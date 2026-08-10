@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antología de Literatura Fantástica</title>
+    <style>
+        :root{
+            --paper:#002FA7;       /* Azul Klein International (Fondo) */
+            --card:#0035BF;        /* Azul para la barra de pestañas */
+            --header-blue:#003AC0; /* Azul para la cabecera del título */
+            --ink:#F5F2E6;         /* Texto blanco/crema */
+            --muted:#AABAF0;       /* Texto secundario (azul claro) */
+            --gold:#F0C040;        /* Detalles dorados */
+            --display:"Futura","Avenir Next","Century Gothic","Trebuchet MS",ui-sans-serif,sans-serif;
+            --body:Georgia,"Iowan Old Style","Palatino Linotype",Palatino,serif;
+        }
+        *{box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        body {
+            font-family: var(--body);
+            background-color: var(--paper);
+            color: var(--ink);
+            margin: 0;
+            padding: 0;
+            line-height: 1.68;
+            font-size: 1.04rem;
+            -webkit-font-smoothing: antialiased;
+        }
+        .header {
+            background-color: var(--header-blue);
+            color: var(--ink);
+            padding: 52px 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--gold);
+        }
+        .header h1 {
+            font-family: var(--display);
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: clamp(2rem, 5.4vw, 3.1rem);
+            letter-spacing: .05em;
+            line-height: 1.06;
+            margin: 0 0 10px;
+        }
+        .header p {
+            font-family: var(--display);
+            font-size: .72rem; 
+            letter-spacing: .28em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin: 10px 0 0;
+        }
+        .tab-container {
+            background-color: var(--card);
+            display: flex;
+            flex-wrap: nowrap; /* Evita que crezca hacia abajo */
+            justify-content: flex-start;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            overflow-x: auto;
+            white-space: nowrap;
+            -ms-overflow-style: none;  /* Ocultar scrollbar en IE y Edge */
+            scrollbar-width: none;  /* Ocultar scrollbar en Firefox */
+        }
+        /* Ocultar scrollbar en Chrome, Safari y Opera */
+        .tab-container::-webkit-scrollbar {
+            display: none;
+        }
+        .tablinks {
+            background-color: inherit;
+            color: var(--ink);
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 20px;
+            font-size: 0.8rem;
+            font-family: var(--display);
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            transition: background-color 0.3s, color 0.3s;
+            border-bottom: 3px solid transparent;
+        }
+        .tablinks:hover {
+            background-color: var(--ink);
+            color: var(--card);
+        }
+        .tablinks.active {
+            background-color: var(--ink);
+            color: var(--card);
+            border-bottom: 3px solid var(--gold);
+            font-weight: 700;
+        }
+        .content-container {
+            max-width: 860px;
+            margin: 40px auto;
+            padding: 40px 50px;
+            background-color: rgba(0, 24, 69, 0.15); 
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .tabcontent {
+            display: none;
+            animation: fadeEffect 1s;
+        }
+        .tabcontent h2 {
+            font-family: var(--display);
+            text-transform: uppercase;
+            letter-spacing: .06em;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 0 10px;
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 10px;
+            color: var(--ink);
+        }
+        .tabcontent h3 {
+            font-weight: normal;
+            font-style: italic;
+            color: var(--muted);
+            margin-top: -10px;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+            font-family: var(--body);
+        }
+        .tabcontent h4 {
+            font-family: var(--display);
+            text-transform: uppercase;
+            letter-spacing: .1em;
+            font-size: .9rem;
+            font-weight: 700;
+            color: var(--gold);
+            margin-top: 30px;
+            border-bottom: 1px dashed rgba(255,255,255,0.3);
+            padding-bottom: 5px;
+        }
+        .tabcontent p {
+            text-align: justify;
+            margin-bottom: 18px;
+            color: var(--ink);
+        }
+        .tabcontent blockquote {
+            border-left: 3px solid var(--gold);
+            margin: 34px 0 6px;
+            padding: 0 0 0 18px;
+            font-style: italic;
+            font-size: 1.12rem;
+            color: #D4C8A0;
+        }
+        .tabcontent .author-bio {
+            font-size: 0.9rem;
+            color: var(--muted);
+            background: rgba(0, 0, 0, 0.2);
+            border-left: 3px solid var(--muted);
+            padding: 14px 16px;
+            border-radius: 0 10px 10px 0;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        @keyframes fadeEffect {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+        @media (max-width: 600px) {
+            .content-container {
+                padding: 20px;
+                margin: 20px;
+            }
+            .tablinks {
+                padding: 10px 15px;
+                font-size: 0.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Antología de Literatura Fantástica</h1>
+        <p>Varios Autores · Adolfo Bioy Casares · Jorge Luis Borges · Silvina Ocampo</p>
+    </div>
+
+    <!-- MANTÉN AQUÍ TUS BOTONES DE PESTAÑAS EXISTENTES -->
+    <div class="tab-container">
+        <button class="tablinks active" onclick="openTab(event, 'Prologo')">Prólogo</button>
+        <button class="tablinks" onclick="openTab(event, 'Postdata')">Postdata</button>
+        <button class="tablinks" onclick="openTab(event, 'Sennin')">Sennin</button>
+        <button class="tablinks" onclick="openTab(event, 'Ojos')">Los ojos culpables</button>
+        <button class="tablinks" onclick="openTab(event, 'Sola')">Sola y su alma</button>
+        <button class="tablinks" onclick="openTab(event, 'Canasta')">En forma de canasta</button>
+        <button class="tablinks" onclick="openTab(event, 'Enoch')">Enoch Soames</button>
+        <button class="tablinks" onclick="openTab(event, 'Sombras')">Sombras suele vestir</button>
+        <button class="tablinks" onclick="openTab(event, 'Calamar')">El calamar opta por su tinta</button>
+        <button class="tablinks" onclick="openTab(event, 'Bloy1')">¿Quién es el rey?</button>
+        <button class="tablinks" onclick="openTab(event, 'Bloy2')">Los goces de este mundo</button>
+        <button class="tablinks" onclick="openTab(event, 'Longjumeau')">Los cautivos de Longjumeau</button>
+        <button class="tablinks" onclick="openTab(event, 'Tlon')">Tlön, Uqbar, Orbis Tertius</button>
+        <button class="tablinks" onclick="openTab(event, 'Odin')">Odín</button>
+        <button class="tablinks" onclick="openTab(event, 'Descuido')">El descuido</button>
+        <button class="tablinks" onclick="openTab(event, 'ObraPoeta')">La obra y el poeta</button>
+        <button class="tablinks" onclick="openTab(event, 'DestinoChambon')">El destino es chambón</button>
+        <button class="tablinks" onclick="openTab(event, 'FantasmaCarlyle')">Un auténtico fantasma</button>
+        <button class="tablinks" onclick="openTab(event, 'SuenoRey')">El sueño del rey</button>
+        <button class="tablinks" onclick="openTab(event, 'GestoMuerte')">El gesto de la muerte</button>
+        <button class="tablinks" onclick="openTab(event, 'CasaTomada')">Casa tomada</button>
+        <button class="tablinks" onclick="openTab(event, 'ArbolOrgullo')">El árbol del orgullo</button>
+        <button class="tablinks" onclick="openTab(event, 'PagodaBabel')">La pagoda de Babel</button>
+        <button class="tablinks" onclick="openTab(event, 'SuenoMariposa')">Sueño de la mariposa</button>
+        <button class="tablinks" onclick="openTab(event, 'SerPolvo')">Ser polvo</button>
+        <button class="tablinks" onclick="openTab(event, 'Creyente')">Un creyente</button>
+        <button class="tablinks" onclick="openTab(event, 'HogarSolido')">Un hogar sólido</button>
+        <button class="tablinks" onclick="openTab(event, 'Negador')">El negador de milagros</button>
+        <button class="tablinks" onclick="openTab(event, 'PeorInfierno')">Peor que el infierno</button>
+        <button class="tablinks" onclick="openTab(event, 'SangreJardin')">La sangre en el jardín</button>
+        <button class="tablinks" onclick="openTab(event, 'Ganadores')">Los ganadores de mañana</button>
+        <button class="tablinks" onclick="openTab(event, 'FinalFantastico')">Final para un cuento fantástico</button>
+        <button class="tablinks" onclick="openTab(event, 'PataMono')">La pata de mono</button>
+        <button class="tablinks" onclick="openTab(event, 'DefinicionFantasma')">Definición del fantasma</button>
+        <button class="tablinks" onclick="openTab(event, 'MayGoulding')">May Goulding</button>
+        <button class="tablinks" onclick="openTab(event, 'BrujoPostergado')">El brujo postergado</button>
+        <button class="tablinks" onclick="openTab(event, 'Josefina')">Josefina la cantora</button>
+        <button class="tablinks" onclick="openTab(event, 'AnteLey')">Ante la ley</button>
+        <button class="tablinks" onclick="openTab(event, 'CuentoHermoso')">El cuento más hermoso del mundo</button>
+        <button class="tablinks" onclick="openTab(event, 'Abdula')">Historia de Abdula</button>
+        <button class="tablinks" onclick="openTab(event, 'CiervoEscondido')">El ciervo escondido</button>
+        <button class="tablinks" onclick="openTab(event, 'Esperanza')">La esperanza</button>
+        <button class="tablinks" onclick="openTab(event, 'CaballosAbdera')">Los caballos de Abdera</button>
+        </div>
+
+    <div class="content-container">
+        <!-- PRÓLOGO -->
+        <div id="Prologo" class="tabcontent" style="display: block;">
+            <h2>Prólogo</h2>
+            <h3>Adolfo Bioy Casares (1940)</h3>
+            <h4>1. Historia</h4>
+            <p>Viejas como el miedo, las ficciones fantásticas son anteriores a las letras. Los aparecidos pueblan todas las literaturas: están en el Zendavesta, en la Biblia, en Homero, en Las Mil y una Noches. Tal vez los primeros especialistas en el género fueron los chinos. El admirable Sueño del Aposento Rojo y hasta novelas eróticas y realistas, como Kin P'ing Mei y Sui Hu Chuan, y hasta los libros de filosofía, son ricos en fantasmas y sueños. Pero no sabemos cómo estos libros representan la literatura china; ignorantes, no podemos conocerla directamente, debemos alegrarnos con lo que la suerte (profesores muy sabios, comités de acercamiento cultural, la señora Perla S. Buck), nos depara. Ateniéndonos a Europa y a América, podemos decir: como género más o menos definido, la literatura fantástica aparece en el siglo XIX y en el idioma inglés. Por cierto, hay precursores; citaremos: en el siglo XIV, al infante Don Juan Manuel; en el siglo XVI, a Rabelais; en el XVII, a Quevedo; en el XVIII, a De Foe y a Horace Walpole; ya en el XIX, a Hoffmann.</p>
+            <h4>2. Técnica</h4>
+            <p>No debe confundirse la posibilidad de un código general y permanente, con la posibilidad de leyes. Tal vez la Poética y la Retórica de Aristóteles no sean posibles; pero las leyes existen; escribir es, continuamente, descubrirlas o fracasar. Si estudiamos la sorpresa como efecto literario, o los argumentos, veremos cómo la literatura va transformando a los lectores y, en consecuencia, cómo éstos exigen una continua transformación de la literatura. Pedimos leyes para el cuento fantástico; pero ya veremos que no hay un tipo, sino muchos, de cuentos fantásticos. Habrá que indagar las leyes generales para cada tipo de cuento y las leyes especiales para cada cuento. El escritor deberá, pues, considerar su trabajo como un problema que puede resolverse, en parte, por las leyes generales y preestablecidas, y, en parte, por leyes especiales que él debe descubrir y acatar.</p>
+            <h4>a) Observaciones generales:</h4>
+            <p><strong>El ambiente o la atmósfera.</strong> Los primeros argumentos eran simples —por ejemplo: consignaban el mero hecho de la aparición de un fantasma— y los autores procuraban crear un ambiente propicio al miedo. Crear un ambiente, una "atmósfera”, todavía es ocupación de muchos escritores. Una persiana que se golpea, la lluvia, una frase que vuelve, o, más abstractamente, memoria y paciencia para volver a escribir cada tantas líneas, esos leitmotive, crean la más sofocante de las atmósferas. Algunos de los maestros del género no han desdeñado, sin embargo, estos recursos. Exclamaciones como ¡Honor! ¡Espanto! ¡Cuál no sería mi sorpresa!, abundan en Maupassant. Poe —no, por cierto, en el límpido M. Valdemar— aprovecha los caserones abandonados, las histerias y las melancolías, los mustios otoños.</p>
+            <p>Después algunos autores descubrieron la conveniencia de hacer que en un mundo plenamente creíble sucediera un solo hecho increíble; que en vidas consuetudinarias y domésticas, como las del lector, sucediera el fantasma. Por contraste, el efecto resultaba más fuerte. Surge entonces lo que podríamos llamar la tendencia realista en la literatura fantástica (ejemplo: Wells). Pero con el tiempo las escenas de calma, de felicidad, los proyectos para después de las crisis en las vidas de los personajes, son claros anuncios de las peores calamidades; y así, el contraste que se había creído conseguir, la sorpresa, desaparecen.</p>
+            <p><strong>La sorpresa.</strong> Puede ser de puntuación, verbal, de argumento. Como todos los efectos literarios, pero más que ninguno sufre por el tiempo. Sin embargo, pocas veces un autor se atreve a no aprovechar una sorpresa. Hay excepciones: Max Beerbohm, en Enoch Soames, W.W. Jacobs, en La Pata de Mono. Max Beerbohm deliberadamente, atinadamente, elimina toda posibilidad de sorpresa con respecto al viaje de Soames a 1997. Para el menos experto de los lectores habrá pocas sorpresas en La Pata de Mono; con todo, es uno de los cuentos más impresionantes de la antología.</p>
+            <p><strong>El Cuarto Amarillo y el Peligro Amarillo.</strong> Chesterton señala con esta fórmula un desiderátum (un hecho, en un lugar limitado, con un número limitado de personajes) y un error para las tramas policiales, creo que puede aplicarse, también, a las fantásticas. Es una nueva versión —periodística, epigramática— de la doctrina de la tres unidades.</p>
+            <h4>b) Enumeración de argumentos fantásticos</h4>
+            <p><strong>Argumentos en que aparecen fantasmas.</strong> En nuestra antología hay dos, brevísimos y perfectos: el de Ireland y el de Loring Frost. El fragmento de Carlyle (Sartor Resartus), que incluimos, tiene el mismo argumento, pero al revés.</p>
+            <p><strong>Viajes por el tiempo.</strong> El ejemplo clásico es La Máquina del Tiempo. En este inolvidable relato, Wells no se ocupa de las modificaciones que los viajes determinan en el pasado y en el futuro, y emplea una máquina que él mismo no se explica. Max Beerbohm, en Enoch Soames emplea al diablo, que no requiere explicaciones, y discute, aprovecha, los efectos del viaje sobre el porvenir.</p>
+            <p><strong>Los Tres Deseos.</strong> Hace más de diez siglos empezó a escribirse este cuento; colaboraron en él escritores ilustres de épocas y de tierras distantes, un oscuro escritor contemporáneo ha sabido acabarlo con felicidad. En 1902, W. W. Jacobs, autor de sketches humorísticos, logra una tercera versión, trágica, admirable.</p>
+            <p><strong>Argumentos con acción que sigue en el infierno.</strong> Hay dos en la antología, que no se olvidarán: el fragmento de Arcana Coelestia, de Swedenborg, y Donde su Fuego Nunca se Apaga, de May Sinclair.</p>
+            <p><strong>Con personaje soñado.</strong> Incluimos: El impecable Sueño Infinito de Pao Yu, de Tsao Hsue Kin; el fragmento de Through the Looking-Glass, de Lewis Carrol; La Última Visita del Caballero Enfermo, de Papini.</p>
+            <p><strong>Con metamorfosis.</strong> Podemos citar La Transformación, de Kafka; Sábanas de Tierra, de Silvina Ocampo; Ser Polvo, de Dabove; Lady into Fox, de Garnett.</p>
+            <p><strong>Acciones paralelas que obran por analogía.</strong> La Sangre en el Jardín, de Ramón Gómez de la Serna: La Secta del Loto Blanco.</p>
+            <p><strong>Tema de la inmortalidad,</strong> Citaremos El Judío Errante; Mr. Elvisham. de Wells. Las Islas Nuevas, de María Luisa Bombal; She. de Rider Haggard; L´Atlantide. de Pierre Benoit.</p>
+            <p><strong>Fantasías metafísicas.</strong> Aquí lo fantástico está, más que en los hechos, en el razonamiento. Nuestra antología incluye: Tantalia. de Macedonio Fernández; un fragmento de Star Maker. de Olaf Stapledon; la historia de Chuang Tzu y la mariposa, el cuento de la negación de los milagros; Tlön, Uqbar, Orbis Tertius, de Jorge Luis Borges.</p>
+            <p><strong>Cuentos y novelas de Kafka.</strong> Las obsesiones del infinito, de la postergación infinita, de la subordinación jerárquica, definen estas obras; Kafka, con ambientes cotidianos, mediocres, burocráticos, logra la depresión y el horror; su metódica imaginación y su estilo incoloro nunca entorpecen el desarrollo de los argumentos.</p>
+            <p><strong>Vampiros y castillos.</strong> Su paso por la literatura no ha sido feliz: recordemos a Drácula, de Bram Stoker, a Mrs. Amworth, de Benson. No figuran en esta antología.</p>
+            <p>Los cuentos fantásticos pueden clasificarse, también, por la explicación:</p>
+            <p>a) Los que se explican por la agencia de un ser o de un hecho sobrenatural.<br>
+            b) Los que tienen explicación fantástica, pero no sobrenatural.<br>
+            c) Los que se explican por la intervención de un ser o de un hecho sobrenatural, pero insinúan, también, la posibilidad de una explicación natural.</p>
+            <h4>3. La antología que presentamos</h4>
+            <p>Para formarla hemos seguido un criterio hedónico; no hemos partido de la intención de publicar una antología. Una noche de 1937 hablábamos de literatura fantástica, discutíamos los cuentos que nos parecían mejores; uno de nosotros dijo que si los reuniéramos y agregáramos los fragmentos del mismo carácter anotados en nuestros cuadernos, obtendríamos un buen libro. Compusimos este libro.</p>
+            <p>Analizado con un criterio histórico o geográfico parecerá irregular. No hemos buscado, ni rechazado, los nombres célebres. Este volumen es, simplemente, la reunión de los textos de la literatura fantástica que nos parecen mejores.</p>
+            <p>Omisiones. Hemos debido resignarnos, por razones de espacio, a algunas omisiones. Nos queda material para una segunda antología de la literatura fantástica.</p>
+            <p>Deliberadamente hemos omitido: a E. T. W. Hoffmann, a Sheridan Le Fanu, a Ambrose Bierce, a M. R. James, a Walter de la Mare.</p>
+            <p>Aclaración. La narración titulada El Destino es Chambón perteneció a una proyectada novela de Arturo Cancela y Pilar de Lusarreta sobre la revolución del 90.</p>
+            <p><strong>ADOLFO BIOY CASARES, Buenos Aires, 1940</strong></p>
+        </div>
+    
+        <!-- POSTDATA -->
+        <div id="Postdata" class="tabcontent">
+            <h2>Postdata (1965)</h2>
+            <h3>Adolfo Bioy Casares</h3>
+            <p>Veinticinco años después, la favorable fortuna permite una nueva edición de nuestra Antología de la literatura fantástica de 1940, enriquecida de textos de Akutagawa, de Bianco, de León Bloy, de Cortázar, de Elena Garro, de Murena, de Carlos Peralta, de Barry Perowne, de Wilcock. Aun relatos de Silvina Ocampo y de Bioy se nos deslizaron, pues entendimos que su inclusión ya no pecaba de impaciente. El editor se opone a la supresión del prólogo de la edición original y me pide que escriba otro. Dejaré que me persuada, redactaré siquiera una postdata, porque en aquel prólogo hay afirmaciones de las que siempre me he arrepentido.</p>
+            <p>En el prólogo, para describir los relatos de Borges, encuentro una fórmula admirablemente adecuada a los más rápidos lugares comunes de la crítica. Sospecho que no faltan pruebas de su eficacia para estimular la deformación de la verdad. Lo deploro. En otro párrafo, llevado por el afán de análisis o por la voluntad de las frases, detenidamente señalo un presunto error en el relato de Kipling. Tal reparo, ni una palabra sobre méritos, configuran una opinión que no es la mía.</p>
+            <p>Lo que tan reiteradamente me arrojaba en el error acaso fuera un bien intencionado ardor sectario. Los compiladores de esta antología creíamos entonces que la novela, en nuestro país y en nuestra época, adolecía de una grave debilidad en la trama, porque los autores habían olvidado lo que podríamos llamar el propósito primordial de la profesión: contar cuentos. De este olvido surgían monstruos, novelas cuyo plan secreto consistía en un prolijo registro de tipos, leyendas, objetos, representativos de cualquier folklore, o simplemente en el saqueo del diccionario de sinónimos, cuando no del Rebusco de voces castizas del P. Mir. Porque requeríamos contrincantes menos ridículos, acometimos contra las novelas psicológicas, a las que imputábamos deficiencia de rigor en la construcción en ellas, alegábamos, el argumento se limita a una suma de episodios, equiparables a adjetivos o láminas, que sirven para definir a los personajes; la invención de tales episodios no reconoce otra norma que el antojo del novelista, ya que psicológicamente todo es posible y aun verosímil. Véase Yet each man kills the thing he loves. porque te quiero te aporreo, etcétera. Como panacea recomendábamos el cuento fantástico.</p>
+            <p>Desde luego, la novela psicológica no peligró por nuestros embates: tiene la perduración asegurada, pues como un inagotable espejo refleja rostros diversos en los que el lector siempre se reconoce. Aun en los relatos fantásticos encontramos personajes en cuya realidad irresistiblemente creemos: nos atrae en ellos, como en la gente de carne y hueso, una sutil amalgama de elementos conocidos y de misterioso destino. ¿Quién no tropezó alguna tarde, en la Sociedad de Escritores o en el PEN Club, con el pobre Soames del inolvidable cuento de Max Beerbohm? Entre las mismas piezas que incluye la presente antología hay una, el curioso apólogo de Kafka, donde la descripción de caracteres, el delicado examen idiosincrático de la heroína y de su pueblo, importa más que la circunstancia fantástica de que los personajes sean ratones.</p>
+            <p>Tampoco peligra el cuento fantástico, por el desdén de quienes reclaman una literatura más grave, que traiga alguna respuesta a las perplejidades del hombre —no se detenga aquí mi pluma, estampe la prestigiosa palabra—: moderno. Difícilmente la respuesta significará una solución, que está fuera de alcance de novelistas y de cuentistas; insistirá más bien en comentarios, consideraciones, divagaciones, tal vez comparables al acto de rumiar, sobre el tema de actualidad: política y economía hoy, ayer o mañana la obsesión que corresponda. A un anhelo del hombre, menos obsesivo, más permanente a lo largo de la vida y de la historia, corresponde el cuento fantástico: al inmarcesible anhelo de oír cuentos; lo satisface mejor que ninguno, porque es el cuento de cuentos, el de las colecciones orientales y antiguas y, como decía Palmerín de Inglaterra, el fruto de oro de la imaginación.</p>
+            <p>Perdone el amable lector las efusiones personales. Estuvo siempre este libro —el primero en su género en que colaboramos con Borges— muy mezclado a nuestra vida. En la última parte de la frase hablo por fin en nombre de los tres antologistas.</p>
+            <p><strong>A. B. C, Rincón Viejo, Pardo, 16 de marzo de 1965.</strong></p>
+        </div>
+
+        <!-- SENNIN -->
+        <div id="Sennin" class="tabcontent">
+            <h2>Sennin</h2>
+            <h3>Ryunosuke Akutagawa (1892-1927)</h3>
+            <div class="author-bio">Escritor japonés. Antes de quitarse la vida, explicó fríamente las razones que lo llevaban a tal decisión y compuso una lista de suicidas históricos, en la que incluyó a Cristo. Entre sus obras citaremos Cuentos grotescos y curiosos, Los tres tesoros, Kappa, Rashomon, Cuentos breves japoneses. Tradujo obras de Browning al japonés.</div>
+            <p>Un hombre que quería emplearse como sirviente llegó una vez a la ciudad de Osaka. No sé su verdadero nombre, lo conocían por el nombre de sirviente, Gonsuké, pues él era, después de todo, un sirviente para cualquier trabajo.</p>
+            <p>Este hombre —que nosotros llamaremos Gonsuké— fue a una agencia de COLOCACIONES PARA CUALQUIER TRABAJO, y dijo al empleado que estaba fumando su larga pipa de bambú:</p>
+            <p>—Por favor, señor Empleado, yo desearía ser un sennin. ¿Tendría usted la gentileza de buscar una familia que me enseñara el secreto de serlo, mientras trabajo como sirviente?</p>
+            <p>El empleado, atónito, quedó sin habla durante un rato, por el ambicioso pedido de su cliente.</p>
+            <p>—¿No me oyó usted, señor Empleado? —dijo Gonsuké—. Yo deseo ser un sennin. ¿Quisiera usted buscar una familia que me tome de sirviente y me revele el secreto?</p>
+            <p>—Lamentamos desilusionarlo —musitó el empleado, volviendo a fumar su olvidada pipa—, pero ni una sola vez en nuestra larga carrera comercial hemos tenido que buscar un empleo para aspirantes al grado de sennin. Si usted fuera a otra agencia, quizá...</p>
+            <p>Gonsuké se le acercó más, rozándolo con sus presuntuosas rodillas, de pantalón azul, y empezó a argüir de esta manera:</p>
+            <p>—Ya, ya, señor, eso no es muy correcto. ¿Acaso no dice el cartel COLOCACIONES PARA CUALQUIER TRABAJO? Puesto que promete cualquier trabajo, usted debe conseguir cualquier trabajo que le pidamos. Usted está mintiendo intencionalmente, si no lo cumple.</p>
+            <p>Frente a un argumento tan razonable, el empleado no censuró el explosivo enojo:</p>
+            <p>—Puedo asegurarle, señor Forastero, que no hay ningún engaño. Todo es correcto —se apresuró a alegar el empleado—, pero si usted insiste en su extraño pedido, le rogaré que se dé otra vuelta por aquí mañana. Trataremos de conseguir lo que nos pide.</p>
+            <p>Para desentenderse, el empleado hizo esa promesa y logró, momentáneamente por lo menos, que Gonsuké se fuera. No es necesario decir, sin embargo, que no tenía la posibilidad de conseguir una casa donde pudieran enseñar a un sirviente los secretos para ser un sennin. De modo que al deshacerse del visitante, el empleado acudió a la casa de un médico vecino. Le contó la historia del extraño cliente y le preguntó ansiosamente:</p>
+            <p>—Doctor, ¿qué familia cree usted que podría hacer de este muchacho un sennin, con rapidez?</p>
+            <p>Aparentemente, la pregunta desconcertó al doctor. Quedó pensando un rato, con los brazos cruzados sobre el pecho, contemplando vagamente un gran pino del jardín. Fue la mujer del doctor, una mujer muy astuta, conocida como la Vieja Zorra, quien contestó por él al oír la historia del empleado.</p>
+            <p>—Nada más simple. Envíelo aquí. En un par de años lo haremos sennin.</p>
+            <p>—¿Lo hará usted realmente, señora? ¡Sería maravilloso! No sé cómo agradecerle su amable oferta. Pero le confieso que me di cuenta desde el comienzo que algo relaciona a un doctor con un sennin.</p>
+            <p>El empleado, que felizmente ignoraba los designios de la mujer, agradeció una y otra vez, y se alejó con gran júbilo. Nuestro doctor lo siguió con la vista; parecía muy contrariado; luego, volviéndose hacia la mujer, le regañó malhumorado:</p>
+            <p>—Tonta, ¿te has dado cuenta de la tontería que has hecho y dicho? ¿Qué harías si el tipo empezara a quejarse algún día de que no le hemos enseñado ni una pizca de tu bendita promesa después de tantos años?</p>
+            <p>La mujer, lejos de pedirle perdón, se volvió hacia él y graznó:</p>
+            <p>—Estúpido. Mejor no te metas. Un atolondrado tan estúpidamente tonto como tú, apenas podría arañar lo suficiente en este mundo de te comeré o me comerás, para mantener alma y cuerpo unidos.</p>
+            <p>Esta frase hizo callar a su marido. A la mañana siguiente, como había sido acordado, el empleado llevó a su rústico cliente a la casa del doctor...</p>
+            <p>[Continúa la historia de Gonsuké, quien trabaja veinte años sin sueldo esperando aprender el secreto de los sennin. Al finalizar el plazo, la astuta mujer le ordena trepar a un pino y soltar ambas manos. Gonsuké obedece, esperando morir, pero en lugar de caer, se detiene en el aire. Se da cuenta de que, sin saberlo, el esfuerzo y la devoción de veinte años lo han convertido en un sennin. Desde lo alto, les agradece y asciende entre las nubes, desapareciendo para siempre.]</p>
+            <blockquote>Según la tradición china, el Sennin es un ermitaño sagrado que vive en el corazón de una montaña, y que tiene poderes mágicos como el de volar cuando quiere y disfrutar de una extrema longevidad.</blockquote>
+        </div>
+
+        <!-- LOS OJOS CULPABLES -->
+        <div id="Ojos" class="tabcontent">
+            <h2>Los ojos culpables</h2>
+            <h3>Ah'med ech Chiruani</h3>
+            <p>Cuentan que un hombre compró a una muchacha por cuatro mil denarios. Un día la miró y echó a llorar. La muchacha le preguntó por qué lloraba; él respondió: "Tienes tan bellos ojos que me olvido de adorar a Dios."</p>
+            <p>Cuando quedó sola, la muchacha se arrancó los ojos. Al verla en ese estado el hombre se afligió y le dijo: "¿Por qué te has maltratado así? Has disminuido tu valor." Ella le respondió: "No quiero que haya nada en mí que te aparte de adorar a Dios."</p>
+            <p>A la noche, el hombre oyó en sueños una voz que le decía: "La muchacha disminuyó su valor para ti, pero lo aumentó para nosotros y te la hemos tomado." Al despertar, encontró cuatro mil denarios bajo la almohada. La muchacha estaba muerta.</p>
+        </div>
+
+        <!-- SOLA Y SU ALMA -->
+        <div id="Sola" class="tabcontent">
+            <h2>Sola y su alma</h2>
+            <h3>Thomas Bailey Aldrich (1836-1907)</h3>
+            <div class="author-bio">Poeta y novelista norteamericano, nacido en New Hampshire; muerto en Boston. Autor de: Cloth of Gold (1874); Wyndham Tower (1879); An Old Town by the Sea (1893).</div>
+            <p>Una mujer está sentada sola en una casa. Sabe que no hay nadie más en el mundo: todos los otros seres han muerto. Golpean a la puerta.</p>
+            <p style="text-align: right; font-size: 0.9em; color: #666;">Thomas Bailey Aldrich: Works, vol. 9, pág. 341 (1912).</p>
+        </div>
+
+        <!-- EN FORMA DE CANASTA -->
+        <div id="Canasta" class="tabcontent">
+            <h2>En forma de canasta</h2>
+            <h3>John Aubrey (1626-1697)</h3>
+            <div class="author-bio">Arqueólogo inglés nacido en Wiltshire; muerto en Oxford. Sus obras incluyen: Architectonica Sacra y las Miscellanies (1696), que tratan de sueños y de fantasmas.</div>
+            <p>Refería Thomas Traherne que, estando en cama, vio una canasta que flotaba en el aire, junto a la cortina: creo que dijo que había fruta en la canasta: Era un Fantasma.</p>
+            <p style="text-align: right; font-size: 0.9em; color: #666;">De las Miscellanies (1696), de John Aubrey</p>
+        </div>
+
+        <!-- ENOCH SOAMES -->
+        <div id="Enoch" class="tabcontent">
+            <h2>Enoch Soames</h2>
+            <h3>Max Beerbohm (1872-1956)</h3>
+            <div class="author-bio">Escritor y caricaturista, nacido en Londres en 1872, muerto en Rapallo en 1956. Autor de A Defense of Cosmetics (1896); The Happy Hypocrite (1897); Zuleika Dobson (1911); Seven Men (1919).</div>
+            <p>Cuando el señor Holbrook Jackson publicó un libro sobre la literatura de la penúltima década del siglo XIX, miré con ansiedad el índice, en busca del nombre SOAMES ENOCH. Temía no encontrarlo. En efecto, no lo encontré. Todos los otros nombres estaban ahí. Aquella omisión confirmaba el fracaso total del pobre Soames.</p>
+            <p>Sospecho que soy la única persona que lo notó. ¡Hasta ese punto Soames había fracasado! Tampoco es un consuelo suponer que si hubiera logrado algún éxito, yo lo habría olvidado, como a los otros, y sólo hubiese vuelto al llamado del historiador. Es cierto que si sus dotes, tales como eran, hubieran sido reconocidas en vida, no hubiera hecho el pacto que hizo, ese extraño pacto, cuyas consecuencias lo han destacado siempre en mi memoria. Pero esas consecuencias subrayan la plenitud de su infortunio.</p>
+            <p>No es compasión, sin embargo, lo que me impulsa escribir sobre él. Por su bien, pobre amigo, preferiría guardar silencio. No hay que burlarse de los muertos. ¿Y cómo escribir sobre Enoch Soames sin ponerlo en ridículo? Más bien ¿cómo ocultar el hecho nefasto de que era un ser ridículo? No seré capaz de hacer eso. Tarde o temprano, sin embargo, tendré que escribir sobre él. Ustedes verán, a su debido tiempo, que no me queda otra alternativa. Tanto da que ahora lo haga.</p>
+            <p>En el verano de 1893, un bólido cayó sobre Oxford. Se hundió profundamente en la tierra. Algo pálidos, profesores y estudiantes se apiñaron a su alrededor sin hablar de otra cosa. ¿De dónde procedía ese meteoro? De París. ¿Su nombre? Will Rothenstein. ¿Su propósito? Ejecutar veinticuatro retratos en litografía, que publicaría la Bodley Head, de Londres. El asunto era urgente. Ya el director de A, el de B, como el decano de C, habían posado con humildad. Ancianos majestuosos y confusos que nunca se habían dignado posar, no resistieron al forastero. No suplicaba: invitaba; no invitaba: ordenaba. Tenía veintiún años. Sus anteojos resplandecían. Conocía a Whistler, a Edmond de Goncourt, conocía a todos en París. Se murmuraba que en cuanto liquidara su colección de profesores, incluiría a algunos estudiantes. Fue orgulloso día para mí cuando me incluyeron. Admiraba y temía a Rothenstein; surgió entre nosotros una amistad que los años enriquecieron.</p>
+            <p>Cuando llegaron las vacaciones se estableció en Londres. A él debo mi conocimiento de Chelsea. Fue Rothenstein quien me hizo conocer, en Pimlico, a un joven cuyos dibujos eran famosos entre la minoría. Se llamaba Aubrey Beardsley. Me llevó también a otro centro de inteligencia y osadía, el Café Royal.</p>
+            <p>Ahí, en ese tardecer de octubre, ahí, en ese exuberante panorama de ornamentos dorados y terciopelo carmesí, entre opuestos espejos y cariátides laboriosas, entre columnas de humo de tabaco que ascendían al cielorraso pintado y pagano, entre el zumbido de conversaciones sin duda cínicas, interrumpidas por las fichas de dominó en las mesas de mármol, respiré profundamente y me dije: —Esta, esta es la vida.</p>
+            <p>Anochecía. Bebimos vermouth. Quienes conocían a Rothenstein lo señalaban a quienes sólo lo conocían de nombre. Constantemente entraban hombres que erraban de un lado a otro en busca de mesas libres o de mesas ocupadas por amigos. Uno de ellos me interesó porque parecía querer llamar la atención de Rothenstein. Pasó dos veces, con mirada indecisa; pero Rothenstein, absorto en una disertación sobre Puvis de Chavannes, no lo vio... Era una persona encorvada, vacilante, más bien alta, muy pálida, de pelo algo largo y negro. Tenía una rala, imprecisa barba o, mejor dicho, tenía un mentón sobre el cual muchos pelos se retorcían para cubrir su retirada. Era una persona de aspecto extraño, pero a fines del siglo pasado, si no me equivoco, los aspectos extraños eran más frecuentes que ahora. Los jóvenes escritores de aquella época —y estaba seguro de que ese hombre lo era— procuraban impresionar por la apariencia. Este hombre lo procuraba en vano. Usaba chambergo de corte clerical pero de intención bohemia, y una impermeable capa gris, que, tal vez por ser impermeable, no conseguía ser romántica. Decidí que "impreciso" era el mot juste que le correspondía. Yo también había intentado escribir y me perturbaba el mot juste, aquel talismán de la época.</p>
+            <p>El hombre impreciso volvió a pasar; esta vez se detuvo. —Usted no me recuerda —dijo con una voz insípida. Rothenstein lo miró. —Sí, lo recuerdo —replicó después de un momento, con más orgullo que efusión—. Edwin Soames. —Enoch Soames —dijo Enoch. —Enoch Soames —repitió Rothenstein como significando que ya era mucho haber recordado el apellido—. Nos encontramos en París, dos o tres veces, cuando usted vivía ahí. —Y fui a su estudio una vez. —Deploro que no me encontrara. —Pero lo encontré. Usted me mostró algunos de sus cuadros. ¿No recuerda? He oído que usted vive en Chelsea, ahora. —Sí.</p>
+            <p>Me asombró que después de este monosílabo, Mr Soames no se fuera. Se quedó pacientemente donde estaba, como un animal inerte, como un borrico mirando una tranquera. Melancólica figura, la suya. Se me ocurrió que "hambriento" era quizá el mot juste que le correspondía; pero ¿hambriento de qué? Parecía más bien desganado. Me dio lástima; y Rothenstein, aunque no lo había invitado a Chelsea, lo invitó a sentarse y a tomar algo. Sentado, adquirió más aplomo. Echó hacia atrás las alas de su capa, con un gesto que —si las alas no hubieran sido impermeables— podía haber parecido un desafío a todas las cosas. Y pidió un ajenjo. —Je me tiens toujours fidèle —le dijo a Rothenstein— à la sorcière glauque. —Le va a hacer mal —dijo Rothenstein secamente. —No puede hacer mal —dijo Soames— Dans ce monde il n'y a ni de bien ni de mal. —¿Nada bueno y nada malo? ¿Qué quiere usted decir? —Todo eso lo expliqué en el prefacio de Negaciones. —¿Negaciones? —Sí; le di a usted un ejemplar. —Sí, desde luego. ¿Pero usted llegó a explicar, por ejemplo, que no hay diferencia entre buena y mala sintaxis? —No —dijo Soames—. En el Arte existen el Bien y el Mal. Pero en la Vida... no. —Estaba armando un cigarrillo. Tenía manos débiles y blancas, no muy limpias y con las puntas de los dedos manchadas con nicotina.— En la vida tenemos la ilusión del bien y del mal, pero —su voz se apagó hasta convertirse en un murmullo donde las palabras vieux jeux y rococó apenas se oían. Quizá comprendía que no estaba muy elocuente y temía que Rothenstein le descubriese alguna falacia. Tosió y dijo: —Parlons d'autre chose.</p>
+            <p>¿Les parecerá a ustedes que Soames era un imbécil? No era mi opinión. Yo era joven y me faltaba el discernimiento que había alcanzado Rothenstein. Soames nos llevaba cinco o seis años. Además, había escrito un libro. Era maravilloso haber escrito un libro. Si Rothenstein no hubiera estado ahí, yo hubiera reverenciado a Soames. Aun así, lo respetaba. Y me acerqué mucho a la reverencia cuando dijo que pronto publicaría otro. Pregunté si podía preguntar qué clase de libro sería. —Mis poemas —contestó. Rothenstein preguntó si era ese el título de la obra. El poeta estudió la sugestión, pero dijo que había pensado no darle título. —Si un libro es bueno... —murmuró, agitando el cigarrillo. Rothenstein hizo notar que la falta de título podía perjudicar la venta del libro. Insistió: —Si yo fuera a una librería y preguntara: ¿Tiene usted...? ¿Tiene usted un ejemplar de...? ¿Cómo iban a saber lo que quiero? —Por supuesto, llevará mi nombre en la tapa.—contestó Soames vivamente—. Y me gustaría —agregó, clavando la mirada en Rothenstein— un retrato mío en la portada. —Rothenstein admitió que era una idea espléndida y mencionó que se iba al campo y que no volvería por algún tiempo. Miró luego el reloj, se asombró de la hora, pagó al mozo y salió conmigo a comer. Soames permaneció en su puesto, fiel a la bruja glauca.</p>
+            <p>[... La narración continúa con la frustración de Soames por el fracaso de su libro 'Fungoides', su satanismo católico, y su desesperación por saber qué pensará la posteridad de él. En el restaurante Vingtième, conoce al Diablo, quien le ofrece viajar cien años al futuro, al 3 de junio de 1997, para leer en la sala de lectura del Museo Británico lo que se ha escrito sobre él. Soames acepta el trato, pero al regresar, destrozado, revela que el único libro del futuro que lo menciona, de un tal T.K. Nupton, lo describe no como un genio, sino como un personaje ficticio inventado por Max Beerbohm para un cuento satírico. El Diablo se lo lleva al infierno, y Beerbohm reflexiona sobre la cruel ironía de que la posteridad no reconozca la existencia real de Soames.]</p>
+            <blockquote>
+                <p><strong>NOCTURNE</strong><br>
+                Round and round the shutter'd Square<br>
+                I stroll'd with the Devil's arm in mine.<br>
+                No sound but the scrape of his hoof was there<br>
+                And the ring of his laughter and mine.<br>
+                We had drunk black wine.<br><br>
+                I scream'd, "I will race you, Master!"<br>
+                "What matter", he shriek'd, "to-night<br>
+                Which of us runs the faster?<br>
+                There is nothing to fear to-night<br>
+                In the foul moons' light!"<br><br>
+                Then I look'd him in the eyes,<br>
+                And I laugh'd full shrill at the lie he told<br>
+                And the gnawing fear he would fain disguise.<br>
+                It was true, what I'd time and again been told:<br>
+                He was old — old.</p>
+            </blockquote>
+            <p>Desde aquel día en el Vingtième, lo he visto varias veces. Sólo una, sin embargo, lo he visto de cerca. Fue en París. Yo caminaba una tarde por la Rue d'Antin cuando lo vi venir, demasiado vistoso, como siempre y revoleando un bastón de ébano, como si fuera el dueño de la calle. Al pensar en Enoch Soames y en los millares de víctimas que gimen bajo el poder de esa bestia, un gran enojo frío me acometió; me erguí cuanto pude. Pero, bueno; uno está tan acostumbrado a sonreír y a saludar en la calle a cualquier conocido, que el acto es casi autónomo. Al cruzarme con el Diablo, sé, miserablemente, que lo saludé y sonreí. Mi vergüenza fue dolorosa cuando él me miró fijamente y siguió de largo. Ser desairado, deliberadamente desairado por él. Estuve, estoy aún, indignado de que eso me pasara.</p>
+            <p style="text-align: right; font-size: 0.9em; color: #666;">Max Beerbohm. Seven Men (1919)</p>
+        </div>
+
+        <!-- SOMBRAS SUELE VESTIR -->
+        <div id="Sombras" class="tabcontent">
+            <h2>Sombras suele vestir</h2>
+            <h3>José Bianco</h3>
+            <div class="author-bio">Escritor argentino, nacido en Buenos Aires. En 1932 publicó un libro de Cuentos, La pequeña Gyaros. De 1943 es su novela Las ratas. El relato que publicamos, editado por los Cuadernos de la Quimera (Emece), apareció por primera vez en la revista "Sur" en octubre de 1941.</div>
+            <blockquote>El sueño, autor de representaciones,<br>en su teatro sobre el viento armado<br>sombras suele vestir de bulto bello.<br>— GÓNGORA.</blockquote>
+            <h4>I</h4>
+            <p>—Lo echaré de menos; lo quiero como a un hijo —dijo doña Carmen.<br>Le contestaron:<br>—Sí, usted ha sido muy buena con él. Pero es lo mejor.</p>
+            <p>En los últimos tiempos, cuando iba al inquilinato de la calle Paso, rehuía la mirada de doña Carmen para no turbar esa vaga somnolencia que había llegado a convertirse en su estado de ánimo definitivo. Hoy, como de costumbre, detuvo los ojos en Raúl. El muchacho ovillaba una madeja de lana dispuesta en el respaldo de dos sillas; podía aparentar veinte años, a lo sumo, y tenía esa expresión atónita de las estatuas, llena de dulzura y desapego. De la cabeza de Raúl pasó al delantal de la mujer; observó los cuatro dedos tenaces, plegados sobre cada bolsillo; paulatinamente llegó al rostro de doña Carmen. Pensó con asombro: "Eran ilusiones mías. Nunca la he odiado, quizá." Y también pensó, con tristeza: "No volveré a la calle Paso."</p>
+            <p>Había muchos muebles en el cuarto de doña Carmen; algunos pertenecían a Jacinta: el escritorio de caoba donde su madre hacía complicados solitarios o escribía cartas aun más complicadas a los amigos de su marido pidiéndoles dinero; el sillón, con el relleno asomando por las aberturas... Observaba con interés el espectáculo de la miseria. Desde lejos parecía un bloque negro, reacio; poco a poco iban surgiendo penumbras amistosas (Jacinta no carecía de experiencia) y se distinguían las sombras claras de los nichos donde era posible refugiarse. La miseria no estaba reñida con momentos de intensa felicidad.</p>
+            <p>Recordó una época en que su hermano no quería comer. Para conseguir que probara algún bocado necesitaban esconder un plato de carne debajo del ropero, en un cajón del escritorio... Raúl se levantaba por la noche: al día siguiente aparecía el plato vacío, donde ellas lo dejaron. Por eso, después de comer, mientras el muchacho tomaba fresco en la vereda, madre e hija discurrían algún escondite. Y Jacinta evocó una mañana de otoño. Oía gemidos en la pieza contigua. Entró, se aproximó a su madre, sentada en el sillón, le separó las manos de la cara y le vio el semblante contraído, deformado por la risa. La señora de Vélez no podía recordar dónde había ocultado el plato la noche anterior.</p>
+            <p>Su madre se adaptaba a todas las circunstancias con una jovial sabiduría infantil. Nada la tomaba de sorpresa y, por eso, cada nueva desgracia encontraba el terreno preparado. Imposible decir en qué momento había sobrevenido, a tal punto se hacía instantáneamente familiar, y lo que fue una alteración, un vicio, pasaba de manera insensible a convertirse en ley, en norma, en propiedad connatural de la vida misma. Como un político y un guerrero famosos, conversando en la embajada de Inglaterra, eran para Delacroix dos pedazos rutilantes de la naturaleza visible, un hombre azul al lado de un hombre rojo, las cosas, contempladas por su madre, parecían despojarse de todo significado moral o convencional, perdían su veneno, se sustituían las unas por las otras y alcanzaban una especie de categoría metafísica, de pureza trascendente que las nivelaba.</p>
+            <p>Pensaba en el aire secreto y un poco ridículo que adoptó doña Carmen cuando la condujo a casa de María Reinoso. Era un departamento interior. En la puerta había una chapa de bronce que decía: Reinoso. Comisiones. Antes de entrar, mientras caminaban por el largo pasillo, doña Carmen balbuceó unas palabras: le aconsejaba que no hablara de María Reinoso con su madre, y Jacinta, al vislumbrar un destello de inocencia en esa mujer tan astuta, reflexionó en la capacidad de ilusión, en la innata afición al melodrama que tienen las llamadas “clases bajas”. Pero ¿le hubiera importado tan poco a su madre, en realidad? Nunca lo sabría. Ya era imposible decírselo.</p>
+            <p>Empezó a ir a casa de María Reinoso. Doña Carmen no tuvo que mantenerlos (desde hacía más de un año sin que nadie supiera por qué, subvenía a las necesidades de la familia Vélez). Sin embargo, no era tan fácil evitar a la encargada del inquilinato. Jacinta tropezaba con ella, conversando con los proveedores en el amplio zaguán a que daban las puertas, o la encontraba instalada en su propio cuarto. ¿Cómo sacarla de allí? Por lo demás, gracias a la encargada del inquilinato había un poco de orden en las tres habitaciones que ocupaban Jacinta, su madre y su hermano.</p>
+            <p>Doña Carmen, una vez por semana, lanzaba sobre la familia Vélez el embate de su actividad: abría las puertas, fregaba el piso y los muebles con una suerte de rabia contenida; en el patio, ante los ojos de los vecinos, salía a relucir el impudor de los colchones y de la dudosa ropa de cama. Ellos se sometían, entre agradecidos y avergonzados. Pasada esa ráfaga, el desorden comenzaba a envolverlos en su tibia, resistente complicación. Jacinta la encontraba tejiendo, sentada junto a su madre.</p>
+            <p>[... La historia profundiza en la relación entre Jacinta, su madre, su hermano discapacitado Raúl, y doña Carmen. Tras la muerte de la madre, Jacinta comienza a prostituirse en casa de María Reinoso, actividad que Doña Carmen sospecha y que eventualmente Jacinta acepta con desolación. Bernardo Stocker, un cliente, se ofrece a llevarla a vivir con él y hacerse cargo de Raúl enviándolo a un sanatorio. La narración salta a la perspectiva de Stocker, sus reflexiones sobre el dolor ajeno, sus discusiones teológicas con su socio Sweitzer, y su creciente obsesión por Jacinta y el misterio de si ella realmente vivió con él o fue un fantasma. Finalmente, se revela que Jacinta se suicidó el mismo día que su madre, y Stocker queda internado en un sanatorio junto a Raúl, esperando inútilmente su regreso.]</p>
+        </div>
+
+        <!-- EL CALAMAR OPTA POR SU TINTA -->
+        <div id="Calamar" class="tabcontent">
+            <h2>El calamar opta por su tinta</h2>
+            <h3>Adolfo Bioy Casares (1914-1999)</h3>
+            <div class="author-bio">Escritor argentino, nacido en Buenos Aires. Autor de La invención de Morel (1940), Plan de evasión (1945), La trama celeste (1948), El sueño de los héroes (1954), Historia prodigiosa (1955), Guirnalda con amores (1959), El lado de la sombra (1962).</div>
+            <p>Más ocurrió en este pueblo en los últimos días que en el resto de su historia. Para medir como corresponde mi palabra recuerden ustedes que hablo de uno de los pueblos viejos de la provincia, de uno en cuya vida abundan los hechos notables la fundación, en pleno siglo XIX; algo después el cólera —un brote que felizmente no llegó a mayores— y el peligro del malón, que si bien no se concretaría nunca, mantuvo a la gente en jaque a lo largo de un lustro en que partidos limítrofes conocieron la tribulación por el indio. Dejando atrás la época heroica, pasaré por alto tantas otras visitas de gobernadores, diputados, candidatos de toda laya, amén de cómicos y uno o dos gigantes del deporte. Para morderme la cola concluiré esta breve lista con la fiesta del Centenario de la Fundación, genuino torneo de oratoria y homenajes.</p>
+            <p>Como he de comunicar un hecho de primer orden, presento mis credenciales al lector. De espíritu amplio e ideas avanzadas, devoro cuanto libro atrapo en la librería de mi amigo el gallego Villarroel, desde el doctor Jung hasta Hugo, Walter Scott y Goldoni, sin olvidar el último tomito de Escenas matritenses. Mi meta es la cultura, pero bordeo los “malditos treinta años” y de veras temo que me quede por aprender más de lo que sé. En resumen, procuro seguir el movimiento e inculcar las luces entre los vecinos, todos bellas personas, platita labrada, eso sí muy afectos a la siesta que hereditariamente acunan desde la edad media y el oscurantismo. Soy docente —maestro de escuela— y periodista. Ejerzo la cátedra de la péndola en modestos órganos locales, ora factotum de El Mirasol (título mal elegido, que provoca pullas y atrae una enormidad de correspondencia errónea, pues nos toman por tribuna cerealista), ora de Nueva Patria.</p>
+            <p>El tema de esta crónica ofrece una particularidad que no quiero omitir: no sólo ocurrió el hecho en mi pueblo; ocurrió en la manzana donde transcurre mi vida entera, donde se halla mi hogar, mi escuelita —segundo hogar— y el bar de un hotel frente a la estación, al que acudimos noche a noche, en altas horas, el núcleo con inquietud de la juventud lugareña. El epicentro del fenómeno, el foco si prefieren, fue el corralón de don Juan Camargo, cuyos fondos lindan por el costado este con el hotel y por el norte con el patio de casa. Un par de circunstancias, que no cualquiera vincularía, lo anunciaron: me refiero al pedido de los libros y al retiro del molinete de riego.</p>
+            <p>Las Margaritas, el petit-hotel particular de don Juan, verdadero chalet provisto de florido jardín a la calle, ocupa la mitad del frente y apenas parte del fondo del terreno del corralón, donde se amontonan incalculables materiales, como reliquias de buques en el fondo del mar. En cuanto al molinete, giró siempre en el apuntado jardín, al extremo de configurar una de las más viejas tradiciones y una de las más interesantes peculiaridades de nuestro pueblo.</p>
+            <p>Un día domingo, a principios de mes, misteriosamente el molinete faltó. Como al cabo de la semana no había reaparecido, el jardín perdió color y brillo. Mientras muchos miraron sin ver, hubo uno a quien la curiosidad embargó desde el primer momento. Ese uno infestó a otros, y a la noche, en el bar, frente a la estación, la muchachada bullía de preguntas y comentarios. De tal modo, al calor de una comezón ingenua, natural, destapamos algo que tenía poco de natural y resultó una sorpresa. Bien sabíamos que don Juan no era hombre de cortar el agua del jardín, por descuido, un verano seco. Por de pronto lo reputamos pilar del pueblo. Con fidelidad la estampa retrata el carácter de nuestro cincuentón, elevada estatura, porte corpulento, cabello cano peinado en dóciles mitades, cuyas ondas dibujan arcos paralelos a los del bigote y a los interiores de la cadena del reloj. Otros detalles revelan al caballero chapado a la antigua: breeches, polainas de cuero, botín. En su vida, regida por la moderación y el orden, nadie, que yo recuerde, computó una debilidad, llámese borrachera, mujerzuela o traspié político. En un ayer que de buen grado olvidaríamos —¿quién de nosotros, en materia de infamia, no arrojó su canita al aire?— don Juan se mantuvo limpio. Por algo le reconocieron autoridad los mismos interventores de la Cooperativa, etcétera, gente muy poco espectable, francamente pelandrunes. Por algo en años ingratos aquel bigotazo constituyó el manubrio del que la familia sana del pueblo se mantuvo colgada.</p>
+            <p>Obligatorio es reconocer que este varón señero milita ideas de viejo cuño y que nuestras filas, de suyu idealistas, hasta ahora no produjeron prohombres de temple comparable. En un país nuevo, las ideas nuevas carecen de tradición. Ya se sabe, sin tradición no hay estabilidad.</p>
+            <p>Por arriba de esta figura, nuestra jerarquía ad usum no pone a nadie, salvo a doña Remedios, madre y consejera única de tan abultado hijo. Entre nosotros, no sólo porque manu militari arregla cuanto conflicto le someten o no, la llamamos Remedio Heroico. Aunque burlesco, el mote es cariñoso.</p>
+            <p>[... El narrador, a través de su alumno don Tadeíto, descubre que en el depósito de don Juan se aloja un ser de otro planeta. Este ser, con aspecto de "bagre boqueando fuera del agua", necesita humedad para sobrevivir, por lo que don Juan le instaló el molinete de riego. El ser ha venido a salvar a la Tierra de la bomba atómica, pues en otros planetas ya han visto cómo estos mundos estallan en cadena. Sin embargo, don Juan,.prefiriendo que el mundo estalle a que la salvación venga de manos extranjeras (o desconocidas), le quita el molinete al ser, condenándolo a muerte. Los jóvenes del bar, al enterarse demasiado tarde, intentan salvar al extraterrestre, pero ya ha muerto. La historia es una sátira sobre el oscurantismo, el orgullo humano y la autodestrucción.]</p>
+            <p>Frente a Las Margaritas, mientras el molinete monótonamente regaba el jardín, exclamé:<br>—Yo le echo en cara la falta de curiosidad —para agregar con la mirada absorta en las constelaciones—. Cuántas Américas y Terranovas infinitas perdimos esta noche.<br>—Don Juan —dijo Villarroel— prefirió vivir en su ley de hombre limitado. Yo le admiro el coraje. Nosotros dos, ni siquiera a entrar aquí nos atrevemos.<br>Dije:<br>—Es tarde.<br>—Es tarde —repitió.</p>
+        </div>
+
+        <!-- ¿QUIÉN ES EL REY? -->
+        <div id="Bloy1" class="tabcontent">
+            <h2>¿Quién es el rey?</h2>
+            <h3>Léon Bloy (1846-1917)</h3>
+            <div class="author-bio">Literato francés, nacido en Périgueux; muerto en Bourg la Reine. Autor de: Le Désespéé; Le Salus par les Juifs; Sueur de Sang; La Femme Pauvre; L'Âme de Napoleon.</div>
+            <p>Recuerdo una de mis ideas más antiguas. El Zar es el jefe y el padre espiritual de ciento cincuenta millones de hombres. Atroz responsabilidad que sólo es aparente. Quizás no es responsable, ante Dios, sino de unos pocos seres humanos. Si los pobres de su imperio están oprimidos durante su reinado, si de ese reinado resultan catástrofes inmensas, ¿quién sabe si el sirviente encargado de lustrarle las botas no es el verdadero y solo culpable? En las disposiciones misteriosas de la Profundidad, ¿quién es de veras Zar, quién es rey, quién puede jactarse de ser un mero sirviente?</p>
+            <p style="text-align: right; font-size: 0.9em; color: #666;">Léon Bloy: Le Mendiant Ingrat (1898).</p>
+        </div>
+
+        <!-- LOS GOCES DE ESTE MUNDO -->
+        <div id="Bloy2" class="tabcontent">
+            <h2>Los goces de este mundo</h2>
+            <h3>Léon Bloy</h3>
+            <p>Aterradora idea de Juana, acerca del texto Per Speculum in Aenigmate. Los goces de este mundo serían los tormentos del infierno, vistos al revés, en un espejo.</p>
+            <p style="text-align: right; font-size: 0.9em; color: #666;">Léon Bloy: Le Vieux de la Montagne (1909).</p>
+        </div>
+
+        <!-- LOS CAUTIVOS DE LONGJUMEAU -->
+        <div id="Longjumeau" class="tabcontent">
+            <h2>Los cautivos de Longjumeau</h2>
+            <h3>Léon Bloy</h3>
+            <p>"El Postillón de Longjumeau" anunciaba ayer el deplorable fin de los Fourmi. Esta hoja tan recomendable por la abundancia y por la calidad de su información se perdía en conjeturas sobre las misteriosas causas de la desesperación que había precipitado al suicidio a esta pareja, considerada tan feliz.</p>
+            <p>Casados muy jóvenes, y despertando cada día a una nueva luna de miel, no habían salido de la ciudad ni un solo día. Aliviados por previsión paterna de las inquietudes pecuniarias que suelen envenenar la vida conyugal, ampliamente provistos, al contrario, de lo requerido para endulzar un género de unión legítima, sin duda, pero poco conforme a ese afán de vicisitudes amorosas que impulsa al versátil ser humano, realizaban, a los ojos del mundo, el milagro de la ternura a perpetuidad.</p>
+            <p>Una hermosa tarde de mayo, el día que siguió a la caída del señor Thiers, aparecieron en el tren de circunvalación con sus padres, venidos para instalarlos en la propiedad deliciosa, que albergaría su dicha. Los longjumelianos de corazón puro contemplaron con enternecimiento a esta linda pareja, que el veterinario comparó sin titubear a Pablo y Virginia. En efecto, ese día estaban muy bien y parecían niños pálidos de gran casa.</p>
+            <p>Maître Piécu, el notario más importante de la región, les había adquirido, en las puertas de la ciudad, un nido de verdura, que los muertos hubieran envidiado. Pues hay que convenir que el jardín hacía pensar en un cementerio abandonado. Este aspecto no debió desagradarles, pues no hicieron, en lo sucesivo, ningún cambio y dejaron que las plantas crecieran a su arbitrio. Para servirme de una expresión profundamente original de Maître Piécu, vivieron en las nubes, sin ver casi a nadie no por maldad o desprecio, sino, sencillamente, porque no se les ocurría. Además, hubiera sido necesario soltarse por algunas horas o algunos minutos, interrumpir los éxtasis, y, a fe mía dada la brevedad de la vida, les faltaba el valor para ello.</p>
+            <p>Sus distracciones eran célebres y se comentaban hasta en Corbeil. Sin embargo, esto no parecía afectarlos, y la funesta resolución que ha concluido con sus vidas tan generalmente envidiadas tiene que parecer inexplicable. Una carta ya antigua de ese desdichado Fourmi, a quien conocí de soltero, me ha permitido reconstruir, por inducción, toda su lamentable historia.</p>
+            <blockquote>"...Por décima o vigésima vez, querido amigo, faltamos a nuestra palabra, infamemente. Por paciente que seas, supongo que ya estarás harto de invitarnos. La verdad es que esta última vez, como las anteriores, no tenemos excusa, mi mujer y yo. Te habíamos escrito que contaras con nosotros y no teníamos absolutamente nada que hacer. Sin embargo, hemos perdido el tren, como siempre.<br><br>Hace quince años que perdemos todos los trenes y todos los vehículos públicos, hagamos lo que hagamos. Es horriblemente estúpido, es de un atroz ridículo, pero empiezo a creer que el mal no tiene remedio. Somos víctimas de una grotesca fatalidad. Todo es inútil. Para alcanzar el tren de las ocho, por ejemplo, hemos ensayado levantarnos a las tres de la mañana, y hasta pasar la noche en vela. Y bien, amigo mío, en el último momento, se incendiaba la chimenea, a medio camino se me recalcaba un pie, el vestido de Julieta se enganchaba en alguna zarza, nos quedábamos dormidos en la sala de espera, sin que ni la llegada del tren ni los gritos del empleado nos despertaran a tiempo, etcétera, etcétera... La última vez olvidé mi portamonedas. En fin, te repito, hace quince años que esto dura y siento que ahí está nuestro principio de muerte. Por esa causa, tú lo sabes, todo lo he malogrado, me he disgustado con todo el mundo, paso por un monstruo de egoísmo, y mi pobre Julieta se ve envuelta, claro está, en la misma reprobación. Desde nuestra llegada a este lugar maldito, hemos faltado a setenta y cuatro entierros, a doce casamientos, a treinta bautismos, a un millar de visitas o diligencias indispensables..."</blockquote>
+            <p>Ciertas particularidades que me permito reservar me sugieren la idea de que la infortunada pareja era realmente víctima de una maquinación tenebrosa del Enemigo del hombre, que los condujo, por medio de un notario evidentemente infernal, a ese rincón maléfico de Longjumeau de donde no ha habido poder humano que los arranque. Creo, en verdad, que no podían huir, que había alrededor de su morada un cordón de tropas invisibles, cuidadosamente elegidas para sitiarlos, contra las cuales era inútil toda energía. El signo, para mí, de una influencia diabólica es que los Fourmi vivían devorados por la pasión de los viajes. Esos cautivos eran, por naturaleza, esencialmente migratorios. Sus baúles estaban siempre listos. Siempre estuvieron a punto de partir, de realizar un viaje interminable a los países más lejanos, más peligrosos o más inexplorados. He recibido como cuarenta telegramas anunciándome su partida inminente para Borneo, la Tierra del Fuego, Nueva Zelanda o Groenlandia. Pero el hecho es que no partían, que no partieron jamás porque no podían y no debían partir. Los átomos y las moléculas se coaligaban para sujetarlos.</p>
+            <p style="text-align: right; font-size: 0.9em; color: #666;">Léon Bloy.</p>
+        </div>
+
+        <!-- TLÖN, UQBAR, ORBIS TERTIUS -->
+        <div id="Tlon" class="tabcontent">
+            <h2>Tlön, Uqbar, Orbis Tertius</h2>
+            <h3>Jorge Luis Borges (1899-1986)</h3>
+            <div class="author-bio">Escritor argentino, nacido en Buenos Aires. Autor de Fervor de Buenos Aires (1923); El Idioma de los Argentinos (1928); Historia Universal de la Infamia (1935); Ficciones (1944); El Aleph (1949); El hacedor (1960).</div>
+            <h4>I</h4>
+            <p>Debo a la conjunción de un espejo y de una enciclopedia el descubrimiento de Uqbar. El espejo inquietaba el fondo de un corredor en una quinta de la calle Gaona, en Ramos Mejía; la enciclopedia falazmente se llama The Anglo-American Cyclopaedia (New York, 1917) y es una reimpresión literal, pero también morosa, de la Encyclopaedia Britannica de 1902. El hecho se produjo hará unos cinco años. Bioy Casares había cenado conmigo esa noche y nos demoró una vasta polémica sobre la ejecución de una novela en primera persona, cuyo narrador omitiera o desfigurara los hechos e incurriera en diversas contradicciones, que permitieran a unos pocos lectores —a muy pocos lectores— la adivinación de una realidad atroz o banal. Desde el fondo remoto del corredor, el espejo nos acechaba. Descubrimos (en la alta noche ese descubrimiento es inevitable) que los espejos tienen algo monstruoso. Entonces Bioy Casares recordó que uno de los heresiarcas de Uqbar había declarado que los espejos y la cópula son abominables, porque multiplican el número de hombres. Le pregunté el origen de esa memorable sentencia y me contestó que The Anglo-American Cyclopaedia la registraba, en su artículo sobre Uqbar.</p>
+            <p>En las últimas páginas del volumen XLVI dimos con un artículo sobre Upsala; en las primeras del XLVII, con uno sobre Ural-Ataic Languages, pero ni una palabra sobre Uqbar. Bioy, un poco azorado, interrogó los tomos del índice. Agotó en vano todas las lecciones imaginables Ukbar, Ucbar, Ooqbar, Ookbar, Oukbahr. Antes de irse, me dijo que era una región del Irak o del Asia Menor. Confieso que asentí con alguna incomodidad. Conjeturé que ese país indocumentado y ese heresiarca anónimo eran una ficción improvisada por la modestia de Bioy para justificar una frase. El examen estéril de uno de los atlas de Justus Perthes fortaleció mi duda.</p>
+            <p>Al día siguiente, Bioy me llamó desde Buenos Aires. Me dijo que tenía a la vista el artículo sobre Uqbar, en el volumen XLVI de la Enciclopedia. No constaba el nombre del heresiarca, pero sí la noticia de su doctrina, formulada en palabras casi idénticas a las repetidas por él, aunque —tal vez— literariamente inferiores. Él había recordado: Copulation and mirrors are abominable. El texto de la Enciclopedia decía: Para uno de esos gnósticos, el visible universo era una ilusión o (más precisamente) un sofisma. Los espejos y la paternidad son abominables (mirrors and fatherhood are abominable) porque lo multiplican y lo divulgan.</p>
+            <p>Leímos con algún cuidado el artículo. El pasaje recordado por Bioy era tal vez el único sorprendente. El resto parecía muy verosímil, muy ajustado al tono general de la obra y (como es natural) un poco aburrido. Releyéndolo, descubrimos bajo su rigurosa escritura una fundamental vaguedad. De los catorce nombres que figuraban en la parte geográfica, sólo reconocimos tres —Jorasán, Armenia, Erzerum—, interpolados en el texto de un modo ambiguo. La nota parecía precisar las fronteras de Uqbar, pero sus nebulosos puntos de referencia eran ríos y cráteres y cadenas de esa misma región. La sección idioma y literatura era breve. Un solo rasgo memorable: anotaba que la literatura de Uqbar era de carácter fantástico y que sus epopeyas y sus leyendas no se referían jamás a la realidad, sino a las dos regiones imaginarias de Mlejnas y de Tlön.</p>
+            <h4>II</h4>
+            <p>Algún recuerdo limitado y menguante de Herbert Ashe, ingeniero de los ferrocarriles del Sur, persiste en el hotel de Adrogué, entre las efusivas madreselvas y en el fondo ilusorio de los espejos. En vida padeció de irrealidad, como tantos ingleses; muerto, no es siquiera el fantasma que ya era entonces. Era alto y desganado y su cansada barba rectangular había sido roja. Entiendo que era viudo, sin hijos. Cada tantos años iba a Inglaterra: a visitar (juzgo por unas fotografías que nos mostró) un reloj de sol y unos robles. Mi padre había estrechado con él (el verbo es excesivo) una de esas amistades inglesas que empiezan por excluir la confidencia y que muy pronto omiten el diálogo. Solían ejercer un intercambio de libros y periódicos, solían batirse al ajedrez, taciturnamente...</p>
+            <p>[... Ashe muere y Borges encuentra entre sus libros el "Onceno Tomo" de una enciclopedia de Tlön. Descubre que Tlön es un planeta inventado por una sociedad secreta de sabios. La narración describe luego la filosofía y la naturaleza de Tlön: su idealismo absoluto, donde el mundo no es un concurso de objetos en el espacio sino una serie de actos mentales sucesivos; su idioma sin sustantivos, compuesto por verbos impersonales y adjetivos acumulados; su matemática y su psicología, donde el sujeto del conocimiento es uno y eterno. Se describen los "hrönir", objetos secundarios que se generan por la distracción y la expectativa, y que permiten a los arqueólogos de Tlön modificar el pasado.]</p>
+            <h4>Postdata de 1947</h4>
+            <p>Reproduzco el artículo anterior tal como apareció en la Antología de la Literatura Fantástica, Editorial Sudamericana, 1940, sin otra escisión que algunas metáforas y que una especie de resumen burlón que ahora resulta frívolo. Han ocurrido tantas cosas desde esa fecha... Me limitaré a recordarlas.</p>
+            <p>En marzo de 1941 se descubrió una carta manuscrita de Gunnar Erfjord en un libro de Hinton que había sido de Herbert Ashe. El sobre tenía el sello postal de Ouro Preto; la carta elucidaba enteramente el misterio de Tlön. Su texto corrobora las hipótesis de Martínez Estrada. A principios del siglo XVII, en una noche de Lucerna o de Londres, empezó la espléndida historia. Una sociedad secreta y benévola (que entre sus afiliados tuvo a Dalgarno y después a George Berkeley) surgió para inventar un país. En el vago programa inicial figuraban los estudios herméticos, la filantropía y la cábala. De esa primera época data el curioso libro de Andrea. Al cabo de unos años de conciliábulos y de síntesis prematuras comprendieron que una generación no bastaba para articular un país. Resolvieron que cada uno de los maestros que la integraba eligiera un discípulo para la continuación de la obra. Esa disposición hereditaria prevaleció, después de un hiato de dos siglos la perseguida fraternidad resurge en América. Hacia 1824, en Memphis (Tennessee) uno de los afiliados conversa con el ascético millonario Ezra Buckley. Éste lo deja hablar con algún desdén, y se ríe de la modestia del proyecto. Le dice que en América es absurdo inventar un país y le propone la invención de un planeta. A esa gigantesca idea añade otra, hija de su nihilismo: la de guardar en el silencio la empresa enorme. Buckley descree de Dios, pero quiere demostrar al Dios no existente que los hombres mortales son capaces de concebir un mundo.</p>
+            <p>Hacia 1944 un investigador del diario The American (de Nashville, Tennessee) exhumó en una biblioteca de Memphis los cuarenta volúmenes de la Primera Enciclopedia de Tlön. El contacto y el hábito de Tlön han desintegrado este mundo. Encantada por su rigor la humanidad olvida y torna a olvidar que es un rigor de ajedrecistas, no de ángeles. Ya ha penetrado en las escuelas el (conjetural) idioma primitivo de Tlön; ya la enseñanza de su historia armoniosa (y llena de episodios conmovedores) ha obliterado a la que presidió mi niñez; ya en las memorias un pasado ficticio ocupa el sitio de otro del que nada sabemos con certitud, ni siquiera qué es falso. Han sido reformadas la numismática, la farmacología y la arqueología. Entiendo que la biología y las matemáticas aguardan también su avatar... Una dispersa dinastía de solitarios ha cambiado la faz del mundo. Su tarea prosigue. Si nuestras previsiones no erran, de aquí cien años alguien descubrirá los cien tomos de la Segunda Enciclopedia de Tlön.</p>
+            <p>Entonces desaparecerán del planeta el inglés y el francés y el mero español. El mundo será Tlön. Yo no hago caso, yo sigo revisando en los quietos días del hotel de Adrogué una indecisa traducción quevediana (que no pienso dar a la imprenta) del Urn Burial de Browne.</p>
+            <p style="text-align: right; font-size: 0.9em; color: #666;">Jorge Luis Borges: El jardín de senderos que se bifurcan (1941).</p>
+        </div>
+
+        <!-- ODÍN -->
+        <div id="Odin" class="tabcontent">
+            <h2>Odín</h2>
+            <h3>Jorge Luis Borges y Delia Ingenieros</h3>
+            <p>Se refiere que a la corte de Olaf Tryggvason, que se había convertido a la nueva fe, llegó una noche un hombre viejo, envuelto en una capa oscura y con el ala del sombrero sobre los ojos. El rey le preguntó si sabía hacer algo, el forastero contestó que sabía tocar el harpa y contar cuentos. Tocó en el harpa aires antiguos, habló de Gudrun y de Gunnar y, finalmente, refirió el nacimiento de Odín. Dijo que tres parcas vinieron, que las dos primeras le prometieron grandes felicidades y que la tercera dijo, colérica: "El niño no vivirá más que la vela que está ardiendo a su lado." Entonces los padres apagaron la vela para que Odín no muriera. Olaf Tryggvason descreyó de la historia, el forastero repitió que era cierto, sacó la vela y la encendió. Mientras la miraban arder, el hombre dijo que era tarde y que tenía que irse. Cuando la vela se hubo consumido, lo buscaron. A unos pasos de la casa del rey, Odín había muerto.</p>
+        </div>
+
+        <!-- EL DESCUIDO -->
+        <div id="Descuido" class="tabcontent">
+            <h2>El descuido</h2>
+            <h3>Martín Buber (1878-1965)</h3>
+            <div class="author-bio">Historiador de la secta de los piadosos y filósofo existencialista. Nacido en Austria, muerto en Israel.</div>
+            <p>Cuentan: El rabí Elimelek estaba cenando con sus discípulos. El criado le trajo un plato de sopa. El rabí lo volcó y la sopa se derramó sobre la mesa. El joven Mendel, que sería rabí de Rimanov, exclamó:</p>
+            <p>—Rabí, ¿qué has hecho? Nos mandarán a todos a la cárcel.</p>
+            <p>Los otros discípulos sonrieron y se hubieran reído abiertamente, pero la presencia del maestro los contuvo. Éste, sin embargo, no sonrió. Movió afirmativamente la cabeza y dijo a Mendel:</p>
+            <p>—No temas, hijo mío.</p>
+            <p>Algún tiempo después se supo que en aquel día un edicto dirigido contra los judíos de todo el país había sido presentado al emperador para que lo firmara. Repetidas veces el emperador había tomado la pluma, pero algo siempre lo interrumpía. Finalmente firmó. Extendió la mano hacia la arena de secar, pero tomó por error el tintero y lo volcó sobre el papel. Entonces lo rompió y prohibió que se lo trajeran de nuevo.</p>
+        </div>
+
+        <!-- LA OBRA Y EL POETA -->
+        <div id="ObraPoeta" class="tabcontent">
+            <h2>La obra y el poeta</h2>
+            <h3>R. F. Burton (1821-1890)</h3>
+            <div class="author-bio">El capitán sir Richard Francis Burton se distinguió como explorador, orientalista, políglota y antropólogo. Tradujo Las Lusiadas de Camoens y el libro de Las mil y una noches.</div>
+            <p>El poeta hindú Tulsi Das, compuso la gesta de Hanuman y de su ejército de monos. Años después, un rey lo encarceló en una torre de piedra. En la celda se puso a meditar y de la meditación surgió Hanuman con su ejército de monos y conquistaron la ciudad e irrumpieron en la torre y lo libertaron.</p>
+        </div>
+
+        <!-- EL DESTINO ES CHAMBÓN -->
+        <div id="DestinoChambon" class="tabcontent">
+            <h2>El destino es chambón</h2>
+            <h3>Arturo Cancela y Pilar de Lusarreta</h3>
+            <div class="author-bio"><strong>Arturo Cancela</strong> (1892-1957): Escritor argentino, autor de Tres relatos Porteños (1922); El Burro de Marul (1925); Film Porteño (1933).<br><strong>Pilar de Lusarreta</strong>: Novelista y crítica de arte, argentina. Autora de los libros de cuentos fantásticos, Job el Opulento (1928), Celimena sin Corazón (1935).</div>
+            <h4>De como Juan Pedro Rearte hizo su entrada en el siglo XX</h4>
+            <p>El discutible principio popular de que "no hay dos sin tres" nunca fue más objetable que en el caso de Juan Pedro Rearte. Este viejo criollo, que había sido durante quince años cochero de la Compañía de Tranvías Ciudad de Buenos Aires, se fracturó una pierna hacia fines de la centuria pasada. Fue el suyo un accidente alegórico de fin de siglo: el tranvía que dirigía se llevó por delante la última carreta de bueyes que cruzaba las calles del centro. En "El Diario" de Láinez se destacó este episodio urbano como un postrer incidente de la lucha entre la Civilización y la Barbarie, y así, en virtud del descuido que le impidió detener los caballos de su coche en la barranca de la Calle Comercio, Rearte fue investido por el anónimo cronista, del carácter de símbolo del Progreso.</p>
+            <p>El involuntario agresor de la última carreta tucumana fue llevado al Hospital de Caridad, en una de cuyas salas aguardó, con la paciencia de todos los humildes, a que el tiempo le soldara los dos fragmentos de tibia, violentamente separados por el choque y no menos violentamente puestos en presencia uno de otro por el precipitado cirujano que le hizo la primera cura. El buen discípulo de Pirovano —que tenía una obligación de carácter no profesional respecto a una de las posibles asistentes a la quermese del Parque Lezama, organizada por las Damas del Patronato—, a fin de ahorrar unos minutos, le acortó en cuatro centímetros la pierna derecha al pobre conductor de tranvía.</p>
+            <p>En su premura por asistir a aquel acto de beneficencia, había tratado la fractura, que era directa y total, como si fuese simple e incompleta, y dado que entre los milagros que puede obrar la Naturaleza, que son muchos, no se cuenta, sin embargo, el de corregir los errores de los médicos, Juan Pedro Rearte abandonó el hospital cojeando y cojeando penetró en el siglo XX.</p>
+            <h4>Breve paréntesis sobre Filosofía de la Historia</h4>
+            <p>Hizo su entrada, en su nuevo carácter de inválido, con un poco de precipitación (¿Qué rengo han visto ustedes que no camine apresuradamente, ni qué tartamudo que no hable con atropello? La lentitud majestuosa es el signo más aparente de la seguridad en el esfuerzo. Nuestros provincianos conocen instintivamente esta ley y abusan de ella hasta el punto de combinar, en algunos casos, la solemnidad y la tartamudez).</p>
+            <p>Insistimos en que el conductor Rearte adelantó improcedentemente su entrada en el presente siglo, pues aún no se había dictado la ley de accidentes del trabajo que debía ampararlo. Esta llegó a promulgarse tan sólo dieciséis años más tarde, pero aunque él la hubiese presentido, no habría podido aguardar todo ese tiempo en el hospital. Es cierto que el efecto más notable de esa ley ha consistido en la prolongación de las convalecencias...</p>
+            <h4>El "Compadrito" y el orden social</h4>
+            <p>Juan Pedro Rearte no pudo pensar, ni aun sentir confusamente, nada de lo expuesto en el capítulo anterior, porque, al igual de todos los individuos de su profesión, era lo que en el lenguaje familiar de entonces se llamaba "un compadrito". Ahora bien: el compadrito era instintivamente conservador, como lo son todos los hombres satisfechos de sí mismos, y nadie más vano de su persona que aquellos cocheros de requintada gorra de visera, clavel tras de la oreja, pañuelo de seda al cuello, pantalón abombillado a la francesa y breves botines de alto taco militar.</p>
+            <p>[... La narración prosigue describiendo la vida de Rearte. Tras ser desplazado por los tranvías eléctricos debido a su cojera, termina trabajando en el enganche de acoplados. Un día, movido por la nostalgia de los tiempos en que era un alegre cochero, fustiga a sus caballos melancólicamente. Sufre entonces un extraño fenómeno: el tiempo se detiene y retrocede. Al abrir los ojos, descubre que ha saltado treinta años en el futuro, a 1918. Al preguntar la fecha, reflexiona filosóficamente: "No es mucho para un salto de treinta años...". El destino, al intentar romperle la pierna izquierda (la que le faltaba fracturar), se equivocó y le rompió la derecha. Finalmente, Rearte concluye que "el Destino es pícaro y chambón como los gringos".]</p>
+            <blockquote>El Destino es chambón...<br>Ya en la ambulancia, con la locuacidad que le prestaba la morfina, Rearte dióse a explicar el misterio:<br>—Es que el Destino es pícaro y chambón como los gringos... Estaba de Dios, desde que subí a un tranvía, que había de quebrarme la pierna izquierda. Ya me la hube de romper hace treinta años, pero me salvó un milagro. El 90, en Lavalle y Paraná, el primer día de la revolución, tres balas atravesaron la plataforma a la altura de la rodilla, sin rozarme siquiera el pantalón. Después, cuando el choque con la carreta, el Destino se equivocó y me rompió la derecha. Y ahora, por miedo de que me le escapase, ha urdido esta trampa para salir con la suya. ¡Vea que es Diablo! ¿No?</blockquote>
+            <p style="text-align: right; font-size: 0.9em; color: #666;">Arturo Cancela y Pilar de Lusarreta</p>
+        </div>
+
+        <!-- UN AUTÉNTICO FANTASMA -->
+        <div id="FantasmaCarlyle" class="tabcontent">
+            <h2>Un auténtico fantasma</h2>
+            <h3>Thomas Carlyle (1795-1881)</h3>
+            <div class="author-bio">Historiador y ensayista escocés. Nacido en Ecclefechan; muerto en Londres. Autor de: The French Revolution; Heroes and Hero-Worship; Letters and Speeches of Oliver Cromwell; History of Frederick the Great.</div>
+            <p>¿Habría algo más prodigioso que un auténtico fantasma? El inglés Johnson anheló, toda su vida, ver uno; pero no lo consiguió, aunque bajó a las bóvedas de las iglesias y golpeó féretros. ¡Pobre Johnson! ¿Nunca miró las marejadas de vida humana que amaba tanto? ¿No se miró siquiera a sí mismo? Johnson era un fantasma, un fantasma auténtico; un millón de fantasmas lo codeaba en las calles de Londres. Borremos la ilusión del Tiempo, compendiemos los sesenta años en tres minutos, ¿qué otra cosa era Johnson, qué otra cosa somos nosotros? ¿Acaso no somos espíritus que han tomado un cuerpo, una apariencia, y que luego se disuelven en aire y en invisibilidad?</p>
+            <p style="text-align: right; font-size: 0.9em; color: #666;">De Sartor Resartus (1834), de Thomas Carlyle.</p>
+        </div>
+
+        <!-- EL SUEÑO DEL REY -->
+        <div id="SuenoRey" class="tabcontent">
+            <h2>El sueño del rey</h2>
+            <h3>Lewis Carroll (1832-1898)</h3>
+            <div class="author-bio">Escritor matemático inglés. Nacido en Daresbury; muerto en Guildford. Autor de: Alice's Adventures in Wonderland (1865); Through the Looking-Glass (1871); Phantasmagoria (1876); Sylvie and Bruno (1889); Symbolic Logic (1896).</div>
+            <p>—Ahora está soñando. ¿Con quién sueña? ¿Lo sabes?</p>
+            <p>—Nadie lo sabe.</p>
+            <p>—Sueña contigo. Y si dejara de soñar, ¿qué sería de ti?</p>
+            <p>—No lo sé.</p>
+            <p>—Desaparecerías. Eres una figura de su sueño. Si se despertara ese Rey te apagarías como una vela.</p>
+            <p style="text-align: right; font-size: 0.9em; color: #666;">De Through the Looking-Glass (1871), de Lewis Carroll.</p>
+        </div>
+
+        <!-- EL GESTO DE LA MUERTE -->
+        <div id="GestoMuerte" class="tabcontent">
+            <h2>El gesto de la muerte</h2>
+            <h3>Jean Cocteau (1891-1963)</h3>
+            <div class="author-bio">Lúcido polígrafo francés, comparable, en cuanto a fecundidad, con "nuestro" Tostado. Entre sus libros recordaremos: Poesía: Opera, L'Ange Heurtebise; novela: Le Grand Écart, Les Enfants Terribles; crítica: Le Rappel à L'ordre; teatro: La Voix Humaine, Les Parents Terribles.</div>
+            <p>Un joven jardinero persa dice a su príncipe:</p>
+            <p>—¡Sálvame! Encontré a la Muerte esta mañana. Me hizo un gesto de amenaza. Esta noche, por milagro, quisiera estar en Ispahan.</p>
+            <p>El bondadoso príncipe le presta sus caballos. Por la tarde, el príncipe encuentra a la Muerte y le pregunta:</p>
+            <p>—Esta mañana ¿por qué hiciste a nuestro jardinero un gesto de amenaza?</p>
+            <p>—No fue un gesto de amenaza —le responde— sino un gesto de sorpresa. Pues lo veía lejos de Ispahan esta mañana y debo tomarlo esta noche en Ispahan.</p>
+        </div>
+
+        <!-- CASA TOMADA -->
+        <div id="CasaTomada" class="tabcontent">
+            <h2>Casa tomada</h2>
+            <h3>Julio Cortázar (1914-1984)</h3>
+            <div class="author-bio">Escritor argentino, nacido en Bruselas. Autor de Los reyes (1949); Bestiario (1951); Final del juego (1956); Las armas secretas (1959); Los premios (1960); Historias de cronopios y de famas (1962); Rayuela (1963).</div>
+            <p>Nos gustaba la casa porque aparte de espaciosa y antigua (hoy que las casas antiguas sucumben a la más ventajosa liquidación de sus materiales) guardaba los recuerdos de nuestros bisabuelos, el abuelo paterno, nuestros padres y toda la infancia.</p>
+            <p>Nos habituamos Irene y yo a persistir solos en ella, lo que era una locura, pues en esa casa podían vivir ocho personas sin estorbarse. Hacíamos la limpieza por la mañana, levantándonos a las siete, y a eso de las once yo le dejaba a Irene las últimas habitaciones por repasar y me iba a la cocina. Almorzábamos a mediodía, siempre puntuales; ya no quedaba nada por hacer fuera de unos pocos platos sucios. Nos resultaba grato almorzar pensando en la casa profunda y silenciosa y cómo nos bastábamos para mantenerla limpia. A veces llegamos a creer que era ella la que no nos dejó casarnos. Irene rechazó dos pretendientes sin mayor motivo, y a mí se me murió María Esther antes que llegáramos a comprometernos. Entramos en los cuarenta años con la inexpresada idea de que el nuestro, simple y silencioso matrimonio de hermanos, era necesaria clausura de la genealogía asentada por los bisabuelos en nuestra casa. Nos moriríamos allí algún día, vagos y esquivos primos se quedarían con la casa y la echarían al suelo para enriquecerse con el terreno y los ladrillos; o mejor nosotros mismos la voltearíamos justicieramente antes de que fuera demasiado tarde.</p>
+            <p>Irene era una chica nacida para no molestar a nadie. Aparte de su actividad matinal se pasaba el resto del día tejiendo en el sofá de su dormitorio. No sé por qué tejía tanto, yo creo que las mujeres tejen cuando han encontrado en esa labor el gran pretexto para no hacer nada. Irene no era así, tejía cosas siempre necesarias, tricotas para el invierno, medias para mí, mañanitas y chalecos para ella. A veces tejía un chaleco y después lo destejía en un momento porque algo no le agradaba; era gracioso ver en la canastilla el montón de lana encrespada resistiéndose a perder su forma de algunas horas. Los sábados iba yo al centro a comprarle lana; Irene tenía fe en mi gusto, se complacía con los colores y nunca tuve que devolver madejas. Yo aprovechaba esas salidas para dar una vuelta por las librerías y preguntar vanamente si había novedades en literatura francesa. Desde 1939 no llegaba nada valioso a la Argentina.</p>
+            <p>Pero es de la casa que me interesa hablar, de la casa y de Irene, porque yo no tengo importancia. Me pregunto qué hubiera hecho Irene sin el tejido. Uno puede releer un libro pero cuando un pulóver está terminado no se puede repetirlo sin escándalo. Un día encontré el cajón de abajo de la cómoda de alcanfor lleno de pañoletas blancas, verdes, lilas. Estaban con naftalina, apiladas, como en una mercería; yo no tuve valor de preguntarle a Irene qué pensaba hacer con ellas. No necesitábamos ganarnos la vida, todos los meses llegaba la plata de los campos y el dinero aumentaba. Pero a Irene solamente la entretenía el tejido, mostraba una destreza maravillosa y a mí se me iban las horas viéndole las manos como erizos plateados, agujas yendo y viniendo y una o dos canastillas en el suelo donde se agitaban constantemente los ovillos. Era hermoso.</p>
+            <p>Cómo no acordarme de la distribución de la casa. El comedor, una sala con gobelinos, la biblioteca y tres dormitorios grandes quedaban en la parte más retirada, la que mira hacia Rodríguez Peña. Solamente un pasillo con su maciza puerta de roble aislaba esa parte del ala delantera donde había un baño, la cocina, nuestros dormitorios y el living central al cual comunicaban los dormitorios y el pasillo. Se entraba a la casa por un zaguán con mayólica, y la puerta cancel daba al living. De manera que uno entraba por el zaguán, abría la cancel y pasaba al living, tenía a los lados las puertas de nuestros dormitorios, y al frente el pasillo que conducía a la parte más retirada; avanzando por el pasillo se franqueaba la puerta de roble y más allá empezaba el otro lado de la casa, o bien se podía girar a la izquierda justamente antes de la puerta y seguir por un pasillo más estrecho que llevaba a la cocina y el baño. Cuando la puerta estaba abierta advertía uno que la casa era muy grande; si no, daba la impresión de un departamento de los que se edifican ahora, apenas para moverse, Irene y yo vivíamos siempre en esa parte de la casa, casi nunca íbamos más allá de la puerta de roble, salvo para hacer la limpieza, pues es increíble cómo se junta tierra en los muebles. Buenos Aires será una ciudad limpia, pero eso lo debe a sus habitantes y no a otra cosa. Hay demasiada tierra en el aire, apenas sopla una ráfaga se palpa el polvo en los mármoles de las consolas y entre los rombos de las carpetas de macramé, da trabajo sacarlo bien con plumero, vuela y se suspende en el aire, un momento después se deposita de nuevo en los muebles y los pianos.</p>
+            <p>Lo recordaré siempre con claridad porque fue simple y sin circunstancias inútiles. Irene estaba tejiendo en su dormitorio, eran las ocho de la noche y de repente se me ocurrió poner al fuego la pavita del mate. Fui por el pasillo hasta enfrentar la entornada puerta de roble, y daba la vuelta al codo que llevaba a la cocina cuando escuché algo en el comedor o la biblioteca. El sonido venía impreciso y sordo, como un volcarse de sillas sobre la alfombra o un ahogado susurro de conversación. También lo oí, al mismo tiempo o un segundo después, en el fondo del pasillo que traía desde aquellas piezas hasta la puerta. Me tiré contra la puerta antes de que fuera demasiado tarde, la cerré de golpe apoyando el cuerpo, felizmente la llave estaba puesta de nuestro lado, y además corrí el gran cerrojo para más seguridad. Fui a la cocina, calenté la pavita, y cuando estuve de vuelta con la bandeja del mate, le dije a Irene:</p>
+            <p>—Tuve que cerrar la puerta del pasillo. Han tomado la parte del fondo.</p>
+            <p>Dejó caer el tejido y me miró con sus graves ojos cansados.</p>
+            <p>—¿Estás seguro?</p>
+            <p>Asentí.</p>
+            <p>—Entonces —dijo recogiendo las agujas—, tendremos que vivir en este lado.</p>
+            <p>Yo cebaba el mate con mucho cuidado, pero ella tardó un rato en reanudar su labor. Me acuerdo que tejía un chaleco gris; a mí me gustaba ese chaleco.</p>
+            <p>Los primeros días nos pareció penoso porque ambos habíamos dejado en la parte tomada muchas cosas que queríamos. Mis libros de literatura francesa, por ejemplo estaban todos en la biblioteca. Irene extrañaba unas carpetas, un par de pantuflas que tanto la abrigaban en invierno. Yo sentía mi pipa de enebro y creo que Irene pensó en una botella de Hesperidina de muchos años. Con frecuencia (pero esto solamente sucedió los primeros días) cerrábamos algún cajón de las cómodas y nos mirábamos con tristeza.</p>
+            <p>—No está aquí.</p>
+            <p>Pero también tuvimos ventajas. La limpieza de la casa se simplificó tanto que aun levantándonos tardísimo, a las nueve y media por ejemplo, no daban las once y ya estábamos de brazos cruzados. Irene se acostumbró a ir conmigo a la cocina y ayudarme a preparar el almuerzo. Lo pensamos bien, y se decidió esto: mientras yo preparaba el almuerzo, Irene cocinaría platos para comer fríos de noche. Nos alegramos porque siempre resultó molesto tener que abandonar los dormitorios al atardecer y ponerse a cocinar. Ahora nos bastaba con la mesa en el dormitorio de Irene y las fuentes de comida fiambre.</p>
+            <p>Irene estaba contenta porque le quedaba más tiempo para tejer. Yo andaba un poco perdido a causa de los libros, pero por no afligir a mi hermana me puse a revisar la colección de estampillas de papá y eso me sirvió para matar el tiempo. Nos divertíamos mucho, cada uno en sus cosas, casi siempre reunidos en el dormitorio de Irene, que era más cómodo. A veces Irene decía:</p>
+            <p>—Fíjate este punto que se me ha ocurrido. ¿No da un dibujo de trébol?</p>
+            <p>Un rato después era yo el que le ponía ante los ojos un cuadradito de papel para que viese el mérito de algún sello de Eupen y Malmédy. Estábamos bien, y poco a poco empezábamos a no pensar. Se puede vivir sin pensar.</p>
+            <p>[... Cuando Irene soñaba en alta voz, yo me desvelaba enseguida. Nunca pude habituarme a esa voz de estatua o de papagayo, voz que viene de los sueños y no de la garganta. Irene decía que mis sueños consistían en grandes sacudones que a veces hacían caer el cobertor. Nuestros dormitorios tenían el living de por medio, pero de noche se escuchaba cualquier cosa en la casa. Nos oíamos respirar, toser, presentíamos el ademán que conduce a la llave del velador, los mutuos y frecuentes insomnios.</p>
+            <p>Fuera de eso, todo estaba callado en la casa. De día eran los rumores domésticos, el roce metálico de las agujas de tejer, un crujido al pasar las hojas del álbum filatélico. La puerta de roble, creo haberlo dicho, era maciza. En la cocina y el baño, que quedaban tocando la parte tomada, nos poníamos a hablar en voz más alta o Irene cantaba canciones de cuna. En una cocina hay demasiado ruido de loza y vidrios para que otros sonidos irrumpan en ella. Muy pocas veces permitíamos allí el silencio, pero cuando tornábamos a los dormitorios y al living, entonces la casa se ponía callada y a media luz, hasta pasábamos más despacio para no molestarlos. Yo creo que era por eso que de noche, cuando Irene empezaba a soñar en alta voz, me desvelaba en seguida.]</p>
+            <p>Es casi repetir lo mismo salvo las consecuencias. De noche siento sed, y antes de acostarnos le dije a Irene que iba hasta la cocina a servirme un vaso de agua. Desde la puerta del dormitorio (ella tejía) oí ruido en la cocina: tal vez en la cocina o tal vez en el baño porque el codo del pasillo apagaba el sonido. A Irene le llamó la atención mi brusca manera de detenerme, y vino a mi lado sin decir palabra. Nos quedamos escuchando los ruidos, notando claramente que eran de este lado de la puerta de roble, en la cocina y el baño, o en el pasillo mismo donde empezaba el codo casi al lado nuestro.</p>
+            <p>No nos miramos siquiera. Apreté el brazo de Irene y la hice correr conmigo hasta la puerta cancel, sin volvernos hacia atrás. Los ruidos se oían más fuerte pero siempre sordos, a espaldas nuestras. Cerré de un golpe la cancel y nos quedamos en el zaguán. Ahora no se oía nada.</p>
+            <p>—Han tomado esta parte —dijo Irene. El tejido le colgaba de las manos y las hebras iban hasta la cancel y se perdían debajo. Cuando vio que los ovillos habían quedado del otro lado, soltó el tejido sin mirarlo.</p>
+            <p>—¿Tuviste tiempo de traer alguna cosa? —le pregunté inútilmente.</p>
+            <p>—No, nada.</p>
+            <p>Estábamos con lo puesto. Me acordé de los quince mil pesos en el armario de mi dormitorio. Ya era tarde ahora. Como me quedaba el reloj pulsera, vi que eran las once de la noche. Rodeé con mi brazo la cintura de Irene (yo creo que ella estaba llorando) y salimos así a la calle. Antes de alejarnos tuve lástima, cerré bien la puerta de entrada y tiré la llave a la alcantarilla. No fuese que a algún pobre diablo se le ocurriera robar y se metiera en la casa, a esa hora y con la casa tomada.</p>
+        </div>
+
+        <!-- EL ÁRBOL DEL ORGULLO -->
+        <div id="ArbolOrgullo" class="tabcontent">
+            <h2>El árbol del orgullo</h2>
+            <h3>G. K. Chesterton (1874-1936)</h3>
+            <div class="author-bio">Polígrafo inglés. Nacido en Londres; muerto en esa ciudad. Su obra es vasta, pero continuamente lúcida y fervorosa. Ejerció, y renovó, la novela, la crítica, la lírica, la biografía, la polémica y las ficciones policiales.</div>
+            <p>Si bajan a la Costa de Berbería, donde se estrecha la última cuña de los bosques entre el desierto y el gran mar sin mareas, oirán una extraña leyenda sobre un santo de los siglos oscuros. Ahí, en el límite crepuscular del continente oscuro, perduran los siglos oscuros. Sólo una vez he visitado esa costa; y aunque está enfrente de la tranquila ciudad italiana donde he vivido muchos años, la insensatez y la transmigración de la leyenda casi no me asombraron, ante la selva en que retumbaban los leones y el oscuro desierto rojo. Dicen que el ermitaño Securis, viviendo entre árboles, llegó a quererlos como a amigos; pues, aunque eran grandes gigantes de muchos brazos, eran los seres más inocentes y mansos; no devoraban como devoran los leones; abrían los brazos a las aves. Rogó que los soltaran de tiempo en tiempo para que anduvieran como las otras criaturas. Los árboles caminaron con las plegarias de Securis, como antes con el canto de Orfeo. Los hombres del desierto se espantaban viendo a lo lejos el paseo del monje y de su arboleda, como un maestro y sus alumnos. Los árboles tenían esa libertad bajo una estricta disciplina; debían regresar cuando sonara la campana del ermitaño y no imitar de los animales sino el movimiento, no la voracidad ni la destrucción. Pero uno de los árboles oyó una voz que no era la del monje; en la verde penumbra calurosa de una tarde, algo se había posado y le hablaba, algo que tenía la forma de un pájaro y que otra vez, en otra soledad, tuvo la forma de una serpiente. La voz acabó por apagar el susurro de las hojas, y el árbol sintió un vasto deseo de apresar a los pájaros inocentes y de hacerlos pedazos. Al fin, el tentador lo cubrió con los pájaros del orgullo, con la pompa estelar de los pavos reales. El espíritu de la bestia venció al espíritu del árbol, y éste desgarró y consumió a los pájaros azules, y regresó después a la tranquila tribu de los árboles. Pero dicen que cuando vino la primavera todos los árboles dieron hojas, salvo este que dio plumas que eran estrelladas y azules. Y por esa monstruosa asimilación, el pecado se reveló.</p>
+            <p style="text-align: right; font-size: 0.9em; color: #666;">De The Man Who Knew Too Much (1922), de G. K. Chesterton.</p>
+        </div>
+
+        <!-- LA PAGODA DE BABEL -->
+        <div id="PagodaBabel" class="tabcontent">
+            <h2>La pagoda de Babel</h2>
+            <h3>G. K. Chesterton</h3>
+            <p>—Ese cuento del agujero en el suelo, que baja quién sabe hasta dónde, siempre me ha fascinado. Ahora es una leyenda musulmana; pero no me asombraría que fuera anterior a Mahoma. Trata del sultán Aladino; no el de la lámpara, por supuesto, pero también relacionado con genios o con gigantes. Dicen que ordenó a los gigantes que le erigieran una especie de pagoda, que subiera y subiera hasta sobrepasar las estrellas. Algo como la Torre de Babel. Pero los arquitectos de la Torre de Babel eran gente doméstica y modesta, como ratones, comparada con Aladino. Sólo querían una torre que llegara al cielo. Aladino quería una torre que rebasara el cielo, y se elevara encima y siguiera elevándose para siempre. Y Dios la fulminó, y la hundió en la tierra abriendo interminablemente un agujero, hasta que hizo un pozo sin fondo, como era la torre sin techo. Y por esa invertida torre de oscuridad, el alma del soberbio Sultán se desmorona para siempre.</p>
+            <p style="text-align: right; font-size: 0.9em; color: #666;">De The Man Who Knew Too Much (1922), de G. K. Chesterton.</p>
+        </div>
+
+        <!-- SUEÑO DE LA MARIPOSA -->
+        <div id="SuenoMariposa" class="tabcontent">
+            <h2>Sueño de la mariposa</h2>
+            <h3>Chuang Tzu (Siglo IV-III a.C.)</h3>
+            <div class="author-bio">Filósofo chino, de la escuela taoísta. De su obra, que abunda en alegorías y en anécdotas, sólo nos quedan treinta y tres capítulos. Hay versiones inglesas de Giles y de Legge; alemana, de Wilhelm.</div>
+            <p>Chuang Tzu soñó que era una mariposa. Al despertar ignoraba si era Tzu que había soñado que era una mariposa o si era una mariposa y estaba soñando que era Tzu.</p>
+            <p style="text-align: right; font-size: 0.9em; color: #666;">Del libro de Chuang Tzu (300 A.C.)</p>
+        </div>
+
+        <!-- SER POLVO -->
+        <div id="SerPolvo" class="tabcontent">
+            <h2>Ser polvo</h2>
+            <h3>Santiago Dabove (1889-1951)</h3>
+            <div class="author-bio">Escritor argentino, nacido en Morón, provincia de Buenos Aires. La muerte y su traje, volumen publicado póstumamente, reúne sus cuentos fantásticos.</div>
+            <p>¡Inexorable severidad de las circunstancias! Los médicos que me atendían tuvieron que darme, a mis pedidos insistentes, a mis ruegos desesperados, varias inyecciones de morfina y otras sustancias para poner como un guante suave a la garra con que habitualmente me torturaba la implacable enfermedad: una atroz neuralgia del trigémino.</p>
+            <p>Yo, por mi parte, tomaba más venenos que Mitrídates. El caso era poner una sordina a esa especie de pila voltaica o bobina que atormentaba mi trigémino con su corriente de viva pulsación dolorosa. Pero nunca se diga: he agotado el padecimiento, este dolor no puede ser superado. Pues siempre habrá más sufrimiento, más dolor, más lágrimas que tragar. Y no se vea en las quejas y expresión de amargura presentes otra cosa que una de las variaciones sobre este texto único de terrible dureza: "¡no hay esperanza para el corazón del hombre!" Me despedí de los médicos y llevaba la jeringa para inyecciones hipodérmicas, las píldoras de opio y todo el arsenal de mi farmacopea habitual.</p>
+            <p>Monté a caballo, como solía hacerlo, para atravesar esos cuarenta kilómetros que separaban los pueblos que con frecuencia recorría.</p>
+            <p>Frente mismo a ese cementerio abandonado y polvoriento que me sugería la idea de una muerte doble, la que había albergado y la de él mismo, que se caía y se transformaba en ruinas, ladrillo por ladrillo, terrón por terrón, me ocurrió la desgracia. Frente mismo a esa ruina me tocó la fatalidad lo mismo que a Jacob el ángel que en las tinieblas le tocó el muslo y lo derrengó, no pudiendo vencerlo. La hemiplejía, la parálisis que hacía tiempo me amenazaba, me derribó del caballo. Luego que caí, éste se puso a pastar un tiempo, y al poco rato se alejó. Quedaba yo abandonado en esa ruta solitaria donde no pasaba un ser humano en muchos días, a veces. Sin maldecir mi destino, porque se había gastado la maldición en mi boca y nada representaba ya. Porque esa maldición había sido en mí como la expresión de gratitud que da a la vida un ser constantemente agradecido por la prodigalidad con que lo mima una existencia abundante en dones.</p>
+            <p>Como el suelo en que caí, a un lado del camino, era duro, y podía permanecer mucho tiempo allí, y poco me podía mover, me dediqué a cavar pacientemente con mi cortaplumas la tierra alrededor de mi cuerpo. La tarea resultó más bien fácil porque, bajo la superficie dura, la tierra era esponjosa. Poco a poco me fui enterrando en una especie de fosa que resultó un lecho tolerable y casi abrigado por la caliente humedad. La tarde huía. Mi esperanza y mi caballo desaparecieron en el horizonte. Vino la noche, oscura y cerrada. Yo la esperaba así, horrorosa y pegajosa de negrura, con desesperanza de mundos, de luna y estrellas. En esas primeras noches negras pudo el espanto contra mí. ¡Leguas de espanto, desesperación, recuerdos! No, no, ¡idos, recuerdos! No he de llorar por mí, ni por... Una fina y persistente llovizna lloró por mí. Al amanecer del otro día tenía bien pegado mi cuerpo a la tierra. Me dediqué a tragar, con entusiasmo y regularidad "ejemplares", píldora tras píldora de opio y eso debe de haber determinado el "sueño" que precedió a "mi muerte".</p>
+            <p>Era un extraño sueño-vela y una muerte-vida. El cuerpo tenía una pesadez mayor que la del plomo, a ratos, porque en otros no lo sentía en absoluto, exceptuando la cabeza, que conservaba su sensibilidad.</p>
+            <p>Muchos días, me parece, pasé en esa situación y las píldoras negras seguían entrando por mi boca y sin ser tragadas descendían por declive, asentándose abajo para transformar todo en negrura y en tierra. La cabeza sentía y sabía que pertenecía a un cuerpo terroso, habitado por lombrices y escarabajos y traspasado de galerías frecuentadas por hormigas. El cuerpo experimentaba cierto calor y cierto gusto en ser de barro y de ahuecarse cada vez más. Así era, y, cosa extraordinaria, los mismos brazos que al principio conservaban cierta autonomía de movimiento, cayeron también a la horizontal. Tan sólo parecía quedar la cabeza indemne y nutrida por el barro como una planta. Pero como ninguna condición tiene reposo, debió defenderse a dentelladas de los pájaros de presa que querían comerle los ojos y la carne de la cara. Por el hormigueo que siento adentro, creo que debo de tener un nido de hormigas cerca del corazón. Me alegra, pero me impele a andar y no se puede ser barro y andar. Todo tiene que venir a mí; no saldré al encuentro de ningún amanecer ni atardecer, de ninguna sensación.</p>
+            <p>Cosa curiosa: el cuerpo está atacado por las fuerzas roedoras de la vida y es un amasijo donde ningún anatomista distinguiría más que barro, galerías y trabajos prolijos de insectos que instalan su casa y, sin embargo, el cerebro conserva su inteligencia. Me daba cuenta de que mi cabeza recibía el alimento poderoso de la tierra, pero en una forma directa, idéntica a la de los vegetales. La savia subía y bajaba lenta, en vez de la sangre que maneja nerviosamente el corazón. Pero ahora ¿qué pasa? Las cosas cambian. Mi cabeza estaba casi contenta con llegar a ser como un bulbo, una papa, un tubérculo, y ahora está llena de temor. Teme que alguno de esos paleontólogos que se pasan la vida husmeando la muerte, la descubra. O que esos historiadores políticos que son los otros empresarios de pompas funebres que acuden después de la inhumación, echen de ver la vegetalización de mi cabeza. Pero, por suerte, no me vieron.</p>
+            <p>... ¡Qué tristeza! Ser casi como la tierra y tener todavía esperanzas de andar, de amar. Si me quiero mover me encuentro como pegado, como solidarizado con la tierra. Me estoy difundiendo, voy a ser pronto un difunto. ¡Qué extraña planta es mi cabeza! Difícil será que dure su singularidad incógnita. Todo lo descubren los hombres, hasta una moneda de dos centavos embarrada.</p>
+            <p>Maquinalmente se inclinaba mi cabeza hacia el reloj de bolsillo que había puesto a mi lado cuando caí. La tapa que cerraba la máquina estaba abierta y una hilera de hormigas pequeñas entraba y salía. Hubiera querido limpiarlo y guardarlo, pero ¿en qué harapo de mi traje, si todo lo mío era casi tierra?</p>
+            <p>Sentía que mi transición a vegetal no progresaba mucho porque un gran deseo de fumar me torturaba. Ideas absurdas me cruzaban la mente ¡Deseaba ser planta de tabaco para no tener la necesidad de fumar!</p>
+            <p>...El imperioso deseo de moverme iba cediendo al de estar firme y nutrido por una tierra rica y protectora. ...Por momentos me entretengo y miro con interés pasar las nubes. ¿Cuántas formas piensan adoptar antes de no ser ya más, máscaras de vapor de agua? ¿Las agotarán todas? Las nubes divierten al que no puede hacer otra cosa que mirar el cielo, pero, cuando repiten hasta el cansancio su intento de semejar formas animales, sin mayor éxito, me siento tan decepcionado que podría mirar impávido una reja de arado venir en derechura a mi cabeza.</p>
+            <p>...Voy a ser vegetal y no lo siento, porque los vegetales han descubierto eso de su vida estática y egoísta. Su modo de cumplimiento y realización amorosos, por medio de telegramas de polen, no puede satisfacernos como nuestro amor carnal y apretado. Pero es cuestión de probar y veremos cómo son sus voluptuosidades.</p>
+            <p>...Pero no es fácil conformarse y borraríamos lo que está escrito en el libro del destino si ya no nos estuviera acaeciendo. ...De qué manera odio ahora eso del "árbol genealógico de las familias"; me recuerda demasiado mi trágica condición de regresión a un vegetal. No hago cuestión de dignidad ni de prerrogativas; la condición de vegetal es tan honrosa como la de animal, pero, para ser lógicos, ¿por qué no representaban las ascendencias humanas con la cornamenta de un ciervo? Estaría más de acuerdo con la realidad y la animalidad de la cuestión.</p>
+            <p>...Solo en aquel desierto, pasaban los días lentamente sobre mi pena y aburrimiento. Calculaba el tiempo que llevaba de entierro por el largo de mi barba. La notaba algo hinchada y, su naturaleza córnea igual a la de la uña y epidermis, se esponjaba como en algunas fibras vegetales. Me consolaba pensando que hay árboles expresivos tanto como un animal o un ser humano. Yo recuerdo haber visto un álamo, cuerda tendida del cielo a la tierra. Era un árbol con hojas abundantes y ramas cortas, muy alto, más lindo que un palo de navío adornado. El viento, según su intensidad, sacaba del follaje una expresión cambiante, un murmullo, un rumor, casi un sonido, como un arco de violín que hace vibrar las cuerdas con velocidad e intensidad graduadas.</p>
+            <p>...Oí los pasos de un hombre, planta de caminador quizá, o que por no tener con qué pagar el pasaje en distancias largas, se ha puesto algo así como un émbolo en las piernas y una presión de vapor de agua en el pecho. Se detuvo como si hubiera frenado de golpe frente a mi cara barbuda. Se asustó al pronto y empezó a huir; luego, venciéndolo la curiosidad, volvió y, pensando quizá en un crimen, intentó desenterrarme escarbando con una navaja. Yo no sabía cómo hacer para hablarle, porque mi voz ya era un semisilencio por la casi carencia de pulmones. Como en secreto, le decía: ¡Déjeme, déjeme! Si me saca de la tierra, como hombre ya no tengo nada de efectivo, y me mata como vegetal. Si quiere cuidar la vida y no ser meramente policía, no mate este modo de existir que también tiene algo de grato, inocente y deseable.</p>
+            <p>No oía el hombre, sin duda acostumbrado a las grandes voces del campo, y pretendió seguir escarbando. Entonces le escupí en la cara. Se ofendió y me golpeó con el revés de la mano. Su simplicidad de campesino, de rápidas reacciones, se imponía sin duda a toda inclinación de investigación o pesquisa. Pero a mí me pareció que una oleada de sangre subía a mi cabeza, y mis ojos coléricos desafiaban como los de un esgrimista enterrado, junto con espadas, pedana y punta hábil que busca herir.</p>
+            <p>La expresión de buena persona desolada y servicial que puso el hombre, me advirtió que no era de esa raza caballeresca y duelista. Pareció que quería retirarse sin ahondar más en el misterio... y se fue en efecto, torciendo el pescuezo largo rato para seguir mirando... Pero en todo esto había algo que llegó a estremecerme, algo referente a mí mismo.</p>
+            <p>Como es común a muchos cuando se encolerizan, me subió el rubor a la cara. Habréis observado que sin espejo no podemos ver de esta última más que un costado de la nariz y una muy pequeña parte de la mejilla y labio correspondiente, todo esto muy borroso y cerrando un ojo. Yo, que había cerrado el izquierdo como para un duelo a pistola, pude entrever en los planos confusos por demasiada proximidad, del lado derecho, en esa mejilla que en otro tiempo había fatigado tanto el dolor, pude entrever, ¡ah!... la ascensión de un "rubor verde". ¿Sería la savia o la sangre? Si era esta última: ¿la clorofila de las células periféricas le prestaría un ilusorio aspecto verdoso?... No sé, pero me parece que cada día soy menos hombre.</p>
+            <p>...Frente a ese antiguo cementerio me iba transformando en una tuna solitaria en la que probarían sus cortaplumas los muchachos ociosos. Yo, con esas manazas enguantadas y carnosas que tienen las tunas, les palmearía las espaldas sudorosas y les tomaría con fruición "su olor humano". ¿Su olor?, para entonces, ¿con qué?, si ya se me va aminorando en progresión geométrica la agudeza de todos los sentidos.</p>
+            <p>Así como el ruido tan variado y agudo de los goznes de las puertas no llegará nunca a ser música, mi tumultuosidad de animal, estridencia en la creación, no se avenía con la actividad callada y serena de los vegetales, con su serio reposo. Y lo único que comprendía es precisamente lo que estos últimos no saben: que son elementos del paisaje. Su tranquilidad e inocencia, su posible éxtasis, quizá equivalgan a la intuición de belleza que ofrece al hombre la "escena" de su conjunto.</p>
+            <p>...Por mucho que se valore la actividad, el cambio, la traslación humanos, en la mayoría de los casos el hombre se mueve, anda, va y viene en un calabozo filiforme, prolongado. El que tiene por horizonte las cuatro paredes bien sabidas y palpadas no difiere mucho del que recorre las mismas rutas a diario para cumplir tareas siempre iguales, en circunstancias no muy diferentes. Todo este fatigarse no vale lo que el beso mutuo, y ni siquiera pactado, entre el vegetal y el sol.</p>
+            <p>...Pero todo esto no es más que sofisma. Cada vez muero más como hombre y esa muerte me cubre de espinas y capas clorofiladas. ...Y ahora, frente al cementerio polvoriento, frente a la ruina anónima, la tuna "a que pertenezco" se disgrega cortado su tronco por un hachazo. ¡Venga el polvo igualitario! ¿Neutro? No sé, pero, ¡tendría que tener ganas el fermento que se ponga de nuevo a laborar con materia o cosa como "la mía", tan trabajada de decepciones y derrumbamientos!</p>
+            <p style="text-align: right; font-size: 0.9em; color: #666;">Santiago Dabove: La muerte y su traje (1961).</p>
+        </div>
+
+        <!-- UN CREYENTE -->
+        <div id="Creyente" class="tabcontent">
+            <h2>Un creyente</h2>
+            <h3>George Loring Frost (1887-1931)</h3>
+            <div class="author-bio">Escritor inglés, nacido en Brentford. Autor de Foreword (1909); The Island (1913); Love of London (1916); The Unremembered Traveller (1919); The Sundial (1924); The Unending Rose (1931).</div>
+            <p>Al caer de la tarde, dos desconocidos se encuentran en los oscuros corredores de una galería de cuadros. Con un ligero escalofrío, uno de ellos dijo:</p>
+            <p>—Este lugar es siniestro. ¿Usted cree en fantasmas?</p>
+            <p>—Yo no —respondió el otro— ¿Y usted?</p>
+            <p>—Yo sí —dijo el primero y desapareció.</p>
+            <p style="text-align: right; font-size: 0.9em; color: var(--muted);">George Loring Frost. Memorabilia (1923).</p>
+        </div>
+
+        <!-- UN HOGAR SÓLIDO -->
+        <div id="HogarSolido" class="tabcontent">
+            <h2>Un hogar sólido</h2>
+            <h3>Elena Garro (1917-1998)</h3>
+            <div class="author-bio">Escritora mexicana, nacida en Puebla. Entre sus libros mencionaremos el volumen de comedias Un hogar sólido y la novela Los recuerdos del porvenir (1963).</div>
+            <p><strong>Personajes:</strong> CLEMENTE (60 años); DOÑA GERTRUDIS (40 años); MAMÁ JESUSITA (80 años); CATALINA (5 años); VICENTE MEJÍA (23 años); MUNI (28 años); EVA, extranjera (20 años); LIDIA (32 años).</p>
+            <p><em>(Interior de un cuarto pequeño, con los muros y el techo de piedra. No hay ventanas ni puertas. A la izquierda, empotradas en el muro y también de piedra, unas literas. En una de ellas, Mamá Jesusita, en camisón de encajes y cofia de dormir de encajes. La escena muy oscura.)</em></p>
+            <p><strong>Voz DE DOÑA GERTRUDIS:</strong> —¡Clemente, Clemente! ¡Oigo pasos!<br>
+            <strong>Voz DE CLEMENTE:</strong> —¡Tú siempre estás oyendo pasos! ¿Por qué serán tan impacientes las mujeres? Siempre anticipándose a lo que va a suceder, vaticinando calamidades.<br>
+            <strong>Voz DE DOÑA GERTRUDIS:</strong> —Pues los oigo.<br>
+            <strong>Voz DE CLEMENTE:</strong> —No, mujer, siempre te equivocas; te dejas llevar por tu nostalgia de catástrofes...<br>
+            <strong>Voz DE DOÑA GERTRUDIS:</strong> —Es cierto... pero esta vez no me equivoco.<br>
+            <strong>Voz DE CATALINA:</strong> —¡Son muchos pies, Gertrudis!</p>
+            <p><em>(Sale CATITA, vestida con un traje blanco de los usados hacia 1865, botitas neguras y un collar de corales al cuello. Lleva el pelo atado en la nuca con un lazo rojo.)</em><br>
+            —¡Qué bueno, qué bueno! ¡Tralala! ¡Tralala! <em>(CATITA da saltos y bate las palmas.)</em></p>
+            <p><strong>DOÑA GERTRUDIS</strong> <em>(apareciendo con un traje rosa de 1930)</em> —Los niños no se equivocan. ¿Verdad, tía Catalina, que alguien viene?<br>
+            <strong>CATALINA:</strong> —¡Sí, yo lo sé! Lo supe desde la primera vez que vinieron. ¡Tenía tanto miedo aquí, solita!</p>
+            <p><strong>CLEMENTE</strong> <em>(aparece en traje negro y puños blancos)</em> —Creo que tienen razón. ¡Gertrudis! ¡Gertrudis! ¡Ayúdame a buscar mis metacarpios! Siempre los pierdo y sin ellos no puedo dar la mano.</p>
+            <p><strong>MAMÁ JESUSITA</strong> <em>(enderezándose en su litera y enseñando la cabeza cubierta con la cofia de encajes)</em> —¡Catita tiene razón! Los pasos vienen hacia acá <em>(se coloca una mano detrás de una oreja, en actitud de escuchar)</em>, se han detenido los primeros... a no ser que a los Ramírez les haya sucedido una desgracia... esta vecindad ya nos ha hecho llevar muchos chascos.</p>
+            <p><strong>CATALINA:</strong> —¡Tú, duérmete, Jesusita! A ti no te gusta sino dormir:<br>
+            <em>Dormir, dormir,<br>
+            que cantan los gallos<br>
+            de San Agustín.<br>
+            ¿Ya está el pan?</em></p>
+            <p>[... La obra continúa revelando que los personajes son esqueletos enterrados en una cripta familiar. Al separarse las losas del techo, desciende Lidia, la última en morir. Los muertos conversan sobre sus vidas pasadas y descubren que, en la muerte, aprenderán a ser todas las cosas: la nieve, el fuego, el viento, una planta. Finalmente, escuchan la trompeta del Juicio Final y desaparecen uno a uno, transformándose en elementos de la naturaleza, mientras Lidia declara: "¡Un hogar sólido! ¡Eso soy yo! ¡Las losas de mi tumba!"]</p>
+            <blockquote>—Ahora volverán las tuzas. No grites cuando tú misma corras por tu cara.<br>
+            <strong>CLEMENTE:</strong> —No le cuenten eso, la van a asustar. Da miedo aprender a ser todas las cosas.<br>
+            <strong>LIDIA:</strong> — ¿Y podré ser un pino con un nido de arañas y construir un hogar sólido?<br>
+            <strong>CLEMENTE:</strong> —Claro. Y serás el pino y la escalera y el fuego.<br>
+            <strong>LIDIA:</strong> —¿Y luego?<br>
+            <strong>MAMÁ JESUSITA:</strong> —Luego Dios nos llamará a su seno.</p></blockquote>
+            <p style="text-align: right; font-size: 0.9em; color: var(--muted);">Elena Garro: Un hogar sólido.</p>
+        </div>
+
+        <!-- EL NEGADOR DE MILAGROS -->
+        <div id="Negador" class="tabcontent">
+            <h2>El negador de milagros</h2>
+            <h3>Anónimo (Citado por Giles)</h3>
+            <p>Chu Fu Tze, negador de milagros, había muerto; lo velaba su yerno. Al amanecer, el ataúd se elevó y quedó suspendido en el aire, a dos cuartas del suelo. El piadoso yerno se horrorizó. "Oh venerado suegro", suplicó "no destruyas mi fe de que son imposibles los milagros". El ataúd, entonces, descendió lentamente, y el yerno recuperó la fe.</p>
+            <p style="text-align: right; font-size: 0.9em; color: var(--muted);">Citado por GILES en Confucianism and its Rivals, Lecture VIII, 1915.</p>
+        </div>
+
+        <!-- PEOR QUE EL INFIERNO -->
+        <div id="PeorInfierno" class="tabcontent">
+            <h2>Peor que el infierno</h2>
+            <h3>Ramón Gómez de la Serna (1888-1963)</h3>
+            <div class="author-bio">Humorista español, nacido en Madrid; muerto en Buenos Aires. Fue uno de los más inventivos escritores de España. De su vastísima obra mencionaremos: El Drama del Palacio Deshabitado; El Rastro; Greguerías; Ismos.</div>
+            <p>¡Oh, la crueldad incomprensible, inadmisible! Le sentenció Dios a muchos miles de siglos de purgatorio porque si los hombres al que no matan, al que absuelven de la última pena lo sentencian casi a lo mismo con sus treinta años, Dios, al que perdona del Infierno, le condena, a veces, a toda la eternidad menos un día, y aunque ese día mata por completo toda la eternidad, ¡cuán vieja y cuan postrada no estará el alma el día en que cumpla la condena! Estará idiota como el alma de la ramera Elisa, de Goncourt, cuando sale del presidio silencioso.</p>
+            <p>"¡Cuántas hojas de almanaque, cuántos lunes, cuántos domingos, cuántos primeros de año esperando un primero de año separado por tantísimos años!, pensaba el sentenciado, y no pudiendo resistir aquello, le pidió al Dios tan abusivamente cruel, que le desterrase al infierno definitivamente, porque allí no hay ninguna impaciencia.</p>
+            <p>"¡Matadme la esperanza! ¡Matad a esa esperanza que piensa en la fecha final, en la fecha inmensamente lejana!", gritaba aquel hombre que por fin fue enviado al Infierno, donde se le alivió la desesperación.</p>
+            <p style="text-align: right; font-size: 0.9em; color: var(--muted);">Ramón Gómez de la Serna: Muestrario (1918).</p>
+        </div>
+
+        <!-- LA SANGRE EN EL JARDÍN -->
+        <div id="SangreJardin" class="tabcontent">
+            <h2>La sangre en el jardín</h2>
+            <h3>Ramón Gómez de la Serna</h3>
+            <p>El crimen aquel hubiera quedado envuelto en el secreto durante mucho tiempo sí no hubiera sido por la fuente central del jardín, que, después de realizado el asesinato, comenzó a echar agua muerta y sangrienta.</p>
+            <p>La correspondencia entre el disimulado crimen de dentro del palacio y la veta de agua rojiza sobre la taza repodrida de verdosidades, dio toda la clave de lo sucedido.</p>
+            <p style="text-align: right; font-size: 0.9em; color: var(--muted);">Ramón Gómez de la Serna: Los muertos, las muertas y Otras fantasmagorías (1933).</p>
+        </div>
+
+        <!-- LOS GANADORES DE MAÑANA -->
+        <div id="Ganadores" class="tabcontent">
+            <h2>Los ganadores de mañana</h2>
+            <h3>Holloway Horn (1901-?)</h3>
+            <div class="author-bio">Matemático inglés, nacido en Brighton. Célebre por su polémica con J. W. Dunne, en la que demostró: 1°) Que la infinita regresión del tiempo es puramente verbal; 2°) Que en general es más inseguro utilizar los sueños para profetizar la realidad, que utilizar la realidad para profetizar los sueños. Ha publicado: A New Theory of Structures (1927); The Old Man and Other Stories (1927).</div>
+            <p>Martin "Knocker" Thompson era difícilmente un caballero. Había sido empresario de dudosos matches de box y de partidos (amistosos) de póker, que ya no dejaban la menor duda. Carecía de imaginación, pero no de viveza y de cierta habilidad. Su galera, sus polainas y la herradura de oro de su corbata podían haber sido más charras, pero estaba tratando de despistar.</p>
+            <p>No siempre iba a favorecerlo la suerte, pero el hombre se defendía. La explicación no era difícil: "Por cada zonzo que se muere, nacen diez más."</p>
+            <p>Sin embargo, la tarde que se encontró con el viejo, estaba pobre. Knocker había dedicado la siesta a una conferencia sobre finanzas en un hotel. Las opiniones abundantemente emitidas por sus dos socios no lo molestaban en absoluto, pero sí el hecho de que le retiraran su crédito.</p>
+            <p>Dobló por Whitcomb y se dirigió a Charing Cross. El enojo acentuaba la fealdad normal de su cara, y el resultado general inquietó a las pocas personas que lo miraron.</p>
+            <p>A las ocho, la calle Whitcomb no está muy concurrida, y no había nadie cerca de los dos cuando el viejo le habló. Estaba acurrucado en un portón cerca de Pall Mall, y Knocker no podía verlo bien.</p>
+            <p>—¡Hola, Knocker! —gritó.<br>
+            Knocker se dio vuelta.</p>
+            <p>En la oscuridad descifró la vaga figura, sin otro rasgo memorable que una barba blanca desmesurada.</p>
+            <p>—¡Hola! —respondió desconfiadamente. (Su memoria le estaba asegurando que él no conocía esa barba.)<br>
+            —Hace frío... —dijo el viejo.<br>
+            —¿Qué quiere? —dijo Thompson con sequedad—. ¿Quién es usted?<br>
+            —Soy un viejo, Knocker.<br>
+            —Si eso es todo lo que me quiere decir...<br>
+            —Es casi todo. ¿Quiere comprarme un diario? Le aseguro que no es como los demás.<br>
+            —No entiendo. ¿Qué no es como los demás?<br>
+            —Es el "Eco" de mañana a la noche —dijo el viejo calmosamente.<br>
+            —Usted debe estar mareado, amigo; eso es lo que le pasa. Mire, los tiempos no son buenos, pero aquí tiene un peso, ¡y que le traiga suerte!...<br>
+            —¡Suerte! —El viejo se rió con una dulzura que crispó los nervios de Knocker.<br>
+            —Mire —dijo otra vez, consciente de algo inverosímil y raro en la vaga figura del portón—. ¿Qué juego es este?<br>
+            —El juego más antiguo del mundo, Knocker.<br>
+            —Déle un descansito a mi nombre, hágame el favor.<br>
+            —¿Lo avergüenza su nombre?<br>
+            —No —dijo Knocker con firmeza—. Dígame de una vez lo que quiere. Estoy harto de perder tiempo.<br>
+            —Váyase entonces, Knocker.<br>
+            —Pero, ¿qué quiere usted? —insistió Knocker, extrañamente inquieto.<br>
+            —Nada. ¿No quiere llevarse este diario? En el mundo no hay otro igual. Ni habrá, por veinticuatro horas.<br>
+            —Claro. Si recién mañana aparece —dijo Knocker con sorna.<br>
+            —Tiene los ganadores de mañana —dijo el otro con sencillez.<br>
+            —Está mintiendo.<br>
+            —Fíjese usted mismo. Ahí los tiene.</p>
+            <p>Un diario salió de la oscuridad y los dedos de Knocker lo aceptaron, casi con miedo. Una carcajada retumbó en el portón, y Knocker se quedó solo.</p>
+            <p>Sintió incómodamente el latir de su corazón, pero siguió hasta una vidriera con luz que le permitió ver el diario. "Jueves 29 de julio de 1926", leyó.</p>
+            <p>Pensó un rato. Hoy era miércoles, tenía la seguridad. Sacó del bolsillo una agenda y la consultó. Era miércoles 28 de julio, último día de carreras en Kempton. No cabía duda.</p>
+            <p>Miró otra vez la fecha: julio 29, 1926. Buscó instintivamente la última página, la página de las carreras. Se encontró con los cinco ganadores en el hipódromo de Gatwick. Se pasó la mano por la frente: estaba húmeda de sudor.</p>
+            <p>[... Knocker verify que los ganadores son correctos y apuesta fuerte, ganando una fortuna. Pero al leer el diario del futuro más detenidamente, descubre un suelto que dice: "Muerte en un tren. El conocido deportista señor Martin Thompson falleció esta tarde en el tren al volver de Gatwick." Aterrado, intenta detener el tren, pero muere de un ataque al corazón mientras los demás pasajeros creen que está enfermo. El diario del futuro desaparece bajo los asientos del tren.]</p>
+            <p>—Está muerto —dijo la espantada voz del hombre que lo sostenía.</p>
+            <p>Nadie prestó atención al diario en el suelo. El barullo lo había empujado bajo el aliento, y no es posible decir dónde fue a parar. Tal vez lo barrieron los guardas en la estación.</p>
+            <p>Tal vez.<br>
+            Nadie sabe.</p>
+            <p style="text-align: right; font-size: 0.9em; color: var(--muted);">Holloway Horn: The old man and other stories (1927).</p>
+        </div>
+
+        <!-- FINAL PARA UN CUENTO FANTÁSTICO -->
+        <div id="FinalFantastico" class="tabcontent">
+            <h2>Final para un cuento fantástico</h2>
+            <h3>I. A. Ireland (1871-?)</h3>
+            <div class="author-bio">Erudito inglés, nacido en Hanley. Afirma ser descendiente del afamado impostor William Henry Ireland, que improvisó un antepasado, William Henrye Irelaunde, a quien Shakespeare habría legado sus manuscritos. Ha publicado: A Brief History of Nightmares (1899); Spanish Literature (1911).</div>
+            <p>—¡Qué extraño! —dijo la muchacha, avanzando cautelosamente—. ¡Qué puerta más pesada! —La tocó, al hablar, y se cerró de pronto, con un golpe.</p>
+            <p>—¡Dios mío! —dijo el hombre—. Me parece que no tiene picaporte del lado de adentro. ¡Cómo, nos ha encerrado a los dos!</p>
+            <p>—A los dos no. A uno solo —dijo la muchacha.</p>
+            <p>Pasó a través de la puerta y desapareció.</p>
+            <p style="text-align: right; font-size: 0.9em; color: var(--muted);">Ireland: Visitations (1919).</p>
+        </div>
+
+        <!-- LA PATA DE MONO -->
+        <div id="PataMono" class="tabcontent">
+            <h2>La pata de mono</h2>
+            <h3>W. W. Jacobs (1863-1943)</h3>
+            <div class="author-bio">Humorista inglés. Ha publicado: Many Cargoes (1896); The Skipper's Wooing (1911); Sea Whispers (1926).</div>
+            <h4>I</h4>
+            <p>La noche era fría y húmeda, pero en la pequeña sala de Laburnum Villa, los postigos estaban cerrados y el fuego ardía vivamente. Padre e hijo jugaban al ajedrez, el primero tenía ideas personales sobre el juego y ponía al rey en tan desesperados e inútiles peligros, que provocaba el comentario de la vieja señora que tejía plácidamente junto a la chimenea.</p>
+            <p>—Oigan el viento —dijo el señor White; había cometido un error fatal y trataba de que su hijo no lo advirtiera.</p>
+            <p>—Lo oigo —dijo éste moviendo implacablemente la reina—. Jaque.</p>
+            <p>—No creo que venga esta noche —dijo el padre con la mano sobre el tablero.</p>
+            <p>—Mate —contestó el hijo.</p>
+            <p>—Esto es lo malo de vivir tan lejos —vociferó el señor White con imprevista y repentina violencia— De todos los barriales, este es el peor. El camino es un pantano. No sé en qué piensa la gente. Como hay sólo dos casas alquiladas, no les importa.</p>
+            <p>—No te aflijas, querido —dijo suavemente su mujer—, ganarás la próxima vez.</p>
+            <p>El señor White alzó la vista y sorprendió una mirada de complicidad entre madre e hijo. Las palabras murieron en sus labios y disimuló un gesto de fastidio.</p>
+            <p>—Ahí viene —dijo Herbert White al oír el golpe del portón y unos pasos que se acercaban. Su padre se levantó con apresurada hospitalidad y abrió la puerta, lo oyeron condolerse con el recién venido. Luego, entraron. El forastero era un hombre fornido con los ojos salientes y la cara rojiza.</p>
+            <p>—El sargento mayor Morris —dijo el señor White, presentándolo. El sargento les dio la mano, aceptó la silla que le ofrecieron y observó con satisfacción que el dueño de casa traía whisky y unos vasos y ponía una pequeña pava de cobre sobre el fuego.</p>
+            <p>Al tercer vaso, le brillaron los ojos y empezó a hablar. La familia miraba con interés a ese forastero que hablaba de guerras, de epidemias y de pueblos extraños.</p>
+            <p>—Hace veintiún años —dijo el señor White sonriendo a su mujer y a su hijo—. Cuando se fue era apenas un muchacho. Mírenlo ahora.</p>
+            <p>—No parece haberle sentado tan mal —dijo la señora White amablemente.</p>
+            <p>—Me gustaría ir a la India —dijo el señor White—. Sólo para dar un vistazo.</p>
+            <p>—Mejor quedarse aquí —replicó el sargento moviendo la cabeza. Dejó el vaso y, suspirando levemente, volvió a sacudir la cabeza.</p>
+            <p>—Me gustaría ver esos viejos templos y faquires y malabaristas —dijo el señor White—. ¿Qué fue, Morris, lo que usted empezó a contarme los otros días, de una pata de mono o algo por el estilo?</p>
+            <p>—Nada —contestó el soldado, apresuradamente—. Nada que valga la pena oír.</p>
+            <p>—¿Una pata de mono? —preguntó la señora White.</p>
+            <p>—Bueno, es lo que se llama magia, tal vez —dijo con desgano el sargento.</p>
+            <p>Sus tres interlocutores lo miraron con avidez. Distraídamente, el forastero llevó la copa vacía a los labios; volvió a dejarla. El dueño de casa la llenó.</p>
+            <p>—A primera vista, es una patita momificada que no tiene nada de particular —dijo el sargento mostrando algo que sacó del bolsillo.</p>
+            <p>La señora retrocedió, con una mueca. El hijo tomó la pata de mono y la examinó atentamente.</p>
+            <p>—¿Y qué tiene de extraordinario? —preguntó el señor White quitándosela a su hijo, para mirarla.</p>
+            <p>—Un viejo faquir le dio poder mágico —dijo el sargento mayor—. Un hombre muy santo... Quería demostrar que el destino gobierna la vida de los hombres y que nadie puede oponérsele impunemente. Le dio este poder: Tres hombres pueden pedirle tres deseos.</p>
+            <p>Habló tan seriamente que los otros sintieron, que sus risas desentonaban.</p>
+            <p>—Y usted, ¿por qué no pide las tres cosas? —preguntó Herbert White.</p>
+            <p>El sargento lo miró con tolerancia.</p>
+            <p>—Las he pedido —dijo, y su rostro, curtido palideció.</p>
+            <p>—¿Realmente se cumplieron los tres deseos? —preguntó la señora White.</p>
+            <p>—Se cumplieron —dijo el sargento.</p>
+            <p>—¿Y nadie más pidió? —insistió la señora.</p>
+            <p>—Sí, un hombre. No sé cuáles fueron las dos primeras cosas que pidió; la tercera, fue la muerte. Por eso entré en posesión de la pata de mono.</p>
+            <p>Habló con tanta gravedad que produjo silencio.</p>
+            <p>—Morris, si obtuvo sus tres deseos, ya no le sirve el talismán —dijo, finalmente, el señor White—. ¿Para qué lo guarda?</p>
+            <p>El sargento sacudió la cabeza:</p>
+            <p>—Probablemente he tenido, alguna vez, la idea de venderlo; pero creo que no lo haré. Ya ha causado bastantes desgracias. Además, la gente no quiere comprarlo. Algunos sospechan que es un cuento de hadas; otros quieren probarlo primero y pagarme después.</p>
+            <p>—Y si a usted le concedieran tres deseos más —dijo el señor White—, ¿los pediría?</p>
+            <p>—No sé —contestó el otro—. No sé.</p>
+            <p>Tomó la pata de mono, la agitó entre el pulgar y el índice y la tiró al fuego. White la recogió.</p>
+            <p>—Mejor que se queme —dijo con solemnidad el sargento.</p>
+            <p>—Si usted no la quiere, Morris, démela.</p>
+            <p>—No quiero —respondió terminantemente—. La tiré al fuego; si la guarda, no me eche las culpas de lo que pueda suceder. Sea razonable, tírela.</p>
+            <p>El otro sacudió la cabeza y examinó su nueva adquisición. Preguntó:</p>
+            <p>—¿Cómo se hace?</p>
+            <p>—Hay que tenerla en la mano derecha y pedir los deseos en voz alta. Pero le prevengo que debe temer las consecuencias.</p>
+            <p>—Parece de las Mil y una noches —dijo la señora White. Se levantó a preparar la mesa—. ¿No le parece que podrían pedir para mí otro par de manos?</p>
+            <p>El señor White sacó del bolsillo el talismán; los tres se rieron al ver la expresión de alarma del sargento.</p>
+            <p>—Si está resuelto a pedir algo —dijo agarrando el brazo de White—, pida algo razonable.</p>
+            <p>El señor White guardó en el bolsillo la pata de mono. Invitó a Morris a sentarse a la mesa. Durante la comida el talismán fue, en cierto modo, olvidado. Atraídos, escucharon nuevos relatos de la vida del sargento en la India.</p>
+            <p>—Si en el cuento de la pata de mono hay tanta verdad como en los otros —dijo Herbert cuando el forastero cerró la puerta y se alejó con prisa, para alcanzar el último tren—, no conseguiremos gran cosa.</p>
+            <p>—¿Le diste algo? —preguntó la señora mirando atentamente a su marido.</p>
+            <p>—Una bagatela —contestó el señor White, ruborizándose levemente—. No quería aceptarlo, pero lo obligué. Insistió en que tirara el talismán.</p>
+            <p>—Sin duda —dijo Herbert, con fingido horror—, seremos felices, ricos y famosos. Para empezar tienes que pedir un imperio, así no estarás dominado por tu mujer.</p>
+            <p>El señor White sacó del bolsillo el talismán y lo examinó perplejamente.</p>
+            <p>—No se me ocurre nada para pedirle —dijo con lentitud—. Me parece que tengo todo lo que deseo.</p>
+            <p>—Si pagaras la hipoteca de la casa serías feliz ¿no es cierto? —dijo Herbert poniéndole la mano sobre el hombro—. Bastará con que pidas doscientas libras.</p>
+            <p>El padre sonrió avergonzado de su propia credulidad y levantó el talismán; Herbert puso una cara solemne, hizo un guiño a su madre y tocó en el piano unos acordes graves.</p>
+            <p>—Quiero-doscientas-libras —pronunció el señor White.</p>
+            <p>Un gran estrépito del piano contestó a sus palabras. El señor White dio un grito. Su mujer y su hijo corrieron hacia él.</p>
+            <p>—Se movió —dijo mirando con desagrado el objeto y lo dejó caer—. Se retorció en mi mano, como una víbora.</p>
+            <p>—Pero yo no veo el dinero —observó el hijo, recogiendo el talismán y poniéndolo sobre la mesa—. Apostaría que nunca lo veré.</p>
+            <p>—Habrá sido tu imaginación, querido —dijo la mujer mirándolo ansiosamente.</p>
+            <p>Sacudió la cabeza.</p>
+            <p>—No importa. No ha sido nada. Pero me dio un susto.</p>
+            <p>Se sentaron junto al fuego y los dos hombres acabaron de fumar sus pipas. El viento era más fuerte que nunca. El señor White se sobresaltó cuando se golpeó una puerta en los pisos altos. Un silencio inusitado y deprimente los envolvió hasta que se levantaron para ir a acostarse.</p>
+            <p>—Se me ocurre que encontrarás el dinero en una gran bolsa, en el medio de la cama —dijo Herbert al darles las buenas noches—. Una aparición horrible, agazapada encima del ropero, te acechará cuando estés guardando tus bienes ilegítimos.</p>
+            <p>Ya solo, el señor White se sentó en la oscuridad, y miró las brasas, y vio caras en ellas. La última era tan simiesca, tan horrible, que la miró con asombro; se rió, molesto, y buscó en la mesa su vaso de agua para echárselo encima y apagar la brasa; sin querer, tocó la pata de mono; se estremeció, limpió la mano en el abrigo y subió a su cuarto.</p>
+            <h4>II</h4>
+            <p>A la mañana siguiente, mientras tomaba el desayuno en la claridad del sol invernal, se rió de sus temores. En el cuarto había un ambiente de prosaica salud que faltaba la noche anterior, y esa pata de mono, arrugada y sucia, tirada sobre el aparador, no parecía terrible.</p>
+            <p>—Todos los viejos militares son iguales —dijo la señora White— ¡Qué idea, la nuestra, escuchar esas tonterías! ¿Cómo puede creerse en talismanes, en esta época? Y si consiguieran las doscientas libras, ¿qué mal podrían hacerte?</p>
+            <p>—Pueden caer de arriba y lastimarle la cabeza —dijo Herbert.</p>
+            <p>—Según Morris, las cosas ocurrían con tanta naturalidad que parecían coincidencias —dijo el padre.</p>
+            <p>—Bueno, no vayas a encontrarte con el dinero antes de mi vuelta —dijo Herbert levantándose de la mesa—. No sea que te conviertas en un avaro y tengamos que repudiarte.</p>
+            <p>La madre se rió, lo acompañó, hasta afuera y lo vio alejarse por el camino; de vuelta a la mesa del comedor, se burló de la credulidad del marido. Sin embargo, cuando el cartero llamó a la puerta, corrió a abrirla y cuando vio que sólo traía la cuenta del sastre, se refirió con cierto malhumor a los militares de costumbres intemperantes.</p>
+            <p>—Me parece que Herbert tendrá tema para sus bromas —dijo al sentarse.</p>
+            <p>—Sin duda —dijo el señor White—. Pero, a pesar de todo, la pata se movió en mi mano. Puedo jurarlo.</p>
+            <p>—Habrá sido en tu imaginación —dijo la señora suavemente.</p>
+            <p>—Afirmo que se movió. Yo no estaba sugestionado. Era... ¿Qué sucede?</p>
+            <p>Su mujer no le contestó. Observaba los misteriosos movimientos de un hombre que rondaba la casa y no se decidía a entrar. Notó que el hombre estaba bien vestido y que tenía una galera nueva y reluciente; pensó en las doscientas libras. El hombre se detuvo tres veces en el portón, por fin se decidió a llamar. Apresuradamente, la señora White se quitó el delantal y lo escondió debajo del almohadón de la silla.</p>
+            <p>Hizo pasar al desconocido. Éste parecía incómodo. La miraba furtivamente, mientras ella le pedía disculpas por el desorden que había en el cuarto y por el guardapolvo del marido. La señora esperó cortésmente que les dijera el motivo de la visita, el desconocido estuvo un rato en silencio.</p>
+            <p>—Vengo de parte de Maw & Meggins —dijo por fin.</p>
+            <p>La señora White tuvo un sobresalto.</p>
+            <p>—¿Qué pasa? ¿Que pasa? ¿Le ha sucedido algo a Herbert?</p>
+            <p>Su marido se interpuso.</p>
+            <p>—Espera, querida. No te adelantes a los acontecimientos. Supongo que usted no trae malas noticias, señor. —Y lo miró patéticamente.</p>
+            <p>—Lo siento... —empezó el otro.</p>
+            <p>—¿Está herido? —preguntó, enloquecida, la madre.</p>
+            <p>El hombre asintió.</p>
+            <p>—Mal herido —dijo pausadamente—. Pero no sufre.</p>
+            <p>—Gracias a Dios —dijo la señora White, juntando las manos—. Gracias a Dios.</p>
+            <p>Bruscamente comprendió el sentido siniestro que había en la seguridad que le daban y vio la confirmación de sus temores, en la cara significativa del hombre. Retuvo la respiración, miró a su marido que parecía tardar en comprender, y le tomó la mano temblorosamente. Hubo un largo silencio.</p>
+            <p>—Lo agarraron las máquinas —dijo en voz baja el visitante.</p>
+            <p>—Lo agarraron las máquinas —repitió el señor White, aturdido.</p>
+            <p>Se sentó, mirando fijamente por la ventana, tomó la mano de su mujer, la apretó en la suya, como en sus tiempos de enamorados.</p>
+            <p>—Era el único que nos quedaba —le dijo al visitante—. Es duro.</p>
+            <p>El otro se levantó y se acercó a la ventana.</p>
+            <p>—La compañía me ha encargado que le exprese sus condolencias por esta gran pérdida —dijo sin darse vuelta—. Le ruego que comprenda que soy tan sólo un empleado y que obedezco a las órdenes que me dieron.</p>
+            <p>No hubo respuesta. La cara de la señora White estaba lívida.</p>
+            <p>—Se me ha comisionado para declararles que Maw & Meggins niega toda responsabilidad en el accidente— prosiguió el otro—. Pero en consideración a los servicios prestados por su hijo, le remiten una suma determinada.</p>
+            <p>El señor White soltó la mano de su mujer y, levantándose, miró con terror al visitante. Sus labios secos pronunciaron la palabra: ¿cuánto?</p>
+            <p>—Doscientas libras —fue la respuesta.</p>
+            <p>Sin oír el grito de su mujer, el señor White sonrió levemente, extendió los brazos, como un ciego, y se desplomó, desmayado.</p>
+            <h4>III</h4>
+            <p>En el cementerio nuevo, a unas dos millas de distancia, marido y mujer dieron sepultura a su muerto y volvieron a la casa transidos de sombra y de silencio.</p>
+            <p>Todo pasó tan pronto que al principio casi no lo entendieron y quedaron esperando alguna otra cosa que les aliviara el dolor. Pero los días pasaron y la expectativa se transformó en resignación, esa desesperada resignación de los viejos, que algunos llaman apatía. Pocas veces hablaban, porque no tenían nada que decirse, sus días eran interminables hasta el cansancio.</p>
+            <p>Una semana después, el señor White, despertándose bruscamente en la noche, estiró la mano y se encontró solo. El cuarto estaba a oscuras, oyó, cerca de la ventana, un llanto contenido. Se incorporó en la cama para escuchar.</p>
+            <p>—Vuelve a acostarte —dijo tiernamente—. Vas a tomar frío.</p>
+            <p>—Mi hijo tiene más frío —dijo la señora White y volvió a llorar.</p>
+            <p>Los sollozos se desvanecieron en los oídos del señor White. La cama estaba tibia, y sus ojos pesados de sueño. Un despavorido grito de su mujer lo despertó.</p>
+            <p>—La pata de mono —gritaba desatinadamente—, la pata de mono.</p>
+            <p>El señor White se incorporó alarmado.</p>
+            <p>—¿Dónde? ¿Dónde está? ¿Qué sucede?</p>
+            <p>Ella se acercó:</p>
+            <p>—La quiero. ¿No la has destruido?</p>
+            <p>—Está en la sala, sobre la repisa —contestó asombrado—. ¿Por qué la quieres?</p>
+            <p>Llorando y riendo se inclinó para besarlo, y le dijo histéricamente:</p>
+            <p>—Sólo ahora he pensado ¿Por qué no he pensado antes? ¿Por qué tú no pensaste?</p>
+            <p>—¿Pensaste en qué? —preguntó.</p>
+            <p>—En los otros dos deseos —respondió enseguida—. Sólo hemos pedido uno.</p>
+            <p>—¿No fue bastante?</p>
+            <p>—No —gritó ella triunfalmente—. Le pediremos otro más. Búscala pronto y pide que nuestro hijo vuelva a la vida.</p>
+            <p>El hombre se sentó en la cama, temblando.</p>
+            <p>—Dios mío, estás loca.</p>
+            <p>—Búscala pronto y pide —le balbuceó—; ¡mi hijo, mi hijo!</p>
+            <p>El hombre encendió la vela:</p>
+            <p>—Vuelve a acostarte. No sabes lo que estás diciendo.</p>
+            <p>—Nuestro primer deseo se cumplió ¿Por qué no hemos de pedir el segundo?</p>
+            <p>—Fue una coincidencia.</p>
+            <p>—Búscala y desea —gritó con exaltación la mujer. El marido se dio vuelta y la miró.</p>
+            <p>—Hace diez días que está muerto y además —no quiero decirte otra cosa— lo reconocí por el traje. Si ya entonces era demasiado horrible para que lo vieras...</p>
+            <p>—Tráemelo —gritó la mujer arrastrándolo hacia la puerta—. ¿Crees que temo al niño que he criado?</p>
+            <p>El señor White bajó en la oscuridad, entró en la sala y se acercó a la repisa. El talismán estaba en su lugar. Tuvo miedo que el deseo todavía no formulado trajera a su hijo hecho pedazos, antes que él pudiera escaparse del cuarto. Perdió la orientación. No encontraba la puerta. Tanteó alrededor de la mesa y a lo largo de la pared y de pronto se encontró en el zaguán, con el maligno objeto en la mano.</p>
+            <p>Cuando entró en el dormitorio, hasta la cara de su mujer le pareció cambiada. Estaba ansiosa y blanca y tenía algo sobrenatural. Le tuvo miedo.</p>
+            <p>—Pídelo —gritó con violencia.</p>
+            <p>—Es absurdo y perverso —balbuceó.</p>
+            <p>—Pídelo —repitió la mujer.</p>
+            <p>El hombre levantó la mano.</p>
+            <p>—Deseo que mi hijo viva de nuevo.</p>
+            <p>El talismán cayó al suelo. El señor White siguió mirándolo con terror. Luego, temblando, se dejó caer en una silla mientras la mujer se acercó a la ventana y levantó la cortina. El hombre no se movió de ahí, hasta que el frío del alba lo traspasó. A veces miraba a su mujer, que estaba en la ventana. La vela se había consumido; hasta apagarse, proyectaba en las paredes y el techo sombras vacilantes.</p>
+            <p>Con un inexplicable alivio ante el fracaso del talismán, el hombre volvió a la cama; un minuto después, la mujer, apática y silenciosa, se acostó a su lado.</p>
+            <p>No hablaron, escuchaban el latido del reloj. Crujió un escalón. La oscuridad era opresiva, el señor White juntó coraje, encendió un fósforo y bajó a buscar una vela.</p>
+            <p>Al pie de la escalera el fósforo se apagó. El señor White se detuvo para encender otro; simultáneamente resonó un golpe furtivo, casi imperceptible, en la puerta de entrada.</p>
+            <p>Los fósforos cayeron. Permaneció inmóvil, sin respirar, hasta que se repitió el golpe. Huyó a su cuarto y cerró la puerta. Se oyó un tercer golpe.</p>
+            <p>—¿Qué es eso? —gritó la mujer.</p>
+            <p>—Una laucha —dijo el hombre—. Una laucha. Se me cruzó en la escalera.</p>
+            <p>La mujer se incorporó. Un fuerte golpe retumbó en toda la casa.</p>
+            <p>—¡Es Herbert! ¡Es Herbert! —La señora White corrió hacia la puerta, pero su marido la alcanzó.</p>
+            <p>—¿Qué vas a hacer? —le dijo ahogadamente.</p>
+            <p>—¡Es mi hijo; es Herbert! —gritó la mujer, luchando para que la soltaran—. Me había olvidado que el cementerio está a dos millas. Suéltame; tengo que abrir la puerta.</p>
+            <p>—Por amor de Dios, no lo dejes entrar —dijo el hombre, temblando.</p>
+            <p>—¿Tienes miedo de tu propio hijo? —gritó—. Suéltame. Ya voy, Herbert; ya voy.</p>
+            <p>Hubo dos golpes más. La mujer se libró y huyó del cuarto. El hombre la siguió y la llamó, mientras bajaba la escalera. Oyó el ruido de la tranca de abajo; oyó el cerrojo; y luego, la voz de la mujer, anhelante:</p>
+            <p>—La tranca —dijo—. No puedo alcanzarla.</p>
+            <p>Pero el marido, arrodillado, tanteaba el piso, en busca de la pata de mono.</p>
+            <p>—Si pudiera encontrarla antes de que eso entrara...—. Los golpes volvieron a resonar en toda la casa. El señor White oyó que su mujer acercaba una silla; oyó el ruido de la tranca al abrirse; en el mismo instante encontró la pata de mono y, frenéticamente, balbuceó el tercer y último deseo.</p>
+            <p>Los golpes cesaron de pronto; aunque los ecos resonaban aún en la casa. Oyó retirar la silla y abrir la puerta. Un viento helado entró por la escalera; y un largo y desconsolado alarido de su mujer le dio valor para correr hacia ella y luego hasta el portón. El camino estaba desierto y tranquilo.</p>
+            <p style="text-align: right; font-size: 0.9em; color: var(--muted);">W. W. Jacobs: The Lady of the Barge (1902).</p>
+        </div>
+
+        <!-- DEFINICIÓN DEL FANTASMA -->
+        <div id="DefinicionFantasma" class="tabcontent">
+            <h2>Definición del fantasma</h2>
+            <h3>James Joyce (1882-1941)</h3>
+            <div class="author-bio">Literato irlandés, nacido en Dublín; muerto en Zurich. Sus virtudes son de orden técnico, especialmente verbal. Publicó: Chamber Music (1907); Dubliners (1914); Portrait of the Artist as a Young Man (1916); Ulysses (1921); Finnegans Wake (1939).</div>
+            <p>¿Qué es un fantasma? preguntó Stephen. Un hombre que se ha desvanecido hasta ser impalpable, por muerte, por ausencia, por cambio de costumbres.</p>
+            <p style="text-align: right; font-size: 0.9em; color: var(--muted);">Del Ulysses (1921), de James Joyce.</p>
+        </div>
+
+        <!-- MAY GOULDING -->
+        <div id="MayGoulding" class="tabcontent">
+            <h2>May Goulding</h2>
+            <h3>James Joyce</h3>
+            <p>La madre de Stephen, extenuada, rígidamente surge del suelo, leprosa y turbia, con una corona de marchitos azahares y un desgarrado velo de novia, la cara gastada y sin nariz, verde de moho sepulcral. El pelo es lacio, ralo. Fija en Stephen las huecas órbitas anilladas de azul y abre la boca desdentada, diciendo una silenciosa palabra.</p>
+            <p><strong>LA MADRE</strong><br>
+            <em>(Con la sonrisa sutil de la demencia de la muerte.)</em><br>
+            Yo fui la hermosa May Goulding. Estoy muerta.</p>
+            <p style="text-align: right; font-size: 0.9em; color: var(--muted);">Del Ulysses (1921), de James Joyce.</p>
+        </div>
+
+        <!-- EL BRUJO POSTERGADO -->
+        <div id="BrujoPostergado" class="tabcontent">
+            <h2>El brujo postergado</h2>
+            <h3>Don Juan Manuel (1282-1348)</h3>
+            <div class="author-bio">Príncipe español, nacido en Escalona; muerto en Peñafiel. Fue sobrino de Alfonso el Sabio. Hombre de cultura latina y de erudición islámica, es uno de los padres de la prosa española.</div>
+            <p>En Santiago había un deán que tenía gran deseo de saber el arte de la nigromancia. Oyó decir que don Illán de Toledo la sabía más que ninguno, y fue a Toledo a buscarlo.</p>
+            <p>El día que llegó a Toledo enderezó a la casa de don Illán y lo encontró leyendo en una cámara muy apartada. Este lo recibió con bondad, le dijo que postergara el motivo de su visita hasta después de almorzar. Le señaló un alojamiento muy fresco y le dijo que lo alegraba mucho su venida. Después de almorzar, el deán le refirió la razón de aquella visita y le rogó que le enseñara la ciencia mágica. Don Illán le dijo que adivinaba que era deán, hombre de buena posición y buen porvenir, y que temía ser olvidado luego por él. El deán le prometió y aseguró que nunca olvidaría aquella merced y que estaría siempre a sus órdenes. Ya arreglado el asunto, explicó don Illán que las artes mágicas no podían aprenderse sino en lugar apartado, y tomándolo por la mano lo llevó a una pieza contigua en cuyo piso había una gran argolla de hierro. Antes le dijo a una sirvienta que trajese perdices para la cena, pero que no las pusiera a asar hasta que la mandara. Levantaron la argolla entre los dos y descendieron por una escalera de piedra bien labrada hasta que al deán le pareció que habían bajado tanto que el lecho del Tajo estaba sobre ellos. Al pie de la escalera había una celda y luego una biblioteca.</p>
+            <p>Revisaron los libros y en eso estaban cuando entraron dos hombres, con una carta para el deán escrita por el Obispo su tío, en la que le hacía saber que estaba muy enfermo y que si quería encontrarlo vivo no demorase. Al deán lo contrariaron mucho estas nuevas, lo uno por la dolencia de su tío, lo otro, por tener que interrumpir los estudios. Optó por escribir una disculpa y la mandó al Obispo. A los tres días llegaron unos hombres de luto con otras cartas para el deán, en las que se leía que el Obispo había fallecido, que estaban eligiendo sucesor, y que esperaban por la gracia de Dios que lo elegirían a él. Decían también que no se molestara en venir, puesto que parecía mucho mejor que lo eligieran en su ausencia.</p>
+            <p>A los diez días vinieron dos escuderos muy bien vestidos, que se arrojaron a sus pies y besaron sus manos y lo saludaron Obispo. Cuando don Illán vio estas cosas, se dirigió con mucha alegría al nuevo prelado y le dijo que agradecía al Señor que tan buenas nuevas llegaran a su casa. Luego le pidió el decanazgo vacante para uno de sus hijos. El Obispo le hizo saber que había reservado el decanazgo para su propio hermano pero que había determinado favorecerlo y que partiesen juntos para Santiago. Fueron para Santiago los tres, donde los recibieron con honores. A los seis meses el Obispo recibió mandaderos del Papa, que le ofrecía el Arzobispado de Tolosa, dejando en sus manos el nombramiento de sucesor. Cuando don Illán supo esto, le recordó la antigua promesa y le pidió ese título para su hijo. El Arzobispo le hizo saber que había reservado el obispado para su propio tío, hermano de su padre, pero que había determinado favorecerlo y que partiesen juntos para Tolosa. Don Illán tuvo que asentir.</p>
+            <p>Fueron para Tolosa los tres, donde los recibieron con honores y misas. A los dos años el Arzobispo recibió mandaderos del Papa, que le ofrecía el capelo de Cardenal, dejando en sus manos el nombramiento de sucesor. Cuando don Illán supo esto le recordó la antigua promesa y le pidió ese título para su hijo. El Cardenal le hizo saber que había reservado el Arzobispado para su propio tío, hermano de su madre, pero que había determinado favorecerlo y que partiesen juntos para Roma. Don Illán tuvo que asentir. Fueron para Roma los tres, donde los recibieron con honores y misas y procesiones. A los cuatro años murió el Papa y el Cardenal fue elegido para el Papado por todos los demás. Cuando don Illán supo esto, besó los pies de Su Santidad, le recordó la antigua promesa y le pidió el Cardenalato para su hijo. El Papa lo amenazó con la cárcel, diciéndole que bien sabía él que no era más que un brujo y que en Toledo había sido profesor de artes mágicas. El miserable don Illán dijo que iba a volver a España y le pidió algo para comer durante el camino. El Papa no accedió. Entonces don Illán dijo con una voz sin temblor:</p>
+            <p>—Pues tendré que comerme las perdices que para esta noche encargué.</p>
+            <p>La sirvienta se presentó y don Illán le dijo que las asara. A estas palabras, el Papa volvió a hallarse en la celda subterránea, solamente deán de Santiago, y tan avergonzado de su ingratitud que no atinaba a disculparse. Don Illán dijo que bastaba con esa prueba, le negó su parte de las perdices y lo acompañó hasta la calle, donde le deseó feliz viaje y lo despidió con gran cortesía.</p>
+            <p style="text-align: right; font-size: 0.9em; color: var(--muted);">Don Juan Manuel. Libro de los Enxiemplos (1575), versión de Jorge Luis Borges.</p>    
+        </div>
+
+        <!-- JOSEFINA LA CANTORA O EL PUEBLO DE LOS RATONES -->
+        <div id="Josefina" class="tabcontent">
+            <h2>Josefina la cantora o el pueblo de los ratones</h2>
+            <h3>Franz Kafka (1883-1924)</h3>
+            <div class="author-bio">Escritor austríaco, nacido en Praga; muerto en Viena. En todos sus libros existe el tema de la soledad, en casi todos repite el procedimiento de la infinita y minuciosa postergación. Su obra comprende: Der Prozess (1925); Das Schloss (1926); Amerika (1927) y numerosos relatos.</div>
+            <p>Nuestra cantora se llama Josefina. Quien no la ha oído no conoce la potencia del canto. No hay nadie a quien no arrebate su canto; esto debe valorarse porque nuestra raza, en general, no ama la música. La quietud es nuestra música más querida. Nuestra vida es difícil, y no podemos —ni siquiera cuando tratamos de desprendernos de todos los cuidados diarios— elevarnos hasta cosas tan lejanas como la música.</p>
+            <p>Sin embargo, no nos quejamos: no llegamos a tanto, consideramos que nuestra mayor virtud es una astucia práctica, que por cierto necesitamos con extrema urgencia, y con la sonrisa de esa astucia solemos consolarnos de todo, hasta de añorar la dicha que tal vez produce la música (pero esto no sucede). Pero Josefina es la excepción: ama la música y también sabe comunicarla; es única, y cuando nos deje desaparecerá la música de nuestra vida, quién sabe hasta cuándo.</p>
+            <p>Suelo preguntarme qué sucede realmente con esa música. Puesto que somos nulos para ese arte, cómo comprendemos el canto de Josefina (pero Josefina niega nuestra comprensión, tal vez sólo creamos comprenderla). La respuesta más simple sería que es tan grande la belleza de este canto, que hasta los sentidos más torpes no pueden resistirla, pero esa respuesta no satisface. Si así fuera debería tenerse, de inmediato y siempre ante ese canto, la sensación de que en esa garganta resuena algo que nunca se oyó antes y que podemos oír, porque Josefina, y sólo ella, nos capacita para oírlo. Pero justamente, según mi opinión, no sucede así, no siento eso y no he notado que otro sintiera algo parecido.</p>
+            <p>¿Es siquiera un canto? A pesar de que no sentimos la música, tenemos tradiciones de canto. En los antiguos tiempos de nuestro pueblo hubo canto, las leyendas lo cuentan y hasta se han conservado canciones que, por cierto ya nadie puede cantar; tenemos, pues, cierta noción de canto: a esta noción no corresponde el arte de Josefina. ¿Y es arte en verdad o siquiera canto? ¿No es tal vez chillido? Por cierto, todos sabemos chillar; es nuestra peculiar expresión vital y no una habilidad artística.</p>
+            <p>[... Kafka explora la naturaleza del arte y el pueblo de los ratones. Josefina exige ser eximida del trabajo cotidiano para dedicarse a su "canto", pero el pueblo, práctico y trabajador, se lo niega. Ella entonces amenaza con abreviar sus trinos, e incluso deja de cantar, pero el pueblo apenas lo nota. Finalmente, Josefina desaparece, olvidada por todos, pues su arte no era más que un chillido común, elevado solo por la vanidad de la cantora y la tolerancia de su pueblo.]</p>
+            <p>Josefina es un episodio en la historia eterna de nuestro pueblo, y este pueblo superará la pérdida. No nos será fácil; ¿cómo serán posibles las asambleas en completo silencio? Pero, ¿no eran silenciosas también con Josefina? ¿Era su chillar efectivo, notablemente más fuerte y vivaz de lo que será en el recuerdo? ¿Acaso, en vida, era más que un mero recuerdo?</p>
+            <p>Quizá nosotros no perdamos mucho; pero Josefina, redimida de los afanes terrestres, a los que, según ella, están predestinados los elegidos, se perderá jubilosa entre la innumerable multitud de los seres de nuestro pueblo, y pronto, ya que no nos interesa la historia, entrará, como todos sus hermanos, en la exaltada liberación del olvido.</p>
+            <p style="text-align: right; font-size: 0.9em; color: var(--muted);">Franz Kafka: Ein Hungerkünstler (1924).</p>
+        </div>
+
+        <!-- ANTE LA LEY -->
+        <div id="AnteLey" class="tabcontent">
+            <h2>Ante la ley</h2>
+            <h3>Franz Kafka</h3>
+            <p>Hay un guardián ante la Ley. A ese guardián llega un hombre del campo que pide ser admitido a la Ley. El guardián le responde que ese día no puede permitirle la entrada. El hombre reflexiona, y pregunta si luego podrá entrar. "Es posible", dice el guardián, "pero no ahora". Como la puerta de la Ley sigue abierta y el guardián está a un lado, el hombre se agacha para espiar. El guardián se ríe, y le dice "Fíjate bien: soy muy fuerte. Y soy el más subalterno de los guardianes. Adentro no hay una sala que no esté custodiada por su guardián, cada uno más fuerte que el anterior. Ya el tercero tiene un aspecto que yo mismo no puedo soportar."</p>
+            <p>El hombre no ha previsto esas trabas. Piensa que la Ley debe ser accesible a todos los hombres, pero al fijarse en el guardián con su capa de piel, su gran nariz aguda y su larga y deshilachada barba de tártaro, resuelve que más vale esperar. El guardián le da un banco y lo deja sentarse junto a la puerta. Ahí pasa los días y los años. Intenta muchas veces ser admitido y fatiga al guardián con sus peticiones. El guardián entabla con él diálogos limitados y lo interroga acerca de su hogar y de otros asuntos, pero de una manera impersonal, como de señor importante, y siempre acaba repitiendo que no puede pasar todavía.</p>
+            <p>El hombre, que se había equipado de muchas cosas para su viaje, va despojándose de todas ellas para sobornar al guardián. Éste no las rehúsa, pero declara: "Acepto para que no te figures que has omitido algún empeño". En los muchos años el hombre no deja de mirarlo. Se olvida de los otros y piensa que éste es la única traba que lo separa de la Ley. En los primeros años maldice a gritos su perverso destino, con la vejez, la maldición decae en quejumbre. El hombre se vuelve infantil, y como en su vigilia de años ha llegado a reconocer las pulgas en la capa de piel, acaba por pedirles que lo socorran y que intercedan con el guardián.</p>
+            <p>Al fin se le nublan los ojos y no sabe si estos lo engañan o si se ha oscurecido el mundo. Apenas si percibe en la sombra una claridad que fluye inmortalmente de la puerta de la Ley. Ya no le queda mucho que vivir. Antes de morir, todos los conocimientos de su vida se concentran en una pregunta que hasta ahora no ha propuesto al guardián. Le hace seña para que se acerque, pues no puede ya enderezar el cuerpo. El guardián se agacha profundamente, pues la disparidad de las estaturas ha aumentado muchísimo. "¿Qué pretendes ahora?", dice el guardián, "eres insaciable". "Todos se esfuerzan por la Ley", dice el hombre. "¿Será posible que en los años que espero nadie haya querido entrar sino yo?" El guardián entiende que el hombre se está acabando, y tiene que gritarle para que le oiga: "Nadie ha querido entrar por aquí, porque a ti solo estaba destinada esta puerta. Ahora voy a cerrarla."</p>
+            <p style="text-align: right; font-size: 0.9em; color: var(--muted);">Franz Kafka: Ein Landarzt (1919).</p>
+        </div>
+
+        <!-- EL CUENTO MÁS HERMOSO DEL MUNDO -->
+        <div id="CuentoHermoso" class="tabcontent">
+            <h2>El cuento más hermoso del mundo</h2>
+            <h3>Rudyard Kipling (1865-1936)</h3>
+            <div class="author-bio">Ilustre novelista, cuentista, poeta épico. Nació en Bombay; murió en Inglaterra. Recibió el premio Nobel de literatura, en 1907. De su vasta obra, mencionaremos: Plain Tales from the Hills; The Light that Failed; Kim; Actions and Reactions; Debits and Credits.</div>
+            <p>Se llamaba Charlie Mears; era hijo único de madre viuda, vivía en el norte de Londres y venía al centro todos los días, a su empleo en un banco. Tenía veinte años y estaba lleno de aspiraciones. Lo encontré en una sala de billares, donde el marcador lo tuteaba. Charlie, un poco nervioso, me dijo que estaba ahí como espectador; le insinué que volviera a su casa.</p>
+            <p>Fue el primer jalón de nuestra amistad. En vez de perder tiempo en las calles con los amigos, solía visitarme, de tarde, hablando de sí mismo, como corresponde a los jóvenes; no tardó en confiarme sus aspiraciones: eran literarias. Quería forjarse un nombre inmortal, sobre todo a fuerza de poemas, aunque no desdeñaba mandar cuentos de amor y de muerte a los diarios de la tarde.</p>
+            <p>[... Charlie le cuenta al narrador que tiene una idea para "el mejor cuento del mundo" sobre un héroe pirata. Pero al contar los detalles, menciona barcos de remos donde los galeotes están encadenados a sus bancos por pulseras de hierro, la luz entra por los agujeros de los remos, y cómo si un remero muere, lo despedazan en su lugar para no desencadenarlo y tiran los pedazos por la borda. El narrador, asombrado por la precisión histórica de un empleado de banco de 20 años, le ofrece cinco libras por el argumento. Descubre que Charlie, sin saberlo, está recordando vidas pasadas (metempsicosis). Le hace escribir una inscripción en "griego corrupto" que resulta ser auténtica. Charlie luego recuerda haber sido un vikingo bajo el mando de Thorfin Karlsefne, viajando a Furdurstrandi (América) siglos antes de Colón. El narrador, ávido de escribir la historia definitiva, intenta que Charlie recuerde más. Un amigo hindú, Grish Chunder, le advierte que los dioses cierran las puertas del pasado y que en cuanto Charlie se enamore, olvidará todo. Finalmente, Charlie le muestra un poema que ha escrito sobre una muchacha que trabaja en una cigarrería. Al verlo enamorado, el narrador comprende con tristeza que el recuerdo se ha borrado para siempre y "el cuento más hermoso del mundo" nunca se escribirá.]</p>
+            <blockquote>
+                <p><strong>Hemos remado con el viento en contra y con las velas bajas.</strong><br>
+                ¿Nunca nos soltaréis?<br>
+                Comimos pan y cebolla cuando os apoderabais de las ciudades; corrimos a bordo cuando el enemigo os rechazaba.<br>
+                Los capitanes cantaban en la cubierta cuando el tiempo era hermoso; nosotros estábamos abajo.<br>
+                Nos desmayábamos con el mentón en los remos; no veíais que estábamos ociosos, porque nos hamacaba la nave.<br>
+                ¿Nunca nos soltaréis?<br>
+                Con la sal, los cabos de los remos eran ásperos como la piel de los tiburones; el agua salada nos ajaba las rodillas hasta los huesos; el pelo se nos pegaba en la frente; nuestros labios deshechos mostraban las encías.<br>
+                Nos azotabais porque no seguíamos remando.<br>
+                ¿Nunca nos soltaréis?<br>
+                Pero en breve nos iremos por los escobenes como el agua que se va por el remo y aunque los otros remen detrás, no nos agarrarán hasta que agarren lo que aventan los remos y hasta que aten los vendavales en el hueco de la vela.<br>
+                ¡Nunca nos soltaréis!</p>
+            </blockquote>
+            <p>Grish Chunder tenía razón. Charlie había probado el amor, que mata el recuerdo, y el cuento más hermoso del mundo nunca se escribiría.</p>
+            <p style="text-align: right; font-size: 0.9em; color: var(--muted);">Rudyard Kipling: Many Inventions (1893).</p>
+        </div>
+
+        <!-- HISTORIA DE ABDULA, EL MENDIGO CIEGO -->
+        <div id="Abdula" class="tabcontent">
+            <h2>Historia de Abdula, el mendigo ciego</h2>
+            <h3>Las 1001 Noches</h3>
+            <div class="author-bio">Famosa compilación de cuentos árabes, hecha en El Cairo, a mediados del siglo XV. Europa la conoció gracias al orientalista francés Antoine Galland. En inglés hay versiones de Lane, de Burton y de Payne; en español de Rafael Cansinos Assens.</div>
+            <p>...El mendigo ciego que había jurado no recibir ninguna limosna que no estuviera acompañada de una bofetada, refirió al Califa su historia:</p>
+            <p>—Comendador de los Creyentes, he nacido en Bagdad. Con la herencia de mis padres y con mi trabajo, compré ochenta camellos que alquilaba a los mercaderes de las caravanas que se dirigían a las ciudades y a los confines de vuestro dilatado imperio.</p>
+            <p>Una tarde que volvía de Bassorah con mi recua vacía, me detuve para que pastaran los camellos; los vigilaba, sentado a la sombra de un árbol, ante una fuente, cuando llegó un derviche que iba a pie a Bassorah. Nos saludamos, sacamos nuestras provisiones y nos pusimos a comer fraternalmente. El derviche, mirando mis numerosos camellos, me dijo que no lejos de ahí, una montaña recelaba un tesoro tan infinito que aun después de cargar de joyas y de oro los ochenta camellos, no se notaría mengua en él. Arrebatado de gozo me arrojé al cuello del derviche y le rogué que me indicara el sitio, ofreciendo darle en agradecimiento un camello cargado. El derviche entendió que la codicia me hacía perder el buen sentido y me contestó:</p>
+            <p>—Hermano, debes comprender que tu oferta no guarda proporción con la fineza que esperas de mí. Puedo no hablarte más del tesoro y guardar mi secreto. Pero te quiero bien y te haré una proposición más cabal. Iremos a la montaña del tesoro y cargaremos los ochenta camellos; me darás cuarenta y te quedarás con otros cuarenta, y luego nos separaremos, tomando cada cual su camino.</p>
+            <p>Esta proposición razonable me pareció durísima, veía como un quebranto la pérdida de los cuarenta camellos y me escandalizaba que el derviche, un hombre harapiento, fuera no menos rico que yo. Accedí, sin embargo para no arrepentirme hasta la muerte de haber perdido esa ocasión.</p>
+            <p>Reuní los camellos y nos encaminamos a un valle, rodeado de montañas altísimas, en el que entramos por un desfiladero tan estrecho que sólo un camello podía pasar de frente. El derviche hizo un haz de leña con las ramas secas que recogió en el valle, lo encendió por medio de unos polvos aromáticos, pronunció palabras incomprensibles, y vimos, a través de la humareda, que se abría la montaña y que había un palacio en el centro. Entramos, y lo primero que se ofreció a mi vista deslumbrada fueron unos montones de oro sobre los que se arrojó mi codicia como el águila sobre la presa, y empecé a llenar las bolsas que llevaba.</p>
+            <p>El derviche hizo otro tanto, noté que prefería las piedras preciosas al oro y resolví copiar su ejemplo. Ya cargados mis ochenta camellos, el derviche, antes de cerrar la montaña, sacó de una jarra de plata una cajita de madera de sándalo que según me hizo ver, contenía una pomada, y la guardó en el seno. Salimos, la montaña se cerró, nos repartimos los ochenta camellos y valiéndome de las palabras más expresivas le agradecí la fineza que me había hecho, nos abrazamos con sumo alborozo y cada cual tomó su camino.</p>
+            <p>No había dado cien pasos cuando el numen de la codicia me acometió. Me arrepentí de haber cedido mis cuarenta camellos y su carga preciosa, y resolví quitárselos al derviche, por buenas o por malas. Hice parar mis camellos y retrocedí corriendo y gritando para que se detuviera el derviche. Lo alcancé.</p>
+            <p>—Hermano —le dije—, he reflexionado que eres un hombre acostumbrado a vivir pacíficamente, sólo experto en la oración y en la devoción, y que no podrás nunca dirigir cuarenta camellos. Si quieres creerme, quédate solamente con treinta, aun así te verás en apuros para gobernarlos.</p>
+            <p>—Tienes razón —me respondió el derviche—. No había pensado en ello. Escoge los diez que más te acomoden, llévatelos y que Dios te guarde.</p>
+            <p>Aparté diez camellos que incorporé a los míos, pero la misma prontitud con que había cedido el derviche, encendió mi codicia. Volví de nuevo atrás y le repetí el mismo razonamiento, encareciéndole la dificultad que tendría para gobernar los camellos, y me llevé otros diez. Semejante al hidrópico que más sediento se halla cuanto más bebe, mi codicia aumentaba en proporción a la condescendencia del derviche. Logré, a fuerza de besos y de bendiciones, que me devolviera todos los camellos con su carga de oro y de pedrería. Al entregarme el último de todos, me dijo:</p>
+            <p>—Haz buen uso de estas riquezas y recuerda que Dios, que te las ha dado, puede quitártelas si no socorres a los menesterosos, a quienes la misericordia divina deja en el desamparo para que los ricos ejerciten su caridad y merezcan, así, una recompensa mayor en el Paraíso.</p>
+            <p>La codicia me había ofuscado de tal modo el entendimiento que, al darle gracias por la cesión de mis camellos, sólo pensaba en la cajita de sándalo que el derviche había guardado con tanto esmero. Presumiendo que la pomada debía encerrar alguna maravillosa virtud, le rogué que me la diera, diciéndole que un hombre como él, que había renunciado a todas las vanidades del mundo, no necesitaba pomadas. En mi interior estaba resuelto a quitársela por la fuerza, pero, lejos de rehusármela, el derviche sacó la cajita del seno, y me la entregó.</p>
+            <p>Cuando la tuve en las manos, la abrí, mirando la pomada que contenía, le dije:</p>
+            <p>—Puesto que tu bondad es tan grande, te ruego que me digas cuáles son las virtudes de esta pomada.</p>
+            <p>—Son prodigiosas —me contestó—. Frotando con ella el ojo izquierdo y cerrando el derecho, se ven distintamente todos los tesoros ocultos en las entrañas de la tierra. Frotando el ojo derecho, se pierde la vista de los dos.</p>
+            <p>Maravillado, le rogué que me frotase con la pomada el ojo izquierdo. El derviche accedió. Apenas me hubo frotado el ojo, aparecieron a mi vista tantos y tan diversos tesoros, que volvió a encenderse mi codicia. No me cansaba de contemplar tan infinitas riquezas, pero como me era preciso tener cerrado y cubierto con la mano el ojo derecho, y esto me fatigaba, rogué al derviche que me frotase con la pomada el ojo derecho, para ver más tesoros.</p>
+            <p>—Ya te dije —me contestó— que si aplicas la pomada al ojo derecho, perderás la vista.</p>
+            <p>—Hermano —le repliqué sonriendo— es imposible que esta pomada tenga dos cualidades tan contrarias y dos virtudes tan diversas.</p>
+            <p>Largo rato porfiamos, finalmente el derviche, tomando a Dios por testigo de que me decía la verdad, cedió a mis instancias. Yo cerré el ojo izquierdo, el derviche me frotó con la pomada el ojo derecho. Cuando los abrí, estaba ciego.</p>
+            <p>Aunque tarde, conocí que el miserable deseo de riquezas me había perdido y maldije mi desmesurada codicia. Me arrojé a los pies del derviche.</p>
+            <p>—Hermano —le dije—, tú que siempre me has complacido y que eres tan sabio, devuélveme la vista.</p>
+            <p>—Desventurado —me respondió—, ¿no te previne de antemano y no hice todos los esfuerzos para preservarte de esta desdicha? Conozco, sí, muchos secretos, como has podido comprobar en el tiempo que hemos estado juntos, pero no conozco el secreto capaz de devolverte la luz. Dios te había colmado de riquezas que eras indigno de poseer, te las ha quitado para castigar tu codicia.</p>
+            <p>Reunió mis ochenta camellos y prosiguió con ellos su camino, dejándome solo y desamparado, sin atender a mis lágrimas y a mis súplicas. Desesperado, no sé cuántos días erré por esas montañas; unos peregrinos me recogieron.</p>
+            <p style="text-align: right; font-size: 0.9em; color: var(--muted);">De El libro de las 1001 Noches.</p>
+        </div>
+
+        <!-- EL CIERVO ESCONDIDO -->
+        <div id="CiervoEscondido" class="tabcontent">
+            <h2>El ciervo escondido</h2>
+            <h3>Liehtsé (Siglo IV a.C.)</h3>
+            <div class="author-bio">Filósofo chino de la escuela taoísta. Floreció hacia el siglo IV, antes de la era cristiana.</div>
+            <p>Un leñador de Cheng se encontró en el campo con un ciervo asustado y lo mató. Para evitar que otros lo descubrieran, lo enterró en el bosque y lo tapó con hojas y ramas. Poco después olvidó el sitio donde lo había ocultado y creyó que todo había ocurrido en un sueño. Lo contó, como si fuera un sueño a toda la gente.</p>
+            <p>Entre los oyentes hubo uno que fue a buscar al ciervo escondido y lo encontró. Lo llevó a su casa y dijo a su mujer:</p>
+            <p>—Un leñador soñó que había matado un ciervo y olvidó dónde lo había escondido y ahora yo lo he encontrado. Ese hombre sí que es un soñador.</p>
+            <p>—Tú habrás soñado que viste un leñador que había matado un ciervo. ¿Realmente crees que hubo un leñador? Pero como aquí está el ciervo, tu sueño debe ser verdadero —dijo la mujer.</p>
+            <p>—Aun suponiendo que encontré al ciervo por un sueño —contestó el marido—, ¿a qué preocuparse averiguando cuál de los dos soñó?</p>
+            <p>Aquella noche el leñador volvió a su casa, pensando todavía en el ciervo, y realmente soñó, y en el sueño soñó el lugar donde había ocultado el ciervo y también soñó quién lo había encontrado. Al alba fue a casa del otro y encontró al ciervo. Ambos discutieron y fueron ante un juez, para que resolviera el asunto.</p>
+            <p>El juez le dijo al leñador:</p>
+            <p>—Realmente mataste un ciervo y creíste que era un sueño. Después soñaste realmente y creíste que era verdad. El otro encontró al ciervo y ahora te lo disputa, pero su mujer piensa que soñó que había encontrado un ciervo. Pero como aquí está el ciervo, lo mejor es que se lo repartan.</p>
+            <p>El caso llegó a oídos del rey de Cheng y el rey de Cheng dijo:</p>
+            <p>—¿Y ese juez no estará soñando que reparte un ciervo?</p>
+            <p style="text-align: right; font-size: 0.9em; color: var(--muted);">Liehtsé.</p>
+        </div>
+
+        <!-- LA ESPERANZA -->
+        <div id="Esperanza" class="tabcontent">
+            <h2>La esperanza</h2>
+            <h3>Villiers de L'Isle-Adam (1840-1889)</h3>
+            <div class="author-bio">Escritor francés, nacido en Saint Brieux; murió en París. La literatura fantástica le debe novelas, cuentos y obras de teatro. Es autor de: Isis; Claire Lenoir; Contes Cruels; Axel; L'Ève Future; Histoires Insolites.</div>
+            <p>Al atardecer, el venerable Pedro Argüés, sexto prior de los dominicos de Segovia, tercer Gran Inquisidor de España, seguido de un fraile redentor (encargado del tormento) y precedido por dos familiares del Santo Oficio provistos de linternas, descendió a un calabozo. La cerradura de una puerta maciza chirrió; el Inquisidor penetró en un hueco mefítico, donde un triste destello del día, cayendo desde lo alto, dejaba percibir, entre dos argollas fijadas en los muros, un caballete ensangrentado, una hornilla, un cántaro. Sobre un lecho de paja, sujeto por grillos, con una argolla de hierro en el pescuezo, estaba sentado, hosco, un hombre andrajoso, de edad indescifrable.</p>
+            <p>Este prisionero era el rabí Abarbanel, judío aragonés, que —aborrecido por sus préstamos usurarios y por su desdén de los pobres— diariamente había sido sometido a la tortura durante un año. Su fanatismo, "duro como su piel", había rehusado la abjuración.</p>
+            <p>Orgulloso de una filiación milenaria —porque todos los judíos dignos de este nombre son celosos de su sangre—, descendía talmúdicamente de la esposa del último juez de Israel: Hecho que había mantenido su entereza en lo más duro de los incesantes suplicios.</p>
+            <p>Con los ojos llorosos, pensando que la tenacidad de esta alma hacía imposible la salvación, el venerable Pedro Argüés, aproximándose al tembloroso rabino, pronunció estas palabras:</p>
+            <p>—Hijo mío, alégrate: Tus trabajos van a tener fin. Si en presencia de tanta obstinación me he resignado a permitir el empleo de tantos rigores, mi tarea fraternal de corrección tiene límites. Eres la higuera reacia, que por su contumaz esterilidad está condenada a secarse... pero sólo a Dios toca determinar lo que ha de suceder a tu alma. ¡Tal vez la infinita clemencia lucirá para ti en el supremo instante! ¡Debemos esperarlo! Hay ejemplos... ¡Así sea! Reposa, pues, esta noche en paz. Mañana participarás en el auto de fe, es decir, serás llevado al quemadero, cuya brasa premonitoria del fuego eternal no quema, ya lo sabes, más que a distancia, hijo mío. La muerte tarda por lo menos dos horas (a menudo tres) en venir, a causa de las envolturas mojadas y heladas con las que preservamos la frente y el corazón de los holocaustos. Seréis cuarenta y dos solamente. Considera que, colocado en la última fila, tienes el tiempo necesario para invocar a Dios, para ofrecerle este bautismo de fuego, que es el del Espíritu Santo. Confía, pues, en la Luz y duerme.</p>
+            <p>Dichas estas palabras, el Inquisidor ordenó que desencadenaran al desdichado y lo abrazó tiernamente. Lo abrazó luego el fraile redentor y, muy bajo, le rogó que le perdonara los tormentos. Después lo abrazaron los familiares, cuyo beso, ahogado por las cogullas, fue silencioso. Terminada la ceremonia, el prisionero se quedó solo, en las tinieblas.</p>
+            <p>El rabí Abarbanel, seca la boca, embotado el rostro por el sufrimiento, miró sin atención precisa la puerta cerrada ¿Cerrada?... Esta palabra despertó en lo más íntimo de sus confusos pensamientos un sueño. Había entrevisto un instante el resplandor de las linternas por la hendidura entre el muro y la puerta. Una esperanza mórbida lo agitó. Suavemente, deslizando el aedo con suma precaución, atrajo la puerta hacia él. Por un azar extraordinario, el familiar que la cerró había dado la vuelta a la llave un poco antes de llegar al tope, contra los montantes de piedra. El pestillo, enmohecido, no había entrado en su sitio y la puerta había quedado abierta.</p>
+            <p>El rabino arriesgó una mirada hacia afuera. A favor de una lívida oscuridad, vio un semicírculo de muros terrosos en los que había labrados unos esta escalones, y en lo alto, después de cinco o seis peldaños una especie de pórtico negro que daba a un vasto corredor del que no le era posible entrever, desde abajo más que los primeros arcos. Se arrastró hasta el nivel del umbral. Era realmente un corredor, pero casi infinito. Una luz pálida, con resplandores de sueño, lo iluminaba. Lámparas suspendidas de las bóvedas azulaban a trechos el color deslucido del aire, el fondo estaba en sombras. Ni una sola puerta en esa extensión. Por un lado, a la izquierda, troneras con rejas, troneras que por el espesor del muro dejaban pasar un crepúsculo que debía ser el del día, porque se proyectaba en cuadrículas rojas sobre el enlosado.</p>
+            <p>[... El rabino, creyéndose milagrosamente libre, recorre el interminable corredor subterráneo. Sufre alucinaciones, evade a los inquisidores que pasan cerca sin verlo, y finalmente encuentra una puerta que da a un jardín bajo las estrellas. Extasiado, cree haber alcanzado la libertad y bendice a Dios. Pero al extender los brazos hacia el cielo, siente que una sombra lo rodea. Al bajar la mirada, descubre con horror que está en los brazos del Gran Inquisidor, Pedro Argüés, quien con ojos llenos de lágrimas le murmura: "¡Cómo, hijo mío! ¿En vísperas, tal vez, de la salvación, querías abandonarnos?"]</p>
+            <p>Mientras el rabino, los ojos sombríos bajo las pupilas, jadeaba de angustia en los brazos del inquisidor y adivinaba confusamente que todas las fases de la jornada no eran más que un suplicio previsto, el de la esperanza, el sombrío sacerdote, con un acento de reproche conmovedor y la vista consternada, le murmuraba al oído, con una voz debilitada por los ayunos:</p>
+            <p>—¡Cómo, hijo mío! ¿En vísperas, tal vez, de la salvación, querías abandonarnos?</p>
+            <p style="text-align: right; font-size: 0.9em; color: var(--muted);">Villiers de L'Isle Adam: Nouveaux Contes Cruels (1888).</p>
+        </div>
+
+        <!-- LOS CABALLOS DE ABDERA -->
+        <div id="CaballosAbdera" class="tabcontent">
+            <h2>Los caballos de Abdera</h2>
+            <h3>Leopoldo Lugones (1874-1938)</h3>
+            <div class="author-bio">Escritor argentino, nacido en Río Seco, provincia de Córdoba; muerto en el Tigre, provincia de Buenos Aires. Ejerció con felicidad la lírica, la biografía, la historia, los estudios homéricos y la ficción. De su vasta obra, citaremos: Las Montañas del Oro; Lunario Sentimental; Odas Seculares; El Payador; La Torre de Casandra; Nuevos Estudios Helénicos.</div>
+            <p>Abdera, la ciudad tracia del Egeo, que actualmente es Balastra y que no debe ser confundida con su tocaya bética, era célebre por sus caballos. Descollar en Tracia por sus caballos, no era poco; y ella descollaba hasta ser única. Los habitantes todos tenían a gala la educación de tan noble animal, y esta pasión cultivada a porfía durante largos años, hasta formar parte de las tradiciones fundamentales, había producido efectos maravillosos. Los caballos de Abdera gozaban de fama excepcional, y todas las poblaciones tracias, desde los cicones hasta los bisaltos, eran tributarias en esto de los bistones, pobladores de la mencionada ciudad. Debe añadirse que semejante industria uniendo el provecho a la satisfacción, ocupaba desde el rey hasta el último ciudadano.</p>
+            <p>Estas circunstancias habían contribuido también a intimar las relaciones entre el bruto y sus dueños, mucho más de lo que era y es habitual para el resto de las naciones; llegando a considerarse las caballerizas como un ensanche del hogar, y extremándose las naturales exageraciones de toda pasión, hasta admitir caballos en la mesa. Eran verdaderamente notables corceles, pero bestias al fin. Otros dormían en cobertores de biso; algunos pesebres tenían frescos sencillos, pues no pocos veterinarios sostenían el gusto artístico de la raza caballar, y el cementerio equino ostentaba entre pompas burguesas, ciertamente recargadas, dos o tres obras maestras.</p>
+            <p>El templo más hermoso de la ciudad estaba consagrado a Arión, el caballo que Neptuno hizo salir de la tierra con un golpe de su tridente, y creo que la moda de rematar las proas en cabezas de caballo, tenga igual proveniencia; siendo seguro en todo caso, que los bajorrelieves hípicos fueron el ornamento más común de toda aquella arquitectura. El monarca era quien se mostraba más decidido por los corceles, llegando hasta tolerar a los suyos verdaderos crímenes que los volvieron singularmente bravíos; de tal modo que los nombres de Podargos y de Lampón figuraban en fábulas sombrías; pues es del caso decir que los caballos tenían nombres como personas.</p>
+            <p>Tan amaestrados estaban aquellos animales, que las bridas eran innecesarias, conservándolas únicamente como adornos, muy apreciados desde luego por los mismos caballos. La palabra era el medio usual de comunicación con ellos; y observándose que la libertad favorecía el desarrollo de sus buenas condiciones, dejábanlos todo el tiempo no requerido por la albarda o el arnés, en libertad de cruzar a sus anchas las magníficas praderas formadas en el suburbio, a la orilla del Kossínites para su recreo y alimentación. A son de trompa los convocaban cuando era menester y así para el trabajo como para él, pienso eran exactísimos. Rayaba en lo increíble su habilidad para toda clase de juegos de circo y hasta de salón, su bravura en los combates, su discreción en las ceremonias solemnes.</p>
+            <p>Aquella educación persistente, aquel forzado despliegue de condiciones, y para decirlo todo en una palabra, aquella humanización de la raza equina iban engendrando un fenómeno que los bistones festejaban como otra gloria nacional. La inteligencia de los caballos comenzaba a desarrollarse pareja con su conciencia, produciendo casos anormales que daban pábulo al comentario general. Una yegua había exigido espejos en su pesebre, arrancándolos con los dientes de la propia alcoba patronal y destruyendo a coces los de tres paneles cuando no le hicieron el gusto. Concedido el capricho daba muestras de coquetería perfectamente visible. Balios, el más bello potro de la comarca, un blanco elegante y sentimental que tenía dos campañas militares y manifestaba regocijo ante el recitado de hexámetros heroicos, acababa de morir de amor por una dama. Era la mujer de un general, dueño del enamorado bruto, y por cierto no ocultaba el suceso. Hasta se creía que halagaba su vanidad, siendo esto muy natural, por otra parte, en la ecuestre metrópoli.</p>
+            <p>Señalábase igualmente casos de infanticidio, que aumentando en forma alarmante, fue necesario corregir con la presencia de viejas mulas adoptivas; un gusto creciente por el pescado y por el cáñamo cuyas plantaciones saqueaban los animales; y varias rebeliones aisladas que hubo de corregirse, siendo insuficiente el látigo, por medio del hierro candente. Esto último fue en aumento, pues el instinto de rebelión progresaba a pesar de todo. Los bistones, más encantados cada vez con sus caballos, no paraban mientes en eso. Otros hechos más significativos produjéronse de allí a poco. Dos o tres atalajes habían hecho causa común contra un carretero que azotaba su yegua rebelde. Los caballos resistíanse cada vez más al enganche y al yugo, de tal modo que empezó a preferirse el asno. Había animales que no aceptaban determinado apero; mas como pertenecían a los ricos, se defería a su rebelión comentándola mimosamente a título de capricho.</p>
+            <p>Un día los caballos no vinieron al son de la trompa, y fue menester constreñirlos por la fuerza; pero los subsiguientes no se reprodujo la rebelión. Al fin esta ocurrió cierta vez que la marea cubrió la playa de pescado muerto, como solía suceder. Los caballos se hartaron de eso, y se los vio regresar al campo suburbano con lentitud sombría. Medianoche era cuando estalló el singular conflicto. De pronto un trueno sordo y persistente conmovió el ámbito de la ciudad. Era que todos los caballos se habían puesto en movimiento a la vez para asaltarla, pero esto se supo luego, inadvertido al principio en la sombra de la noche y la sorpresa de lo inesperado. Como las praderas de pastoreo quedaban entre las murallas, nada pudo contener la agresión; y añadido a esto el conocimiento minucioso que los animales tenían de los domicilios, ambas cosas acrecentaron la catástrofe. Noche memorable entre todas, sus horrores sólo aparecieron cuando el día vino a ponerlos en evidencia, multiplicándolos aun.</p>
+            <p>Las puertas reventadas a coces yacían por el suelo dando paso a feroces manadas que se sucedían casi sin interrupción. Había corrido sangre, pues no pocos vecinos cayeron aplastados bajo el casco y los dientes de la banda en cuyas filas causaron estragos también las armas humanas. Conmovida de tropeles, la ciudad oscurecíase con la polvareda que engendraban; y un extraño tumulto formado por gritos de cólera o de dolor, relinchos variados como palabras a los cuales mezclábase uno que otro doloroso rebuzno, y estampidos de coces sobre las puertas atacadas, unía su espanto al pavor visible de la catástrofe. Una especie de terremoto incesante hacía vibrar el suelo con el trote de la masa rebelde, exaltado a ratos como en ráfaga huracanada por frenéticos tropeles sin dirección y sin objeto; pues habiendo saqueado todos los plantíos de cáñamo, y hasta algunas bodegas que codiciaban aquellos corceles pervertidos por los refinamientos de la mesa, grupos de animales ebrios aceleraban la obra de destrucción. Y por el lado del mar era imposible huir. Los caballos, conociendo la misión de las naves, cerraban el acceso del puerto.</p>
+            <p>[... La rebelión de los caballos se vuelve sangrienta y destructiva. Los humanos se refugian en la fortaleza, desde donde intentan organizarse y defenderse, aunque la situación parece desesperada. Los caballos, enloquecidos y ebrios, asaltan la fortaleza con una furia implacable. Justo cuando las murallas comienzan a ceder y todo parece perdido para los habitantes de Abdera, aparece un monstruo gigantesco: un león antediluviano de proporciones colosales que emerge del bosque. Los caballos, aterrorizados por la presencia de esta fiera primitiva, abandonan el asedio y huyen despavoridos hacia la playa y Macedonia. Los humanos, salvados milagrosamente por un terror aún mayor, quedan contemplando el inmenso cadáver del león y la ciudad en ruinas.]</p>
+            <p>Súbitamente una alarma paralizó a las bestias. Unas sobre otras, apoyándose en ancas y lomos, alargaron sus cuellos hacia la alameda que bordeaba la margen del Kossínites; y los defensores volviéndose hacia la misma dirección, contemplaron un tremendo espectáculo. Dominando la arboleda negra, espantosa sobre el cielo de la tarde, una colosal cabeza de león miraba hacia la ciudad. Era una de esas fieras antediluvianas cuyos ejemplares, cada vez más raros, devastaban de tiempo en tiempo los montes Ródopes. Mas nunca se había visto nada tan monstruoso, pues aquella cabeza dominaba los más altos árboles, mezclando a las hojas teñidas de crepúsculo las greñas de su melena. Brillaban claramente sus enormes colmillos, percibíanse sus ojos fruncidos ante la luz, llegaba en el hálito de la brisa su olor bravío. Inmóvil entre la palpitación del follaje, herrumbrada por el sol casi hasta dorarse su gigantesca crin, alzábase ante el horizonte como uno de esos bloques en que el pelasgo, contemporáneo de las montañas, esculpió sus bárbaros divinidades. Y de repente empezó a andar, lento como el océano. Oíase el rumor de la fronda que su pecho apartaba, su aliento de fragua que iba sin duda a estremecer la ciudad cambiándose en rugido. A pesar de su fuerza prodigiosa y de su número, los caballos sublevados no resistieron semejante aproximación. Un solo ímpetu los arrastró por la playa, en dirección a la Macedonia, levantando un verdadero huracán de arena y de espuma, pues no pocos disparábanse a través de las olas. En la fortaleza reinaba el pánico. ¿Qué podrían contra semejante enemero? ¿Qué gozne de bronce resistiría a sus mandíbulas? ¿Qué muro a sus garras...? Comenzaban ya a preferir el pasado riesgo (al fin era una lucha contra bestias civilizadas), sin alien</p>
+            <p style="text-align: right; font-size: 0.9em; color: var(--muted);">Leopoldo Lugones.</p>
+        </div>
+        
+        </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+
+</body>
+</html>
