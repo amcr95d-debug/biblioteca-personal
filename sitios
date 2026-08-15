@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventario de Destinos Extraordinarios</title>
+
+    <!-- Fuentes: Atkinson Hyperlegible y Lexend -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-main: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --accent-blue: #4fc3f7;
+            --accent-green: #81c784;
+            --accent-orange: #ffb74d;
+            --accent-purple: #ce93d8;
+            --border-color: #333333;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Futura', 'Atkinson Hyperlegible', 'Lexend', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--accent-blue);
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--accent-green);
+            margin-top: 60px;
+            margin-bottom: 10px;
+            border-left: 5px solid var(--accent-green);
+            padding-left: 15px;
+        }
+
+        .section-desc {
+            color: var(--text-muted);
+            font-style: italic;
+            margin-bottom: 30px;
+            padding-left: 15px;
+            max-width: 900px;
+        }
+
+        .intro-text {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px auto;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+
+        /* Panel de filtros */
+        .filter-bar {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .filter-label {
+            color: var(--text-muted);
+            margin-right: 10px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .filter-chips {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .chip {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-muted);
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            font-family: inherit;
+        }
+
+        .chip:hover {
+            border-color: var(--accent-purple);
+            color: var(--text-main);
+        }
+
+        .chip.active {
+            background: var(--accent-purple);
+            border-color: var(--accent-purple);
+            color: #121212;
+            font-weight: bold;
+        }
+
+        /* Grid de Tarjetas */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.5);
+            border-color: var(--accent-purple);
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 180px;
+            background-color: #2a2a2a;
+            background-image: linear-gradient(45deg, #222 25%, transparent 25%, transparent 75%, #222 75%, #222),
+                              linear-gradient(45deg, #222 25%, transparent 25%, transparent 75%, #222 75%, #222);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #555;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .card-content {
+            padding: 20px;
+            flex: 1;
+        }
+
+        .card h4 {
+            color: var(--accent-purple);
+            margin-bottom: 8px;
+            font-size: 1.3rem;
+        }
+
+        .card .meta {
+            font-size: 0.85rem;
+            color: var(--accent-orange);
+            margin-bottom: 15px;
+            font-weight: bold;
+            display: inline-block;
+            background: rgba(255, 183, 77, 0.1);
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+            color: var(--text-muted);
+        }
+
+        .card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .card strong {
+            color: var(--text-main);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Inventario de Destinos Extraordinarios</h1>
+    <p class="intro-text">Recopilación de destinos únicos analizados por su naturaleza, arquitectura y rareza cultural. Razones profundas para aventurarse a conocer lo excepcional.</p>
+
+    <!-- Panel de filtrado -->
+    <div class="filter-bar">
+        <span class="filter-label">Filtrar por:</span>
+        <div class="filter-chips" id="filterChips">
+            <button class="chip active" data-filter="all">Todos</button>
+            <button class="chip" data-filter="montana">Montaña</button>
+            <button class="chip" data-filter="costa">Costa</button>
+            <button class="chip" data-filter="isla">Isla</button>
+            <button class="chip" data-filter="naturaleza">Naturaleza</button>
+            <button class="chip" data-filter="aislamiento">Aislamiento</button>
+            <button class="chip" data-filter="espiritual">Espiritual</button>
+            <button class="chip" data-filter="tradiciones">Tradiciones</button>
+            <button class="chip" data-filter="arquitectura">Arquitectura</button>
+            <button class="chip" data-filter="historia">Historia</button>
+            <button class="chip" data-filter="europa">Europa</button>
+            <button class="chip" data-filter="asia">Asia</button>
+            <button class="chip" data-filter="america">América</button>
+            <button class="chip" data-filter="africa">África</button>
+            <button class="chip" data-filter="espana">España</button>
+            <button class="chip" data-filter="aventura">Aventura</button>
+        </div>
+    </div>
+
+    <!-- ============================================================
+         ORGANIZACIÓN POR TIPO DE EXPERIENCIA
+         Cada destino tiene etiquetas en data-tags para el filtro.
+    ============================================================ -->
+
+    <!-- 1. Naturaleza Extrema y Aislamiento -->
+    <h2>Naturaleza Extrema y Aislamiento</h2>
+    <p class="section-desc">Destinos donde el entorno natural es el protagonista absoluto, el acceso es difícil y la huella humana es mínima. Ideales para expediciones y desconexión total.</p>
+    <div class="grid-cards">
+        <div class="card" data-tags="asia,rusia,montana,volcan,aislamiento,naturaleza,aventura">
+            <img src="Fotos%20sitios/Kamchatka.jpg" alt="Kamchatka">
+            <div class="card-content">
+                <h4>Kamchatka</h4>
+                <div class="meta">Extremo Oriente, Rusia</div>
+                <p>El epítome de lo remoto; una península descrita como una tierra de fuego y hielo en el extremo oriental de Rusia. Es un destino puramente de expedición, sin comodidades occidentales ni redes de ferrocarril, donde la naturaleza impera de forma absoluta e intimidante.</p>
+                <p>Lo extraordinario radica en su densidad de volcanes activos, valles de géiseres humeantes y la mayor concentración de osos pardos del planeta. Kamchatka es un viaje de aventura pura para quienes buscan paisajes volcánicos primigenios y una soledad total frente a los elementos más salvajes de la Tierra.</p>
+            </div>
+        </div>
+        <div class="card" data-tags="europa,italia,montana,naturaleza,aislamiento,senderismo">
+            <div class="image-placeholder">[ Imagen aquí ]</div>
+            <div class="card-content">
+                <h4>Los Abruzos</h4>
+                <div class="meta">Centro de Italia</div>
+                <p>Es el secreto mejor guardado de Italia, una región donde los Apeninos alcanzan su máxima altitud y salvajismo. Sus encantos específicos incluyen pueblos medievales colgados de acantilados, como el cinematográfico Rocca Calascio, y bosques que sirven de último refugio para el esquivo oso pardo marsicano.</p>
+                <p>A diferencia de las regiones saturadas del país, aquí la autenticidad es total. Ofrece una gastronomía rústica, una vida que transcurre a ritmo de piedra y un entorno donde la naturaleza y la historia se fusionan en estado puro, lejos de cualquier bullicio.</p>
+            </div>
+        </div>
+        <div class="card" data-tags="espana,europa,montana,naturaleza,senderismo,tradiciones,aislamiento">
+            <div class="image-placeholder">[ Imagen aquí ]</div>
+            <div class="card-content">
+                <h4>Parque Natural de Somiedo</h4>
+                <div class="meta">Asturias, España</div>
+                <p>Considerado el último gran santuario salvaje del oso pardo cantábrico, Somiedo es un paraíso de valles glaciares y lagos de alta montaña. Su rasgo más insólito son los "teitos", cabañas de pastoreo con techos vegetales de reminiscencia celta, diseminadas por las antiguas brañas.</p>
+                <p>La región está marcada por la herencia de los "vaqueiros de alzada", un hermético grupo de pastores trashumantes con costumbres y ritos propios. Es un destino de senderismo puro, donde la niebla, la piedra y la fauna salvaje crean una atmósfera mística profundamente enraizada en la tradición asturiana.</p>
+            </div>
+        </div>
+        <div class="card" data-tags="espana,europa,pirineos,montana,naturaleza,aislamiento,senderismo,arquitectura">
+            <div class="image-placeholder">[ Imagen aquí ]</div>
+            <div class="card-content">
+                <h4>La Vall Fosca</h4>
+                <div class="meta">Pirineo Catalán (Lleida)</div>
+                <p>La "puerta sur" desconocida al Parque Nacional de Aigüestortes. Este circo de altísima montaña alberga más de 30 ibones (lagos glaciares) de gélidas aguas cristalinas, rodeados de una estética monolítica de granito gris y tejados negros de pizarra.</p>
+                <p>A su patrimonio natural y románico, suma una épica epopeya industrial: a principios del siglo XX, sus reservas de agua en altura sirvieron para construir la primera gran central hidroeléctrica de Cataluña. Es un destino fascinante donde la ingeniería humana extrema y la naturaleza más agreste conviven en perfecta armonía.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. Culturas Vivas y Cosmovisiones Únicas -->
+    <h2>Culturas Vivas y Cosmovisiones Únicas</h2>
+    <p class="section-desc">El viajero se sumerge en formas de vida, rituales, lenguas y creencias que se han mantenido casi intactas durante siglos. La dimensión humana y espiritual es el centro.</p>
+    <div class="grid-cards">
+        <div class="card" data-tags="asia,butan,montana,espiritual,aislamiento,arquitectura,tradiciones,budismo">
+            <div class="image-placeholder">[ Imagen aquí ]</div>
+            <div class="card-content">
+                <h4>Bután</h4>
+                <div class="meta">Asia (Himalaya)</div>
+                <p>Un reino perdido en el corazón del Himalaya que mide su éxito a través de la "Felicidad Nacional Bruta" en lugar del PIB. Su extraordinario aislamiento ha preservado un paisaje de valles profundos y laderas escarpadas donde monasterios budistas se aferran milagrosamente a acantilados imposibles.</p>
+                <p>Visitar Bután es sumergirse en una burbuja temporal donde la madera tallada y las normas tradicionales dictan el ritmo, y donde no encontrarás un solo semáforo en sus calles. Es un destino de alto valor y bajo impacto, perfecto para quienes buscan una paz espiritual inquebrantable y una naturaleza impoluta.</p>
+            </div>
+        </div>
+        <div class="card" data-tags="europa,georgia,montana,arquitectura,aislamiento,tradiciones,historia">
+            <div class="image-placeholder">[ Imagen aquí ]</div>
+            <div class="card-content">
+                <h4>Svaneti</h4>
+                <div class="meta">Cáucaso, Georgia</div>
+                <p>En las altas cumbres del Cáucaso georgiano se esconde una región mística y aislada, rodeada de picos que superan los 5.000 metros. Lo que hace extraordinaria a Svaneti es su arquitectura defensiva: cientos de torres medievales de piedra se alzan en sus pueblos, erigidas durante siglos para proteger a las familias de clanes rivales y avalanchas.</p>
+                <p>Su extremo aislamiento ha blindado una cultura milenaria. Visitar Svaneti es adentrarse en un mundo donde el idioma esvano y los ritos pagano-cristianos permanecen casi inalterados desde la Edad Media, ofreciendo una experiencia de viaje inmersiva y brutalmente auténtica.</p>
+            </div>
+        </div>
+        <div class="card" data-tags="asia,japon,espiritual,budismo,peregrinacion,costa,montana,arquitectura">
+            <div class="image-placeholder">[ Imagen aquí ]</div>
+            <div class="card-content">
+                <h4>Isla de Shikoku</h4>
+                <div class="meta">Japón</div>
+                <p>La antítesis del frenesí de Tokio; una isla japonesa montañosa, boscosa y brumosa que invita a la introspección espiritual. Shikoku es famosa por albergar la ruta de peregrinación de los 88 templos budistas (Ohenro), un viaje físico y mental que serpentea a través de bosques y costas escarpadas.</p>
+                <p>Su gran tesoro es el remoto Valle de Iya, con sus gargantas de aguas esmeralda y los antiguos puentes colgantes tejidos a mano con enredaderas vivas. Cruzarlos sobre ríos torrenciales es experimentar la ingeniería y el aislamiento de los antiguos clanes samuráis refugiados en sus laderas.</p>
+            </div>
+        </div>
+        <div class="card" data-tags="asia,indonesia,tradiciones,espiritual,arquitectura,montana">
+            <div class="image-placeholder">[ Imagen aquí ]</div>
+            <div class="card-content">
+                <h4>Tana Toraja</h4>
+                <div class="meta">Sulawesi, Indonesia</div>
+                <p>En las brumosas montañas de Sulawesi, el tiempo y la muerte se perciben de manera completamente distinta. Sus aldeas están presididas por los "Tongkonan", casas tradicionales de madera con techos curvados que emulan los barcos de sus antepasados navegantes.</p>
+                <p>Lo que hace a Tana Toraja verdaderamente extraordinario son sus funerales: festivales masivos de varios días donde el luto se transforma en celebración comunitaria. Los difuntos no se entierran bajo tierra, sino que descansan en cuevas excavadas en acantilados verticales, custodiados por efigies de madera llamadas "Tau Tau" que miran eternamente hacia el valle.</p>
+            </div>
+        </div>
+        <div class="card" data-tags="asia,nepal,montana,desierto,espiritual,budismo,aislamiento,arquitectura,historia">
+            <div class="image-placeholder">[ Imagen aquí ]</div>
+            <div class="card-content">
+                <h4>Reino de Mustang</h4>
+                <div class="meta">Himalaya, Nepal</div>
+                <p>Oculto en la sombra orográfica del Himalaya nepalí, este desierto de extrema altitud fue un reino prohibido que no permitió visitantes hasta la década de 1990. Su capital, Lo Manthang, es una ciudad medieval amurallada de barro y piedra que resguarda el último reducto puro de la cultura tibetana.</p>
+                <p>Lo sobrecogedor del viaje radica en sus paisajes: gigantescos cañones de caliza en tonos ocre y rojo que esconden miles de cuevas artificiales milenarias. Estas paredes rocosas albergan antiguos murales budistas y misterios arqueológicos en un entorno que parece literalmente sacado de otro planeta.</p>
+            </div>
+        </div>
+        <div class="card" data-tags="america,argentina,montana,tradiciones,espiritual,historia,gastronomia">
+            <div class="image-placeholder">[ Imagen aquí ]</div>
+            <div class="card-content">
+                <h4>Quebrada de Humahuaca</h4>
+                <div class="meta">Jujuy, Argentina</div>
+                <p>Un profundo tajo tectónico en los Andes argentinos, célebre por sus cerros policromados, como el imponente Hornocal con sus catorce vetas de colores minerales. Más allá de la geología, el área es un crisol de identidad andina, con pueblos de adobe, capillas coloniales y fortalezas preincaicas como Pucará de Tilcara.</p>
+                <p>Visitar la Quebrada es sumergirse directamente en la cosmovisión de la Pachamama (Madre Tierra). Aquí la influencia indígena lo permea todo: desde la gastronomía a base de quinoa y llama, hasta una música folclórica vibrante que resuena en los valles mientras el sol cae sobre las montañas.</p>
+            </div>
+        </div>
+        <div class="card" data-tags="africa,etiopia,montana,historia,arquitectura,naturaleza,religion">
+            <div class="image-placeholder">[ Imagen aquí ]</div>
+            <div class="card-content">
+                <h4>Gondar y Montañas Simien</h4>
+                <div class="meta">Norte de Etiopía</div>
+                <p>Etiopía desbanca los estereotipos africanos, y esta región es la prueba definitiva. Gondar es conocida como la "Camelot africana", albergando el asombroso complejo imperial de Fasil Ghebbi, un laberinto de castillos y palacios de piedra del siglo XVII que recuerdan a la arquitectura europea medieval.</p>
+                <p>A pocos kilómetros, las Montañas Simien despliegan uno de los relieves más dramáticos del planeta: abismos verticales de cientos de metros poblados por babuinos gelada de pelaje dorado que pastan en manadas pacíficas. Es un destino para maravillarse con una historia cristiana antiquísima y una naturaleza de vértigo.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Arquitectura Legendaria y Conjuntos Históricos -->
+    <h2>Arquitectura Legendaria y Conjuntos Históricos</h2>
+    <p class="section-desc">El principal reclamo es el patrimonio construido: ciudades medievales, castillos, monasterios, jardines históricos o arquitectura vernácula excepcional.</p>
+    <div class="grid-cards">
+        <div class="card" data-tags="europa,portugal,arquitectura,historia,jardin,barroco">
+            <div class="image-placeholder">[ Imagen aquí ]</div>
+            <div class="card-content">
+                <h4>Castelo Branco: El Jardín del Obispo</h4>
+                <div class="meta">Interior de Portugal</div>
+                <p>El verdadero tesoro de esta tranquila región interior de Portugal es el impresionante Jardín do Paço Episcopal. Considerado una obra maestra del barroco portugués, este recinto amurallado es una explosión de simbolismo donde estatuas de reyes y figuras mitológicas se entrelazan con setos perfectamente recortados y escalinatas de agua.</p>
+                <p>Visitar este jardín es sumergirse en el lujo discreto y la paz de la historia lusa, muy lejos del bullicio costero. Además, la región que lo envuelve guarda joyas ocultas como las "aldeias de xisto" (pueblos íntegramente de piedra de esquisto) y un fuerte legado templario que invita a la exploración rural.</p>
+            </div>
+        </div>
+        <div class="card" data-tags="europa,inglaterra,arquitectura,historia,medieval">
+            <div class="image-placeholder">[ Imagen aquí ]</div>
+            <div class="card-content">
+                <h4>Wells</h4>
+                <div class="meta">Somerset, Inglaterra</div>
+                <p>Ostenta el título de la ciudad más pequeña de Inglaterra, y su encanto reside en ser una auténtica cápsula del tiempo medieval. La espectacular Catedral de Wells y la calle Vicars' Close —considerada la calle residencial intacta más antigua de Europa— transportan al viajero directamente a la Edad Media.</p>
+                <p>Es la antítesis pacífica de ciudades saturadas como Bath. Su fama en el ámbito de las trivias le viene dado por detalles que subrayan su paz: no tiene estación de tren ni un solo semáforo en su casco histórico, haciendo que caminar por sus piedras sea un deleite silencioso y nostálgico.</p>
+            </div>
+        </div>
+        <div class="card" data-tags="espana,europa,arquitectura,historia,medieval,aislamiento,naturaleza">
+            <div class="image-placeholder">[ Imagen aquí ]</div>
+            <div class="card-content">
+                <h4>El Maestrazgo</h4>
+                <div class="meta">Teruel y Castellón, España</div>
+                <p>Apodada "La Laponia del Sur" por su extrema despoblación, esta región ofrece una geografía áspera de páramos solitarios y barrancos kársticos. Sus encantos son villas medievales amuralladas como Mirambel o Cantavieja, estancadas en el tiempo, con calles empedradas flanqueadas por palacios renacentistas y bastiones de piedra.</p>
+                <p>Es un destino cargado de misticismo histórico, fuertemente marcado por la presencia de órdenes militares como los Templarios. Travelar por el Maestrazgo es disfrutar del silencio más absoluto, rastreando el legado del carlismo y la guerrilla rural en uno de los rincones más desconocidos y mágicos de la Península.</p>
+            </div>
+        </div>
+        <div class="card" data-tags="espana,europa,arquitectura,historia,monasterios,naturaleza,enoturismo">
+            <div class="image-placeholder">[ Imagen aquí ]</div>
+            <div class="card-content">
+                <h4>La Ribeira Sacra</h4>
+                <div class="meta">Ourense y Lugo, España</div>
+                <p>En el corazón de Galicia, los ríos Sil y Miño han excavado cañones de hasta 500 metros de profundidad. Este enclave esconde la mayor concentración de arquitectura románica rural de Europa, con imponentes monasterios camuflados en la frondosidad de robles y castaños, o incluso excavados directamente en la roca viva.</p>
+                <p>Pero lo verdaderamente extraordinario es su "viticultura heroica". Un legado romano que obliga a cultivar la vid sobre escarpados bancales de piedra en pendientes casi verticales. Es un destino para amantes del enoturismo extremo, la contemplación paisajística y la espiritualidad más antigua.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. Tradiciones Vivas y Folclore Rural -->
+    <h2>Tradiciones Vivas y Folclore Rural</h2>
+    <p class="section-desc">Destinos donde las costumbres, oficios antiguos, vestimentas y celebraciones siguen formando parte de la vida cotidiana. La experiencia es íntima y auténtica.</p>
+    <div class="grid-cards">
+        <div class="card" data-tags="europa,rumania,tradiciones,arquitectura,historia,rural,espiritual">
+            <div class="image-placeholder">[ Imagen aquí ]</div>
+            <div class="card-content">
+                <h4>Maramureș</h4>
+                <div class="meta">Norte de Rumanía</div>
+                <p>El latido rural de Europa late en esta región boscosa y bucólica que parece detenida en la Edad Media. Su máxima expresión es su arquitectura íntegramente en madera, con gigantescas iglesias góticas de agujas imposibles y monumentales puertas talladas a mano que jalonan las entradas de las casas.</p>
+                <p>Pero su encanto más insólito es el "Cementerio Alegre" de Săpânța. Aquí, la muerte se celebra con cruces de madera pintadas de colores vivos que narran con humor y poesía la vida y los defectos del difunto. Es un destino que ofrece una visión cálida, teatral y profundamente humana sobre la mortalidad.</p>
+            </div>
+        </div>
+        <div class="card" data-tags="asia,asia central,montana,tradiciones,nomadas,naturaleza,aventura">
+            <div class="image-placeholder">[ Imagen aquí ]</div>
+            <div class="card-content">
+                <h4>Kirguistán</h4>
+                <div class="meta">Asia Central</div>
+                <p>Un paraíso de espacios abiertos dominado por las "Montañas Celestiales" (Tian Shan) y lagos de altitud cristalinos. Kirguistán es extraordinario porque preserva el verdadero estilo de vida nómada ancestral. No hay grandes urbes; la arquitectura es itinerante, formada por campamentos de yurtas blancas de fieltro.</p>
+                <p>Viajar aquí es montar a caballo por estepas infinitas, presenciar la cetrería con águilas y ser recibido con una hospitalidad inquebrantable bajo un cielo estrellado. Es uno de los últimos lugares del planeta donde la naturaleza no ha sido domesticada y el ser humano vive al ritmo de sus rebaños.</p>
+            </div>
+        </div>
+        <div class="card" data-tags="america,chile,isla,costa,tradiciones,mitologia,arquitectura,gastronomia">
+            <div class="image-placeholder">[ Imagen aquí ]</div>
+            <div class="card-content">
+                <h4>Chiloé</h4>
+                <div class="meta">Sur de Chile</div>
+                <p>Un archipiélago chileno envuelto en una bruma mágica, separado del continente por un mar traicionero. Este aislamiento forjó una identidad única, visible en sus palafitos de colores construidos sobre el agua y en una red de iglesias de madera levantadas por jesuitas sin usar un solo clavo metálico.</p>
+                <p>Chiloé te atrapa por su mitología propia, llena de criaturas del bosque y el mar, y por su gastronomía comunitaria. Participar en un "curanto en hoyo", donde piedras calientes cocinan mariscos y carnes bajo tierra, es sumergirse en una cultura insular que mezcla lo céltico, lo indígena y lo colonial.</p>
+            </div>
+        </div>
+        <div class="card" data-tags="espana,europa,pirineos,montana,tradiciones,arquitectura,historia,aislamiento">
+            <div class="image-placeholder">[ Imagen aquí ]</div>
+            <div class="card-content">
+                <h4>Valle de Ansó</h4>
+                <div class="meta">Pirineo Aragonés (Huesca)</div>
+                <p>Una verdadera fortaleza pirenaica de piedra, dominada por tupidos bosques de hayas y profundos cañones. Ansó destaca por su arquitectura defensiva: imponentes casonas con gruesos muros y chimeneas cilíndricas gigantes ("espantabrujas"), separadas por "callizos", pasadizos oscuros y milimétricos entre viviendas.</p>
+                <p>Su extremo aislamiento permitió la supervivencia del "Traje Ansotano", una de las vestimentas tradicionales más arcaicas de Europa Occidental, usado hasta el siglo XX. Es un destino ideal para quienes buscan una montaña auténtica, donde la arquitectura resiste la nieve y el tiempo parece no haber pasado.</p>
+            </div>
+        </div>
+        <div class="card" data-tags="espana,europa,pirineos,montana,tradiciones,lengua,aislamiento">
+            <div class="image-placeholder">[ Imagen aquí ]</div>
+            <div class="card-content">
+                <h4>Val de Chistau</h4>
+                <div class="meta">Pirineo Aragonés (Huesca)</div>
+                <p>Cercado por colosales montañas de más de 3.000 metros, este valle es un finisterre geográfico donde los pueblos cuelgan literalmente de laderas de pizarra. Su brutal encierro invernal propició la conservación del "chistabino", una antigua variante lingüística del aragonés que aún resuena en sus tabernas.</p>
+                <p>Lo más cautivador es su conexión con ritos precristianos. La festividad solsticial de las Fallas, donde antorchas de fuego son bajadas desde las cumbres a toda velocidad por la noche, ilumina un paisaje salvaje. Es el Pirineo más crudo, donde la tradición es una llama que se niega a apagarse.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. Islas y Costas Remotas -->
+    <h2>Islas y Costas Remotas</h2>
+    <p class="section-desc">Archipiélagos y litorales donde el mar define el carácter, el clima y la historia. Destacan por su aislamiento marítimo y su identidad insular.</p>
+    <div class="grid-cards">
+        <div class="card" data-tags="europa,escocia,isla,costa,historia,arqueologia,neolitico,aislamiento,naturaleza">
+            <div class="image-placeholder">[ Imagen aquí ]</div>
+            <div class="card-content">
+                <h4>Las Orcadas</h4>
+                <div class="meta">Escocia (Reino Unido)</div>
+                <p>Muy lejos del circuito habitual de las Tierras Altas, este archipiélago norteño ofrece una naturaleza costera salvaje, golpeada por un clima implacable. Su verdadera magia reside en su ancestralidad: aquí yacen algunos de los asentamientos neolíticos mejor conservados de Europa, como Skara Brae, que superan en antigüedad a las pirámides de Egipto.</p>
+                <p>Es un destino de paz absoluta, sin trenes ni grandes infraestructuras, donde la historia emerge de la tierra misma. La ausencia de semáforos y cadenas comerciales subraya un aislamiento que premia al viajero con un silencio vertebrado por el rugido del Atlántico.</p>
+            </div>
+        </div>
+        <div class="card" data-tags="america,canada,costa,isla,naturaleza,icebergs,historia,vikingos,aislamiento">
+            <div class="image-placeholder">[ Imagen aquí ]</div>
+            <div class="card-content">
+                <h4>Terranova y Labrador</h4>
+                <div class="meta">Atlántico Norte, Canadá</div>
+                <p>Un confín canadiense en el Atlántico Norte, donde la vida está dictada por el hielo y el océano. Es el hogar del "Callejón de los Icebergs", donde gigantes de hielo navegan frente a acantilados habitados por ballenas, en un paisaje de belleza inabarcable y dureza extrema.</p>
+                <p>Su gran rareza histórica es L'Anse aux Meadows, el único asentamiento vikingo confirmado en toda América del Norte, mil años antes que Colón. Con su dialecto único del inglés y sus pueblos pesqueros de colores, es un destino melancólico que atrae a quienes buscan los límites del mundo.</p>
+            </div>
+        </div>
+        <div class="card" data-tags="africa,isla,costa,naturaleza,selva,playa,historia,colonial">
+            <div class="image-placeholder">[ Imagen aquí ]</div>
+            <div class="card-content">
+                <h4>Santo Tomé y Príncipe</h4>
+                <div class="meta">Golfo de Guinea, África</div>
+                <p>Bautizado como las "Galápagos de África", este diminuto archipiélago volcánico es uno de los países menos visitados del mundo. Ofrece playas desiertas, cascadas espectaculares y selvas vírgenes, pero su mayor encanto reside en sus "roças": majestuosas haciendas coloniales portuguesas de cacao.</p>
+                <p>Estas ruinas de la opulencia pasada están siendo devoradas lentamente por la jungla tropical. Es un destino para desconectar bajo la máxima local "leve leve" (despacio, despacio), sumergiéndose en un África ecuatorial sin filtros, ritmo lento y una historia cacaotera fascinante.</p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const chips = document.querySelectorAll('.chip');
+    const cards = document.querySelectorAll('.card');
+    const sections = document.querySelectorAll('.grid-cards');
+
+    function updateFilters() {
+        const activeChips = document.querySelectorAll('.chip.active:not([data-filter="all"])');
+        const filters = Array.from(activeChips).map(chip => chip.dataset.filter);
+
+        // Filtrar tarjetas
+        cards.forEach(card => {
+            const tags = (card.dataset.tags || '').toLowerCase().split(',').map(t => t.trim());
+            const matches = filters.every(filter => tags.includes(filter));
+            card.style.display = matches ? '' : 'none';
+        });
+
+        // Ocultar secciones sin resultados visibles
+        sections.forEach(grid => {
+            const visibleCards = Array.from(grid.querySelectorAll('.card')).filter(c => c.style.display !== 'none');
+            const sectionDesc = grid.previousElementSibling; // p.section-desc
+            const sectionTitle = sectionDesc ? sectionDesc.previousElementSibling : null; // h2
+
+            if (visibleCards.length === 0) {
+                if (sectionTitle) sectionTitle.style.display = 'none';
+                if (sectionDesc) sectionDesc.style.display = 'none';
+                grid.style.display = 'none';
+            } else {
+                if (sectionTitle) sectionTitle.style.display = '';
+                if (sectionDesc) sectionDesc.style.display = '';
+                grid.style.display = '';
+            }
+        });
+    }
+
+    chips.forEach(chip => {
+        chip.addEventListener('click', function() {
+            const filter = this.dataset.filter;
+
+            if (filter === 'all') {
+                // Activar solo "Todos"
+                chips.forEach(c => c.classList.remove('active'));
+                this.classList.add('active');
+            } else {
+                // Alternar el chip actual
+                this.classList.toggle('active');
+
+                // Si "Todos" está activo, desactivarlo
+                const allChip = document.querySelector('.chip[data-filter="all"]');
+                if (allChip) allChip.classList.remove('active');
+
+                // Si no queda ningún chip activo, reactivar "Todos"
+                const anyActive = document.querySelector('.chip.active:not([data-filter="all"])');
+                if (!anyActive) {
+                    const allChip2 = document.querySelector('.chip[data-filter="all"]');
+                    if (allChip2) allChip2.classList.add('active');
+                }
+            }
+
+            updateFilters();
+        });
+    });
+
+    // Inicializar
+    updateFilters();
+});
+</script>
+
+</body>
+</html>
