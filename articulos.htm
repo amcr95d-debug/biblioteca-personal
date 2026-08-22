@@ -222,6 +222,83 @@
             100% { opacity: 1; transform: translateY(0); }
         }
 
+        /* Menú Desplegable (Dropdown) */
+.dropdown-nav {
+    margin: 1.5rem 0 2rem 0;
+    text-align: center;
+}
+
+.dropdown-label {
+    display: block;
+    margin-bottom: 0.6rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    opacity: 0.85;
+    letter-spacing: 0.02em;
+}
+
+.article-dropdown {
+    width: 100%;
+    max-width: 450px;
+    padding: 0.8rem 1.2rem;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 30px;
+    cursor: pointer;
+    outline: none;
+    transition: background 0.3s, border-color 0.3s;
+    /* Quitar apariencia por defecto y añadir flecha personalizada */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1.5rem center;
+    background-size: 0.8rem;
+}
+
+.article-dropdown:hover, .article-dropdown:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Colores para el modo oscuro */
+body.dark .article-dropdown {
+    color: #e0e0e0;
+    background-color: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+body.dark .article-dropdown:hover, body.dark .article-dropdown:focus {
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Estilo de las opciones cuando se despliega el menú */
+.article-dropdown option {
+    color: #120a8f; /* Azul del modo claro */
+    background-color: #ffffff;
+    padding: 0.5rem;
+}
+body.dark .article-dropdown option {
+    color: #e0e0e0;
+    background-color: #0f0f2e; /* Fondo oscuro personalizado */
+}
+
+/* Responsivo */
+@media (max-width: 700px) {
+    .dropdown-label {
+        font-size: 0.85rem;
+    }
+    .article-dropdown {
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+
         /* Utilidades */
         .author {
             font-style: italic;
@@ -472,21 +549,24 @@
     <button class="theme-toggle" id="themeToggle">🌙 Modo oscuro</button>
 
     <!-- Pestañas -->
-    <div class="tabs" role="tablist">
-        <button class="tab-btn active" data-tab="tab1" role="tab" aria-selected="true">Pictorial Apocalypse</button>
-        <button class="tab-btn" data-tab="tab2" role="tab" aria-selected="false">The Kekulé Problem</button>
-        <button class="tab-btn" data-tab="tab3" role="tab" aria-selected="false">Returns to Kekulé</button>
-        <button class="tab-btn" data-tab="tab4" role="tab" aria-selected="false">Apocalipsis Mente</button>
-        <button class="tab-btn" data-tab="tab5" role="tab" aria-selected="false">Psychologically Rich Life</button>
-        <button class="tab-btn" data-tab="tab6" role="tab" aria-selected="false">Entrevista: Colin DeYoung</button>
-        <button class="tab-btn" data-tab="tab7" role="tab" aria-selected="false">the palace perspective</button>
-        <button class="tab-btn" data-tab="tab8" role="tab" aria-selected="false">Bleak House (Zwerdling)</button>
-        <button class="tab-btn" data-tab="tab9" role="tab" aria-selected="false">My Last Duchess</button>
-        <button class="tab-btn" data-tab="tab10" role="tab" aria-selected="false">Treasure Island</button>
-        <button class="tab-btn" data-tab="tab11" role="tab" aria-selected="false">Miguel Ángel (Pater)</button>
-        <button class="tab-btn" data-tab="tab12" role="tab" aria-selected="false">Ferenczi: niño mal recibido</button>
+    <!-- Menú Desplegable -->
+    <div class="dropdown-nav">
+        <label for="articleSelector" class="dropdown-label">Índice de Artículos:</label>
+        <select id="articleSelector" class="article-dropdown">
+            <option value="tab1">Pictorial Apocalypse</option>
+            <option value="tab2">The Kekulé Problem</option>
+            <option value="tab3">Returns to Kekulé</option>
+            <option value="tab4">Apocalipsis Mente</option>
+            <option value="tab5">Psychologically Rich Life</option>
+            <option value="tab6">Entrevista: Colin DeYoung</option>
+            <option value="tab7">the palace perspective</option>
+            <option value="tab8">Bleak House (Zwerdling)</option>
+            <option value="tab9">My Last Duchess</option>
+            <option value="tab10">Treasure Island</option>
+            <option value="tab11">Miguel Ángel (Pater)</option>
+            <option value="tab12">Ferenczi: niño mal recibido</option>
+        </select>
     </div>
-
     <!-- ============================================================ -->
     <!-- TAB 1 — Pictorial Apocalypse                                   -->
     <!-- ============================================================ -->
@@ -2597,84 +2677,45 @@
     <!-- ============================================================ -->
     <!-- JavaScript                                                    -->
     <!-- ============================================================ -->
-    <script>
-        (function() {
-            // ----- Tema oscuro/claro -----
-            const toggle = document.getElementById('themeToggle');
-            const body = document.body;
-            let isDark = false;
+<script>
+    // Lógica para el menú desplegable
+    const selector = document.getElementById('articleSelector');
+    const contents = document.querySelectorAll('.tab-content');
 
-            const stored = localStorage.getItem('blake-theme');
-            if (stored === 'dark') {
-                isDark = true;
-                body.classList.remove('light');
-                body.classList.add('dark');
-                toggle.textContent = '☀️ Modo claro';
-            }
+    selector.addEventListener('change', function() {
+        const targetId = this.value;
 
-            toggle.addEventListener('click', function() {
-                isDark = !isDark;
-                if (isDark) {
-                    body.classList.remove('light');
-                    body.classList.add('dark');
-                    toggle.textContent = '☀️ Modo claro';
-                    localStorage.setItem('blake-theme', 'dark');
-                } else {
-                    body.classList.remove('dark');
-                    body.classList.add('light');
-                    toggle.textContent = '🌙 Modo oscuro';
-                    localStorage.setItem('blake-theme', 'light');
-                }
+        // Ocultar todos los artículos
+        contents.forEach(content => {
+            content.classList.remove('active');
+        });
+
+        // Mostrar el artículo seleccionado
+        const targetContent = document.getElementById(targetId);
+        if (targetContent) {
+            targetContent.classList.add('active');
+            // Hacer scroll suave hacia la parte superior del artículo
+            window.scrollTo({
+                top: targetContent.offsetTop - 100,
+                behavior: 'smooth'
             });
+        }
+    });
 
-            // ----- Pestañas -----
-            const tabs = document.querySelectorAll('.tab-btn');
-            const contents = {
-                tab1: document.getElementById('tab1'),
-                tab2: document.getElementById('tab2'),
-                tab3: document.getElementById('tab3'),
-                tab4: document.getElementById('tab4'),
-                tab5: document.getElementById('tab5'),
-                tab6: document.getElementById('tab6'),
-                tab7: document.getElementById('tab7'),  // <- ¡coma añadida aquí!
-                tab8: document.getElementById('tab8'),
-                tab9: document.getElementById('tab9'),
-                tab10: document.getElementById('tab10'),
-                tab11: document.getElementById('tab11'),
-                tab12: document.getElementById('tab12')
-            };
+    // Lógica existente para el botón de cambio de tema (Modo Claro / Oscuro)
+    const themeToggle = document.getElementById('themeToggle');
+    const body = document.body;
 
-            function activateTab(tabId) {
-                Object.values(contents).forEach(el => el.classList.remove('active'));
-                tabs.forEach(btn => {
-                    btn.classList.remove('active');
-                    btn.setAttribute('aria-selected', 'false');
-                });
-                if (contents[tabId]) {
-                    contents[tabId].classList.add('active');
-                }
-                const activeBtn = document.querySelector(`.tab-btn[data-tab="${tabId}"]`);
-                if (activeBtn) {
-                    activeBtn.classList.add('active');
-                    activeBtn.setAttribute('aria-selected', 'true');
-                }
-            }
-
-            tabs.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    const tabId = this.getAttribute('data-tab');
-                    activateTab(tabId);
-                    localStorage.setItem('active-tab', tabId);
-                });
-            });
-
-            const savedTab = localStorage.getItem('active-tab');
-            if (savedTab && contents[savedTab]) {
-                activateTab(savedTab);
-            } else {
-                activateTab('tab1');
-            }
-        })();
-    </script>
+    themeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark');
+        body.classList.toggle('light');
+        
+        if (body.classList.contains('dark')) {
+            themeToggle.textContent = '☀️ Modo claro';
+        } else {
+            themeToggle.textContent = '🌙 Modo oscuro';
+        }
+    });
+</script>
 </body>
 </html>
