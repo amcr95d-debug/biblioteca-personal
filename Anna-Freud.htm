@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anna Freud · El yo y los mecanismos de defensa — Diez lecciones</title>
+<meta name="description" content="Antología explicativa del libro de Anna Freud (1936): el yo como objeto de observación, el catálogo de las defensas, la identificación con el agresor y la pubertad.">
+<style>
+:root{
+  --paper:#2E1F8C; --card:#372899; --ink:#F5F2E6; --muted:#B4ABEE;
+  --line:#443398; --gold:#F2B84B; --green:#79E8CF; --green-tint:#33249A;
+  --display:"Futura","Avenir Next","Century Gothic","Trebuchet MS",ui-sans-serif,sans-serif;
+  --body:Georgia,"Iowan Old Style","Palatino Linotype",Palatino,serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);
+  line-height:1.68;font-size:1.04rem;-webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin:0 auto;padding:0 22px}
+a{color:var(--gold);text-decoration:none}
+a:hover{text-decoration:underline}
+
+.topbar{position:fixed;top:0;left:0;right:0;z-index:60;height:52px;
+  background:rgba(26,15,80,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);display:flex;align-items:center}
+.topbar .wrap{display:flex;align-items:center;gap:14px;width:100%}
+.tb-title{font-family:var(--display);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1}
+.tb-title b{color:var(--ink);font-weight:700}
+.btn{font-family:var(--display);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;
+  padding:7px 13px;border-radius:999px;border:1px solid var(--line);background:var(--card);
+  color:var(--ink);cursor:pointer;white-space:nowrap;transition:border-color .15s,color .15s}
+.btn:hover{border-color:var(--gold);color:var(--gold)}
+.btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+#progress{position:fixed;top:52px;left:0;height:2px;background:var(--gold);width:0;z-index:61;transition:width .1s linear}
+
+.panel{position:fixed;inset:0;z-index:70;background:rgba(22,12,70,.975);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);overflow-y:auto;padding:70px 0 60px;display:none}
+.panel.open{display:block}
+.panel .cerrar{position:fixed;top:11px;right:22px;z-index:71}
+.pgroup{margin:26px 0 8px;font-family:var(--display);font-size:.68rem;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--gold);border-bottom:1px solid var(--line);padding-bottom:8px}
+.plist{list-style:none;margin:0;padding:0}
+.plist li a{display:flex;gap:14px;align-items:baseline;padding:11px 8px;border-radius:8px;
+  color:var(--ink);text-decoration:none;transition:background .12s}
+.plist li a:hover{background:var(--card)}
+.plist .num{font-family:var(--display);font-size:.72rem;letter-spacing:.1em;color:var(--gold);
+  min-width:44px;flex:0 0 auto}
+.plist .tit{flex:1}
+.plist .fuente{display:block;font-size:.82rem;color:var(--muted);font-style:italic;margin-top:2px}
+
+.cover{padding:130px 0 30px;text-align:center}
+.cover .kick{font-family:var(--display);font-size:.72rem;letter-spacing:.32em;
+  text-transform:uppercase;color:var(--green);margin:0 0 20px}
+.cover h1{font-family:var(--display);text-transform:uppercase;font-weight:700;
+  font-size:clamp(2.2rem,8vw,4.4rem);letter-spacing:.06em;line-height:1;margin:0 0 4px}
+.cover h1 em{font-family:var(--body);font-style:italic;text-transform:none;letter-spacing:0;
+  color:var(--gold);font-weight:400;display:block;font-size:.44em;margin-top:14px}
+.escudo{width:170px;margin:32px auto 0;display:block;color:var(--ink)}
+.escudo .acc{color:var(--gold)}
+.cover .lede{max-width:60ch;margin:34px auto 0;color:var(--muted);font-size:1.06rem;text-align:left}
+.cover .lede p{margin:0 0 16px}
+.checker{height:9px;margin:26px 0;
+  background:repeating-linear-gradient(90deg,var(--gold) 0 9px,#1C1263 9px 18px)}
+
+.toc{margin:10px 0 40px}
+.toc-part{font-family:var(--display);font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--gold);margin:34px 0 14px}
+.toc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.toc-card{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--line);
+  border-radius:10px;padding:14px 16px;color:var(--ink);text-decoration:none;display:block;
+  transition:transform .15s,border-color .15s}
+.toc-card:hover{transform:translateY(-2px);border-top-color:var(--gold);text-decoration:none}
+.toc-card .n{font-family:var(--display);font-size:.68rem;letter-spacing:.14em;color:var(--gold)}
+.toc-card .t{font-family:var(--display);font-size:.9rem;letter-spacing:.05em;text-transform:uppercase;
+  font-weight:700;margin:6px 0;line-height:1.25}
+.toc-card .f{font-size:.8rem;color:var(--muted);font-style:italic;line-height:1.45}
+
+.leccion{padding:40px 0 0;border-top:1px solid var(--line);margin-top:50px}
+.kicker{font-family:var(--display);font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--green);margin:0 0 14px}
+.leccion h1{font-family:var(--display);text-transform:uppercase;font-weight:700;
+  font-size:clamp(1.85rem,5vw,2.8rem);letter-spacing:.05em;line-height:1.06;margin:0 0 10px}
+.sub{font-size:1.06rem;color:var(--muted);max-width:560px;margin:0;font-style:italic}
+.lesson-meta{font-family:var(--display);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--muted);margin:16px 0 0}
+.prose{max-width:70ch}
+.prose p{margin:0 0 18px}
+.epigraph{margin:34px 0 6px;padding:0 0 0 18px;border-left:3px solid var(--gold);
+  font-style:italic;font-size:1.12rem;color:#DCCBA6}
+.epigraph .who{display:block;margin-top:8px;font-style:normal;font-family:var(--display);
+  font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.prose section{margin:38px 0}
+.eyebrow{font-family:var(--display);font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--gold);margin:0 0 6px}
+.prose h2{font-family:var(--display);text-transform:uppercase;letter-spacing:.06em;
+  font-size:1.26rem;font-weight:700;margin:0 0 16px}
+.nota{margin:22px 0;background:var(--green-tint);border-left:3px solid var(--green);
+  padding:14px 16px;border-radius:0 10px 10px 0;font-size:.96rem;color:#C6E7DC}
+.nota b{color:var(--green);font-family:var(--display);font-size:.7rem;letter-spacing:.1em;
+  text-transform:uppercase;display:block;margin-bottom:4px}
+.caja{margin:26px 0;background:var(--card);border:1px solid var(--line);border-top:3px solid var(--gold);
+  padding:16px 18px;border-radius:10px;font-size:.95rem}
+.caja b{color:var(--ink);font-family:var(--display);font-size:.72rem;letter-spacing:.12em;
+  text-transform:uppercase;display:block;margin-bottom:6px}
+.caja p{margin:0 0 8px}.caja p:last-child{margin-bottom:0}
+
+.lnav{display:flex;gap:10px;flex-wrap:wrap;align-items:center;
+  margin:44px 0 10px;padding-top:20px;border-top:1px solid var(--line)}
+.lnav a{font-family:var(--display);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
+  padding:8px 14px;border-radius:999px;border:1px solid var(--line);background:var(--card);
+  color:var(--ink);text-decoration:none;transition:border-color .15s,color .15s}
+.lnav a:hover{border-color:var(--gold);color:var(--gold);text-decoration:none}
+.lnav .sp{flex:1}
+
+footer{padding:40px 0 60px;color:var(--muted);font-size:.86rem;margin-top:50px}
+footer p{max-width:70ch;margin:0 0 10px}
+#top{position:fixed;right:20px;bottom:20px;z-index:50;opacity:0;pointer-events:none;transition:opacity .2s}
+#top.show{opacity:1;pointer-events:auto}
+
+@media (max-width:600px){.cover{padding-top:96px}.escudo{width:130px}body{font-size:1rem}.tb-title{font-size:.62rem}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+@media print{.topbar,.panel,#progress,#top,.lnav{display:none!important}body{background:#2E1F8C}.leccion{page-break-before:always}}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="wrap">
+  <span class="tb-title" id="tbt">Anna Freud · Los mecanismos de defensa</span>
+  <button class="btn" id="abrir">☰ Índice</button>
+</div></div>
+<div id="progress"></div>
+
+<div class="panel" id="panel">
+  <button class="btn cerrar" id="cerrar">Cerrar ✕</button>
+  <div class="wrap">
+    <p class="pgroup">A · Teoría de los mecanismos de defensa</p>
+    <ul class="plist">
+      <li><a href="#lI"><span class="num">I</span><span class="tit">El yo como objeto de observación<span class="fuente">Capítulo I</span></span></a></li>
+      <li><a href="#lII"><span class="num">II</span><span class="tit">La técnica aplicada a las instancias<span class="fuente">Capítulo II</span></span></a></li>
+      <li><a href="#lIII"><span class="num">III</span><span class="tit">Las defensas como material<span class="fuente">Capítulo III</span></span></a></li>
+      <li><a href="#lIV"><span class="num">IV</span><span class="tit">El catálogo de los mecanismos<span class="fuente">Capítulo IV</span></span></a></li>
+      <li><a href="#lV"><span class="num">V</span><span class="tit">Los motivos de la defensa<span class="fuente">Capítulo V</span></span></a></li>
+    </ul>
+    <p class="pgroup">B · Defensas contra el displacer exterior</p>
+    <ul class="plist">
+      <li><a href="#lVI"><span class="num">VI</span><span class="tit">La negación: fantasía, actos y palabras<span class="fuente">Capítulos VI y VII</span></span></a></li>
+      <li><a href="#lVII"><span class="num">VII</span><span class="tit">La restricción del yo<span class="fuente">Capítulo VIII</span></span></a></li>
+    </ul>
+    <p class="pgroup">C · Dos defensas típicas</p>
+    <ul class="plist">
+      <li><a href="#lVIII"><span class="num">VIII</span><span class="tit">La identificación con el agresor<span class="fuente">Capítulo IX</span></span></a></li>
+      <li><a href="#lIX"><span class="num">IX</span><span class="tit">Una forma de altruismo<span class="fuente">Capítulo X</span></span></a></li>
+    </ul>
+    <p class="pgroup">D · Angustia ante la fuerza de los instintos</p>
+    <ul class="plist">
+      <li><a href="#lX"><span class="num">X</span><span class="tit">La pubertad: ascetismo e intelectualización<span class="fuente">Capítulos XI, XII y Conclusiones</span></span></a></li>
+      <li><a href="#indice"><span class="num">↑</span><span class="tit">Portada e índice</span></a></li>
+    </ul>
+  </div>
+</div>
+
+<header class="cover" id="portada">
+  <div class="wrap">
+    <p class="kick">Diez lecciones sobre un libro de 1936</p>
+    <h1>Anna Freud<em>El yo y los mecanismos de defensa</em></h1>
+    <svg class="escudo" viewBox="0 0 160 96" role="img" aria-label="Escudo y flechas">
+      <g fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+        <path class="acc" d="M80 14 L118 28 V54 C118 72 100 84 80 90 C60 84 42 72 42 54 V28 Z"/>
+        <path d="M12 40 L34 48"/><path d="M12 56 L34 52"/>
+        <path d="M148 40 L126 48"/><path d="M148 56 L126 52"/>
+        <path d="M80 40 V64"/><path d="M68 52 H92"/>
+      </g>
+    </svg>
+    <div class="checker" aria-hidden="true"></div>
+    <div class="lede">
+      <p>En 1936, para el ochenta cumpleaños de su padre, Anna Freud publicó un libro breve que cambió el rumbo del psicoanálisis. Hasta entonces la disciplina había mirado sobre todo hacia el ello: los deseos reprimidos, el material oculto. Este libro propone girar el foco y mirar al <em>yo</em> — no como el obstáculo que estorba la investigación, sino como su objeto más interesante.</p>
+      <p>Estas diez lecciones recorren la obra siguiendo su propia arquitectura: la teoría de la defensa, los ejemplos tomados de niños, las dos defensas que ella descubrió, y la crisis del yo en la pubertad. Cada lección expone las ideas en su lógica y señala después lo que la investigación posterior ha confirmado o discutido.</p>
+      <p>Basadas en la edición castellana de Paidós, en traducción de Y. P. de Cárcamo y C. E. Cárcamo.</p>
+    </div>
+  </div>
+</header>
+
+<div class="toc" id="indice"><div class="wrap">
+  <p class="toc-part">A · Teoría de los mecanismos de defensa</p>
+  <div class="toc-grid">
+    <a class="toc-card" href="#lI"><span class="n">Lección I</span><span class="t">El yo como objeto de observación</span><span class="f">El giro del punto de mira</span></a>
+    <a class="toc-card" href="#lII"><span class="n">Lección II</span><span class="t">La técnica aplicada a las instancias</span><span class="f">Hipnosis, asociación, sueños, transferencia</span></a>
+    <a class="toc-card" href="#lIII"><span class="n">Lección III</span><span class="t">Las defensas como material</span><span class="f">Resistencia, afecto y carácter</span></a>
+    <a class="toc-card" href="#lIV"><span class="n">Lección IV</span><span class="t">El catálogo de los mecanismos</span><span class="f">Diez procedimientos y una cronología dudosa</span></a>
+    <a class="toc-card" href="#lV"><span class="n">Lección V</span><span class="t">Los motivos de la defensa</span><span class="f">De quién tiene miedo el yo</span></a>
+  </div>
+  <p class="toc-part">B · Defensas contra el displacer exterior</p>
+  <div class="toc-grid">
+    <a class="toc-card" href="#lVI"><span class="n">Lección VI</span><span class="t">La negación: fantasía, actos y palabras</span><span class="f">Cuando el mundo se corrige por decreto</span></a>
+    <a class="toc-card" href="#lVII"><span class="n">Lección VII</span><span class="t">La restricción del yo</span><span class="f">Renunciar a una capacidad para no sufrir</span></a>
+  </div>
+  <p class="toc-part">C · Dos defensas típicas</p>
+  <div class="toc-grid">
+    <a class="toc-card" href="#lVIII"><span class="n">Lección VIII</span><span class="t">La identificación con el agresor</span><span class="f">Su hallazgo más célebre</span></a>
+    <a class="toc-card" href="#lIX"><span class="n">Lección IX</span><span class="t">Una forma de altruismo</span><span class="f">La renuncia altruista y Cyrano</span></a>
+  </div>
+  <p class="toc-part">D · Angustia ante la fuerza de los instintos</p>
+  <div class="toc-grid">
+    <a class="toc-card" href="#lX"><span class="n">Lección X</span><span class="t">La pubertad: ascetismo e intelectualización</span><span class="f">Y el balance final del libro</span></a>
+  </div>
+</div></div>
+
+<!-- ══════════════════════════ I ══════════════════════════ -->
+<article class="leccion" id="lI" data-num="I" data-titulo="El yo como objeto de observación">
+<div class="wrap">
+  <p class="kicker">Parte A · Lección I</p>
+  <h1>El yo como objeto de observación</h1>
+  <p class="sub">Girar el telescopio: de lo que se oculta a quien lo oculta.</p>
+  <p class="lesson-meta">Capítulo I · Lectura: ~12 minutos</p>
+  <div class="checker" aria-hidden="true"></div>
+  <div class="prose">
+
+  <blockquote class="epigraph">
+    «El yo es el medio por el cual tratamos de formarnos una idea de las otras dos instancias.»
+    <span class="who">Anna Freud, El yo y los mecanismos de defensa (1936)</span>
+  </blockquote>
+
+  <section>
+    <p class="eyebrow">§ 1</p>
+    <h2>El malentendido que el libro viene a deshacer</h2>
+    <p>Anna Freud abre su libro discutiendo una definición que circulaba entre analistas y que ella considera falsa: la de que el psicoanálisis es <em>la ciencia del inconsciente</em>, y por tanto que solo merece el nombre de trabajo analítico aquello que saca a la luz contenidos del ello. Según esa idea, todo lo que tuviera que ver con el yo era «psicología de superficie» — trabajo preliminar, cosa de segundo orden, casi una concesión.</p>
+    <p>Su réplica es doble. La primera parte es de hecho histórico: el psicoanálisis nació estudiando el yo, no el ello. Los primeros objetos de la investigación fueron los síntomas neuróticos, y solo cuando se descubrió que detrás del síntoma había una defensa se pudo llegar a lo defendido. La segunda parte es de método, y es el argumento central del capítulo: <strong>al ello no se llega sino a través del yo</strong>. Nadie percibe directamente un impulso inconsciente. Lo que el analista tiene delante es siempre una persona que habla, que calla, que se resiste, que se emociona o deja de emocionarse: material del yo. Aunque el objetivo último fuera el ello, la vía de acceso es la otra instancia, y por eso conocerla no es una distracción sino una condición.</p>
+    <p>De ahí la fórmula con que corrige la definición: el objeto propio del psicoanálisis no es el inconsciente sino <em>la vida psíquica entera</em>, con sus tres instancias, y las relaciones que mantienen entre sí. Puede sonar a matiz burocrático. No lo es: de ese matiz sale toda la psicología del yo del siglo XX.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">§ 2</p>
+    <h2>Qué se percibe de cada instancia</h2>
+    <p>Antes de estudiar el yo hay que preguntarse qué puede percibirse de cada una de las tres instancias, y Anna Freud lo despacha con orden.</p>
+    <p>Del <strong>ello</strong> no se percibe nada directamente. Sus contenidos solo se conocen por sus derivados: cuando un impulso consigue atravesar la frontera y presentarse — deformado — en la conciencia, o cuando se manifiesta indirectamente en un sueño, un síntoma, un acto fallido. El ello es siempre reconstrucción.</p>
+    <p>Del <strong>superyó</strong> se percibe algo más, pero de manera indirecta y peculiar: sus efectos. No se observa la instancia; se observan los estados que produce en el yo — el sentimiento de culpa, la vergüenza, el remordimiento, el desprecio de sí. El juez no comparece: se le deduce por las sentencias.</p>
+    <p>Del <strong>yo</strong>, en cambio, se percibe bastante, y de dos maneras distintas. Por un lado es el <em>órgano</em> de la observación: aquello con lo que se mira. Por otro, y esto es lo que el libro explota, puede convertirse él mismo en <em>objeto</em> mirado. Es la peculiaridad que Freud padre había descrito al hablar de una instancia que se toma a sí misma por objeto, y que la hija convierte en programa de trabajo.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">§ 3</p>
+    <h2>Cuándo se deja ver el yo</h2>
+    <p>Aquí está el hallazgo práctico del capítulo, y conviene entenderlo bien porque organiza todo el libro. Si el yo funciona con normalidad, resulta casi invisible: hace su trabajo, media, filtra, y no se nota — como no se nota un cristal limpio. Para observarlo hace falta que algo lo perturbe.</p>
+    <p>Anna Freud señala dos ocasiones en que eso ocurre. La primera son las <strong>irrupciones del ello</strong>: cuando un impulso presiona con fuerza y el yo tiene que hacer algo para contenerlo, ese «hacer algo» se vuelve visible. La actividad defensiva sale a la superficie precisamente cuando está bajo presión. La segunda son las <strong>zonas de conflicto</strong>: allí donde el yo choca con el superyó o con la realidad, sus operaciones dejan de ser automáticas y se manifiestan.</p>
+    <p>De donde una consecuencia de método que suena paradójica y no lo es: <em>el yo se estudia mejor cuando falla</em>. Lo que en la técnica anterior se vivía como obstáculo — el paciente que se resiste, que calla, que cambia de tema — resulta ser el único momento en que la instancia que interesa se hace visible. Es la misma jugada que su padre había hecho con el lapsus y con el sueño: convertir el estorbo en documento. Aquí se aplica al yo.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">§ 4</p>
+    <h2>Qué se gana con el giro</h2>
+    <p>Conviene medir el alcance de este primer capítulo, porque parece modesto y no lo es. Si el yo es observable, entonces sus operaciones defensivas pueden clasificarse, compararse entre pacientes, ordenarse por edades y estudiarse como se estudia cualquier otro fenómeno. La defensa deja de ser un obstáculo genérico — «hay resistencia» — y se convierte en un objeto con variedades, historia y lógica propias.</p>
+    <p>Y hay un rendimiento clínico inmediato. Si dos pacientes tienen el mismo deseo reprimido pero uno lo proyecta y otro lo convierte en su contrario, no tienen la misma enfermedad ni requieren el mismo trabajo. Lo que define un cuadro no es solo qué se reprime, sino <em>cómo</em> se reprime. Ese desplazamiento del interés — del contenido al procedimiento — es lo que este libro instala, y es la razón de que siga leyéndose casi un siglo después.</p>
+  </section>
+
+  <div class="caja">
+    <b>Contexto: quién escribe</b>
+    <p>Anna Freud (Viena, 1895 – Londres, 1982), la menor de los seis hijos de Freud, fue maestra de escuela primaria antes que analista y no tuvo formación médica. Esa procedencia pedagógica explica buena parte del libro: sus ejemplos son casi siempre niños y adolescentes observados de cerca, no pacientes adultos en un diván. Publicó esta obra en 1936, y su padre la incorporó de inmediato a su propio trabajo: en «Análisis terminable e interminable» (1937) remite expresamente a ella al tratar las alteraciones del yo. Después del exilio a Londres fundó la clínica de Hampstead y se convirtió en la principal figura del psicoanálisis infantil anglosajón — y en la gran adversaria teórica de Melanie Klein.</p>
+  </div>
+
+  <nav class="lnav"><a href="#indice">← Índice</a><span class="sp"></span><a href="#indice">Índice</a><a href="#lII">La técnica →</a></nav>
+</div></div>
+</article>
+
+<!-- ══════════════════════════ II ══════════════════════════ -->
+<article class="leccion" id="lII" data-num="II" data-titulo="La técnica aplicada a las instancias">
+<div class="wrap">
+  <p class="kicker">Parte A · Lección II</p>
+  <h1>La técnica aplicada a las instancias</h1>
+  <p class="sub">Los instrumentos clásicos, releídos: cada uno mira a un sitio distinto.</p>
+  <p class="lesson-meta">Capítulo II · Lectura: ~13 minutos</p>
+  <div class="checker" aria-hidden="true"></div>
+  <div class="prose">
+
+  <section>
+    <p class="eyebrow">§ 1</p>
+    <h2>Un inventario de herramientas</h2>
+    <p>El segundo capítulo hace algo muy útil y muy poco frecuente: repasa uno por uno los instrumentos de la técnica analítica y pregunta de cada uno <em>a qué instancia da acceso</em>. El resultado es un mapa de la caja de herramientas que explica por qué la primera época del psicoanálisis vio tan bien el ello y tan mal el yo.</p>
+    <p>La <strong>hipnosis</strong>, del período preanalítico, es el caso extremo. Su eficacia consistía en eliminar al yo: dormida la instancia que censura, los contenidos del ello afloraban sin obstáculo. Pero al despertar, el yo volvía a su sitio y todo lo obtenido quedaba fuera de su alcance. Por eso los resultados eran espectaculares y frágiles a la vez. La hipnosis daba acceso al ello al precio de excluir al yo — y por tanto no enseñaba absolutamente nada sobre él.</p>
+    <p>La <strong>asociación libre</strong> corrige eso. Al pedir que se diga todo sin seleccionar, se invita al yo a suspender su función crítica; pero se cuenta con que la suspensión será imperfecta. Y ahí está lo valioso: el yo permanece un rato en silencio, los derivados del ello aprovechan ese reposo para irrumpir, y entonces la instancia crítica reacciona. Cada vez que el paciente se detiene, se desvía, protesta o considera una ocurrencia indigna de mención, el yo se ha hecho visible. La regla fundamental no anula la censura: la <em>provoca</em>, y así la muestra.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">§ 2</p>
+    <h2>Sueños, símbolos y actos fallidos</h2>
+    <p>Con el <strong>sueño</strong> ocurre algo parecido y Anna Freud lo formula con precisión. Al dormir se retiran las cargas defensivas — como su padre había descrito —, y por eso el sueño trae material del ello con una facilidad que la vigilia no permite. Pero el sueño <em>no</em> es puro ello: la deformación onírica, la censura, el disfraz son obra del yo. Un sueño es, por tanto, un documento doble: su contenido latente informa sobre el ello, y su elaboración informa sobre los procedimientos defensivos de quien lo sueña. Leer solo lo primero es desperdiciar la mitad del texto.</p>
+    <p>La <strong>interpretación de símbolos</strong> aparece aquí con una advertencia de método. Es la única técnica que permite saltar directamente al contenido inconsciente sin pasar por las asociaciones del paciente — y precisamente por eso es la que menos informa sobre el yo. Es rápida y ciega: se gana un contenido y se pierde el proceso.</p>
+    <p>Los <strong>actos fallidos</strong> tienen el mismo estatuto que en la obra del padre: un compromiso entre una intención consciente y otra que la perturba. Anna Freud subraya lo que interesa a su programa — que en el fallo puede leerse el momento exacto en que la vigilancia del yo se relaja, y cuánto dura ese descuido.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">§ 3</p>
+    <h2>El hallazgo: la transferencia de la defensa</h2>
+    <p>El tramo más original del capítulo es el dedicado a la <strong>transferencia</strong>, y contiene una distinción que se ha vuelto patrimonio común de la clínica.</p>
+    <p>La forma conocida es la <em>transferencia de impulsos libidinales</em>: el paciente revive con el analista deseos y afectos que correspondían a figuras de su infancia. Es material del ello, servido en escena. Pero Anna Freud señala una segunda forma que hasta entonces se había tratado como estorbo: la <strong>transferencia de la defensa</strong>. El paciente no repite solo lo que sintió, sino <em>lo que hizo con lo que sintió</em>: reproduce ante el analista las mismas maniobras defensivas que empleó de niño ante aquellos afectos. Se vuelve irónico donde entonces se volvió irónico; se distancia donde entonces se distanció; se somete donde entonces se sometió.</p>
+    <p>La consecuencia técnica es enorme. Cuando un paciente se muestra frío, evasivo o desdeñoso en una sesión, no está fallando el análisis: está mostrando, en vivo y en presente, la operación que organiza su carácter. Lo que hay que interpretar no es solo el impulso escondido debajo, sino la maniobra misma. Es exactamente lo que Freud padre recogería un año después al escribir que el paciente <em>produce ante nuestros ojos</em> esos modos de reacción, y que solo por ese camino podemos conocerlos.</p>
+    <p>Anna Freud añade una tercera figura, el <em>acting out</em> — la puesta en acto —, y advierte de su ambigüedad: cuando la transferencia se descarga en conducta fuera de la sesión, el material se pierde para el análisis en la misma medida en que se vive. Cuanto más se actúa, menos se puede leer.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">§ 4</p>
+    <h2>Contra la unilateralidad</h2>
+    <p>El capítulo cierra con una advertencia que da la medida de su equilibrio, y que conviene retener porque desmiente la caricatura que después se hizo de la autora. Anna Freud <em>no</em> propone sustituir el análisis del ello por el análisis del yo. Propone que el analista se mantenga <strong>equidistante</strong> de las tres instancias, sin privilegiar a ninguna: ni el que solo persigue contenidos reprimidos, ni el que solo describe defensas, hacen un trabajo completo.</p>
+    <p>Y observa que la unilateralidad suele tener un origen personal: el analista se inclina hacia el material que le resulta más afín, y esa preferencia se disfraza de doctrina. La imagen que propone — un observador colocado a igual distancia de tres focos, dispuesto a mirar hacia donde el material se mueva — es la mejor definición breve de lo que después se llamó neutralidad técnica.</p>
+  </section>
+
+  <nav class="lnav"><a href="#lI">← El yo como objeto</a><span class="sp"></span><a href="#indice">Índice</a><a href="#lIII">Las defensas como material →</a></nav>
+</div></div>
+</article>
+
+<!-- ══════════════════════════ III ══════════════════════════ -->
+<article class="leccion" id="lIII" data-num="III" data-titulo="Las defensas como material">
+<div class="wrap">
+  <p class="kicker">Parte A · Lección III</p>
+  <h1>Las defensas como material</h1>
+  <p class="sub">Resistencia, afecto y carácter: el estorbo convertido en objeto.</p>
+  <p class="lesson-meta">Capítulo III · Lectura: ~13 minutos</p>
+  <div class="checker" aria-hidden="true"></div>
+  <div class="prose">
+
+  <section>
+    <p class="eyebrow">§ 1</p>
+    <h2>La resistencia deja de ser un obstáculo</h2>
+    <p>Este es el capítulo bisagra del libro, y su argumento cabe en una identidad: <strong>la resistencia es la defensa vista desde la consulta</strong>. Lo que el paciente hace para impedir que el análisis avance es exactamente lo que hace, y lleva haciendo desde niño, para impedir que un impulso llegue a su conciencia. No son dos fenómenos: es el mismo, observado desde fuera.</p>
+    <p>De ahí el giro de valor. Mientras la resistencia se considerara un obstáculo, lo razonable era vencerla cuanto antes para llegar al material. Si la resistencia <em>es</em> material — y de la instancia que más gobierna la vida cotidiana del paciente —, entonces atravesarla deprisa equivale a tirar la mitad de los datos. Freud padre lo formularía en 1937 con la imagen del péndulo: el trabajo oscila continuamente entre un fragmento de análisis del ello y otro del yo.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">§ 2</p>
+    <h2>También se defiende uno de los afectos</h2>
+    <p>La ampliación más importante del capítulo es esta: el yo no solo se defiende de los <em>impulsos</em>; se defiende también de los <strong>afectos</strong> que los acompañan. Amor, anhelo, celos, humillación, dolor, duelo, rabia: cada uno puede ser combatido por sí mismo, con independencia de la pulsión de la que procede.</p>
+    <p>Y aquí Anna Freud hace una observación que tiene mucho alcance clínico. Los procedimientos empleados contra el afecto son <em>los mismos</em> que contra el impulso — represión, desplazamiento, transformación en lo contrario —, pero sus resultados son mucho más visibles en el trato corriente. Una persona que ha convertido sistemáticamente su ternura en desdén, o su miedo en temeridad, no presenta un síntoma: presenta un modo de ser. La defensa contra el afecto se ve a simple vista, y por eso es la puerta de entrada más practicable al estudio del yo.</p>
+    <p>Un matiz que conviene retener, porque es de los más finos del libro: la defensa contra el afecto puede sobrevivir a su causa. Desaparecido el peligro que la motivó, el procedimiento sigue funcionando por cuenta propia, aplicándose a situaciones que ya no lo requieren. Es la definición misma de una rigidez de carácter.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">§ 3</p>
+    <h2>Las defensas permanentes: el carácter</h2>
+    <p>De ahí sale el concepto que más ha viajado fuera del psicoanálisis. Anna Freud llama <strong>manifestaciones defensivas permanentes</strong> a aquellas operaciones que, de tanto repetirse, han dejado de ser respuestas a una situación concreta y se han incorporado a la persona: la postura corporal rígida, la sonrisa fija, la ironía constante, el tono monótono, la cortesía impenetrable, la risa a destiempo.</p>
+    <p>Su valor diagnóstico es doble. Primero, son <em>residuos</em>: cada una fue en su día una defensa útil contra un conflicto determinado, y sigue ahí como una cicatriz que informa de la herida. Segundo, son observables sin necesidad de que el paciente diga nada — están en el cuerpo, en la voz, en los modales. El analista puede leerlas desde el primer minuto.</p>
+    <p>Esta idea es prima hermana de la «coraza caracterológica» que Wilhelm Reich había descrito por esos mismos años, y ambas confluyen en la noción moderna de <em>estilo defensivo</em>: no lo que una persona hace en una crisis, sino la manera estable en que administra su vida afectiva. Cuando hoy se dice de alguien que «se protege con el humor» o «racionaliza todo», se está usando, sin saberlo, este capítulo.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">§ 4</p>
+    <h2>Consecuencias para la técnica</h2>
+    <p>El capítulo termina extrayendo el corolario práctico, que puede resumirse en una regla de orden: <strong>primero la defensa, después lo defendido</strong>. Interpretar el impulso reprimido antes de haber trabajado la maniobra que lo mantiene fuera es inútil en el mejor de los casos y contraproducente en el peor, porque la interpretación choca contra una estructura intacta.</p>
+    <p>Es la misma prudencia que su padre recomendaba al decir que se interpreta primero solo para uno mismo mientras el yo siga aferrado a sus defensas. Y es el origen directo de lo que después se llamó <em>análisis de la resistencia</em>, una de las líneas técnicas más productivas del siglo XX: no correr hacia el contenido, sino describirle pacientemente al paciente lo que hace cada vez que se acerca a él.</p>
+    <div class="nota">
+      <b>Por qué esto importa fuera del psicoanálisis</b>
+      La secuencia «trabajar primero cómo evita, después qué evita» sobrevive en terapias que no tienen nada de psicoanalíticas. La terapia cognitivo-conductual habla de conductas de evitación y de seguridad, y las aborda antes que el contenido temido. Las terapias de aceptación hablan de evitación experiencial. La entrevista motivacional trabaja la ambivalencia antes que el cambio. Ninguna de ellas cita a Anna Freud, y todas comparten su intuición básica: lo que una persona hace para no sentir algo es más accesible, y a menudo más decisivo, que aquello que no quiere sentir.
+    </div>
+  </section>
+
+  <nav class="lnav"><a href="#lII">← La técnica</a><span class="sp"></span><a href="#indice">Índice</a><a href="#lIV">El catálogo →</a></nav>
+</div></div>
+</article>
+
+<!-- ══════════════════════════ IV ══════════════════════════ -->
+<article class="leccion" id="lIV" data-num="IV" data-titulo="El catálogo de los mecanismos">
+<div class="wrap">
+  <p class="kicker">Parte A · Lección IV</p>
+  <h1>El catálogo de los mecanismos</h1>
+  <p class="sub">Diez procedimientos, y una cronología que su autora declara insegura.</p>
+  <p class="lesson-meta">Capítulo IV · Lectura: ~14 minutos</p>
+  <div class="checker" aria-hidden="true"></div>
+  <div class="prose">
+
+  <section>
+    <p class="eyebrow">§ 1</p>
+    <h2>La lista</h2>
+    <p>Este es el capítulo por el que el libro se hizo famoso, y conviene decir de entrada qué hizo exactamente Anna Freud aquí: <em>no</em> inventó los mecanismos. Casi todos estaban dispersos por la obra de su padre — la represión en 1915, el aislamiento y la anulación en 1926, la proyección y la introyección en varios lugares, la sublimación desde 1905. Lo que hizo fue <strong>reunirlos, nombrarlos como conjunto y darles rango de catálogo</strong>. Es una operación de sistematización, y de las que cambian una disciplina.</p>
+    <p>La lista canónica que se le atribuye reúne nueve procedimientos más uno: <strong>regresión</strong>, <strong>represión</strong>, <strong>formación reactiva</strong>, <strong>aislamiento</strong>, <strong>anulación de lo sucedido</strong>, <strong>proyección</strong>, <strong>introyección</strong>, <strong>vuelta contra la propia persona</strong> y <strong>transformación en lo contrario</strong>; y aparte la <strong>sublimación</strong>, que ella distingue con cuidado porque pertenece más al estudio de lo normal que al de la neurosis. A ellos añadirá, en la parte central del libro, tres que son aportación suya: la negación en la fantasía, la restricción del yo y la identificación con el agresor.</p>
+    <p>Vale la pena notar que el prólogo de la edición castellana amplía todavía más la enumeración — racionalización, inhibición, conversión, desplazamiento, identificación, negación de la realidad — y observa que estos recursos han sido admitidos «sin distinción de banderías escolásticas» por la psicología general, y que a menudo aparecen en la producción psicológica no analítica <em>sin mención de su fuente</em>. Es una observación exacta y sigue siéndolo: el vocabulario de las defensas es hoy patrimonio común, y casi nadie recuerda de dónde salió.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">§ 2</p>
+    <h2>La represión no es una defensa más</h2>
+    <p>Anna Freud dedica un tramo a mostrar que la represión ocupa un lugar aparte, y su argumento es de economía. La represión es <em>la más eficaz</em> de todas — puede con impulsos intensos contra los que las demás nada pueden — y a la vez <em>la más peligrosa</em>, porque la sustracción de un fragmento entero de vida psíquica puede desequilibrar a la persona de por vida. Las otras técnicas trabajan sobre el impulso; la represión lo destierra.</p>
+    <p>De ahí la asimetría que ella subraya con una comparación clínica: cuando el yo recurre a la represión, la formación de síntomas le releva de la tarea de dominar el conflicto — el síntoma se encarga —, mientras que con los demás procedimientos el yo debe seguir trabajando de manera continuada. La represión externaliza el problema en un síntoma; el resto del catálogo lo administra con esfuerzo permanente. Y por eso, añade, la represión es la base de la formación de compromiso y de la neurosis propiamente dicha, mientras que las otras técnicas producen más bien alteraciones del carácter.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">§ 3</p>
+    <h2>El intento de cronología, y su honestidad</h2>
+    <p>La parte más interesante del capítulo es la que ella misma titula «ensayo de una clasificación cronológica», y lo interesante está tanto en la propuesta como en la cautela con que la formula.</p>
+    <p>La hipótesis es que los mecanismos no aparecen todos a la vez, sino que cada uno presupone un determinado grado de desarrollo del aparato psíquico. La <strong>proyección</strong> y la <strong>introyección</strong> — que consisten en trasladar contenidos de dentro afuera y de fuera adentro — solo tienen sentido cuando el yo ya ha establecido una frontera nítida entre él y el mundo; antes de esa diferenciación no hay dónde proyectar. La <strong>represión</strong>, por su parte, exige una separación consolidada entre sistemas psíquicos, y por tanto es tardía. La <strong>sublimación</strong> supone la existencia de un superyó y de ideales, y por tanto es la última en llegar. De donde se sigue una idea con gran futuro clínico: el repertorio defensivo de una persona informa sobre el momento evolutivo en que sus conflictos se organizaron.</p>
+    <p>Y entonces viene la cautela, que es lo mejor del capítulo. Anna Freud no presenta esto como resultado sino como <em>ensayo</em>; reconoce que la investigación no permite fijar con seguridad el orden de aparición; y advierte que la elección del mecanismo depende también de factores individuales y constitucionales que no sabemos medir. Es una autora que propone una hipótesis y pone ella misma el cartel de provisional — algo que sus divulgadores posteriores olvidaron, convirtiendo el ensayo en tabla.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">§ 4</p>
+    <h2>Qué queda de la lista</h2>
+    <p>Conviene hacer el balance aquí, porque este capítulo es el que más ha viajado y el que más se ha deformado en el viaje.</p>
+    <p><strong>No se sostiene</strong> la cronología estricta, que nunca encontró confirmación empírica, ni la idea de que a cada neurosis le corresponda un mecanismo característico — la correspondencia resultó ser mucho más laxa de lo que la clínica de los años treinta suponía. Tampoco la economía subyacente, con su energía que se desplaza de un sitio a otro.</p>
+    <p><strong>Ha quedado</strong>, en cambio, el catálogo mismo, y con una fortuna notable. La idea de que las defensas pueden ordenarse por grado de madurez — de las más primitivas, como la negación y la proyección, a las más adaptativas, como el humor, la anticipación y la sublimación — fue desarrollada por George Vaillant a partir de estudios longitudinales que siguieron a las mismas personas durante décadas, y encontró que el estilo defensivo predice razonablemente bien el ajuste psicológico a largo plazo. Los sistemas diagnósticos llegaron a incluir una escala de mecanismos de defensa, y existen instrumentos de medida que se usan en investigación. Es probablemente la parte del psicoanálisis clásico que mejor ha sobrevivido a la exigencia de contrastación — no porque se haya demostrado la teoría que hay detrás, sino porque las categorías descriptivas resultaron útiles y razonablemente fiables.</p>
+  </section>
+
+  <nav class="lnav"><a href="#lIII">← Las defensas como material</a><span class="sp"></span><a href="#indice">Índice</a><a href="#lV">Los motivos →</a></nav>
+</div></div>
+</article>
+
+<!-- ══════════════════════════ V ══════════════════════════ -->
+<article class="leccion" id="lV" data-num="V" data-titulo="Los motivos de la defensa">
+<div class="wrap">
+  <p class="kicker">Parte A · Lección V</p>
+  <h1>Los motivos de la defensa</h1>
+  <p class="sub">De quién tiene miedo el yo, y por qué eso cambia el pronóstico.</p>
+  <p class="lesson-meta">Capítulo V · Lectura: ~13 minutos</p>
+  <div class="checker" aria-hidden="true"></div>
+  <div class="prose">
+
+  <section>
+    <p class="eyebrow">§ 1</p>
+    <h2>La pregunta correcta</h2>
+    <p>Los capítulos anteriores describían <em>cómo</em> se defiende el yo. Este pregunta <em>por qué</em>, y la respuesta organiza el resto del libro: el yo se defiende porque tiene miedo, y el catálogo de sus miedos coincide con el de sus amos. La Lección V del volumen freudiano lo dejó planteado — el yo sirve a tres señores y responde con angustia cuando no puede conciliarlos; aquí eso se convierte en una tipología con consecuencias clínicas.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">§ 2</p>
+    <h2>Cuatro miedos</h2>
+    <p><strong>La angustia ante el superyó.</strong> Es la que el psicoanálisis conocía mejor, porque es la que domina en las neurosis de los adultos. El yo rechaza un impulso porque su satisfacción provocaría culpa. Anna Freud señala lo peculiar de este caso: aquí el yo no teme al impulso por sí mismo, sino por el juicio de una instancia interna — se defiende de un deseo para no ser reprendido por sí mismo.</p>
+    <p><strong>La angustia objetiva o real.</strong> Es la que domina en las <em>neurosis infantiles</em>, y su inclusión es una de las aportaciones específicas del libro. El niño pequeño aún no tiene un superyó consolidado; su instancia crítica está fuera, en los adultos que le cuidan. De modo que se defiende de sus impulsos por miedo a un peligro exterior real: el castigo, la reprimenda, la retirada del cariño. La estructura es idéntica a la del adulto, pero el juez está en la habitación de al lado. Y de ahí una consecuencia que Anna Freud subraya: en el niño, la defensa depende del ambiente mucho más que en el adulto, porque el motivo está literalmente fuera.</p>
+    <p><strong>La angustia ante la fuerza del instinto.</strong> Es el motivo más arcaico y el más inquietante, y da título a toda la última parte del libro. Aquí el yo no teme ni al castigo ni a la culpa: teme <em>ser desbordado</em>. Es el pánico ante la magnitud de lo que uno siente, ante una intensidad que amenaza con arrasar la organización entera. Anna Freud sugiere que este miedo delata un antagonismo primario entre el yo y el instinto — una desconfianza básica ante la propia vida pulsional — y que se hace visible sobre todo en dos épocas de crecimiento libidinal: la primera infancia y la pubertad.</p>
+    <p><strong>La necesidad de síntesis.</strong> El cuarto motivo es distinto de los otros tres y menos conocido. El yo, dice Anna Freud, tiende a armonizar sus contenidos y no tolera bien las contradicciones. Puede por tanto rechazar un impulso no porque sea peligroso ni culpable, sino simplemente porque es <em>incompatible</em> con el resto de la persona que uno cree ser. Se defiende uno de lo que no le pega.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">§ 3</p>
+    <h2>Por qué la distinción cambia el trabajo</h2>
+    <p>La utilidad de la tipología es que cada motivo exige una intervención distinta, y confundirlos lleva a errores previsibles.</p>
+    <p>Si la defensa está motivada por la <em>angustia real</em> — el caso del niño —, tiene sentido modificar el ambiente: unos adultos menos amenazantes reducen el motivo en su origen. Es la vía pedagógica, y explica el interés de Anna Freud por la educación. Si está motivada por el <em>superyó</em>, el ambiente ya no basta, porque el juez viaja dentro; hay que trabajar analíticamente sobre esa instancia. Y si está motivada por la <em>angustia ante la fuerza del instinto</em>, el pronóstico se complica: no hay a quien apaciguar, y el problema no es un contenido sino una cantidad.</p>
+    <p>El propio libro registra la consecuencia terapéutica con sobriedad, y su padre la recogería un año después en «Análisis terminable e interminable»: el resultado depende también de la intensidad constitucional de las pulsiones y de la clase de alteración que el yo haya sufrido, y hay casos en que la fuerza del instinto es el factor que decide. En su versión menos consoladora: no todo repertorio defensivo se deja modificar por comprensión.</p>
+    <div class="nota">
+      <b>La defensa contra los afectos, otra vez</b>
+      Anna Freud aplica los mismos cuatro motivos a la defensa contra los afectos, y de ahí sale una observación clínicamente valiosa: uno puede combatir un sentimiento por temor al castigo, por culpa, por su intensidad o por su incompatibilidad con la imagen que tiene de sí. Cuatro personas que reprimen su tristeza pueden estar haciéndolo por cuatro razones distintas, y no responden al mismo abordaje. Es una advertencia contra la tentación de tratar «la represión emocional» como una sola cosa.
+    </div>
+  </section>
+
+  <nav class="lnav"><a href="#lIV">← El catálogo</a><span class="sp"></span><a href="#indice">Índice</a><a href="#lVI">La negación →</a></nav>
+</div></div>
+</article>
+
+<!-- ══════════════════════════ VI ══════════════════════════ -->
+<article class="leccion" id="lVI" data-num="VI" data-titulo="La negación: fantasía, actos y palabras">
+<div class="wrap">
+  <p class="kicker">Parte B · Lección VI</p>
+  <h1>La negación: fantasía, actos y palabras</h1>
+  <p class="sub">Cuando el mundo no gusta, el niño lo corrige por decreto.</p>
+  <p class="lesson-meta">Capítulos VI y VII · Lectura: ~14 minutos</p>
+  <div class="checker" aria-hidden="true"></div>
+  <div class="prose">
+
+  <section>
+    <p class="eyebrow">§ 1</p>
+    <h2>Un grupo aparte de defensas</h2>
+    <p>La segunda parte del libro se ocupa de defensas que no van dirigidas contra un impulso interno, sino contra un <strong>displacer que viene de fuera</strong>: una realidad decepcionante, una comparación humillante, una impotencia objetiva. Son, dice Anna Freud, defensas del yo contra el mundo, no contra el ello — y ese desplazamiento del objeto es lo que las hace nuevas.</p>
+    <p>Su interés es doble. Clínicamente, permiten estudiar el yo en su forma más elemental. Y teóricamente plantean un problema fino: si un adulto niega un fragmento de realidad, hablamos de psicosis; si lo hace un niño de cuatro años, hablamos de juego. ¿Dónde está la diferencia? Buena parte de estos dos capítulos consiste en responder eso.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">§ 2</p>
+    <h2>La negación en la fantasía</h2>
+    <p>El ejemplo central lo toma Anna Freud del caso más famoso del psicoanálisis infantil, el del pequeño Juanito, y elige un tramo que suele pasarse por alto: no la fobia, sino las fantasías que el niño produjo <em>después</em> de que la fobia remitiera.</p>
+    <p>Juanito, cuyo padre era el analista, desarrolló una serie de ensueños diurnos alrededor de un león. En uno de ellos acude a una fiesta de disfraces y anuncia que el león que lleva consigo es en realidad un amigo disfrazado; el aviso es falso — se trata de un león verdadero — y el niño goza imaginando el espanto de la gente si adivinara el secreto. Al mismo tiempo sabe que no hay peligro real: el león es inofensivo <em>mientras él lo tenga bajo su dominio</em>. El padre reconoció en esas fantasías el cumplimiento de dos deseos que la realidad no le concedía: poseer un órgano genital como el suyo, y tener hijos. Con esas realizaciones imaginarias, anota Anna Freud, el niño recuperó el buen humor.</p>
+    <p>Lo que le interesa del episodio es el mecanismo. El niño no ignora la realidad — sabe perfectamente que es pequeño y que su padre es grande —, pero construye en paralelo un escenario donde la relación de fuerzas se invierte y él domina al animal temido. La fantasía no sustituye al mundo: lo <em>duplica</em> con signo contrario. Y el resultado es un alivio real, verificable en el ánimo.</p>
+    <p>De ahí extrae la respuesta al problema del §1. La negación en la fantasía es normal en el niño porque coexiste con el reconocimiento de la realidad y porque está limitada a un ámbito reservado — el juego, el ensueño —, del que el niño puede salir. Se vuelve patológica cuando invade el conjunto y deja de tener puerta. Es, en otro vocabulario, la «reserva natural» que su padre describió al hablar del principio de realidad: un territorio protegido, útil mientras siga siendo un territorio y no el país entero.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">§ 3</p>
+    <h2>La negación en actos y palabras</h2>
+    <p>El capítulo siguiente estudia lo que ocurre cuando esa corrección de la realidad sale de la cabeza y se representa <em>con el cuerpo o con la voz</em>.</p>
+    <p>El ejemplo que Anna Freud analiza es una figura que cualquiera reconoce y que precisamente por eso nadie considera un mecanismo de defensa: el <strong>«hombrecito»</strong>, el niño que se pone el sombrero y coge el bastón del padre y se pasea con ellos jugando a ser mayor. No lo consideramos anormal, observa; nos resulta familiar y hasta gracioso. Pero cuenta el caso de un paciente infantil suyo que, en su prehistoria, caía en un intenso mal humor cada vez que veía a un hombre grande y fuerte: entonces se ponía el sombrero del padre y empezaba a pasear, y mientras nadie le molestara en ese juego se sentía contento y feliz. La escenificación cumplía exactamente la misma función que la fantasía de Juanito, solo que representada.</p>
+    <p>La variante verbal es la misma operación hecha con palabras: el niño que anuncia sucesos deseados como si hubieran ocurrido — «¡mira cuántos huevos han puesto las gallinas!», «¡ahí está el coche que trae al tío!» — cuando ni las gallinas han puesto huevos ni el coche ha llegado. Y Anna Freud añade el detalle que hace del capítulo algo más que una curiosidad: los adultos <strong>colaboran</strong>. Acogen esas invenciones con risas y agasajos, se prestan al juego, lo alimentan. La negación infantil no es una operación solitaria: requiere un ambiente que la consienta, y en buena medida se aprende con él.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">§ 4</p>
+    <h2>La frontera</h2>
+    <p>Los dos capítulos convergen en una tesis que merece enunciarse aparte, porque es una de las más finas del libro. Estas defensas son <strong>normales y transitorias</strong>: dependen de que el yo del niño sea todavía débil frente a un mundo desproporcionado, y ceden a medida que crece su capacidad real de intervenir. Un yo que puede actuar sobre las cosas necesita menos negarlas.</p>
+    <p>Y el criterio para distinguirlas de sus versiones patológicas no es el contenido — un adulto puede fantasear lo mismo que un niño — sino tres rasgos formales: si la negación <em>coexiste</em> con el reconocimiento de la realidad o lo sustituye; si está <em>acotada</em> a un ámbito o lo invade todo; y si el sujeto puede <em>entrar y salir</em> a voluntad. Cuando las tres condiciones se cumplen, tenemos juego. Cuando fallan, empezamos a estar en otro sitio.</p>
+    <div class="nota">
+      <b>Un eco contemporáneo</b>
+      Este par de capítulos ha resultado inesperadamente actual. La psicología del desarrollo confirmó lo esencial de su observación: los niños distinguen con notable precisión lo fingido de lo real mientras invierten en lo fingido un afecto genuino, y el juego simbólico cumple funciones de regulación emocional documentadas. Lo que Anna Freud llamó «negación en la fantasía» se estudia hoy como afrontamiento imaginativo, y su tesis de que el recurso disminuye cuando aumenta la capacidad real de acción coincide con lo que se observa en el paso del afrontamiento centrado en la emoción al centrado en el problema.
+    </div>
+  </section>
+
+  <nav class="lnav"><a href="#lV">← Los motivos</a><span class="sp"></span><a href="#indice">Índice</a><a href="#lVII">La restricción del yo →</a></nav>
+</div></div>
+</article>
+
+<!-- ══════════════════════════ VII ══════════════════════════ -->
+<article class="leccion" id="lVII" data-num="VII" data-titulo="La restricción del yo">
+<div class="wrap">
+  <p class="kicker">Parte B · Lección VII</p>
+  <h1>La restricción del yo</h1>
+  <p class="sub">Dejar de hacer algo para no tener que sentirse mal haciéndolo.</p>
+  <p class="lesson-meta">Capítulo VIII · Lectura: ~12 minutos</p>
+  <div class="checker" aria-hidden="true"></div>
+  <div class="prose">
+
+  <section>
+    <p class="eyebrow">§ 1</p>
+    <h2>Una defensa que nadie había nombrado</h2>
+    <p>Este capítulo describe un mecanismo que es aportación propia de Anna Freud y que, una vez nombrado, se reconoce en todas partes. Consiste en lo siguiente: ante un displacer que procede de una comparación desfavorable — no soy tan bueno como él, no me sale como a los otros —, el yo no reprime nada ni niega nada. Simplemente <strong>abandona la actividad</strong>. Deja de dibujar, deja de jugar al fútbol, deja de cantar, deja de intentarlo. Y con la actividad desaparece el displacer.</p>
+    <p>El caso que ella refiere es el de un niño que dibujaba con gusto hasta que alguien más hábil dibujó a su lado; a partir de ese momento no volvió a coger un lápiz. No hubo síntoma, no hubo angustia visible, no hubo conflicto interno: hubo una retirada silenciosa. El yo se ha empequeñecido un poco, y a cambio ha eliminado una fuente de dolor.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">§ 2</p>
+    <h2>No es lo mismo que una inhibición</h2>
+    <p>Anna Freud dedica el tramo central del capítulo a una distinción que su índice anuncia expresamente — «divergencia entre inhibición y restricción del yo» — y que es de las más útiles del libro.</p>
+    <p>Una <strong>inhibición</strong> neurótica, en el sentido de Freud padre, es la renuncia a una función porque su ejercicio despertaría angustia: la función está cargada de significado conflictivo — escribir se ha vuelto peligroso porque la mano representa otra cosa —, y por eso la persona no puede hacerlo, aunque quiera. El conflicto es <em>interno</em> y el impedimento se vive como incapacidad.</p>
+    <p>Una <strong>restricción del yo</strong> es otra cosa: el motivo es <em>externo</em> — una comparación, un fracaso, una humillación — y la persona no es que no pueda, es que <em>ha dejado de querer</em>. No hay síntoma, no hay lucha, no hay sensación de estar impedido. La actividad simplemente ha salido del repertorio, y con frecuencia se acompaña de una racionalización tranquila: nunca me interesó, no se me da bien, prefiero otras cosas.</p>
+    <p>Por eso, observa Anna Freud, la restricción del yo <em>no produce neurosis</em>: produce empobrecimiento. No hay conflicto que resolver ni síntoma que interpretar, y por eso es mucho más difícil de detectar. Lo que se pierde no aparece en ninguna queja.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">§ 3</p>
+    <h2>Cuándo es normal y cuándo no</h2>
+    <p>El capítulo insiste en que el mecanismo es, en dosis moderadas, <strong>perfectamente normal y hasta necesario</strong>. Toda vida adulta consiste en parte en abandonar aptitudes en las que uno no destaca para concentrarse en otras: es lo que llamamos, con mejor prensa, elegir. Nadie puede sostener todas las actividades posibles, y la retirada selectiva es un acto de economía.</p>
+    <p>El problema aparece cuando el procedimiento se generaliza. Un yo que responde a cada comparación desfavorable retirándose acaba con un repertorio mínimo, encerrado en el estrecho territorio donde se siente seguro. Y el resultado no es una persona enferma sino una persona <em>reducida</em> — que ha comprado su tranquilidad al precio de casi todo lo demás.</p>
+    <p>De ahí que Anna Freud atienda al ambiente. El niño que abandona una actividad tras una comparación humillante estaba respondiendo a algo que ocurrió fuera, y el adulto que lo rodea tiene margen para intervenir. Es la vía pedagógica que ya asomaba en la Lección V: cuando el motivo de la defensa es externo, el motivo puede modificarse.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">§ 4</p>
+    <h2>La advertencia pedagógica</h2>
+    <p>Aquí conviene recoger un tramo del libro que suele sorprender a quien espera de la autora una defensa entusiasta de la educación permisiva: sus <em>reservas</em> ante las experiencias pedagógicas de su época. El índice mismo lo anuncia como «experiencias pedagógicas recientes malogradas por la subestimación» de los factores que el libro estudia.</p>
+    <p>El argumento es coherente con todo lo anterior. Los educadores de los años veinte y treinta, influidos por el psicoanálisis, habían supuesto que bastaba con retirar la severidad — menos prohibiciones, menos castigos, menos represión — para que los niños crecieran sin conflicto. Anna Freud objeta que eso solo actúa sobre <em>uno</em> de los cuatro motivos de la defensa, el de la angustia real. Quedan intactos los otros tres: el superyó ya formado, la incompatibilidad con la imagen de sí, y sobre todo la angustia ante la fuerza del propio instinto, que no procede de ninguna autoridad y que ningún ambiente amable puede suprimir. Un niño puede tener miedo de lo que siente aunque nadie le amenace.</p>
+    <p>La conclusión no es un alegato a favor de la severidad — ella fue toda su vida una reformadora — sino contra el optimismo simple: la educación puede reducir un motivo de conflicto, no abolir el conflicto. Es una posición que sigue siendo pertinente cada vez que se promete una crianza sin frustración.</p>
+  </section>
+
+  <nav class="lnav"><a href="#lVI">← La negación</a><span class="sp"></span><a href="#indice">Índice</a><a href="#lVIII">La identificación con el agresor →</a></nav>
+</div></div>
+</article>
+
+<!-- ══════════════════════════ VIII ══════════════════════════ -->
+<article class="leccion" id="lVIII" data-num="VIII" data-titulo="La identificación con el agresor">
+<div class="wrap">
+  <p class="kicker">Parte C · Lección VIII</p>
+  <h1>La identificación con el agresor</h1>
+  <p class="sub">El hallazgo por el que se la recuerda: convertirse en aquello que se teme.</p>
+  <p class="lesson-meta">Capítulo IX · Lectura: ~15 minutos</p>
+  <div class="checker" aria-hidden="true"></div>
+  <div class="prose">
+
+  <blockquote class="epigraph">
+    «Transformándose de amenazado en amenazador, el niño pasa del papel pasivo al activo.»
+    <span class="who">El yo y los mecanismos de defensa, capítulo IX</span>
+  </blockquote>
+
+  <section>
+    <p class="eyebrow">§ 1</p>
+    <h2>La escena</h2>
+    <p>El mecanismo más célebre del libro se ilustra con dos observaciones mínimas que conviene tener presentes porque toda la teoría sale de ellas.</p>
+    <p>La primera: una niña pequeña tiene miedo de cruzar sola el pasillo oscuro de su casa, donde cree que hay fantasmas. Un día lo atraviesa sin problema haciendo gestos extraños con las manos. Explicada la escena a otra niña, la primera le da la clave con la lógica implacable de la infancia: no hay por qué tener miedo, basta con <em>hacer los gestos del fantasma</em>. Ha dejado de ser la que se encuentra al fantasma para pasar a ser el fantasma que se encuentran los demás.</p>
+    <p>La segunda: un niño castigado por su maestro sale de la escena haciendo, sin darse cuenta, la misma mueca de cólera que acaba de recibir. No se está burlando — Anna Freud lo subraya —, está <em>ensayando</em> el gesto del otro con su propia cara, y en ese ensayo deja de padecerlo.</p>
+    <p>En ambos casos ocurre lo mismo, y en eso consiste el mecanismo: ante una amenaza, el yo <strong>se apropia de los rasgos del amenazador</strong> — su gesto, su tono, su agresividad, su papel — y con ello se sitúa del lado del poder en lugar del lado del daño. La operación es la que su padre había descrito con el carrete: el paso de la pasividad a la actividad. Solo que aquí lo que se repite activamente no es una escena, sino <em>una persona</em>.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">§ 2</p>
+    <h2>Cómo funciona por dentro</h2>
+    <p>Anna Freud descompone el proceso en dos movimientos que no siempre van juntos, y esa descomposición es lo que hace del capítulo teoría y no anécdota.</p>
+    <p>El primero es la <strong>identificación</strong> propiamente dicha: se incorporan los atributos del agresor. El segundo es la <strong>proyección</strong>: la agresividad, una vez incorporada, se dirige hacia fuera — hacia otras personas, generalmente más débiles, en quienes se coloca ahora el papel de culpable que uno ocupaba antes. Ella lo enuncia con nitidez: el uso de la identificación emparenta este mecanismo con el estudio de las primeras identificaciones, y el de la proyección lo conecta con el segundo grupo de fenómenos; y añade que ambos son, en sí mismos, formas <em>normales</em> del desarrollo, no invenciones patológicas.</p>
+    <p>La secuencia completa produce entonces un resultado que cualquiera reconoce: el niño criticado se vuelve severísimo con las faltas ajenas; el humillado busca a alguien a quien humillar; el que ha temido una autoridad se convierte en autoridad temible. Y una observación de la autora vale la pena aislarla: por esta vía, la crítica que se ha recibido se experimenta como <em>propia</em> — uno cree estar juzgando cuando está repitiendo.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">§ 3</p>
+    <h2>La consecuencia mayor: así se fabrica un superyó</h2>
+    <p>Lo que convierte este capítulo en pieza teórica de primer orden es que Anna Freud lo enlaza con la formación del superyó, y con ello ofrece una descripción <em>observable</em> de un proceso que en su padre era una construcción.</p>
+    <p>El razonamiento: si la identificación con el agresor consiste en interiorizar la crítica ajena y volverla propia, entonces es un <strong>estadio preliminar</strong> en la construcción de la conciencia moral. El niño que reproduce el gesto del maestro está haciendo, en pequeño y a la vista, exactamente lo que la teoría describe a gran escala cuando dice que la autoridad parental se introyecta y se convierte en superyó. La diferencia es de grado y de estabilidad: la identificación con el agresor es local, momentánea, todavía reversible; el superyó es su versión consolidada.</p>
+    <p>Y de ahí una consecuencia clínica valiosa: explica por qué la severidad del juez interior puede no guardar proporción con la de los padres reales. Lo que se interioriza no es solo lo que se recibió, sino lo que se necesitó incorporar para dejar de padecerlo — más la propia agresividad que se sumó en el trayecto. Su padre había llegado a lo mismo por vía especulativa en «El malestar en la cultura»; aquí hay una escena de pasillo.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">§ 4</p>
+    <h2>Lo que vino después</h2>
+    <p>Ningún concepto de este libro ha tenido un destino tan amplio, y conviene seguirlo con cuidado porque es también el más maltratado.</p>
+    <p>La primera prolongación fue histórica y terrible. <strong>Bruno Bettelheim</strong>, superviviente de Dachau y Buchenwald, describió en 1943 cómo algunos prisioneros de larga duración acababan adoptando gestos, actitudes e incluso fragmentos del uniforme de sus guardianes. La descripción encaja con el mecanismo de Anna Freud y contribuyó a difundirlo — aunque el testimonio de Bettelheim ha sido después objeto de discusión y su generalización, cuestionada.</p>
+    <p>La segunda es de vocabulario popular: la idea se ha fundido con lo que se llama <em>síndrome de Estocolmo</em>, y con explicaciones del ciclo de la violencia que sostienen que el maltratado se convierte en maltratador. Aquí hay que ser preciso, porque la divulgación ha ido bastante más lejos que los datos. Es cierto que haber sufrido maltrato en la infancia aumenta el riesgo de ejercerlo — pero la mayoría de las personas maltratadas <em>no</em> maltrata, y el determinismo de la fórmula «se convierte en» es falso. Y el llamado síndrome de Estocolmo nunca ha sido una categoría diagnóstica reconocida, ni cuenta con base empírica sólida; su popularidad procede más del periodismo que de la investigación.</p>
+    <p>Lo que <strong>sí</strong> ha resistido es el núcleo descriptivo: que la incorporación de rasgos del agresor es una manera reconocible de tramitar el desamparo; que el paso de la pasividad a la actividad alivia; y que la crítica recibida tiende a volverse crítica ejercida. Con ese alcance — el de una observación fértil, no el de una ley — el concepto sigue en uso en la clínica del trauma y en el estudio de las dinámicas de poder.</p>
+  </section>
+
+  <nav class="lnav"><a href="#lVII">← La restricción del yo</a><span class="sp"></span><a href="#indice">Índice</a><a href="#lIX">Una forma de altruismo →</a></nav>
+</div></div>
+</article>
+
+<!-- ══════════════════════════ IX ══════════════════════════ -->
+<article class="leccion" id="lIX" data-num="IX" data-titulo="Una forma de altruismo">
+<div class="wrap">
+  <p class="kicker">Parte C · Lección IX</p>
+  <h1>Una forma de altruismo</h1>
+  <p class="sub">Vivir los propios deseos en otro: la renuncia altruista.</p>
+  <p class="lesson-meta">Capítulo X · Lectura: ~13 minutos</p>
+  <div class="checker" aria-hidden="true"></div>
+  <div class="prose">
+
+  <section>
+    <p class="eyebrow">§ 1</p>
+    <h2>La operación</h2>
+    <p>El segundo mecanismo propio de Anna Freud es más sutil que el anterior y, en cierto sentido, más incómodo, porque toca algo que solemos considerar una virtud. Lo llama <strong>renuncia altruista</strong>, y consiste en esto: el sujeto no puede permitirse un deseo, pero tampoco lo reprime del todo. Lo <em>transfiere</em> a otra persona, lo proyecta en ella, y después se dedica con enorme energía a que <em>ese otro</em> lo consiga.</p>
+    <p>La estructura combina dos mecanismos ya conocidos. Hay <em>proyección</em> — el deseo se coloca fuera — y hay <em>identificación</em>, porque el sujeto sigue vinculado a él y participa de su satisfacción a través del otro. El resultado es una figura conocidísima: la persona abnegada que se desvive por el éxito ajeno, que se alegra sinceramente de él, y que a la vez no puede intentar nada por su cuenta.</p>
+    <p>Anna Freud lo distingue con cuidado de la simple represión: aquí el impulso <em>no</em> se ha destruido, sigue vivo y activo, solo que ha cambiado de titular. Y de la formación reactiva: no se ha transformado en su contrario, se ha delegado.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">§ 2</p>
+    <h2>El caso de la gobernanta</h2>
+    <p>El ejemplo que ella analiza es el de una joven institutriz que llegó a análisis y contó que en su infancia le preocupaban dos ideas: tener vestidos bonitos y tener muchos hijos. Ninguna de las dos aspiraciones se realizó en su vida: era una mujer modesta en el vestir, sin hijos propios, aparentemente sin ambición y sin apenas exigencias.</p>
+    <p>Lo que el análisis mostró es que esos deseos no habían desaparecido: se habían repartido. Se ocupaba apasionadamente de que sus amigas fueran bien vestidas, se interesaba de manera desproporcionada por sus vidas amorosas y sus embarazos, y empujaba a sus amigos varones hacia ambiciones profesionales que ella no se permitía. Anna Freud lo describe con precisión: transfería sus fantasías ambiciosas a sus amigos y sus deseos libidinales a sus amigas — y los amigos representaban en su afecto a los sucesores del padre y del hermano mayor.</p>
+    <p>Hay además un rendimiento secundario que ella subraya y que es de lo más agudo del capítulo: la delegación permite <em>ejercer agresividad</em> que de otro modo estaría prohibida. La paciente, incapaz de reclamar nada para sí, podía en cambio rebelarse con energía contra quien negara algo a la persona en cuyo favor había renunciado. Defendiendo al otro se permite uno una beligerancia que jamás se permitiría en nombre propio. Es la razón por la que hay personas dulcísimas consigo mismas y feroces cuando defienden a un tercero.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">§ 3</p>
+    <h2>Cyrano</h2>
+    <p>Para mostrar la figura en su forma pura, Anna Freud recurre a la literatura, y su elección es tan buena que se ha vuelto inseparable del concepto: <strong>Cyrano de Bergerac</strong>.</p>
+    <p>Cyrano ama a Roxana y se considera excluido por su fealdad. En lugar de intentarlo, pone todo su talento al servicio de un rival mejor parecido: escribe por él, habla por él, le sopla las palabras que han de asegurarle el éxito. La escena culminante es la del balcón nocturno, donde Cyrano, oculto en la oscuridad, toma el lugar del otro y habla en su nombre — y en el ardor de su propio enamoramiento <em>olvida que él no es el pretendiente</em>, para volver a la realidad, resignadamente, solo al final.</p>
+    <p>Ese olvido momentáneo es exactamente lo que Anna Freud quiere mostrar. En la renuncia altruista el deseo no está muerto: está a un paso de la superficie, y la satisfacción por delegación es una satisfacción de verdad. Por eso estas personas no viven su abnegación como un sacrificio — la viven como un amor.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">§ 4</p>
+    <h2>El uso, y sus límites</h2>
+    <p>El capítulo termina señalando dos aplicaciones y una precaución.</p>
+    <p>La primera aplicación es a las <strong>relaciones entre padres e hijos</strong>: la renuncia altruista describe con exactitud al progenitor que deposita en el hijo la carrera, el talento o la vida que él no tuvo, y que se entrega a ella con una energía desproporcionada. Es la misma observación que Freud padre había hecho al describir el amor parental como narcisismo revivido, vista ahora desde el lado de la renuncia.</p>
+    <p>La segunda es a las <strong>relaciones entre mujeres y hombres</strong> en la sociedad de su tiempo: Anna Freud señala que esta abdicación puede determinar el vínculo de la mujer con el hombre en detrimento de una relación de objeto genuina — una mujer que, impedida de perseguir sus propios planes, exige que él los cumpla en su lugar. Conviene leer ese pasaje en su contexto: describe con lucidez una posición forzada por las condiciones sociales de la Viena de entreguerras, aunque la explique en términos exclusivamente intrapsíquicos. Es el punto donde el libro más acusa su época.</p>
+    <p>Y la precaución: no todo altruismo es defensivo. Anna Freud está describiendo una variedad concreta, reconocible por dos rasgos — la <em>incapacidad</em> de perseguir el propio deseo y la <em>intensidad desproporcionada</em> del interés por el ajeno —, no emitiendo un juicio sobre la generosidad en general. Confundir ambas cosas es el error habitual de la divulgación psicoanalítica: convertir una descripción clínica en una sospecha universal.</p>
+    <div class="nota">
+      <b>Vigencia</b>
+      El concepto ha tenido descendencia con otros nombres. En la investigación sobre relaciones familiares se estudia como <em>parentalización</em> y como logro vicario; en la literatura sobre cuidadores, como abnegación patológica; y en el trabajo sobre codependencia — categoría discutida y de contornos borrosos — se reconoce el mismo perfil. Vaillant lo situó, en su jerarquía de defensas, entre las <em>maduras</em> cuando es moderado, lo que coincide con la posición de Anna Freud: es una operación costosa, pero infinitamente mejor que muchas otras.
+    </div>
+  </section>
+
+  <nav class="lnav"><a href="#lVIII">← La identificación con el agresor</a><span class="sp"></span><a href="#indice">Índice</a><a href="#lX">La pubertad →</a></nav>
+</div></div>
+</article>
+
+<!-- ══════════════════════════ X ══════════════════════════ -->
+<article class="leccion" id="lX" data-num="X" data-titulo="La pubertad: ascetismo e intelectualización">
+<div class="wrap">
+  <p class="kicker">Parte D · Lección X · Final</p>
+  <h1>La pubertad</h1>
+  <p class="sub">Ascetismo e intelectualización: el yo frente a una crecida.</p>
+  <p class="lesson-meta">Capítulos XI y XII y Conclusiones · Lectura: ~16 minutos</p>
+  <div class="checker" aria-hidden="true"></div>
+  <div class="prose">
+
+  <section>
+    <p class="eyebrow">§ 1</p>
+    <h2>Un desequilibrio, no una enfermedad</h2>
+    <p>La última parte del libro está dedicada al motivo de defensa más arcaico — la angustia ante la fuerza del instinto — y elige para estudiarlo el mejor laboratorio disponible: la <strong>pubertad</strong>.</p>
+    <p>El planteamiento de Anna Freud es económico y elegante. En la latencia se había alcanzado un equilibrio razonable entre las tres instancias. La pubertad rompe ese equilibrio no porque el yo se debilite, sino porque la <em>cantidad</em> de exigencia pulsional aumenta bruscamente. Es una crecida: el cauce sigue siendo el mismo y el caudal se ha multiplicado. De ahí que lo que se observa en el adolescente no sea propiamente una patología, sino un aparato psíquico en desproporción transitoria.</p>
+    <p>Y de ahí también su observación clínica sobre el pronóstico, que su padre recogería en 1937: cuando la fuerza instintiva disminuye, el yo se vuelve más complaciente; cuando aumenta, se endurece la defensa y se agudizan los síntomas. Lo que parece una transformación del carácter puede ser, simplemente, una variación de caudal.</p>
+    <p>Anna Freud aprovecha para insistir en algo que hoy suena moderno: el adolescente reprime como el neurótico, pero no <em>es</em> un neurótico, y confundir ambas cosas lleva a patologizar un proceso normal. La adecuación o inadecuación del recurso defensivo, y no su existencia, es lo que distingue un caso de otro.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">§ 2</p>
+    <h2>El ascetismo</h2>
+    <p>La primera de las dos actitudes que le llaman la atención — y que, dice, «causan viva extrañeza en el observador» — es el <strong>ascetismo del adolescente</strong>.</p>
+    <p>La describe con exactitud: alternando con los excesos y las irrupciones del ello, aparece en muchos adolescentes una desconfianza radical hacia todo placer, que no se dirige contra un impulso concreto sino contra <em>la vida instintiva entera</em>. No es la renuncia selectiva del neurótico, que sacrifica un deseo determinado; es una negativa general, que puede extenderse a la comida, al sueño, a la ropa, a la comodidad, al trato con otros. Un adolescente puede llegar a rechazar aquello que ni siquiera le está prohibido, simplemente porque le gusta.</p>
+    <p>La interpretación de Anna Freud es que ese ascetismo delata el antagonismo primario entre el yo y el instinto en su forma más pura: un yo que se siente amenazado por la magnitud de lo que le sube desde dentro y responde cerrando todas las compuertas a la vez, indiscriminadamente. No hay cálculo ni elección: hay pánico organizado en principio moral.</p>
+    <p>Añade un dato de pronóstico que suaviza el cuadro: el ascetismo puberal suele ser <em>transitorio</em> y alterna con lo contrario, de modo que el mismo joven que se niega todo puede entregarse poco después a un exceso. Lo preocupante no es la severidad sino la rigidez: cuando la actitud se estabiliza y deja de alternar, deja de ser una fase.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">§ 3</p>
+    <h2>La intelectualización</h2>
+    <p>La segunda actitud es la que ha hecho fortuna, y su descripción es una de las mejores páginas del libro.</p>
+    <p>Anna Freud parte de un hecho conocido: en la pubertad se produce un notable acrecentamiento de la vida intelectual, y los intereses concretos de la fase de latencia se vuelven hacia lo abstracto. El adolescente descubre la filosofía, la política, la religión, la teoría; discute durante horas sobre el amor, la libertad, el sentido de la vida, la justicia. Suele interpretarse como maduración del pensamiento. Ella propone otra cosa.</p>
+    <p>Su argumento es que ese pensamiento no está al servicio del conocimiento, sino de la <em>defensa</em>. La reflexión sobre el conflicto instintivo — su intelectualización — es un medio conveniente para dominarlo: se convierte lo que se siente en un problema que se piensa, y en el terreno de lo abstracto la excitación se vuelve manejable. El adolescente que teoriza sobre el amor está tramitando en un nivel psíquico distinto algo que en el nivel del cuerpo le desborda.</p>
+    <p>Y aquí Anna Freud hace la conexión teórica que da profundidad al capítulo: recuerda que la vinculación de los procesos instintivos y los afectos con <em>representaciones verbales</em> ha sido considerada en la metapsicología psicoanalítica como el paso fundamental hacia la dominación del instinto que el individuo debe dar durante su desarrollo. Poner en palabras es la operación que permite pensar en lugar de descargar. La intelectualización adolescente es una versión intensiva — y a veces exagerada — de esa misma operación.</p>
+    <p>De ahí un rasgo que ella observa y que cualquiera que trate con adolescentes reconoce: la desproporción entre la brillantez de sus construcciones y la escasa influencia que tienen sobre su conducta. Se teoriza magníficamente sobre lo que se sigue haciendo de cualquier manera. La función del pensamiento aquí no es guiar la acción, sino contener el afecto.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">§ 4</p>
+    <h2>El amor objetal y las identificaciones</h2>
+    <p>El tercer apartado del capítulo estudia el destino de los vínculos, y su análisis explica varias particularidades de la adolescencia que suelen desconcertar a los adultos.</p>
+    <p>El punto de partida es que las viejas relaciones con los objetos infantiles — los padres — se han vuelto peligrosas, porque la carga libidinal que ahora las acompaña las convierte en incestuosas. El adolescente rompe con ellas, y esa ruptura tiene un coste: el mundo exterior se <em>deslibidiniza</em>, queda vaciado de interés, y la libido retirada regresa al yo. De ahí el narcisismo característico de la edad, y de ahí también esa impresión de que el adolescente vive replegado sobre sí en el momento en que más socialmente activo parece.</p>
+    <p>Sobre ese fondo, Anna Freud describe las <strong>vinculaciones amorosas apasionadas y efímeras</strong> de la pubertad — esos enamoramientos absolutos que duran tres semanas — y propone entenderlas como <em>identificaciones primitivas</em> más que como amores de objeto en sentido pleno: uno se convierte en el otro, adopta sus gustos, su música, su vocabulario, su ropa. Y lee las relaciones tormentosas de la edad como <em>tentativas de curación</em> — intentos de volver a enganchar al mundo la libido que se ha replegado.</p>
+    <p>El conjunto compone un retrato que ha envejecido notablemente bien: la alternancia entre entrega y frialdad, entre idealización y desprecio, entre ascetismo y exceso, no como caprichos de carácter sino como oscilaciones de un aparato que está reorganizándose entero.</p>
+  </section>
+
+  <section>
+    <p class="eyebrow">§ 5</p>
+    <h2>Balance: qué queda de este libro</h2>
+    <p>Corresponde cerrar haciendo el inventario, y en este caso el resultado es más favorable que en casi cualquier otro texto psicoanalítico clásico.</p>
+    <p><strong>No se sostiene</strong> el aparato metapsicológico sobre el que todo esto se apoya: la economía de energías que se desplazan, la cronología estricta de los mecanismos, la explicación de la adolescencia por un aumento cuantitativo de libido — hoy se explicaría por maduración cerebral, cambios hormonales y reorganización de los sistemas de recompensa y control, con datos que Anna Freud no podía tener. Tampoco se sostiene la idea, muy de su escuela, de que la turbulencia adolescente sea universal e inevitable: la investigación longitudinal ha mostrado que una mayoría considerable de adolescentes atraviesa el período sin crisis notable, y que la «tormenta» era en parte un artefacto de observar solo a los que llegaban a consulta.</p>
+    <p><strong>Ha quedado</strong> mucho, y en tres niveles. Primero, el <em>vocabulario</em>: negación, proyección, racionalización, formación reactiva, intelectualización, identificación con el agresor son hoy palabras del lenguaje común, y su lista canónica sale de aquí. Segundo, el <em>programa</em>: mirar cómo alguien evita antes de mirar qué evita es una regla técnica que sobrevive en escuelas que nada tienen que ver con el psicoanálisis. Y tercero, el <em>objeto</em>: al convertir el yo en materia de estudio, este libro abrió la psicología del yo, que a través de Hartmann, Erikson y Vaillant conectó el psicoanálisis con la psicología del desarrollo y con la investigación empírica — la vía por la que algunas de estas ideas llegaron a contrastarse de verdad.</p>
+    <p>Y queda una virtud de estilo que merece señalarse, porque es rara en la literatura psicoanalítica: Anna Freud escribe con una sobriedad casi administrativa, sin metáforas grandiosas, sin especulación metabiológica, apoyándose una y otra vez en escenas mínimas — un pasillo oscuro, un sombrero de adulto, un niño que deja de dibujar. Su padre construyó una mitología magnífica y discutible. Ella se dedicó a mirar de cerca y a nombrar bien lo que veía. De las dos operaciones, la segunda ha necesitado menos correcciones.</p>
+  </section>
+
+  <div class="caja">
+    <b>Conceptos trabajados en este volumen</b>
+    <p>Yo, ello y superyó · defensa y resistencia · transferencia de la defensa · defensa contra los afectos · manifestaciones defensivas permanentes · represión · regresión · formación reactiva · aislamiento · anulación · proyección · introyección · vuelta contra la propia persona · transformación en lo contrario · sublimación · negación en la fantasía, en actos y en palabras · restricción del yo · identificación con el agresor · renuncia altruista · ascetismo · intelectualización.</p>
+  </div>
+
+  <div class="caja">
+    <b>Sobre la edición utilizada</b>
+    <p>Estas lecciones siguen «El yo y los mecanismos de defensa» (título original: <em>Das Ich und die Abwehrmechanismen</em>, Imago Verlag, Viena, 1936) en la edición castellana de Paidós, Buenos Aires, traducción de Y. P. de Cárcamo y C. E. Cárcamo. La estructura de las diez lecciones sigue la del libro: la parte A corresponde a los capítulos I a V, la B a los VI a VIII, la C a los IX y X, y la D a los XI y XII más las conclusiones.</p>
+  </div>
+
+  <nav class="lnav"><a href="#lIX">← Una forma de altruismo</a><span class="sp"></span><a href="#indice">Índice</a><a href="#portada">Portada ↑</a></nav>
+</div></div>
+</article>
+
+<footer><div class="wrap">
+  <div class="checker" aria-hidden="true"></div>
+  <p><strong>Sobre esta serie:</strong> antología explicativa del libro de Anna Freud. Cada lección expone las ideas en su propia lógica y señala cuando procede lo que la investigación posterior ha confirmado, discutido o abandonado.</p>
+  <p>Diez lecciones · Documento único y autónomo.</p>
+</div></footer>
+
+<button class="btn" id="top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Portada</button>
+
+<script>
+(function(){
+  var panel=document.getElementById('panel'),abrir=document.getElementById('abrir'),cerrar=document.getElementById('cerrar');
+  function open(){panel.classList.add('open');document.body.style.overflow='hidden';}
+  function close(){panel.classList.remove('open');document.body.style.overflow='';}
+  abrir.addEventListener('click',open);cerrar.addEventListener('click',close);
+  panel.addEventListener('click',function(e){if(e.target.closest('a'))close();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  var bar=document.getElementById('progress'),tbt=document.getElementById('tbt'),top=document.getElementById('top');
+  var arts=[].slice.call(document.querySelectorAll('.leccion'));
+  function onScroll(){
+    var h=document.documentElement,pct=h.scrollTop/(h.scrollHeight-h.clientHeight)*100;
+    bar.style.width=(pct||0)+'%';top.classList.toggle('show',h.scrollTop>600);
+    var a=null;for(var i=0;i<arts.length;i++){if(arts[i].getBoundingClientRect().top<=90)a=arts[i];}
+    tbt.innerHTML=a?'<b>'+a.getAttribute('data-num')+'</b> · '+a.getAttribute('data-titulo')
+                   :'Anna Freud · Los mecanismos de defensa';
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+})();
+</script>
+</body>
+</html>
