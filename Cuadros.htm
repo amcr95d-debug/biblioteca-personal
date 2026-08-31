@@ -1,1 +1,1448 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cuadernos de galería · Mis cuadros favoritos</title>
+<meta name="description" content="Colección privada de cuadros, con ficha, contexto, análisis y voces críticas sobre cada obra.">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#c7c2b9">
+<script>document.documentElement.className += ' js';</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Archivo:wght@400;500;600&display=swap">
+<style>
+/* ==========================================================================
+   Cuadernos de galería
+   Dos ambientes: la SALA (gris de museo, para mirar) y el PAPEL (para leer).
+   La pared es deliberadamente gris y desaturada: un fondo cálido y amarillo
+   desplaza el balance de blancos percibido de cada reproducción.
+   ========================================================================== */
 
+:root {
+  /* Sala */
+  --sala:        #c7c2b9;
+  --sala-alta:   #d3cec5;
+  /* Papel */
+  --papel:       #efece5;
+  --paspartu:    #f8f6f1;
+  /* Tinta */
+  --tinta:       #14130f;
+  --tinta-2:     #4c4840;
+  --tinta-3:     #736e64;
+  --regla:       #a49e93;
+  --regla-suave: #bdb7ac;
+  /* Acento: azul de cartela. No compite con la paleta de los cuadros. */
+  --azul:        #17415c;
+
+  --serif: 'Spectral', Georgia, 'Times New Roman', serif;
+  --sans:  'Archivo', system-ui, -apple-system, sans-serif;
+
+  --paso: cubic-bezier(.22,1,.36,1);
+  --medida: 66ch;              /* medida de lectura */
+  --altura-fila: clamp(150px, 20vw, 280px);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--sans);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--tinta);
+  background: var(--sala);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+/* La vista de obra vuelve al papel */
+body[data-vista="obra"] { background: var(--papel); }
+
+::selection { background: var(--azul); color: #fff; }
+a { color: inherit; text-decoration: none; }
+img { display: block; }
+
+:focus-visible {
+  outline: 2px solid var(--azul);
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
+.salto-contenido {
+  position: absolute; left: -9999px; top: 0;
+  background: var(--azul); color: #fff;
+  padding: .7rem 1.1rem; z-index: 100;
+  font-family: var(--sans); font-size: .8rem; letter-spacing: .06em;
+}
+.salto-contenido:focus { left: 1rem; top: 1rem; }
+
+/* --------------------------------------------------------------- tipografía */
+
+h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
+
+.rotulo {
+  font-family: var(--sans);
+  font-size: .688rem;
+  font-weight: 500;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--azul);
+}
+.rotulo--tenue { color: var(--tinta-3); }
+
+.regla-corta {
+  width: 2.4rem; height: 1px; background: var(--azul);
+  margin: 1.1rem 0 1.3rem;
+}
+
+/* ------------------------------------------------------------------- envase */
+
+.envase { width: min(100% - 3rem, 1440px); margin-inline: auto; }
+@media (max-width: 640px) { .envase { width: min(100% - 2rem, 1440px); } }
+
+/* -------------------------------------------------------------- cartela sala */
+
+.sala-cabecera {
+  display: grid;
+  grid-template-columns: minmax(0, 26rem) minmax(0, 1fr);
+  gap: 3rem 5rem;
+  align-items: start;
+  padding: clamp(3rem, 8vw, 6.5rem) 0 clamp(2.5rem, 5vw, 4rem);
+}
+.sala-cabecera h1 {
+  font-size: clamp(2.1rem, 4.4vw, 3.4rem);
+  letter-spacing: -.015em;
+}
+.sala-cabecera h1 em { font-style: italic; color: var(--azul); }
+
+.sala-texto { max-width: var(--medida); }
+.sala-texto p {
+  font-family: var(--serif);
+  font-size: clamp(1rem, 1.35vw, 1.12rem);
+  line-height: 1.72;
+  color: var(--tinta-2);
+}
+.sala-texto p + p { margin-top: 1.1rem; }
+.sala-texto .lede { color: var(--tinta); font-size: clamp(1.06rem, 1.5vw, 1.22rem); }
+
+@media (max-width: 900px) {
+  .sala-cabecera { grid-template-columns: 1fr; gap: 2rem; }
+}
+
+/* ------------------------------------------------------------------ mandos */
+
+.mandos {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 1.2rem 2rem;
+  padding: 1.1rem 0;
+  border-top: 1px solid var(--regla);
+  border-bottom: 1px solid var(--regla);
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
+}
+.mandos-grupo { display: flex; align-items: baseline; gap: .85rem; }
+.mandos-grupo > .rotulo { flex: none; }
+.mandos-cuenta { margin-left: auto; }
+
+.boton {
+  font-family: var(--sans);
+  font-size: .75rem; font-weight: 500;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--tinta-2);
+  background: none; border: 0; cursor: pointer;
+  padding: .25rem 0;
+  border-bottom: 1px solid transparent;
+  transition: color .25s var(--paso), border-color .25s var(--paso);
+}
+.boton:hover { color: var(--azul); }
+.boton[aria-pressed="true"], .boton[aria-selected="true"] {
+  color: var(--azul); border-bottom-color: var(--azul);
+}
+
+/* ------------------------------------------------------------- el colgado */
+
+.cabecera-seccion { margin-bottom: clamp(2.2rem, 4vw, 3.4rem); }
+.titulo-seccion {
+  font-family: var(--serif); font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  letter-spacing: -.01em;
+}
+.linea-orden {
+  font-family: var(--serif); font-style: italic; font-size: 1rem;
+  color: var(--tinta-2); margin-top: .5rem;
+}
+
+.rejilla {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));
+  gap: clamp(3rem, 5vw, 5rem) clamp(1.5rem, 3vw, 3rem);
+  align-items: end;
+  padding-bottom: clamp(4rem, 8vw, 7rem);
+}
+
+.obra { display: block; }
+.obra:hover, .obra:focus-within { position: relative; z-index: 5; }
+
+/* La imagen manda: nunca se recorta ni se deforma un cuadro para encajarlo
+   en una retícula. La caja solo alinea; el marco es la propia lámina. */
+.obra-caja {
+  display: flex; align-items: flex-end; justify-content: center;
+  height: var(--altura-fila);
+}
+.obra-caja > * {
+  max-height: 100%; max-width: 100%; width: auto; height: auto;
+  position: relative; z-index: 1;
+  background: var(--sala-alta);
+  box-shadow: inset 0 0 0 1px rgba(20,19,15,.18),
+              0 12px 26px -18px rgba(20,15,8,.6);
+  transform-origin: bottom center;
+  transition: transform .55s var(--paso), box-shadow .55s var(--paso), z-index 0s .55s;
+}
+.obra-caja > img { object-fit: contain; }
+
+/* «Pasa el cursor para verla en mayor tamaño»: la promesa, cumplida.
+   El retardo evita que la página salte al mover el ratón de paso. */
+@media (hover: hover) and (pointer: fine) {
+  .obra:hover .obra-caja > *,
+  .obra:focus-visible .obra-caja > * {
+    transform: scale(1.42);
+    box-shadow: inset 0 0 0 1px rgba(20,19,15,.3),
+                0 30px 55px -22px rgba(20,15,8,.7);
+    z-index: 5;
+    transition-delay: .18s, .18s, 0s;
+  }
+}
+
+/* lámina ausente: honesta, no una foto de relleno */
+.lamina-ausente {
+  height: 100%;
+  aspect-ratio: var(--ratio, 4 / 3);
+  display: grid; place-content: center; gap: .4rem;
+  background:
+    repeating-linear-gradient(135deg,
+      transparent 0 9px, rgba(23,65,92,.07) 9px 10px),
+    var(--sala-alta);
+  text-align: center; padding: 1rem;
+}
+.lamina-ausente .rotulo { color: var(--tinta-3); font-size: .625rem; }
+.paspartu .lamina-ausente { width: 100%; height: auto; }
+
+.obra-cartela { margin-top: 1.1rem; padding-left: .85rem; position: relative; }
+.obra-cartela::before {
+  content: ''; position: absolute; left: 0; top: .35em; bottom: .3em;
+  width: 1px; background: var(--azul);
+  transform: scaleY(0); transform-origin: top;
+  transition: transform .45s var(--paso);
+}
+.obra:hover .obra-cartela::before,
+.obra:focus-visible .obra-cartela::before { transform: scaleY(1); }
+
+.obra-titulo {
+  font-family: var(--serif); font-style: italic; font-size: 1.08rem;
+  line-height: 1.3; color: var(--tinta);
+}
+.obra-autor {
+  font-size: .7rem; letter-spacing: .09em; text-transform: uppercase;
+  color: var(--tinta-3); margin-top: .3rem;
+}
+.obra-autor .anno::before { content: ' · '; color: var(--azul); }
+
+/* -------------------------------------------------- vista de escala (firma) */
+
+.escala { margin-bottom: clamp(3rem, 6vw, 5rem); }
+.escala[hidden] { display: none; }
+
+.escala-lienzo {
+  position: relative;
+  overflow-x: auto;
+  overflow-y: hidden;
+  background: linear-gradient(var(--sala-alta), var(--sala));
+  border-top: 1px solid var(--regla-suave);
+  padding-bottom: 2.6rem;
+  scrollbar-width: thin;
+}
+.escala-pared {
+  position: relative;
+  height: var(--pared, 420px);
+  display: flex; align-items: flex-end; gap: clamp(1rem, 2vw, 2rem);
+  padding: 0 clamp(1rem, 3vw, 2.5rem);
+  width: max-content; min-width: 100%;
+  border-bottom: 2px solid var(--tinta-2);
+}
+.escala-obra { position: relative; display: block; }
+.escala-obra .caja {
+  position: absolute; left: 0; bottom: var(--suelo);
+  width: var(--w); height: var(--h);
+  background: var(--sala-alta);
+  box-shadow: inset 0 0 0 1px rgba(20,19,15,.28), 0 8px 18px -12px rgba(20,15,8,.6);
+  overflow: hidden;
+  transition: outline-color .2s;
+  outline: 2px solid transparent; outline-offset: 2px;
+}
+.escala-obra:hover .caja, .escala-obra:focus-visible .caja { outline-color: var(--azul); }
+.escala-obra .caja img { width: 100%; height: 100%; object-fit: cover; }
+.escala-pared .pie {
+  position: absolute; bottom: -1.6rem; left: 0;
+  font-size: .625rem; letter-spacing: .06em; color: var(--tinta-3);
+  white-space: nowrap;
+  max-width: 14ch; overflow: hidden; text-overflow: ellipsis;
+}
+.escala-figura { position: relative; flex: none; }
+.escala-figura .pie { max-width: none; }
+.escala-figura svg { position: absolute; bottom: 0; left: 0; }
+.escala-marcas { position: absolute; inset: 0; pointer-events: none; }
+.escala-marca {
+  position: absolute; left: 0; right: 0; border-top: 1px dashed var(--regla);
+  opacity: .8;
+}
+.escala-marca span {
+  position: absolute; left: .4rem; top: -1.1rem;
+  font-size: .625rem; letter-spacing: .08em; color: var(--tinta-3);
+  background: var(--sala-alta); padding: 0 .3rem;
+}
+.escala-nota {
+  font-family: var(--serif); font-style: italic; font-size: .95rem;
+  color: var(--tinta-2); margin-top: 2.6rem; max-width: var(--medida);
+}
+
+/* ------------------------------------------------------------------- pie */
+
+.pie-sitio {
+  border-top: 1px solid var(--regla);
+  padding: clamp(3rem, 6vw, 5rem) 0 clamp(2.5rem, 4vw, 4rem);
+  display: grid; grid-template-columns: minmax(0, 26rem) minmax(0, 1fr);
+  gap: 2rem 5rem;
+}
+.pie-sitio p {
+  font-family: var(--serif); font-style: italic;
+  color: var(--tinta-2); max-width: 34ch;
+}
+.pie-datos {
+  font-size: .688rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--tinta-3); align-self: end;
+}
+@media (max-width: 900px) { .pie-sitio { grid-template-columns: 1fr; } }
+
+/* =========================================================== vista de obra */
+
+.vista-obra { padding-bottom: clamp(4rem, 8vw, 7rem); }
+.vista-obra[hidden] { display: none; }
+
+.barra-obra {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1.5rem; padding: 1.4rem 0;
+  border-bottom: 1px solid var(--regla-suave);
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+}
+.volver {
+  display: inline-flex; align-items: center; gap: .6rem;
+  font-size: .75rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--tinta-2);
+  padding: .3rem 0; border-bottom: 1px solid transparent;
+  transition: color .25s var(--paso), border-color .25s var(--paso);
+}
+.volver:hover { color: var(--azul); border-bottom-color: var(--azul); }
+.volver .flecha { transition: transform .35s var(--paso); }
+.volver:hover .flecha { transform: translateX(-4px); }
+.barra-pos { font-size: .688rem; letter-spacing: .12em; color: var(--tinta-3); }
+
+.obra-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+  gap: clamp(2.5rem, 5vw, 5rem);
+  align-items: start;
+}
+@media (max-width: 980px) { .obra-grid { grid-template-columns: 1fr; } }
+
+.columna-imagen { position: sticky; top: 1.5rem; }
+@media (max-width: 980px) { .columna-imagen { position: static; } }
+
+.lamina { margin: 0; }
+.lamina + .lamina { margin-top: 2.5rem; }
+.lamina .paspartu {
+  background: var(--paspartu);
+  padding: clamp(1rem, 2.5vw, 2.2rem);
+  box-shadow: 0 1px 0 rgba(255,255,255,.6) inset,
+              0 24px 50px -30px rgba(20,15,8,.6);
+}
+.lamina img {
+  width: 100%; height: auto;
+  max-height: calc(100vh - 12rem);
+  object-fit: contain;
+  margin-inline: auto;
+  box-shadow: 0 2px 14px -6px rgba(20,15,8,.5);
+}
+.lamina figcaption {
+  margin-top: 1rem;
+  font-family: var(--serif); font-style: italic; font-size: .9rem;
+  color: var(--tinta-3); line-height: 1.5;
+}
+
+.ficha-cabeza { padding-bottom: 1.8rem; border-bottom: 1px solid var(--regla-suave); }
+.ficha-titulo {
+  font-family: var(--serif); font-style: italic;
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  line-height: 1.12; margin: .9rem 0 .5rem;
+}
+.ficha-autor {
+  font-family: var(--serif); font-size: 1.1rem; color: var(--tinta-2);
+}
+.ficha-autor .sep { color: var(--azul); margin: 0 .55rem; }
+
+.ficha { margin: 1.8rem 0 0; display: grid; grid-template-columns: 9rem 1fr; gap: .1rem 1.5rem; }
+.ficha dt {
+  font-size: .625rem; font-weight: 500; letter-spacing: .16em; text-transform: uppercase;
+  color: var(--tinta-3); padding-top: .55rem;
+}
+.ficha dd {
+  font-family: var(--serif); font-size: 1.02rem; color: var(--tinta);
+  padding-top: .35rem;
+}
+@media (max-width: 480px) { .ficha { grid-template-columns: 1fr; gap: 0 0; } .ficha dd { margin-bottom: .7rem; } }
+
+.escala-mini {
+  margin-top: 1.8rem; padding-top: 1.4rem; border-top: 1px dotted var(--regla-suave);
+  display: flex; align-items: flex-end; gap: 1rem;
+}
+.escala-mini svg { flex: none; }
+.escala-mini p {
+  font-family: var(--serif); font-style: italic; font-size: .9rem; color: var(--tinta-3);
+}
+
+.seccion { margin-top: 2.6rem; padding-top: 2.2rem; border-top: 1px solid var(--regla-suave); }
+.seccion > h2 {
+  font-family: var(--serif); font-style: italic; font-size: 1.28rem;
+  color: var(--azul); margin-bottom: 1.3rem;
+}
+
+.prosa { max-width: var(--medida); }
+.prosa p {
+  font-family: var(--serif); font-size: 1.06rem; line-height: 1.76; color: var(--tinta);
+}
+.prosa p + p { margin-top: 1.1rem; }
+.prosa strong { font-weight: 600; }
+.prosa em { font-style: italic; }
+.prosa .subtitulo {
+  display: block;
+  font-family: var(--sans); font-size: .688rem; font-weight: 600; line-height: 1.4;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--azul);
+  margin: 2rem 0 .8rem;
+}
+.prosa > .subtitulo:first-child { margin-top: 0; }
+
+.voz { position: relative; padding-left: 1.8rem; margin-top: 2.2rem; }
+.voz:first-of-type { margin-top: 0; }
+.voz::before {
+  content: ''; position: absolute; left: 0; top: .45em; bottom: .3em;
+  width: 2px; background: var(--azul); opacity: .35;
+}
+.voz blockquote { max-width: var(--medida); }
+.voz blockquote p {
+  font-family: var(--serif); font-style: italic; font-size: 1.06rem;
+  line-height: 1.72; color: var(--tinta);
+}
+.voz blockquote p + p { margin-top: 1rem; }
+.voz figcaption { margin-top: .9rem; }
+.voz .quien {
+  font-size: .688rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--tinta-2);
+}
+.voz .quien::before { content: '— '; color: var(--azul); }
+.voz .fuente {
+  display: block; margin-top: .35rem;
+  font-family: var(--serif); font-style: italic; font-size: .9rem; color: var(--tinta-3);
+}
+
+.paso-obras {
+  margin-top: 3rem; padding-top: 1.6rem; border-top: 1px solid var(--regla-suave);
+  display: flex; justify-content: space-between; gap: 1.5rem;
+}
+.paso-obras a {
+  font-size: .7rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--tinta-2); max-width: 45%;
+  transition: color .25s var(--paso);
+}
+.paso-obras a:hover { color: var(--azul); }
+.paso-obras a:last-child { text-align: right; }
+
+/* ------------------------------------------------------------- animaciones */
+
+/* La ocultación previa a la animación solo se aplica si el JS está vivo:
+   si algo falla, el contenido sigue visible en lugar de desaparecer. */
+.js [data-anima] {
+  opacity: 0; transform: translateY(20px);
+  transition: opacity .8s var(--paso), transform .8s var(--paso);
+}
+.js [data-anima].visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+  .js [data-anima] { opacity: 1 !important; transform: none !important; }
+}
+@media (pointer: coarse) {
+  .obra:hover .obra-caja > * { transform: none; }
+}
+
+/* ----------------------------------------------------------------- imprenta */
+
+@media print {
+  body, body[data-vista="obra"] { background: #fff; color: #000; }
+  .mandos, .paso-obras, .barra-obra, .salto-contenido, .escala { display: none !important; }
+  .obra-grid { grid-template-columns: 1fr; }
+  .columna-imagen { position: static; }
+  .lamina .paspartu { padding: 0; box-shadow: none; }
+  .lamina img { max-height: 12cm; box-shadow: none; }
+  .seccion { break-inside: avoid; border-top: .5pt solid #999; }
+  .prosa p, .voz blockquote p { font-size: 10.5pt; line-height: 1.5; }
+  a[href^="http"]::after { content: ' (' attr(href) ')'; font-size: 8pt; }
+}
+</style>
+</head>
+<body data-vista="galeria">
+
+<a class="salto-contenido" href="#coleccion">Saltar a la colección</a>
+
+<main class="envase" id="vista-galeria">
+
+  <header class="sala-cabecera">
+    <div data-anima>
+      <p class="rotulo">Cuadernos de galería · Volumen I</p>
+      <div class="regla-corta"></div>
+      <h1>Una colección privada de <em>cuadros favoritos</em></h1>
+    </div>
+    <div class="sala-texto" data-anima>
+      <p class="lede">No soy historiador de arte ni crítico. Solo soy alguien que durante años ha recopilado imágenes de cuadro, ha entrado en salas de museos, y ha leído libros sobre arte. A veces buscando algo en concreto, la mayoría sin saber por qué. Esta página reúne algunos de los cuadros que más me han acompañado. Algunos los he visto en museos. Otros los he visto en libros, en Internet, en una película. Solo quiero tenerlos, en un lugar tranquilo.</p>
+      <p>Pasa el cursor por cada miniatura para verla en mayor tamaño. Si quieres leer la ficha y mis notas, haz clic: te llevará a una página aparte con el cuadro en su tamaño original.</p>
+    </div>
+  </header>
+
+  <div class="mandos">
+    <div class="mandos-grupo">
+      <span class="rotulo rotulo--tenue" id="rot-orden">Orden</span>
+      <button type="button" class="boton" data-orden="afinidad" aria-pressed="true">Afinidad</button>
+      <button type="button" class="boton" data-orden="cronologia" aria-pressed="false">Cronología</button>
+    </div>
+    <div class="mandos-grupo">
+      <span class="rotulo rotulo--tenue">Vista</span>
+      <button type="button" class="boton" id="btn-escala" aria-pressed="false" aria-controls="escala">Comparar tamaños</button>
+    </div>
+    <span class="mandos-cuenta rotulo rotulo--tenue" id="cuenta"></span>
+  </div>
+
+  <section class="escala" id="escala" hidden aria-labelledby="escala-titulo">
+    <h2 class="rotulo" id="escala-titulo">Las obras a la misma escala</h2>
+    <div class="regla-corta"></div>
+    <div class="escala-lienzo" tabindex="0" role="group" aria-label="Comparación de tamaños, desplazable en horizontal">
+      <div class="escala-pared" id="escala-pared"></div>
+    </div>
+    <p class="escala-nota" id="escala-nota"></p>
+  </section>
+
+  <section id="coleccion" aria-labelledby="titulo-coleccion">
+    <header class="cabecera-seccion" data-anima>
+      <p class="rotulo">La colección</p>
+      <div class="regla-corta"></div>
+      <h2 class="titulo-seccion" id="titulo-coleccion"></h2>
+      <p class="linea-orden" id="linea-orden">Ordenados por afinidad, no por cronología.</p>
+    </header>
+    <div class="rejilla" id="rejilla"></div>
+  </section>
+
+  <footer class="pie-sitio">
+    <div data-anima>
+      <p class="rotulo">Cuadernos de galería</p>
+      <div class="regla-corta"></div>
+      <p>Una página sin prisa, hecha para volver a ella cuando haga falta volver a ver algo hermoso.</p>
+    </div>
+    <p class="pie-datos" id="pie-datos"></p>
+  </footer>
+
+</main>
+
+<main class="vista-obra envase" id="vista-obra" hidden>
+  <div class="barra-obra">
+    <a class="volver" href="#" id="volver"><span class="flecha" aria-hidden="true">←</span> Volver a la sala</a>
+    <span class="barra-pos" id="barra-pos"></span>
+  </div>
+  <article class="obra-grid">
+    <div class="columna-imagen" id="columna-imagen"></div>
+    <div class="columna-ficha" id="columna-ficha"></div>
+  </article>
+</main>
+
+<script type="application/json" id="datos-coleccion">[
+  {
+    "slug": "grandes-banistas",
+    "title": "Las grandes bañistas",
+    "artist": "Paul Cézanne",
+    "year": "h. 1894-1905",
+    "anio": 1894,
+    "technique": "Óleo sobre lienzo",
+    "dimensions": "127,2 × 196,1 cm",
+    "alto": 127.2,
+    "ancho": 196.1,
+    "movement": "Postimpresionismo",
+    "location": "National Gallery, Londres",
+    "img": {
+      "drive": "1t-WpE88L_-JH-kpmNEVfKdbrk5nHtYhR",
+      "commons": null,
+      "url": null
+    },
+    "detalle": null,
+    "description": "La pintura representa a once figuras desnudas simplificadas en un paisaje boscoso bajo un cielo azul.",
+    "context": null,
+    "analysis": null,
+    "voices": [
+      {
+        "author": "Roger Fry",
+        "year": "1927",
+        "source": null,
+        "text": "El diseño se basa en direcciones rectangulares, paralelogramos y pirámides. Y estas formas están situadas en el espacio del cuadro con esa impresionante definición, ese reposo imperturbable del cual Cézanne había descubierto el secreto."
+      },
+      {
+        "author": "Thomas MacDonald",
+        "year": "1995",
+        "source": "Un lenguaje visual del erotismo: violencia y sexualidad en Los bañistas masculinos de Cézanne",
+        "text": "El empuje vertical encuentra resonancia en los árboles del fondo, cuyos afilados troncos se disparan hacia arriba y a través de la línea de nubes, lo que no solo refuerza el potencial de las figuras para una expresión violenta, sino que también señala su relación con su entorno. Una vez más vemos el uso de lo femenino para ejercitar lo masculino: estos bañistas masculinos están utilizando y pisoteando activamente la naturaleza. De hecho, las figuras parecen imponer su sexualidad sobre el espacio a través de sus distintas posturas, que muestran de manera casi burlona todos los ángulos del cuerpo masculino y cubren casi la totalidad del paisaje natural, un espacio generificado como femenino. [...] En Les Baigneurs, esta técnica refuerza la violenta intrusión de los bañistas masculinos en un espacio femenino; las figuras, delineadas en negro, parecen transpuestas sobre la escena natural, y sus movimientos superpuestos y conflictivos son el resultado directo de su torpe afirmación y de su condición de extranjeros."
+      }
+    ]
+  },
+  {
+    "slug": "desollamiento-marsias",
+    "title": "El desollamiento de Marsias",
+    "artist": "Tiziano",
+    "year": "1576",
+    "anio": 1576,
+    "technique": "Óleo sobre lienzo",
+    "dimensions": "212 × 207 cm",
+    "alto": 212,
+    "ancho": 207,
+    "movement": "Manierismo",
+    "location": "Palacio Arzobispal de Kroměříž, República Checa",
+    "img": {
+      "drive": "1SYWxAobJqHHHupQ9Kfly84jMjCN49O47",
+      "commons": null,
+      "url": null
+    },
+    "detalle": null,
+    "description": null,
+    "context": null,
+    "analysis": null,
+    "voices": [
+      {
+        "author": "Iris Murdoch",
+        "year": null,
+        "source": "Entrevista con la BBC",
+        "text": "\"El desollamiento de Marsias tiene «algo que ver con la vida humana y todas sus ambigüedades y todos sus horrores y terrores y miserias», le dijo a la BBC, «y al mismo tiempo hay algo bello, el cuadro es bello, y también algo que ver con la entrada de lo espiritual en la situación humana y la cercanía de los dioses... Considero a Dioniso, en cierto sentido, como parte de la mente de Apolo... y quiero exaltar a Apolo como un dios que es un dios terrible, pero también un gran artista y pensador y una gran fuente de vida»."
+      },
+      {
+        "author": "Ovidio",
+        "year": null,
+        "source": "Las Metamorfosis",
+        "text": "Mientras grita, la piel es desollada de la superficie de su cuerpo, ninguna parte queda intacta. La sangre fluye por todas partes, los tendones expuestos son visibles, y las venas temblorosas se estremecen, sin piel que las oculte: puedes contar los órganos internos, y las fibras de los pulmones, claramente visibles en su pecho. Los dioses de los bosques, y los faunos del campo, lloraron... El suelo fértil quedó empapado, y la tierra empapada recogió las lágrimas que caían, y las absorbió en sus venas profundas."
+      },
+      {
+        "author": "Dan Piepenbring",
+        "year": null,
+        "source": null,
+        "text": "\"¿Sabía Tiziano que la vida humana era realmente terrible?\", escribe Murdoch en Henry y Cato, \"que no era sino un matadero?\" Respuesta breve: sí.\n\nNo es de extrañar que Murdoch, cuyas novelas son meditaciones sobre la crueldad, se sintiera tan atraída por la pintura de Tiziano. Esta lleva el mismo peso moral que ella aportó a su ficción. \"Un novelista está obligado a expresar valores\", dijo en su entrevista de Paris Review, \"y creo que debería ser consciente de que es, en cierto sentido, un moralista obligado\". Y hay algo obligadamente moral en El desollamiento, que exige que el espectador se enfrente a un sufrimiento físico intenso y lo juzgue como correcto o incorrecto."
+      },
+      {
+        "author": "Harold Bloom",
+        "year": null,
+        "source": null,
+        "text": "Recuerdo haber contemplado el cuadro de Tiziano que muestra el desollamiento de Marsias por Apolo cuando fue exhibido en Washington D.C. Abrumado y sobrecogido, sólo pude asentir con la cabeza ante el comentario de mi acompañante, el pintor norteamericano Larry Day, de que el cuadro poseía algo de la intensidad y el efecto que produce el acto final de El rey Lear. Ese Tiziano estaba en San Petersburgo, y Tolstói pudo verlo; no recuerdo ningún comentario concreto, pero presumiblemente él también habría concebido la imagen de Tiziano de ese horror, de ese final prometido."
+      }
+    ]
+  },
+  {
+    "slug": "coloso",
+    "title": "El coloso",
+    "artist": "Atribuido a Francisco de Goya",
+    "year": "Después de 1808",
+    "anio": 1808,
+    "technique": "Óleo sobre lienzo",
+    "dimensions": "116 × 105 cm",
+    "alto": 116,
+    "ancho": 105,
+    "movement": null,
+    "location": "Museo del Prado, Madrid (sala 064)",
+    "img": {
+      "drive": null,
+      "commons": "El coloso.jpg",
+      "url": null
+    },
+    "detalle": null,
+    "description": null,
+    "context": null,
+    "analysis": null,
+    "voices": [
+      {
+        "author": "Visual Arts Cork",
+        "year": null,
+        "source": "visual-arts-cork.com",
+        "text": "The dramatic impact of The Colossus lies in its fundamental uncertainty. We have absolutely no idea if the giant has harmed anyone or anything. It is not necessary for him to have done so to create this terrified exodus. Here is this hostile being of unimaginable size, who at any moment could swing around and crush people, wagons and animals with his massive limbs."
+      },
+      {
+        "author": "Carlos Foradada",
+        "year": null,
+        "source": "El ostracismo de Goya en El Coloso",
+        "text": "«...hay que tener en cuenta, como indicó en su momento Cézanne, que el verdadero pintor no elabora tanto los objetos, cuanto el aire que se interpone entre dichos elementos y nosotros. Este fue realmente el objetivo [...], dado que el cuerpo del coloso, a pesar de su enorme dimensión, se encuentra en el fondo del paisaje, tras las nubes del horizonte. Por esta razón su figura debe emanar del mismo aire que configura el paisaje, de tal modo que la distancia sea verosímil a pesar de su extraordinario tamaño»"
+      },
+      {
+        "author": "Sarah Symmons",
+        "year": null,
+        "source": null,
+        "text": "His analysis in paint, chalk and ink of mass disaster and human frailty pointed to someone obsessed with the chaos of existence."
+      },
+      {
+        "author": "André Malraux",
+        "year": "1950",
+        "source": "Saturne. Le destin, l'art et Goya (trad. inglesa: Saturn: An Essay on Goya, 1957)",
+        "text": "Loneliness has its limits, for Goya was not a prophet but a painter. If he had not been a painter his attitude to life would have found expression only in preaching or suicide."
+      }
+    ]
+  },
+  {
+    "slug": "picnic",
+    "title": "Picnic",
+    "artist": "Larry Day",
+    "year": "1970-75",
+    "anio": 1970,
+    "technique": "Óleo sobre lienzo",
+    "dimensions": null,
+    "alto": null,
+    "ancho": null,
+    "movement": "Realismo americano",
+    "location": "Colección privada",
+    "img": {
+      "drive": "1YQp5IbTSGgDJp2q0C77uQPVPVDo4VMiU",
+      "commons": null,
+      "url": null
+    },
+    "detalle": {
+      "drive": "1xtVvoHL480GGf-X4PoQoHau1h7j8J9aq",
+      "pie": "Detalle"
+    },
+    "description": null,
+    "context": null,
+    "analysis": null,
+    "voices": [
+      {
+        "author": "Larry Day",
+        "year": null,
+        "source": null,
+        "text": "Soy un realista hasta cierto punto: utilizo normas relativas en las que todo es reconocible, pero en realidad no son imitaciones directas de figuras, lugares o cosas. Son comentarios, actitudes o iluminaciones sobre ellos. Por lo tanto, busco un cierto distanciamiento entre la imagen y el objeto representado."
+      }
+    ]
+  },
+  {
+    "slug": "petroglifo-tanum",
+    "title": "Hombre y serpiente",
+    "artist": "Anónimo (Edad del Bronce nórdica)",
+    "year": "h. 1800-500 a. C.",
+    "anio": -1800,
+    "technique": "Petroglifo sobre granito (con repintado moderno)",
+    "dimensions": "Dimensiones variables",
+    "alto": null,
+    "ancho": null,
+    "movement": "Arte rupestre",
+    "location": "Tanum, Bohuslän, Suecia",
+    "img": {
+      "drive": "1pQiTG5-fAqUFE8KsI_Zm0pQCCY4TDL67",
+      "commons": null,
+      "url": null
+    },
+    "detalle": null,
+    "description": "Petroglifo de la Edad del Bronce situado en el área de Tanum (Patrimonio de la Humanidad, Bohuslän, Suecia). La talla representa a una figura humana con los brazos levantados junto a una línea ondulada en forma de serpiente y una marca de cúpula. El color rojo aplicado no es original, sino moderno, utilizado para resaltar los grabados.",
+    "context": "Conviene empezar por una precisión que no es pedantería, sino que altera la naturaleza misma del objeto: esto no es, en rigor, una *pintura* rupestre, sino un **grabado**, un petroglifo. Las líneas no se aplicaron con pigmento sobre la piedra, sino que se picaron y desgastaron en el granito con percutores de roca más dura —cuarzo, diabasa—. El rojo que ves es un añadido posterior sobre el surco. Se trata de arte rupestre de la **Edad del Bronce nórdica**, del tipo de los grabados de Bohuslän.\n\n**Contexto: una costa del Bronce**\nLa Edad del Bronce escandinava se sitúa, grosso modo, entre el 1800 y el 500 a. C. El soporte tiene su propia profundidad temporal: el norte de Bohuslän es un país de lecho granítico que el manto de hielo dejó raspado y pulido hace unos 14.000 años. Durante el Bronce, esa franja era la línea de costa de un fiordo: era un mundo marítimo, y el motivo más frecuente es el barco, junto a figuras humanas y escenas rituales. No estamos ante garabatos aislados, sino ante el vocabulario gráfico de una cultura entera.\n\n**El rojo: un velo moderno**\nEl rojo es una intervención moderna: muchos grabados fueron pintados por las autoridades para hacerlos visibles al visitante, una práctica criticada por sustraerles autenticidad. Esto tiene una consecuencia de primer orden: *no estamos viendo la obra de la Edad del Bronce, sino su relectura contemporánea*. En origen, el petroglifo era un surco desnudo, legible solo por el juego de la luz rasante. El rojo la fija, la vuelve permanente. Vemos la Antigüedad a través de una mano moderna que a la vez la revela y la falsifica. La nitidez que hoy admiramos es, en parte, una ficción del siglo XX.",
+    "analysis": "**La economía radical del signo**\nAceptando que leemos una versión intervenida, la composición posee una fuerza gráfica innegable. A la izquierda, un antropomorfo con ambos brazos alzados: el tipo que la literatura llama \"orante\" (*adorant*), habitualmente interpretada como gesto ritual. A la derecha, una larga línea ondulante. Y arriba, un pequeño disco o cazoleta. Lo estético aquí es la reducción extrema: el ser humano condensado en un puñado de trazos y, sin embargo, dotado de expresividad por la pura postura. Es semiosis en su grado más elemental.\n\n**La línea y el ritmo**\nEl corazón plástico de la imagen es esa línea larga y ondulada. Su acierto es rítmico: la ondulación repetida produce una cadencia visual casi notacional. Y encierra la ambigüedad fundamental: puede leerse como una **serpiente** o como **agua**, lo cual encajaría con el mundo de fiordo. La composición insinúa un encuentro entre la figura y la onda. Pero qué encuentro sea ese, lo ignoramos.\n\n**El código perdido**\nNo sabemos qué representa ni qué significaba. La arqueología ofrece marcos —el culto, la fertilidad, la cosmología solar—, pero todos son conjetura. Este grabado nos interpela a través de unos tres mil años en una lengua cuya clave se ha perdido. Ahí reside buena parte de su fuerza, y también la tentación que conviene resistir: la de la divulgación que \"traduce\" con aplomo cada signo.\n\n**El gesto y el tiempo profundo**\nAlgo sí nos llega intacto: el gesto. Los brazos alzados son legibles a través de cualquier distancia temporal. El signo gestual persiste donde el signo simbólico se ha vuelto opaco. Todo ello descansa sobre un soporte que multiplica las escalas de tiempo: el granito pulido por el hielo hace catorce milenios, la incisión del Bronce, el rojo del siglo XX, y el liquen que hoy lo borra. La obra no habita el tiempo humano, sino el geológico.\n\n**Sobre lo itifálico**\nLa representación itifálica es uno de los rasgos mejor documentados del corpus de la Edad del Bronce escandinava. Los \"orantes\" aparecen con frecuencia dotados de un falo marcado, vinculados a un complejo de fertilidad, virilidad y poder cósmico. Si tu figura lo es, se inscribe con toda naturalidad en esa tradición.\n\n**Sobre la persecución: una objeción**\n\"Perseguir\" implica movimiento, pero lo que el grabado presenta es una yuxtaposición estática. El antropomorfo queda fijo a la izquierda y entre él y la línea hay un hueco sin marcar. No hay indicio formal de persecución. Lo que tenemos es un encuentro o una yuxtaposición. Que leamos \"persecución\" dice tanto de nuestra tendencia narrativa —el ojo humano completa una historia— como de la imagen en sí.\n\n**Lo que sí es plausible: la yuxtaposición hombre/serpiente-agua**\nLa asociación entre figura humana y línea ondulante es un tema bien documentado, aunque discutido: emparejamiento cosmológico entre lo terrestre-viril y lo acuático-ctónico, escena de culto junto al agua, o convivencia de dos símbolos de fertilidad. Si el orante es itifálico, la lectura de una escena de fecundidad gana verosimilitud frente a la de la amenaza. Seguimos operando en el terreno de la conjetura; el relato que une a los signos es una historia que nosotros, no ellos, necesitamos contar.",
+    "voices": []
+  },
+  {
+    "slug": "manana-bosque-pinos",
+    "title": "Mañana en un bosque de pinos",
+    "artist": "Iván Shishkin y Konstantín Savitski",
+    "year": "1889",
+    "anio": 1889,
+    "technique": "Óleo sobre lienzo",
+    "dimensions": "139 × 213 cm",
+    "alto": 139,
+    "ancho": 213,
+    "movement": "Realismo ruso (Peredvízhniki)",
+    "location": "Galería Tretiakov, Moscú",
+    "img": {
+      "drive": "1GuepykU4M_i7bsVcT9IJn76Su_-im13z",
+      "commons": null,
+      "url": null
+    },
+    "detalle": null,
+    "description": "El cuadro representa un amanecer en un bosque de pinos: la niebla matutina se eleva entre los troncos, los primeros rayos de sol atraviesan el dosel, y una familia de osos se congrega alrededor de un árbol con una colmena en su copa.",
+    "context": "**El origen de los osos y la coautoría**\nEl cuadro nació de una profunda conexión personal y profesional entre ambos pintores. Savitski tuvo una noche de inspiración en la que bocetó una escena llamada \"Osos en el bosque\". Al mostrárselo a Shishkin, este quedó fascinado. Savitski le propuso colaborar diciendo: \"Tú conoces el bosque mucho mejor que yo\". Durante mucho tiempo se rumoreó que Shishkin no sabía pintar animales, pero es un mito: se formó en el taller del famoso pintor animalista suizo Rudolf Koller. La realidad es que Shishkin prefería centrar su energía puramente en la perfección del paisaje, delegando el dinamismo de la fauna en Savitski.\n\n**El conflicto de la firma**\nAl terminar la pintura, ambos la firmaron orgullosamente. Sin embargo, el magnate y coleccionista de arte Pável Tretiakov pagó una fortuna por ella. Al notar que el estilo de paisaje dominante correspondía por completo al método creativo tradicional de Shishkin, Tretiakov usó aguarrás para borrar la firma de Savitski personalmente. Esto causó tensión entre Savitski y el mecenas.\n\n**Inspiración y exhibición**\nAunque evoca el alma profunda de la taiga rusa, se cree que Shishkin tomó como referencia los paisajes boscosos de la isla de Gorodomlya (en el lago Seliguer) o los alrededores de Narva-Jõesuu en Estonia, donde solía pasar los veranos. El lienzo original cuelga de forma permanente en las paredes de la Galería Tretiakov en Moscú.\n\n**Impacto en la cultura popular**\nLa pintura es masivamente conocida entre los ciudadanos de Europa del Este debido a su envoltorio de caramelo. En el siglo XX, la fábrica de dulces Krasny Oktyabr colocó la imagen en la envoltura de sus icónicos chocolates praliné llamados Mishka Kosolapy (Oso patoso). Esto convirtió un cuadro de bellas artes del siglo XIX en un elemento cotidiano presente en casi todos los hogares rusos.",
+    "analysis": "**El juego de la luz y la niebla**\nEl cuadro destaca por trascender el realismo estático de la época para convertirse en una fantasía atmosférica viva. Shishkin logró capturar perfectamente la densa niebla matutina del amanecer que se eleva desde el suelo boscoso. Utilizó transiciones sutiles de color en los troncos de los pinos —pasando de tonos grises y fríos a naranjas cálidos— para reflejar los primeros rayos del sol rompiendo el dosel arbóreo.\n\n**Composición y profundidad**\nLa obra utiliza una perspectiva profunda estructurada en tres niveles tonales. El primer plano destaca por detalles nítidos: las agujas de pino, el musgo y el árbol roto. El fondo se desvanece gradualmente en la neblina para simular la inmensidad del bosque salvaje.\n\n**Precisión botánica**\nShishkin tenía una obsesión por el detalle de la flora. Su trazo era tan preciso que los botánicos modernos aseguran poder identificar la salud exacta de los árboles de sus cuadros basándose únicamente en cómo pintaba las cortezas y las ramas.\n\n**El bort: la colmena tradicional eslava**\nLa inserción técnica de la colmena tradicional eslava (*bort* o *koloda*) en el cuadrante superior izquierdo funciona como justificación biológica de la presencia de los osos. La apicultura forestal primitiva consistía en acondicionar huecos naturales en árboles altos o colgar troncos ahuecados a gran altura para atraer a las abejas silvestres y proteger la miel de los depredadores de la taiga. La inclusión de la colmena por Shishkin demuestra no solo su absoluto conocimiento de la cultura material rural del Prikamye y del norte de Rusia, sino que dota de coherencia narrativa a toda la escena: la familia de osos no deambula de manera aleatoria, sino que ha sido atraída al lugar por el olor a miel de la colmena.",
+    "voices": [
+      {
+        "author": "Nota de catalogación oficial",
+        "year": null,
+        "source": "Galería Estatal Tretiakov, Moscú",
+        "text": "Mañana en un bosque de pinos es un retrato del bosque de Prikamye profundamente estudiado, donde el artista creció. Es un retrato profundamente verdadero tanto en la fórmula general como en los pequeños detalles, un paisaje solemne en su estructura, que requiere cierta distancia del espectador y al mismo tiempo profundamente personal en relación con el objeto. Como en otras obras de Shishkin, hay una integridad artística inseparable: una cualidad no existe sin las otras. Así, ni las mariposas revoloteando contra el fondo de un posible bosque de madera de barco, ni los osos mirando fijamente un árbol con una colmena en su copa, ni las flores silvestres que deslumbran el mar dorado de centeno, todo pintado con reverente atención, parecen disonantes en su pintura. Shishkin buscó identificar y capturar los valores perdurables del paisaje. Creó pinturas que expresaban la naturaleza misma casi hasta el grado último. La estructura majestuosa de sus obras, derivada principalmente del objeto mismo, se basa en gran medida en la relación constante entre lo pequeño y lo enorme, lo efímero y lo eterno."
+      },
+      {
+        "author": "Reseña académica",
+        "year": null,
+        "source": "Revista Academia (Análisis del bort)",
+        "text": "La inserción técnica de la colmena tradicional eslava (bort o koloda) en el cuadrante superior izquierdo como justificación biológica de la presencia de los osos. La apicultura forestal primitiva consistía en acondicionar huecos naturales en árboles altos o colgar troncos ahuecados a gran altura para atraer a las abejas silvestres y proteger la miel de los depredadores de la taiga. La inclusión de la colmena por Shishkin demuestra no solo su absoluto conocimiento de la cultura material rural del Prikamye y del norte de Rusia, sino que dota de coherencia narrativa a toda la escena: la familia de osos no deambula de manera aleatoria, sino que ha sido atraída al lugar por el olor a miel de la colmena."
+      }
+    ]
+  },
+  {
+    "slug": "dragon-rojo-mujer-sol",
+    "title": "El Dragón Rojo y la Mujer Revestida del Sol",
+    "artist": "William Blake",
+    "year": "h. 1805",
+    "anio": 1805,
+    "technique": "Acuarela, tinta y lápiz sobre papel",
+    "dimensions": "40,8 × 33,7 cm",
+    "alto": 40.8,
+    "ancho": 33.7,
+    "movement": "Romanticismo / Misticismo",
+    "location": "National Gallery of Art, Washington D. C.",
+    "img": {
+      "drive": "1Q86zh8zu0sADXQnunTVSk6SWoRbU_OT0",
+      "commons": null,
+      "url": null
+    },
+    "detalle": null,
+    "description": "La obra ilustra un pasaje del Apocalipsis (12:1-4): una mujer vestida de sol, con la luna bajo sus pies y una corona de doce estrellas, es amenazada por un gran dragón rojo de múltiples cabezas que espera para devorar a su hijo nonato.",
+    "context": null,
+    "analysis": "**Dinámica espacial del cuadro**\nAtención a la dinámica espacial del cuadro, porque el dragón flotante y monstruoso no es un demonio externo y físicamente real que amenaza a una mujer inocente; más bien, el dragón es una exteriorización de un estado psicológico dentro de la propia mente de la mujer.",
+    "voices": [
+      {
+        "author": "Credo Quia Absurdum",
+        "year": null,
+        "source": "Publicación sobre Arte",
+        "text": "A través de una perspectiva freudiana de esta narrativa bíblica, podríamos [...] tomar al dragón como un símbolo del Ello (Id), nuestros deseos inmediatos fuera de control... Él no muestra su rostro, lo que sugiere que podría representar una proyección de lo desconocido, nuestros miedos y dudas hechos carne."
+      },
+      {
+        "author": "Diana Hume George",
+        "year": null,
+        "source": null,
+        "text": "Blake puede ser visto como un precursor de las ideas de Sigmund Freud."
+      },
+      {
+        "author": "Henry Crabb Robinson",
+        "year": null,
+        "source": "Conversación con el artista en sus últimos años de vida",
+        "text": "Blake me dijo que 'la Naturaleza es la obra del Diablo'. Cuando objeté (bajo la autoridad del Génesis) que 'Dios creó los cielos y la Tierra...', se me dijo triunfalmente que este Dios no era Jehová, sino los Elohim, repitiendo la doctrina de los gnósticos con la suficiente consistencia como para silenciar a alguien tan ignorante como yo."
+      },
+      {
+        "author": "Terence Allan Hoagwood",
+        "year": null,
+        "source": null,
+        "text": "En lo que equivale a una revisión gnóstica de la Biblia, Blake repite esta misma visión [tormentosa], con la misma postura... pero aquí coloca al Dios de Job, Elohim, en el papel de Satán."
+      }
+    ]
+  },
+  {
+    "slug": "labrador-del-universo",
+    "title": "El Labrador del Universo",
+    "artist": "Aurel David",
+    "year": "1972",
+    "anio": 1972,
+    "technique": "Mosaico de esmalte (smalt)",
+    "dimensions": null,
+    "alto": null,
+    "ancho": null,
+    "movement": "Modernismo Socialista",
+    "location": "Chișinău, Moldavia",
+    "img": {
+      "drive": "1ifFVcMI8Pd5tZs3b5SYkJc1WireTfNBQ",
+      "commons": null,
+      "url": null
+    },
+    "detalle": null,
+    "description": "El mosaico \"El Labrador del Universo\" en la fachada del antiguo Centro Juvenil Yuri Gagarin en Chișinău representa a una figura monumental de un hombre que avanza con un arado, enmarcada en bandas circulares concéntricas de colores. La silueta estilizada del labrador está renderizada en teselas oscuras hechas de esmalte (smalt), contrastando con un fondo de esmalte en azules, amarillos y rojos brillantes que irradian hacia afuera como anillos cósmicos. Las bandas exteriores incorporan motivos de estrellas. Su imaginería representa indudablemente el dominio de la humanidad sobre el universo, dándole forma a su voluntad como si fuera un campo.",
+    "context": "**El Centro Juvenil Yuri Gagarin**\nEl Centro Juvenil, llamado así por Yuri Gagarin, contenía una sala con 800 asientos, instalaciones deportivas, una discoteca y un hotel reservado para invitados extranjeros. Su construcción fue financiada a través del trabajo voluntario organizado por la Unión de Jóvenes Comunistas Leninistas (Komsomol), que movilizaba regularmente a sus miembros para campañas de construcción los fines de semana. Aunque el edificio está semiabandonado, todavía está en uso.",
+    "analysis": "**El concepto salvaje**\nLa variedad de colores, la imaginería cósmica, la representación realista socialista de un hombre y el concepto simplemente salvaje lo convierten en uno de mis diseños favoritos. Lamentablemente, el mosaico está empezando a deteriorarse y podría limpiarse para revertir los efectos de la intemperie.",
+    "voices": [
+      {
+        "author": "Fuentes originales",
+        "year": null,
+        "source": "mosaicsofmoldova.com · kathmanduandbeyond.com",
+        "text": "Concrete Wastelands preserva el patrimonio arquitectónico de la era socialista a través de la fotografía, el mapeo y la investigación. Resistir al borrado. Capturar el legado de una época desaparecida."
+      }
+    ]
+  },
+  {
+    "slug": "meninas",
+    "title": "Las meninas",
+    "artist": "Diego Velázquez",
+    "year": "1656",
+    "anio": 1656,
+    "technique": "Óleo sobre lienzo",
+    "dimensions": "318 × 276 cm",
+    "alto": 318,
+    "ancho": 276,
+    "movement": "Barroco",
+    "location": "Museo del Prado, Madrid",
+    "img": {
+      "drive": null,
+      "commons": "Las Meninas 01.jpg",
+      "url": null
+    },
+    "detalle": null,
+    "description": null,
+    "context": null,
+    "analysis": null,
+    "voices": []
+  }
+]</script>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ------------------------------------------------------------------ ajustes
+     Lo único que hay que tocar para mantener la página al día.            */
+  const ACTUALIZADO = '24 de marzo';
+  const VOLUMEN     = 'Volumen I';
+  const PARED_CM    = 360;   // altura de pared representada en la vista de escala
+  const EJE_CM      = 150;   // altura museística estándar del centro de la obra
+  const FIGURA_CM   = 170;   // silueta humana de referencia
+
+  const obras = JSON.parse(document.getElementById('datos-coleccion').textContent);
+
+  /* --------------------------------------------------------------- utilidades */
+
+  // Crea nodos sin innerHTML: el texto entra siempre por textContent.
+  function h(tag, props, ...hijos) {
+    const el = document.createElement(tag);
+    for (const k in (props || {})) {
+      const v = props[k];
+      if (v === null || v === undefined || v === false) continue;
+      if (k === 'class') el.className = v;
+      else if (k === 'texto') el.textContent = v;
+      else if (k === 'estilo') el.setAttribute('style', v);
+      else if (k.startsWith('on')) el.addEventListener(k.slice(2), v);
+      else el.setAttribute(k, v === true ? '' : v);
+    }
+    for (const c of hijos.flat()) {
+      if (c === null || c === undefined || c === false) continue;
+      el.appendChild(typeof c === 'string' ? document.createTextNode(c) : c);
+    }
+    return el;
+  }
+
+  const NUMERALES = ['cero','uno','dos','tres','cuatro','cinco','seis','siete','ocho','nueve',
+    'diez','once','doce','trece','catorce','quince','dieciséis','diecisiete','dieciocho',
+    'diecinueve','veinte','veintiuna','veintidós','veintitrés','veinticuatro','veinticinco',
+    'veintiséis','veintisiete','veintiocho','veintinueve','treinta'];
+  function enPalabras(n, genero) {
+    let s = NUMERALES[n];
+    if (!s) return String(n);
+    if (genero === 'f') s = s.replace(/uno$/, 'una');
+    else s = s.replace(/^uno$/, 'un').replace(/veintiuno$/, 'veintiún');
+    return s;
+  }
+
+  /* ------------------------------------------------------------------ imágenes
+     Tres orígenes posibles por obra. Añadir una imagen nueva es rellenar uno
+     de los tres campos de "img" en el JSON de arriba:
+       drive:   id del archivo en Google Drive (debe ser público)
+       commons: nombre exacto del archivo en Wikimedia Commons
+       url:     dirección directa a un archivo de imagen
+     Commons es el origen recomendado para obras de dominio público: es estable,
+     no tiene cuota y sirve la reproducción de referencia.                    */
+  function fuente(img, ancho) {
+    if (!img) return null;
+    if (img.url) return img.url;
+    if (img.commons) {
+      return 'https://commons.wikimedia.org/wiki/Special:FilePath/' +
+             encodeURIComponent(img.commons) + '?width=' + ancho;
+    }
+    if (img.drive) {
+      return 'https://drive.google.com/thumbnail?id=' +
+             encodeURIComponent(img.drive) + '&sz=w' + ancho;
+    }
+    return null;
+  }
+  const hayImagen = img => Boolean(img && (img.url || img.commons || img.drive));
+
+  function crearImg(obra, img, anchos, alt, sizes) {
+    const el = h('img', {
+      src: fuente(img, anchos[0]),
+      srcset: anchos.map(a => fuente(img, a) + ' ' + a + 'w').join(', '),
+      sizes: sizes || (anchos[0] + 'px'),
+      alt: alt,
+      loading: 'lazy',
+      decoding: 'async'
+    });
+    // Si la imagen no carga, se dice; no se rellena con una foto cualquiera.
+    el.addEventListener('error', () => {
+      const hueco = laminaAusente(obra);
+      if (el.parentNode) el.parentNode.replaceChild(hueco, el);
+    }, { once: true });
+    return el;
+  }
+
+  function laminaAusente(obra) {
+    const ratio = (obra.ancho && obra.alto) ? (obra.ancho + ' / ' + obra.alto) : '4 / 3';
+    return h('div', { class: 'lamina-ausente', estilo: '--ratio: ' + ratio, role: 'img',
+                      'aria-label': 'Sin reproducción disponible de ' + obra.title },
+      h('p', { class: 'rotulo', texto: 'Lámina ausente' })
+    );
+  }
+
+  /* -------------------------------------------------------------------- prosa
+     Micro-marcado del propio documento:
+       **Titulillo** en línea propia -> subtítulo de sección
+       **negrita**, *cursiva*        -> énfasis
+     Todo el texto pasa por textContent; no hay inyección posible.          */
+  function prosa(texto) {
+    const cont = h('div', { class: 'prosa' });
+    if (!texto) return cont;
+
+    texto.split('\n\n').forEach(bloque => {
+      const lineas = bloque.split('\n');
+      const cabecera = lineas[0].match(/^\*\*(.+?)\*\*$/);
+      if (cabecera) {
+        cont.appendChild(h('h3', { class: 'subtitulo', texto: cabecera[1] }));
+        const resto = lineas.slice(1).join('\n').trim();
+        if (resto) cont.appendChild(parrafo(resto));
+      } else {
+        cont.appendChild(parrafo(bloque));
+      }
+    });
+    return cont;
+  }
+
+  function parrafo(txt) {
+    const p = h('p');
+    // Trocea por **negrita** y *cursiva* sin usar innerHTML.
+    const piezas = txt.split(/(\*\*[^*]+?\*\*|\*[^*]+?\*)/g);
+    piezas.forEach(pieza => {
+      if (!pieza) return;
+      if (pieza.startsWith('**') && pieza.endsWith('**') && pieza.length > 4) {
+        p.appendChild(h('strong', { texto: pieza.slice(2, -2) }));
+      } else if (pieza.startsWith('*') && pieza.endsWith('*') && pieza.length > 2) {
+        p.appendChild(h('em', { texto: pieza.slice(1, -1) }));
+      } else {
+        p.appendChild(document.createTextNode(pieza));
+      }
+    });
+    return p;
+  }
+
+  /* ------------------------------------------------------------------ rejilla */
+
+  let ordenActual = 'afinidad';
+
+  function ordenadas() {
+    if (ordenActual === 'cronologia') {
+      return obras.slice().sort((a, b) => (a.anio ?? 9999) - (b.anio ?? 9999));
+    }
+    return obras;
+  }
+
+  function pintarRejilla() {
+    const rejilla = document.getElementById('rejilla');
+    rejilla.textContent = '';
+    ordenadas().forEach(obra => {
+      const marco = h('div', { class: 'obra-caja' });
+      marco.appendChild(
+        hayImagen(obra.img)
+          ? crearImg(obra, obra.img, [560, 1000], obra.title + ', de ' + obra.artist,
+                     '(max-width: 640px) 88vw, (max-width: 1100px) 40vw, 26vw')
+          : laminaAusente(obra)
+      );
+
+      rejilla.appendChild(
+        h('a', { class: 'obra', href: '#obra/' + obra.slug, 'data-anima': true },
+          marco,
+          h('div', { class: 'obra-cartela' },
+            h('div', { class: 'obra-titulo', texto: obra.title }),
+            h('div', { class: 'obra-autor' },
+              obra.artist,
+              h('span', { class: 'anno', texto: obra.year })
+            )
+          )
+        )
+      );
+    });
+    observarAnimaciones();
+  }
+
+  /* ------------------------------------------------- vista de escala (la firma) */
+
+  function siluetaHumana(px, cm) {
+    const w = px * 0.42;
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('viewBox', '0 0 42 100');
+    svg.setAttribute('width', String(w));
+    svg.setAttribute('height', String(px));
+    svg.setAttribute('aria-hidden', 'true');
+    const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    p.setAttribute('d', 'M21 2c3.4 0 6 2.7 6 6s-2.6 6-6 6-6-2.7-6-6 2.6-6 6-6zm-9 15h18c2.4 0 4 1.8 4 4.2v22c0 1.6-1.1 2.6-2.4 2.6-1.3 0-2.3-1-2.3-2.6V30h-1.1v66c0 2.2-1.5 3.6-3.4 3.6-1.9 0-3.3-1.4-3.3-3.6V60h-2.2v36c0 2.2-1.4 3.6-3.3 3.6-1.9 0-3.4-1.4-3.4-3.6V30H11.7v11.2c0 1.6-1 2.6-2.3 2.6-1.3 0-2.4-1-2.4-2.6v-22C7 18.8 8.6 17 11 17z');
+    p.setAttribute('fill', 'var(--tinta-2)');
+    p.setAttribute('opacity', '.55');
+    svg.appendChild(p);
+    return { svg: svg, ancho: w };
+  }
+
+  function pintarEscala() {
+    const pared = document.getElementById('escala-pared');
+    pared.textContent = '';
+
+    const altoPx = Math.max(320, Math.min(520, Math.round(window.innerHeight * 0.55)));
+    const k = altoPx / PARED_CM;                       // píxeles por centímetro
+    pared.style.setProperty('--pared', altoPx + 'px');
+
+    // marcas de altura
+    const marcas = h('div', { class: 'escala-marcas' });
+    [100, 200, 300].forEach(cm => {
+      marcas.appendChild(
+        h('div', { class: 'escala-marca', estilo: 'bottom:' + (cm * k) + 'px' },
+          h('span', { texto: cm + ' cm' })
+        )
+      );
+    });
+    pared.appendChild(marcas);
+
+    // silueta de referencia
+    const fig = siluetaHumana(FIGURA_CM * k, FIGURA_CM);
+    const contFig = h('div', { class: 'escala-figura', estilo: 'width:' + fig.ancho + 'px;height:' + (FIGURA_CM * k) + 'px' });
+    contFig.appendChild(fig.svg);
+    contFig.appendChild(h('span', { class: 'pie', texto: 'persona, 170 cm' }));
+    pared.appendChild(contFig);
+
+    const medibles = ordenadas().filter(o => o.alto && o.ancho);
+    medibles.forEach(obra => {
+      const w = obra.ancho * k, alt = obra.alto * k;
+      const suelo = Math.max(0, (EJE_CM - obra.alto / 2) * k);
+      const caja = h('div', { class: 'caja',
+        estilo: '--w:' + w + 'px;--h:' + alt + 'px;--suelo:' + suelo + 'px' });
+      if (hayImagen(obra.img)) {
+        caja.appendChild(crearImg(obra, obra.img, [400, 800], '', '200px'));
+      }
+      pared.appendChild(
+        h('a', { class: 'escala-obra', href: '#obra/' + obra.slug,
+                 estilo: 'width:' + w + 'px;height:' + (suelo + alt) + 'px',
+                 title: obra.title + ' — ' + obra.dimensions },
+          caja,
+          h('span', { class: 'pie', texto: obra.title })
+        )
+      );
+    });
+
+    const sinMedida = obras.filter(o => !o.alto || !o.ancho);
+    const nota = document.getElementById('escala-nota');
+    // El ejemplo se saca de la propia colección: si cambian las obras, cambia la frase.
+    const orden = medibles.slice().sort((a, b) => a.alto - b.alto);
+    const menor = orden[0], mayor = orden[orden.length - 1];
+    nota.textContent =
+      'Cada obra en su tamaño real, colgada con el centro a ' + EJE_CM + ' cm del suelo, ' +
+      'como en una sala. La reproducción digital iguala lo que en la pared es incomparable: ' +
+      (menor && mayor && menor !== mayor
+        ? '«' + menor.title + '» mide ' + menor.dimensions + ' y «' + mayor.title +
+          '», ' + mayor.dimensions + '.'
+        : '') +
+      (sinMedida.length
+        ? ' Quedan fuera ' + enPalabras(sinMedida.length, 'f') +
+          (sinMedida.length === 1 ? ' obra sin medidas documentadas: ' : ' obras sin medidas documentadas: ') +
+          sinMedida.map(o => o.title).join('; ') + '.'
+        : '');
+  }
+
+  /* ------------------------------------------------------------ vista de obra */
+
+  function pintarObra(obra, indice) {
+    const lista = ordenadas();
+
+    // --- columna de la imagen
+    const col = document.getElementById('columna-imagen');
+    col.textContent = '';
+
+    const paspartu = h('div', { class: 'paspartu' });
+    paspartu.appendChild(
+      hayImagen(obra.img)
+        ? crearImg(obra, obra.img, [1200, 2000],
+                   obra.title + ', de ' + obra.artist + ', ' + obra.year,
+                   '(max-width: 980px) 92vw, 48vw')
+        : laminaAusente(obra)
+    );
+    col.appendChild(
+      h('figure', { class: 'lamina' }, paspartu,
+        h('figcaption', { texto: obra.title + ', ' + obra.artist + ', ' + obra.year + '. ' + obra.technique + '.' })
+      )
+    );
+
+    if (obra.detalle && hayImagen(obra.detalle)) {
+      const p2 = h('div', { class: 'paspartu' });
+      p2.appendChild(crearImg(obra, obra.detalle, [1200, 2000], 'Detalle de ' + obra.title));
+      col.appendChild(h('figure', { class: 'lamina' }, p2,
+        h('figcaption', { texto: obra.detalle.pie || 'Detalle' })));
+    }
+
+    // --- columna de la ficha
+    const ficha = document.getElementById('columna-ficha');
+    ficha.textContent = '';
+
+    const cabeza = h('div', { class: 'ficha-cabeza' },
+      h('p', { class: 'rotulo', texto: 'Ficha técnica' }),
+      h('h1', { class: 'ficha-titulo', texto: obra.title, id: 'titulo-obra', tabindex: '-1' }),
+      h('p', { class: 'ficha-autor' }, obra.artist,
+        h('span', { class: 'sep', texto: '·' }), obra.year)
+    );
+
+    const dl = h('dl', { class: 'ficha' });
+    [['Técnica', obra.technique],
+     ['Dimensiones', obra.dimensions],
+     ['Movimiento', obra.movement],
+     ['Ubicación', obra.location]
+    ].forEach(([k, v]) => {
+      if (!v) return;                       // sin dato, sin fila: nada de «no disponible»
+      dl.appendChild(h('dt', { texto: k }));
+      dl.appendChild(h('dd', { texto: v }));
+    });
+    cabeza.appendChild(dl);
+    if (obra.alto && obra.ancho) cabeza.appendChild(miniEscala(obra));
+    ficha.appendChild(cabeza);
+
+    if (obra.description) {
+      ficha.appendChild(h('section', { class: 'seccion' },
+        h('h2', { texto: 'El cuadro' }), prosa(obra.description)));
+    }
+    if (obra.context) {
+      ficha.appendChild(h('section', { class: 'seccion' },
+        h('h2', { texto: 'Contexto' }), prosa(obra.context)));
+    }
+    if (obra.analysis) {
+      ficha.appendChild(h('section', { class: 'seccion' },
+        h('h2', { texto: 'Análisis' }), prosa(obra.analysis)));
+    }
+    if (obra.voices && obra.voices.length) {
+      const sec = h('section', { class: 'seccion' },
+        h('h2', { texto: obra.voices.length === 1 ? 'Una voz sobre el cuadro' : 'Voces sobre el cuadro' }));
+      obra.voices.forEach(v => {
+        const cita = h('blockquote');
+        v.text.split('\n\n').forEach(t => cita.appendChild(h('p', { texto: t })));
+        const pie = h('figcaption', {},
+          h('span', { class: 'quien', texto: v.author + (v.year ? ', ' + v.year : '') }),
+          v.source ? h('cite', { class: 'fuente', texto: v.source }) : null
+        );
+        sec.appendChild(h('figure', { class: 'voz' }, cita, pie));
+      });
+      ficha.appendChild(sec);
+    }
+
+    const anterior = lista[(indice - 1 + lista.length) % lista.length];
+    const siguiente = lista[(indice + 1) % lista.length];
+    ficha.appendChild(
+      h('nav', { class: 'paso-obras', 'aria-label': 'Obras contiguas' },
+        h('a', { href: '#obra/' + anterior.slug, rel: 'prev', texto: '← ' + anterior.title }),
+        h('a', { href: '#obra/' + siguiente.slug, rel: 'next', texto: siguiente.title + ' →' })
+      )
+    );
+
+    document.getElementById('barra-pos').textContent =
+      (indice + 1) + ' / ' + lista.length;
+    document.title = obra.title + ' · ' + obra.artist + ' — Cuadernos de galería';
+  }
+
+  // Diagrama diminuto: la obra frente a una persona de 170 cm.
+  function miniEscala(obra) {
+    const altoPx = 76;
+    const techo = Math.max(215, EJE_CM + obra.alto / 2 + 10);   // cm de pared que caben
+    const k = altoPx / techo;
+    const NS = 'http://www.w3.org/2000/svg';
+    const anchoObra = Math.max(2, obra.ancho * k);
+    const xObra = 34;
+    const total = Math.round(xObra + anchoObra + 6);
+
+    const svg = document.createElementNS(NS, 'svg');
+    svg.setAttribute('viewBox', '0 0 ' + total + ' ' + (altoPx + 2));
+    svg.setAttribute('width', String(Math.min(total, 200)));
+    svg.setAttribute('height', String(altoPx + 2));
+    svg.setAttribute('aria-hidden', 'true');
+
+    const suelo = document.createElementNS(NS, 'line');
+    suelo.setAttribute('x1', '0'); suelo.setAttribute('x2', String(total));
+    suelo.setAttribute('y1', String(altoPx + 1)); suelo.setAttribute('y2', String(altoPx + 1));
+    suelo.setAttribute('stroke', 'var(--regla)'); suelo.setAttribute('stroke-width', '1');
+    svg.appendChild(suelo);
+
+    const fig = siluetaHumana(FIGURA_CM * k, FIGURA_CM).svg;
+    fig.setAttribute('x', '2');
+    fig.setAttribute('y', String(altoPx + 1 - FIGURA_CM * k));
+    svg.appendChild(fig);
+
+    const hObra = obra.alto * k;
+    const superior = Math.min(techo, EJE_CM + obra.alto / 2);   // borde alto sobre el suelo
+    const r = document.createElementNS(NS, 'rect');
+    r.setAttribute('x', String(xObra));
+    r.setAttribute('y', String(Math.max(0, altoPx + 1 - superior * k)));
+    r.setAttribute('width', String(anchoObra));
+    r.setAttribute('height', String(hObra));
+    r.setAttribute('fill', 'var(--azul)'); r.setAttribute('opacity', '.18');
+    r.setAttribute('stroke', 'var(--azul)'); r.setAttribute('stroke-width', '1');
+    svg.appendChild(r);
+
+    return h('div', { class: 'escala-mini' }, svg,
+      h('p', { texto: 'Tamaño real frente a una persona de 170 cm.' }));
+  }
+
+  /* ------------------------------------------------------------------- rutas */
+
+  let scrollSala = 0;
+
+  function mostrar(quePinta) {
+    if (document.startViewTransition && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.startViewTransition(quePinta);
+    } else {
+      quePinta();
+    }
+  }
+
+  function ruta() {
+    const hash = location.hash;
+    const m = hash.match(/^#obra\/(.+)$/);
+    const galeria = document.getElementById('vista-galeria');
+    const detalle = document.getElementById('vista-obra');
+
+    if (m) {
+      const lista = ordenadas();
+      const i = lista.findIndex(o => o.slug === decodeURIComponent(m[1]));
+      if (i === -1) { location.replace('#'); return; }
+      if (document.body.dataset.vista === 'galeria') scrollSala = window.scrollY;
+
+      mostrar(() => {
+        pintarObra(lista[i], i);
+        galeria.hidden = true;
+        detalle.hidden = false;
+        document.body.dataset.vista = 'obra';
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      });
+      // el foco va al título, para que el lector de pantalla anuncie la obra
+      setTimeout(() => { const t = document.getElementById('titulo-obra'); if (t) t.focus(); }, 40);
+    } else {
+      mostrar(() => {
+        detalle.hidden = true;
+        galeria.hidden = false;
+        document.body.dataset.vista = 'galeria';
+        window.scrollTo({ top: scrollSala, behavior: 'instant' });
+      });
+      document.title = 'Cuadernos de galería · Mis cuadros favoritos';
+    }
+  }
+
+  function saltarObra(paso) {
+    const m = location.hash.match(/^#obra\/(.+)$/);
+    if (!m) return;
+    const lista = ordenadas();
+    const i = lista.findIndex(o => o.slug === decodeURIComponent(m[1]));
+    if (i === -1) return;
+    location.hash = '#obra/' + lista[(i + paso + lista.length) % lista.length].slug;
+  }
+
+  /* ------------------------------------------------------------ animaciones */
+
+  let observador = null;
+  function observarAnimaciones() {
+    const pendientes = document.querySelectorAll('[data-anima]:not(.visible)');
+    if (!observador) { pendientes.forEach(el => el.classList.add('visible')); return; }
+    pendientes.forEach(el => observador.observe(el));
+  }
+
+  /* ------------------------------------------------------------------ inicio */
+
+  function iniciar() {
+    if ('IntersectionObserver' in window) {
+      observador = new IntersectionObserver(entradas => {
+        entradas.forEach(e => {
+          if (!e.isIntersecting) return;
+          e.target.classList.add('visible');
+          observador.unobserve(e.target);
+        });
+      }, { threshold: .1, rootMargin: '0px 0px -40px 0px' });
+    }
+
+    pintarRejilla();
+
+    const n = obras.length;
+    const numM = enPalabras(n, 'm'), numF = enPalabras(n, 'f');
+    document.getElementById('cuenta').textContent =
+      numF + (n === 1 ? ' obra' : ' obras');
+    document.getElementById('titulo-coleccion').textContent = n === 1
+      ? 'Un cuadro, una conversación'
+      : numM.charAt(0).toUpperCase() + numM.slice(1) + ' cuadros, ' + numF + ' conversaciones';
+    document.getElementById('pie-datos').textContent =
+      VOLUMEN + ' · Actualizado el ' + ACTUALIZADO;
+
+    // orden
+    document.querySelectorAll('[data-orden]').forEach(b => {
+      b.addEventListener('click', () => {
+        ordenActual = b.dataset.orden;
+        document.querySelectorAll('[data-orden]').forEach(o =>
+          o.setAttribute('aria-pressed', String(o === b)));
+        document.getElementById('linea-orden').textContent =
+          ordenActual === 'afinidad'
+            ? 'Ordenados por afinidad, no por cronología.'
+            : 'Ordenados por cronología, de la Edad del Bronce a 1972.';
+        pintarRejilla();
+        if (!document.getElementById('escala').hidden) pintarEscala();
+      });
+    });
+
+    // vista de escala
+    const btn = document.getElementById('btn-escala');
+    btn.addEventListener('click', () => {
+      const sec = document.getElementById('escala');
+      const abierta = sec.hidden;
+      if (abierta) pintarEscala();
+      sec.hidden = !abierta;
+      btn.setAttribute('aria-pressed', String(abierta));
+      btn.textContent = abierta ? 'Ocultar tamaños' : 'Comparar tamaños';
+    });
+
+    let remedir;
+    window.addEventListener('resize', () => {
+      clearTimeout(remedir);
+      remedir = setTimeout(() => {
+        if (!document.getElementById('escala').hidden) pintarEscala();
+      }, 200);
+    });
+
+    // teclado: ← → entre obras, Esc para volver a la sala
+    document.addEventListener('keydown', ev => {
+      if (ev.metaKey || ev.ctrlKey || ev.altKey) return;
+      const enCampo = /^(input|textarea|select)$/i.test(ev.target.tagName);
+      if (enCampo) return;
+      if (document.body.dataset.vista !== 'obra') return;
+      if (ev.key === 'ArrowLeft')  { ev.preventDefault(); saltarObra(-1); }
+      if (ev.key === 'ArrowRight') { ev.preventDefault(); saltarObra(1); }
+      if (ev.key === 'Escape')     { ev.preventDefault(); location.hash = ''; }
+    });
+
+    document.getElementById('volver').addEventListener('click', ev => {
+      ev.preventDefault();
+      if (history.length > 1) history.back(); else location.hash = '';
+    });
+
+    window.addEventListener('hashchange', ruta);
+    ruta();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', iniciar);
+  } else {
+    iniciar();
+  }
+})();
+</script>
+
+</body>
+</html>
