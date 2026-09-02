@@ -454,6 +454,70 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
   font-family: var(--serif); font-style: italic; font-size: .9rem; color: var(--tinta-3);
 }
 
+/* ------------------------------------------------------- aparato crítico */
+
+.aparato-caja > summary {
+  list-style: none;
+  cursor: pointer;
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding-bottom: .4rem;
+  border-bottom: 1px solid transparent;
+  transition: border-color .3s var(--paso);
+}
+.aparato-caja > summary::-webkit-details-marker { display: none; }
+.aparato-caja > summary:hover { border-bottom-color: var(--regla-suave); }
+.aparato-titulo {
+  font-family: var(--serif); font-style: italic; font-size: 1.28rem;
+  color: var(--azul); display: inline;
+}
+.aparato-titulo::after {
+  content: '+';
+  font-style: normal; font-family: var(--sans); font-weight: 400;
+  margin-left: .55rem; color: var(--tinta-3);
+}
+.aparato-caja[open] .aparato-titulo::after { content: '–'; }
+.aparato-cuenta {
+  margin-left: auto;
+  font-size: .625rem; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--tinta-3); white-space: nowrap;
+}
+
+.aparato { margin-top: 1.8rem; max-width: var(--medida); }
+.aparato-grupo + .aparato-grupo { margin-top: 2.4rem; }
+.aparato-grupo > .subtitulo { margin-top: 0; }
+
+.entrada {
+  padding-left: 1.1rem;
+  border-left: 1px solid var(--regla-suave);
+  margin-bottom: 1.5rem;
+}
+.entrada:last-child { margin-bottom: 0; }
+.entrada .ref {
+  font-family: var(--serif); font-size: 1rem; line-height: 1.55; color: var(--tinta);
+}
+.entrada .ref a {
+  border-bottom: 1px solid var(--regla);
+  transition: color .25s var(--paso), border-color .25s var(--paso);
+}
+.entrada .ref a:hover { color: var(--azul); border-bottom-color: var(--azul); }
+.entrada .nota {
+  margin-top: .5rem;
+  font-family: var(--serif); font-size: .95rem; line-height: 1.65; color: var(--tinta-2);
+}
+.marcas { margin-top: .45rem; display: flex; flex-wrap: wrap; gap: .4rem; }
+.marca {
+  font-family: var(--sans); font-size: .563rem; font-weight: 500;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--tinta-3);
+  border: 1px solid var(--regla-suave);
+  padding: .15rem .45rem;
+  white-space: nowrap;
+}
+.marca--firme { color: var(--azul); border-color: var(--azul); }
+.marca--floja { color: var(--tinta-2); border-style: dashed; }
+
 .paso-obras {
   margin-top: 3rem; padding-top: 1.6rem; border-top: 1px solid var(--regla-suave);
   display: flex; justify-content: space-between; gap: 1.5rem;
@@ -497,6 +561,9 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
   .lamina .paspartu { padding: 0; box-shadow: none; }
   .lamina img { max-height: 12cm; box-shadow: none; }
   .seccion { break-inside: avoid; border-top: .5pt solid #999; }
+  .aparato-caja > *:not(summary) { display: block !important; }
+  .aparato-titulo::after { content: '' !important; }
+  .entrada { break-inside: avoid; }
   .prosa p, .voz blockquote p { font-size: 10.5pt; line-height: 1.5; }
   a[href^="http"]::after { content: ' (' attr(href) ')'; font-size: 8pt; }
 }
@@ -609,7 +676,8 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
         "source": "Un lenguaje visual del erotismo: violencia y sexualidad en Los bañistas masculinos de Cézanne",
         "text": "El empuje vertical encuentra resonancia en los árboles del fondo, cuyos afilados troncos se disparan hacia arriba y a través de la línea de nubes, lo que no solo refuerza el potencial de las figuras para una expresión violenta, sino que también señala su relación con su entorno. Una vez más vemos el uso de lo femenino para ejercitar lo masculino: estos bañistas masculinos están utilizando y pisoteando activamente la naturaleza. De hecho, las figuras parecen imponer su sexualidad sobre el espacio a través de sus distintas posturas, que muestran de manera casi burlona todos los ángulos del cuerpo masculino y cubren casi la totalidad del paisaje natural, un espacio generificado como femenino. [...] En Les Baigneurs, esta técnica refuerza la violenta intrusión de los bañistas masculinos en un espacio femenino; las figuras, delineadas en negro, parecen transpuestas sobre la escena natural, y sus movimientos superpuestos y conflictivos son el resultado directo de su torpe afirmación y de su condición de extranjeros."
       }
-    ]
+    ],
+    "bibliografia": []
   },
   {
     "slug": "desollamiento-marsias",
@@ -657,7 +725,8 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
         "source": null,
         "text": "Recuerdo haber contemplado el cuadro de Tiziano que muestra el desollamiento de Marsias por Apolo cuando fue exhibido en Washington D.C. Abrumado y sobrecogido, sólo pude asentir con la cabeza ante el comentario de mi acompañante, el pintor norteamericano Larry Day, de que el cuadro poseía algo de la intensidad y el efecto que produce el acto final de El rey Lear. Ese Tiziano estaba en San Petersburgo, y Tolstói pudo verlo; no recuerdo ningún comentario concreto, pero presumiblemente él también habría concebido la imagen de Tiziano de ese horror, de ese final prometido."
       }
-    ]
+    ],
+    "bibliografia": []
   },
   {
     "slug": "coloso",
@@ -705,7 +774,8 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
         "source": "Saturne. Le destin, l'art et Goya (trad. inglesa: Saturn: An Essay on Goya, 1957)",
         "text": "Loneliness has its limits, for Goya was not a prophet but a painter. If he had not been a painter his attitude to life would have found expression only in preaching or suicide."
       }
-    ]
+    ],
+    "bibliografia": []
   },
   {
     "slug": "picnic",
@@ -738,7 +808,8 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
         "source": null,
         "text": "Soy un realista hasta cierto punto: utilizo normas relativas en las que todo es reconocible, pero en realidad no son imitaciones directas de figuras, lugares o cosas. Son comentarios, actitudes o iluminaciones sobre ellos. Por lo tanto, busco un cierto distanciamiento entre la imagen y el objeto representado."
       }
-    ]
+    ],
+    "bibliografia": []
   },
   {
     "slug": "petroglifo-tanum",
@@ -761,7 +832,8 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
     "description": "Petroglifo de la Edad del Bronce situado en el área de Tanum (Patrimonio de la Humanidad, Bohuslän, Suecia). La talla representa a una figura humana con los brazos levantados junto a una línea ondulada en forma de serpiente y una marca de cúpula. El color rojo aplicado no es original, sino moderno, utilizado para resaltar los grabados.",
     "context": "Conviene empezar por una precisión que no es pedantería, sino que altera la naturaleza misma del objeto: esto no es, en rigor, una *pintura* rupestre, sino un **grabado**, un petroglifo. Las líneas no se aplicaron con pigmento sobre la piedra, sino que se picaron y desgastaron en el granito con percutores de roca más dura —cuarzo, diabasa—. El rojo que ves es un añadido posterior sobre el surco. Se trata de arte rupestre de la **Edad del Bronce nórdica**, del tipo de los grabados de Bohuslän.\n\n**Contexto: una costa del Bronce**\nLa Edad del Bronce escandinava se sitúa, grosso modo, entre el 1800 y el 500 a. C. El soporte tiene su propia profundidad temporal: el norte de Bohuslän es un país de lecho granítico que el manto de hielo dejó raspado y pulido hace unos 14.000 años. Durante el Bronce, esa franja era la línea de costa de un fiordo: era un mundo marítimo, y el motivo más frecuente es el barco, junto a figuras humanas y escenas rituales. No estamos ante garabatos aislados, sino ante el vocabulario gráfico de una cultura entera.\n\n**El rojo: un velo moderno**\nEl rojo es una intervención moderna: muchos grabados fueron pintados por las autoridades para hacerlos visibles al visitante, una práctica criticada por sustraerles autenticidad. Esto tiene una consecuencia de primer orden: *no estamos viendo la obra de la Edad del Bronce, sino su relectura contemporánea*. En origen, el petroglifo era un surco desnudo, legible solo por el juego de la luz rasante. El rojo la fija, la vuelve permanente. Vemos la Antigüedad a través de una mano moderna que a la vez la revela y la falsifica. La nitidez que hoy admiramos es, en parte, una ficción del siglo XX.",
     "analysis": "**La economía radical del signo**\nAceptando que leemos una versión intervenida, la composición posee una fuerza gráfica innegable. A la izquierda, un antropomorfo con ambos brazos alzados: el tipo que la literatura llama \"orante\" (*adorant*), habitualmente interpretada como gesto ritual. A la derecha, una larga línea ondulante. Y arriba, un pequeño disco o cazoleta. Lo estético aquí es la reducción extrema: el ser humano condensado en un puñado de trazos y, sin embargo, dotado de expresividad por la pura postura. Es semiosis en su grado más elemental.\n\n**La línea y el ritmo**\nEl corazón plástico de la imagen es esa línea larga y ondulada. Su acierto es rítmico: la ondulación repetida produce una cadencia visual casi notacional. Y encierra la ambigüedad fundamental: puede leerse como una **serpiente** o como **agua**, lo cual encajaría con el mundo de fiordo. La composición insinúa un encuentro entre la figura y la onda. Pero qué encuentro sea ese, lo ignoramos.\n\n**El código perdido**\nNo sabemos qué representa ni qué significaba. La arqueología ofrece marcos —el culto, la fertilidad, la cosmología solar—, pero todos son conjetura. Este grabado nos interpela a través de unos tres mil años en una lengua cuya clave se ha perdido. Ahí reside buena parte de su fuerza, y también la tentación que conviene resistir: la de la divulgación que \"traduce\" con aplomo cada signo.\n\n**El gesto y el tiempo profundo**\nAlgo sí nos llega intacto: el gesto. Los brazos alzados son legibles a través de cualquier distancia temporal. El signo gestual persiste donde el signo simbólico se ha vuelto opaco. Todo ello descansa sobre un soporte que multiplica las escalas de tiempo: el granito pulido por el hielo hace catorce milenios, la incisión del Bronce, el rojo del siglo XX, y el liquen que hoy lo borra. La obra no habita el tiempo humano, sino el geológico.\n\n**Sobre lo itifálico**\nLa representación itifálica es uno de los rasgos mejor documentados del corpus de la Edad del Bronce escandinava. Los \"orantes\" aparecen con frecuencia dotados de un falo marcado, vinculados a un complejo de fertilidad, virilidad y poder cósmico. Si tu figura lo es, se inscribe con toda naturalidad en esa tradición.\n\n**Sobre la persecución: una objeción**\n\"Perseguir\" implica movimiento, pero lo que el grabado presenta es una yuxtaposición estática. El antropomorfo queda fijo a la izquierda y entre él y la línea hay un hueco sin marcar. No hay indicio formal de persecución. Lo que tenemos es un encuentro o una yuxtaposición. Que leamos \"persecución\" dice tanto de nuestra tendencia narrativa —el ojo humano completa una historia— como de la imagen en sí.\n\n**Lo que sí es plausible: la yuxtaposición hombre/serpiente-agua**\nLa asociación entre figura humana y línea ondulante es un tema bien documentado, aunque discutido: emparejamiento cosmológico entre lo terrestre-viril y lo acuático-ctónico, escena de culto junto al agua, o convivencia de dos símbolos de fertilidad. Si el orante es itifálico, la lectura de una escena de fecundidad gana verosimilitud frente a la de la amenaza. Seguimos operando en el terreno de la conjetura; el relato que une a los signos es una historia que nosotros, no ellos, necesitamos contar.",
-    "voices": []
+    "voices": [],
+    "bibliografia": []
   },
   {
     "slug": "manana-bosque-pinos",
@@ -797,7 +869,8 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
         "source": "Revista Academia (Análisis del bort)",
         "text": "La inserción técnica de la colmena tradicional eslava (bort o koloda) en el cuadrante superior izquierdo como justificación biológica de la presencia de los osos. La apicultura forestal primitiva consistía en acondicionar huecos naturales en árboles altos o colgar troncos ahuecados a gran altura para atraer a las abejas silvestres y proteger la miel de los depredadores de la taiga. La inclusión de la colmena por Shishkin demuestra no solo su absoluto conocimiento de la cultura material rural del Prikamye y del norte de Rusia, sino que dota de coherencia narrativa a toda la escena: la familia de osos no deambula de manera aleatoria, sino que ha sido atraída al lugar por el olor a miel de la colmena."
       }
-    ]
+    ],
+    "bibliografia": []
   },
   {
     "slug": "dragon-rojo-mujer-sol",
@@ -845,7 +918,8 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
         "source": null,
         "text": "En lo que equivale a una revisión gnóstica de la Biblia, Blake repite esta misma visión [tormentosa], con la misma postura... pero aquí coloca al Dios de Job, Elohim, en el papel de Satán."
       }
-    ]
+    ],
+    "bibliografia": []
   },
   {
     "slug": "labrador-del-universo",
@@ -875,7 +949,8 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
         "source": "mosaicsofmoldova.com · kathmanduandbeyond.com",
         "text": "Concrete Wastelands preserva el patrimonio arquitectónico de la era socialista a través de la fotografía, el mapeo y la investigación. Resistir al borrado. Capturar el legado de una época desaparecida."
       }
-    ]
+    ],
+    "bibliografia": []
   },
   {
     "slug": "meninas",
@@ -898,7 +973,252 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
     "description": null,
     "context": null,
     "analysis": null,
-    "voices": []
+    "voices": [],
+    "bibliografia": []
+  },
+  {
+    "slug": "discomedusae",
+    "title": "Discomedusae",
+    "artist": "Ernst Haeckel y Adolf Giltsch",
+    "year": "1899",
+    "anio": 1899,
+    "technique": "Litografía en color",
+    "dimensions": "35,5 × 27 cm (formato del volumen)",
+    "alto": 35.5,
+    "ancho": 27,
+    "movement": null,
+    "location": "Lámina 8 de Kunstformen der Natur, Bibliographisches Institut, Leipzig y Viena",
+    "img": {
+      "drive": null,
+      "commons": "Haeckel Discomedusae 8.jpg",
+      "url": null
+    },
+    "detalle": null,
+    "description": null,
+    "context": null,
+    "analysis": null,
+    "voices": [],
+    "bibliografia": [
+      {
+        "seccion": "Fuentes primarias",
+        "entradas": [
+          {
+            "ref": "Haeckel, Ernst. Kunstformen der Natur. Leipzig y Viena: Bibliographisches Institut, 1899-1904.",
+            "url": "https://archive.org/details/kunstformenderna00haec",
+            "estado": "verificado",
+            "acceso": "acceso abierto",
+            "nota": "Diez entregas de diez láminas; recopilación en dos volúmenes en 1904; segunda edición reducida a treinta láminas en 1914. Litografías de Adolf Giltsch (1852-1911). El ejemplar digitalizado por la Biodiversity Heritage Library incluye el Supplement-Heft, con la explicación que Haeckel escribió para cada lámina: es la fuente menos explotada de todas, y casi nadie que escriba sobre estas imágenes la cita."
+          },
+          {
+            "ref": "Haeckel, Ernst. «Report on the Radiolaria». En Report on the Scientific Results of the Voyage of H.M.S. Challenger during the Years 1873-1876, vol. 18. Londres: HMSO, 1887.",
+            "estado": "verificado",
+            "acceso": "acceso abierto",
+            "nota": "Con las monografías anteriores —Die Radiolarien (1862), Arabische Korallen (1876), Das System der Medusen (1879-1881)— forma el repertorio del que salen las láminas."
+          },
+          {
+            "ref": "Haeckel, Ernst. Generelle Morphologie der Organismen. Berlín: Georg Reimer, 1866.",
+            "estado": "verificado",
+            "acceso": "acceso abierto",
+            "nota": "Aquí desarrolla la promorfología, su geometría de la simetría orgánica. Es el puente conceptual entre la biología y la estética: sin ella, la tesis de Kockerbeck se queda sin fundamento técnico."
+          },
+          {
+            "ref": "Haeckel, Ernst. Der Monismus als Band zwischen Religion und Wissenschaft. 1892. — Die Welträthsel. Gemeinverständliche Studien über monistische Philosophie. Bonn: Emil Strauß, 1899.",
+            "estado": "verificado",
+            "acceso": "acceso abierto",
+            "nota": "Los dos textos filosóficos. En el primero niega a Dios como ser personal y afirma el espíritu divino en todas las cosas: es la formulación contra la que hay que leer la tesis de Kleeberg."
+          },
+          {
+            "ref": "Haeckel, Ernst. Erinnerungen und Briefe der Liebe, ed. Heinrich Schmidt. Dresde: Carl Reissner, 1927.",
+            "estado": "de segunda mano",
+            "acceso": "sin digitalizar",
+            "nota": "Correspondencia con Anna Sethe. Richards cita las pp. 318-319."
+          },
+          {
+            "ref": "Binet, René. Esquisses décoratives, prefacio de Gustave Geffroy. París: Librairie centrale des beaux-arts / Émile Lévy, [1902].",
+            "estado": "verificado",
+            "acceso": "acceso abierto",
+            "nota": "Dos volúmenes en folio de 45 × 33 cm, catorce hojas con 43 figuras y 60 láminas. Binet expone aquí su método y declara sus fuentes: el tratado de los colores de Goethe y los trabajos de Haeckel, cuyos cincuenta volúmenes consultaba en la biblioteca del Muséum de París."
+          },
+          {
+            "ref": "Correspondencia Binet-Haeckel, cartas del 8 y el 17 de mayo de 1902. Ernst-Haeckel-Archiv, Jena (EHA).",
+            "estado": "de segunda mano",
+            "acceso": "sin digitalizar",
+            "nota": "Transcritas parcialmente por Proctor. Es el documento que prueba que la transmisión no fue de formas sino de doctrina."
+          }
+        ]
+      },
+      {
+        "seccion": "La estética monista: primacía de lo bello natural",
+        "entradas": [
+          {
+            "ref": "Kockerbeck, Christoph. Ernst Haeckels «Kunstformen der Natur» und ihr Einfluß auf die deutsche bildende Kunst der Jahrhundertwende: Studie zum Verhältnis von Kunst und Naturwissenschaften im wilhelminischen Zeitalter. Fráncfort, tesis doctoral, 1985; ed. Peter Lang, 1986, 260 pp.",
+            "estado": "verificado",
+            "acceso": "sin digitalizar",
+            "nota": "La referencia central. Sostiene que el atlas es un documento de la teoría estética de los monistas hacia 1900, que afirmaban la primacía de lo bello natural (Naturschönes) sobre lo bello artístico (Kunstschönes) y pretendían fundar el arte biológicamente; la recepción se ejemplifica en Hermann Obrist. Choca con toda la tradición idealista alemana, y de frente con la apertura de las Vorlesungen über die Ästhetik de Hegel. Límite: su corpus de recepción es exclusivamente alemán, y deja fuera la vía francesa. Bibliografía en pp. 233-246."
+          },
+          {
+            "ref": "Krauße, Erika. «Haeckel: Promorphologie und “evolutionistische” ästhetische Theorie: Konzept und Wirkung». En Die Rezeption von Evolutionstheorien im 19. Jahrhundert, ed. Eve-Marie Engels. Fráncfort: Suhrkamp, 1995, pp. 347-394.",
+            "estado": "de segunda mano",
+            "acceso": "sin digitalizar",
+            "nota": "Por el título, la pieza que conecta la promorfología de 1866 con la teoría estética. Complemento técnico de Kockerbeck."
+          },
+          {
+            "ref": "Richards, Robert J. «The Aesthetic and Morphological Foundations of Ernst Haeckel's Evolutionary Project». En The Many Faces of Evolution in Europe, 1860-1914, eds. Mary Kemperink y Patrick Dassen. Ámsterdam: Peeters, 2005, pp. 1-16.",
+            "estado": "de segunda mano",
+            "acceso": "sin digitalizar",
+            "nota": "Dieciséis páginas directas al asunto: los cimientos estéticos del proyecto evolutivo."
+          },
+          {
+            "ref": "Breidbach, Olaf. «Naturkristalle: Zur Architektur der Naturordnungen bei Ernst Haeckel». En Architektur weiterdenken: Werner Oechslin zum 60. Geburtstag. Zúrich: GTA, 2004, pp. 254-275. — «Körperkristalle: Haeckels Natursymmetrien», Praxis der Naturwissenschaften 52 (2003), pp. 17-22.",
+            "estado": "de segunda mano",
+            "acceso": "sin digitalizar",
+            "nota": "El cristal y la simetría como modelo del orden natural. De todo Breidbach, lo más pertinente para la cuestión estética."
+          },
+          {
+            "ref": "Mann, Gunther. «Ernst Haeckel, Zoologie und Jugendstil». Berichte zur Wissenschaftsgeschichte 13 (1990), fasc. 1.",
+            "url": "https://onlinelibrary.wiley.com/doi/abs/10.1002/bewi.19900130102",
+            "estado": "verificado",
+            "acceso": "de pago",
+            "nota": "Con resumen en francés. Recorre la genealogía marítima: la exploración oceánica del XIX como condición de posibilidad de estas imágenes."
+          },
+          {
+            "ref": "Hoppe-Sailer, Richard. «Der Biolog[e] als Ästhet: Ernst Heinrich Haeckel».",
+            "estado": "de segunda mano",
+            "acceso": "sin digitalizar",
+            "nota": "Referencia dada por el Wellcome Collection a través de Breidbach. No he podido verificar ni el título exacto ni el volumen colectivo donde aparece; el registro está cortado. Es el primer cabo que hay que atar."
+          }
+        ]
+      },
+      {
+        "seccion": "Monismo y teología natural",
+        "entradas": [
+          {
+            "ref": "Kleeberg, Bernhard. «God-Nature Progressing: Natural Theology in German Monism». Science in Context 20:3 (2007).",
+            "url": "https://resolve.cambridge.org/core/journals/science-in-context/article/abs/godnature-progressing-natural-theology-in-german-monism/B8FA99CD7838B568E1A348042032ADE2",
+            "estado": "verificado",
+            "acceso": "de pago",
+            "nota": "Sostiene que el monismo funde el goce religioso ante la belleza de la naturaleza con la certeza científica del progreso, y que pese a su combate contra las iglesias no logra ocultar sus raíces: todos los argumentos centrales de la teología natural reaparecen. La estética de la naturaleza de Haeckel en particular delataría su deuda con la idea de una economía divina. Conclusión: el monismo es una teología natural evolutiva y panteísta. Límite: es historia de las ideas, no análisis de imágenes; el paso de la tesis a las láminas concretas queda por dar."
+          }
+        ]
+      },
+      {
+        "seccion": "El dibujo como problema epistemológico",
+        "entradas": [
+          {
+            "ref": "Richards, Robert J. The Tragic Sense of Life: Ernst Haeckel and the Struggle over Evolutionary Thought. Chicago y Londres: University of Chicago Press, 2008.",
+            "estado": "verificado",
+            "acceso": "de pago",
+            "nota": "Su tesis es que la muerte de Anna Sethe en 1864 reorientó el pensamiento entero de Haeckel. Seductora y difícil de falsar: Richards es un biógrafo enamorado de su biografiado."
+          },
+          {
+            "ref": "Richards, Robert J. Texto sobre la lámina 8 de Kunstformen der Natur [PDF en su página de la Universidad de Chicago].",
+            "url": "https://home.uchicago.edu/~rjr6/articles/Kunsthalle2.pdf",
+            "estado": "verificado",
+            "acceso": "acceso abierto",
+            "nota": "Documenta que Haeckel ajustó el tamaño de las medusas laterales para realzar a la central: falseó proporciones relativas por razones de composición. Es el mejor puente entre esta línea y esta lámina."
+          },
+          {
+            "ref": "Dombrowski, Paul M. «Ernst Haeckel's Controversial Visual Rhetoric». Technical Communication Quarterly 12:3 (2003), pp. 303-319.",
+            "estado": "verificado",
+            "acceso": "de pago",
+            "nota": "Trata la polémica de los embriones como problema de retórica visual y no de fraude. El marco para preguntar dónde acaba la esquematización legítima y empieza la mentira."
+          },
+          {
+            "ref": "Bredekamp, Horst. Darwins Korallen: Frühe Evolutionsmodelle und die Tradition der Naturgeschichte. Berlín: Wagenbach, 2005, 111 pp.",
+            "estado": "verificado",
+            "acceso": "sin digitalizar",
+            "nota": "Corto y en alemán, sobre el diagrama evolutivo como forma visual."
+          },
+          {
+            "ref": "Bredekamp, Horst, Vera Dünkel y Birgit Schneider (eds.). The Technical Image: A History of Styles in Scientific Imagery. Chicago y Londres: University of Chicago Press, 2015.",
+            "estado": "verificado",
+            "acceso": "de pago",
+            "nota": "El marco general de la escuela de Berlín sobre la imagen científica."
+          },
+          {
+            "ref": "Weber, Thomas P. Reseña conjunta de Bredekamp (2005) y Breidbach (2006). British Journal for the History of Science, 2008.",
+            "url": "https://www.cambridge.org/core/journals/british-journal-for-the-history-of-science/article/horst-bredekamp-darwins-korallen-fruhe-evolutionsmodelle-und-die-tradition-der-naturgeschichte-berlin-wagenbach-verlag-2005-pp-111-isbn-9783803151735-2250-hardback-olaf-breidbach-visions-of-nature-the-art-and-science-of-ernst-haeckel-munich-prestel-verlag-2006-pp-299-isbn-9783791336640-10000-hardback/9B30170FA519D880619CA30A4D46EAA3",
+            "estado": "verificado",
+            "acceso": "de pago",
+            "nota": "El modo más rápido de tener el estado de la cuestión en dos páginas."
+          }
+        ]
+      },
+      {
+        "seccion": "Recepción: cuando la filosofía viaja con las formas",
+        "entradas": [
+          {
+            "ref": "Proctor, Robert W. «Architecture from the Cell-Soul: René Binet and Ernst Haeckel». The Journal of Architecture 11:4 (septiembre de 2006), pp. 407-424.",
+            "url": "https://www.tandfonline.com/doi/abs/10.1080/13602360601037818",
+            "estado": "verificado",
+            "acceso": "de pago",
+            "nota": "Aportación decisiva y documental: Binet poseía y había leído Die Welträthsel y la Natürliche Schöpfungsgeschichte además de los Kunstformen. Cualquier trabajo que trate el asunto como préstamo decorativo queda desautorizado por esa carta. Existe además un Proctor y Breidbach de 2007, citado en la literatura posterior, que no he localizado."
+          },
+          {
+            "ref": "Proctor, Robert. «Architecture from the Cell-Soul», versión de congreso (Design History Society, Delft, 2006), y capítulo sobre la Porte Monumentale de 1900 [PDF].",
+            "url": "http://radar.gsa.ac.uk/2582/1/Chapter_Final_Proof.pdf",
+            "estado": "verificado",
+            "acceso": "acceso abierto",
+            "nota": "En el repositorio de la Glasgow School of Art. La vía libre para acceder a esta línea sin suscripción."
+          },
+          {
+            "ref": "Breidbach, Olaf. Visions of Nature: The Art and Science of Ernst Haeckel. Múnich: Prestel, 2006, 299 pp.",
+            "estado": "verificado",
+            "acceso": "de pago",
+            "nota": "La síntesis de referencia. Suyo es el juicio de que el libro no es una colección de ilustraciones sino la suma de su visión del mundo."
+          },
+          {
+            "ref": "«Quand la faune de la rade de Villefranche inspirait les artistes du XIXᵉ». The Conversation.",
+            "url": "https://theconversation.com/quand-la-faune-de-la-rade-de-villefranche-inspirait-les-artistes-du-xix-122505",
+            "estado": "verificado",
+            "acceso": "acceso abierto",
+            "nota": "Divulgativo pero con las fuentes puestas: identifica el radiolario concreto, Clathrocanium reginae, que está detrás de la Porte Monumentale, y el que inspiró la cúpula del Printemps. Cierra además un círculo con esta lámina: la fauna que inspiró a esos artistas es la de la bahía de Villefranche, el mismo lugar donde Haeckel observó en abril de 1864 la medusa que dedicó a Anna."
+          },
+          {
+            "ref": "«Beauty of the Plankton: From the First Issue of Haeckel's Art Forms of Nature». Journal of Plankton Research 45:2 (2023), pp. 235 y ss.",
+            "url": "https://academic.oup.com/plankt/article/45/2/235/6974842",
+            "estado": "verificado",
+            "acceso": "de pago",
+            "nota": "Establece qué contenía la primera entrega de diez láminas, que estaba dominada por el plancton. Es lo que respalda fechar esta lámina en 1899 y no en 1904."
+          }
+        ]
+      },
+      {
+        "seccion": "La polémica de fondo",
+        "entradas": [
+          {
+            "ref": "Gasman, Daniel. The Scientific Origins of National Socialism: Social Darwinism in Ernst Haeckel and the German Monist League. Londres y Nueva York: Macdonald y American Elsevier, 1971.",
+            "estado": "verificado",
+            "acceso": "sin digitalizar",
+            "nota": "Richards lo combate a lo largo de todo The Tragic Sense of Life. No es una discusión ajena a lo estético: una doctrina que hace de la naturaleza la norma de lo bello está a un paso de hacerla norma de lo bueno, y ese paso lo dieron algunos de sus lectores."
+          }
+        ]
+      },
+      {
+        "seccion": "Archivos, repositorios y lagunas",
+        "entradas": [
+          {
+            "ref": "Ernst-Haeckel-Haus, Jena (Universidad Friedrich Schiller).",
+            "estado": "verificado",
+            "acceso": "sin digitalizar",
+            "nota": "La antigua Villa Medusa, que Haeckel se hizo construir y decoró con frescos de medusas. Conserva correspondencia, acuarelas originales y los bocetos previos a las litografías. Es el sitio donde comprobar si esta lámina tiene acuarela previa y en qué se diferencia."
+          },
+          {
+            "ref": "Kunstformen der Natur en Wikimedia Commons.",
+            "url": "https://commons.wikimedia.org/wiki/Kunstformen_der_Natur",
+            "estado": "verificado",
+            "acceso": "acceso abierto",
+            "nota": "Las cien láminas en dominio público y en resolución muy alta, con categoría por lámina y recortes de figuras sueltas."
+          },
+          {
+            "ref": "Lagunas por atar.",
+            "estado": "de segunda mano",
+            "acceso": "sin digitalizar",
+            "nota": "La referencia completa de Hoppe-Sailer; si Krauße 1995 dice lo que su título promete; la relación exacta entre la promorfología de 1866 y las láminas de 1899, que nadie parece haber trabajado de frente; y la medida real de la mancha impresa de una lámina, que no aparece en ninguna descripción bibliográfica seria. Términos útiles: en alemán, Naturschönes Kunstschönes Monismus Ästhetik Haeckel, Promorphologie, Haeckel Jugendstil Obrist; en francés, Binet Haeckel esthétique radiolaires."
+          }
+        ]
+      }
+    ]
   }
 ]</script>
 
@@ -1035,6 +1355,49 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
       }
     });
     return p;
+  }
+
+  /* ------------------------------------------------------- aparato crítico
+     Bibliografía razonada: referencia, marcas de fiabilidad y acceso, y nota.
+     La marca de procedencia es lo que distingue un aparato de una lista:
+     "verificado" = comprobado en catálogo o repositorio;
+     "de segunda mano" = conocido solo por cita ajena.                       */
+  function enlaceSeguro(u) {
+    return typeof u === 'string' && /^https?:\/\//i.test(u);
+  }
+
+  function bloqueAparato(grupos) {
+    const cont = h('div', { class: 'aparato' });
+    grupos.forEach(g => {
+      const grupo = h('section', { class: 'aparato-grupo' });
+      if (g.seccion) grupo.appendChild(h('h3', { class: 'subtitulo', texto: g.seccion }));
+      (g.entradas || []).forEach(e => {
+        const ent = h('div', { class: 'entrada' });
+
+        const ref = h('p', { class: 'ref' });
+        if (enlaceSeguro(e.url)) {
+          ref.appendChild(h('a', { href: e.url, target: '_blank',
+                                   rel: 'noopener noreferrer', texto: e.ref }));
+        } else {
+          ref.textContent = e.ref;
+        }
+        ent.appendChild(ref);
+
+        if (e.estado || e.acceso) {
+          const marcas = h('p', { class: 'marcas' });
+          if (e.estado) marcas.appendChild(h('span', {
+            class: 'marca ' + (e.estado === 'verificado' ? 'marca--firme' : 'marca--floja'),
+            texto: e.estado }));
+          if (e.acceso) marcas.appendChild(h('span', { class: 'marca', texto: e.acceso }));
+          ent.appendChild(marcas);
+        }
+
+        if (e.nota) ent.appendChild(h('p', { class: 'nota', texto: e.nota }));
+        grupo.appendChild(ent);
+      });
+      cont.appendChild(grupo);
+    });
+    return cont;
   }
 
   /* ------------------------------------------------------------------ rejilla */
@@ -1237,6 +1600,22 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
         sec.appendChild(h('figure', { class: 'voz' }, cita, pie));
       });
       ficha.appendChild(sec);
+    }
+
+    if (obra.bibliografia && obra.bibliografia.length) {
+      const total = obra.bibliografia.reduce((s, g) => s + (g.entradas || []).length, 0);
+      ficha.appendChild(
+        h('section', { class: 'seccion' },
+          h('details', { class: 'aparato-caja' },
+            h('summary', {},
+              h('h2', { class: 'aparato-titulo', texto: 'Aparato crítico' }),
+              h('span', { class: 'aparato-cuenta',
+                          texto: total + (total === 1 ? ' referencia' : ' referencias') })
+            ),
+            bloqueAparato(obra.bibliografia)
+          )
+        )
+      );
     }
 
     const anterior = lista[(indice - 1 + lista.length) % lista.length];
