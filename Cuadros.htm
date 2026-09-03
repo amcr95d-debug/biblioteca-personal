@@ -341,10 +341,41 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; tex
 .vista-obra[hidden] { display: none; }
 
 .barra-obra {
+  position: sticky; top: 0; z-index: 20;
+  background: var(--papel);
   display: flex; align-items: center; justify-content: space-between;
-  gap: 1.5rem; padding: 1.4rem 0;
+  gap: 1rem; padding: 1.1rem 0;
   border-bottom: 1px solid var(--regla-suave);
   margin-bottom: clamp(2rem, 4vw, 3.5rem);
+}
+/* el fondo se prolonga a los lados del contenedor */
+.barra-obra::before {
+  content: ''; position: absolute; inset: 0 -50vw; z-index: -1;
+  background: var(--papel);
+  border-bottom: 1px solid var(--regla-suave);
+}
+.barra-nav { display: flex; align-items: center; gap: .9rem; }
+.paso {
+  display: inline-flex; align-items: baseline; gap: .4rem;
+  font-family: var(--sans); font-size: .75rem; font-weight: 500;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--tinta-2);
+  padding: .3rem 0; border-bottom: 1px solid transparent;
+  transition: color .25s var(--paso), border-color .25s var(--paso);
+}
+.paso:hover { color: var(--azul); border-bottom-color: var(--azul); }
+.paso .flecha { font-size: 1rem; transition: transform .35s var(--paso); }
+.paso--prev:hover .flecha { transform: translateX(-3px); }
+.paso--next:hover .flecha { transform: translateX(3px); }
+.paso-titulo {
+  max-width: 12ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  font-family: var(--serif); font-style: italic; font-size: .92rem;
+  letter-spacing: 0; text-transform: none; color: var(--tinta-3);
+}
+@media (max-width: 720px) {
+  .paso-titulo { display: none; }
+  .volver .texto { display: none; }
+  .barra-obra { gap: .6rem; }
 }
 .volver {
   display: inline-flex; align-items: center; gap: .6rem;
@@ -366,7 +397,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; tex
 }
 @media (max-width: 980px) { .obra-grid { grid-template-columns: 1fr; } }
 
-.columna-imagen { position: sticky; top: 1.5rem; }
+.columna-imagen { position: sticky; top: 5.5rem; }
 @media (max-width: 980px) { .columna-imagen { position: static; } }
 
 .lamina { margin: 0; }
@@ -582,6 +613,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; tex
 @media print {
   body, body[data-vista="obra"] { background: #fff; color: #000; }
   .mandos, .paso-obras, .barra-obra, .salto-contenido, .escala { display: none !important; }
+  .barra-obra::before { display: none !important; }
   .obra-grid { grid-template-columns: 1fr; }
   .columna-imagen { position: static; }
   .lamina .paspartu { padding: 0; box-shadow: none; }
@@ -655,8 +687,12 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; tex
 
 <main class="vista-obra envase" id="vista-obra" hidden>
   <div class="barra-obra">
-    <a class="volver" href="#" id="volver"><span class="flecha" aria-hidden="true">←</span> Volver a la sala</a>
-    <span class="barra-pos" id="barra-pos"></span>
+    <a class="volver" href="#" id="volver"><span class="flecha" aria-hidden="true">←</span> <span class="texto">Volver a la sala</span></a>
+    <nav class="barra-nav" aria-label="Obras contiguas">
+      <a class="paso paso--prev" id="paso-prev"><span class="flecha" aria-hidden="true">‹</span><span class="paso-titulo" id="paso-prev-t"></span></a>
+      <span class="barra-pos" id="barra-pos"></span>
+      <a class="paso paso--next" id="paso-next"><span class="paso-titulo" id="paso-next-t"></span><span class="flecha" aria-hidden="true">›</span></a>
+    </nav>
   </div>
   <article class="obra-grid">
     <div class="columna-imagen" id="columna-imagen"></div>
@@ -859,9 +895,9 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; tex
       "url": null
     },
     "detalle": null,
-    "description": "Petroglifo de la Edad del Bronce situado en el área de Tanum (Patrimonio de la Humanidad, Bohuslän, Suecia). La talla representa a una figura humana con los brazos levantados junto a una línea ondulada en forma de serpiente y una marca de cúpula. El color rojo aplicado no es original, sino moderno, utilizado para resaltar los grabados.",
-    "context": "Conviene empezar por una precisión que no es pedantería, sino que altera la naturaleza misma del objeto: esto no es, en rigor, una *pintura* rupestre, sino un **grabado**, un petroglifo. Las líneas no se aplicaron con pigmento sobre la piedra, sino que se picaron y desgastaron en el granito con percutores de roca más dura —cuarzo, diabasa—. El rojo que ves es un añadido posterior sobre el surco. Se trata de arte rupestre de la **Edad del Bronce nórdica**, del tipo de los grabados de Bohuslän.\n\n**Contexto: una costa del Bronce**\nLa Edad del Bronce escandinava se sitúa, grosso modo, entre el 1800 y el 500 a. C. El soporte tiene su propia profundidad temporal: el norte de Bohuslän es un país de lecho granítico que el manto de hielo dejó raspado y pulido hace unos 14.000 años. Durante el Bronce, esa franja era la línea de costa de un fiordo: era un mundo marítimo, y el motivo más frecuente es el barco, junto a figuras humanas y escenas rituales. No estamos ante garabatos aislados, sino ante el vocabulario gráfico de una cultura entera.\n\n**El rojo: un velo moderno**\nEl rojo es una intervención moderna: muchos grabados fueron pintados por las autoridades para hacerlos visibles al visitante, una práctica criticada por sustraerles autenticidad. Esto tiene una consecuencia de primer orden: *no estamos viendo la obra de la Edad del Bronce, sino su relectura contemporánea*. En origen, el petroglifo era un surco desnudo, legible solo por el juego de la luz rasante. El rojo la fija, la vuelve permanente. Vemos la Antigüedad a través de una mano moderna que a la vez la revela y la falsifica. La nitidez que hoy admiramos es, en parte, una ficción del siglo XX.",
-    "analysis": "**La economía radical del signo**\nAceptando que leemos una versión intervenida, la composición posee una fuerza gráfica innegable. A la izquierda, un antropomorfo con ambos brazos alzados: el tipo que la literatura llama \"orante\" (*adorant*), habitualmente interpretada como gesto ritual. A la derecha, una larga línea ondulante. Y arriba, un pequeño disco o cazoleta. Lo estético aquí es la reducción extrema: el ser humano condensado en un puñado de trazos y, sin embargo, dotado de expresividad por la pura postura. Es semiosis en su grado más elemental.\n\n**La línea y el ritmo**\nEl corazón plástico de la imagen es esa línea larga y ondulada. Su acierto es rítmico: la ondulación repetida produce una cadencia visual casi notacional. Y encierra la ambigüedad fundamental: puede leerse como una **serpiente** o como **agua**, lo cual encajaría con el mundo de fiordo. La composición insinúa un encuentro entre la figura y la onda. Pero qué encuentro sea ese, lo ignoramos.\n\n**El código perdido**\nNo sabemos qué representa ni qué significaba. La arqueología ofrece marcos —el culto, la fertilidad, la cosmología solar—, pero todos son conjetura. Este grabado nos interpela a través de unos tres mil años en una lengua cuya clave se ha perdido. Ahí reside buena parte de su fuerza, y también la tentación que conviene resistir: la de la divulgación que \"traduce\" con aplomo cada signo.\n\n**El gesto y el tiempo profundo**\nAlgo sí nos llega intacto: el gesto. Los brazos alzados son legibles a través de cualquier distancia temporal. El signo gestual persiste donde el signo simbólico se ha vuelto opaco. Todo ello descansa sobre un soporte que multiplica las escalas de tiempo: el granito pulido por el hielo hace catorce milenios, la incisión del Bronce, el rojo del siglo XX, y el liquen que hoy lo borra. La obra no habita el tiempo humano, sino el geológico.\n\n**Sobre lo itifálico**\nLa representación itifálica es uno de los rasgos mejor documentados del corpus de la Edad del Bronce escandinava. Los \"orantes\" aparecen con frecuencia dotados de un falo marcado, vinculados a un complejo de fertilidad, virilidad y poder cósmico. Si tu figura lo es, se inscribe con toda naturalidad en esa tradición.\n\n**Sobre la persecución: una objeción**\n\"Perseguir\" implica movimiento, pero lo que el grabado presenta es una yuxtaposición estática. El antropomorfo queda fijo a la izquierda y entre él y la línea hay un hueco sin marcar. No hay indicio formal de persecución. Lo que tenemos es un encuentro o una yuxtaposición. Que leamos \"persecución\" dice tanto de nuestra tendencia narrativa —el ojo humano completa una historia— como de la imagen en sí.\n\n**Lo que sí es plausible: la yuxtaposición hombre/serpiente-agua**\nLa asociación entre figura humana y línea ondulante es un tema bien documentado, aunque discutido: emparejamiento cosmológico entre lo terrestre-viril y lo acuático-ctónico, escena de culto junto al agua, o convivencia de dos símbolos de fertilidad. Si el orante es itifálico, la lectura de una escena de fecundidad gana verosimilitud frente a la de la amenaza. Seguimos operando en el terreno de la conjetura; el relato que une a los signos es una historia que nosotros, no ellos, necesitamos contar.",
+    "description": "Petroglifo de la Edad del Bronce situado en el área de Tanum (Patrimonio de la Humanidad, Bohuslän, Suecia). La talla representa a una figura humana con los brazos levantados junto a una línea ondulada en forma de serpiente, mucho mayor que ella, y una cazoleta suspendida sobre la escena. El color rojo aplicado no es original, sino moderno, utilizado para resaltar los grabados.",
+    "context": "**Un grabado, no una pintura**\nNo hay pigmento en esta imagen. Las líneas se hicieron picando el granito con una piedra más dura, cuarzo o diabasa, y desgastando después el surco. Es un petroglifo: un dibujo hecho quitando materia, no añadiéndola. El surco es somero, de pocos milímetros, y en la piedra desnuda solo se distingue bien con luz rasante, al amanecer o al atardecer.\n\n**Una costa que ya no está donde estaba**\nTanum está en Bohuslän, en la costa oeste de Suecia, sobre un lecho de granito que el hielo dejó raspado y pulido al retirarse, hace unos trece o catorce mil años. En la Edad del Bronce, entre 1800 y 500 a. C., el mar llegaba más alto que hoy y estas rocas quedaban junto al agua. El motivo más repetido en toda la zona es el barco; después vienen las figuras humanas, los animales y las escenas que se suelen llamar rituales. El conjunto es Patrimonio de la Humanidad desde 1994.\n\n**El rojo es del siglo XX**\nEl color no es original. Se pintó sobre el surco para que los visitantes pudieran ver algo, y esa práctica lleva décadas discutida entre los arqueólogos, que en muchos paneles han dejado de repintar. Lo que se mira aquí es una obra de la Edad del Bronce con una capa moderna encima: la nitidez es prestada. Sin el rojo, la figura sería una sombra en la piedra que aparece y desaparece con la luz.",
+    "analysis": "**El título ya decide**\nEste grabado no tiene título. «Hombre y serpiente» es un nombre puesto aquí, y contiene una decisión: dice hombre donde solo hay una figura, y dice serpiente donde hay una línea que ondula. Conviene tenerlo presente al mirar, porque una parte de lo que uno cree ver viene del rótulo.\n\n**Tres trazos y un cuerpo**\nLa figura tiene los dos brazos levantados. Es el tipo que la bibliografía llama orante, uno de los más frecuentes en el arte rupestre nórdico. Lo notable es cuánto se puede quitar sin que deje de leerse: un tronco, dos brazos, dos piernas, y todavía es alguien haciendo algo. La legibilidad no depende del detalle. Depende de la postura.\n\n**La línea, y su tamaño**\nAl lado corre una línea larga que sube y baja en ondas casi iguales, unas nueve o diez, con un ritmo que se puede contar. Lo primero que llama la atención no es la forma sino la escala: la línea mide varias veces el cuerpo de la figura, tanto que ocupa el resto de la roca. Si esto fuese un animal, sería un animal desmesurado.\n\nEl extremo izquierdo, el más cercano a la figura, se levanta y se curva hacia arriba, separándose del ritmo del resto. Ese gesto es lo que hace que la línea se lea como serpiente y no como agua: parece una cabeza alzada. Pero no tiene ojo, ni boca, ni ensanchamiento; solo una curva que rompe la serie. Las dos lecturas siguen abiertas, y en una costa las dos tienen sentido.\n\n**El punto**\nEncima de la línea, hacia el centro, hay una cazoleta: un hoyo redondo picado en la roca. Son el motivo más abundante del arte rupestre nórdico, aparecen a miles y nadie sabe qué son. Se han propuesto el sol, estrellas, ofrendas, recuentos. Aquí queda suspendido sobre la escena sin tocarla, y es el elemento que más se resiste a cualquier lectura.\n\n**Lo que se ha perdido**\nNo se sabe qué quería decir. La arqueología ofrece marcos, como el culto, la fertilidad o la cosmología solar, pero son marcos, no traducciones. Tres mil años bastan para que un signo pierda su clave. La tentación es rellenar ese hueco con una explicación segura, y la divulgación lo hace a menudo. Mejor dejarlo abierto, que es como está.\n\n**Lo que sí llega**\nEl gesto sobrevive. Unos brazos levantados se entienden en cualquier siglo, aunque no se sepa a quién se levantan ni por qué. El signo que quería decir algo concreto se ha vuelto opaco; el que muestra un cuerpo en una postura sigue funcionando. Es lo único de esta imagen que no necesita traducción.\n\n**Sobre el falo**\nMuchas de estas figuras son itifálicas. Es uno de los rasgos mejor documentados del corpus del Bronce escandinavo y se suele asociar a la fertilidad y a la virilidad. Si esta figura lo es, no hace falta explicarlo por separado: entra en lo habitual.\n\n**Al lado, no detrás**\nEs fácil leer aquí una escena: el hombre huye de la serpiente, o la invoca, o la domina. La imagen da pie a ello más de lo que parecía. La figura está vuelta hacia la línea, la línea se alza justo en el extremo que la mira, y entre las dos hay un palmo de piedra sin marcar. Hay orientación, y eso ya es algo.\n\nLo que no hay es movimiento. Ninguna de las dos figuras avanza: los brazos están quietos en alto, las ondas son regulares de principio a fin, y el hueco entre ambas no se estrecha ni se ensancha. Se puede decir que están enfrentadas. No se puede decir qué está ocurriendo. El verbo que une los dos signos lo ponemos nosotros, porque el ojo no tolera dos cosas juntas sin uno en medio, y de ahí salen tanto la persecución como el conjuro.\n\n**Cuatro tiempos en una roca**\nEl soporte lleva varias edades encima. El granito lo pulió el hielo hace catorce mil años. El surco se picó hace tres mil. El rojo se pintó hace unas décadas. Y el liquen que crece en el surco lo está borrando ahora. La imagen que se mira es la suma de esas cuatro capas, y solo una de ellas la hizo alguien que quería decir algo.",
     "voices": [],
     "bibliografia": [],
     "ficha": []
@@ -1768,6 +1804,16 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; tex
 
     document.getElementById('barra-pos').textContent =
       (indice + 1) + ' / ' + lista.length;
+
+    // los mismos saltos, siempre a la vista en la barra flotante
+    [['paso-prev', anterior, 'Obra anterior: '], ['paso-next', siguiente, 'Obra siguiente: ']]
+      .forEach(([id, obj, etiqueta]) => {
+        const el = document.getElementById(id);
+        el.href = '#obra/' + obj.slug;
+        el.title = obj.title;
+        el.setAttribute('aria-label', etiqueta + obj.title);
+        document.getElementById(id + '-t').textContent = obj.title;
+      });
     document.title = obra.title + ' · ' + obra.artist + ' — Cuadernos de galería';
   }
 
