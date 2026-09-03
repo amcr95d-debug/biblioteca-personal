@@ -7,6 +7,7 @@
 <meta name="description" content="Colección privada de cuadros, con ficha, contexto, análisis y voces críticas sobre cada obra.">
 <meta name="color-scheme" content="light">
 <meta name="theme-color" content="#c7c2b9">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect x=%273%27 y=%273%27 width=%2726%27 height=%2726%27 fill=%27%23c7c2b9%27 stroke=%27%2317415c%27 stroke-width=%272%27/%3E%3Crect x=%279%27 y=%279%27 width=%2714%27 height=%2714%27 fill=%27%2317415c%27/%3E%3C/svg%3E">
 <script>document.documentElement.className += ' js';</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -79,10 +80,14 @@ img { display: block; }
   font-family: var(--sans); font-size: .8rem; letter-spacing: .06em;
 }
 .salto-contenido:focus { left: 1rem; top: 1rem; }
+.sin-js {
+  font-family: var(--serif); font-style: italic; color: var(--tinta-2);
+  padding: 2rem 0; border-top: 1px solid var(--regla);
+}
 
 /* --------------------------------------------------------------- tipografía */
 
-h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
+h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; text-wrap: balance; }
 
 .rotulo {
   font-family: var(--sans);
@@ -177,7 +182,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));
   gap: clamp(3rem, 5vw, 5rem) clamp(1.5rem, 3vw, 3rem);
-  align-items: end;
+  align-items: start;
   padding-bottom: clamp(4rem, 8vw, 7rem);
 }
 
@@ -281,6 +286,12 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
   outline: 2px solid transparent; outline-offset: 2px;
 }
 .escala-obra:hover .caja, .escala-obra:focus-visible .caja { outline-color: var(--azul); }
+.caja--desborda { border-top: 2px dashed var(--azul); }
+.caja--desborda::after {
+  content: ''; position: absolute; inset: 0 0 auto 0; height: 30%;
+  background: linear-gradient(var(--sala-alta), transparent);
+  pointer-events: none;
+}
 .escala-obra .caja img { width: 100%; height: 100%; object-fit: cover; }
 .escala-pared .pie {
   position: absolute; bottom: -1.6rem; left: 0;
@@ -378,6 +389,14 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
   font-family: var(--serif); font-style: italic; font-size: .9rem;
   color: var(--tinta-3); line-height: 1.5;
 }
+.lamina figcaption a {
+  display: inline-block; margin-left: .6rem;
+  font-family: var(--sans); font-style: normal; font-size: .625rem;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--tinta-3);
+  border-bottom: 1px solid var(--regla-suave);
+  transition: color .25s var(--paso), border-color .25s var(--paso);
+}
+.lamina figcaption a:hover { color: var(--azul); border-bottom-color: var(--azul); }
 
 .ficha-cabeza { padding-bottom: 1.8rem; border-bottom: 1px solid var(--regla-suave); }
 .ficha-titulo {
@@ -398,6 +417,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
 .ficha dd {
   font-family: var(--serif); font-size: 1.02rem; color: var(--tinta);
   padding-top: .35rem;
+  font-variant-numeric: lining-nums tabular-nums;
 }
 @media (max-width: 480px) { .ficha { grid-template-columns: 1fr; gap: 0 0; } .ficha dd { margin-bottom: .7rem; } }
 
@@ -419,6 +439,8 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
 .prosa { max-width: var(--medida); }
 .prosa p {
   font-family: var(--serif); font-size: 1.06rem; line-height: 1.76; color: var(--tinta);
+  font-variant-numeric: oldstyle-nums;
+  text-wrap: pretty;
 }
 .prosa p + p { margin-top: 1.1rem; }
 .prosa strong { font-weight: 600; }
@@ -441,6 +463,8 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
 .voz blockquote p {
   font-family: var(--serif); font-style: italic; font-size: 1.06rem;
   line-height: 1.72; color: var(--tinta);
+  font-variant-numeric: oldstyle-nums;
+  text-wrap: pretty;
 }
 .voz blockquote p + p { margin-top: 1rem; }
 .voz figcaption { margin-top: .9rem; }
@@ -505,10 +529,12 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
 .entrada .nota {
   margin-top: .5rem;
   font-family: var(--serif); font-size: .95rem; line-height: 1.65; color: var(--tinta-2);
+  font-variant-numeric: oldstyle-nums;
+  text-wrap: pretty;
 }
 .marcas { margin-top: .45rem; display: flex; flex-wrap: wrap; gap: .4rem; }
 .marca {
-  font-family: var(--sans); font-size: .563rem; font-weight: 500;
+  font-family: var(--sans); font-size: .625rem; font-weight: 500;
   letter-spacing: .14em; text-transform: uppercase;
   color: var(--tinta-3);
   border: 1px solid var(--regla-suave);
@@ -582,7 +608,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
       <h1>Una colección privada de <em>cuadros favoritos</em></h1>
     </div>
     <div class="sala-texto" data-anima>
-      <p class="lede">No soy historiador de arte ni crítico. Solo soy alguien que durante años ha recopilado imágenes de cuadro, ha entrado en salas de museos, y ha leído libros sobre arte. A veces buscando algo en concreto, la mayoría sin saber por qué. Esta página reúne algunos de los cuadros que más me han acompañado. Algunos los he visto en museos. Otros los he visto en libros, en Internet, en una película. Solo quiero tenerlos, en un lugar tranquilo.</p>
+      <p class="lede">No soy historiador de arte ni crítico. Solo soy alguien que durante años ha recopilado imágenes de cuadros, ha entrado en salas de museos, y ha leído libros sobre arte. A veces buscando algo en concreto, la mayoría sin saber por qué. Esta página reúne algunos de los cuadros que más me han acompañado. Algunos los he visto en museos. Otros los he visto en libros, en Internet, en una película. Solo quiero tenerlos, en un lugar tranquilo.</p>
       <p>Pasa el cursor por cada miniatura para verla en mayor tamaño. Si quieres leer la ficha y mis notas, haz clic: te llevará a una página aparte con el cuadro en su tamaño original.</p>
     </div>
   </header>
@@ -616,15 +642,12 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
       <h2 class="titulo-seccion" id="titulo-coleccion"></h2>
       <p class="linea-orden" id="linea-orden">Ordenados por afinidad, no por cronología.</p>
     </header>
+    <noscript><p class="sin-js">La colección se monta con JavaScript. Sin él, esta página solo muestra la cabecera.</p></noscript>
     <div class="rejilla" id="rejilla"></div>
   </section>
 
   <footer class="pie-sitio">
-    <div data-anima>
-      <p class="rotulo">Cuadernos de galería</p>
-      <div class="regla-corta"></div>
-      <p>Una página sin prisa, hecha para volver a ella cuando haga falta volver a ver algo hermoso.</p>
-    </div>
+    <p class="rotulo" data-anima>Cuadernos de galería</p>
     <p class="pie-datos" id="pie-datos"></p>
   </footer>
 
@@ -677,7 +700,8 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
         "text": "El empuje vertical encuentra resonancia en los árboles del fondo, cuyos afilados troncos se disparan hacia arriba y a través de la línea de nubes, lo que no solo refuerza el potencial de las figuras para una expresión violenta, sino que también señala su relación con su entorno. Una vez más vemos el uso de lo femenino para ejercitar lo masculino: estos bañistas masculinos están utilizando y pisoteando activamente la naturaleza. De hecho, las figuras parecen imponer su sexualidad sobre el espacio a través de sus distintas posturas, que muestran de manera casi burlona todos los ángulos del cuerpo masculino y cubren casi la totalidad del paisaje natural, un espacio generificado como femenino. [...] En Les Baigneurs, esta técnica refuerza la violenta intrusión de los bañistas masculinos en un espacio femenino; las figuras, delineadas en negro, parecen transpuestas sobre la escena natural, y sus movimientos superpuestos y conflictivos son el resultado directo de su torpe afirmación y de su condición de extranjeros."
       }
     ],
-    "bibliografia": []
+    "bibliografia": [],
+    "ficha": []
   },
   {
     "slug": "desollamiento-marsias",
@@ -726,7 +750,8 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
         "text": "Recuerdo haber contemplado el cuadro de Tiziano que muestra el desollamiento de Marsias por Apolo cuando fue exhibido en Washington D.C. Abrumado y sobrecogido, sólo pude asentir con la cabeza ante el comentario de mi acompañante, el pintor norteamericano Larry Day, de que el cuadro poseía algo de la intensidad y el efecto que produce el acto final de El rey Lear. Ese Tiziano estaba en San Petersburgo, y Tolstói pudo verlo; no recuerdo ningún comentario concreto, pero presumiblemente él también habría concebido la imagen de Tiziano de ese horror, de ese final prometido."
       }
     ],
-    "bibliografia": []
+    "bibliografia": [],
+    "ficha": []
   },
   {
     "slug": "coloso",
@@ -754,7 +779,8 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
         "author": "Visual Arts Cork",
         "year": null,
         "source": "visual-arts-cork.com",
-        "text": "The dramatic impact of The Colossus lies in its fundamental uncertainty. We have absolutely no idea if the giant has harmed anyone or anything. It is not necessary for him to have done so to create this terrified exodus. Here is this hostile being of unimaginable size, who at any moment could swing around and crush people, wagons and animals with his massive limbs."
+        "text": "The dramatic impact of The Colossus lies in its fundamental uncertainty. We have absolutely no idea if the giant has harmed anyone or anything. It is not necessary for him to have done so to create this terrified exodus. Here is this hostile being of unimaginable size, who at any moment could swing around and crush people, wagons and animals with his massive limbs.",
+        "lang": "en"
       },
       {
         "author": "Carlos Foradada",
@@ -766,16 +792,19 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
         "author": "Sarah Symmons",
         "year": null,
         "source": null,
-        "text": "His analysis in paint, chalk and ink of mass disaster and human frailty pointed to someone obsessed with the chaos of existence."
+        "text": "His analysis in paint, chalk and ink of mass disaster and human frailty pointed to someone obsessed with the chaos of existence.",
+        "lang": "en"
       },
       {
         "author": "André Malraux",
         "year": "1950",
         "source": "Saturne. Le destin, l'art et Goya (trad. inglesa: Saturn: An Essay on Goya, 1957)",
-        "text": "Loneliness has its limits, for Goya was not a prophet but a painter. If he had not been a painter his attitude to life would have found expression only in preaching or suicide."
+        "text": "Loneliness has its limits, for Goya was not a prophet but a painter. If he had not been a painter his attitude to life would have found expression only in preaching or suicide.",
+        "lang": "en"
       }
     ],
-    "bibliografia": []
+    "bibliografia": [],
+    "ficha": []
   },
   {
     "slug": "picnic",
@@ -809,7 +838,8 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
         "text": "Soy un realista hasta cierto punto: utilizo normas relativas en las que todo es reconocible, pero en realidad no son imitaciones directas de figuras, lugares o cosas. Son comentarios, actitudes o iluminaciones sobre ellos. Por lo tanto, busco un cierto distanciamiento entre la imagen y el objeto representado."
       }
     ],
-    "bibliografia": []
+    "bibliografia": [],
+    "ficha": []
   },
   {
     "slug": "petroglifo-tanum",
@@ -833,7 +863,8 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
     "context": "Conviene empezar por una precisión que no es pedantería, sino que altera la naturaleza misma del objeto: esto no es, en rigor, una *pintura* rupestre, sino un **grabado**, un petroglifo. Las líneas no se aplicaron con pigmento sobre la piedra, sino que se picaron y desgastaron en el granito con percutores de roca más dura —cuarzo, diabasa—. El rojo que ves es un añadido posterior sobre el surco. Se trata de arte rupestre de la **Edad del Bronce nórdica**, del tipo de los grabados de Bohuslän.\n\n**Contexto: una costa del Bronce**\nLa Edad del Bronce escandinava se sitúa, grosso modo, entre el 1800 y el 500 a. C. El soporte tiene su propia profundidad temporal: el norte de Bohuslän es un país de lecho granítico que el manto de hielo dejó raspado y pulido hace unos 14.000 años. Durante el Bronce, esa franja era la línea de costa de un fiordo: era un mundo marítimo, y el motivo más frecuente es el barco, junto a figuras humanas y escenas rituales. No estamos ante garabatos aislados, sino ante el vocabulario gráfico de una cultura entera.\n\n**El rojo: un velo moderno**\nEl rojo es una intervención moderna: muchos grabados fueron pintados por las autoridades para hacerlos visibles al visitante, una práctica criticada por sustraerles autenticidad. Esto tiene una consecuencia de primer orden: *no estamos viendo la obra de la Edad del Bronce, sino su relectura contemporánea*. En origen, el petroglifo era un surco desnudo, legible solo por el juego de la luz rasante. El rojo la fija, la vuelve permanente. Vemos la Antigüedad a través de una mano moderna que a la vez la revela y la falsifica. La nitidez que hoy admiramos es, en parte, una ficción del siglo XX.",
     "analysis": "**La economía radical del signo**\nAceptando que leemos una versión intervenida, la composición posee una fuerza gráfica innegable. A la izquierda, un antropomorfo con ambos brazos alzados: el tipo que la literatura llama \"orante\" (*adorant*), habitualmente interpretada como gesto ritual. A la derecha, una larga línea ondulante. Y arriba, un pequeño disco o cazoleta. Lo estético aquí es la reducción extrema: el ser humano condensado en un puñado de trazos y, sin embargo, dotado de expresividad por la pura postura. Es semiosis en su grado más elemental.\n\n**La línea y el ritmo**\nEl corazón plástico de la imagen es esa línea larga y ondulada. Su acierto es rítmico: la ondulación repetida produce una cadencia visual casi notacional. Y encierra la ambigüedad fundamental: puede leerse como una **serpiente** o como **agua**, lo cual encajaría con el mundo de fiordo. La composición insinúa un encuentro entre la figura y la onda. Pero qué encuentro sea ese, lo ignoramos.\n\n**El código perdido**\nNo sabemos qué representa ni qué significaba. La arqueología ofrece marcos —el culto, la fertilidad, la cosmología solar—, pero todos son conjetura. Este grabado nos interpela a través de unos tres mil años en una lengua cuya clave se ha perdido. Ahí reside buena parte de su fuerza, y también la tentación que conviene resistir: la de la divulgación que \"traduce\" con aplomo cada signo.\n\n**El gesto y el tiempo profundo**\nAlgo sí nos llega intacto: el gesto. Los brazos alzados son legibles a través de cualquier distancia temporal. El signo gestual persiste donde el signo simbólico se ha vuelto opaco. Todo ello descansa sobre un soporte que multiplica las escalas de tiempo: el granito pulido por el hielo hace catorce milenios, la incisión del Bronce, el rojo del siglo XX, y el liquen que hoy lo borra. La obra no habita el tiempo humano, sino el geológico.\n\n**Sobre lo itifálico**\nLa representación itifálica es uno de los rasgos mejor documentados del corpus de la Edad del Bronce escandinava. Los \"orantes\" aparecen con frecuencia dotados de un falo marcado, vinculados a un complejo de fertilidad, virilidad y poder cósmico. Si tu figura lo es, se inscribe con toda naturalidad en esa tradición.\n\n**Sobre la persecución: una objeción**\n\"Perseguir\" implica movimiento, pero lo que el grabado presenta es una yuxtaposición estática. El antropomorfo queda fijo a la izquierda y entre él y la línea hay un hueco sin marcar. No hay indicio formal de persecución. Lo que tenemos es un encuentro o una yuxtaposición. Que leamos \"persecución\" dice tanto de nuestra tendencia narrativa —el ojo humano completa una historia— como de la imagen en sí.\n\n**Lo que sí es plausible: la yuxtaposición hombre/serpiente-agua**\nLa asociación entre figura humana y línea ondulante es un tema bien documentado, aunque discutido: emparejamiento cosmológico entre lo terrestre-viril y lo acuático-ctónico, escena de culto junto al agua, o convivencia de dos símbolos de fertilidad. Si el orante es itifálico, la lectura de una escena de fecundidad gana verosimilitud frente a la de la amenaza. Seguimos operando en el terreno de la conjetura; el relato que une a los signos es una historia que nosotros, no ellos, necesitamos contar.",
     "voices": [],
-    "bibliografia": []
+    "bibliografia": [],
+    "ficha": []
   },
   {
     "slug": "manana-bosque-pinos",
@@ -870,7 +901,8 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
         "text": "La inserción técnica de la colmena tradicional eslava (bort o koloda) en el cuadrante superior izquierdo como justificación biológica de la presencia de los osos. La apicultura forestal primitiva consistía en acondicionar huecos naturales en árboles altos o colgar troncos ahuecados a gran altura para atraer a las abejas silvestres y proteger la miel de los depredadores de la taiga. La inclusión de la colmena por Shishkin demuestra no solo su absoluto conocimiento de la cultura material rural del Prikamye y del norte de Rusia, sino que dota de coherencia narrativa a toda la escena: la familia de osos no deambula de manera aleatoria, sino que ha sido atraída al lugar por el olor a miel de la colmena."
       }
     ],
-    "bibliografia": []
+    "bibliografia": [],
+    "ficha": []
   },
   {
     "slug": "dragon-rojo-mujer-sol",
@@ -919,7 +951,8 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
         "text": "En lo que equivale a una revisión gnóstica de la Biblia, Blake repite esta misma visión [tormentosa], con la misma postura... pero aquí coloca al Dios de Job, Elohim, en el papel de Satán."
       }
     ],
-    "bibliografia": []
+    "bibliografia": [],
+    "ficha": []
   },
   {
     "slug": "labrador-del-universo",
@@ -927,18 +960,23 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
     "artist": "Aurel David",
     "year": "1972",
     "anio": 1972,
-    "technique": "Mosaico de esmalte (smalt)",
-    "dimensions": null,
-    "alto": null,
-    "ancho": null,
+    "technique": "Mosaico de smalt y vidrio de color roto, en una técnica que el artista llamó «erklez»",
+    "dimensions": "900 × 1500 cm (9 × 15 m)",
+    "alto": 900,
+    "ancho": 1500,
     "movement": "Modernismo Socialista",
-    "location": "Chișinău, Moldavia",
+    "location": "Fachada del antiguo Centro Republicano de la Juventud «Iuri Gagarin», Chișinău, Moldavia",
     "img": {
+      "drive": null,
+      "commons": null,
+      "url": "https://live.staticflickr.com/65535/54925651649_b9a74c237b_b.jpg"
+    },
+    "detalle": {
       "drive": "1ifFVcMI8Pd5tZs3b5SYkJc1WireTfNBQ",
       "commons": null,
-      "url": null
+      "url": null,
+      "pie": "La misma obra en una imagen editada para corregir la perspectiva y verla de frente. El mosaico está en una fachada y no puede fotografiarse así."
     },
-    "detalle": null,
     "description": "El mosaico \"El Labrador del Universo\" en la fachada del antiguo Centro Juvenil Yuri Gagarin en Chișinău representa a una figura monumental de un hombre que avanza con un arado, enmarcada en bandas circulares concéntricas de colores. La silueta estilizada del labrador está renderizada en teselas oscuras hechas de esmalte (smalt), contrastando con un fondo de esmalte en azules, amarillos y rojos brillantes que irradian hacia afuera como anillos cósmicos. Las bandas exteriores incorporan motivos de estrellas. Su imaginería representa indudablemente el dominio de la humanidad sobre el universo, dándole forma a su voluntad como si fuera un campo.",
     "context": "**El Centro Juvenil Yuri Gagarin**\nEl Centro Juvenil, llamado así por Yuri Gagarin, contenía una sala con 800 asientos, instalaciones deportivas, una discoteca y un hotel reservado para invitados extranjeros. Su construcción fue financiada a través del trabajo voluntario organizado por la Unión de Jóvenes Comunistas Leninistas (Komsomol), que movilizaba regularmente a sus miembros para campañas de construcción los fines de semana. Aunque el edificio está semiabandonado, todavía está en uso.",
     "analysis": "**El concepto salvaje**\nLa variedad de colores, la imaginería cósmica, la representación realista socialista de un hombre y el concepto simplemente salvaje lo convierten en uno de mis diseños favoritos. Lamentablemente, el mosaico está empezando a deteriorarse y podría limpiarse para revertir los efectos de la intemperie.",
@@ -950,7 +988,21 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
         "text": "Concrete Wastelands preserva el patrimonio arquitectónico de la era socialista a través de la fotografía, el mapeo y la investigación. Resistir al borrado. Capturar el legado de una época desaparecida."
       }
     ],
-    "bibliografia": []
+    "bibliografia": [],
+    "ficha": [
+      {
+        "clave": "Título original",
+        "valor": "Plugarul Universului"
+      },
+      {
+        "clave": "Superficie",
+        "valor": "135 m²"
+      },
+      {
+        "clave": "Estado",
+        "valor": "Sin protección estatal. El edificio es de propiedad privada y el mosaico no figura en el Registro de monumentos protegidos por el Estado"
+      }
+    ]
   },
   {
     "slug": "meninas",
@@ -974,7 +1026,8 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
     "context": null,
     "analysis": null,
     "voices": [],
-    "bibliografia": []
+    "bibliografia": [],
+    "ficha": []
   },
   {
     "slug": "discomedusae",
@@ -995,8 +1048,8 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
     },
     "detalle": null,
     "description": null,
-    "context": null,
-    "analysis": null,
+    "context": "**Cómo se hizo**\nLa lámina salió en la primera entrega de *Kunstformen der Natur*, en 1899. El libro se publicó en diez cuadernos de diez láminas, entre 1899 y 1904. Entre el animal y la página hay cuatro pasos: Haeckel observaba al microscopio y tomaba apuntes, hacía un boceto, el litógrafo Adolf Giltsch lo pasaba a un dibujo terminado, Haeckel corregía y Giltsch lo volvía a trazar, ahora sobre la piedra y en color. Trabajaron juntos más de cuarenta años. En la portada figura un solo nombre.\n\n**La medusa del centro**\nLa figura grande y las de abajo son *Desmonema annasethe*. Haeckel le puso el nombre de Anna Sethe, su primera mujer, muerta en febrero de 1864, el día en que él cumplía treinta años; llevaban dieciocho meses casados. Unos meses antes ya había dedicado a Anna otra medusa, *Mitrocoma annae*, observada en la bahía de Villefranche. La frase que suele citarse, esa de los tentáculos que caen como el pelo rubio de una princesa, la escribió sobre *Mitrocoma*, no sobre esta. Circula mal atribuida en casi todas partes.",
+    "analysis": "**El título dice más de lo que parece**\n*Kunstformen der Natur* quiere decir «formas de arte de la naturaleza». No «formas naturales llevadas al arte». La diferencia no es de matiz. Haeckel sostenía que las formas ya vienen compuestas antes de que llegue nadie a dibujarlas. Era la posición de los monistas hacia 1900: lo bello natural está por encima de lo bello artístico, y el arte debería fundarse en la biología. Es justo lo contrario de lo que dice Hegel al empezar su estética, donde lo bello del arte vale más porque procede del espíritu. Si Haeckel lleva razón, el que dibuja no compone. Copia.\n\n**Y sin embargo aquí se compone**\nEsta lámina está compuesta. Una figura grande en el centro, otras menores alrededor, todo simétrico. Así se organiza un retablo, no una página de atlas, donde las figuras van numeradas y agrupadas por criterio taxonómico. Robert Richards ha documentado además que Haeckel ajustó el tamaño de las medusas laterales para que realzaran a la del centro. En un atlas el tamaño relativo es un dato; aquí es un recurso. El libro que defiende que la naturaleza ya viene compuesta tuvo que recomponerla para demostrarlo.\n\n**Falta el agua**\nLas medusas flotan sobre un fondo oscuro y vacío. Aislar al espécimen contra un fondo neutro es la norma en ilustración de historia natural, y con un escarabajo no pasa nada. Con una medusa sí. Una medusa no tiene esqueleto: la sostiene el agua. Sacarla del medio no es quitarle el decorado, es quitarle lo que le da la forma que estamos admirando. Lo que queda en la lámina es una silueta que se puede recortar y llevar a otro sitio. Y eso fue exactamente lo que ocurrió: René Binet copió un radiolario de Haeckel para la Puerta Monumental de la Exposición de París de 1900 y otro para la cúpula del Printemps. Las formas viajaron bien porque en la lámina ya estaban despegadas del mar. Conviene no dar por sentado el sentido de la flecha. Philip Ball, al reseñar a Breidbach, recordó una observación de Gombrich: el que dibuja no empieza por lo que ve sino por el esquema que ya trae. Las medusas de Haeckel se parecen a los estampados de William Morris porque Haeckel miraba el microscopio con los ojos de 1890. La influencia fue de ida y vuelta: el ornamento de la época entró en las láminas antes de que las láminas salieran a la calle.\n\n**Para qué sirve aquí la belleza**\nHaeckel quería que la ciencia sustituyera a la religión, y no solo en las explicaciones. También en lo que la religión daba y la ciencia no: el asombro. Bernhard Kleeberg ha señalado que su estética de la naturaleza arrastra la vieja idea de una economía divina, con el diseñador borrado y todo lo demás en su sitio. Visto así, estas cien láminas no son el adorno del sistema monista. Son su parte devocional. La simetría de una medusa hace el trabajo que hacía el reloj de Paley: se enseña para que uno se quede callado. Hay quien lee el mismo hecho al revés. Whitney Bauman ve en Haeckel una estética «desde abajo», que baja lo sagrado del cielo a la materia y saca el asombro de la tutela de la iglesia. Kleeberg y Bauman describen el mismo movimiento y discrepan en si es una liberación o una herencia mal disimulada. No hace falta decidirlo para mirar la lámina, pero sí saber que la discusión existe.\n\n**Lo que se sostiene y lo que no**\nDos avisos. El primero, sobre Richards: su tesis de que la muerte de Anna reorientó el pensamiento entero de Haeckel es difícil de comprobar y él es un biógrafo entregado a su personaje; que la especie del centro lleve el nombre de su mujer es un hecho, que por eso ocupe el centro es una conjetura. El segundo, sobre lo que puede verse en una reproducción: el color de estas láminas depende del tiraje y de la copia, y no todos los ejemplares se imprimieron igual. Lo verificable a simple vista es la composición: la jerarquía de tamaños, la simetría y el fondo sin agua. El resto es lectura.",
     "voices": [],
     "bibliografia": [
       {
@@ -1044,6 +1097,18 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
             "estado": "de segunda mano",
             "acceso": "sin digitalizar",
             "nota": "Transcritas parcialmente por Proctor. Es el documento que prueba que la transmisión no fue de formas sino de doctrina."
+          },
+          {
+            "ref": "Haeckel, Ernst. Die Natur als Künstlerin. Berlín: Vita, 1913.",
+            "estado": "de segunda mano",
+            "acceso": "sin digitalizar",
+            "nota": "Su respuesta tardía a las dudas sobre la fidelidad de sus dibujos: microfotografías directas de los especímenes para sostener que no había retoque ni esquematización. Es la pieza que faltaba en la línea epistemológica. El dossier lo cita como «Natur als Künstler»; el título lleva femenino."
+          },
+          {
+            "ref": "Haeckel, Ernst. Kristallseelen: Studien über das anorganische Leben. Leipzig: Kröner, 1917.",
+            "estado": "de segunda mano",
+            "acceso": "acceso abierto",
+            "nota": "Las «almas de cristal»: la vida atribuida también a lo inorgánico. Último libro de Haeckel y prolongación de la promorfología de 1866 hacia el mineral. Dominio público."
           }
         ]
       },
@@ -1086,6 +1151,12 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
             "estado": "de segunda mano",
             "acceso": "sin digitalizar",
             "nota": "Referencia dada por el Wellcome Collection a través de Breidbach. No he podido verificar ni el título exacto ni el volumen colectivo donde aparece; el registro está cortado. Es el primer cabo que hay que atar."
+          },
+          {
+            "ref": "Bauman, Whitney. Sobre la «estética desde abajo» de Haeckel; probablemente en A Critical Planetary Romanticism (2022) o en un artículo previo.",
+            "estado": "de segunda mano",
+            "acceso": "sin digitalizar",
+            "nota": "Lee la inmanencia de Haeckel como liberación: lo sagrado baja del cielo a la materia y el asombro se reubica en las regularidades del mundo microscópico. Es la lectura contraria a la de Kleeberg sobre el mismo hecho, y conviene tenerlas juntas. Conocido solo a través de un dossier de segunda mano; la referencia exacta está por localizar."
           }
         ]
       },
@@ -1141,6 +1212,31 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
             "estado": "verificado",
             "acceso": "de pago",
             "nota": "El modo más rápido de tener el estado de la cuestión en dos páginas."
+          },
+          {
+            "ref": "Brody, David. «Ernst Haeckel and the Microbial Baroque». Cabinet 7 (verano de 2002).",
+            "url": "https://www.cabinetmagazine.org/issues/7/brody.php",
+            "estado": "verificado",
+            "acceso": "acceso abierto",
+            "nota": "Crítica de arte, no historia de la ciencia, y por eso mira lo que los historiadores no miran: la composición. Columnas simétricas, horror al vacío, criaturas sobre fondos negros; las medusas convertidas en lámparas de araña. Recoge además las voces de tres pintores (Tomaselli, Jennings, Nozkowski) sobre la simetría impuesta. Aquí está el original de casi todo lo que circula sobre este punto."
+          },
+          {
+            "ref": "Ball, Philip. Reseña de Visions of Nature (Breidbach). Nature (2007), p. 486.",
+            "estado": "verificado",
+            "acceso": "de pago",
+            "nota": "Sostiene que la belleza de las láminas trabaja contra su verdad: Haeckel traducía lo que veía en criaturas ideales, y proyectaba sobre el microcosmos el ornamento de su tiempo (Morris, Art Nouveau). Apoya la tesis en Gombrich: el dibujante parte del esquema, no de la impresión. Invierte la dirección de la influencia que da por hecha la línea de recepción. El título «Treacherous beauty» que circula no lo he podido confirmar."
+          },
+          {
+            "ref": "Hopwood, Nick. Haeckel's Embryos: Images, Evolution, and Fraud. Chicago y Londres: University of Chicago Press, 2015. — Hufnagel, H., N. Hopwood, F. Jäger y N. Wanlin. «Kreatives Kopieren: Ernst Haeckels Embryonenbilder» (2016).",
+            "estado": "de segunda mano",
+            "acceso": "de pago",
+            "nota": "La monografía de referencia sobre la polémica de los embriones, que ni el dossier ni la primera versión de este aparato citaban. Sigue las imágenes copia a copia durante siglo y medio."
+          },
+          {
+            "ref": "Richards, Robert J. «Haeckel's Embryos: Fraud Not Proven». Biology and Philosophy 24 (2009), pp. 147-154. — Richardson, Michael K. y Gerhard Keuck. «Haeckel's ABC of Evolution and Development». Biological Reviews 77 (2002), pp. 495-528.",
+            "estado": "de segunda mano",
+            "acceso": "de pago",
+            "nota": "Las dos posiciones del debate reciente: Richards absuelve; Richardson y Keuck concluyen que hubo juego de manos en los dos bandos. Frente a ambos, Gould («Abscheulich!», Natural History, 2000) mantuvo la acusación de fraude."
           }
         ]
       },
@@ -1180,6 +1276,19 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
             "estado": "verificado",
             "acceso": "de pago",
             "nota": "Establece qué contenía la primera entrega de diez láminas, que estaba dominada por el plancton. Es lo que respalda fechar esta lámina en 1899 y no en 1904."
+          },
+          {
+            "ref": "Braun, Emily. «Ornament as Evolution: Gustav Klimt and Charles Darwin». En Gustav Klimt: The Ronald S. Lauder and Serge Sabarsky Collections. Nueva York: Neue Galerie, 2007.",
+            "url": "https://www.academia.edu/8641152/Ornament_as_Evolution_Gustav_Klimt_and_Charles_Darwin_",
+            "estado": "verificado",
+            "acceso": "acceso abierto",
+            "nota": "El trabajo de referencia sobre Klimt y la biología: los motivos de El beso como formas celulares, la vía de Berta y Emil Zuckerkandl, la lectura de Bölsche en Wiener Mode. Todo lo que el dossier atribuye a un tal Nikolić está aquí, con las fuentes. Datos del volumen, de memoria; el artículo está en Academia.edu."
+          },
+          {
+            "ref": "Morton, Marsha. Trabajos sobre Haeckel, el darwinismo y el arte alemán; entre ellos la lectura de la lámina «Entwickelungsgeschichte des Gesichts» de la Anthropogenie (1874).",
+            "estado": "de segunda mano",
+            "acceso": "sin digitalizar",
+            "nota": "La observación de que Haeckel remata la serie embrionaria del rostro con la cabeza de un dios griego, para traer el origen de lo humano del cielo a la tierra. Conocida por el dossier; referencia exacta por localizar."
           }
         ]
       },
@@ -1214,11 +1323,12 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
             "ref": "Lagunas por atar.",
             "estado": "de segunda mano",
             "acceso": "sin digitalizar",
-            "nota": "La referencia completa de Hoppe-Sailer; si Krauße 1995 dice lo que su título promete; la relación exacta entre la promorfología de 1866 y las láminas de 1899, que nadie parece haber trabajado de frente; y la medida real de la mancha impresa de una lámina, que no aparece en ninguna descripción bibliográfica seria. Términos útiles: en alemán, Naturschönes Kunstschönes Monismus Ästhetik Haeckel, Promorphologie, Haeckel Jugendstil Obrist; en francés, Binet Haeckel esthétique radiolaires."
+            "nota": "La referencia completa de Hoppe-Sailer; si Krauße 1995 dice lo que su título promete; la relación exacta entre la promorfología de 1866 y las láminas de 1899, que nadie parece haber trabajado de frente; y la medida real de la mancha impresa de una lámina, que no aparece en ninguna descripción bibliográfica seria. Localizar las referencias exactas de Bauman y Morton. Términos útiles: en alemán, Naturschönes Kunstschönes Monismus Ästhetik Haeckel, Promorphologie, Haeckel Jugendstil Obrist; en francés, Binet Haeckel esthétique radiolaires."
           }
         ]
       }
-    ]
+    ],
+    "ficha": []
   }
 ]</script>
 
@@ -1257,6 +1367,14 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
     return el;
   }
 
+  // La fecha sale del propio archivo: document.lastModified cambia cada vez que
+  // se guarda. Si el navegador no la da, se usa la constante de arriba.
+  function fechaActualizacion() {
+    const d = new Date(document.lastModified);
+    if (isNaN(d) || d.getFullYear() < 2000) return ACTUALIZADO;
+    return new Intl.DateTimeFormat('es-ES', { day: 'numeric', month: 'long', year: 'numeric' }).format(d);
+  }
+
   const NUMERALES = ['cero','uno','dos','tres','cuatro','cinco','seis','siete','ocho','nueve',
     'diez','once','doce','trece','catorce','quince','dieciséis','diecisiete','dieciocho',
     'diecinueve','veinte','veintiuna','veintidós','veintitrés','veinticuatro','veinticinco',
@@ -1292,11 +1410,22 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
   }
   const hayImagen = img => Boolean(img && (img.url || img.commons || img.drive));
 
+  // Dirección del archivo a tamaño completo. Drive no ofrece una fiable; se omite.
+  function original(img) {
+    if (!img) return null;
+    if (img.url) return img.url;
+    if (img.commons) return 'https://commons.wikimedia.org/wiki/Special:FilePath/' + encodeURIComponent(img.commons);
+    return null;
+  }
+
   function crearImg(obra, img, anchos, alt, sizes) {
+    // Drive y Commons sirven la miniatura del ancho pedido; una url directa
+    // es un solo archivo, así que ahí no hay srcset que valga.
+    const variable = !(img && img.url);
     const el = h('img', {
       src: fuente(img, anchos[0]),
-      srcset: anchos.map(a => fuente(img, a) + ' ' + a + 'w').join(', '),
-      sizes: sizes || (anchos[0] + 'px'),
+      srcset: variable ? anchos.map(a => fuente(img, a) + ' ' + a + 'w').join(', ') : null,
+      sizes: variable ? (sizes || (anchos[0] + 'px')) : null,
       alt: alt,
       loading: 'lazy',
       decoding: 'async'
@@ -1441,7 +1570,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
 
   /* ------------------------------------------------- vista de escala (la firma) */
 
-  function siluetaHumana(px, cm) {
+  function siluetaHumana(px) {
     const w = px * 0.42;
     const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     svg.setAttribute('viewBox', '0 0 42 100');
@@ -1476,7 +1605,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
     pared.appendChild(marcas);
 
     // silueta de referencia
-    const fig = siluetaHumana(FIGURA_CM * k, FIGURA_CM);
+    const fig = siluetaHumana(FIGURA_CM * k);
     const contFig = h('div', { class: 'escala-figura', estilo: 'width:' + fig.ancho + 'px;height:' + (FIGURA_CM * k) + 'px' });
     contFig.appendChild(fig.svg);
     contFig.appendChild(h('span', { class: 'pie', texto: 'persona, 170 cm' }));
@@ -1484,9 +1613,13 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
 
     const medibles = ordenadas().filter(o => o.alto && o.ancho);
     medibles.forEach(obra => {
-      const w = obra.ancho * k, alt = obra.alto * k;
-      const suelo = Math.max(0, (EJE_CM - obra.alto / 2) * k);
-      const caja = h('div', { class: 'caja',
+      // Lo que mide más que la pared se recorta y se marca: una fachada de
+      // nueve metros no cabe en una sala, y ese es justamente el dato.
+      const desborda = obra.alto > PARED_CM;
+      const w = obra.ancho * k;
+      const alt = (desborda ? PARED_CM : obra.alto) * k;
+      const suelo = desborda ? 0 : Math.max(0, (EJE_CM - obra.alto / 2) * k);
+      const caja = h('div', { class: 'caja' + (desborda ? ' caja--desborda' : ''),
         estilo: '--w:' + w + 'px;--h:' + alt + 'px;--suelo:' + suelo + 'px' });
       if (hayImagen(obra.img)) {
         caja.appendChild(crearImg(obra, obra.img, [400, 800], '', '200px'));
@@ -1496,7 +1629,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
                  estilo: 'width:' + w + 'px;height:' + (suelo + alt) + 'px',
                  title: obra.title + ' — ' + obra.dimensions },
           caja,
-          h('span', { class: 'pie', texto: obra.title })
+          h('span', { class: 'pie', texto: obra.title + (desborda ? ' ↑ ' + obra.dimensions : '') })
         )
       );
     });
@@ -1512,6 +1645,9 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
       (menor && mayor && menor !== mayor
         ? '«' + menor.title + '» mide ' + menor.dimensions + ' y «' + mayor.title +
           '», ' + mayor.dimensions + '.'
+        : '') +
+      (medibles.some(o => o.alto > PARED_CM)
+        ? ' Lo que pasa de ' + PARED_CM + ' cm se recorta arriba: no cabe en una sala.'
         : '') +
       (sinMedida.length
         ? ' Quedan fuera ' + enPalabras(sinMedida.length, 'f') +
@@ -1537,11 +1673,13 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
                    '(max-width: 980px) 92vw, 48vw')
         : laminaAusente(obra)
     );
-    col.appendChild(
-      h('figure', { class: 'lamina' }, paspartu,
-        h('figcaption', { texto: obra.title + ', ' + obra.artist + ', ' + obra.year + '. ' + obra.technique + '.' })
-      )
-    );
+    const pieLamina = h('figcaption', {},
+      obra.title + ', ' + obra.artist + ', ' + obra.year + '. ' + obra.technique + '.');
+    if (original(obra.img)) {
+      pieLamina.appendChild(h('a', { href: original(obra.img), target: '_blank',
+        rel: 'noopener noreferrer', texto: 'Archivo completo ↗' }));
+    }
+    col.appendChild(h('figure', { class: 'lamina' }, paspartu, pieLamina));
 
     if (obra.detalle && hayImagen(obra.detalle)) {
       const p2 = h('div', { class: 'paspartu' });
@@ -1566,7 +1704,8 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
      ['Dimensiones', obra.dimensions],
      ['Movimiento', obra.movement],
      ['Ubicación', obra.location]
-    ].forEach(([k, v]) => {
+    ].concat((obra.ficha || []).map(f => [f.clave, f.valor]))
+     .forEach(([k, v]) => {
       if (!v) return;                       // sin dato, sin fila: nada de «no disponible»
       dl.appendChild(h('dt', { texto: k }));
       dl.appendChild(h('dd', { texto: v }));
@@ -1591,7 +1730,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
       const sec = h('section', { class: 'seccion' },
         h('h2', { texto: obra.voices.length === 1 ? 'Una voz sobre el cuadro' : 'Voces sobre el cuadro' }));
       obra.voices.forEach(v => {
-        const cita = h('blockquote');
+        const cita = h('blockquote', { lang: v.lang || null });
         v.text.split('\n\n').forEach(t => cita.appendChild(h('p', { texto: t })));
         const pie = h('figcaption', {},
           h('span', { class: 'quien', texto: v.author + (v.year ? ', ' + v.year : '') }),
@@ -1635,7 +1774,8 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
   // Diagrama diminuto: la obra frente a una persona de 170 cm.
   function miniEscala(obra) {
     const altoPx = 76;
-    const techo = Math.max(215, EJE_CM + obra.alto / 2 + 10);   // cm de pared que caben
+    const apoya = obra.alto / 2 > EJE_CM;      // demasiado alta para colgarse centrada
+    const techo = Math.max(215, apoya ? obra.alto + 10 : EJE_CM + obra.alto / 2 + 10);
     const k = altoPx / techo;
     const NS = 'http://www.w3.org/2000/svg';
     const anchoObra = Math.max(2, obra.ancho * k);
@@ -1654,13 +1794,13 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
     suelo.setAttribute('stroke', 'var(--regla)'); suelo.setAttribute('stroke-width', '1');
     svg.appendChild(suelo);
 
-    const fig = siluetaHumana(FIGURA_CM * k, FIGURA_CM).svg;
+    const fig = siluetaHumana(FIGURA_CM * k).svg;
     fig.setAttribute('x', '2');
     fig.setAttribute('y', String(altoPx + 1 - FIGURA_CM * k));
     svg.appendChild(fig);
 
     const hObra = obra.alto * k;
-    const superior = Math.min(techo, EJE_CM + obra.alto / 2);   // borde alto sobre el suelo
+    const superior = Math.min(techo, apoya ? obra.alto : EJE_CM + obra.alto / 2);
     const r = document.createElementNS(NS, 'rect');
     r.setAttribute('x', String(xObra));
     r.setAttribute('y', String(Math.max(0, altoPx + 1 - superior * k)));
@@ -1686,15 +1826,21 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
     }
   }
 
+  function slugDe(hash) {
+    const m = hash.match(/^#obra\/(.+)$/);
+    if (!m) return null;
+    try { return decodeURIComponent(m[1]); } catch (e) { return m[1]; }
+  }
+
   function ruta() {
     const hash = location.hash;
-    const m = hash.match(/^#obra\/(.+)$/);
+    const m = slugDe(hash);
     const galeria = document.getElementById('vista-galeria');
     const detalle = document.getElementById('vista-obra');
 
     if (m) {
       const lista = ordenadas();
-      const i = lista.findIndex(o => o.slug === decodeURIComponent(m[1]));
+      const i = lista.findIndex(o => o.slug === m);
       if (i === -1) { location.replace('#'); return; }
       if (document.body.dataset.vista === 'galeria') scrollSala = window.scrollY;
 
@@ -1719,10 +1865,10 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
   }
 
   function saltarObra(paso) {
-    const m = location.hash.match(/^#obra\/(.+)$/);
+    const m = slugDe(location.hash);
     if (!m) return;
     const lista = ordenadas();
-    const i = lista.findIndex(o => o.slug === decodeURIComponent(m[1]));
+    const i = lista.findIndex(o => o.slug === m);
     if (i === -1) return;
     location.hash = '#obra/' + lista[(i + paso + lista.length) % lista.length].slug;
   }
@@ -1759,7 +1905,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
       ? 'Un cuadro, una conversación'
       : numM.charAt(0).toUpperCase() + numM.slice(1) + ' cuadros, ' + numF + ' conversaciones';
     document.getElementById('pie-datos').textContent =
-      VOLUMEN + ' · Actualizado el ' + ACTUALIZADO;
+      VOLUMEN + ' · Actualizado el ' + fechaActualizacion();
 
     // orden
     document.querySelectorAll('[data-orden]').forEach(b => {
@@ -1767,10 +1913,12 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
         ordenActual = b.dataset.orden;
         document.querySelectorAll('[data-orden]').forEach(o =>
           o.setAttribute('aria-pressed', String(o === b)));
+        const lista = ordenadas();
         document.getElementById('linea-orden').textContent =
           ordenActual === 'afinidad'
             ? 'Ordenados por afinidad, no por cronología.'
-            : 'Ordenados por cronología, de la Edad del Bronce a 1972.';
+            : 'Ordenados por cronología, de «' + lista[0].title + '» (' + lista[0].year +
+              ') a «' + lista[lista.length - 1].title + '» (' + lista[lista.length - 1].year + ').';
         pintarRejilla();
         if (!document.getElementById('escala').hidden) pintarEscala();
       });
@@ -1808,7 +1956,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; }
 
     document.getElementById('volver').addEventListener('click', ev => {
       ev.preventDefault();
-      if (history.length > 1) history.back(); else location.hash = '';
+      location.hash = '';
     });
 
     window.addEventListener('hashchange', ruta);
