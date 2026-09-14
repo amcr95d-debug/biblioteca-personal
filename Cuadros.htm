@@ -4,712 +4,530 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cuadernos de galería · Mis cuadros favoritos</title>
-<meta name="description" content="Colección privada de cuadros, con ficha, contexto, análisis y voces críticas sobre cada obra.">
+<meta name="description" content="Catálogo razonado de una colección privada de imágenes, con ficha técnica, contexto, análisis, voces críticas y aparato bibliográfico.">
 <meta name="color-scheme" content="light">
-<meta name="theme-color" content="#c7c2b9">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect x=%273%27 y=%273%27 width=%2726%27 height=%2726%27 fill=%27%23c7c2b9%27 stroke=%27%2317415c%27 stroke-width=%272%27/%3E%3Crect x=%279%27 y=%279%27 width=%2714%27 height=%2714%27 fill=%27%2317415c%27/%3E%3C/svg%3E">
+<meta name="theme-color" content="#171613">
 <script>document.documentElement.className += ' js';</script>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 fill=%27%23171613%27/%3E%3Crect x=%277%27 y=%275%27 width=%2718%27 height=%2722%27 fill=%27%23f2efe9%27/%3E%3Crect x=%277%27 y=%275%27 width=%2718%27 height=%273%27 fill=%27%239e3b2a%27/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,600;1,400&family=Archivo:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,300;0,7..72,400;0,7..72,600;1,7..72,400&family=IBM+Plex+Sans+Condensed:wght@400;500;600&display=swap">
 <style>
 /* ==========================================================================
-   Cuadernos de galería
-   Dos ambientes: la SALA (gris de museo, para mirar) y el PAPEL (para leer).
-   La pared es deliberadamente gris y desaturada: un fondo cálido y amarillo
-   desplaza el balance de blancos percibido de cada reproducción.
+   CUADERNOS DE GALERÍA — catálogo razonado
+   Dos materiales y nada más: la PLANCHA (negro cálido, para mirar) y el
+   PAPEL (para leer). El rojo es tinta de rúbrica: numera y separa, no decora.
    ========================================================================== */
 
 :root {
-  /* Sala */
-  --sala:        #c7c2b9;
-  --sala-alta:   #d3cec5;
-  /* Papel */
-  --papel:       #efece5;
-  --paspartu:    #f8f6f1;
-  /* Tinta */
-  --tinta:       #14130f;
-  --tinta-2:     #4c4840;
-  --tinta-3:     #736e64;
-  --regla:       #a49e93;
-  --regla-suave: #bdb7ac;
-  /* Acento: azul de cartela. No compite con la paleta de los cuadros. */
-  --azul:        #17415c;
+  --papel:      #f2efe9;
+  --papel-alto: #fbfaf7;
+  --plancha:    #171613;
+  --plancha-2:  #232119;
+  --tinta:      #16150f;
+  --tinta-2:    #4a463d;
+  --tinta-3:    #7a7467;
+  --regla:      #c6bfb0;
+  --regla-fina: #ddd7c9;
+  --rojo:       #9e3b2a;
+  --claro:      #ece8de;
+  --claro-2:    #a39d8c;
 
-  --serif: 'Spectral', Georgia, 'Times New Roman', serif;
-  --sans:  'Archivo', system-ui, -apple-system, sans-serif;
+  --texto:  'Literata', Georgia, 'Times New Roman', serif;
+  --rotulo: 'IBM Plex Sans Condensed', system-ui, -apple-system, sans-serif;
 
-  --paso: cubic-bezier(.22,1,.36,1);
-  --medida: 66ch;              /* medida de lectura */
-  --altura-fila: clamp(150px, 20vw, 280px);
+  --paso: cubic-bezier(.2,.8,.25,1);
+  --medida: 34rem;                  /* columna de lectura */
+  --ancho:  78rem;                  /* caja del catálogo */
+  --fila:   clamp(9rem, 15vw, 15rem);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-html { -webkit-text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
 
 body {
-  font-family: var(--sans);
+  font-family: var(--texto);
+  font-size: 1.0625rem;
   font-weight: 400;
-  font-size: 1rem;
-  line-height: 1.65;
+  line-height: 1.62;
   color: var(--tinta);
-  background: var(--sala);
+  background: var(--papel);
+  font-variant-numeric: oldstyle-nums;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  min-height: 100vh;
 }
 
-/* La vista de obra vuelve al papel */
-body[data-vista="obra"] { background: var(--papel); }
-
-::selection { background: var(--azul); color: #fff; }
+::selection { background: var(--rojo); color: var(--papel-alto); }
 a { color: inherit; text-decoration: none; }
 img { display: block; }
+:focus-visible { outline: 2px solid var(--rojo); outline-offset: 3px; }
 
-:focus-visible {
-  outline: 2px solid var(--azul);
-  outline-offset: 3px;
-  border-radius: 1px;
+.caja { width: min(100% - 2.5rem, var(--ancho)); margin-inline: auto; }
+.lectura { width: min(100% - 2.5rem, var(--medida)); margin-inline: auto; }
+@media (max-width: 560px) { .caja, .lectura { width: calc(100% - 1.75rem); } }
+
+.salto {
+  position: absolute; left: -9999px; top: 0; z-index: 100;
+  background: var(--rojo); color: #fff; padding: .7rem 1.1rem;
+  font-family: var(--rotulo); font-size: .85rem; letter-spacing: .06em;
 }
+.salto:focus { left: 1rem; top: 1rem; }
 
-.salto-contenido {
-  position: absolute; left: -9999px; top: 0;
-  background: var(--azul); color: #fff;
-  padding: .7rem 1.1rem; z-index: 100;
-  font-family: var(--sans); font-size: .8rem; letter-spacing: .06em;
-}
-.salto-contenido:focus { left: 1rem; top: 1rem; }
-.sin-js {
-  font-family: var(--serif); font-style: italic; color: var(--tinta-2);
-  padding: 2rem 0; border-top: 1px solid var(--regla);
-}
+/* ------------------------------------------------------------ tipografía */
 
-/* --------------------------------------------------------------- tipografía */
-
-h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; text-wrap: balance; }
+h1, h2, h3 { font-weight: 400; line-height: 1.16; text-wrap: balance; }
 
 .rotulo {
-  font-family: var(--sans);
-  font-size: .688rem;
-  font-weight: 500;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  color: var(--azul);
+  font-family: var(--rotulo);
+  font-size: .75rem; font-weight: 600;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--tinta-3);
+  font-variant-numeric: lining-nums;
 }
-.rotulo--tenue { color: var(--tinta-3); }
+.rotulo--rojo { color: var(--rojo); }
 
-.regla-corta {
-  width: 2.4rem; height: 1px; background: var(--azul);
-  margin: 1.1rem 0 1.3rem;
-}
-
-/* ------------------------------------------------------------------- envase */
-
-.envase { width: min(100% - 3rem, 1440px); margin-inline: auto; }
-@media (max-width: 640px) { .envase { width: min(100% - 2rem, 1440px); } }
-
-/* -------------------------------------------------------------- cartela sala */
-
-.sala-cabecera {
-  display: grid;
-  grid-template-columns: minmax(0, 26rem) minmax(0, 1fr);
-  gap: 3rem 5rem;
-  align-items: start;
-  padding: clamp(3rem, 8vw, 6.5rem) 0 clamp(2.5rem, 5vw, 4rem);
-}
-.sala-cabecera h1 {
-  font-size: clamp(2.1rem, 4.4vw, 3.4rem);
-  letter-spacing: -.015em;
-}
-.sala-cabecera h1 em { font-style: italic; color: var(--azul); }
-
-.sala-texto { max-width: var(--medida); }
-.sala-texto p {
-  font-family: var(--serif);
-  font-size: clamp(1rem, 1.35vw, 1.12rem);
-  line-height: 1.72;
-  color: var(--tinta-2);
-}
-.sala-texto p + p { margin-top: 1.1rem; }
-.sala-texto .lede { color: var(--tinta); font-size: clamp(1.06rem, 1.5vw, 1.22rem); }
-
-@media (max-width: 900px) {
-  .sala-cabecera { grid-template-columns: 1fr; gap: 2rem; }
+/* el número de catálogo: identifica la pieza y no cambia con el orden */
+.num {
+  font-family: var(--rotulo); font-weight: 600;
+  font-variant-numeric: lining-nums tabular-nums;
+  letter-spacing: .04em; color: var(--rojo);
 }
 
-/* ------------------------------------------------------------------ mandos */
+.filete { height: 2px; background: var(--rojo); border: 0; }
+
+/* --------------------------------------------------------------- portada */
+
+.portada {
+  padding: clamp(3.5rem, 9vw, 8rem) 0 clamp(2.5rem, 5vw, 4rem);
+  border-bottom: 2px solid var(--rojo);
+}
+.portada-marca { display: flex; align-items: baseline; gap: 1rem; margin-bottom: clamp(2rem, 5vw, 3.5rem); }
+.portada-marca .filete { flex: 1; height: 1px; background: var(--regla); align-self: center; }
+.portada h1 {
+  font-size: clamp(2.3rem, 6.5vw, 4.5rem);
+  letter-spacing: -.022em;
+  max-width: 18ch;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+.portada h1 em { font-style: italic; color: var(--rojo); }
+.portada-cuerpo {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+  gap: 1.6rem 3.5rem;
+}
+.portada-cuerpo p { color: var(--tinta-2); font-size: 1rem; text-wrap: pretty; }
+.portada-cuerpo .lede { color: var(--tinta); }
+.portada-cuerpo .lede::first-letter {
+  float: left; font-size: 3.3em; line-height: .82;
+  padding: .06em .1em 0 0; color: var(--rojo); font-weight: 600;
+}
+
+/* ----------------------------------------------------------------- índice */
+
+.indice { padding: clamp(2.5rem, 5vw, 4rem) 0; border-bottom: 1px solid var(--regla); }
+.indice-lista { list-style: none; margin-top: 1.6rem; }
+.indice-fila {
+  display: flex; align-items: baseline; gap: .8rem;
+  padding: .5rem 0;
+  border-bottom: 1px solid var(--regla-fina);
+  transition: color .2s var(--paso);
+}
+.indice-fila:hover { color: var(--rojo); }
+.indice-fila .num { flex: none; width: 2.2rem; font-size: .9rem; }
+.indice-fila .tit { font-style: italic; }
+.indice-fila .rell {
+  flex: 1; height: 0; border-bottom: 1px dotted var(--regla);
+  transform: translateY(-.3em);
+}
+.indice-fila .meta {
+  flex: none; font-family: var(--rotulo); font-size: .8rem;
+  letter-spacing: .04em; color: var(--tinta-3);
+  font-variant-numeric: lining-nums;
+}
+@media (max-width: 620px) { .indice-fila .meta { display: none; } }
+
+/* ----------------------------------------------------------------- mandos */
 
 .mandos {
-  display: flex; flex-wrap: wrap; align-items: baseline; gap: 1.2rem 2rem;
-  padding: 1.1rem 0;
-  border-top: 1px solid var(--regla);
+  position: sticky; top: 0; z-index: 30;
+  background: var(--papel);
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: .8rem 2rem;
+  padding: .9rem 0;
   border-bottom: 1px solid var(--regla);
-  margin-bottom: clamp(2.5rem, 5vw, 4rem);
 }
-.mandos-grupo { display: flex; align-items: baseline; gap: .85rem; }
-.mandos-grupo > .rotulo { flex: none; }
-.mandos-cuenta { margin-left: auto; }
-
+.grupo { display: flex; align-items: baseline; gap: .8rem; }
+.cuenta { margin-left: auto; }
 .boton {
-  font-family: var(--sans);
-  font-size: .75rem; font-weight: 500;
+  font-family: var(--rotulo); font-size: .8rem; font-weight: 500;
   letter-spacing: .1em; text-transform: uppercase;
-  color: var(--tinta-2);
-  background: none; border: 0; cursor: pointer;
-  padding: .25rem 0;
-  border-bottom: 1px solid transparent;
-  transition: color .25s var(--paso), border-color .25s var(--paso);
+  color: var(--tinta-2); background: none; border: 0; cursor: pointer;
+  padding: .2rem 0; border-bottom: 2px solid transparent;
+  transition: color .2s var(--paso), border-color .2s var(--paso);
 }
-.boton:hover { color: var(--azul); }
-.boton[aria-pressed="true"], .boton[aria-selected="true"] {
-  color: var(--azul); border-bottom-color: var(--azul);
-}
+.boton:hover { color: var(--rojo); }
+.boton[aria-pressed="true"] { color: var(--rojo); border-bottom-color: var(--rojo); }
 
-/* ------------------------------------------------------------- el colgado */
+/* ------------------------------------------------- planchas de la galería */
 
-.cabecera-seccion { margin-bottom: clamp(2.2rem, 4vw, 3.4rem); }
-.titulo-seccion {
-  font-family: var(--serif); font-size: clamp(1.5rem, 2.6vw, 2.1rem);
-  letter-spacing: -.01em;
-}
-.linea-orden {
-  font-family: var(--serif); font-style: italic; font-size: 1rem;
-  color: var(--tinta-2); margin-top: .5rem;
-}
-
-.rejilla {
+.galeria { background: var(--plancha); padding: clamp(3rem, 7vw, 6rem) 0; }
+.planchas {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(17rem, 100%), 1fr));
   gap: clamp(3rem, 5vw, 5rem) clamp(1.5rem, 3vw, 3rem);
-  align-items: start;
-  padding-bottom: clamp(4rem, 8vw, 7rem);
 }
 
-.obra { display: block; }
-.obra:hover, .obra:focus-within { position: relative; z-index: 5; }
-
-/* La imagen manda: nunca se recorta ni se deforma un cuadro para encajarlo
-   en una retícula. La caja solo alinea; el marco es la propia lámina. */
-.obra-caja {
+.pieza { display: block; color: var(--claro); }
+.pieza-visor {
   display: flex; align-items: flex-end; justify-content: center;
-  height: var(--altura-fila);
+  height: var(--fila);
 }
-.obra-caja > * {
+.pieza-visor > * {
   max-height: 100%; max-width: 100%; width: auto; height: auto;
-  position: relative; z-index: 1;
-  background: var(--sala-alta);
-  box-shadow: inset 0 0 0 1px rgba(20,19,15,.18),
-              0 12px 26px -18px rgba(20,15,8,.6);
+  position: relative;
+  transition: transform .5s var(--paso), filter .5s var(--paso);
   transform-origin: bottom center;
-  transition: transform .55s var(--paso), box-shadow .55s var(--paso), z-index 0s .55s;
+  filter: brightness(.93);
 }
-.obra-caja > img { object-fit: contain; }
-
-/* «Pasa el cursor para verla en mayor tamaño»: la promesa, cumplida.
-   El retardo evita que la página salte al mover el ratón de paso. */
+.pieza-visor > img { object-fit: contain; }
 @media (hover: hover) and (pointer: fine) {
-  .obra:hover .obra-caja > *,
-  .obra:focus-visible .obra-caja > * {
-    transform: scale(1.42);
-    box-shadow: inset 0 0 0 1px rgba(20,19,15,.3),
-                0 30px 55px -22px rgba(20,15,8,.7);
-    z-index: 5;
-    transition-delay: .18s, .18s, 0s;
+  .pieza:hover .pieza-visor > *, .pieza:focus-visible .pieza-visor > * {
+    transform: scale(1.4); filter: brightness(1.06);
+    z-index: 5; transition-delay: .15s;
   }
+  .pieza:hover, .pieza:focus-within { position: relative; z-index: 5; }
 }
+.ausente {
+  height: 100%; aspect-ratio: var(--ratio, 4 / 3);
+  display: grid; place-content: center;
+  background: repeating-linear-gradient(135deg, transparent 0 10px, rgba(158,59,42,.22) 10px 11px), var(--plancha-2);
+  border: 1px solid rgba(236,232,222,.18);
+  padding: 1rem; text-align: center;
+}
+.ausente .rotulo { color: var(--claro-2); font-size: .65rem; }
 
-/* lámina ausente: honesta, no una foto de relleno */
-.lamina-ausente {
-  height: 100%;
-  aspect-ratio: var(--ratio, 4 / 3);
-  display: grid; place-content: center; gap: .4rem;
-  background:
-    repeating-linear-gradient(135deg,
-      transparent 0 9px, rgba(23,65,92,.07) 9px 10px),
-    var(--sala-alta);
-  text-align: center; padding: 1rem;
+.pieza-cartela { margin-top: 1.2rem; display: flex; gap: .8rem; }
+.pieza-cartela .num { font-size: .8rem; padding-top: .25rem; color: #c4644f; }
+.pieza-tit { font-style: italic; font-size: 1.05rem; line-height: 1.3; }
+.pieza-aut {
+  font-family: var(--rotulo); font-size: .78rem; letter-spacing: .07em;
+  text-transform: uppercase; color: var(--claro-2); margin-top: .25rem;
+  font-variant-numeric: lining-nums;
 }
-.lamina-ausente .rotulo { color: var(--tinta-3); font-size: .625rem; }
-.paspartu .lamina-ausente { width: 100%; height: auto; }
+.pieza-tipo { font-style: italic; font-size: .85rem; color: #b08a7e; margin-top: .2rem; }
 
-.obra-cartela { margin-top: 1.1rem; padding-left: .85rem; position: relative; }
-.obra-cartela::before {
-  content: ''; position: absolute; left: 0; top: .35em; bottom: .3em;
-  width: 1px; background: var(--azul);
-  transform: scaleY(0); transform-origin: top;
-  transition: transform .45s var(--paso);
-}
-.obra:hover .obra-cartela::before,
-.obra:focus-visible .obra-cartela::before { transform: scaleY(1); }
+/* ------------------------------------------------------- vista de escala */
 
-.obra-titulo {
-  font-family: var(--serif); font-style: italic; font-size: 1.08rem;
-  line-height: 1.3; color: var(--tinta);
-}
-.obra-autor {
-  font-size: .7rem; letter-spacing: .09em; text-transform: uppercase;
-  color: var(--tinta-3); margin-top: .3rem;
-}
-.obra-autor .anno::before { content: ' · '; color: var(--azul); }
-.obra-tipo {
-  margin-top: .35rem;
-  font-family: var(--serif); font-style: italic; font-size: .85rem;
-  color: var(--azul); opacity: .85;
-}
-
-/* -------------------------------------------------- vista de escala (firma) */
-
-.escala { margin-bottom: clamp(3rem, 6vw, 5rem); }
+.escala { background: var(--plancha-2); padding: clamp(2rem, 4vw, 3.5rem) 0; color: var(--claro); }
 .escala[hidden] { display: none; }
-
-.escala-lienzo {
-  position: relative;
-  overflow-x: auto;
-  overflow-y: hidden;
-  background: linear-gradient(var(--sala-alta), var(--sala));
-  border-top: 1px solid var(--regla-suave);
-  padding-bottom: 2.6rem;
-  scrollbar-width: thin;
-}
+.escala .rotulo { color: var(--claro-2); }
+.escala-lienzo { overflow-x: auto; overflow-y: hidden; padding-bottom: 2.6rem; margin-top: 1.4rem; }
 .escala-pared {
-  position: relative;
-  height: var(--pared, 420px);
+  position: relative; height: var(--pared, 420px);
   display: flex; align-items: flex-end; gap: clamp(1rem, 2vw, 2rem);
-  padding: 0 clamp(1rem, 3vw, 2.5rem);
   width: max-content; min-width: 100%;
-  border-bottom: 2px solid var(--tinta-2);
+  border-bottom: 2px solid var(--claro-2);
 }
 .escala-obra { position: relative; display: block; }
-.escala-obra .caja {
+.escala-obra .cuadro {
   position: absolute; left: 0; bottom: var(--suelo);
   width: var(--w); height: var(--h);
-  background: var(--sala-alta);
-  box-shadow: inset 0 0 0 1px rgba(20,19,15,.28), 0 8px 18px -12px rgba(20,15,8,.6);
-  overflow: hidden;
-  transition: outline-color .2s;
-  outline: 2px solid transparent; outline-offset: 2px;
+  background: var(--plancha); overflow: hidden;
+  box-shadow: inset 0 0 0 1px rgba(236,232,222,.3);
 }
-.escala-obra:hover .caja, .escala-obra:focus-visible .caja { outline-color: var(--azul); }
-.caja--corte-alto { border-top: 2px dashed var(--azul); }
-.caja--corte-ancho { border-right: 2px dashed var(--azul); }
-.caja--corte-alto::after, .caja--corte-ancho::before {
-  content: ''; position: absolute; pointer-events: none;
-}
-.caja--corte-alto::after {
-  inset: 0 0 auto 0; height: 28%;
-  background: linear-gradient(var(--sala-alta), transparent);
-}
-.caja--corte-ancho::before {
-  inset: 0 0 0 auto; width: 18%;
-  background: linear-gradient(to left, var(--sala-alta), transparent);
-}
-.escala-obra .caja img { width: 100%; height: 100%; object-fit: cover; }
+.escala-obra:hover .cuadro, .escala-obra:focus-visible .cuadro { box-shadow: inset 0 0 0 2px var(--rojo); }
+.escala-obra .cuadro img { width: 100%; height: 100%; object-fit: cover; }
+.corte-alto { border-top: 2px dashed var(--rojo); }
+.corte-ancho { border-right: 2px dashed var(--rojo); }
 .escala-pared .pie {
-  position: absolute; bottom: -1.6rem; left: 0;
-  font-size: .625rem; letter-spacing: .06em; color: var(--tinta-3);
-  white-space: nowrap;
-  max-width: 14ch; overflow: hidden; text-overflow: ellipsis;
+  position: absolute; bottom: -1.7rem; left: 0;
+  font-family: var(--rotulo); font-size: .7rem; letter-spacing: .05em;
+  color: var(--claro-2); white-space: nowrap;
+  max-width: 16ch; overflow: hidden; text-overflow: ellipsis;
+  font-variant-numeric: lining-nums;
 }
 .escala-figura { position: relative; flex: none; }
 .escala-figura .pie { max-width: none; }
 .escala-figura svg { position: absolute; bottom: 0; left: 0; }
 .escala-marcas { position: absolute; inset: 0; pointer-events: none; }
-.escala-marca {
-  position: absolute; left: 0; right: 0; border-top: 1px dashed var(--regla);
-  opacity: .8;
-}
+.escala-marca { position: absolute; left: 0; right: 0; border-top: 1px dashed rgba(236,232,222,.28); }
 .escala-marca span {
-  position: absolute; left: .4rem; top: -1.1rem;
-  font-size: .625rem; letter-spacing: .08em; color: var(--tinta-3);
-  background: var(--sala-alta); padding: 0 .3rem;
+  position: absolute; left: .3rem; top: -1.05rem;
+  font-family: var(--rotulo); font-size: .68rem; color: var(--claro-2);
+  font-variant-numeric: lining-nums;
 }
 .escala-nota {
-  font-family: var(--serif); font-style: italic; font-size: .95rem;
-  color: var(--tinta-2); margin-top: 2.6rem; max-width: var(--medida);
+  margin-top: 2.4rem; font-size: .95rem; color: var(--claro-2);
+  max-width: 46rem; text-wrap: pretty;
 }
 
 /* ------------------------------------------------------------------- pie */
 
-.pie-sitio {
-  border-top: 1px solid var(--regla);
-  padding: clamp(3rem, 6vw, 5rem) 0 clamp(2.5rem, 4vw, 4rem);
-  display: grid; grid-template-columns: minmax(0, 26rem) minmax(0, 1fr);
-  gap: 2rem 5rem;
-}
-.pie-sitio p {
-  font-family: var(--serif); font-style: italic;
-  color: var(--tinta-2); max-width: 34ch;
-}
-.pie-datos {
-  font-size: .688rem; letter-spacing: .12em; text-transform: uppercase;
-  color: var(--tinta-3); align-self: end;
-}
-@media (max-width: 900px) { .pie-sitio { grid-template-columns: 1fr; } }
+.pie-sitio { padding: clamp(2.5rem, 5vw, 4rem) 0; display: flex; flex-wrap: wrap; gap: 1rem 2rem; align-items: baseline; }
+.pie-datos { margin-left: auto; font-family: var(--rotulo); font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: var(--tinta-3); font-variant-numeric: lining-nums; }
+.sin-js { padding: 2rem 0; font-style: italic; color: var(--tinta-2); }
 
-/* =========================================================== vista de obra */
+/* ==================================================== ficha de la obra */
 
-.vista-obra { padding-bottom: clamp(4rem, 8vw, 7rem); }
-.vista-obra[hidden] { display: none; }
-
-.barra-obra {
-  position: sticky; top: 0; z-index: 20;
-  background: var(--papel);
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 1rem; padding: 1.1rem 0;
-  border-bottom: 1px solid var(--regla-suave);
-  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+.barra {
+  position: sticky; top: 0; z-index: 40;
+  background: var(--plancha); color: var(--claro);
+  border-bottom: 1px solid rgba(236,232,222,.15);
 }
-/* el fondo se prolonga a los lados del contenedor */
-.barra-obra::before {
-  content: ''; position: absolute; inset: 0 -50vw; z-index: -1;
-  background: var(--papel);
-  border-bottom: 1px solid var(--regla-suave);
+.barra-int { display: flex; align-items: center; gap: 1rem; padding: .55rem 0; min-height: 3.4rem; }
+.barra-mini {
+  width: 2.3rem; height: 2.3rem; flex: none;
+  object-fit: cover; background: var(--plancha-2);
+  box-shadow: inset 0 0 0 1px rgba(236,232,222,.25);
 }
-.barra-nav { display: flex; align-items: center; gap: .9rem; }
-.paso {
-  display: inline-flex; align-items: baseline; gap: .4rem;
-  font-family: var(--sans); font-size: .75rem; font-weight: 500;
+.barra-tit { flex: 1; min-width: 0; }
+.barra-tit .t { font-style: italic; font-size: .98rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.barra-tit .n { font-family: var(--rotulo); font-size: .7rem; letter-spacing: .12em; color: var(--claro-2); font-variant-numeric: lining-nums; }
+.barra a, .barra .paso { color: var(--claro); }
+.volver, .paso {
+  display: inline-flex; align-items: center; gap: .45rem; flex: none;
+  font-family: var(--rotulo); font-size: .78rem; font-weight: 500;
   letter-spacing: .1em; text-transform: uppercase;
-  color: var(--tinta-2);
-  padding: .3rem 0; border-bottom: 1px solid transparent;
-  transition: color .25s var(--paso), border-color .25s var(--paso);
+  padding: .35rem 0; border-bottom: 2px solid transparent;
+  transition: color .2s var(--paso), border-color .2s var(--paso);
 }
-.paso:hover { color: var(--azul); border-bottom-color: var(--azul); }
-.paso .flecha { font-size: 1rem; transition: transform .35s var(--paso); }
-.paso--prev:hover .flecha { transform: translateX(-3px); }
-.paso--next:hover .flecha { transform: translateX(3px); }
-.paso-titulo {
-  max-width: 12ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-  font-family: var(--serif); font-style: italic; font-size: .92rem;
-  letter-spacing: 0; text-transform: none; color: var(--tinta-3);
+.volver:hover, .paso:hover { color: #d9745d; border-bottom-color: #d9745d; }
+.barra-nav { display: flex; align-items: center; gap: .9rem; flex: none; }
+.barra-pos { font-family: var(--rotulo); font-size: .72rem; letter-spacing: .1em; color: var(--claro-2); font-variant-numeric: lining-nums tabular-nums; }
+@media (max-width: 760px) {
+  .volver .txt { display: none; }
+  .barra-tit .t { font-size: .9rem; }
 }
-@media (max-width: 720px) {
-  .paso-titulo { display: none; }
-  .volver .texto { display: none; }
-  .barra-obra { gap: .6rem; }
-}
-.volver {
-  display: inline-flex; align-items: center; gap: .6rem;
-  font-size: .75rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase;
-  color: var(--tinta-2);
-  padding: .3rem 0; border-bottom: 1px solid transparent;
-  transition: color .25s var(--paso), border-color .25s var(--paso);
-}
-.volver:hover { color: var(--azul); border-bottom-color: var(--azul); }
-.volver .flecha { transition: transform .35s var(--paso); }
-.volver:hover .flecha { transform: translateX(-4px); }
-.barra-pos { font-size: .688rem; letter-spacing: .12em; color: var(--tinta-3); }
 
-.obra-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
-  gap: clamp(2.5rem, 5vw, 5rem);
-  align-items: start;
-}
-@media (max-width: 980px) { .obra-grid { grid-template-columns: 1fr; } }
-
-.columna-imagen { position: sticky; top: 5.5rem; }
-@media (max-width: 980px) { .columna-imagen { position: static; } }
-
+/* la plancha: la obra, a sangre, sobre negro */
+.plancha-obra { background: var(--plancha); padding: clamp(1.5rem, 4vw, 3.5rem) 0 clamp(2rem, 4vw, 3rem); }
 .lamina { margin: 0; }
-.lamina + .lamina { margin-top: 2.5rem; }
-.lamina .paspartu {
-  background: var(--paspartu);
-  padding: clamp(1rem, 2.5vw, 2.2rem);
-  box-shadow: 0 1px 0 rgba(255,255,255,.6) inset,
-              0 24px 50px -30px rgba(20,15,8,.6);
-}
+.lamina + .lamina { margin-top: clamp(2.5rem, 5vw, 4rem); }
 .lamina img {
-  width: 100%; height: auto;
-  max-height: calc(100vh - 12rem);
-  object-fit: contain;
+  max-width: min(100% - 2.5rem, 62rem);
+  max-height: 78vh; width: auto; height: auto;
   margin-inline: auto;
-  box-shadow: 0 2px 14px -6px rgba(20,15,8,.5);
+  box-shadow: 0 2rem 4rem -2rem rgba(0,0,0,.9);
 }
+.lamina .ausente { max-width: min(100% - 2.5rem, 40rem); margin-inline: auto; height: auto; }
 .lamina figcaption {
-  margin-top: 1rem;
-  font-family: var(--serif); font-style: italic; font-size: .9rem;
-  color: var(--tinta-3); line-height: 1.5;
+  margin: 1.1rem auto 0; max-width: min(100% - 2.5rem, 46rem);
+  font-size: .9rem; color: var(--claro-2); text-align: center; text-wrap: pretty;
 }
 .lamina figcaption a {
-  display: inline-block; margin-left: .6rem;
-  font-family: var(--sans); font-style: normal; font-size: .625rem;
-  letter-spacing: .12em; text-transform: uppercase; color: var(--tinta-3);
-  border-bottom: 1px solid var(--regla-suave);
-  transition: color .25s var(--paso), border-color .25s var(--paso);
+  font-family: var(--rotulo); font-size: .72rem; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--claro-2);
+  border-bottom: 1px solid rgba(236,232,222,.3); margin-left: .6rem;
 }
-.lamina figcaption a:hover { color: var(--azul); border-bottom-color: var(--azul); }
+.lamina figcaption a:hover { color: #d9745d; border-bottom-color: #d9745d; }
 
-.ficha-cabeza { padding-bottom: 1.8rem; border-bottom: 1px solid var(--regla-suave); }
-.ficha-titulo {
-  font-family: var(--serif); font-style: italic;
-  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
-  line-height: 1.12; margin: .9rem 0 .5rem;
-}
-.ficha-autor {
-  font-family: var(--serif); font-size: 1.1rem; color: var(--tinta-2);
-}
-.ficha-autor .sep { color: var(--azul); margin: 0 .55rem; }
+/* cabecera de la ficha */
+.obra-cab { padding: clamp(2.5rem, 5vw, 4rem) 0 0; }
+.obra-num { font-size: clamp(2.4rem, 7vw, 4rem); line-height: 1; display: block; margin-bottom: .6rem; }
+.obra-tit { font-size: clamp(1.9rem, 4.5vw, 3rem); font-style: italic; letter-spacing: -.02em; }
+.obra-aut { margin-top: .7rem; font-size: 1.1rem; color: var(--tinta-2); }
+.obra-aut .sep { color: var(--rojo); margin: 0 .5rem; }
 
-.ficha { margin: 1.8rem 0 0; display: grid; grid-template-columns: 9rem 1fr; gap: .1rem 1.5rem; }
-.ficha dt {
-  font-size: .625rem; font-weight: 500; letter-spacing: .16em; text-transform: uppercase;
-  color: var(--tinta-3); padding-top: .55rem;
-}
-.ficha dd {
-  font-family: var(--serif); font-size: 1.02rem; color: var(--tinta);
-  padding-top: .35rem;
-  font-variant-numeric: lining-nums tabular-nums;
-}
-@media (max-width: 480px) { .ficha { grid-template-columns: 1fr; gap: 0 0; } .ficha dd { margin-bottom: .7rem; } }
+/* ficha técnica */
+.ficha { margin-top: 2rem; border-top: 2px solid var(--rojo); }
+.ficha div { display: grid; grid-template-columns: 10rem 1fr; gap: 1.5rem; padding: .55rem 0; border-bottom: 1px solid var(--regla-fina); }
+.ficha dt { font-family: var(--rotulo); font-size: .72rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--tinta-3); padding-top: .2em; }
+.ficha dd { font-variant-numeric: lining-nums; text-wrap: pretty; }
+@media (max-width: 560px) { .ficha div { grid-template-columns: 1fr; gap: .1rem; } }
 
-.escala-mini {
-  margin-top: 1.8rem; padding-top: 1.4rem; border-top: 1px dotted var(--regla-suave);
-  display: flex; align-items: flex-end; gap: 1rem;
-}
-.escala-mini svg { flex: none; }
-.escala-mini p {
-  font-family: var(--serif); font-style: italic; font-size: .9rem; color: var(--tinta-3);
-}
+.mini-escala { margin-top: 1.6rem; display: flex; align-items: flex-end; gap: 1rem; }
+.mini-escala p { font-size: .88rem; color: var(--tinta-3); font-style: italic; }
 
-.seccion { margin-top: 2.6rem; padding-top: 2.2rem; border-top: 1px solid var(--regla-suave); }
-.seccion > h2 {
-  font-family: var(--serif); font-style: italic; font-size: 1.28rem;
-  color: var(--azul); margin-bottom: 1.3rem;
+/* sumario interno */
+.sumario { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: .5rem 1.4rem; }
+.sumario button {
+  font-family: var(--rotulo); font-size: .75rem; font-weight: 500;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--tinta-2);
+  background: none; border: 0; border-bottom: 1px solid var(--regla); cursor: pointer;
+  padding: .2rem 0; transition: color .2s var(--paso), border-color .2s var(--paso);
 }
+.sumario button:hover { color: var(--rojo); border-bottom-color: var(--rojo); }
 
-.prosa { max-width: var(--medida); }
-.prosa p {
-  font-family: var(--serif); font-size: 1.06rem; line-height: 1.76; color: var(--tinta);
-  font-variant-numeric: oldstyle-nums;
-  text-wrap: pretty;
-}
-.prosa p + p { margin-top: 1.1rem; }
+/* secciones de texto */
+.seccion { margin-top: clamp(2.5rem, 5vw, 3.5rem); padding-top: 1.8rem; border-top: 1px solid var(--regla); scroll-margin-top: 5rem; }
+.seccion > h2 { font-family: var(--rotulo); font-size: .78rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--rojo); margin-bottom: 1.4rem; }
+
+.prosa p { text-wrap: pretty; }
+.prosa p + p { margin-top: 1.05rem; }
+.prosa p + p:not(.subtitulo + p) { text-indent: 1.4em; }
 .prosa strong { font-weight: 600; }
-.prosa em { font-style: italic; }
 .prosa .subtitulo {
-  display: block;
-  font-family: var(--sans); font-size: .688rem; font-weight: 600; line-height: 1.4;
-  letter-spacing: .16em; text-transform: uppercase; color: var(--azul);
-  margin: 2rem 0 .8rem;
+  display: block; font-family: var(--rotulo); font-size: .75rem; font-weight: 600;
+  letter-spacing: .16em; text-transform: uppercase; color: var(--tinta-2);
+  margin: 2rem 0 .7rem; line-height: 1.4;
 }
 .prosa > .subtitulo:first-child { margin-top: 0; }
 
-.voz { position: relative; padding-left: 1.8rem; margin-top: 2.2rem; }
+.voz { margin-top: 2rem; }
 .voz:first-of-type { margin-top: 0; }
-.voz::before {
-  content: ''; position: absolute; left: 0; top: .45em; bottom: .3em;
-  width: 2px; background: var(--azul); opacity: .35;
-}
-.voz blockquote { max-width: var(--medida); }
-.voz blockquote p {
-  font-family: var(--serif); font-style: italic; font-size: 1.06rem;
-  line-height: 1.72; color: var(--tinta);
-  font-variant-numeric: oldstyle-nums;
-  text-wrap: pretty;
-}
-.voz blockquote p + p { margin-top: 1rem; }
-.voz figcaption { margin-top: .9rem; }
-.voz .quien {
-  font-size: .688rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase;
-  color: var(--tinta-2);
-}
-.voz .quien::before { content: '— '; color: var(--azul); }
-.voz .fuente {
-  display: block; margin-top: .35rem;
-  font-family: var(--serif); font-style: italic; font-size: .9rem; color: var(--tinta-3);
-}
+.voz blockquote { border-left: 2px solid var(--rojo); padding-left: 1.3rem; }
+.voz blockquote p { font-size: 1rem; line-height: 1.62; }
+.voz blockquote p + p { margin-top: .9rem; }
+.voz figcaption { margin-top: .8rem; padding-left: 1.3rem; }
+.voz .quien { font-family: var(--rotulo); font-size: .75rem; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--tinta-2); font-variant-numeric: lining-nums; }
+.voz .quien::before { content: '— '; color: var(--rojo); }
+.voz .fuente { display: block; margin-top: .3rem; font-style: italic; font-size: .9rem; color: var(--tinta-3); }
 
-/* ------------------------------------------------------- aparato crítico */
-
-.aparato-caja > summary {
-  list-style: none;
-  cursor: pointer;
-  display: flex;
-  align-items: baseline;
-  gap: 1rem;
-  padding-bottom: .4rem;
-  border-bottom: 1px solid transparent;
-  transition: border-color .3s var(--paso);
-}
+/* aparato crítico */
+.aparato-caja > summary { list-style: none; cursor: pointer; display: flex; align-items: baseline; gap: 1rem; }
 .aparato-caja > summary::-webkit-details-marker { display: none; }
-.aparato-caja > summary:hover { border-bottom-color: var(--regla-suave); }
-.aparato-titulo {
-  font-family: var(--serif); font-style: italic; font-size: 1.28rem;
-  color: var(--azul); display: inline;
-}
-.aparato-titulo::after {
-  content: '+';
-  font-style: normal; font-family: var(--sans); font-weight: 400;
-  margin-left: .55rem; color: var(--tinta-3);
-}
-.aparato-caja[open] .aparato-titulo::after { content: '–'; }
-.aparato-cuenta {
-  margin-left: auto;
-  font-size: .625rem; letter-spacing: .14em; text-transform: uppercase;
-  color: var(--tinta-3); white-space: nowrap;
-}
-
-.aparato { margin-top: 1.8rem; max-width: var(--medida); }
-.aparato-grupo + .aparato-grupo { margin-top: 2.4rem; }
-.aparato-grupo > .subtitulo { margin-top: 0; }
-
-.entrada {
-  padding-left: 1.1rem;
-  border-left: 1px solid var(--regla-suave);
-  margin-bottom: 1.5rem;
-}
-.entrada:last-child { margin-bottom: 0; }
-.entrada .ref {
-  font-family: var(--serif); font-size: 1rem; line-height: 1.55; color: var(--tinta);
-}
-.entrada .ref a {
-  border-bottom: 1px solid var(--regla);
-  transition: color .25s var(--paso), border-color .25s var(--paso);
-}
-.entrada .ref a:hover { color: var(--azul); border-bottom-color: var(--azul); }
-.entrada .nota {
-  margin-top: .5rem;
-  font-family: var(--serif); font-size: .95rem; line-height: 1.65; color: var(--tinta-2);
-  font-variant-numeric: oldstyle-nums;
-  text-wrap: pretty;
-}
-.marcas { margin-top: .45rem; display: flex; flex-wrap: wrap; gap: .4rem; }
+.aparato-tit { font-family: var(--rotulo); font-size: .78rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--rojo); display: inline; }
+.aparato-tit::after { content: ' +'; color: var(--tinta-3); }
+.aparato-caja[open] .aparato-tit::after { content: ' –'; }
+.aparato-cuenta { margin-left: auto; font-family: var(--rotulo); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--tinta-3); white-space: nowrap; font-variant-numeric: lining-nums; }
+.aparato { margin-top: 1.8rem; }
+.aparato-grupo + .aparato-grupo { margin-top: 2.2rem; }
+.aparato-grupo > .subtitulo { display: block; font-family: var(--rotulo); font-size: .73rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: var(--tinta-2); margin-bottom: 1.1rem; line-height: 1.4; }
+.entrada { padding-left: 1.1rem; border-left: 1px solid var(--regla-fina); margin-bottom: 1.4rem; }
+.entrada .ref { font-size: .97rem; line-height: 1.5; }
+.entrada .ref a { border-bottom: 1px solid var(--regla); }
+.entrada .ref a:hover { color: var(--rojo); border-bottom-color: var(--rojo); }
+.entrada .nota { margin-top: .45rem; font-size: .92rem; line-height: 1.58; color: var(--tinta-2); text-wrap: pretty; }
+.marcas { margin-top: .4rem; display: flex; flex-wrap: wrap; gap: .35rem; }
 .marca {
-  font-family: var(--sans); font-size: .625rem; font-weight: 500;
-  letter-spacing: .14em; text-transform: uppercase;
-  color: var(--tinta-3);
-  border: 1px solid var(--regla-suave);
-  padding: .15rem .45rem;
-  white-space: nowrap;
+  font-family: var(--rotulo); font-size: .65rem; font-weight: 500;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--tinta-3);
+  border: 1px solid var(--regla-fina); padding: .1rem .4rem; white-space: nowrap;
 }
-.marca--firme { color: var(--azul); border-color: var(--azul); }
-.marca--floja { color: var(--tinta-2); border-style: dashed; }
+.marca--firme { color: var(--rojo); border-color: var(--rojo); }
+.marca--floja { border-style: dashed; }
 
-.paso-obras {
-  margin-top: 3rem; padding-top: 1.6rem; border-top: 1px solid var(--regla-suave);
-  display: flex; justify-content: space-between; gap: 1.5rem;
-}
-.paso-obras a {
-  font-size: .7rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase;
-  color: var(--tinta-2); max-width: 45%;
-  transition: color .25s var(--paso);
-}
-.paso-obras a:hover { color: var(--azul); }
+.paso-obras { margin-top: 3rem; padding-top: 1.5rem; border-top: 2px solid var(--rojo); display: flex; justify-content: space-between; gap: 1.5rem; }
+.paso-obras a { font-family: var(--rotulo); font-size: .78rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--tinta-2); max-width: 46%; }
+.paso-obras a:hover { color: var(--rojo); }
 .paso-obras a:last-child { text-align: right; }
+.cierre-obra { padding-bottom: clamp(3rem, 7vw, 6rem); }
 
-/* ------------------------------------------------------------- animaciones */
+/* --------------------------------------------------------------- movimiento */
 
-/* La ocultación previa a la animación solo se aplica si el JS está vivo:
-   si algo falla, el contenido sigue visible en lugar de desaparecer. */
-.js [data-anima] {
-  opacity: 0; transform: translateY(20px);
-  transition: opacity .8s var(--paso), transform .8s var(--paso);
-}
+.js [data-anima] { opacity: 0; transform: translateY(14px); transition: opacity .7s var(--paso), transform .7s var(--paso); }
 .js [data-anima].visible { opacity: 1; transform: none; }
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: .01ms !important;
-    transition-duration: .01ms !important;
-  }
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
   .js [data-anima] { opacity: 1 !important; transform: none !important; }
 }
-@media (pointer: coarse) {
-  .obra:hover .obra-caja > * { transform: none; }
-}
+@media (pointer: coarse) { .pieza:hover .pieza-visor > * { transform: none; } }
 
 /* ----------------------------------------------------------------- imprenta */
 
 @media print {
-  body, body[data-vista="obra"] { background: #fff; color: #000; }
-  .mandos, .paso-obras, .barra-obra, .salto-contenido, .escala { display: none !important; }
-  .barra-obra::before { display: none !important; }
-  .obra-grid { grid-template-columns: 1fr; }
-  .columna-imagen { position: static; }
-  .lamina .paspartu { padding: 0; box-shadow: none; }
-  .lamina img { max-height: 12cm; box-shadow: none; }
+  body, .galeria, .escala, .plancha-obra, .barra { background: #fff !important; color: #000 !important; }
+  .mandos, .barra, .escala, .paso-obras, .salto, .sumario { display: none !important; }
+  .lamina img { max-height: 11cm; box-shadow: none; }
+  .lamina figcaption, .pieza-aut, .escala-nota { color: #444 !important; }
   .seccion { break-inside: avoid; border-top: .5pt solid #999; }
-  .aparato-caja > *:not(summary) { display: block !important; }
-  .aparato-titulo::after { content: '' !important; }
   .entrada { break-inside: avoid; }
-  .prosa p, .voz blockquote p { font-size: 10.5pt; line-height: 1.5; }
-  a[href^="http"]::after { content: ' (' attr(href) ')'; font-size: 8pt; }
+  .aparato-caja > *:not(summary) { display: block !important; }
+  .aparato-tit::after { content: '' !important; }
+  .prosa p, .voz blockquote p { font-size: 10.5pt; line-height: 1.45; }
+  a[href^="http"]::after { content: ' (' attr(href) ')'; font-size: 8pt; word-break: break-all; }
 }
 </style>
 </head>
 <body data-vista="galeria">
 
-<a class="salto-contenido" href="#coleccion">Saltar a la colección</a>
+<a class="salto" href="#coleccion">Saltar al catálogo</a>
 
-<main class="envase" id="vista-galeria">
+<main id="vista-galeria">
 
-  <header class="sala-cabecera">
-    <div data-anima>
-      <p class="rotulo">Cuadernos de galería · Volumen I</p>
-      <div class="regla-corta"></div>
-      <h1>Una colección privada de <em>cuadros favoritos</em></h1>
+  <header class="portada caja">
+    <div class="portada-marca" data-anima>
+      <span class="rotulo rotulo--rojo">Cuadernos de galería</span>
+      <span class="filete"></span>
+      <span class="rotulo">Volumen I</span>
     </div>
-    <div class="sala-texto" data-anima>
+    <h1 data-anima>Una colección privada de <em>cuadros favoritos</em></h1>
+    <div class="portada-cuerpo" data-anima>
       <p class="lede">No soy historiador de arte ni crítico. Solo soy alguien que durante años ha recopilado imágenes de cuadros, ha entrado en salas de museos, y ha leído libros sobre arte. A veces buscando algo en concreto, la mayoría sin saber por qué. Esta página reúne algunos de los cuadros que más me han acompañado. Algunos los he visto en museos. Otros los he visto en libros, en Internet, en una película. Solo quiero tenerlos, en un lugar tranquilo.</p>
       <p>Pasa el cursor por cada miniatura para verla en mayor tamaño. Si quieres leer la ficha y mis notas, haz clic: te llevará a una página aparte con el cuadro en su tamaño original.</p>
     </div>
   </header>
 
-  <div class="mandos">
-    <div class="mandos-grupo">
-      <span class="rotulo rotulo--tenue" id="rot-orden">Orden</span>
-      <button type="button" class="boton" data-orden="afinidad" aria-pressed="true">Afinidad</button>
-      <button type="button" class="boton" data-orden="cronologia" aria-pressed="false">Cronología</button>
+  <section class="indice caja" aria-labelledby="rot-indice">
+    <span class="rotulo" id="rot-indice">Índice</span>
+    <ol class="indice-lista" id="indice"></ol>
+  </section>
+
+  <div class="mandos-envoltura">
+    <div class="mandos caja">
+      <div class="grupo">
+        <span class="rotulo">Orden</span>
+        <button type="button" class="boton" data-orden="afinidad" aria-pressed="true">Afinidad</button>
+        <button type="button" class="boton" data-orden="cronologia" aria-pressed="false">Cronología</button>
+      </div>
+      <div class="grupo">
+        <span class="rotulo">Vista</span>
+        <button type="button" class="boton" id="btn-escala" aria-pressed="false" aria-controls="escala">Comparar tamaños</button>
+      </div>
+      <span class="cuenta rotulo" id="cuenta"></span>
     </div>
-    <div class="mandos-grupo">
-      <span class="rotulo rotulo--tenue">Vista</span>
-      <button type="button" class="boton" id="btn-escala" aria-pressed="false" aria-controls="escala">Comparar tamaños</button>
-    </div>
-    <span class="mandos-cuenta rotulo rotulo--tenue" id="cuenta"></span>
   </div>
 
-  <section class="escala" id="escala" hidden aria-labelledby="escala-titulo">
-    <h2 class="rotulo" id="escala-titulo">Las obras a la misma escala</h2>
-    <div class="regla-corta"></div>
-    <div class="escala-lienzo" tabindex="0" role="group" aria-label="Comparación de tamaños, desplazable en horizontal">
-      <div class="escala-pared" id="escala-pared"></div>
+  <section class="escala" id="escala" hidden aria-labelledby="rot-escala">
+    <div class="caja">
+      <span class="rotulo" id="rot-escala">Las obras a la misma escala</span>
+      <div class="escala-lienzo" tabindex="0" role="group" aria-label="Comparación de tamaños, desplazable en horizontal">
+        <div class="escala-pared" id="escala-pared"></div>
+      </div>
+      <p class="escala-nota" id="escala-nota"></p>
     </div>
-    <p class="escala-nota" id="escala-nota"></p>
   </section>
 
-  <section id="coleccion" aria-labelledby="titulo-coleccion">
-    <header class="cabecera-seccion" data-anima>
-      <p class="rotulo">La colección</p>
-      <div class="regla-corta"></div>
-      <h2 class="titulo-seccion" id="titulo-coleccion"></h2>
-      <p class="linea-orden" id="linea-orden">Ordenados por afinidad, no por cronología.</p>
-    </header>
-    <noscript><p class="sin-js">La colección se monta con JavaScript. Sin él, esta página solo muestra la cabecera.</p></noscript>
-    <div class="rejilla" id="rejilla"></div>
+  <section class="galeria" id="coleccion" aria-labelledby="rot-coleccion">
+    <div class="caja">
+      <h2 class="rotulo" id="rot-coleccion" style="color:var(--claro-2)"></h2>
+      <p class="rotulo" id="linea-orden" style="color:#b08a7e;letter-spacing:.05em;text-transform:none;font-size:.9rem;margin-top:.5rem"></p>
+      <noscript><p class="sin-js" style="color:var(--claro-2)">El catálogo se monta con JavaScript. Sin él, esta página solo muestra la portada.</p></noscript>
+      <div class="planchas" id="rejilla" style="margin-top:clamp(2.5rem,5vw,4rem)"></div>
+    </div>
   </section>
 
-  <footer class="pie-sitio">
-    <p class="rotulo" data-anima>Cuadernos de galería</p>
-    <p class="pie-datos" id="pie-datos"></p>
+  <footer class="pie-sitio caja">
+    <span class="rotulo rotulo--rojo">Cuadernos de galería</span>
+    <span class="pie-datos" id="pie-datos"></span>
   </footer>
 
 </main>
 
-<main class="vista-obra envase" id="vista-obra" hidden>
-  <div class="barra-obra">
-    <a class="volver" href="#" id="volver"><span class="flecha" aria-hidden="true">←</span> <span class="texto">Volver a la sala</span></a>
-    <nav class="barra-nav" aria-label="Obras contiguas">
-      <a class="paso paso--prev" id="paso-prev"><span class="flecha" aria-hidden="true">‹</span><span class="paso-titulo" id="paso-prev-t"></span></a>
-      <span class="barra-pos" id="barra-pos"></span>
-      <a class="paso paso--next" id="paso-next"><span class="paso-titulo" id="paso-next-t"></span><span class="flecha" aria-hidden="true">›</span></a>
-    </nav>
+<main id="vista-obra" hidden>
+
+  <div class="barra">
+    <div class="barra-int caja">
+      <a class="volver" href="#" id="volver"><span aria-hidden="true">←</span> <span class="txt">Catálogo</span></a>
+      <img class="barra-mini" id="barra-mini" alt="" aria-hidden="true">
+      <div class="barra-tit">
+        <div class="n"><span id="barra-num"></span></div>
+        <div class="t" id="barra-t"></div>
+      </div>
+      <nav class="barra-nav" aria-label="Obras contiguas">
+        <a class="paso" id="paso-prev"><span aria-hidden="true">‹</span></a>
+        <span class="barra-pos" id="barra-pos"></span>
+        <a class="paso" id="paso-next"><span aria-hidden="true">›</span></a>
+      </nav>
+    </div>
   </div>
-  <article class="obra-grid">
-    <div class="columna-imagen" id="columna-imagen"></div>
-    <div class="columna-ficha" id="columna-ficha"></div>
+
+  <div class="plancha-obra" id="plancha"></div>
+
+  <article class="cierre-obra">
+    <div class="lectura">
+      <header class="obra-cab">
+        <span class="num obra-num" id="obra-num"></span>
+        <h1 class="obra-tit" id="obra-tit" tabindex="-1"></h1>
+        <p class="obra-aut" id="obra-aut"></p>
+        <dl class="ficha" id="ficha"></dl>
+        <div id="mini-escala"></div>
+        <nav class="sumario" id="sumario" aria-label="Secciones de la ficha"></nav>
+      </header>
+      <div id="columna-ficha"></div>
+    </div>
   </article>
+
 </main>
 
 <script type="application/json" id="datos-coleccion">[
@@ -1474,20 +1292,19 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; tex
 (function () {
   'use strict';
 
-  /* ------------------------------------------------------------------ ajustes
-     Lo único que hay que tocar para mantener la página al día.            */
-  const ACTUALIZADO = '24 de marzo';
-  const VOLUMEN     = 'Volumen I';
-  const PARED_CM    = 360;   // altura de pared representada en la vista de escala
-  const EJE_CM      = 150;   // altura museística estándar del centro de la obra
-  const FIGURA_CM   = 170;   // silueta humana de referencia
-  const ANCHO_MAX_CM = 520;  // más allá, la obra se recorta por la derecha
+  const ACTUALIZADO   = '24 de marzo';
+  const VOLUMEN       = 'Volumen I';
+  const PARED_CM      = 360;
+  const EJE_CM        = 150;
+  const FIGURA_CM     = 170;
+  const ANCHO_MAX_CM  = 520;
 
   const obras = JSON.parse(document.getElementById('datos-coleccion').textContent);
+  // El número de catálogo lo fija el orden de afinidad y no cambia nunca más.
+  obras.forEach((o, i) => { o.num = String(i + 1).padStart(2, '0'); });
 
-  /* --------------------------------------------------------------- utilidades */
+  /* ------------------------------------------------------------- utilidades */
 
-  // Crea nodos sin innerHTML: el texto entra siempre por textContent.
   function h(tag, props, ...hijos) {
     const el = document.createElement(tag);
     for (const k in (props || {})) {
@@ -1506,17 +1323,9 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; tex
     return el;
   }
 
-  // La fecha sale del propio archivo: document.lastModified cambia cada vez que
-  // se guarda. Si el navegador no la da, se usa la constante de arriba.
-  function fechaActualizacion() {
-    const d = new Date(document.lastModified);
-    if (isNaN(d) || d.getFullYear() < 2000) return ACTUALIZADO;
-    return new Intl.DateTimeFormat('es-ES', { day: 'numeric', month: 'long', year: 'numeric' }).format(d);
-  }
-
   const NUMERALES = ['cero','uno','dos','tres','cuatro','cinco','seis','siete','ocho','nueve',
     'diez','once','doce','trece','catorce','quince','dieciséis','diecisiete','dieciocho',
-    'diecinueve','veinte','veintiuna','veintidós','veintitrés','veinticuatro','veinticinco',
+    'diecinueve','veinte','veintiuno','veintidós','veintitrés','veinticuatro','veinticinco',
     'veintiséis','veintisiete','veintiocho','veintinueve','treinta'];
   function enPalabras(n, genero) {
     let s = NUMERALES[n];
@@ -1525,31 +1334,24 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; tex
     else s = s.replace(/^uno$/, 'un').replace(/veintiuno$/, 'veintiún');
     return s;
   }
+  const mayus = s => s.charAt(0).toUpperCase() + s.slice(1);
 
-  /* ------------------------------------------------------------------ imágenes
-     Tres orígenes posibles por obra. Añadir una imagen nueva es rellenar uno
-     de los tres campos de "img" en el JSON de arriba:
-       drive:   id del archivo en Google Drive (debe ser público)
-       commons: nombre exacto del archivo en Wikimedia Commons
-       url:     dirección directa a un archivo de imagen
-     Commons es el origen recomendado para obras de dominio público: es estable,
-     no tiene cuota y sirve la reproducción de referencia.                    */
+  function fechaActualizacion() {
+    const d = new Date(document.lastModified);
+    if (isNaN(d) || d.getFullYear() < 2000) return ACTUALIZADO;
+    return new Intl.DateTimeFormat('es-ES', { day: 'numeric', month: 'long', year: 'numeric' }).format(d);
+  }
+
+  /* --------------------------------------------------------------- imágenes
+     Tres orígenes: commons (nombre del archivo), url directa o id de Drive. */
   function fuente(img, ancho) {
     if (!img) return null;
     if (img.url) return img.url;
-    if (img.commons) {
-      return 'https://commons.wikimedia.org/wiki/Special:FilePath/' +
-             encodeURIComponent(img.commons) + '?width=' + ancho;
-    }
-    if (img.drive) {
-      return 'https://drive.google.com/thumbnail?id=' +
-             encodeURIComponent(img.drive) + '&sz=w' + ancho;
-    }
+    if (img.commons) return 'https://commons.wikimedia.org/wiki/Special:FilePath/' + encodeURIComponent(img.commons) + '?width=' + ancho;
+    if (img.drive) return 'https://drive.google.com/thumbnail?id=' + encodeURIComponent(img.drive) + '&sz=w' + ancho;
     return null;
   }
   const hayImagen = img => Boolean(img && (img.url || img.commons || img.drive));
-
-  // Dirección del archivo a tamaño completo. Drive no ofrece una fiable; se omite.
   function original(img) {
     if (!img) return null;
     if (img.url) return /^data:/i.test(img.url) ? null : img.url;
@@ -1558,47 +1360,36 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; tex
   }
 
   function crearImg(obra, img, anchos, alt, sizes) {
-    // Drive y Commons sirven la miniatura del ancho pedido; una url directa
-    // es un solo archivo, así que ahí no hay srcset que valga.
     const variable = !(img && img.url);
     const el = h('img', {
       src: fuente(img, anchos[0]),
       srcset: variable ? anchos.map(a => fuente(img, a) + ' ' + a + 'w').join(', ') : null,
       sizes: variable ? (sizes || (anchos[0] + 'px')) : null,
-      alt: alt,
-      loading: 'lazy',
-      decoding: 'async'
+      alt: alt, loading: 'lazy', decoding: 'async'
     });
-    // Si la imagen no carga, se dice; no se rellena con una foto cualquiera.
     el.addEventListener('error', () => {
-      const hueco = laminaAusente(obra);
-      if (el.parentNode) el.parentNode.replaceChild(hueco, el);
+      if (el.parentNode) el.parentNode.replaceChild(ausente(obra), el);
     }, { once: true });
     return el;
   }
 
-  function laminaAusente(obra) {
+  function ausente(obra) {
     const ratio = (obra.ancho && obra.alto) ? (obra.ancho + ' / ' + obra.alto) : '4 / 3';
-    return h('div', { class: 'lamina-ausente', estilo: '--ratio: ' + ratio, role: 'img',
+    return h('div', { class: 'ausente', estilo: '--ratio: ' + ratio, role: 'img',
                       'aria-label': 'Sin reproducción disponible de ' + obra.title },
-      h('p', { class: 'rotulo', texto: 'Lámina ausente' })
-    );
+      h('p', { class: 'rotulo', texto: 'Lámina ausente' }));
   }
 
-  /* -------------------------------------------------------------------- prosa
-     Micro-marcado del propio documento:
-       **Titulillo** en línea propia -> subtítulo de sección
-       **negrita**, *cursiva*        -> énfasis
-     Todo el texto pasa por textContent; no hay inyección posible.          */
+  /* ------------------------------------------------------------------ prosa */
+
   function prosa(texto) {
     const cont = h('div', { class: 'prosa' });
     if (!texto) return cont;
-
     texto.split('\n\n').forEach(bloque => {
       const lineas = bloque.split('\n');
-      const cabecera = lineas[0].match(/^\*\*(.+?)\*\*$/);
-      if (cabecera) {
-        cont.appendChild(h('h3', { class: 'subtitulo', texto: cabecera[1] }));
+      const cab = lineas[0].match(/^\*\*(.+?)\*\*$/);
+      if (cab) {
+        cont.appendChild(h('h3', { class: 'subtitulo', texto: cab[1] }));
         const resto = lineas.slice(1).join('\n').trim();
         if (resto) cont.appendChild(parrafo(resto));
       } else {
@@ -1610,9 +1401,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; tex
 
   function parrafo(txt) {
     const p = h('p');
-    // Trocea por **negrita** y *cursiva* sin usar innerHTML.
-    const piezas = txt.split(/(\*\*[^*]+?\*\*|\*[^*]+?\*)/g);
-    piezas.forEach(pieza => {
+    txt.split(/(\*\*[^*]+?\*\*|\*[^*]+?\*)/g).forEach(pieza => {
       if (!pieza) return;
       if (pieza.startsWith('**') && pieza.endsWith('**') && pieza.length > 4) {
         p.appendChild(h('strong', { texto: pieza.slice(2, -2) }));
@@ -1625,14 +1414,9 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; tex
     return p;
   }
 
-  /* ------------------------------------------------------- aparato crítico
-     Bibliografía razonada: referencia, marcas de fiabilidad y acceso, y nota.
-     La marca de procedencia es lo que distingue un aparato de una lista:
-     "verificado" = comprobado en catálogo o repositorio;
-     "de segunda mano" = conocido solo por cita ajena.                       */
-  function enlaceSeguro(u) {
-    return typeof u === 'string' && /^https?:\/\//i.test(u);
-  }
+  /* -------------------------------------------------------- aparato crítico */
+
+  const enlaceSeguro = u => typeof u === 'string' && /^https?:\/\//i.test(u);
 
   function bloqueAparato(grupos) {
     const cont = h('div', { class: 'aparato' });
@@ -1641,25 +1425,17 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; tex
       if (g.seccion) grupo.appendChild(h('h3', { class: 'subtitulo', texto: g.seccion }));
       (g.entradas || []).forEach(e => {
         const ent = h('div', { class: 'entrada' });
-
         const ref = h('p', { class: 'ref' });
         if (enlaceSeguro(e.url)) {
-          ref.appendChild(h('a', { href: e.url, target: '_blank',
-                                   rel: 'noopener noreferrer', texto: e.ref }));
-        } else {
-          ref.textContent = e.ref;
-        }
+          ref.appendChild(h('a', { href: e.url, target: '_blank', rel: 'noopener noreferrer', texto: e.ref }));
+        } else { ref.textContent = e.ref; }
         ent.appendChild(ref);
-
         if (e.estado || e.acceso) {
-          const marcas = h('p', { class: 'marcas' });
-          if (e.estado) marcas.appendChild(h('span', {
-            class: 'marca ' + (e.estado === 'verificado' ? 'marca--firme' : 'marca--floja'),
-            texto: e.estado }));
-          if (e.acceso) marcas.appendChild(h('span', { class: 'marca', texto: e.acceso }));
-          ent.appendChild(marcas);
+          const m = h('p', { class: 'marcas' });
+          if (e.estado) m.appendChild(h('span', { class: 'marca ' + (e.estado === 'verificado' ? 'marca--firme' : 'marca--floja'), texto: e.estado }));
+          if (e.acceso) m.appendChild(h('span', { class: 'marca', texto: e.acceso }));
+          ent.appendChild(m);
         }
-
         if (e.nota) ent.appendChild(h('p', { class: 'nota', texto: e.nota }));
         grupo.appendChild(ent);
       });
@@ -1668,59 +1444,62 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; tex
     return cont;
   }
 
-  /* ------------------------------------------------------------------ rejilla */
+  /* ------------------------------------------------------ índice y planchas */
 
   let ordenActual = 'afinidad';
+  const ordenadas = () => ordenActual === 'cronologia'
+    ? obras.slice().sort((a, b) => (a.anio ?? 9999) - (b.anio ?? 9999))
+    : obras;
 
-  function ordenadas() {
-    if (ordenActual === 'cronologia') {
-      return obras.slice().sort((a, b) => (a.anio ?? 9999) - (b.anio ?? 9999));
-    }
-    return obras;
+  function pintarIndice() {
+    const ol = document.getElementById('indice');
+    ol.textContent = '';
+    ordenadas().forEach(o => {
+      ol.appendChild(h('li', {},
+        h('a', { class: 'indice-fila', href: '#obra/' + o.slug },
+          h('span', { class: 'num', texto: o.num }),
+          h('span', { class: 'tit', texto: o.title }),
+          h('span', { class: 'rell' }),
+          h('span', { class: 'meta', texto: o.artist + ' · ' + o.year })
+        )));
+    });
   }
 
   function pintarRejilla() {
-    const rejilla = document.getElementById('rejilla');
-    rejilla.textContent = '';
-    ordenadas().forEach(obra => {
-      const marco = h('div', { class: 'obra-caja' });
-      marco.appendChild(
-        hayImagen(obra.img)
-          ? crearImg(obra, obra.img, [560, 1000], obra.title + ', de ' + obra.artist,
-                     '(max-width: 640px) 88vw, (max-width: 1100px) 40vw, 26vw')
-          : laminaAusente(obra)
-      );
-
-      rejilla.appendChild(
-        h('a', { class: 'obra', href: '#obra/' + obra.slug, 'data-anima': true },
-          marco,
-          h('div', { class: 'obra-cartela' },
-            h('div', { class: 'obra-titulo', texto: obra.title }),
-            h('div', { class: 'obra-autor' },
-              obra.artist,
-              h('span', { class: 'anno', texto: obra.year })
-            ),
-            obra.tipo ? h('div', { class: 'obra-tipo', texto: obra.tipo }) : null
-          )
-        )
-      );
+    const r = document.getElementById('rejilla');
+    r.textContent = '';
+    ordenadas().forEach(o => {
+      const visor = h('div', { class: 'pieza-visor' });
+      visor.appendChild(hayImagen(o.img)
+        ? crearImg(o, o.img, [560, 1000], o.title + ', de ' + o.artist,
+                   '(max-width: 640px) 88vw, (max-width: 1100px) 42vw, 28vw')
+        : ausente(o));
+      r.appendChild(
+        h('a', { class: 'pieza', href: '#obra/' + o.slug, 'data-anima': true },
+          visor,
+          h('div', { class: 'pieza-cartela' },
+            h('span', { class: 'num', texto: o.num }),
+            h('div', {},
+              h('div', { class: 'pieza-tit', texto: o.title }),
+              h('div', { class: 'pieza-aut', texto: o.artist + ' · ' + o.year }),
+              o.tipo ? h('div', { class: 'pieza-tipo', texto: o.tipo }) : null
+            ))));
     });
-    observarAnimaciones();
+    observar();
   }
 
-  /* ------------------------------------------------- vista de escala (la firma) */
+  /* ------------------------------------------------------- vista de escala */
 
-  function siluetaHumana(px) {
+  function silueta(px) {
     const w = px * 0.42;
-    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    const NS = 'http://www.w3.org/2000/svg';
+    const svg = document.createElementNS(NS, 'svg');
     svg.setAttribute('viewBox', '0 0 42 100');
-    svg.setAttribute('width', String(w));
-    svg.setAttribute('height', String(px));
+    svg.setAttribute('width', String(w)); svg.setAttribute('height', String(px));
     svg.setAttribute('aria-hidden', 'true');
-    const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    const p = document.createElementNS(NS, 'path');
     p.setAttribute('d', 'M21 2c3.4 0 6 2.7 6 6s-2.6 6-6 6-6-2.7-6-6 2.6-6 6-6zm-9 15h18c2.4 0 4 1.8 4 4.2v22c0 1.6-1.1 2.6-2.4 2.6-1.3 0-2.3-1-2.3-2.6V30h-1.1v66c0 2.2-1.5 3.6-3.4 3.6-1.9 0-3.3-1.4-3.3-3.6V60h-2.2v36c0 2.2-1.4 3.6-3.3 3.6-1.9 0-3.4-1.4-3.4-3.6V30H11.7v11.2c0 1.6-1 2.6-2.3 2.6-1.3 0-2.4-1-2.4-2.6v-22C7 18.8 8.6 17 11 17z');
-    p.setAttribute('fill', 'var(--tinta-2)');
-    p.setAttribute('opacity', '.55');
+    p.setAttribute('fill', 'currentColor'); p.setAttribute('opacity', '.5');
     svg.appendChild(p);
     return { svg: svg, ancho: w };
   }
@@ -1728,400 +1507,310 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 400; line-height: 1.15; tex
   function pintarEscala() {
     const pared = document.getElementById('escala-pared');
     pared.textContent = '';
-
-    const altoPx = Math.max(320, Math.min(520, Math.round(window.innerHeight * 0.55)));
-    const k = altoPx / PARED_CM;                       // píxeles por centímetro
+    const altoPx = Math.max(300, Math.min(500, Math.round(window.innerHeight * 0.52)));
+    const k = altoPx / PARED_CM;
     pared.style.setProperty('--pared', altoPx + 'px');
 
-    // marcas de altura
     const marcas = h('div', { class: 'escala-marcas' });
-    [100, 200, 300].forEach(cm => {
-      marcas.appendChild(
-        h('div', { class: 'escala-marca', estilo: 'bottom:' + (cm * k) + 'px' },
-          h('span', { texto: cm + ' cm' })
-        )
-      );
-    });
+    [100, 200, 300].forEach(cm => marcas.appendChild(
+      h('div', { class: 'escala-marca', estilo: 'bottom:' + (cm * k) + 'px' }, h('span', { texto: cm + ' cm' }))));
     pared.appendChild(marcas);
 
-    // silueta de referencia
-    const fig = siluetaHumana(FIGURA_CM * k);
-    const contFig = h('div', { class: 'escala-figura', estilo: 'width:' + fig.ancho + 'px;height:' + (FIGURA_CM * k) + 'px' });
-    contFig.appendChild(fig.svg);
-    contFig.appendChild(h('span', { class: 'pie', texto: 'persona, 170 cm' }));
-    pared.appendChild(contFig);
+    const fig = silueta(FIGURA_CM * k);
+    const cf = h('div', { class: 'escala-figura', estilo: 'width:' + fig.ancho + 'px;height:' + (FIGURA_CM * k) + 'px' });
+    cf.appendChild(fig.svg);
+    cf.appendChild(h('span', { class: 'pie', texto: 'persona, 170 cm' }));
+    pared.appendChild(cf);
 
     const medibles = ordenadas().filter(o => o.alto && o.ancho);
-    medibles.forEach(obra => {
-      // Lo que mide más que la pared se recorta y se marca: una fachada de
-      // nueve metros no cabe en una sala, y ese es justamente el dato.
-      const alto_ = obra.alto > PARED_CM, ancho_ = obra.ancho > ANCHO_MAX_CM;
-      const desborda = alto_ || ancho_;
-      const w = (ancho_ ? ANCHO_MAX_CM : obra.ancho) * k;
-      const alt = (alto_ ? PARED_CM : obra.alto) * k;
-      const suelo = desborda ? 0 : Math.max(0, (EJE_CM - obra.alto / 2) * k);
-      const caja = h('div', { class: 'caja' + (alto_ ? ' caja--corte-alto' : '') + (ancho_ ? ' caja--corte-ancho' : ''),
+    medibles.forEach(o => {
+      const altoX = o.alto > PARED_CM, anchoX = o.ancho > ANCHO_MAX_CM;
+      const w = (anchoX ? ANCHO_MAX_CM : o.ancho) * k;
+      const alt = (altoX ? PARED_CM : o.alto) * k;
+      const suelo = altoX ? 0 : Math.max(0, (EJE_CM - o.alto / 2) * k);
+      const cuadro = h('div', { class: 'cuadro' + (altoX ? ' corte-alto' : '') + (anchoX ? ' corte-ancho' : ''),
         estilo: '--w:' + w + 'px;--h:' + alt + 'px;--suelo:' + suelo + 'px' });
-      if (hayImagen(obra.img)) {
-        caja.appendChild(crearImg(obra, obra.img, [400, 800], '', '200px'));
-      }
+      if (hayImagen(o.img)) cuadro.appendChild(crearImg(o, o.img, [400, 800], '', '200px'));
       pared.appendChild(
-        h('a', { class: 'escala-obra', href: '#obra/' + obra.slug,
-                 estilo: 'width:' + w + 'px;height:' + (suelo + alt) + 'px',
-                 title: obra.title + ' — ' + obra.dimensions },
-          caja,
-          h('span', { class: 'pie', texto: obra.title + (desborda ? ' · ' + obra.dimensions : '') })
-        )
-      );
+        h('a', { class: 'escala-obra', href: '#obra/' + o.slug,
+          estilo: 'width:' + w + 'px;height:' + (suelo + alt) + 'px',
+          title: o.title + ' — ' + o.dimensions },
+          cuadro,
+          h('span', { class: 'pie', texto: o.num + ' · ' + o.title + ((altoX || anchoX) ? ' · ' + o.dimensions : '') })));
     });
 
-    const sinMedida = obras.filter(o => !o.alto || !o.ancho);
-    const nota = document.getElementById('escala-nota');
-    // El ejemplo se saca de la propia colección: si cambian las obras, cambia la frase.
-    const orden = medibles.slice().sort((a, b) => a.alto - b.alto);
-    const menor = orden[0], mayor = orden[orden.length - 1];
-    nota.textContent =
-      'Cada obra en su tamaño real, colgada con el centro a ' + EJE_CM + ' cm del suelo, ' +
-      'como en una sala. La reproducción digital iguala lo que en la pared es incomparable: ' +
-      (menor && mayor && menor !== mayor
-        ? '«' + menor.title + '» mide ' + menor.dimensions + ' y «' + mayor.title +
-          '», ' + mayor.dimensions + '.'
-        : '') +
+    const sin = obras.filter(o => !o.alto || !o.ancho);
+    const ord = medibles.slice().sort((a, b) => a.alto - b.alto);
+    const men = ord[0], may = ord[ord.length - 1];
+    document.getElementById('escala-nota').textContent =
+      'Cada obra en su tamaño real, colgada con el centro a ' + EJE_CM + ' cm del suelo, como en una sala. ' +
+      'La reproducción digital iguala lo que en la pared es incomparable: ' +
+      (men && may && men !== may ? '«' + men.title + '» mide ' + men.dimensions + ' y «' + may.title + '», ' + may.dimensions + '.' : '') +
       (medibles.some(o => o.alto > PARED_CM || o.ancho > ANCHO_MAX_CM)
-        ? ' Lo que no cabe en la pared se recorta, con el borde marcado: la medida entera va en el rótulo.'
-        : '') +
-      (sinMedida.length
-        ? ' Quedan fuera ' + enPalabras(sinMedida.length, 'f') +
-          (sinMedida.length === 1 ? ' obra sin medidas documentadas: ' : ' obras sin medidas documentadas: ') +
-          sinMedida.map(o => o.title).join('; ') + '.'
-        : '');
+        ? ' Lo que no cabe en la pared se recorta, con el borde marcado: la medida entera va en el rótulo.' : '') +
+      (sin.length ? ' Quedan fuera ' + enPalabras(sin.length, 'f') + (sin.length === 1 ? ' obra sin medidas documentadas: ' : ' obras sin medidas documentadas: ') + sin.map(o => o.title).join('; ') + '.' : '');
   }
 
-  /* ------------------------------------------------------------ vista de obra */
+  /* ------------------------------------------------------------ ficha de obra */
 
-  function pintarObra(obra, indice) {
-    const lista = ordenadas();
-
-    // --- columna de la imagen
-    const col = document.getElementById('columna-imagen');
-    col.textContent = '';
-
-    const paspartu = h('div', { class: 'paspartu' });
-    paspartu.appendChild(
-      hayImagen(obra.img)
-        ? crearImg(obra, obra.img, [1200, 2000],
-                   obra.title + ', de ' + obra.artist + ', ' + obra.year,
-                   '(max-width: 980px) 92vw, 48vw')
-        : laminaAusente(obra)
-    );
-    const pieLamina = h('figcaption', {},
-      obra.title + ', ' + obra.artist + ', ' + obra.year + '. ' + obra.technique + '.');
-    if (original(obra.img)) {
-      pieLamina.appendChild(h('a', { href: original(obra.img), target: '_blank',
-        rel: 'noopener noreferrer', texto: 'Archivo completo ↗' }));
-    }
-    col.appendChild(h('figure', { class: 'lamina' }, paspartu, pieLamina));
-
-    (obra.laminas || []).forEach(l => {
-      if (!hayImagen(l)) return;
-      const caja = h('div', { class: 'paspartu' });
-      caja.appendChild(crearImg(obra, l, [1200, 2000], l.alt || (l.pie || 'Detalle') + ' de ' + obra.title,
-                                '(max-width: 980px) 92vw, 48vw'));
-      col.appendChild(h('figure', { class: 'lamina' }, caja,
-        h('figcaption', { texto: l.pie || 'Detalle' })));
-    });
-
-    // --- columna de la ficha
-    const ficha = document.getElementById('columna-ficha');
-    ficha.textContent = '';
-
-    const cabeza = h('div', { class: 'ficha-cabeza' },
-      h('p', { class: 'rotulo', texto: 'Ficha técnica' }),
-      h('h1', { class: 'ficha-titulo', texto: obra.title, id: 'titulo-obra', tabindex: '-1' }),
-      h('p', { class: 'ficha-autor' }, obra.artist,
-        h('span', { class: 'sep', texto: '·' }), obra.year)
-    );
-
-    const dl = h('dl', { class: 'ficha' });
-    [['Tipo', obra.tipo],
-     ['Técnica', obra.technique],
-     ['Dimensiones', obra.dimensions],
-     ['Movimiento', obra.movement],
-     ['Ubicación', obra.location]
-    ].concat((obra.ficha || []).map(f => [f.clave, f.valor]))
-     .forEach(([k, v]) => {
-      if (!v) return;                       // sin dato, sin fila: nada de «no disponible»
-      dl.appendChild(h('dt', { texto: k }));
-      dl.appendChild(h('dd', { texto: v }));
-    });
-    cabeza.appendChild(dl);
-    if (obra.alto && obra.ancho) cabeza.appendChild(miniEscala(obra));
-    ficha.appendChild(cabeza);
-
-    if (obra.description) {
-      ficha.appendChild(h('section', { class: 'seccion' },
-        h('h2', { texto: 'El cuadro' }), prosa(obra.description)));
-    }
-    if (obra.context) {
-      ficha.appendChild(h('section', { class: 'seccion' },
-        h('h2', { texto: 'Contexto' }), prosa(obra.context)));
-    }
-    if (obra.analysis) {
-      ficha.appendChild(h('section', { class: 'seccion' },
-        h('h2', { texto: 'Análisis' }), prosa(obra.analysis)));
-    }
-    if (obra.voices && obra.voices.length) {
-      const sec = h('section', { class: 'seccion' },
-        h('h2', { texto: obra.voices.length === 1 ? 'Una voz sobre el cuadro' : 'Voces sobre el cuadro' }));
-      obra.voices.forEach(v => {
-        const cita = h('blockquote', { lang: v.lang || null });
-        v.text.split('\n\n').forEach(t => cita.appendChild(h('p', { texto: t })));
-        const pie = h('figcaption', {},
-          h('span', { class: 'quien', texto: v.author + (v.year ? ', ' + v.year : '') }),
-          v.source ? h('cite', { class: 'fuente', texto: v.source }) : null
-        );
-        sec.appendChild(h('figure', { class: 'voz' }, cita, pie));
-      });
-      ficha.appendChild(sec);
-    }
-
-    if (obra.bibliografia && obra.bibliografia.length) {
-      const total = obra.bibliografia.reduce((s, g) => s + (g.entradas || []).length, 0);
-      ficha.appendChild(
-        h('section', { class: 'seccion' },
-          h('details', { class: 'aparato-caja' },
-            h('summary', {},
-              h('h2', { class: 'aparato-titulo', texto: 'Aparato crítico' }),
-              h('span', { class: 'aparato-cuenta',
-                          texto: total + (total === 1 ? ' referencia' : ' referencias') })
-            ),
-            bloqueAparato(obra.bibliografia)
-          )
-        )
-      );
-    }
-
-    const anterior = lista[(indice - 1 + lista.length) % lista.length];
-    const siguiente = lista[(indice + 1) % lista.length];
-    ficha.appendChild(
-      h('nav', { class: 'paso-obras', 'aria-label': 'Obras contiguas' },
-        h('a', { href: '#obra/' + anterior.slug, rel: 'prev', texto: '← ' + anterior.title }),
-        h('a', { href: '#obra/' + siguiente.slug, rel: 'next', texto: siguiente.title + ' →' })
-      )
-    );
-
-    document.getElementById('barra-pos').textContent =
-      (indice + 1) + ' / ' + lista.length;
-
-    // los mismos saltos, siempre a la vista en la barra flotante
-    [['paso-prev', anterior, 'Obra anterior: '], ['paso-next', siguiente, 'Obra siguiente: ']]
-      .forEach(([id, obj, etiqueta]) => {
-        const el = document.getElementById(id);
-        el.href = '#obra/' + obj.slug;
-        el.title = obj.title;
-        el.setAttribute('aria-label', etiqueta + obj.title);
-        document.getElementById(id + '-t').textContent = obj.title;
-      });
-    document.title = obra.title + ' · ' + obra.artist + ' — Cuadernos de galería';
-  }
-
-  // Diagrama diminuto: la obra frente a una persona de 170 cm.
-  function miniEscala(obra) {
+  function miniEscala(o) {
     const altoPx = 76;
-    const apoya = obra.alto / 2 > EJE_CM;      // demasiado alta para colgarse centrada
-    const techo = Math.max(215, apoya ? obra.alto + 10 : EJE_CM + obra.alto / 2 + 10);
+    const apoya = o.alto / 2 > EJE_CM;
+    const techo = Math.max(215, apoya ? o.alto + 10 : EJE_CM + o.alto / 2 + 10);
     const k = altoPx / techo;
     const NS = 'http://www.w3.org/2000/svg';
-    const anchoObra = Math.max(2, obra.ancho * k);
-    const xObra = 34;
+    const anchoObra = Math.max(2, o.ancho * k), xObra = 34;
     const total = Math.round(xObra + anchoObra + 6);
-
     const svg = document.createElementNS(NS, 'svg');
     svg.setAttribute('viewBox', '0 0 ' + total + ' ' + (altoPx + 2));
     svg.setAttribute('width', String(Math.min(total, 200)));
     svg.setAttribute('height', String(altoPx + 2));
     svg.setAttribute('aria-hidden', 'true');
-
+    svg.style.color = 'var(--tinta-2)';
     const suelo = document.createElementNS(NS, 'line');
     suelo.setAttribute('x1', '0'); suelo.setAttribute('x2', String(total));
     suelo.setAttribute('y1', String(altoPx + 1)); suelo.setAttribute('y2', String(altoPx + 1));
-    suelo.setAttribute('stroke', 'var(--regla)'); suelo.setAttribute('stroke-width', '1');
+    suelo.setAttribute('stroke', 'var(--regla)');
     svg.appendChild(suelo);
-
-    const fig = siluetaHumana(FIGURA_CM * k).svg;
-    fig.setAttribute('x', '2');
-    fig.setAttribute('y', String(altoPx + 1 - FIGURA_CM * k));
-    svg.appendChild(fig);
-
-    const hObra = obra.alto * k;
-    const superior = Math.min(techo, apoya ? obra.alto : EJE_CM + obra.alto / 2);
+    const f = silueta(FIGURA_CM * k).svg;
+    f.setAttribute('x', '2'); f.setAttribute('y', String(altoPx + 1 - FIGURA_CM * k));
+    svg.appendChild(f);
     const r = document.createElementNS(NS, 'rect');
-    r.setAttribute('x', String(xObra));
-    r.setAttribute('y', String(Math.max(0, altoPx + 1 - superior * k)));
-    r.setAttribute('width', String(anchoObra));
-    r.setAttribute('height', String(hObra));
-    r.setAttribute('fill', 'var(--azul)'); r.setAttribute('opacity', '.18');
-    r.setAttribute('stroke', 'var(--azul)'); r.setAttribute('stroke-width', '1');
+    const hObra = o.alto * k;
+    const sup = Math.min(techo, apoya ? o.alto : EJE_CM + o.alto / 2);
+    r.setAttribute('x', String(xObra)); r.setAttribute('y', String(Math.max(0, altoPx + 1 - sup * k)));
+    r.setAttribute('width', String(anchoObra)); r.setAttribute('height', String(hObra));
+    r.setAttribute('fill', 'var(--rojo)'); r.setAttribute('opacity', '.2');
+    r.setAttribute('stroke', 'var(--rojo)');
     svg.appendChild(r);
-
-    return h('div', { class: 'escala-mini' }, svg,
-      h('p', { texto: 'Tamaño real frente a una persona de 170 cm.' }));
+    return h('div', { class: 'mini-escala' }, svg, h('p', { texto: 'Tamaño real frente a una persona de 170 cm.' }));
   }
 
-  /* ------------------------------------------------------------------- rutas */
+  function pintarObra(o, indice) {
+    const lista = ordenadas();
+
+    /* --- la plancha: la obra sobre negro --- */
+    const pl = document.getElementById('plancha');
+    pl.textContent = '';
+    const laminas = [{ img: o.img, pie: o.title + ', ' + o.artist + ', ' + o.year + '. ' + o.technique + '.',
+                       alt: o.title + ', de ' + o.artist + ', ' + o.year }]
+      .concat((o.laminas || []).map(l => ({ img: l, pie: l.pie || 'Detalle', alt: l.alt || ('Detalle de ' + o.title) })));
+    laminas.forEach(l => {
+      if (!hayImagen(l.img)) { 
+        pl.appendChild(h('figure', { class: 'lamina' }, ausente(o)));
+        return;
+      }
+      const pie = h('figcaption', {}, l.pie);
+      if (original(l.img)) pie.appendChild(h('a', { href: original(l.img), target: '_blank', rel: 'noopener noreferrer', texto: 'Archivo completo ↗' }));
+      pl.appendChild(h('figure', { class: 'lamina' },
+        crearImg(o, l.img, [1200, 2000], l.alt, '(max-width: 1100px) 92vw, 62rem'), pie));
+    });
+
+    /* --- cabecera y ficha técnica --- */
+    document.getElementById('obra-num').textContent = o.num;
+    document.getElementById('obra-tit').textContent = o.title;
+    const aut = document.getElementById('obra-aut');
+    aut.textContent = '';
+    aut.append(o.artist, h('span', { class: 'sep', texto: '·' }), o.year);
+
+    const dl = document.getElementById('ficha');
+    dl.textContent = '';
+    [['Tipo', o.tipo], ['Técnica', o.technique], ['Dimensiones', o.dimensions],
+     ['Movimiento', o.movement], ['Ubicación', o.location]]
+      .concat((o.ficha || []).map(f => [f.clave, f.valor]))
+      .forEach(([k, v]) => { if (v) dl.appendChild(h('div', {}, h('dt', { texto: k }), h('dd', { texto: v }))); });
+
+    const me = document.getElementById('mini-escala');
+    me.textContent = '';
+    if (o.alto && o.ancho) me.appendChild(miniEscala(o));
+
+    /* --- secciones --- */
+    const ficha = document.getElementById('columna-ficha');
+    ficha.textContent = '';
+    const secciones = [];
+    const anade = (id, titulo, contenido) => {
+      ficha.appendChild(h('section', { class: 'seccion', id: id }, h('h2', { texto: titulo }), contenido));
+      secciones.push([id, titulo]);
+    };
+    if (o.description) anade('sec-obra', 'La obra', prosa(o.description));
+    if (o.context)     anade('sec-ctx', 'Contexto', prosa(o.context));
+    if (o.analysis)    anade('sec-an', 'Análisis', prosa(o.analysis));
+    if (o.voices && o.voices.length) {
+      const cont = h('div');
+      o.voices.forEach(v => {
+        const cita = h('blockquote', { lang: v.lang || null });
+        v.text.split('\n\n').forEach(t => cita.appendChild(h('p', { texto: t })));
+        cont.appendChild(h('figure', { class: 'voz' }, cita,
+          h('figcaption', {},
+            h('span', { class: 'quien', texto: v.author + (v.year ? ', ' + v.year : '') }),
+            v.source ? h('cite', { class: 'fuente', texto: v.source }) : null)));
+      });
+      anade('sec-voces', o.voices.length === 1 ? 'Una voz sobre la obra' : 'Voces sobre la obra', cont);
+    }
+    if (o.bibliografia && o.bibliografia.length) {
+      const total = o.bibliografia.reduce((s, g) => s + (g.entradas || []).length, 0);
+      const det = h('details', { class: 'aparato-caja' },
+        h('summary', {}, h('h2', { class: 'aparato-tit', texto: 'Aparato crítico' }),
+          h('span', { class: 'aparato-cuenta', texto: total + (total === 1 ? ' referencia' : ' referencias') })),
+        bloqueAparato(o.bibliografia));
+      ficha.appendChild(h('section', { class: 'seccion', id: 'sec-ap' }, det));
+      secciones.push(['sec-ap', 'Aparato crítico']);
+    }
+
+    /* --- sumario: lleva a cada sección sin tocar el hash --- */
+    const sum = document.getElementById('sumario');
+    sum.textContent = '';
+    secciones.forEach(([id, titulo]) => {
+      sum.appendChild(h('button', { type: 'button', texto: titulo, onclick: () => {
+        const s = document.getElementById(id);
+        if (id === 'sec-ap') s.querySelector('details').open = true;
+        s.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } }));
+    });
+
+    /* --- pasos --- */
+    const ant = lista[(indice - 1 + lista.length) % lista.length];
+    const sig = lista[(indice + 1) % lista.length];
+    ficha.appendChild(h('nav', { class: 'paso-obras', 'aria-label': 'Obras contiguas' },
+      h('a', { href: '#obra/' + ant.slug, rel: 'prev', texto: '← ' + ant.title }),
+      h('a', { href: '#obra/' + sig.slug, rel: 'next', texto: sig.title + ' →' })));
+
+    /* --- barra --- */
+    const mini = document.getElementById('barra-mini');
+    if (hayImagen(o.img)) { mini.src = fuente(o.img, 200); mini.style.visibility = ''; }
+    else { mini.removeAttribute('src'); mini.style.visibility = 'hidden'; }
+    document.getElementById('barra-num').textContent = 'N.º ' + o.num;
+    document.getElementById('barra-t').textContent = o.title;
+    document.getElementById('barra-pos').textContent = (indice + 1) + ' / ' + lista.length;
+    [['paso-prev', ant, 'Obra anterior: '], ['paso-next', sig, 'Obra siguiente: ']].forEach(([id, obj, et]) => {
+      const el = document.getElementById(id);
+      el.href = '#obra/' + obj.slug;
+      el.title = obj.title;
+      el.setAttribute('aria-label', et + obj.title);
+    });
+    document.title = o.num + ' · ' + o.title + ' — Cuadernos de galería';
+  }
+
+  /* ------------------------------------------------------------------ rutas */
 
   let scrollSala = 0;
-
-  function mostrar(quePinta) {
-    if (document.startViewTransition && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      document.startViewTransition(quePinta);
-    } else {
-      quePinta();
-    }
+  function mostrar(fn) {
+    if (document.startViewTransition && !matchMedia('(prefers-reduced-motion: reduce)').matches) document.startViewTransition(fn);
+    else fn();
   }
-
   function slugDe(hash) {
     const m = hash.match(/^#obra\/(.+)$/);
     if (!m) return null;
     try { return decodeURIComponent(m[1]); } catch (e) { return m[1]; }
   }
-
   function ruta() {
-    const hash = location.hash;
-    const m = slugDe(hash);
-    const galeria = document.getElementById('vista-galeria');
-    const detalle = document.getElementById('vista-obra');
-
-    if (m) {
+    const slug = slugDe(location.hash);
+    const g = document.getElementById('vista-galeria'), d = document.getElementById('vista-obra');
+    if (slug) {
       const lista = ordenadas();
-      const i = lista.findIndex(o => o.slug === m);
+      const i = lista.findIndex(o => o.slug === slug);
       if (i === -1) { location.replace('#'); return; }
       if (document.body.dataset.vista === 'galeria') scrollSala = window.scrollY;
-
       mostrar(() => {
         pintarObra(lista[i], i);
-        galeria.hidden = true;
-        detalle.hidden = false;
+        g.hidden = true; d.hidden = false;
         document.body.dataset.vista = 'obra';
         window.scrollTo({ top: 0, behavior: 'instant' });
       });
-      // el foco va al título, para que el lector de pantalla anuncie la obra
-      setTimeout(() => { const t = document.getElementById('titulo-obra'); if (t) t.focus(); }, 40);
+      setTimeout(() => { const t = document.getElementById('obra-tit'); if (t) t.focus(); }, 40);
     } else {
       mostrar(() => {
-        detalle.hidden = true;
-        galeria.hidden = false;
+        d.hidden = true; g.hidden = false;
         document.body.dataset.vista = 'galeria';
         window.scrollTo({ top: scrollSala, behavior: 'instant' });
       });
       document.title = 'Cuadernos de galería · Mis cuadros favoritos';
     }
   }
-
-  function saltarObra(paso) {
-    const m = slugDe(location.hash);
-    if (!m) return;
+  function saltar(paso) {
+    const slug = slugDe(location.hash);
+    if (!slug) return;
     const lista = ordenadas();
-    const i = lista.findIndex(o => o.slug === m);
+    const i = lista.findIndex(o => o.slug === slug);
     if (i === -1) return;
     location.hash = '#obra/' + lista[(i + paso + lista.length) % lista.length].slug;
   }
 
-  /* ------------------------------------------------------------ animaciones */
-
   let observador = null;
-  function observarAnimaciones() {
-    const pendientes = document.querySelectorAll('[data-anima]:not(.visible)');
-    if (!observador) { pendientes.forEach(el => el.classList.add('visible')); return; }
-    pendientes.forEach(el => observador.observe(el));
+  function observar() {
+    const p = document.querySelectorAll('[data-anima]:not(.visible)');
+    if (!observador) { p.forEach(e => e.classList.add('visible')); return; }
+    p.forEach(e => observador.observe(e));
   }
 
-  /* ------------------------------------------------------------------ inicio */
+  /* ----------------------------------------------------------------- inicio */
 
   function iniciar() {
     if ('IntersectionObserver' in window) {
-      observador = new IntersectionObserver(entradas => {
-        entradas.forEach(e => {
-          if (!e.isIntersecting) return;
-          e.target.classList.add('visible');
-          observador.unobserve(e.target);
-        });
-      }, { threshold: .1, rootMargin: '0px 0px -40px 0px' });
+      observador = new IntersectionObserver(es => es.forEach(e => {
+        if (!e.isIntersecting) return;
+        e.target.classList.add('visible'); observador.unobserve(e.target);
+      }), { threshold: .08, rootMargin: '0px 0px -30px 0px' });
     }
 
+    pintarIndice();
     pintarRejilla();
 
-    const n = obras.length;
-    const numM = enPalabras(n, 'm'), numF = enPalabras(n, 'f');
-    document.getElementById('cuenta').textContent =
-      numF + (n === 1 ? ' obra' : ' obras');
-    document.getElementById('titulo-coleccion').textContent = n === 1
+    const n = obras.length, numF = enPalabras(n, 'f');
+    document.getElementById('cuenta').textContent = numF + (n === 1 ? ' obra' : ' obras');
+    document.getElementById('rot-coleccion').textContent = n === 1
       ? 'Una imagen, una conversación'
-      : numF.charAt(0).toUpperCase() + numF.slice(1) + ' imágenes, ' + numF + ' conversaciones';
-    document.getElementById('pie-datos').textContent =
-      VOLUMEN + ' · Actualizado el ' + fechaActualizacion();
+      : mayus(numF) + ' imágenes, ' + numF + ' conversaciones';
+    document.getElementById('pie-datos').textContent = VOLUMEN + ' · Actualizado el ' + fechaActualizacion();
 
-    // orden
-    document.querySelectorAll('[data-orden]').forEach(b => {
-      b.addEventListener('click', () => {
-        ordenActual = b.dataset.orden;
-        document.querySelectorAll('[data-orden]').forEach(o =>
-          o.setAttribute('aria-pressed', String(o === b)));
-        const lista = ordenadas();
-        document.getElementById('linea-orden').textContent =
-          ordenActual === 'afinidad'
-            ? 'Ordenados por afinidad, no por cronología.'
-            : 'Ordenados por cronología, de «' + lista[0].title + '» (' + lista[0].year +
-              ') a «' + lista[lista.length - 1].title + '» (' + lista[lista.length - 1].year + ').';
-        pintarRejilla();
-        if (!document.getElementById('escala').hidden) pintarEscala();
-      });
-    });
+    const linea = document.getElementById('linea-orden');
+    const ponerLinea = () => {
+      const l = ordenadas();
+      linea.textContent = ordenActual === 'afinidad'
+        ? 'Ordenados por afinidad, no por cronología.'
+        : 'Ordenados por cronología, de «' + l[0].title + '» (' + l[0].year + ') a «' + l[l.length - 1].title + '» (' + l[l.length - 1].year + ').';
+    };
+    ponerLinea();
 
-    // vista de escala
+    document.querySelectorAll('[data-orden]').forEach(b => b.addEventListener('click', () => {
+      ordenActual = b.dataset.orden;
+      document.querySelectorAll('[data-orden]').forEach(o => o.setAttribute('aria-pressed', String(o === b)));
+      ponerLinea(); pintarIndice(); pintarRejilla();
+      if (!document.getElementById('escala').hidden) pintarEscala();
+    }));
+
     const btn = document.getElementById('btn-escala');
     btn.addEventListener('click', () => {
       const sec = document.getElementById('escala');
-      const abierta = sec.hidden;
-      if (abierta) pintarEscala();
-      sec.hidden = !abierta;
-      btn.setAttribute('aria-pressed', String(abierta));
-      btn.textContent = abierta ? 'Ocultar tamaños' : 'Comparar tamaños';
+      const abrir = sec.hidden;
+      if (abrir) pintarEscala();
+      sec.hidden = !abrir;
+      btn.setAttribute('aria-pressed', String(abrir));
+      btn.textContent = abrir ? 'Ocultar tamaños' : 'Comparar tamaños';
     });
 
-    let remedir;
+    let t;
     window.addEventListener('resize', () => {
-      clearTimeout(remedir);
-      remedir = setTimeout(() => {
-        if (!document.getElementById('escala').hidden) pintarEscala();
-      }, 200);
+      clearTimeout(t);
+      t = setTimeout(() => { if (!document.getElementById('escala').hidden) pintarEscala(); }, 200);
     });
 
-    // teclado: ← → entre obras, Esc para volver a la sala
     document.addEventListener('keydown', ev => {
       if (ev.metaKey || ev.ctrlKey || ev.altKey) return;
-      const enCampo = /^(input|textarea|select)$/i.test(ev.target.tagName);
-      if (enCampo) return;
+      if (/^(input|textarea|select)$/i.test(ev.target.tagName)) return;
       if (document.body.dataset.vista !== 'obra') return;
-      if (ev.key === 'ArrowLeft')  { ev.preventDefault(); saltarObra(-1); }
-      if (ev.key === 'ArrowRight') { ev.preventDefault(); saltarObra(1); }
+      if (ev.key === 'ArrowLeft')  { ev.preventDefault(); saltar(-1); }
+      if (ev.key === 'ArrowRight') { ev.preventDefault(); saltar(1); }
       if (ev.key === 'Escape')     { ev.preventDefault(); location.hash = ''; }
     });
 
-    document.getElementById('volver').addEventListener('click', ev => {
-      ev.preventDefault();
-      location.hash = '';
-    });
-
+    document.getElementById('volver').addEventListener('click', ev => { ev.preventDefault(); location.hash = ''; });
     window.addEventListener('hashchange', ruta);
     ruta();
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', iniciar);
-  } else {
-    iniciar();
-  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', iniciar);
+  else iniciar();
 })();
 </script>
 
