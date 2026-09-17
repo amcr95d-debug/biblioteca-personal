@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Índice del Libro | Material Design</title>
+    
+    <!-- Google Fonts: Roboto (Tipografía estándar de Material Design) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Google Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <style>
+        :root {
+            --md-primary: #3f51b5;
+            --md-primary-light: #e8eaf6;
+            --md-secondary: #ff4081;
+            --md-surface: #ffffff;
+            --md-background: #f5f7fa;
+            --md-text-primary: #212121;
+            --md-text-secondary: #757575;
+            --md-divider: #e0e0e0;
+            --md-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+            --md-shadow-hover: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--md-background);
+            color: var(--md-text-primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+        }
+
+        /* Encabezado */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            animation: fadeInDown 0.6s ease-out;
+        }
+
+        .header h1 {
+            font-weight: 500;
+            font-size: 2.2rem;
+            color: var(--md-primary);
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: var(--md-text-secondary);
+            font-size: 1rem;
+            font-weight: 300;
+        }
+
+        /* Tarjeta Principal (Card) */
+        .md-card {
+            background-color: var(--md-surface);
+            border-radius: 8px;
+            box-shadow: var(--md-shadow);
+            overflow: hidden;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Lista */
+        .md-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .md-list-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--md-divider);
+            text-decoration: none;
+            color: inherit;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .md-list-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Efecto Hover (Ripple / Elevación sutil) */
+        .md-list-item:hover {
+            background-color: #f8f9fa;
+            transform: translateY(-2px);
+            box-shadow: var(--md-shadow-hover);
+            z-index: 1;
+        }
+
+        .md-list-item:active {
+            background-color: #e8eaf6;
+        }
+
+        /* Icono */
+        .md-list-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--md-primary-light);
+            border-radius: 50%;
+            margin-right: 16px;
+            flex-shrink: 0;
+            color: var(--md-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .md-list-item:hover .md-list-icon {
+            background-color: var(--md-primary);
+            color: #ffffff;
+        }
+
+        .md-list-icon .material-icons {
+            font-size: 20px;
+        }
+
+        /* Contenido del Item */
+        .md-list-content {
+            flex-grow: 1;
+        }
+
+        .md-list-title {
+            font-weight: 500;
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+            color: var(--md-text-primary);
+        }
+
+        .md-list-subtitle {
+            font-size: 0.85rem;
+            color: var(--md-text-secondary);
+            font-weight: 400;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.8rem;
+            color: var(--md-text-secondary);
+            animation: fadeIn 1s ease-out;
+        }
+
+        /* Animaciones */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.8rem; }
+            .md-list-item { padding: 14px 16px; }
+            .md-list-icon { width: 36px; height: 36px; }
+            .md-list-icon .material-icons { font-size: 18px; }
+            .md-list-title { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- Encabezado del Libro -->
+        <header class="header">
+            <h1>Índice de Contenidos</h1>
+            <p>Estudios sobre la vida intelectual y literaria</p>
+        </header>
+
+        <!-- Tarjeta Principal con la lista -->
+        <div class="md-card">
+            <ul class="md-list">
+                
+                <!-- Prefacio -->
+                <a href="preface.html" class="md-list-item">
+                    <div class="md-list-icon">
+                        <i class="material-icons">menu_book</i>
+                    </div>
+                    <div class="md-list-content">
+                        <div class="md-list-title">Prefacio</div>
+                        <div class="md-list-subtitle">Introducción y contexto de la obra</div>
+                    </div>
+                </a>
+
+                <!-- Capítulo 1 -->
+                <a href="chapter1.html" class="md-list-item">
+                    <div class="md-list-icon">
+                        <i class="material-icons">person_search</i>
+                    </div>
+                    <div class="md-list-content">
+                        <div class="md-list-title">1. Mr. Casaubon en Middlemarch</div>
+                        <div class="md-list-subtitle">El personaje de George Eliot y su simbolismo</div>
+                    </div>
+                </a>
+
+                <!-- Capítulo 2 -->
+                <a href="chapter2.html" class="md-list-item">
+                    <div class="md-list-icon">
+                        <i class="material-icons">history_edu</i>
+                    </div>
+                    <div class="md-list-content">
+                        <div class="md-list-title">2. Mark Pattison</div>
+                        <div class="md-list-subtitle">El rector de Lincoln College y su legado</div>
+                    </div>
+                </a>
+
+                <!-- Capítulo 3 -->
+                <a href="chapter3.html" class="md-list-item">
+                    <div class="md-list-icon">
+                        <i class="material-icons">auto_stories</i>
+                    </div>
+                    <div class="md-list-content">
+                        <div class="md-list-title">3. Isaac Casaubon</div>
+                        <div class="md-list-subtitle">El erudito renacentista y su obra</div>
+                    </div>
+                </a>
+
+                <!-- Conclusión -->
+                <a href="conclusion.html" class="md-list-item">
+                    <div class="md-list-icon">
+                        <i class="material-icons">gavel</i>
+                    </div>
+                    <div class="md-list-content">
+                        <div class="md-list-title">Conclusión</div>
+                        <div class="md-list-subtitle">La otra sexualidad y la moralidad del saber</div>
+                    </div>
+                </a>
+
+                <!-- Notas -->
+                <a href="notes.html" class="md-list-item">
+                    <div class="md-list-icon">
+                        <i class="material-icons">format_list_bulleted</i>
+                    </div>
+                    <div class="md-list-content">
+                        <div class="md-list-title">Notas</div>
+                        <div class="md-list-subtitle">Referencias bibliográficas y anotaciones</div>
+                    </div>
+                </a>
+
+            </ul>
+        </div>
+
+        <!-- Pie de página -->
+        <footer class="footer">
+            <p>© 2026 Repositorio de Literatura. Todos los derechos reservados.</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
