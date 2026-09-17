@@ -1,1 +1,360 @@
-.
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colección de Textos | Biblioteca Personal</title>
+    
+    <!-- Google Fonts: Roboto (Tipografía estándar de Material Design) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Google Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <style>
+        :root {
+            --md-primary: #3f51b5;
+            --md-primary-light: #e8eaf6;
+            --md-secondary: #ff4081;
+            --md-surface: #ffffff;
+            --md-background: #f5f7fa;
+            --md-text-primary: #212121;
+            --md-text-secondary: #757575;
+            --md-divider: #e0e0e0;
+            --md-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+            --md-shadow-hover: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--md-background);
+            color: var(--md-text-primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 850px;
+            width: 100%;
+        }
+
+        /* Encabezado */
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            animation: fadeInDown 0.6s ease-out;
+        }
+
+        .header h1 {
+            font-weight: 500;
+            font-size: 2.2rem;
+            color: var(--md-primary);
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: var(--md-text-secondary);
+            font-size: 1rem;
+            font-weight: 300;
+        }
+
+        /* Tarjeta Principal (Card) */
+        .md-card {
+            background-color: var(--md-surface);
+            border-radius: 8px;
+            box-shadow: var(--md-shadow);
+            overflow: hidden;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Lista */
+        .md-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .md-list-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--md-divider);
+            text-decoration: none;
+            color: inherit;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .md-list-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Efecto Hover (Ripple / Elevación sutil) */
+        .md-list-item:hover {
+            background-color: #f8f9fa;
+            transform: translateY(-2px);
+            box-shadow: var(--md-shadow-hover);
+            z-index: 1;
+        }
+
+        .md-list-item:active {
+            background-color: #e8eaf6;
+        }
+
+        /* Icono */
+        .md-list-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 44px;
+            height: 44px;
+            background-color: var(--md-primary-light);
+            border-radius: 50%;
+            margin-right: 16px;
+            flex-shrink: 0;
+            color: var(--md-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .md-list-item:hover .md-list-icon {
+            background-color: var(--md-primary);
+            color: #ffffff;
+        }
+
+        .md-list-icon .material-icons {
+            font-size: 22px;
+        }
+
+        /* Contenido del Item */
+        .md-list-content {
+            flex-grow: 1;
+        }
+
+        .md-list-title {
+            font-weight: 500;
+            font-size: 1.1rem;
+            margin-bottom: 4px;
+            color: var(--md-text-primary);
+        }
+
+        .md-list-subtitle {
+            font-size: 0.85rem;
+            color: var(--md-text-secondary);
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .md-list-subtitle .material-icons {
+            font-size: 14px;
+        }
+
+        /* Etiqueta de tiempo */
+        .time-badge {
+            background-color: #f0f2f5;
+            color: #666;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            margin-left: auto;
+            align-self: center;
+            white-space: nowrap;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 0.8rem;
+            color: var(--md-text-secondary);
+            animation: fadeIn 1s ease-out;
+        }
+
+        /* Animaciones */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.8rem; }
+            .md-list-item { padding: 14px 16px; }
+            .md-list-icon { width: 38px; height: 38px; }
+            .md-list-icon .material-icons { font-size: 18px; }
+            .md-list-title { font-size: 1rem; }
+            .time-badge { display: none; /* Ocultar en móviles para ahorrar espacio */ }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- Encabezado -->
+        <header class="header">
+            <h1>📚 Colección de Textos</h1>
+            <p>Ordenados cronológicamente por fecha de adición</p>
+        </header>
+
+        <!-- Tarjeta Principal con la lista -->
+        <div class="md-card">
+            <ul class="md-list">
+                
+                <!-- 10 minutos atrás (Más antiguo) -->
+                <a href="index.html" class="md-list-item">
+                    <div class="md-list-icon">
+                        <i class="material-icons">home</i>
+                    </div>
+                    <div class="md-list-content">
+                        <div class="md-list-title">Inicio / Índice Principal</div>
+                        <div class="md-list-subtitle">Portada de la colección</div>
+                    </div>
+                    <div class="time-badge">Hace 10 min</div>
+                </a>
+
+                <!-- 8 minutos atrás -->
+                <a href="Structure_and_Style_in_the_Greater_Romantic_Lyric.html" class="md-list-item">
+                    <div class="md-list-icon">
+                        <i class="material-icons">article</i>
+                    </div>
+                    <div class="md-list-content">
+                        <div class="md-list-title">Structure and Style in the Greater Romantic Lyric</div>
+                        <div class="md-list-subtitle">M.H. Abrams</div>
+                    </div>
+                    <div class="time-badge">Hace 8 min</div>
+                </a>
+
+                <!-- 7 minutos atrás -->
+                <a href="La_retama_Leopardi.html" class="md-list-item">
+                    <div class="md-list-icon">
+                        <i class="material-icons">local_florist</i>
+                    </div>
+                    <div class="md-list-content">
+                        <div class="md-list-title">La retama, o flor del desierto</div>
+                        <div class="md-list-subtitle">Giacomo Leopardi</div>
+                    </div>
+                    <div class="time-badge">Hace 7 min</div>
+                </a>
+
+                <!-- 5 minutos atrás -->
+                <a href="English_Literary_Selections.html" class="md-list-item">
+                    <div class="md-list-icon">
+                        <i class="material-icons">auto_stories</i>
+                    </div>
+                    <div class="md-list-content">
+                        <div class="md-list-title">English Literary Selections</div>
+                        <div class="md-list-subtitle">Varios Autores</div>
+                    </div>
+                    <div class="time-badge">Hace 5 min</div>
+                </a>
+
+                <!-- 4 minutos atrás -->
+                <a href="Dialogo_de_la_Naturaleza_y_un_Islandes_Leopardi.html" class="md-list-item">
+                    <div class="md-list-icon">
+                        <i class="material-icons">forum</i>
+                    </div>
+                    <div class="md-list-content">
+                        <div class="md-list-title">Diálogo de la Naturaleza y un Islandés</div>
+                        <div class="md-list-subtitle">Giacomo Leopardi</div>
+                    </div>
+                    <div class="time-badge">Hace 4 min</div>
+                </a>
+
+                <!-- 3 minutos atrás -->
+                <a href="The_Internalization_of_Quest-Romance.html" class="md-list-item">
+                    <div class="md-list-icon">
+                        <i class="material-icons">explore</i>
+                    </div>
+                    <div class="md-list-content">
+                        <div class="md-list-title">The Internalization of Quest-Romance</div>
+                        <div class="md-list-subtitle">Harold Bloom</div>
+                    </div>
+                    <div class="time-badge">Hace 3 min</div>
+                </a>
+
+                <!-- 2 minutos atrás -->
+                <a href="Romanticism_and_Anti-Self-Consciousness.html" class="md-list-item">
+                    <div class="md-list-icon">
+                        <i class="material-icons">psychology</i>
+                    </div>
+                    <div class="md-list-content">
+                        <div class="md-list-title">Romanticism and Anti-Self-Consciousness</div>
+                        <div class="md-list-subtitle">Geoffrey H. Hartman</div>
+                    </div>
+                    <div class="time-badge">Hace 2 min</div>
+                </a>
+
+                <!-- 2 minutos atrás -->
+                <a href="The_Subject_and_his_Landscape.html" class="md-list-item">
+                    <div class="md-list-icon">
+                        <i class="material-icons">landscape</i>
+                    </div>
+                    <div class="md-list-content">
+                        <div class="md-list-title">The Subject and his Landscape</div>
+                        <div class="md-list-subtitle">J. H. Van den Berg</div>
+                    </div>
+                    <div class="time-badge">Hace 2 min</div>
+                </a>
+
+                <!-- 1 minuto atrás -->
+                <a href="Negative_Capability.html" class="md-list-item">
+                    <div class="md-list-icon">
+                        <i class="material-icons">lightbulb</i>
+                    </div>
+                    <div class="md-list-content">
+                        <div class="md-list-title">Negative Capability</div>
+                        <div class="md-list-subtitle">Walter Jackson Bate</div>
+                    </div>
+                    <div class="time-badge">Hace 1 min</div>
+                </a>
+
+                <!-- Ahora (Más reciente) -->
+                <a href="Cernuda_Gaston_Baquero.html" class="md-list-item">
+                    <div class="md-list-icon">
+                        <i class="material-icons">person</i>
+                    </div>
+                    <div class="md-list-content">
+                        <div class="md-list-title">La poesía de Luis Cernuda</div>
+                        <div class="md-list-subtitle">Gastón Baquero</div>
+                    </div>
+                    <div class="time-badge">Ahora</div>
+                </a>
+
+            </ul>
+        </div>
+
+        <!-- Pie de página -->
+        <footer class="footer">
+            <p>© 2026 Repositorio de Literatura. Todos los derechos reservados.</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
