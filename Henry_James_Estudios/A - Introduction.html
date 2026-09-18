@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* =========================================
+           COLORES (Modo Diurno - International Klein Blue)
+           ========================================= */
+        :root {
+            --bg-body: #002FA7;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.88);
+            --text-muted: rgba(255, 255, 255, 0.6);
+            --border-color: rgba(255, 255, 255, 0.35);
+            --border-light: rgba(255, 255, 255, 0.15);
+            --fab-bg: #ffffff;
+            --fab-color: #002FA7;
+            --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+            --quote-border: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Modo Nocturno - Deep Navy Blue */
+        body.dark-mode {
+            --bg-body: #001233;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.85);
+            --text-muted: rgba(255, 255, 255, 0.5);
+            --border-color: rgba(255, 255, 255, 0.2);
+            --border-light: rgba(255, 255, 255, 0.1);
+            --fab-bg: #ffffff;
+            --fab-color: #001233;
+            --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+            --quote-border: rgba(255, 255, 255, 0.4);
+        }
+
+        /* =========================================
+           ESTILOS GENERALES
+           ========================================= */
+        * { transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease; }
+        
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            line-height: 1.75;
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 2em 1.5em 5em;
+            color: var(--text-primary);
+            background-color: var(--bg-body);
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 0.2em;
+            font-weight: normal;
+            letter-spacing: 0.05em;
+            color: var(--text-primary);
+        }
+
+        h2 {
+            font-size: 1.4em;
+            text-align: center;
+            margin-top: 2.5em;
+            margin-bottom: 1.5em;
+            font-weight: bold;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        h3 {
+            font-size: 1.1em;
+            text-align: center;
+            margin-top: 2.5em;
+            margin-bottom: 1em;
+            font-weight: bold;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        p {
+            text-align: justify;
+            margin-bottom: 1.2em;
+            text-indent: 1.5em;
+        }
+
+        p.no-indent { text-indent: 0; }
+
+        blockquote {
+            margin: 1.5em 2em;
+            padding-left: 1.5em;
+            border-left: 3px solid var(--quote-border);
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        blockquote p { text-indent: 0; margin-bottom: 0.8em; }
+
+        .poem {
+            margin: 1.5em 2em;
+            font-style: italic;
+            text-indent: 0;
+        }
+
+        .poem p {
+            text-indent: 0;
+            margin-bottom: 0.3em;
+            text-align: left;
+            padding-left: 2em;
+            text-indent: -2em;
+        }
+
+        em { font-style: italic; }
+
+        sup {
+            font-size: 0.75em;
+            vertical-align: super;
+            line-height: 0;
+        }
+
+        .page-number {
+            display: block;
+            text-align: center;
+            font-size: 0.8em;
+            color: var(--text-muted);
+            margin: 2em 0 1em 0;
+        }
+
+        .footnotes {
+            margin-top: 4em;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5em;
+            font-size: 0.9em;
+            color: var(--text-secondary);
+        }
+
+        .footnotes h3 {
+            text-align: left;
+            font-size: 1em;
+            margin-bottom: 1em;
+            text-transform: none;
+            letter-spacing: normal;
+            color: var(--text-primary);
+        }
+
+        .footnotes p {
+            text-align: left;
+            text-indent: -1.5em;
+            padding-left: 1.5em;
+            margin-bottom: 0.6em;
+            font-size: 0.9em;
+        }
+
+        .section-break {
+            text-align: center;
+            margin: 2.5em 0;
+            font-weight: bold;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.1em;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 2em;
+        }
+
+        /* =========================================
+           BOTÓN FLOTANTE (Modo Nocturno)
+           ========================================= */
+        .fab-toggle {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background-color: var(--fab-bg);
+            color: var(--fab-color);
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease;
+            z-index: 1000;
+            outline: none;
+        }
+        .fab-toggle:hover { transform: scale(1.1); }
+        .fab-toggle:active { transform: scale(0.95); }
+        .fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            body { padding: 1.2em 1em 4em; }
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.1em; }
+            .fab-toggle { bottom: 16px; right: 16px; width: 50px; height: 50px; }
+            .fab-toggle .material-icons { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo Nocturno">
+        <i class="material-icons" id="theme-icon">dark_mode</i>
+    </button>
+
+    <article id="content">
+        <h1>Introduction</h1>
+
+        <h2>I</h2>
+
+        <p>The intense critical admirers of Henry James go so far as to call him the major American writer, or even the most accomplished novelist in the English language. The first assertion neglects only Walt Whitman, while the second partly evades the marvelous sequence that moves from Samuel Richardson’s <em>Clarissa</em> through Jane Austen on to George Eliot, and the alternative tradition that goes from Fielding through Dickens to Joyce. James is certainly the crucial American novelist, and in his best works the true peer of Austen and George Eliot. His precursor, Hawthorne, is more than fulfilled in the splendors of <em>The Portrait of a Lady</em> and <em>The Wings of the Dove</em>, giant descendants of <em>The Marble Faun</em>, while the rival American novelists—Melville, Mark Twain, Dreiser, Faulkner—survive comparison with James only by being so totally unlike him. Unlikeness makes Faulkner—particularly in his great phase—a true if momentary rival, and perhaps if you are to find a non-Jamesian sense of sustained power in the American novel, you need to seek out our curious antithetical tradition that moves between <em>Moby-Dick</em> and its darker descendants: <em>As I Lay Dying</em>, <em>Miss Lonelyhearts</em>, <em>The Crying of Lot 49</em>. The normative consciousness of our prose fiction, first prophesied by <em>The Scarlet Letter</em>, was forged by Henry James, whose spirit lingers not only in palpable disciples like Edith Wharton in <em>The Age of Innocence</em> and Willa Cather in her superb <em>A Lost Lady</em>, but more subtly (because merged with Joseph Conrad’s aura) in novelists as various as Fitzgerald, Hemingway, and Warren. It seems clear that the relation of James to American prose fiction is precisely analogous to Whitman’s relation to our poetry; each is, in his own sphere, what Emerson prophesied as the Central Man who would come and change all things forever, in a celebration of the American Newness.</p>
+
+        <p>The irony of James’s central position among our novelists is palpable, since, like the much smaller figure of T. S. Eliot later on, James abandoned his nation and eventually became a British subject, after having been born a citizen in Emerson’s America. But it is a useful commonplace of criticism that James remained the most American of novelists, not less peculiarly nationalistic in <em>The Ambassadors</em> than he had been in “Daisy Miller” and <em>The American</em>. James, a subtle if at times perverse literary critic, understood very well what we continue to learn and relearn; an American writer can be Emersonian or anti-Emersonian, but even a negative stance towards Emerson always leads back again to his formulation of the post-Christian American religion of <em>Self-Reliance</em>. Overt Emersonians like Thoreau, Whitman, and Frost are no more pervaded by the Sage of Concord than are anti-Emersonians like Hawthorne, Melville, and Eliot. Perhaps the most haunted are those writers who evade Emerson, yet never leave his dialectical ambiance, a group that includes Emily Dickinson, Henry James, and Wallace Stevens.</p>
+
+        <p>Emerson was for Henry James something of a family tradition, though that in itself hardly accounts for the plain failure of very nearly everything that the novelist wrote about the essayist. James invariably resorts to a tone of ironic indulgence on the subject of Emerson, which is hardly appropriate to the American prophet of Power, Fate, Illusion, and Wealth. I suggest that James unknowingly mixed Emerson up with the sage’s good friend Henry James, Sr., whom we dismiss as a Swedenborgian, but who might better be characterized as an American Gnostic speculator, in Emerson’s mode, though closer in eminence to, say, Bronson Alcott than to the author of <em>The Conduct of Life</em>.</p>
+
+        <p>The sane and sacred Emerson was a master of evasions, particularly when disciples became too pressing, whether upon personal or spiritual matters. The senior Henry James is remembered now for having fathered Henry, William, and Alice, and also for his famous outburst against Emerson, whom he admired on the other side of idolatry: “O you man without a handle!” The junior Henry James, overtly celebrating Emerson, nevertheless remarked: “It is hardly too much, or too little, to say of Emerson’s writings in general that they were not composed at all.” “Composed” is the crucial word there, and makes me remember a beautiful moment in Stevens’s “The Poems of Our Climate”:</p>
+
+        <div class="poem">
+            <p>There would still remain the never-resting mind,</p>
+            <p>So that one would want to escape, come back</p>
+            <p>To what had been so long composed.</p>
+        </div>
+
+        <p>Emerson’s mind, never merely restless, indeed was never-resting, as was the mind of every member of the James family. The writings of Emerson, not composed at all, constantly come back to what had been so long composed, to what his admirer Nietzsche called the primordial poem of mankind, the fiction that we have knocked together and called our cosmos. James was far too subtle not to have known this. He chose not to know it, because he needed a provincial Emerson even as he needed a provincial Hawthorne, just as he needed a New England that never was: simple, gentle, and isolated, even a little childlike.</p>
+
+        <p>The days when T. S. Eliot could wonder why Henry James had not carved up R. W. Emerson seem safely past, but we ought to remember Eliot’s odd complaint about James as critic: “Even in handling men whom he could, one supposes, have carved joint from joint—Emerson or Norton—his touch is uncertain; there is a desire to be generous, a political motive, an admission (in dealing with American writers) that under the circumstances this was the best possible, or that it has fine qualities.” Aside from appearing to rank Emerson with Charles Eliot Norton (which is comparable to ranking Freud with Bernard Berenson), this unamiable judgment reduces Emerson, who was and is merely the mind of America, to the stature of a figure who might, at most, warrant the condescension of James (and of Eliot). The cultural polemic involved is obvious, and indeed obsessive, in Eliot, but though pleasanter in James is really no more acceptable:</p>
+
+        <blockquote>
+            <p>Of the three periods into which his life divides itself, the first was (as in the case of most men) that of movement, experiment and selection—that of effort too and painful probation. Emerson had his message, but he was a good while looking for his form—the form which, as he himself would have said, he never completely found and of which it was rather characteristic of him that his later years (with their growing refusal to give him the <em>word</em>), wishing to attack him in his most vulnerable point, where his tenure was least complete, had in some degree the effect of despoiling him. It all sounds rather bare and stern, Mr. Cabot’s account of his youth and early manhood, and we get an impression of a terrible paucity of alternatives. If he would be neither a farmer nor a trader he could “teach school”; that was the main resource and a part of the general educative process of the young New Englander who proposed to devote himself to the things of the mind. There was an advantage in the nudity, however, which was that, in Emerson’s case at least, the things of the mind did get themselves admirably well considered. If it be his great distinction and his special sign that he had a more vivid conception of the moral life than any one else, it is probably not fanciful to say that he owed it in part to the limited way in which he saw our capacity for living illustrated. The plain, God-fearing, practical society which surrounded him was not fertile in variations: it had great intelligence and energy, but it moved altogether in the straightforward direction. On three occasions later—three journeys to Europe—he was introduced to a more complicated world; but his spirit, his moral taste, as it were, abode always within the undecorated walls of his youth. There he could dwell with that ripe unconsciousness of evil which is one of the most beautiful signs by which we know him. His early writings are full of quaint animadversion upon the vices of the place and time, but there is something charmingly vague, light and general in the arraignment. Almost the worst he can say is that these vices are negative and that his fellow-townsmen are not heroic. We feel that his first impressions were gathered in a community from which misery and extravagance, and either extreme, of any sort, were equally absent. What the life of New England fifty years ago offered to the observer was the common lot, in a kind of achromatic picture, without particular intensifications. It was from this table of the usual, the merely typical joys and sorrows that he proceeded to generalise—a fact that accounts in some degree for a certain inadequacy and thinness in his enumerations. But it helps to account also for his direct, intimate vision of the soul itself—not in its emotions, its contortions and perversions, but in its passive, exposed, yet healthy form. He knows the nature of man and the long tradition of its dangers; but we feel that whereas he can put his finger on the remedies, lying for the most part, as they do, in the deep recesses of virtue, of the spirit, he has only a kind of hearsay, uninformed acquaintance with the disorders. It would require some ingenuity, the reader may say too much, to trace closely this correspondence between his genius and the frugal, dutiful, happy but decidedly lean Boston of the past, where there was a great deal of will but very little fulcrum—like a ministry without an opposition.</p>
+        </blockquote>
+
+        <p>It is astonishing to me that James judged Emerson’s “great distinction” and “special sign” to be “that he had a more vivid conception of the moral life than any one else,” unless “the moral life” has an altogether Jamesian meaning. I would rather say that the great distinction and special sign of James’s fiction is that it represents a more vivid conception of the moral life than even Jane Austen or George Eliot could convey to us. Emerson is not much more concerned with morals than he is with manners; his subjects are power, freedom, and fate. As for “that ripe unconsciousness of evil” that James found in Emerson, I have not been able to find it myself, after reading Emerson almost daily for the last twenty years, and I am reminded of Yeats’s late essay on Shelley’s <em>Prometheus Unbound</em>, in which Yeats declares that his skeptical and passionate precursor, great poet that he certainly was, necessarily lacked the Vision of Evil. The necessity in both strong misreadings, James’s and Yeats’s, was to clear more space for themselves.</p>
+
+        <p>Jealous as I am for Emerson, I can recognize that no critic has matched James in seeing and saying what Emerson’s strongest virtue is: “But no one has had so steady and constant, and above all so natural, a vision of what we require and what we are capable of in the way of aspiration and independence.” No one, that is, except Henry James, for that surely is the quest of Isabel Archer towards her own quite Emersonian vision of aspiration and independence. “The moral world” is James’s phrase and James’s emphasis. Emerson’s own emphasis, I suspect, was considerably more pragmatic than that of James. When James returned to America in 1904 on a visit, after twenty years of self-exile, he went back to Concord and recorded his impressions in <em>The American Scene</em>:</p>
+
+        <blockquote>
+            <p>It is odd, and it is also exquisite, that these witnessing ways should be the last ground on which we feel moved to ponderation of the “Concord school”—to use, I admit, a futile expression; or rather, I should doubtless say, it <em>would</em> be odd if there were not inevitably something absolute in the fact of Emerson’s all but lifelong connection with them. We may smile a little as we “drag in” Weimar, but I confess myself, for my part, much more satisfied than not by our happy equivalent, “in American money,” for Goethe and Schiller. The money is a potful in the second case as in the first, and if Goethe, in the one, represents the gold and Schiller the silver, I find (and quite putting aside any bimetallic prejudice) the same good relation in the other between Emerson and Thoreau. I open Emerson for the same benefit for which I open Goethe, the sense of moving in large intellectual space, and that of the gush, here and there, out of the rock, of the crystalline cupful, in wisdom and poetry, in Wahrheit and Dichtung; and whatever I open Thoreau for (I needn’t take space here for the good reasons) I open him oftener than I open Schiller. Which comes back to our feeling that the rarity of Emerson’s genius, which has made him so, for the attentive peoples, the first, and the one really rare, American spirit in letters, couldn’t have spent his career in a charming woody, watery place, for so long socially and typically and, above all, interestingly homogeneous, without an effect as of the communication to it of something ineffaceable. It was during his long span his immediate concrete, sufficient world; it gave him his nearest vision of life, and he drew half his images, we recognize, from the revolution of its seasons and the play of its manners. I don’t speak of the other half, which he drew from elsewhere. It is admirably, to-day, as if we were still seeing these things <em>in</em> those images, which stir the air like birds, dim in the eventide, coming home to nest. If one had reached a “time of life” one had thereby at least heard him lecture; and not a russet leaf fell for me, while I was there, but fell with an Emersonian drop.</p>
+        </blockquote>
+
+        <p>That is a beautiful study of the nostalgias and tells us, <em>contra</em> T. S. Eliot, what James’s relation to Emerson actually was. We know how much that is essential in William James was quarried out of Emerson, particularly from the essay “Experience,” which gave birth to Pragmatism. Henry James was not less indebted to Emerson than William James was. <em>The Portrait of a Lady</em> is hardly an Emersonian novel; perhaps <em>The Scarlet Letter</em> actually is closer to that. Yet Isabel Archer is Emerson’s daughter, just as Lambert Strether is Emerson’s heir. The Emersonian aura also lingers on even in the ghostly tales of Henry James.</p>
+
+        <h2>II</h2>
+
+        <p>Isabel Archer may be the fictional heroine above all others with whom modern literary intellectuals are certain to fall in love. That sounds funny, yet is intended quite seriously. That Henry James himself was in love with her is palpable. Critics and biographers frequently associate her with Minny Temple, James’s beloved cousin, who had died at the age of twenty-four. That James was deeply in love with Minny Temple we may doubt, but if he ever was in love with any woman, it was with her, and with her representation in the heroine of <em>The Portrait of a Lady</em>.</p>
+
+        <p>Leon Edel makes the interesting (and disquieting) suggestion that Isabel is a portrait not only of Minny but of James himself:</p>
+
+        <blockquote>
+            <p>The allusion to her “flame-like spirit” suggests that Isabel is an image of James’s long-dead cousin Minny Temple, whom he would describe in the same way. But if Isabel, with her eager imagination and intellectual shortcomings, has something of Minny in her make-up, she has much of Henry himself. He endows her with the background of his own Albany childhood, and when he sends her to Europe and makes her into an heiress, he places her in a predicament similar to his own. James was hardly an “heir”; but his pen had won him a measure of the freedom which others possess through wealth. In posing the questions: what would Isabel do with her new-found privileges? where would she turn? how behave? he was seeking answers to the transcendentalism of Concord: his novel is a critique of American “self-reliance.”</p>
+        </blockquote>
+
+        <p>A much more sophisticated analysis of the problematical ways in which James’s masterpiece is a critique of Emerson is provided by Richard Poirier in <em>The Comic Sense of Henry James</em> (1960):</p>
+
+        <blockquote>
+            <p>This connection between James and Emerson is worth attention because, as it has already been shown, the idealistic and romantic attitudes towards experience which are to be found in Emerson’s essays are observable as well in the whole body of significant American fiction from Melville and Hawthorne to Faulkner. The relationship between James and Emerson is important within the larger fact that both of them subscribe to attitudes which are discernibly American, regardless of whether the literature derives from New England, New York, the South, or the West. It has often been said that Isabel Archer is an imitation of George Eliot’s Dorothea Brooke, but it is apparent from all the novels of James which have no resemblance to <em>Middlemarch</em>, and from their Emersonian echoes, that <em>The Portrait of a Lady</em> could have brought the theme of aspiration to the point it does without the help of George Eliot.</p>
+        </blockquote>
+
+        <p>Poirier’s important formulation seems to me the necessary beginning of critical wisdom concerning <em>The Portrait of a Lady</em>. As Poirier observes, the novel’s severest irony “is the degree to which Osmond is a mock version of the transcendentalist,” which makes it not surprising that “Isabel, whose mental processes are authentically Emersonian, should see an image of herself in the man she marries.” I would add to Poirier’s point that Osmond is as much a mock version of the Paterian aesthete as he is of the Emersonian transcendentalist, which is again appropriate, since Isabel is both an authentic Emersonian and a true Paterian consciousness. Her blindness as to Osmond’s true nature, a blindness not cleared away until too late, may be taken as James’s implicit judgment that Emerson and Pater alike had no true vision of evil, but that would make James too much a forerunner of T. S. Eliot and too little an heir of George Eliot, to whom his affinities are far more profound. It makes little sense to say that Dorothea Brooke in <em>Middlemarch</em> falls into her initial dreadful marriage because her Wordsworthian idealism cannot accommodate reality, and even less sense to believe that Isabel Archer is a victim either of Emersonian aspiration or of Paterian sensibility.</p>
+
+        <p>Whatever James took Emersonian self-reliance to be, we can recognize in Isabel her own version of Emerson’s post-Christian American religion, with its grand style of aspiration, that seems to center for James’s Lady in the Sage of Concord’s most dangerous admonition:</p>
+
+        <blockquote>
+            <p>Life only avails, not the having lived. Power ceases in the instant of repose; it resides in the moment of transition from a past to a new state, in the shooting of the gulf, in the darting to an aim. (“Self-Reliance”)</p>
+        </blockquote>
+
+        <p>Isabel declines to be one of the secondary women, which means that she rejects European history. As a believer in self-reliance, she quests after a knowing in which she herself will be known. Does her quest fail as massively as the disaster of her marriage to Osmond would seem to indicate? Poirier, reading the novel as Jamesian comedy, gives a complex answer, which informs me without altogether persuading me. Is Isabel’s what Emerson called a great defeat, necessarily unacceptable to Americans because we demand victory? Is James somehow more Virgilian than Emersonian? In Poirier’s judgment, as I interpret it, James is both, because Isabel ends as that sublimely unlikely compound ghost, a Virgilian Emersonian:</p>
+
+        <blockquote>
+            <p>James had a very tenuous and unorganized sense of the connection between sexual psychology, on the one hand, and, on the other, the desire for freedom and death. He had a very clear and conscious idea, however, about the relationship between freedom and death, and it is that which comes through to us from the final chapters. What Caspar offers her in the garden is an old call to action and freedom: “The world is all before us.” While the intensity of her reaction to Caspar deserves the closest attention, the reasons for her refusal to go away with him need no explanation. She is simply not deeply enough in love with him nor has she ever been. When she hurries away from him, however, she is also escaping his call to leave the “garden” of her dreams now that, like Eden after the fall, it has become a place of desolation. The Miltonic echo in his plea is unmistakably placed there. The same line occurs much earlier in the novel when Isabel sees her relatives off for America. Having done her duty by these figures out of her past, and in possession of what seems unhampered independence, she walks away from the station into the London fog: “The world lay all before her—she could do whatever she chose.” In James’s use of the phraseology of <em>Paradise Lost</em> (“The world lay all before them, where to choose / Their place of rest . . .”), there is not only a Miltonic sadness, but also an irony derived from the fact that neither Isabel nor Caspar is free to choose anything. His life is in useless bondage to his love for her, while hers is dedicated to its errors. And there is nothing in her act which holds the promise, as does Adam and Eve’s, of eventual happiness through suffering, even though Ralph assures her that there is. Her action is absolutely within the logic of her Emersonian idealism, so much so that the logic takes its vengeance. In effect she tells the reader, to borrow from “The Transcendentalist,” that “you think me the child of my circumstances: I make my circumstance,”—including, one might add, “my own misery.” It is of no importance to her that, in fact, she has been so calculatingly deceived by other people that it is preposterous to assume all the responsibility for her own past. To admit this would be finally to subscribe to Madame Merle’s view that the “self” is determined, in part, by “an envelope of circumstances” that one does not always create. Isabel’s action at the end is fully consistent with everything she does earlier. Now, however, she asserts her idealism of self not in innocence but in full knowledge of the world. For that reason, freedom, which was the condition of self-creation, becomes a form of indifference to the fact that returning to Rome will, as Caspar admonishes, cost her her life.</p>
+        </blockquote>
+
+        <p>The overt anti-Emersonianism of Madame Merle’s view of the self, noted both by Philip Rahv and by Poirier, seems to me an involuntary or repressed allusion on James’s part. Yet I read the novel’s conclusion a touch more hopefully than Poirier does. Caspar Goodwood is hardly the answer, any more than Warburton was, and James himself labored to make certain that Ralph Touchett could not be the answer either. Since Isabel fuses Minny Temple and James himself, no marriage could be the answer, and the male otherness of Goodwood only drives Isabel back to the house of death. When James revised the novel for the New York edition, his emphasis upon both Isabel’s possibilities for freedom and the severe limitations set by context and fate upon that freedom became obsessive, particularly in regard to Isabel’s hovering dread of the erotic threat to her inward liberty. The “disagreeably strong push, a kind of hardness of presence, in his way of rising before her,” clearly dismisses the revised Goodwood as a distasteful phallic phenomenon, and so unacceptable to Isabel, who finds, however absurdly, in the repellant Osmond “a future at a high level of consciousness of the beautiful.” Anthony J. Mazzella, in his close study of the novel’s revisions, finds in “the new Isabel” a more remarkable consciousness, both of freedom and of vulnerability, than was possessed by the original Isabel. This is surely equivalent to the difference between the Emerson of “Self-Reliance” and the dark necessitarian of <em>The Conduct of Life</em>, so that we move from the sage who insisted that “the only sin is limitation” to the theoretician of “Power” who warns us that “nothing is got for nothing,” and that this is the true law of Compensation.</p>
+
+        <p>It cannot be accidental that Isabel’s psychosexual vulnerabilities are so like James’s own (so far as we are able to tell) and that her apotropaic gestures are essentially his also. Leon Edel wisely avoids any overt characterization of the Master’s ineluctable modalities of sexual evasiveness, which have been speculated on so bizarrely by others, with suppositions as remarkable as Hemingway’s, who jauntily persuaded Scott Fitzgerald that their greatest American precursor had been physically impotent. In <em>The Sun Also Rises</em>, the castrating wound of Jake Barnes is related to James’s catastrophe, fantasied both as a bicycle- and a horse-riding accident. Crazy as this was, it is no weirder than the notion even Edel plays with, which is that Henry James never could resolve his homoerotic attachment to his brother William, scarcely less eminent as philosopher and psychologist than Henry was as a novelist.</p>
+
+        <p>I suspect that Henry James in his psychosexual orientation resembled Walt Whitman more strongly than he did anyone else in literary history. Like Whitman, his desires were essentially homoerotic, and, again like Whitman, he appears to have evaded any merely actual fulfillment of those desires. The distrust of human sexuality in both writers is immense, though the truly esoteric and hermetic Whitman proclaimed his ostensible passions for men, women, the soul, and the United States in a deliberately misleading sexual rhetoric, while the oddly less esoteric Master subtly swerved away from any explicitly sexual diction. A close reader of <em>Song of Myself</em> comes to realize that Whitman’s poetry, and perhaps Whitman himself, were auto-erotic, while the student of James eventually knows that James and his fiction seem to lack the “narcissistic scar” that Freud saw as marking all of us, being a memento of our first failure in love, the loss of our parent of the sex opposite to ours to our parent of the same sex as ours. Whatever his authentic relation to George Eliot and to Trollope, to Hawthorne and to Emerson, James also seems not to have needed to restitute a wounded narcissism as an author. His striking originality as a novelist, nearly akin to Whitman’s as a poet, has a still obscure but vital relation to his warding-off of mere sexuality. Just as Whitman is an erotic rather than a sexual poet, since he crosses sex with death, so James is an intensely erotic novelist, while largely eschewing direct representations of the sexual.</p>
+
+        <p>Isabel’s eros, being transcendental, is not crucified by the failure of her marriage, since her Jamesian desire remains for her own aspiring self and not for any outward companion. Moral readings of <em>The Portrait of a Lady</em> seem to me always to fail, because inherited systems of morality—Christian or humanistic—are irrelevant to Isabel’s Emersonian self, as they are to Whitman and to James. Distinguished readers always go wrong on this. I think of the novelist Graham Greene, who remarked that James’s ruling passion, in the <em>Portrait</em> as elsewhere, was the idea of treachery, or of the moral philosopher Dorothea Krook, who criticizes Isabel for “fatal aestheticism.” Madame Merle’s treachery, though it has its interest, remains peripheral to Isabel’s fate, and James himself is far more tainted with a “fatal aestheticism” than Isabel or Emerson are. Searching for a tragic flaw in Isabel always leads to the banal discovery that, like Emerson, she supposedly lacks that grand New Critical, neo-Christian, T. S. Eliotic virtue—a Vision of Evil. But Isabel is the heroine of the American, post-Christian version of the Protestant will; she is the heiress of all the ages, and so inherits from the great sequence of Clarissa Harlowe, Elizabeth Bennet, Emma Woodhouse, and Dorothea Brooke. What matters is the integrity of her will. For her, love entails her conferring of esteem upon others, and accepting back from them only her own authentic self-esteem. Her will declines the Freudian cosmos of mourning and melancholia. No shadow of the object can fall upon her ego. Consider the great scene between her and Goodwood, a scene more visionary than melodramatic, that effectively ends the inward aspect of the novel. Goodwood has echoed Milton: “The world’s all before us—and the world’s very big,” a truth that Isabel knows better than does her perpetually frustrated suitor:</p>
+
+        <blockquote>
+            <p>Isabel gave a long murmur, like a creature in pain; it was as if he were pressing something that hurt her. “The world’s very small,” she said at random; she had an immense desire to appear to resist. She said it at random, to hear herself say something; but it was not what she meant. The world, in truth, had never seemed so large; it seemed to open out, all round her, to take the form of a mighty sea, where she floated in fathomless waters. She had wanted help, and here was help; it had come in a rushing torrent. I know not whether she believed everything he said; but she believed just then that to let him take her in his arms would be the next best thing to her dying. This belief, for a moment, was a kind of rapture, in which she felt herself sink and sink. In the movement she seemed to beat with her feet, in order to catch herself, to feel something to rest on.</p>
+            <p>“Ah, be mine as I’m yours!” she heard her companion cry. He had suddenly given up argument, and his voice seemed to come, harsh and terrible, through a confusion of vaguer sounds.</p>
+            <p>This however, of course, was but a subjective fact, as the metaphysicians say; the confusion, the noise of waters, all the rest of it, were in her own swimming head. In an instant she became aware of this. “Do me the greatest kindness of all,” she panted. “I beseech you to go away!”</p>
+            <p>“Ah, don’t say that. Don’t kill me!” he cried.</p>
+            <p>She clasped her hands; her eyes were streaming with tears. “As you love me, as you pity me, leave me alone!”</p>
+            <p>He glared at her a moment through the dusk, and the next instant she felt his arms about her and his lips on her own lips. His kiss was like white lightning, a flash that spread, and spread again, and stayed; and it was extraordinarily as if, while she took it, she felt each thing in his hard manhood that had least pleased her, each aggressive fact of his face, his figure, his presence, justified of its intense identity and made one with this act of possession. So had she heard of those wrecked and under water following a train of images before they sink. But when darkness returned she was free. She never looked about her; she only darted from the spot. There were lights in the windows of the house; they shone far across the lawn. In an extraordinarily short time—for the distance was considerable—she had moved through the darkness (for she saw nothing) and reached the door. Here only she paused. She looked all about her; she listened a little; then she put her hand on the latch. She had not known where to turn; but she knew now. There was a very straight path.</p>
+        </blockquote>
+
+        <p>What Isabel’s straight path will lead her to is the renewed Emersonian realization that she herself is her own alternative. More than the noise of waters is in her own swimming head. The erotic imagery of this superb encounter is oceanic, but more in the mode of Whitman’s maternal, deathly ocean than in what Freud deprecated as “the oceanic sense” of mystical illusion. A mighty sea, fathomless waters, a rushing torrent, and most of all, those wrecked and under water following a train of images before they sink—these figures can be read from at least two radically different perspectives, both Whitmanian enough. One would oppose the waters to Isabel as the eros of otherness that she rejects, but the other would offer the waters as emblem of a world centered upon Isabel, in evidence that she had made her circumstances, and so chose to accept them, the world of Wallace Stevens’s “Tea at the Palaz of Hoon”:</p>
+
+        <div class="poem">
+            <p>What was the sea whose tide swept through me there?</p>
+            <p>Out of my mind the golden ointment rained,</p>
+            <p>And my ears made the blowing hymns they heard.</p>
+            <p>I was myself the compass of that sea:</p>
+            <p>I was the world in which I walked, and what I saw</p>
+            <p>Or heard or felt came not but from myself;</p>
+            <p>And there I found myself more truly and more strange.</p>
+        </div>
+
+        <p>This is a hymn of self-reliance, and the chanter could be Whitman, or Emerson, or Pater (adding strangeness to beauty in quest of the Romantic). Or she could be Isabel Archer, not at the close of the novel, but beyond, in that resumed difficult marriage with Osmond, whom she no longer loves, and who no longer loves her. But she herself will be the compass of that sea.</p>
+    </article>
+
+    <script>
+        const toggle = document.getElementById('theme-toggle');
+        const icon = document.getElementById('theme-icon');
+
+        toggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+            toggle.title = isDark ? 'Modo Diurno' : 'Modo Nocturno';
+            toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+        });
+    </script>
+
+</body>
+</html>

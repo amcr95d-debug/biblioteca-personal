@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juliet McMaster - "The Full Image of a Repetition" in "The Turn of the Screw"</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* =========================================
+           COLORES (Modo Diurno - International Klein Blue)
+           ========================================= */
+        :root {
+            --bg-body: #002FA7;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.88);
+            --text-muted: rgba(255, 255, 255, 0.6);
+            --border-color: rgba(255, 255, 255, 0.35);
+            --border-light: rgba(255, 255, 255, 0.15);
+            --fab-bg: #ffffff;
+            --fab-color: #002FA7;
+            --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+            --quote-border: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Modo Nocturno - Deep Navy Blue */
+        body.dark-mode {
+            --bg-body: #001233;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.85);
+            --text-muted: rgba(255, 255, 255, 0.5);
+            --border-color: rgba(255, 255, 255, 0.2);
+            --border-light: rgba(255, 255, 255, 0.1);
+            --fab-bg: #ffffff;
+            --fab-color: #001233;
+            --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+            --quote-border: rgba(255, 255, 255, 0.4);
+        }
+
+        /* =========================================
+           ESTILOS GENERALES
+           ========================================= */
+        * { transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease; }
+        
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            line-height: 1.75;
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 2em 1.5em 5em;
+            color: var(--text-primary);
+            background-color: var(--bg-body);
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 0.2em;
+            font-weight: normal;
+            letter-spacing: 0.05em;
+            color: var(--text-primary);
+        }
+
+        h2 {
+            font-size: 1.4em;
+            text-align: center;
+            margin-top: 2.5em;
+            margin-bottom: 1.5em;
+            font-weight: bold;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        h3 {
+            font-size: 1.1em;
+            text-align: center;
+            margin-top: 2.5em;
+            margin-bottom: 1em;
+            font-weight: bold;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        p {
+            text-align: justify;
+            margin-bottom: 1.2em;
+            text-indent: 1.5em;
+        }
+
+        p.no-indent { text-indent: 0; }
+
+        blockquote {
+            margin: 1.5em 2em;
+            padding-left: 1.5em;
+            border-left: 3px solid var(--quote-border);
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        blockquote p { text-indent: 0; margin-bottom: 0.8em; }
+
+        .poem {
+            margin: 1.5em 2em;
+            font-style: italic;
+            text-indent: 0;
+        }
+
+        .poem p {
+            text-indent: 0;
+            margin-bottom: 0.3em;
+            text-align: left;
+            padding-left: 2em;
+            text-indent: -2em;
+        }
+
+        em { font-style: italic; }
+
+        sup {
+            font-size: 0.75em;
+            vertical-align: super;
+            line-height: 0;
+        }
+
+        .page-number {
+            display: block;
+            text-align: center;
+            font-size: 0.8em;
+            color: var(--text-muted);
+            margin: 2em 0 1em 0;
+        }
+
+        .footnotes {
+            margin-top: 4em;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5em;
+            font-size: 0.9em;
+            color: var(--text-secondary);
+        }
+
+        .footnotes h3 {
+            text-align: left;
+            font-size: 1em;
+            margin-bottom: 1em;
+            text-transform: none;
+            letter-spacing: normal;
+            color: var(--text-primary);
+        }
+
+        .footnotes p {
+            text-align: left;
+            text-indent: -1.5em;
+            padding-left: 1.5em;
+            margin-bottom: 0.6em;
+            font-size: 0.9em;
+        }
+
+        .section-break {
+            text-align: center;
+            margin: 2.5em 0;
+            font-weight: bold;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.1em;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 2em;
+        }
+
+        .source-note {
+            text-align: center;
+            font-size: 0.85em;
+            color: var(--text-muted);
+            margin-bottom: 2em;
+            font-style: normal;
+        }
+
+        /* =========================================
+           BOTÓN FLOTANTE (Modo Nocturno)
+           ========================================= */
+        .fab-toggle {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background-color: var(--fab-bg);
+            color: var(--fab-color);
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease;
+            z-index: 1000;
+            outline: none;
+        }
+        .fab-toggle:hover { transform: scale(1.1); }
+        .fab-toggle:active { transform: scale(0.95); }
+        .fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            body { padding: 1.2em 1em 4em; }
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.1em; }
+            .fab-toggle { bottom: 16px; right: 16px; width: 50px; height: 50px; }
+            .fab-toggle .material-icons { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo Nocturno">
+        <i class="material-icons" id="theme-icon">dark_mode</i>
+    </button>
+
+    <article id="content">
+        <h1>Juliet McMaster</h1>
+        <p class="subtitle">&ldquo;The Full Image of a Repetition&rdquo;<br>in &ldquo;The Turn of the Screw&rdquo;</p>
+        <p class="source-note">From <em>Studies in Short Fiction</em> 6, no. 4 (Summer 1969). &copy; 1969 by Newberry College.</p>
+
+        <p>When the governess in &ldquo;The Turn of the Screw&rdquo; has just been terrified by seeing the apparition of Peter Quint looking in at her through the dining-room window at Bly, she tells us,</p>
+
+        <blockquote>
+            <p>It was confusedly present to me that I ought to place myself where he had stood. I did so; I applied my face to the pane and looked, as he had looked, into the room. As if, at this moment, to show me exactly what his range had been, Mrs. Grose, as I had done for himself just before, came in from the hall. With this I had the full image of a repetition of what already occurred. She saw me as I had seen my own visitant.</p>
+        </blockquote>
+
+        <p>She watches the effect of her appearance on Mrs. Grose, giving her, indeed, &ldquo;something of the shock that I had received.&rdquo;</p>
+
+        <p>Oscar Cargill has called attention to this scene as an instance of James&rsquo;s &ldquo;marvelous symbolic irony, perhaps the best example in his fiction&rdquo;; and the incident certainly seems to have an impact that goes beyond its immediate import in the narrative. However, what appears to have been overlooked is the significance of the fact that this is not the only instance in &ldquo;The Turn of the Screw&rdquo; of an ironic reversal of locations; that in fact James consistently replaces the ghosts with the governess to recreate the &ldquo;full image&rdquo; of her own perception. She herself feels compelled to act out the image in her mind.</p>
+
+        <p>The first time she encounters Peter Quint, as Freudians will recall, it is while she is wandering in the garden and daydreaming about the master, and she sees him at the top of the tower. On this occasion she does not, as when she next meets him, immediately go to where she saw him; however, on the night when she wakes to see Flora gazing intently out of the window, communicating, as the governess supposes, with Miss Jessel, she determines herself to look out of a different window that faces the same way: &ldquo;There were empty rooms enough at Bly, and it was only a question of choosing the right one. The right one suddenly presented itself to me as the lower one&mdash;though high above the gardens&mdash;in the solid corner of the house that I have spoken of as the old tower.&rdquo; From this room high upon the tower, by again applying her face to the pane, she sees Miles looking up. She herself is sure that he is looking higher still, at Peter Quint <em>on</em> the tower, but by Miles&rsquo;s own assertion it was she he was looking at. Again, she is appearing to someone else as the ghost had appeared to her.</p>
+
+        <p>Sometimes it is only herself that she horrifies by this identification with the ghosts. On one of her nocturnal ramblings, &ldquo;I once recognized the presence of a woman seated on one of the lower steps with her back presented to me, her body half-bowed and her head, in an attitude of woe, in her hand.&rdquo; Later she adopts the same attitude in the same place: she has just returned alone from her disturbing interview with Miles outside the church: &ldquo;Tormented, in the hall, with difficulties and obstacles, I remember sinking down at the foot of the staircase&mdash;suddenly collapsing there on the lowest step and then, with a revulsion, recalling that it was exactly where, more than a month before, in the darkness of night and just so bowed with evil things, I had seen the spectre of the most horrible of women.&rdquo; She goes up to the schoolroom, only to find her &ldquo;vile predecessor&rdquo; usurping her place at the table, and to have &ldquo;the extraordinary chill of a feeling that it was I who was the intruder.&rdquo;</p>
+
+        <p>Miss Jessel&rsquo;s first and definitive appearance, of course, is at the far side of the lake in the grounds of Bly (chap. 7). And it is almost predictable that it should be there that the governess later confronts Flora. The little girl has escaped her vigilance, has taken the boat and rowed herself across the lake. There the governess finds her and now openly accuses her of being aware of Miss Jessel&rsquo;s presence. But as the governess had once seen Miss Jessel there, a horrifying and evil presence, so now Flora sees <em>her</em>:</p>
+
+        <blockquote>
+            <p>&ldquo;I see nobody. I see nothing. I never <em>have</em>. I think you&rsquo;re cruel. I don&rsquo;t like you&rdquo; [and she pleads to Mrs. Grose:] &ldquo;Take me away, take me away&mdash;oh take me away from <em>her</em>!&rdquo;</p>
+            <p>&ldquo;From <em>me</em>?&rdquo; I panted.</p>
+            <p>&ldquo;From you&mdash;from you!&rdquo; she cried.</p>
+        </blockquote>
+
+        <p>In the same way, in her agonizing and fatal confrontation with Miles, the governess calls his attention to Peter Quint, looking through the dining room window as she had once looked through at Mrs. Grose; but the only &ldquo;devil&rdquo; he can see is the governess herself.</p>
+
+        <p>Lear&rsquo;s image for the essential identity of the justice and the thief could be appropriately adapted for &ldquo;The Turn of the Screw&rdquo;: &ldquo;Change places, and handy-dandy, which is the governess, which is the ghost?&rdquo;</p>
+
+        <p>My point should be sufficiently clear. The occasion on which the governess runs round to look in through the window and terrify Mrs. Grose as the ghost had just looked in and terrified her&mdash;this is only the most obvious instance of a consistently maintained pattern in the action, in which the governess takes the place of the ghost. Part of James&rsquo;s purpose in this systematic exchange of locations is no doubt to give us another facet of the governess&rsquo; complex psychology. She herself is conscious of some appropriateness in her taking the ghosts&rsquo; places, and it is evidently part of her longing to be &ldquo;justified&rdquo; in her perceptions that moves her to endow her mental images with some measure of spatial reality: she becomes the embodiment of her own mental projections.</p>
+
+        <p>But there is a further significance in this image. What we have in effect is the symmetrical reversal of an object and its image in a glass (and if there is no actual glass there is usually the possibility of some other kind of projected image&mdash;a reflection in water, a shadow, or a trick effect of distance or half-light). And the question that James deliberately raises is whether that glass is a transparent pane, through which Peter Quint can clearly be seen, or whether it is, as it may become at dusk, opaque like a mirror, simply giving back to the governess a reflection of herself. The apparition and the perceiver may be distinct, each with a separate existence, or the one may be only the reflection of the other.</p>
+
+        <p>The image of the reflection is a dominant one in the novel. It is not only glass that can receive and reflect an image, but the human mind; and the recurrence of this word <em>reflection</em> becomes significant in the governess&rsquo; communication as well as in her perceptions. Her mental projections are effected not only spatially, but psychologically, and by this means she makes Mrs. Grose &ldquo;a receptacle of lurid things.&rdquo; When she tells her of Miss Jessel&rsquo;s appearance, &ldquo;I was conscious as I spoke that I looked prodigious things, for I got the slow reflection of them in my companion&rsquo;s face.&rdquo; The reflexion is sometimes a two-way affair between these two, we find. It is noticeable that we hear about the major encounters with the ghosts not as they appear to the governess but as she relates the matter to Mrs. Grose afterwards. The total creation of the apparition is not immediate, nor singly in her own mind; it is a product partly of Mrs. Grose&rsquo;s mind, too, as the two catch and reflect back and forth the gleams of suspicion and awareness. Harold Goddard pointed out that it is from Mrs. Grose herself that the governess first gets a hint of some evil male presence at Bly. And now, as she is describing the apparition, she could be enlarging on that hint.</p>
+
+        <p>At first, looking for confirmation, she suggests that Mrs. Grose has &ldquo;guessed&rdquo; the identity of the male apparition. &ldquo;Ah I haven&rsquo;t guessed!&rdquo; she said very simply. &ldquo;How can I if <em>you</em> don&rsquo;t imagine?&rdquo; For the moment the governess is halted and cannot describe him: &ldquo;What is he? He&rsquo;s a horror. . . . He&rsquo;s&mdash;God help me if I know <em>what</em> he is!&rdquo; But after a few blind alleys, a few gleams of communication, their minds are working in concert, and it is now that, &ldquo;seeing in her face that she already, in this, with a deeper dismay found a touch of picture, I quickly added stroke to stroke.&rdquo; As in running round to look in through the window she has just created a general impression in Mrs. Grose&rsquo;s mind, so through her urgent and intimate communication with her afterwards she fills out the full image of Peter Quint.</p>
+
+        <p>The children&rsquo;s minds, on the other hand, are more opaque than Mrs. Grose&rsquo;s, and like untarnished mirrors give back to the governess only the image of her own distraught face. In talking to Miles, she recalls, &ldquo;. . . to gain time, I tried to laugh, and I seemed to see in the beautiful face with which he watched me how ugly and queer I looked.&rdquo; Similarly, when she has bundled off Mrs. Grose and Flora in the coach, and set the stage for her harrowing solo encounter with Miles, she communicates her own almost hysterical apprehension to the whole household: &ldquo;I could see in the aspect of others a confused reflexion of the crisis.&rdquo;</p>
+
+        <p>Douglas, too, testifies to her power of communicating her experience with an image that is close to that of the reflection: when asked if he took down her narrative, he replies, &ldquo;Nothing but the impression. I took that <em>here</em>&rdquo;&mdash;he tapped his heart. &ldquo;I&rsquo;ve never lost it.&rdquo;</p>
+
+        <p>That pane of glass between the human being and the apparition becomes a focus for the total and deliberate ambiguity in the tale. We may take our own choice as to which side of the pane we want to be: with the governess, looking outwards at the baleful stalking ghosts, or on the other side, looking inwards at her and the working of a diseased imagination. Or alternatively, in another operation of the image, we may think of the glass either as a transparent medium through which real ghosts can be seen, or as a mirror in which the governess sees, essentially, only her own reflection.</p>
+
+        <p>The choice is with us from the first, in the account of how Douglas prepares his audience for the governess&rsquo; narrative. Leon Edel, in his careful analysis of the point of view in &ldquo;The Turn of the Screw,&rdquo; draws no conclusions as to the significance of this rather elaborate introduction. It seems to me, however, that James has in this passage, the first of the twelve instalments, quite carefully defined two kinds of readers for his story. There are two distinct elements in Douglas&rsquo; audience. One is a group of sensation-hungry women, who want a few chills and terrors to enliven their long winter evenings in the country-house, and so will hear Douglas&rsquo; reading of the manuscript as another ghost story. For them dreadfulness is in itself &ldquo;delicious,&rdquo; and the more turns of the screw the better. Subtlety is not their concern: one of them laments that the story is not told &ldquo;in any literal vulgar way,&rdquo; because &ldquo;that&rsquo;s the only way I ever understand.&rdquo;</p>
+
+        <p>On the other hand Douglas is more particularly addressing the original narrator of the story, whom for convenience we may call [James]. It is for this kind of hearer, for [James] and, one might add, Goddard, Edmund Wilson and their followers, that the fact of the governess&rsquo; love for her master becomes particularly relevant:</p>
+
+        <blockquote>
+            <p>He continued to fix me. &ldquo;You&rsquo;ll easily judge,&rdquo; he repeated: &ldquo;<em>you</em> will.&rdquo;</p>
+            <p>I fixed him too. &ldquo;I see. She was in love.&rdquo;</p>
+            <p>He laughed for the first time. &ldquo;You <em>are</em> acute. Yes, she was in love. That is she <em>had</em> been. That came out&mdash;she couldn&rsquo;t tell her story without its coming out.&rdquo;</p>
+        </blockquote>
+
+        <p>For this kind of listener the impact of the tale is not so simple as &ldquo;sheer terror&rdquo;; and the distinction is carefully made:</p>
+
+        <blockquote>
+            <p>&ldquo;Nobody but me, till now, has ever heard. It&rsquo;s quite too horrible.&rdquo; This was naturally declared by several voices to give the thing the utmost price, and our friend, with quiet art, prepared his triumph by turning his eyes over the rest of us and going on: &ldquo;It&rsquo;s beyond everything. Nothing at all that I know touches it.&rdquo;</p>
+            <p>&ldquo;For sheer terror?&rdquo; I remember asking.</p>
+            <p>He seemed to say it wasn&rsquo;t so simple as that; to be really at a loss how to qualify it. He passed his hand over his eyes, made a little wincing grimace. &ldquo;For dreadful&mdash;dreadfulness!&rdquo;</p>
+            <p>&ldquo;Oh how delicious!&rdquo; cried one of the women.</p>
+            <p>He took no notice of her; he looked at me, but as if, instead of me, he saw what he spoke of. &ldquo;For general uncanny ugliness and horror and pain.&rdquo;</p>
+        </blockquote>
+
+        <p>There we see Douglas&rsquo; two kinds of hearer. For the general entertainment, he presents another ghost story; for [James], for &ldquo;me in particular,&rdquo; he presents something more subtle, that demands deeper psychological perception. Douglas&rsquo; look through [James] at the illusion he is about to present is like the governess&rsquo; look through the window at the visions she communicates. [James] the narrator and listener, like James the author, is our transparent medium of perception.</p>
+
+        <p>According to my contention, there isn&rsquo;t a right way and a wrong way to interpret the tale, but rather <em>two</em> ways, which the same reader may enjoy alternately, if he wishes; and James has carefully established this, both through the imagery of the glass and its reversal of locations, and in the narrative set-up of the story. Just as we may choose to look through the glass <em>with</em> the governess or <em>at</em> her, so we may choose to listen with the ladies, and hear a ghost story, or with [James], and hear a psychological novel. We have &ldquo;the full image of a repetition,&rdquo; as in a mirror, and we may decide for ourselves what to take for substance and what for shadow.</p>
+    </article>
+
+    <script>
+        const toggle = document.getElementById('theme-toggle');
+        const icon = document.getElementById('theme-icon');
+
+        toggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+            toggle.title = isDark ? 'Modo Diurno' : 'Modo Nocturno';
+            toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+        });
+    </script>
+
+</body>
+</html>

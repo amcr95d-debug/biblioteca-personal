@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maria Irene Ramalho de Sousa Santos - Isabel's Freedom: The Portrait of a Lady</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* =========================================
+           COLORES (Modo Diurno - International Klein Blue)
+           ========================================= */
+        :root {
+            --bg-body: #002FA7;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.88);
+            --text-muted: rgba(255, 255, 255, 0.6);
+            --border-color: rgba(255, 255, 255, 0.35);
+            --border-light: rgba(255, 255, 255, 0.15);
+            --fab-bg: #ffffff;
+            --fab-color: #002FA7;
+            --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+            --quote-border: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Modo Nocturno - Deep Navy Blue */
+        body.dark-mode {
+            --bg-body: #001233;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.85);
+            --text-muted: rgba(255, 255, 255, 0.5);
+            --border-color: rgba(255, 255, 255, 0.2);
+            --border-light: rgba(255, 255, 255, 0.1);
+            --fab-bg: #ffffff;
+            --fab-color: #001233;
+            --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+            --quote-border: rgba(255, 255, 255, 0.4);
+        }
+
+        /* =========================================
+           ESTILOS GENERALES
+           ========================================= */
+        * { transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease; }
+        
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            line-height: 1.75;
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 2em 1.5em 5em;
+            color: var(--text-primary);
+            background-color: var(--bg-body);
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 0.2em;
+            font-weight: normal;
+            letter-spacing: 0.05em;
+            color: var(--text-primary);
+        }
+
+        h2 {
+            font-size: 1.4em;
+            text-align: center;
+            margin-top: 2.5em;
+            margin-bottom: 1.5em;
+            font-weight: bold;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        h3 {
+            font-size: 1.1em;
+            text-align: center;
+            margin-top: 2.5em;
+            margin-bottom: 1em;
+            font-weight: bold;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        p {
+            text-align: justify;
+            margin-bottom: 1.2em;
+            text-indent: 1.5em;
+        }
+
+        p.no-indent { text-indent: 0; }
+
+        blockquote {
+            margin: 1.5em 2em;
+            padding-left: 1.5em;
+            border-left: 3px solid var(--quote-border);
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        blockquote p { text-indent: 0; margin-bottom: 0.8em; }
+
+        .poem {
+            margin: 1.5em 2em;
+            font-style: italic;
+            text-indent: 0;
+        }
+
+        .poem p {
+            text-indent: 0;
+            margin-bottom: 0.3em;
+            text-align: left;
+            padding-left: 2em;
+            text-indent: -2em;
+        }
+
+        em { font-style: italic; }
+
+        sup {
+            font-size: 0.75em;
+            vertical-align: super;
+            line-height: 0;
+        }
+
+        .page-number {
+            display: block;
+            text-align: center;
+            font-size: 0.8em;
+            color: var(--text-muted);
+            margin: 2em 0 1em 0;
+        }
+
+        .footnotes {
+            margin-top: 4em;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5em;
+            font-size: 0.9em;
+            color: var(--text-secondary);
+        }
+
+        .footnotes h3 {
+            text-align: left;
+            font-size: 1em;
+            margin-bottom: 1em;
+            text-transform: none;
+            letter-spacing: normal;
+            color: var(--text-primary);
+        }
+
+        .footnotes p {
+            text-align: left;
+            text-indent: -1.5em;
+            padding-left: 1.5em;
+            margin-bottom: 0.6em;
+            font-size: 0.9em;
+        }
+
+        .section-break {
+            text-align: center;
+            margin: 2.5em 0;
+            font-weight: bold;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.1em;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 2em;
+        }
+
+        .epigraph {
+            margin: 1.5em 2em 2.5em;
+            padding-left: 1.5em;
+            border-left: 3px solid var(--quote-border);
+            font-style: italic;
+            color: var(--text-secondary);
+            font-size: 0.95em;
+        }
+
+        .epigraph p {
+            text-indent: 0;
+            margin-bottom: 0.5em;
+            text-align: left;
+        }
+
+        .epigraph .attribution {
+            text-align: right;
+            font-style: normal;
+            font-size: 0.9em;
+            color: var(--text-muted);
+            margin-top: 0.5em;
+        }
+
+        .source-note {
+            text-align: center;
+            font-size: 0.85em;
+            color: var(--text-muted);
+            margin-bottom: 2em;
+            font-style: normal;
+        }
+
+        /* =========================================
+           BOTÓN FLOTANTE (Modo Nocturno)
+           ========================================= */
+        .fab-toggle {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background-color: var(--fab-bg);
+            color: var(--fab-color);
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease;
+            z-index: 1000;
+            outline: none;
+        }
+        .fab-toggle:hover { transform: scale(1.1); }
+        .fab-toggle:active { transform: scale(0.95); }
+        .fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            body { padding: 1.2em 1em 4em; }
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.1em; }
+            .fab-toggle { bottom: 16px; right: 16px; width: 50px; height: 50px; }
+            .fab-toggle .material-icons { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo Nocturno">
+        <i class="material-icons" id="theme-icon">dark_mode</i>
+    </button>
+
+    <article id="content">
+        <h1>Maria Irene Ramalho de Sousa Santos</h1>
+        <p class="subtitle">Isabel&rsquo;s Freedom:<br>The Portrait of a Lady</p>
+
+        <div class="epigraph">
+            <p>Das Gesetz hat noch keinen grossen Mann gebildet, aber die Freiheit br&uuml;tet Kolosse und Extremit&auml;ten aus.</p>
+            <p class="attribution">&mdash;Karl Moor in <em>Die R&auml;uber</em></p>
+            <p style="margin-top:1em;">No, it is awful. She will be nobody&rsquo;s wife; she will be lost!</p>
+            <p class="attribution">&mdash;Darya Alexandrovna Oblonsky speaking of Anna Arkadyevna Karenin</p>
+            <p style="margin-top:1em;">The idea of the whole thing is that the poor girl, who has dreamed of freedom and nobleness . . . finds herself in reality ground in the very mill of the conventional.</p>
+            <p class="attribution">&mdash;HENRY JAMES speaking of Isabel Archer Osmond</p>
+        </div>
+
+        <p class="source-note">From <em>Biblos</em> 56. &copy; 1980 by Maria Irene Ramalho de Sousa Santos.</p>
+
+        <p>In an article that he very aptly called &ldquo;The Moment of <em>The Portrait of a Lady</em>,&rdquo; Charles Feidelson shows how this novel represents not only a transitional point in James&rsquo;s work and thinking, but also a basic shift of fictional attitude in the nineteenth-century novel, moving towards the twentieth century novel-of-consciousness. By placing &ldquo;The centre of the subject in the young woman&rsquo;s own consciousness,&rdquo; [as James claimed in the Preface to the New York edition to have done] James begins to reverse the whole idea of fictional narrative. While, for example, in <em>Bleak House</em> the social world around Esther Summerson defines her and even conditions her own narrative of herself, in <em>The Portrait of a Lady</em> it is Isabel&rsquo;s consciousness that <em>seems</em> to define and shape the world about her. Where before the novel had presented the characters in terms of the world&mdash;either in harmony with society or in opposition to it&mdash;now the novel begins to sketch the idea of a character that shapes the fictional form itself: the character-as-consciousness. From now on the world of fiction will depend more and more on the shaping power of this imagining consciousness. The main technical change is, then, a change of voice, or point of view. The so-called omniscient author&mdash;&ldquo;the muffled majesty of authorship&rdquo; James speaks of&mdash;no longer plays his former role. If the character&rsquo;s consciousness holds the center of interest, then the character&rsquo;s consciousness must &ldquo;tell&rdquo; the &ldquo;story,&rdquo; and &ldquo;the artist, like the God of the creation, remains within or behind or beyond or above his handiwork, invisible, refined out of existence, indifferent, paring his fingernails&rdquo; [James Joyce, <em>The Portrait of the Artist as a Young Man</em>]. Although in <em>The Portrait</em>, and for that matter in James&rsquo;s work as a whole, we are still far from Joyce&rsquo;s radical stance of narrative absence, Henry James&rsquo;s novels must be read as transitional in this regard, and <em>The Portrait</em> as a clear turning point. Indeed, before we get to the hardly audible authorial voice in <em>The Golden Bowl</em>, we witness a process of gradual slowing down of the authoritative, supposedly knowledgeable narrative voice in <em>The Portrait</em>, until in chapter 42, &ldquo;the best thing in the book,&rdquo; the reader is left alone with the contemplation of Isabel, finally almost completely &ldquo;translated&rdquo; into the &ldquo;formula&rdquo; of her own consciousness.</p>
+
+        <p>Thus, from Dickens (or Jane Austen), where we have the individual concerned with society, to the extent that he or she depends on society for his or her own definition, we turn to James, where the individual becomes more and more preoccupied with his or her consciousness, to the extent that his or her alienation from society becomes the gauge of his or her identity. The Jamesian character, by his or her own introspective movement, begins seriously to question previous societal definitions and to assert the right to a separate identity. In this sense also, James&rsquo;s <em>Portrait</em> may still be said to be a social novel. For it depicts precisely this changing social context, or world system, in which an individual consciousness has lost its sense of an individual&rsquo;s defined place in the world, a sense of roots growing deeply in a solid soil, however menacing. If it is possible to say that James&rsquo;s demericanized Americans are vivid dramatizations of this sense of displacement, the problem must not be seen merely in the light of James&rsquo;s International Theme. Lord Warburton, the preposterous radical aristocrat, is also definitely unable to reconcile his liberal ideology with the rigid form and the heavy weight of the English tradition in which he finds himself misplaced.</p>
+
+        <p>Isabel Archer seems to find her lack of place (or definition) the more interesting and appealing. She believes herself completely free to choose the absence of form that appears most congenial to her, thus typically neglecting the complex network of relationships in which individual facts or events are rooted. Her love for an all-embracing (individual) consciousness equals her love of freedom. This is what is implied in Chase&rsquo;s view that &ldquo;Isabel has higher ideals than any she thinks can be realized by a life with Lord Warburton.&rdquo; Her higher ideals are the liberal ideals of a &ldquo;completed consciousness&rdquo; and of individual freedom, whereas Lord Warburton, even if in spite of himself, has to offer only the &ldquo;system&rdquo; her &ldquo;instinct&rdquo; tells her to &ldquo;resist.&rdquo; It is clear right from the beginning of the novel that Isabel Archer dreads the kind of definition implied in a commitment to what Lord Warburton represents, and that is why she cannot &ldquo;think of [his] various homes as the settled seat of [her] residence.&rdquo; She will have to remain completely disengaged to pursue the &ldquo;free exploration of life&rdquo; that her imagination dreams of.</p>
+
+        <p>This is exactly what she thinks she will begin to achieve when she decides to marry Gilbert Osmond, the man who presents himself to her seemingly without a system. In justifying her marital decision to Ralph, Isabel says: &ldquo;He [Osmond] wants me to know everything; that is what I like him for&rdquo;; and later on, still failing to see the intricate web of relationships, and resolutely ignoring Ralph&rsquo;s socializing warning that &ldquo;one ought to feel one&rsquo;s relation to things&mdash;to others,&rdquo; she refuses to see Osmond but in the light of noble individuality and independence she bestows on him: &ldquo;He knows everything, he understands everything, he has the kindest, gentlest, highest spirit.&rdquo; Thus, as she had rejected the social commitment implicit in Lord Warburton&rsquo;s proposal, she now accepts the offer that seems to her most uncommitted socially and that she believes to be the total fulfilment of the freedom she needs to expand her imagination limitlessly: &ldquo;His being so independent, so individual, is what I most see in him.&rdquo;</p>
+
+        <p>Isabel believes, then, that her marriage to Osmond opens up for her the broad road towards the complete fulfilment of her consciousness. Out of that late Nineteenth century, pre-war idealism that she, too, embodies, Isabel cherishes the kind of individual freedom (i.e. disengagement, separateness, independence) which she believes to be the essence of human consciousness. So, in freedom as she thinks, she chooses to marry the man that had seemed to her most uncommitted, most unconcerned, most disinterested, most independent, most free. Thus, Isabel will truly find herself, as a woman, in her marriage, which is no less than the symbolic reconciliation of her notion of freedom with society&rsquo;s (and her own) as yet unquestioned definition of woman as somebody&rsquo;s wife.</p>
+
+        <p>Up to this point we have the social novel about how bad or how good a marriage a certain intelligent and idealistic, but rather presumptuously independent young girl will make. <em>The Portrait of a Lady</em> begins overtly like a comedy of manners, with its beautiful Gardencourt setting of English amenities and afternoon tea. Like Jane Austen&rsquo;s heroines, Isabel Archer is also mainly concerned with the difficult problem of marriage. The main issue in the first part of the book seems to be how Isabel will fit in the events that surround her, or rather, how she will attain that important goal of all Austen&rsquo;s heroines: appropriate <em>location</em> in a surrounding society by means of a suitable marriage. For in this society, as in Tolstoy&rsquo;s tzarist Russia, to be nobody&rsquo;s wife is to be lost indeed. However, little by little the reader begins to realize that, unlike what happens in Austen&rsquo;s novels, the interesting thing about Isabel is not how she will eventually fit in the surrounding events, but rather if and how the events fit <em>her</em>. Since we shall find out in the end that the events in the novel do not fit its heroine at all, that she will rather have to re-invent her freedom in order to force herself to fit them, the <em>moment</em> of <em>The Portrait of a Lady</em> turns out to be more telling than a mere technical change of fictional stances. While in earlier novels of manners and social comedy the center of interest lay mainly on the full definition of womanhood within society by a woman&rsquo;s right (or wrong) choice of marriage, in <em>The Portrait</em> the center of interest is gradually shifting from social events to the main character&rsquo;s consciousness; and marriage, rightly or wrongly assumed, is being quietly, perhaps inadvertently, put into question as a woman&rsquo;s defining principle.</p>
+
+        <p>For Feidelson&rsquo;s argument it is indeed important to emphasize the word <em>consciousness</em> in James&rsquo;s much quoted piece of self-advice, &ldquo;Place the center of the subject in the young woman&rsquo;s consciousness;&rdquo; but the fact that the consciousness is that of a young <em>woman&rsquo;s</em> must never slip out of one&rsquo;s mind. Like Hawthorne&rsquo;s <em>The Scarlet Letter</em> or George Eliot&rsquo;s <em>Middlemarch</em>, two obvious predecessors of <em>The Portrait</em>, or James&rsquo;s own short novel &ldquo;Daisy Miller,&rdquo; <em>The Portrait of a Lady</em> reflects its author&rsquo;s latent social preoccupations, or his sensitivity to the changing times, precisely in his heroine&rsquo;s quest for freedom, i.e. in her control, or lack of control, of her own destiny. Whether James actually wanted it so or not, by implicitly siding with many other nineteenth-century authors in their concern for the woman&rsquo;s place in society, James made of Isabel&rsquo;s consciousness not just the growing consciousness of a presumptuous girl, around whom an ado is organized, but the very arena upon which the structure of society is questioned through the young woman&rsquo;s &ldquo;searching [self] criticism.&rdquo;</p>
+
+        <p>The novel-of-consciousness in <em>The Portrait</em> begins, therefore, when Isabel sits down to <em>think</em> of what has happened to her consciousness and to her freedom; it begins when Isabel learns how to make connections and relate events; it begins when her thoughtful self-criticism enlightens her as to the calculated intrigues that had necessitated her marriage. Isabel&rsquo;s discoveries about her freedom or lack of freedom, as well as her final stubborn attempt to mend the broken image of her illusion of self-control, must then also be read as an implicit comment on the shifting values of late nineteenth century, such as individualism and individual freedom, integrity and dignity of mind and consciousness, inner authenticity and coherence in absolute terms (i.e. regardless of external, social circumstances). Isabel&rsquo;s self-probing consciousness, as well as the subtle gradual translation of social comedy into the novel-of-consciousness, are already clear signs of the crisis in western thinking and ideals that Fredric Jameson has called &ldquo;the bankruptcy of the liberal tradition.&rdquo; In James&rsquo;s world, independent young women either die, like Daisy Miller, or, like Isabel Archer/Osmond, are mercilessly crushed by a conventional form. In the following attempt to explain once again why Isabel Archer returns to Rome and to her husband at the end of the novel, I suggest that James&rsquo;s heroine is desperately trying to preserve a lost ideal of individual freedom as the basis for a woman&rsquo;s social identity.</p>
+
+        <h2>II</h2>
+
+        <blockquote>
+            <p>Isabel sat there looking up at her, without rising; her face almost a prayer to be enlightened. But the light of this woman&rsquo;s eyes seemed only a darkness. &ldquo;O misery!&rdquo; she murmured at last; and she fell back, covering her face with her hands. It had come over her like a high surging wave that Mrs. Touchett was right. Madame Merle had married her. Before she uncovered her face again that lady had left the room.</p>
+        </blockquote>
+
+        <p>In his Notebook entry on <em>The Portrait of a Lady</em>, Henry James was still debating whether he should have Mme Merle or the Countess Gemini break the news to Isabel about Mme Merle&rsquo;s relationship to Pansy and Osmond. He thinks that it would be &ldquo;better on many grounds&rdquo; that it should be the Countess, and yet he regrets to have, in that case, to lose &ldquo;the &lsquo;great scene&rsquo; between Madame Merle and Isabel.&rdquo; The passage I quoted above shows how James was able to have the Countess be messenger of bad news and still save one &ldquo;great scene&rdquo; between Mme Merle and Isabel. The scene is indeed great. It is a crucial scene in the whole novel, particularly important for our understanding of Isabel&rsquo;s sense of freedom, and her subsequent attempts to preserve it. Isabel Osmond&mdash;trapped by the calculated machinations of her husband and of Mme Merle&mdash;begins to realize how far away she is now from Isabel Archer, the independent young woman at the beginning of the novel, a symbol in herself of unlimited freedom in her latent potentialities.</p>
+
+        <p>After this momentous interview with Mme Merle, Isabel has to go out into the open air: &ldquo;she wished to be far away, under the sky, where she could descend from her carriage and tread upon the daisies.&rdquo; Of course, this had already become a habit with her. The weariness accumulated in &ldquo;the house of darkness, the house of dumbness, the house of suffocation&rdquo; she would rest &ldquo;upon things that had crumbled for centuries and yet still were upright.&rdquo; It was relieving and refreshing to identify her own sense of wreckage and desolation with the dismal, pain-echoing ruins of the grandeur that Rome had been. The image of a glorious decadence around her worked like a balsamic consolation on her battered, and yet still dignified soul. This time, however, it seems that Isabel&rsquo;s impulse to run into the open space of the Roman landscape comes mainly as a result of her sudden confrontation with the overwhelming revelation: the most important decision of her life had been determined, not by her own free choice, but by someone else&rsquo;s deliberate calculations. In freedom she had wanted to be enlightened, and in bondage she had received only the most terrifying darkness. She had wished her consciousness to expand itself into the realm of beauty in its completeness, and finds out, abjectly, that what she believes to be the basic presupposition for human consciousness itself&mdash;freedom&mdash;had been lacking in her all the time. The openness of space between the daisies and the sky will help create around her, outside her, the illusion of the liberty she is miserably missing inside her.</p>
+
+        <p>We shall have to recapitulate what things like freedom, and liberty, and independence, and self-confidence had always meant to Isabel to understand all the implications of such a discovery. Our first glimpse of Isabel is that telegraphic &ldquo;quite independent,&rdquo; which Mrs. Touchett had considered an important piece of information to include in her scanty message to her family. When Isabel herself appears on the lawn of Gardencourt, she strikes Ralph as having &ldquo;a great deal of confidence, both in herself and in others.&rdquo; A little later, she will be appalled at the very idea of being considered &ldquo;a candidate for adoption&rdquo;: &ldquo;I&rsquo;m very fond of my liberty,&rdquo; she says. Liberty means to know everything, including all the possibilities ahead in order to choose freely, confidently, responsibly; as when she tells her aunt that she always likes to know the things one shouldn&rsquo;t do, &ldquo;so as to choose.&rdquo; A few pages later, we find Isabel afraid of becoming &ldquo;a mere sheep in the flock&rdquo;; she wants to be the sole free master of her own fate. In other words, Isabel declines to be a puppet; she wants to act always within the limits of human dignity, which she measures by the freedom of human consciousness.</p>
+
+        <p>These are, of course, some of the romantic &ldquo;theories&rdquo; of &ldquo;the mere slim shade of an intelligent but presumptuous girl.&rdquo; When she apparently becomes really free to &ldquo;meet the requirements of [her] imagination,&rdquo; Isabel is intuitively afraid. Unaware of the liberal fallacy of her notion of individual freedom, regardless of the complex interactions at work in human society, Isabel is, however, perceptive enough to sense the trap she may be walking into: &ldquo;A large fortune means freedom, and I&rsquo;m afraid of that.&rdquo; Isabel is right to be afraid, for indeed her desire for total freedom will eventually have to be translated into freedom-as-accepted-necessity. I shall come back to this. Meanwhile, Isabel&rsquo;s new fortune brings her an enlarged freedom, however problematic. She believes herself now to be freer than ever before, and she thinks that, from now on, she will have to cope with a boundless imagination. She is scared of the burden of tremendous responsibility involved in complete, unquestionable freedom, but she is also exhilarated at the thought of her consciousness opening up, infinitely, towards the fulfilment of its own potentialities. That her love of freedom equals her fear of freedom is only an indication of changing values and conceptions in James&rsquo;s own world: liberal individualism, all too questionably presented in Isabel&rsquo;s portrait&mdash;she is anxious about the use she will make of her freedom, but she never doubts its reality; she believes herself to be in complete control of her destiny. She is free&mdash;she thinks&mdash;to choose her own fate. And so she believes she does when she fulfils her &ldquo;one ambition&mdash;to be free to follow out a good feeling.&rdquo; For a person like Isabel, to whom this kind of liberty had always been the dearest, most cherished value of human life, how dreadful and how crushing and how destructive Mme Merle&rsquo;s revelation must have been! No wonder Isabel had to go out into the open air to try to rescue herself from total suffocation.</p>
+
+        <p>In marrying Osmond, as she thinks, in freedom, Isabel had wanted &ldquo;to transfer the weight [of her money] to some other conscience, to some more prepared receptacle.&rdquo; That is, she had wanted to share her liberty with a freer, unprejudiced consciousness, which she hoped to be the fulfilment of her own. Her marriage had then been for her the symbol of her total freedom. When Isabel becomes gradually aware of her error of perception concerning Osmond&rsquo;s character&mdash;that though she had married <em>in</em> freedom, she had <em>not married freedom</em>&mdash;all her strength and sense of dignity come to her through her still, and now even more, cherished ideal of freedom as opposed to her husband&rsquo;s strict conformity to standard traditions or sterile forms:</p>
+
+        <blockquote>
+            <p>Her notion of the aristocratic life was simply the union of great knowledge with great liberty. . . . But for Osmond it was altogether a thing of forms, a conscious calculated attitude. He was fond of the old, the consecrated, the transmitted; so was she, but she pretended to do what she chose with it.</p>
+        </blockquote>
+
+        <p>The belief that she is free, has always been, and still is, in spite of the rigid system that Osmond wants to close about her, saves Isabel somehow from irrevocable spiritual death. She had made a mistake, she knows; but she believes she had been free to make it, and that belief saves her self-respect for her. Her sense of freedom is now the only glimmering light in the darkness of her habitation, a quiet, obstinate preservation of integrity, that reflects itself fundamentally in her passive-resistance-like attitude towards Ralph.</p>
+
+        <p>Up to the famous scene between Isabel and Mme Merle in chapter 49, two forceful motives have been keeping Isabel faithful to the sacred ideal of her marriage. First, she had been free when she had decided to marry Gilbert Osmond, and therefore she feels she must accept the consequences of her acts, however painful: &ldquo;one must accept one&rsquo;s deeds. I married him before all the world; I was perfectly free; it was impossible to do anything more deliberate.&rdquo; Secondly, as Henrietta rightly points out in this passage, Isabel&rsquo;s pride determines her unwillingness to admit that she has made a mistake. She knows that she has made a mistake, but she cannot publish it: &ldquo;I don&rsquo;t think that&rsquo;s decent. I&rsquo;d much rather die.&rdquo; Isabel&rsquo;s attitude need not, indeed must not be understood merely as the vain stubbornness of a foolish presumptuous girl who stupidly refuses to admit that she has made a mistake; it is rather, in a way, a privilege of her sense of freedom; she is still free to choose the face she wants to show, and she chooses <em>not</em> to acknowledge <em>publicly</em> such a gross error of perception on her part concerning Osmond. As she tells Henrietta, she owes that much to her own respect for such liberal, Emersonian values as she was taught to love: individual freedom, self-reliance, self-responsibility.</p>
+
+        <p>However, there is surely a certain naivety and immaturity in Isabel&rsquo;s desperate need &ldquo;to feel that her unhappiness should not have come to her through her own fault.&rdquo; In the very first draft of Isabel&rsquo;s portrait, we learn that &ldquo;she had an infinite hope that she should never do anything wrong,&rdquo; we learn how much she dreads &ldquo;inconsistency&rdquo; and &ldquo;hollowness,&rdquo; and how much she would like &ldquo;to find herself some day in a difficult position, so that she should have the pleasure of being as heroic as the occasion demanded.&rdquo; In other words, Isabel Archer had always been anxious about the use she would ever make of her freedom, which she never doubts or questions, and her deepest wish had always been ever <em>to do right</em>. So that, when she finds herself, as Ralph had foreseen, &ldquo;in trouble,&rdquo; her first thought goes to a justification of herself. The &ldquo;need to right herself&rdquo; that worries Isabel at the beginning of the novel has now gained a deeper meaning for her. In accepting the consequences of what she believes to have been her free acts, Isabel is again in possession of the satisfaction of &ldquo;doing herself justice,&rdquo; of doing herself the justice of being considerate of herself, of being after all as heroic as the difficulty of the situation demanded. Once, as she thinks, &ldquo;the sole source of her mistake had been within herself,&rdquo; in order to keep the sense of her dignity in her own eyes, Isabel has to assume the burden of her initial error. This is justification before herself; before others, her pride prevents her from even admitting her mistake. She is free; she may therefore choose to go on showing the world the <em>image</em> of her freedom. Thus, while she knows that &ldquo;the place has surrendered,&rdquo; she wants her flag to be seen waving high up in the sky.</p>
+
+        <p>And yet, suddenly, Isabel lets her flag drop. She has to. When she finds out how little free she had been in the most important decision of her life, how much she had been made a convenience of, Isabel is wretchedly confronted with her own collapsing dignity as a human being. Freedom is the highest value, the sum of all human dignity. The discovery of Mme Merle&rsquo;s and Osmond&rsquo;s interference in her marriage forces Isabel to see herself as a mere instrument, a useful tool in other people&rsquo;s hands, a mere puppet. This might have been a comfortable discovery for someone who had wished ever to do right. But Isabel&rsquo;s subsequent behavior indicates that she loves individual freedom more than she loves self-righteousness. If Isabel&rsquo;s discovery washes white the guilt and responsibility of her misery, it also deprives her, to her mind, of human dignity and tragic stature. There is only one gesture left for Isabel: <em>to invest with freedom</em>, retrospectively, her initially determined, conditioned choice. This she does by returning to Rome and to her husband in the end. Thus, in sanctioning her first act, in turning it, retroactively, into a free act, Isabel finally <em>creates</em> (or <em>invents</em>?) her real freedom, the liberty of a fully expanded consciousness, backwards and forwards, in a complete, calculating control of itself. That the gesture is merely a symbolic one, and that Isabel&rsquo;s <em>willed</em> freedom&mdash;ominously reminiscent of Emerson&rsquo;s &ldquo;terrible freedom&rdquo; inside&mdash;is now unequivocally an <em>image</em> of freedom, again points to the novel&rsquo;s subtle problematization of late nineteenth-century values.</p>
+
+        <p>The interpreter might argue that Isabel would not have been less free or responsible if she had decided to turn away from Osmond and Rome; but Isabel&rsquo;s idealistic humanism had taught her a different lesson. Her notion of human freedom, dignity, and responsibility, as well as her ideal of marriage and her conception of a woman&rsquo;s place in society, inexorably trace for her, paradoxically, her freely chosen path. To be free, then, is to be master of one&rsquo;s destiny. That Isabel achieves by her retrospective act; but she is nonetheless trapped in her disengaged ideals and, as a woman, doubly trapped. As she confides to Ralph right before he dies, her final decision will be dictated by what &ldquo;seems right.&rdquo; To ratify retroactively her initial choice of fate had meant to choose her destiny again, to redefine her marriage as freedom fulfilled, to assume her identity as Mrs. Osmond, without which she would now be lost. Thus, although the interpreter might say that, in wanting to ascend towards the realm of ends, Isabel is most vilely trapped in the world of means, Isabel herself, by her ratifying act, finds herself finally soaring above a world of necessity and dependence. Seemingly returning to the darkness and dumbness of her suffocating habitation, she is indeed at last enjoying for the first time the meaning of a free, responsible consciousness. How heroic and noble this is will depend, of course, on the value one attributes to Isabel&rsquo;s idea of freedom and responsibility. What I mean is that it may still be difficult for many of us in this day and age to see Oedipus as a mere plaything in the hands of the gods of iron necessity. We demand some sense of freedom, guilt, and responsibility in order to grasp the magnificent dignity of the king&rsquo;s tragedy. This may seem too much of an ado about Isabel Archer; but wasn&rsquo;t exactly that James&rsquo;s idea, that of &ldquo;organising an ado about Isabel Archer&rdquo;?</p>
+
+        <p>I therefore suggest that Isabel&rsquo;s final decision to go back to her husband, in <em>enfranchising</em> her first choice, endows her with the responsibility one demands of all free human beings. When in the end she rejects Caspar Goodwood&rsquo;s proposal, though of course the motive of sexual fear is very obvious, Isabel is above all aware that Caspar&rsquo;s idea of freedom is at odds with her own, that it would indeed nullify her very conception of herself. For Goodwood, freedom means &ldquo;that a woman deliberately made to suffer is justified in anything in life&rdquo;; for Isabel, freedom means that a woman that has made herself responsible for her own suffering has only &ldquo;one straight path&rdquo; to follow: the wide, but painful, path of authenticity. For the first time in her life, Isabel may be said to be truly, knowingly consistent. Or, as the observant Ralph [James?] might have said, she is once and for all &ldquo;dismally consistent.&rdquo;</p>
+
+        <p>A brief digression will help me put James&rsquo;s novel and its ideals and values, particularly its problematized conception of freedom, in the broader context of Western Literature. At the beginning of Schiller&rsquo;s <em>Die R&auml;uber</em>, young Karl Moor expresses his titanic, Promethean longing for glorious deeds that are only to be achieved in freedom: &ldquo;Das Gesetz hat noch keinen grossen Mann gebildet, aber die Freiheit br&uuml;tet Kolosse und Extremit&auml;ten aus.&rdquo; A deep loathing for the sickly, corrupt laws of mankind turns Moor into an outcast and a robber. When later he finds out that his is not the task, nor the right, to chastise mankind in the name of a higher moral order, it is too late to retrieve. Moor has now lost Schiller&rsquo;s highest values: his freedom and the purity of his conscience. The oath sworn among the robbers and their leader binds Karl Moor helplessly to the iron chain of his band, necessity drags him down forcefully, step by step, towards destruction and self-annihilation. Only when in the end Moor recognizes the higher value of divine and human law does he become free again. Moor had dared to assume as a right of his own the task of purifying a polluted mankind, failing to realize that in breaking the law he was shaking the very moral grounds of the world. When finally he is horrified to think that &ldquo;zwei Menschen wie ich den ganzen Bau der sittlichen Welt zugrund richten w&uuml;rden,&rdquo; Karl Moor understands that man&rsquo;s freedom lies deep within the boundaries of law. He therefore shuns the pseudo-freedom of suicide, as he had just rejected the pseudo-freedom of lawlessness. Liberty is wilful acceptance of law itself, as the only safeguard of the world&rsquo;s and man&rsquo;s order. This is the only freedom, Schiller suggests, that makes giants of men.</p>
+
+        <p>In drawing the parallel between <em>Die R&auml;uber</em> and <em>The Portrait of a Lady</em>, one has, of course, to be discriminating. Karl Moor is deeply concerned with the destiny of mankind, whereas Isabel is mainly concerned with what happens to her own consciousness. The difference lies surely on the different social and cultural contexts that helped create both works, and it may also be seen as an indication of the growing fictional concern with the human consciousness as a subject. Karl Moor&rsquo;s attitude in the end shows how much the order of the world depends on the freedom of human consciousness to accept legal restraint. In <em>The Portrait of a Lady</em> the process is somehow reversed: the integrity (or order) of Isabel&rsquo;s consciousness depends entirely on her free acceptance of the &ldquo;mill of the conventional,&rdquo; in order to secure her threatened liberty. But while Karl Moor, in accepting <em>Gesetz</em> as a higher <em>Freiheit</em>, is admitting how conditioned by necessity his past life had been, Isabel&rsquo;s return to Rome, as I read it, is a choice of freedom <em>in the past</em>: her gesture ratifies her first decision to marry Osmond, which now becomes truly a free decision. In returning to Rome, Isabel sets herself free, retrospectively, and she is thus as responsible for her deeds as becomes a tragic figure. On the other hand, at the very bottom of both Isabel&rsquo;s and Moor&rsquo;s motivation, we may discern an unconfessed desire for self-glorification. After all, if Isabel Archer had always been longing for some heroic deed in her life, perhaps the accusation of Karl Moor&rsquo;s fellow-robber in the end is not entirely false either: &ldquo;Lasst ihn hinfahren! Es ist die Grossmannsucht. Er will sein Leben an eitle Bewunderung setzen.&rdquo; So that Isabel is as much the author of her &ldquo;tragedy of consciousness&rdquo; as Karl Moor is the victim of his own tragedy of freedom.</p>
+
+        <p>I would not assert, <em>positively</em>, that James wanted to give Isabel a tragic dimension; but I do wish to suggest that he wanted <em>her</em> to give <em>herself</em> a tragic dimension. In so constructing a new sense of freedom, Isabel was indeed acting as heroically, or as tragically, as the occasion demanded. We are not only beholding &ldquo;a kind of inverted triumph&rdquo; instead of &ldquo;the waste and degradation of a splendid spirit,&rdquo; as Arnold Kettle says; we are also looking at the last masterly touch on Isabel&rsquo;s ideal portrait of herself as a wholly liberated consciousness. That the symbol of her liberation is her sterile marriage must be understood, I think, as an indication of James&rsquo;s implied criticism of her ideals.</p>
+
+        <p>I do not want to turn Isabel&rsquo;s conquest of freedom into the sole motive for her return to Rome. She has plenty of reasons to take that decision, as a perfunctory glimpse at the secondary literature would assure us. There is, to name but a few, Isabel&rsquo;s conception of marriage as &ldquo;sacred&rdquo;; her fear of sexual passion as offered by Goodwood&rsquo;s alternative; Isabel&rsquo;s promise to Pansy not to &ldquo;desert&rdquo; her; her dread of public exposure; her respect for &ldquo;certain obligations . . . involved in the very fact of marriage.&rdquo; However, the reader is made to sense, in the course of the last chapters of the novel, that none of these reasons is sufficient. Isabel seems all too anxious to find a new reason to return to Rome when the previous one proves no longer valid. Her fear of Goodwood&rsquo;s aggressive manhood at the very end doesn&rsquo;t seem to be enough good reason, either, for, after all, she not only escapes from him but also <em>does</em> return to Rome. The last scene between these two characters strikes me rather as one more symbolic aspect of Isabel&rsquo;s desperate quest for freedom. &ldquo;Why should you go through that ghastly form?&rdquo; Goodwood asks her; and Isabel replies, &ldquo;to get away from <em>you</em>.&rdquo; If Caspar may be said to stand here for the world that considers Isabel guiltless of her mistake, it is in his eyes that Isabel must more than ever justify herself as a free human being, always in command of her fate, always responsible for her life. If she should for a moment allow herself to suspect that her marriage&mdash;i.e. that which alone gives her (social) identity&mdash;is at odds with her ideal of freedom, she would be lost indeed.</p>
+
+        <p>To conclude I should like to go back to James&rsquo;s Preface and then comment a little on the novel&rsquo;s inconclusive closure. Says James:</p>
+
+        <blockquote>
+            <p>The obvious criticism of course will be that it is not finished&mdash;that I have not seen the heroine to the end of her situation&mdash;that I have left her <em>en l&rsquo;air</em>&mdash;this is both true and false. The <em>whole</em> of anything is never told; you can only take what groups together. What I have done has that unity&mdash;it groups together. It is complete in itself&mdash;and the rest may be taken up or not, later.</p>
+        </blockquote>
+
+        <p>James is here clearly toying with the idea that <em>The Portrait of a Lady</em> is not the end of Isabel&rsquo;s story and I will knowingly bite the bait and rather commit the crime of meaningful speculation than that of sterile synchronicity. Isabel&rsquo;s story is not only the story of a woman&rsquo;s changing place in society, but also the very chronicle of society itself. That the only noble and dignified way that Isabel has of refusing to be &ldquo;ground in the . . . mill of the conventional&rdquo; is to accept the &ldquo;ghastly form&rdquo; knowingly and freely, is a telling comment on the kind of society presented in James&rsquo;s world; and a comment, too, on the kind of (American) literary tradition this international novelist feeds on: Isabel Archer/Osmond is undoubtedly a lesser Hester Prynne, but still a potential &ldquo;rebel&rdquo; who willingly accepts the role of an &ldquo;agent of socialization.&rdquo; The time has obviously not yet come for the fulfilment of Hester Prynne&rsquo;s ambiguous prophecy at the end of <em>The Scarlet Letter</em>:</p>
+
+        <blockquote>
+            <p>at some brighter period, when the world should have grown ripe for it, in Heaven&rsquo;s own time, a new truth would be revealed, in order to establish the whole relation between man and woman on a surer ground of mutual happiness.</p>
+        </blockquote>
+
+        <p>However, the choice of a woman&rsquo;s growing consciousness for the portrayal of a changing awareness of society&rsquo;s inconsistencies and incongruities is surely an indication that James, in questioning isolated conceptions and values and in drawing attention to their interrelation and interdependence in their large societal context, is indeed formulating at a newer light Hester Prynne&rsquo;s implied conviction that a critique of society must begin with a searching critique of the relation between man and woman, not in &ldquo;Heaven&rsquo;s own time,&rdquo; but right <em>now</em>, in the time of undeniable social reality&mdash;a deep reaching critique of &ldquo;the bottomless idiocy of the world.&rdquo;</p>
+    </article>
+
+    <script>
+        const toggle = document.getElementById('theme-toggle');
+        const icon = document.getElementById('theme-icon');
+
+        toggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+            toggle.title = isDark ? 'Modo Diurno' : 'Modo Nocturno';
+            toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+        });
+    </script>
+
+</body>
+</html>

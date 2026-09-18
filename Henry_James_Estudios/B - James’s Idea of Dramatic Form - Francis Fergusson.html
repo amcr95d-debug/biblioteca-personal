@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Francis Fergusson - James's Idea of Dramatic Form</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* =========================================
+           COLORES (Modo Diurno - International Klein Blue)
+           ========================================= */
+        :root {
+            --bg-body: #002FA7;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.88);
+            --text-muted: rgba(255, 255, 255, 0.6);
+            --border-color: rgba(255, 255, 255, 0.35);
+            --border-light: rgba(255, 255, 255, 0.15);
+            --fab-bg: #ffffff;
+            --fab-color: #002FA7;
+            --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+            --quote-border: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Modo Nocturno - Deep Navy Blue */
+        body.dark-mode {
+            --bg-body: #001233;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.85);
+            --text-muted: rgba(255, 255, 255, 0.5);
+            --border-color: rgba(255, 255, 255, 0.2);
+            --border-light: rgba(255, 255, 255, 0.1);
+            --fab-bg: #ffffff;
+            --fab-color: #001233;
+            --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+            --quote-border: rgba(255, 255, 255, 0.4);
+        }
+
+        /* =========================================
+           ESTILOS GENERALES
+           ========================================= */
+        * { transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease; }
+        
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            line-height: 1.75;
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 2em 1.5em 5em;
+            color: var(--text-primary);
+            background-color: var(--bg-body);
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 0.2em;
+            font-weight: normal;
+            letter-spacing: 0.05em;
+            color: var(--text-primary);
+        }
+
+        h2 {
+            font-size: 1.4em;
+            text-align: center;
+            margin-top: 2.5em;
+            margin-bottom: 1.5em;
+            font-weight: bold;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        h3 {
+            font-size: 1.1em;
+            text-align: center;
+            margin-top: 2.5em;
+            margin-bottom: 1em;
+            font-weight: bold;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        p {
+            text-align: justify;
+            margin-bottom: 1.2em;
+            text-indent: 1.5em;
+        }
+
+        p.no-indent { text-indent: 0; }
+
+        blockquote {
+            margin: 1.5em 2em;
+            padding-left: 1.5em;
+            border-left: 3px solid var(--quote-border);
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        blockquote p { text-indent: 0; margin-bottom: 0.8em; }
+
+        .poem {
+            margin: 1.5em 2em;
+            font-style: italic;
+            text-indent: 0;
+        }
+
+        .poem p {
+            text-indent: 0;
+            margin-bottom: 0.3em;
+            text-align: left;
+            padding-left: 2em;
+            text-indent: -2em;
+        }
+
+        em { font-style: italic; }
+
+        sup {
+            font-size: 0.75em;
+            vertical-align: super;
+            line-height: 0;
+        }
+
+        .page-number {
+            display: block;
+            text-align: center;
+            font-size: 0.8em;
+            color: var(--text-muted);
+            margin: 2em 0 1em 0;
+        }
+
+        .footnotes {
+            margin-top: 4em;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5em;
+            font-size: 0.9em;
+            color: var(--text-secondary);
+        }
+
+        .footnotes h3 {
+            text-align: left;
+            font-size: 1em;
+            margin-bottom: 1em;
+            text-transform: none;
+            letter-spacing: normal;
+            color: var(--text-primary);
+        }
+
+        .footnotes p {
+            text-align: left;
+            text-indent: -1.5em;
+            padding-left: 1.5em;
+            margin-bottom: 0.6em;
+            font-size: 0.9em;
+        }
+
+        .section-break {
+            text-align: center;
+            margin: 2.5em 0;
+            font-weight: bold;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.1em;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 2em;
+        }
+
+        /* =========================================
+           BOTÓN FLOTANTE (Modo Nocturno)
+           ========================================= */
+        .fab-toggle {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background-color: var(--fab-bg);
+            color: var(--fab-color);
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease;
+            z-index: 1000;
+            outline: none;
+        }
+        .fab-toggle:hover { transform: scale(1.1); }
+        .fab-toggle:active { transform: scale(0.95); }
+        .fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            body { padding: 1.2em 1em 4em; }
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.1em; }
+            .fab-toggle { bottom: 16px; right: 16px; width: 50px; height: 50px; }
+            .fab-toggle .material-icons { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo Nocturno">
+        <i class="material-icons" id="theme-icon">dark_mode</i>
+    </button>
+
+    <article id="content">
+        <h1>Francis Fergusson</h1>
+        <p class="subtitle">James&rsquo;s Idea of Dramatic Form</p>
+
+        <h2>I</h2>
+
+        <p>It has often been pointed out that James&rsquo;s attempt to write for the theatre marks an important turning point in his career. He had behind him a certain success as a writer of fiction, but this success had begun to wane. He felt that his aims as an artist were becoming clearer, but that his public was losing interest. After his experience with the theatre he returned to the novel. But at the moment of writing his plays he could not see what form his work was to take, and he seems to have considered the possibility at least that it would be drama. He had followed the theatre all his life, and was aware that his fiction approached the form and texture of drama. He envied Dumas and Labiche their secure possession of a stage, an audience, a &ldquo;theatre.&rdquo;</p>
+
+        <p>But the theatre he had to write for was the British theatre of the eighties. The well-made play of the Scribe tradition, lightened and sweetened to suit the taste of the theatregoers of Victorian London, held the stage. Drama was understood as a plot or machine for holding the attention of an audience for two hours, and then releasing it in a good humor. The great Sarcey wrote, &ldquo;The audience is the necessary and inevitable condition to which dramatic art must accommodate its means. . . . From this simple fact we derive all the laws of the theatre without a single exception.&rdquo; When James set out to write his comedies he put the problem to himself in exactly these terms: to accept that audience and learn to obey the laws derived from its habits and its taste. &ldquo;The mixture,&rdquo; he wrote, &ldquo;was to be stirred to the tune of perpetual motion and served, under pain of being rejected with disgust, with the time-honored bread-sauce of the happy ending.&rdquo;</p>
+
+        <p>This narrow and cynical conception of drama is of course &ldquo;true&rdquo; as far as it goes. It is a necessary condition of drama that it hold an audience. Yet on this basis we have no clue to the distinction between various dramatic genres, or even between drama and other devices for entertaining an audience in a theatre. The notion goes back, I think, to the seventeenth century, when all the arts addressed themselves to a comparatively small and homogeneous society, the embodiment of all values and the arbiter of taste. The neoclassic theorists in their reading of Aristotle failed to notice the distinction between <em>mythos</em> and <em>praxis</em>, plot and action; they did not digest the Aristotelian notion of drama as the imitation of an action by means of plot. This left them without an explicit theory of the substance of drama, and hence with a purely mechanical and empirical idea of its form. They assumed that serious drama was substantially the conflict between love and honor, or passion and reason, or desire and duty. Subsequent generations of theatregoers were to lose their interest in this theme, but not their demand for entertainment. We have seen the tyranny of the consumer become as absolute in drama as in advertising, and the playwright study his trade in the same spirit as the layout man and copy-writer.</p>
+
+        <p>James found no difficulty in learning the tricks of this trade, and he turned out four plays which are mechanically as neatly put together as one could wish. All four are perpetually agitated comedies, parlor games, the stakes &ldquo;love&rdquo; and money. At the beginning of each we are shown the characters paired off in a certain arrangement which is not quite satisfactory; by the end they have effected a shift into a new and happier pattern. The suspense, the speed of the story, and the succession of clear and stagey situations never flag for a moment. James had solved the problem which he as craftsman had set himself. But it was easy for him, as it is for us, to see why the experiment was not a success. It was not satisfactory to him because the nature of the form ruled out in advance any subject he would have been interested in trying to dramatize. He could only take a minor idea, he says, which, with the habit of small natures, proved thankless. It is too evident that he disliked his characters and that the happy ending offended his taste. This must all have been as puzzling and unsatisfactory to his audience as it was to him.</p>
+
+        <p>When he wrote the preface to the published plays he speculated a little ruefully about what the plays might have been. He thought that the tone of farce might have carried them off if the audience had not so inexorably demanded the &ldquo;bland air of the little domestic fairy tale.&rdquo; In spite of his attempts at good nature, his plays do approximate now and then a cold, hard Jonsonian type of farce, based on flat external caricature, and boldly absurd situations&mdash;a form in which the mechanical ticking of the plot is part of the basic vision. I think it possible that if one produced a James play now in the costume of the eighties one might bring out this farce. Perhaps an audience would even accept it as a satirical picture of a society now safely remote.</p>
+
+        <p>He abandoned the stage, but without thinking that the drama or even the theatre lacked the resources he required. It was rather that particular form of drama and that particular theatre which baffled and thwarted him. As he turned away from the theatre he wrote, &ldquo;Give me an hour, just an hour; Dumas and Augier never lacked it, and it makes all the difference; and with it I shan&rsquo;t fear to tackle the infinite.&rdquo; It was about this time too that he wrote the article on Coquelin which contains the following fine description of that actor&rsquo;s art:</p>
+
+        <blockquote>
+            <p>M. Coquelin&rsquo;s progress through this long and elaborate part, all of fine shades and pointed particulars, all resting on the keenest observation as well as appealing to it, resembles the method of the psychological novelist who (when he is in as complete possession of his form as M. Coquelin of <em>his</em>) builds up a character, in his supposedly uncanny process, by touch added to touch, line to line, illustration to illustration, and with a vision of his personage breathing steadily before him.</p>
+        </blockquote>
+
+        <h2>II</h2>
+
+        <p>When James embarked upon his last group of novels and his critical prefaces he was free to tackle the subject which really interested him. It was in the effort to &ldquo;dramatize&rdquo; this subject that he made his great discoveries in dramatic form and technique. It is true that by rejecting the theatre as he found it he also rejected some of the limitations which any theatre imposes upon drama: the strict time limits, and the obligation to maintain a certain rhythmic tension in the face of that impatient crowd of Sarcey&rsquo;s. He clearly luxuriates in this freedom, multiplying his discriminations, taking his time, putting out of patience a large group of readers who accuse him of verbosity and hair-splitting. His novels are not literally dramas. I am not even sure that the phrase &ldquo;described dramas&rdquo; is very accurate for them. Yet both the texture of the writing and the large outlines of the form are truly dramatic. And I wish to suggest that his ideas of form and of techniques of presentation throw at least as much light upon drama as upon fiction.</p>
+
+        <p>The critical prefaces have been carefully studied by Joseph Warren Beach, Percy Lubbock, R. P. Blackmur, and others with whose work I am less familiar. Thanks to their work many of James&rsquo;s technical notions have become generally available. In the following notes I have taken some of the ideas, and indicated how they might be applied to drama, and what basic conceptions of dramatic form they constitute.</p>
+
+        <h3>&ldquo;Picture and Scene&rdquo;</h3>
+
+        <p>Percy Lubbock makes much of the distinction between &ldquo;picture&rdquo; and &ldquo;scene&rdquo; which James mentions several times in his prefaces. He writes,</p>
+
+        <blockquote>
+            <p>It is the method of picture-making that enables a novelist to cover his great spaces of life and quantities of experience so much greater than any that can be brought within the acts of a play. . . . The limitation of drama is as obvious as its peculiar power. It is clear that if we wish to see an abundance and multitude of life we shall find it more readily and summarily by looking for an hour into a memory, a consciousness, than by merely watching the present events of an hour, however crowded. . . . But it needs a mind to create that vista.</p>
+        </blockquote>
+
+        <p>A novelist may and often does break down and tell all, while a writer for the stage never can. In this sense the novelist commands a resource not available to the dramatist. But this resource, so conceived, James disdained. He felt how easily it degenerated into mere formless loquacity. He preferred to dramatize the picture too, by viewing it through a consciousness different from his own, that of a character in the drama. The method is that of the dramatist, and if you look at a drama which contains &ldquo;great spaces of life and quantities of experience&rdquo; you can see the dramatist employing it. Behind the chief characters in <em>Antony and Cleopatra</em>, <em>Troilus and Cressida</em>, <em>King Lear</em>, these great spaces extend, because the characters are aware of them. In the two hours of playing time of <em>Ghosts</em> Ibsen makes us feel many years of Mrs. Alving&rsquo;s life and experience by making the characters in their various ways feel them. Mr. Lubbock&rsquo;s analysis suffers throughout from his failure to understand the nature and scope of the stage medium. The actors are not there only to illustrate for us the facts of the story, but through their make-believe to create an imagined world for the eye of the mind to dwell upon. Good dramatic writing, like good acting, owes much of its quality to the establishment of these imagined perspectives behind and beyond the little figures on the boards.</p>
+
+        <h3>The Fine Intelligence as &ldquo;Reflector&rdquo; and as Compositional Center</h3>
+
+        <p>James almost invariably used a fine intelligence to give us the clue to the other characters and to the issues and values of his dramas. It had to be a fine intelligence if it was to perceive what James wanted his audience to perceive through it, yet it could not be James himself, for then James would have been telling us <em>about</em> his subject instead of presenting it to us directly. The problem and the solution both belong to drama, and good drama is full of Jamesian &ldquo;reflectors.&rdquo; Enobarbus in <em>Antony and Cleopatra</em> is one. In the first three acts he interprets Antony and Cleopatra for us. We come to depend on him for the clue even when we have the chief characters in the flesh before us. This function is very clear in scene 13 of act 3, when Cleopatra receives Caesar&rsquo;s emissary and Antony has him whipped. Enobarbus not only shows us what to think of Antony and Cleopatra at various moments, he also sums up the impression of the whole scene for us several times and at the end. It is not too much to say that the scene is composed and pulled together for us in Enobarbus&rsquo; consciousness of it. Shakespeare thus uses Enobarbus both as &ldquo;reflector&rdquo; and as &ldquo;compositional center&rdquo; for this scene.</p>
+
+        <p>These notions of the reflector, and of the fine intelligence as the center of composition, are as useful in the analysis of Chekhov&rsquo;s or Congreve&rsquo;s plays as in the analysis of Shakespeare&rsquo;s. The practitioners of &ldquo;well-made&rdquo; drama, who usually conceive their subjects in terms of a single narrative line or a monolinear argument, the demonstration of a thesis, do not need the notion of the reflector. Any dramatist who conceives his subject in the round, capable of being looked at from various angles, needs and uses these devices. But it was James who defined them clearly.</p>
+
+        <h3>Situations as Lamps or Reflectors</h3>
+
+        <p>James describes the structure of <em>The Awkward Age</em> as follows:</p>
+
+        <blockquote>
+            <p>I drew on a sheet of paper . . . the neat figure of a circle consisting of a number of small rounds disposed at equal distance about a central object. The central object was my situation, my subject in itself to which the thing would owe its title, and the small rounds represented so many distinct lamps, as I liked to call them, the function of each of which would be to light with all due intensity one of its aspects. . . . Each of my &ldquo;lamps&rdquo; would be the light of a single &ldquo;social occasion&rdquo; in the history and intercourse of the characters concerned and would bring out to the full the latent color of the scene in question and cause it to illustrate, to the last drop, its bearing on my theme.</p>
+        </blockquote>
+
+        <p>In this passage the Jamesian conception of the &ldquo;round&rdquo; subject is very clear. He thinks of it as a metaphysical or moral entity rather than as a sequence of events. It is, I think, an Action in Aristotle&rsquo;s sense of the word. The distinction between plot and action thus reappears in James&rsquo;s analysis of form, and he is then able to think of the story, or plot or arrangement of incidents as a means to an end: the end of revealing the Action which is the subject of the play.</p>
+
+        <p>He points out that the &ldquo;occasions&rdquo; which make up <em>The Awkward Age</em> are in effect the acts of a play. They are very much like the acts of a Chekhov play. The reviewers of Chekhov have not yet seen that his plays are composed, not as stories, in which the chief point of interest is to find out &ldquo;what happened,&rdquo; but as a series of social occasions each of which throws its light upon the central subject. <em>The Cherry Orchard</em>, for instance, has a minimum of story in this sense, but a maximum of subject. The first act is the occasion of the return of Mme. Ranevsky&rsquo;s party to the Cherry Orchard; the second, a dilatory gathering on a warm evening; the third a rather hysterical party; the fourth, the departure of Ranevsky and her family. Each of these occasions illumines a facet of the subject, or action, &ldquo;to possess the Cherry Orchard.&rdquo; By the time we are through we have seen this action from various angles and on various levels; and the completing of this vision, rather than the overt event which ends the little thread of story, completes for us the play.</p>
+
+        <p>There is of course no contradiction between the use of an intelligence as reflector and the use of the situation as reflector. The intelligent character reflects the occasion, and the occasion throws its light upon the central subject.</p>
+
+        <h3>Jamesian Suspense</h3>
+
+        <p>Though the story is never the main interest in James&rsquo;s late works, they are very carefully composed in the dimension of time, having a beginning, a development, and an end in temporal succession. As Joseph Warren Beach points out, this order is that of the reader&rsquo;s developing awareness of the subject. We are finding out, not what happened, but what the true values in the situation are. And this process of discovery is itself dramatized. Sometimes it is dramatized for us in the growing awareness of the fine intelligence at the center of the composition. Very often the development of the investigation is controlled by switching from one intelligence to another. And in addition we are led from one social occasion or scene to another, whose succession (as well as their relation to the central subject) is significant.</p>
+
+        <p>If you once grant at all the interest of the subject, the investigation becomes a very intense and exciting project. Mr. Beach aptly compares this suspense to that of a well-planned detective story, which is an investigation on another level. But for some reason Mr. Beach seems to doubt that it is &ldquo;dramatic.&rdquo;</p>
+
+        <p>There are many familiar dramas in which this type of suspense (once James has made us aware of it) may be demonstrated. It is very instructive, for example, to notice how in <em>Hamlet</em> our sense of the evil in Denmark is made to develop as we feel it now from the point of view of the soldiers, now from the point of view of the King, now from the point of view of Polonius, and now from the point of view of Hamlet himself. Perhaps the clearest example is <em>Oedipus the King</em>. This drama is primarily an investigation; and though it has the swift movement and the &ldquo;plot interest&rdquo; of the mystery story, it is also an investigation of the moral and metaphysical realities of Oedipus&rsquo; situation. These interest the chorus even more deeply than the question, Who killed Laius?</p>
+
+        <h3>James&rsquo;s Subject as a Static Composition</h3>
+
+        <p>When we have taken, in succession, the points of view of the various &ldquo;reflectors,&rdquo; when we have seen the central intelligence, on various &ldquo;occasions,&rdquo; complete its investigation, the drama is over, and the subject is revealed as a static composition. In <em>The Golden Bowl</em>, for instance, Maggie Verver is gradually revealed as the central intelligence. She understands, at length, herself and all the other characters in relation to the issues and the values of the action they have been through&mdash;she gets at last the &ldquo;truth&rdquo; of their situation. In her awareness and then in the mind&rsquo;s eye of the reader the whole comes to rest, and is perceived as motionless, like the composed canvas of a painter.</p>
+
+        <p>Mr. Beach has described the composition of James&rsquo;s later novels in terms like these. He concludes that James&rsquo;s subject is essentially plastic rather than narrative or dramatic. He thinks that the narrative movement is lost in these later novels; and though he feels that they are full of the sense of &ldquo;dramatic struggle&rdquo; he cannot quite explain to himself how, granted the static subject, drama can still be there. I should prefer to say that the late novels are narrative <em>and</em> dramatic <em>and</em> plastic. The heresy would be to insist on one aspect of their form to the exclusion of the others.</p>
+
+        <p>As for the painter, he also may compose with a temporal succession of perceptions in mind; he also has ways of guiding the eye of the spectator from element to element to the final &ldquo;stasis of aesthetic pleasure.&rdquo;</p>
+
+        <p>The notion of drama as a static composition is not popular with modern writers on the subject. Yet in what other terms are we to describe the full-stop, the final rest, with which a completely achieved drama ends? This moment or this aspect corresponds to the epiphany in Greek drama. In Euripides the epiphany is characteristically presented in plastic terms&mdash;an arrangement of properties and corpses, with a visible <em>deus ex machina</em>. In Sophocles, though there may be a significant grouping of the characters, in tableau form, at the end, the final synthesis is made in the mind of the chorus as it at last &ldquo;sees the truth.&rdquo;</p>
+
+        <h2>III</h2>
+
+        <p>It is easy to see, after the event, why James never found a public stage for his drama. The first answer is of course that the established and recognized public stage was too limited and too hard to crack. If you then go on to study the drama in his best novels, you see that this drama, by its very nature, postulates an audience which doesn&rsquo;t exist, so to speak, in public; and that it is founded upon James&rsquo;s anomalous and unique traditionalism, which is also far removed from the public consciousness.</p>
+
+        <p>James&rsquo;s drama is that of a fine, perceptive spirit which endeavors to secure for itself the best that the world has to offer: &ldquo;Life,&rdquo; at its sharpest point of intensity and awareness. This fine spirit is always dispossessed, even disembodied. There is usually some circumstance to explain its having been deprived of life&mdash;an American upbringing, poverty, a fatal but hidden disease. Some of James&rsquo;s critics have tried to explain this deprivation in Freudian terms, as the result of some disturbance in James&rsquo;s own emotional life. It is true that James keeps sexual passion at the periphery of his consciousness; but his drama is no more disembodied sexually than it is in a number of other ways. His attitude to sex may be a symptom rather than a cause, and one can believe that if he had had a place and a name, &ldquo;sex&rdquo; also would have been added unto him. However that may be, his fine spirits exist almost exclusively on the plane of moral awareness and activity.</p>
+
+        <p>To &ldquo;register&rdquo; at all, they require therefore a stage, a setting, a &ldquo;theatre&rdquo; which is based upon and embodies their awareness. James&rsquo;s fine spirits are usually American, but he hypostatizes the setting as &ldquo;Europe,&rdquo; as a drawing room, like Shaw&rsquo;s secure, feeling eternal (so that even the Shavian bandits drink tea at five)&mdash;but unlike Shaw&rsquo;s the epitome of culture and the heir of the ages. Its architectural setting, its costume and its custom, its taboos and its hierarchies, all of its forms, embody the values the Jamesian Americans are seeking, and above all the value of concrete embodiment itself. For James&rsquo;s people, who must exist on what he called the &ldquo;high plane,&rdquo; are extremely worldly, pagan, moral, and irreligious. The values they seek are traditional, but a tradition which no longer informed a society would be of no use to them whatever.</p>
+
+        <p>This drama is &ldquo;dramatic&rdquo; enough, even stagey, and James always felt it to be so. It is not subjective or private, being in the tradition of European moralists since the Greeks. But it is difficult to make its elements visible to a modern audience.</p>
+
+        <p>I have remarked that Chekhov was no more interested than James in the monolinear story or thesis, but saw his subject in the round; and that he evolved a form with many close analogies to James&rsquo;s. He also assumed a society&mdash;or rather (the distinction is important) found one&mdash;and stuck close to it. He was in this the physician rather than the moralist; he took the people, the themes, and the situations he found around him. The material of his art was what his audience was already prepared to recognize, whereas a large part of James&rsquo;s ingenuity is spent in making the elements of his composition visible at all. Chekhov&rsquo;s people are perhaps more lost than James&rsquo;s, but being lost in the flesh and the feelings, they are not lost to public view. If James had known Chekhov he would probably have felt that he had &ldquo;lapsed to passivity from the high plane.&rdquo;</p>
+
+        <p>James did know Ibsen&rsquo;s plays, and was among the first in London to recognize his mastery as a dramatist. The plays of Ibsen&rsquo;s naturalistic period start, like James&rsquo;s own comedies, with Scribe, and it is possible to read them as social theses or as well-constructed stories. But his plays are composed on a deeper level also. He is neither sociologist nor entertainer, but, like James, a moralist. James recognized this also, but with mixed feelings. In Ibsen&rsquo;s plays, he wrote, &ldquo;the lamp of the spirit burns as in tasteless parlors with the flame practically exposed.&rdquo; He may have been remembering the America he left, which must have been similar in many ways to Ibsen&rsquo;s Norway. James could no more accept Ibsen&rsquo;s Norway as real and ultimate than he could the America of the seventies. Ibsen&rsquo;s characters are not trying to realize a life of the spirit in any sort of traditional cultivated society; it is doubtful whether, in their gloomy quests, they envision the possibility of <em>any</em> &ldquo;life,&rdquo; and certainly they are unaware of a traditional wisdom that could have anything to say to them. James complains that Ibsen&rsquo;s dramas always end at the point where the true interest and the true comedy of things should begin. And I think one can see that if Rosmer and Rebecca, for example, had married under the eyes of a group of interested and intelligent friends, instead of jumping into the millrace together, a truly &ldquo;bristling&rdquo; Jamesian subject would have resulted. But at the same moment Ibsen would have lost his audience. The plays which do end on such a note, <em>The Lady from the Sea</em>, <em>Little Eyolf</em>, are still the least esteemed of all Ibsen&rsquo;s dramas.</p>
+
+        <p>Did James ever think that British society actually provided the setting and the awareness he needed? Probably not; certainly not for long&mdash;his early letters seem to show that clearly. He willingly admitted that his people were too intelligent and too gifted to be probable. Their ideal social intercourse was derived from James&rsquo;s experience of society, but eventually became almost independent of it. He seems to have been moving toward an unrealistic theatrical convention, based on the rules and the tensions of politeness; the kind of convention which makes possible a B&eacute;r&eacute;nice, a Hippolyte, an Alceste, a Millamant. Such a &ldquo;stage&rdquo; was a fundamental postulate of his inner life and of his art, and even in the semi-retirement of his last period he continued to live up to its ghostly urbanity and agility. It is this which makes his prose so entirely unlike that of Proust or Virginia Woolf. Though he left society, he clung to its values; and while Proust recorded the dissolution of the moral being, James, with his shadow-boxing, kept in excellent trim.</p>
+
+        <p>The drama that James knew did not survive the last war. The most interesting writers for the stage between 1918 and 1939&mdash;among whom I should include Yeats, Eliot, Cocteau, Obey, Lorca&mdash;start completely afresh. The influences of the Moscow Art Theatre, the Ballet, and the Music Hall, combine to produce a new conception of the theatrical medium. Not only nineteenth-century naturalism, but most European drama back through the seventeenth century, is explicitly rejected in favor of medieval farce, Greek tragedy, peasant rituals and entertainments. The new dramatists are likely to be interested in religion, in myth, and in types of symbolism designed to reach a popular audience. Most of them would I think approve of Cocteau&rsquo;s description of <em>po&eacute;sie de th&eacute;&acirc;tre</em> as like the cordage of a ship&mdash;a composition of large coarse elements easily perceptible at a distance. Their estrangement from the audience of before the war&mdash;if indeed it still exists&mdash;is complete. They neither ask for the support of the carriage trade, nor try, like James, to build a notion of the ideal cultivated spectator into their theatrical forms. The traditions and the symbols they like antedate the founding of the drawing-room.</p>
+
+        <p>It is not yet clear whether this strategy is any less desperate than James&rsquo;s. The vision they get of a drama speaking directly to the population in simple, ancient, fundamental terms, is perhaps a flattering illusion, like that of the mythical drowning man who sees his whole life before him at the moment of going under for the last time. Paris in the twenties is already far away, and we see now some of the dangers in the new line. One needs, I think, to place against Cocteau&rsquo;s theatrical virtuosity, and Eliot&rsquo;s abstract theological framework, and Lorca&rsquo;s luxuriant popular imagery, the Jamesian and classic conception of an Action, seen in the round, seen from many angles. James paid dearly for his position above the battle, but he found there some curiously universal technical concepts, useful in contexts he never dreamed of; and a conception of dramatic form which we still need if we are to see the drama of his time and ours in the right perspective.</p>
+    </article>
+
+    <script>
+        const toggle = document.getElementById('theme-toggle');
+        const icon = document.getElementById('theme-icon');
+
+        toggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+            toggle.title = isDark ? 'Modo Diurno' : 'Modo Nocturno';
+            toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Robert L. Caserio - The Story in It: The Wings of the Dove</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* =========================================
+           COLORES (Modo Diurno - International Klein Blue)
+           ========================================= */
+        :root {
+            --bg-body: #002FA7;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.88);
+            --text-muted: rgba(255, 255, 255, 0.6);
+            --border-color: rgba(255, 255, 255, 0.35);
+            --border-light: rgba(255, 255, 255, 0.15);
+            --fab-bg: #ffffff;
+            --fab-color: #002FA7;
+            --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+            --quote-border: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Modo Nocturno - Deep Navy Blue */
+        body.dark-mode {
+            --bg-body: #001233;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.85);
+            --text-muted: rgba(255, 255, 255, 0.5);
+            --border-color: rgba(255, 255, 255, 0.2);
+            --border-light: rgba(255, 255, 255, 0.1);
+            --fab-bg: #ffffff;
+            --fab-color: #001233;
+            --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+            --quote-border: rgba(255, 255, 255, 0.4);
+        }
+
+        /* =========================================
+           ESTILOS GENERALES
+           ========================================= */
+        * { transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease; }
+        
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            line-height: 1.75;
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 2em 1.5em 5em;
+            color: var(--text-primary);
+            background-color: var(--bg-body);
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 0.2em;
+            font-weight: normal;
+            letter-spacing: 0.05em;
+            color: var(--text-primary);
+        }
+
+        h2 {
+            font-size: 1.4em;
+            text-align: center;
+            margin-top: 2.5em;
+            margin-bottom: 1.5em;
+            font-weight: bold;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        h3 {
+            font-size: 1.1em;
+            text-align: center;
+            margin-top: 2.5em;
+            margin-bottom: 1em;
+            font-weight: bold;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        p {
+            text-align: justify;
+            margin-bottom: 1.2em;
+            text-indent: 1.5em;
+        }
+
+        p.no-indent { text-indent: 0; }
+
+        blockquote {
+            margin: 1.5em 2em;
+            padding-left: 1.5em;
+            border-left: 3px solid var(--quote-border);
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        blockquote p { text-indent: 0; margin-bottom: 0.8em; }
+
+        .poem {
+            margin: 1.5em 2em;
+            font-style: italic;
+            text-indent: 0;
+        }
+
+        .poem p {
+            text-indent: 0;
+            margin-bottom: 0.3em;
+            text-align: left;
+            padding-left: 2em;
+            text-indent: -2em;
+        }
+
+        em { font-style: italic; }
+
+        sup {
+            font-size: 0.75em;
+            vertical-align: super;
+            line-height: 0;
+        }
+
+        .page-number {
+            display: block;
+            text-align: center;
+            font-size: 0.8em;
+            color: var(--text-muted);
+            margin: 2em 0 1em 0;
+        }
+
+        .footnotes {
+            margin-top: 4em;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5em;
+            font-size: 0.9em;
+            color: var(--text-secondary);
+        }
+
+        .footnotes h3 {
+            text-align: left;
+            font-size: 1em;
+            margin-bottom: 1em;
+            text-transform: none;
+            letter-spacing: normal;
+            color: var(--text-primary);
+        }
+
+        .footnotes p {
+            text-align: left;
+            text-indent: -1.5em;
+            padding-left: 1.5em;
+            margin-bottom: 0.6em;
+            font-size: 0.9em;
+        }
+
+        .section-break {
+            text-align: center;
+            margin: 2.5em 0;
+            font-weight: bold;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.1em;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 2em;
+        }
+
+        .epigraph {
+            margin: 1.5em 2em 2.5em;
+            padding-left: 1.5em;
+            border-left: 3px solid var(--quote-border);
+            font-style: italic;
+            color: var(--text-secondary);
+            font-size: 0.95em;
+        }
+
+        .epigraph p {
+            text-indent: 0;
+            margin-bottom: 0.5em;
+            text-align: left;
+        }
+
+        .epigraph .attribution {
+            text-align: right;
+            font-style: normal;
+            font-size: 0.9em;
+            color: var(--text-muted);
+            margin-top: 0.5em;
+        }
+
+        .source-note {
+            text-align: center;
+            font-size: 0.85em;
+            color: var(--text-muted);
+            margin-bottom: 2em;
+            font-style: normal;
+        }
+
+        /* =========================================
+           BOTÓN FLOTANTE (Modo Nocturno)
+           ========================================= */
+        .fab-toggle {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background-color: var(--fab-bg);
+            color: var(--fab-color);
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease;
+            z-index: 1000;
+            outline: none;
+        }
+        .fab-toggle:hover { transform: scale(1.1); }
+        .fab-toggle:active { transform: scale(0.95); }
+        .fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            body { padding: 1.2em 1em 4em; }
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.1em; }
+            .fab-toggle { bottom: 16px; right: 16px; width: 50px; height: 50px; }
+            .fab-toggle .material-icons { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo Nocturno">
+        <i class="material-icons" id="theme-icon">dark_mode</i>
+    </button>
+
+    <article id="content">
+        <h1>Robert L. Caserio</h1>
+        <p class="subtitle">The Story in It:<br>The Wings of the Dove</p>
+
+        <div class="epigraph">
+            <p>The adventures of innocence have so often been the material of fiction? Yes. . . . That&rsquo;s exactly what the bored reader complains of. . . . What is it but . . . a question of interest, or, as people say, of the story? What&rsquo;s a situation undeveloped but a subject lost? If a relation stops, where&rsquo;s the story? If it doesn&rsquo;t stop, where&rsquo;s the innocence? It seems to me you must choose.</p>
+            <p class="attribution">&mdash;HENRY JAMES, &ldquo;The Story in It&rdquo;</p>
+            <p>The pleasure of handling an action (or, otherwise expressed, of a &ldquo;story&rdquo;) is, . . . for a storyteller, immense.</p>
+            <p class="attribution">&mdash;HENRY JAMES, Preface to <em>The Tragic Muse</em></p>
+        </div>
+
+        <p class="source-note">From <em>Plot, Story, and the Novel: From Dickens and Poe to the Modern Period</em>. &copy; 1979 by Princeton University Press.</p>
+
+        <p>The modern sense of plot ignores a crucial step in Melville&rsquo;s development by overlooking and undervaluing the impulse to plot willful political action in <em>White Jacket</em> and by canonizing <em>Moby-Dick</em> without paying attention to the narrative and moral meaning of Steelkilt. When we come to the case of Henry James, the modern sense of plot makes us overlook and undervalue even more; it excludes both an accurate view of James&rsquo;s work from <em>The Awkward Age</em> on and an accurate understanding of James&rsquo;s career as a revolution in moral and formal allegiances. It has been the assumption of modern criticism that James&rsquo;s novels, especially the last ones, contain scarcely any overt or externalized acts, and that they emblematize what <em>The Sense of the Past</em> calls &ldquo;the force of the stillness in which nothing happened.&rdquo; According to modern criticism stillness is informed, of course, by reflection, by intensely speculative consciousness, by narrative reasonings seeking detachment from concrete practice. Now it is arguable that consciousness is the only &ldquo;happening&rdquo; of consequence, that it is the force of the stillness in which everything happens. James certainly gives us reason to claim the relative insignificance of acts in relation to the effective intellectual, imaginative, or moral &ldquo;picturing&rdquo; of them; but my contention here is that increasingly with his maturity he gives us powerful reasons to claim otherwise. What happens as sheer act in Jamesian story enlarges in importance as James grows older, and the force of a reflective stillness, of a kind of narrative reason seeking to contain and inhibit action, turns out to be the characteristic mark of James&rsquo;s <em>earlier</em> work. Admittedly, the change is obscured not only by the modern sense of plot but by James himself&mdash;by the James of the New York edition, whose prefaces attempt to unify more than thirty years of work, to suppress transitions and discontinuities for the sake of an appearance of consistency. It was perhaps odd of James to make so much of consistency; but it has been more odd for criticism to have followed James&rsquo;s endeavor without raising any questions&mdash;until, that is, Laurence Holland began to point out the conflicts underneath the appearance. We need to designate and liberate these conflicts even more. What is at issue is the mature James&rsquo;s evergrowing conviction that the featuring of act in story is of positive importance not just to &ldquo;the novel&rdquo; but to any civilization worth the name.</p>
+
+        <p>The transformation we can see in James&rsquo;s career is both thematic and formal. He shifts his allegiances from subjects and persons who are valuably innocent by virtue of their freedom from plot, understood as intrigue and action, to those who are valuably experienced by commitment to the intriguing and plotting enactments of story. <em>The Awkward Age</em> is a turning point in James&rsquo;s career, for it represents a clear break with values and forms best represented by Christopher Newman and <em>The American</em>; by 1899 James is ready to begin attaching supreme value and distinction to the strenuous intriguers, not at all like Newman, who will be the heroes and heroines of <em>The Wings of the Dove</em> and <em>The Golden Bowl</em>. This change of allegiance and evaluation is the essential moral story in James&rsquo;s stories&mdash;the story the prefaces leave us to spell out: the story of a change in James&rsquo;s form complementing the change in his thematics and values.</p>
+
+        <p>To designate the narrative modes by which he works, James repeatedly uses four terms in the prefaces to the New York edition: <em>picture, drama, story, plot</em>. He appears to use these terms interchangeably, favoring each and all by turns, yet usually reserving his highest praise for <em>picture</em>, which, as we commonly understand it, means narrative and intellectual reasoning removed from action. But this praise is misleading and also nervous, for the late novels show not only more honor given to the experience and heroism of action but a complementary shift away from James&rsquo;s favoring of the aesthetic and ethical bearing of <em>picture</em>. Under the surface of the employment of the terms in the prefaces&mdash;and from time to time even on the surface&mdash;a battle is going on among the narrative modes; and I argue that ascendancy in the battle belongs finally to <em>plot</em> and <em>story</em>, understood as founded on action more than on <em>picture</em> and on the still, contemplative reflectiveness of pictorial composition.</p>
+
+        <p>James matters immensely because of this transformation in his allegiances. The change seems the result of an urgent social judgment to the effect that modern life not only inhibits adequate reflection but inhibits even more crucially the transformation of intelligent consciousness into the form of externalized, adventurous acts. To James the inhibition of goodness as a realizable and realized form of activity is a great human sadness; and by means of a new commitment to plot and story, the late James insists on the necessary conversion of the good glimpsed by him and his characters into a form of active life. As James comes to see them, both American and English social experience have almost broken down even the possibility of such a form. With the exception of Yeats, the contemporaries of James whom we have considered in chapter 6 [of <em>Plot, Story, and the Novel</em>] exemplify this breakdown, for they make prestigious a rebellious, amoral quietism, a dissociation of sensibility or human fineness from the creativity of action. The mature James is characterized by a stubborn struggle against this dissociation&mdash;one that much of his earlier great work actually honors.</p>
+
+        <p>The shift of allegiance occurs most clearly at the thematic level&mdash;in what is represented. But in the prefaces we can see clues to the shift in the usage of the terms designating the modes of representation. As James uses the word <em>picture</em>, it seems to mean a striking composition of mere appearances that begins (at least) to lend the appearances form and significance, especially by means of their reflection in a personal center of consciousness. A reflective narrative mode, which explains and amplifies both subjectively and objectively what goes on under the surface of appearances, <em>picture</em> appears to be analytic and contemplative narrative reasoning rather than dynamic presentation of acts. Unlike <em>picture</em>, <em>drama</em> (referred to also as the &ldquo;scenic&rdquo; mode) seems exclusively objective representation of appearances. If it is reflective or analytic, it presents the immediate surface simultaneous with analysis, it &ldquo;make[s] the presented occasion tell all its story itself, . . . shut up in its own presence.&rdquo; <em>Drama</em> seems to be a middle term between <em>picture, story</em>, and <em>plot</em>, capable of being synonymous with each of the others (except when <em>picture</em> is exclusively subjective). What, then, are <em>story</em> and <em>plot</em>? James uses them to suggest dynamism and development, the unsettling, uncomposed, and very possibly unreflective presence of will and of &ldquo;headlong,&rdquo; transformative agencies. He calls <em>story</em> &ldquo;action,&rdquo; does not&mdash;as the Russian Formalists do&mdash;distinguish it from <em>plot</em>, and comments on both honorifically by saying that &ldquo;story as such . . . is ever, obviously, the prime and precious thing.&rdquo;</p>
+
+        <p>Just how &ldquo;prime and precious&rdquo; is it? Such a comment is at odds with how, in the preface to <em>The Portrait of a Lady</em>, it is <em>picture</em> that looks prime and precious, although James ends the discussion of Isabel Archer&rsquo;s story by transubstantiating <em>picture</em> into the other modes. Outside of the prefaces, in the novels themselves, this conversion is not typical of James&rsquo;s mature practice of composition; but the play on the terms in regard to the early novel is instructive as a measure of what happens to the use of the modes later. James begins the discussion of <em>The Portrait of a Lady</em> with an organic metaphor: he calls the origin of the novel a germ, suggesting that the subject is a seed in life&rsquo;s garden and that its development is a spontaneous blossoming. James seems only to have to gather the blossom, not to make it grow by a plot, by an active, willful construction of relations. The germ is also, James says, a &ldquo;fictive picture&rdquo; of the heroine. The picture</p>
+
+        <blockquote>
+            <p>must have consisted not at all in any conceit of a &ldquo;plot,&rdquo; nefarious name, in any flash upon the fancy, of a set of relations, or in any of those situations, that by a logic of their own, immediately fall, for the fabulist, into movement.</p>
+        </blockquote>
+
+        <p>But what would Isabel Archer <em>do</em>, her author remembers wondering.</p>
+
+        <blockquote>
+            <p>Without her sense of [her adventures], her sense <em>for</em> them, they are next to nothing at all; but isn&rsquo;t the beauty and the difficulty just in showing their mystic conversion by that sense, conversion into the stuff of drama or, even more delightful word still, of &ldquo;story&rdquo;?</p>
+        </blockquote>
+
+        <p>Difficult as it is to keep hold of a process undergoing mystic conversions, does this mean in effect that the &ldquo;fictive picture&rdquo; remains &ldquo;picture,&rdquo; even though it also becomes &ldquo;drama&rdquo; and &ldquo;story&rdquo;? Apparently so, if one understands James to mean that Isabel considered as a fictive picture is an intense center of consciousness, a commanding sensibility. Her sensibility converts adventures&mdash;the equivalent in external deeds of mere appearances&mdash;into intellectually and ethically <em>significant</em> actions. In this instance James identifies significant action with drama and drama with story, calls them by the collective term &ldquo;portrait,&rdquo; and makes them significant by internalizing them.</p>
+
+        <p>Yet the interidentity of the terms, their transubstantiation into <em>picture</em>, true as it is for <em>The Portrait of a Lady</em>, is not true for all of James. In late James there is more adventure than his characters&rsquo; <em>sense</em> for it. The important question becomes, &ldquo;What will picture and plot <em>together</em> &lsquo;do&rsquo;?&rdquo; Late Jamesian story can be seen as the effort at a further conversion. It becomes the attempt to turn purely reflective consciousness (merely contemplative narrative reason) back into meaningful activity as a test and a consummation of <em>all</em> meaning and significance and not as only a <em>means</em> to significance. If plot, the ally of story, is &ldquo;nefarious,&rdquo; this is because it demands that consciousness act&mdash;and activity is threatening and dangerous. It unbalances and may even betray the insights of composed reflection. A <em>sense</em> for adventures does not guarantee that the adventurer will act out the story in the reflective narrative picture easily, honestly, cogently&mdash;or at all. Yet, for the later James, the enactment is necessary and supremely creative. Of course once the story is worked out and acted, it amounts to a new picture for the reader who contemplates it. And by means of picture, at the end of a tale James too may stand outside action rather than in it, containing activity within his pictorial frame. Yet the movement of story is less lucid than this transcendent stance. We sympathize with pictorial appreciativeness and lucidity, and need it. But would either reader or author be interested or moved if the activity of the characters and the story did not put lucidity and detachment under attack?</p>
+
+        <p>I have been arguing in this book that the ultimate test of significance in narrative reasoning is how significance withstands this attack and how it re-forms itself as action in terms of deed as well as of appreciation and thought. Viewed solely as speculative thought or appreciation, narrative intellectual and moral reasoning is a thematizing of experience that separates what happens from perspectives on what happens&mdash;a separation that I believe humbles narrative reason and dangerously separates signs from their referents. The young James saw in this separation only intellectual and moral richness, whereas the mature James comes to believe in a union of signs and referents with action, in a closer wedding of theme and plot; hence, in his later years James comes to favor plot and story, to think them more prime and precious than picture, even at the risk of having to allow the narrative modes to be at war with one another. He acknowledges the conflict explicitly: in the preface to <em>The Wings of the Dove</em>, he admits &ldquo;the odd inveteracy with which picture, at almost any turn, is jealous of drama and drama . . . suspicious of picture.&rdquo; It is not only suspicion but open conflict: &ldquo;Each baffles insidiously the other&rsquo;s ideal and eats round the edges of its position; each is too ready to say &lsquo;I can take the thing for &ldquo;done&rdquo; only when done in <em>my</em> way.&rsquo;&rdquo; Do plot and story also attempt a further insidious baffling of picture and even of drama? The question is important because James is talking about conflicts among presentational techniques, and yet he is also talking about more. Even &ldquo;drama&rdquo; can present the absence of action, but the battle James speaks of is ultimately a conflict over what is more privileged: a way of life characterized by reflective consciousness that is not expressed, or is violated, by action; or a way of life that features action, demands the realization of consciousness as act, and may even demand the temporary loss of clear consciousness for the sake of an act. The battle among the narrational modes is a battle between the ways of life on which the modes are ultimately based.</p>
+
+        <p>Although the prefaces name the conflict among the modes, they hide the way the conflict increasingly transforms the content of James&rsquo;s work. The James who writes <em>The Portrait of a Lady</em> does believe that a <em>sense</em> for adventure is greater than adventure; the James who writes <em>The Awkward Age</em> and the late novels thinks the adventure of action makes the most significant sense. If we look briefly at <em>The American</em>, <em>The Awkward Age</em>, and the stillborn experiment, <em>The Sense of the Past</em>, we can see more clearly how the transubstantiating of the terms does not remain possible for James except in the prefaces, how <em>picture</em> in his novels themselves gives way to the priority of <em>story</em> in thematic as well as in formal terms.</p>
+
+        <p>In the young James there is a characteristic identification of virtuous behavior with a denial of action. Indeed in his early work James insists that the creativity appropriate to Americans is located in their ability to keep free of deeds, in their aloofness from any temptation or provocation to enact plot. The American innocence and the American virtue is a sense for adventure that keeps adventure itself outside and at a distance, framed by a personal consciousness that is itself a shy romance, a subjective satisfaction in the intrigues of others. This kind of consciousness is a personification of Jamesian <em>picture</em>, and an examination of James&rsquo;s character, Christopher Newman, offers much insight into this particular pictorial mode of narration.</p>
+
+        <p>The crisis in <em>The American</em> turns on what Newman will make of the Dickensian plot and intrigue revealed to him as the true history of the Bellegardes. How can Newman&rsquo;s picturing consciousness accommodate itself to the dynamic twists and turns of action initiated by the Bellegardes and written down in the narrative of their misdeeds, which their servant Mrs. Bread offers Newman? Newman first wants to expose the story, even if it is not true. He thinks this will force the family to sanction his marriage to Claire Bellegarde, who is being driven into a convent as a result of her older brother&rsquo;s tyrannical opposition to her wedding with the American. The first person to whom Newman decides to tell his story is a noble friend of the family. But as he sits in this duchess&rsquo;s drawing room, he feels more and more confused. He cannot fit his story anywhere into the conversation, and he abandons his intention: &ldquo;Whether or not the duchess would hear his story, he wouldn&rsquo;t tell it. Was he to sit there another half hour for the sake of exposing the Bellegardes? The Bellegardes be hanged!&rdquo; He drifts off to England, then back to America, all the while unsure about what he feels or believes. Hearing that Claire has taken her final vows, he rushes back to Paris, looking like a man &ldquo;with a plot in his head.&rdquo; Yet he does not know what to do, and at last a few moments in Notre Dame resolve him.</p>
+
+        <blockquote>
+            <p>Somewhere in his mind, a tight knot seemed to have loosened. He thought of the Bellegardes; he had almost forgotten them. He remembered them as people he had meant to do something to. He gave a groan as he remembered what he had meant to do; he was annoyed at having meant to do it; the bottom, suddenly, had fallen out of his revenge. Whether it was Christian charity or unregenerate good nature&mdash;what it was, in the background of his soul&mdash;I don&rsquo;t pretend to say; but Newman&rsquo;s last thought was that of course he would let the Bellegardes go. If he had spoken it aloud he would have said that he didn&rsquo;t want to hurt them. He was ashamed of having wanted to hurt them. They had hurt him, but such things were really not his game.</p>
+        </blockquote>
+
+        <p>He burns the narrative Mrs. Bread has given him.</p>
+
+        <p>But it is not so much vengeance as the alliance of conscience with elaborate and determined plot that is not Newman&rsquo;s game. His &ldquo;unregenerate good nature&rdquo; finally resists his ability to extend the story of the Bellegardes by means of a plot in his own head. He cannot grasp the reality of their history as it has been revealed to him. To Newman all the Bellegardes have the look of adventurers, of characters who inhabit not life but complicated and fabulous tales foreign to American assumptions and experience. Newman cannot comprehend life as literally plotted or storied, and this in the end keeps him from realizing the image of happiness he had projected for himself. And he not only feels that decency and intrigue are incompatible but that even a decency that must be pursued by deliberate, intriguing action is not worth the trouble.</p>
+
+        <p>The James who writes <em>The American</em> also does not believe in intrigue&mdash;either as a fact of life or of novelistic form. Intrigue seems identical with action, and both the innocence of James&rsquo;s hero and the conviction of James himself testify to an incredulity about action: it seems to young James a convention of old-fashioned plot, or it is identical with aggression, deceit, and hurt. Like his character, James admits in his preface to <em>The American</em> his disbelief in his own plot, in the way things happen in the novel outside the hero&rsquo;s consciousness. &ldquo;The way [real] things happen is frankly not the way in which they are represented as having happened, in Paris, to my hero.&rdquo; The novel&rsquo;s interest thus lies both in the consciousness of the hero and in picture&mdash;in the portrait of a subjectivity that, like its author&rsquo;s, curiously, appreciatively, and at last antagonistically, pictures action but does not join or participate in it, except in a reflective stillness. For James the lasting value of the book resides in the &ldquo;more or less convincing image of his hero&rsquo;s center of consciousness&rdquo;:</p>
+
+        <blockquote>
+            <p>The picture of his consistency was all my undertaking. . . . If Newman was attaching enough, I must have argued, his tangle would be sensible enough; for the interest of everything is all that it is <em>his</em> vision, <em>his</em> conception, <em>his</em> interpretation.</p>
+        </blockquote>
+
+        <p>In <em>The American</em>, as in <em>The Portrait of a Lady</em>, story is transubstantiated into the prime and precious thing of picture.</p>
+
+        <p>But the man who can picture complex relations and who nevertheless will not enter the frame of the picture keeps James&rsquo;s attention but not his allegiance. Similarly, James retains picture as narrative mode, but commits himself to the primacy of action (or, otherwise expressed, of story). We can see this if we understand that one of Christopher Newman&rsquo;s last emanations is Vanderbank in <em>The Awkward Age</em>; considered as the American&rsquo;s heir, Vanderbank is a measure of James&rsquo;s later coldness towards the man who keeps himself puritanically clear of plot and plot&rsquo;s &ldquo;doings.&rdquo; Now &ldquo;the awkward age&rdquo; means not only late adolescence but the era James&rsquo;s novel describes. The modernity of this era is seen in its bad faith about standards and its inhibited and incoherent enactment of its impulses. The novel questions if there is any genuine or significant action or heroism available to the &ldquo;civilization&rdquo; of such an era. In this age can young persons realize a decent and fruitful maturity? The vehicles of James&rsquo;s questionings are Longdon, who belongs to an earlier and supposedly better age; Nanda Brookenham, one of the young who feels the need of a life other than that which modern society offers her; and Vanderbank, a young man whose smooth intelligence, self-possession, and glamour have a sinister edge, but who seems to represent the best distillation of the era. Nanda tries to save her friend Mitchett from the indeterminacy of modern values by advising him to marry Aggie, a girl brought up in old-fashioned seclusion and enforced innocence by a modern noblewoman who hardly practices the virtue she preaches to her ward. The marriage is a failure because as a wife the girl shows herself as deceitful as her guardian. Longdon fails in turn to &ldquo;save&rdquo; Vanderbank, the young man Nanda loves, by trying to arrange for him a marriage with Nanda free from financial obstacles. In the end Vanderbank rejects Nanda and Longdon&rsquo;s offer, apparently because he does not love the girl enough. But he also may not want to marry her because of the studied humaneness she has adopted from Longdon and has applied with such bad results in the case of Mitchett. The implication of Vanderbank&rsquo;s point of view is that a modern person cannot free himself from all his compromises by returning to expressions of human goodness (Nanda&rsquo;s aid to Mitchett is a kind of outdated Dickensian rescue attempt) that have lost their practicability.</p>
+
+        <p>So for Vanderbank there is left finally only a kind of detached, lucid endurance of the age, a lucidity that is modern especially because it is inactive and, in its opposition to the doings of Longdon and Nanda, even opposed to action. The novel begins with Vanderbank comparing a photograph of Lady Julia, symbol of an outmoded form of human goodness, with a photograph of Nanda, symbol of the goodness that must find and enact a modern form for itself. He ends the same way, clinging to the clarity of his pictorial comparisons and appreciations, thematizing experience, having an imaginative sense for it, but making and keeping separate his fullness of speculation and his poverty of deed. Van&rsquo;s development is to only know more certainly, at last, how woefully inept Nanda and Longdon have been in their attempts to put their contemplative images of goodness to work in the world.</p>
+
+        <p>Yet unmistakably James admires Longdon and Nanda more than Vanderbank. For James, at this time in his career, it is better to be inept (even if this is the price of &ldquo;doing&rdquo;) than to be perfect as a reflector. Narrative intellectual and moral reasonings must be attached to active practice. In many of the prefaces James admits his own ineptitude but with a kind of stoic pride, for it is the result of willfully making experience tell as action and as story, not just as picture. By adopting Nanda, Longdon risks an active marriage of past values and a decent&mdash;even if compromised&mdash;modern humanity. And in so doing he acts to create a community of past and present ways of feeling and acting, even though he recognizes that &ldquo;everything&rsquo;s different from what it used to be.&rdquo; There is an irony in Vanderbank&rsquo;s refusal to marry Nanda: because Nanda has been exposed to the knowing sophistication and promiscuity of &ldquo;the age,&rdquo; Vanderbank considers her unacceptably prepared for marriage, but if Vanderbank thinks this way, then he&mdash;rather than Longdon&mdash;turns out to be puritanical and nostalgic, even sentimental, about the past. And at the same time his appreciative realization that everything has changed is tainted by his refusal to attempt or to execute a further transformation. For the social and historical change that has created &ldquo;the age&rdquo; is not humanly satisfying. &ldquo;What comes out, on reflection&rdquo; for both Longdon and Nanda is that something must be done about this change, that they must enact a further change; whereas Vanderbank refuses commitment to anything but the reflective comprehension of change.</p>
+
+        <p>Vanderbank&rsquo;s commitment is not James&rsquo;s. His withdrawal from action, his appreciativeness of the &ldquo;doings&rdquo; of <em>others</em>&mdash;that quality inherited from Newman&mdash;is, as his name keeps telling us, a vanity. In their final alliance Nanda and Longdon are a hope that creative action is not, as Van would have it, &ldquo;long done.&rdquo; James admires even Nanda&rsquo;s mother, Mrs. Brookenham, who in her own insistently willful intriguing is more creative than Vanderbank. And although the other characters call Vanderbank a &ldquo;sacred terror,&rdquo; his glamour and power may be &ldquo;the force of stillness in which nothing happens.&rdquo; In Christopher Newman, James had seen the force of stillness as a redemptive human and American virtue; in Vanderbank he sees it as both fine and stagnantly quiescent. But its quiescence cancels its fineness. Such men as Vanderbank leave the social and historical world mired in confusion, and they are sadly inactive in the face of its incoherence. In <em>The American</em> the intriguing and plotting characters had been the symptoms and agents of social evil, the antagonists of goodness and of passive decency. By the time of <em>The Awkward Age</em> James&rsquo;s world is not so neatly divided. He relocates his hope for a new moral and social order in the agents and agency of plot.</p>
+
+        <p>Now it is possible that in <em>The Sense of the Past</em> (started in 1900 and then not resumed until World War I) James wanted to reverse his new emphasis and essay a novel in which his narrative modes would once again be personified and interidentified by felicitous mystic conversions as they had been in <em>The Portrait of a Lady</em>. But it is also possible that the novel remained&mdash;and remains&mdash;an odd fragment because James could no longer believe in the necessity or value of the transformation. The novel&rsquo;s hero, the historian Ralph Pendrel, loves Aurora Coyne, who is likened to a Renaissance portrait and who refuses Ralph&rsquo;s suit because she wants to marry a man of action. Ralph&rsquo;s success as an historian has arisen from his ability to render intensely the pictorial tone and feel of things past and not from his ability to narrate past deeds, events, and adventures. As he himself says, &ldquo;I don&rsquo;t know what anyone is who leads the life of action.&rdquo; He then literally slips back into the past by means of becoming the man in a Regency portrait he inherits. What first entranced him in this picture, what &ldquo;kept him on and on,&rdquo; &ldquo;was precisely the force of the stillness in which nothing happened.&rdquo;</p>
+
+        <p>The projected ending of the novel seems to have been tailored to convince both Aurora and the reader that for a modern man &ldquo;the life of action&rdquo; finds its equivalent in picture. By becoming the figure in the portrait, Ralph becomes what Aurora wants: a man who has experienced &ldquo;the prodigy of . . . adventure.&rdquo; Story and plot, action and adventure are thus again made synonymous with a picture; moreover, Ralph&rsquo;s moral fineness is projected as the fruit of modernity&rsquo;s denial of the importance of action in Aurora&rsquo;s sense of the word. And yet, even <em>The Sense of the Past</em> stirs up contradictions of the formal identities James had especially cultivated in his earlier work and seems to have wanted to cultivate once more. Pendrel was to have been rescued from entrapment in the past by the <em>strenuous and active doing</em> of both his Regency sweetheart&mdash;a double of Aurora&mdash;and Aurora herself. The picture would have been in some way damning, after all; so we can see that in <em>The Sense of the Past</em> James&rsquo;s mystic conversions are not working as they used to.</p>
+
+        <p>If we turn to a close reading of <em>The Wings of the Dove</em>, we can especially observe how the conflict of the narrative modes is both technical and thematic and how the primacy of contemplative picture gives way in later James to the priority of story and action. In this novel of 1902 James makes <em>picture</em>, albeit with one exception, almost synonymous with <em>unreliable</em> consciousness, and he dramatizes the moral maturation of his hero as his yielding of reflection to the need for willful action. &ldquo;Have you seen the picture in the house, the beautiful one that&rsquo;s so like you?&rdquo; With this question, in the novel&rsquo;s first self-reflexive use of picture, Lord Mark brings Milly Theale face to face with what he thinks of as her double, a Bronzino portrait. Milly bursts into tears. In the picture</p>
+
+        <blockquote>
+            <p>the lady in question . . . was a very great personage&mdash;only unaccompanied by a joy. And she was dead, dead, dead. Milly recognized her exactly in words that had nothing to do with her. &ldquo;I shall never be better than this.&rdquo;</p>
+        </blockquote>
+
+        <p>Does Milly recognize the Bronzino &ldquo;in words that had nothing to do with&rdquo; its subject because she thinks that she herself will never be better than dead, will always be &ldquo;unaccompanied by a joy&rdquo;? What Milly, still facing the portrait, thinks and says after her tears is unclear to the reader and to Milly&rsquo;s interlocuter, Mark. Apparently Milly wants after all to resist recognition that the portrait is her double. Pressed by Mark to clarify her words of &ldquo;recognition,&rdquo; Milly says she will &ldquo;never be better&rdquo; than this particular day has made her feel. She is at a brilliant English house called Matcham, where the entire company has created for Milly &ldquo;a sort of magnificent maximum, the pink dawn of an apotheosis.&rdquo; The portrait has just become part of the &ldquo;maximum&rdquo; for her. But &ldquo;you&rsquo;re a pair,&rdquo; Lord Mark insists, stubbornly matching (at Matcham) portrait and lady. Surely Milly will admit the identity straightforwardly? But she resists: &ldquo;I don&rsquo;t know&mdash;one never knows one&rsquo;s self.&rdquo; When Kate Croy spots the resemblance and brings other viewers, Milly is doubly uneasy. &ldquo;Lady Aldershaw . . . looked at Milly quite as if Milly had been the Bronzino and the Bronzino only Milly.&rdquo;</p>
+
+        <p>The live creature does not like being mixed up with art. Moreover, she refuses to be identified with what she <em>appears</em> to be. Thematically <em>The Wings of the Dove</em> worries over a number of problems implicit in the portrait episode. How is life to be made valuable? What is life&rsquo;s best form? How does one really have or hold onto &ldquo;life&rdquo; or &ldquo;self&rdquo;? But James goes out of his way here to put thematic issues in terms of &ldquo;picture,&rdquo; and this shows that his feelings about <em>picture</em> are as mixed as Milly&rsquo;s. Through the Bronzino scene the pictorial moment is shown to be an unreliable composition of appearances, a misleading still reflection. In its arranged fixity and richness the portrait does not stand for what Milly believes herself to be, nor for what she wants. Already suspicious that she is dying, Milly feels she can never be better than <em>alive</em>. The portrait&rsquo;s very lifelikeness is deceptive&mdash;its fineness is that of a still life, <em>hence</em> unaccompanied by joy.</p>
+
+        <p>After Matcham the moments of picture in <em>The Wings of the Dove</em> are suspect. Milly herself acts like Lady Aldershaw, mixing up alleged representations and copies of life with truth. One of the reasons the picture of &ldquo;Milly&rdquo; at Matcham is false is that it has no story in it: it does not represent its subject by what she does. In the National Gallery scene in Book Fifth, Milly will mistake a picture of Merton for the truth by ignoring how his story, what he is enacting, defines him more truthfully than what he appears to be. Milly is at the gallery to escape truth altogether, of course: at home her doctor is delivering a final diagnosis of her disease. At the museum she feels too weak to look at Titians and Turners, which we are to understand is also a blinking of truth&mdash;for she finds herself curious only about the ladies who copy the real pictures. She wants, suddenly, to lose herself, to escape the agony and burden of what she and James call &ldquo;the personal question.&rdquo; &ldquo;She should have been a lady-copyist&mdash;it met so the case. The case was the case of escape, of living under water.&rdquo;</p>
+
+        <p>She feels embarrassed by her interest in the copyists, but instead of turning to the authentic originals, she muses next over the hordes of American tourists in the gallery. When three American women stop in front of her, she watches and listens to their reaction to what she supposes is a portrait &ldquo;in the English style&rdquo; (as the women say) hanging at her back. She turns around to see that only Dutch genre paintings are there. The Americans have in fact been looking at Merton Densher. Just returned to England, Merton is at the gallery to meet with Kate, who as suddenly and surprisingly as Merton appears in Milly&rsquo;s line of vision. How, Milly is frightened and anxious to know, is this mysterious composition, this living picture, to be read? Surely the sheer visibility of appearances is all or almost all of the story.</p>
+
+        <blockquote>
+            <p>Little by little indeed, under the vividness of Kate&rsquo;s behavior, the probabilities fell back into their order. Merton Densher was in love, and Kate couldn&rsquo;t help it&mdash;could only be sorry and kind: wouldn&rsquo;t that, without wild flurries, cover everything? Milly at all events tried it as a cover, tried it hard.</p>
+        </blockquote>
+
+        <p>She asks herself too&mdash;the question acting as part of the cover&mdash;if Merton will have changed since her meeting with him in America. But the picture is deceptively indefinite; it can be read any way the individual desires. So Milly</p>
+
+        <blockquote>
+            <p>was to see her question itself simply go to pieces. She couldn&rsquo;t tell if he were different or not, and she didn&rsquo;t know nor care if <em>she</em> were: these things had ceased to matter in the light of the only thing she did know. This was that she liked him. . . . It was at this point that she saw . . . that all she had to do with was the sense of being there with him.</p>
+        </blockquote>
+
+        <p>Merton&rsquo;s pictorial presence (and Kate&rsquo;s behind his) &ldquo;covers everything.&rdquo; Nevertheless, the questions that go to pieces matter the most. Kate Croy is one of the lady-copyists, forging a substitute picture for the real thing. Milly takes Kate&rsquo;s portrait of Merton for the truth. She passes it on to Lord Mark, and struggles not to recognize her own lie. We see that there is a grave potential of falseness in the privileged pictorial moment. Moreover, whoever works to <em>fix</em> his life in the form of privileged picture, of a beatific still composition, is deceived. Meaningful as the pictorial moment is, it either has too many meanings or not enough. The dynamic of story must seize this moment and define and enact its truth. Picture confuses or inhibits the process of active movement and precise definition.</p>
+
+        <p>But, we might think, surely action can be no less a forgery, no less a deceiving &ldquo;act&rdquo; than the deceptions created by the eye and the mind&rsquo;s eye. However generally true this may be, in late James the act is featured as the means whereby uncertainties are cleared and treacheries are at last routed. In relation to the doubtful and ambiguous authority of picture, action is a superior authority, a final arbiter of truth. Moreover, mature Jamesian picture demands that action realize what consciousness sees, and that consciousness execute vision in the form of act. In Merton Densher, especially, we see the process whereby the truth and action of story&mdash;the supplementary execution of vision as deed&mdash;overcomes arbitrariness and stillness, even a treacherous passivity, in the purely contemplative or speculative aspect of picture.</p>
+
+        <p>At the end of the novel another picture proposes itself&mdash;this time to Merton&mdash;again as a magnificent maximum. Merton is shown fixating his life upon a final portrait of Milly, a positively sacred icon set up in his imagination. With Mrs. Lowder in attendance, he contemplates himself contemplating Milly:</p>
+
+        <blockquote>
+            <p>He saw a young man, far off, in a relation inconceivable, saw him hushed, passive, staying his breath, but half understanding, yet dimly conscious of something immense and holding himself, not to lose it, painfully together. The young man, at these moments, so seen was too distant and too strange for the right identity; and yet outside, afterwards, it was his own face Densher had known. . . . At present there, with Mrs. Lowder, he knew he had gathered all. . . . He had been, to his recovered sense, forgiven, dedicated, blessed; but this he couldn&rsquo;t coherently express. It would have required an explanation&mdash;fatal to Mrs. Lowder&rsquo;s faith in him&mdash;of the nature of Milly&rsquo;s wrong. So, as to the wonderful scene, they just stood at the door. They had the sense of the presence within&mdash;they felt the charged stillness; after which, with their association deepened by it, they turned together away.</p>
+        </blockquote>
+
+        <p>Merton has been mystically converted and possessed by a new version of the Bronzino, but the possession is disconcerting to him and to us. There is again, as at Matcham and the National Gallery, an unsettling arbitrariness in the pictorial phenomenon&mdash;and, as this passage emphasizes, an ethical unreliability. The stillness of the picture is charged with implicit demands that stillness be broken, that passivity of awareness be transformed into activity for the sake of a finer utterance of truth. Even Merton&rsquo;s identity, maintained by the force of the stillness in which nothing happens, is deceiving and deceived.</p>
+
+        <p>By what grace has Merton become supported and fixed by an image of exemplary human decency? The arbitrariness of pictorial significance&mdash;in spite of any tendency to sanctify them as absolutely reliable iconography&mdash;is reinforced if we remember that Merton, only a few months before the scene with Mrs. Lowder, had found himself&mdash;as the young man he now strains to recognize&mdash;experiencing apparently the same phenomenon when the presence and the image had been Kate&rsquo;s:</p>
+
+        <blockquote>
+            <p>What had come to pass within his walls lingered there as an obsession importunate to all his sense; it lived again, as a cluster of pleasant memories, at every hour and in every subject; it made everything but itself irrelevant and tasteless. It remained, in a word, a conscious, watchful presence, active on its own side, forever to be reckoned with, in face of which the effort at detachment was scarcely less futile than frivolous. Kate had come to him; . . . to stay, as people called it; and what survived of her . . . was something he couldn&rsquo;t have banished if he had wished. Luckily he didn&rsquo;t wish, even though there might be . . . almost a shade of the awful in so unqualified a consequence of his act. It had simply worked, his idea, the idea he had made her accept; and all erect before him, really covering the ground as far as he could see, was the fact of the gained success that this represented. It was, otherwise, but the fact of the idea as directly applied, as converted from a luminous conception into an historic truth.</p>
+        </blockquote>
+
+        <p>Merton had presented Kate with the sketch of a plot. When the sketch is realized according to his vision Merton is dazzled by the consonance of his &ldquo;luminous conception&rdquo; with &ldquo;historic truth.&rdquo; Picture, story, and plot here look identical. And yet Merton is deluded. Other forces are turning his historic truth back into an idea, less consequential as fact or act than he realizes. Kate&rsquo;s &ldquo;conscious, watchful presence, active on its own side&rdquo; seems to enjoin Merton from further &ldquo;working&rdquo;&mdash;another Jamesian synonym for plot. Further work may expel the presence filling Merton&rsquo;s room. It is expelled. <em>Milly&rsquo;s</em> &ldquo;conscious, watchful presence, active on its own side&rdquo; takes over. But although Milly&rsquo;s icon seems more blessed to Merton because it has not been made in the active, willful way he made Kate&rsquo;s, Merton is again mistaken. He must stop picturing Milly&rsquo;s goodness to himself in a way that keeps him still and passive. The sacred icon, the luminous conception whose values are ethical as well as pictorial, demands conversion once again into a form of action so that it may become a deed, and hence &ldquo;historic.&rdquo; This is one step further in the articulation of &ldquo;history&rdquo; than the one suggested as necessary [elsewhere] when it was argued that Carlyle, for example, could not make history feel actual to us if he did not picture it or frame it in terms of theory. James&rsquo;s Merton suggests that a theoretical formulation provides only the preliminary formulation of an act. The act is greater, that is, more valuable and more truthful and definite than the theory.</p>
+
+        <p>Fixed before the icon of Milly in his scene with Mrs. Lowder, Merton is adhering to theory, to <em>that</em> &ldquo;stillness&rdquo;; but his story will not end until he exchanges contemplation&mdash;purely speculative narrative reasoning about Milly&mdash;for an act that supplements speculation and is initiated by himself. How does Merton at last succeed as an actor, giving up the passivity, quiescence, and arbitrariness of relation with which the picturing consciousness in late James seems doubtfully intertwined? Merton&rsquo;s success in making Kate come to him is the first step of his transformation from passive watcher to active maker of the story that is his, Kate&rsquo;s, and Milly&rsquo;s; but no sooner has he taken the step, than he returns to passivity. At this point in the novel we are given a double sense of picture&mdash;reminded of its potential for truth as well as for falsity. By having consummated sexual relations with Kate, Merton makes himself more false to Milly; but &ldquo;it was only on reflection that the falseness came out.&rdquo; &ldquo;Reflection,&rdquo; the characteristic and fruit of picturing consciousness, is here a touchstone of truth and genuine conscience, and is being favored by James. But although the deed enacts the truth of Merton&rsquo;s relation to others, thus defining and mastering what reflection can bring out, reflective consciousness also resists such mastering definition. Consequently Merton can use reflection, in spite of what he undeniably does, to picture a false and happy composition of relations among Kate, Milly, and himself: Are they not each getting their just deserts? Everything is all right, that is&mdash;if Merton will just <em>see</em> it that way. And it helps Merton to see it that way if he does not commit himself to any further defining action, if he lets his action sink back into a felicitous composition of appearances.</p>
+
+        <blockquote>
+            <p>Action itself, of any sort, the right as well as the wrong&mdash;if the difference even survived&mdash;had heard . . . a vivid &ldquo;Hush!&rdquo; the injunction, from that moment, to keep intensely still. . . . His wisdom reduced itself&mdash;to the need again simply to be kind [to Milly]. That was the same as being still&mdash;as creating, studiously, the minimum of vibration. He felt himself, as he smoked, shut up to a room, on the wall of which something precious was too precariously hung. A false step would bring it down, and it must hang as long as possible.</p>
+        </blockquote>
+
+        <p>Is not the picture hanging here the falsely composed affair with Milly? Reflection is not bringing out the truth, after all, and the &ldquo;precious&rdquo; picture must be brought down, by the clarifying agency of what Merton will do.</p>
+
+        <p>But it is Mark who acts first, pushing Merton out of falsity and quiescence. The picture is brought down the moment Merton sees Mark, the evangel of truth, sitting behind the plate glass of Florian&rsquo;s caf&eacute; on the Piazza San Marco with the <em>Figaro</em> on his knee, with an unfinished drink on his table, and staring at a rococo wall. This is, curiously, a replacement of one picture by another; but now the picture is incontrovertibly &ldquo;true.&rdquo; The vision of Mark is the supreme pictorial moment in <em>The Wings of the Dove</em>, realizing once more James&rsquo;s old ambition to have a reflective moment tell the entire story for both the fictional character and the reader&mdash;a moment reconciling the presentational ideals of the narrative modes and conveying an absolute of truthful perception through the reconciliation. Seeing Mark, Merton takes two turns around the square in order to see him twice more. The terror of this appearance compels him to repeat the sight. Merton literally envisions a reversal of his fortune and his life, for he immediately understands that the truth of his relation to Milly has just been revealed to her. And simultaneously he knows he can no longer cover up from himself the truth of his relation to her. What happens to Merton here echoes James&rsquo;s remark in another preface:</p>
+
+        <blockquote>
+            <p>One never really chooses one&rsquo;s general range of vision: . . . this proves ever what it has <em>had</em> to be, this is one with the very turn one&rsquo;s life has taken; so that whatever it &ldquo;gives,&rdquo; . . . we regard very much as imposed and inevitable.</p>
+        </blockquote>
+
+        <p>In the scene in St. Mark&rsquo;s square, Merton&rsquo;s physical vision is unified with the fatal turn the reality and significance of his life have taken. And picture, drama, plot, and story are also unified because here Merton&rsquo;s apprehension of Mark&rsquo;s appearance does not have to await unfolding and testing by time, by action, or by &ldquo;work.&rdquo; The image is at once one with definitive historic truth.</p>
+
+        <p>Yet it is not enough for the late James&mdash;and for Merton&mdash;to &ldquo;see&rdquo; story this way. In the caf&eacute; window Mark&rsquo;s image is story, imposing itself visually as truth and picture. But story&rsquo;s form of &ldquo;doing&rdquo; is not identical with vision, either physical or speculative. What is anyone&mdash;what is Merton&mdash;to <em>do</em> with &ldquo;one&rsquo;s general range of vision?&rdquo; Consciousness, pervaded by awareness and &ldquo;vision,&rdquo; presses for a further conversion, a transformation into action, a making of a novel difference to itself through an externalizing of what it knows, in the form of an overt deed. When Merton hangs his precious picture of Milly on his wall, it too must be brought down&mdash;and by his own willful agency, not by passive acquiescence. For the revelation produced by Mark in Venice is again a passive reflective experience for Merton; so is his being held by Kate&rsquo;s design, then by Milly&rsquo;s icon, then by Milly&rsquo;s will.</p>
+
+        <p>In the last pages Densher struggles against passivity. Milly&rsquo;s will makes her an ally of Kate. It composes the fate of all three persons in&mdash;apparently&mdash;the happiest terms. But Merton refuses to accept this final composition. For him his internalized pictures of Milly, her will, and his will, do not match. The document from New York is a picturing of herself that Milly hands on to her survivors. Merton refuses to take this image for the truth: he rejects it as incompatible with his feelings and with goodness. Milly must be better than this. Merton says he will marry Kate on condition that they reject Milly&rsquo;s legacy. This condition subordinates and even annuls Kate&rsquo;s creative agency; it makes Merton the superior actor and intriguer. Merton will now do more than recognize he has cherished Milly and has regretted deceiving her. Recognition could be appreciative of Milly and could still be &ldquo;covered&rdquo; by acceptance of the legacy, but Merton&rsquo;s accession to intrigue is to interpret his sacred icon of Milly by enacting his sense of its value with a deed that wipes out Milly&rsquo;s last picture of herself as well as Kate&rsquo;s entire design. Densher does offer Kate the appearance of a marriage with him, but she knows as well as he the absolutely defining nature of the act rejecting the legacy.</p>
+
+        <p>What Densher wills and does, not merely what he appreciates, sees, or feels, makes definite Kate&rsquo;s judgment about his transformation. And Merton&rsquo;s act defining the transformation closes the novel, breaking him and Kate apart at the moment when Merton has become, as an <em>enactor</em> of a perception of values, most like Kate. His similarity to Kate at this point is of course easily available to detached pictorial consciousness, but the break with Kate might be said to underline how action tells more than the identities available to picture. And for the most proper appreciation of Merton&rsquo;s telling action, it is necessary to emphasize and reiterate that Merton contravenes Milly as well as Kate. For this means that Merton himself is picturing goodness without a clear, available, external model (Milly&rsquo;s will is obviously not one) and insisting that he make himself the model of this goodness by an action attempting concretely to define and embody the value he &ldquo;sees.&rdquo; What he sees may be only awkwardly embodied in action (just as in <em>The Awkward Age</em> Nanda and Longdon are awkward actors), but the vision <em>must</em> be followed through with a deed. Merton&rsquo;s final move against Milly and Kate features Merton as actor by cancelling the heroines&rsquo; self-picturings and their speculative designs. The novel ends its narrative reasoning emphatically as story.</p>
+
+        <p>Merton is thus not a Newman or a Vanderbank, withdrawing from action either for the sake of a superior quiet goodness and intelligence or for the sake of avoiding something compromising of or frustrating to lucidity in the form of action in the modern era. Merton&rsquo;s act is a sort of risk of moral creativity that neither Newman nor Vanderbank could manage. Moreover, the morality or goodness of Merton&rsquo;s action is complex: his deed does not simplify experience, nor does it make experience conform to innocence. The goodness or fineness in Milly to which Merton&rsquo;s act testifies is not Milly&rsquo;s innocence or kindness. It is as if James identifies Milly&rsquo;s goodness with an integrity of passionate desire in her, with what she wants most: we can assume that Merton feels this integrity betrayed by the self-effacing kindness of the will. Merton&rsquo;s own last willful action testifies to the identity of his self with his transformed <em>desire</em>: he has come to love Milly more than Kate. In Merton&rsquo;s case, as in Milly&rsquo;s, James ultimately portrays goodness as fidelity to one&rsquo;s desires and truth to the transformations they create. Merton&rsquo;s action thus does not instance an abstract morality of love or kindness but a goodness that is truth: truth to one&rsquo;s essential reality. Through Merton James is willing to risk the idea that such truth is preeminently moral, no matter what is the object of desire or the nature of the character to which the actor is morally true. Of course, neither the desire nor the essential nature and reality is seen by James as possessing integrity if it is not witnessed by and as action.</p>
+
+        <p>In this risky notion of what is good or moral we can see James&rsquo;s imagination of Merton, like his imagination of Kate, looking forward to the achieved apotheosis of intrigue and plot in <em>The Golden Bowl</em>, where the morality of action leaps beyond reflective pictorial composition and conventional good and evil, beyond easy discriminations of innocence and betrayal. And, in looking forward to <em>The Golden Bowl</em> and its princess, we must not underestimate &ldquo;princess&rdquo; Milly&rsquo;s address to goodness and to action. Milly matures by becoming an intriguer. How else can she really <em>have</em> her life: when she marches through Regent&rsquo;s Park, fresh with the news of her approaching death, she is as fiercely purposeful and grasping, as committed to an intrigue and action that leave behind conventional good and evil as Kate is. Thus, we have followed James&rsquo;s lead in involving his characters with his technical modes, for as we have seen in citations from <em>The Wings of the Dove</em>, the characters are often figured as live symbols of <em>picture</em> or of <em>story</em>, in such a way as to dramatize the differing weights and values of primarily contemplative or primarily active ways of life. But we must now ask, what is the good of Merton&rsquo;s and James&rsquo;s enactment of their version of good? And what is the good of James&rsquo;s cultivating a battle between ways of life that turns out to disrupt and even sacrifice his aesthetic transubstantiations of picture, drama, plot, and story?</p>
+
+        <p>The featuring of act in the late James is the result of his growing conviction that the inhibition of action, either by passive, still, and quiescent life or by a limitation upon action&rsquo;s intellectual and moral diversity and risk, is a blow to civilization, to the fortunes of human community. Since the shift in James&rsquo;s technical and thematic interests is so motivated, it is necessary to consider further what the sense of plot means to James in terms of the fate of society. The young James presents the withdrawal from plot and active intrigue as an American and social virtue, not merely as a private one. And beginning with <em>The Awkward Age</em>, the elder James shows the active intrigue of Longdon and Nanda as an honorable attempt to redeem a blighted social state. But in what way are the actions &ldquo;social&rdquo; whereby Kate or Merton execute their purposes and values? The fruit of Merton&rsquo;s break with Kate can only be satisfaction with his own will and act. It creates nothing happy or blessed for Kate; it contravenes Milly; it leaves him utterly alone. Kate&rsquo;s activity too has left her penniless and destitute. Is the fruit of action only desolation and solitude? No wonder human happiness and good, even human interrelation, may seem more available to contemplative narrative consciousness than to the consciousness that transforms &ldquo;picture&rdquo; into action. The active plotter is true to himself, but appears also to do himself harm and to do no one else any good.</p>
+
+        <p>Bleak as this prospect is, James&rsquo;s most valued late characters find that they must embrace it. Merton may create nothing for himself but an isolation, but paradoxically this represents hope for a decent form of human interrelation&mdash;even if the form can exist only as an act of hope. Human relation as it already exists is far from happy. Kate once exclaims to Milly with great pathos and envy: &ldquo;You&rsquo;re an outsider, independent and standing by yourself; you&rsquo;re not hideously relative to tiers and tiers of others.&rdquo; In many of the novels both early and late, James&rsquo;s characters begin their stories without sufficient independence. An excess of relationship, crowded with presences and possibilities of connection, demoralizes and even terrifies them. Kate&rsquo;s activity is finally sadder than Merton&rsquo;s, perhaps because she cannot think of alternatives to the closeness of relation that characterizes her family. She describes her &ldquo;narrow little family feeling&rdquo; as a &ldquo;small stupid-piety.&rdquo; She insists on honoring it, though, when &ldquo;face to face . . . with the bond of blood,&rdquo; she finds it neither uplifting nor sweet. Unfortunately she reproduces these relations among herself, Merton, Mrs. Lowder, and Milly. Her family feeling becomes a literally bloody bond. But if Milly becomes quickly relative&mdash;hideously so&mdash;to tiers and tiers of others, it is not just because Kate plots or &ldquo;works&rdquo; her into relation. Kate only uses the connection already existing between Milly and Merton.</p>
+
+        <p>All the characters of <em>The Wings of the Dove</em> are hideously relative to each other, through family ties, love, or financial need. The bonds of connection are almost instantaneous. Lord Mark and Milly agree not to be intimate, but, despite the agreement, Milly feels &ldquo;a perverse quickening of the relation [with Mark] to which she had been, in spite of herself, appointed.&rdquo; When Mark seems to exchange with Kate looks that comment on Milly, Milly feels the onset of a &ldquo;relation into which she was sinking.&rdquo; Indeed Milly&rsquo;s consciousness is &ldquo;crowded&rdquo; with &ldquo;the various signs of a relation,&rdquo; and this is a kind of suffocating terror to her. In the face of relation as crowded, bloody bond and passive sinking, the activity that achieves isolation (such as Merton&rsquo;s last act) is thus an honorable and creative check to the bondage of passive interrelations. In their place, the act puts a hope of interrelations that are freely created. This hope suggests what positive social relations, rather than &ldquo;sinking&rdquo; ones, would be.</p>
+
+        <p>Here is an interesting difference between James, his predecessors, and his Victorian contemporaries, for in Scott, Dickens, or Eliot the characters are originally isolated, and they plot in order to achieve a final close, even crowded, state of connection. But when the reverse happens in James, it is nevertheless motivated by social intention. Of course we are speaking not of a passive withdrawal of the individual from the crowd of relations but of an active plotted assertion against them. Not surprisingly, in the prefaces James talks of relations constituted by passive sinkings in terms of &ldquo;pictorial&rdquo; metaphor, so that it seems plot or story can be actions moving against relations associated with the contemplativeness of picture. For example, when James says that &ldquo;really, universally, relations stop nowhere,&rdquo; the famous sentence has an ominous side. The expansiveness promises the novelist and his characters unlimited developments, but it simultaneously threatens confusion and entrapment. Just after the famous sentence James says that connections and continuities frighten him. Even as &ldquo;a young embroiderer of the canvas of life,&rdquo; he &ldquo;soon began to work in terror, fairly, of the vast expanse&rdquo; of surface before him. Since James speaks here in terms of a pictorial figure, we may take him to mean that picture&rsquo;s relations stop nowhere. This fecundity is a hazard for James the mature storyteller. The immense quantity of such relations needs to be checked by plot, which for the sake of a significant action must sacrifice some of them. Otherwise, James will find himself in the situation of Milly, for whom, in a moment of picture, relations seem to &ldquo;stop nowhere&rdquo; and are a matter of passive sinking. With emotional and moral urgency, James intervenes against the passivity, and shows the characters of his later work doing the same for their lives and for others. Art demands, James says,</p>
+
+        <blockquote>
+            <p>a dire process of selection and comparison, of surrender and sacrifice. The very meaning of expertness is acquired courage to brace one&rsquo;s self for the cruel crisis from the moment one sees it grimly loom.</p>
+        </blockquote>
+
+        <p>Story, plot, action: these are other names for the &ldquo;dire process&rdquo; that brings the storyteller, his story, and his characters to an emphatic end. The relation stops somewhere, for good and for ill. If this process sacrifices possibilities of picture on the aesthetic and reflective level and passive communities of relationship on the ethical and social level, it is for the sake of &ldquo;the cruel crisis&rdquo; of action. For the late James, without active plot or doing, no form of goodness substantiates itself. This means a willful self-bracing, an acquired and even brutal courage on the actor&rsquo;s part. The price and the fruit of this is the radical alteration of the actor&rsquo;s social being, whether he is the novelist or the novelist&rsquo;s fictive agent. The possible or probable isolation that results <em>may</em> do the actor harm and may not&mdash;in practical and immediate terms&mdash;do much good for anyone else. Yet, as James sees it, his braced sacrificial deed can be the hope of any human and aesthetic state in which relation is characterized by only passively received givens or by a consciousness that can reflect upon its discriminations but cannot fulfill its narrative reasonings by enacting them.</p>
+
+        <p>There will be advocates of James who will resist this account of him, who will insist that the narrative modes receive no individual featuring or favor earlier or later in the career, and who will find in work as rich as James&rsquo;s numerous exceptions to my argument. But these advocates will sadly have little or no sense of what James believed was at stake in an American storyteller&rsquo;s relation to action at the beginning of this century. In <em>The American Scene</em>, we find James once again using the pictorial mode&mdash;this time in nonfiction&mdash;and we find him simultaneously perplexed and frustrated by &ldquo;scenic&rdquo; impressions. James decides that America has devoted itself to something like a parody of Jamesian picture: the country basks in monstrous self-reflections of its economic and physical grandeur; it insistently matches its identity with a portrait James at first assiduously scrutinizes and then rejects as uncreative and probably uncivilized. What damages America for James is that it resists story and history, that it denies the narrative motions of consciousness, especially insofar as those motions feature acts. In one sense, of course, James&rsquo;s America does favor action by the primacy it assigns to the &ldquo;work&rdquo; of business, but it inhibits and overlooks action of every other kind. In <em>The American Scene</em> James&rsquo;s prescription for American civilization is not contemplation or withdrawal from the action of business but a finer cultivation of will and adventure, a broadening of the possibilities for significant human deeds. Because James&rsquo;s recommendation has obvious bearing on his mature thoughts about story, <em>The American Scene</em> deserves attention here. And to focus the sense of plot especially brought out by this last of James&rsquo;s examinations of American culture, it will also be fruitful to take a long look backward at the attitudes towards the relations of picture and story, of contemplative composition or reflection and action in Nathaniel Hawthorne, the novelist who most inspired James&rsquo;s lifelong pictorial technique as well as the type of Jamesian &ldquo;drama&rdquo; represented by <em>The American</em>. Hawthorne&rsquo;s presence and achievement must inevitably frame a consideration of Jamesian story; and the older James&rsquo;s difference from Hawthorne is one of the best gauges of transformation in James&rsquo;s sense of the value of story and action for American civilization.</p>
+
+        <p>Jamesian <em>picture</em> seems to have sprung directly from <em>The House of the Seven Gables</em>, the drama of which concerns a hero whose photographic pictorial art is identified by Hawthorne with truth and quiescent speculation and with the absence of manipulatory intrigue and will, and whose storytelling art&mdash;in direct contrast&mdash;is identified with lying and coercion, with mastery of others, with plot and action considered as evil. Through Holgrave Hawthorne gives storytelling a nefarious name, for the photographer plots to put a mesmeric spell on Phoebe Pyncheon by reading her his story of Alice Pyncheon. He all but succeeds, and Hawthorne tells us that &ldquo;to a disposition like Holgrave&rsquo;s, at once speculative and active, there is no temptation so great as the opportunity of acquiring empire over the human spirit.&rdquo; Holgrave&rsquo;s kind of storytelling is this great temptation to acquire empire over the reader and the listener by spellbinding them with the tale&rsquo;s proximity to reality and by using the tale to incite action rather than reflection. Fortunately, we are made to think, Holgrave cedes his intriguing ambitions for the sake of Phoebe, who represents natural truth free of story&rsquo;s alleged magics and artifices. Hawthorne follows Holgrave&rsquo;s example. He deauthorizes the truth of his novel, insisting that the reader <em>not</em> suspend disbelief in the tale. It is not magic or metaphysical evil that <em>The House of the Seven Gables</em> attacks but fictive fabling, which according to Hawthorne curses experience by manipulating its shape and calling it truth. The legends of the house are spurious superstructures of plot and will. The novel&rsquo;s authentic story, its only real or important truth, lies in picturings available to natural light or to nonmanipulative reflective light. In a remarkably early instance of the modern sense of plot, Hawthorne juxtaposes his characters in a variety of combinations for the sake of speculative comparisons and contrasts. When these combinations of pictures bring the characters to the threshold of a fable or a plot, Hawthorne lingers and draws back, anxious <em>not</em> to fable but to remain on the threshold of story. Indeed what Hawthorne seems to want in <em>The House of the Seven Gables</em> is to replace story with Phoebe&rsquo;s &ldquo;easy and flexible charm of play,&rdquo; with &ldquo;a succession of kaleidoscopic pictures&rdquo; like those in Maule&rsquo;s Well, whose water provides &ldquo;a continually shifting apparition of quaint figures, vanishing too suddenly to be definable.&rdquo; Where plot is concerned, in <em>The House of the Seven Gables</em> Hawthorne has the detachment and the innocence of Newman confronting Mrs. Bread. And Hawthorne&rsquo;s emphasis upon Phoebe deauthorizes the life and fact of action: the heroine represents a suspension of will and act, a reproof to the prestige and definiteness of deeds.</p>
+
+        <p>Hawthorne&rsquo;s reluctance to master appearances by means of plot and his conversion of story and action into indefinite picture and play are taken up by James and made the essence of much of his career. But <em>The American Scene</em>, although it is nonfiction, shows as significantly great a difference from the narrative and moral values of James&rsquo;s master as <em>The Wings of the Dove</em> or <em>The Golden Bowl</em> show from the narrative and moral values of <em>Roderick Hudson</em> and <em>The American</em>. In <em>The American Scene</em> James&rsquo;s pictorial moments, although he has committed himself to their use, are all questionable: their lack of reliability makes him feel &ldquo;pricked by thorns,&rdquo; &ldquo;impotent,&rdquo; and &ldquo;poisoned.&rdquo; &ldquo;The lone visionary&rdquo; finds himself &ldquo;betrayed and arrested in the very act of vision.&rdquo; He finds some relief from the betrayals of picture, however,</p>
+
+        <blockquote>
+            <p>in that blest general drop of the immediate need for conclusions, or rather in that blest general feeling for the impossibility of them. . . . [The spectator] doesn&rsquo;t <em>know</em>, he can&rsquo;t <em>say</em>, before the facts, and he doesn&rsquo;t even want to know or say: . . . it is as if the syllables were too numerous to make a legible word. The <em>illegible</em> word, accordingly, the great inscrutable answer to questions, hangs in the vast American sky, to his imagination, as something fantastic and <em>abracadabrant</em>, belonging to no known language.</p>
+        </blockquote>
+
+        <p>But this relief is momentary, and creative initiative passes from reflective composition to willful making of relations. In the face of nonsense James must <em>make</em> sense. &ldquo;The high honour of the painter of life [is] always to <em>make</em> a sense,&rdquo; even when he surmises that &ldquo;the cluster of appearances can <em>have</em> no sense. . . . The last thing decently permitted him is to recognize incoherence&mdash;to recognize it, that is, as baffling.&rdquo; Does not Hawthorne&rsquo;s narrative playfulness allow experience to be recognized by the storyteller as baffling, even incoherent, in no way that he can correct? As a descendant of Holgrave, James cannot be content with bafflement; he wants &ldquo;empire&rdquo; over appearances. By emphasizing his own resistance to passive spectatorship, James shifts the vehicle of his analysis to willful exertion: &ldquo;the painter of life&rdquo; remains a visionary, but in response to the scene he becomes a purposefully shaping actor. James thus highlights one of his principal definitions of civilization: it is &ldquo;the capture of conceived values,&rdquo; and the means of realizing this capture are the enactments that supplement conceptions. Thus, the famous identification of the &ldquo;hotel-spirit&rdquo; as <em>the</em> modern American hallmark is not a condemnation on James&rsquo;s part: by the time he reaches Florida, he realizes that the American hotel is, after all, a &ldquo;capture&rdquo; of the &ldquo;inordinate desire for taste.&rdquo; The activity is all to the good, for it transforms the conception of taste into a definite and realized form. The only pathos of this desire, James explicitly says, is that it will &ldquo;remain a mere heartbreak to the historic muse&rdquo; by not transforming itself into a greater variety of realizations or enactments&mdash;especially by confining its &ldquo;capture&rdquo; to a pictorial and visible form of business activity:</p>
+
+        <blockquote>
+            <p>The human imagination, . . . the collective consciousness, in however empty an air, gasps for a relation, as intimate as possible, to something superior, something as central as possible, from which it may more or less have proceeded and round which its life may revolve&mdash;and its dim desire is always, I think, to do it justice, that this object or presence shall have had as much as possible an heroic or romantic association. But the difficulty is that in these later times . . . the heroic and romantic elements, even under the earliest rude stress, have been all too tragically obscure, belonged to smothered, unwritten, almost unconscious private history: so that the central something, the social <em>point de rep&eacute;re</em>, has had to be extemporised rather pitifully after the fact, and made to consist of the biggest hotel or the biggest common school, the biggest factory, the biggest newspaper office, or, for climax of desperation, the house of the biggest billionaire.</p>
+        </blockquote>
+
+        <p>The pictorial presences and grandeurs are mere blanks if they are cut loose from the diverse and complex actions and stories that make them. James is most shocked to note the national absence of reference to the Civil War. But although the War&rsquo;s increasing obscurity would be reversed by an American renewal of consciousness and reflection in relation to its past, James is also arguing that America has &ldquo;unmade&rdquo; the complex ideological and spiritual activity it represented. If there were room again for a spectrum of activities other than business and the pursuit of material grandeur, America might be able to imagine the War again, and might become more civilized by broadening the scope of action whereby values are captured. Now James, as I have said before, never gives up his pictorial mode; nor does he ever equate it with vulgar visibilities, as America equates her own self-picturings; nor does he even suggest that America can dispense with reflective self-awareness. But he wants to insist on both the value of the narrative realities that America has made secret and on the value of the stories and actions she inhibits or hides. What James calls &ldquo;the great social proposition&rdquo; is a matter of cultivated and captured diversity of character, and character itself is &ldquo;developed to visible fineness only by friction and discipline on a large scale, only by its having to reckon with a complexity of forces.&rdquo; True &ldquo;visible fineness&rdquo; develops out of the frictions and forces that in America belong to the &ldquo;smothered, unwritten, almost unconscious&rdquo; private histories, relations, and acts that it is the storyteller&rsquo;s vocation to designate and express.</p>
+
+        <p>James ends his book on modern America with an act of rejection that typifies the late Jamesian sense of plot: reflective consciousness must fulfill itself by a supplementary determined enactment. To collect pictures is not enough; what the pictures show must be matched by a deed. James&rsquo;s definitive deed is the break with America announced at the end of <em>The American Scene</em>. This is his proud and willful resolution of the meaning of the illegible word hanging in the vast American sky. Hawthorne, who far more than James is to be associated with ambiguities, would not have pressed the American questions to so definite and active a conclusion; but James <em>will</em> show his empire over the &ldquo;abracadabrants&rdquo; of experience. He shows his empire by breaking off his relation: &ldquo;one&rsquo;s supreme relation . . . was one&rsquo;s relation to one&rsquo;s country,&rdquo; but to carry on the hope of community implicit in that relation and to show his own personal capture of conceived values, James resolves the story of his ties by an act of rejection that undoes them. What this act constitutes in the actor is a form of the goodness we have seen in Merton: a complex integrity, discrimination, and enactment of desire. Civilization needs such resolving, constitutive acts, by means of even &ldquo;nefarious&rdquo; plots and plotters, since such resolutions create the stories&mdash;the testimonies of conceived <em>and enacted</em> discriminations&mdash;for which humanity hungers. Might I suggest in closing that James&rsquo;s surrender of American citizenship in 1915 is another measure of his final distance from Hawthorne and Christopher Newman, is an instance too of his late favoring of the story in complex intrigue and overt action rather than of the story in picture? In his change of nationality, whatever claims are to be made for its sheer convenience, James designates as his country the one whose novelistic tradition shows, at least in the last century, relatively more trust than America&rsquo;s in plot, story, and the representation of action.</p>
+    </article>
+
+    <script>
+        const toggle = document.getElementById('theme-toggle');
+        const icon = document.getElementById('theme-icon');
+
+        toggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+            toggle.title = isDark ? 'Modo Diurno' : 'Modo Nocturno';
+            toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+        });
+    </script>
+
+</body>
+</html>

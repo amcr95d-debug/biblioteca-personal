@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carren O. Kaston - Imagination and Desire in The Spoils of Poynton and What Maisie Knew</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* =========================================
+           COLORES (Modo Diurno - International Klein Blue)
+           ========================================= */
+        :root {
+            --bg-body: #002FA7;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.88);
+            --text-muted: rgba(255, 255, 255, 0.6);
+            --border-color: rgba(255, 255, 255, 0.35);
+            --border-light: rgba(255, 255, 255, 0.15);
+            --fab-bg: #ffffff;
+            --fab-color: #002FA7;
+            --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+            --quote-border: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Modo Nocturno - Deep Navy Blue */
+        body.dark-mode {
+            --bg-body: #001233;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.85);
+            --text-muted: rgba(255, 255, 255, 0.5);
+            --border-color: rgba(255, 255, 255, 0.2);
+            --border-light: rgba(255, 255, 255, 0.1);
+            --fab-bg: #ffffff;
+            --fab-color: #001233;
+            --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+            --quote-border: rgba(255, 255, 255, 0.4);
+        }
+
+        /* =========================================
+           ESTILOS GENERALES
+           ========================================= */
+        * { transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease; }
+        
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            line-height: 1.75;
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 2em 1.5em 5em;
+            color: var(--text-primary);
+            background-color: var(--bg-body);
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 0.2em;
+            font-weight: normal;
+            letter-spacing: 0.05em;
+            color: var(--text-primary);
+        }
+
+        h2 {
+            font-size: 1.4em;
+            text-align: center;
+            margin-top: 2.5em;
+            margin-bottom: 1.5em;
+            font-weight: bold;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        h3 {
+            font-size: 1.1em;
+            text-align: center;
+            margin-top: 2.5em;
+            margin-bottom: 1em;
+            font-weight: bold;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        p {
+            text-align: justify;
+            margin-bottom: 1.2em;
+            text-indent: 1.5em;
+        }
+
+        p.no-indent { text-indent: 0; }
+
+        blockquote {
+            margin: 1.5em 2em;
+            padding-left: 1.5em;
+            border-left: 3px solid var(--quote-border);
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        blockquote p { text-indent: 0; margin-bottom: 0.8em; }
+
+        .poem {
+            margin: 1.5em 2em;
+            font-style: italic;
+            text-indent: 0;
+        }
+
+        .poem p {
+            text-indent: 0;
+            margin-bottom: 0.3em;
+            text-align: left;
+            padding-left: 2em;
+            text-indent: -2em;
+        }
+
+        em { font-style: italic; }
+
+        sup {
+            font-size: 0.75em;
+            vertical-align: super;
+            line-height: 0;
+        }
+
+        .page-number {
+            display: block;
+            text-align: center;
+            font-size: 0.8em;
+            color: var(--text-muted);
+            margin: 2em 0 1em 0;
+        }
+
+        .footnotes {
+            margin-top: 4em;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5em;
+            font-size: 0.9em;
+            color: var(--text-secondary);
+        }
+
+        .footnotes h3 {
+            text-align: left;
+            font-size: 1em;
+            margin-bottom: 1em;
+            text-transform: none;
+            letter-spacing: normal;
+            color: var(--text-primary);
+        }
+
+        .footnotes p {
+            text-align: left;
+            text-indent: -1.5em;
+            padding-left: 1.5em;
+            margin-bottom: 0.6em;
+            font-size: 0.9em;
+        }
+
+        .section-break {
+            text-align: center;
+            margin: 2.5em 0;
+            font-weight: bold;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.1em;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 2em;
+        }
+
+        .source-note {
+            text-align: center;
+            font-size: 0.85em;
+            color: var(--text-muted);
+            margin-bottom: 2em;
+            font-style: normal;
+        }
+
+        /* =========================================
+           BOTÓN FLOTANTE (Modo Nocturno)
+           ========================================= */
+        .fab-toggle {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background-color: var(--fab-bg);
+            color: var(--fab-color);
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease;
+            z-index: 1000;
+            outline: none;
+        }
+        .fab-toggle:hover { transform: scale(1.1); }
+        .fab-toggle:active { transform: scale(0.95); }
+        .fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            body { padding: 1.2em 1em 4em; }
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.1em; }
+            .fab-toggle { bottom: 16px; right: 16px; width: 50px; height: 50px; }
+            .fab-toggle .material-icons { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo Nocturno">
+        <i class="material-icons" id="theme-icon">dark_mode</i>
+    </button>
+
+    <article id="content">
+        <h1>Carren O. Kaston</h1>
+        <p class="subtitle">Imagination and Desire<br>in <em>The Spoils of Poynton</em><br>and <em>What Maisie Knew</em></p>
+        <p class="source-note">From <em>Imagination and Desire in the Novels of Henry James</em>. &copy; 1984 by Rutgers, The State University. Rutgers University Press, 1984.</p>
+
+        <p>Although James&rsquo;s literary commitments are anchored in social and psychological realism and Emerson, in contrast, is essentially a mystic, Emerson&rsquo;s image of the self as a transparent eyeball provides a clarifying context for James&rsquo;s work with the character of consciousness. Emerson&rsquo;s eyeball is an image of self-transcendence; the boundaries that are ordinarily felt to separate the self from the world, the &ldquo;I,&rdquo; or eye, from what it sees, are dissolved when Emerson says, &ldquo;I am nothing. I see all. The currents of the Universal Being circulate through me&rdquo; (<em>Nature, Addresses, and Lectures</em>). The particular self is transcended by taking into itself the world outside of it. James created a group of characters whose distinctive feature is a similar ability to transcend the self. He pointed to this achievement, which came to fruition in <em>The Spoils of Poynton</em> in the character of Fleda Vetch, when he commented on the character of Rowland Mallet in <em>Roderick Hudson</em>: &ldquo;What happened to him was above all to feel certain things happening to others, to Roderick, to Christina, to Mary Garland, to Mrs. Hudson, to the Cavaliere, to the Prince.&rdquo; When what happens to others is felt as happening to the self, social and psychological realities touch borders with the mystical. But James&rsquo;s characters transfer the ground of self-transcendence from nature, where Emerson located it, to society. Consciousness then takes into itself principally other people: not the natural landscape, but the social one. The ramifications of this change for the identity and autonomy of the self in James are enormous.</p>
+
+        <p>James&rsquo;s characters of consciousness live in a world made vivid by the social and psychological risks implicit in Emersonian Transcendentalism, though Emerson took care to defend consciousness from the consequences of those risks by situating it apart from society, in nature. Quentin Anderson, Richard Poirier, and Tony Tanner, who productively place Emerson at the center of America&rsquo;s literary tradition, present the problems of an American visionary self (Poirier locates it specifically in Emerson&rsquo;s eyeball image) that cannot adequately represent itself in or grapple with the social, material world. Formulating the continuities between Emerson and James, they see James as having attempted to escape from the limitations of this world in his fiction by creating what Anderson calls an &ldquo;imperial&rdquo; or &ldquo;hypertrophied&rdquo; self, a character who through powers of imaginative expansion seeks to create another world, apart from this one.</p>
+
+        <p>The obstacles that threaten such expansiveness have typically been located in forces outside of the self. From Ezra Pound to Stephen Donadio, whose recent study of Nietzsche and James explores, among other things, their common debts to Emerson, the threat has been located in society, most devastatingly in &ldquo;the pressures and encroachments of other wills.&rdquo; Sallie Sears, formulating the matter in terms of competing authorial visions, proposes this melodramatic paradigm: the &ldquo;imaginary worlds that the characters create for themselves annihilate each other. They cannot coexist because the victory of one by definition means the undoing of the other.&rdquo; The same melodramatic formulation is offered by James himself when he contemplates &ldquo;that bright hard medal, of so strange an alloy, one face of which is somebody&rsquo;s right and ease and the other somebody&rsquo;s pain and wrong.&rdquo;</p>
+
+        <p>Yet James also showed that, external forces aside, the self could be its own worst enemy. In an implicit critique of Emerson, he questioned whether a self that has transcended its particular identity can avoid losing itself. He suggests that the threat or restriction that finally matters most for consciousness comes from points of view and desires that have been incorporated into the self from outside of it and take possession of its center. As we have seen [previously] with Isabel Archer, James&rsquo;s characters of consciousness identify with certain points of view that they contain more compellingly than with any that might be considered their own. Such a process, in which the self evaporates instead of expanding, poisons the roots of artistry for these characters and subverts the concept of the &ldquo;imperial self.&rdquo;</p>
+
+        <p>In grounding my presentation of Jamesian self-transcendence in Emerson, I am not so much trying to establish a line of direct influence, though Emerson was a living presence in both the James family household and the New England culture in which the Jameses grew up. Rather, Emerson is a valuable point of departure for this study because he gave the theme of visionary, or self-transcendent, possession of experience &ldquo;life and flamboyance; it was he who generated it into [a] literary mythology,&rdquo; which made it available to other American writers &ldquo;through agencies more mysterious than direct literary influence.&rdquo;</p>
+
+        <p>For Emerson, then, in the famous epiphany of chapter 1 in <em>Nature</em>,</p>
+
+        <blockquote>
+            <p>Standing on the bare ground,&mdash;my head bathed by the blithe air, and uplifted into infinite space,&mdash;all mean egotism vanishes. I become a transparent eye-ball. I am nothing. I see all. The currents of the Universal Being circulate through me; I am part or particle of God. The name of the nearest friend sounds then foreign and accidental. To be brothers, to be acquaintances,&mdash;master or servant, is then a trifle and a disturbance.</p>
+        </blockquote>
+
+        <p>For Emerson, the self was primary, yet its status was precarious. In becoming universalized, the personal self or &ldquo;mean ego&rdquo; ceased to exist. Afloat in nature and one with it, an eyeball without a body, incorporeal and in an important sense anonymous, Emerson&rsquo;s image projects what might be called a selfless self.</p>
+
+        <p>Emerson conceived of himself as being all the more himself for being continuous with the world, all the more his particular self for being part of a universal identity. He was capable at times of making selfhood and otherness coincide with absolute success: &ldquo;Spirit, that is, the Supreme Being, does not build up nature around us, but puts it forth through us, as the life of the tree puts forth new branches and leaves through the pores of the old.&rdquo;</p>
+
+        <p>Yet overall, there are serious difficulties for Emerson in believing that the particular self can find its essence and meaning through an epiphanic oneness with the universe. According to Roy Harvey Pearce, who brilliantly isolates this problem in American literature and culture, &ldquo;Emerson&rsquo;s characteristic failures result from his striving so much to universalize the self that it gets lost in the striving.&rdquo; Jonathan Bishop notes that Emerson&rsquo;s way of existing in community was to be there hardly at all, to have others &ldquo;hear from me what I never spoke.&rdquo; In addressing this paradox of selfless selfhood, however, Bishop tends to dissolve the tensions, as in his discussion of this journal entry: &ldquo;All that we care for in a man is the tidings he gives us of our own faculty through the new conditions under which he exhibits the Common Soul.&rdquo; Bishop&rsquo;s gloss is &ldquo;We are, potentially, already in the only point of view from which the whole can be understood.&rdquo; While this is helpful on one level, on another it perpetuates the problem. If all that we care for in a man is what he tells us about ourselves and the universal soul, how can we know him? How can we have a relationship with him? Anderson comments that Emersonian consciousness &ldquo;denies that our sense of ourselves is based on a reciprocal or dramatic or dialectic awareness of one another.&rdquo; Yet to do away with other is to do dialectical damage to the self.</p>
+
+        <p>These difficulties can be summed up in the observation that Emerson lacked a social theory, a theory that could explain how the self is to keep the company of others (a lack that caused him pain and stumbling especially in &ldquo;Experience&rdquo;). At the end of the eyeball passage in <em>Nature</em>, all relations are disavowed. Friends, brothers, acquaintances, masters, and servants are all dismissed. The Emersonian self is universalized without being socialized. It does not know how to have a conversation or a relationship with another self even though&mdash;even perhaps because&mdash;self and other are conceived as one. James, however, made central in his work the question of how the self is to keep the company of others in a way that might preserve the integrity of both.</p>
+
+        <p>James consciously focused on the tenuousness of the Emersonian personal self in an ambivalent description of Emerson that comes rather close to characterizing his own characters of consciousness: &ldquo;He had polished his aloofness till it reflected the image of his solicitor [that is, the person asking something of him]. And this was not because he was an &lsquo;uncommunicating egotist,&rsquo; though he amuses himself with saying so to Miss Fuller: egotism is the strongest of passions, and he was altogether passionless. It was because he had no personal, just as he had almost no physical wants.&rdquo; James&rsquo;s characters of consciousness also act as though they have &ldquo;no personal . . . wants.&rdquo; And the imagery of mirrors and reflectors, used here to describe Emerson, James often employed in the prefaces to describe those characters. One implication of the image is the risk that identity may be constituted largely by what it mirrors, that the self may be defined by what is outside of it. This image of the self as a reflector, of consciousness as a mirror, receiving its identity from outside of itself, closely resembles and helps us to understand the stereotypical feminine self scrutinized by feminists. The image beautifully articulates the paradox that seems to define female identity&mdash;that women are more sensitive, more conscious than men, but that these assets often fail to give them an advantage. Because of them, in fact, women are generally less able to bring a personal self into existence.</p>
+
+        <p>Some of James&rsquo;s remarks about his mother evoke this image of a mirror-self, a selfless self: &ldquo;She lived in ourselves so exclusively, with such a want of use for anything in her consciousness that was not about us and for us, that I think we almost contested her being separate enough to be proud of us&mdash;it was too like our being proud of ourselves.&rdquo; Even more pointedly: &ldquo;She <em>was</em> he [the senior James, her husband], <em>was</em> each of us.&rdquo; An expert at what one might call selfless or evacuated selfhood, Mrs. James makes real Poulet&rsquo;s image of the Jamesian fictional self as a decentered circle.</p>
+
+        <p>By saying the James character of consciousness is lacking a personal self in an important and revealing sense, however, I do not mean to imply that Strether, for example, does not feel a personal sort of pleasure from <em>dejeuner</em> with Mme de Vionnet, or that Fleda Vetch lacks a defining context of realistic detail, such as the possession of a father in West Kensington. Fleda may even manifest a perverse sort of self-gratification or egoism in her desire, while getting nothing for herself, to take charge of the affairs of others. Leon Edel sensitively discusses the way Mrs. James could be self-sacrificial, and yet &ldquo;all-encompassing,&rdquo; even &ldquo;gubernatorial.&rdquo; What I mean by saying that the James character of consciousness lacks a personal self, then, is that in terms of the novels&rsquo; psychic flow, the energies of Fleda and Strether&rsquo;s egos are severely disrupted. Though they are personages in their books, Fleda and Strether are also empty centers much of the time. They accumulate experience, but lack what would be thought of as a self.</p>
+
+        <p>In creating characters of consciousness like Fleda Vetch and Strether, James in effect socialized or domesticated Emerson&rsquo;s visionary eyeball self. Being visionary now meant floating out over other characters&rsquo; consciousness, becoming a medium of reception capable of registering what it was like to be them, at the risk, as with Emerson, of making the personal self tenuous. It is precisely here, where the social and the mystical overlap (in mysticism, the self feels that it is in communion with a reality larger than itself), that James touches Emerson. In his 1918 memorial essay, which is still one of the most fertile sources of ideas about James, T. S. Eliot maintained that &ldquo;The real hero, in any of James&rsquo;s stories, is a social entity of which men and women are constituents. . . . Compared with James&rsquo;s, other novelists&rsquo; characters seem to be only accidentally in the same book.&rdquo; Eliot was commenting on the profoundly social nature of James&rsquo;s work, but social in this case means that the work shows a concern with the fabric of awareness that constitutes communities of intimacy. On the whole, in James, these communities are woven from the narrative center outward as that character makes a relation with other characters by registering their desires and points of view.</p>
+
+        <p>James invokes these ideas about the self in relation to others in the preface to <em>The Spoils of Poynton</em> when he calls Fleda Vetch a &ldquo;free spirit.&rdquo; He means by that term something close to an Emersonian eyeball self. The &ldquo;free spirit,&rdquo; James says, &ldquo;almost demonically both sees and feels, while the others [the &ldquo;fools,&rdquo; who are &ldquo;the fixed constituents&rdquo; of the action] but feel without seeing.&rdquo; The others are fixed in the sense that they are trapped inside of themselves by the very intensity of their feelings, in what might be called the tyrannous centricity of the self, with all of its purely personal desires and claims. It was probably in order to get free of this narrow conception of personality posed by an exclusively self-centric way of being in the world that James invented the novelistic version of transcendental consciousness we know as the James character of consciousness, or the &ldquo;free spirit.&rdquo; Fleda is free by virtue of the fact that she can see what is outside of herself; she can get beyond herself.</p>
+
+        <p>James valued empathic imagining so highly because he equated it with morality. He wrote of &ldquo;the perfect dependence of the &lsquo;moral&rsquo; sense of a work of art on the amount of felt life concerned in producing it,&rdquo; and implied the perfect dependence of a moral sense in people, or in characters that represent people, on the &ldquo;amount of felt life&rdquo; they can feel. To get outside of the self and imagine what experience feels like to others is to experience greater and greater amounts of &ldquo;felt life&rdquo; oneself. This conception of morality also, I believe, helps to explain James&rsquo;s preference for the technique of the central consciousness over the technique of first-person narration. In the preface to <em>The Ambassadors</em>, James speaks disenchantedly of &ldquo;the terrible <em>fluidity</em> of self-revelation.&rdquo; The phrase suggests that he viewed first-person narration as inundatingly self-centric, a way of being in the world in which the self floods out all others.</p>
+
+        <p>The question provoked by James&rsquo;s comments on the free spirit is whether a commitment to what is ordinarily thought of as the personal self, or personality, need spell the death of freedom. Is it really liberating to be a self without a center? In dissolving the separation between self and other, and getting beyond the fixed limits ordinarily imposed by a sense of self, the free spirit makes a kind of contact with other selves that the Emerson persona customarily cannot manage. Yet despite the virtually limitless possibilities for growth perhaps potentially sponsored by self-transcendence in a social setting, the totally decentered self in James constitutes an invitation to melodrama and repression. For when James&rsquo;s characters escape the potential tyranny of their own personalities by making consciousness an instrument for encompassing other characters&rsquo; feelings, they are in danger of being occupied at their centers by these competitive versions of experience. In Poulet&rsquo;s terms, &ldquo;the object of attention [the person being observed] becomes the point of arrival of a movement of prospection and exploration. . . . So everything changes, consciousness, from central, becoming peripheral, and the object contemplated, becoming the central objective.&rdquo; The result, when the &ldquo;object of attention&rdquo; is another character, is that the imagination of the narrative center is given over to this now &ldquo;central objective&rdquo; and subdued to its desires and the compositions of reality prescribed by these desires. Usually these are compositions that cause the characters of consciousness to disclaim their own desires. Such renunciation is a logical result of self-transcendence, a predictable outcome for characters who regard their own emotions primarily as a form of limitation.</p>
+
+        <h2>The Spoils of Poynton</h2>
+
+        <p>In <em>The Spoils of Poynton</em> (1897), James turns his concern with the limits imposed on the imagination by decenteredness into a study of ambassadorial consciousness. The transcendental character of consciousness in James often appears on the social scene as an intermediary or ambassador. <em>The Ambassadors</em>, <em>In the Cage</em>, and even <em>What Maisie Knew</em> come to mind, in addition to <em>The Spoils of Poynton</em>. Ambassadors are persons empowered by others to realize goals and purposes not their own, or only adoptively theirs. Although they may have a measure of freedom to negotiate independently and may even enter, at times, into a kind of working partnership with the bargaining parties, they are still not negotiating for themselves. Even if their employer&rsquo;s purposes and emotions become their own, the spoils will finally go to other parties. Strether&rsquo;s renunciatory ideal at the end of <em>The Ambassadors</em>, &ldquo;not, out of the whole affair, to have got anything for myself,&rdquo; is a kind of manifesto of ambassadorial service. The same ideal governs the labors of Fleda Vetch up until the critical point at which she allows herself, at Owen&rsquo;s invitation, to journey to Poynton to pick an object of personal gain from among the spoils.</p>
+
+        <p>Fleda, like Strether, is employed to conduct diplomacy between mother and son. Her life as an ambassador begins when she is pressed to undertake for the widowed Mrs. Gereth and her son Owen the touchy negotiations that have arisen over the possession of Poynton&rsquo;s contents as a result of Owen&rsquo;s upcoming and, as it turns out, contingent marriage to Mona Brigstock. Mrs. Gereth and her son &ldquo;transmit through&rdquo; Fleda; she is their &ldquo;communicator,&rdquo; their &ldquo;envoy,&rdquo; and virtually leaves herself out as she negotiates on their behalf. She identifies with their picture of her as an ambassador to such a degree that even when they want her to profit personally from the negotiations, she remains committed to ambassadorial consciousness.</p>
+
+        <p>The egoless, free-floating quality of the Emersonian eyeball is especially apparent when Owen offers to buy Fleda a token of appreciation for her assistance with his mother. Fleda busies herself &ldquo;wondering what Mona would think of such proceedings.&rdquo; &ldquo;What she noticed most was that . . . [Owen] said no word of his intended.&rdquo; When Fleda construes Owen&rsquo;s &ldquo;unsounded words&rdquo; as an offer to live with her at Ricks, she &ldquo;could only vainly wonder how it provided for poor Mona.&rdquo; And when she hears that Mona jealously suspects her motives in continuing to negotiate between Owen and his mother, &ldquo;It was a sudden drop in her great flight, a shock to her attempt to watch over Mona&rsquo;s interests.&rdquo; The conjunction here of imagery of flight and vision conjures up a flying eyeball, with, in this case, intentionally comic effect. The eyeball&rsquo;s unexpected &ldquo;drop&rdquo; is a pratfall that subjects the enterprise it implicitly signifies&mdash;self-transcendence&mdash;to intended scrutiny. (In <em>The Wings of the Dove</em>, Milly watches over the interests of Densher and Kate Croy in a selfless flight that is subjected to some of the same scrutiny.) Fleda&rsquo;s effort to &ldquo;watch over Mona&rsquo;s interests&rdquo; extends the role of intermediary to which Owen and his mother first appointed her. The fact that Mona has not employed her as an ambassador makes even clearer her need to negotiate on behalf of someone else, on behalf of anyone except herself.</p>
+
+        <p>Robert C. McLean questions the self-transcending capacity of Fleda&rsquo;s imagination, and contends that Fleda is imprisoned in herself and that her imaginings of others should be taken as delusions and self-projections. Richard A. Hocks, however, insists that Fleda is genuinely self-transcendent:</p>
+
+        <blockquote>
+            <p>Her ethic is . . . pragmatistically oriented&mdash;that is, parallel to William&rsquo;s own broadening or &ldquo;radical&rdquo; aspects of utilitarianism&mdash;in that Fleda characteristically <em>creates</em> a possible other case about Mona, projects a version of the other girl as someone for whom Owen&rsquo;s earlier proposal is &ldquo;a tremendous thing,&rdquo; someone who &ldquo;must&rdquo; love him because Fleda herself does. The saltatory mind can immediately say that Fleda is merely creating Mona in her own image, and that is so to the extent that she . . . makes Mona&rsquo;s feelings coalesce with her own. To the same saltatory mind that sounds simply like making others into yourself. In fact it is just the reverse: it is conceiving of each person as so distinctively individual that you are willing continually to subsume your own views into them rather than classify them as Other.</p>
+        </blockquote>
+
+        <p>When Fleda attributes feelings to Mona that cannot be verified, however, there is good reason to think that if she is not creating Mona in her image, she is externalizing her own feelings by means of Mona. Fleda&rsquo;s displacement of her own emotion onto Mona is particularly apparent when she argues with Owen about Mona&rsquo;s reasons for postponing the wedding: &ldquo;Doesn&rsquo;t it occur to you . . . that if Mona is, as you say, drawing away, she may have in doing so a very high motive? She knows the immense value of all the objects detained by your mother, and to restore the spoils of Poynton she&rsquo;s ready . . . to make a sacrifice. The sacrifice is that of an engagement she had entered upon with joy.&rdquo; With such reasoning, Fleda injects into Mona&rsquo;s motives her own high-tonedness, tenderness, and inclination to sacrifice. When Fleda greets the prospect of Owen&rsquo;s disengagement from Mona with the question, &ldquo;Can you take such pleasure in her being finished&mdash;a poor girl you&rsquo;ve once loved?&rdquo; it is easier to recognize Fleda herself as the piteous &ldquo;poor girl&rdquo; about to be &ldquo;finished&rdquo; than it is to recognize the robust Mona. And when Fleda exhorts Owen not to &ldquo;break faith&rdquo; with Mona because &ldquo;She must love you&mdash;how can she help it? I wouldn&rsquo;t give you up! . . . Never, never, never!,&rdquo; she seems to be saying that Mona must love Owen because she, Fleda, does. Although she claims that she would not give Owen up, the irony, of course, is that she does so, as though she had quite emptied herself of these emotions in attributing them to Mona.</p>
+
+        <p>Fleda later imagines the suffering of Ricks&rsquo; maiden aunt in a flight of consciousness that, like her imagination of Mona, is never verified. In contrast, we accept Maggie Verver&rsquo;s imagination of Charlotte&rsquo;s shriek and Amerigo&rsquo;s pacing as the unquestionable reality of <em>The Golden Bowl</em> because Maggie&rsquo;s self is sufficiently present to make what she imagines <em>become</em> novelistic reality. Fleda feels her own emotions best by giving them away, however, and as a result she responds to them in a self-defeating way. When she expresses her own love by imagining Mona&rsquo;s love for Owen, for instance, her interests are displaced in her consciousness by Mona&rsquo;s; and Mona&rsquo;s dictate that she, Fleda, shall renounce the young man. Thus Fleda actively labors for this end, as though for some cause of her own.</p>
+
+        <p>Mrs. Gereth also serves as an external agent by which Fleda experiences her own emotional life. At first, Mrs. Gereth&rsquo;s disapproval of Mona as Owen&rsquo;s fianc&eacute;e seems to express an oedipal competitiveness: removing the furnishings from Poynton looks like competing with Mona for them, and for Owen. But in the flow of raw psychic energy beneath the novel&rsquo;s surface, the mother&rsquo;s sexual dimension becomes Fleda&rsquo;s own in dislocation, giving form to Fleda&rsquo;s barely recognized stirrings. She encourages Fleda to compete with Mona on sexual terms: &ldquo;&lsquo;I want you to cut in!&rsquo; . . . She challenged again and again Fleda&rsquo;s picture, as she called it (though the sketch was too slight to deserve the name), of the indifference to which a prior attachment had committed the proprietor of Poynton. . . . &lsquo;Only let yourself go, darling&mdash;only let yourself go!&rsquo;&rdquo; When Fleda returns from a trip to London, in the course of which she has lost track of Owen rather than letting herself go to him, and she tries to calm Mrs. Gereth while submitting to her interrogation, Mrs. Gereth &ldquo;rose again from where Fleda had kept her down,&rdquo; like Fleda&rsquo;s own impulses. Mrs. Gereth&rsquo;s lecture &ldquo;affected our young lady as if it had been the shake of a tambourine borne toward her from a gipsy dance; her head seemed to go round and she felt a sudden passion in her feet.&rdquo;</p>
+
+        <p>Thus inspired, Fleda sees the situation and herself with Mrs. Gereth&rsquo;s eyes, and consents, in James&rsquo;s metaphor, to dance to her patron&rsquo;s tambourine, with the result that her determination &ldquo;to lose herself&rdquo;&mdash;as James puts it when she hides from Owen in her father&rsquo;s West Kensington flat&mdash;to claim nothing for herself, is for a moment suspended. She temporarily recomposes her sketch of the plot by volunteering to find Owen and marry him without further ado. She takes the extraordinary step, for her, of sending Owen a telegram asking him to come to her, putting her desire for him, until now displaced onto Mrs. Gereth and Mona, into words explicitly from her, hoping thus to disprove Mrs. Gereth&rsquo;s contention that she &ldquo;could invent nothing better&rdquo; than to send Owen back to Mona (Fleda&rsquo;s instructions to Owen in London). As a sign of her effort to concentrate her distributed energies into a personal self, Fleda even refuses Mrs. Gereth&rsquo;s offer to pay for the telegram: &ldquo;To succeed it must be all me!&rdquo;</p>
+
+        <p>Yet the incompleteness of her effort to locate a self&mdash;to &ldquo;be all me&rdquo;&mdash;and to recompose the sketch is evident even as she awaits an answer to the telegram. James evokes her psychic division in terms of a virtually Freudian architecture. &ldquo;Her trouble occupied some quarter of her soul that had closed its doors for the day and shut out even her own sense of it; she might perhaps have heard something if she had pressed her ear to a partition. Instead of that she sat with her patience in a cold still chamber from which she could look out in quite another direction.&rdquo; Absent from the scene of her trouble, she remains partitioned off from her own emotional life. She sits in less private spaces of the self, unable to inhabit the full residence. Thus when Mrs. Gereth brings her the news that Owen is already married, &ldquo;All the girl&rsquo;s effort tended for the time to a single aim&mdash;that of taking the thing with outward detachment, speaking of it as having happened to Owen and to his mother and not in any degree to herself.&rdquo;</p>
+
+        <p>Fleda&rsquo;s way of owning pain is, as it was before, with other emotions, to register it in another self. With Owen married, Fleda prepares for a life of memories and spinsterhood, enhanced in her eyes by qualities she attributes to Ricks&rsquo; former proprietor, a maiden aunt. From the beginning, her unverified imagination of the aunt&rsquo;s life contains her own feelings of suffering: &ldquo;The poor lady . . . had been sensitive and ignorant and exquisite. . . . [Fleda] was so sure she had deeply suffered.&rdquo; On her third visit to Ricks, after Mrs. Gereth has sent back the furnishings stolen from Poynton and reinstated the maiden aunt&rsquo;s few effects, Fleda hears these speak with a voice full of her own sense of frailness: &ldquo;a voice so gentle, so human, so feminine&mdash;a faint far-away voice with the little quaver of a heart-break.&rdquo; It is a voice that turns deprivation into something romantic and appealing, something &ldquo;exquisite.&rdquo; Fleda has the sense of &ldquo;something dreamed and missed, something reduced, relinquished, resigned: the poetry, as it were, of something sensibly <em>gone</em>.&rdquo; In deriving poetic pleasure from this contemplation, Fleda can aestheticize such sufferings as might well be her own and, in doing so, avoid the acknowledgment of her own pain that might enable her to throw it off.</p>
+
+        <p>Even at this late date, she chooses to remain &ldquo;vague&rdquo; about the nature of her pain:</p>
+
+        <blockquote>
+            <p>Then Fleda said: &ldquo;What I mean is, for this dear one of ours [the aunt], that if she had (as I <em>know</em> she did: it&rsquo;s in the very touch of the air!) a great accepted pain&mdash;&rdquo;</p>
+            <p>She had paused an instant, and Mrs. Gereth took her up. &ldquo;Well, if she had?&rdquo;</p>
+            <p>Fleda still hung fire. &ldquo;Why, it was worse than yours.&rdquo;</p>
+            <p>Mrs. Gereth debated. &ldquo;Very likely.&rdquo; Then she too hesitated. &ldquo;The question is if it was worse than yours.&rdquo;</p>
+            <p>&ldquo;Mine?&rdquo; Fleda looked vague.</p>
+        </blockquote>
+
+        <p>Though her consciousness does not register the pain as her own, Fleda herself has become part of the spoilage of Poynton.</p>
+
+        <p>Although Fleda has been employed by Owen and his mother, she betrays them both, promoting events that probably neither of them wants to occur. Mona, who never appointed Fleda, is, ironically, the one party whose interests she does not betray. No sooner does she sense that Owen might want her to help him end his engagement, and that she herself might want to help, than she fosters a sequence of events leading to the return of the spoils to Poynton, a move she knows will satisfy Mona and precipitate the marriage. Mona is the character from whose point of view Fleda essentially operates&mdash;Mona and perhaps the maiden aunt. As a character of consciousness, incorporating other selves at the expense of her own sense of self, Fleda necessarily favors characters whose pictures or fictions of experience commit her to strategies of personal loss.</p>
+
+        <p>Skepticism about Fleda&rsquo;s renunciation is fed by what seems to be a desire on her part for visible justification and moral simplification. Before the marriage, when Owen seeks Fleda out at her sister&rsquo;s, he hears, &ldquo;&lsquo;Ah you see it&rsquo;s not true that you&rsquo;re free!&rsquo; She seemed almost to exult. &lsquo;It&rsquo;s not true&mdash;it&rsquo;s not true&rsquo;&rdquo;: a crow of satisfaction rather than, as one might expect, a lament. To Mrs. Gereth&rsquo;s news that Owen is married Fleda responds, &ldquo;That he has done it, that he couldn&rsquo;t <em>not</em> do it, shows how right I was.&rdquo; Subsequently her certainty about what is right seduces her into a dead language, a rhetoric suggesting that what she embraces as rightness may be rigidity. When Owen invites her, after his marriage, to take something from him, something from Poynton, the best thing in the collection, or whatever she most loves, she feels compelled to reason out the invitation, straining all the way, as &ldquo;a token of gratitude for having kept him in the straight path.&rdquo; To a reader, this rhetorical deadness undermines her renunciatory selflessness as much as it undermines Isabel&rsquo;s when Isabel turns, rhetorically and literally, to the rigid rightness of the &ldquo;straight path&rdquo; to show her what to do after the confusion of Caspar&rsquo;s kiss.</p>
+
+        <p>The tenuousness of Fleda&rsquo;s personal self, her tendency to turn to Mona or the maiden aunt for tidings of her own condition, prevents her from achieving full authorial status in the book and, therefore, from making the prevailing picture of the plot accommodate her own desires. The implications for authorship of Fleda&rsquo;s renunciatory consciousness can be seen best by returning to the figure of Mrs. Gereth. James calls her &ldquo;the very reverse of a free spirit.&rdquo; &ldquo;She had no imagination about anybody&rsquo;s life save on the side she bumped against. . . . Mrs. Gereth had really no perception of anybody&rsquo;s nature&mdash;had only one question about persons: were they clever or stupid?&rdquo;&mdash;were they, that is, capable of appreciating Poynton? Imprisoned in her narrowly defined particular self, Mrs. Gereth is, in Emersonian terms, a &ldquo;mean egotist.&rdquo; She lacks the largeness of vision to apprehend others on their own terms&mdash;and thus to be a figure of consciousness. For example, when she moves from Poynton to the dowerhouse, redecorating it with furnishings stolen from Poynton, she is at first so devoid of empathic imaginative response to the meager but touching objects left by her predecessor that, Fleda feels, &ldquo;The maiden-aunt had been exterminated.&rdquo; Nevertheless, once Mrs. Gereth returns the spoils to Poynton, she reinstates the old aunt&rsquo;s few effects at Ricks and makes them grow &ldquo;indescribably sweet&rdquo; around her. And despite her incomprehension of Fleda&rsquo;s nature and motives for betraying her, she keeps Fleda with her at the end and cannot help but care for her, even if waspishly.</p>
+
+        <p>Mrs. Gereth is thus a complex figure in the allegiances the novel creates in the reader. Even her devotion to the &ldquo;mean ego,&rdquo; the particular self, generates ambivalence. That James intended this is suggested by the fact that her advice to Fleda to let herself go echoes James&rsquo;s most urgent and moving exhortation to himself in his notebooks, the record he kept of his work in progress for more than thirty years. &ldquo;I have only to let myself go! So I have said to myself all my life. . . . Yet I have never fully done it. The sense of it&mdash;of the need of it&mdash;rolls over me. . . . I am in full possession of accumulated resources&mdash;I have only to use them. . . . All life is&mdash;at my age, with all one&rsquo;s artistic soul the record of it&mdash;in one&rsquo;s pocket, as it were. Go on, my boy, and strike hard: have a rich and long St. Martin&rsquo;s Summer.&rdquo;</p>
+
+        <p>Here in 1891 James speaks of his art in terms of the energies of Victorian commerce and, implicitly, its ethos of self-fulfillment: &ldquo;accumulated resources&rdquo; in &ldquo;one&rsquo;s pocket&rdquo; which it is imperative to &ldquo;use.&rdquo; Composition is analogized not so much to saving (though there is talk in the prefaces about the economy of art) or to paying (which often takes the form in James of punishment and loss), but to having and spending, a difference of emphasis that suggests a generous regard for the resources of the self. Fleda&rsquo;s &ldquo;imagination of a disaster&rdquo; as she travels down to Poynton to claim her gift is an aspect of James&rsquo;s own melodramatic vision, as James confessed to A. C. Benson the year before he published <em>The Spoils</em>: &ldquo;I have the imagination of disaster&mdash;and see life indeed as ferocious and sinister.&rdquo; Nevertheless, the letting go, which in the notebooks James required of himself for the sake of his art, is allied with the kinds of letting go&mdash;both emotional and sexual&mdash;by means of which Fleda herself could become authorial and purge the plot of <em>The Spoils</em> of its similarities to a genteelly-suffering-maiden-aunt melodrama. The invitation Mrs. Gereth extends to Fleda to let herself go and imagine herself beyond renunciation is, in effect, James&rsquo;s own.</p>
+
+        <p>Although Emerson opposed the values of the genteel tradition, particularly the failure of originality in its indebtedness to the European inheritance, and although he periodically, in his essays, issued calls to action in the material world, his image of the self as an incorporeal eyeball floating cleanly above a world of getting and spending has something in common with the disengagement from experience prized by the genteel tradition. This attitude characterizes the genteel tradition even though it reached its vantage of disengagement from a base of compromising material security. In electing to work with the character of consciousness, James departed from both Emerson and the genteel tradition. He showed that to be free of worldly and personal desires, nevertheless, is not to be free&mdash;that for the earthbound, integrity and a measure of freedom necessarily come through the personal self and the satisfaction of earthly desires. Although Fleda resists the invitation, the pressures of James&rsquo;s material point toward the possibility of a consciousness capable both of possessing itself without becoming self-absorbed and possessing its world instead of losing itself in it.</p>
+
+        <p>James wished to evaluate the costs of being a transparent eyeball lodged in a material world. The costs for Fleda are an inability to include much of her world in her composition of it. For example, though Fleda has rendered a sense of Owen&rsquo;s love through her consciousness, she does not know his pain; there is no space for that in the novel as her awareness composes it. The destruction of Poynton and its contents by fire is the ultimate symbol of Fleda&rsquo;s authorial failure, the result and the sign of her inability to imagine for herself an existence and a plot that could incorporate what the spoils in the largest sense include: love, sexuality, and ownership in the physical, material world. The novel suggests that Poynton burns because Fleda&rsquo;s sketch of experience affords no space to those desires of the particular self. To save it would require a self capable of being both eyeball and body.</p>
+
+        <p>James creates the impression in several ways that the destruction of Poynton is both symbol and consequence of Fleda&rsquo;s absence from herself and the design she has promoted. It is partly a matter of timing. The house goes up in flames on the precise morning Fleda has picked, after weeks of waiting, for her visit to claim the gift Owen has invited her to take. The accusatory effect is heightened by an eerie sense that the objects of Poynton have suddenly come to life to take revenge on Fleda for abandoning them to Mona&rsquo;s negligent hands. A sense of dislocated energy further relates the fire to Fleda&rsquo;s selflessness: it is as if her desire at last to get something for herself triggers in her a fantasy of guilt and punishment which is projected onto the external world in the destruction of what she loves.</p>
+
+        <p>An author in James must ultimately participate in and profit from the design in order to be assured of &ldquo;<em>supreme</em> command&rdquo; over the fictional arrangements. In Maggie Verver, James did create a character of consciousness capable both of transcending the self and fully occupying its center, being both other and self, eyeball and body, a fusion that enables her to be a fully successful artist of her situation. But Fleda is unable to make the spoils (the objects and the book) her <em>Spoils</em> in the way that Osmond can make Isabel his <em>Portrait</em> and Maggie can make the bowl (object and book) her <em>Bowl</em>. <em>The Spoils</em> resembles <em>The Wings of the Dove</em> in that imagination and consciousness acquire a certain degree of control over the plot, but not enough to secure the predominance of their designs. In <em>The Wings of the Dove</em>, Milly seeks to compose shapes for the lives around her through her will, the &ldquo;sacred script&rdquo; she leaves behind after her death, but in her absence she cannot make the design take hold. Presiding authorially from a distance proves to be an inadequate sort of authorship for Strether too when, in lecturing Chad at the end of <em>The Ambassadors</em>, he futilely delegates to the young man his own desire to love and protect Mme de Vionnet. . . .</p>
+
+        <h2>What Maisie Knew</h2>
+
+        <p>Like Fleda Vetch, Strether, and the young telegraphist, six-year-old Maisie Farange is trapped in ambassadorial service. <em>What Maisie Knew</em> (1897) begins when a divorce court assigns the child to alternating terms with parents who use her as &ldquo;a messenger of insult.&rdquo; Once she has &ldquo;puzzled out . . . that everything was bad because she had been employed to make it so&rdquo; by her parents, she begins to repudiate their ambassadorial &ldquo;employment,&rdquo; to have her own feelings, and to employ them for her own purposes. At the end of the novel, rejecting the alien designs for her life that confine her in the novel&rsquo;s various parental houses, Maisie grows up. The intricate five-way custody battle that develops over the course of the book concludes for Maisie at the edge of adolescence with what amounts to an act of self-custody, as she struggles to achieve the &ldquo;imagination in <em>predominance</em>&rdquo; that will enable her to possess the material of her life in a plot of her own design.</p>
+
+        <p>Maisie rejects her parents&rsquo; ambassadorial conception of her life at first through resistance, a refusal to report what one of them has instructed her to say against the other: she begins with &ldquo;the idea of an inner self or, in other words, of concealment. . . . Her parted lips locked themselves with the determination to be employed no longer.&rdquo; It is clear what she does not want, but not what she does. The merely negative assertion of self involved in her silence perpetuates her helplessness:</p>
+
+        <blockquote>
+            <p>The sharpened sense of spectatorship was the child&rsquo;s main support, the long habit, from the first, of seeing herself in discussion [by other people] and finding in the fury of it&mdash;she had a glimpse of the game of football&mdash;a sort of compensation for the doom of a peculiar passivity. It gave her often an odd air of being present at her history in as separate a manner as if she could only get at experience by flattening her nose against a pane of glass.</p>
+        </blockquote>
+
+        <p>The effect is as though her life existed outside of and apart from her. She is the football, passively taking direction from the will of other people. But her consciousness is not even in the football&mdash;it is watching from the other side of the pane of glass.</p>
+
+        <p>Yet Maisie&rsquo;s silence, looking forward to Maggie Verver&rsquo;s in <em>The Golden Bowl</em>, is ultimately reinventive. Her &ldquo;idea of an inner self,&rdquo; cultivated in silence, is in part the same idea that comes to Strether with his disobedient determination to see for himself, and to Catherine Sloper in tentative excursions into dissimulation in a few exchanges with her father and Aunt Penniman. But beyond a certain point in Catherine&rsquo;s verbal evasions, as in her silences, and in the silences of Claire de Cintr&eacute;, Isabel, Fleda, and Strether, feelings are not found but lost. Maisie&rsquo;s &ldquo;locked lips,&rdquo; however, prepare for her escape from an emotional life melodramatically manipulated in her by others, even though they seem to associate her with a kind of Jamesian consciousness that never explicitly authorizes the expression of anger.</p>
+
+        <p>Consciously resisting one kind of parental employment, the transmission of insult, Maisie is then for a long time the unconscious agent of another: she finds herself unintentionally promoting liaisons for her parents&rsquo; benefit. First she brings together her beautiful governess Miss Overmore and her father Beale, who later marry. Then she brings together the new Mrs. Beale and Sir Claude, the compassionate and romantic figure her mother has recently married. But this unconscious gift for composition is not fully at Maisie&rsquo;s own disposal, for the new parental pairs prove to be as manipulative, perhaps also as derelict, as the old. They use their connection with the child to promote their own designs&mdash;to begin and conceal the affairs, or to give them an air of respectability&mdash;while Maisie, unable to exert supreme imaginative command, is trapped and neglected in the architecture of multiplying relations that she has invented.</p>
+
+        <p>James himself uses Maisie in the novel&rsquo;s preface in some of the same ways that her various parents use her in the novel. For instance, he speaks of her functioning as a tool of his novelistic design: &ldquo;Instead of simply submitting to the inherited tie and the imposed complication, of suffering from them, our little wonder-working agent would create . . . quite fresh elements of this order.&rdquo; As a &ldquo;little wonder-working agent&rdquo; of James&rsquo;s &ldquo;order,&rdquo; Maisie is converted from a character into what Bersani calls a &ldquo;technical ingenuity.&rdquo; Another passage also illustrates the way the prefaces often diminish the emotional impact of the novels. &ldquo;Not less than the chance of misery and of a degraded state, the chance of happiness and of an improved state might be . . . involved for the child, round about whom the complexity of life would thus turn to fineness, to richness&mdash;and indeed would have but so to turn for the small creature to be steeped in security and ease.&rdquo; Readers fresh from the novel may have trouble recalling any impression of &ldquo;the small creature,&rdquo; even at the end, &ldquo;steeped in security and ease.&rdquo; Both this remade version of the plot and the one that disposes of her as a structural functionary in the novel might be said to constitute parental houses of fiction in which Maisie does not seem to fit.</p>
+
+        <p>James&rsquo;s anesthetized tone toward Maisie in the preface resembles the objectifying way society talks or sounds at the beginning of the novel. With the jargonistic and impersonal voices of the law, finance, and gossip, the book&rsquo;s prologue renders what will become the increasingly subjective and intimate world of Maisie&rsquo;s experience from an initially external perspective. It is reported in the prologue&rsquo;s Latinate legal voice, for example, that &ldquo;the litigation [of the divorce and custody proceedings] had seemed interminable.&rdquo; And when Beale is unable to refund to Ida some money that he owes her, and the court stipulates that each parent support Maisie in turn, it is said that by this &ldquo;partition of the tutelary office&rdquo; Beale&rsquo;s debt is &ldquo;remitted&rdquo; to him. We hear too of &ldquo;people . . . looking for appeals in the newspapers for the rescue of the little one,&rdquo; also called &ldquo;the bone of contention,&rdquo; language whose preciosity is not far removed from the prefatory coyness of &ldquo;little wonder-working agent.&rdquo; James informs us that Maisie lives in &ldquo;a society in which for the most part people were occupied only with chatter,&rdquo; a species of talk which, like that in <em>Washington Square</em> and <em>The Awkward Age</em>, is disconnected from felt emotion. Just as the abstract and technical voice of the prefaces often anesthetizes the experience of the novels, the various voices of society in <em>Maisie</em> forge a variety of talk that betrays the sources of feeling James ultimately makes most important. Though <em>Maisie</em> begins, in the vein of <em>Washington Square</em>, with the brittle ironies generated by remote and superficial views of the heroine&rsquo;s experience, it proceeds to shield her from both irony and melodrama by anchoring itself in her deepening sense of self. That is, she escapes from the rhetorically glib versions of her experience presented in the prologue and the preface by locating in herself the felt emotion absent from their styles. In doing so, she is ultimately able to outgrow all of the parental fictions in which the novel threatens to imprison her. She gets away a little even from the house of fiction that James erects for his heroine in his own voice in the preface.</p>
+
+        <p>Maisie&rsquo;s release from her parents is managed in scenes that free her from them both physically and emotionally. Ida is relieved that Sir Claude has abducted Maisie from her custody because it saves her the inconvenience of continuing to have the child in her life. But Maisie distills most of the sting from Ida&rsquo;s desire to abandon her when she has a scene with the captain, Ida&rsquo;s latest lover, in which she discovers the measure of sincerely positive feeling that she has for her mother beyond dread, or mystified awe, or pain. The captain reports about Ida: &ldquo;She&rsquo;s tremendous fun&mdash;she can do all sorts of things better than I&rsquo;ve ever seen anyone. . . . She has the nerve for a tiger-shoot. . . . Look here, she&rsquo;s <em>true</em>!&rdquo; If the virtues the captain celebrates are scarcely maternal and barely accurate, that hardly matters since</p>
+
+        <blockquote>
+            <p>What it appeared to . . . [Maisie] to come to was that on the subject of her ladyship it was the first real kindness she had heard, so that at the touch of it something strange and deep and pitying surged up within her. . . . She cried, with a pang, straight <em>at</em> him. . . . &ldquo;Oh do you love her?&rdquo; . . .</p>
+            <p>. . . &ldquo;Of <em>course</em> I love her, damn it, you know!&rdquo;</p>
+            <p>. . . &ldquo;So do I then. I do, I do, I do!&rdquo;</p>
+        </blockquote>
+
+        <p>Maisie has a brief opportunity to feel authentically loving toward her father too in a scene in which Beale abandons her by trying to make her say she does not want him. The scene with Ida&rsquo;s captain and the one with Beale are corresponding moments at the heart of the novel in which Maisie is released from her parents in the most profound sense, even from the impression of hurt.</p>
+
+        <p>Maisie&rsquo;s scene with her father begins when he abducts her and takes her, oedipally, to his mistress&rsquo;s rooms. Alone with him there,</p>
+
+        <blockquote>
+            <p>Maisie had her sense . . . of her having grown for him. . . . There was a passage during which, on a yellow silk sofa under one of the palms, he had her on his knee, stroking her hair, playfully holding her off while he showed his shining fangs and let her, with a vague affectionate helpless pointless &ldquo;Dear old girl, dear little daughter,&rdquo; inhale the fragrance of his cherished beard. . . . it needed nothing more than this to make up to her in fact for omissions. The tears came into her eyes again as they had done when in the Park that day the Captain told her so &ldquo;splendidly&rdquo; that her mother was good. What was this but splendid too&mdash;this still directer goodness of her father . . . out of which everything had dropped but that he was papa and that he was magnificent?</p>
+        </blockquote>
+
+        <p>Though Beale, like Ida, does not in fact deserve Maisie&rsquo;s generosity, he nevertheless, however unintentionally, helps release his daughter from the hold of childhood memories of suffering, as Catherine Sloper is never fully released. Nor for all his &ldquo;shining fangs&rdquo; does Beale loom in Maisie&rsquo;s imagination with the melodramatic power that Osmond possesses for Pansy and Isabel. Maisie is no longer her parents&rsquo; victim not only because she escapes them physically but, more profoundly, because she ceases to regard them as damaging.</p>
+
+        <p>With her actual parents out of the picture, the last third of the novel shows Maisie reassembling in Boulogne with her stepparents, Sir Claude and Mrs. Beale, and her current governess Mrs. Wix. Her governess favors a living arrangement that excludes Mrs. Beale; she wishes to save Maisie from what she regards as the corrupting effect of daily exposure to adultery. Sir Claude, however, proposes a household composed of Maisie, Mrs. Beale, and himself, minus the didactic Mrs. Wix. Pressed to choose between these alternatives, Maisie is caught between the possibility that the stepparents care about her for herself, and the alternate or perhaps overlapping possibility that they care for her largely because her presence gives their relationship an appearance of respectability.</p>
+
+        <p>An earlier exchange between Maisie and Beale about the stepparents has made clear that in the <em>Maisie</em> world, the impulses of caring and the architecture of use are hard to tell apart but difficult to combine for any length of time:</p>
+
+        <blockquote>
+            <p>&ldquo;They&rsquo;re probably the worst people in the world and the very greatest criminals,&rdquo; Beale pleasantly urged. . . .</p>
+            <p>&ldquo;Well, it doesn&rsquo;t prevent them from loving me. They love me tremendously.&rdquo; . . .</p>
+            <p>. . . &ldquo;You&rsquo;re a jolly good pretext . . . for their game.&rdquo; . . .</p>
+            <p>The child reflected. &ldquo;Well then that&rsquo;s all the more reason . . . for their being kind to me.&rdquo;</p>
+            <p>. . . &ldquo;Don&rsquo;t you understand,&rdquo; Beale pursued, &ldquo;that . . . they&rsquo;ll just simply chuck you? . . . they&rsquo;ll cease to require you.&rdquo; . . .</p>
+            <p>. . . &ldquo;Cease to require me because they won&rsquo;t care?&rdquo;</p>
+        </blockquote>
+
+        <p>The novel&rsquo;s consideration of the authenticity of emotion beneath stylishness boils down to the question of whether Sir Claude is a fraud. It is one of the book&rsquo;s brilliant strokes that this question, like the one of how we are to regard Charlotte and Amerigo&rsquo;s adultery in <em>The Golden Bowl</em>, is never conclusively resolved. Sir Claude&rsquo;s desires and motives are so mixed, there are so many feelings that need to be honored, that it is almost as difficult to convict him of actual dishonesty as it is Madame de Vionnet.</p>
+
+        <p>Maisie finally grasps &ldquo;the implication of a kind of natural divergence between lovers and little girls&rdquo; in a supremely unstable society that makes people choose between being lovers and being parents&mdash;a divergence which, paradoxically, exists even though it is she who has brought the lovers together. She realizes that if she were to forsake Mrs. Wix and accept Sir Claude&rsquo;s proposal that she live with him and Mrs. Beale, the cycle of composition and abandonment in which she has been victimized might reassert itself. This realization makes her counter Sir Claude&rsquo;s proposal with one of her own: that they go away together, just the two of them. The importance of her locating a desiring self, and articulating this desire in the form of a design, can hardly be overemphasized. James says, &ldquo;She knew what she wanted. All her learning and learning had made her at last learn that.&rdquo;</p>
+
+        <p>At the train station, she and Sir Claude very nearly do depart by themselves:</p>
+
+        <blockquote>
+            <p>&ldquo;I wish we could go. Won&rsquo;t you take me?&rdquo;</p>
+            <p>He continued to smile. &ldquo;Would you really come?&rdquo;</p>
+            <p>&ldquo;Oh yes, oh yes. Try.&rdquo; . . .</p>
+            <p>Sir Claude turned to a porter. &ldquo;When does the train go?&rdquo;</p>
+            <p>. . . &ldquo;In two minutes. <em>Monsieur est plac&eacute;?</em> . . . <em>Et vos billets?</em>&rdquo;</p>
+            <p>. . . Then after a look at Maisie, &ldquo;<em>Monsieur veut-il que je les prenne?</em>&rdquo; the man said.</p>
+            <p>Sir Claude turned back to her. &ldquo;<em>Veux-tu bien qu&rsquo;il en prenne?</em>&rdquo;</p>
+            <p>It was the most extraordinary thing in the world: in the intensity of her excitement she not only by illumination understood all their French, but fell into it with an active perfection. She addressed herself straight to the porter. &ldquo;<em>Prenny, prenny. Oh prenny!</em>&rdquo;</p>
+        </blockquote>
+
+        <p>Although the train departs on her hauntingly plaintive invocation of a new version of the plot and their relationship, Maisie for the first time has found her voice: &ldquo;<em>Prenny, prenny. Oh prenny.</em>&rdquo; The French, just improvised, suggests that there has been no place in the language they customarily speak for the expression of her personally desiring self; until now, indeed, there have been no words for it at all. Yet if Maisie can thus speak her desire, she cannot, like Maggie Verver, impose it. The upshot of Maisie&rsquo;s success at locating a self with hopes and needs of its own and proposing to Sir Claude a design that fulfills these is that, although Sir Claude is tempted, he finds it impossible to accede. He cannot give up Mrs. Beale. To a degree that undermines her imaginative authority, Maisie&rsquo;s material exhibits its own &ldquo;germinal property and authority.&rdquo;</p>
+
+        <p>But although Maisie is unable to enforce the version of the plot she prefers&mdash;that is, life with Sir Claude&mdash;she can nevertheless place herself beyond melodrama by escaping from his household, <em>his</em> fiction. Catherine Sloper, like Maisie, cultivates through silence a desiring self: she pursues a marriage with Morris despite her father&rsquo;s opposition. Once that design proves impossible to realize, however, she collapses back into her father&rsquo;s fiction of her. Morris was in so many ways like her father that desiring him hardly even constituted a new design. Maisie, on the other hand, makes a convincingly complete exit from the novel&rsquo;s oedipal drama.</p>
+
+        <p>For Beale, her actual father, when he holds her on his knee, strokes her hair, murmurs in her ear, and offers her the scent of &ldquo;his cherished beard,&rdquo; Maisie is no longer a mere child. For her stepfather Sir Claude, the growing Maisie is similarly both a woman and a child, a potential sweetheart and a daughter; he shares the confusion of Beale&rsquo;s &ldquo;Dear old girl, dear little daughter.&rdquo; He even repeats Beale&rsquo;s symbolically sexual abduction with another of his own when he sweeps Maisie off to Boulogne and nearly elopes with her on the train. In bidding for control of the meanings she inadvertently made possible when she brought Mrs. Beale and Sir Claude together, Maisie seeks to secure what she has always yearned for, a measure of emotional safety. But it does not follow that she is trying to have Sir Claude strictly as a parent when she proposes that they depart together on the train.</p>
+
+        <p>The extent of Maisie&rsquo;s sexual maturity has been a major issue in criticism of the novel. F. R. Leavis, for example, contends that Maisie&rsquo;s adoration of Sir Claude is safely &ldquo;feminine,&rdquo; but not at all sexual. Harris Wilson, however, has read Maisie&rsquo;s feelings for Sir Claude as incestuously sexual: &ldquo;Her greatest asset opposed to Mrs. Beale&rsquo;s lush worldliness is her virginity, and that she is prepared to offer&rdquo; to Sir Claude if they go away together. Edward Wasiolek accepts the sexuality implicit in Maisie&rsquo;s proposal to Sir Claude, but does not consider how the collapse of Maisie&rsquo;s projected scenario actually assists her toward sexual maturity. Similarly, Muriel G. Shine, tracing the movement toward maturity in James&rsquo;s fictional children, blames Sir Claude for sticking with Mrs. Beale, and thus overlooks the potential for growth in Maisie&rsquo;s separation from him.</p>
+
+        <p>It seems very unlikely that James concerned himself with the question of whether or not Maisie might go to bed with Sir Claude. It does, however, seem likely&mdash;especially in the context of Catherine Sloper, Isabel, and Strether&rsquo;s damaging attachment to parental figures and their fictions&mdash;that James was concerned in <em>Maisie</em> with the obstacles to sexual and imaginative maturity posed by oedipal irresolution. The difference in this respect between <em>Maisie</em> and the earlier works is that the oedipal attachment is initially acknowledged as something natural. Commenting on Maisie&rsquo;s early admission to Mrs. Wix that she is in love with her stepfather, James avers that &ldquo;Everything was as it should be.&rdquo; This both makes a comedy of the confession and underscores its human naturalness. And by expressing the emotion directly, Maisie is able to grow beyond it. Her departure, by the end of the book, from both her fathers seals her release from the ambiguous oedipal embrace.</p>
+
+        <p>James&rsquo;s depiction of the oedipal drama adds a lagging affection for her stepmother to Maisie&rsquo;s love for her stepfather. In the book&rsquo;s penultimate scene, while Sir Claude&rsquo;s &ldquo;hands went up and down gently on her shoulders,&rdquo; Maisie presses Mrs. Beale to give up Sir Claude: &ldquo;&lsquo;I love Sir Claude&mdash;I love <em>him</em>,&rsquo; Maisie replied with an awkward sense that she appeared to offer it as something that would do as well [as loving Mrs. Beale]. Sir Claude had continued to pat her, and it was really an answer to his pats. &lsquo;She hates you&mdash;she hates you,&rsquo; he observed with the oddest quietness to Mrs. Beale.&rdquo; The neatness with which they all take their places here in a Freudian scene might seem oppressive were it not handled so delicately, and with so unerring an instinct for health. Maisie herself terminates the scene when she asks Mrs. Wix, &ldquo;&lsquo;Shan&rsquo;t we lose the boat?&rsquo;&rdquo; Her escape is so complete that even when Sir Claude fails to appear on the balcony for her as she turns around for a last look, and Mrs. Wix explains that &ldquo;He went to <em>her</em>,&rdquo; his mistress, Mrs. Beale, Maisie&rsquo;s response is nothing more damaged or deprived than &ldquo;Oh I know!&rdquo;</p>
+
+        <p>Sir Claude&rsquo;s failure to be on the balcony to receive Maisie&rsquo;s parting look in one way seals the fraudulence of his affection. In another way, though, it signifies the salutary &ldquo;lapse of a sequence&rdquo; that enables Maisie &ldquo;to recognize . . . the proof of an extinction.&rdquo; The extinction is, as much as anything else, the necessary &ldquo;death of her childhood.&rdquo; Thus, when Maisie and Sir Claude part, &ldquo;their eyes [meet] as the eyes of those who have done for each other what they can,&rdquo; that is, with a kind of serene acceptance of a natural ending. Such an extinction may seem premature, with Maisie still so young, but it represents a natural process symbolically accelerated.</p>
+
+        <p>The elderly, maternal governess Mrs. Wix attributes Maisie&rsquo;s separation from Sir Claude to her own efforts to work in the girl the triumph of what she calls &ldquo;the moral sense,&rdquo; the last of the alien fictions in which the novel&rsquo;s various parent figures try to make Maisie dwell with them. Mrs. Wix presides over the genre of moral melodrama, and she herself is the melodramatic imagination of the novel personified. She thinks of Mrs. Beale as a &ldquo;bad&rdquo; woman, clings to didacticism for assistance in making sense of Maisie&rsquo;s way of bringing the story to a close, and sees all of the novel&rsquo;s events in simplified terms of good and evil. The beleaguered Maisie to her mind, can be saved from evil only by moral instruction. But at sea with Maisie as she is tossed from one alliance to another, the reader who may want to side with Mrs. Wix&rsquo;s impulse to criticize is bound to recognize that her idea of the moral sense is too simple a <em>vade mecum</em>. Marius Bewley argues that &ldquo;if one denies evil in this novel one will be depriving Maisie&rsquo;s triumphant escape of a good deal of its significance.&rdquo; Yet to agree that Maisie&rsquo;s departure from Sir Claude and Mrs. Beale is a triumph of good over evil is to reconsign the girl to a vision that is not the less melodramatic because the victimization it projects is averted. What such a vision fails to recognize is that Maisie outgrows its terms altogether as she outgrows her childhood.</p>
+
+        <p>Mrs. Wix&rsquo;s special virtue is that she is the one parental character whose emotion for Maisie is stable. Yet we respond ambivalently to the safety of her absolutely dependable affection because it is the safety of death itself in its resolution of all uncertainties. For Maisie, &ldquo;she was peculiarly and soothingly safe; safer than anyone in the world, than papa, than mamma . . . safer even, though so much less beautiful, than Miss Overmore [later to become Mrs. Beale]. . . . Mrs. Wix was as safe as Clara Matilda&rdquo;&mdash;Mrs. Wix&rsquo;s dead daughter. That the elderly governess wears &ldquo;glasses which, in humble reference to a divergent obliquity of vision, she called her straighteners&rdquo; reveals that she is walleyed, physiologically unreliable when it comes to the visual equivalent of moral rectitude. The repetitions of the word &ldquo;straighteners&rdquo; as a substitute for her name suggest that she is someone who strains to define ethical space, to see as straight what perhaps can never conclusively be made out to be so.</p>
+
+        <p>The portrait of Mrs. Wix is worth exploring further especially because she thinks and judges so much like the characters of consciousness in James&rsquo;s other novels. Isabel also settles her uncertainty with an allusion to the straight path, and both Fleda and Strether pride themselves on being right. James&rsquo;s own entertainment of uncertainty, however, constitutes one of the most important ways in which he distances himself from his figures of consciousness who are sure of their rightness. Granted that in the <em>Maisie</em> preface James employs some of the same language of salvation that he assigns to Mrs. Wix: &ldquo;For satisfaction of the mind . . . the small expanding consciousness would have to be saved, have to become presentable as a register of impressions.&rdquo; He speaks of Maisie &ldquo;sowing on barren strands, through the mere fact of presence, the seed of the moral life.&rdquo; But Mrs. Wix and James mean substantially different things by &ldquo;moral life&rdquo; and being &ldquo;saved.&rdquo; As James insisted in the preface to <em>The Portrait</em>, &ldquo;the &lsquo;moral&rsquo; sense&rdquo; in art, and, by implication, in life or in characters who represent life, depends &ldquo;on the amount of felt life&rdquo; experienced. Thus, although he does indeed describe the lovers in <em>Maisie</em> as morally &ldquo;barren,&rdquo; he says that the promise of moral life for the girl comes from her continuing &ldquo;presence,&rdquo; not from absence, from her &ldquo;register[ing] . . . impressions&rdquo;&mdash;presumably including sexual impressions&mdash;not from her fleeing them.</p>
+
+        <p>With a tranquility very much at odds with Mrs. Wix&rsquo;s harried inquiries and pronouncements, Maisie arrives at a perspective on moral knowledge that endorses its importance at the same time as it treats the inclination to absolutes as something comical. The idea of moralizing experience, of seeing it as a series of lessons, is made funny.</p>
+
+        <blockquote>
+            <p>She judged that if her whole history, for Mrs. Wix, had been the successive stages of her knowledge, so the very climax of the concatenation would, in the same view, be the stage at which the knowledge should overflow. As she was condemned to know more and more, how could it logically stop before she should know Most? It came to her in fact . . . that she was distinctly on the road to know Everything. She had not had governesses for nothing. . . . She looked at the pink sky with a placid foreboding that she soon should have learnt All.</p>
+        </blockquote>
+
+        <p>Maisie&rsquo;s gropings after the comically capitalized quantities &ldquo;Most,&rdquo; &ldquo;Everything,&rdquo; and &ldquo;All&rdquo; have the effect of making fun of the pretentiousness of moral certitude&mdash;knowing everything&mdash;at the same time as they convey a feeling for the largeness of moral knowledge.</p>
+
+        <p>Mrs. Wix presses Maisie at the end about her knowledge of the moral sense, like a teacher testing a slow learner on fixed, easily specifiable facts.</p>
+
+        <blockquote>
+            <p>Sir Claude and Mrs. Beale stood there like visitors at an &ldquo;exam.&rdquo; She had indeed [for] an instant a whiff of the faint flower [the moral sense] that Mrs. Wix pretended to have plucked. . . . Then it left her, and, as if she were sinking with a slip from a foothold, her arms made a short jerk. What this jerk represented was the spasm within her of something still deeper than a moral sense. . . . she felt the rising of the tears she had kept down at the station. They had nothing&mdash;no, distinctly nothing&mdash;to do with her moral sense. The only thing was the old flat shameful schoolroom plea. &ldquo;I don&rsquo;t know&mdash;I don&rsquo;t know.&rdquo;</p>
+        </blockquote>
+
+        <p>Maisie substitutes for Mrs. Wix&rsquo;s settled convictions a knowledge that, like the early Newman&rsquo;s, is the larger for encompassing doubt. With her loss of a sure foothold, her admission of uncertainty, and her openness to tears, Maisie embodies the largest ethical appeal imagined in the novel: &ldquo;something still deeper than a moral sense.&rdquo;</p>
+
+        <p>The others, including Mrs. Wix, fend off the pain of that moment with various rhetorical flourishes. We hear a veritable operetta of glib voices. Mrs. Wix flares out at Sir Claude with a florid and melodramatic didacticism: &ldquo;You&rsquo;ve nipped it [Maisie&rsquo;s moral sense] in the bud. You&rsquo;ve killed it when it had begun to live.&rdquo; Later she is described as having &ldquo;found another apostrophe.&rdquo; Sir Claude responds to Mrs. Wix&rsquo;s accusation with a language inflated after its own fashion, with a hushed aestheticism: &ldquo;I&rsquo;ve not killed anything. . . . On the contrary I think I&rsquo;ve produced life. I don&rsquo;t know what to call it . . . but, whatever it is, it&rsquo;s the most beautiful thing I&rsquo;ve ever met&mdash;it&rsquo;s exquisite, it&rsquo;s sacred.&rdquo; About Maisie&rsquo;s offer to give up Mrs. Wix on the condition that he give up Mrs. Beale, Sir Claude speaks &ldquo;with a relish as intense now as if some lovely work of art or of nature had suddenly been set down among them. He was rapidly recovering himself on this basis of fine appreciation.&rdquo; His ironically described &ldquo;recovery&rdquo; in high-tonedness, like Mrs. Wix&rsquo;s immersion in moralizing, floats him away from Maisie&rsquo;s wordless weeping.</p>
+
+        <p>Ultimately, Maisie leaves for England in the company of Mrs. Wix. In doing so, she chooses an ending that appears to validate conventional social values of disapproval and judgment urged upon her by Mrs. Wix. Maisie&rsquo;s return to England, however, is not an instance of fidelity to anyone else&rsquo;s imagination of her life, not even Mrs. Wix&rsquo;s vision of her life as moral melodrama. When the governess informs Maisie that Sir Claude has left the balcony to keep company with his mistress and Maisie&rsquo;s reply is no more censorious than &ldquo;Oh I know!&rdquo; James notes that Mrs. Wix &ldquo;still had room for wonder at what Maisie knew.&rdquo; Mrs. Wix is thus superseded and must take her place as no more than a midwife to Maisie&rsquo;s determination to give birth to herself.</p>
+
+        <p>As Maisie gets beyond, one after another, her father, her mother, then Mrs. Beale and Sir Claude, and even, at last, Mrs. Wix, she enacts a farewell to parents that has no parallel in what James had written until that time. By showing that Maisie&rsquo;s sense of the life around her has become larger than any other character&rsquo;s in the book, James was suggesting that although she goes off with the elderly governess, she is actually spinning out of herself the dimensions of her experience, becoming her own source, taking custody of herself. Instead of constituting a &ldquo;leak&rdquo; or victimizing dissipation of power, instead of disabling her or rendering her &ldquo;sterile,&rdquo; as James says they do Fleda, consciousness and vision coupled with the desires of the personal self confer power on Maisie and ready her for fictions of her own. Dubious though he might have been that we can live out the designs we compose for our adults lives, James nevertheless felt that it was imperative to try to create such designs. For him, growing up was quintessentially an authorial act.</p>
+    </article>
+
+    <script>
+        const toggle = document.getElementById('theme-toggle');
+        const icon = document.getElementById('theme-icon');
+
+        toggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+            toggle.title = isDark ? 'Modo Diurno' : 'Modo Nocturno';
+            toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+        });
+    </script>
+
+</body>
+</html>

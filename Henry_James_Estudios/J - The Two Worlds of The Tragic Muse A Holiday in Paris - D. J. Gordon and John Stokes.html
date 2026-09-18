@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D. J. Gordon and John Stokes - The Two Worlds of The Tragic Muse: A Holiday in Paris</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* =========================================
+           COLORES (Modo Diurno - International Klein Blue)
+           ========================================= */
+        :root {
+            --bg-body: #002FA7;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.88);
+            --text-muted: rgba(255, 255, 255, 0.6);
+            --border-color: rgba(255, 255, 255, 0.35);
+            --border-light: rgba(255, 255, 255, 0.15);
+            --fab-bg: #ffffff;
+            --fab-color: #002FA7;
+            --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+            --quote-border: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Modo Nocturno - Deep Navy Blue */
+        body.dark-mode {
+            --bg-body: #001233;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.85);
+            --text-muted: rgba(255, 255, 255, 0.5);
+            --border-color: rgba(255, 255, 255, 0.2);
+            --border-light: rgba(255, 255, 255, 0.1);
+            --fab-bg: #ffffff;
+            --fab-color: #001233;
+            --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+            --quote-border: rgba(255, 255, 255, 0.4);
+        }
+
+        /* =========================================
+           ESTILOS GENERALES
+           ========================================= */
+        * { transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease; }
+        
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            line-height: 1.75;
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 2em 1.5em 5em;
+            color: var(--text-primary);
+            background-color: var(--bg-body);
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 0.2em;
+            font-weight: normal;
+            letter-spacing: 0.05em;
+            color: var(--text-primary);
+        }
+
+        h2 {
+            font-size: 1.4em;
+            text-align: center;
+            margin-top: 2.5em;
+            margin-bottom: 1.5em;
+            font-weight: bold;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        h3 {
+            font-size: 1.1em;
+            text-align: center;
+            margin-top: 2.5em;
+            margin-bottom: 1em;
+            font-weight: bold;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        p {
+            text-align: justify;
+            margin-bottom: 1.2em;
+            text-indent: 1.5em;
+        }
+
+        p.no-indent { text-indent: 0; }
+
+        blockquote {
+            margin: 1.5em 2em;
+            padding-left: 1.5em;
+            border-left: 3px solid var(--quote-border);
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        blockquote p { text-indent: 0; margin-bottom: 0.8em; }
+
+        .poem {
+            margin: 1.5em 2em;
+            font-style: italic;
+            text-indent: 0;
+        }
+
+        .poem p {
+            text-indent: 0;
+            margin-bottom: 0.3em;
+            text-align: left;
+            padding-left: 2em;
+            text-indent: -2em;
+        }
+
+        em { font-style: italic; }
+
+        sup {
+            font-size: 0.75em;
+            vertical-align: super;
+            line-height: 0;
+        }
+
+        .page-number {
+            display: block;
+            text-align: center;
+            font-size: 0.8em;
+            color: var(--text-muted);
+            margin: 2em 0 1em 0;
+        }
+
+        .footnotes {
+            margin-top: 4em;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5em;
+            font-size: 0.9em;
+            color: var(--text-secondary);
+        }
+
+        .footnotes h3 {
+            text-align: left;
+            font-size: 1em;
+            margin-bottom: 1em;
+            text-transform: none;
+            letter-spacing: normal;
+            color: var(--text-primary);
+        }
+
+        .footnotes p {
+            text-align: left;
+            text-indent: -1.5em;
+            padding-left: 1.5em;
+            margin-bottom: 0.6em;
+            font-size: 0.9em;
+        }
+
+        .section-break {
+            text-align: center;
+            margin: 2.5em 0;
+            font-weight: bold;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.1em;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 2em;
+        }
+
+        .source-note {
+            text-align: center;
+            font-size: 0.85em;
+            color: var(--text-muted);
+            margin-bottom: 2em;
+            font-style: normal;
+        }
+
+        /* =========================================
+           BOTÓN FLOTANTE (Modo Nocturno)
+           ========================================= */
+        .fab-toggle {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background-color: var(--fab-bg);
+            color: var(--fab-color);
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease;
+            z-index: 1000;
+            outline: none;
+        }
+        .fab-toggle:hover { transform: scale(1.1); }
+        .fab-toggle:active { transform: scale(0.95); }
+        .fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            body { padding: 1.2em 1em 4em; }
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.1em; }
+            .fab-toggle { bottom: 16px; right: 16px; width: 50px; height: 50px; }
+            .fab-toggle .material-icons { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo Nocturno">
+        <i class="material-icons" id="theme-icon">dark_mode</i>
+    </button>
+
+    <article id="content">
+        <h1>D. J. Gordon and John Stokes</h1>
+        <p class="subtitle">The Two Worlds of <em>The Tragic Muse</em>:<br>A Holiday in Paris</p>
+        <p class="source-note">From <em>The Air of Reality: New Essays on Henry James</em>, edited by John Goode. &copy; 1972 by Methuen and Co., Ltd.</p>
+
+        <p>One of James&rsquo;s problems [in <em>The Tragic Muse</em>] was how to connect the story of the public or political life, and therefore the story of Julia, with the story of art and the life of art. Those objects at the Salon, sculptures in the sunny air where the English visitors are sitting, or pictures hung indoors, can be made to point to both. The absent Julia can, obtrusively, be connected with objects, beautiful objects, by Lady Agnes and Grace; but Nick rejects this offered link between himself and Julia: the taste, the intelligence that brought those objects together was not Julia&rsquo;s but her dead husband&rsquo;s. The Salon shows not a &ldquo;collection&rdquo; but objects made by living artists. Through these we are to be led into generalizations, not so much about the worth of those new things as about the conditions that produced them, the conditions which must be available for the life and work of the artist. Biddy, biddable, innocent, offers a first proposition:</p>
+
+        <blockquote>
+            <p>&ldquo;The subject doesn&rsquo;t matter; it&rsquo;s the treatment, the treatment!&rdquo; Biddy announced, in a voice like the tinkle of a silver bell.</p>
+            <p>[All quotations are taken from the Hart-Davis edition (London, 1948), chapters 1&ndash;12.]</p>
+        </blockquote>
+
+        <p>Falling from Biddy&rsquo;s lips this tinkles like a dropped formula, a stock response to the subject/treatment dilemma, coming as though she had learnt it by heart even in the presumably discreet studios where she was allowed to study &ldquo;modelling.&rdquo; Nick brushes it aside, affectionately. His answer to his mother indicates here, among these tangible signs, responses, presuppositions, phrases that are to conduct us through James&rsquo;s principal enquiry:</p>
+
+        <blockquote>
+            <p>This place is an immense stimulus to me; it refreshes me, excites me, it&rsquo;s such an exhibition of artistic life. It&rsquo;s full of ideas, full of refinements; it gives one such an impression of artistic experience. They try everything, they feel everything. While you were looking at the murders, apparently, I observed an immense deal of curious and interesting work. . . . All art is one&mdash;remember that, Biddy dear. . . . It&rsquo;s the same great, many-headed effort, and any ground that&rsquo;s gained by an individual, any spark that&rsquo;s struck in any province, is of use and of suggestion to all the others. We are all in the same boat.</p>
+        </blockquote>
+
+        <p>Effort and work are what preoccupy Nick. Biddy, though she would like to, does not understand him; and, strolling among those objects, he transposes her jargon, or their mother&rsquo;s vocabulary, into the context of this effort and of the general conditions that must support it. &ldquo;Ideas&rdquo;&mdash;what Biddy hopes to find for her modelling, the &ldquo;capacity for ideas&rdquo; which she hopes she has&mdash;are put alongside <em>application</em>; her own <em>trying</em> becomes <em>trying seriously</em>; and definition of the crucial adverb is put into a paradox that translates Lady Agnes&rsquo;s position into its opposite: art is good, or acceptable to Lady Agnes when it is bad, which means when it is the affair of odd hours, a distraction like a game:</p>
+
+        <blockquote>
+            <p>The only thing that can justify it, the effort to carry it as far as one can (which you can&rsquo;t do without time and singleness of purpose), she regards as just the dangerous, the criminal element.</p>
+        </blockquote>
+
+        <p>Biddy translates Nick&rsquo;s meaning into <em>professional</em>&mdash;that is what her mother doesn&rsquo;t want one to become; and Nick accepts the word. Professional is a social definition of what he meant, and could become (with still other social nuances) <em>work</em>, something one spends one&rsquo;s life on and tries to earn one&rsquo;s living by: Biddy immediately introduces &ldquo;Your own work&mdash;your painting.&rdquo; But this is a light sense of <em>work</em> which Nick rejects, for himself. Painting has never been his <em>work</em>: &ldquo;if it had . . . I should stick to it.&rdquo; A set of terms has been erected, generated by occasion, by this sort of dialogue based on incomprehension (though in this case, sympathetic); and these are to persist. That a moment has been reached is marked by closing the dialogue and introducing a summary account of Nick Dormer&rsquo;s long transactions with Paris. His awareness of what the exhibits at the Salon stand for involves now the whole city. What he responds to is a manifold, comprising garden, shadows of summer clouds, the white images, provocative, &ldquo;hard in their crudity,&rdquo; even the rattle of plates in the restaurant. For this too is part of the contagion of Paris, that has always offered so many suggestions in the way of art; and now especially offers&mdash;the earlier phrase is repeated&mdash;&ldquo;a sense of artistic life&rdquo;: studios, companionships, youth, &ldquo;and a multitudinous newness, forever reviving and the diffusion of a hundred talents, ingenuities, experiments.&rdquo; What the artistic life means as an activity is still his preoccupation. He felt that the exhibition &ldquo;would help him to settle something&rdquo;; and he associates &ldquo;the idea of help&rdquo; with a man whom he sees approaching. This is Gabriel Nash.</p>
+
+        <p>There is a major transposition from Nick&rsquo;s terms, <em>artistic life</em> or <em>life of art</em> and its glimpsed conditions, to <em>life as art</em>, with its proposed terms and conditions. Gabriel Nash offers this. Biddy cannot understand Nash, any more than she can identify or place him, except as a &ldquo;gentleman,&rdquo; or any more than she can identify even the nationality of the two silent women who were with him as they met. She can only try to understand, by finding some named role or formula that will bring Nash somewhere within a known world. Nick&rsquo;s part is to question, to welcome, neither to accept nor deny. Nash appears, as it were, from nowhere, to Nick who has not seen or heard of him for a long time: that he should move in what seems to others&mdash;not to himself&mdash;a cloud of uncertainty is essential to his full presentation. Nick&rsquo;s questions permit Nash to talk about himself&mdash;not in riddles or evasions, as Biddy may think, but in generalizations; for Nash is his own case, his own text, illustrating a new set of rules to live by.</p>
+
+        <p>Nash redefines and revalues accepted kinds of human activity, both art and politics, together with the conditions of their practice: he offers another sort of activity&mdash;in his definition as final. His premise is a version of what <em>experience</em> is; and this involves both the individual and his social relationships.</p>
+
+        <p>Nash&rsquo;s refusal to allow that he lives in the nineteenth century, or in London rather than in Samarkand, is the same as his refusal to allow that he either likes or dislikes English art. He is refusing any <em>formula</em> or social definition or <em>generalization</em>. And this he does in the name of <em>feeling</em>. &ldquo;They try everything, they feel everything,&rdquo; Nick had said of the French artists; and Nash says &ldquo;We must feel everything, everything we can. We are here for that.&rdquo; Nick&rsquo;s <em>feeling</em> had immediate reference to the artistic experience and the work that comes out of it. Nash&rsquo;s <em>feeling</em> is absolute, referring to nothing beyond itself: for there is nothing else that we have. In the one life we know, we have only our <em>impressions</em>. <em>Impressions</em> becomes the word for what our consciousness is made up of, and these impressions had better be agreeable ones:</p>
+
+        <blockquote>
+            <p>the happy moments of our consciousness&mdash;the multiplication of those moments. We must save as many as possible from the dark gulf.</p>
+        </blockquote>
+
+        <p><em>Generalization</em> loses its normal sense and is only admissible as autobiography (what I do)&mdash;&ldquo;My only generalizations are my actions&rdquo;&mdash;and &ldquo;my behaviour&rdquo; (what I do) is my feelings. This is not passive acceptance of anything that may come. If <em>feeling</em> modulates into <em>impressions</em>, and <em>impressions</em> modulate into the restrictive <em>agreeable impressions</em> (&ldquo;happy moments&rdquo;), these in turn are translatable into <em>the beautiful</em>. Our <em>feelings</em> are <em>behaviour</em> because we are capable of &ldquo;shades of impression, of appreciation,&rdquo; <em>appreciation</em> being a faculty we have, &ldquo;a special sense&rdquo; that can be trained and extended so that we can get hold of the <em>beautiful</em>. With these words, <em>consciousness, impressions</em>, and <em>appreciation</em> we have a new vocabulary that connects with Nick&rsquo;s as he reflected on the life of art. Nick&rsquo;s question has to be (we are still among the sculptures): What does all this produce? And Nash&rsquo;s answer is, in his terms an inescapable one: he makes himself: &ldquo;I am a fine consequence.&rdquo; &ldquo;Are you an aesthete?&rdquo; Biddy asks. But that is only another name, a definition operating within the social reference which the &ldquo;I&rdquo; denies:</p>
+
+        <blockquote>
+            <p>Ah, there&rsquo;s one of the formulas! That&rsquo;s walking in one&rsquo;s hat! I&rsquo;ve <em>no</em> profession, my dear young lady. I&rsquo;ve no <em>&eacute;tat civil</em>. These things are part of the complicated ingenious machinery. . . . Merely to be is such a <em>m&eacute;tier</em>; to live is such an art; to feel is such a career!</p>
+        </blockquote>
+
+        <p>So the major transposition is effected. Such terms refer back to and reverse Nick&rsquo;s relating of the <em>serious</em> and the <em>professional</em> in the life of art; and refer also to the conditions of the political life. Biddy had introduced that life as an alternative choice to Nash&rsquo;s: Nick&rsquo;s choice to put right wrongs, abuses and sufferings. This has been dismissed as belonging to the <em>formulas</em> or the complicated social machines that are opposed to the free movements of the individual consciousness. Politics&mdash;returning to the vocabulary of <em>function</em>, and to an application that would horrify Lady Agnes&mdash;is</p>
+
+        <blockquote>
+            <p>a trade like any other, and a method of making one&rsquo;s way which society certainly condones.</p>
+        </blockquote>
+
+        <p>But the <em>observer</em>&mdash;and thus Nick assigns a known role to Nash&mdash;engaged in distinguishing his <em>shades</em> must himself be involved in the world of <em>naming</em>. Nash agrees: he has his <em>terminology</em> (a set of names), and this is his <em>style</em> (a word that goes with <em>appreciation</em>); but <em>style</em> is wholly individual, which means wholly private. To function for the convenience of others means that the names, or signs or style must become grosser; and the shades, which are what truly distinguish, must go. And here the conditions of the practice of art and politics meet. And so too Nash has given up his own art, writing.</p>
+
+        <p>Nash has used, for himself, the vocabulary of the critic of art or literature: the notion that <em>style</em> is the man reaches its conclusion that style cannot be a vehicle of social relation. He is both in a role&mdash;critic, observer&mdash;and is denying it. And he does not observe that he is still as fond of generalizations as Nick says he had been while at Oxford. In the name of the final freedom of the isolate consciousness we are offered generally applicable rules for conduct.</p>
+
+        <p>Nash, then, reduces the political life to an affair of words, of Nick&rsquo;s speeches coming, like literature, within the orbit of his word &ldquo;style,&rdquo; and subject to the same condemnation: &ldquo;style&rdquo; being essentially private and individual, both politics and literature must suffer corruption because they have to do with communication, with an audience, and so with the convenience of others, and so with the realm of machinery, both operating through names or formulas which, by identifying, thereby falsify. Politics, like literature, is excluded from the realm of doing, of <em>action</em>, of the true <em>m&eacute;tier</em>, behaviour being feeling; or from the realm of art, for the true <em>m&eacute;tier</em> is to <em>be</em>: the true work of art (the fine consequence) being myself. When Nash concludes that politics (meaning, this time, being a &ldquo;great statesman&rdquo;) is &ldquo;a trade like any other,&rdquo; and a method of making one&rsquo;s way which society certainly condones, &ldquo;he is taking up <em>work</em>&rdquo; (which itself went with <em>professional</em>), which Nick had used as both a description of an essential condition of the life of art and a social definition of the artist&rsquo;s occupation (&ldquo;my work&rdquo;&mdash;&ldquo;my occupation&rdquo;), refusing, as we saw, to accept the word, in either application for himself, as painter.</p>
+
+        <p>There are other ways of defining the conditions of the <em>public life</em> (or the political life). What Lady Agnes offers as Nash, Nick and Biddy stroll and talk is a version of these conditions that must (as Nash&rsquo;s do) guide our expectations about how this story is to be presented. What Lady Agnes knows is that the inescapable condition of the political or public life is <em>money</em>:</p>
+
+        <blockquote>
+            <p>&ldquo;It&rsquo;s all very well to say that in public life money isn&rsquo;t necessary, as it used to be. . . . Those who say so don&rsquo;t know anything about it. It&rsquo;s always necessary. . . .&rdquo;</p>
+            <p>&ldquo;I dare say; but there&rsquo;s the fact&mdash;isn&rsquo;t there?&mdash;that poor papa had so little.&rdquo;</p>
+            <p>&ldquo;Yes, and there&rsquo;s the fact that it killed him!&rdquo; These words came out with a strange, quick little flare of passion.</p>
+        </blockquote>
+
+        <p>If Nick is to have money he has to get it from someone. There are two sources, Julia and Mr Carteret. It is left for the graceless Grace to say outright what Nick&rsquo;s marriage to Julia would be for all of them&mdash;&ldquo;she would be so nice to us&rdquo;&mdash;and to assume that &ldquo;Mr Carteret will always help him.&rdquo; Lady Agnes knows only uncertainties: that she does not really know what Nick is, that his relationship with Julia is not to be taken for granted; that Mr Carteret&rsquo;s bounty depends on Nick being <em>serious</em>, of which his marriage to Julia would be a sign: money goes to money.</p>
+
+        <blockquote>
+            <p>If Nick becomes rich, Charles Carteret will make him more so.</p>
+            <p>If he doesn&rsquo;t, he won&rsquo;t give him a shilling.</p>
+        </blockquote>
+
+        <p>Lady Agnes does know that Julia and Mr Carteret have existences of their own, but this is only to know that there are limits to the ways in which they can be used. She accepts without hesitation Julia&rsquo;s function in the impending by-election at Harsh, as does Julia&rsquo;s brother, Peter Sherringham, who takes it for granted when he brings the news to Lady Agnes. Their language dangerously assumes and portends a relation of ownership. Julia &ldquo;undertakes&rdquo; to bring Nick in. And to pay the bill: &ldquo;I think that&rsquo;s her idea.&rdquo; &ldquo;Delightful Julia!&rdquo; Lady Agnes ejaculated. Julia will leave Paris &ldquo;for her man.&rdquo; &ldquo;Her man?&rdquo;&mdash;Lady Agnes&rsquo;s question means more to us than Peter&rsquo;s answer covers: &ldquo;the fellow that stands, whoever he is; especially if he&rsquo;s Nick.&rdquo; Neither the naked cash basis, nor the sort of relationship this involves, affects for a moment Lady Agnes&rsquo;s version of the value of the political or public life. For her this value is wholly comprehended in Nick&rsquo;s relationship to his father, which is the relationship to a <em>name</em>: &ldquo;One of the greatest, simply.&rdquo; And Lady Agnes&rsquo;s version will be expanded to become one of the kinds of <em>tradition</em> with which the novel is concerned.</p>
+
+        <p>&ldquo;Poor Julia, how you do work her!&rdquo;: this is Nick&rsquo;s recognition that his mother and sister have cast Julia for a specific instrumental role, which would imply that he, in his turn, is to serve Julia&rsquo;s purpose, and demonstrate the conditions of his political life. &ldquo;Julia wants me? I&rsquo;m much obliged to her! . . . Where&rsquo;s the money to come from?&rdquo; &ldquo;The money? Why, from Jul&mdash;&rdquo; Grace began, but immediately caught her mother&rsquo;s eye.&rdquo; <em>Harsh</em> as a name is a joke to Gabriel Nash, but its realities are harsh enough for Nick, and for the English system. &ldquo;It belongs very largely to my cousin, Mrs Dallow.&rdquo; &ldquo;But I thought we had no more pocket boroughs&rdquo; is Nash&rsquo;s immediate translation.</p>
+
+        <p>Nash, at this luncheon party, playing his part as visitor from Samarkand, can now go on with his devaluation of the political life. Surely a pocket borough fills your pockets? Surely only a bribe would induce a man to go into Parliament? Accused of thinking politics dreadful his answer is &ldquo;only inferior. . . . Everything is relative.&rdquo;</p>
+
+        <p>It is characteristic of Nash&rsquo;s technique that the particular statement should be offered as an application of the wider generalization, and that this supporting generalization should be put forward as aphorism or epigram, and in a manner that assumes general acceptance, as of a commonplace. By now &ldquo;everything is relative&rdquo; as a general measure of value was sufficiently commonplace, as Nash knows perfectly well, but he is playing a familiar role at this moment. And also to introduce this clich&eacute; is to bring into action his doctrine of experience, of which that phrase is an essential postulate. It helps him to continue his devaluation of politics, for only that application of the phrase is picked up, by Lady Agnes (&ldquo;Inferior to what?&rdquo;); but it will pass into and support the ways in which Nash evaluates art.</p>
+
+        <p>One of the purposes of the complex game played around this luncheon table is to establish a major theme: the theatre&mdash;actor, scene, play&mdash;as art, and in connexions with the political life, with other sorts of art, with questions about experience; and from the beginning, to establish the whole question of the theatre in a situation of dispute and controversy.</p>
+
+        <p>That the theatre would eventually come was adumbrated when Biddy, attempting to identify Gabriel Nash, saw him as a musician or an actor, and saw the younger of the two women with him as a dancer. The luncheon-table conversation opens formally with a life/theatre comparison from Nash. Tactically, this leads straight to money&mdash;&ldquo;The world isn&rsquo;t got up regardless of expense&rdquo;; it also introduces a theme in his doctrine of experience: an economical stage procession shows the same figures appearing again and again, and this is an analogue for the &ldquo;repetition&rdquo; and &ldquo;recurrence&rdquo; that we haven&rsquo;t yet abolished &ldquo;in the study of how to live.&rdquo; This is another way of talking about &ldquo;moment&rdquo; or &ldquo;moments.&rdquo; The actual theatre comes in through Nash&rsquo;s first account of those unexplained women, and passes immediately from the individual case&mdash;the girl wants to go on the stage&mdash;into generalizations so extreme that they enclose all the positions that Nash and Peter Sherringham will in due course state and enact. Nash is not helping the girl because he considers the theatre &ldquo;the lowest of the arts&rdquo;&mdash;although the <em>Th&eacute;&acirc;tre fran&ccedil;ais</em> is a greater institution than the House of Commons:</p>
+
+        <blockquote>
+            <p>&ldquo;I agree with you there!&rdquo; laughed Sherringham; &ldquo;all the more that I don&rsquo;t consider the dramatic art a low one. On the contrary, it seems to me to include all the others.&rdquo;</p>
+        </blockquote>
+
+        <p>Those great polemical assertions made&mdash;Nash acknowledges them as a &ldquo;view&rdquo;&mdash;Peter&rsquo;s are kept till later for formal restatement. Lady Agnes seizes on what she understands: it is really better for a gentleman to be an actor?</p>
+
+        <blockquote>
+            <p>Better than being a politician? Ah, comedian for comedian, isn&rsquo;t the actor more honest?</p>
+        </blockquote>
+
+        <p>What a gentleman is to do is a question that Julia Dallow is soon to ask Nick. In answer here, Lady Agnes can only invoke Nick&rsquo;s &ldquo;great father&rdquo;&mdash;for that image is the only value she knows in the realm of political action, the assumptions of class and family being her furthest generalizations. Nick&rsquo;s response is partial and only a <em>perhaps</em>, but he accepts Nash&rsquo;s predicated value: his own father was &ldquo;an honest man,&rdquo; and perhaps that is why he could not endure (or died of) the political life. Actor and politician have this in common, that they can only function in relation to an audience; that to catch this audience both speak and feign &ldquo;parts&rdquo; that have been written and devised for them by others&mdash;they must be what they are not. <em>Honesty</em> is in relationship to &ldquo;part&rdquo; and words and audience; the actor sets out to deceive no one (to interpret Nash); the politician&rsquo;s art, if he would succeed, is to deceive, radically. The comedian is the more honest man, yet <em>comedian for comedian</em> devalues both activities. Nash allows the actor more grace, certainly, but just a little more, and in this comparison.</p>
+
+        <p>Acting and its conditions (the theatre) are to become the central paradigmatic instance of the artist&rsquo;s life, with all those questions about how the actress becomes an actress, what she brings, and what she must acquire; and this must involve enquiry not only into the formation of the actress, but into what James, fascinated by the problem, called elsewhere the <em>nature d&rsquo;actrice</em>; and brings too an enquiry, which James would not have admitted to be either separate or grander, into what the actress <em>does</em>, and what her art achieves: into, that is, the nature or meaning of her art, and into those necessary limitations which are imposed by those very conditions&mdash;the theatre depending as it does on several fixed relationships under which, as things are, it is practised. Those skirmishes, tentative beginnings, at the luncheon table are to prepare us for the general and special developments of Nick&rsquo;s concern with the life of art and with Nash&rsquo;s rejection of art. Nash has already moved into position about the theatre and so has Peter Sherringham: these topics are to be in their hands.</p>
+
+        <p>They turn, these topics, on two women: on the aspirant actress, Miriam Rooth, the younger of those two women who walked with Nash among the sculptures and whom he so rapidly got rid of; and, counterposed to Miriam, the great achieved artist, the aged Carr&eacute;, of the <em>Th&eacute;&acirc;tre fran&ccedil;ais</em>, whose past is legend, whose present is still potent, and who is to be brought together with Miriam when she hears the young woman &ldquo;say&rdquo; something, so that she can pronounce judgement on her.</p>
+
+        <p>The tale of the Rooths is Gabriel Nash&rsquo;s; and it will serve more than one purpose. There is his report of Mrs Rooth&rsquo;s account of her splendid origins. This is fiction: Mrs Rooth has as much to do with truth as her daughter (who will have a good deal to do with it) will have to do with ruth. If Mrs Rooth&rsquo;s tale were true&mdash;it interests Lady Agnes&mdash;it would perhaps be less important for the aspiring actress than what Nash has learned or inferred about the facts. These have to do with Miriam&rsquo;s formal education&mdash;mostly bits and pieces of languages picked up during mother and daughter&rsquo;s cheap peregrinations through Europe; and we are to take this with Nash&rsquo;s confident claim that Miriam is stupid. And, more importantly, these facts have to do with Miriam&rsquo;s inheritance. Biddy, at first sight, had imagined Miriam as a particularly violent dancer; and Miriam has this of the Old Testament about her (and perhaps, proleptically, more, for Miriam, the sacred dancer, offended the Lord by conspiring to betray his servant, and was smitten by leprosy), that her Christian name indicates her father&rsquo;s faith: his surname had been Roth; and Miriam is half a Jewess. Of her name Peter Sherringham says immediately: &ldquo;It is as good as Rachel F&eacute;lix&rdquo;&mdash;and so Rachel, the Tragic Muse of painters and writers, first appears: that child of a Jewish pedlar, trailed across Europe, uneducated, whose legend is to be so powerful a presence, a reference for achievement and a touchstone for theory. With Rooth&rsquo;s Jewishness went a taste for collecting (Julia Dallow&rsquo;s husband had it, on a grander scale), and some skill in music (&ldquo;like most of his species&rdquo;); in fact he had the <em>artistic temperament</em>; but this phrase is given to Mrs Rooth, which puts its seriousness in doubt, and James uses it very gingerly as an explanation or description of the artist&rsquo;s nature. But there is no doubt that this paternal and racial inheritance was to count for Miriam.</p>
+
+        <p>The exchange turning on Carr&eacute; is explicitly put forward as a rehearsal of currently familiar positions. Thus Nash accuses Sherringham of using the language of the <em>feuilletons</em>, and Sherringham accuses Nash of using an attitude and arguments in vogue among the <em>raffin&eacute;s</em>. Sherringham particularly refers to Nash&rsquo;s insistence on the poverty of the modern dramatic form, as compared with the novel.</p>
+
+        <p>The older dramatists, Nash argues, had an easier task: to represent a simpler civilization in which man expressed himself directly and violently in action and passion. But today &ldquo;What can you do with a character, with an idea, with a feeling, between dinner and the suburban trains?&rdquo; Nash is, in part, defining &ldquo;modernity&rdquo; in the sense of what the modern dramatist has to deal with. He is also giving a reason why the achievement even of a Carr&eacute; must be limited. When Sherringham says that to watch her was</p>
+
+        <blockquote>
+            <p>an education of the taste, an enlargement of one&rsquo;s knowledge</p>
+        </blockquote>
+
+        <p>we are certainly to believe him, but we are also to believe Nash&rsquo;s rejoinder:</p>
+
+        <blockquote>
+            <p>She did what she could, poor woman, but in what belittling, coarsening conditions! . . . The dramatist shows us so little, is so hampered by his audience, is restricted to so poor an analysis.</p>
+        </blockquote>
+
+        <p>Even a Carr&eacute; is limited, like the dramatist, by what he calls &ldquo;the essentially brutal nature of the modern audience.&rdquo; &ldquo;Theatre&rdquo; is tending to split into two: here Sherringham&rsquo;s concern is for <em>acting</em>, Nash&rsquo;s for what the actor has to work with.</p>
+
+        <p>Nash&rsquo;s attack on the actual conditions of theatrical performance (even his reference to the time-tables of the last suburban trains), which mark the infrangible limits of the dramatist&rsquo;s (and therefore of the actor&rsquo;s) art, is anything but new or esoteric. Yet it can serve as a consistent extension of his earlier declarations. The criterion of theatrical representation is <em>success</em>: there are not many bad actors because most of them succeed in &ldquo;that business,&rdquo; &ldquo;more easily and completely than in anything else.&rdquo; Such success&mdash;money or satisfied vanity for the actor, or just money for managers and stage carpenters&mdash;depends wholly on giving the gross audience what it wants. The theatre is indeed &ldquo;a commercial and social convenience.&rdquo; But the repetition of that word <em>convenience</em> and this insistence on the theatre&rsquo;s corrupting dependence takes us back to Nash on the art of writing, or the life of politics&mdash;which were condemned for precisely this same reason: the inevitable corruption of those other dealers in words, through the audience which they who properly exist as individuals are tied to&mdash;and tied therefore to the realm of convenience, formulas, generalizations.</p>
+
+        <p>Nash has another, equally consistent, version of why he has to come to reject the theatre, but this position is more radical, for it carries forward Nash&rsquo;s basic doctrine of experience. This step comes in the shape of still another generalization, turned by repetition into a formula. Nash first met the Rooths when Mrs Rooth was selling off her husband&rsquo;s objects. Those included pots, and at that time Nash was collecting pots. &ldquo;It was a little phase&mdash;we have our little phases, haven&rsquo;t we? . . . and I have come out on the other side.&rdquo; And of his earlier enthusiasm for the theatre he says:</p>
+
+        <blockquote>
+            <p>Oh, I used to be of your way of feeling. . . . It&rsquo;s a phase like another. I&rsquo;ve been through it.</p>
+        </blockquote>
+
+        <p>This connects with &ldquo;everything is relative&rdquo;; and <em>phase</em> is an extension of <em>moment</em> or <em>moments</em>. Repetition or recurrence is fatal: happy <em>moments</em>, or a <em>phase</em>, had their value, but cannot retain it. We must move on: the moments must be multiplied.</p>
+
+        <p>Nick&rsquo;s admonition to Biddy that &ldquo;all the arts are one&rdquo; had specific reference to the artist&rsquo;s necessary effort to carry his art further, and had involved no direct comparison between what artists <em>make</em>, with paint or stone or words. Peter&rsquo;s assertion that the &ldquo;dramatic art&rdquo; includes all the others had been left unelaborated except for his justification of Carr&eacute;; and that rests on a certain assumption about the unity of the arts based, like Nick&rsquo;s, in terms of effort, and on one, but not the only view of what the actor actually does.</p>
+
+        <blockquote>
+            <p>It&rsquo;s not easy . . . to produce, completely, any artistic effect . . . and those that the actor produces are among the most moving we know.</p>
+        </blockquote>
+
+        <p>Part of the argument that Sherringham needs he offers to Nick after lunch as they stroll by themselves, aimlessly, through the streets. Nash had first used <em>represent</em> about what the dramatist does, and in its general sense of &ldquo;shewing forth&rdquo; (drama as &ldquo;mirror&rdquo; of its age). This is the word Sherringham uses as the basis of his argument, applying it, however, principally to the actor&rsquo;s art (the dramatist provides material for him to work on):</p>
+
+        <blockquote>
+            <p>I am fond of representation&mdash;the representation of life: I like it better, I think, than the real thing. You like it, too, so you have no right to cast the stone. You like it best done one way and I another; and our preference, on either side, has a deep root in us. There is a fascination to me in the way the actor does it, when his talent (ah! he must have that!) has been highly trained (ah! it must <em>be</em> that!). The things he can do, in this effort at representation (with the dramatist to give him his lift) seem to me innumerable&mdash;he can carry it to a delicacy!&mdash;and I take great pleasure in observing them, in recognizing them, and comparing them. It&rsquo;s an amusement like another: I don&rsquo;t pretend to call it by any exalted name; but in this vale of friction it will serve. One can lose one&rsquo;s self in it, and it has this recommendation (in common, I suppose, with the study of the other arts), that the further you go in it, the more you find. So I go rather far, if you will. But is it the principal sign one knows me by?</p>
+        </blockquote>
+
+        <p>This is formally set out: the generalizations offer that restricted part of the argument about the unity of the arts that the novel will most require. They insist, again, on the process of <em>doing</em>, and introduce terms relative to this (<em>talent, training</em>)&mdash;which are almost immediately to be picked up in the case of Miriam&mdash;and relative to the critic&rsquo;s activity (<em>observe, recognize, compare</em>), which Peter claims for himself; and they offer no <em>justification</em> for the taste&mdash;it is more than this&mdash;for one or other kind. The vital suggestion that the &ldquo;representation&rdquo; may be preferred to the &ldquo;real,&rdquo; is informally, almost casually, brought in.</p>
+
+        <p>This formal explicit argument is constructed to introduce the first formal explicit statement of Nick&rsquo;s situation:</p>
+
+        <blockquote>
+            <p>The idea of representation fascinates you, but in your case it&rsquo;s representation in oils&mdash;or do you practice water-colours too? You even go much further than I, for I study my art of predilection only in the works of others. . . . You&rsquo;re a painter, possibly a great one; but I&rsquo;m not an actor.</p>
+        </blockquote>
+
+        <p>Peter&rsquo;s argument is a piece of self-defence; the accusation he thinks he has to meet, which forces him to the formal statement and to its application to Nick, is an extension of the concern with <em>naming</em> or <em>identification</em>.</p>
+
+        <p>This begins with questions about Gabriel Nash (&ldquo;He sounds like an Elizabethan dramatist,&rdquo; Peter says) and what he is: an ass, in Peter&rsquo;s version, or a real case for enquiry into what might prevent &ldquo;the whole man from being as good as his parts,&rdquo; in Nick&rsquo;s. So to the luncheon dispute about the theatre, and Nick&rsquo;s</p>
+
+        <blockquote>
+            <p>the old sign one knew you best by: your permanent stall at the <em>Fran&ccedil;ais</em>.</p>
+        </blockquote>
+
+        <p>and to Peter&rsquo;s argument, and to his final question, repeating Nick&rsquo;s phrase as a question. In language&mdash;used however lightly&mdash;that associates him with Nash and the critics (&ldquo;I ought to discriminate . . . I always want the further distinction, the last analysis&rdquo;), Nick answers yes. And the dialogue is brought to a conclusion through a return to Nash, which is a return to the problem of defining him (or distinguishing him).</p>
+
+        <blockquote>
+            <p>Most people have a lot of attributes and appendages that dress them up and superscribe them, and what I like him for is that he hasn&rsquo;t any at all.</p>
+        </blockquote>
+
+        <p><em>Sign, superscription</em>: holy writ has been called in to extend the vocabulary available for proofs or tokens of identity. Peter&rsquo;s self-justifying declaration, which is also a way of asking by what sign Nick is best known, leads into brief companion biographies of the two young men, held up till now so that they should go with this revealing formal declaration: from indications we move to statement.</p>
+
+        <p>The biography of Nick is not simple. It is a comment on the conditions and values of the political, or public, life, in a specified English setting.</p>
+
+        <p>Political life is a function of family and class situation, and in turn guarantees that situation; it can only be exercised through money and can bring safety through money or alliance with money. Lady Agnes has already shown, vividly, that she knows this. Nick&rsquo;s great father&mdash;that great name&mdash;was a younger son; he had inherited baronetcy and property from his elder brother; Nick himself is the younger son. Bricket, &ldquo;that moderate property,&rdquo; is in the hands of his elder brother; that &ldquo;pleasant white house&rdquo; (no great house of stone, let alone marble) is let, while the heir neglects his family and devotes himself to big-game shooting: an occupation approved of by a society which the narrator&mdash;the tone is plain&mdash;does not approve of. Lady Agnes&rsquo;s jointure is not &ldquo;an incitement to grandeur.&rdquo; There is no dower house for her and her daughters, and no proper town house; she has to live in Calcutta Gardens, in a &ldquo;gabled, latticed house in a creditable quarter, though it was still a little raw, of the temperate zone of London.&rdquo; This, in London, and dated by the speculative builder&rsquo;s name, is the precarious edge of the world; largely dependent on Mr Carteret&rsquo;s &ldquo;convenient cheques,&rdquo; it is to be &ldquo;in a general way&rdquo; his mother&rsquo;s and his sister&rsquo;s &ldquo;providence,&rdquo; as Mr Carteret is his. Lady Agnes&rsquo;s anxieties are real. The Dormers are in danger.</p>
+
+        <p>That the political life is proper to a gentleman is, we know, the limit of Lady Agnes&rsquo;s generalization; the content and value of the activity lie in its connexion with&mdash;and this would include the family&mdash;Nick&rsquo;s duty to maintain his father&rsquo;s name: which is also a kind of property he would bring to a contest in Harsh, balancing&mdash;in his mother&rsquo;s eyes&mdash;Julia&rsquo;s gifts. What Nick&rsquo;s father actually <em>did</em> to achieve &ldquo;greatness&rdquo; we are not quite clear about: to leave us uncertain, and to define the achievement through Mr Carteret, or newspaper allusion or other report, are ways both of reducing the political life and of relating it socially&mdash;indirectly to class and directly to the media of publicity.</p>
+
+        <p>Mr Carteret&rsquo;s generosity to Nick (but Lady Agnes has already foretold its terms) springs from devotion to the great name: he has nothing more real (except his money).</p>
+
+        <blockquote>
+            <p>He had never married, espousing nothing more reproductive than Sir Nicholas&rsquo;s views (he used to write letters to <em>The Times</em> in favour of them).</p>
+        </blockquote>
+
+        <p>That parenthesis suggests, again, that politics is an ephemeral verbal activity, and the summary of Nick&rsquo;s first success also gives this:</p>
+
+        <blockquote>
+            <p>the fresh cleverness of his speeches, tinted with young idealism and yet sticking sufficiently to the question (the burning question, it has since burnt out). . . . There had been leaders in the newspapers about it.</p>
+        </blockquote>
+
+        <p>The death-bed scene, when father dedicates son to the carrying on of his work, is treated in just the same way. We learn of it indirectly. Lady Agnes knew that Sir Nicholas&rsquo;s charge had been</p>
+
+        <blockquote>
+            <p>a solemn communication of ideas on the highest national questions (she had reason to believe he had touched on those of external as well as of domestic and of colonial policy). . . . It was work cut out for a lifetime, and that &ldquo;co-ordinating power in relation to detail,&rdquo; which was one of the great characteristics of Sir Nicholas&rsquo;s high distinction (the most analytic of the weekly papers was always talking about it), had enabled him to rescue the prospect from any shade of vagueness or ambiguity.</p>
+        </blockquote>
+
+        <p>The streets of Paris meant Nick&rsquo;s last hours of freedom, he felt. Later, with Julia Dallow, he comes out to the boulevard and to Paris at night: crowds, lights, sounds, &ldquo;tokens of a great traffic of pleasure, that night-aspect of Paris which represents it as a huge market of sensations.&rdquo; Light and murmur, through the windows of Julia Dallow&rsquo;s sitting-room, accompany Nick&rsquo;s dialogue with her. But she cannot interest herself except for a moment in all this. She is &ldquo;awfully tired&rdquo; of the city; to visit France for her is to transfer a social life from one place to another, and her France is never cut off from London, the true centre of activity, or from Harsh; and these both mean political activity.</p>
+
+        <p>When Nick is eventually alone with Julia he has to tell her that he will gratefully accept the chance of standing for Harsh; and their dialogue is part of his enquiry into the gracefulness of her mind, and into the relationship between her imperiousness and her generosity. He will try to find out whether Julia has any more notion of what the political life means than, for example, his mother has; and this will involve the other question.</p>
+
+        <p>Julia aligns herself with Mr Carteret in the world that Lady Agnes recognizes. And though Julia does not like Nick to compare her with Lady Agnes, whom from the security of her riches she can patronize and organize, it is there that she belongs; for Lady Agnes, anxious now, dependent in her meagre substance, had shown high competence&mdash;&ldquo;ideas&rdquo;&mdash;in the organization of the public life of a public man. Julia&rsquo;s price for making Lady Agnes&rsquo;s stay in Paris comfortable (carriages and presents) is the silent expectation that the Dormer ladies will do precisely what they are told. In politics <em>winning</em> is Julia&rsquo;s concern; and she will expect to be paid for her help, just as much as Mr Carteret will for those cheques that will meet the election expenses. Julia&rsquo;s payment will come as <em>success</em>: the success that will make her mistress of a successful political salon. For that, Nick tells her, is what she really wants, because she, no more than Lady Agnes, has &ldquo;an idea . . . to call an idea.&rdquo; And <em>serious</em> and <em>work</em>, words that for Julia belong to the business of winning the election, are according to the usage of Lady Agnes, and not according to Nick&rsquo;s reference of them, in that first dialogue with Biddy.</p>
+
+        <p>Elections are won by making speeches (and by newspaper reports that degrade even the speeches). Nick is good at this activity:</p>
+
+        <blockquote>
+            <p>&ldquo;I&rsquo;ve got the cursed humbugging trick of it. I speak beautifully. I can turn it on, a fine flood of it, at the shortest notice. The better it is the worse it is, the kind is so inferior. It has nothing to do with the truth or the search for it; nothing to do with intelligence, or candour, or honour. It&rsquo;s an appeal to everything that for one&rsquo;s self one despises,&rdquo; the young man went on&mdash;&ldquo;to stupidity, to ignorance, to density, to the love of names and phrases, the love of hollow, idiotic words, of shutting the eyes tight and making a noise. Do men who respect each other or themselves talk to each other that way?&rdquo;</p>
+        </blockquote>
+
+        <p>Nick himself has been evasive enough, or playful, or oblique, or tangential, about both politics and art; but this speech here is a passionate declaration, not patient of any ambiguous reading. And the verbal art is still further reduced; words are not even <em>names</em> and <em>phrases</em>, they compose an idiot&rsquo;s tale of what is <em>hollow</em>, merely <em>noise</em>.</p>
+
+        <p>Julia, reaching after &ldquo;ideas,&rdquo; can only answer with unexamined words that might well come from a speech or an editorial, only to find Nick translating them into the reality or meaning of a situation. Her &ldquo;the good of the country&rdquo; turns out to mean keeping the Tories out, and helping to prevent them doing whatever it is they want to do; and this is really what our organized political game is all about, whichever party is playing it. Her &ldquo;the simple idea that one ought to do something or other for one&rsquo;s country&rdquo; Nick brings down to the irreducible reality of the individual act: &ldquo;there is one thing one can always do for his country, which is not to be afraid.&rdquo; Her &ldquo;when it&rsquo;s for the country . . . for <em>them</em>&rdquo; as justifying the use of other people&rsquo;s money to meet expenses receives the disenchanted answer &ldquo;when they get it back&rdquo;&mdash;as Mr Carteret and Julia will, in their ways. Realizing that they have been speaking different languages Julia finally asks</p>
+
+        <blockquote>
+            <p>Pray, isn&rsquo;t a gentleman to do anything, to be anything?</p>
+        </blockquote>
+
+        <p><em>Doing</em> and <em>being</em> are bound together, and the doing defines the being. But the <em>doing</em> means for Julia aspiring &ldquo;to serve the State&rdquo;&mdash;which Nick renders (and we need not avoid the ambiguity of his word) as &ldquo;to make his political fortune.&rdquo; Lady Agnes would have recognized Julia&rsquo;s words. Nick&rsquo;s parting suggestion that there are other ways of <em>doing</em>, that he, for example, is very fond of painting, gets only a gesture refusing to take him seriously. But Gabriel Nash had already raised the question of <em>being and doing</em>.</p>
+
+        <p>Carr&eacute; has been renowned for half a century: she is Art itself, defined in a certain way, conscious of this, wholly confident that there is no other. Against the questions or innocuities of Mrs Rooth, Carr&eacute; stands four-square, stable, &ldquo;classical&rdquo; or historical as the Maison de Moli&egrave;re (or the Maison Carr&eacute;). We approach her through history: the walls of her drawing-room are hung, as though it were a theatrical museum, with a lifetime&rsquo;s trophies, letters, or gifts, or wreaths, or diadems. Gabriel Nash wanders round looking at them. Nick sees her early portraits and wonders curiously how she manages to have been alive then, and alive now. Peter knows what this and Carr&eacute; mean. She is art as tradition, taught and transmitted by master to pupil: Carr&eacute;&rsquo;s art and her most celebrated parts go back to a great com&eacute;dienne of the early years of the century. She also, by her survival, testifies to his theory that the actor&rsquo;s art is now in decadence, going down into vulgarity. The narrator, himself, establishes for us the final limits of this art and life and history&mdash;the little room is a museum, but there is something missing from it: &ldquo;clappings which . . . could now only be present as a silence.&rdquo; This version of the life of art at its greatest is &ldquo;the history of a mask, of a squeak, a record of movements in the air.&rdquo; A skull placed here in the formal composition is to remind us, in the presence of greatness, both of Carr&eacute;&rsquo;s insistencies on what this art&rsquo;s instruments are, and of its transitoriness. She is insistent: she understands perfectly; in her way she is as rigid as Lady Agnes or Julia, as dependent on definition; but this may be&mdash;the question will expand&mdash;a necessary condition of the life of art.</p>
+
+        <p>Nick is almost embarrassed to hear the kind of life that Miriam might lead discussed in the girl&rsquo;s presence, but he reflects that the echoes of such discussions seem to linger &ldquo;in the egotistical little room.&rdquo; The general questions, that is, are considered by Carr&eacute; either not at all, or as having been settled once and for all, or as having to do only with the single question of what the girl&rsquo;s potentialities as an artist are. There is a turning of discussions we have heard before, but with a new specificity of application. The large questions come from Mrs Rooth, who cannot separate the notion of her daughter&rsquo;s becoming an actress (she knows the pressing need) from questions about &ldquo;life&rdquo; and conduct; and these will find a form in that Paris/London contrast which the very presentation of Carr&eacute; is also designed to indicate. On one side is the old artist whose Paris may be going, on the other the mother, whose age is as indeterminate as her origins, whose London is certainly unreal: lies, fantasy, ambition. Between the two women, the three men offer attitudes whose differences are also set out through reference to the cities.</p>
+
+        <blockquote>
+            <p>You mix things up, <em>ch&egrave;re madame</em>, and I have it on my heart to tell you so.</p>
+        </blockquote>
+
+        <p>When Madame Carr&eacute; says this to Mrs Rooth she is bringing out that she knows perfectly well what the essential point in their relation is. She goes on:</p>
+
+        <blockquote>
+            <p>I believe it&rsquo;s rather the case with you other English, and I have never been able to learn that either your morality or your talent is the gainer by it. To be too respectable to go where things are done best is, in my opinion, to be very vicious indeed; and to do them badly in order to preserve your virtue is to fall into a grossness more shocking than any other. To do them well is virtue enough, and not to make a mess of it the only respectability. That&rsquo;s hard enough to merit Paradise. Everything else is base humbug! <em>Voil&agrave;, ch&egrave;re madame</em>, the answer I have for your scruples!</p>
+        </blockquote>
+
+        <p>What Carr&eacute; knows is her <em>m&eacute;tier</em>. &ldquo;Morality&rdquo; works only within the <em>m&eacute;tier</em>. Mrs Rooth&rsquo;s worries about respectability&mdash;&ldquo;we are very very respectable&rdquo;&mdash;or about the possibility of her daughter having to represent a bad woman, or the thankfulness with which she can fall back on Shakespeare&rsquo;s purity: all this is not only silly, it is plain irrelevance. If the English stage can offer all that Mrs Rooth wants, so much the better for England. But &ldquo;<em>je ne connais qu&rsquo;une sc&egrave;ne&mdash;la n&ocirc;tre</em>.&rdquo; Nash agrees. Peter agrees, but thinks something might be done for London. Gabriel Nash, who agrees with Carr&eacute; anyhow, is quick to indicate the relevance of what she has been saying to Nick&rsquo;s situation. Nick, agreeing in his turn that Carr&eacute; has shown &ldquo;an intelligence of the question,&rdquo; is annoyed that Nash should think that the position is new to him, and proceeds to make his own translation for Mrs Rooth:</p>
+
+        <blockquote>
+            <p>In other words, your daughter must find her safeguard in the artistic conscience.</p>
+        </blockquote>
+
+        <p>Mrs Rooth understands neither version. This does not prevent her from uttering her own:</p>
+
+        <blockquote>
+            <p>Oh, a fine artistic life&mdash;what indeed is more beautiful?</p>
+        </blockquote>
+
+        <p>This is rather worse than Biddy&rsquo;s chatter about subject and treatment. Nor does Mrs Rooth mean by &ldquo;earnest&rdquo; or &ldquo;serious&rdquo; what Carr&eacute; does.</p>
+
+        <p>Carr&eacute;&rsquo;s generalization is sufficiently central. Here it covers her objections to Mrs Rooth&rsquo;s account of the gifts or accomplishments that Miriam has to offer to the stage, which is the immediate question. Miriam is &ldquo;educated&rdquo;: she knows English, French, Italian, German. Carr&eacute;&rsquo;s rejoinder is that in that case the girl had better be a governess: only the right education matters, and one language is enough provided Miriam can speak it. She has, her mother claims, a &ldquo;voice&rdquo; of rare beauty; Carr&eacute; replies</p>
+
+        <blockquote>
+            <p>Ah, then, if she has intelligence she has every gift.</p>
+        </blockquote>
+
+        <p>Mrs Rooth&rsquo;s answer is that Miriam has &ldquo;a most poetic mind.&rdquo; To that piece of English mixing-things-up Carr&eacute; does not even reply.</p>
+
+        <p>The history of a squeak, the narrator has warned us. At Carr&eacute;&rsquo;s first words&mdash;she is a red-faced woman in a wig with beady eyes&mdash;Gabriel Nash exclaims, &ldquo;Ah, la voix de C&eacute;lim&eacute;ne!&rdquo; What Carr&eacute; is listening for, what she will judge on, what Nick is listening to, is Miriam&rsquo;s voice. The scene enforces this from start to finish. Miriam does very badly. Her training&mdash;to the French woman&mdash;has been grotesque: a few lessons from a retired English actress and from an Italian tragedian. At the moment her voice is impossible. The problem is whether there is something there, a note, an inflection that could be disengaged. Peter is more willing to find this quality than Carr&eacute;, but, by the end of the scene, she too is willing to find something&mdash;from whatever motives, for it may well be that the old woman believes that Miriam&rsquo;s youth and her beauty and the interest of these young men will assure her a future, anyhow.</p>
+
+        <p>This beauty is not obvious. At first sight Peter finds that her face expresses no &ldquo;sentiment,&rdquo; even her obvious terror shows itself only as a kind of stupidity. But at the same moment he sees that the head is good. &ldquo;The head is very good,&rdquo; Carr&eacute; repeats a moment later. The eyes are &ldquo;fine,&rdquo; &ldquo;deep,&rdquo; &ldquo;sombre.&rdquo; When Miriam prepares for the first time to speak a part there is an immediate sense of a great physical presence. Her face now appears &ldquo;pale and regular, with a strange, strong, tragic beauty.&rdquo; Forcing herself to speak:</p>
+
+        <blockquote>
+            <p>she frowned portentously; her low forehead overhung her eyes; the eyes themselves, in shadow, stared, splendid and cold, and her hands clinched themselves at her sides. She looked austere and terrible, and during this moment she was an incarnation the vividness of which drew from Sherringham a stifled cry. &ldquo;Elle est bien belle&mdash;ah, &ccedil;a!&rdquo; murmured the old actress; and in the pause which still preceded the issue of sound from the girl&rsquo;s lips Peter turned to his kinsman and said in a low tone:</p>
+            <p>&ldquo;You must paint her just like that.&rdquo;</p>
+            <p>&ldquo;Like that?&rdquo;</p>
+            <p>&ldquo;As the Tragic Muse.&rdquo;</p>
+        </blockquote>
+
+        <p>Nick has looked at Carr&eacute; with the painter&rsquo;s observation, he has been alive to Miriam&rsquo;s possibilities as a model, and he will repeat his hope that she may one day sit for him. At this moment he says nothing. Nor does Gabriel Nash (who is going to spend most of the time looking out of the window). This incarnation has its effect only on the old professional, and on the critic who works within the realm of that profession. Yet for Carr&eacute; that surprised recognition was not necessarily the recognition of a talent for the stage. Here professional and critic&mdash;the latter, in spite of his understanding, is an amateur&mdash;are almost on different sides. The &ldquo;plastic quality&rdquo; is the only sign of a vocation that Peter can find in Miriam; and this is something he has learnt to distrust. It is a &ldquo;gift&rdquo; that may lead to nothing. And he knows that it is something that Carr&eacute; discounts almost completely as an element of the &ldquo;histrionic nature,&rdquo; unless it is accompanied by more important attributes. At the extreme, Peter and Carr&eacute;&rsquo;s dispute has been about the respective contributions of &ldquo;gifts,&rdquo; which he has championed, and &ldquo;unwearying study,&rdquo; which she has championed. The test case they had both used was Rachel. Peter had cited Rachel as a pre-eminent example of the great artist made by her &ldquo;natural endowment.&rdquo; Carr&eacute; had insisted that Rachel, although she had a voice and an eye, was &ldquo;essentially formed by work, unremitting and ferocious work.&rdquo; But of course Carr&eacute; had added, &ldquo;Rachel wasn&rsquo;t a <em>b&ecirc;te</em>: that&rsquo;s a gift, if you like!&rdquo; This means, in the appropriate vocabulary, that Rachel had &ldquo;intelligence.&rdquo; About Miriam&rsquo;s &ldquo;intelligence&rdquo; Carr&eacute; is doubtful. It is Mrs Rooth who thinks that Miriam has &ldquo;ideas&rdquo;: &ldquo;She gets them from you&rdquo; is Carr&eacute;&rsquo;s reply. &ldquo;Ideas&rdquo; are certainly what is needed, and go with &ldquo;intelligence&rdquo; and not being a <em>b&ecirc;te</em>: so far it has been Biddy who hoped to find them. Work, work, practise, practise, is the injunction she leaves her with, whatever future she may see for the girl. It is not she but Gabriel Nash who supposes that the voice, when it&rsquo;s worth anything, &ldquo;comes from the heart.&rdquo;</p>
+
+        <p>At Peter&rsquo;s tea-party Miriam is presented to an English audience, whose standards and knowledge are very different from those of Carr&eacute;, as Peter well knows; and, given that audience&mdash;people whom a rising young diplomat might well, though a shade dangerously, invite&mdash;Miriam is a success. This is a general misunderstanding, but for some of those present the occasion also serves to bring out other misunderstandings of which they are hardly aware, or it worsens those already established.</p>
+
+        <p>Biddy, who is &ldquo;immensely struck&rdquo; by the recital, sees Miriam as a phenomenon that she must try (and Biddy always tries) to understand; but their conversation is about Nick:</p>
+
+        <blockquote>
+            <p>&ldquo;If your brother&rsquo;s an artist, I don&rsquo;t understand how he&rsquo;s in Parliament.&rdquo;</p>
+            <p>&ldquo;Oh, he isn&rsquo;t in Parliament now; we only hope he will be.&rdquo;</p>
+            <p>&ldquo;Oh, I see.&rdquo;</p>
+            <p>&ldquo;And he isn&rsquo;t an artist, either,&rdquo; Biddy felt herself conscientiously bound to subjoin.</p>
+            <p>&ldquo;Then he isn&rsquo;t anything,&rdquo; said Miss Rooth.</p>
+            <p>&ldquo;Well&mdash;he&rsquo;s immensely clever.&rdquo;</p>
+        </blockquote>
+
+        <p>When Nash is alone with Julia the misunderstanding, on her part, is total. Nash has already involved himself in Nick&rsquo;s problems, although they have yet to be fully expounded to him. Julia&rsquo;s involvement with Nick is of a different order. It is not enquiring, nor does it &ldquo;extend tolerances to others.&rdquo; Her affection is of the kind that &ldquo;isolates and simplifies its object.&rdquo; She is &ldquo;rigidly direct&rdquo;; her desires for Nick are an expression of what she desires for herself; that rigidity controls her responses to anyone or anything outside of those particular desires, including Nash. His attack on the recent social pretensions of actors, an extended version of earlier remarks, meets no response. Elaborate discussions of the artistic life, as held at Carr&eacute;&rsquo;s or, as here, of the lives that artists lead, have for Julia no meaning whatsoever, even when Nash obliquely refers them to Nick. And when her belated enquiry (yet another attempt to place the speaker) &ldquo;Are you an artist?&rdquo; receives the apparently unhelpful answer &ldquo;I work in life,&rdquo; Julia turns away.</p>
+
+        <p>This is absolute failure. Other failures are recorded by the application of certain words to certain people, when those words have quite different meanings for the speaker and listener. By the company in general, Miriam is thought to be &ldquo;clever and successful.&rdquo; She is not. Miriam&rsquo;s comment on Nick, &ldquo;he isn&rsquo;t anything,&rdquo; is met by Biddy&rsquo;s &ldquo;he&rsquo;s immensely clever,&rdquo; which hangs in the air. Nash is introduced to Julia by Nick as &ldquo;one of the cleverest men he knew&rdquo;; she doesn&rsquo;t find him so. When they discuss Julia, Grace misunderstands Nash by apparently agreeing with him:</p>
+
+        <blockquote>
+            <p>&ldquo;Ah, she&rsquo;s very charming,&rdquo; said Grace.</p>
+            <p>&ldquo;She&rsquo;s very beautiful,&rdquo; Nash rejoined.</p>
+            <p>&ldquo;And very clever,&rdquo; Miss Dormer continued.</p>
+            <p>&ldquo;Very, very intelligent.&rdquo;</p>
+        </blockquote>
+
+        <p>To accord &ldquo;intelligence&rdquo; does not advance agreement unless it is known what that person is intelligent about, which requires an agreement about what he is or what he does. Ambiguity in epithet or description is part of ambiguity of identity, and can be resolved only by a definition of identity, or of intention and practice.</p>
+
+        <p>Nick has arranged to meet Nash late in the evening and the two young men abandon modern Paris, Haussman&rsquo;s Paris of the <em>grands boulevards</em>, the <em>ville lumi&eacute;re</em>, for the <em>quartiers s&eacute;rieux</em>, that older, dustier city: here they &ldquo;look, emphasize, compare.&rdquo; Julia Dallow, to Nash, is a &ldquo;beautiful specimen&rdquo; of the English garden flower, a &ldquo;product&rdquo; of &ldquo;high cultivation&rdquo; and &ldquo;much tending&rdquo;; she has the &ldquo;completeness&rdquo; that is always satisfying; she will never &ldquo;understand&rdquo; him. Nor, Nick says, does he. This is precisely the mark or sign of Nash&rsquo;s relationships: the puzzles are made by those others&mdash;it is he who is &ldquo;simple.&rdquo; He has a &ldquo;little system&rdquo; which requires he should be &ldquo;just the same to everyone&rdquo;; but <em>they</em> depend on the newcomer defining himself by knowing the right password, joining their side, their &ldquo;camp or religion.&rdquo; He claims&mdash;in so far as his mode of qualification, of puzzled self-depreciation allows&mdash;that he has</p>
+
+        <blockquote>
+            <p>no interest of my own to push, no nostrum to advertise, no power to conciliate, no axe to grind. I&rsquo;m not a savage&mdash;ah, far from it&mdash;but I really think I&rsquo;m perfectly independent.</p>
+        </blockquote>
+
+        <p>&ldquo;Little system&rdquo; is <em>manner</em>, this treating everyone in the same way (which may, muddled as we are, seem to be impertinence); that it <em>is</em> a system in fact relates him&mdash;he accepts Nick&rsquo;s challenge&mdash;to the rest who also work by system; and Nash will also turn this round (to the politician) by claiming that by his consistent application of it he may become &ldquo;a perceptible force of good.&rdquo; His system involves the making of no concessions whatever to those who expect him to name and align himself (and he had given up literature because that involved concessions and compromises): he will never concede that &ldquo;we are only here for dreariness&rdquo;: &ldquo;modern slang,&rdquo; says Nick, which might be applied to virtue, decency, charity, perseverance, courage, honour. Such qualities Nash does not exclude as part of life. On the contrary, they are <em>subjects</em> or <em>materials</em>, like any others: <em>dreariness</em> is a matter of <em>treatment</em> (or lack of it):</p>
+
+        <blockquote>
+            <p>Life consists of the personal experiments of each of us, and the point of an experiment is that it shall succeed.</p>
+        </blockquote>
+
+        <p>What we contribute is our treatment of the material, our rendering of the text, our style. Biddy&rsquo;s parroted formula&mdash;which Nick had rejected&mdash;is picked up, and sophisticated by extension to include the possibilities of that word &ldquo;style&rdquo; (which goes with &ldquo;manner&rdquo;) which had puzzled Biddy. The first application, here, is to literature, and we ourselves become texts: difficult to read, because a sense of &ldquo;style&rdquo; is so rare, but that&rsquo;s no reason why we should not try to write our best (be Macaulays, Ruskins, Renans). <em>That</em> is contribution, the &ldquo;great thing&rdquo; we can offer. &ldquo;One has one&rsquo;s form&rdquo;&mdash;that word, too, can pass from one reference to another; and Nash &ldquo;is not afraid of putting all life&rdquo; into his, including honour, courage, charity&mdash;&ldquo;I&rsquo;ll only do them good&rdquo; (Nick has told Biddy that this is what Nash would do for them&mdash;like the sculptures in the Salon). &ldquo;Style,&rdquo; which is &ldquo;a personal manner,&rdquo; belongs to a way of talking about art. So Nick follows Nash. This is his attempt: art is difficult, there is always more to learn, polishing, refining; but his direction is right, &ldquo;towards the beautiful.&rdquo; Beauty is really present, concrete, certain, against Nash&rsquo;s games of translation; and Nick gestures to Notre-Dame, rising now in front of the young men: instance and focus of their exchanges, forcing explorations of definitions to what is admission of a dilemma. Notre-Dame is a visual fact, like the streets of old Paris. It is, however, a great deliberated artefact, with the qualities of &ldquo;simplification&rdquo; (under the night sky) and &ldquo;large, full composition.&rdquo; Nick&rsquo;s reference is immediately to the artistic life:</p>
+
+        <blockquote>
+            <p>How it straightens things out and blows away one&rsquo;s vapours&mdash;anything that&rsquo;s <em>done</em>! . . . The great point is to do something.</p>
+        </blockquote>
+
+        <p>&ldquo;Done&rdquo; is carried out to its necessary appropriate end: he had left Julia asking whether a gentleman wasn&rsquo;t to <em>do</em> or <em>be</em> (in her synonyms) anything; and Nash turns the word against him, to the very reference of that scene. Nick can&rsquo;t build cathedrals out of words. The poets do, yes&mdash;they make cathedrals out of words, Nick has said. But the vocabulary can be seen shifting again within that fluid bound:</p>
+
+        <blockquote>
+            <p><em>Their</em> words are ideas&mdash;their words are images, enchanting collocations and unforgettable signs. But the verbiage of parliamentary speeches!</p>
+        </blockquote>
+
+        <p>Great &ldquo;structures&rdquo;&mdash;Nick adds this word&mdash;can be made in materials other than stone, timber, painted glass. The great artefact, immobile yet with, it seems, all the movement of some ship, is there for criticism, admiration, discussion; and there is comfort in Nash&rsquo;s &ldquo;response,&rdquo; his appreciation, exhibited by his own signs, of the &ldquo;great effect,&rdquo; the freedom of his &ldquo;feeling&rdquo; and the utterance of his &ldquo;impression,&rdquo; his &ldquo;natural intelligence of everything of that kind.&rdquo; In the great presence Nick can rest, soothed and joyful, &ldquo;as if it had been the temple of a faith so dear to him that there was peace and security in its precinct.&rdquo; In a small caf&eacute;, away from the work of art, the dialogue continues: the terms are of those relations and signs that society, or the world, recognizes. Nash &ldquo;goes about his business, like any good citizen.&rdquo; Nick&rsquo;s concerns are with &ldquo;do,&rdquo; &ldquo;accomplish,&rdquo; &ldquo;do anything,&rdquo; &ldquo;produce,&rdquo; &ldquo;go for,&rdquo; with &ldquo;the old false measure of success,&rdquo; as Nash tells him; with &ldquo;life,&rdquo; yes, but as so signed and marked. It is again a question of transpositions. Nash&rsquo;s &ldquo;business&rdquo; is &ldquo;the spectacle of the world&rdquo;; and this is not inconsistent with his search for what in this spectacle is &ldquo;charming.&rdquo;</p>
+
+        <blockquote>
+            <p>Last year I heard of such a delightful little spot: a place where a wild fig tree grows in the south wall, the outer side, of an old Spanish city . . . I lay on the first green grass&mdash;I liked it.</p>
+        </blockquote>
+
+        <p>This is &ldquo;doing&rdquo; and &ldquo;accomplishment&rdquo;: it is the accomplishment of happiness through &ldquo;feelings&rdquo; and &ldquo;sensations&rdquo;&mdash;&ldquo;It&rsquo;s rare to have them . . . I go after them&mdash;when I judge they won&rsquo;t hurt anyone.&rdquo; He takes his stand on his &ldquo;nature&rdquo; or &ldquo;disposition&rdquo;; and on &ldquo;liberty&rdquo; which, with &ldquo;spontaneity&rdquo; and &ldquo;enjoyment,&rdquo; goes with &ldquo;being natural.&rdquo; Nick&rsquo;s open disclosure of his crisis or dilemma is being prepared for&mdash;Notre-Dame had been a determining sign for him&mdash;but he can only come to it through those other signs or definitions of &ldquo;life&rdquo; which Nash transposes, or refuses, outright; and Notre-Dame was a thing &ldquo;done,&rdquo; in more senses than one. He is&mdash;he declares&mdash;committed to stand again for Parliament. What he wants is to be a painter&mdash;&ldquo;Isn&rsquo;t that the aesthetic life?&rdquo; But he would want the &ldquo;aesthetic life,&rdquo; the &ldquo;little system&rdquo; to be identified by those signs that mark the other.</p>
+
+        <blockquote>
+            <p>&ldquo;There will be precious little beauty if I produce nothing but daubs.&rdquo;</p>
+            <p>&ldquo;Ah, you cling to the old false measure of success. I must cure you of that.&rdquo;</p>
+        </blockquote>
+
+        <p>The act is its own justification:</p>
+
+        <blockquote>
+            <p>There will be the beauty of having been disinherited and independent; of having taken the world the free, brave, personal way.</p>
+        </blockquote>
+
+        <p>A life effort, certainly; but Nick would not now be satisfied without the visible result: he would want to paint &ldquo;decently.&rdquo; If he were to produce only daubs, Nash would find him a still more interesting &ldquo;case.&rdquo; As it is, with all that weighs him down and makes him seem, even to himself, so improbable, so freakish&mdash;his Philistine family, his traditions, his training, his circumstances, his career, the effect of his giving it up, even his own prejudices&mdash;these are enough to make him &ldquo;a magnificent case.&rdquo; The last words are:</p>
+
+        <blockquote>
+            <p>&ldquo;It&rsquo;s her place, she&rsquo;ll put me in. . . .&rdquo;</p>
+            <p>&ldquo;Baleful woman! But I&rsquo;ll pull you out!&rdquo;</p>
+        </blockquote>
+
+        <p>Peter has already confessed his devotion to the particular art of representation practised by the actor, and, in conversation with Nash and Nick, has countered their generalizations with those of his own. His involvement with Miriam is also to provide him with a case, in two ways. Miriam, first of all, may have talent, and Peter will not resist the opportunity to observe and contribute to her development and training. She is also, he becomes convinced, a fine example of the artistic temperament, the <em>nature d&rsquo;actrice</em>. He will now explore the relationship between talent and temperament, and become increasingly trapped between his admiration for the one and his fascination with the other.</p>
+
+        <p>Two full chapters describe this involvement, and indicate the kinds of relationship possible between them; these in turn invoke wider implications about the personalities and habits of actors, and their art of representation. The prime revelation comes early on, but is to be repeated again and again:</p>
+
+        <blockquote>
+            <p>It came over him suddenly that so far from there being any question of her having the histrionic nature, she simply had it in such perfection that she was always acting; that her existence was a series of parts assumed for the moment, each changed for the next, before the perpetual mirror of some curiosity or admiration or wonder&mdash;some spectatorship that she perceived or imagined in the people about her. Interested as he had ever been in the profession of which she was potentially an ornament, this idea startled him by its novelty and even lent, on the spot, a formidable, a really appalling character to Miriam Rooth.</p>
+        </blockquote>
+
+        <p>This perception is a generalized extension to include the whole personality of his even earlier prophetic distaste for what the actress does, a distaste that he had notably failed to communicate to Miriam. That outburst had related to Nash&rsquo;s equation of politician with actor, in terms of what they are both obliged to become for their respective audiences:</p>
+
+        <blockquote>
+            <p>&ldquo;You&rsquo;re a strange girl.&rdquo;</p>
+            <p>&ldquo;<em>Je crois bien!</em> Doesn&rsquo;t one have to be, to want to go and exhibit one&rsquo;s self to a loathsome crowd, on a platform, with trumpets and a big drum, for money&mdash;to parade one&rsquo;s body and one&rsquo;s soul?&rdquo;</p>
+            <p>Sherringham looked at her a moment: her face changed constantly; now there was a little flush and a noble delicacy in it.</p>
+            <p>&ldquo;Give it up; you&rsquo;re too good for it,&rdquo; he said, abruptly.</p>
+            <p>&ldquo;Never, never&mdash;never till I&rsquo;m pelted!&rdquo;</p>
+        </blockquote>
+
+        <p>His revulsion coexists with a real, if incomplete, understanding of what the actress aspires to, and how she must learn her trade. &ldquo;If you see the things to do, the art of doing them will come, if you hammer away. The great point is to see them.&rdquo; The contradictions in his own mind are fed by a susceptibility to Miriam&rsquo;s charm, &ldquo;communicative, persuasive, familiar, egotistical,&rdquo; which he responds to even when disturbed by its apparent inconsistency. Proof of her devotion to, and understanding of, her art, and her desire to &ldquo;do what&rsquo;s difficult&rdquo; he can find; what he looks for is &ldquo;intelligence,&rdquo; and at times recognizes that essential as part of what disturbs him. &ldquo;All reflection is affectation, and all acting is reflection.&rdquo; There remains the difficulty of finding in her charm, the excellence of her presentation of herself, signs that she has gained from her varied experience anything other than material for representation.</p>
+
+        <blockquote>
+            <p>He made indeed without difficulty the reflection that her life might have taught her the reality of things, at the same time that he could scarcely help thinking it clever of her to have so persistently declined the lesson. She appeared to have put it by with a deprecating, ladylike smile&mdash;a plea of being too soft and bland for experience.</p>
+        </blockquote>
+
+        <p>These questions are clearly irrelevant to the immediate concerns of Carr&eacute; or Miriam herself. They lead Peter finally to postulate &ldquo;something vulgar in the histrionic conscience,&rdquo; that must be reconciled with his first conviction that</p>
+
+        <blockquote>
+            <p>The actor&rsquo;s talent was essentially a gift, a thing by itself, implanted, instinctive, accidental, equally unconnected with intellect and with virtue&mdash;Sherringham was completely of that opinion; but it seemed to him no contradiction to consider at the same time that intellect (leaving virtue, for the moment, out of the question) might be brought into fruitful relation with it.</p>
+        </blockquote>
+
+        <p>By flinching from Carr&eacute;&rsquo;s uncompromising comments on Miriam&rsquo;s talent, Peter has revealed himself as an amateur among professionals:</p>
+
+        <blockquote>
+            <p>she has relieved herself, with the rare cynicism of the artist, all the crudity, the irony and intensity of a discussion of esoteric things, of personal mysteries, of methods and secrets.</p>
+        </blockquote>
+
+        <p>This world &ldquo;of mysteries, of methods and secrets,&rdquo; where hard logical passion is applied to the personal, is where Miriam belongs: she is already professional. But at first Peter can safely observe her, &ldquo;the spectacle of the young lady&rsquo;s genius,&rdquo; without risk either to his career or his emotions. Those dangers will arise when observation becomes involvement, and even then there are kinds of involvement:</p>
+
+        <blockquote>
+            <p>Certainly, however, she seemed to belong to him very much indeed, as she sat facing him in the Paris caf&eacute;, in her youth, her beauty and her talkative confidence. This degree of possession was highly agreeable to him.</p>
+        </blockquote>
+
+        <p>The object of dispassionate criticism might easily become a <em>prot&eacute;g&eacute;</em>, might even become what he possessed, and the possessed might become the used&mdash;&ldquo;she was the instrument, and incontestably a fine one, that had come to his hand&rdquo;&mdash;or, if the revulsion prove too great, the protected&mdash;&ldquo;give it up.&rdquo;</p>
+
+        <p>When Peter ponders Miriam&rsquo;s nature, &ldquo;affected, contradictious,&rdquo; he does so in terms which we already know.</p>
+
+        <blockquote>
+            <p>Was this succession of phases a sign that she really possessed the celebrated artistic temperament, the nature that made people provoking and interesting?</p>
+        </blockquote>
+
+        <p>This recalls the language of Nash, and, as before, it is applied to the life of the mind, and invokes a doctrine of experience. Significantly the language returns when Peter and Miriam discuss an actor&rsquo;s diction and manner, what is called his style. Peter is very precise about this: &ldquo;I mean any style that <em>is</em> a style, that is a system, an art, that contributes a positive beauty to utterance.&rdquo; Comparisons are made with Nash, whom Peter describes, despite that person&rsquo;s refusal to admit of any audience, as very like an actor, with his &ldquo;affectations and histrionics.&rdquo;</p>
+
+        <p>We come back to the question of the conscious exhibition of the self that it seems the actor must indulge, which Peter both fears and disapproves of, although he does extol a &ldquo;personal&rdquo; style that can be so rarely achieved under the conditions of the modern theatre. The &ldquo;personal style&rdquo; is that of an actor alone, unencumbered by the stage carpenter and costumier, and is now to be found only in the poor countries, most of all in Italy&mdash;&ldquo;it&rsquo;s a human exhibition, not a mechanical one.&rdquo; But at the same time we are being led inexorably to a paradox. It may be that even the unencumbered human exhibition requires the multiple personality of the actor. If that is so, then the personal, the essential component of style, must also require the &ldquo;nature,&rdquo; the feigning honesty. The &ldquo;nature&rdquo; might be the natural.</p>
+
+        <p>Peter&rsquo;s dislike of the modern theatre recalls that of Nash, because both, for reasons of different and varying complexity, resent the public demands that make up conditions for the practice, and are suspicious even of the practice itself.</p>
+
+        <blockquote>
+            <p>you could afford to be vague only if you hadn&rsquo;t a responsibility. He had fine ideas, but she was to do the acting, that is the application of them, and not he; and application was always of necessity a sort of vulgarization, a smaller thing than theory.</p>
+        </blockquote>
+
+        <p>Such alignments of opinion reverberate against each other, and are still part of the strategy of the novel. Apparently similar formulas from opposed or dissimilar characters tell us something about both characters and formulas. Miriam&rsquo;s vulgar &ldquo;I go in for the book of life&rdquo; echoes disturbingly, but does not repeat, Nash&rsquo;s remark to Julia, &ldquo;I work in life.&rdquo;</p>
+
+        <p>Miriam, too, is both like and not like her mother, as Peter realizes, for both are concerned with fictions. The mother &ldquo;took everything for the sense, or behaved as if she did, caring above all for the subject and the romance&rdquo;; the daughter &ldquo;hungry for the manner and the art of it, the presentation and the vividness.&rdquo; The one makes &ldquo;the true seem fictive&rdquo;; the other&rsquo;s &ldquo;effort was to make the fictive true.&rdquo;</p>
+
+        <p>These speculations of Peter&rsquo;s <em>are</em> dangerous, but as long as he is able to preserve his role of critic and contribute only his judgement and knowledge he is, in part, protected. Then Miriam &ldquo;belongs&rdquo; to him only as a talent and a potential.</p>
+
+        <blockquote>
+            <p>He reflected ingeniously that he owed his escape to a peculiar cause&mdash;the fact that they had together a positive outside object. Objective, as it were, was all their communion; not personal and selfish, but a matter of art and business and discussion.</p>
+        </blockquote>
+
+        <p>This is &ldquo;the pure exorcism of art&rdquo;; but it is not to last long. Once away from Miriam and the distancing discussions of technique and business, Peter discovers that he has not escaped: &ldquo;He <em>was</em> in love with her: he had been in love with her from the first hour.&rdquo;</p>
+
+        <p>Exploring the labyrinth of Miriam&rsquo;s personality and situation, Peter becomes trapped himself.</p>
+
+        <p>The return from Paris, the &ldquo;huge market for sensations,&rdquo; to England means for Nick fresh confrontations with an inheritance whose images and traditions are to be compared with those of Paris, and the next part of the novel is much concerned with those traditions as maintained by persons and place. But there is repetition and extension of previous matter: the subdued but repeated pun on &ldquo;represent,&rdquo; and the reappearance of words such as &ldquo;work&rdquo; and &ldquo;success&rdquo; in other contexts. The practical ramifications of money and its relationship to &ldquo;freedom&rdquo; which have so far only been asserted by Lady Agnes, now become her desperate and immediate concern: &ldquo;What freedom <em>is</em> there in being poor?&rdquo;</p>
+
+        <p>The political life is to be devalued in terms of its actualities rather than its inherent possibilities; although the actualities are related to traditions of their own, fallen or mechanical as these may have become. Nick&rsquo;s distrust of his own rhetorical skill may or may not express an absolute valuation of the political life. His &ldquo;double nature&rdquo; certainly contributes to a further delay of the great decision, but his versatility and imagination obscure and complicate the value of the opposing claim. It is left open whether or not, despite all this, politics might once have, and might still, present a serious alternative. That conclusion is to be delayed, like many others, until, or perhaps beyond, the end of the novel. For the moment the instances that are offered of the political life, personalities and practices, continue a devaluation already suggested by Nash to an attentive Nick in Paris.</p>
+
+        <p>Julia, we have been told, is &ldquo;rigid and singular.&rdquo; There is now a full concentration on Nick&rsquo;s very different ambiguity, his &ldquo;double personality,&rdquo; his &ldquo;sympathy&rdquo; and his ability to participate in the lives of others. But it is these abilities that direct him towards activity and postponement rather than action. Nick&rsquo;s double nature rises to challenges and the chances for activity, and works well with Julia&rsquo;s compulsive organizing. His tactful suppression of dangerous thoughts that might frighten his mother and Julia is, apart from the occasional hint, consistent. Activity and action predicate different kinds of achievement. The work of the politician is singular, continuous and, given its particular terms, automatic; the work of the artist that Nick is drawn to demands an individual appreciation.</p>
+
+        <p>Although these sections of the novel lack the density of reference to be found in those dealing with art, the images and characteristics of the political life are offered as a formal counterpoint, whose inadequacies the seemingly neutral narrator alludes to by a re-application of terms already introduced and an unapologetic exploration of Nick&rsquo;s nature. As before, the transposition of terms and images is a way of bringing two worlds together, as well as revealing their differences.</p>
+    </article>
+
+    <script>
+        const toggle = document.getElementById('theme-toggle');
+        const icon = document.getElementById('theme-icon');
+
+        toggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+            toggle.title = isDark ? 'Modo Diurno' : 'Modo Nocturno';
+            toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+        });
+    </script>
+
+</body>
+</html>

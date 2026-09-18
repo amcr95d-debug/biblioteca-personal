@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>David Howard - The Bostonians</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* =========================================
+           COLORES (Modo Diurno - International Klein Blue)
+           ========================================= */
+        :root {
+            --bg-body: #002FA7;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.88);
+            --text-muted: rgba(255, 255, 255, 0.6);
+            --border-color: rgba(255, 255, 255, 0.35);
+            --border-light: rgba(255, 255, 255, 0.15);
+            --fab-bg: #ffffff;
+            --fab-color: #002FA7;
+            --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+            --quote-border: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Modo Nocturno - Deep Navy Blue */
+        body.dark-mode {
+            --bg-body: #001233;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.85);
+            --text-muted: rgba(255, 255, 255, 0.5);
+            --border-color: rgba(255, 255, 255, 0.2);
+            --border-light: rgba(255, 255, 255, 0.1);
+            --fab-bg: #ffffff;
+            --fab-color: #001233;
+            --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+            --quote-border: rgba(255, 255, 255, 0.4);
+        }
+
+        /* =========================================
+           ESTILOS GENERALES
+           ========================================= */
+        * { transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease; }
+        
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            line-height: 1.75;
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 2em 1.5em 5em;
+            color: var(--text-primary);
+            background-color: var(--bg-body);
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 0.2em;
+            font-weight: normal;
+            letter-spacing: 0.05em;
+            color: var(--text-primary);
+        }
+
+        h2 {
+            font-size: 1.4em;
+            text-align: center;
+            margin-top: 2.5em;
+            margin-bottom: 1.5em;
+            font-weight: bold;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        h3 {
+            font-size: 1.1em;
+            text-align: center;
+            margin-top: 2.5em;
+            margin-bottom: 1em;
+            font-weight: bold;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        p {
+            text-align: justify;
+            margin-bottom: 1.2em;
+            text-indent: 1.5em;
+        }
+
+        p.no-indent { text-indent: 0; }
+
+        blockquote {
+            margin: 1.5em 2em;
+            padding-left: 1.5em;
+            border-left: 3px solid var(--quote-border);
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        blockquote p { text-indent: 0; margin-bottom: 0.8em; }
+
+        .poem {
+            margin: 1.5em 2em;
+            font-style: italic;
+            text-indent: 0;
+        }
+
+        .poem p {
+            text-indent: 0;
+            margin-bottom: 0.3em;
+            text-align: left;
+            padding-left: 2em;
+            text-indent: -2em;
+        }
+
+        em { font-style: italic; }
+
+        sup {
+            font-size: 0.75em;
+            vertical-align: super;
+            line-height: 0;
+        }
+
+        .page-number {
+            display: block;
+            text-align: center;
+            font-size: 0.8em;
+            color: var(--text-muted);
+            margin: 2em 0 1em 0;
+        }
+
+        .footnotes {
+            margin-top: 4em;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5em;
+            font-size: 0.9em;
+            color: var(--text-secondary);
+        }
+
+        .footnotes h3 {
+            text-align: left;
+            font-size: 1em;
+            margin-bottom: 1em;
+            text-transform: none;
+            letter-spacing: normal;
+            color: var(--text-primary);
+        }
+
+        .footnotes p {
+            text-align: left;
+            text-indent: -1.5em;
+            padding-left: 1.5em;
+            margin-bottom: 0.6em;
+            font-size: 0.9em;
+        }
+
+        .section-break {
+            text-align: center;
+            margin: 2.5em 0;
+            font-weight: bold;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.1em;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 2em;
+        }
+
+        .source-note {
+            text-align: center;
+            font-size: 0.85em;
+            color: var(--text-muted);
+            margin-bottom: 2em;
+            font-style: normal;
+        }
+
+        /* =========================================
+           BOTÓN FLOTANTE (Modo Nocturno)
+           ========================================= */
+        .fab-toggle {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background-color: var(--fab-bg);
+            color: var(--fab-color);
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease;
+            z-index: 1000;
+            outline: none;
+        }
+        .fab-toggle:hover { transform: scale(1.1); }
+        .fab-toggle:active { transform: scale(0.95); }
+        .fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            body { padding: 1.2em 1em 4em; }
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.1em; }
+            .fab-toggle { bottom: 16px; right: 16px; width: 50px; height: 50px; }
+            .fab-toggle .material-icons { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo Nocturno">
+        <i class="material-icons" id="theme-icon">dark_mode</i>
+    </button>
+
+    <article id="content">
+        <h1>David Howard</h1>
+        <p class="subtitle">The Bostonians</p>
+
+        <div class="poem" style="text-align:center; margin-bottom: 2em;">
+            <p style="text-align:center; padding-left:0; text-indent:0;"><em>&ldquo;In any case,&rdquo; he said, &ldquo;it was just personal.&rdquo;</em></p>
+            <p style="text-align:center; padding-left:0; text-indent:0; font-style:normal; font-size:0.9em; color:var(--text-muted);">&mdash;F. SCOTT FITZGERALD, <em>The Great Gatsby</em></p>
+            <p style="text-align:center; padding-left:0; text-indent:0; margin-top:1em;"><em>&ldquo;Try to be one of the people on whom nothing is lost!&rdquo;</em></p>
+            <p style="text-align:center; padding-left:0; text-indent:0; font-style:normal; font-size:0.9em; color:var(--text-muted);">&mdash;HENRY JAMES, &ldquo;The Art of Fiction&rdquo;</p>
+            <p style="text-align:center; padding-left:0; text-indent:0; margin-top:1em;"><em>&ldquo;I prefer free unions.&rdquo;</em></p>
+            <p style="text-align:center; padding-left:0; text-indent:0; font-style:normal; font-size:0.9em; color:var(--text-muted);">&mdash;Verena Tarrant</p>
+        </div>
+
+        <p><em>The Bostonians</em> is a novel about union, even &ldquo;The Union.&rdquo; What becomes unified is not altogether clear, partly because the word in the novel, as in American history, points consistently to battle. The employment of Miss Birdseye&rsquo;s serene, unifying, dying vision is characteristic:</p>
+
+        <blockquote>
+            <p>Three minutes later Miss Birdseye, looking up from her letter, saw them move together through the bristling garden and traverse a gap in the old fence which enclosed the further side of it. They passed into the ancient shipyard which lay beyond, and which was now a mere vague, grass-grown approach to the waterside, bestrewn with a few remnants of the supererogatory timber. She saw them stroll forward to the edge of the bay and stand there, taking the soft breeze in their faces. She watched them a little, and it warmed her heart to see the stiff-necked young Southerner led captive by a daughter of New England trained in the right school, who would impose her opinions in their integrity. Considering how prejudiced he must have been he was certainly behaving very well; even at that distance Miss Birdseye dimly made out that there was something positively humble in the way he invited Verena Tarrant to seat herself on a low pile of weatherblacked planks, which constituted the principal furniture of the place, and something, perhaps, just a trifle too expressive of righteous triumph in the manner in which the girl put the suggestion by and stood where she liked, a little proudly, turning a good deal away from him. Miss Birdseye could see as much as this, but she couldn&rsquo;t hear, so that she didn&rsquo;t know what it was that made Verena turn suddenly back to him, at something he said. If she had known, perhaps his observation would have struck her as less singular&mdash;under the circumstances in which these two young persons met&mdash;than it may appear to the reader.</p>
+            <p>&ldquo;They have accepted one of my articles; I think it&rsquo;s the best.&rdquo;</p>
+            <p>[(chap. 36.) All quotations are taken from the Chiltern Library edition (London, 1952), which follows the text of the first book edition of <em>The Bostonians</em> (1886).]</p>
+        </blockquote>
+
+        <p>This is explicitly as well as gently an image of the union of North and South, or more correctly, through these eyes, an image of triumphant reconstruction, the daughter of New England &ldquo;imposing&rdquo; her opinions. As we know, the opposite is true. Ransom, in achieving the publication of his most reactionary opinions, those already tried out on Verena, now feels qualified to pursue their marriage, to take Verena on fully, and through her the other Bostonian, Olive Chancellor. He is the carpetbagger in reverse. The South wins the war.</p>
+
+        <p>Both versions are combative and public. If Miss Birdseye had heard Ransom&rsquo;s remark she would have been less surprised than the reader at such an opening for lovers&rsquo; talk. These are two performers in a performing world. (There is, of course, an assumption that what is going on in this part of the novel is some kind of triumph of love, of personal feelings, which I shall look at later.)</p>
+
+        <p>The detail of this scene is important. The superannuated shipbuilding town fits the superannuated reformer. And both combine to give a sense of the heroic New England that is gone. But the hints of desolation, of waste and debris and aftermath (even possibly of Ransom&rsquo;s ruined plantation, the South wasted by war) go further than this. The &ldquo;poverty&rdquo; of the scene is an American one. The unformed, blurred vision&mdash;Miss Birdseye&rsquo;s spectacles are notoriously ineffective&mdash;a vision involving nonetheless a serene complacent unifying, goes naturally with the casual unformed or decreated &ldquo;American scene.&rdquo; But there is more than one attitude to this scene in the novel, just as there is more than one attitude to unions both private and public.</p>
+
+        <p>I want first to glance at some of the obvious &ldquo;American scenes&rdquo; in the book, to connect the descriptive detail of this Marmion section with the detailed rendering of New York and Boston. There are other elements this scene takes up: the earlier Miss Birdseye of course, although she turns out to be a personification of debris and disarray; at least two other episodes of false serenity&mdash;Ransom almost lulled into the acceptance of Mrs Luna as a wife (chap. 24), and Olive giving herself momentarily to Burrage&rsquo;s world of wealth, taste, and collecting, where human life ceased to be a battle (chap. 18). And we must connect this approaching death, of the &ldquo;heroic&rdquo; and &ldquo;sublime&rdquo; Miss Birdseye, with the central meditation on death and battle in the Harvard Memorial Hall. But the convenient way into the novel is through other explicitly American scenes.</p>
+
+        <p>There is a particular view of Boston from Olive Chancellor&rsquo;s windows which comes very early in the novel, and recurs several times. The view of the Back Bay comes first via Ransom, who has little &ldquo;artistic sense&rdquo; but finds its combination of spires, factory chimneys, masts, brackish water &ldquo;too big for a river and too small for a bay,&rdquo; and modern houses, &ldquo;picturesque&rdquo; and &ldquo;almost romantic&rdquo; (chap. 3). The Bostonians are proud of this view too, always, according to Mrs Luna, &ldquo;giving you the Back Bay to look at, and then taking credit for it,&rdquo; so that it is not merely a question of Ransom exposing a provincial sensibility in the city of culture. He assists at a typical, in some ways rather mean, American scene, and that response and scene are rather coldly presented.</p>
+
+        <p>The sense of a distance between this American view and James&rsquo;s tone is more evident when this same scene reappears through Verena&rsquo;s eyes. There has been a change of season, and there is much more detail, but it is recognizably the same:</p>
+
+        <blockquote>
+            <p>the long, low bridge that crawled, on its staggering posts, across the Charles; the casual patches of ice and snow; the desolate suburban horizons, peeled and made bald by the rigour of the season; the general hard, cold void of the prospect; the extrusion, at Charlestown, at Cambridge, of a few chimneys and steeples, straight, sordid tubes of factories and engine-shops, or spare, heavenward finger of the New England meeting-house. There was something inexorable in the poverty of the scene, shameful in the meanness of its details, which gave a collective impression of boards and tin and frozen earth, sheds and rotting piles, railway-lines striding flat across a thoroughfare of puddles, and tracks of the humbler, the universal horse-car, traversing obliquely this path of danger; loose fences, vacant lots, mounds of refuse, yards bestrewn with iron pipes, telegraph poles, and bare wooden backs of places. Verena thought such a view lovely.</p>
+            <p>(chap. 20)</p>
+        </blockquote>
+
+        <p>It is wrong to stop the quotation there of course, but doing so does bring out this distance I mentioned; leaving it like this makes of it an almost appalling separation. The passage goes on:</p>
+
+        <blockquote>
+            <p>and she was by no means without excuse when, as the afternoon closed, the ugly picture was tinted with a clear, cold rosiness. The air, in its windless chill, seemed to tinkle like a crystal, the faintest gradations of tone were perceptible in the sky, the west became deep and delicate, everything grew doubly distinct before taking on the dimness of evening. There were pink flushes on snow, &ldquo;tender&rdquo; reflections in patches of stiffened marsh, sounds of car-bells, no longer vulgar, but almost silvery, on the long bridge, lonely outlines of distant dusky undulations against the fading glow.</p>
+        </blockquote>
+
+        <p>The view at sunset does qualify, and this in fact had already been hinted at in the earlier view of it through Ransom&rsquo;s eyes. But there is a severe discrimination at work here which appears to condemn both Ransom and Verena. Unlike the &ldquo;real&rdquo; Bostonian, Olive, they don&rsquo;t know when to look. They are really &ldquo;without excuse,&rdquo; especially because the transformation of ugliness&mdash;&ldquo;poverty,&rdquo; &ldquo;meanness,&rdquo; &ldquo;refuse,&rdquo; etc.&mdash;is so great: &ldquo;car-bells, no longer vulgar, but almost silvery.&rdquo; The American scene is vulgar, rarely rescued by silver sound or rosy light. Like Miss Peabody, though, with her &ldquo;delicate, dirty, democratic little hand,&rdquo; it fades or dies rather well. Yet a few pages later there is the most intensely vulgar scene in the novel, the scene of Ransom&rsquo;s New York life. Here there is no fading light to work magical transformations. Instead there is the positive assertion of vigorous ugliness, of triumphant jumble and debris, of participation in a &ldquo;rank civilization&rdquo; (I quote only a fragment):</p>
+
+        <blockquote>
+            <p>The house had a red, rusty face, and faded green shutters, of which the slats were limp and at variance with each other. In one of the lower windows was suspended a fly-blown card, with the words &ldquo;Table Board&rdquo; affixed in letter cut (not very neatly) out of coloured paper, of graduated tints, and surrounded with a small band of stamped gilt. The two sides of the shop were protected by an immense pent-house shed, which projected over a greasy pavement and was supported by wooden posts fixed in the curbstone. Beneath it, on the dislocated flags, barrels and baskets were freely and picturesquely grouped; an open cellarway yawned beneath the feet of those who might pause to gaze too fondly on the savoury wares displayed in the window; a strong odour of smoked fish, combined with a fragrance of molasses, hung about the spot; the pavement, toward the gutter, was fringed with dirty panniers, heaped with potatoes, carrots, and onions; and a smart, bright waggon, with the horse detached from the shafts, drawn up on the edge of the abominable road (it contained holes and ruts a foot deep, and immemorial accumulations of stagnant mud), imparted an idle, rural, pastoral air to a scene otherwise perhaps expressive of rank civilization.</p>
+            <p>(chap. 21)</p>
+        </blockquote>
+
+        <p>In spite of that final cautious note there is real excitement and relish here, an almost visceral closeness. The word &ldquo;picturesque&rdquo; is inadequate: the scene invites not distance but exploration and discovery, a peering&mdash;even a falling&mdash;into one fascinating hole or box or cage after another. The excitement of the response is most clearly indicated later in the passage with the glimpse of the Elevated Railway &ldquo;overhanging the transverse longitudinal street, which it darkened and smothered with the immeasurable spinal column and myriad clutching paws of an antediluvian monster.&rdquo;</p>
+
+        <p>One of the striking things about the whole passage is that James is being frankly personal and also apparently frankly irrelevant. The Dutch grocery is mentioned &ldquo;not on account of any particular influence it may have had on the life or thoughts of Basil Ransom, but for old acquaintance sake and that of local colour.&rdquo; Then he adds (with an echo of &ldquo;The Art of Fiction&rdquo;) &ldquo;besides which, a figure is nothing without a setting,&rdquo; and this is immediately set aside by &ldquo;our young man came and went every day, with rather an indifferent, unperceiving step, it is true, among the objects I have briefly designated&rdquo;&mdash;how different from Hyacinth Robinson. This setting seems to exist not for Ransom but for no purpose at all, or for a novel or part of a novel which is not going to be written:</p>
+
+        <blockquote>
+            <p>If the opportunity were not denied me here, I should like to give some account of Basil Ransom&rsquo;s interior, of certain curious persons of both sexes, for the most part not favourites of fortune, who had found an obscure asylum there.</p>
+            <p>(chap. 21)</p>
+        </blockquote>
+
+        <p>However sceptically one takes that &ldquo;I should like,&rdquo; and one has to bear in mind the American magazine public, this passage as far as it goes has great force. One thinks here of course of James&rsquo;s dalliance with naturalism and the Dickensian, and of the ambitions of <em>The Princess Casamassima</em>. Within this novel one is made very aware of what James won&rsquo;t touch: both Ransom&rsquo;s bohemian life in New York and that southern setting which includes &ldquo;something almost African&rdquo; (chap. 1); and also, the crucial case, Verena&rsquo;s setting. It is not my intention in this essay to go into the relation of Verena to the feminist movement in America in the 1870s. Andrew Sinclair&rsquo;s suggestion that she is a pale reflection of Victoria Woodhull, however questionable it may be, sufficiently points to how much of the extraordinary world of reform in this period is not there. But I think we have to put the issue of figure and setting in a different way.</p>
+
+        <p>The question is whether James wanted to give her any setting at all. &ldquo;A figure is nothing without a setting,&rdquo; but we have just seen James refuse to find Ransom &ldquo;among the objects I have briefly designated.&rdquo; This may be a reluctance or inability to explore certain areas of life, comparable with the failure to find in <em>The Princess Casamassima</em> &ldquo;the real thing.&rdquo; But it begins to look more than that if we remember that this setting is not a setting at all in one sense. It is the most powerful of the &ldquo;American scenes&rdquo; I have been quoting. And its power comes from letting the promiscuous detail and sensation have its head &ldquo;without excuse,&rdquo; as was implied by Verena. Its debris is so assertive it doesn&rsquo;t need justification either by a certain slant of light or a certain kind of hero, or indeed any furtherance of the novel. James without design is without excuse. It is not simply that this American scene triumphs over an art of fiction, of &ldquo;setting&rdquo;: it is almost wilfully irrelevant and indifferent. Setting and figure and author are liberated. The book, having turned from Boston, is on holiday.</p>
+
+        <p>But if the novel escapes at this point, however briefly, from a certain kind of discrimination of the ugliness and the &ldquo;poverty&rdquo; of the American scene, it looks relevant, however destructively, to a larger design. For the visual vulgarity of America is only one part of a general and increasing American vulgarity. I do not want to dwell on this too long. It is very explicit in the novel and is brilliantly done. The assurance in the handling of the New York fashionable world, for example, is remarkable. My enquiry is into possible complexities of attitude towards this vulgarity. In the same way I shall neglect the particular reform questions, especially the woman question (as James does himself), for a more general sense of their American character. This should lead us to the elusive Verena, the crucial case as I have suggested for relation of figure to &ldquo;setting,&rdquo; now in the wider sense of &ldquo;the age.&rdquo;</p>
+
+        <p>The obvious focus for a sense of the age are Ransom&rsquo;s remarks in chapter 34. But although they give one version of contemporary mediocrity, and Ransom sees it as his task to rescue Verena from that mediocrity, he is in no clear way James&rsquo;s spokesman. To call him, as James does immediately afterwards, &ldquo;poor fellow,&rdquo; and to write of the &ldquo;ugliness&rdquo; of his profession of faith, may well be irony at the expense of Verena and the age&mdash;&ldquo;Mr Ransom, I assure you this is an age of conscience.&rdquo; But it is more likely that, given the consistent handling of Ransom, the irony is cutting both ways. Like Miss Birdseye he finds it difficult to recover from earlier severe treatment: for instance, &ldquo;five thousand, ten thousand, fifteen thousand a year? There was a richness to our panting young man in the smallest of these figures&rdquo;; and &ldquo;he was conscious at bottom of a bigger stomach than all the culture of Charles Street could fill.&rdquo; The sardonic handling persists into the New York section of the book: &ldquo;where should he find the twenty-dollar greenbacks which it was his ambition to transmit from time to time to his female relations, confined so constantly to a farinaceous diet?&rdquo; His pronounced values are male, martial, antidemocratic, and stoical:</p>
+
+        <blockquote>
+            <p>it&rsquo;s a feminine, a nervous, hysterical, chattering, canting age, an age of hollow phrases and false delicacy and exaggerated solicitudes and coddled sensibilities, which, if we don&rsquo;t look out, will usher in the reign of mediocrity, of the feeblest and flattest and the most pretentious that has even been. The masculine character, the ability to dare and endure, to know and yet not fear reality, to look the world in the face and take it for what it is&mdash;a very queer and partly very base mixture&mdash;that is what I want to preserve, as I may say, to recover.</p>
+            <p>(chap. 34)</p>
+        </blockquote>
+
+        <p>Now this is not so much argument as oratory. Verena finds herself listening to the eloquence, the man, rather than the ideas. We know that voice, kept back for most of the book, comes from a &ldquo;large stomach&rdquo; and a great ambition for success. It has that sincerity. And it is of course typical of the novel that relationships are conducted in this way. Ransom&rsquo;s resentment against women is natural, given his experience since leaving the South. He has found women in control wherever he has gone. The Olive Chancellors, Mrs Farrinders, Mrs Burrages, and Mrs. Lunas, have the wealth or power or both. And their men are non-existent or weak&mdash;Olive&rsquo;s brothers, for example, were killed in the war. Like any other &ldquo;failure&rdquo; or minority group he needs a conspiracy theory, but this hardly makes that theory the summation of the book&rsquo;s view of &ldquo;the age.&rdquo;</p>
+
+        <p>Rather, given James&rsquo;s generally sardonic handling of him, he himself is part of the age. It&rsquo;s illuminating to compare him to Olive Chancellor in this respect. In terms of his statement <em>she</em> is the age, the enemy. But they are in the book the two chief discriminators of the age. They share a sense of how much &ldquo;trash&rdquo; there is in it. They regret a lost heroic American past and posit the recovery of nobler human values of daring and suffering. The exactly comparable statement of Olive&rsquo;s views comes earlier in the book:</p>
+
+        <blockquote>
+            <p>Olive had a standing quarrel with the levity, the good-nature, of the judgements of the day; many of them seemed to her weak to imbecility, losing sight of all measures and standards, lavishing superlatives, delighted to be fooled. The age seemed to her to be relaxed and demoralized, and I believe she looked to the influx of the great feminine element to make it feel and speak more sharply.</p>
+            <p>(chap. 16)</p>
+        </blockquote>
+
+        <p>Putting these two passages together most clearly reveals the irony of James&rsquo;s design. There is a very similar diagnosis and sense of the mediocrity of the age, with exactly opposite treatment: &ldquo;the masculine character,&rdquo; &ldquo;the great feminine element.&rdquo;</p>
+
+        <p>Olive, on this occasion, has been talking to Matthias Pardon, the journalist with hair &ldquo;precociously white.&rdquo; His &ldquo;gossip&rsquo;s view of great tendencies&rdquo; personifies the age for her. And I would have thought that it is to the world of Matthias Pardon, and Selah Tarrant, we have to look for the most consistent portrait of the age. There are two passages on Tarrant and Pardon in chapters 13 and 16 written in the brilliant manner of the first half of the novel which especially have a firm satirical confidence. In the first passage James comments that to Selah Tarrant &ldquo;human existence . . . was a huge publicity&rdquo; which combined happily with the need for &ldquo;receipts&rdquo; (chap. 13). But it&rsquo;s the description of Pardon which catches &ldquo;the age&rdquo; most ambitiously:</p>
+
+        <blockquote>
+            <p>He had small, fair features, remarkably neat, and pretty eyes, and a moustache that he caressed, and an air of juvenility much at variance with his grizzled locks, and the free familiar reference in which he was apt to indulge in his career as a journalist. His friends knew that in spite of his delicacy and his prattle he was what they called a live man; his appearance was perfectly reconcilable with a large degree of literary enterprise. It should be explained that for the most part they attached to this idea the same meaning as Selah Tarrant&mdash;a state of intimacy with the newspapers, the cultivation of the great arts of publicity. For this ingenuous son of his age all distinction between the person and the artist had ceased to exist; the writer was personal, the person food for newsboys, and everything and everyone were every one&rsquo;s business. All things, with him, referred themselves to print, and print meant simply infinite reporting, a promptitude of announcement, abusive when necessary, or even when not, about his fellow-citizens. He poured contumely on their private life, on their personal appearance, with the best conscience in the world. His faith, again, was the faith of Selah Tarrant&mdash;that being in the newspapers is a condition of bliss, and that it would be fastidious to question the terms of the privilege. He was an <em>enfant de la balle</em>, as the French say; he had begun his career, at the age of fourteen, by going the rounds of the hotels, to cull flowers from the big, greasy registers which lie on the marble counters; and he might flatter himself that he had contributed in his measure, and on behalf of a vigilant public opinion, the pride of a democratic State, to the great end of preventing the American citizen from attempting clandestine journeys. Since then he had ascended other steps of the same ladder; he was the most brilliant young interviewer on the Boston press. He was particularly successful in drawing out the ladies; he had condensed into shorthand many of the most celebrated women of his time&mdash;some of these daughters of fame were very voluminous&mdash;and he was supposed to have a remarkably insinuating way of waiting upon <em>prime donne</em> and actresses the morning after their arrival, or sometimes the very evening, while their luggage was being brought up. He was only twenty-eight years old, and, with his hoary head, was a thoroughly modern young man; he had no idea of not taking advantage of all the modern conveniences. He regarded the mission of mankind upon earth as a perpetual evolution of telegrams; everything to him was very much the same, he had no sense of proportion or quality; but the newest thing was what came nearest exciting in his mind the sentiment of respect.</p>
+            <p>(chap. 16)</p>
+        </blockquote>
+
+        <p>The particularization and the representativeness are superbly managed here, especially in the use of the wise child motif. (The passage does have a slightly different kind of power if we remember the trouble James ran into for being personal about Elizabeth Peabody, the model for Mrs Birdseye, and the way in which the injunction to the novelist to be &ldquo;one of the people on whom nothing is lost&rdquo; in &ldquo;The Art of Fiction&rdquo; is just as much a reporter&rsquo;s watchword as a novelist&rsquo;s.)</p>
+
+        <p>We have to remember then&mdash;perhaps James doesn&rsquo;t sufficiently remind us&mdash;that Pardon is as important a contender for Verena&rsquo;s hand as anyone else. Ransom and Olive are rivals but they both seek to rescue Verena from Pardon&rsquo;s world, which in many ways is her natural world. But then we come to James&rsquo;s major irony. Both Ransom and Olive have a partial discriminatory intelligence which enables them to see through the world of publicity. But like most other characters in the novel, with the notable exception of Dr Prance who is doing real and quiet work, they both seek a place in it, and in the end both have compromised with it. Olive plans to &ldquo;launch&rdquo; Verena finally with Pardon&rsquo;s co-operation. Ransom has had his best article accepted. They both of course distinguish <em>their</em> public role from the world of publicity. They will offer the best article. But I don&rsquo;t think the book allows this kind of distinction final weight. Certainly the climax, with its vulgar public squabbling, can&rsquo;t. The point in Ransom&rsquo;s case is most economically made in the brilliant comic scene with Mrs Luna and Pardon before the Music Hall finale. Mrs Luna finds herself unwillingly providing material for the world of publicity&mdash;&ldquo;What Miss Chancellor&rsquo;s Family Think About It&rdquo;:</p>
+
+        <blockquote>
+            <p>&ldquo;If you have the impertinence to publish a word about me, or to mention my name in print, I will come to your office and make such a scene!&rdquo;</p>
+            <p>&ldquo;Dearest lady, that would be a godsend!&rdquo; Mr Pardon cried, enthusiastically; but he put his note-book back into his pocket.</p>
+            <p>&ldquo;Have you made an exhaustive search for Miss Tarrant?&rdquo; Basil Ransom asked of him. Mr Pardon, at this inquiry, eyes him with a sudden, familiar archness, expressive of the idea of competition; so that Ransom added: &ldquo;You needn&rsquo;t be afraid, I&rsquo;m not a reporter.&rdquo;</p>
+            <p>&ldquo;I didn&rsquo;t know but what you had come on from New York.&rdquo;</p>
+            <p>&ldquo;So I have&mdash;but not as the representative of a newspaper.&rdquo;</p>
+            <p>&ldquo;Fancy his taking you&rdquo;&mdash;Mrs Luna murmured, with indignation.</p>
+            <p>(chap. 40)</p>
+        </blockquote>
+
+        <p>We are surely here meant to relish this mistaken identity because it makes a point about Ransom, which is not Mrs Luna&rsquo;s: that he is not so distinguishable. Ransom of course is taken for &ldquo;one of us&rdquo; in various ways in the book. Not the least embarrassing is that lady&rsquo;s way, claiming him as part of her own coarse, wealthy, Europeanized conservatism. He is not the reporter from New York, although in a sense he has from the beginning been gathering material; rather, fluid American character that he is, despite his &ldquo;stiffness,&rdquo; that is one of his possibilities. Certainly at this stage of the novel he feels himself to be on his way in his own part of the world of publicity.</p>
+
+        <p>All this will seem to avoid the main question of Ransom and Verena&rsquo;s mutual love, his desire to remove Verena from this &ldquo;detestable&rdquo; world, and his influence in giving her&mdash;the first one to do so&mdash;a private identity, a sense of a self other than the continuously public self of her upbringing and life, a self, predictably, of a genuine domestic and familial vocation. But it seemed best to come at this in the way I have done in order not to confuse Ransom&rsquo;s public role with Verena&rsquo;s. Ransom doesn&rsquo;t stand for contempt of public life, except in so far as he stands for contempt of life in general, the queer and base mixture; but he is against women&rsquo;s involvement in it. &ldquo;He had always had a desire for public life; to cause one&rsquo;s ideas to be embodied in national conduct appeared to him the highest form of human enjoyment&rdquo; (chap. 21). Verena is offered the private life of a public man.</p>
+
+        <p>Nevertheless it may be argued that Ransom stands for personal values against the world of publicity. The difficulty with a word like &ldquo;personal,&rdquo; certainly much used by James, is that it can get a blanket endorsement&mdash;what could be of value which was not personal?&mdash;which can obscure the complexity of what it is pointing to. The use of the word in &ldquo;The Art of Fiction&rdquo; for example, or in the essay on Daudet, is ambiguous, probably contradictory. In <em>The Bostonians</em> the word usually operates against the vocabulary of public life. The key moment in the development of the love of Ransom and Verena comes when she says his interest in her is not &ldquo;controversial&rdquo; but &ldquo;personal.&rdquo; Again, Olive&rsquo;s disqualification for public life is that&mdash;in Ransom&rsquo;s view, like all women&mdash;she takes things too personally, too hard.</p>
+
+        <p>One of the simplest readings the book offers is as a backstage drama&mdash;will the show go on? The anticipation here of <em>The Tragic Muse</em> is relevant but can be misleading. In that complex novel the performing art transcends and transforms the meanness of life, especially women&rsquo;s life, and the meanness of lesser arts, including the art of politics. In <em>The Bostonians</em> there is no secure world of discrimination and art, the actresses are more likely to be &ldquo;variety.&rdquo; But there is this powerful element in the novel of a felt need to escape from the confinement of the personal, from private sensation, into contact with &ldquo;life,&rdquo; especially the life in &ldquo;the social dusk of that mysterious democracy.&rdquo; &ldquo;I&rsquo;m sick of the Back Bay,&rdquo; cries Olive.</p>
+
+        <p>It may be objected that, in noting this markedly Hawthorne-like aspect of the novel, I am really generalizing from Olive&rsquo;s particular &ldquo;problem&rdquo; as wealthy guilty spinster, and in doing so possibly confusing the private, in terms of isolation, with the personal, with its necessary additional &ldquo;relationships.&rdquo; Certainly what the novel does and was intended to do is to show &ldquo;one of those friendships between women which are so common in New England.&rdquo; This relationship is in different ways &ldquo;life&rdquo; for both women, and it may be supposed to be a perverse version of the personal, disguised in the language of self-sacrifice and dedication. But this is rather stale ground, that of public activity and reform always being definable in terms of indirect or thwarted &ldquo;personal&rdquo; desires.</p>
+
+        <p>But are we then to assume that the love of Verena and Ransom is &ldquo;really&rdquo; personal in some sense?&mdash;heterosexual being better than lesbian, in spite of its grotesque variants in the book such as the Farrinders (&ldquo;and his name was Amaria&rdquo;), or Selah Tarrant&rsquo;s &ldquo;association&rdquo; with Ada T. P. Foat? Eventually it comes to the question of the nature of the relationship, the union. And uncertainties and forebodings about that do not spring from the novel&rsquo;s grim last sentence alone: &ldquo;It is to be feared that with the union, so far from brilliant, into which she was about to enter, these [tears] were not the last she was destined to shed.&rdquo; If this is the most substantial relationship in the book (although one would have to say that the Olive&mdash;Verena affair is the more subtle, also involving as it does a rationale of free union), it is because it takes up and confirms what all other &ldquo;unions&rdquo; point to: dominance for one partner, defeat for the other. That is the force of sexuality in the novel. Olive&rsquo;s sense, which James delicately guesses at, of Verena exhibiting women&rsquo;s &ldquo;hideous weakness&mdash;their predestined subjection to man&rsquo;s larger and grosser insistence&rdquo; (chap. 39) agrees with Ransom&rsquo;s attitude toward Verena (beneath his politeness): &ldquo;she was tremendously open to attack, she was meant for love, she was meant for him&rdquo; (chap. 36).</p>
+
+        <p>But the sexual sense of &ldquo;personal&rdquo; in this relationship combines with the public as well as being opposed to it. Over another &ldquo;queer&rdquo; American private life, another &ldquo;fiasco,&rdquo; looms the encompassing fiasco of the Civil War, the war of union, with the lurking irony of Ransom&rsquo;s championship of &ldquo;minority rights.&rdquo; And it is Ransom&rsquo;s dedication to a cause, his forlorn but powerful hope of public success, that is part of his persuasion of her.</p>
+
+        <p>It is typical of the novel&rsquo;s procedure that this persuasion takes place in public (all their courting is done this way, except for those limited hours in Marmion), in the characteristic American scene of Central Park, under the gaze of the unemployed, &ldquo;the children of disappointment from across the sea.&rdquo; It&rsquo;s the first time that Ransom lets go his bantering tone and speaks sincerely, from the stomach as it were&mdash;he is virtually unemployed himself at this time. She is partly won, as I have already suggested, by oratory, greater public conviction. For her to submit in that way is not surprising&mdash;it is not after all so odd a match for a daughter of the lecturing-circuit to make.</p>
+
+        <p>James thought of naming the novel after her, but who is Verena? Verena is a great creation, she makes <em>The Bostonians</em> plural in its greatness, gives the novel a compensating and complementary generosity along with its sardonic and satirical verve. Sometimes it is the idea of her that is great, rather than the embodiment. James does not always know how far to go with her or how much sceptical qualification to introduce. But even these reservations pick on something almost necessary to her presence.</p>
+
+        <p>Who she is is really part of the question of whom she is taken to be, whom she is made to be. She enters the book as the passive instrument of her father, and leaves &ldquo;enslaved&rdquo; by Ransom. &ldquo;She had always done everything that people asked,&rdquo; &ldquo;it was in her nature to be easily submissive, to like being overborne.&rdquo; Like Priscilla in Hawthorne&rsquo;s <em>The Blithedale Romance</em> she waits to be possessed, to be created. But that parallel is immediately disturbing. Hawthorne&rsquo;s &ldquo;gentle parasite&rdquo; draws on the energies of other people. Verena&rsquo;s submission, sexual or otherwise, involves her as a source of energy, a capturable vitality.</p>
+
+        <p>For Olive she is &ldquo;life,&rdquo; particularly the life, &ldquo;the romance of the people.&rdquo; She is that &ldquo;poor girl&rdquo; Olive has been looking for, whom she will raise, and who will answer that need &ldquo;to know everything that lies beneath and out of sight.&rdquo; In her first appearance in the novel she is eager and restless, &ldquo;not a quiet girl.&rdquo; With her extraordinary red hair and bizarre dress (James shows her interest in dressing up at several points in the novel) she appears &ldquo;theatrical,&rdquo; but &ldquo;naturally theatrical.&rdquo; Her performance at Miss Birdseye&rsquo;s is &ldquo;fresh&rdquo; and &ldquo;pure,&rdquo; &ldquo;an intensely personal exhibition.&rdquo; For Ransom</p>
+
+        <blockquote>
+            <p>the necessity of her nature was not to make converts to a ridiculous cause, but to emit those charming notes of her voice, to stand in those free young attitudes, to shake her braided locks like a naiad rising from the waves, to please everyone who came near her and to be happy that she pleased.</p>
+            <p>(chap. 8)</p>
+        </blockquote>
+
+        <p>&ldquo;All her desire was to learn&rdquo; and &ldquo;she was ever-curious about the world.&rdquo; She had &ldquo;no particular feeling about herself; she only cared, as yet, for outside things.&rdquo; As you came to know her &ldquo;you would have wondered immensely how she came to issue from such a pair&rdquo; as the Tarrants.</p>
+
+        <p>To Olive (in an unusually socialist moment):</p>
+
+        <blockquote>
+            <p>she was so strange, so different from the girls one usually met, seemed to belong to some queer gipsy-land or transcendental Bohemia. With her bright, vulgar clothes, her salient appearance, she might have been a rope-dancer or a fortune-teller; and this had the immense merit, for Olive, that it appeared to make her belong to the &ldquo;people,&rdquo; threw her into the social dusk of that mysterious democracy which Miss Chancellor held that the fortunate classes know so little about, and with which (in a future possibly very near) they will have to count.</p>
+            <p>(chap. 11)</p>
+        </blockquote>
+
+        <p>Verena &ldquo;had moved her as she never had been moved.&rdquo;</p>
+
+        <p>She was also &ldquo;a creature of unlimited generosity&rdquo; who &ldquo;never held back.&rdquo; Her &ldquo;gift&rdquo; was a mystery, &ldquo;dropped straight from heaven&rdquo;&mdash;nothing to do with her awful parents, her &ldquo;queer&rdquo; life and background. She has survived that &ldquo;perfectly uncontaminated, and she would never be touched by evil&rdquo; in spite of announcements like &ldquo;I prefer free unions.&rdquo; She smiled at everyone, she &ldquo;likes the individual.&rdquo;</p>
+
+        <p>There is a &ldquo;characteristic raciness of speech&rdquo; in her. She is &ldquo;the most extraordinary mixture of eagerness and docility,&rdquo; her success is &ldquo;simply to have been made as she was made.&rdquo; Olive welcomes her as an innocent &ldquo;flower of the great Democracy,&rdquo; without vulgarity, coming from &ldquo;the poorest, humblest people,&rdquo; &ldquo;the very obscure,&rdquo; the only persons &ldquo;safe&rdquo; from vulgarity. Yet she is &ldquo;miraculous,&rdquo; a &ldquo;whim of the creative force.&rdquo; &ldquo;There were people like that, fresh from the hand of Omnipotence&rdquo; (chap. 15).</p>
+
+        <p>She flirts, or rather this is &ldquo;the subtle feminine desire to please.&rdquo; &ldquo;There were so many things she hadn&rsquo;t yet learned to dislike.&rdquo; She represented &ldquo;the consummate innocence of the American girl.&rdquo; &ldquo;The very stones of the street&mdash;all the dumb things of nature&mdash;might find a voice to talk to you&rdquo; (chap. 17). She enables both Olive and Ransom to speak. She wants to &ldquo;intellectually command all life&rdquo; but she is not &ldquo;naturally concentrated&rdquo; like Olive. She jokes&mdash;turns the sacred formulae of feminist success into pleasantries. She is of &ldquo;many pieces,&rdquo; &ldquo;irresponsible,&rdquo; but she can &ldquo;kindle, flame up . . . resolve herself into a magical voice, become again the pure young sybil.&rdquo; In entering the partnership with Olive she was attracted by &ldquo;the vision of new social horizons, the sense of novelty, and the love of change.&rdquo; She &ldquo;put forth a beautiful energy.&rdquo; She lacks pride, she is &ldquo;free from private self-reference.&rdquo;</p>
+
+        <blockquote>
+            <p>her bright mildness glided over the many traps that life sets for our consistency . . . everything fresh and fair renewed itself in her with extraordinary facility, everything ugly and tiresome evaporated as soon as it touched her.</p>
+            <p>(chap. 20)</p>
+        </blockquote>
+
+        <p>Under Olive&rsquo;s care she &ldquo;assimilated all delicacies and absorbed all traditions.&rdquo; She could &ldquo;do anything she tried.&rdquo;</p>
+
+        <p>Mrs Luna thinks her a third-rate adventuress, &ldquo;trash.&rdquo; At his second meeting with her Ransom finds she has a &ldquo;fantastic fairness,&rdquo; she is an actress making a &ldquo;scene&rdquo; of anything. She has a natural oratory and the &ldquo;air of being a public figure,&rdquo; but in this she is &ldquo;genial&rdquo; not &ldquo;dogmatic.&rdquo; She was &ldquo;honest and natural&rdquo; but with &ldquo;queer, bad lecture-blood in her veins . . . a touching, ingenuous victim, unconscious of the pernicious forces which were hurrying her to her ruin&rdquo; (chap. 26). She is like an actress or singer, an &ldquo;Improvisatrice . . . a chastened, modern, American version . . . a New England Corinna.&rdquo;</p>
+
+        <p>She is &ldquo;meant for love.&rdquo; She has a great power of enjoyment, she responds in New York to &ldquo;the infinite possibilities of a great city.&rdquo; She was made to enjoy rather than suffer, there is the &ldquo;epicurean&rdquo; in her, the impulse to &ldquo;live only for the hour.&rdquo; She proves &ldquo;by the answering, familiar brightness with which she looked out on the lamp-lighted streets that, whatever theory might be entertained as to the genesis of her talent and her personal nature, the blood of the lecture-going, night-walking Tarrants did distinctly flow in her veins&rdquo; (chap. 31).</p>
+
+        <p>She resists protection: &ldquo;I must take everything that comes. I mustn&rsquo;t be afraid.&rdquo; She is &ldquo;a good thing&rdquo; to get hold of, &ldquo;the latest thing,&rdquo; someone who &ldquo;might easily have a big career,&rdquo; &ldquo;an article for which there was more and more demand&rdquo; (an intellectually third-rate article in Ransom&rsquo;s opinion). Ransom tells her, &ldquo;I don&rsquo;t know where you come from nor how you came to be what you are, but you are outside and above all vulgarizing influences&rdquo; (chap. 34).</p>
+
+        <p>As the book nears its close James himself takes up her analysis much more, writing of &ldquo;her peculiar frankness&rdquo; and &ldquo;the extraordinary generosity with which she would expose herself, give herself away, turn herself inside out, for the satisfaction of a person who made demands of her&rdquo; (chap. 37). She was &ldquo;always passion&rdquo; (whether in love or for the feminist cause), but without a great capacity for suffering:</p>
+
+        <blockquote>
+            <p>With her light, bright texture, her complacent responsiveness, her genial, graceful, ornamental cast, her desire to keep on pleasing others at the time when a force she had never felt before was pushing her to please herself, poor Verena lived in those days in a state of moral tension&mdash;with a sense of being strained and aching&mdash;which she didn&rsquo;t betray more only because it was absolutely not in her power to look desperate.</p>
+            <p>(chap. 38).</p>
+        </blockquote>
+
+        <p>She had only a &ldquo;hothouse loyalty&rdquo; to Olive and her cause, and eventually, like those other poor girls, there was a &ldquo;Charlie&rdquo; to take her off.</p>
+
+        <p>James&rsquo;s sceptical note in that last extended quotation has its own complexities. The &ldquo;light, bright texture . . . complacent responsiveness&rdquo; are being measured against Olive&rsquo;s suffering, her capacity to take things too hard. <em>Her</em> morbidity makes desperation always at her disposal. The irony of a force &ldquo;pushing her to please herself&rdquo; is clearer, especially as that &ldquo;force&rdquo; has told Verena that &ldquo;what is most agreeable to women is to be agreeable to men.&rdquo;</p>
+
+        <p>Given that general sense of Verena, however much &ldquo;of many pieces&rdquo; it is, it becomes clearer still that Verena in love with Ransom is a defeated Verena. Like Fitzgerald&rsquo;s Gatsby, also a &ldquo;son of God,&rdquo; her discovery of personal love is limiting and destructive (far more so than the relationship with Olive). And what it limits or destroys is what James&rsquo;s lyrical tone in presenting her so often manifests, something personal in a different sense, her &ldquo;gift,&rdquo; what is responsive and vivifying in her nature.</p>
+
+        <p>And that love, that separable self, is closely related to the repeated attempts, very evident in the combined impressions of her I have quoted, to find her &ldquo;essence,&rdquo; to separate her from her background, her &ldquo;setting&rdquo;&mdash;her parents, her class, the world of publicity, the whole vulgar American scene. She is both representative of the age and uniquely separable from it, and we are continually watching her in the novel being taken both ways. The comedy of these attempts is that they keep reopening the satirically settled question of the American scene. It gives that scene, the &ldquo;age,&rdquo; a perpetual second chance. And that chance can&rsquo;t be defined merely in terms of vulgar car-bells sounding almost silvery. It&rsquo;s the chance of Verena&rsquo;s indiscriminate vision itself, that power to make all things, including Ransom and Olive, speak, to make all things live.</p>
+
+        <p>This Orphic role, together with other religious and legendary associations&mdash;Minerva, &ldquo;fresh from the hand of Omnipotence&rdquo;&mdash;however playful, give her a mythic potentiality. But her human variousness remains dominant. Her force is not that of a transcendent presence; not so much a second coming, more an American second chance, a superhumanized possibility, a Whitmanesque &ldquo;song of myself&rdquo; and &ldquo;democratic vista,&rdquo; a creative innocence like that of Huck Finn&rsquo;s, both close to and separate from the world of the confidence trickster and the adventurer.</p>
+
+        <p>Her defeat then is naturally associated with the Civil War. It is in the visit with Ransom to the Harvard Memorial Hall that her self-consciousness begins. At the start of this episode her talk&mdash;about her attendance at the Women&rsquo;s Convention&mdash;is typically gay and earnest: &ldquo;We had some tremendously earnest discussions, which it would have been a benefit to you to hear, or any man who doesn&rsquo;t think we can rise to the highest point. Then we had some refreshment&mdash;we consumed quantities of ice-cream!&rdquo; And it is also typically impersonal about her success&mdash;&ldquo;it had no more manner about it than if it concerned the goddess Minerva.&rdquo; In Ransom&rsquo;s imagination of the scene she is &ldquo;ruined,&rdquo; the victim of a hall &ldquo;filled with carpet-baggers.&rdquo; And it is the intensity of this concern which shows and provokes her discovery: &ldquo;See here, Mr Ransom, do you know what strikes me? . . . The interest you take in me isn&rsquo;t really controversial&mdash;a bit. It&rsquo;s quite personal!&rdquo; (chap. 25).</p>
+
+        <p>This new sense of the personal is interrupted by Ransom&rsquo;s contemplation of the Hall, which draws from James one of his most apparently unequivocal passages in the book:</p>
+
+        <blockquote>
+            <p>The effect of the place is singularly noble and solemn, and it is impossible to feel it without a lifting of the heart. It stands there for duty and honour, it speaks of sacrifice and example, seems a kind of temple to youth, manhood, generosity. Most of them were young, all were in their prime, and all of them had fallen; this simple idea hovers before the visitor and makes him read with tenderness each name and place&mdash;names often without other history, and forgotten Southern battles. For Ransom these things were not a challenge nor a taunt; they touched him with respect, with the sentiment of beauty. He was capable of being a generous foeman, and he forgot, now, the whole question of sides and parties; the simple emotion of the old fighting-time came back to him, and the monument around him seemed an embodiment of that memory; it arched over friends as well as enemies, the victims of defeat as well as the sons of triumph.</p>
+            <p>(chap. 25)</p>
+        </blockquote>
+
+        <p>Then as their own discussion intensifies, over the question of whether Verena will tell Olive of their meeting, their relationship fits with this heroic American past:</p>
+
+        <blockquote>
+            <p>&ldquo;I tell her everything,&rdquo; said the girl; and now as soon as she had spoken, she blushed. He stood before her, tracing a figure on the mosaic pavement with his cane, conscious that in a moment they had become more intimate. They were discussing their affairs, which had nothing to do with the heroic symbols that surrounded them; but their affairs had suddenly grown so serious that there was no want of decency in their lingering there for the purpose.</p>
+            <p>(chap. 25)</p>
+        </blockquote>
+
+        <p>We surely connect Verena with this &ldquo;temple&rdquo; to youth and generosity, this dedication and sacrifice, exclusively male as it is; and make the connexion not only in terms of her own cause, and the struggle of men and women, but also in what is becoming more serious to her at this moment, the &ldquo;intimate&rdquo; personal battle with Ransom and Olive. The Civil War, the war for the Union, elsewhere described as &ldquo;one of the biggest failures that history commemorates, an immense national fiasco,&rdquo; is solemnized (as it is from this period on in America) with a transcendental generosity, a slightly hollow effort of reconciliation&mdash;&ldquo;the victims of defeat as well as the sons of triumph.&rdquo;</p>
+
+        <p>This solemn reconciliation is the setting for Verena&rsquo;s own kind of reconciliation, her &ldquo;feminine logic&rdquo;: &ldquo;It is very beautiful&mdash;but I think it is very dreadful, if it wasn&rsquo;t so majestic, I would have it pulled down.&rdquo; She objects to the glorification of bloodshed, the male martial sacrament of sacrifice. But she responds, she partially submits, as she will later to Ransom&rsquo;s intensity. As their own intimate battle starts, her own sacrificial role is prepared. And as the chapter proceeds Ransom begins to assert his newly-felt power, his &ldquo;man&rsquo;s brutality&rdquo; over her.</p>
+
+        <p>The Hall, then, operates both as a solemn memorial of an heroic American past, a past contrasting with a mediocre modern age, and as an ironic image of union. Here as everywhere in the novel the idea of union, whether private or public, leads to conflict, and either victory or defeat. The escape, &ldquo;after the battle had ceased,&rdquo; is momentary, rhetorical, and delusory, except as death&rsquo;s &ldquo;sacrifice.&rdquo;</p>
+
+        <p>Yet Verena stands for an alternative, not an escape, within the unmemorialized world. She is not after all a heroine. Her thinking is not like Ransom&rsquo;s or Olive&rsquo;s. She is superficial, she is absurd. &ldquo;The truth had changed sides.&rdquo; She changes her mind. She &ldquo;liked herself better.&rdquo; There is something reassuring in that, and in James&rsquo;s refusal to make her &ldquo;tragic,&rdquo; to go for the full resonance of the innocent child-victim, as in <em>What Maisie Knew</em> or even &ldquo;Daisy Miller.&rdquo; There is nothing sacred in her defeat. There is something reassuringly mean in it, and in her (and their) prospects. If this is loss of innocence it is not <em>the</em> loss of innocence. A girl without a setting, or too many settings, too many changes of mind, cannot be that symbolic. Nothing American can be that symbolic.</p>
+
+        <p>The solemn temple appears in a different form at the end of the novel. The Boston Music Hall is the final meeting place for the trains of imagery of battle and religious apotheosis, and where they reach their most dramatic, and in some ways most vulgar, expression. Ransom fights his last daring battle of a campaign which has become increasingly desperate. This includes one carefully placed reference to him imagining himself in the role of Lincoln&rsquo;s assassin (chap. 41). Like Olive he is prepared for martyrdom.</p>
+
+        <p>The temple of course is dedicated to the world of publicity, to the launching of &ldquo;the latest thing&rdquo; into the mediocre age. But that is more Olive&rsquo;s and Ransom&rsquo;s view of it; both conceive of themselves as defying the mob. But it&rsquo;s Verena again who won&rsquo;t allow the reactionary image of the democracy to cohere:</p>
+
+        <blockquote>
+            <p>&ldquo;And what will the people do? Listen, listen!&rdquo;</p>
+            <p>&ldquo;Your father is ceasing to interest them. They&rsquo;ll howl and thump, according to their nature.&rdquo;</p>
+            <p>&ldquo;Ah, their nature&rsquo;s fine!&rdquo;</p>
+            <p>(chap. 42)</p>
+        </blockquote>
+
+        <p>In the brilliantly rendered final fiasco, the refought battle of North and South, Verena&rsquo;s idea persists in the midst of contending parties. There is nothing final about the ending of the novel&mdash;we are not sure what will become of the Ransoms. More immediately, we may not be sure what will happen to Olive. &ldquo;I am going to be hissed, hooted, and insulted.&rdquo; But the people may give her a voice.</p>
+
+        <p>In <em>The Bostonians</em> James wanted to write &ldquo;a very American tale,&rdquo; and in looking back at it towards the end of his life he found he had written a very &ldquo;curious&rdquo; one. To search for the representative and come up with the curious is characteristically Jamesian. It could be a shorthand for what goes wrong with <em>The Princess Casamassima</em>. But it is the achievement of <em>The Bostonians</em> to convince of the curiosity of the very American, and, if Verena is given her full value, to celebrate that curiosity, sardonically but also generously.</p>
+    </article>
+
+    <script>
+        const toggle = document.getElementById('theme-toggle');
+        const icon = document.getElementById('theme-icon');
+
+        toggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+            toggle.title = isDark ? 'Modo Diurno' : 'Modo Nocturno';
+            toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+        });
+    </script>
+
+</body>
+</html>

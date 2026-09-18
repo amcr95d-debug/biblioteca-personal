@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carol Ohmann - "Daisy Miller": A Study of Changing Intentions</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* =========================================
+           COLORES (Modo Diurno - International Klein Blue)
+           ========================================= */
+        :root {
+            --bg-body: #002FA7;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.88);
+            --text-muted: rgba(255, 255, 255, 0.6);
+            --border-color: rgba(255, 255, 255, 0.35);
+            --border-light: rgba(255, 255, 255, 0.15);
+            --fab-bg: #ffffff;
+            --fab-color: #002FA7;
+            --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+            --quote-border: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Modo Nocturno - Deep Navy Blue */
+        body.dark-mode {
+            --bg-body: #001233;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.85);
+            --text-muted: rgba(255, 255, 255, 0.5);
+            --border-color: rgba(255, 255, 255, 0.2);
+            --border-light: rgba(255, 255, 255, 0.1);
+            --fab-bg: #ffffff;
+            --fab-color: #001233;
+            --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+            --quote-border: rgba(255, 255, 255, 0.4);
+        }
+
+        /* =========================================
+           ESTILOS GENERALES
+           ========================================= */
+        * { transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease; }
+        
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            line-height: 1.75;
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 2em 1.5em 5em;
+            color: var(--text-primary);
+            background-color: var(--bg-body);
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 0.2em;
+            font-weight: normal;
+            letter-spacing: 0.05em;
+            color: var(--text-primary);
+        }
+
+        h2 {
+            font-size: 1.4em;
+            text-align: center;
+            margin-top: 2.5em;
+            margin-bottom: 1.5em;
+            font-weight: bold;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        h3 {
+            font-size: 1.1em;
+            text-align: center;
+            margin-top: 2.5em;
+            margin-bottom: 1em;
+            font-weight: bold;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        p {
+            text-align: justify;
+            margin-bottom: 1.2em;
+            text-indent: 1.5em;
+        }
+
+        p.no-indent { text-indent: 0; }
+
+        blockquote {
+            margin: 1.5em 2em;
+            padding-left: 1.5em;
+            border-left: 3px solid var(--quote-border);
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        blockquote p { text-indent: 0; margin-bottom: 0.8em; }
+
+        .poem {
+            margin: 1.5em 2em;
+            font-style: italic;
+            text-indent: 0;
+        }
+
+        .poem p {
+            text-indent: 0;
+            margin-bottom: 0.3em;
+            text-align: left;
+            padding-left: 2em;
+            text-indent: -2em;
+        }
+
+        em { font-style: italic; }
+
+        sup {
+            font-size: 0.75em;
+            vertical-align: super;
+            line-height: 0;
+        }
+
+        .page-number {
+            display: block;
+            text-align: center;
+            font-size: 0.8em;
+            color: var(--text-muted);
+            margin: 2em 0 1em 0;
+        }
+
+        .footnotes {
+            margin-top: 4em;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5em;
+            font-size: 0.9em;
+            color: var(--text-secondary);
+        }
+
+        .footnotes h3 {
+            text-align: left;
+            font-size: 1em;
+            margin-bottom: 1em;
+            text-transform: none;
+            letter-spacing: normal;
+            color: var(--text-primary);
+        }
+
+        .footnotes p {
+            text-align: left;
+            text-indent: -1.5em;
+            padding-left: 1.5em;
+            margin-bottom: 0.6em;
+            font-size: 0.9em;
+        }
+
+        .section-break {
+            text-align: center;
+            margin: 2.5em 0;
+            font-weight: bold;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.1em;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 2em;
+        }
+
+        .source-note {
+            text-align: center;
+            font-size: 0.85em;
+            color: var(--text-muted);
+            margin-bottom: 2em;
+            font-style: normal;
+        }
+
+        /* =========================================
+           BOTÓN FLOTANTE (Modo Nocturno)
+           ========================================= */
+        .fab-toggle {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background-color: var(--fab-bg);
+            color: var(--fab-color);
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease;
+            z-index: 1000;
+            outline: none;
+        }
+        .fab-toggle:hover { transform: scale(1.1); }
+        .fab-toggle:active { transform: scale(0.95); }
+        .fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            body { padding: 1.2em 1em 4em; }
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.1em; }
+            .fab-toggle { bottom: 16px; right: 16px; width: 50px; height: 50px; }
+            .fab-toggle .material-icons { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo Nocturno">
+        <i class="material-icons" id="theme-icon">dark_mode</i>
+    </button>
+
+    <article id="content">
+        <h1>Carol Ohmann</h1>
+        <p class="subtitle">&ldquo;Daisy Miller&rdquo;:<br>A Study of Changing Intentions</p>
+        <p class="source-note">From <em>American Literature</em> 36, no. 1 (March 1964). &copy; 1964 by Duke University Press.</p>
+
+        <p>Henry James&rsquo;s most popular nouvelle seems to have owed its initial prominence as much to the controversy it provoked as to the artistry it displayed. &ldquo;Daisy Miller&rdquo; caused a bitter dispute in the customarily urbane dining room of Mrs. Lynn Linton; it gave American writers of etiquette a satisfying opportunity to chastise native mothers and daughters (Daisy should have had a chaperone; dear reader, take heed); it brought Henry James himself, while he sat in the confines of a Venetian gondola, a round scolding from a highly articulate woman of the cosmopolitan world. The causes of argument, of course, were the character of James&rsquo;s heroine and the judgment her creator made of her. In late Victorian eyes, Daisy was likely to be either wholly innocent or guilty; James, either all for her or against her.</p>
+
+        <p>Today, Daisy&rsquo;s notoriety attends her only in her fictional world. We take her now as one of our familiars; we invoke her, in the assurance that she will come and be recognized, as an American figure both vital and prototypical. Thus Ihab Hassan, for example, joins her in his <em>Radical Innocence</em> with Twain&rsquo;s Huck Finn and Crane&rsquo;s Henry Fleming, and notes that all three are young protagonists faced with &ldquo;the first existential ordeal, crisis, or encounter with experience.&rdquo; Taking Daisy with appreciation and without alarm, we also reread her character and reevaluate her moral status. We seem to meet James&rsquo;s sophistication with our own, by agreeing on a mixed interpretation of Daisy: she is literally innocent, but she is also ignorant and incautious. Or, as F. W. Dupee writes, and his view meets with considerable agreement elsewhere in our criticism, &ldquo;[Daisy] does what she likes because she hardly knows what else to do. Her will is at once strong and weak by reason of the very indistinctness of her general aims.&rdquo;</p>
+
+        <p>Our near consensus of opinion on &ldquo;Daisy Miller&rdquo; seems to me largely correct. I certainly do not want to dismiss it, although I do wish to elaborate upon it and ground it in Jamesian text and method. At the same time, however, I wish to suggest that our very judiciousness is supported by only part of James&rsquo;s nouvelle and that other parts, certain scenes in Rome, really call for franker and more intense alignments of both sympathy and judgment. In a sense, the early and extreme reactions to Daisy were adequate responses to James&rsquo;s creation. Whether black or white, these responses did at least perceive that the final issue of the nouvelle was a matter of total commitment. In short, I think James began writing with one attitude toward his heroine and concluded with a second and different attitude toward her.</p>
+
+        <h2>I</h2>
+
+        <p>James begins his nouvelle by building a dramatic, and largely comic, contrast between two ways of responding to experience&mdash;a contrast at once suggested by the first-person narrator in the opening paragraph:</p>
+
+        <blockquote>
+            <p>in the month of June, American travellers are extremely numerous; it may be said, indeed, that Vevey assumes at this period some of the characteristics of an American watering-place. There are sights and sounds which evoke a vision, an echo, of Newport and Saratoga. There is a flitting hither and thither of &ldquo;stylish&rdquo; young girls, a rustling of muslin flounces, a rattle of dance-music in the morning hours, a sound of high-pitched voices at all times. You receive an impression of these things at the excellent inn of the &ldquo;Trois Couronnes,&rdquo; and are transported in fancy to the Ocean House or to Congress Hall. But at the &ldquo;Trois Couronnes,&rdquo; it must be added, there are other features that are much at variance with these suggestions: neat German waiters, who look like secretaries of legation; Russian princesses sitting in the garden; little Polish boys walking about, held by the hand, with their governors.</p>
+            <p>(This quotation, and unless otherwise noted every one subsequent, appears in the original version, &ldquo;Daisy Miller: A Study,&rdquo; <em>Cornhill Magazine</em> 37 (June 1878): 678&ndash;698, and 38 (July 1878): 44&ndash;67).</p>
+        </blockquote>
+
+        <p>The carefree exuberance, the noisy frivolity, of the American visitors is set against the quiet formality and restraint of the Europeans, who hold even their little boys in check.</p>
+
+        <p>James repeats his opening contrast in virtually every piece of dialogue that follows. While the hero Frederick Winterbourne is an American by birth, he has lived &ldquo;a long time&rdquo; in Geneva, the &ldquo;little metropolis of Calvinism,&rdquo; the &ldquo;dark old city at the other end of the lake.&rdquo; And Winterbourne&rsquo;s mode of speech suggests the extent to which he has become Europeanized. In Vevey, he finds himself &ldquo;at liberty,&rdquo; on a little holiday from Geneva. He takes a daring plunge into experience; with no more than a very casual introduction from her little brother Randolph, he speaks to Daisy Miller. &ldquo;This little boy and I have made acquaintance,&rdquo; he says. Daisy glances at him and turns away. In a moment Winterbourne tries again. &ldquo;Are you going to Italy?&rdquo; he asks. Daisy says, &ldquo;Yes, sir,&rdquo; and no more. &ldquo;Are you&mdash;a&mdash;going over the Simplon?&rdquo; Winterbourne continues. Shortly afterwards, as Daisy continues to ignore him, Winterbourne &ldquo;risk[s] an observation upon the beauty of the view.&rdquo; Winterbourne&rsquo;s feelings of &ldquo;liberty&rdquo; and of &ldquo;risk&rdquo; and, later, of &ldquo;audacity&rdquo; become ironic in conjunction with his speech. For all his holiday spirit, his language is studiously formal, his opening conversational bits, unimaginative and conventional.</p>
+
+        <p>In opposition to Winterbourne, Daisy often speaks in the language of extravagant, if unoriginal, enthusiasm. In her opinion, Europe is &ldquo;perfectly sweet. . . . She had ever so many intimate friends that had been there ever so many times. . . . she had had ever so many dresses and things from Paris.&rdquo; She wants to go to the Castle of Chillon &ldquo;dreadfully.&rdquo; Or, unlike Winterbourne again, Daisy speaks in an idiom that is homely and matter-of-fact. When Winterbourne asks, &ldquo;Your brother is not interested in ancient monuments?&rdquo; she rejects his formal phrasing and says simply, &ldquo;[Randolph] says he don&rsquo;t care much about old castles.&rdquo;</p>
+
+        <p>For all their differences, Winterbourne and Daisy may still be capable of <em>rapprochement</em>. Toward the end of part 1, Daisy teases Winterbourne out of his formality and makes him, for a moment, speak her language&mdash;makes him, for a moment, express himself enthusiastically. &ldquo;Do, then, let me give you a row,&rdquo; Winterbourne says. Daisy replies, &ldquo;It&rsquo;s quite lovely, the way you say that!&rdquo; And Winterbourne answers, &ldquo;It will be still more lovely to do it.&rdquo; Winterbourne is, and Daisy notices this, a &ldquo;mixture.&rdquo; He is not quite, or at least not yet, thoroughly Europeanized.</p>
+
+        <p>Winterbourne may be influenced by Daisy, but he is also subject to the sway of his aunt. Mrs. Costello is a woman of few words. When Winterbourne asks her, in Vevey, if she has observed Mrs. Miller, Daisy, and Randolph, she raps out the reply: &ldquo;Oh, yes, I have observed them. Seen them&mdash;heard them&mdash;and kept out of their way.&rdquo; Epigram is Mrs. Costello&rsquo;s favorite way of speaking and perfectly expresses the inflexibility of her approach to experience. Her principles of value have long been set&mdash;she need only apply them. Whatever is vulgar, whatever is improper, she condemns out of hand, and shuns. Sage and spokesman of the American set abroad, she guards a <em>style</em> of life and reveals its furthest limit of permissible emotion by exclaiming, &ldquo;I am an old woman, but I am not too old&mdash;thank Heaven&mdash;to be shocked!&rdquo;</p>
+
+        <p>The opening, then, and indeed the chief focus of &ldquo;Daisy Miller&rdquo; is a comic portrayal of different ways of living, different manners. In the social settings with which they are identified, in the ways they speak, as well as in what they say, the various characters range themselves along an axis that runs from the natural to the cultivated, from the exuberant to the restrained.</p>
+
+        <p>In the conflict between Geneva and Schenectady, there is, I think, little doubt of the direction James gives our sympathies. Presented with the collision between the artificial and the natural, the restrained and the free, we side emotionally with Daisy. We sympathize with Winterbourne, too, to the extent that he seems capable of coming &ldquo;alive&rdquo; and to the extent that he speaks up in favor of Daisy to Mrs. Costello in Vevey and, later, in Rome, to Mrs. Costello and also to Mrs. Walker, another American who has lived in Geneva. For the rest, however, our emotional alliance with Winterbourne is disturbed or interrupted by his Genevan penchant for criticism. At his first meeting with Daisy in Vevey, Winterbourne mentally accuses her&mdash;&ldquo;very forgivingly&mdash;of a want of finish.&rdquo; But when Daisy blithely announces that she has always had &ldquo;a great deal of gentlemen&rsquo;s society,&rdquo; Winterbourne is more alarmed. He wonders if he must accuse her of &ldquo;actual or potential <em>inconduite</em>, as they said at Geneva.&rdquo;</p>
+
+        <p>In Rome, although Winterbourne defends Daisy to the American colony publicly, he is, privately, increasingly shocked by her friendship with the &ldquo;third-rate&rdquo; Italian Giovanelli. Her walks with Giovanelli, her rides with Giovanelli, her t&ecirc;te-&agrave;-t&ecirc;tes in her own drawing room with Giovanelli&mdash;all worry Winterbourne. He imitates Mrs. Walker in scolding Daisy. And so he removes himself farther and farther from her. When he finally comes upon her with Giovanelli in the Colosseum at night, he thinks that she has certainly compromised herself. And he is relieved. For his personal feelings for Daisy have gradually been overwhelmed by his intellectual involvement in the problem of Daisy. He is relieved and &ldquo;exhilarated&rdquo; that the &ldquo;riddle&rdquo; has suddenly become &ldquo;easy to read.&rdquo; He promptly judges Daisy by her manners&mdash;as Mrs. Costello and Mrs. Walker have already done&mdash;and condemns her. &ldquo;What a clever little reprobate she was,&rdquo; he thinks, &ldquo;and how smartly she played at injured innocence!&rdquo;</p>
+
+        <p>He learns otherwise too late. He knows, for a moment at the end of the nouvelle, that he has made a mistake; he knows he has wronged Daisy because he has stayed too long abroad, has become too rigid in his values. Yet his knowledge does not change him. The authorial voice concludes the tale by mocking Winterbourne&rsquo;s return to the narrow social code of restraint and prejudice:</p>
+
+        <blockquote>
+            <p>Nevertheless, he went back to live at Geneva, whence there continue to come the most contradictory accounts of his motives of sojourn: a report that he is &ldquo;studying&rdquo; hard&mdash;an intimation that he is much interested in a very clever foreign lady.</p>
+        </blockquote>
+
+        <p>Like so many Jamesian heroes, Winterbourne has lost the capacity for love, and he has lost the opportunity to come to life.</p>
+
+        <p>As Winterbourne judges Daisy, judges her unfairly, and completes her expulsion from the American set in Rome, our sympathy for her naturally increases. But I think James does not&mdash;save through a certain pattern of symbolic imagery to which I wish to return in a moment&mdash;guide us to any such simple intellectual alignment with his American heroine.</p>
+
+        <p>Daisy&rsquo;s sensibility has very obvious limitations, limitations we hear very clearly in the statement that Europe is &ldquo;perfectly sweet.&rdquo; Daisy is more intensely alive than anyone else we meet in Vevey or Rome. But James hints from time to time at a possible richness of aesthetic experience that is beyond Daisy&rsquo;s capabilities&mdash;a richness that would include an appreciation of the artificial, or the cultivated, not as it is represented by the mores of Geneva but by the &ldquo;splendid chants and organ-tones&rdquo; of St. Peter&rsquo;s and by the &ldquo;superb portrait of Innocent X. by Velasquez.&rdquo;</p>
+
+        <p>And Daisy has other limitations. The members of the American community abroad are very much aware of one another&rsquo;s existence. True, they use their mutual awareness to no good purpose&mdash;they are watchbirds watching one another for vulgarity, for any possible lapse from propriety. But Daisy&rsquo;s social awareness is so primitive as scarcely to exist. At Rome, in the Colosseum, Winterbourne&rsquo;s imagination cannot stretch to include the notion of unsophisticated innocence. But neither can Daisy&rsquo;s imagination stretch to include the idea that manners really matter to those who practice them. She never realizes the consternation she causes in Rome. &ldquo;I don&rsquo;t believe it,&rdquo; she says to Winterbourne. &ldquo;They are only pretending to be shocked.&rdquo; Her blindness to the nature of the American colony is equalled by her blindness to Winterbourne and Giovanelli as individuals. While Winterbourne fails to &ldquo;read&rdquo; her &ldquo;riddle&rdquo; rightly, she fails to &ldquo;read&rdquo; his. She feels his disapproval in Rome, but she is not aware of his affection for her. Neither does she reveal any adequate perception of her impact on Giovanelli. To Daisy, going about with Mr. Giovanelli is very good fun. Giovanelli&rsquo;s feelings, we learn at the end, have been much more seriously involved.</p>
+
+        <p>James therefore hands a really favorable intellectual judgment to neither Geneva nor Schenectady. He gives his full approval neither to the manners of restraint nor to those of freedom. His irony touches Daisy as well as the Europeanized Americans. And the accumulation of his specific ironies hints at an ideal of freedom and of vitality and also of aesthetic and social awareness that is nowhere fully exemplified in the nouvelle. To be from Schenectady, to be from the new world, is to be free from the restrictions of Geneva. But merely to be free is not enough.</p>
+
+        <h2>II</h2>
+
+        <p>Such, then, in some detail are the Jamesian dynamics of social contrast that give us our prudent estimate of Daisy&mdash;a heroine innocent and exuberant and free, but also unreflective and insensible of the world around her. But, as I have already suggested, this estimate does not receive support from the whole of the story. To begin with, prudence leads straight to the conclusion that Daisy dies as a result of social indiscretion. What began as a comedy of manners, ends in the pathos, if not the tragedy, of a lonely Roman deathbed and burial. And there is, it seems to me, in this progress from the Trois Couronnes to the Protestant cemetery a change in tone so pronounced, a breach in cause and appropriate effect so wide, as to amount to a puzzling disruption of James&rsquo;s artistry.</p>
+
+        <p>To be sure, James tries to make Daisy&rsquo;s death inevitable, and to make it so within, as it were, the boundaries of his comedy of manners. Early in part 2, at Mrs. Walker&rsquo;s late one afternoon, Daisy remarks that she is going to take a walk on the Pincian Hill with Giovanelli. Mrs. Walker tries to dissuade her from the impropriety&mdash;a walk at such a time in such a place with such a dubious companion. It isn&rsquo;t &ldquo;safe,&rdquo; Mrs. Walker says, while Mrs. Miller adds, &ldquo;You&rsquo;ll get the fever as sure as you live.&rdquo; And Daisy herself, as she walks towards the Pincian Hill with Winterbourne, alludes to the fever: &ldquo;We are going to stay [in Rome] all winter&mdash;if we don&rsquo;t die of the fever; and I guess we&rsquo;ll stay then.&rdquo;</p>
+
+        <p>With these remarks, James foreshadows Daisy&rsquo;s death, and links her fate with her carelessness of the manners of restraint. But these preparations do not successfully solve his difficulties either of tone or of cause and effect. They croak disaster far too loudly, far too obviously, and, still, the punishment no more fits the crime than it does in a typical cautionary tale.</p>
+
+        <p>In part 1, James has already used the words &ldquo;natural,&rdquo; &ldquo;uncultivated,&rdquo; and &ldquo;fresh&rdquo; to describe his heroine. And in the choice of the name, Daisy, he may have suggested her simplicity and her spontaneous beauty. In part 2, just after the opening scene at Mrs. Walker&rsquo;s, James follows up the implications of these epithets&mdash;&ldquo;natural,&rdquo; &ldquo;uncultivated,&rdquo; &ldquo;fresh&rdquo;&mdash;and of the name Daisy and gives them a somewhat different significance.</p>
+
+        <p>In Rome, after Winterbourne has been taken up in Mrs. Walker&rsquo;s carriage and set down again, he sees Daisy with Giovanelli in a natural setting&mdash;a setting that James describes in brilliant and expansive terms. Daisy and Giovanelli are in the Pincian Garden overlooking the Villa Borghese:</p>
+
+        <blockquote>
+            <p>They evidently saw no one; they were too deeply occupied with each other. When they reached the low garden-wall they stood a moment looking off at the great flat-topped pine-clusters of the Villa Borghese; then Giovanelli seated himself, familiarly, upon the broad ledge of the wall. The western sun in the opposite sky sent out a brilliant shaft through a couple of cloud-bars, whereupon Daisy&rsquo;s companion took her parasol out of her hands and opened it. She came a little nearer and he held the parasol over her; then, still holding it, he let it rest upon her shoulder, so that both of their heads were hidden from Winterbourne. This young man lingered a moment, then he began to walk. But he walked&mdash;not towards the couple with the parasol; towards the residence of his aunt, Mrs. Costello.</p>
+        </blockquote>
+
+        <p>This scene links Daisy with the natural world, and links her with that world more closely than any other scene James has so far given us. And it suggests that the distance between Winterbourne and Daisy is greater even than the distance that separates artificial from natural manners, greater than the distance that separates restraint from free self-expression.</p>
+
+        <p>That suggestion becomes a certainty on the Palatine Hill:</p>
+
+        <blockquote>
+            <p>A few days after his brief interview with her mother, [Winterbourne] encountered her in that beautiful abode of flowering desolation known as the Palace of the C&aelig;sars. The early Roman spring had filled the air with bloom and perfume, and the rugged surface of the Palatine was muffled with tender verdure. Daisy was strolling along the top of one of those great mounds of ruin that are embanked with mossy marble and paved with monumental inscriptions. It seemed to him that Rome had never been so lovely as just then. He stood looking off at the enchanting harmony of line and colour that remotely encircles the city, inhaling the softly humid odours and feeling the freshness of the year and the antiquity of the place reaffirm themselves in mysterious interfusion. It seemed to him also that Daisy had never looked so pretty; but this had been an observation of his whenever he met her. Giovanelli was at her side, and Giovanelli, too, wore an aspect of even unwonted brilliancy.</p>
+        </blockquote>
+
+        <p>Here Daisy is not identified with a particular society, as she was with the gay American visitors by the lakeside and in the garden of Vevey, but simply and wholly with the natural world, which has its own eternal and beautiful rhythms. Birth is followed by death, and death is followed again by birth. And the beauty of the natural world&mdash;the world to which Daisy belongs&mdash;is supreme. Rome has never been so lovely as when its relics are &ldquo;muffled with tender verdure.&rdquo; The monuments of men, the achievements of civilization, are most beautiful when they are swept again into the round of natural process. At the moment, Daisy seems to share the natural world, as she did in the Pincian Garden, with Giovanelli. But at the end of the nouvelle that &ldquo;subtle Roman&rdquo; is quite aware of Daisy&rsquo;s distance even from himself. He knew, beforehand, that the Colosseum would not be for him, as it was for Daisy, a &ldquo;fatal place.&rdquo; &ldquo;For myself,&rdquo; he says to Winterbourne, &ldquo;I had no fear.&rdquo;</p>
+
+        <p>Once Daisy is identified with the world of nature, we see that she is subject to its laws of process. Her very beauty becomes a reminder of her mortality. So the scene on the Palatine (unlike the scenes at Mrs. Walker&rsquo;s and on the way to the Pincian Hill) does prepare us effectively for Daisy&rsquo;s burial in the Protestant cemetery; it does convince us that her death is inevitable.</p>
+
+        <h2>III</h2>
+
+        <p>Yet James&rsquo;s use of his symbolic natural imagery is at once a gain and a loss. If it solves, almost at the eleventh hour, certain difficulties of tone and of cause and effect regarding Daisy&rsquo;s death, it also leaves us with some permanent breaks in the nouvelle&rsquo;s unity of structure. If Daisy is translated or transfigured in the end into a purely natural ideal of beauty and vitality and innocence, then what relevance has that ideal to Schenectady, or to Geneva? If Daisy&rsquo;s death is &ldquo;fated,&rdquo; does it matter at all what Winterbourne does? And what sort of agent is Giovanelli? Or can we even call him an agent? Hasn&rsquo;t James made inconsequent by the end of his tale, the dramatic conflict&mdash;the conflict between two kinds of manners&mdash;that he set up in the beginning? The contrast in manners seems to suggest, to hold up as an ideal, a certain way of responding to life. This ideal would combine freedom and vitality with a sophisticated awareness of culture and society. Yet the symbolic imagery of the Palatine Hill seems to elevate natural freedom and vitality and innocence into an ideal so moving, so compelling, that all other considerations pale beside it. Or, if I rephrase my questions about Schenectady and Geneva, Winterbourne and Giovanelli, and answer them in terms of James&rsquo;s creative experience, they come to this: James began writing &ldquo;Daisy Miller&rdquo; as a comedy of manners and finished it as a symbolic presentation of a metaphysical ideal. He began by criticizing Daisy in certain ways and ended simply by praising her.</p>
+
+        <p>James&rsquo;s friend in the Venetian gondola was, at least in a general way, aware of his transfiguration of Daisy. And James records her opinion&mdash;in effect her scolding&mdash;in his preface to the New York edition of his nouvelle:</p>
+
+        <blockquote>
+            <p>[Daisy&rsquo;s] only fault is touchingly to have transmuted so sorry a type [as the uncultivated American girl] and to have, by a poetic artifice, not only led our judgement of it astray, but made <em>any</em> judgement quite impossible. . . . You <em>know</em> you quite falsified, by the turn you gave it, the thing you had begun with having in mind, the thing you had had, to satiety, the chance of &lsquo;observing&rsquo;: your pretty perversion of it, or your unprincipled mystification of our sense of it, does it really too much honour.</p>
+        </blockquote>
+
+        <p>James virtually accepts his friend&rsquo;s criticism. Elsewhere in the preface, speaking in his own voice, he says that, when his nouvelle was first published, the full title ran: &ldquo;Daisy Miller: A Study.&rdquo; Now, for the New York edition, he subtracts the apposition &ldquo;in view of the simple truth, which ought from the first to have been apparent to me, that my little exhibition is made to no degree whatever in critical but, quite inordinately and extravagantly, in poetical terms.&rdquo; It appears, then, that James&rsquo;s natural symbolic imagery and his translation of his heroine into a metaphysical figure were unconscious developments. Only after he wrote his nouvelle did James himself discover and acknowledge his own &ldquo;poetical terms.&rdquo;</p>
+
+        <p>Once he had discovered those &ldquo;terms,&rdquo; he chose to emphasize them, not only in his preface, but also in his text for the New York edition. Viola R. Dunbar has already noted that in a number of places in the final version of &ldquo;Daisy Miller&rdquo; James eases his criticism of Daisy and bears down more heavily on the Europeanized Americans. Briefly, he places more stress on Daisy&rsquo;s beauty and innocence, and he associates her more frequently with nature, and more pointedly. At the same time, he gives more asperity to the judgments of Winterbourne and Mrs. Costello and Mrs. Walker. And it is interesting to note as well that James inserts very early in part 1 at least two suggestions of Daisy&rsquo;s final transfiguration. She looks at Winterbourne &ldquo;with lovely remoteness&rdquo;; she strikes him as a &ldquo;charming apparition.&rdquo;</p>
+
+        <p>These revisions, though, are occasional and do not essentially change &ldquo;Daisy Miller.&rdquo; In the New York edition, as well as in the original version, it remains a narrative of imperfect unity, a work that shows unmistakable signs of shifting authorial intention and attitude. And yet, as I have already suggested, James&rsquo;s idealization of his heroine is a matter of gain as well as loss. It resolves certain problems about Daisy&rsquo;s death. More importantly, it adds to the emotional appeal of the second part of the nouvelle. In other words, even if James may have lost something in intellectual consistency by introducing the poetry of Daisy, even if he does to some extent throw away his original comedy of manners, his symbolic natural imagery nonetheless intensifies our response to his story. Again, I return to the articulate lady in the gondola: &ldquo;As anything charming or touching always to that extent justifies itself, we after a fashion forgive and understand you.&rdquo;</p>
+
+        <p>The ideal of a purely natural vitality and freedom and innocence is a strongly, and persistently, attractive ideal. It is attractive, especially, to American writers, and in one variation or another we have, of course, met it before&mdash;in Melville, for example, in Hawthorne, in Fitzgerald, in Faulkner. We take James&rsquo;s Daisy Miller, rightly, as prototypical. My purpose here has been to suggest that her relationship to certain major areas of our American experience is even more various than we may previously have thought.</p>
+    </article>
+
+    <script>
+        const toggle = document.getElementById('theme-toggle');
+        const icon = document.getElementById('theme-icon');
+
+        toggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+            toggle.title = isDark ? 'Modo Diurno' : 'Modo Nocturno';
+            toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+        });
+    </script>
+
+</body>
+</html>

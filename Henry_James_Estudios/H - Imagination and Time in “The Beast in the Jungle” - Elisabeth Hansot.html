@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elisabeth Hansot - Imagination and Time in "The Beast in the Jungle"</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* =========================================
+           COLORES (Modo Diurno - International Klein Blue)
+           ========================================= */
+        :root {
+            --bg-body: #002FA7;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.88);
+            --text-muted: rgba(255, 255, 255, 0.6);
+            --border-color: rgba(255, 255, 255, 0.35);
+            --border-light: rgba(255, 255, 255, 0.15);
+            --fab-bg: #ffffff;
+            --fab-color: #002FA7;
+            --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+            --quote-border: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Modo Nocturno - Deep Navy Blue */
+        body.dark-mode {
+            --bg-body: #001233;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.85);
+            --text-muted: rgba(255, 255, 255, 0.5);
+            --border-color: rgba(255, 255, 255, 0.2);
+            --border-light: rgba(255, 255, 255, 0.1);
+            --fab-bg: #ffffff;
+            --fab-color: #001233;
+            --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+            --quote-border: rgba(255, 255, 255, 0.4);
+        }
+
+        /* =========================================
+           ESTILOS GENERALES
+           ========================================= */
+        * { transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease; }
+        
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            line-height: 1.75;
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 2em 1.5em 5em;
+            color: var(--text-primary);
+            background-color: var(--bg-body);
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 0.2em;
+            font-weight: normal;
+            letter-spacing: 0.05em;
+            color: var(--text-primary);
+        }
+
+        h2 {
+            font-size: 1.4em;
+            text-align: center;
+            margin-top: 2.5em;
+            margin-bottom: 1.5em;
+            font-weight: bold;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        h3 {
+            font-size: 1.1em;
+            text-align: center;
+            margin-top: 2.5em;
+            margin-bottom: 1em;
+            font-weight: bold;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        p {
+            text-align: justify;
+            margin-bottom: 1.2em;
+            text-indent: 1.5em;
+        }
+
+        p.no-indent { text-indent: 0; }
+
+        blockquote {
+            margin: 1.5em 2em;
+            padding-left: 1.5em;
+            border-left: 3px solid var(--quote-border);
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        blockquote p { text-indent: 0; margin-bottom: 0.8em; }
+
+        .poem {
+            margin: 1.5em 2em;
+            font-style: italic;
+            text-indent: 0;
+        }
+
+        .poem p {
+            text-indent: 0;
+            margin-bottom: 0.3em;
+            text-align: left;
+            padding-left: 2em;
+            text-indent: -2em;
+        }
+
+        em { font-style: italic; }
+
+        sup {
+            font-size: 0.75em;
+            vertical-align: super;
+            line-height: 0;
+        }
+
+        .page-number {
+            display: block;
+            text-align: center;
+            font-size: 0.8em;
+            color: var(--text-muted);
+            margin: 2em 0 1em 0;
+        }
+
+        .footnotes {
+            margin-top: 4em;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5em;
+            font-size: 0.9em;
+            color: var(--text-secondary);
+        }
+
+        .footnotes h3 {
+            text-align: left;
+            font-size: 1em;
+            margin-bottom: 1em;
+            text-transform: none;
+            letter-spacing: normal;
+            color: var(--text-primary);
+        }
+
+        .footnotes p {
+            text-align: left;
+            text-indent: -1.5em;
+            padding-left: 1.5em;
+            margin-bottom: 0.6em;
+            font-size: 0.9em;
+        }
+
+        .section-break {
+            text-align: center;
+            margin: 2.5em 0;
+            font-weight: bold;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.1em;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 2em;
+        }
+
+        .source-note {
+            text-align: center;
+            font-size: 0.85em;
+            color: var(--text-muted);
+            margin-bottom: 2em;
+            font-style: normal;
+        }
+
+        /* =========================================
+           BOTÓN FLOTANTE (Modo Nocturno)
+           ========================================= */
+        .fab-toggle {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background-color: var(--fab-bg);
+            color: var(--fab-color);
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease;
+            z-index: 1000;
+            outline: none;
+        }
+        .fab-toggle:hover { transform: scale(1.1); }
+        .fab-toggle:active { transform: scale(0.95); }
+        .fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            body { padding: 1.2em 1em 4em; }
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.1em; }
+            .fab-toggle { bottom: 16px; right: 16px; width: 50px; height: 50px; }
+            .fab-toggle .material-icons { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo Nocturno">
+        <i class="material-icons" id="theme-icon">dark_mode</i>
+    </button>
+
+    <article id="content">
+        <h1>Elisabeth Hansot</h1>
+        <p class="subtitle">Imagination and Time<br>in &ldquo;The Beast in the Jungle&rdquo;</p>
+        <p class="source-note">From <em>Twentieth Century Interpretations of &ldquo;The Turn of the Screw&rdquo; and Other Tales: A Collection of Critical Essays</em>, edited by Jane P. Tomkins. &copy; 1970 by Prentice-Hall, Inc.</p>
+
+        <p>In his preface to <em>Joseph Andrews</em>, Maynard Mack suggests that the comic artist achieves his effect by subordinating the presentation of life as experience to the presentation of life as a spectacle. In the first instance the relationship between the characters experiencing life and the reader is a primary one, whereas in the second instance the characters remain detached from the events they observe and the primary relationship of reader and characters is that of onlookers.</p>
+
+        <p>&ldquo;The Beast in the Jungle&rdquo; is not a comedy but its central character, Marcher, can nonetheless be described in Mack&rsquo;s terms. Marcher is a person who chooses to experience life as a spectacle. Consequently, the only relationship that Marcher can offer May is that of an onlooker, albeit a privileged one with access to information withheld from &ldquo;the amusement of a cold world&rdquo; (<em>The Complete Tales of Henry James</em>, edited by Leon Edel, 12 vols. (New York: J. B. Lippincott, 1964), vol. 11; all references to &ldquo;The Beast in the Jungle&rdquo; are from this edition). The reader, to reverse Mack&rsquo;s terms, is invited to figure to himself, through Marcher, the quality of life that can result from holding ordinary experience at arm&rsquo;s length.</p>
+
+        <p>Marcher&rsquo;s detachment from ordinary experience, James tells us, comes from his conviction that an extraordinary experience awaits him which, like a supernatural event, is expected to dislocate, supersede, or render meaningless the normal incidents and attitudes which make up a good part of everyday life. In the course of his narrative James describes some of the attitudes and beliefs which enable Marcher to establish and maintain a distance between himself and the everyday experience available to him, and suggests how, in turn, these dispositions come to constitute the substance of Marcher&rsquo;s own character. One of the most noteworthy concomitants of Marcher&rsquo;s detachment is the curiously passive attitude he adopts toward his own past and future. This passivity&mdash;whether it be a cause or a consequence of his detachment&mdash;has among its effects a gradual and unperceived impoverishment of his own sensibility, for Marcher maintains toward his own past and future the attitude of a spectator viewing events that he cannot influence. He seems to view both these dimensions of time as discrete, self-contained objects, endowed with their own independent value and bearing little or no relationship to himself in the present.</p>
+
+        <p>When Marcher does try to conceive of himself as an active agent he chooses the paradigm of the hero. The hero&rsquo;s singularity might be said to consist in his ability to dominate events by his perfectly timed and conceived actions. James describes this kind of abrupt shift in Marcher&rsquo;s concept of himself as a sudden passage from one extreme of consciousness to another. The images James uses to portray Marcher&rsquo;s rapid, almost unconscious transitions from passive spectator to heroic actor offer important clues to Marcher&rsquo;s attitude toward time.</p>
+
+        <p>In his opening sentence, James indicates that Marcher is not interested in questions of causality. &ldquo;What determined the speech that startled him in the course of their encounter scarcely matters, being probably but some words spoken by himself quite without intention.&rdquo; Marcher at this juncture is wondering what had brought May to remind him of a long forgotten intimacy, a confession made to her ten years ago. Both the past confession and the present rediscovery of it appear to be fortunate accidents, explained, if explanation is needed, by some words spoken by Marcher without intent or purpose. Marcher seems to be a man to whom accidents&mdash;including accidents of memory&mdash;occur easily. As James portrays him, both in his initial setting at Weatherend and subsequently, Marcher does not conceive of himself as an active agent capable of initiating changes or causing events to occur in his everyday world. He is a man who lacks intentions, perhaps because he lacks desires and purposes by which to define himself and furnish his corner of the universe.</p>
+
+        <p>When Marcher does look to the past, it is because he desires to find a groundwork strong enough to support further intimacy with May in the future. He had, James remarks, most curiously forgotten the events of their encounter. The explanation may be that for Marcher these events seemed, in the strongest sense of the word, to be mere accidents, episodes which did not mark him, or even annoy or amuse him enough to recollect them in the intervening years. Marcher&rsquo;s past, seen in this light, might be described as a collection of incidents without continuity or form. These incidents appear as finished, somewhat gratuitous episodes, with little relation to the present and fewer implications for the future.</p>
+
+        <blockquote>
+            <p>He was still merely fumbling with the idea that any contact between them in the past would have had no importance. If it had had no importance he scarcely knew why his actual impression of her should so seem to have so much; the answer to which, however, was that in such a life as they all appeared to be leading for the moment one could but take things as they came.</p>
+        </blockquote>
+
+        <p>Another way of describing what has happened to Marcher is to say he declines to live in ordinary time&mdash;the time in which people fall in love, get married, assume responsibilities, acquire possessions, and, like the visitors to Weatherend, long for others they cannot acquire. Quite to the contrary, Marcher&rsquo;s concern, upon becoming reacquainted with May, is that she show no right or claim to him.</p>
+
+        <blockquote>
+            <p>The vanity of women had long memories, but she was making no claim on him of a compliment or a mistake. With another woman, a totally different one, he might have feared the recall possibly even of some imbecile &ldquo;offer.&rdquo;</p>
+        </blockquote>
+
+        <p>While he does obscurely sense that something will be required of him if the present meeting with May is to contain the germ for the future development, when Marcher reaches out it is only &ldquo;in imagination&mdash;as against time&rdquo; that he chooses to look for a fresh start.</p>
+
+        <p>Why does James speak of &ldquo;imagination as <em>against</em> time&rdquo;? As James uses the idea of imagination the phrase implies that Marcher still has available to him a choice of roots by which he can try to reestablish his acquaintance with May. Marcher prefers to use his imagination, James suggests, because the humdrum activity, the everyday business of life, encountered on the alternative route seems trivial to him. But as Marcher himself ages and the unused and disdained possibilities of experience within ordinary time are withdrawn, Marcher&rsquo;s imagination comes to serve as a weapon to preserve himself against time.</p>
+
+        <blockquote>
+            <p>&ldquo;Only, you know, it isn&rsquo;t anything I&rsquo;m to <em>do</em>, to achieve in the world, to be distinguished or admired for. I&rsquo;m not such an ass as <em>that</em>.&rdquo;</p>
+        </blockquote>
+
+        <p>As the time allotted him diminishes, Marcher&rsquo;s refusal to seriously take in hand and give value to the everyday business of life makes him dangerously dependent upon the existence of his singular fate, the occurrence of which will, presumably, both vindicate his attitude toward ordinary time and redeem the insignificance of his present life. And, as the margin of time shrinks, Marcher&rsquo;s anxiety increases. He becomes aware that &ldquo;when the possibilities themselves had accordingly turned stale, when the secret of the gods had grown faint, had perhaps even quite evaporated that, and that only, was failure.&rdquo; But even with this awareness, Marcher continues to see his future as an extraordinary one: his fate is to be bankrupt, dishonoured, pilloried, events without any relation to what Marcher is in the present and with an accidental quality that absolves him of any responsibility for bringing them to pass.</p>
+
+        <p>Marcher does not appear to use his imagination to enrich the present by exploring the future; he does not know how to investigate the potentialities or select from the possibilities that the future offers to the present. He imagines the future in a way that isolates it from the present&mdash;the only quality which Marcher allows it is a strangeness sufficient to drain the present of any value which it may contain. Marcher&rsquo;s own image of the future is of an agency fully shaped in a way that he cannot specify, impinging at some point on his present and radically altering its shape. While the upheaval is to occur in time, its singularity, and its value for Marcher would seem to be in its indiscernibility; it cannot be prepared for and its eruption in time will be so sudden and of so short a duration that it will scarcely be known other than by its effects&mdash;the radical transformation it will leave in its wake.</p>
+
+        <blockquote>
+            <p>&ldquo;It&rsquo;s to be something you&rsquo;re merely to suffer?&rdquo;</p>
+            <p>&ldquo;Well, say to wait for&mdash;to have to meet, to face, to see suddenly break out in my life; possibly destroying all further consciousness, possibly annihilating me; possibly, on the other hand, only altering everything, striking at the root of all my world and leaving me to the consequences, however they shape themselves.&rdquo;</p>
+        </blockquote>
+
+        <p>Marcher uses his imagination as a weapon to ward off time, to keep the dangerous beast at bay. He does this by using his imagination to endow the future with independent agency and significance. Perhaps inadvertently, Marcher sets up a signpost prohibiting all exploration of that domain by consigning it to the unimaginable. When he does choose to use his imagination in time, it is, significantly, only to register his dissatisfaction with a meager past, apparently oblivious of any suspicion that the past is as much constituted by choices made in the present as a record of possibilities missed and experiences denied.</p>
+
+        <p>A past as insubstantial as Marcher&rsquo;s may be said to invite imaginative reconstruction and Marcher can, with safety, invest it with deeds of considerable dimension. In this vein, he wonders why he could not have saved May from a capsized boat, or at least recovered her dressing bag, filched by a lazzarone with a stiletto. The heroic self-portrayal is congenial to Marcher because the hero may be viewed as not responsible to the workings of everyday time. The hero, conceived as eternally young, can afford to scorn ordinary intimacies and everyday trivialities. If the hero is impervious to everyday time, it may be because his acts are performed to redress an upset, never of his own making, in ordinary time. To rescue someone from the unexpected is to prevent a dislocation of ordinary time and permit it to resume. When it does resume the hero withdraws (or the tale ends), hence his actions remain eternally fresh and vivid. The hero, in this interpretation, requires no past or future and need not be measured by ordinary time in which actions do have causes in the past and consequences in the future. His actions are fully completed when ordinary time resumes and luminously justified by its humdrum resumption.</p>
+
+        <p>In a cruel image, James proceeds to deny to the aging Marcher that any such heroic exemption from time exists.</p>
+
+        <blockquote>
+            <p>He had settled to his safety . . . figuring to himself, with some colour, in the likeness of certain little old men he remembered to have seen, of whom, all meagre and wizened as they might look, it was related that they had in their time fought twenty duels or been loved by ten princesses.</p>
+        </blockquote>
+
+        <p>In an important passage, James describes Marcher&rsquo;s present as a &ldquo;simplification of everything but the state of suspense. That remained only by seeming to hang in the void surrounding it.&rdquo; But even a state of suspense must draw from the future, or from the past, to maintain its vitality. And to the extent that Marcher may, at one time, have feared his future fate, or at the very least feared the possibility that others might find his fate ridiculous, the state of suspense could still be distinguished from the void&mdash;if James means by the void the devaluation of the past and future which surround Marcher&rsquo;s present.</p>
+
+        <p>It may indeed be because of his early fears that May agrees to watch with him, a willingness that Marcher undervalues because, unlike May, it is his future fate and not his present fears which fix and hold his attention. Unlike her companion, May is aware of the passage of time and her subjection to it. Marcher initially perceives her at Weatherend as having visibly aged. &ldquo;She <em>was</em> there on harder terms than anyone; she was there as a consequence of things suffered, one way and another, in the interval of years.&rdquo; Because she is conscious of the passage of time, May is primarily alert to Marcher&rsquo;s condition in the present. When she does consent to share Marcher&rsquo;s watch, it is only after having asked him three times whether he is afraid. The questions indicate that perhaps what most interests May is not the future in which Marcher alone is to meet his unique fate, but the present in which Marcher has needs that May can meet, needs that make him dependent on her for sympathy, understanding, and support. Marcher is baffled by May&rsquo;s questions because he conceives his relationship to May in the present as subordinate to and at the service of his singular destiny. By contrast May, grasping at straws, hazards that Marcher&rsquo;s destiny, with its by-product of fear that can be met and assuaged, may be used to develop and serve their relationship in the present.</p>
+
+        <p>When the question is later resumed between them, and Marcher&rsquo;s &ldquo;original fear, if fear it had been, had lost itself in the desert,&rdquo; May&rsquo;s watch is at an end and the present is indeed barren. There has been no growth in Marcher&rsquo;s awareness of his dependency upon May, and May&rsquo;s need for Marcher remains mute and unexpressed, for want of an answering voice. Without understanding why, Marcher senses that from that point on their discourse bears the mark of something finished and completed.</p>
+
+        <p>At Weatherend May&rsquo;s function was to explain to the curious the history of the place and the objects it shelters. These treasures, so full of history and poetry, have been tested by time, and their value once established, they are to be preserved against time. What is striking is Marcher&rsquo;s way of viewing his own destiny as though it were an object of similar worth. The stupid world is to be kept in deliberate ignorance of his singularity, and it is May, with her superior knowledge, who will be allowed &ldquo;to dispose the concealing veil in the right folds.&rdquo; She is to be both witness and keeper&mdash;and the value of that over which she watches is no more open to discussion than the more publicly recognized treasures at Weatherend.</p>
+
+        <p>If Marcher refrains, with a fine show of detachment, from the display of greed which causes his associates to all but handle the objects presented to their view at Weatherend, he is much less circumspect in fingering that other treasure, his consciousness of his own unique fate. His carefully cherished image of his future fate resembles in many ways a work of art: it is the result of an imaginative effort, set apart from ordinary incomplete events, and endowed with its own intrinsic significance. But, unlike Marcher&rsquo;s fate, a work of art is specific. By choosing from the range of possibilities, excluding some in the process of giving meaning to others, a work of art is given its concrete characteristics and this is what Marcher, in analogous circumstances, is unable or unwilling to do.</p>
+
+        <p>Likewise Marcher thinks himself disinterested, &ldquo;even a little sublimely&mdash;unselfish&rdquo; in carefully allowing for May&rsquo;s requirements and peculiarities. But his studied consideration, James indicates, is really a mask for the purest egotism, the price Marcher consents to pay for the luxury of May&rsquo;s attention. Between the greed of the visitors at Weatherend and Marcher&rsquo;s more disingenuous selfishness there would appear to be far less difference than Marcher himself is able to perceive.</p>
+
+        <p>Whether he wishes it or not, Marcher lives in ordinary time. James describes Marcher&rsquo;s entanglement with ordinary time as involuntary and to a large extent unconscious, &ldquo;a passage of his consciousness in the suddenest way, from one extreme to another.&rdquo; Marcher&rsquo;s fate is not to understand, until too late, what such sudden passages signify: that Marcher <em>is</em> subject to ordinary time, and that what he figures to himself as perfect detachment will be seen, in the end even by Marcher, as perfect selfishness. When the Beast has sprung and Marcher is forced to see the real measure of his past &ldquo;in the chill of his egotism and the light of her use&rdquo; it is too late. Unknown to himself he had lived, been measured, and found wanting&mdash;by ordinary time.</p>
+    </article>
+
+    <script>
+        const toggle = document.getElementById('theme-toggle');
+        const icon = document.getElementById('theme-icon');
+
+        toggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+            toggle.title = isDark ? 'Modo Diurno' : 'Modo Nocturno';
+            toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+        });
+    </script>
+
+</body>
+</html>

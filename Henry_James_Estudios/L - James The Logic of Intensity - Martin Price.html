@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Martin Price - James: The Logic of Intensity</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* =========================================
+           COLORES (Modo Diurno - International Klein Blue)
+           ========================================= */
+        :root {
+            --bg-body: #002FA7;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.88);
+            --text-muted: rgba(255, 255, 255, 0.6);
+            --border-color: rgba(255, 255, 255, 0.35);
+            --border-light: rgba(255, 255, 255, 0.15);
+            --fab-bg: #ffffff;
+            --fab-color: #002FA7;
+            --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+            --quote-border: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Modo Nocturno - Deep Navy Blue */
+        body.dark-mode {
+            --bg-body: #001233;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.85);
+            --text-muted: rgba(255, 255, 255, 0.5);
+            --border-color: rgba(255, 255, 255, 0.2);
+            --border-light: rgba(255, 255, 255, 0.1);
+            --fab-bg: #ffffff;
+            --fab-color: #001233;
+            --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+            --quote-border: rgba(255, 255, 255, 0.4);
+        }
+
+        /* =========================================
+           ESTILOS GENERALES
+           ========================================= */
+        * { transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease; }
+        
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            line-height: 1.75;
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 2em 1.5em 5em;
+            color: var(--text-primary);
+            background-color: var(--bg-body);
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 0.2em;
+            font-weight: normal;
+            letter-spacing: 0.05em;
+            color: var(--text-primary);
+        }
+
+        h2 {
+            font-size: 1.4em;
+            text-align: center;
+            margin-top: 2.5em;
+            margin-bottom: 1.5em;
+            font-weight: bold;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        h3 {
+            font-size: 1.1em;
+            text-align: center;
+            margin-top: 2.5em;
+            margin-bottom: 1em;
+            font-weight: bold;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        p {
+            text-align: justify;
+            margin-bottom: 1.2em;
+            text-indent: 1.5em;
+        }
+
+        p.no-indent { text-indent: 0; }
+
+        blockquote {
+            margin: 1.5em 2em;
+            padding-left: 1.5em;
+            border-left: 3px solid var(--quote-border);
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        blockquote p { text-indent: 0; margin-bottom: 0.8em; }
+
+        .poem {
+            margin: 1.5em 2em;
+            font-style: italic;
+            text-indent: 0;
+        }
+
+        .poem p {
+            text-indent: 0;
+            margin-bottom: 0.3em;
+            text-align: left;
+            padding-left: 2em;
+            text-indent: -2em;
+        }
+
+        em { font-style: italic; }
+
+        sup {
+            font-size: 0.75em;
+            vertical-align: super;
+            line-height: 0;
+        }
+
+        .page-number {
+            display: block;
+            text-align: center;
+            font-size: 0.8em;
+            color: var(--text-muted);
+            margin: 2em 0 1em 0;
+        }
+
+        .footnotes {
+            margin-top: 4em;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5em;
+            font-size: 0.9em;
+            color: var(--text-secondary);
+        }
+
+        .footnotes h3 {
+            text-align: left;
+            font-size: 1em;
+            margin-bottom: 1em;
+            text-transform: none;
+            letter-spacing: normal;
+            color: var(--text-primary);
+        }
+
+        .footnotes p {
+            text-align: left;
+            text-indent: -1.5em;
+            padding-left: 1.5em;
+            margin-bottom: 0.6em;
+            font-size: 0.9em;
+        }
+
+        .section-break {
+            text-align: center;
+            margin: 2.5em 0;
+            font-weight: bold;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.1em;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 2em;
+        }
+
+        .source-note {
+            text-align: center;
+            font-size: 0.85em;
+            color: var(--text-muted);
+            margin-bottom: 2em;
+            font-style: normal;
+        }
+
+        /* =========================================
+           BOTÓN FLOTANTE (Modo Nocturno)
+           ========================================= */
+        .fab-toggle {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background-color: var(--fab-bg);
+            color: var(--fab-color);
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease;
+            z-index: 1000;
+            outline: none;
+        }
+        .fab-toggle:hover { transform: scale(1.1); }
+        .fab-toggle:active { transform: scale(0.95); }
+        .fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            body { padding: 1.2em 1em 4em; }
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.1em; }
+            .fab-toggle { bottom: 16px; right: 16px; width: 50px; height: 50px; }
+            .fab-toggle .material-icons { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo Nocturno">
+        <i class="material-icons" id="theme-icon">dark_mode</i>
+    </button>
+
+    <article id="content">
+        <h1>Martin Price</h1>
+        <p class="subtitle">James: The Logic of Intensity</p>
+        <p class="source-note">From <em>Forms of Life: Character and Moral Imagination in the Novel</em>. &copy; 1983 by Yale University. Yale University Press, 1983.</p>
+
+        <h2>Lucidity and Bewilderment</h2>
+
+        <p>In his later novels, Henry James leaves some crucial portion of his action, and of his characters, indeterminate. He does this, in part, by giving us characters&rsquo; conscious responses&mdash;at a somewhat shallow level of awareness&mdash;without accounting for their deeper motives or even, in some cases, indicating whether the surface awareness is consistent with what lies below. By a shallow level I mean only that the principal action of his novels takes place close enough to the surface of consciousness to alert us to meanings that are almost evident and therefore the more frustrating for their elusiveness. We are never given a fully determinate account of Vanderbank&rsquo;s feelings about Nanda, or of Lambert Strether&rsquo;s decision to leave Paris and Maria Gostrey behind him, or of Milly Theale&rsquo;s motives for leaving the money to Densher, or even of Densher&rsquo;s final feelings about Kate Croy. In <em>The Golden Bowl</em> we are largely kept outside the minds of Adam Verver and, to a lesser degree, of Charlotte Stant. How deeply inside Maggie and the Prince we are taken is less of a question, but even there we find some attitudes given only by implication and open to surmise.</p>
+
+        <p>This indeterminacy is, to a degree, a willed vagueness on the part of the characters, the &ldquo;merciful muddle&rdquo; or &ldquo;bewilderment&rdquo; they cannot do without. But the indeterminacy arises, too, from James&rsquo;s artistic design; the design is, of course, essential to the kind of suspense and intensity he wants to give to the experience of reading these novels and of puzzling out the motives and meanings of his characters&rsquo; words. It is not a trivial suspense; it has all the depth of the search for truth where truth is almost impossibly hard, and yet urgent, to recognize.</p>
+
+        <p>&ldquo;Lucidity and ironic, she knew no merciful muddle.&rdquo; So James presents Kate Croy in <em>The Wings of the Dove</em>, free both of illusion and of cant. When Merton Densher demands, as the encouragement of his deception of Milly Theale, that Kate come to his rooms, she takes &ldquo;no refuge in showing herself shocked.&rdquo; As he sees her &ldquo;stand there for him in all the light of the day and of his admirable, merciless meaning,&rdquo; he feels in some sense already &ldquo;possessed of what he wanted&rdquo;&mdash;possessed at least &ldquo;of the fact that she hadn&rsquo;t thrown over his lucidity the horrid shadow of cheap reprobation. Of this he had had so sore a fear that its being dispelled was in itself of the nature of bliss&rdquo; (chap. 27). [In this (essay) I have used the following editions of James&rsquo;s novels: <em>The Wings of the Dove</em>, 1st ed. of 1902; <em>The Awkward Age</em>, New York edition of 1907-09; <em>The Ambassadors</em>, 1st ed. of 1903; and <em>The Golden Bowl</em>, 1st ed. of 1904. All references are given by chapter, except in the case of <em>The Ambassadors</em>, where book and chapter numbers are given.] Later, near the close of the novel, when Densher believes that they have lost their &ldquo;dreadful game,&rdquo; Kate can perceive his &ldquo;horror, almost, of her lucidity&rdquo; (chap. 34).</p>
+
+        <p>That lucidity returns in the last scene, when Densher has received his inheritance from Milly Theale, the inheritance that will finally allow him and Kate the freedom to marry. Kate asks Densher if he is not now in love with Milly&rsquo;s memory. Nor does she allow him to dismiss the possibility. She would have been so in his place, she claims, and she recognizes his feelings: &ldquo;Your memory&rsquo;s your love. You <em>want</em> no other.&rdquo; When he meets this by offering to marry her at once, she asks, &ldquo;As we were?&rdquo; But she turns away from his assent with a final shake of her head. She is beyond the illusions he tries to sustain, and she speaks the moving last sentence of the novel: &ldquo;We shall never be again as we were!&rdquo; (chap. 38).</p>
+
+        <p>Earlier in the novel, Kate Croy&rsquo;s lucidity has taken on &ldquo;a kind of heroic ring, a note of character that belittled&rdquo; Densher&rsquo;s &ldquo;own capacity for action.&rdquo; And he sees in it &ldquo;the greatness of knowing so well what one wanted&rdquo; (chap. 28). Kate has been setting forth a plan for Densher and Milly, but she demands his complicity in its formulation. &ldquo;Don&rsquo;t think . . . I&rsquo;ll do <em>all</em> the work for you. If you want things named, you must name them.&rdquo;</p>
+
+        <blockquote>
+            <p>He had quite, within the minute, been turning names over; and there was only one, which at last stared at him there dreadful, that properly fitted. &ldquo;Since she&rsquo;s to die I&rsquo;m to marry her?&rdquo;</p>
+            <p>It struck him even at the moment as fine in [Kate] that she met it with no wincing nor mincing. She might, for the grace of silence, for favour to their conditions, have only answered him with her eyes. But her lips bravely moved. &ldquo;To marry her.&rdquo;</p>
+        </blockquote>
+
+        <p>Kate has undergone a long strain of &ldquo;impatience for all he had to be taught.&rdquo; Now he learns it or at least he emerges from the &ldquo;merciful muddle&rdquo; which has allowed him to come so far. &ldquo;It was before him enough now, and he had nothing more to ask; he had only to turn, on the spot, considerably cold with the thought that all along&mdash;to his stupidity, his timidity&mdash;it had been, it had been only what she meant.&rdquo; And, while Densher feels the shock of unmitigated clarity, she goes on: &ldquo;You&rsquo;ll in the natural course have money. We shall in the natural course be free.&rdquo; Kate&rsquo;s use of &ldquo;the natural course&rdquo; is ironic enough; but if it underlines the unnatural use they will make of Milly, it is also a recognition that they will not induce her early death but rather console her for it. As for their use of Milly, it can only prosper: Densher will have &ldquo;a free hand, a clear field, a chance&mdash;well, quite ideal.&rdquo; Densher is shocked again by her use of &ldquo;ideal,&rdquo; by her single-minded concentration upon the efficacy of the plan. He doesn&rsquo;t raise the moral issue that so clearly distresses him. Instead he asks how Kate, if she cares for him, can &ldquo;like&rdquo; this procedure. And again her lucidity cuts across his questions with a &ldquo;heroic ring,&rdquo; almost a stoical severity or a categorical imperative: &ldquo;I don&rsquo;t like it, but I&rsquo;m a person, thank goodness, who can do what I don&rsquo;t like&rdquo; (chap. 28).</p>
+
+        <p>Densher accepts her instructions, persuading himself that he is merely &ldquo;seeing what she would say&rdquo; and that she will &ldquo;somewhere break down.&rdquo; But she does not break down, and he finds himself continuing. The prospect is daunting: to propose marriage to a dying girl whom he does not love. But Kate has imagination enough to see the full case: &ldquo;She isn&rsquo;t for you as if she&rsquo;s dying.&rdquo; Densher recognizes the truth of this. As they look across the room, Milly sends back to them, as if in response, &ldquo;all the candour of her smile, the lustre of her pearls, the value of her life, the essence of her wealth.&rdquo; How explicit in Kate&rsquo;s or Densher&rsquo;s mind is that interweaving of &ldquo;candour&rdquo; and &ldquo;lustre,&rdquo; of &ldquo;life&rdquo; and &ldquo;wealth,&rdquo; we are not told; but they are made &ldquo;grave&rdquo; by &ldquo;the reality she put into the plan&rdquo; (chap. 28).</p>
+
+        <p>We can see Densher&rsquo;s &ldquo;merciful muddle&rdquo; at an earlier stage&mdash;a stage where he resembles George Eliot&rsquo;s characters as they find themselves not making, but having made, a decision. Densher is already acting on Kate&rsquo;s instructions but is troubled as to whether Kate &ldquo;really meant him to succeed quite so much.&rdquo; He is also in frequent danger of giving himself away. When he urges Milly to return to London after her travels, he says, &ldquo;Try us, at any rate . . . once more&rdquo; (chap. 21). When she in turn asks whom he means by &ldquo;us,&rdquo; he is pulled up short and quickly dispels the sense of &ldquo;an allusion to himself as conjoined with Kate.&rdquo; So a moment later, when Milly speaks of her indebtedness to Mrs. Lowder and to Kate, she concludes, &ldquo;I&rsquo;d do anything . . . for Kate.&rdquo; Has she laid a trap for him?</p>
+
+        <blockquote>
+            <p>&ldquo;Oh, I know what one would do for Kate!&rdquo;&mdash;it had hung for him by a hair to break out with that, which he felt he had really been kept from by an element in his consciousness stronger still. The proof of the truth in question was precisely in his silence; resisting the impulse to break out was what he <em>was</em> doing for Kate.</p>
+        </blockquote>
+
+        <p>As he avoids that danger he moves on to others, the dialogue becoming more and more intense with his sense of risk. He avoids displaying too full an acquaintance with Kate&rsquo;s ways; he can remark &ldquo;with a good intention that had the further merit of representing a truth: &lsquo;I don&rsquo;t feel as if I knew her&mdash;really to call know.&rsquo;&rdquo;</p>
+
+        <p>The passage which follows is a brilliant treatment of the flickering of conflict which underlies the few spoken words; it looks forward to such passages as I have cited [elsewhere] from Virginia Woolf and Nathalie Sarraute, a notable instance of <em>sous-conversation</em>:</p>
+
+        <blockquote>
+            <p>During a silence that ensued for a minute he had time to recognize that his own [words] contained, after all, no element of falsity. Strange enough therefore was it that he could go too far&mdash;if it <em>was</em> too far&mdash;without being false. His observation was one he would perfectly have made to Kate herself. And before he again spoke, and before Milly did, he took time for more still&mdash;for feeling that just here it was that he must break short off if his mind was really made up not to go further. It was as if he had been at a corner&mdash;and fairly put there by his last speech; so that it depended on him whether or no to turn it. The silence if prolonged but an instant might even have given him a sense of her waiting to see what he would do.</p>
+            <p>(chap. 21)</p>
+        </blockquote>
+
+        <p>They are interrupted by the arrival below of Milly&rsquo;s carriage. Densher can recognize his attraction for her as she first denies that she was going out and then proposes that he ride with her.</p>
+
+        <blockquote>
+            <p>Densher&rsquo;s happy response, however, had as yet hung fire, the process we have described in him operating by this time with extreme intensity. The system of not pulling up, not breaking off, had already brought him headlong, he seemed to feel, to where they had actually stood; and just now it was, with a vengeance, that he must do either one thing or the other. He had been waiting for some moments, which probably seemed to him longer than they were; this was because he was anxiously watching himself wait. He couldn&rsquo;t keep that up for ever; and since one thing or the other was what he must do, it was for the other that he presently became conscious of having decided. If he had been drifting it settled itself in the manner of a bump, of considerable violence, against a firm object in the stream. &ldquo;Oh yes; I&rsquo;ll go with you with pleasure. It&rsquo;s a charming idea.&rdquo;</p>
+        </blockquote>
+
+        <p>Densher is touched by &ldquo;her wishing to oblige him,&rdquo; and, as he waits for Milly to get ready, he recognizes that &ldquo;she had made him simply wish, in civil acknowledgment, to oblige <em>her</em>; which he had not fully done, by turning his corner. He was quite round it, his corner.&rdquo; He has, in effect, begun to deceive Milly under the comforting sense of kindness.</p>
+
+        <p>&ldquo;It seems probable,&rdquo; James wrote in the preface to <em>The Princess Casamassima</em>, &ldquo;that if we were never bewildered there would never be a story to tell about us.&rdquo; The novelist must avoid making his characters &ldquo;too interpretative of the muddle of fate . . . too divinely, too priggishly clever.&rdquo; The &ldquo;wary reader&rdquo; urges, &ldquo;&lsquo;Give us plenty of bewilderment . . . so long as there is plenty of slashing out in the bewilderment too.&rsquo;&rdquo; For too much intelligence precludes &ldquo;the very slashing, the subject-matter of any self-respecting story.&rdquo; To represent bewilderment, as we have seen in the case of Densher, requires an exploration of characters&rsquo; feelings with a measure of detachment, an &ldquo;appreciation,&rdquo; on the part of the novelist. The &ldquo;doing&rdquo; of such characters is, &ldquo;immensely, their feeling.&rdquo; Any &ldquo;intimacy with a man&rsquo;s specific behaviour, with his given case, is desperately certain to make us see it as a whole. . . . What a man thinks and what he feels are the history and the character of what he does; on all of which things the logic of intensity rests.&rdquo;</p>
+
+        <p>The &ldquo;quality of bewilderment&rdquo; will depend on the nature of the consciousness invented and engaged, and it will range from &ldquo;vague and crepuscular to sharpest and most critical.&rdquo; Each story requires its fools, who embody &ldquo;the coarser and less fruitful forms and degrees of moral reaction;&rdquo; but the leading interest requires a consciousness &ldquo;subject to fine intensification and wide enlargement.&rdquo; Such a consciousness will expose the deficiencies of the fools; but the problem is to keep it from soaring too high, to &ldquo;keep it connected, connected intimately, with the general human exposure, and thereby bedimmed and befooled and bewildered, anxious, restless, fallible&rdquo;&mdash;and yet not with such bewilderment as will make the situation and the story &ldquo;unintelligible.&rdquo; These persons are &ldquo;intense <em>perceivers</em>&rdquo;&mdash;James cites among others Isabel Archer, Lambert Strether, and Merton Densher&mdash;&ldquo;even . . . the divided Vanderbank of <em>The Awkward Age</em>, the extreme pinch of whose romance is the vivacity in him, to his positive sorrow and loss, of the state of being aware.&rdquo;</p>
+
+        <p>It is to the last of these cases I wish to turn, for Vanderbank displays a consciousness which can embrace two quite different conceptions of life but which cannot finally choose between them; or at least, since inaction is itself a choice, cannot choose actively or with full lucidity. There is a sense in which the very intensity of his perception is disabling, making him not a spectator but a failed participant.</p>
+
+        <p><em>The Awkward Age</em> was an experiment in a new form: &ldquo;a form all dramatic and scenic,&rdquo; as James wrote to a bewildered friend, &ldquo;of presented episodes, architecturally combined and each making a piece of the building; with no going behind, no <em>telling about</em> the figures save by their own appearance and action and with explanations reduced to the explanation of everything by all the other things <em>in</em> the picture.&rdquo; And, for all that indirectness, James feels special pleasure in his central characters. &ldquo;I think Mrs. Brook the best thing I&rsquo;ve ever done&mdash;and Nanda much <em>done</em>.&rdquo; Mrs. Brookenham and her daughter Nanda are both in love with Vanderbank, who, in his mid-thirties, is younger than Mrs. Brookenham and older than her daughter. Nanda quite frankly and simply loves Vanderbank. Her mother, whose lover he seems to be, and might as well be, but perhaps is not (if we accept the evidence of a not very generous friend), counts on Van as a member of her circle. He is, as James said, &ldquo;divided,&rdquo; attracted by the decencies and sincerity of another kind of life, but unable to separate himself from Mrs. Brook and the bold, free talk of her circle.</p>
+
+        <p>The novel opens with a dramatic presentation of Van&rsquo;s self-division. He has just met at Mrs. Brook&rsquo;s a charming old man, Mr. Longdon, who has known both Mrs. Brook&rsquo;s mother and Van&rsquo;s mother as well. Mr. Longdon once courted each lady, but with no success. Van now finds himself looking at Mrs. Brook&rsquo;s circle through the eyes of Mr. Longdon. They provide him with the occasion&mdash;for the feelings are clearly not new&mdash;to voice his uneasy dissatisfaction with the circle, with London, with modernity and his own part in it. How deeply Van feels this and how much he merely plays at self-castigation is hard to determine and, as I have suggested earlier, is meant to be indeterminate. But there seems to be something more than amusement or complacency in his attempt to grasp and appropriate Mr. Longdon&rsquo;s attitude.</p>
+
+        <p>The older man has lived outside London for years, and Van, whose imagination &ldquo;liked to place an object, even to the point of losing sight of it in its conditions,&rdquo; conceives what a &ldquo;nice old nook it must have taken to keep a man of intelligence so fresh while suffering him to remain so fine&rdquo; (chap. 1). Van can only suppose that the free talk at Mrs. Brook&rsquo;s must have struck Mr. Longdon as &ldquo;odd.&rdquo; If Van shows &ldquo;elation&rdquo; in producing his surmise, it is not, I think, the pleasure of being shocked but the delight of his accuracy in placing Mr. Longdon and in imagining his response. Van is, moreover, almost eager to be caught out in vulgarity: when he speaks of Mrs. Brookenham as Fernanda, he at once accepts Mr. Longdon&rsquo;s &ldquo;scruple&rdquo; and admits that he does not use that name in her presence. Van cannot resist a light and rather cheap remark (too often the level of the circle&rsquo;s wit) when he explains how seldom his own Christian name, Gustavus, is used by Mrs. Brook. &ldquo;Any implication that she consciously avoided it might make you see deeper depths.&rdquo; To this Mr. Longdon replies with pain: &ldquo;Oh, I&rsquo;m not so bad as that!&rdquo; (chap. 1) When they speak of Nanda&rsquo;s age, which is almost nineteen but which her mother vaguely sets at sixteen, Van is amused by Mrs. Brook&rsquo;s vanity. &ldquo;She has done so, I think, for the last year or two&rdquo; (since, in fact, she has turned forty). But Van&rsquo;s amusement must now, because of Mr. Longdon&rsquo;s presence, be turned upon himself as he recognizes what he has done: &ldquo;It was nasty doing that? I see, I see. Yes, yes: I rather gave her away, and you&rsquo;re struck by it&mdash;as is most delightful you <em>should</em> be&mdash;because you&rsquo;re, in every way, of a better tradition.&rdquo; No friendship, Van concludes, of the kind Mr. Longdon has cherished, can survive in &ldquo;great towns and great crowds.&rdquo; London society must seem to an outsider &ldquo;an elbowing, pushing, perspiring, chattering mob.&rdquo; But Mr. Longdon sees acutely enough that Van is too quick and glib in mocking self-deprecation. &ldquo;That shows you really don&rsquo;t care,&rdquo; he says; and he adds, &ldquo;You ought to, you ought to&rdquo; (chap. 2).</p>
+
+        <p>Mr. Longdon is struck by the resemblance he finds between photographs of Nanda and those of her grandmother, Lady Julia. Van can see an &ldquo;originality&rdquo; in his preferring Nanda&rsquo;s beauty to Mrs. Brook&rsquo;s. &ldquo;London doesn&rsquo;t love the latent or lurking,&rdquo; he explains, and there have been some fears about Nanda&rsquo;s chance for an early marriage (chap. 2). Mr. Longdon cannot yet imagine that Nanda is unwelcome in her mother&rsquo;s drawing room. She has reached the &ldquo;awkward age&rdquo; at which she can no longer be hidden in the nursery but is still too young to enter the free talk of her mother&rsquo;s circle. To prevent Nanda&rsquo;s damping the wit of their &ldquo;temple of analysis,&rdquo; Mrs. Brook allows Nanda great freedom to visit friends, including the unhappily married Tishy Grendon. This is no gesture of trust by Mrs. Brook: it is the laxity of indifference and the pursuit of her own convenience. Nanda becomes in the process exposed to all the scandalous secrets that animate London conversation. She does not regard the scandals with primness or with prurience. She does not take pleasure in others&rsquo; disadvantage. Her &ldquo;lucidity&rdquo; accepts truth with candor and genuine concern.</p>
+
+        <p>In contrast to Mrs. Brook, her friend the duchess&mdash;the title is Italian, but Jane is English&mdash;raises her niece Aggie in protected innocence. She wants Aggie to read only proper books, history &ldquo;that leaves the horrors out.&rdquo; As a &ldquo;little rounded and tinted innocence had been aimed at,&rdquo; Mr. Longdon reflects, &ldquo;the fruit had been grown to the perfection of a peach on a sheltered wall.&rdquo; Little Aggie has been &ldquo;deliberately prepared for consumption.&rdquo; Nanda, in contrast, is a &ldquo;northern savage,&rdquo; all the elements of her nature overt and unforced.</p>
+
+        <blockquote>
+            <p>Both the girls struck him as lambs with a great shambles of life in their future; but while one, with its neck in a pink ribbon, had no consciousness but that of being fed from the hand with the sweet biscuit of unobjectionable knowledge, the other struggled with instincts and forebodings, with the suspicion of its doom and the far-borne scent, in the flowery fields, of blood.</p>
+            <p>(chap. 18)</p>
+        </blockquote>
+
+        <p>This final contrast reveals Mr. Longdon&rsquo;s changing consciousness. He has come to recognize in Nanda, for all her modernity of manners and precocious awareness, a more radical innocence than Aggie possesses. Aggie remains ostentatiously virginal&mdash;the ostentation is not hers but her aunt&rsquo;s&mdash;until she marries. Then she breaks free with a smash, capturing her aunt&rsquo;s lover (who is also her husband&rsquo;s friend) for herself.</p>
+
+        <p>Mr. Longdon comes to see how impossible it would be&mdash;for all their physical resemblance&mdash;to recreate Lady Julia in Nanda. He has lived through that past from which his manners and his values come, and he relinquishes any thought of preserving it at the cost of doing justice to Nanda&rsquo;s distinctive beauty. Vanderbank, in contrast, is less realistic. He projects into the generation of Mr. Longdon and Lady Julia the beauty by which he measures all he finds ugly in his own age and in himself. It is a more romantic, more fragile, more external, perhaps more inhuman vision of the past. It arises from the division within himself, and it must be protected all the more jealously for the consolation it provides. Vanderbank cannot accept the element of modernity in Nanda, for all its candor. He sees it as defilement.</p>
+
+        <p>The division within Vanderbank is central to the novel. I think we must grant him a sincere enough dream of innocence, just as we must recognize the genuine appeal he has for Mr. Longdon as well as for Nanda. Mitchett says of Van at one point that he is &ldquo;thoroughly straight,&rdquo; at another that he is &ldquo;formed for a distinctly higher sphere&rdquo; and that &ldquo;on our level&rdquo;&mdash;that of Mrs. Brook&rsquo;s circle&mdash;he is &ldquo;positively wasted&rdquo; (chap. 10). Vanderbank is different from Mrs. Brook and most of her circle; it may be the very division within him which accounts for the &ldquo;sacred terror&rdquo; others feel in him. If we take him as a man intrinsically flawed with indecisiveness&mdash;a Jamesian hollow man, like John Marcher in &ldquo;The Beast in the Jungle&rdquo;&mdash;we rob the book of much of its intensity. For its dramatic action arises from Mrs. Brook&rsquo;s effort to prevent his marrying Nanda.</p>
+
+        <p>One can see the quality of Mrs. Brook&rsquo;s world most succinctly by considering her son Harold. Harold is not made a contrast to his mother as Nanda is. He reduces to a series of comic turns the selfishness that his mother, for the most part, covers with style or wit. His mother encourages Harold to secure invitations to country houses, where, we learn, he cheats at cards. As his mother lightly says, &ldquo;however Harold plays, he has a way of winning&rdquo; (chap. 6). At home he pilfers any money that is not locked up, and he duns the men who visit his mother, particularly the amiable Mitchy. Harold&rsquo;s parents feel that they should ask Mitchy if he has been dunned; but, as Mr. Brookenham remarks, it &ldquo;will be such a beastly bore if he admits it.&rdquo; Brookenham can&rsquo;t easily and doesn&rsquo;t want to pay his son&rsquo;s debts; and, somewhat like the John Dashwoods in <em>Sense and Sensibility</em>, the Brookenhams rationalize their comfortable obliviousness: &ldquo;they ought to tell us, and when they don&rsquo;t it serves them right.&rdquo; (When the question of Vanderbank arises, Mr. Brookenham&rsquo;s reply to his wife is, &ldquo;I think, Van, you know, is your affair.&rdquo;) Mrs. Brook offers, with no great expectation of being believed, the danger of her husband&rsquo;s outrage as a reason for Mitchy to conceal Harold&rsquo;s guilt. Thereupon she promptly adopts a contrary-to-fact construction: &ldquo;if you had let Harold borrow,&rdquo; she says to Mitchy, &ldquo;you would have another manner.&rdquo; By the end of the novel, Harold has come far out, savagely impertinent and very much, Van tells us, &ldquo;the rage.&rdquo; He has become the lover of Lord Petherton&rsquo;s sister and Mr. Cashmore&rsquo;s wife, Lady Fanny, and thus keeps her from running off with a Captain Dent-Douglas&mdash;like Anna Karenina, as Mrs. Brook observes, to &ldquo;one of the smaller Italian towns&rdquo; (chap. 21). Mrs. Brook remarks of her son, &ldquo;His success is true. . . . I hold my breath. But I&rsquo;m bound to say I rather admire.&rdquo;</p>
+
+        <p>Mrs. Brook herself is &ldquo;charmingly pretty,&rdquo; with &ldquo;lovely, silly eyes&rdquo; and a &ldquo;natural, quavering tone&rdquo; of voice that work together, like a &ldquo;trick that had never yet been exposed,&rdquo; to give her always &ldquo;the pure light of youth&rdquo; (chap. 4). Beneath that charm is an unblinking sense of her advantage, a powerful will, and awesome shrewdness. She is of the strain of Becky Sharp and Trollope&rsquo;s Lizzie Eustace. She sees Mr. Longdon as a possible benefactor because of his devotion to the memory of her mother. &ldquo;The thing is,&rdquo; she softly wails, &ldquo;that I don&rsquo;t see how he <em>can</em> like Harold.&rdquo; She looks coolly at the facts: &ldquo;And I don&rsquo;t think he really likes <em>me</em>. . . . I mean not utterly <em>really</em>. He has to try to.&rdquo; But that, she concludes, won&rsquo;t matter. &ldquo;&lsquo;He&rsquo;ll be just the same.&rsquo; She saw it steadily and saw it whole. &lsquo;On account of mamma.&rsquo;&rdquo; The derisive tag from Matthew Arnold helps to fix by contrast the closeness with which Mrs. Brook&rsquo;s vision operates as she chooses her strategy: &ldquo;He <em>must</em> like Nanda&rdquo; (chap. 6).</p>
+
+        <p>Mr. Longdon&rsquo;s wealth, Mrs. Brook thinks, must be immense. &ldquo;I can see it growing while he sits there,&rdquo; she remarks to Van. &ldquo;I should really like not to lose him.&rdquo; As she contemplates Mr. Longdon&rsquo;s uses, she asks Van in turn, &ldquo;What can we make him do for <em>you</em>?&rdquo; Van&rsquo;s blank, embarrassed response requires a stronger assertion. &ldquo;How can any one love you . . . without wanting to show it in some way? You know all the ways, dear Van, . . . in which I want to show it.&rdquo; His reply returns them to the business at hand: &ldquo;That, for instance, is the tone not to take with him&rdquo; (chap. 14). Mrs. Brook is conscious of what attracts Van in Mr. Longdon and gives Van influence in turn. It is an image of goodness that she finds at best boring. And Mrs. Brook clearly sees the danger in Van&rsquo;s divided mind: &ldquo;It will be him you&rsquo;ll help. If you&rsquo;re to make sacrifices to keep on good terms with him, the first sacrifice will be of me.&rdquo;</p>
+
+        <p>There are two measures Mrs. Brook uses to keep Van. One is to insist again and again on how much that is improper Nanda knows, how much she is pursued by Mr. Cashmore (who has tired of his mistress, Tishy Grendon&rsquo;s sister), how free she is at Tishy&rsquo;s to keep her own hours. The other is to insist, with the force of a willed prophecy, that he will not act. We see both of these measures at work in the remarkable twenty-first chapter. Mrs. Brook complains to Van of the cost of Nanda&rsquo;s presence&mdash;the reduction of their talk to the &ldquo;stupid, flat, fourth-rate.&rdquo; She speculates on what Mr. Longdon may do for Nanda, and at last asks Van directly, &ldquo;Has he given <em>you</em> anything?&rdquo; Mrs. Brook still captivates Van by &ldquo;the childlike innocence with which her voice could invest the hardest teachings of life.&rdquo; Then &ldquo;with the air of a man who had suddenly determined on a great blind leap,&rdquo; Van reveals what Mr. Longdon asked him to keep a secret, the offer of a large sum of money to make Van&rsquo;s marriage to Nanda possible. Van has been reluctant to tell Mrs. Brook of this, but he is even more reluctant not to do so. Is it an effort to make her release him or an appeal for her to hold him? She is bold enough to reply: &ldquo;Do you imagine I want you myself?&rdquo; She refuses to plead with him and insists upon the chance of success: &ldquo;Of course you know . . . that she&rsquo;d jump at you.&rdquo; Van is still locked in uncertainty and tries to read his own motives: &ldquo;Isn&rsquo;t there rather something in my having thus thought it my duty to warn you that I&rsquo;m definitely his candidate?&rdquo; And once more Mrs. Brook takes a high hand: &ldquo;What kind of monster are you trying to make me out?&rdquo; And then she introduces the other measure:</p>
+
+        <blockquote>
+            <p>Holding him a minute as with the soft, low voice of his fate, she sadly but firmly shook her head. &ldquo;You won&rsquo;t do it.&rdquo;</p>
+            <p>&ldquo;Oh!&rdquo; he almost too loudly protested.</p>
+            <p>&ldquo;You won&rsquo;t do it,&rdquo; she went on.</p>
+            <p>&ldquo;I <em>say</em>&rdquo;&mdash;he made a joke of it.</p>
+            <p>&ldquo;You won&rsquo;t do it,&rdquo; she repeated.</p>
+            <p>It was as if he could not at last but show himself really struck; yet what he exclaimed on was what might in truth most have impressed him. You <em>are</em> magnificent, really!&rdquo;</p>
+            <p>(chap. 21)</p>
+        </blockquote>
+
+        <p>Mrs. Brookenham&rsquo;s great stroke is to expose Nanda&rsquo;s sophistication&mdash;through a sordid French novel Nanda has read and passed on to Tishy Grendon (one, ironically, belonging to Vanderbank, whose name Nanda has inscribed in it). Mrs. Brook does this in such a way as to shock Van, and at the same time she &ldquo;calls in&rdquo; Nanda from Mr. Longdon&rsquo;s care. Her purpose is to force upon Mr. Longdon the ugliness of Nanda&rsquo;s life so as to make him save her by adoption and a financial settlement. When Mrs. Brook demands Nanda&rsquo;s return, her husband wanders into the conversation and maladroitly exclaims, &ldquo;We wouldn&rsquo;t <em>take</em> her&rdquo; (chap. 29). Mrs. Brook&rsquo;s resourcefulness is great. She brilliantly meets the duchess&rsquo;s observation that Brookenham has spoken without his cue:</p>
+
+        <blockquote>
+            <p>&ldquo;We dressed today in a hurry and hadn&rsquo;t time for our usual rehearsal. Edward, when we dine out, generally brings three pocket-handkerchiefs and six jokes. I leave the management of the handkerchiefs to his own taste, but we mostly try together, in advance, to arrange a career for the other things. It&rsquo;s some charming light thing of my own that&rsquo;s supposed to give him the sign.&rdquo;</p>
+            <p>(chap. 30)</p>
+        </blockquote>
+
+        <p>For all her resourcefulness, Mrs. Brook&rsquo;s plan brings no immediate success. Vanderbank, in spite of Mr. Longdon&rsquo;s support, delays for months. Nanda has earlier sensed his revulsion from her modernity, as if to say to him, &ldquo;I can&rsquo;t help it any more than you can, can I?&rdquo;</p>
+
+        <blockquote>
+            <p>So she appeared to put it to him, with something in her lucidity that would have been infinitely touching; a strange, grave calm consciousness of their common doom. . . . [Vanderbank sprang up] as if he had been infinitely touched . . . and there was in fact on Vanderbank&rsquo;s part quite the look of the man&mdash;though it lasted but just while we seize it&mdash;in suspense about himself.</p>
+            <p>(chap. 23)</p>
+        </blockquote>
+
+        <p>The last book of <em>The Awkward Age</em>, the one named for Nanda, is made up in large part of Nanda&rsquo;s visits from three men: Vanderbank, Mitchy, and Mr. Longdon. Vanderbank is painfully flustered and uneasy, but Nanda&rsquo;s purpose is to spare him all she can. She is like Maggie Verver in the second part of <em>The Golden Bowl</em>: &ldquo;To force upon him an awkwardness was like forcing a disfigurement or a hurt, so that at the end of a minute . . . she arrived at the appearance of having changed places with him and of their being together precisely in order that he&mdash;not she&mdash;should be let down easily&rdquo; (chap. 35). That is a good brief account of Maggie&rsquo;s treatment of Charlotte Stant and, to a degree, of the prince. Nanda not only does not reproach Vanderbank, but she urges him not to desert her mother. &ldquo;I verily believe she&rsquo;s in love with you. Not, for that matter, that father would mind&mdash;he wouldn&rsquo;t mind, as he says, a twopenny rap&rdquo; (chap. 36). And she adds, with unashamed maturity: &ldquo;She&rsquo;s so fearfully young.&rdquo; As she tries to reconcile them, Nanda can say, with an implicit sense of her own life as a daughter, &ldquo;You <em>can&rsquo;t</em> know how much you are to her. You&rsquo;re more to her, I verily believe, than any one <em>ever</em> was.&rdquo; Van is touched because he is also relieved: &ldquo;no one who ever <em>has</em> liked her can afford ever again, for any long period, to do without her. . . . She&rsquo;s a fixed star.&rdquo; Nanda helps him rise to more and more celebration, almost as if she were reviving his feelings for Mrs. Brook by making him voice them. At the last, he reverts to an indirect apology, cast as a message to Mr. Longdon: &ldquo;Look after my good name. . . . I&rsquo;ve odiously neglected him&mdash;by a complication of accidents. There are things I ought to have done that I haven&rsquo;t. . . . I&rsquo;ve been a brute, and I didn&rsquo;t mean it, and I couldn&rsquo;t help it&rdquo; (chap. 36).</p>
+
+        <p>When Nanda relays his message, Mr. Longdon is struck by her pride. &ldquo;Pride&rsquo;s all right,&rdquo; he says, &ldquo;when it helps one to bear things.&rdquo; But Nanda will not have it that way. When one wants to take most, rather than least, from things, she says, &ldquo;one . . . must rather grovel.&rdquo; When Mr. Longdon wishes she didn&rsquo;t &ldquo;so wonderfully love&rdquo; Van, she bursts into tears. She sees herself as &ldquo;the horrible impossible,&rdquo; who <em>is</em> what Van thinks her. &ldquo;We can&rsquo;t help it. It isn&rsquo;t really our fault. . . . Everything&rsquo;s different from what it used to be.&rdquo; She turns to Mr. Longdon, who has come so far. &ldquo;Oh, he&rsquo;s more old-fashioned than you.&rdquo; But he tried&mdash;&ldquo;he did his best. But he couldn&rsquo;t&rdquo; (chap. 37).</p>
+
+        <p>The &ldquo;extreme pinch&rdquo; of Vanderbank&rsquo;s &ldquo;romance is the vivacity in him, to his positive sorrow and loss, of the state of being aware.&rdquo; Van&rsquo;s awareness only creates division rather than spreads to cover and to embrace. It seems, as Robert Caserio has written, that Van, rather than Longdon, is &ldquo;puritanical and nostalgic, even sentimental, about the past.&rdquo; This is, I have tried to suggest, a reflex of his dissatisfaction with himself, the expression of that part of him which distrusts and even rebels against Mrs. Brookenham, for all his devotion to and need for her. Is it true (to pursue Caserio&rsquo;s account) that he has &ldquo;a kind of detached, lucid endurance of the age, a lucidity that is modern because it is inactive&rdquo;? I should prefer, for reasons I&rsquo;ve indicated, to stress Vanderbank&rsquo;s ultimate bewilderment in contrast with Nanda&rsquo;s hard-earned lucidity. He remains bewildered because he can never reconcile the opposed impulses within himself; he seems doomed to a joyless (if not unpleasant) life in Mrs. Brookenham&rsquo;s circle. &ldquo;What are parties given for in London,&rdquo; the duchess remarks, &ldquo;but that enemies may meet?&rdquo; (chap. 8).</p>
+
+        <p>If Vanderbank&rsquo;s inaction remains the crux of the plot, the culmination is the heroic generosity of Nanda in giving him &ldquo;that refined satisfaction with himself which would proceed from his having dealt with a difficult hour in a gallant and delicate way&rdquo; (chap. 35). It is for Nanda, in fact, to do so in order to leave Vanderbank with the sense that he has done so. In his preface to <em>The Spoils of Poynton</em> James writes of the &ldquo;free spirit&rdquo;&mdash;in that novel Fleda Vetch, as it is Nanda in this&mdash;&ldquo;always much tormented, and by no means always triumphant . . . heroic, ironic, pathetic . . . &lsquo;successful&rsquo; only through having remained free.&rdquo; That freedom may be earned, in Joseph Conrad&rsquo;s phrase, through &ldquo;the supreme energy of an act of renunciation.&rdquo; Milly Theale renounces any grievance in leaving the money to Densher; Densher renounces the money for himself. In this novel Nanda Brookenham renounces any claim on Vanderbank&rsquo;s conscience or upon his self-regard. Like Maggie Verver, later, she preserves those who have failed or wronged her, both Van and her mother. Conrad goes on to observe that a &ldquo;solution by rejection must always present a certain lack of finality, especially startling when contrasted with the usual methods of solution by rewards and punishments.&rdquo; One can connect Conrad&rsquo;s observations with James&rsquo;s words in &ldquo;The Art of Fiction&rdquo; (1884): the &ldquo;essence of moral energy is to survey the whole field.&rdquo; James wishes to reject an external, rule-bound conception of morality, and in the process he often celebrates the consciousness which can see around all others and enfold them in its understanding. So with the author: the &ldquo;moral&rdquo; sense of a work of art depends on &ldquo;the amount of felt life concerned in producing it.&rdquo; The artist&rsquo;s sensibility should be a soil in which &ldquo;any vision of life&rdquo; can grow &ldquo;with due freshness and straightness&rdquo; (Preface to <em>The Portrait of a Lady</em>).</p>
+
+        <p>James is always ready to put deeper virtues in the balance with conventions and rules. When he writes W. D. Howells about the French novelists he knows, he strikes such a balance: &ldquo;They do the only kind of work, today, that I respect; and in spite of their ferocious pessimism and their handling of unclean things, they are at least serious and honest.&rdquo; There is a telling contrast drawn between Thackeray and Balzac:</p>
+
+        <blockquote>
+            <p>Balzac loved his Val&eacute;rie then as Thackeray did not love his Becky, or his Blanche Amory in <em>Pendennis</em>. But his prompting was not to expose her; it could only be, on the contrary . . . to cover her up and protect her, in the interest of her special genius and freedom. All his impulse was to <em>la faire valoir</em>, to give her all her value, just as Thackeray&rsquo;s attitude was the opposite one, a desire positively to expose and desecrate poor Becky&mdash;to follow her up, catch her in the act, and bring her to shame: though with a mitigation, an admiration, an inconsequence, now and then wrested from him by an instinct finer, in his mind, than the so-called &ldquo;moral&rdquo; eagerness. The English writer wants to make sure, first of all, of your moral judgment; the French is willing, while it waits a little, to risk, for the sake of his subject and its interest, your spiritual salvation.</p>
+        </blockquote>
+
+        <p>Clearly James is distrustful of any moral restrictions set upon the field of consciousness. But he distrusts other restrictions no less. In his early essay on Baudelaire he writes, &ldquo;to count out the moral element in one&rsquo;s appreciation of an artistic total is exactly as sane as it would be (if the total were a poem) to eliminate all the words in three syllables.&rdquo; Morality &ldquo;is in reality simply a part of the essential richness of inspiration&mdash;it has nothing to do with the artistic process and it has everything to do with the artistic effect. The more a work of art feels it at its source, the richer it is; the less it feels it, the poorer it is.&rdquo; The kind of moral imagination James brings to the case of Vanderbank, or of Densher, is to be seen in a remark he made in an early letter: &ldquo;We know when we lie, when we kill, when we steal, when we deceive or violate others; but it is hard to know when we deceive or violate ourselves.&rdquo;</p>
+
+        <h2>&ldquo;Almost Socratic&rdquo;</h2>
+
+        <p>As James presents one of Mrs. Brookenham&rsquo;s questions, he calls her &ldquo;almost Socratic.&rdquo; It is an interesting observation because one feels at times a remote influence upon James of the Platonic dialogues. I have no wish to fix that influence but only to consider the kind of midwifery of ideas, like that which Socrates claims, we can find in some of James&rsquo;s dialogue. One of the forms of intensity James achieves is the dramatization of a process wherein a man&rsquo;s accepted ideas are gradually brought into question and replaced. A good instance is the evening Lambert Strether spends in London with Maria Gostrey, at dinner and at the theater (<em>The Ambassadors</em>). It is also a good instance of that principle of which James wrote to H. G. Wells: &ldquo;It is art that <em>makes</em> life, makes interest, makes importance.&rdquo;</p>
+
+        <p>In this chapter, the first of book 2, Strether is learning &ldquo;to find names&rdquo; for many matters, and on no evening of his life has he tried to supply so many. Maria Gostrey is the &ldquo;mistress of a hundred cases or categories,&rdquo; and Strether soon feels that she &ldquo;knew even intimate things about him that he hadn&rsquo;t yet told her and perhaps never would.&rdquo; She is eliciting from him the names or categories by which he has organized experience all of his life in America, and the very process by which she elicits them requires Strether to bring them to full consciousness, and then withdraw from, circumambulate, and question attitudes he has so far taken as natural and necessary. He has not told her these things about himself because he has not known that he knew them. They emerge in consciousness through the art of her questions.</p>
+
+        <p>Everything about Strether&rsquo;s evening defines itself in opposition to the world he has known; when he has gone to the theater with his American patron, Mrs. Newsome, he has enjoyed no &ldquo;little confronted dinner, no pink lights, no whiff of vague sweetness.&rdquo; Nor has Mrs. Newsome ever worn a dress cut so low. Strether finds himself given over to &ldquo;uncontrolled perception,&rdquo; to a freedom of awareness that Mrs. Newsome&rsquo;s black dress and white ruff have never encouraged. The red velvet band around Maria&rsquo;s throat becomes a &ldquo;starting-point for fresh backward, fresh forward, fresh lateral flights.&rdquo; If Mrs. Newsome&rsquo;s ruff suggested Queen Elizabeth, Maria Gostrey&rsquo;s band evokes Mary Stuart. Strether finds in himself a &ldquo;candor of fancy&rdquo; that takes pleasure in such an antithesis. The texture of all he sees becomes more complex; the English &ldquo;types&rdquo; both on the stage and in the audience will prove more varied and distinct than Woollett allowed.</p>
+
+        <p>As Maria Gostrey draws Strether out on the subject of his mission, she requires him to attend to those terms he has never before questioned. She often echoes a response, holding a note he has sounded until it becomes the object of their joint perception. And to see with her eyes is to begin to free himself from the limits in which he has unconsciously acquiesced. She has also a tendency to abet his most treasonous thoughts. He begins, at the theater, to feel &ldquo;kindness&rdquo; for the young man on the stage who wears perpetual evening dress and weakly succumbs to &ldquo;a bad woman in a yellow frock.&rdquo; Would Chad Newsome (whom he has come to rescue) wear evening dress, too? Would Strether have to do so himself to meet Chad at a proper level?</p>
+
+        <p>As his own thoughts warily approach such questions, Maria Gostrey puts them so directly before him that he can hardly evade them. &ldquo;You&rsquo;ve accepted the mission of separating him from the wicked woman. Are you quite sure she&rsquo;s very bad for him?&rdquo; Strether is startled by the question: &ldquo;Of course we are. Wouldn&rsquo;t <em>you</em> be?&rdquo; Maria refuses the comfort of easy judgment. &ldquo;One can only judge the facts.&rdquo; Might, after all, the woman be charming? Again, Strether is startled:</p>
+
+        <blockquote>
+            <p>&ldquo;Charming?&rdquo;&mdash;Strether stared before him. &ldquo;She&rsquo;s base, venal&mdash;out of the streets.&rdquo;</p>
+            <p>&ldquo;I see. And <em>he</em>&mdash;?&rdquo;</p>
+            <p>&ldquo;Chad, wretched boy?&rdquo;</p>
+            <p>&ldquo;Of what type and temper is he?&rdquo; she went on as Strether had lapsed.</p>
+        </blockquote>
+
+        <p>We aren&rsquo;t told why he has &ldquo;lapsed,&rdquo; but presumably he is forced to ask himself whether Chad is merely a virtuous American lad seduced.</p>
+
+        <blockquote>
+            <p>&ldquo;Well&mdash;the obstinate.&rdquo; It was as if for a moment he had been going to say more and had then controlled himself.</p>
+            <p>That was scarce what she wanted. &ldquo;Do you like him?&rdquo;</p>
+            <p>This time he was prompt. &ldquo;No. How <em>can</em> I?&rdquo;</p>
+        </blockquote>
+
+        <p>Once Strether has acknowledged his dislike of Chad Newsome, he wishes to attribute it to the son&rsquo;s treatment of his mother. Mrs. Newsome inspires a rather exalted idiom: &ldquo;He has darkened her admirable life.&rdquo; Then, as if to bring it down to earth, Strether makes the point less stuffily: &ldquo;He has worried her half to death.&rdquo; Maria, for reasons of her own, picks up the first and, as it were, the &ldquo;official&rdquo; version: &ldquo;Is her life very admirable?&rdquo; To this Strether replies with a solemn, perhaps reverent, &ldquo;Extraordinarily.&rdquo; James indicates the timing of these remarks: &ldquo;There was so much in the tone that Miss Gostrey had to devote another pause to the appreciation of it.&rdquo; She proceeds to deflate Strether&rsquo;s dictum and perhaps also to uncover the strong managerial role of Mrs. Newsome: &ldquo;And he has only <em>her</em>? I don&rsquo;t mean the bad woman in Paris . . . for I assure you I shouldn&rsquo;t even at the best be disposed to allow him more than one. But has he only his mother?&rdquo;</p>
+
+        <p>Strether mentions Chad&rsquo;s sister, Sarah Pocock, and he can imply of her, as he could not of her mother, that she is not universally beloved. Maria calls up Strether&rsquo;s earlier &ldquo;admirable&rdquo;: &ldquo;But <em>you</em> admire her?&rdquo; And this releases Strether&rsquo;s critical awareness: &ldquo;I&rsquo;m perhaps a little afraid of her.&rdquo; What Maria is trying to uncover is the kind of will that governs the ladies and Strether as their ambassador. When he exclaims that they would do &ldquo;anything in the world for him,&rdquo; Maria turns that conventional tribute inside out: &ldquo;And you&rsquo;d do anything in the world for them?&rdquo; Strether is uncomfortable; she &ldquo;had made it perhaps just a shade too affirmative for his nerves: &lsquo;Oh I don&rsquo;t know.&rsquo;&rdquo; Their generosity begins to turn, under Maria&rsquo;s cool queries, into something like officiousness. &ldquo;The &lsquo;anything&rsquo; they&rsquo;d do is represented by their <em>making</em> you do it.&rdquo;</p>
+
+        <p>A comic view of Mrs. Newsome begins to emerge. &ldquo;She puts so much of herself into everything&mdash;.&rdquo; And Maria nicely picks up the absurdity: &ldquo;that she has nothing left for anything else?&rdquo; Strether begins to let go his admiration. Maria supposes that &ldquo;if your friend <em>had</em> come she would take great views, and the great views, to put it simply, would be too much for her.&rdquo; Strether by now is no longer defensive; he is &ldquo;amused at&rdquo; Maria&rsquo;s &ldquo;notion of the simple,&rdquo; but accepts her terms: &ldquo;Everything&rsquo;s too much for her.&rdquo;</p>
+
+        <p>James catches the conflict of exaltation and vulgarity in the unmentionable thing whose manufacture is the source of Mrs. Newsome&rsquo;s wealth: &ldquo;a small, trivial, rather ridiculous object of the commonest domestic use,&rdquo; Strether lamely describes it; &ldquo;it&rsquo;s rather wanting in&mdash;what shall I say? Well, dignity, or the least approach to distinction.&rdquo; James looks ahead to Maria&rsquo;s many attempts to have him name it; with their failure she can treat &ldquo;the little nameless object as indeed unnameable&mdash;she could make their abstention enormously definite.&rdquo; And behind this suppressed object there are sources of money even more questionable, not simply vulgar but dishonest. We begin to see Mrs. Newsome covering these wrongs with a high manner, as a &ldquo;moral swell,&rdquo; the patron of the review that Strether edits and that few read. &ldquo;It&rsquo;s her tribute to the ideal,&rdquo; Strether explains. Maria puts it otherwise: &ldquo;You assist her to expiate&mdash;which is rather hard when you&rsquo;ve yourself not sinned.&rdquo;</p>
+
+        <p>Perhaps the saddest and most significant exchange concerns the plans for Chad:</p>
+
+        <blockquote>
+            <p>&ldquo;He stands . . . if you succeed with him, to gain&mdash;&rdquo;</p>
+            <p>&ldquo;Oh a lot of advantages.&rdquo; Strether had them clearly at his fingers&rsquo; ends.</p>
+            <p>&ldquo;By which you mean of course a lot of money.&rdquo;</p>
+            <p>&ldquo;Well, not only. I&rsquo;m acting with a sense for him of other things too. Consideration and comfort and security&mdash;the general safety of being anchored by a strong chain. He wants, as I see him, to be protected. Protected I mean from life.&rdquo;</p>
+            <p>&ldquo;Ah <em>voil&agrave;</em>!&rdquo;&mdash;her thought fitted with a click. &ldquo;From life. What you <em>really</em> want to get him home for is to marry him.&rdquo;</p>
+        </blockquote>
+
+        <p>There is something pitiable in this distrust of &ldquo;life.&rdquo; Strether has been, as he now would have Chad be, &ldquo;anchored by a strong chain.&rdquo; To question this prepares, of course, for his speech in Gloriani&rsquo;s garden, the rueful &ldquo;Live all you can!&rdquo;</p>
+
+        <p>Maria Gostrey has come to recognize the range of awareness that Strether can, with release, attain. He has modesty, simplicity, good will, conscience&mdash;beneath the conventional attitudes he has come abroad to represent are generosity and imagination. Later, Little Bilham will say to him, &ldquo;you&rsquo;re not a person to whom it&rsquo;s easy to tell things you don&rsquo;t want to know. Though it is easy, I admit&mdash;it&rsquo;s quite beautiful . . . when you do want to&rdquo; (bk. 5, chap. 1). When Maria first asks Strether what, if he should fail, he stands to lose, he exclaims, &ldquo;Nothing!&rdquo; As she leaves him, she asks once more, &ldquo;What do you stand to lose?&rdquo;</p>
+
+        <blockquote>
+            <p>Why the question now affected him as other he couldn&rsquo;t have said; he could only this time meet it otherwise. &ldquo;Everything.&rdquo;</p>
+            <p>(bk. 2, chap. 1)</p>
+        </blockquote>
+
+        <p>Has he come at last to reject the old language-game he has brought from Woollett, to reverse the meanings of &ldquo;succeed&rdquo; and &ldquo;fail&rdquo;? Later, in Paris with his dogged fellow American Waymarsh, the question of when he will see Chad comes up.</p>
+
+        <blockquote>
+            <p>&ldquo;Well,&rdquo; said Strether almost gaily, &ldquo;I guess I don&rsquo;t know anything!&rdquo; His gaiety might have been a tribute to the fact that the state he had been reduced to did for him again what had been done by his talk of the matter with Miss Gostrey at the London theatre. It was somehow enlarging.</p>
+            <p>(bk. 3, chap. 1)</p>
+        </blockquote>
+
+        <p>The enlargement will take Strether to a vision of Chad and Mme de Vionnet, and of Paris itself, so large as to reverse all of his original judgments. When Strether learns that the &ldquo;virtuous attachment&rdquo; he has imagined is not what he thought, when he discovers that Mme de Vionnet is in fact Chad&rsquo;s mistress, he has come too far to revert to his earlier moral categories. He has already seen Mrs. Newsome&rsquo;s lack of imagination and force of will. He has not been able to budge her from her preconceptions, and all that is left is &ldquo;morally and intellectually to get rid of her.&rdquo; He sees her &ldquo;fine cold thought&rdquo; as a &ldquo;particularly large iceberg in a cool blue northern sea.&rdquo; And Maria complements his thought with her own: &ldquo;There&rsquo;s nothing so magnificent&mdash;for making others feel you&mdash;as to have no imagination&rdquo; (bk. 11, chap. 1).</p>
+
+        <p>At Strether&rsquo;s final meeting with Mme de Vionnet in her apartment, the aristocratic setting promises support: the &ldquo;things from far back&mdash;tyrannies of history, facts of type, values, as the painters said, of expression&mdash;all working for her and giving her the supreme chance, the chance . . . on a great occasion, to be natural and simple.&rdquo; Her lie and Chad&rsquo;s now seem to him &ldquo;an inevitable tribute to good taste,&rdquo; even as he winces &ldquo;at the amount of comedy involved&rdquo; in his own misunderstanding (bk. 12, chap. 1). But what Strether learns is how helpless her passion for Chad has been. As she has put it obliquely, &ldquo;The wretched self is always there, always making one somehow a fresh anxiety.&rdquo; And while she asserts that the &ldquo;only safe thing is to give,&rdquo; she seems, after all, in her fear that Chad will leave her, &ldquo;exploited.&rdquo; She has made Chad better; &ldquo;but it came to our friend with supreme queerness that he was none the less only Chad.&rdquo; Strether finally exclaims to Mme de Vionnet, &ldquo;You&rsquo;re afraid for your life!&rdquo; (bk. 12, chap. 2). Her aristocratic nature will not save her. Strether recalls the fate of Madame Roland, the &ldquo;smell of revolution, the smell of the public temper&mdash;or perhaps simply, the smell of blood&rdquo; (bk. 12, chap. 1). He sees Mme de Vionnet at once as &ldquo;the finest and subtlest creature&rdquo; caught in a passion &ldquo;mature, abysmal, pitiful.&rdquo;</p>
+
+        <p>After two reversals, then, Strether finds himself once more voicing a moral view. To Chad, who shows signs of being ready for Woollett and the &ldquo;art&rdquo; of advertising, who seems somewhat tired of Mme de Vionnet and perhaps unfaithful to her, Strether appeals &ldquo;by all you hold sacred&rdquo; to remain in Paris (bk. 12, chap. 4). Strether finally sees beneath the charm of his new manners Chad&rsquo;s limited consciousness; Chad has spoken of being tired of Mme de Vionnet &ldquo;as he might have spoken of being tired of roast mutton for dinner.&rdquo; And Strether calls Chad to moral responsibility as intensely as he might once have done, but the moral vision comes now out of a breadth of consciousness that would have been unimaginable in his early talk with Maria Gostrey. &ldquo;You owe her everything,&rdquo; he tells Chad, &ldquo;very much more than she can ever owe you. You&rsquo;ve in other words duties to her, of the most positive sort; and I don&rsquo;t see what other duties . . . can be held to go before them&rdquo; (bk. 12, chap. 4).</p>
+
+        <p>As Strether later recounts the meeting to Maria Gostrey, he recognizes the &ldquo;portentous solemnity&rdquo; of his moral view, but, he concludes, &ldquo;I was made so.&rdquo; And he must leave Maria and Paris so as not to get anything for himself: &ldquo;To be right.&rdquo; Just as the early moral attitudes had to give way to the more inclusive awareness that aesthetic ordering permitted, so now the scope of the aesthetic is in turn enlarged&mdash;but in a far different way and with much more at stake&mdash;by the concern with conduct. Mme de Vionnet is more and less than she was, Chad&rsquo;s change seems less complete, and even Maria and her &ldquo;hundred cases and categories&rdquo; must be surrendered to a final view that is sterner. &ldquo;It was awkward, it was almost stupid, not to seem to prize&rdquo; the beauty and knowledge in Maria&rsquo;s life and in her offer of love (bk. 12, chap. 5). But, as James put it in the &ldquo;project&rdquo; for the novel, Strether &ldquo;has come so far through his little experience that he has come out on the other side&mdash;on the other side even of a union with Miss Gostrey. He must go back as he came&mdash;or rather, really, so quite other that, in comparison, marrying Miss Gostrey would be almost of the same order.&rdquo; The sternness comes of an acceptance of consciousness, with all its privileges and pains, at the expense of all else.</p>
+    </article>
+
+    <script>
+        const toggle = document.getElementById('theme-toggle');
+        const icon = document.getElementById('theme-icon');
+
+        toggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+            toggle.title = isDark ? 'Modo Diurno' : 'Modo Nocturno';
+            toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+        });
+    </script>
+
+</body>
+</html>

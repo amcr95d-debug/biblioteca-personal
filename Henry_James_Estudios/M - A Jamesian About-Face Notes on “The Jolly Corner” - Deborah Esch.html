@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deborah Esch - A Jamesian About-Face: Notes on "The Jolly Corner"</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* =========================================
+           COLORES (Modo Diurno - International Klein Blue)
+           ========================================= */
+        :root {
+            --bg-body: #002FA7;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.88);
+            --text-muted: rgba(255, 255, 255, 0.6);
+            --border-color: rgba(255, 255, 255, 0.35);
+            --border-light: rgba(255, 255, 255, 0.15);
+            --fab-bg: #ffffff;
+            --fab-color: #002FA7;
+            --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+            --quote-border: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Modo Nocturno - Deep Navy Blue */
+        body.dark-mode {
+            --bg-body: #001233;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.85);
+            --text-muted: rgba(255, 255, 255, 0.5);
+            --border-color: rgba(255, 255, 255, 0.2);
+            --border-light: rgba(255, 255, 255, 0.1);
+            --fab-bg: #ffffff;
+            --fab-color: #001233;
+            --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+            --quote-border: rgba(255, 255, 255, 0.4);
+        }
+
+        /* =========================================
+           ESTILOS GENERALES
+           ========================================= */
+        * { transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease; }
+        
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            line-height: 1.75;
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 2em 1.5em 5em;
+            color: var(--text-primary);
+            background-color: var(--bg-body);
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 0.2em;
+            font-weight: normal;
+            letter-spacing: 0.05em;
+            color: var(--text-primary);
+        }
+
+        h2 {
+            font-size: 1.4em;
+            text-align: center;
+            margin-top: 2.5em;
+            margin-bottom: 1.5em;
+            font-weight: bold;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        h3 {
+            font-size: 1.1em;
+            text-align: center;
+            margin-top: 2.5em;
+            margin-bottom: 1em;
+            font-weight: bold;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        p {
+            text-align: justify;
+            margin-bottom: 1.2em;
+            text-indent: 1.5em;
+        }
+
+        p.no-indent { text-indent: 0; }
+
+        blockquote {
+            margin: 1.5em 2em;
+            padding-left: 1.5em;
+            border-left: 3px solid var(--quote-border);
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        blockquote p { text-indent: 0; margin-bottom: 0.8em; }
+
+        .poem {
+            margin: 1.5em 2em;
+            font-style: italic;
+            text-indent: 0;
+        }
+
+        .poem p {
+            text-indent: 0;
+            margin-bottom: 0.3em;
+            text-align: left;
+            padding-left: 2em;
+            text-indent: -2em;
+        }
+
+        em { font-style: italic; }
+
+        sup {
+            font-size: 0.75em;
+            vertical-align: super;
+            line-height: 0;
+        }
+
+        .page-number {
+            display: block;
+            text-align: center;
+            font-size: 0.8em;
+            color: var(--text-muted);
+            margin: 2em 0 1em 0;
+        }
+
+        .footnotes {
+            margin-top: 4em;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5em;
+            font-size: 0.9em;
+            color: var(--text-secondary);
+        }
+
+        .footnotes h3 {
+            text-align: left;
+            font-size: 1em;
+            margin-bottom: 1em;
+            text-transform: none;
+            letter-spacing: normal;
+            color: var(--text-primary);
+        }
+
+        .footnotes p {
+            text-align: left;
+            text-indent: -1.5em;
+            padding-left: 1.5em;
+            margin-bottom: 0.6em;
+            font-size: 0.9em;
+        }
+
+        .section-break {
+            text-align: center;
+            margin: 2.5em 0;
+            font-weight: bold;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.1em;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 2em;
+        }
+
+        .epigraph {
+            margin: 1.5em 2em 2.5em;
+            padding-left: 1.5em;
+            border-left: 3px solid var(--quote-border);
+            font-style: italic;
+            color: var(--text-secondary);
+            font-size: 0.95em;
+        }
+
+        .epigraph p {
+            text-indent: 0;
+            margin-bottom: 0.5em;
+            text-align: left;
+        }
+
+        .epigraph .attribution {
+            text-align: right;
+            font-style: normal;
+            font-size: 0.9em;
+            color: var(--text-muted);
+            margin-top: 0.5em;
+        }
+
+        .source-note {
+            text-align: center;
+            font-size: 0.85em;
+            color: var(--text-muted);
+            margin-bottom: 2em;
+            font-style: normal;
+        }
+
+        /* =========================================
+           BOTÓN FLOTANTE (Modo Nocturno)
+           ========================================= */
+        .fab-toggle {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background-color: var(--fab-bg);
+            color: var(--fab-color);
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease;
+            z-index: 1000;
+            outline: none;
+        }
+        .fab-toggle:hover { transform: scale(1.1); }
+        .fab-toggle:active { transform: scale(0.95); }
+        .fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            body { padding: 1.2em 1em 4em; }
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.1em; }
+            .fab-toggle { bottom: 16px; right: 16px; width: 50px; height: 50px; }
+            .fab-toggle .material-icons { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo Nocturno">
+        <i class="material-icons" id="theme-icon">dark_mode</i>
+    </button>
+
+    <article id="content">
+        <h1>Deborah Esch</h1>
+        <p class="subtitle">A Jamesian About-Face:<br>Notes on &ldquo;The Jolly Corner&rdquo;</p>
+
+        <div class="epigraph">
+            <p>And we know how the possible&mdash;that ghostly and unreal life of what might have been, figures with which we have a standing rendezvous&mdash;exerted a dangerous, sometimes almost insane attraction on James, which perhaps art alone enabled him to explore and exorcise.</p>
+            <p class="attribution">&mdash;MAURICE BLANCHOT</p>
+        </div>
+
+        <p class="source-note">From <em>ELH</em> 50, no. 3 (Fall 1983). &copy; 1983 by the Johns Hopkins University Press and &copy; 1985 by Deborah Esch.</p>
+
+        <p>The question of unrealized possibilities&mdash;of what one might have done, who one might have become, had circumstances been different&mdash;is posed with notable persistence in James&rsquo;s narratives, the autobiographical and critical as well as the fictive. Dencombe, the figure for the writer in a tale called &ldquo;The Middle Years,&rdquo; is a dying novelist obsessed with the idea of revision (the reader finds him compulsively correcting the proofs of what turns out to be his last novel, <em>The Middle Years</em>), with the books he might have written and might still write if he could only get, as he laments, an &ldquo;extension.&rdquo; When a number of prominent authors were asked, during a recent symposium on literary composition, to reflect back on their own careers in order to name the work they would most like to have produced, at least one participant recognized a Jamesian note in the question, and responded in kind:</p>
+
+        <blockquote>
+            <p>In a story by Henry James, &ldquo;The Jolly Corner,&rdquo; a man at night looks in an empty house for the ghost of the person he could have been if his life had been different. The house is that of his youth. In it, thus, are all the possibilities that have not come true.</p>
+            <p>At dawn the man sees his ghost, and it frightens him. This is the story I would have wanted to write, or that I would have wanted to live, or the story in which I identify myself when I try to imagine the books that I could have written instead of those I have.</p>
+        </blockquote>
+
+        <p>With his choice of James&rsquo;s late ghost story, Italo Calvino, himself a raconteur with a penchant for the fantastic, provides a concise plot summary along with an appropriate point of departure for a reading of &ldquo;The Jolly Corner.&rdquo; Like Spencer Brydon, the tale&rsquo;s protagonist, Calvino is asked to conceive of &ldquo;possibilities that have not come true&rdquo; for him, and he finds the question itself thematized in the work he would have written. What is more, Calvino not only identifies the story, but does so several times over, in a process of revision punctuated by &ldquo;or&rdquo; that, in effect, opens two distinct avenues of interpretation to other readers of the tale.</p>
+
+        <p>On the one hand, the story might be read as &ldquo;the exploration of a consciousness and the education of a perception&rdquo;&mdash;that is, as a narrative of self-identification (&ldquo;the one in which I identify myself&rdquo;) and eventual self-consciousness on the part of character (Brydon) and reader (here, Calvino). In this light, altogether familiar in the criticism of James&rsquo;s fiction, &ldquo;the house on the jolly corner, like the House of Usher, becomes the emblem of a mind,&rdquo; and the tale is understood to enact the painful ordeal of that mind as it struggles to fuller consciousness of itself. On the other hand, a slight shift of emphasis in Calvino&rsquo;s assessment would suggest that &ldquo;The Jolly Corner&rdquo; might be read in another light as well: the story he would have wanted to write, the one that comes to mind when he tries to imagine the books he could have written, might be approached in terms of reading (and self-reading) and writing (and self-writing). The many attentive interpreters who have traced and retraced the Jamesian &ldquo;coming to terms&rdquo; in the psychological and the epistemological senses of a character&rsquo;s becoming reconciled to his or her hard-won self-consciousness tend to overlook the other, rhetorical significance of the activity of mind indicated by this phrase: namely, that of finding the &ldquo;terms&rdquo; that will turn its experience into a writable, readable narrative. It is presumably clear, even to the reader for whom language as such is not an issue in the fiction, that the crucial terms arrived at by the Jamesian consciousness (whether narrator or character) are invariably terms of comparison, or metaphors. Yet this observation is generally relegated by the critics to a discussion of style or technique as categories understood to subsume this aspect of the prose, rather than serving as a spur to the interpretation of the pervasive figures of speech themselves. This neglect of James&rsquo;s consistent and explicit appeal to figurative language is particularly perplexing in the case of &ldquo;The Jolly Corner,&rdquo; a tale that turns upon the consequences, for character, narrator, and reader, of &ldquo;strange figures&rdquo; lurking in the text in the guise of familiar idioms. For the reader who acknowledges the force of these metaphors, the suspense attending this ghost story is displaced from the recounted act or event to the narrative&rsquo;s textual surface. The &ldquo;ordeal of consciousness,&rdquo; in this exemplary Jamesian narrative, is a function of the process of figuration that it thematizes&mdash;of the ordeal, that is, of reading and writing.</p>
+
+        <p>&ldquo;The Jolly Corner&rdquo; was first published in December 1908 in Ford Madox Hueffer&rsquo;s newly-founded <em>English Review</em>, after suffering rejection by a number of other editors. In keeping with James&rsquo;s characteristic practice of revision, even this late tale underwent minor modification as it passed from the journal to volume 17 of the New York edition. In most respects, however, the two versions are identical: they recount a critical moment in the history of Spencer Brydon, a middle-aged American expatriate who, after a sojourn of thirty-three years in Europe, returns to New York and his ancestral home. To this extent, the tale has some autobiographical basis, and critics have rightly recognized aspects of the author&rsquo;s career in that of his character. James returned to his birthplace in 1904, following an absence of twenty-two years, on a journey that is documented in the essay &ldquo;New York Revisited,&rdquo; collected in <em>The American Scene</em>. Like Brydon, James finds the city greatly changed, in ways he had not anticipated. He articulates his ambivalence, as a &ldquo;revisiting spirit,&rdquo; by way of a figure of writing, of inscription: &ldquo;It was an extraordinary statement on the subject of New York that the space between Fourteenth Street and Washington Square should . . . figure as the old ivory of an overscored tablet.&rdquo; The nostalgic narrative of his own history is disrupted by the most drastic alteration James discovers on his homecoming: the &ldquo;house of his youth&rdquo; has been razed to make room for &ldquo;a high, square, impersonal structure&rdquo; that &ldquo;so blocks, at the right moment for its own success, the view of the past, that the effect for me, in Washington Place, was of having been amputated of half my history.&rdquo; Having linked the activity of remembering with one of dismembering, he further figures his disenchantment as follows:</p>
+
+        <blockquote>
+            <p>This was the snub, for the complacency of retrospect, that, whereas the inner sense had positively erected there for its private contemplation a commemorative mural tablet, the very wall that should have borne this inscription had been smashed as for demonstration that tablets, in New York, are unthinkable. . . . Where, in fact, is the point of inserting a mural tablet, at any legible height, in a building certain to be destroyed to make room for a sky-scraper?</p>
+        </blockquote>
+
+        <p>Spencer Brydon likewise experiences a mixed response of fascination and dismay on his belated return to New York, and borrows James&rsquo;s figure of the &ldquo;overscored tablet&rdquo; when he compares the city to &ldquo;some vast ledger-page, overgrown, fantastic, of ruled and criss-crossed lines and figures&rdquo; (this and subsequent references to &ldquo;The Jolly Corner&rdquo; and others of James&rsquo;s novels, essays, and tales are to the New York edition). He is repelled by the philistine values everywhere in evidence, judging them &ldquo;vulgar&rdquo; and &ldquo;monstrous&rdquo; (epithets that will reappear later in the story). But Brydon&rsquo;s perspective is not &ldquo;blocked,&rdquo; his history is not &ldquo;amputated,&rdquo; by the unexpected loss of his birthplace sustained by James. He is the possessor of two properties in the city, and has returned in part to inspect them, their rent having financed his life abroad. One of these, the unoccupied house on the site named in the title, is his ancestral home. It is also the house he comes to haunt in pursuit of the character he might have been had he lived those thirty-three years in his native city. Brydon&rsquo;s nightly vigil in the great vacant structure culminates in a stunning scene of recognition, when his <em>alter ego</em>, the &ldquo;I&rdquo; of his increasingly obsessive &ldquo;I might have been,&rdquo; finally materializes and confronts him face to face.</p>
+
+        <p>Thematically, &ldquo;The Jolly Corner&rdquo; broke little new ground for James. Brydon&rsquo;s pilgrimage to New York is in some respects a revision of that of Clement Searle, the protagonist of &ldquo;A Passionate Pilgrim,&rdquo; a tale written more than thirty years earlier. And the preliminary notes for James&rsquo;s last novel, <em>The Sense of the Past</em>, record the use he made of a &ldquo;scrap&rdquo; of that unfinished work, which also featured a ghost of sorts, in composing &ldquo;The Jolly Corner.&rdquo; In the story-line borrowed for the shorter narrative, the</p>
+
+        <blockquote>
+            <p>hero&rsquo;s adventure there takes the form so to speak of his turning the tables, as I think I called it, on a &ldquo;ghost&rdquo; or whatever, a visiting or haunting apparition otherwise qualified to appall <em>him</em>, and thereby winning a sort of victory, by the appearance, and the evidence, that this personage or presence was more overwhelmingly affected by him than he by it.</p>
+        </blockquote>
+
+        <p>The language in this excerpt from the notebooks rehearses the earlier account, in the autobiographical volume <em>A Small Boy and Others</em>, of a memorable scene of James&rsquo;s childhood&mdash;the Galerie d&rsquo;Apollon in the Louvre, an old haunt of his youth&mdash;and the setting it provided for a dream he had later in life. The climax of the dream that James called &ldquo;the most appalling yet most admirable nightmare&rdquo; of his life was</p>
+
+        <blockquote>
+            <p>the sudden pursuit, through an open door, along a huge high saloon, of a just dimly-described figure that retreated in terror before my rush and dash . . . out of the room I had a moment before been desperately, and all the more abjectly, defending by the push of my shoulder against hard pressure on the lock and bar from the other side. The lucidity, not to say the sublimity, of the crisis had consisted of the great thought that I, in my appalled state, was probably still more appalling than the awful agent, creature, or presence, whatever he was. . . . The triumph of my impulse, perceived in a flash as I acted on it by myself at a bound, forcing the door outward, was the grand thing, but the great point of the whole was the wonder of my final recognition. Routed, dismayed, the tables turned on him by my so surpassing him for straight aggression and dire intention, my visitant was already but a diminished spot in the long perspective, the tremendous, glorious hall, as I say, over the far-gleaming floor of which . . . he sped for <em>his</em> life.</p>
+        </blockquote>
+
+        <p>The &ldquo;final recognition&rdquo; James alludes to&mdash;that he has prevailed over &ldquo;the awful agent, creature, or presence&rdquo;&mdash;is predicated on a prior <em>self</em>-recognition on the part of the dreamer; insofar as James is able to identify himself as the first person in the nightmare, the account can constitute further autobiographical material for the story he would subsequently write. In both of the passages cited, the idiomatic expression &ldquo;turning the tables&rdquo; is used to convey the essential affair of the narrative, which in each case is an act of reversal performed by the protagonist. Spencer Brydon credits himself with the same fait accompli in the text of &ldquo;The Jolly Corner,&rdquo; when he reflects, by way of a rhetorical question, on the turn his situation has taken: &ldquo;People enough, first and last, had been in terror of apparitions, but who had ever before so turned the tables and become himself, in the apparitional world, an incalculable terror?&rdquo; &ldquo;Turning the tables&rdquo; is a figure of speech based on a meaning of &ldquo;table&rdquo; other than that invoked earlier, of a tablet bearing or intended for inscription, a memorial plaque fixed in a wall, or a notice-board (<em>OED</em>); the sense of &ldquo;table&rdquo; in James&rsquo;s recurrent phrase is that of a game-board, as in chess. The player who does the turning rotates the board so as to reverse the relative positions of the opponents, putting each in the other&rsquo;s former place. In James&rsquo;s dream and in the story, the protagonist&rsquo;s sense of &ldquo;victory,&rdquo; of &ldquo;triumph,&rdquo; consists in his having effected such an about-face. On the night following his third absence from the house, calculated to lull his quarry into a false sense of reprieve, Brydon recommences his vigil with a fresh certainty, formulated in terms of another analogy with a bigger game: &ldquo;&lsquo;I&rsquo;ve hunted him till he has &lsquo;turned&rsquo;: that, up there, is what has happened&mdash;he&rsquo;s the fanged or the antlered animal brought at last to bay.&rsquo;&rdquo; The cornered prey, according to the metaphor of the chase, senses that escape is impossible and is obliged to turn and face the hunter.</p>
+
+        <p>The &ldquo;turning&rdquo; that Brydon attributes to his own cleverness and persistence in keeping pace with his adversary is placed within the quotation marks that appear with remarkable frequency in James&rsquo;s prose&mdash;often, but by no means exclusively, around clich&eacute;s&mdash;to indicate that the word or expression quoted signifies in the manner of &ldquo;so to speak&rdquo; or &ldquo;as it were&rdquo;&mdash;that is, figuratively. It is not, then, a literal turning that Brydon is convinced has taken place, but a revolution of another sort. Immediately following his reflection, the narrative first person intrudes, as it will do no more than three times in the course of the tale, to emphasize the decisiveness of Brydon&rsquo;s coming-to-terms: &ldquo;There came to him, as I say&mdash;but determined by an influence beyond my notation!&mdash;the acuteness of this certainty.&rdquo; It is an arresting moment in the story, marking an unbidden and seemingly unwarranted confession: it represents, in fact, the intervention of the narrator to call into question the possibility of a sufficient narration. Is the reader, then, to understand this interjection as an expression of undue self-effacement on the part of the narrator, who has so far been equal to the twists and turns of Brydon&rsquo;s obsessive pursuit? If so, it is curious that a second such intrusion is made for the express purpose of affirming the adequacy of the narrative notation to what is transpiring:</p>
+
+        <blockquote>
+            <p>Discretion&mdash;he jumped at that; and yet not, verily, at such a pitch, because it saved his nerves or his skin, but because, much more valuably, it saved the situation. When I say he &ldquo;jumped&rdquo; at it I feel the consonance of this term with the fact that&mdash;at the end indeed of I know not how long&mdash;he did move again, he crossed straight to the door.</p>
+        </blockquote>
+
+        <p>Once again, the quotation marks around &ldquo;jumped&rdquo; indicate not only that the narrator is citing himself in a gesture of linguistic reflection, but also that he is using the term figuratively, to signify a moment in Brydon&rsquo;s thought process. In this case, the character&rsquo;s subsequent action, his virtual leap across the room, justifies the narrator&rsquo;s &ldquo;notation&rdquo; by literally acting it out. In the earlier instance of intrusion, the operation of an &ldquo;influence beyond his notation&rdquo; might, of course, rather be understood as a narrative strategy in keeping with the ostensibly uncanny, supernatural elements of the tale. But whether the remark is read ironically or taken at face value, it remains for the reader to pursue the logic and validity of the claims here being made, by character as well as narrator. This entails posing interpretive questions that are, once again, rhetorical: not because they are necessarily asked in order to produce an effect rather than to elicit a reply, but because they can be answered only with respect to the rhetorical structures and strategies in the story. Has Brydon succeeded, as he here persuades himself, in &ldquo;turning the tables&rdquo; once and for all to vanquish his <em>alter ego</em>? And is there indeed at work in the tale a determining influence that is beyond the narrative&rsquo;s ability to account for it?</p>
+
+        <p>The two questions&mdash;of the status of Brydon&rsquo;s relation to the figure for his other self, and of the status of narrative notation&mdash;are, to a considerable extent, congruent. In fact, Brydon sees his life as a linear history, a time-line along which he can trace actions and events backward and, at a fork in the path marking two incompatible routes, choose (albeit hypothetically) the alternate one. He longs to rewrite the story of his life from the moment of that choice, recover his lost opportunities, and rescue his unfulfilled potential. From the outset, before he is even conscious of its character and scope, Brydon&rsquo;s obsession with his conditional-imperfect past is articulated most forcefully by way of his own explicit metaphors and analogies, notably those already mentioned whose terms involve pursuit and confrontation. Early in the tale, his companion and confidante Alice Staverton observes, with the &ldquo;slightly greater effect of irony&rdquo; that distinguishes her version of the matter from Brydon&rsquo;s, that in view of the aptitude for business he has demonstrated in an exchange with a building firm representative, he has clearly neglected a real talent, a genius in fact, and could doubtless have &ldquo;anticipated the inventor of the sky-scraper&rdquo; if he had remained in New York. Her words constitute a refrain (&ldquo;If he had but stayed at home. . . . If he had but stayed at home&rdquo;) and strike a chord that reverberates in Brydon&rsquo;s consciousness long after they are spoken, prompting his own speculation:</p>
+
+        <blockquote>
+            <p>It had begun to be present to him after the first fortnight, it had broken out with the oddest abruptness, this particular wanton wonderment: it met him there&mdash;and this was the image under which he himself judged the matter, or at least, not a little, thrilled and flushed with it&mdash;very much as he might have been met by some strange figure, some unexpected occupant, at a turn of one of the dim passages of an empty house. The quaint analogy quite hauntingly remained with him, when he didn&rsquo;t indeed rather improve it by a still intenser form: that of his opening a door behind which he would have made sure of finding nothing, a door into a room shuttered and void, and yet so coming, with a great suppressed start, on some quite erect confronting presence, something planted in the middle of the place and facing him through the dusk.</p>
+        </blockquote>
+
+        <p>As Brydon&rsquo;s analogy unfolds, his conception of what he might have been, which has itself no phenomenal existence, assumes the shape and substance of this &ldquo;strange figure&rdquo; as a result of what the narrator terms &ldquo;the strangest, the most joyous, possibly the next minute almost the proudest, duplication of consciousness.&rdquo; But the vocabulary of consciousness cannot sufficiently account for the structure of Brydon&rsquo;s reflection and the specificity of the form it generates. What escapes the character, and apparently the narrator as well, is the realization that Brydon&rsquo;s agency (which for him, as avowedly for James, consists in his ritually turning the tables to triumph over his <em>alter ego</em>) in fact manifests itself as an ongoing activity of literalization, a turning of the tables on his own figures in an effort to fix their significance once and for all. With his nocturnal vigil on the jolly corner, he grants &ldquo;all the old baffled forsworn possibilities&rdquo; of the life he has missed precisely the form that a visiting apparition might have:</p>
+
+        <blockquote>
+            <p>What he did therefore by this appeal of his hushed presence was to wake them into such measure of ghostly life as they might still enjoy . . . they had taken the Form he so longed to make them take, the Form he at moments saw himself in the light of fairly hunting on tiptoe . . . from room to room and from storey to storey.</p>
+        </blockquote>
+
+        <p>If the criticism of consciousness has no precise name for Brydon&rsquo;s &ldquo;strange figure,&rdquo; for the &ldquo;Form&rdquo; with a capital <em>F</em> that he grants his imagined past, rhetoric can supply the missing term: <em>prosopopoeia</em> designates the figure that makes present to the senses something abstract and not susceptible of phenomenalization. In giving a face (<em>prosopon</em>) or the semblance of one (<em>prosopeion</em>, a later variant denoting <em>mask</em>) to an entity that lacks a literal visage, prosopopoeia serves as a guarantor of its existence. In its stricter sense, prosopopoeia is usually accompanied by personification, and often by apostrophe (it is the conventional figure of address in lyric poetry, and constitutive of the form of the ode). According to Pierre Fontanier in his rhetorical handbook <em>Les figures du discours</em>, prosopopoeia consists in</p>
+
+        <blockquote>
+            <p>somehow staging [<em>mettre en sc&egrave;ne</em>] the absent, the dead, supernatural beings, or even inanimate objects, to make them act, speak, respond; or at least to take them for confidants, witnesses, guarantors, accusers, avengers, judges; and this, either in jest [<em>par feint</em>] or in earnest, depending upon whether one is master of one&rsquo;s imagination.</p>
+        </blockquote>
+
+        <p>While his preoccupation is evidently in earnest, whether Spencer Brydon is master of his imagination, and of the images it figures forth, is a pressing question for a reading of &ldquo;The Jolly Corner.&rdquo; The obsession with his <em>alter ego</em> takes on the form, the phenomenality, of the &ldquo;strange figure&rdquo; in order to satisfy Brydon&rsquo;s own design; it is thus no longer, to his mind, merely conceptual and so subject to doubt, but can afford him the clarity and distinctness of a perception whose &ldquo;sense&rdquo; is perfectly accessible: &ldquo;He knew what he meant and what he wanted; it was as clear as the figure on a cheque presented in demand for cash. His <em>alter ego</em> &lsquo;walked&rsquo;&mdash;that was the note of his image of him, while his image of his motive for his own odd pastime was the desire to waylay him and meet him.&rdquo; But Brydon, in his eagerness to confront his other self, gets his figures confused: it seems he cannot tell (or cannot admit) the difference between the figure indicated on a check, a number that represents a fixed amount of money and can be exchanged on demand for that sum, and the &ldquo;strange figure&rdquo; of his earlier analogy&mdash;the prosopopoeia&mdash;to which he is attempting to assign as stable a significance by literalizing it&mdash;that is, by turning what he might have turned into into an actual, palpable presence. In other words, Brydon cannot read the word &ldquo;figure,&rdquo; though he uses it repeatedly, because he cannot tell (or admit) the difference between its literal and figurative senses. He has forgotten, if he ever knew, that the figure of his <em>alter ego</em> is a figure by virtue of the linguistic process of figuration. Moreover, he is unable to read the quotation marks that are of his own inscription, unable to tell (or admit) the difference between <em>walked</em> and &ldquo;walked.&rdquo; His claim to knowing &ldquo;what he meant and what he wanted&rdquo; becomes a self-deception based on a refusal <em>not</em> to literalize his own figures of speech.</p>
+
+        <p>This self-mystification sometimes takes the form of delusions of grandeur&mdash;Brydon is convinced that no one before him has ever achieved a frame of mind or forged a set of circumstances comparable to his own. He imagines himself, at one point in his adventure, as a Lancelot figure undergoing a test of courage:</p>
+
+        <blockquote>
+            <p>This was before him in truth as a physical image, an image almost worthy of an age of greater romance. That remark indeed glimmered for him only to glow the next instant with a finer light; since what age of romance, after all, could have matched either the state of his mind or, &ldquo;objectively,&rdquo; as they said, the wonder of his situation? The only difference would have been that, brandishing his dignities over his head as in a parchment scroll, he might then&mdash;that is in the heroic time&mdash;have proceeded downstairs with a drawn sword in his other grasp.</p>
+            <p>At present, really, the light he had set down on the mantel would have to figure his sword; which utensil, in the course of a minute, he had taken the requisite number of steps to possess himself of.</p>
+        </blockquote>
+
+        <p>In the final sentence in the passage, the narrative voice resumes a description of the action, and reminds the reader that the instrument Brydon brandishes is not &ldquo;really&rdquo; the imagined sword; he merely gets hold of the closest figural facsimile, the candle, since there is no literal rapier at hand. But the text affords Brydon numerous other opportunities to practice his penchant for literalizing his own figures of speech. In an exchange with Alice Staverton, he offers an analogy for his &ldquo;rage of curiosity&rdquo; about what might have been:</p>
+
+        <blockquote>
+            <p>[It] brings back what I remember to have felt, once or twice, after judging best, for reasons, to burn some important letter unopened. I&rsquo;ve been sorry, I&rsquo;ve hated it&mdash;I&rsquo;ve never known what was in the letter. You may say it&rsquo;s a trifle . . . I shouldn&rsquo;t care if you did! . . . and it&rsquo;s only a figure, at any rate, for the way I now feel.</p>
+        </blockquote>
+
+        <p>The analogy is based, as the reader discovers, on an act Brydon has performed &ldquo;once or twice&rdquo; in the past&mdash;a gesture that is of course charged with symbolic significance (the same decisive measure is enacted by Kate Croy in a pivotal moment near the conclusion of <em>The Wings of the Dove</em>, when she burns Milly Theale&rsquo;s final letter to Densher before he can open it). In this instance, Brydon insists on the figurative status of his comparison, as if for Alice&rsquo;s instruction. Yet in another early dialogue, she catches him, as it were, in the act. When he takes her to see the house of his youth, he denies having even the ghost of a reason for holding on to it, rather than capitalizing on its prime location and sacrificing it for financial gain, as he has the second, inferior property. Alice replies by asking, elliptically, whether &ldquo;the &lsquo;ghost&rsquo; of one doesn&rsquo;t, much rather, serve&mdash;?&rdquo; Her intonational quotation marks themselves serve to indicate that &ldquo;ghost,&rdquo; in his phrase &ldquo;ghost of a reason,&rdquo; is a trope, a catachresis. Brydon masks his uneasiness at her so taking note of his guilty figure with a literalizing response that tries to make light of her acuity: &ldquo;Oh ghosts&mdash;of course the place must swarm with them! I should be ashamed of it if it didn&rsquo;t.&rdquo; The narrative is then given over to conjecture about Alice&rsquo;s subsequent thoughts:</p>
+
+        <blockquote>
+            <p>Miss Staverton&rsquo;s gaze again lost itself, and things she didn&rsquo;t utter, it was clear, came and went in her mind. She might even for the minute, off there in the fine room, have imagined some element dimly gathering. Simplified like the death-mask of a handsome face, it perhaps produced for her just then an effect akin to the stir of an expression in the &ldquo;set&rdquo; commemorative plaster. Yet whatever her impression may have been she produced instead a vague platitude. &ldquo;Well, if it were only furnished and lived in&mdash;!&rdquo;</p>
+        </blockquote>
+
+        <p>The death mask, the prosopopoeia, produces more than the &ldquo;stir of an expression,&rdquo; or &ldquo;a vague platitude&rdquo;: it furnishes the house with the kind of haunting apparition Brydon alludes to in an offhand way when he literalizes the phrase &ldquo;ghost of a reason.&rdquo; Again, he forgets the rhetorical status of the figure, and seeks to engage it as an opponent in a battle of wits&mdash;in the text&rsquo;s phrase, a &ldquo;concentrated conscious <em>combat</em>&rdquo;:</p>
+
+        <blockquote>
+            <p>he had tasted of no pleasure so fine as his actual tension, had been introduced to no sport that demanded at once the patience and the nerve of this stalking of a creature more subtle, yet at bay perhaps more formidable, than any beast of the forest. The terms, the comparisons, the very practices of the chase positively came again into play; there were even moments when passages of his occasional experience as a sportsman, stirred memories, from his younger time, of moor and mountain and desert, revived for him&mdash;and to the increase of his keenness&mdash;by the tremendous force of analogy.</p>
+        </blockquote>
+
+        <p>The analogy of the hunt is one that James himself uses, in his preface to <em>The Golden Bowl</em> and elsewhere, to represent the pleasure he takes in writing fiction, which he calls &ldquo;the entertainment of the great game,&rdquo; and an &ldquo;inordinate intellectual &lsquo;sport.&rsquo;&rdquo; In Brydon&rsquo;s reliance on the metaphor of the chase, &ldquo;the terms, the comparisons,&rdquo; that he brings into play are in effect denied the &ldquo;play&rdquo; of possible signification that is the mark of figurative language; they are instead positively put into practice, enacted by the character&rsquo;s literalizing compulsion, in order that their meaning may become one&mdash;and only one&mdash;with his purpose. In the opening paragraph of the tale, when Brydon finds his belated return to his native city attended by one surprise after another, he reasons that this &ldquo;might be natural when one had so long and so consistently neglected everything, taken pains to give surprise so much margin for play.&rdquo; He discovers soon enough that &ldquo;margin for play&rdquo; is precisely what he has not given, what he cannot afford to give:</p>
+
+        <blockquote>
+            <p>The great fact all the while however had been the incalculability; since he <em>had</em> supposed himself, from decade to decade, to be allowing, and in the most liberal and intelligent manner, for brilliancy of change. He actually saw that he had allowed for nothing; he missed what he would have been sure of finding, he found what he never would have imagined.</p>
+        </blockquote>
+
+        <p>Later, when his <em>alter ego</em> is brought at last to bay, in the logical conclusion to the figural chain set in motion by the metaphor of the hunt, Brydon again finds what he never would have imagined&mdash;&ldquo;it proved, of all the conceivable impressions, the one least suited to his book.&rdquo; He realizes, namely, that his prey has &ldquo;turned,&rdquo; and is now tracking <em>him</em> at a distance, keeping him (as Brydon imagines) in sight while he remains blind to his own position vis &agrave; vis his adversary. Indeed, as Brydon reflects, &ldquo;prey&rdquo; has become, &ldquo;by so sharp an irony&rdquo;&mdash;that is, by the sharp about-face of the figure, the turn of the trope&mdash;&ldquo;so little the term now to apply.&rdquo;</p>
+
+        <p>His conviction that the tables have been turned on him is, as the narrator intercedes to emphasize, &ldquo;determined by an influence beyond my notation.&rdquo; But it is only when Brydon comes upon the closed door to the fourth-floor room with no alternate access (recalling the door in his original analogy, and in James&rsquo;s twice-told nightmare)&mdash;the door he is certain he has left open, in accordance with his policy&mdash;that he experiences &ldquo;the violent shock of having ceased happily to forget.&rdquo; When he must (involuntarily) remember the rhetorical status of the figure, the possibility of another agent&rsquo;s being at work presents itself: &ldquo;Another agent?&mdash;he had been catching, as he felt, a moment back, the very breath of him; but when had he been so close as in this simple, this logical, this completely personal act? It was so logical, that is, that one might have <em>taken</em> it for personal . . . and this time, as much as one would, the question of danger loomed.&rdquo; The act and the agency in question are &ldquo;so logical&rdquo; that they might be taken for &ldquo;personal&rdquo;&mdash;and are mistaken for such by Brydon in the form of the prosopopoeia, the figure that gives phenomenality to his speculation and desire, to the point of their being incarnated in the person of his projected <em>alter ego</em>.</p>
+
+        <p>Brydon expresses earlier in his adventure an appreciation for the <em>impersonal</em>, which he evokes by opening the shutters of the upper rooms out onto the night. He relishes</p>
+
+        <blockquote>
+            <p>the sense of the hard silver of the autumn stars through the window-panes, and scarcely less the flare of the street-lamps below, the white electric lustre which it would have taken curtains to keep out. This was human actual social; this was of the world he had lived in, and he was more at his ease certainly for the countenance, coldly general and impersonal, that all the while and in spite of his detachment it seemed to give him.</p>
+        </blockquote>
+
+        <p>In his anxiety, Brydon takes comfort in the impersonal &ldquo;countenance&rdquo;&mdash;in the sense of moral support or encouragement&mdash;offered him by the vision of the world outside his private ordeal. Now, however, as &ldquo;the question of danger looms,&rdquo; what he had taken for personal&mdash;the operation of the strange figure in the act of closing the door&mdash;proves to be the function of another countenance, one he mistook for personal, but which, as a linguistic phenomenon, is strictly impersonal: namely, the countenance of the prosopopoeia by which he has given a face, a form, a personality, to a conception. The potential danger, however, does not arise from any real threat posed by this &ldquo;prodigy of a personal presence,&rdquo; odious as it appears to Brydon when it finally presents itself to block his escape from the house. The hazard stems from his conceivable loss of mastery over his discourse&mdash;from the possibility that his metaphors are out of his control. The figure refuses to be restricted to the significance assigned it by Brydon, and lets him know as much, by way of a sign: &ldquo;Shut up there, at bay, defiant, and with the prodigy of the thing palpably proveably <em>done</em>; thus giving notice like some stark signboard&mdash;under that accession of accent the situation itself had turned, and Brydon at last remarkably made up his mind on what it had turned to.&rdquo;</p>
+
+        <p>When it is no longer merely the tables that have turned, but the situation itself, the relative positions of the players in this elaborate game are no longer clear, and neither are the &ldquo;terms to apply.&rdquo; This includes, to some extent, the terms that have organized the reading thus far: literal and figurative, terms that appear, parenthetically, in the text of the tale. Brydon&rsquo;s fear that, if he returns to check on the door closed by the phantom, he might find it open again, and the figure at large in the house, takes the &ldquo;awful specific form&rdquo; of the image of throwing himself out the window. It is a chance he decides not to take, opting instead for &ldquo;uncertainty&rdquo;; as he heads for the staircase to make his getaway, the narrative attests that he is scared speechless: &ldquo;He couldn&rsquo;t have spoken, the tone of his voice would have scared him, and the common conceit or resource of &lsquo;whistling in the dark&rsquo; (whether literally or figuratively) have appeared basely vulgar.&rdquo; The quotation marks and parentheses punctuate a new uncertainty, reflected in the &ldquo;or&rdquo; or &ldquo;literally or figuratively.&rdquo; The presentation of both possibilities might be read as another instance of the narrator&rsquo;s irresolution about what is passing through Brydon&rsquo;s mind: he is doubtful as to whether the character is contemplating producing an actual sound, or simply pretending to ignore the threat&mdash;&ldquo;whistling in the dark&rdquo; in the metaphoric sense (the same figure appears in &ldquo;The Beast in the Jungle&rdquo; as well as in <em>The Ambassadors</em>). But whether the narrator is here master of <em>his</em> discourse or not, the point is that the text will not, cannot decide the question posed by the &ldquo;or.&rdquo; The possibility that the figure resists being confined to one signification or the other sheds a light on the nature of this uncertainty, revealing it as a hesitancy about the adequacy and the ultimate usefulness of a distinction that begins to blur when the language in which it is presented is susceptible to the very indetermination that the distinction tries to prevent.</p>
+
+        <p>In this drama&mdash;this pantomime&mdash;of facts and figures, &ldquo;the great fact,&rdquo; to allude once more to the second paragraph of the tale, has been and remains &ldquo;the incalculability,&rdquo; the indeterminacy of the figure&mdash;the force that overwhelms Brydon when, in the story&rsquo;s climactic scene, he encounters his <em>alter ego</em> in all its identity and difference. The progress of figuration has been thorough; the &ldquo;ghost, or whatever,&rdquo; is rendered in more concrete sensory detail than any other character, any other figure, in the tale, including Brydon himself:</p>
+
+        <blockquote>
+            <p>Rigid and conscious, spectral yet human, a man of his own substance and stature waited there to measure himself with his power to dismay. This only could it be&mdash;this only till he recognized, with his advance, that what made the face dim was a pair of raised hands that covered it and in which, so far from being offered in defiance, it was buried as for dark deprecation.</p>
+        </blockquote>
+
+        <p>Every fact of the figure&rsquo;s appearance, from its double eyeglass to its polished shoe, becomes visible, to Brydon&rsquo;s great revulsion:</p>
+
+        <blockquote>
+            <p>That meaning at least, while he gaped, it offered him; for he could but gape at his other self in this other anguish, gape as proof that <em>he</em>, standing there for the achieved, the enjoyed, the triumphant life, couldn&rsquo;t be faced in his triumph. Wasn&rsquo;t the proof in the splendid covering hands, strong and completely spread?&mdash;so spread and so intentional that, in spite of a special verity that surpassed every other, the fact that one of these hands had lost two fingers, which were reduced to stumps, as if accidentally shot away, the face was effectually guarded and saved.</p>
+        </blockquote>
+
+        <p>If James, on finding that his birthplace has been torn down to make room for more progressive structures, characterizes the effect as one of &ldquo;having been amputated of half my history&rdquo; in the passage from &ldquo;New York Revisited,&rdquo; Brydon has a literal amputation on his hands. Though the face seems, initially, to be effectively masked despite the two missing digits, it turns out that it is not &ldquo;saved&rdquo; in the end, literally or figuratively. The hands fall away to reveal the monstrous visage, and Brydon is not spared the resulting humiliation:</p>
+
+        <blockquote>
+            <p>the bared identity was too hideous as <em>his</em>, and his glare was the passion of his protest. The face, <em>that</em> face, Spencer Brydon&rsquo;s?&mdash;he searched it still, but looking away from it in dismay and denial, falling straight from his height of sublimity. It was unknown, inconceivable, awful, disconnected from any possibility&mdash;! He had been &ldquo;sold,&rdquo; he inwardly moaned, stalking such game as this: the presence before him was a presence, the horror within him a horror, but the waste of his nights had been only grotesque and the success of his adventure an irony. Such an identity fitted him at <em>no</em> point, made its alternative monstrous.</p>
+        </blockquote>
+
+        <p>While Calvino can cite &ldquo;The Jolly Corner&rdquo; as &ldquo;the story in which I identify myself when I try to imagine the books I could have written,&rdquo; the tale&rsquo;s protagonist fails to identify himself in the figure he has authored. He finds it disfigured beyond recognition: it is not <em>his</em> face, but a hideous mask that fails to fit him, and Brydon denies it, losing face and consciousness. He falls into a dead faint, and it appears that he has given up the ghost.</p>
+
+        <p>In the story&rsquo;s epilogue, Brydon awakes after an undetermined lapse of time to see the faces of Mrs. Muldoon and Alice Staverton watching worriedly over him, and finds himself with his head cradled in the latter&rsquo;s lap, stretched out on the black and white squares of the hallway. As he regains consciousness, his nightmare and its aftermath are summed up, not surprisingly, by analogy:</p>
+
+        <blockquote>
+            <p>It had brought him to knowledge, to knowledge&mdash;yes, this was the beauty of his state; which came to resemble more and more that of a man who has gone to sleep on some news of a great inheritance, and then, after dreaming it away, after profaning it with matters strange to it, has waked up again to serenity of certitude and has only to lie and watch it grow.</p>
+        </blockquote>
+
+        <p>Though Brydon is quick to identify himself with the dreamer in his analogy, there is a confusion in the last pages between waking and sleeping that calls into question his &ldquo;serenity of certitude&rdquo; and the status of the entire preceding episode. For if, when one dreams, one invariably dreams that one is awake, the project of distinguishing between waking and sleeping, sensing and dreaming, seeing and hallucinating, is problematized. In thinking (or perhaps in dreaming) that he has (whether literally or figuratively) &ldquo;waked up again&rdquo; to knowledge, Brydon may well be deceiving himself once more, and the pursuit of his <em>alter ego</em> may have been, like James&rsquo;s appalling and admirable nightmare, only a dream.</p>
+
+        <p>Alice Staverton, on the other hand, seems more capable of discriminating between these questionable states. She informs Brydon that she, too, has seen the strange figure, at the same time that it appeared to him&mdash;but seen it, as she has twice before, in a dream. To substantiate her claim, she describes the apparition down to the last grisly detail, and her companion has no choice but to believe her: &ldquo;Brydon winced&mdash;whether for his proved identity or for his lost fingers.&rdquo; But whose identity is in fact proved through Alice&rsquo;s testimony? How can either she or Brydon be certain that their respective figures are identical? Alice explains that when the visitant appeared to her she &ldquo;knew it for a sign,&rdquo; that she was not, like Brydon, horrified by the &ldquo;poor thing,&rdquo; but could accept him, not &ldquo;for his proved identity,&rdquo; but &ldquo;for the interest of his difference.&rdquo; Miss Staverton, to whom the narrator repeatedly attributes a saving sense of irony, allows the figure what Brydon has consistently denied it: a life, and a story, of its own, independent of his authorship and of any attempt to fix the terms of its interpretation. To this extent she is an example for the reader of the tale, who can now turn the tables on its narrator&rsquo;s insistence upon the determining force of an influence beyond his notation, to counter that what is at issue in &ldquo;The Jolly Corner&rdquo; is nothing less than a notation&mdash;the narrative&rsquo;s system of written signs&mdash;that is beyond Brydon&rsquo;s, or Alice&rsquo;s, or the narrator&rsquo;s, or the reader&rsquo;s influence. Notation, the <em>alter ego</em> of no one and nothing, is what has finally to be confronted&mdash;that is, to be read. Such an alternative reading has, however, its monstrous aspect, for it forces the reader to face his (or her) inability to identify himself (or herself) in the tale that tells the story of what (s)he could have read, and would have read, if reading had been a possibility.</p>
+    </article>
+
+    <script>
+        const toggle = document.getElementById('theme-toggle');
+        const icon = document.getElementById('theme-icon');
+
+        toggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+            toggle.title = isDark ? 'Modo Diurno' : 'Modo Nocturno';
+            toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+        });
+    </script>
+
+</body>
+</html>

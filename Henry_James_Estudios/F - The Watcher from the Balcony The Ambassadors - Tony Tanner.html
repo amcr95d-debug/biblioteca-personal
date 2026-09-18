@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tony Tanner - The Watcher from the Balcony: The Ambassadors</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* =========================================
+           COLORES (Modo Diurno - International Klein Blue)
+           ========================================= */
+        :root {
+            --bg-body: #002FA7;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.88);
+            --text-muted: rgba(255, 255, 255, 0.6);
+            --border-color: rgba(255, 255, 255, 0.35);
+            --border-light: rgba(255, 255, 255, 0.15);
+            --fab-bg: #ffffff;
+            --fab-color: #002FA7;
+            --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+            --quote-border: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Modo Nocturno - Deep Navy Blue */
+        body.dark-mode {
+            --bg-body: #001233;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.85);
+            --text-muted: rgba(255, 255, 255, 0.5);
+            --border-color: rgba(255, 255, 255, 0.2);
+            --border-light: rgba(255, 255, 255, 0.1);
+            --fab-bg: #ffffff;
+            --fab-color: #001233;
+            --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+            --quote-border: rgba(255, 255, 255, 0.4);
+        }
+
+        /* =========================================
+           ESTILOS GENERALES
+           ========================================= */
+        * { transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease; }
+        
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            line-height: 1.75;
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 2em 1.5em 5em;
+            color: var(--text-primary);
+            background-color: var(--bg-body);
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 0.2em;
+            font-weight: normal;
+            letter-spacing: 0.05em;
+            color: var(--text-primary);
+        }
+
+        h2 {
+            font-size: 1.4em;
+            text-align: center;
+            margin-top: 2.5em;
+            margin-bottom: 1.5em;
+            font-weight: bold;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        h3 {
+            font-size: 1.1em;
+            text-align: center;
+            margin-top: 2.5em;
+            margin-bottom: 1em;
+            font-weight: bold;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        p {
+            text-align: justify;
+            margin-bottom: 1.2em;
+            text-indent: 1.5em;
+        }
+
+        p.no-indent { text-indent: 0; }
+
+        blockquote {
+            margin: 1.5em 2em;
+            padding-left: 1.5em;
+            border-left: 3px solid var(--quote-border);
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        blockquote p { text-indent: 0; margin-bottom: 0.8em; }
+
+        .poem {
+            margin: 1.5em 2em;
+            font-style: italic;
+            text-indent: 0;
+        }
+
+        .poem p {
+            text-indent: 0;
+            margin-bottom: 0.3em;
+            text-align: left;
+            padding-left: 2em;
+            text-indent: -2em;
+        }
+
+        em { font-style: italic; }
+
+        sup {
+            font-size: 0.75em;
+            vertical-align: super;
+            line-height: 0;
+        }
+
+        .page-number {
+            display: block;
+            text-align: center;
+            font-size: 0.8em;
+            color: var(--text-muted);
+            margin: 2em 0 1em 0;
+        }
+
+        .footnotes {
+            margin-top: 4em;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5em;
+            font-size: 0.9em;
+            color: var(--text-secondary);
+        }
+
+        .footnotes h3 {
+            text-align: left;
+            font-size: 1em;
+            margin-bottom: 1em;
+            text-transform: none;
+            letter-spacing: normal;
+            color: var(--text-primary);
+        }
+
+        .footnotes p {
+            text-align: left;
+            text-indent: -1.5em;
+            padding-left: 1.5em;
+            margin-bottom: 0.6em;
+            font-size: 0.9em;
+        }
+
+        .section-break {
+            text-align: center;
+            margin: 2.5em 0;
+            font-weight: bold;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.1em;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 2em;
+        }
+
+        .epigraph {
+            margin: 1.5em 2em 2.5em;
+            padding-left: 1.5em;
+            border-left: 3px solid var(--quote-border);
+            font-style: italic;
+            color: var(--text-secondary);
+            font-size: 0.95em;
+        }
+
+        .epigraph p {
+            text-indent: 0;
+            margin-bottom: 0.5em;
+            text-align: left;
+        }
+
+        .epigraph .attribution {
+            text-align: right;
+            font-style: normal;
+            font-size: 0.9em;
+            color: var(--text-muted);
+            margin-top: 0.5em;
+        }
+
+        .source-note {
+            text-align: center;
+            font-size: 0.85em;
+            color: var(--text-muted);
+            margin-bottom: 2em;
+            font-style: normal;
+        }
+
+        /* =========================================
+           BOTÓN FLOTANTE (Modo Nocturno)
+           ========================================= */
+        .fab-toggle {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background-color: var(--fab-bg);
+            color: var(--fab-color);
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease;
+            z-index: 1000;
+            outline: none;
+        }
+        .fab-toggle:hover { transform: scale(1.1); }
+        .fab-toggle:active { transform: scale(0.95); }
+        .fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            body { padding: 1.2em 1em 4em; }
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.1em; }
+            .fab-toggle { bottom: 16px; right: 16px; width: 50px; height: 50px; }
+            .fab-toggle .material-icons { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo Nocturno">
+        <i class="material-icons" id="theme-icon">dark_mode</i>
+    </button>
+
+    <article id="content">
+        <h1>Tony Tanner</h1>
+        <p class="subtitle">The Watcher from the Balcony:<br>The Ambassadors</p>
+
+        <div class="epigraph">
+            <p>Condemned the human particle &ldquo;over here&rdquo; was to live, on whatever terms, in thickness&mdash;instead of being free, comparatively, or as I at once ruefully and exquisitely found myself, only to feel and think in it. Ruefully because there were clearly a thousand contacts and sensations, of the strong direct order, that one lost by not so living; exquisitely because of the equal number of immunities and independences, blest independences of perception and judgment, blest liberties of range for the intellectual adventure, that accrued by the same stroke.</p>
+            <p class="attribution">&mdash;HENRY JAMES, <em>The Middle Years</em></p>
+        </div>
+
+        <p>In his account of his own growth and development contained in his <em>Autobiography</em> (by <em>Autobiography</em> I mean: <em>A Small Boy and Others</em>, <em>Notes of a Son and Brother</em>, and &ldquo;The Middle Years&rdquo;), James projects an image of a consciousness which, as it grows richer and more subtly responsive, is at the same time increasingly excluded from direct participation in life. He talks of his &ldquo;foreseen and foredoomed detachment&rdquo; at the same time as he describes himself as being &ldquo;gorged with wonders.&rdquo; He seems to become a consciousness without a context. For example: &ldquo;I lived and wriggled, floundered and failed, lost the clue of everything but a general lucid consciousness . . . which I clutched with a sense of its value.&rdquo; It was this that compensated for his feeling of being &ldquo;cut off from any degree of direct performance.&rdquo; He remains what he feels himself to be as a small boy&mdash;&ldquo;a vague outsider.&rdquo; There is, of course, some pathos in this sense of growing exclusion, but more interesting is a discernible ambivalence in his attitude to life itself, an ambivalence manifest in such descriptions of himself as &ldquo;all wondering and all fearing.&rdquo; It would seem that, from the start, mixed in with his awe at the boundless wonder of life was an inner fear at its potential dangers and terrors. A fear not of this or that threat or the potential malevolence of people, but simply a pervasive sense of the danger inherent in experience as such. James appears, that is, as an appreciative but apprehensive spectator, and it was just such an ambivalence of attitude that he was to make the subject of one of his greatest novels, the one he himself most liked&mdash;<em>The Ambassadors</em>.</p>
+
+        <p>Before turning to that novel, it is worth glancing at some earlier works which offer clear evidence of this ambivalence. Take a very early story like &ldquo;A Passionate Pilgrim.&rdquo; The American hero, Clement Searle, is sick from the start. He laments the empty inadequacies of his American education and comes to England for an experience of a fuller life. Here he meets with some disillusion (some of the characters are treacherous), but the important thing is the manner of his death. &ldquo;He was becoming more and more a disembodied observer and critic; the shell of sense, growing daily thinner and now transparent, transmitted the tremor of his quickened faculty.&rdquo; He dies, really, from an excess of rich impressions which the frail vessel of his hyper-sensitive consciousness could not contain. The wondering observer is killed by the sudden onset of too much material. So, from the start, we see that typically Jamesian combination of an enraptured yearning for experience of life and a deeper feeling that life itself is fatal to handle. Another early story, &ldquo;The Madonna of the Future&rdquo; tells of an American artist living in Europe. He also complains of lack of material in America: &ldquo;We are the disinherited of art. . . . We are excluded from the magic circle. The soil of American perception is a poor little barren, artificial deposit. . . . We poor aspirants must live in perpetual exile.&rdquo; He dreams of painting one great picture (rather as James dreamed of writing the great American novel), but in fact he dies in squalor, his canvas still quite blank. Again, the new wealth of experience he thought so fruitful has proved, instead, to be fatal. James&rsquo;s first full length novel, <em>Roderick Hudson</em>, is also about a young artist, panting for more material and opportunity than America offers, who is sent to Europe where he is at first wonderfully stimulated by the new wealth of experience, then betrayed by it. He dies&mdash;another victim of sheer life. In his later introduction James made an interesting point about this book. In effect he says that the main fault of the novel is that it shows Hudson as disintegrating improbably quickly. His collapse is indeed amazingly rapid and James, in his old age comments: &ldquo;I felt how many more ups and downs, how many more adventures and complications my young man would have had to know, how much more experience it would have taken, in short either to make him go under or to make him triumph.&rdquo; James&rsquo;s criticism is acute and correct. From the standpoint of credibility Hudson does capitulate improbably quickly to his European stimuli. But I think this reveals something very interesting about James&rsquo;s own fears at the time. Himself a young aspiring American artist in Europe, he could not stay away from Europe, because of the dazzling range and density of real material it offered. But another part of him seems also to have felt, or dreaded, that the slightest real involvement with this rich stuff of life would prove fatal. The rapidity of Hudson&rsquo;s decline is, I think, the measure of James&rsquo;s own unconscious apprehensions.</p>
+
+        <p>But James also mentions something even more interesting in this introduction. He says that the real centre of interest in the novel is &ldquo;in Rowland Mallett&rsquo;s consciousness . . . and the drama is the very drama of that consciousness.&rdquo; The important thing about Mallett (who is Hudson&rsquo;s patron) is that &ldquo;what happened to him was above all to feel certain things happening to others.&rdquo; His experience of life, thus, is indirect. The onlooker, not the participator. And James intends that the main drama should be, not the external decline of Hudson, but the internal involved consciousness of Mallett. He is immensely interested in everything; he helps, he watches, he feels, he inquires, he cares. But he himself does not get involved in the treacherous flux of experience. From this novel alone it would be possible to trace the development of two main figures in James&rsquo;s novel. The person who does get involved in experience, often fatally&mdash;this would include figures as remote as Daisy Miller and Milly Theale. And then the passive spectator who does not have an external physical destiny in the same way but who wonders about what happens to other people. For this figure the main adventure is his (or her) own musing, appreciating, evaluating consciousness. But he stays out of the mess of life. This non-participating watcher may be an actual artist, or more generally someone who seems somehow bound to brood apart over the wonders and mysteries of life. Maisie is one such figure, the unnamed narrator of <em>The Sacred Fount</em> another. There are many of these detached narrators in James&rsquo;s work, figures who hover around the edges of the story without ever quite getting seriously involved in the action. There is an interesting one in &ldquo;Madame de Mauves&rdquo; who almost, but not quite, becomes passionately involved with one of the characters in the story he is telling. And in thinking of this one moment of near-involvement he makes a revealing comment. &ldquo;Why should his first&mdash;his last&mdash;glimpse of positive happiness be so indissolubly linked with renunciation.&rdquo; But if he has to renounce marital and sensual pleasure, it is nevertheless he who watches and assesses and who most sensitively understands what is going on. He is an incipient artist, in fact. A figure&mdash;one of many&mdash;who anticipates the profounder study of Louis Lambert Strether.</p>
+
+        <p>I am suggesting, perhaps too crudely, that from the start James can be seen exploring his own dual attitude to the great sea of life (I use the image in order to stress how often James uses &ldquo;water&rdquo; imagery in his analyses of peoples&rsquo; experience). It was beguiling but bedeviling: without it one starved; in it one drowned. The two instincts are endlessly at work in his novels&mdash;shaping the material, providing the drama, finding the meanings. Involvement and detachment; impassioned eager participation, enlightened and cautious renunciation; a strong attraction to the dusky richness and vivid risks of actual life, a holding back in the interests of internal appreciation and subjective comprehension. Above all, a deep conviction that art must feed on life&mdash;the sheer stuff which gives data for perception, which embroils the feelings and provokes the understanding, which nourishes consciousness. <em>And</em>, a vague undefined apprehension that the stuff of life could be a quick poison, that it might kill the artist before providing the art, that it was dangerous to touch. This I think is why James often reverted to the image of the artist as a man looking out of a window&mdash;looking down, from a lonely security, into the vitality and confusion of the streets. To quote only the most famous example, from his definition of the House of Fiction: at each window of that House &ldquo;stands a figure with a pair of eyes, or at least with a field glass, which forms, again and again, for observation, a unique instrument, insuring to the person making use of it an impression distinct from every other.&rdquo; This stress on the stance of the &ldquo;posted presence of the watcher&rdquo; suggests what certain Jamesian characters come to feel: namely, that it is indispensable to see life, but perhaps not advisable to go down and embrace it; indeed, that if one is to learn to look at life properly it is <em>essential</em> to renounce the privileges, as well as the threats, of participation.</p>
+
+        <p>It is in <em>The Ambassadors</em> that James, for the first time, makes the consciousness of the onlooker figure the central focus of a major novel. Describing his initial conception of Strether James wrote: &ldquo;He would have issued, our rueful worthy, from the very heart of New England&rdquo; and &ldquo;he had come to Paris in some state of mind which was literally undergoing, as a result of new and unexpected assaults and infusions, a change from hour to hour.&rdquo; It is a recurring Jamesian theme: a person confronting new facts with an old vision and being worried because the vision will not adequately account for the facts. Thus, James goes on, &ldquo;the false position for him . . . was obviously to have presented himself at the gate of that boundless menagerie primed with a moral scheme of the most approved pattern which was yet framed to break down on any approach to vivid facts.&rdquo; The book, then, is to be about an approved moral scheme challenged by confusing vivid facts, and the consequent attempt to find a new adequate scheme, a more inclusive vision which can contain the new range of facts even if it loses its old approval. The drama is to be &ldquo;the drama of discrimination.&rdquo; The first sentence of the book refers to Strether asking a question, and the book is a long adventure of subtle inquiry, the testing of assumptions, the weighing of claims. How excessively narrow and life-denying is the New England conscience; what is fine and what is fraudulent in the rich aggregation of life&rsquo;s possibilities which Paris represents? The book is, as James says, about a revolution of consciousness in Strether; a revolution which has nothing to do with any carnal temptations offered by Paris but rather its power to stimulate the sensitive and appreciative imagination. It is also a testing of Strether&mdash;for he has to submit to the labyrinthine ordeal which other Jamesian characters have suffered before him, an ordeal of darkness and confusion in which the old lights fail and new ones are not immediately forthcoming. In that darkness the abandoned consciousness must generate its own illumination. Thus James on Strether: &ldquo;he was to be thrown forward, rather, thrown quite with violence, upon his lifelong trick of intense reflexion: which friendly test indeed was to bring him out, through winding passages, through alternations of darkness and light, very much <em>in</em> Paris, but with the surrounding scene itself a minor matter, a mere symbol for more things than had been dreamt of in the philosophy of Woollett.&rdquo; And the result would be, says James, still describing how he conceived the novel, that Strether&rsquo;s &ldquo;whole analytic faculty would be led such a wonderful dance.&rdquo; It is that dance of consciousness which this book, with all of James&rsquo;s most supple, patient sensitivity, tries to enact and disclose. (In connection with this it is worth stressing that all the violence of the book&mdash;all the dangers and woundings and fightings&mdash;is internal. There is probably more violent imagery in this novel than in any other by James, but it is used to describe feelings, thoughts, reactions, apprehensions&mdash;never deeds. To specify: the imagery shows people nearly drowning in heavy seas, engaged on battlefields, struggling in savage jungles. Floods, shipwrecks, rescues are common; animals prowl around; people advance and retreat as in war, they plant flags on gained territory, they flourish bayonets. There are falls, floorings, even broken noses. People stick nails in other people, let fly with arrows, and in general are much given to drawing blood. As well, there is much talk of treasure, even of pirates. But it all refers to internal events and exchanges: in the outer world there is nothing more violent than Sarah Pocock raising her morally outraged voice to Strether. Therefore we must feel with James that there are deadly combats, flounderings, even murders which never ruffle the social surface; that there are cruelties and quarrelings, victimisations and bleedings which all take place in the invisible arenas of consciousness. We must accept this or find his novels, particularly his later ones, absurd.)</p>
+
+        <p>So the book is, at its simplest, about the convulsion of values in a complex man. &ldquo;He came out to do what he could, but everything is altered for him by the fact that nothing, damn it, is as simple as his scheme.&rdquo; The richness of the book is to show the gradual modifications and alterations of vision, the confusions, readjustments, and expansions of consciousness, undergone by a man who starts with a simple moral scheme and is confronted by novel vivid facts which do not, damn it, fit into that scheme. The alternatives are&mdash;to renounce the vivid facts (as the other ambassadors in the book do), or take the risk of trying to develop a more comprehensive scheme and vision which can accommodate and respect them. Strether takes that risk. And in this connection it is worth noting his name&mdash;Louis Lambert. As Quentin Anderson has pointed out, this is the hero of a novel by Balzac which bears an interesting resemblance to James&rsquo;s novel. In Balzac&rsquo;s novel, Lambert is a theorist who is writing a metaphysical treatise. He is utterly absorbed in his transcendental speculations until one day he has a sudden rush of passion at the sight of a woman in a theatre during a visit to Paris. He returns to the provinces and arranges to marry a Jewish heiress. But before the marriage he goes mad. The narrator conjectures that his madness may well be the result of a sudden &ldquo;transition from pure idealism to the most intense sensualism.&rdquo; James&rsquo;s story too touches on a theme as perennial as the conflicting claims of the ideal and the real, morality and appearances, the transcendental and the sensual. James himself had used the theme before. For example in the comparatively crude parable &ldquo;Benvolio,&rdquo; in which a young artist is alternately drawn to a studious retiring ascetic woman called Scholastica, and a rich ripe social figure called the Countess. Scholastica is pure New England transcendentalism, and the Countess, of course, is good old sensual Europe. An amiable and slight tale. But similarly in <em>The Ambassadors</em> one could say that Strether is shown transferring his allegiances from the coldly moral New England Mrs. Newsome to the finely social European Mme de Vionnet. It is the subtlety of exploration, not the root theme, which is new in this book.</p>
+
+        <p>The action is Strether&rsquo;s &ldquo;process of vision&rdquo; and in this action although physical deeds are not of the first importance, concrete settings and environments most certainly are. To detail the significance of all the streets, houses, gardens, galleries, etc., would occupy a disproportionate amount of space; so to simplify the general point I would like to suggest that we can regard Strether&rsquo;s progress in Europe as an ascent to a balcony. When he first goes to visit Chad&rsquo;s house he lingers on the opposite side of the street looking <em>up</em> at the balcony on the third floor. One of his first feelings &ldquo;was that the balcony in question didn&rsquo;t somehow show as a convenience easy to surrender.&rdquo; That is, he feels from the start that once one has a balcony it must be difficult to abandon it. The significance of this emerges later. At this point he is still down in the street looking <em>up</em>, then he sees a young man leaning on the rail &ldquo;looking at the life below.&rdquo; The house itself, Chad&rsquo;s house, is revealing in a way we should note. It is &ldquo;high broad clear . . . admirably built&rdquo; and the windows &ldquo;took all the March sun.&rdquo; Chad too is well built, and he too is a great one for basking in other peoples&rsquo; warmth. The house is &ldquo;aided by the presence of ornament&rdquo; and seems very well-bred&mdash;exactly as Chad has become under the tuition of Mme de Vionnet. Strether pausing before the house is indeed Strether pausing before the whole question of what he will do about Chad, though he does not know it yet. And the important thing is that, then and there, he is most drawn to the image of the young man and his &ldquo;surrender to the balcony.&rdquo; &ldquo;The balcony, the distinguished front, testified suddenly, for Strether&rsquo;s fancy, to something that was up and up; they placed the whole case materially, and as by an admirable image, on a level that he found himself at the end of another moment rejoicing to think he might reach.&rdquo; More cogently, &ldquo;a perched privacy appeared to him the last of luxuries.&rdquo; Chad is absent from the house (just as the real Chad is not to be found behind the misleading &ldquo;distinguished front&rdquo; he has acquired in Europe), but Strether later admits that he had &ldquo;nevertheless gone up, and gone up.&rdquo; The reiteration gives a special emphasis to the ascent which is made to seem at once protracted, laborious, and significant. It is the first of many staircases that Strether is to climb; his progress is characteristically upwards. Towards the end of Book Eleven, shortly before Strether discovers about the illicit relationship of Chad and Mme de Vionnet, he goes again to call on Chad&mdash;who again is not in his house. This time Strether goes directly to the balcony and spends a long time looking out over the whole suggestive mass of the city at night. In one of James&rsquo;s more significant phrases &ldquo;Strether found himself in possession as he had never yet been.&rdquo; Visual possession, possession from above. A possession which is also generous and grateful&mdash;non-exploitative. &ldquo;He spent a long time on the balcony; he hung over it as he had seen little Bilham hang the day of his first approach.&rdquo; He is now looking <em>down</em>: he has achieved his &ldquo;perched privacy.&rdquo; It is up there that he has one of his long meditations, thinking of his lost youth, regretting that his life has been all too little &ldquo;an affair of the senses,&rdquo; thinking about the precious freedom to enjoy which he has only so recently come to appreciate. &ldquo;It was in the outside air as well as within; it was in the long watch, from the balcony, in the summer night, of the wide late life of Paris.&rdquo; (The second half of that sentence seems to me beautifully and appropriately cadenced; the syntax which both delays, and contains, the whole meaning, is something of a paradigm for the movement of the novel as a whole.) Strether has not, of course, purchased an actual building with a balcony; he is seen appreciating an opportunity which the ever-absent Chad has disdained. The scene is a visible analogue to a certain new perspective, a new mode of vision gained.</p>
+
+        <p>To support my contention that the balcony has a profound iconographic significance for James I want to bring together some revealing passages from his <em>Autobiography</em>. Very early on, after revealingly referring to the general life around them as &ldquo;deep waters&rdquo; (&ldquo;However, any breasting of those deep waters must be but in the form for me of an occasional dip&rdquo;), James says &ldquo;our general medium of life in the situation I speak of was such as to make a large defensive verandah, which seems to have very stoutly and completely surrounded us, play more or less the part of a raft of rescue in too high a tide.&rdquo; The &ldquo;defensive verandah&rdquo; from which he could survey, without entering, the dangerous flood. A very apt image for a writer whose most constant image for experience was &ldquo;water.&rdquo; A later passage provides a more direct autobiographical gloss on the scenes in <em>The Ambassadors</em> I have cited. I must quote at some length. James is recalling &ldquo;the intensity of a fond apprehension of Paris, a few days later, from the balcony of an hotel that hung, through the soft summer night, over the Rue de la Paix.&rdquo;</p>
+
+        <blockquote>
+            <p>I hung over the balcony, and doubtless with my brothers and sister, though I recover what I felt as so much relation and response to the larger, the largest appeal only, that of the whole perfect Parisianism I seemed to myself always to have possessed mentally . . . and that now filled out its frame or case for me from every lighted window, up and down, as if each of these had been, for strength of sense, a word in some immortal quotation, the very breath of civilised lips.&rdquo;</p>
+        </blockquote>
+
+        <p>He feels in some strange way that he had always anticipated and expected such a scene:</p>
+
+        <blockquote>
+            <p>I had had before me from far back a picture . . . and here was every touch in it repeated with a charm. Had I ever till then known what a charm <em>was</em>?&mdash;a large, a local, a social charm, leaving out that of a few individuals. It was at all events, this mystery, one&rsquo;s property&mdash;that of one&rsquo;s mind; and so, once for all, I helped myself to it from my balcony and tucked it away. It counted all immensely for practice in taking in.</p>
+        </blockquote>
+
+        <p>The wondering mind taking &ldquo;possession&rdquo; of Paris from a balcony&mdash;precisely the significance of the scene in <em>The Ambassadors</em>. Again, in describing another place where they stayed in Paris, James defines it as the sort of setting exactly suited to someone with his ambivalent attitude to life. It &ldquo;hung, at no great height, over the Avenue des Champs-Elys&eacute;es; hung, that is, from the vantage of its own considerable terrace, surmounted as the parapet of the latter was with iron railings rising sufficiently to protect the place for familiar use and covert contemplation . . . and yet not to the point of fencing out life.&rdquo; A protected place of contemplation from which he can see life, but where life cannot reach him. Another time he recalls waking up and adopting once more this significant position. &ldquo;I had slipped from my so cushioned sleep . . . to hang, from the balcony of our quatri&egrave;me . . . over that Place du Palais Royal and up against that sculptured and storied fa&ccedil;ade of the new Louvre which seemed to me then to represent, in its strength, the capacity and chiselled rim of some such potent vivifying cup as it might have been given us, under a happier arrangement, to taste now in its fulness and with a braver sense for it.&rdquo; It is in this passage that James, using one of his many gustatory images, describes himself storing up &ldquo;treasures of impression that might be gnawed, in seasons or places of want, like winter pears or a squirrel&rsquo;s hoard of nuts,&rdquo; in general acquiring a &ldquo;weight of consciousness.&rdquo; And he returns again to that intoxicating moment &ldquo;as one stood up on the high balcony to the great insolence of the Louvre and to all the history, all the glory again and all the imposed applause, not to say worship, and not to speak of the implied inferiority, on the part of everything else, that it represented.&rdquo; James does not learn very much actual history in his travels; rather he surveys, and wonders over, rich suggestive panoramas, inhaling atmospheres rather than mastering facts. Not the past, but &ldquo;the sense of the past.&rdquo; He seems always to have been more interested in extensions of consciousness than accretions to memory. In his work, the watchers from the balcony (this includes Maisie as well as Strether) are most nearly duplicating his own most favoured stance.</p>
+
+        <p>One or two other settings in the novel should be mentioned. If the balcony was one place of meditation for James, the garden was another, and in this novel we see Strether seated for a long time in the Garden of the Tuileries&mdash;sitting and watching as he does so often in the book. In those gardens &ldquo;the air had a taste as of something mixed with art, something that presented nature as a white-capped master-chef.&rdquo; The image may seem somewhat indecorous; but the point is that in New England Strether has never had the feeling that nature might, literally, cater for the senses, feed them with permissible pleasures. It is worth noting that James is unusually specific about food, drink, even table-settings in this novel. This is not mere circumstantial realism. Strether is learning the attraction of things that appeal to the senses&mdash;surfaces, tastes, odours, colours, etc. There is an appetite of the senses which is not grasping and appropriating and cruel. Of course, it is not spiritual or transcendental either. It is the sort of generous delight we associate with Impressionist paintings and their avowed addiction to the wonder of appearances. Strether, among other things, acquires an Impressionist eye.</p>
+
+        <p>Of many interiors two may be singled out; the dwellings of Maria Gostrey and Mme de Vionnet. Maria is a collector: better than a gossip, but not quite a true artist. Her dusky crowded chambers have a strong effect on Strether: &ldquo;the life of the occupant struck him . . . as more charged with possession even than Chad&rsquo;s . . . wide as his glimpse had lately become of the empire of &lsquo;things,&rsquo; what was before him still enlarged it; the lust of the eyes and the pride of life had indeed thus their temple. It was the innermost nook of the shrine&mdash;as brown as a pirate&rsquo;s cave.&rdquo; Now Strether, too, learns to appreciate &ldquo;things,&rdquo; but the evidence piled up here is of some more acquisitive instinct: &ldquo;the lust of the eyes&rdquo; suggests something less than the true disinterest to which he aspires. Strether does not become a collector. He learns from Maria, but he also goes far beyond her. He could not marry her at the end because to do so would be to deny the radical difference between them which has emerged. Mme de Vionnet&rsquo;s house has fine things too, though her possessions are not &ldquo;vulgarly numerous&rdquo;; there is no sense of the piled-up loot of the pirate&rsquo;s cave here. Such things as there are have the &ldquo;dim lustre&rdquo; of legend about them. The house is very old, full of genuine relics which have long had their place there. &ldquo;They were among the matters that marked Mme de Vionnet&rsquo;s apartment as something quite different from Miss Gostrey&rsquo;s little museum of bargains and from Chad&rsquo;s lovely home; he recognised it as founded much more on old accumulations that had possibly from time to time shrunken than on any contemporary method of acquisition or form of curiosity. Chad and Miss Gostrey had rummaged and purchased and picked up and exchanged, sifting, selecting, comparing; whereas the mistress of the scene before him, beautifully passive under the spell of transmission . . . had only received, accepted and been quiet.&rdquo; Here is the difference between a collector and a true incumbent, between a purchaser and an inheritor. In Mme de Vionnet&rsquo;s house the recession of unfolding rooms becomes a &ldquo;vista, which he found high melancholy and sweet&mdash;full, once more, of dim historic shades, of the faint far-away cannon-roar of the great Empire.&rdquo; Maria Gostrey sits among her own shrewd purchases: Mme de Vionnet sits amidst her heritage&mdash;the history of Europe. These are only two of many houses that Strether finds himself in. But at the end he has no house of his own. Unlike Isabel Archer (who, I suggested in a previous article, chooses the wrong home), Strether recognises that with his particular form of consciousness he cannot commit himself to this or that dwelling, just as he finally will not limit himself to any one specific edifice of values.</p>
+
+        <p>The title of the novel is plural, and in order to appreciate what happens to Strether we should examine some of the other &ldquo;ambassadors.&rdquo; (Maria Gostrey, Chad, Strether, Waymarsh, Jim and Sarah Pocock, Little Bilham, Mamie&mdash;all are American &ldquo;ambassadors&rdquo; of one sort or another&mdash;indeed, Mme de Vionnet is almost the only important European figure in the novel.) Waymarsh was originally &ldquo;Waymark,&rdquo; and, indeed he seems to be a moral signpost of the severest and most obvious type. Strether finds his unrelenting suspicious moralising in turns amusing, then depressing, and then irrelevant as he passes far beyond the mark which Waymarsh so unbendingly stands for. Waymarsh is at first referred to as a Hebrew prophet, then as Moses&mdash;the law-giver supreme. He is also like a grim Indian chief who &ldquo;stands wrapt in his blanket and gives no sign&rdquo;&mdash;a perhaps more ominous comparison. He is always trying to get away from the European atmosphere or shut it out&mdash;hiding behind windows, refusing to relax, trying to make his whole European sojourn into one long withdrawing gesture of disapproval. Yet if he represents a bit of the old New England conscience, there is another aspect to his behaviour which we should note. For instance when Strether and Maria are enjoying the view on the Rows in Chester, Waymarsh grows increasingly uncomfortable with their aesthetic delectation and appraisal. He turns for relief to the shop windows and surprises his companions by suddenly dashing into a shop to buy something. It is a subtle touch: in his unease all he can think of doing is to reduce Europe to a place of purchase. And when Sarah Pocock comes over to Europe a sudden change comes over Waymarsh. With his bright clothes and weird compulsive gaiety he now looks, not like Moses, but a Southern plantation owner&mdash;not a pleasant transformation. And with Sarah he starts to dash around Paris in search of shops and certain forms of entertainment like the circus. It is not surprising that these two stern moralists should be drawn together for they share a deep suspicion of, and loathing for, Strether&rsquo;s sort of open aesthetic appreciation of things. They refuse to <em>see</em> (as Strether realises); they consult their New England moral scheme and then hold their heads too grimly high ever to notice whether the evidence might be more complex. They judge, they condemn: they never try to appreciate. And yet they are enthusiastic purchasers (to buy something is to show your power over the seller; thus to reduce Europe to a shop is to treat it like a contemptuous patron); and if they do not like the art and architecture which is there to be seen, they take great relish in the circus (this again suggests, not only their philistinism but a more brutal instinct&mdash;a desire to use Europe as a low spectacle and entertainment, which again implies a sort of defensive contempt). Not only is there a ferocity of judgment in this pair, but also a harsh crudity of self-indulgence and acquisition. James could see deeply into the self-deceptions of this sort of puritan. Jim Pocock is more crudely candid: he wants the crass sort of &ldquo;good time&rdquo; traditionally associated with Paris for the Americans. These people are examples of what James elsewhere called &ldquo;passionless pilgrims,&rdquo; those who regard Europe as a toy to be used and discarded at will and who miss all that is fine and enriching. &ldquo;A hundred good instances confirmed this tradition that nothing in the new world was held accountable to anything in the old world.&rdquo; This unpleasant mixture of damning Europe morally, whilst using and abusing it for low pleasures and &ldquo;bargains&rdquo; is, for James, a typical result of certain aspects of the New England conscience&mdash;which, as Maria Gostrey suggests, is really composed of &ldquo;intensity with ignorance.&rdquo; Always, of course, a formidable combination.</p>
+
+        <p>Behind these people is Mrs. Newsome, Chad&rsquo;s mother, and the employer and maintainer of Strether. She is the real moral iceberg (the image is used) from which the coldness of Sarah Pocock seems to derive. &ldquo;She&rsquo;s all cold thought&mdash;which Sarah could serve to us cold without its really losing anything&rdquo; says Strether: cold thought as opposed to warm life. And here again, James has added a dimension to this image of radiant moral ice who is so wonderfully present throughout the novel in the immensity of her still, silent, deeply disapproving absence. She gets all her money from a vulgar business which, it is implied, won its way to power through corrupt means. The combination of unscrupulous commercial exploitation and moral self-congratulation is clearly established. Jim Pocock&rsquo;s image for his wife and Mrs. Newsome seems aptly sinister. &ldquo;They don&rsquo;t lash about and shake the cage . . . and it&rsquo;s at feeding time that they&rsquo;re quietest. But they always get there.&rdquo; Small wonder that Sarah Pocock liked the circus. The crude incursion of the Pococks represents a challenge to Strether&rsquo;s changing type of vision and his newly developed habit of observation. They of course fail in observation, but Strether has to ask himself&mdash;is their world real, is his own false; &ldquo;had they come to make the work of observation, as <em>he</em> had practised observation, crack and crumble?&rdquo; In not returning when they return, Strether is refusing their attitude to life. They threaten but he stands firm&mdash;stands by Mme de Vionnet, stands by the perceptible, as opposed to the purchasable, values of Europe. But perhaps the worst ambassador will turn out to be Chad. He is of course completely egotistical: as he claims, he has always had his own way. He is a &ldquo;taker&rdquo; supreme for he takes and uses and keeps all the love and care which Mme de Vionnet lavishes on him. Her attentions improve him immensely as a &ldquo;social animal.&rdquo; In manners, taste, behaviour, etc., he now looks marvellously good whereas before he had been a boorish insensitive ass. But there are intimations that the surface improvements are misleading. Little Bilham offers the opinion that &ldquo;I&rsquo;m not sure he was meant by nature to be quite so good.&rdquo; This implies that by nature he is not and cannot be as good as his new appearance suggests. Europe has refined the surface but it has not reached the soul. Deep down he is still &ldquo;old Chad.&rdquo; Strether is initially taken in by the improved appearance, but by the end he can perceive that Chad is really just another one of those Americans who have come to Europe to take and exploit its valuable things before returning to America and the profits of big business. True, Chad&rsquo;s decision to return is not announced in the novel, but Strether, I think, sees it coming. By the end he <em>has</em> to work on <em>Chad</em> to keep him in Europe (the major ironic reversal in the book&mdash;for earlier Chad has to work on Strether to gain his permission to remain in Europe); and he feels it necessary to utter a strong prospective indictment. &ldquo;You&rsquo;ll be a brute, you know&mdash;you&rsquo;ll be guilty of the last infamy&mdash;if you ever forsake her.&rdquo; Chad glibly says that he will never get tired of her, but &ldquo;he spoke of being &lsquo;tired&rsquo; of her almost as he might have spoken of being tired of roast mutton for dinner.&rdquo; A rank selfishness of mere appetite is hinted at here. And after Strether has exhausted himself trying to show Chad how vile it would be to abandon Mme de Vionnet, Chad suddenly switches the conversation to advertising. &ldquo;It really does the thing, you know.&rdquo; The &ldquo;thing&rdquo; being to make a lot of money. Chad is revealing the old instinct of his family to accumulate a lot of fast dollars&mdash;despite all the subtler values that have been so liberally showered on him in Europe. He claims his interest in the possibilities of advertising is only theoretic, but his last comment is: &ldquo;There at any rate the fact is&mdash;the fact of the possible. I mean the money in it.&rdquo; Showing this emergent taste for business and such a confusion of values, it is hard to imagine that Chad will remain with Mme de Vionnet much longer. He is drawn to advertising&mdash;the art of manipulating the false appearance for profit. After so long in Europe he is still oblivious to intrinsic values. What is for Mme de Vionnet a real and lasting love is for him a passing amusement to be indulged in before going into business. He takes: Mme de Vionnet gives. But she has a sort of wisdom which the egotistical American ambassadors, from Sarah to Chad, could never attain. As when she says: &ldquo;What I hate is myself&mdash;when I think that one has to take so much, to be happy, out of the lives of others, and that one isn&rsquo;t happy even then. . . . The wretched self is always there, always making one somehow a fresh anxiety. What it comes to is that it&rsquo;s not, that it&rsquo;s never, a happiness, any happiness at all, to <em>take</em>. The only safe thing is to give.&rdquo; She has given, and, we feel, she alone of all the characters will achieve the dignity and stature of real suffering. But only Strether can really appreciate her for what she is. And he too attempts to transcend &ldquo;the wretched self&rdquo; by a refusal to &ldquo;take&rdquo; anything that the world seems to offer. For in the Jamesian world, those who consult and pander to the self are capable of cruel obliquities of vision and a ruthless insensitivity of conduct.</p>
+
+        <p>The gradual change and development of Strether&rsquo;s consciousness and vision is a complex and subtle process. To simplify it I want to refer to three key moments: Strether meeting Chad at the theatre; Strether at Gloriani&rsquo;s garden-party; and Strether in the French countryside when he finally realises that Chad is conducting an adulterous affair with Mme de Vionnet. It is worth noticing that the progression theatre-garden-countryside suggests the diminishing presence of art, or &ldquo;artifice,&rdquo; and an increase in &ldquo;nature&rdquo;; just as the scenes show Strether first of all reacting to the illusion of appearances but finally having to cope with the undeniability of realities. One of the key words in the novel is &ldquo;appearances&rdquo; and the problem is, how will Strether finally respond to them? At the start we read that upon his arrival in Europe Strether felt &ldquo;launched in something of which the sense would be quite disconnected from the sense of his past,&rdquo; and this something had begun &ldquo;with a sharper survey of the elements of Appearance than he had for a long time been moved to take.&rdquo; The opposition is clear. His &ldquo;past&rdquo; is his life in America where he has taken small notice of the sensory surfaces of things. Over there, we gather, people focus directly on the moral essence of phenomena. But in Europe Strether is to find himself trying to learn the proper way to handle appearances. It is fitting that the first thing that makes him start to doubt the rightness of his quest as rescuer is the noticeable change in Chad&rsquo;s personal appearance; it is even more fitting that this shock should take place in a theatre, the place most dedicated to the deceptive illusion, the putting on of shows and acts. It was in a theatre in London that Strether had experienced a significant premonitory confusion: &ldquo;he couldn&rsquo;t have said if it were the actors or auditors who were most true.&rdquo; When Chad makes his dazzling entry into the box at the theatre in Paris it seems like a matter of a superb entry, fine acting with consummate staging. Chad is transformed&mdash;&ldquo;Chad had improved in appearance&rdquo;: Strether cannot yet say if the change goes any deeper. Strether does not shy away from the baffling change. &ldquo;All one&rsquo;s energy goes to facing it, to tracking it. . . . Call it then life . . . call it poor dear old life simply that springs the surprises.&rdquo; He finds the fact of radically enriched appearances sufficiently engrossing to make him determine to go more deeply into the matter.</p>
+
+        <p>In the central scene in Gloriani&rsquo;s garden (at the start of Book Five) we are made to feel that a representative selection of old Europe has congregated under the supervision of the enigmatic artist Gloriani. Here Strether finds himself in the &ldquo;queer old garden&rdquo; next to &ldquo;the house of art&rdquo;: the people, the garden, and the house distill a heady magic for Strether and it is at this point that he &ldquo;lets himself go&rdquo; (it is here that he makes his famous speech to little Bilham&mdash;&ldquo;Live all you can; its a mistake not to&rdquo;&mdash;too well known to need requoting here). In this atmosphere he feels &ldquo;smothered in flowers&rdquo; but instead of recoiling from the feeling of suffocation he puts it down to his &ldquo;odious ascetic suspicion of any form of beauty.&rdquo; He wishes to learn to accept it in the proper way. Like other Jamesian pilgrims he feels a sudden &ldquo;assault of images&rdquo;: &ldquo;he had the sense of names in the air, of ghosts at the windows, of signs and tokens, a whole range of expression, all about him, too thick for prompt discrimination.&rdquo; But instead of shutting the thick rich confusion out (as some of the other ambassadors do) he opens &ldquo;the windows of his mind . . . letting this rather grey interior drink in for once the sun of a clime not marked in his old geography.&rdquo; But along with this new venturous hospitality to life Strether also experiences that nervousness and timidity when threatened with too much proximity to experience which I suggested was discernible in James&rsquo;s own <em>Autobiography</em>. He is &ldquo;aware of fearing close quarters&rdquo;: he prefers to sit apart and view it all from a removed point. It is in this mood that he asks little Bilham, tentatively, if the union of Chad and Mme de Vionnet is &ldquo;virtuous.&rdquo; The latter answers&mdash;&ldquo;it&rsquo;s what they pass for&rdquo; and goes on: &ldquo;But isn&rsquo;t that enough? What more than a vain appearance does the wisest of us know? I commend you . . . the vain appearance.&rdquo; This is clearly not a point of view that Strether would be content to adopt uncritically; but, coming from Woollett he has to learn that appearances may have a value, that there is a knowledge to be gained from the surface as well as from the depth. At this point in the garden Strether is really poised between two visions, two attitudes to life. He still half envies Waymarsh&rsquo;s obtuse and condemnatory refusal to have anything to do with the world of appearances. At the same time he is drawn to the warmer life of impressions and sensory stimuli to which he is now exposing himself. It is a question of how open or how shut to keep the windows of the mind. During his inner conflict he makes a comment which really leads to the key question of the book. Speaking of the Europeans in general he says: &ldquo;You&rsquo;ve all of you so much visual sense that you&rsquo;ve somehow all &lsquo;run&rsquo; to it. There are moments when it strikes one that you haven&rsquo;t any other.&rdquo; He means the moral sense, as his interlocutors quickly realise. Miss Barrace admits the charge: &ldquo;I dare say . . . that we all do here, run too much to mere eye. But how can it be helped? We&rsquo;re all looking at each other&mdash;and in the light of Paris one sees what things resemble. That&rsquo;s what the light of Paris seems always to show.&rdquo; Of course the eye (the Lockean window to the mind) is the organ supremely committed to appearances, to noting what things resemble, seeing how things &ldquo;show&rdquo; (interesting to recall that C&eacute;zanne said of Monet&mdash;he is all eye, but my God, what an eye! Strether&rsquo;s adventure among sheer appearances coincides very aptly with the age of Impressionism). Miss Barrace continues:</p>
+
+        <blockquote>
+            <p>&ldquo;Everything, every one shows&rdquo; . . . .</p>
+            <p>&ldquo;But for what they really are?&rdquo; Strether asked.</p>
+            <p>&ldquo;Oh I like your Boston &lsquo;reallys&rsquo;! But sometimes&mdash;yes.&rdquo;</p>
+        </blockquote>
+
+        <p>That is the most important question Strether asks. If one accepts the visible beauty and charm and decorousness of appearances, to what extent might one be blinding oneself to a hidden immoral reality? How much are things and people <em>really</em> what they show as being? How much can one stake on the &ldquo;vain appearance&rdquo;? Clearly a good deal, since without sensory impressions we could have no knowledge of this present world. Waymarsh&rsquo;s moral response to the world is based on wilful not-seeing and is thus ignorant and thus worse than useless. Yet if one agrees to regard the world with the same aesthetic attitude as one regards a picture, what invisible but real moral problems may one be overlooking?</p>
+
+        <p>This, of course, is the point of the last crucial incident in Strether&rsquo;s &ldquo;process of vision.&rdquo; He has accepted the aesthetic view, he has left Waymarsh and all he stands for far behind him with no regret. He takes a day out in the country where everything reminds him of a small landscape painting by Lambinet (curiously echoing his own name) which he had seen years before. The reality exactly measures up to the art. He thinks in terms of the frame, the composition etc., of the scene: &ldquo;it was France, it was Lambinet. Moreover he was freely walking about in it.&rdquo; James makes it explicit: Strether is &ldquo;in the picture.&rdquo; That is to say that in this perfect moment, the world of actual appearances is exactly consonant with the world of art. Strether&rsquo;s new aesthetic sense basks luxuriously in this merged world of art and nature. But then, in the famous scene, Chad and Mme de Vionnet come sailing into the picture. At first they seem to enhance its pictorial quality (&ldquo;What he saw was exactly the right thing&rdquo;) but then as other evidence (of hints, glimpses, suppressed gestures, prepared attitudes) emerges, Strether realises that under the felicitous pastoral appearance there is a genuine moral dubiety. This moral reality does not appear directly to the eye; it is something inferred and detected by the human interpreting mind. It is impossible to regard the real world as one would a painted canvas&mdash;because genuine moral problems obtrude; problems not of aesthetic values, but of the complexities and cruelties of human conduct. This experience&mdash;of the moral reality damaging the aesthetic appearance&mdash;is the final test for Strether. He spends hours sitting on his bedroom sofa (sedantry musings become the very essence of artistic meditation in James), turning over this crucial undeniable fact: &ldquo;there had been simply a <em>lie</em> in the affair.&rdquo; His theory had been that the facts were &ldquo;intrinsically beautiful&rdquo; as well as apparently so. Now he has to reconsider their intrinsic, as opposed to their apparent quality. He has to assimilate &ldquo;the deep, deep truth of the intimacy revealed.&rdquo; And it is this challenge which brings Strether to his final maturity of vision. He visits Mme de Vionnet; he perceives her fear; and he achieves an ethical sense which goes far beyond a mere disapprobation for the illicit deed. His fine insight, (James calls it his &ldquo;sharpest perception yet&rdquo;), is that &ldquo;it was almost appalling, that a creature so fine could be, by mysterious forces, a creature so exploited.&rdquo; It is the &ldquo;exploitation&rdquo; of people that is the cardinal sin in the Jamesian world: evil is the callous manipulation and selfish appropriation of other peoples&rsquo; lives&mdash;of life itself. According to such a moral scheme, Mme de Vionnet is no sinner but all victim. The exploiters include many of the minor ambassadors, but the central one is Chad. Strether has approached very close to a Jamesian view of the world for by the end the values of character and author overlap to a large extent.</p>
+
+        <p>To assert that is to bring into prominence one last crucial question. Why does Strether return to America? Mme de Vionnet&rsquo;s question is very relevant here. She asks him: &ldquo;Where is your &lsquo;home&rsquo; moreover now&mdash;what has become of it?&rdquo; This &ldquo;unhomeing&rdquo; of Strether is important. I suggested in an earlier article that Isabel Archer was looking for a home, a defining abode for her &ldquo;self,&rdquo; and made a major error of choice because of her failures of vision. Strether, having attained a wide and comprehensive vision of life has unfitted himself for any one specific &ldquo;home.&rdquo; For that would be to return to the very partiality, the limited and limiting commitment, which he has transcended. Like other Jamesian artist figures, he renounces all participation. To take up an image from the book, he must drop off the great stage of life and appreciate it from behind the scenes. The paradox is, as is usual in James, that &ldquo;he had only to be at last well out of it to feel it, oddly enough, still going on.&rdquo; Just as from the balcony the watcher is &ldquo;well out of it&rdquo; but most aware of it all &ldquo;going on.&rdquo; In addition &ldquo;it was he somehow who finally paid, and it was the others who mainly partook.&rdquo; He seems to become the containing, all-embracing consciousness of the various participants; but he must pay by forfeiting his place on the stage. That is what is behind the final reason he gives to Maria Gostrey for not staying on in Europe. In going back to America he is, it is made very clear, going back to completely nothing&mdash;a blank, a nowhere. But that is the whole point, he explains: &ldquo;But all the same I must go . . . To be right. . . . That, you see, is my only logic. Not, out of the whole affair, to have got anything for myself.&rdquo; This is the Jamesian logic, no matter how perverse it may seem to some people. For Strether to go back to Mrs. Newsome&rsquo;s money and security would, of course, be an impossible reversion, a wilful blinding, an abdication from his newly won perspective on life. To stay in Europe, however, would subtly contaminate his disinterested efforts on behalf of Mme de Vionnet by making it seem that he has become a corrupt defender of old Europe. He must not appear simply to have opted for one world&mdash;of appearances&mdash;as opposed to the other&mdash;of moral essences. It is not simply a matter of changing sides&mdash;it is getting beyond sides altogether, and the geographical equivalent of this is his refusal to seek around for a comfortable corner for himself in Europe. To show that Strether&rsquo;s new vision has passed beyond all the demands of the &ldquo;wretched self,&rdquo; it is important that he must not get any swag or material loot for himself (as, for instance, even Maria Gostrey has her little museum of sharp acquisitions). He must be above all collecting, all purchasing, all possessing. His gain, his treasures, must all be of the imagination; gems of appreciation, understanding, and a generous sympathy. Thus we have our last glimpse of him looking, perhaps, not unlike James himself&mdash;alone, homeless, somehow out of life, but full of a priceless vision.</p>
+
+        <p>I have isolated, for purposes of emphasis, Strether&rsquo;s stance on the balcony. But one should also note his increasing preference for the posture of seated meditation. This too reflects James&rsquo;s own preference for what he revealingly called &ldquo;the bench of reverie&rdquo; in his <em>Autobiography</em>; and indeed the bench has an iconographic significance equal to that of the balcony in James&rsquo;s later work&mdash;both, of course, suggest the choice, or sentence, of non-participation. His last story is called &ldquo;The Bench of Desolation,&rdquo; and the figure seated on the bench or in the &ldquo;chair of contemplation&rdquo; (&ldquo;Crapy Cornelia&rdquo;) is a recurrent one in his later work. In his later stories one often finds an ageing man sitting in solitude, and often in pensive sorrow, abandoning himself to melancholy musing and waiting for the twilight to close in. He may feel estranged, excluded, unwanted, or unfulfilled. Thus, for instance, Traffle in &ldquo;Mora Montravers&rdquo;: &ldquo;he could now stare but at the prospect of exclusion, and of his walking round it, through the coming years. . . . But he remained staring out at the approach of evening.&rdquo; But as the night comes on he has, like so many of James&rsquo;s spectators and on-lookers, the consolation and company of his private Jamesian consciousness&mdash;&ldquo;exquisite, occult, dangerous and sacred, to which everything ministered and which nothing could take away.&rdquo; And the prototype for all these seated thinkers is surely James himself, who was, of all the &ldquo;pilgrims&rdquo; he wrote about, ultimately the most &ldquo;passionate&rdquo;&mdash;even if the passion was all for appreciation and not participation. There is a lovely sketch of James, written by himself, which seems exactly to define his own chosen relationship to life. It occurs at the very end of a little-known travel book, <em>A Little Tour in France</em>, where James, having, like Strether, travelled and seen and appreciated, retires to a &ldquo;bench of reverie&rdquo; as if to turn over the significance and value of all his garnered impressions and sensations. It is the end of the tour, a twilight moment in which memory takes over from experience and the journeyings of life give way to the meditations of art. This picture makes a fitting end to this discussion of <em>The Ambassadors</em>. James is in a deserted Parc in Dijon:</p>
+
+        <blockquote>
+            <p>I went there late in the afternoon, without meeting a creature. . . . At the end of it was a little river that looked like a canal, and on the further bank was an old-fashioned villa, close to the water, with a little French garden of its own. On the hither side was a bench, on which I seated myself, lingering a good while; for this was just the sort of place I like. It was the furthermost point of my little tour. I thought that over, as I sat there, on the eve of taking the express to Paris; and as the light faded in the Parc the vision of some of the things I had seen became more distinct.</p>
+        </blockquote>
+
+        <p>It is precisely for the sake of that &ldquo;distinctness of vision&rdquo; that the watcher on the balcony and the thinker on the bench alike withdraw from the wonderful, fearful life around them.</p>
+    </article>
+
+    <script>
+        const toggle = document.getElementById('theme-toggle');
+        const icon = document.getElementById('theme-icon');
+
+        toggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+            toggle.title = isDark ? 'Modo Diurno' : 'Modo Nocturno';
+            toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+        });
+    </script>
+
+</body>
+</html>
