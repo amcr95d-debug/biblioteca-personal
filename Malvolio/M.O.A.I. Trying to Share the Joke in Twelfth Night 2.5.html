@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>"M.O.A.I." Trying to Share the Joke in Twelfth Night 2.5</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* =========================================
+           COLORES (Modo Diurno - International Klein Blue)
+           ========================================= */
+        :root {
+            --bg-body: #002FA7;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.88);
+            --text-muted: rgba(255, 255, 255, 0.6);
+            --border-color: rgba(255, 255, 255, 0.35);
+            --border-light: rgba(255, 255, 255, 0.15);
+            --fab-bg: #ffffff;
+            --fab-color: #002FA7;
+            --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+            --quote-border: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Modo Nocturno - Deep Navy Blue */
+        body.dark-mode {
+            --bg-body: #001233;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.85);
+            --text-muted: rgba(255, 255, 255, 0.5);
+            --border-color: rgba(255, 255, 255, 0.2);
+            --border-light: rgba(255, 255, 255, 0.1);
+            --fab-bg: #ffffff;
+            --fab-color: #001233;
+            --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+            --quote-border: rgba(255, 255, 255, 0.4);
+        }
+
+        /* =========================================
+           ESTILOS GENERALES
+           ========================================= */
+        * { transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease; }
+        
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            line-height: 1.75;
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 2em 1.5em 5em;
+            color: var(--text-primary);
+            background-color: var(--bg-body);
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            text-align: center;
+            margin-bottom: 0.2em;
+            font-weight: normal;
+            letter-spacing: 0.05em;
+            color: var(--text-primary);
+        }
+
+        h2 {
+            font-size: 1.4em;
+            text-align: center;
+            margin-top: 2.5em;
+            margin-bottom: 1.5em;
+            font-weight: bold;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        h3 {
+            font-size: 1.1em;
+            text-align: center;
+            margin-top: 2.5em;
+            margin-bottom: 1em;
+            font-weight: bold;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        p {
+            text-align: justify;
+            margin-bottom: 1.2em;
+            text-indent: 1.5em;
+        }
+
+        p.no-indent { text-indent: 0; }
+
+        blockquote {
+            margin: 1.5em 2em;
+            padding-left: 1.5em;
+            border-left: 3px solid var(--quote-border);
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        blockquote p { text-indent: 0; margin-bottom: 0.8em; }
+
+        .poem {
+            margin: 1.5em 2em;
+            font-style: italic;
+            text-indent: 0;
+        }
+
+        .poem p {
+            text-indent: 0;
+            margin-bottom: 0.3em;
+            text-align: left;
+            padding-left: 2em;
+            text-indent: -2em;
+        }
+
+        em { font-style: italic; }
+
+        sup {
+            font-size: 0.75em;
+            vertical-align: super;
+            line-height: 0;
+        }
+
+        .page-number {
+            display: block;
+            text-align: center;
+            font-size: 0.8em;
+            color: var(--text-muted);
+            margin: 2em 0 1em 0;
+        }
+
+        .footnotes {
+            margin-top: 4em;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5em;
+            font-size: 0.9em;
+            color: var(--text-secondary);
+        }
+
+        .footnotes h3 {
+            text-align: left;
+            font-size: 1em;
+            margin-bottom: 1em;
+            text-transform: none;
+            letter-spacing: normal;
+            color: var(--text-primary);
+        }
+
+        .footnotes p {
+            text-align: left;
+            text-indent: -1.5em;
+            padding-left: 1.5em;
+            margin-bottom: 0.6em;
+            font-size: 0.9em;
+        }
+
+        .section-break {
+            text-align: center;
+            margin: 2.5em 0;
+            font-weight: bold;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.1em;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 2em;
+        }
+
+        .source-note {
+            text-align: center;
+            font-size: 0.85em;
+            color: var(--text-muted);
+            margin-bottom: 2em;
+            font-style: normal;
+        }
+
+        .author {
+            text-align: center;
+            font-size: 1.1em;
+            color: var(--text-secondary);
+            margin-bottom: 2em;
+            letter-spacing: 0.05em;
+        }
+
+        /* =========================================
+           BOTÓN FLOTANTE (Modo Nocturno)
+           ========================================= */
+        .fab-toggle {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background-color: var(--fab-bg);
+            color: var(--fab-color);
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease;
+            z-index: 1000;
+            outline: none;
+        }
+        .fab-toggle:hover { transform: scale(1.1); }
+        .fab-toggle:active { transform: scale(0.95); }
+        .fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            body { padding: 1.2em 1em 4em; }
+            h1 { font-size: 1.6em; }
+            h2 { font-size: 1.1em; }
+            .fab-toggle { bottom: 16px; right: 16px; width: 50px; height: 50px; }
+            .fab-toggle .material-icons { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo Nocturno">
+        <i class="material-icons" id="theme-icon">dark_mode</i>
+    </button>
+
+    <article id="content">
+        <h1>&ldquo;M.O.A.I.&rdquo; Trying to Share the Joke<br>in <em>Twelfth Night</em> 2.5<br>(A Critical Hypothesis)</h1>
+        <p class="author">Inge Leimberg</p>
+        <p class="source-note">Connotations, Vol. 1.1 (1991)</p>
+
+        <p>It is not very often that Shakespeare made his purpose as clear as in the case of Malvolio. Apart from the allegorical name, there are Olivia&rsquo;s as well as Maria&rsquo;s words which do not leave the slightest doubt as to the identity of the very real and, indeed, very evil spirit by which Malvolio is possessed:</p>
+
+        <blockquote>
+            <p><em>Olivia.</em> O, you are sick of self-love, Malvolio, and taste with a distempered appetite. (1.5.89-90)<sup>1</sup></p>
+            <p><em>Maria.</em> . . . it is his grounds of faith that all that look on him love him: and on that vice in him will my revenge find notable cause to work. (2.3.151-53)</p>
+        </blockquote>
+
+        <p>It goes without saying that self-love is not a venial sin but the very first and the very worst of them all, and it is equally obvious that self-love is a subject far beyond the scope of a short essay. But it may be permitted to point out some of the landmarks in this vast field. Malvolio closely resembles, for instance, the victim of self-love in <em>De civitate Dei</em>, who claims power and glory or even adoration, who is essentially unchaste because he is possessed with a lust for dominance, and who, in his imagined wisdom and self-exaltation, is given over to the rule of pride, thus having his mind darkened until, finally, his self-adoration turns out to be the adoration of beasts and reptiles. If St Augustine had written an allegory instead of a treatise, it is very likely that he would have named such a figure Mala Voluntas.<sup>2</sup> Another compelling example is the <em>Divina Commedia</em>, where Lucifer, the father of pride, remains fixed and frozen in the very pit of hell<sup>3</sup> and where, in the <em>Purgatorio</em>, the penitent must leave behind himself this damning sin before he can actually begin the slow ascent to the restoration of the divine image.<sup>4</sup></p>
+
+        <p>Thirdly, in Shakespeare&rsquo;s own days self-love was nothing less than an obsolete kind of error. Montaigne described a Malvolio-like man when he wanted to expose the wrongness of human self-adoration.<sup>5</sup> When, only a little later, it comes to the &ldquo;grounds of faith&rdquo; of Roman Catholic reformers like Fran&ccedil;ois de Sales, the message is much more in harmony with Shakespeare&rsquo;s Christian humanism than is the acid Pyrrhonism of Montaigne. It is an added charm to Salesian preaching, and a witty device very much akin to Shakespeare&rsquo;s comic riddles, that the <em>Introduction &agrave; la vie devote</em> was also known under the name <em>Philothea</em>. It was obviously an understood thing that Fran&ccedil;ois&rsquo; readers measured up to recognizing in the desired <em>philo-thea</em> the despised <em>phil-autia</em> against which the exhortation of the work is aimed.<sup>6</sup> What self-love may do to a man had, of course, been amply and ironically shown by Erasmus in the <em>Laus Stultitiae</em>, where Philautia officiates as star-assistant to that goddess. According to Erasmus, Philautia, i.e., self-love or self-conceit, is always the first step in a human creature being metamorphosed into an ass.<sup>7</sup></p>
+
+        <p>Finally, John Donne&rsquo;s paradoxical definition of <em>amor sui</em> must not be ignored in an interpretation of <em>Twelfth Night</em>: Trying to act in accordance with God&rsquo;s will as regards <em>amor sui</em>, says Donne (the preacher), man has not simply to respect a prohibition but to become aware of a dilemma. Self-love must not be replaced by self-contempt; or, in other words, man is strictly forbidden as well as commanded to try and be like God:</p>
+
+        <blockquote>
+            <p>. . . whereas it was the greatest trespasse, of the greatest trespasser in the world, the Devill, to say <em>Similis ero Altissimo</em>, I will be like the Highest, it would be as great a trespasse in me, not to be like the Highest: not to conforme my selfe to God, by the use of his grace, in the Christian Church. And whereas the humiliation of my Saviour is in all things to be imitated by me: yet herein I am bound to depart, from his humiliation; that whereas he being in the forme of God, tooke the forme of a servant; I being in the forme of a servant, may, nay must take upon me the forme of God, in being <em>Deiformis homo</em>, a man made in Christ, the Image of God.<sup>8</sup></p>
+        </blockquote>
+
+        <p>When Shakespeare made Malvolio fall victim to self-love, he moved in the field roughly defined by these different examples. The pattern, however, which will prove to be most helpful in an interpretation of Malvolio is the tripartite one described in <em>De civitate Dei</em>: Self-love is only another name for unchastity, it leads to intellectual blindness,<sup>9</sup> and, therefore, brings about the loss of man&rsquo;s likeness to God, which was God&rsquo;s very purpose in the creation of man. In <em>Twelfth Night</em> 2.5 Shakespeare is mainly concerned with intellectual blindness, whilst the unchastity of self-love comes to the fore even more clearly in <em>Twelfth Night</em> 3.4. Man&rsquo;s likeness to God, being the acme of the whole thematic complex, is always involved.</p>
+
+        <p>If, in <em>Twelfth Night</em>, Shakespeare branded self-love as the sickness and the sin of Malvolio, he went even further in Sonnet 62,<sup>10</sup> where the speaker himself is a victim of <em>amor sui</em>. But, by contrast with <em>Twelfth Night</em>, in the sonnet the ego possessed by self-love is never quite bereft of self-knowledge. In the octave the speaker confesses to his guilt:</p>
+
+        <div class="poem">
+            <p>Sin of self-love possesseth all mine eye,</p>
+            <p>And all my soul, and all my every part;</p>
+            <p>And for this sin there is no remedy,</p>
+            <p>It is so grounded inward in my heart.</p>
+            <p>Methinks no face so gracious is as mine,</p>
+            <p>No shape so true, no truth of such account,</p>
+            <p>And for myself my own worth do define,</p>
+            <p>As I all other in all worths surmount.</p>
+        </div>
+
+        <p>In the sestet, after the peripeteia-like volta, he describes his bitter awakening to reality:</p>
+
+        <div class="poem">
+            <p>But when my glass shows me myself indeed,</p>
+            <p>Beated and chopped with tanned antiquity,</p>
+            <p>Mine own self-love quite contrary I read;</p>
+            <p>Self so self-loving were iniquity.</p>
+        </div>
+
+        <p>Then comes the final couplet extolling the transformation of self-love and self-praise into real love and real praise, which is only another name for poetry:</p>
+
+        <div class="poem">
+            <p>&rsquo;Tis thee, myself, that for myself I praise,</p>
+            <p>Painting my age with beauty of thy days.</p>
+        </div>
+
+        <p>The autobiographical parallel in the sonnet, which goes as far as we shall ever come towards autobiography in Shakespeare, makes Malvolio&rsquo;s tragi-comic catharsis poignantly clear to any spectator and hearer of <em>Twelfth Night</em>. While, in the sonnet, self-love is set off against the speaker&rsquo;s passionate self-castigation as well as his trust in the redeeming power of unselfish love, in Malvolio the evil passion of self-love reigns supreme. He sees nothing but illusions, no matter whether he looks with his mind&rsquo;s eye into his own heart or with his real eyes into a real mirror, or whether he witnesses his relations with other people, be they socially above or below him, be they men or women.<sup>11</sup> But it is, of course, a woman who becomes the final stumbling-block for a man suffering from Malvolio&rsquo;s disease. Love is blind, and self-love in love, or rather infatuation with a woman (who, necessarily, has to be a great lady) is doubly blind. Self-knowledge is one of the redeeming features of the distressing story told in Sonnet 62. And it is largely due to the self-lover&rsquo;s complete lack of self-knowledge that we are moved to pity and terror as well as laughter in <em>Twelfth Night</em> 2.5.</p>
+
+        <p>Both Sir Toby and his companions on the stage as well as the audience take part in what to Malvolio is an overwhelming discovery:</p>
+
+        <blockquote>
+            <p>. . . let me see, let me see, let me see</p>
+        </blockquote>
+
+        <p>he says (2.5.113). The letter he has before him, in his Lady&rsquo;s own handwriting, sealed &ldquo;with her Lucrece&rdquo; and ringing with her &ldquo;very phrases,&rdquo; speaks to him in terms which are</p>
+
+        <blockquote>
+            <p>. . . evident to any formal capacity. There is no obstruction in this.</p>
+            <p>(118-19)</p>
+            <p>Daylight and champaign discovers not more! This is open. . . .</p>
+            <p>(160-61)</p>
+            <p>. . . I do not now fool myself, to let imagination jade me; for every reason excites to this, that my lady loves me. (164-66)</p>
+        </blockquote>
+
+        <p>Whilst the poor man afflicted with the disease for which &ldquo;there is no remedy&rdquo; exults in his being at last undeceived that his lady adores him, the spectators on the stage make it quite clear that the very undeceiving is a deception. And this is the main cause of their laughter. Of course, Malvolio is a comic figure in the tradition of the <em>miles gloriosus</em> or the <em>mercator</em> in Plautus; but it is only later in the play, in Scene 3.4, that he will display the mad antics of the imaginary lady-killer and the old-man-in-love. In 2.5 we are not yet concerned with his strutting about in yellow stockings but with his reading the letter trying to &ldquo;see . . . see . . . see&rdquo; with the eyes of a mind hopelessly blinded by self-love.</p>
+
+        <p>It is not enough that Shakespeare presents Malvolio as the reader of a letter as well as of combinations of single letters, he also makes him scan the numbers<sup>12</sup> of Maria&rsquo;s verses as well as reason along the lines of textual exegesis. He sees himself in the role of a schoolman applying the rules of analysis (118). He is sure of his findings (118-19). He is well aware that the riddle given him to solve is an &ldquo;alphabetical&rdquo;<sup>13</sup> one (120). Finally, he tries to find a <em>tertium comparationis</em> as if St Thomas Aquinas himself had shown him the way to understanding (121). When he applies his method, however, every onlooker knows what Sir Toby and his companions speak of and rejoice at:</p>
+
+        <blockquote>
+            <p>He is . . . at a cold scent. (123)</p>
+            <p>. . . the cur is excellent at faults. (128-29)<sup>14</sup></p>
+            <p>Ay, and you had any eye behind you, you might see more detraction at your heels than fortunes before you. (136-38)<sup>15</sup></p>
+        </blockquote>
+
+        <p>Malvolio is completely deprived of self-knowledge and that is what scene 2.5 is mostly about and what, together with Sir Toby and Sir Andrew and Feste and Fabian, we are meant to laugh at, though, hopefully, being struck at the same time with pity and terror by the spectacle of a man who repeats the sin of Mother Eve in drinking the poison of the Tempter (114). Malvolio, for all his passionate efforts to &ldquo;see . . . see . . . see,&rdquo; is blind to what every one else sees clearly because it is indeed as revealing as &ldquo;Daylight and champaign&rdquo;; he is virtually illiterate, unable to read the very ABC of self-knowledge spread out before his eyes. &ldquo;There, but for the grace of God, goes . . . ,&rdquo; the terrified understander of <em>Twelfth Night</em> says to himself, brushing away the tears of laughter all the same. What wonderful comedy, the best ever written! But what a terrible spectacle, too, of Everyman&rsquo;s downfall brought about by his most degrading and, alas, most common fault, the &ldquo;Sin of self-love . . . .&rdquo;</p>
+
+        <p>All this would be lost on the spectator if he did not see clearly what Malvolio misreads. Shakespeare, hearing Sir Toby&rsquo;s prayer and making Malvolio read the letter aloud, makes him repeat four times the fourfold &ldquo;alphabetical position&rdquo; which proves to be the fatal ingredient in the &ldquo;dish of poison&rdquo; concocted by Maria:</p>
+
+        <blockquote>
+            <p>M.O.A.I. doth sway my life. (109)</p>
+            <p>&lsquo;M.O.A.I. doth sway my life.&rsquo;&mdash;Nay, but first let me see, let me see, let me see. (112-13)</p>
+            <p>Softly: &lsquo;M.O.A.I.&rsquo;&mdash; (122)</p>
+            <p>&lsquo;M.O.A.I.&rsquo; . . . to crush this a little, it would bow to me, for every one of these letters are in my name. (139-41)</p>
+        </blockquote>
+
+        <p>In all the broken soliloquy from the first mention of &ldquo;M.O.A.I.&rdquo; to the last, Malvolio is mainly concerned with the solution of this riddle. So are his spectators on the stage who, in lieu of a chorus, are helping the audience along with understanding, in their turn, what the four-times repeated &ldquo;tetragrammatic&rdquo; pattern means, namely, something completely different from or even opposite to what it means in Malvolio&rsquo;s madly wishful thinking.</p>
+
+        <p>If we don&rsquo;t see the joke, there is none, apart from the mad antics the actors may happen to perform. It mostly depends on this joke whether whatever happens to Malvolio is felt to be meaningful, be it in the narrower or wider context of the play. Therefore, when I read in the Arden Edition that we should stop worrying because Shakespeare&rsquo;s purpose in all the &ldquo;ado&rdquo; about &ldquo;M.O.A.I.&rdquo; is mainly &ldquo;prolonging the comic scene,&rdquo;<sup>16</sup> I can only say, with Feste and some others in Shakespeare: &ldquo;O no, no, no, no&rdquo; (2.3.112) and begin listening to the rogues who are hidden in the box-tree, busily providing comments for the benefit of the audience there below. &ldquo;O ay,&rdquo; says Sir Toby (2.5.123). When, a little later, Malvolio argues &ldquo;&lsquo;A&rsquo; should follow, but &lsquo;O&rsquo; does,&rdquo; Fabian comments, &ldquo;And &lsquo;O&rsquo; shall end, I hope&rdquo; (131-33). Sir Toby goes on repeating &ldquo;O&rdquo; and &ldquo;Ay,&rdquo; but now in reversed order: &ldquo;Ay, or I&rsquo;ll cudgel him, and make him cry &lsquo;O&rsquo;!&rdquo; Then Malvolio reaches the final &ldquo;I&rdquo; of the formula and Fabian clinches the argument by adding to &ldquo;ay&rdquo; and &ldquo;eye&rdquo; the [ju:] which (literally as well as figuratively) is absent from Malvolio&rsquo;s egotistic alphabet. Furthermore, he implicitly draws a comparison with Lot&rsquo;s wife, insinuating that Malvolio would have shared her fate of being turned into a pillar of salt if he had any eye behind him (136 and Gen. 19:17, 19:26).</p>
+
+        <p>The clearest of all these &ldquo;alphabetical&rdquo; pointers is Fabian&rsquo;s &ldquo;And &lsquo;O&rsquo; shall end, I hope,&rdquo; emphasized by Sir Toby&rsquo;s reordering his former &ldquo;O ay&rdquo; into &ldquo;Ay . . . &lsquo;O&rsquo;!&rdquo; Surely these hints refer to the Greek alphabet which, indeed, ends with &ldquo;&Omega;.&rdquo; What Malvolio ought to have seen at a glance (as the chorus in the box-tree do) is his own image mirrored in a very simple anagram reflecting the creed of man fallen off from the love of God and thrown into the outer darkness of self-love: &ldquo;<em>Eritis sicut deus</em>,&rdquo; says the devil, and <em>Adam homo</em> promptly replies: I&rsquo;M A &amp; O!<sup>17</sup></p>
+
+        <p>If only Malvolio had bothered to &ldquo;crush this a little&rdquo; (140) as it ought to be crushed, the four letters must, indeed, have hurt him &ldquo;<em>like a Lucrece knife</em>&rdquo; (107), wounding his self-love, or, in other words, his unchastity (be it sensual or spiritual) to the core. If only he had looked in the right direction (the letters themselves) instead of the wrong one (the distorting mirror of his own name) he might have remembered what happened to Lot&rsquo;s wife who also wanted to &ldquo;see . . . see . . . see&rdquo; and, against God&rsquo;s command, looked backward. In Malvolio&rsquo;s case, this means that he looks at his own image with the eyes of self-love, and is, therefore, incapable of learning the lesson which is contained in the letter.</p>
+
+        <p>There is, in the annals of the English-speaking theatre, a direct (though comparatively harmless) lineal descendant of Malvolio: Henry Higgins in the musical version of Shaw&rsquo;s <em>Pygmalion</em>. The librettist applies to him precisely the old formula which exposes the moral blindness of the eternal self-lover who &ldquo;thinks he is a god,&rdquo; i.e., Alpha and Omega:</p>
+
+        <div class="poem">
+            <p>No, my reverberating friend,</p>
+        </div>
+
+        <p>sings Eliza, giving Henry Higgins the brush-off and preferring Freddie,</p>
+
+        <div class="poem">
+            <p>You are not the beginning and the end!</p>
+        </div>
+
+        <p>Surely Shakespeare&rsquo;s audience was expected to catch the meaning and to share Maria&rsquo;s joke as, even in the literary amnesia of our own age, some people are supposed to know what Eliza Doolittle thinks she is talking about in that line: A man to be imagined with the letters &ldquo;M.O.A.I.&rdquo; (or the other way round) hovering in a balloon above his head.</p>
+
+        <p>To summarize: &ldquo;M.O.A.I.&rdquo; is an anagram (and a very simple and obvious one at that) of Rev. 1:8.<sup>18</sup> As such it is an ironic pointer to Malvolio&rsquo;s ruling passion, self-love, which is only another name for <em>superbia</em> or <em>mala voluntas</em>.<sup>19</sup> Thus, temptation comes to him (as it came, for instance, to Dr Faustus or to fair Rosamond)<sup>20</sup> as an unmistakable warning. The spectators on the stage grasp that meaning at once and keep giving alphabetical hints to the audience and heading them off the false scent followed by Malvolio.</p>
+
+        <p>The method and the substance of this interpretation are supported by an alphabetical pattern quoted by Erasmus in the <em>Laus Stultitiae</em>. It comes up in connection with the folly of an old-man-turned-lover, who is one of Malvolio&rsquo;s typical literary forbears. According to Erasmus (speaking tongue in cheek) the old man, otherwise a sad figure, is graced by the goddess Stultitia with this folly which makes him sociable for a little while, when otherwise he would merely be shunned:</p>
+
+        <blockquote>
+            <p>Itaque delirat senex meo munere. Sed tamen delirus iste meus interim miseris illis curis vacat, quibus sapiens ille distorquetur. Interim non illepidus est compotor. Non sensit vitae taedium, quod robustior aetas vix tolerat. Nonnunquam cum sene Plautino ad tres illas litteras revertitur, infelicissimus si sapiat . . . (26).</p>
+        </blockquote>
+
+        <p>Shakespeare, writing for the comic stage where words have to be grasped instantly, contents himself with a simple anagram of a very terse and very well-known formula which he repeats four times, helping the audience on with all sorts of pointers. Erasmus, on the other hand, can afford to provide an elliptical, merely allusive pattern, being very sure that his readers have enough leisure to identify the Plautinian old man as Demipho in the <em>Mercator</em> and &ldquo;these three letters&rdquo; as AMO. This is the passage to which Erasmus refers:</p>
+
+        <div class="poem">
+            <p><em>Dem.</em> Sed ausimne ego tibi eloqui fideliter?</p>
+            <p><em>Lys.</em> Audacter.</p>
+            <p><em>Dem.</em> Animum advorte.</p>
+            <p><em>Lys.</em> Fiet sedulo.</p>
+            <p><em>Dem.</em> Hodie ire in ludum occepi litterarium,</p>
+            <p>Lysimache. ternas scio iam.</p>
+            <p><em>Lys.</em> Quid ternas?</p>
+            <p><em>Dem.</em> AmO.<sup>21</sup></p>
+        </div>
+
+        <p>Add to the three letters AMO the letter I, and you have an absurd, macaronic version of <em>amor sui</em> (the perversion of <em>amor Dei</em>) together with the alphabetical distortion of the divine &ldquo;<em>I am A and &Omega;</em>.&rdquo;<sup>22</sup></p>
+
+        <p>Apart from referring to the <em>tres litteras</em> in Plautus, that passage in the <em>Laus Stultitiae</em> is preceded by another one which points to the latinized alpha in Shakespeare&rsquo;s double-barrelled satire, including the numerical value of the letters. When Stultitia claims the title of the first and foremost of gods and goddesses, she describes this position as an &ldquo;alphabetical&rdquo; one:</p>
+
+        <blockquote>
+            <p>. . . cur non ego iure, Deorum omnium <em>alpha</em> dicar, habearque, quae una omnibus largior omnia?<sup>23</sup></p>
+        </blockquote>
+
+        <p>Erasmus here is supposed to refer to the Book of Revelation; but letters and numbers are interchangeable anyway. The &ldquo;A&rdquo; in &ldquo;M.O.A.I.&rdquo; being the first letter of the Latin alphabet (as <em>alpha</em> is of the Greek) is numerically identical with the &ldquo;1&rdquo; which so very aptly (as well as absurdly) occupies the last place in &ldquo;M.O.A.I.&rdquo; The letter &ldquo;M&rdquo; is, in itself, no less suggestive of a numerical value than are &ldquo;A&rdquo; and &ldquo;I.&rdquo;<sup>24</sup> If both &ldquo;A&rdquo; and &ldquo;I&rdquo; fit in beautifully with Malvolio&rsquo;s being possessed with the devil of egotism as well as seeing himself as the number one of Olivia&rsquo;s household (which is the world to him) the number 1000 has come down to him from his ancestors Pyrgopolynices and Ralph Roister Doister, who are, at least partly, responsible for his comic error of being an irresistible lady-killer. Listening to &ldquo;M.O.A.I.&rdquo; as a combination of numbers, we are reminded of Leporello counting his master&rsquo;s triumphs: &ldquo;Ma in Espagna, mille tre!&rdquo; With the <em>miles gloriosus</em>, be he Latin or English, the victories in war and love are all imaginary, not real like Don Juan&rsquo;s, but they are won in their thousands all the same.<sup>25</sup> The arithmetic of the megalomaniac self-lover consists mainly of two numbers: &ldquo;I&rdquo; and &ldquo;M.&rdquo; The &ldquo;I&rdquo; he employs exclusively and continuously for himself, the &ldquo;M&rdquo; he uses to number the victims, whether of his arm or his charm.</p>
+
+        <p>If &ldquo;M&rdquo; and &ldquo;A&rdquo; and &ldquo;I&rdquo; denote the numbers 1000 and 1, the &ldquo;O&rdquo; is what is needed to transform 1 into 1000, the cypher. Shakespeare loved this open-mouthed emblem of emptiness. In <em>As You Like It</em> it is the badge of the bitter fool, Jaques, who in his splendid isolation and misanthropy is akin to Malvolio; so, too, is the image of the cypher in <em>As You Like It</em> akin to the &ldquo;M.O.A.I.&rdquo; sequence in <em>Twelfth Night</em>:</p>
+
+        <div class="poem">
+            <p><em>Jaqu.</em> . . . I was seeking for a fool when I found you.</p>
+            <p><em>Orl.</em> He is drowned in the brook. Look but in and you shall see him.</p>
+            <p><em>Jaqu.</em> There I shall see mine own figure.</p>
+            <p><em>Orl.</em> Which I take to be either a fool, or a cipher.</p>
+            <p><em>Jaqu.</em> I&rsquo;ll tarry no longer with you. . . .</p>
+            <p>(<em>As You Like It</em> 3.2.280-86)</p>
+        </div>
+
+        <p>Here, too, the bitter fool is shown his own image in a mirror. To Jaques &ldquo;All the world&rsquo;s a stage, / And all the men and women merely players&rdquo; on this stage of fools, excepting only himself, the philosopher. Consequently Jaques, looking for a man (he never looks for a woman, anyway), always looks for a fool. When Orlando actually shows him the fool (and a drowned one at that), Jaques happens to see his own face or &ldquo;figure,&rdquo; which means <em>face</em> as well as <em>letter</em> or <em>number</em>, and, moreover, &ldquo;an imaginary form, a phantasm.&rdquo;<sup>26</sup> And this meaning rather than &ldquo;letter&rdquo; or &ldquo;number&rdquo; befits the image of the drowned fool in the water. What Jaques sees is not a number but a mere cipher, &ldquo;an O without a figure&rdquo; (<em>LR</em> 1.4.189-90).</p>
+
+        <p>In a silence which clearly bespeaks his pensiveness, the philosopher-fool, Jaques, takes his departure. He has looked into the mirror and has seen that the difference between &ldquo;figure&rdquo; and &ldquo;cipher&rdquo; can be virtually infinitesimal. The letter-mirror held before Malvolio&rsquo;s eyes is quite as clear as that brook in the Forest of Arden. It shows him the figure of figures, the One, which is also the I, which is also the divine Alpha, which is also the figure before the three ciphers in the 1000. If not completely bereft of reason, he must be aware that I and O may very easily change places, and, handy-dandy, which is the I, which is the O? This holds true, too, for <em>one</em>. In no time it may be reduced to 0,<sup>27</sup> the very figure may turn out to be a mere cypher, which, though looking exactly like an &ldquo;O mega magna,&rdquo;<sup>28</sup> is only an especially large nothing, the vanishing point in the infinitesimal calculus of existence.<sup>29</sup></p>
+
+        <p>That, in the vast field of the Shakespearean dialectics of something-and-nothing, the capital &ldquo;I&rdquo; comes very near to a mere &ldquo;O&rdquo; (wooden or otherwise) is the thesis discussed in Sonnet 136, a &ldquo;figural&rdquo; companion-piece to Sonnet 62 with its neoplatonic love-theory:</p>
+
+        <div class="poem">
+            <p>Among a number one is reckoned none:</p>
+            <p>Then in the number let me pass untold,</p>
+            <p>Though in thy store&rsquo;s account I one must be,</p>
+            <p>For nothing hold me, so it please thee hold</p>
+            <p>That nothing me, a something sweet to thee.</p>
+            <p>Make but my name thy love, and love that still,</p>
+            <p>And then thou lov&rsquo;st me, for my name is Will.</p>
+            <p>(Sonnet 136.8-14)<sup>30</sup></p>
+        </div>
+
+        <p>I defy any reader or spectator of <em>Twelfth Night</em> to think that the poet who wrote this sonnet had forgotten all about its message when he composed the alphabetical-numerical riddle &ldquo;M.O.A.I.,&rdquo; to be solved by a character also answering to the name of Will, though in an italianate version, in a play also called by that name. But &ldquo;let grammarians dispute&rdquo;<sup>31</sup> the problem of &ldquo;figure&rdquo; and &ldquo;picture&rdquo; and &ldquo;oneness&rdquo; and &ldquo;nothingness,&rdquo; while others may stick to the various proverbs which say just the same, for instance: &ldquo;One and none is all one,&rdquo; or &ldquo;One man and no man,&rdquo; or &ldquo;one is no number.&rdquo;</p>
+
+        <p>&ldquo;M.O.A.I.&rdquo; has the expressive dynamics of a fire-cracker. A spark which has not yet been mentioned is the prototypal egotism contained in the function of the three letters called &ldquo;I per se,&rdquo; &ldquo;A per se,&rdquo; and &ldquo;O per se.&rdquo; The three vowels quite literally &ldquo;stand alone,&rdquo;<sup>32</sup> which also holds true for the initial &ldquo;M&rdquo; not only as a contracted form of &ldquo;am,&rdquo;<sup>33</sup> but also as an abbreviation of words like Majesty, Master, or Monsieur, all ringing true to the greatness Malvolio feels he was born to, has achieved, and will soon have thrust upon him.<sup>34</sup> Furthermore, there is the dramaturgically all-important grammatical commonplace that the letter is a sound.<sup>35</sup> Four times Malvolio bleats out the fatal vowels, preceded by a nasally voiced consonant (the one singers use for training) thus making the audience run the full gamut of all the possible emotions to be roused by comic satire from cathartic pity and terror to farce.</p>
+
+        <p>Some hints on pronunciation which seem appropriate to Shakespeare&rsquo;s comic purpose in <em>Twelfth Night</em> 2.5 are to be culled, again, from Erasmus, who is, of course, mainly concerned with Latin (though not excepting vernaculars), but the educated man of Shakespeare&rsquo;s days always thought in terms of Latin when moving in the field of grammar and logic and rhetoric, and, consequently, of <em>pronuntiatio</em>. Therefore the <em>De recta pronuntiatione</em><sup>36</sup> may serve as a source of information on the sound value of &ldquo;M.O.A.I.&rdquo;</p>
+
+        <p>According to Erasmus the &ldquo;M&rdquo; is not only a prototypically large number but also the largest of the letters. Therefore:</p>
+
+        <blockquote>
+            <p>. . . quae uero magnitudinem, m, qua nulla spatio maior littera, gaudent, ut Graecis <em>megas</em>, <em>makros</em>, apud Latinos <em>magnus</em>, <em>mons</em>, <em>moles</em>. (958, p. 188)</p>
+        </blockquote>
+
+        <p>Furthermore, the intonation of M rightly done, instantly transports its hearer into the animal kingdom:</p>
+
+        <blockquote>
+            <p>M uero compressis inter se labiis mugitum quendam intra oris specum attractis naribus aedit . . . (959, p. 188)</p>
+        </blockquote>
+
+        <p>So let Malvolio wrinkle his nose and press together his lips and produce a resonant mooing. Then let him pause for breath and wait for inspiration before making ready to give us the &ldquo;O&rdquo;:<sup>37</sup></p>
+
+        <blockquote>
+            <p>Sequitur <em>o</em>, similiter ex arteria prodiens quemadmodum <em>a</em>, lingua recta quidem, sed introrsum modice reducta, nisi quod ore non solum diducto, uerumetiam rotundato, quod ipsa elementi figura uidetur admonere; . . . ab asinis discere poteramus huius litterae pronuntiationem . . . (936, p. 102)</p>
+        </blockquote>
+
+        <p>One can see Malvolio exercising these facial contortions and hear his vocal imitation of the ass, which, among the scores of quadrupeds he is compared to, is his heraldic animal anyway.<sup>38</sup></p>
+
+        <p>The &ldquo;A&rdquo;<sup>39</sup> is, of course, a vastly &ldquo;open&rdquo; vowel. Moreover it has been considered from of old (witness Erasmus), for the most abstruse mythical as well as grammatical reasons, the number one of the alphabet. Last but not least, it is a babyish and a sheepish sound:</p>
+
+        <blockquote>
+            <p>. . . A diducto largiter ore profertur . . . uoxque prodit ex arteria profundiore, . . . In loquendo siquidem nihil est prius quam diducere labia, mox nullo alio uel dentium uel linguae uel labiorum adminiculo uocem aedere, quam primam audimus in pueris nascentibus. LEO: Nec dissimilem in ouibus balantibus. (934-35, pp. 94-96)</p>
+        </blockquote>
+
+        <p>After having opened his mouth to its utmost capacity, bleating like a sheep, Malvolio gives us the &ldquo;I,&rdquo; his face finally splitting into the ghastly smile which will be frozen on his features in 3.4:</p>
+
+        <blockquote>
+            <p>. . . Iam <em>i</em> minus etiam diducto rictu sonatur ac paene coeuntibus dentibus, quibus sensim lingua illiditur, qua parte sunt genuini, sic ut labia nihil adiuuent sonitum, sed reducantur potius aliquantulum, ut in <em>e</em>. (936, p. 100)</p>
+        </blockquote>
+
+        <p>In <em>Twelfth Night</em> 2.5, all this is repeated four times in 30 lines, hopefully by a master comedian; furthermore, it is multiplied by all the &ldquo;M&rsquo;s&rdquo; and &ldquo;O&rsquo;s&rdquo; and &ldquo;I&rsquo;s&rdquo; of Malvolio&rsquo;s analysis, and augmented by the &ldquo;O&rsquo;s&rdquo; and &ldquo;Ay&rsquo;s&rdquo; and eyes and you-you-yous of the chorus.<sup>40</sup> Surely, it must have been irresistible for the audience to contribute their own farmyard-imitations, until all was drowned in laughter.</p>
+
+        <p>It goes without saying, though, that Malvolio&rsquo;s mooing, and braying, and bleating, and gaping, and grinning is not a mere lark, either, but the ridiculous mask screening the terrible reality: a human being bereft of the likeness to God by shameless self-love, with eyes blinded both to reality and truth, with a mouth literally unable to spell the elements, and a mind incapable of discriminating between the divine name and &ldquo;Malvolio,&rdquo; with not a trace of an instinct left to shun the snake in the grass, however glaringly it wriggles. Alas, poor Malvolio!</p>
+
+        <p class="no-indent" style="text-align: center; margin-top: 3em; font-style: italic;">Westf&auml;lische Wilhelms-Universit&auml;t<br>M&uuml;nster</p>
+
+        <div class="footnotes">
+            <h3>Notes</h3>
+            <p><sup>1</sup>References to Shakespeare&rsquo;s plays cite the Arden Edition.</p>
+            <p><sup>2</sup>See <em>De civitate Dei</em> 14.28; cf. also the explication of <em>mala voluntas</em> in Book 12 <em>passim</em>, which reads like a commentary on the fall of Malvolio.</p>
+            <p><sup>3</sup>See <em>Inferno</em> 34.1-69.</p>
+            <p><sup>4</sup>See <em>Purgatorio</em> 10-12.72. For the identification of <em>amor sui</em>, <em>mala voluntas</em> and <em>superbia</em>, cf., again, <em>De civitate Dei</em> 12.6 and 14.3.</p>
+            <p><sup>5</sup>&ldquo;An Apologie of Raymond Sebond,&rdquo; <em>Montaigne&rsquo;s Essays</em>, trans. J. Florio, ed. L. C. Harmer, vol. 2 (London: Dent, 1965), esp. 142.</p>
+            <p><sup>6</sup>See, for instance, <em>Philothea</em>, Part V, Chpt. 5. Cf. also M. Tietz, <em>Saint Fran&ccedil;ois de Sales&rsquo; Trait&eacute; de l&rsquo;amour de Dieu (1616) und seine spanischen Vorl&auml;ufer</em> (Wiesbaden: Steiner, 1973), esp. 131-33, 156, and 196.</p>
+            <p><sup>7</sup>Erasmus&rsquo; irony in the <em>Laus Stultitiae</em> has much in common with Shakespeare&rsquo;s satire in <em>TN</em>. See Erasmus von Rotterdam, <em>Ausgew&auml;hlte Schriften</em>, vol. 2 (Darmstadt: Wissenschaftliche Buchgesellschaft, 1975), for instance, 18, 98, and esp. 54 and 100, where the adage of the ass before the harp is quoted to describe the victim of Philautia.</p>
+            <p><sup>8</sup>See <em>The Sermons of John Donne</em>, eds. E. Simpson and G. R. Potter, vol. 9 (Berkeley: U of California P, 1958) 86.666-76. Cf. <em>De civitate Dei</em> 14.13. This is another passage so clearly descriptive of Malvolio-Everyman&rsquo;s predicament that it deserves to be quoted verbatim (<em>The City of God</em>, ed. and trans. P. Levine, vol. 4 [London: Heinemann; Cambridge, Mass.: Harvard UP, 1966] 338):</p>
+            <blockquote>
+                <p>Unde superbi secundum scripturas sanctas alio nomine appellantur sibi placentes. Bonum est enim sursum habere cor, non tamen ad se ipsum, quod est superbiae, sed ad Dominum, quod est oboedientiae, quae nisi humilium non potest esse.</p>
+                <p>Est igitur aliquid humilitatis miro modo quod sursum faciat cor, et est aliquid elationis quod deorsum faciat cor. Hoc quidem quasi contrarium videtur, ut elatio sit deorsum et humilitas sursum.</p>
+            </blockquote>
+            <p>Another aspect of the human dilemma comes to the fore in St Bernard&rsquo;s exposition of carnal self-love having to be transformed into <em>amor Dei</em>, cf. P. Pacifique Delfgaauw, &ldquo;La nature et les degr&eacute;s de l&rsquo;amour selon S. Bernard,&rdquo; <em>Analecta Sacri Ordinis Cisterciensis</em> 9 (1953): 234-52, esp. 235-36.</p>
+            <p><sup>9</sup>For the stupidity of the &ldquo;selfe Louer,&rdquo; cf. also the Latin definitions given by Simon Pelegromius, <em>Synonymorum sylua</em> (London: J. Harison, 1603) 248: &ldquo;Nimium sibi ipsi tribuens, arrogans, assumens, placens, assentiens; ipse tibi assentaris; te ipsum amas; cum de te iudicas, non rationem, non veritatem consulis. Largiris [?] ipse tibi, plus quam veritas concedat, plus quam veritati.&rdquo;</p>
+            <p><sup>10</sup>The commentaries, as far as I can see, don&rsquo;t do justice to the problem of self-love in Son. 62. P. Martin, in his study of Shakespeare&rsquo;s sonnets, makes self-love his point of departure but does not treat the subject historically and therefore lacks relevant criteria; see <em>Shakespeare&rsquo;s Sonnets: Self, Love, and Art</em> (Cambridge: Cambridge UP, 1972), ch. 3, &ldquo;Self-love and Love Itself.&rdquo; Cf. also E. Slater, &ldquo;Sinne of Self-Love,&rdquo; <em>N&amp;Q</em> 221 (1976): 155-56, who thinks that Shakespeare &ldquo;discovered [self-love] for himself, some hundreds of years before the rest of the world.&rdquo; Even S. Booth, ed., <em>Shakespeare&rsquo;s Sonnets</em> (New Haven: Yale UP, 1977) does not elaborate on the subject of self-love in his annotations of Son. 62, see pp. 242-44.</p>
+            <p><sup>11</sup>The erotic-poetic altruism of the final couplet in Son. 62 is paralleled by the epistemological altruism showing, for instance, in Son. 24 and <em>IC</em> 1.2.50-53. Cf. Maria Wickert, &ldquo;Das Schattenmotiv bei Shakespeare,&rdquo; <em>Anglia</em> 71 (1952-53): 274-309.</p>
+            <p><sup>12</sup>This, of course, is where <em>LLL</em> comes in. In 5.2 Rosaline reads Berowne&rsquo;s versified letter (34); she is concerned with the numbers (35), and ridicules it (as well as its writer) by way of alphabetical allusions, concentrating on &ldquo;O&rdquo; (38 and 45); she comments on the hand of the writer (42), and she makes use of the homonymity of &ldquo;letter&rdquo; (38, 40, 44). On the homonymic potentialities of <em>letter</em> see the author, &ldquo;George Herbert&rsquo;s &lsquo;The Jews&rsquo;&rdquo; (forthcoming). A useful introduction to the field of the numerical value of letters (in Christian or Cabbalist mysticism or otherwise) is F. Dornseiff, <em>Das Alphabet in Mystik und Magie</em>, 2nd ed. (Leipzig: Teubner, 1925), esp. &sect;&sect; 7-11.</p>
+            <p><sup>13</sup>When he uses this term he implicitly alludes to the horn-book, the original source of alphabetical training, and thus, punningly, to the subject of (un)chastity. Shakespeare has prepared us for this kind of word-corrupting in <em>LLL</em> 5.1, esp. 44-63.</p>
+            <p><sup>14</sup>See Chris Hassel, Jr., &ldquo;&lsquo;The Riddle in Twelfth Night Simplified,&rsquo;&rdquo; <em>SQ</em> 25 (1974): 356. I am sorry to say that I cannot follow the author in his effort to explain away Malvolio&rsquo;s error: &ldquo;Toby&rsquo;s &lsquo;O, aye, make up that. He is now at a cold scent&rsquo; (l. 113), suggests that Malvolio is yet to interpret the first letter, not that he is completely off the track. Fabian&rsquo;s &lsquo;Did not I say he would work it out? The cur is excellent at faults&rsquo; (l. 118), would seem to imply that Malvolio is beginning to sniff the proper scent (&lsquo;fault&rsquo;). When Fabian urges, &lsquo;And O shall end, I hope&rsquo; (l. 122), he is suggesting that &lsquo;O&rsquo; ends Malvolio&rsquo;s name, a perception necessary to work out the riddle.&rdquo; See <em>OED</em>, &ldquo;Fault&rdquo; 8. and 8.b.</p>
+            <p><sup>15</sup>Cf. the story of Lot&rsquo;s wife in Gen. 19:17 and 19:26.</p>
+            <p><sup>16</sup>Footnote to 2.5.109. Apart from the two transcriptions offered there, see also C. Lewis, &ldquo;&lsquo;A Fustian Riddle?&rsquo; Anagrammatic Names in Twelfth Night,&rdquo; <em>ELN</em> 22 (1985): 32-37 and the review article in <em>ShN</em> 36 (1986): 60. See also J. J. M. Tobin, &ldquo;Malvolio and his Capitals,&rdquo; <em>AN&amp;Q</em> 23 (1985): 69-71. Though I know that he is a dangerous person to agree with, I am at one with Leslie Hotson when he writes: &ldquo;But to call such gracious fooling &lsquo;incoherent jargon&rsquo; or &lsquo;mere high-sounding emptiness&rsquo; is fatally easy for the modern reader nourished on nonsense.&rdquo; <em>The First Night of Twelfth Night</em>, (London: Hart-Davis, 1954) 156. I do not accept, however, the &ldquo;simple solution&rdquo; then provided by Hotson on p. 165. Two recent publications which also seek to solve the alphabetical riddles in <em>TN</em> are stimulating because of the method employed: D. W. Pearson, &ldquo;Gulled into an T-word, or, Much Ado about a Pronoun,&rdquo; <em>IRMMRA</em> 8 (1987): 119-130 and V. F. Petronella, &ldquo;Anamorphic Naming in Shakespeare&rsquo;s Twelfth Night,&rdquo; <em>Names</em> 35 (1987): 139-146.</p>
+            <p><sup>17</sup>The structure comes out very clearly in King James&rsquo; paraphrase of Rev. 1:8. See James I, <em>A Paraphrase vpon the Revelation of the Apostle S. John, The Workes</em> (London: Robert Barker and Iohn Bill, 1616; rpt. Hildesheim: Georg Olms, 1971) 8. Cf. AV, Rev. 1:8. See also Dornseiff 122-25.</p>
+            <p><sup>18</sup>That Shakespeare when composing <em>TN</em> 2.5 had the Book of Revelation in mind, is also borne out by the parallel of the (again three times repeated!) &ldquo;No man must know&rdquo; (101-103) and &ldquo;. . . a new name . . . which no man knoweth except he that receiveth it&rdquo; (Rev. 2:17). Shakespeare&rsquo;s &ldquo;no man&rdquo; implies (by way of paronomasia) <em>nomen</em>. Malvolio is obsessed with the importance of his own <em>nomen</em> and only too ready to find it enclosed in the tetragrammatic formula suggestive to the other listeners of the truly divine name which must be kept a secret. Cf. Ex. 6:3.</p>
+            <p><sup>19</sup>See above, note 4 with reference to Augustine&rsquo;s identification of <em>amor sui</em>, <em>mala voluntas</em>, and <em>superbia</em>.</p>
+            <p><sup>20</sup>Cf. Christopher Marlowe, <em>Doctor Faustus</em>, ed. J. D. Jump (London: Methuen, 1962) 5.117-127 and Samuel Daniel, &ldquo;The Complaint of Rosamond,&rdquo; <em>Poems and a Defence of Ryme</em>, ed. A. C. Sprague (London: RKP, 1950) 52:</p>
+            <blockquote>
+                <p>These presidents presented to my view,</p>
+                <p>Wherein the presage of my fall was showne:</p>
+                <p>Might haue fore-warn&rsquo;d me well what would ensue,</p>
+                <p>And others harmes haue made me shunne mine owne;</p>
+                <p>But fate is not preuented though fore-knowne.</p>
+                <p>For that must hap decreed by heauenly powers,</p>
+                <p>Who worke our fall, yet make the fault still ours. (407-13)</p>
+            </blockquote>
+            <p><sup>21</sup>Plautus, <em>Mercator</em> 301-04, <em>Plautus</em>, ed. and trans. P. Nixon, vol. 3 (London: Heinemann; Cambridge, Mass.: Harvard UP, 1963) 34.</p>
+            <p><sup>22</sup>See above, note 17.</p>
+            <p><sup>23</sup>Erasmus, <em>Laus Stultitiae</em> 20. (For technical reasons, the Greek letters in Erasmus&rsquo; text have been latinized.) Cf. Geoffroy Tory, <em>Champ Fleury ou l&rsquo;art et science de la proportion des lettres</em> (1529), ed. G. Cohen (Gen&egrave;ve: Slatkine Reprints, 1973) XXXIV and XXXII<sup>v</sup>. Geoffroy Tory, who was a contemporary of Erasmus, picks out and relates exactly the details in <em>Laus Stultitiae</em> which figure in our interpretation.</p>
+            <p><sup>24</sup>See H. Meyer and R. Suntrup, <em>Lexikon der mittelalterlichen Zahlenbedeutungen</em> (M&uuml;nchen: Fink, 1987) and H. Meyer, <em>Die Zahlenallegorese im Mittelalter: Methode und Gebrauch</em> (M&uuml;nchen: Fink, 1975). See also <em>Mensura: Mass, Zahl, Zahlensymbolik im Mittelalter</em>, ed. A. Zimmermann (Berlin: de Gruyter, 1983).</p>
+            <p><sup>25</sup>See Plautus, <em>Miles Gloriosus</em> 42-46 (<em>Plautus</em>, vol. 3, 128):</p>
+            <blockquote>
+                <p><em>Art.</em> Memini: centum in Cilicia</p>
+                <p>et quinquaginta, centum in Scytholatronia,</p>
+                <p>triginta Sardos, sexaginta Macedones</p>
+                <p>sunt homines quos tu occidisti uno die.</p>
+                <p><em>Pyrg.</em> Quanta istaec hominum summast?</p>
+                <p><em>Art.</em> Septem milia.</p>
+            </blockquote>
+            <p>Cf. also <em>LLL</em> 5.2.37 and <em>Roister Doister</em>, ed. W. W. Greg (Oxford: Malone Society Reprints, 1934-35) 1.2.170-75:</p>
+            <blockquote>
+                <p><em>M. Mery.:</em> Yet a fitter wife for your maship might be founde:</p>
+                <p>Suche a goodly man as you, might get one wyth lande,</p>
+                <p>Besides poundes of golde a thousande and a thousande,</p>
+                <p>And a thousande, and a thousande, and a thousande,</p>
+                <p>And so to the summe of twentie hundred thousande,</p>
+                <p>Your most goodly personage is worthie of no lesse.</p>
+            </blockquote>
+            <p>and 3.4.1171-77:</p>
+            <blockquote>
+                <p><em>R. Royster:</em> Yes, for although he had as many liues,</p>
+                <p>As a thousande widowes, and a thousande wiues,</p>
+                <p>As a thousande lyons, and a thousand rattes,</p>
+                <p>A thousande wolues, and a thousande cattes,</p>
+                <p>A thousande bulles, and a thousand calues,</p>
+                <p>And a thousande legions diuided in halues,</p>
+                <p>He shall never scape death on my swordes point,</p>
+            </blockquote>
+            <p><sup>26</sup>See I. Leimberg, &ldquo;&lsquo;The Truest Poetry is the Most Feigning&rsquo;: Dichtung und Wahrheit in <em>As You Like It</em>,&rdquo; <em>Festschrift f&uuml;r Edgar Mertner</em>, eds. H. Mainusch and D. Rolle (Frankfurt: Lang, 1979): 70-72 and notes 41-48.</p>
+            <p><sup>27</sup>See <em>OED</em>, &ldquo;O&rdquo; 2.b. and &ldquo;O, oo&rdquo; numeral adj.</p>
+            <p><sup>28</sup>See Edward Grant, <em>Graecae linguae spicilegium</em> (ex off. H. Binemani pro F. Coldock, [1575]) 4.</p>
+            <p><sup>29</sup>It goes without saying that this is one of the most interesting issues discussed by natural philosophers in Shakespeare&rsquo;s time. See, for instance, the commentary on Kepler&rsquo;s theory of &ldquo;fluxion&rdquo; in D. Mahnke, <em>Unendliche Sph&auml;re und Allmittelpunkt</em> (1937; rpt. Stuttgart-Bad Cannstatt: Frommann, 1966), esp. p. 134.</p>
+            <p><sup>30</sup>Some light is thrown on the problem of Son. 136 by C. V. Jones, &ldquo;&lsquo;One is not a Number&rsquo;: The Literal Meaning of a Figure of Speech,&rdquo; <em>N&amp;Q</em> 225 (1980): 312-14. Considering Shakespeare&rsquo;s strong neoplatonic leanings, however, as well as the prevalence of neoplatonism in English Renaissance idealism anyway, a study of this sonnet along the lines of Proclus&rsquo; number-mysticism is a desideratum.</p>
+            <p><sup>31</sup>Sir Philip Sidney, <em>An Apology for Poetry</em>, ed. G. Shepherd, (Manchester: Manchester UP, 1973) 102.23-24.</p>
+            <p><sup>32</sup>See <em>OED</em>, &ldquo;I&rdquo; 1.1, &ldquo;A&rdquo; IV.1.b. (this last, figurative sense is especially telling in the case of &ldquo;M.O.A.I.&rdquo;); &ldquo;O&rdquo; 1.1.</p>
+            <p><sup>33</sup>See <em>OED</em>, &ldquo;Be&rdquo; A.1.1 and &ldquo;Per&rdquo; 1.9. (<em>per se</em>) tb.: &ldquo;1530 . . . HEYWOOD . . . Some say I am I perse I.&rdquo;</p>
+            <p><sup>34</sup><em>OED</em>, &ldquo;M&rdquo; III.5; it may be noted in passing that the first letter of &ldquo;M.O.A.I.&rdquo; as well as of Malvolio&rsquo;s name is the twelfth letter of the Latin alphabet and, accordingly, a perfect <em>signum universitatis</em>. See Meyer and Suntrup 625-45.</p>
+            <p><sup>35</sup>See, for instance, Donatus&rsquo; <em>Ars grammatica</em>, <em>Grammatici Latini</em>, ed. H. Keil, vol. 4 (Leipzig: Teubner, 1864) 367: &ldquo;DE LITTERA. Littera est pars minima vocis articulatae.&rdquo;</p>
+            <p><sup>36</sup>Cf. Desiderius Erasmus, <em>De recta Latini Graecique sermonis pronuntiatione dialogus</em>, ed. Johannes Kramer (Meisenheim am Glan: Anton Hain, 1978). That Erasmus looms large behind any 16th or 17th century consideration of language is borne out, for instance, by F. A. Yates in <em>A Study of Love&rsquo;s Labour Lost</em> (Cambridge: Cambridge UP, 1936). The passage in which she makes use of Erasmus&rsquo; <em>Colloquia</em> (within its didactic tradition) is most enlightening as regards Shakespeare&rsquo;s &ldquo;crushing&rdquo; of words, esp. in <em>LLL</em> 5.1.44-63, where Moth appears as Feste&rsquo;s worthy predecessor; see Yates, 58-59 and 188-91. Furthermore, cf. T. W. Baldwin&rsquo;s dictum: &ldquo;The whole framework of the English grammar school was based upon the ideas and texts of Erasmus.&rdquo; <em>William Shakespeare&rsquo;s Small Latine &amp; Lesse Greeke</em>, vol. 1 (Urbana: U of Illinois P, 1944) 100.</p>
+            <p><sup>37</sup>Cf. <em>LLL</em> 5.2.38-46.</p>
+            <p><sup>38</sup>Cf. 2.3.124, 148, 169-70, and 187; cf. also 2.5.5, 7, 9, 22, 30-32, 84, 105, 115, 124-25, 128, and 187. There is an interesting tract of Sir Thomas Browne&rsquo;s in which the figure of the ass occurs in a curiously Shakespearean context. Browne&rsquo;s tendency is critically directed against the overdoing of stylistic darkness: &ldquo;More aenigmatical and dark expressions might be made if anyone would speak or compose them out of the numerical Characters or characteristical Numbers set down by Robertus de Fluctibus.&rdquo; &ldquo;One way more I shall mention, though scarce worth your notice: Two pestels and a book come short of a retort, as much as a spear and an ass exceed a dog&rsquo;s tail. This to be [sic] expounded by the numerical characters, or characteristical numbers set down by Robertus de Fluctibus, and speaks only this text: two and four come short of six, as much as ten exceed six, the figure of an ass standing for a cipher (MS Sloane 1827).&rdquo; Sir Thomas Browne, &ldquo;Of Ropalic or Gradual Verses,&rdquo; <em>Certain Miscellany Tracts</em>, <em>The Works of Sir Thomas Browne</em>, ed. G. Keynes, vol. 3 (Chicago: U of Chicago P, 1964) 68 and note 3.</p>
+            <p><sup>39</sup>Cf. <em>LLL</em> 5.1.46-48.</p>
+            <p><sup>40</sup>In the Original-Spelling Edition of Shakespeare&rsquo;s <em>Complete Works</em>, ed. Stanley Wells et al. (Oxford: Clarendon P, 1989), Sir Toby&rsquo;s &ldquo;Ay&rsquo;s&rdquo; appear as &ldquo;I&rsquo;s.&rdquo;</p>
+        </div>
+    </article>
+
+    <script>
+        const toggle = document.getElementById('theme-toggle');
+        const icon = document.getElementById('theme-icon');
+
+        toggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+            toggle.title = isDark ? 'Modo Diurno' : 'Modo Nocturno';
+            toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+        });
+    </script>
+
+</body>
+</html>

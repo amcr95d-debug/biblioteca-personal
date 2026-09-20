@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inge Leimberg - Maria's Theology and Other Questions</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* =========================================
+           COLORES (Modo Diurno - International Klein Blue)
+           ========================================= */
+        :root {
+            --bg-body: #002FA7;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.88);
+            --text-muted: rgba(255, 255, 255, 0.6);
+            --border-color: rgba(255, 255, 255, 0.35);
+            --border-light: rgba(255, 255, 255, 0.15);
+            --fab-bg: #ffffff;
+            --fab-color: #002FA7;
+            --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+            --quote-border: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Modo Nocturno - Deep Navy Blue */
+        body.dark-mode {
+            --bg-body: #001233;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.85);
+            --text-muted: rgba(255, 255, 255, 0.5);
+            --border-color: rgba(255, 255, 255, 0.2);
+            --border-light: rgba(255, 255, 255, 0.1);
+            --fab-bg: #ffffff;
+            --fab-color: #001233;
+            --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+            --quote-border: rgba(255, 255, 255, 0.4);
+        }
+
+        /* =========================================
+           ESTILOS GENERALES
+           ========================================= */
+        * { transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease; }
+        
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            line-height: 1.75;
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 2em 1.5em 5em;
+            color: var(--text-primary);
+            background-color: var(--bg-body);
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            text-align: center;
+            margin-bottom: 0.2em;
+            font-weight: normal;
+            letter-spacing: 0.05em;
+            color: var(--text-primary);
+        }
+
+        h2 {
+            font-size: 1.4em;
+            text-align: center;
+            margin-top: 2.5em;
+            margin-bottom: 1.5em;
+            font-weight: bold;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        h3 {
+            font-size: 1.1em;
+            text-align: left;
+            margin-top: 2.5em;
+            margin-bottom: 1em;
+            font-weight: bold;
+            color: var(--text-secondary);
+            letter-spacing: 0.05em;
+        }
+
+        p {
+            text-align: justify;
+            margin-bottom: 1.2em;
+            text-indent: 1.5em;
+        }
+
+        p.no-indent { text-indent: 0; }
+
+        blockquote {
+            margin: 1.5em 2em;
+            padding-left: 1.5em;
+            border-left: 3px solid var(--quote-border);
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        blockquote p { text-indent: 0; margin-bottom: 0.8em; }
+
+        .poem {
+            margin: 1.5em 2em;
+            font-style: italic;
+            text-indent: 0;
+        }
+
+        .poem p {
+            text-indent: 0;
+            margin-bottom: 0.3em;
+            text-align: left;
+            padding-left: 2em;
+            text-indent: -2em;
+        }
+
+        em { font-style: italic; }
+
+        sup {
+            font-size: 0.75em;
+            vertical-align: super;
+            line-height: 0;
+        }
+
+        .page-number {
+            display: block;
+            text-align: center;
+            font-size: 0.8em;
+            color: var(--text-muted);
+            margin: 2em 0 1em 0;
+        }
+
+        .footnotes {
+            margin-top: 4em;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5em;
+            font-size: 0.9em;
+            color: var(--text-secondary);
+        }
+
+        .footnotes h3 {
+            text-align: left;
+            font-size: 1em;
+            margin-bottom: 1em;
+            text-transform: none;
+            letter-spacing: normal;
+            color: var(--text-primary);
+        }
+
+        .footnotes p {
+            text-align: left;
+            text-indent: -1.5em;
+            padding-left: 1.5em;
+            margin-bottom: 0.6em;
+            font-size: 0.9em;
+        }
+
+        .section-break {
+            text-align: center;
+            margin: 2.5em 0;
+            font-weight: bold;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.1em;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 2em;
+        }
+
+        .source-note {
+            text-align: center;
+            font-size: 0.85em;
+            color: var(--text-muted);
+            margin-bottom: 2em;
+            font-style: normal;
+        }
+
+        .author {
+            text-align: center;
+            font-size: 1.1em;
+            color: var(--text-secondary);
+            margin-bottom: 1em;
+            letter-spacing: 0.05em;
+        }
+
+        .abstract {
+            margin: 1.5em 2em;
+            padding: 1em 1.5em;
+            border-left: 3px solid var(--quote-border);
+            background-color: rgba(255, 255, 255, 0.05);
+            font-style: italic;
+            color: var(--text-secondary);
+            font-size: 0.95em;
+        }
+
+        .abstract p {
+            text-indent: 0;
+            margin-bottom: 0;
+        }
+
+        .metadata {
+            margin-top: 3em;
+            padding-top: 1.5em;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--text-secondary);
+        }
+
+        .metadata p {
+            text-indent: 0;
+            margin-bottom: 0.4em;
+        }
+
+        .metadata a {
+            color: var(--text-primary);
+            text-decoration: underline;
+            text-decoration-color: var(--border-color);
+        }
+
+        /* =========================================
+           BOTÓN FLOTANTE (Modo Nocturno)
+           ========================================= */
+        .fab-toggle {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background-color: var(--fab-bg);
+            color: var(--fab-color);
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease;
+            z-index: 1000;
+            outline: none;
+        }
+        .fab-toggle:hover { transform: scale(1.1); }
+        .fab-toggle:active { transform: scale(0.95); }
+        .fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            body { padding: 1.2em 1em 4em; }
+            h1 { font-size: 1.6em; }
+            h2 { font-size: 1.1em; }
+            .fab-toggle { bottom: 16px; right: 16px; width: 50px; height: 50px; }
+            .fab-toggle .material-icons { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo Nocturno">
+        <i class="material-icons" id="theme-icon">dark_mode</i>
+    </button>
+
+    <article id="content">
+        <h1>Maria&rsquo;s Theology and Other Questions<br>(An Answer to John Russell Brown)</h1>
+        <p class="author">Inge Leimberg</p>
+        <p class="source-note"><em>Connotations</em> Vol. 1.2 (1991)</p>
+
+        <p>Professor Brown&rsquo;s response contains three parts. First, there is a consideration of the aptness of my hypothesis that Malvolio&rsquo;s motto is &ldquo;M.O.A.I.&rdquo;, alias &ldquo;I&rsquo;M A &amp; &Omega;.&rdquo; Secondly, there is a discussion of the problems arising out of such an interpretation. Thirdly, Professor Brown offers another hypothesis.</p>
+
+        <p>As to the first: reading Professor Brown&rsquo;s summary of my hypothesis, I became aware that I have given Malvolio what seems to me his proper name but have failed to provide him with &ldquo;a local habitation,&rdquo; in other words, to point out to the reader my idea of the dramatic context. I hope to provide that, if belatedly, and, of course, very sketchily, now.</p>
+
+        <p>Of all Shakespeare&rsquo;s comedies, <em>Twelfth Night</em> is, perhaps, most aptly called his &ldquo;Play of Love.&rdquo; In it love and life are shown to be essentially one and the same thing. That union, however, must be put to the test not in &ldquo;Elysium&rdquo; but in &ldquo;Illyria,&rdquo; i.e. not in some idealized nowhere but in the fallen world.<sup>1</sup> Here, in the labyrinth of life, the course of love (whether true or false) nearly always runs crooked, with the lover choosing the wrong person, or the wrong sex, or even a dead person (who is, moreover, the lady&rsquo;s own brother!), or, final outrage, his or her own self. Malvolio, Self-love personified, is the representative of this worst perversion of the ideal to be celebrated. He is, <em>horribile dictu</em>, the Everyman of the play and the figure of identification for the spectator. In the comic catharsis all the errors will be cleared up, the true lovers are united and may now live and love in the enjoyment of married chastity. Only the poor self-lover&rsquo;s passion is far from being &ldquo;spent.&rdquo; The happy lovers, of course, are all for reconciling him, but before we can get to know whether reconciliation really is what Malvolio wills, the curtain, so to speak, falls, and Feste sings his song of &ldquo;hey, ho, the wind and the rain&rdquo; which will blow and fall on every man every day.</p>
+
+        <p>This, in the proverbial nutshell, is the context in which, to my mind, the tetragram &ldquo;M.O.A.I.&rdquo; plays an essential part. And now to Professor Brown&rsquo;s second point, the remaining problems.</p>
+
+        <h3>(1)</h3>
+        <p>&ldquo;. . . a good riddle has one [obvious] solution.&rdquo; I am not sure that I agree with this maxim but would contend that, especially in Shakespeare, the most intriguing riddles are those which keep us guessing. To give just one example: when, in <em>Love&rsquo;s Labour&rsquo;s Lost</em> 3.1.83-95, the goose joins the fox, the ape, and the bumble-bee, the three becomes four, the oddness is made even and, words thus turned into numbers, the pun evaporates, and the &ldquo;riddle,&rdquo; or &ldquo;enigma,&rdquo; or &ldquo;egma&rdquo; is solved. But, surely, it is only then that the real guesswork begins and that, when Nash&rsquo;s clues are exhausted, Aesop&rsquo;s come to the fore, and so on, preferably <em>ad infinitum</em>.</p>
+
+        <h3>(2)</h3>
+        <p>&ldquo;. . . the re-ordering [of the letters M O A I] is complex.&rdquo; Is it, really? Considering the passion of the period for speaking in alphabetical or numerical or musical or iconographical riddles, the intricacy of a pun or an anagram was felt to be a stylistic virtue, not a vice. Professor Brown here voices a classicist&rsquo;s objection (Pope versus Crashaw) but this is Shakespeare playing the fool and delighting his public by making his riddles just difficult enough for them to be funny. To a veteran solver of cross-word puzzles the question &ldquo;Australian running-bird with three letters&rdquo; does not provide much of a thrill. By the way: the original &ldquo;and&rdquo; in &ldquo;M.O.A.I.&rdquo; is very often, or even usually, lacking in iconography, too, and therefore will not be missed?<sup>2</sup> And if, in spite of the context, the apostrophized M should appear to be a stumbling block, may I offer the [em] of the spelled alphabet, which, surely, is near enough to the &ldquo;am&rdquo; of the original formula. (After all, the letters are declaimed, not printed on a screen.)</p>
+
+        <h3>(3)</h3>
+        <p>&ldquo;How can we suppose that Maria has the ability to construct such a moralistic and theological teaser, knowing all that the play shows us about her thought-processes?&rdquo; This objection rests on assumptions which, I am sorry to say, are not convincing.</p>
+
+        <p>(a) I am sure Professor Brown agrees with me that Maria is indeed a &ldquo;most excellent devil of wit!&rdquo; (2.5.206), not a silly fool like her namesake Moria in <em>Cynthia&rsquo;s Revels</em>. Why, then, should she not be able to choose the universally known &ldquo;I&rsquo;M A &amp; &Omega;&rdquo; as an ironical motto for the self-loving Malvolio and shake it up just enough for him to misread it while it is obvious to everyone else? Surely Maria (or any other lady&rsquo;s maid) witnessed or even took part in parlour games in her lady&rsquo;s circle where that sort of thing was practised as a matter of course (witness, for instance, <em>Cynthia&rsquo;s Revels</em> 4.3.81 ff.: &ldquo;For sports sake, let&rsquo;s have some riddles . . .&rdquo;).</p>
+
+        <p>(b) The fact that the theo-logical connection of self-love with &ldquo;I&rsquo;M A &amp; &Omega;&rdquo; is well within the scope of Maria&rsquo;s intelligence is manifested indisputably by her characterization of Malvolio, including the announcement of her plan of action, in 2.3.146-53:</p>
+
+        <blockquote>
+            <p>. . . it is his grounds of faith that all that look on him love him: and on that vice in him will my revenge find notable cause to work.</p>
+        </blockquote>
+
+        <p>By the way, what about Parolles&rsquo; theological abilities? Shakespeare does not hesitate to condemn self-love, speaking through the mask of even that fool (<em>All&rsquo;s Well</em> 1.1.141-43).</p>
+
+        <h3>(4)</h3>
+        <p>&ldquo;. . . how does it [&lsquo;I&rsquo;M A &amp; &Omega;&rsquo;] fit into the sentence of which it is only a part?&rdquo; The formula &ldquo;M.O.A.I.&rdquo; occurs four times in <em>Twelfth Night</em> 2.5, once in the letter and three times in Malvolio&rsquo;s analysis. Only in the first of the three repetitions does it appear in the syntactical context. The first time, Malvolio quotes it (or rather Shakespeare quotes it, for the benefit of the puzzlers in the pit) only to leave it alone in order to begin with the beginning: &ldquo;Nay but first . . . &lsquo;I may command where I adore&rsquo; . . . .&rdquo; After having solved, to his own satisfaction, the first part of the riddle, he turns to the last: &ldquo;And the end: what should that alphabetical position portend?&rdquo; Regarding this passage retrospectively, one may take the confrontation of &ldquo;first&rdquo; and &ldquo;end&rdquo; (the latter emphasized by rhyming with &ldquo;portend&rdquo;) to be a first pointer to A and &Omega;, with their traditional meaning of beginning and end. Be that as it may, the &ldquo;alphabetical position&rdquo; is now analyzed by Malvolio as well as the eavesdroppers without the slightest regard to the syntactical context in Maria&rsquo;s letter, which is supposed to be taken for Olivia&rsquo;s letter by Malvolio but which, in contrast to Malvolio&rsquo;s self-loving view-point, is meant to be deciphered and understood by the audience as a mirror held up to Mala voluntas-Self-love-Everyman-Malvolio himself. In this context it becomes evident that his rather unappetizing day-dreams are rooted, as such day-dreams are wont to be, in fallen man&rsquo;s claim to be like God.</p>
+
+        <p>Thus, as far as I can see, Shakespeare, from 2.5.112 onwards, leaves the &ldquo;original&rdquo; syntactical context alone. To such reader-spectators, however, who think differently I beg to offer a suggestion. &ldquo;&lsquo;I am Alpha and Omega,&rsquo; in any sense, can hardly be said to &lsquo;sway my life&rsquo;,&rdquo; writes Professor Brown. I feel tempted to counter this with a snappy &ldquo;Why not?&rdquo; Malvolio has been accused by the conspirators, with much verbal expenditure, of being a Puritan (2.3.140-46). Now, it is a typical trait of the Puritan bugbear of comedy to be called (witness Ben Jonson) by a first name (often a translation of an Old Testament name)<sup>3</sup> which contains several components, often forming a whole sentence. &ldquo;I am Alpha and Omega,&rdquo; seen in the light of persiflage, may be taken for Malvolio&rsquo;s un-Christian proper name and it would, brimful as it is with poisonous irony, fit quite as well into its &ldquo;original&rdquo; syntactical context as into the whole argument which fills the rest of the scene.</p>
+
+        <h3>(5)</h3>
+        <p>&ldquo;If the sequence of vowel-sounds are ludicrous enough . . . to create an animal-like noise . . . how can any serious meaning survive?&rdquo; Surely this grotesque effect, this simultaneity of tragedy and farce is not only not unfitting but absolutely essential to the archetypal pattern re-enacted in <em>Twelfth Night</em> 2.5. Perhaps the most striking instance is Fortune&rsquo;s wheel as prefaced to Lydgate&rsquo;s <em>Fall of Princes</em> in Henry Bergen&rsquo;s edition:<sup>4</sup> the very moment man assumes the highest position and sees himself crowned, he is adorned, too, with a fine pair of ass&rsquo;s ears. Or let us think of <em>Paradise Lost</em> X.460, when Satan, returning to Pandemonium from his world-perverting mission, full-mouthedly announces his triumph only to be answered by that famous &ldquo;universal hiss&rdquo; (508) which immediately blends with his boast. A third example is the end of the fisherman&rsquo;s wife in the fairy tale: the very moment she lays claim to the throne of God she finds herself sitting once more in the pisspot. Similarly, far from being inimical to the tragic pathos of Malvolio-Everyman&rsquo;s age-old claim to be like God, his degradation in the scale of being is a necessary adjunct to it, and so is the simultaneity, the ringing dissonance of the ridiculous and the sublime.</p>
+
+        <p>As to the multiple meanings, Professor Brown again seems, momentarily, to take sides with the classicists who aim at unequivocal meanings. But these are not at home in the <em>Illyria</em> of <em>Twelfth Night</em> and especially in Olivia&rsquo;s household, where Feste is installed as &ldquo;my lady&rsquo;s corruptor of words.&rdquo; And, if it comes not to words but letters, they are traditionally charged with &ldquo;a corollary of&rdquo; meanings. This is what fills them, to the baroque mind (of any age), with such mysterious power and such &ldquo;infinite jest.&rdquo;</p>
+
+        <h3>(6)</h3>
+        <p>As regards the somewhat &ldquo;rank&rdquo; odour and &ldquo;fustian&rdquo; character of Malvolio&rsquo;s doings in word and deed: &ldquo;fustian&rdquo; (<em>OED</em> B.2.) means &ldquo;ridiculously lofty in expression; bombastic, highflown, inflated, pompous.&rdquo; This could not fit in better with &ldquo;I am Alpha and Omega,&rdquo; and the same applies to &ldquo;rank.&rdquo; The self-lover is essentially unchaste. But that is another story, told, mainly, in 3.4.</p>
+
+        <p>Finally, the hypothesis offered by Professor Brown (&ldquo;The whole riddle is . . . a covert dramatization of a supposed sexual fantasy&rdquo;) points in the direction of Malvolio&rsquo;s pathetic day-dreams. Well yes, let the actor playing Malvolio pronounce &ldquo;M.O.A.I.&rdquo; in a way to suggest sexual encounter; but don&rsquo;t let him do so again and again (or too blatantly) in all the four instances where the formula occurs.</p>
+
+        <div class="section-break">* * * * *</div>
+
+        <p>I agree with Professor Brown that &ldquo;Double, triple or quadruple meanings for &lsquo;M.O.A.I.&rsquo; may be what this opalesque comedy requires,&rdquo; but I beg to differ when he goes on, &ldquo;so that a dominant one never fully declares itself . . . .&rdquo; Perhaps, for the purpose of discussing the verbal music of such a musical comedy as <em>Twelfth Night</em>, musical terms may be helpful. To me, Scene 2.5 seems not dissimilar to a quodlibet. Many different &ldquo;voices&rdquo; and many different &ldquo;tunes&rdquo; are welded together in a partly concordant, partly discordant whole. An interpreter will not do this kind of polyphony justice by singling out one voice and claiming it is the only one that matters, but neither will he do so by avoiding evaluation altogether. In musical harmony, there is a tenor, and a bass, and a treble. And their functions are essentially different. The tenor makes sense, if need be, without the other two, but not the other way round. Even in the musical caterwauling of a quodlibet the different parts are of different value. In the one written by Shakespeare around the subject of &ldquo;M.O.A.I.,&rdquo; I still claim the &ldquo;alphabetical position&rdquo; to be a kind of tenor. Perhaps the next important part (let us say the bass) is the train of sounds and images indicating man&rsquo;s downfall in the scale of being. This being archetypally tragi-comic, some middle voices may provide variations on the animal theme. Finally, let there be some instrument to illustrate the sexual nastiness of the old self-lover, foreshadowing Scene 3.4, when the theme of unchastity will be treated as the tenor.</p>
+
+        <p class="no-indent" style="text-align: center; margin-top: 3em; font-style: italic;">Westf&auml;lische Wilhelms-Universit&auml;t<br>M&uuml;nster</p>
+
+        <div class="footnotes">
+            <h3>NOTES</h3>
+            <p><sup>1</sup>Mr. Philip Craig Bell of the University of Massachusetts has pointed out to me that this pun is already to be found in Apollodorus&rsquo; version of the story of Cadmus and Harmonia.</p>
+            <p><sup>2</sup>See, for instance, the numerous examples given by F. Cabrol in his article on &ldquo;A &Omega;&rdquo; in the <em>Dictionnaire d&rsquo;arch&eacute;ologie chr&eacute;tienne et de liturgie</em>, vol. 1 (Paris: Librairie Letouzey et An&eacute;, 1924): 1-25.</p>
+            <p><sup>3</sup>The most prominent example is of course the name of the Lord: &ldquo;And God said unto Moses, I AM THAT I AM: and he said, Thus shalt thou say unto the children of Israel, I AM hath sent me unto you&rdquo; (Ex. 4:14).</p>
+            <p><sup>4</sup>4 vols. (Washington: The Carnegie Institution, 1923-27); reprinted for the EETS Extra Series 121-24 (London: OUP, 1967).</p>
+        </div>
+    </article>
+
+    <script>
+        const toggle = document.getElementById('theme-toggle');
+        const icon = document.getElementById('theme-icon');
+
+        toggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+            toggle.title = isDark ? 'Modo Diurno' : 'Modo Nocturno';
+            toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+        });
+    </script>
+
+</body>
+</html>

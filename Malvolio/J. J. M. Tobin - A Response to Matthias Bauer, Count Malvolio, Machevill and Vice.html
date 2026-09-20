@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>J. J. M. Tobin - A Response to Matthias Bauer, "Count Malvolio, Machevill and Vice"</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* =========================================
+           COLORES (Modo Diurno - International Klein Blue)
+           ========================================= */
+        :root {
+            --bg-body: #002FA7;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.88);
+            --text-muted: rgba(255, 255, 255, 0.6);
+            --border-color: rgba(255, 255, 255, 0.35);
+            --border-light: rgba(255, 255, 255, 0.15);
+            --fab-bg: #ffffff;
+            --fab-color: #002FA7;
+            --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+            --quote-border: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Modo Nocturno - Deep Navy Blue */
+        body.dark-mode {
+            --bg-body: #001233;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.85);
+            --text-muted: rgba(255, 255, 255, 0.5);
+            --border-color: rgba(255, 255, 255, 0.2);
+            --border-light: rgba(255, 255, 255, 0.1);
+            --fab-bg: #ffffff;
+            --fab-color: #001233;
+            --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+            --quote-border: rgba(255, 255, 255, 0.4);
+        }
+
+        /* =========================================
+           ESTILOS GENERALES
+           ========================================= */
+        * { transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease; }
+        
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            line-height: 1.75;
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 2em 1.5em 5em;
+            color: var(--text-primary);
+            background-color: var(--bg-body);
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            text-align: center;
+            margin-bottom: 0.2em;
+            font-weight: normal;
+            letter-spacing: 0.05em;
+            color: var(--text-primary);
+        }
+
+        h2 {
+            font-size: 1.4em;
+            text-align: center;
+            margin-top: 2.5em;
+            margin-bottom: 1.5em;
+            font-weight: bold;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        h3 {
+            font-size: 1.1em;
+            text-align: left;
+            margin-top: 2.5em;
+            margin-bottom: 1em;
+            font-weight: bold;
+            color: var(--text-secondary);
+            letter-spacing: 0.05em;
+        }
+
+        p {
+            text-align: justify;
+            margin-bottom: 1.2em;
+            text-indent: 1.5em;
+        }
+
+        p.no-indent { text-indent: 0; }
+
+        blockquote {
+            margin: 1.5em 2em;
+            padding-left: 1.5em;
+            border-left: 3px solid var(--quote-border);
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        blockquote p { text-indent: 0; margin-bottom: 0.8em; }
+
+        .poem {
+            margin: 1.5em 2em;
+            font-style: italic;
+            text-indent: 0;
+        }
+
+        .poem p {
+            text-indent: 0;
+            margin-bottom: 0.3em;
+            text-align: left;
+            padding-left: 2em;
+            text-indent: -2em;
+        }
+
+        em { font-style: italic; }
+
+        sup {
+            font-size: 0.75em;
+            vertical-align: super;
+            line-height: 0;
+        }
+
+        .page-number {
+            display: block;
+            text-align: center;
+            font-size: 0.8em;
+            color: var(--text-muted);
+            margin: 2em 0 1em 0;
+        }
+
+        .footnotes {
+            margin-top: 4em;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5em;
+            font-size: 0.9em;
+            color: var(--text-secondary);
+        }
+
+        .footnotes h3 {
+            text-align: left;
+            font-size: 1em;
+            margin-bottom: 1em;
+            text-transform: none;
+            letter-spacing: normal;
+            color: var(--text-primary);
+        }
+
+        .footnotes p {
+            text-align: left;
+            text-indent: -1.5em;
+            padding-left: 1.5em;
+            margin-bottom: 0.6em;
+            font-size: 0.9em;
+        }
+
+        .section-break {
+            text-align: center;
+            margin: 2.5em 0;
+            font-weight: bold;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.1em;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 2em;
+        }
+
+        .source-note {
+            text-align: center;
+            font-size: 0.85em;
+            color: var(--text-muted);
+            margin-bottom: 2em;
+            font-style: normal;
+        }
+
+        .author {
+            text-align: center;
+            font-size: 1.1em;
+            color: var(--text-secondary);
+            margin-bottom: 2em;
+            letter-spacing: 0.05em;
+        }
+
+        .reference-note {
+            margin: 1.5em 2em;
+            padding: 1em 1.5em;
+            border-left: 3px solid var(--quote-border);
+            font-style: italic;
+            color: var(--text-secondary);
+            font-size: 0.9em;
+        }
+
+        .reference-note p {
+            text-indent: 0;
+            margin-bottom: 0;
+        }
+
+        /* =========================================
+           BOTÓN FLOTANTE (Modo Nocturno)
+           ========================================= */
+        .fab-toggle {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background-color: var(--fab-bg);
+            color: var(--fab-color);
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease;
+            z-index: 1000;
+            outline: none;
+        }
+        .fab-toggle:hover { transform: scale(1.1); }
+        .fab-toggle:active { transform: scale(0.95); }
+        .fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            body { padding: 1.2em 1em 4em; }
+            h1 { font-size: 1.6em; }
+            h2 { font-size: 1.1em; }
+            .fab-toggle { bottom: 16px; right: 16px; width: 50px; height: 50px; }
+            .fab-toggle .material-icons { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo Nocturno">
+        <i class="material-icons" id="theme-icon">dark_mode</i>
+    </button>
+
+    <article id="content">
+        <h1>A Response to Matthias Bauer,<br>&ldquo;Count Malvolio, Machevill and Vice&rdquo;</h1>
+        <p class="author">J. J. M. Tobin</p>
+        <p class="source-note"><em>Connotations</em> Vol. 2.1 (1992)</p>
+
+        <p>Dr. Bauer&rsquo;s richly suggestive argument, &ldquo;however tentatively&rdquo; held, deepens our understanding of the nature and function of the endlessly intriguing Malvolio by transcending the pursuit of particularized source models in favor of the generic and typical. May I, as one who has argued from a position midway on the spectrum between the absolutely specific and the truly generic<sup>1</sup> join the discussion of <em>Twelfth Night</em> in the first three issues of <em>Connotations</em><sup>2</sup> and offer two points about Gabriel Harvey as a source for Malvolio, one in terms of the capital letters so ingeniously interpreted by Dr. Leimberg and one which more generally supports from a Harveian perspective the idea of the spoilsport steward as parodic Machiavellian.</p>
+
+        <p>When I argued earlier that much of the diction in the comedy derived from <em>Have with you to Saffron-Walden</em> (1596) and to a lesser extent Harvey&rsquo;s <em>Foure Letters</em> (1592),<sup>3</sup> I did not read carefully enough Harvey&rsquo;s <em>Ciceronianus</em> (1577).</p>
+
+        <p>Harvey&rsquo;s <em>Ciceronianus</em> addresses itself to the question of what constituted a proper Latin style and how far Cicero should be the model for the acquiring of that style. This is a charming work full of interesting ideas and marked by an unusual self-deprecating tone. In the midst of it Harvey praises the unsurpassed scholarship of &ldquo;our Cheke in the knowledge of languages&rdquo; (43; italics mine)<sup>4</sup> and apologizes for his earlier extreme Ciceronianism with a bit of preterition, &ldquo;I am compelled by a sense of shame to omit mention of those curls and curling-irons, with which my whole style was elegantly frizzed in every part&rdquo; (63). These are further elements in our linguistically deficient Sir Andrew Aguecheek<sup>5</sup> and the paronomasia at his expense on tongs (curling irons) and tongues (classical language). But most interestingly for the basic parallel between Harvey himself and Malvolio, the steward who is most memorable as he tries to find meaning in the capital letters, M.O.A.I., written in &ldquo;the sweet Roman hand&rdquo; of &lsquo;Olivia&rsquo; is Harvey&rsquo;s admission that he was at one time entranced by capital letters:</p>
+
+        <blockquote>
+            <p>Sed 0 mansuetiores Musae, vt ego non modo istas politularum formularum delitiolas, atque flosculos consectabar: sed quibusdam etiam literis grandiusculis oculos, atque animum pascebam meum, siquando in orationibus, aut epistolis, quas tum bene multas ad honoratissimum Mildmaium perscripseram, hominem de Academia nostra praeclare meritum, &amp;: mihi multis sane nominibus colendissimum, vel pro Senatu, Populoque Romano, S.P.Q.R. &amp;: imitatione quadam, pro Britannis, S.P.Q.B.: vel pro patribus conscriptis, P.C. quibus &amp;: Regios interdum consiliarios, &amp;: sacrorum antistites, &amp;: collegiorum, atque Caenobiorum praesides, &amp;: nonnunquam etiam alios designabam: vel pro eo, quod vltimo salutationis loco ascribi solet, salutem plurimam dicit, S.D. tantum in medio [25] posuissem? Vel denique quod Caput erat, pro Iaue optima Maxima; cuius tum nomine ipso mirum in modum recreabar; prisco, &amp;: solenni ritu, IVP. OM. tanquam in marmoreo quodam, celebrique monumento, a vetere aliquo Romano illius numini locato, incidissem. Vix credibile est, quam mirifice hisce fuerim maiuscularum literarum emblematis delinitus. (64)<sup>6</sup></p>
+        </blockquote>
+
+        <p>I suggest that here is not the key to unlocking the meaning of &ldquo;M.O.A.I.&rdquo; but the stimulus for Malvolio&rsquo;s fascination with Olivia&rsquo;s capital letters, letters and letter for which the Illyrian steward is pleased to thank, in a perfectly Latin manner, not god, but &ldquo;Jove&rdquo; (II.v.173, 178)<sup>7</sup></p>
+
+        <p>In the matter of Malvolio and Machiavelli it is all too true that, as Dr. Bauer has rightly pointed out &ldquo;the similarity between &lsquo;Malevolo&rsquo; and &lsquo;Malvolio&rsquo; [in <em>Pierce Penilesse</em>] has been noted by J. J. M. Tobin, who does not, however, make reference to Machiavelli&rdquo; (241). Because I see the merit in Dr. Bauer&rsquo;s linking of Machiavelli and Malvolio, I am doubly chagrined for having missed a second chance to link Machiavelli to Malvolio. George Watson has written of &ldquo;. . . Malvolio and Polonius&mdash;farcical versions of the Machiavel, who conceive of themselves as policied and earn the mockery of audiences.&rdquo;<sup>8</sup> We know that Shakespeare borrowed from <em>Have with you to Saffron-Walden</em> for aspects of Polonius as well as for Malvolio, although the fact that, whatever their linked farcical Machiavellianism, these two characters are never confused with one another is further evidence that Shakespeare&rsquo;s use of source material is in each instance malleably unique and that specific, personal allusions are not his interest.</p>
+
+        <p>In <em>Have with you to Saffron-Walden</em> Pierce Penilesse, the Respondent in this dialogue, makes some astute observations on the differences between cause and effect. In its rhythm and subject of logical tautology, with the added issue of insanity, this passage made up the rhythm of Polonius&rsquo;s analysis of Hamlet&rsquo;s lunacy:</p>
+
+        <blockquote>
+            <p>As though the cause and the effect (more than the superficies and the substance) can bee seperated, when in manie things causa sine qua non is both the cause and the effect, the common distinction of potentia non actu approuing it selfe verie crazed and impotent herein, since the premisses necessarily beget the conclusion, and so contradictorily the conclusion the premisses; a halter including desperation, and so desperation concluding in a halter; without which fatall conclusion and priuation it cannot truly bee termed desperation, since nothing is said to bee till it is borne, and despaire is neuer fully borne till it ceaseth to bee, and hath depriu&rsquo;d him of beeing that first bare it and brought it forth. So that herein it is hard to distinguish which is most to be blamed, of the cause or the effect; the Cause without the effect beeing of no effect, and the effect without the cause neuer able to haue been (59-60; italics mine)<sup>9</sup></p>
+        </blockquote>
+
+        <p>Carneades, one of the interlocutors, urges the Respondent to continue with the life story of Gabriel Harvey and hopes that there will be no interruption:</p>
+
+        <blockquote>
+            <p>Better or worse fortune, I pry thee let vs heare how thou goest forward with describing the Doctor and his life and fortunes: and you, my fellow Auditors, I beseech you, trouble him not (anie more) with these impertinent Parentheses (60).</p>
+        </blockquote>
+
+        <p>Polonius is eager to describe the crazed desperation of Hamlet, interrupting and delaying his narrative by parenthetical pieces of self-criticism. His most comical lines are those devoted to premises which necessarily beget conclusions, (the inverse of Malvolio&rsquo;s comically mistaken premise which begets a false conclusion) &ldquo;for to define madness, / What is it but to be nothing else but mad,&rdquo; and to much play on the relationship of cause and effect:</p>
+
+        <div class="poem">
+            <p>Mad let us grant him then. And now remains</p>
+            <p>That we find out the cause of this effect,</p>
+            <p>Or rather say <em>the cause of this defect</em>,</p>
+            <p>For this effect defective comes by cause.</p>
+            <p>(2.2. 100-03; italics mine)<sup>10</sup></p>
+        </div>
+
+        <p>We now know from Harvey&rsquo;s private notations, his <em>Marginalia</em>, that he had a certain admiration for aspects of Machiavelli. Shakespeare of course had no knowledge of the unpublished writings of Harvey, but he certainly knew of Harvey&rsquo;s very frequent references in his published English writings to Machiavelli in <em>Foure Letters</em>, <em>Pierce&rsquo;s Supererogation</em>, etc., admittedly critical, and his odd, ironic creation of the spirit of Machiavelli in his Latin verses (which also revealed his self-congratulatory and hubristic response to his meeting with the Queen at Audley End) in <em>Gratulationes Valdinenses</em>, especially in Book II where Machiavelli speaks in propria persona. This element, tho&rsquo; the word is overworn, this link with Machiavelli, in a strongly-evidenced source suggests from another Harveian angle how right Dr. Bauer is to argue for a comically Machiavellian Malvolio.</p>
+
+        <p>One final point: years ago in an introduction to an American edition of Machiavelli&rsquo;s <em>The Prince</em>, I drew attention to the fact that &ldquo;The Prince, apart from the ending, is written in a direct, unadorned, indeed apothegmatic style. The pithy judgments about fortune, initial impressions, virtue and vice, the aphorisms about war and cunning pleased an age which delighted in similar examples of compact wisdom from Erasmus through Bacon.&rdquo;<sup>11</sup> This truth should have pointed me toward Dr. Bauer&rsquo;s insight re: the Illyrian steward and the parodic version of the Florentine politician, but a link has been established independently by Brian Vickers, stressing Malvolio&rsquo;s role as an overreaching politician:</p>
+
+        <blockquote>
+            <p>. . . it was an ingenious idea of Shakespeare&rsquo;s to cast the letter laid to deceive him into the style of the very authors which an ambitious politician would study, the style nourished on the pregnant aphorisms of Machiavelli and Guicciardini and boiled down to precepts at their barest: the English versions might be the aculeate memoranda of Gabriel Harvey&rsquo;s <em>Marginalia</em>, or Bacon&rsquo;s <em>Essays</em> in their first form (1597) or indeed in many cruder examples of the &lsquo;Advice&rsquo; literature. The precept in the form of a bare imperative, such as we find it in this letter&mdash;&lsquo;let thy tongue tang arguments of state&rsquo;&mdash;is more characteristic of Harvey and the cruder works (or Polonius) . . . .<sup>12</sup></p>
+        </blockquote>
+
+        <p>Dr. Bauer has deepened our appreciation of the comically politic Malvolio, and I, for one, will now imagine the steward&rsquo;s imaginary readings of his favorite politic author, as he comes again to that notorious chapter 17 and smiling as he notes its Vergilian quotation, &ldquo;Res dura, et regni novitas me talia cogunt / Moliri, et late fines custode tueri&rdquo; (<em>Aeneid</em> 1.563-64), doubtless reflecting on the justice of Dido&rsquo;s severity as quite as appropriate for a grieving sister and daughter, a countess, as for a regal widow, inhabiting a vulnerable sea-coast and needing an equally appropriate protector, himself the very man.</p>
+
+        <p class="no-indent" style="text-align: center; margin-top: 3em; font-style: italic;">University of Massachusetts<br>Boston</p>
+
+        <div class="footnotes">
+            <h3>NOTES</h3>
+            <p><sup>1</sup>&ldquo;Shakespeare did not attempt to write a comedy <em>a clef</em> with Malvolio as a recognizable Harvey. Certainly Manningham, an alert and presumably representative member of the Middle Temple audience, makes no mention of Gabriel Harvey, D.C.L., in his <em>Diary</em>. Rather it was that Shakespeare found in the figure of Harvey as gull, with his characteristics of egocentricity, puritanism, and social presumption, a workable model for the creation of Malvolio.&rdquo; &ldquo;Gabriel Harvey in Illyria,&rdquo; <em>ES</em> 61 (1980): 327. Henk Gras seems to have gone beyond my argument when he says &ldquo;yet he has also been interpreted more specifically as a satire on Puritans, as referring to the Harvey-Nashe controversy (Malvolio being &lsquo;Gabriel Harvey in Illyria&rsquo; . . . ),&rdquo; in &ldquo;Twelfth Night, Every Man Out of His Humour, and the Middle Temple Revels of 1597-98,&rdquo; <em>MLR</em> 84 (1989): 551.</p>
+            <p><sup>2</sup>Inge Leimberg, &ldquo;&lsquo;M.O.A.I.&rsquo; Trying to Share the Joke in <em>Twelfth Night</em> 2.5 (A Critical Hypothesis),&rdquo; <em>Connotations</em> 1 (1991): 78-95; John Russell Brown, &ldquo;More About Laughing at &lsquo;M.O.A.I.&rsquo; (A Response to Inge Leimberg),&rdquo; <em>Connotations</em> 1 (1991): 187-90; and Inge Leimberg, &ldquo;&lsquo;Maria&rsquo;s Theology and Other Questions (An Answer to John Russell Brown),&rdquo; <em>Connotations</em> 1 (1991): 191-96.</p>
+            <p><sup>3</sup>From Nashe we have such details as: the proper name &ldquo;Cesario&rdquo; (Viola&rsquo;s alias); the issue of beards and barbering; the tongues commanded by Bishop Andrewes (compare Sir Andrew and his lament that he had not bestow&rsquo;d his time in the tongues, Sir Andrew Aguecheek, echoing in his last name that of the distinguished Grecian Sir John Cheke); and the tutoring of Harvey &ldquo;Pythagoreanly&rdquo; (compare the instructional method of Feste in the guise of Sir Topas in IV.ii); but also the outlandishly colourful costume of Harvey when he met the Queen who thought he looked &ldquo;like an Italian&rdquo;); Harvey being called a &ldquo;pedant,&rdquo; as is Malvolio, strangely, at III.ii.75; Harvey &ldquo;pranking himself immeasurably&rdquo; for two hours and Malvolio &ldquo;practicing behavior to his own shadow this half-hour&rdquo; (II.v.16-17); Harvey and the theme of counterfeit madness (compare the question put to Malvolio by Feste as Sir Topas at IV.ii.114); &ldquo;Peggy Ramsey&rdquo; associated with Gabriel Harvey&rsquo;s hypocritical brother, Richard, and Malvolio as &ldquo;a Peg-a Ramsey&rdquo; at II.iii.76, and much ado about &ldquo;ale,&rdquo; &ldquo;cakes,&rdquo; and &ldquo;ginger.&rdquo; &ldquo;Malvolio and his Capitals,&rdquo; <em>AN&amp;Q</em> 23 (1985): 69-70.</p>
+            <p><sup>4</sup>Gabriel Harvey&rsquo;s <em>Ciceronianus</em>, introd. and notes by Harold S. Wilson, trans. Clarence A. Forbes, University of Nebraska Studies in the Humanities Nov. 1945, Studies in the Humanities 4 (Lincoln: U of Nebraska, 1945).</p>
+            <p><sup>5</sup>See note 3 above. Both Lancelot Andrewes and Sir John Cheke are frequently referred to by Harvey in <em>Foure Letters</em> and <em>Pierce&rsquo;s Supererogation</em>.</p>
+            <p><sup>6</sup>As Forbes has it (65), &ldquo;But O ye gentler Muses, I was not content with eagerly pursuing such charms of elegant phraseology and such flowers of rhetoric. How I did feed my eyes and mind also with certain capital letters, whenever I had a chance to insert them in speeches or in the epistles which I was then writing in great numbers to the most honorable Mildmay, a man of distinguished service to our University and one whom I must esteem highly on many accounts. For instance, I wrote S.P.Q.R for &lsquo;the Senate and People of Rome&rsquo; and, by a sort of imitation, S.P.Q.B. for the Britons; P.C. for the &lsquo;Conscript Fathers,&rsquo; alluding sometimes to her Majesty&rsquo;s councellors, or religious dignitaries, or heads of colleges and cloisters, or sometimes still others; and simply S.D. for what is customarily written as the closing salutation, &lsquo;with kindest regards.&rsquo; Or finally-and this capped the climax-for &lsquo;Jupiter Optimus Maximus,&rsquo; from whose very name in those days I derived marvellous refreshment, I wrote according to the ancient and consecrated custom IVP. O.M., as if I were cutting the letters on some famous monument of marble, set up by an ancient Roman to Jupiter&rsquo;s godhead. It is hard to believe how strangely fascinated I was by these emblems of capital letters.&rdquo;</p>
+            <p><sup>7</sup>Editors usually suggest the possibility that &ldquo;Jove&rdquo; is a replacement for &ldquo;God,&rdquo; made in order to satisfy the statute against profanity of 1606. I do not doubt that it is a possibility.</p>
+            <p><sup>8</sup>&ldquo;Machiavel and Machiavelli,&rdquo; <em>SR</em> 84 (1976): 645.</p>
+            <p><sup>9</sup>References to <em>Have With You to Saffron-Walden</em> are to <em>The Works of Thomas Nashe</em>, ed. Ronald B. McKerrow, vol. 3 (Oxford: Blackwell, 1966) 1-139.</p>
+            <p><sup>10</sup>Arden Edition, ed. Harold Jenkins (London: Methuen, 1982). Cf. &ldquo;More Elements from Nashe,&rdquo; <em>Hamlet Studies</em> 5 (1983): 55-6.</p>
+            <p><sup>11</sup><em>The Prince</em>, trans. Christian E. Detmold, Introduction by John Tobin (New York: Airmont, 1965) 4.</p>
+            <p><sup>12</sup>Brian Vickers, <em>The Artistry of Shakespeare&rsquo;s Prose</em> (London: Methuen, 1968) 235.</p>
+        </div>
+    </article>
+
+    <script>
+        const toggle = document.getElementById('theme-toggle');
+        const icon = document.getElementById('theme-icon');
+
+        toggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+            toggle.title = isDark ? 'Modo Diurno' : 'Modo Nocturno';
+            toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+        });
+    </script>
+
+</body>
+</html>

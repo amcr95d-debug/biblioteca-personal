@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John Russell Brown - More About Laughing at "M.O.A.I."</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* =========================================
+           COLORES (Modo Diurno - International Klein Blue)
+           ========================================= */
+        :root {
+            --bg-body: #002FA7;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.88);
+            --text-muted: rgba(255, 255, 255, 0.6);
+            --border-color: rgba(255, 255, 255, 0.35);
+            --border-light: rgba(255, 255, 255, 0.15);
+            --fab-bg: #ffffff;
+            --fab-color: #002FA7;
+            --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+            --quote-border: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Modo Nocturno - Deep Navy Blue */
+        body.dark-mode {
+            --bg-body: #001233;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.85);
+            --text-muted: rgba(255, 255, 255, 0.5);
+            --border-color: rgba(255, 255, 255, 0.2);
+            --border-light: rgba(255, 255, 255, 0.1);
+            --fab-bg: #ffffff;
+            --fab-color: #001233;
+            --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+            --quote-border: rgba(255, 255, 255, 0.4);
+        }
+
+        /* =========================================
+           ESTILOS GENERALES
+           ========================================= */
+        * { transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease; }
+        
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            line-height: 1.75;
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 2em 1.5em 5em;
+            color: var(--text-primary);
+            background-color: var(--bg-body);
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            text-align: center;
+            margin-bottom: 0.2em;
+            font-weight: normal;
+            letter-spacing: 0.05em;
+            color: var(--text-primary);
+        }
+
+        h2 {
+            font-size: 1.4em;
+            text-align: center;
+            margin-top: 2.5em;
+            margin-bottom: 1.5em;
+            font-weight: bold;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        h3 {
+            font-size: 1.1em;
+            text-align: center;
+            margin-top: 2.5em;
+            margin-bottom: 1em;
+            font-weight: bold;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        p {
+            text-align: justify;
+            margin-bottom: 1.2em;
+            text-indent: 1.5em;
+        }
+
+        p.no-indent { text-indent: 0; }
+
+        blockquote {
+            margin: 1.5em 2em;
+            padding-left: 1.5em;
+            border-left: 3px solid var(--quote-border);
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        blockquote p { text-indent: 0; margin-bottom: 0.8em; }
+
+        .poem {
+            margin: 1.5em 2em;
+            font-style: italic;
+            text-indent: 0;
+        }
+
+        .poem p {
+            text-indent: 0;
+            margin-bottom: 0.3em;
+            text-align: left;
+            padding-left: 2em;
+            text-indent: -2em;
+        }
+
+        em { font-style: italic; }
+
+        sup {
+            font-size: 0.75em;
+            vertical-align: super;
+            line-height: 0;
+        }
+
+        .page-number {
+            display: block;
+            text-align: center;
+            font-size: 0.8em;
+            color: var(--text-muted);
+            margin: 2em 0 1em 0;
+        }
+
+        .footnotes {
+            margin-top: 4em;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5em;
+            font-size: 0.9em;
+            color: var(--text-secondary);
+        }
+
+        .footnotes h3 {
+            text-align: left;
+            font-size: 1em;
+            margin-bottom: 1em;
+            text-transform: none;
+            letter-spacing: normal;
+            color: var(--text-primary);
+        }
+
+        .footnotes p {
+            text-align: left;
+            text-indent: -1.5em;
+            padding-left: 1.5em;
+            margin-bottom: 0.6em;
+            font-size: 0.9em;
+        }
+
+        .section-break {
+            text-align: center;
+            margin: 2.5em 0;
+            font-weight: bold;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.1em;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 2em;
+        }
+
+        .source-note {
+            text-align: center;
+            font-size: 0.85em;
+            color: var(--text-muted);
+            margin-bottom: 2em;
+            font-style: normal;
+        }
+
+        .author {
+            text-align: center;
+            font-size: 1.1em;
+            color: var(--text-secondary);
+            margin-bottom: 1em;
+            letter-spacing: 0.05em;
+        }
+
+        .abstract {
+            margin: 1.5em 2em;
+            padding: 1em 1.5em;
+            border-left: 3px solid var(--quote-border);
+            background-color: rgba(255, 255, 255, 0.05);
+            font-style: italic;
+            color: var(--text-secondary);
+            font-size: 0.95em;
+        }
+
+        .abstract p {
+            text-indent: 0;
+            margin-bottom: 0;
+        }
+
+        .metadata {
+            margin-top: 3em;
+            padding-top: 1.5em;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9em;
+            color: var(--text-secondary);
+        }
+
+        .metadata p {
+            text-indent: 0;
+            margin-bottom: 0.4em;
+        }
+
+        .metadata a {
+            color: var(--text-primary);
+            text-decoration: underline;
+            text-decoration-color: var(--border-color);
+        }
+
+        /* =========================================
+           BOTÓN FLOTANTE (Modo Nocturno)
+           ========================================= */
+        .fab-toggle {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background-color: var(--fab-bg);
+            color: var(--fab-color);
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease;
+            z-index: 1000;
+            outline: none;
+        }
+        .fab-toggle:hover { transform: scale(1.1); }
+        .fab-toggle:active { transform: scale(0.95); }
+        .fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            body { padding: 1.2em 1em 4em; }
+            h1 { font-size: 1.6em; }
+            h2 { font-size: 1.1em; }
+            .fab-toggle { bottom: 16px; right: 16px; width: 50px; height: 50px; }
+            .fab-toggle .material-icons { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo Nocturno">
+        <i class="material-icons" id="theme-icon">dark_mode</i>
+    </button>
+
+    <article id="content">
+        <h1>More About Laughing at &ldquo;M.O.A.I.&rdquo;<br>(A Response to Inge Leimberg)</h1>
+        <p class="author">John Russell Brown</p>
+        <p class="source-note">Published in <em>Connotations</em> Vol. 1.2 (1991)</p>
+
+        <div class="abstract">
+            <p>This is a Response to Inge Leimberg&rsquo;s essay &ldquo;&lsquo;M.O.A.I.&rsquo; Trying to Share the Joke in <em>Twelfth Night</em> 2.5 (A Critical Hypothesis).&rdquo;</p>
+        </div>
+
+        <p>Professor Leimberg has argued persuasively that &ldquo;M.O.A.I.&rdquo; in <em>Twelfth Night</em>, Act II, Scene v, should be taken seriously and not dismissed as any old nonsensical collection of initials or letters; the riddle rivets attention on stage and among the audience. It can&rsquo;t be overlooked, and so we need to work out how the laughter might come. Besides any riddle worth the name, however &ldquo;fustian&rdquo; (l. 110), is there to be solved.</p>
+
+        <p>In brief, the interpretation offered in the earlier number of <em>Connotations</em> is that these letters are initials representing Malvolio&rsquo;s claim that &ldquo;I&rsquo;M A and O&rdquo;&mdash;that is &ldquo;I am Alpha and Omega, the first and the last.&rdquo; The solution is attractive because Malvolio is indeed full of self-love and self-esteem. Besides, a reference to such ultimate matters as the beginning and end of all things suits well with a comedy which features a Fool who lives &ldquo;by the church&rdquo; (III.i.3), catechizes his madonna-mistress about heaven und hell (see I.v.60 ff.), and is familiar with &ldquo;the whirligig of time&rdquo; (V.i.375). Such a theological riddle would take its place alongside a counterfeit parson, a reference to the Hermit of Prague, and a doggerel rhyme which calls upon the devil himself (see IV.ii.1-132). Solving the riddle this way would also provide a connection to the subtextual life of the whole comedy, which is haunted by thoughts of perfection and the passage of time. It would chime with the concluding reminder that &ldquo;A great while ago the world began.&rdquo;</p>
+
+        <p>But problems remain. First of all, a good riddle has one solution which is blindingly obvious once it has been found. Elsewhere Shakespeare riddles in this fashion:</p>
+
+        <div class="poem">
+            <p>I am no viper, yet I feed</p>
+            <p>On mother&rsquo;s flesh . . . .</p>
+            <p>(<em>Pericles</em>, I.i.65 ff.)</p>
+            <p>So there&rsquo;s my riddle: one that&rsquo;s dead is quick . . . .</p>
+            <p>(<em>All&rsquo;s Well</em>, V.iii.297)</p>
+        </div>
+
+        <p>The Sphinx can be confusing, but once her meaning is grasped no further scope is left for argument. Professor Leimberg&rsquo;s solution is not of this kind, but raises further problems and prompts more consideration.</p>
+
+        <p>Transpositions are often acceptable in riddles, but here the re-ordering is complex, reversing A and O, as well as I and M, and, as it were, shuffling sequences. Besides, the initials are taken to represent hidden meanings in several different ways, the use of M for an abbreviated &ldquo;am&rdquo; being the most obtrusively unusual. The customary &ldquo;and&rdquo; or &ldquo;&amp;&rdquo; (between Alpha and Omega) is not represented at all.</p>
+
+        <p>The most serious problems arise when the riddle with this solution is placed back into its dramatic context. How can we suppose that Maria has the ability to construct such a moralistic and theological teaser, knowing all that the play shows us about her thought-processes? Moreover how does it fit into the sentence of which it is only a part? &ldquo;I am Alpha and Omega,&rdquo; in any sense, can hardly be said to &ldquo;sway my life&rdquo; (121), when &ldquo;my&rdquo; is, unquestionably, Olivia. While some of the eavesdroppers on stage may be thought to have understood a part of the message, none of them, as Professor Leimberg shows, can be said to have grasped the whole of this solution.</p>
+
+        <p>In the same article, Professor Leimberg provides several other readings of the riddle which rather blunt the edge of her primary solution, rather than supporting it. If &ldquo;M.O.A.I.&rdquo; also means &ldquo;M. (i.e. Monsieur) O (i.e. nothing) A(nd) I (i.e. Number One, and I myself),&rdquo; then how can &ldquo;O.A.&rdquo; also stand for &ldquo;Alpha and Omega&rdquo; without confusing hopelessly the value of A for &ldquo;and&rdquo;? If the sequence of vowel-sounds are ludicrous enough, when mouthed ambitiously as Professor Leimberg suggests, to create an animal-like noise for the name of Olivia&rsquo;s steward and supposed beloved, how can any serious meaning survive?</p>
+
+        <p>All these problems prompt a further look at the dialogue in which the riddle occurs. Here it is described as a &ldquo;fustian riddle,&rdquo; which might refer to over-pedantic, almost meaningless jargon, and so, with some straining, to the riddle as interpreted by Professor Leimberg. But more usual Shakespearian meanings are more to do with sound-and-fury and with the home-spun or frankly coarse. Doll Tearsheet&rsquo;s rebuke of the swaggering Pistol in <em>II Henry IV</em> II.iv.184-85, illustrates these more familiar meanings: &ldquo;I cannot endure such a fustian rascal.&rdquo; Something of the same kind is repeated when the riddle is also called &ldquo;rank&rdquo;:</p>
+
+        <blockquote>
+            <p><em>Sir Toby.</em> . . . He [Malvolio] is now at a cold scent.</p>
+            <p><em>Fabian.</em> Sowter will cry upon&rsquo;t for all this, though it be as rank as a fox. (123-25)</p>
+        </blockquote>
+
+        <p>&ldquo;Rank&rdquo; occurs numerous times in Shakespeare&rsquo;s plays to describe unbridled sexuality: for example, &ldquo;the rank garb&rdquo; of <em>Othello</em>, II.i.301, &ldquo;this rank offence&rdquo; of <em>Measure for Measure</em>, III.i.99, and &ldquo;lust,and rank thoughts&rdquo; of <em>Cymbeline</em>, II.v.176; in <em>Hamlet</em> are found &ldquo;Things rank and gross in nature,&rdquo; &ldquo;rank sweat of an enseamed bed,&rdquo; and &ldquo;rank corruption&rdquo; (I.ii.136, III.iv.92 and 150). Surely we should consider whether a fustian and rank solution may not be at the heart of Maria&rsquo;s riddle, rather than the more learned one proposed by Professor Leimberg.</p>
+
+        <p>An alternative solution might start by reading &ldquo;M&rdquo; for Malvolio, which is what the victim of Maria&rsquo;s plot and most other commentators have done. Then &ldquo;O&rdquo; could stand for O! or Oh!&mdash;which is what the eavesdroppers are quick to imply in their comments; here we would hear the Oh! of sexual anticipation, pleasure, and/or surprize. In <em>Cymbeline</em>, II.iv.168-69, a supposed lecher is said to have &ldquo;cried &lsquo;O!&rsquo; and mounted&rdquo;; but this reading hardly needs supporting texts, for Oh! or O! has occured countless times, over the years and centuries, in stories, ballads and ordinary life, when sexual encounter is the theme. If this is the primary sense of &ldquo;O&rdquo; in this riddle, then Sir Toby&rsquo;s promise of raising another such cry would be spoken with an emphasis on &ldquo;him,&rdquo; meaning Malvolio as opposed to Olivia (who in the riddle makes the exclamation): &ldquo;I&rsquo;ll cudgel him,&rdquo; he says, &ldquo;and make him cry &lsquo;O&rsquo;!&rdquo; (134). The &ldquo;A&rdquo; of the riddle would be another exclamation, as resistance or hesitation is overcome: a more positive Ah! The &ldquo;I&rdquo; would stand for Ay, as it often did in print and handwriting in this period; and &ldquo;I&rdquo; would also represent Olivia giving her full assent. The whole riddle is thus a covert dramatisation of the sexual fantasy which supposedly drives Olivia and &ldquo;sways her life.&rdquo; Like the rest of the quatrain in which it appears, this sense could be self-evident if only the letters were read in the right way: &ldquo;this is evident to any formal capacity. There is no obstruction in this&rdquo; (118-19). But then, Malvolio never considers how Olivia might be thinking and feeling on her own account; and so he does not catch on.</p>
+
+        <p>An ambiguity remains in &ldquo;Ay&rdquo; and &ldquo;I,&rdquo; but this is commonly found in Shakespeare&rsquo;s plays and elsewhere. <em>Richard II</em> exemplifies the punning possibilities:</p>
+
+        <blockquote>
+            <p><em>King.</em> Ay, no; no, ay; for I must nothing be.</p>
+            <p>Therefore no &ldquo;no&rdquo;, for I resign to thee. (IV.i.201-02)</p>
+        </blockquote>
+
+        <p>Here Ay and I are almost interchangeable, as in &ldquo;I know no I; for I . . . ,&rdquo; or &ldquo;I, no; no I; for One must nothing be . . . ,&rdquo; or &ldquo;I no; no; Ay, for I must nothing be . . . .&rdquo; Early printed editions used &ldquo;I,&rdquo; and not &ldquo;Ay,&rdquo; as in the modern text quoted here.</p>
+
+        <p>Double, triple or quadruple meanings for &ldquo;M.O.A.I.&rdquo; may be what this opalesque comedy requires, so that a dominant one never fully declares itself, or settles the interpretation one way or another. But the subtitle to the play, &ldquo;What you Will,&rdquo; should perhaps sway readers and audiences towards a rank and fustian understanding of its message; the sexual connotations of &ldquo;will&rdquo; are active in this comedy, the sonnets, and many other Shakespeare&rsquo;s plays. Maria, Sir Toby and Fabian might well be able to hear only this; certainly all that they say in the play about the joke can be taken to imply as much. It may be part of the fun that this (and every other) solution seems to be beyond the reach of Sir Andrew&rsquo;s comprehension; he does not voice any opinion.</p>
+
+        <p class="no-indent" style="text-align: center; margin-top: 3em; font-style: italic;">The University of Michigan<br>Ann Arbor, Michigan</p>
+
+        <div class="metadata">
+            <h3>Meta-Data</h3>
+            <p>Published in: 1.2</p>
+            <p>Page numbers: 187-90.</p>
+            <p>Publication Date: 06/30/1991</p>
+            <p>DOI: 10.25623/conn001.2-brown-1</p>
+            <p>Download: Article as PDF</p>
+            <p style="margin-top: 1em;"><em>Connotations - A Journal for Critical Debate</em> by the Connotations Society is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</p>
+        </div>
+    </article>
+
+    <script>
+        const toggle = document.getElementById('theme-toggle');
+        const icon = document.getElementById('theme-icon');
+
+        toggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+            toggle.title = isDark ? 'Modo Diurno' : 'Modo Nocturno';
+            toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matthias Bauer - Count Malvolio, Machevill and Vice</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* =========================================
+           COLORES (Modo Diurno - International Klein Blue)
+           ========================================= */
+        :root {
+            --bg-body: #002FA7;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.88);
+            --text-muted: rgba(255, 255, 255, 0.6);
+            --border-color: rgba(255, 255, 255, 0.35);
+            --border-light: rgba(255, 255, 255, 0.15);
+            --fab-bg: #ffffff;
+            --fab-color: #002FA7;
+            --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+            --quote-border: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Modo Nocturno - Deep Navy Blue */
+        body.dark-mode {
+            --bg-body: #001233;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.85);
+            --text-muted: rgba(255, 255, 255, 0.5);
+            --border-color: rgba(255, 255, 255, 0.2);
+            --border-light: rgba(255, 255, 255, 0.1);
+            --fab-bg: #ffffff;
+            --fab-color: #001233;
+            --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+            --quote-border: rgba(255, 255, 255, 0.4);
+        }
+
+        /* =========================================
+           ESTILOS GENERALES
+           ========================================= */
+        * { transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease; }
+        
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            line-height: 1.75;
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 2em 1.5em 5em;
+            color: var(--text-primary);
+            background-color: var(--bg-body);
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            text-align: center;
+            margin-bottom: 0.2em;
+            font-weight: normal;
+            letter-spacing: 0.05em;
+            color: var(--text-primary);
+        }
+
+        h2 {
+            font-size: 1.4em;
+            text-align: center;
+            margin-top: 2.5em;
+            margin-bottom: 1.5em;
+            font-weight: bold;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        h3 {
+            font-size: 1.1em;
+            text-align: left;
+            margin-top: 2.5em;
+            margin-bottom: 1em;
+            font-weight: bold;
+            color: var(--text-secondary);
+            letter-spacing: 0.05em;
+        }
+
+        p {
+            text-align: justify;
+            margin-bottom: 1.2em;
+            text-indent: 1.5em;
+        }
+
+        p.no-indent { text-indent: 0; }
+
+        blockquote {
+            margin: 1.5em 2em;
+            padding-left: 1.5em;
+            border-left: 3px solid var(--quote-border);
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        blockquote p { text-indent: 0; margin-bottom: 0.8em; }
+
+        .poem {
+            margin: 1.5em 2em;
+            font-style: italic;
+            text-indent: 0;
+        }
+
+        .poem p {
+            text-indent: 0;
+            margin-bottom: 0.3em;
+            text-align: left;
+            padding-left: 2em;
+            text-indent: -2em;
+        }
+
+        em { font-style: italic; }
+
+        sup {
+            font-size: 0.75em;
+            vertical-align: super;
+            line-height: 0;
+        }
+
+        .page-number {
+            display: block;
+            text-align: center;
+            font-size: 0.8em;
+            color: var(--text-muted);
+            margin: 2em 0 1em 0;
+        }
+
+        .footnotes {
+            margin-top: 4em;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5em;
+            font-size: 0.9em;
+            color: var(--text-secondary);
+        }
+
+        .footnotes h3 {
+            text-align: left;
+            font-size: 1em;
+            margin-bottom: 1em;
+            text-transform: none;
+            letter-spacing: normal;
+            color: var(--text-primary);
+        }
+
+        .footnotes p {
+            text-align: left;
+            text-indent: -1.5em;
+            padding-left: 1.5em;
+            margin-bottom: 0.6em;
+            font-size: 0.9em;
+        }
+
+        .section-break {
+            text-align: center;
+            margin: 2.5em 0;
+            font-weight: bold;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.1em;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 2em;
+        }
+
+        .source-note {
+            text-align: center;
+            font-size: 0.85em;
+            color: var(--text-muted);
+            margin-bottom: 2em;
+            font-style: normal;
+        }
+
+        .author {
+            text-align: center;
+            font-size: 1.1em;
+            color: var(--text-secondary);
+            margin-bottom: 2em;
+            letter-spacing: 0.05em;
+        }
+
+        /* =========================================
+           BOTÓN FLOTANTE (Modo Nocturno)
+           ========================================= */
+        .fab-toggle {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background-color: var(--fab-bg);
+            color: var(--fab-color);
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease;
+            z-index: 1000;
+            outline: none;
+        }
+        .fab-toggle:hover { transform: scale(1.1); }
+        .fab-toggle:active { transform: scale(0.95); }
+        .fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            body { padding: 1.2em 1em 4em; }
+            h1 { font-size: 1.6em; }
+            h2 { font-size: 1.1em; }
+            .fab-toggle { bottom: 16px; right: 16px; width: 50px; height: 50px; }
+            .fab-toggle .material-icons { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo Nocturno">
+        <i class="material-icons" id="theme-icon">dark_mode</i>
+    </button>
+
+    <article id="content">
+        <h1>Count Malvolio, Machevill and Vice</h1>
+        <p class="author">Matthias Bauer</p>
+        <p class="source-note"><em>Connotations</em> Vol. 1.3 (1991)</p>
+
+        <p>In this paper, Malvolio is seen, however tentatively, as being related to the &ldquo;Machiavellian,&rdquo; whose crafty machinations are turned by Shakespeare into the silly antics of the bitter fool of <em>Twelfth Night</em>.<sup>1</sup> My point of departure is Inge Leimberg&rsquo;s and John Russell Brown&rsquo;s discussion of Maria&rsquo;s riddling letter in scene 2.5.<sup>2</sup> In her reading of &ldquo;M.O.A.I.&rdquo; as the self-lover&rsquo;s anagrammatical confession of his wish to be like God, Professor Leimberg refers to the unholy alliance of <em>mala voluntas, amor sui</em>, and <em>superbia</em> in St. Augustine&rsquo;s <em>De civitate Dei</em>.<sup>3</sup> But, surely, that very title points to another, closely related concept clearly suggestive of Malvolio&rsquo;s dilemma, the <em>civitas</em>. To quote one of the passages referred to by Professor Leimberg:</p>
+
+        <blockquote>
+            <p>Fecerunt itaque civitates duas amores duo, terrenam scilicet amor sui usque ad contemptum Dei, caelestem vero amor Dei usque ad contemptum sui. . . . Illi in principibus eius vel in eis quas subiugat nationibus dominandi libido dominatur . . . .<sup>4</sup></p>
+        </blockquote>
+
+        <p>To St. Augustine, self-love is the fundamental principle of the <em>civitas terrena</em>, the worldly state of politics and power, as opposed to the <em>civitas Dei</em>, which is founded upon the love of God. Thus, <em>amor sui</em> has political implications in the basic sense of the word: in his very solitude, the self-lover craves to be praised and honoured by others, entering upon a relationship of dominance and flattering submission, of adoration and command, with his fellow-sinners.</p>
+
+        <h2>I</h2>
+
+        <p>In a survey of Malvolio&rsquo;s &ldquo;sin of self-love,&rdquo; his fantasies loom large. John Russell Brown stresses their lascivious nature (189-90), but Malvolio&rsquo;s day-dreams of a compliant Olivia are only part of an overwhelming dream of omnipotence which finds its most succinct expression in 2.5.35, shortly before he is baited by Maria&rsquo;s fatal letter: &ldquo;To be Count Malvolio!&rdquo;<sup>5</sup> This merely political aim is what the self-lover finally lusts for. In the realm of Shakespeare&rsquo;s imaginary <em>Illyria</em>, he who wishes to be &ldquo;Count&rdquo; aspires to the position of sovereign or prince: it is Orsino, the ruler, who is repeatedly called by that title in the play. The retinue of which Malvolio dreams exceeds everything we may expect from the size of Olivia&rsquo;s household. When Count Malvolio asks for his kinsman Toby, no less than seven of his people, &ldquo;with an obedient start, make out for him&rdquo; (2.5.58-59).</p>
+
+        <p>First and foremost, Malvolio dreams of power over others. It is not just on the &ldquo;day-bed&rdquo; that he holds sway but also in the &ldquo;state&rdquo;:</p>
+
+        <div class="poem">
+            <p>Having been three months married to her, sitting in my state&mdash;. . .</p>
+            <p>Calling my officers about me . . .</p>
+            <p>And then to have the humour of state; and after a demure travel of regard, telling them I know my place, as I would they should do theirs, . . . .</p>
+            <p>(2.5.44-46, 52-54)</p>
+        </div>
+
+        <p>Several meanings of &ldquo;state&rdquo; are implied here, combining the idea of &ldquo;solemn pomp, appearance of greatness&rdquo; (in ll. 44-45)<sup>6</sup> with the more ambiguously political &ldquo;humour of state,&rdquo; which may refer to &ldquo;class, rank&rdquo; as well as to &ldquo;government.&rdquo;<sup>7</sup> In any case, it is the &ldquo;state&rdquo; which is the object of Malvolio&rsquo;s &ldquo;humour,&rdquo; here obviously denoting his &ldquo;particular disposition, inclination, or liking&rdquo; (<em>OED</em>, &ldquo;humour,&rdquo; 6.). The connection between <em>amor sui</em> and politics becomes visible at this point. Hiram Haydn, discussing Renaissance views of &ldquo;humour,&rdquo; quotes the earlier version of <em>Every Man in his Humour</em> (1601): &ldquo;[humour] is a monster bred in a man by selfe loue, and affectation, and fed by folly.&rdquo;<sup>8</sup> Haydn regards this concept of &ldquo;humour&rdquo; as being similar to what Gabriel Harvey calls &ldquo;[one&rsquo;s] owne singularity.&rdquo;<sup>9</sup> To Ben Jonson, around the year 1600, every man&rsquo;s humour as expressive of his self-love was quite distinct from humour as a mere affectation, expressed, for instance, by a fop&rsquo;s &ldquo;yard of shooetye, or the Switzers knot / On his French garters.&rdquo;<sup>10</sup></p>
+
+        <p>Malvolio combines, so to speak, both kinds of humour when he indulges in the most affected kind of dress in order to feed the monster of his self-love. Maria&rsquo;s letter reflects Malvolio&rsquo;s own desire to have the &ldquo;humour of state&rdquo; when it commands him, &ldquo;Let thy tongue tang arguments of state; put thyself into the trick of singularity&rdquo; (2.5.150-51). The letter scene is characterized throughout by terms belonging to the political sphere. The fictitious writer points out that she may very well &ldquo;command&rdquo; her addressee to become her sovereign or master.<sup>11</sup> In his fantasy of power, Malvolio is tempted to &ldquo;crush&rdquo; the very letters of the alphabet and make them &ldquo;bow&rdquo; to him (140-41). The prose part of the letter, in particular, bluntly aims at Malvolio&rsquo;s political ambition. It makes him believe that &ldquo;greatness&rdquo; may lie in wait for him, a term which implies high rank and political dominance:<sup>12</sup> &ldquo;Some are born great, some achieve greatness, and some have greatness thrust upon&rsquo;em&rdquo; (2.5.145-46). Malvolio wants to be &ldquo;made,&rdquo; to be elevated from the level of a &ldquo;fellow of servants&rdquo; (156) to political power and, in order to attain this goal, is resolved to &ldquo;read politic authors&rdquo; (161-62). Which authors does he read?</p>
+
+        <p>He might, for instance, share Harvey&rsquo;s opinion about the &ldquo;most inspiring authors&rdquo; and read &ldquo;Machiavellus in politicis.&rdquo;<sup>13</sup> The word which Malvolio uses, &ldquo;politic,&rdquo; may already point in this direction. <em>Politic</em>, as Napoleone Orsini has shown,<sup>14</sup> was often used at the time as a synonym of &ldquo;Machiavellian.&rdquo; Shakespeare&rsquo;s Sonnet 124 provides a context for Malvolio as a political time-server which is just as revealing as Sonnet 62 is for his &ldquo;sin of self-love.&rdquo; Malvolio&rsquo;s love for Olivia is but &ldquo;the child of state&rdquo; and &ldquo;fortune&rsquo;s bastard&rdquo; (ll. 1-2); both &ldquo;smiling pomp&rdquo; and &ldquo;thralled discontent&rdquo; (6-7) characterize this &ldquo;fool of time,&rdquo; who is a Puritan out of &ldquo;policy, that heretic&rdquo; (9). But, just as Malvolio fails to attain the final self-knowledge achieved by the speaker of Sonnet 62, he similarly fails to become &ldquo;politic&rdquo; in that original true sense of belonging to the <em>civitas Dei</em>,<sup>15</sup> in which it is just another word for the constancy of mutual love: &ldquo;But all alone stands hugely politic, / That it nor grows with heat, nor drowns with show&rsquo;rs&rdquo; (11-12).<sup>16</sup> Malvolio is &ldquo;politic&rdquo; only in the sense expressed by Shakespeare&rsquo;s Host of the Garter: &ldquo;Am I politic? Am I subtle? Am I a Machiavell?&rdquo; (<em>Merry Wives</em> 3.1.92-93). In <em>Twelfth Night</em>, Sir Andrew seems to have a vague idea about the derogatory meaning of <em>politic</em> when he declares: &ldquo;. . . policy I hate: I had as lief be a Brownist as a polititian&rdquo; (3.2.30-31). More difficult to determine, however, is the sense in which that somewhat anarchic triumvirate of Feste, Sir Toby, and Sir Andrew call themselves &ldquo;politicians&rdquo; (2.3.76). They are playing the roles of Machiavellian plotters who, in the little commonwealth of Olivia&rsquo;s household, try to oust Malvolio from his position of influence by serving him Maria&rsquo;s &ldquo;dish o&rsquo;poison&rdquo; (2.5.114).<sup>17</sup></p>
+
+        <p>In Machiavelli, Malvolio could learn more about that famous distinction between greatness by birth, or achieved through one&rsquo;s own ability, or as a result of one&rsquo;s good fortune. This is what <em>Il Principe</em> has to say about the <em>principati nuovi</em> as opposed to the <em>principati ereditari</em>:</p>
+
+        <blockquote>
+            <p>E perch&eacute; questo evento, di diventare di privato principe, presuppone o virt&ugrave; o fortuna . . . .<sup>18</sup></p>
+        </blockquote>
+
+        <p>Machiavelli then goes on to describe those who come to power <em>per propria virt&ugrave;</em>, whereas the next chapter (7) is devoted to those who become princes <em>colle armi et fortuna di altri</em>. It seems more than just a coincidence that the fate of the Orsini family plays an important role in this chapter. They were the antagonists of Cesare Borgia, who serves as Machiavelli&rsquo;s most prominent example of a man who has greatness thrust upon him, cleverly succeeds in keeping it, but is finally overcome through &ldquo;una estraordinaria ed estreme malignit&agrave; di fortuna&rdquo; (109). With respect to <em>Twelfth Night</em>, the relation of Cesare and Cesario is clearly a case of <em>lucus a non lucendo</em>, but does it come as a suprise that the innocent young heroine assumes the name of an arch-villain when she finds herself in <em>Illyria</em> instead of Elysium? Her conqueror&rsquo;s name becomes part of her disguise in a fallen world, where, to give just one example provided by Maria&rsquo;s letter, the name of chaste Lucrece is invoked by a lady of noble birth evincing her inordinate desire to marry a &ldquo;fellow of servants.&rdquo;<sup>19</sup></p>
+
+        <h2>II</h2>
+
+        <p>What makes us discern the grimace of the Machiavellian behind the comic mask is, apart from Malvolio&rsquo;s &ldquo;political&rdquo; ambition, the stress laid on Fortune, as well as the conspicuous animal imagery.</p>
+
+        <p>Maria never openly pretends in her letter that it has been written by Olivia; it is only Malvolio who thinks so. The disguise which Maria assumes is no lesser personage than Lady Fortune herself. &ldquo;The Fortunate Unhappy&rdquo; (159) who signs the letter may only hint at this, but the epistle itself makes it quite obvious: the writer lures Malvolio into aspiring for Olivia&rsquo;s hand by emphasizing his being &ldquo;worthy to touch Fortune&rsquo;s fingers&rdquo; (156-57). Malvolio is a ready believer in this goddess, as has been evinced by his very first words upon entering the scene: &ldquo;&rsquo;Tis but fortune, all is fortune&rdquo; (23). The many allusions to Malvolio&rsquo;s favourite goddess seem to confirm this credo. She who is in her stars above him (143-44) and has power over the proverbial wheel (&ldquo;revolve,&rdquo; 143), as well as over the Fates themselves (146), gives him an opportunity to court her and become, as her husband, the ruling deity whom he has been worshipping all along. Malvolio fails to &ldquo;see more detraction at [his] heels than fortunes before&rdquo; him (137-38); instead, he thanks and praises his stars (170-71, 173-74).</p>
+
+        <p>The connection made in Maria&rsquo;s letter between the image of fortune as a lady who has to be courted (but who also wants to change places with him and become his servant) and the theme of political ambition is clearly resonant of one of the most famous passages of <em>Il Principe</em>, which may have been known even to those who read neither the original nor one of the early translations:</p>
+
+        <blockquote>
+            <p>perch&eacute; la fortuna &egrave; donna: ed &egrave; necessario, volendola tenere sotto, batterla et urtarla . . . . e per&ograve; sempre, come donna, &egrave; amica de&rsquo; giovani, perch&eacute; sono meno respettivi, pi&ugrave; feroci, e con pi&ugrave; audacia la comandano. (Ch. 25, 190)</p>
+        </blockquote>
+
+        <p>Those who regard this recommendation as being too physically aggressive for Malvolio should take into account Machiavelli&rsquo;s corresponding statement in the <em>Discorsi</em>, where it is Lady Fortune who plays the active part, choosing a man who is able to see that she plans to do great things with him. This is exactly the position in which Malvolio imagines himself to be:</p>
+
+        <blockquote>
+            <p>Fa bene la fortuna questo, che la elegge uno uomo, quando la voglia condurre cose grandi, che sia di tanto spirito e di tanta virt&ugrave; che ei conosca quelle occasioni che la gli porge.<sup>20</sup></p>
+        </blockquote>
+
+        <p>In <em>Twelfth Night</em>, Fortune&rsquo;s power is not confined to Malvolio&rsquo;s attempt at establishing himself in a privileged position with this goddess. In contrast, Viola and Sebastian, at the beginning and towards the end of the play, emphasize the fact that fortune remains inscrutable both in adversity and happiness. In her misfortune, Viola literally clutches at the straw of &ldquo;chance&rdquo;:</p>
+
+        <div class="poem">
+            <p><em>Viola.</em> . . . Perchance he is not drown&rsquo;d: what think you, sailors?</p>
+            <p><em>Captain.</em> It is perchance that you yourself were sav&rsquo;d.</p>
+            <p><em>Viola.</em> O my poor brother! and so perchance may he be.</p>
+            <p><em>Captain.</em> True, madam, and to comfort you with chance,</p>
+            <p>Assure yourself . . . (1.2.5-9)</p>
+        </div>
+
+        <p>Sebastian, in scene 4.3, expresses his surprise at the marvellous good fortune he has met with, using a metaphor reminiscent of Machiavelli&rsquo;s image of fortune as an impetuous flooded river:<sup>21</sup></p>
+
+        <div class="poem">
+            <p>Yet doth this accident and flood of fortune</p>
+            <p>So far exceed all instance, all discourse</p>
+            <p>That I am ready to distrust mine eyes,</p>
+            <p>. . . . (4.3.11-13)</p>
+        </div>
+
+        <p>It is a splendid stroke of dramatic irony that Olivia here appears in the very role Malvolio conceived for her, instigated by Maria&rsquo;s letter. But, as befits a Lady Fortune proper, in her wilfulness she chooses a man who never dreamt of attaining her.<sup>22</sup></p>
+
+        <p>The idea that the courtship of Fortune can be politically decisive, however, is taken up again by Shakespeare in a far more serious context. It is central to Prospero&rsquo;s attempt to regain his dukedom, from which he has been expelled by his truly Machiavellian brother. He knows that &ldquo;bountiful Fortune,&rdquo; his &ldquo;dear lady,&rdquo; has brought his enemies into his power, and, if he fails to &ldquo;court&rdquo; the influence of the star whom she governs, his &ldquo;fortunes / Will ever after droop&rdquo; (1.2.178-84).</p>
+
+        <p>Animal imagery provides us with another hint that the caricature of a Machiavellian is to be discovered in the figure of Malvolio. Machiavelli&rsquo;s teachings have been identified with the famous animal comparison he makes in Chapter 18 of <em>Il Principe</em>, though it is in fact a political saying which goes back to antiquity:<sup>23</sup></p>
+
+        <blockquote>
+            <p>Pertanto, a uno principe &egrave; necessario sapere bene usare la bestia e l&rsquo;uomo . . . . Sendo dunque uno principe necessitato sapere bene usare la bestia, debbe di quelle pigliare la golpe e il lione; perch&eacute; il lione non si defende da&rsquo; lacci, la golpe non si defende da&rsquo; lupi. (156)</p>
+        </blockquote>
+
+        <p>When it comes to being both beast and man, Malvolio undoubtedly fulfils Machiavelli&rsquo;s requirement for a prince. He takes the first place in Audrey Yolder&rsquo;s list of animal comparisons in <em>Twelfth Night</em>.<sup>24</sup> Unfortunately, however, there is little that qualifies him for Machiavelli&rsquo;s choice of animals representing strength and craftiness. Maria speaks the plain truth when she calls him &ldquo;an affectioned ass,&rdquo; the heraldic animal of the self-lover.<sup>25</sup> There is, of course, the famous Aesopian story of the ass who succeeded in dressing up as a lion, but then everybody knows what happened to him. His ears sticking out too visibly from his disguise, he ended up in ridicule and ignominy.<sup>26</sup> As regards the second animal Machiavelli recommends, Malvolio is rather like &ldquo;sowter&rdquo;, a &ldquo;cur&rdquo; who is &ldquo;excellent at faults&rdquo; but unable to get the wind of Maria&rsquo;s trap, &ldquo;though it be as rank as a fox&rdquo; (124-25). Feste, in his witty repartee to Malvolio in 1.5.76-79, brings together the fox and the fool, leaving no doubt as to which epithet is the right one for Malvolio. The fox, to whom a sovereign should be similar because he is able to avoid the snares set for him by his enemies, has an exact opposite in the animal kingdom among the birds. Malvolio is compared twice to a bird that is proverbially stupid enough to be caught easily in any snare or net. &ldquo;Now is the woodcock near the gin,&rdquo; says Fabian when Malvolio stoops to pick up the letter (2.5.84), and Feste will only regard him as sane if he believes that his grandam&rsquo;s soul inhabits a woodcock (4.2.59-61).<sup>27</sup> Thus, Malvolio&rsquo;s beast-like nature, while serving, by contrast, as another hint to his favourite political author, falls rather short of that sly and powerful animal character which the <em>principe</em> is taught to assume.</p>
+
+        <h2>III</h2>
+
+        <p>Perhaps the most obvious pointer to the kinship of Machiavelli and Malvolio is the name. Setting aside a certain similarity in the spelling,<sup>28</sup> there is a structural similarity between the names as regards their telling character.</p>
+
+        <p>According to Edward Meyer, Machiavelli&rsquo;s name was spelt &ldquo;in over a hundred different ways&rdquo; in 16th- and 17th-century England.<sup>29</sup> Thus, it easily lent itself to abuse when regarded as a verbal phrase with sinister meaning. Both &ldquo;make&rdquo; and &ldquo;match,&rdquo; for instance, could be followed by &ldquo;evil&rdquo; or &ldquo;vile.&rdquo; Those who believe in Machiavelli&rsquo;s doctrine disclose themselves as &ldquo;-villians&rdquo; or rather &ldquo;-villains.&rdquo;<sup>30</sup> Just one telling example among the many given by Meyer may be quoted; it is from John Davies&rsquo; <em>Paper&rsquo;s Complaint</em>:</p>
+
+        <div class="poem">
+            <p>A villaine vile, that sure in hell doth hang,</p>
+            <p>Hight <em>Mach-evill</em> that <em>evill</em> none can match,</p>
+            <p>. . . .</p>
+            <p>Now not a Groome (whose wits erst soard no hyer</p>
+            <p>Then how to pile the Logs on his Lords fire)</p>
+            <p>But playes the <em>Machiavillian</em> (with a pox)</p>
+            <p>And in a Sheep-skin clad, the Woolfe or FOX.<sup>31</sup></p>
+        </div>
+
+        <p>Malvolio&rsquo;s name is similarly composed of two telling parts, combining an &ldquo;evil&rdquo; or &ldquo;ill&rdquo; element with an italianized &ldquo;will,&rdquo; both of which can be found in the latter part of Machiavelli&rsquo;s anglicized name. In the sense of &ldquo;ill-will,&rdquo; Malvolio&rsquo;s name was taken over by Marston in <em>The Malcontent</em>, where Malevole&rsquo;s <em>mala voluntas</em> is part of his Machiavellian disguise. He is contrasted with Mendoza, the true Machiavellian villain of the play, who characterizes himself in a line that echoes Malvolio&rsquo;s aspirations: &ldquo;We that are great, our sole self-good still moves us.&rdquo;<sup>32</sup></p>
+
+        <p>As ominous names, both &ldquo;Machevill&rdquo; and &ldquo;Malvolio&rdquo; are phrasal composites which follow the pattern demonstrated by those witty corrupters of words in <em>Love&rsquo;s Labour&rsquo;s Lost</em> who comment upon Holofernes&rsquo; performance as one of the Nine Worthies. He never gets beyond saying &ldquo;Judas I am, ycleped Maccabaeus&rdquo; (5.2.593), for his audience at once cut him short by insisting that &ldquo;Judas Maccabaeus clipt is plain Judas&rdquo; (594). The jesters are sure that he is just waiting for &ldquo;the latter end of his name,&rdquo; i.e. &ldquo;the ass to the Jude&rdquo; (521-22). The joke here of course is that this latter end is actually not &ldquo;-as(s)&rdquo; but &ldquo;Maccabaeus&rdquo; or rather &ldquo;make-abuse.&rdquo; Thus the pedant remains on stage for the simple purpose that abuse can be &ldquo;made&rdquo; of his name.</p>
+
+        <p>Last but not least, there is another strong contemporary reason for assuming that Malvolio&rsquo;s name echoes &ldquo;Machiavelli.&rdquo; In his <em>Pierce Penniless</em> (1592), a work concerned with the ways of attaining influence and wealth, Thomas Nashe is undoubtedly referring to Machiavelli when he addresses Envy: &ldquo;Enuie, awake, for thou must appear before <em>Nicalao Maleuolo</em>, great Muster maister of hell.&rdquo;<sup>33</sup> In a later passage, under the heading of &ldquo;hypocrisy,&rdquo; Nashe links Machiavellianism and Puritanism (220). The context here is also relevant to the figure of Malvolio: Nashe discusses the view that the devil is in fact &ldquo;a pestilent humour in a man, of pleasure, profit, or policie,&rdquo; manifesting itself in &ldquo;that hateful sinne of self-love&rdquo; (220).</p>
+
+        <h2>IV</h2>
+
+        <p>From antiquity, princes and great men were regarded as particularly prone to self-love, a vice nourished by flatterers. In Plutarch&rsquo;s <em>Moralia</em>, for instance, the power of those who gratify somebody&rsquo;s self-conceit is &ldquo;greatest . . . with those who seem to be the greatest personages.&rdquo;<sup>34</sup> Self-love is the <em>tertium comparationis</em> between Malvolio, with his petty ambition for &ldquo;greatness,&rdquo; and the figure of the political upstart, greedy for power, who was called by the name of &ldquo;Machevillian.&rdquo; Machevill, who speaks the Prologue in <em>The Jew of Malta</em>, says of the protagonist, Barabas, that he &ldquo;favours&rdquo; him (l. 35). The arch-politician and evil-maker is approved by him whose motto openly declares his self-love: <em>Ego mihimet sum semper proximus</em> (1.1.188).<sup>35</sup> Self-love to the degree of making a god of oneself, the very sin Malvolio commits when he regards himself as &ldquo;A &amp; &Omega;,&rdquo; was commonly seen to be a typical feature of the Machiavellian.<sup>36</sup></p>
+
+        <p>Shakespeare provides us with the best example. Besides Malvolio, there is one other character in his plays who is &ldquo;sick of self-love,&rdquo; though, characteristically, he does not think that all who look on him love him but quite the opposite.<sup>37</sup> It is his imagined lovelessness which urges Richard III to aspire after the crown, driven by a self-love which is but another name for self-hate:</p>
+
+        <div class="poem">
+            <p>Alack, I love myself. Wherefore? For any good</p>
+            <p>That I myself have done unto myself?</p>
+            <p>O no, alas, I rather hate myself</p>
+            <p>For hateful deeds committed by myself. (5.3.188-91)<sup>38</sup></p>
+        </div>
+
+        <p>Richard III is the only character in Shakespeare who openly espouses Machiavellian precepts, striving to outdo his master:</p>
+
+        <div class="poem">
+            <p>I can add colours to the chamelion,</p>
+            <p>Change shapes with Proteus for advantages,</p>
+            <p>And set the murderous Machiavel to school.<sup>39</sup></p>
+        </div>
+
+        <p>Richard and Malvolio are as different as &ldquo;tragedy&rdquo; and comedy, as the relentless villain who makes the audience shudder and the man with whom any groom can identify, laughing at his too familiar vice. And yet, we may be reminded, for instance, by Thomas Mann&rsquo;s &ldquo;Bruder Hitler&rdquo; of the Everyman who hides even in Richard&rsquo;s disguise. The comparison of Malvolio and Richard brings to the fore both the latent dangerousness (political and otherwise) of him who vainly regards himself as most lovable and the miserable banality of him who thinks he must command because he cannot be loved.</p>
+
+        <p>Two points shall be shown where &ldquo;extremes meet,&rdquo; and a hidden relationship becomes visible between the tyrant-king and the day-dreaming steward. Firstly, the false smile is a badge worn by both, one of the most ugly marks Shakespeare has to bestow upon a character.<sup>40</sup> The &ldquo;smiling damned villain&rdquo; (<em>Hamlet</em> 1.5.106) hides his unscrupulous ambition behind the deceitful mask of joviality. Richard makes no secret of this in <em>3 Henry VI</em>:</p>
+
+        <div class="poem">
+            <p>Why, I can smile, and murder whiles I smile . . . (3.2.182)</p>
+        </div>
+
+        <p>In <em>Richard III</em>, he brings this quality to perfection when he pretends that he &ldquo;cannot flatter, and look fair, / Smile in men&rsquo;s faces . . .&rdquo; (1.3.47-48).<sup>41</sup> If the smile of a man who pretends that he cannot fawn is the epitome of Machiavellian villainy, Malvolio again appears as a grotesque mirror-image of the crafty politician. On the one hand, there is the sinister man who smiles a crafty smile only in order to hide it when convenient and appear as a man who loathes time-pleasers. In comic distortion, on the other hand, inscrutability becomes absurdity. There appears the image of a man who cannot laugh at the fool (1.5.85-87) but who wants to quench his &ldquo;familiar smile with a austere regard of control&rdquo; (2.5.66-67) once he has become ruler, and who, immediately afterwards, finds he must &ldquo;smile his face into more lines than is in the new map with the augmentation of the Indies&rdquo; (3.2.75-76), merely because Lady Fortune seems to take delight in it.<sup>42</sup> But alas, Malvolio, whose Puritan demeanour is but a &ldquo;time-pleasing&rdquo; attitude (2.3.146-47),<sup>43</sup> fails to please the one who would make him a favourite with everybody (3.4.22-23).</p>
+
+        <p>The second point of connection between Richard and Malvolio can be seen in the outcome of their self-loving enterprises. According to the medical authorities cited by Robert Burton, self-love leads to melancholy and madness.<sup>44</sup> Thus, when Feste and his friends treat him who believes he is a &ldquo;made&rdquo; man (2.5.154) as a madman and &ldquo;have him in a dark room and bound&rdquo; (3.4.136-37), they act, so to speak, along the lines of preventive medicine. More seriously, Feste makes us realize that the dark room is a visible sign of Malvolio&rsquo;s blindness and encapsulation, which are caused by his self-centred desires (cf. 4.2.43-45). &ldquo;Obstruction&rdquo; is the word Feste uses here (4.2.40), referring to Malvolio&rsquo;s claim that there is no &ldquo;obstruction&rdquo; in the meaning of the letter (2.5.119). A closely related word, &ldquo;obstacle,&rdquo; is used by Malvolio when he boasts of his literally unscrupulous expectations:</p>
+
+        <div class="poem">
+            <p>. . . no dram of a scruple, no scruple of a scruple, no obstacle, no incredulous or unsafe circumstance&mdash;what can be said?&mdash;nothing that can be can come between me and the full prospect of my hopes. (3.4.79-83)</p>
+        </div>
+
+        <p>It seems remarkable that both &ldquo;obstruction&rdquo; and &ldquo;obstacle&rdquo; are extremely rare words in Shakespeare, the first being typical of <em>Twelfth Night</em>,<sup>45</sup> while the second is used as a noun only in <em>Twelfth Night</em> and <em>Richard III</em>.<sup>46</sup> In <em>Richard III</em>, conscience &ldquo;fills a man full of obstacles&rdquo; (1.4.133); Richard, however, has already cut these obstacles away when he pretends to be too humble for the crown:</p>
+
+        <div class="poem">
+            <p>First, if all obstacles were cut away,</p>
+            <p>And that my path were even to the crown</p>
+            <p>As the ripe revenue and due of birth,</p>
+            <p>Yet so much is my poverty of spirit,</p>
+            <p>So mighty and so many my defects,</p>
+            <p>That I would rather hide me from my greatness&mdash; (3.7.155-60)</p>
+        </div>
+
+        <p>Richard&rsquo;s self-loving ambition for &ldquo;greatness,&rdquo; like Malvolio&rsquo;s, will lead him to the hell of utter solitude and isolation. His famous &ldquo;I am myself alone&rdquo; (<em>3 Henry VI</em>, 5.6.83) is equally appropriate to Malvolio in his dark cell. In his monologue in <em>Richard III</em> 5.3.178-204, Richard sees the obstacles which he has cut away start up again in grotesque liveliness. Verging on madness, he is a prisoner to his own self and accused by his own deeds before the court of conscience.<sup>47</sup></p>
+
+        <h2>V</h2>
+
+        <p>A common dramatic ancestor of both Richard III and Malvolio is the figure of the Vice, upon whom the more recent properties of the &ldquo;Machevillian&rdquo; were loaded by Elizabethan playwrights.<sup>48</sup> This old allegorical figure of the sardonic intriguer who tries to bring about the ruin of Humanum Genus found his way into both tragedy and comedy in the latter part of the 16th century.<sup>49</sup> Whereas Richard III compares himself to the Vice,<sup>50</sup> the relationship seems more concealed in the case of Malvolio. Bernard Spivack recognized some resemblance in the &ldquo;theme of sullen negation&rdquo; taking form &ldquo;in the puritan rigor of Malvolio, whose name implies what his behavior confirms&rdquo; (411). More specifically, a close verbal analysis will reveal that the Vice is quite important for Malvolio&rsquo;s role as a reflection and persiflage of the political upstart.</p>
+
+        <p>It is Feste who brings the Vice into play in <em>Twelfth Night</em>. Having payed a visit to Malvolio in his dark room under the disguise of Sir Topas, he takes leave with a song, assuming quite a different character:</p>
+
+        <div class="poem">
+            <p>I am gone, sir, and anon, sir,</p>
+            <p>I&rsquo;ll be with you again,</p>
+            <p>In a trice, like to the old Vice,</p>
+            <p>Your need to sustain;</p>
+            <p>Who, with dagger and lath, in his rage and his wrath,</p>
+            <p>Cries, &lsquo;Ah, ha!&rsquo; to the devil:</p>
+            <p>Like a mad lad, &lsquo;Pare thy nails, dad.</p>
+            <p>Adieu, goodman devil!&rsquo; (4.2.125-32)</p>
+        </div>
+
+        <p>Feste here compares himself to the Vice and calls him a madman who serves the devil Malvolio. (It is quite in keeping with the traditional Vice figure that he maltreats his &ldquo;master,&rdquo; the devil.<sup>51</sup>) Feste&rsquo;s role-playing indicates in what sense the word &ldquo;Vice&rdquo; could be understood. Even though modem etymology may not confirm this,<sup>52</sup> Feste&rsquo;s song stresses the meaning of Vice as a derivative of <em>vicarius</em> (vice), i.e. the Vice being the devil&rsquo;s deputy.<sup>53</sup> The Vice is, of course, a promoter of vices but this does not mean that, for Elizabethans, <em>vitium</em> had exclusive rights to the etymology. (The Duke in <em>Measure for Measure</em>, for example, puns on both meanings when he speaks of his deputy&rsquo;s sin: &ldquo;When vice makes mercy . . . ,&rdquo; 4.2.110.<sup>54</sup>) Correspondingly, the prefix &ldquo;vice-&rdquo; (as in viceroy, vicegerent etc.) could have negative connotations.<sup>55</sup> Feste&rsquo;s playing the role of Vice to the devil Malvolio goes together with his playing minister to a man who has fatally admitted that he is &ldquo;as well in [his] wits&rdquo; as the fool (4.2.91). What the fool actually does here is hold up a mirror to Malvolio, to whom he presents himself in the roles of Puritan minister,<sup>56</sup> &ldquo;mad lad&rdquo; and Vice.</p>
+
+        <p>The fact that it is Malvolio who is actually the Vice is underlined by his &ldquo;vice&rdquo; of self-love being is the target of all the revenge taken on him (2.3.152-53). Malvolio, to apply Heywood&rsquo;s definition of the Vice in his <em>Play of Love</em>, is &ldquo;nother louer nor beloued.&rdquo;<sup>57</sup> In addition, in scenes 3.4 and 4.2 the merry avengers stress that he has become possessed by the devil, who speaks in him and makes an instrument of him.<sup>58</sup> When Malvolio is called upon to &ldquo;defy the devil&rdquo; and &ldquo;consider, he&rsquo;s an enemy to mankind&rdquo; (3.4.98-99), he is assigned the roles both of Everyman and of the devil&rsquo;s representative, his Vice. It belongs to the comic effect of Feste&rsquo;s role-playing in 4.2 that, as &ldquo;curate&rdquo; and &ldquo;minister&rdquo; (both words imply the vicarious function of the clergyman), and as &ldquo;Vice,&rdquo; this ingenious corrupter of words simply translates Malvolio&rsquo;s own function of &ldquo;steward.&rdquo;</p>
+
+        <p>A steward is of course a majordomo, but then the word also means &ldquo;deputy-governor, vice-gerent&rdquo; (<em>OED</em> 4.), or, more generally, &ldquo;one who manages the affairs of an estate on behalf of his employer&rdquo; (<em>OED</em> 5.). Malvolio wants to exchange his position of housekeeper for the highest order of stewardship and become a count or prince. Like Falstaff, at the death of King Henry IV, he sees himself in the role of &ldquo;Fortune&rsquo;s steward&rdquo; (<em>2 Henry IV</em>, 5.3.126) and is similarly disappointed.<sup>59</sup> Baldassare Castiglione, in his <em>Cortegiano</em> (written at the same time as <em>Il Principe</em> and to some extent its idealistic counterpart), describes the kind of stewardship Malvolio never attains. Thus we read in Sir Thomas Hoby&rsquo;s translation:</p>
+
+        <blockquote>
+            <p>It is God therefore that hath appointed the people under the custody of princes, which ought to have a diligent care over them, that they may make him an account of it, as good stewardes doe their Lorde, . . . .<sup>60</sup></p>
+        </blockquote>
+
+        <p>Shakespeare himself formulates this idea of the stewardship of the prince when he has Richard II demand of Bollingbroke, &ldquo;show us the hand of God / That hath dismiss&rsquo;d us from our stewardship&rdquo; (<em>Richard II</em> 3.3.77-78). At a later time, when the conflict about the Stewart monarchy and the divine rights of kings began to escalate, the concept of the king as God&rsquo;s steward could be emphasized in order to remind the king of his God-given limitations.<sup>61</sup></p>
+
+        <p>Sir Toby&rsquo;s disdainful &ldquo;Art any more than a steward?&rdquo; (2.3.114), together with Maria&rsquo;s letter, incites Malvolio&rsquo;s desire not to be seen as &ldquo;a steward still, the fellow of servants&rdquo; (2.5.155-56). The word which names Malvolio&rsquo;s function characterizes both his great political ambition to become a divine representative, a &ldquo;god on earth&rdquo; (<em>Richard II</em> 5.3.134), and his downfall to the very bottom of the ladder, to the level of acting as Vice to the Devil himself.</p>
+
+        <p>At the end of the play, Malvolio, who had been told by Lady Fortune to &ldquo;revolve,&rdquo; has come full circle: when &ldquo;the whirligig of time&rdquo; has brought in his revenges (5.1.375-76), Malvolio is back to his old position of steward and fellow of servants in the diminutive <em>civitas terrena</em> of Olivia&rsquo;s household. There, an equilibrium of powers is maintained by the Duke, who demands to &ldquo;entreat him to a peace&rdquo; (5.1.379). Orsino, in his turn, has undergone a process in which his self-willed fantasy of conquest is replaced by the acceptance of a sovereign who rules his fancy. In the first scene of the play, Orsino speaks of his love as a fancy, &ldquo;So full of shapes . . . / That it alone is high fantastical&rdquo; (1.1.14-15). He compares himself to the hunter Actaeon (19-23), and, though he sees Olivia in the role of unattainable Diana, he yet dreams of the moment &ldquo;when liver, brain, and heart, / These sovereign thrones, ar all supplied, and fill&rsquo;d / Her sweet perfections with one self king!&rdquo; (1.1.37-39). His own self is the imagined king here, but his hopes for sovereignty are thwarted. Like Actaeon, Orsino the hunter will become the hunted&mdash;but not, as he thinks at the beginning, by his own desires (22-23). The conqueror will be conquered by a Cesario who, in the final scene of the play, turns out to be the true sovereign of his own &lsquo;liver, brain, and heart.&rdquo; The &ldquo;one self king&rdquo; at the beginning comes to be replaced by Orsino&rsquo;s &ldquo;fancy&rsquo;s Queen&rdquo; at the end. Thus, Malvolio&rsquo;s counting himself among the elect, his frustrated &ldquo;Machevillian&rdquo; ambition to become godlike, is put into a perspective of self-love being overcome by those who truly deserve to touch Fortune&rsquo;s fingers.</p>
+
+        <p class="no-indent" style="text-align: center; margin-top: 3em; font-style: italic;">Westf&auml;lische Wilhelms-Universit&auml;t<br>M&uuml;nster</p>
+
+        <div class="footnotes">
+            <h3>NOTES</h3>
+            <p><sup>1</sup>The great popularity of the Machiavellian villain on the Elizabethan stage was first documented by Edward Meyer, <em>Machiavelli and the Elizabethan Drama</em> (Weimar: Emil Felber, 1897). This is still a useful book, even though Meyer&rsquo;s thesis that the Elizabethans received their knowledge of Machiavelli from Gentillet&rsquo;s refutation rather than from <em>Il Principe</em> itself has been discredited by scholars, especially after the discovery of manuscript translations. See Felix Raab, <em>The English Face of Machiavelli</em> (London: RKP, 1964) 53, esp. note 2, and 56-58. Malvolio may well be seen in the context of a general development: &ldquo;When the &lsquo;politic villain&rsquo; . . . ceased to be good theatre, he was made into a figure of fun&rdquo; (Raab 56-57). See also Mario Praz, <em>Machiavelli and the Elizabethans</em> (London: Humphrey Milford, 1928) 27-28, citing Nashe&rsquo;s <em>Unfortunate Traveller</em> (1594). Further examples of Machiavelli as a fool are given by Meyer, beginning in 1600 with a reference in Hakluyt&rsquo;s &ldquo;Pasquils Passion&rdquo; (94). See also Meyer 95 (Marston), 98 (Chettle), 100 (Davies), 107 (Chapman), 108 and 147 (Jonson), 133 (Beaumont and Fletcher), 116 (Day), etc. John Earle&rsquo;s <em>Micro-Cosmographie</em> (1628) provides an illuminating quotation: &ldquo;Hee ha&rsquo;s beene long a riddle himselfe, but at last finds Oedipusses: for his over-acted dissimulation discovers him, and men doe with him as they would with Hebrew letter, spell him backwards, and read him&rdquo; (Meyer 143n).</p>
+            <p><sup>2</sup>Inge Leimberg, &ldquo;&lsquo;M.O.A.I.&rsquo; Trying to Share the Joke in Twelfth Night 2.5 (A Critical Hypothesis),&rdquo; <em>Connotations</em> 1.1 (1991): 78-95; John Russell Brown, &ldquo;More About Laughing at &lsquo;M.O.A.I.&rsquo; (A Response to Inge Leimberg),&rdquo; <em>Connotations</em> 1.2 (1991): 187-90; see also Inge Leimberg, &ldquo;&lsquo;Maria&rsquo;s Theology and Other Questions (An Answer to John Russell Brown),&rdquo; <em>Connotations</em> 1.2 (1991): 191-96.</p>
+            <p><sup>3</sup>See &ldquo;&lsquo;M.O.A.I.,&rsquo;&rdquo; especially 78 and notes 2 and 4, referring to Books 12 and 14 of <em>De civitate Dei</em>, e.g. 12.6 and 14.3.</p>
+            <p><sup>4</sup><em>The City of God</em>, Loeb ed., trans. P. Levine, vol. 4 (London: Heinemann, 1966), Bk. 14, ch. 28, p. 404.</p>
+            <p><sup>5</sup>References to Shakespeare&rsquo;s plays are taken from the Arden Edition.</p>
+            <p><sup>6</sup><em>OED</em> &ldquo;state,&rdquo; 7. (quoting Dr Johnson).</p>
+            <p><sup>7</sup>See <em>OED</em> &ldquo;state,&rdquo; III. (&ldquo;A class, rank; a person of rank&rdquo;) and IV. (&ldquo;&lsquo;Common weal&rsquo;; commonwealth, polity&rdquo;), esp. 32., where the phrase &ldquo;of state&rdquo; is defined: &ldquo;All that concerns the government or ruling power of a country; the sphere of supreme political power and administration.&rdquo;</p>
+            <p><sup>8</sup>Hiram Haydn, <em>The Counter-Renaissance</em> (New York: Harcourt, Brace &amp; World, 1950) 385; the quotation is from the Herford and Simpson edition, vol. 3 (Oxford: Clarendon P, 1927; repr. 1954) 3.1.157-58. The relation between <em>Twelfth Night</em>, especially the figure of Malvolio, and Ben Jonson has been discussed by John Hollander, &ldquo;<em>Twelfth Night</em> and the Morality of Indulgence,&rdquo; <em>SR</em> 68 (1959): 220-38; repr. in Walter E. King (ed.), <em>Twentieth Century Interpretations of Twelfth Night</em> (Englewood Cliffs: Prentice-Hall, 1968) 75-89. In her answer to John Russell Brown, Inge Leimberg suggested there is some connection between Shakespeare&rsquo;s Maria and Jonson&rsquo;s Moria in <em>Cynthia&rsquo;s Revels</em> (see &ldquo;Maria&rsquo;s Theology&rdquo; 193). The original title of Jonson&rsquo;s play, <em>The Fountain of Self-Love</em>, points to a thematic link. In the field of theatrical history, a connection is made by Henk Gras, &ldquo;Twelfth Night, Every Man out of His Humour, and the Middle Temple Revels of 1597-98,&rdquo; <em>MLR</em> 84 (1989): 545-64.</p>
+            <p><sup>9</sup>Haydn 384-85; the quotation is from <em>Gabriel Harvey&rsquo;s Marginalia</em>, ed. G. C. Moore Smith (Stratford-upon-Avon: Shakespeare Head Press, 1913) 156.</p>
+            <p><sup>10</sup><em>Every Man Out of His Humour</em>, Induction 112-13. Cf. Haydn 385.</p>
+            <p><sup>11</sup>Cf. 2.5.157-58: &ldquo;She that would alter services with thee . . . .&rdquo;</p>
+            <p><sup>12</sup>For the political implications of the term &ldquo;greatness&rdquo;, cf. Montaigne&rsquo;s &ldquo;Of the Incommodity of Greatnesse&rdquo;, <em>Essayes</em>, trans. John Florio, vol. 3 (London: J. M. Dent, n.d.), no. 7, 151-56; Sir Francis Bacon, <em>The Essayes and Counsels, Civill and Morall</em>, ed. Michael Kiernan (Oxford: Clarendon P, 1985); especially essays no. 11 (&ldquo;Of Great Place&rdquo;) and 29 (&ldquo;Of the true Greatnesse of Kingdomes and Estates&rdquo;).</p>
+            <p><sup>13</sup><em>Marginalia</em> 156. This recommendation adds to the number of similarities between Harvey and Malvolio noted by J. J. M. Tobin, &ldquo;Gabriel Harvey in Illyria,&rdquo; <em>ES</em> 61 (1980): 318-28.</p>
+            <p><sup>14</sup>Napoleone Orsini, &ldquo;&lsquo;Policy&rsquo; or the Language of Elizabethan Machiavellianism,&rdquo; <em>JWCI</em> 9 (1946): 122-34. Orsini mentions Malvolio&rsquo;s reading &ldquo;politic authors&rdquo; but does not expatiate on this (131). On &ldquo;politic,&rdquo; see also Praz 12-17.</p>
+            <p><sup>15</sup>See e.g. Phil. 3:20, where &ldquo;our conversation is in heaven&rdquo; is a translation of the Greek <em>politeuma</em>.</p>
+            <p><sup>16</sup>Quoted from Stephen Booth (ed.), <em>Shakespeare&rsquo;s Sonnets</em> (New Haven: Yale UP, 1977) 107. Both the relation of Malvolio to Sonnet 124 and the contrasting usage of &ldquo;policy&rdquo; and &ldquo;politic&rdquo; in the sonnet require further critical investigation. Booth&rsquo;s commentary, I am sorry to say, is of little help.</p>
+            <p><sup>17</sup>Poison was often regarded as one of the political instruments recommended by Machiavelli. Meyer 120 cites Webster&rsquo;s <em>White Devil</em> (5.3): &ldquo;You that were held the famous politician / Whose art was poison.&rdquo;</p>
+            <p><sup>18</sup>Niccol&ograve; Machiavelli, <em>Il Principe</em> (Milano: Biblioteca Universale Rizzoli, 1975) ch. 6, 104. The distinction between hereditary and newly acquired power appears as early as the first chapter.</p>
+            <p><sup>19</sup>See 5.1.95 and 107-08. Rather than Tarquinius&rsquo; victim, another Lucrece may be alluded to here, a lady famous for having had a considerable number of husbands by the age of 22: Lucrezia Borgia. See, for instance, Simon Patericke&rsquo;s translation of Gentillet, <em>A Discourse vpon the Meanes of Wel Governing</em>, pp. 186-88 in the second ed. (London, 1608).</p>
+            <p><sup>20</sup>Niccol&ograve; Machiavelli, <em>Discorsi sopra la prima deca di Tito Livio</em> (Milano: Biblioteca Universale Rizzoli, 1984), Bk. 2, ch. 29, 373-74.</p>
+            <p><sup>21</sup><em>Il Principe</em>, ch. 25, 187: &ldquo;E assomiglio quella a uno di questi fiumi rovinosi, che, quando s&rsquo;adirano, allagano e&rsquo; piani, . . . .&rdquo;</p>
+            <p><sup>22</sup>A study which helps to survey this vast subject is Michael Steppat, <em>Chances of Mischief: Variations of Fortune in Spenser</em> (Cologne: B&ouml;hlau Verlag, 1990). For Machiavelli, see esp. 54-55 and note 129. Among the numerous studies of Fortune in Machiavelli, I found particularly helpful those of Thomas Flanagan, &ldquo;The Concept of Fortuna in Machiavelli,&rdquo; <em>The Political Calculus: Essays on Machiavelli&rsquo;s Philosophy</em>, ed. Anthony Parel (Toronto: U of Toronto P, 1972) 127-56, and Joachim Leeker, &ldquo;Fortuna bei Machiavelli&mdash;ein Erbe der Tradition?&rdquo; <em>Romanische Forschungen</em> 101 (1989): 407-32.</p>
+            <p><sup>23</sup>Cicero, for instance, makes the comparison in order to describe inhuman behaviour in <em>De officiis</em> 1.13 (41).</p>
+            <p><sup>24</sup>Audrey Yolder, <em>Animal Analogy in Shakespeare&rsquo;s Character Portrayal</em> (New York: King&rsquo;s Crown P at Columbia U, 1947) 71; see also 44-45.</p>
+            <p><sup>25</sup>See Leimberg, &ldquo;&lsquo;M.O.A.I.&rsquo;&rdquo; 79.</p>
+            <p><sup>26</sup>There are two versions of the story quoted by Yolder (79-80) from Iachimo Carnerarius, <em>Fabellae Aesopicae quaedam notiores et in scholis usitatae . . .</em> (Lipsiae, 1573), &ldquo;De Asino Induto Leonina Pelle&rdquo; and &ldquo;De Asino.&rdquo; The first one seems most pertinent to Malvolio&rsquo;s undertaking.</p>
+            <p><sup>27</sup>See M. P. Tilley, <em>A Dictionary of Proverbs in England in the Sixteenth and Seventeenth Centuries</em> (Ann Arbor: U of Michigan P, 1950) W 746 (&ldquo;As wise as a woodcock&rdquo;). Malvolio&rsquo;s gullibility is underlined by Fabian&rsquo;s calling Maria &ldquo;my noble gull-catcher&rdquo; (2.5.187), and, in 5.1, Malvolio himself complains about having been made &ldquo;the most notorious geck and gull / That e&rsquo;er invention play&rsquo;d on&rdquo; (342-43).</p>
+            <p><sup>28</sup>Both &ldquo;Machiavelli&rdquo; and &ldquo;Malvolio&rdquo; contain the sequence of five letters, M-A-V-L-I. This should not be overstressed, perhaps, though it is hardly less probable than, for instance, a similarity discovered by some readers between &ldquo;M.O.A.I.&rdquo; and &ldquo;Montaigne.&rdquo; Robert F. Fleissner, &ldquo;Malvolio&rsquo;s Manipulated Name,&rdquo; <em>Names</em> 39.2 (1991): 95-102, who discusses this view on 98-100, does not give convincing thematic reasons why Montaigne may be relevant to Malvolio. His essay &ldquo;De l&rsquo;incommodite de la grandeur&rdquo; (cf. above note 12) makes the point that it is far better <em>not</em> to aspire to greatness; so it does not fit Malvolio at all. And the words &ldquo;mal volontiers&rdquo; (unwillingly) which occur in the essay &ldquo;Des noms&rdquo; (and in thousands of other French texts as well) do not have a particular function or meaning there which could make this text expressive of anything in Malvolio&rsquo;s character. The same objection can be made, by the way, to the idea that Malvolio is related to the porter Malvenu in Spenser&rsquo;s <em>Faerie Queene</em> (1.4.6). All we learn about him is that he never denies entrance to the House of Pride, thus giving ill advice to those who come to his door. Malvolio is far too self-important to be a slave to anybody else&rsquo;s pride; he is not just an allegorical figure but a dramatic character.</p>
+            <p><sup>29</sup>Meyer 26.</p>
+            <p><sup>30</sup>Cf. Meyer 28n1 and <em>passim</em>.</p>
+            <p><sup>31</sup>Meyer 117 cites Grosart&rsquo;s edition, II, 78.</p>
+            <p><sup>32</sup>John Marston, <em>The Malcontent</em>, 4.3.134. The fact that Marston had Malvolio in mind when he created the Machiavellian figure of Mendoza is underlined by another parallel which has recently been pointed out by Brownell Salomon. Mendoza, in 1.3.23-26, echoes Malvolio&rsquo;s dream of being a count, having the &ldquo;humour of state,&rdquo; and commanding a vast number of obedient servants (2.5.35, 52, 58). See &ldquo;The &lsquo;Doubleness&rsquo; of <em>The Malcontent</em> and Fairy-tale Form,&rdquo; <em>Connotations</em> 1.2 (1991): 150-63, here 155.</p>
+            <p><sup>33</sup><em>The Works of Thomas Nashe</em>, ed. Ronald B. McKerrow, vol. 1 (Oxford: Basil Blackwell, 1966) 183; see also McKerrow&rsquo;s commentary in vol. 4, 112. The similarity between &lsquo;Maleuolo&rdquo; and &lsquo;Malvolio&rdquo; has been noted by J. M. M. Tobin (320), who does not, however, make reference to Machiavelli. In the light of Malvolio&rsquo;s alleged affinity to the devil, the connection between Machiavelli and the devil serves as a further hint to their affinity.</p>
+            <p><sup>34</sup><em>How to Tell a Flatterer from a Friend</em> 24 (= <em>Moralia</em> 65E), Loeb edition, trans. Frank Cole Babbit, vol. 1 (London: Heinemann, 1960), pp. 348-49. On <em>philautia</em>, see also sections 1 and 25 (<em>Moralia</em> 48F and 65F), pp. 264-65 and 348-49. Cf. also Gentillet-Patericke 33.</p>
+            <p><sup>35</sup>Christopher Marlowe, <em>The Jew of Malta</em>, ed. N. W. Bawcutt (Manchester: Manchester UP, 1978); Barabas here misquotes from Terence&rsquo;s <em>Andria</em> (4.1.12).</p>
+            <p><sup>36</sup>A good example is Gabriel Harvey&rsquo;s &ldquo;Epigramma in effigiem Machiauelli&rdquo; from his <em>Gratulationes Valdinenses</em> (London, 1578), where &ldquo;Machiauellus ipse loquitur.&rdquo; He begins: &ldquo;Quaeris, ego qui sum? Rex Regum: totius orbis / Imperium digito nititur omne meo&rdquo; (II, 8). See Meyer 22, for further examples, e.g. 66 (Greene) and 114-15n3 (Fulke Greville). Praz 20 cites a passage from Cinthio&rsquo;s <em>Euphimia</em> (2.2), where Acharisto reveals himself as a Machiavellian: &ldquo;Il mio Dio &egrave; mio volere, et ove questo / Mi guida, i&rsquo; voglio andare.&rdquo;</p>
+            <p><sup>37</sup>See <em>3 Henry VI</em> 3.2.163-64: &ldquo;And am I then a man to be belov&rsquo;d? / O monstrous fault to harbour such a thought!&rdquo;</p>
+            <p><sup>38</sup>Cf. <em>3 Henry VI</em> 3.2.174, 179: &ldquo;And I . . . Torment myself to catch the English crown.&rdquo;</p>
+            <p><sup>39</sup><em>3 Henry VI</em> 3.2.191-93.</p>
+            <p><sup>40</sup>See Inge Leimberg, &ldquo;&lsquo;Golden Apollo, a poor humble swain . . .&rsquo;: A Study of Names in <em>The Winter&rsquo;s Tale</em>,&rdquo; <em>ShJW</em> (1991): 135-58, on &ldquo;Sir Smile&rdquo; (143 and note 32).</p>
+            <p><sup>41</sup>See also <em>Richard III</em> 3.5.1-12.</p>
+            <p><sup>42</sup>See also 3.4.11 (&ldquo;he does nothing but smile&rdquo;) and 3.4.32 (&ldquo;Why dost thou smile so . . .?&rdquo;).</p>
+            <p><sup>43</sup>The connection between &ldquo;time-server&rdquo; and &ldquo;Puritan&rdquo; points to the identification of Machiavellianism and puritanical hypocrisy made, for example, in Nashe&rsquo;s <em>Pierce Penniless</em> (see above p. 232 and Raab 59, 62) and in Marston&rsquo;s &ldquo;Satire II&rdquo; (esp. ll. 70-74 and 98-104 in Bullen&rsquo;s edition [London, 1887], vol. 3, pp. 271-73; see Meyer 90-91). On Malvolio&rsquo;s role as a Puritan, see J. L. Simmons, &ldquo;A Source for Shakespeare&rsquo;s Malvolio: The Elizabethan Controversy with the Puritans,&rdquo; <em>HLQ</em> 36 (1973): 181-201. Simmons aptly cites Richard Bancroft&rsquo;s assertion that &ldquo;Self-love . . . did build the city of the divel&rdquo; (183). I find it difficult, however, to discover in Malvolio any tendency &ldquo;toward the Anabaptist&rsquo;s claim of Christian egalitarianism and liberty&rdquo; (186). Topical satire is also traced by Winfried Schleiner, &ldquo;The Feste-Malvolio Scene in <em>Twelfth Night</em> against the Background of Renaissance Ideas about Madness and Possession,&rdquo; <em>ShJW</em> (1990): 48-57. Schleiner presents pertinent source-material, e.g. John Darrell&rsquo;s accounts of possessed people saying &ldquo;I am god&rdquo; (53) or turning the Bible into &ldquo;bibble bable&rdquo; (55-56). I do not share Schleiner&rsquo;s assumption, however, that Malvolio represents only &ldquo;marginal groups satirized&rdquo; (51).</p>
+            <p><sup>44</sup>Robert Burton, <em>The Anatomy of Melancholy</em>, Part. 1, Sect. 2, Memb. 3, Subsec. 14; pp. 293-301 in vol. 1 of the ed. by Thomas C. Faulkner, Nicolas K. Kiessling, and Rhonda L. Blair (Oxford: Clarendon P, 1989). See also Simmons 183 and Schleiner 50.</p>
+            <p><sup>45</sup>The only other instances, in <em>Measure for Measure</em> 3.1.118 and <em>2 Henry IV</em>, 4.1.65, refer to physiology, like Malvolio&rsquo;s cross-gartering making &ldquo;some obstruction in the blood&rdquo; (3.4.20).</p>
+            <p><sup>46</sup>See the relevant data in Marvin Spevack, <em>The Harvard Concordance to Shakespeare</em> (Hildesheim: Georg Olms Verlag, 1973).</p>
+            <p><sup>47</sup>See especially 5.3.183-86, 194-96, and 199-200:</p>
+            <blockquote>
+                <p>What do I fear? Myself? There&rsquo;s none else by;</p>
+                <p>Richard loves Richard, that is, I and I.</p>
+                <p>Is there a murderer here? No. Yes, I am!</p>
+                <p>Then fly. What, from myself?</p>
+                <p>. . .</p>
+                <p>My conscience has a thousand several tongues</p>
+                <p>And every tongue brings in a several tale</p>
+                <p>And every tale condemns me for a villain:</p>
+                <p>. . .</p>
+                <p>All several sins, all us&rsquo;d in each degree</p>
+                <p>Throng to the bar, crying all, &ldquo;Guilty, guilty!&rdquo;</p>
+            </blockquote>
+            <p><sup>48</sup>See Bernard Spivack, <em>Shakespeare and the Allegory of Evil</em> (New York: Columbia UP, 1958) 374-77.</p>
+            <p><sup>49</sup>See Spivack 57.</p>
+            <p><sup>50</sup>See <em>Richard III</em> 3.1.82-83: &ldquo;Thus, like the formal Vice, Iniquity, / I moralize two meanings in one word.&rdquo; Cf. Spivack 386-407 and Antony Hammond&rsquo;s introduction to the Arden Edition of <em>Richard III</em> (100-02).</p>
+            <p><sup>51</sup>See Spivack 133-34.</p>
+            <p><sup>52</sup>See <em>OED</em> &ldquo;vice&rdquo; sb.1 3. According to L. W. Cushman, <em>The Devil and the Vice in the English Dramatic Literature before Shakespeare</em> (Halle: Max Niemeyer, 1900) 68n2, the suggestion that Vice is derived from Latin <em>vice</em>, denoting the devil&rsquo;s representative, was first made by J. L. Klein in his <em>Geschichte des Dramas</em> (1886). Both Cushman and E. K. Chambers, <em>The Medieval Stage</em>, vol. 2 (Oxford: Clarendon P, 1903), reject this and other etymologies as &ldquo;irresponsible philology&rdquo; (Chambers 204). It cannot be denied, however, that a punning folk etymology made the connection.</p>
+            <p><sup>53</sup>Historically, this is confirmed by Spivack&rsquo;s description of the &ldquo;Emergence of the Vice&rdquo; in ch. 5 of <em>The Allegory of Evil</em>, esp. 130-31, where he points out that the Devil &ldquo;has only a negligible place in the morality drama . . . . His sole, easily dispensible, business is to commission the Vice, without whose aid he is helpless.&rdquo; It is surprising, however, that Spivack does not follow up this line of argument but goes on to explain the origin of the Vice exclusively as a single embodiment of the vices, or <em>radix malorum</em> (135-50).</p>
+            <p><sup>54</sup>Cf. also Hamlet on Claudius: &ldquo;A murderer and a villain, / A slave that is not twentieth part the tithe / Of your precedent lord, a vice of kings, . . .&rdquo; (3.4.96-98).</p>
+            <p><sup>55</sup>The Arden edition of <em>Love&rsquo;s Labour&rsquo;s Lost</em> cites in a note to 1.1.216 Stubbes&rsquo; <em>Anatomy of Abuses</em>, ii.104: &ldquo;The Devill himselfe, whose Vice-gerent . . . he showes himselfe to be&rdquo; (1583).</p>
+            <p><sup>56</sup>Sir Topas&rsquo; dress, the gown without surplice, was usually worn by Calvinist ministers. See the Arden note to 4.2.4-6, referring to Peter Milward, <em>Shakespeare&rsquo;s Religious Background</em> (Bloomington: U of Indiana P, 1973) 149. See Schleiner 54 on the change and imposition of roles in this scene.</p>
+            <p><sup>57</sup>See the reprint of the title page in John Heywood, <em>A Play of Love</em>, ed. Frank E. La Rosa (New York: Garland, 1979) 1; cf. Spivack 136; Leimberg, &ldquo;Maria&rsquo;s Theology.&rdquo;</p>
+            <p><sup>58</sup>See 3.4.86, 92, 98, and 101; 4.2.26, 32.</p>
+            <p><sup>59</sup>Falstaff&rsquo;s words are echoed by Olivia&rsquo;s description of Malvolio: &ldquo;He is sad and civil, / And suits well for a servant of my fortunes&rdquo; (3.4.5-6). It goes without saying that whatever affinity may exist between Falstaff and Malvolio, it is a similarity hidden by visible contrasts. To name just one common trait, however: Malvolio&rsquo;s belief &ldquo;that all who look on him love him&rdquo; (2.3.151-52) may well be compared to Falstaff&rsquo;s detecting &ldquo;the leer of invitation&rdquo; (<em>Merry Wives</em> 1.3.42) in both Ford&rsquo;s wife and Page&rsquo;s. Furthermore, it should not be forgotten that Prince Hal calls Falstaff &ldquo;that reverend vice&rdquo; (<em>1 Henry IV</em>, 2.4.447). Cf. Spivack 203-04.</p>
+            <p><sup>60</sup><em>The Book of the Courtier</em>, trans. Sir Thomas Hoby (London: J. M. Dent, n.d.) Bk. 4, 277.</p>
+            <p><sup>61</sup>One example can be found in William Bell&rsquo;s <em>Tractatus De Jure Regnandi, &amp; Regni: Or, The Sphere of Government</em> ([London,] 1645) 7: &ldquo;. . . for to speake truly, a King of England is but in nature of an high Steward of the Kingdom by inheritance, . . . .&rdquo; The name of the Stewart family derives from their original office as stewards responsible for the royal household; see, e.g., J. D. Mackie, <em>A History of Scotland</em>, 2nd ed. (Harmondsworth: Penguin, 1978) 51.</p>
+        </div>
+    </article>
+
+    <script>
+        const toggle = document.getElementById('theme-toggle');
+        const icon = document.getElementById('theme-icon');
+
+        toggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+            toggle.title = isDark ? 'Modo Diurno' : 'Modo Nocturno';
+            toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+        });
+    </script>
+
+</body>
+</html>
