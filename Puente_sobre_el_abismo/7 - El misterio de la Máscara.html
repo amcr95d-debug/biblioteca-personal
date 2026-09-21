@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El misterio de la Máscara</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* =========================================
+           COLORES (Modo Diurno - International Klein Blue)
+           ========================================= */
+        :root {
+            --bg-body: #002FA7;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.88);
+            --text-muted: rgba(255, 255, 255, 0.6);
+            --border-color: rgba(255, 255, 255, 0.35);
+            --border-light: rgba(255, 255, 255, 0.15);
+            --fab-bg: #ffffff;
+            --fab-color: #002FA7;
+            --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+            --quote-border: rgba(255, 255, 255, 0.5);
+            --placeholder-bg: rgba(255, 255, 255, 0.08);
+            --placeholder-border: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Modo Nocturno - Deep Navy Blue */
+        body.dark-mode {
+            --bg-body: #001233;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.85);
+            --text-muted: rgba(255, 255, 255, 0.5);
+            --border-color: rgba(255, 255, 255, 0.2);
+            --border-light: rgba(255, 255, 255, 0.1);
+            --fab-bg: #ffffff;
+            --fab-color: #001233;
+            --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+            --quote-border: rgba(255, 255, 255, 0.4);
+            --placeholder-bg: rgba(255, 255, 255, 0.05);
+            --placeholder-border: rgba(255, 255, 255, 0.15);
+        }
+
+        /* =========================================
+           ESTILOS GENERALES
+           ========================================= */
+        * { transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease; }
+        
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            line-height: 1.75;
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 2em 1.5em 5em;
+            color: var(--text-primary);
+            background-color: var(--bg-body);
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            text-align: center;
+            margin-bottom: 0.2em;
+            font-weight: normal;
+            letter-spacing: 0.05em;
+            color: var(--text-primary);
+        }
+
+        h2 {
+            font-size: 1.3em;
+            text-align: center;
+            margin-top: 2.5em;
+            margin-bottom: 1.5em;
+            font-weight: bold;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        h3 {
+            font-size: 1.1em;
+            text-align: center;
+            margin-top: 2.5em;
+            margin-bottom: 1em;
+            font-weight: bold;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        p {
+            text-align: justify;
+            margin-bottom: 1.2em;
+            text-indent: 1.5em;
+        }
+
+        p.no-indent { text-indent: 0; }
+
+        blockquote {
+            margin: 1.5em 2em;
+            padding-left: 1.5em;
+            border-left: 3px solid var(--quote-border);
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        blockquote p { text-indent: 0; margin-bottom: 0.8em; }
+
+        .poem {
+            margin: 1.5em 2em;
+            font-style: italic;
+            text-indent: 0;
+        }
+
+        .poem p {
+            text-indent: 0;
+            margin-bottom: 0.3em;
+            text-align: left;
+            padding-left: 2em;
+            text-indent: -2em;
+        }
+
+        em { font-style: italic; }
+
+        sup {
+            font-size: 0.75em;
+            vertical-align: super;
+            line-height: 0;
+        }
+
+        .section-break {
+            text-align: center;
+            margin: 2.5em 0;
+            font-weight: bold;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.1em;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 2em;
+        }
+
+        .epigraph {
+            margin: 1.5em 2em 2.5em;
+            padding-left: 1.5em;
+            border-left: 3px solid var(--quote-border);
+            font-style: italic;
+            color: var(--text-secondary);
+            font-size: 0.95em;
+        }
+
+        .epigraph p {
+            text-indent: 0;
+            margin-bottom: 0.5em;
+            text-align: left;
+        }
+
+        .epigraph .attribution {
+            text-align: right;
+            font-style: normal;
+            font-size: 0.9em;
+            color: var(--text-muted);
+            margin-top: 0.5em;
+        }
+
+        /* =========================================
+           PLACEHOLDERS DE IMÁGENES
+           ========================================= */
+        .image-placeholder {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin: 2em auto;
+            padding: 1.5em;
+            border: 2px dashed var(--placeholder-border);
+            background-color: var(--placeholder-bg);
+            border-radius: 8px;
+            color: var(--text-muted);
+            font-family: sans-serif;
+            font-size: 0.9em;
+            min-height: 150px;
+            max-width: 90%;
+        }
+
+        .image-placeholder span {
+            font-weight: bold;
+            color: var(--text-secondary);
+            margin-bottom: 0.5em;
+            display: block;
+        }
+
+        .image-caption {
+            text-align: center;
+            font-size: 0.85em;
+            color: var(--text-muted);
+            margin-top: -1em;
+            margin-bottom: 2em;
+            font-style: italic;
+            text-indent: 0;
+        }
+
+        /* =========================================
+           BOTÓN FLOTANTE (Modo Nocturno)
+           ========================================= */
+        .fab-toggle {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background-color: var(--fab-bg);
+            color: var(--fab-color);
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease;
+            z-index: 1000;
+            outline: none;
+        }
+        .fab-toggle:hover { transform: scale(1.1); }
+        .fab-toggle:active { transform: scale(0.95); }
+        .fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            body { padding: 1.2em 1em 4em; }
+            h1 { font-size: 1.6em; }
+            h2 { font-size: 1.1em; }
+            .fab-toggle { bottom: 16px; right: 16px; width: 50px; height: 50px; }
+            .fab-toggle .material-icons { font-size: 24px; }
+            .image-placeholder { padding: 1em; min-height: 100px; }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo Nocturno">
+        <i class="material-icons" id="theme-icon">dark_mode</i>
+    </button>
+
+    <article id="content">
+        <h1>El misterio de la Máscara</h1>
+
+        <div class="epigraph">
+            <p>«Desde niña temía a los disfrazados».</p>
+            <p class="attribution">A. Ajmátova</p>
+            <p>«Desde las costas de mares remotos,<br>del mundo de la cultura helénica caminan hacia nosotros pintorescas comitivas<br>de cierta gente extraña».</p>
+            <p class="attribution">Ferani</p>
+        </div>
+
+        <h2>Capítulo 7</h2>
+
+        <p>La máscara es un instrumento de transfiguración o de metamorfosis. Instrumento misterioso y antiguo. Nació junto con la cultura. Sus significaciones y exégesis son ilimitadas, a la vez difusas y concretas. La máscara es la base de toda historia artístico-religiosa, universal o de pequeña etnia: los pueblos de Oceanía, del Continente Negro, de China, de la India, del Yucatán, del Antiguo Egipto, del Cercano, del Medio y del Lejano Oriente, de Europa: todo no cabe en la enumeración. El significado absoluto de la máscara es indiscutible; carece de prescripción. Cuándo y cómo apareció la máscara, no se sabe a ciencia cierta.</p>
+
+        <p>Las tradiciones artísticas de la máscara en la historia de la cultura universal son diversas, pero atestiguan una cierta comunidad excepcional del pensamiento por imágenes de la humanidad de cualquier lado del mundo.</p>
+
+        <p>La máscara fue siempre, en todas las mitologías prerreligiosas, mediadora mágica en la comunicación con el mundo de allende. El pensamiento no es nuevo ni grita originalidad alguna. Él, aquel mundo, o Ellos, los héroes del «más allá», se aparecen a este lado del ser solo en máscara, y también solo en máscara se revelaba a «ellos». Poco a poco esta ritualidad se fue expandiendo místicamente y hasta hoy no ha desaparecido. La máscara ritual se conserva hoy en muchas culturas. Los misterios rituales, secretos o públicos, fueron y siguen siendo, por su forma, mitología teatralizada del acto. Los arcanos ocultistas de cualquier ritual mágico —de los espiritistas a los masónicos— son siempre máscaras. ¡Cuidado! Este terreno está minado. A la vez, la máscara es símbolo del teatro, es decir, igualmente «otra vida», como cualquier misterio. El teatro tradicional de máscara se ciñe hoy, en lo esencial, a los argumentos folclóricos y épicos del tiempo en que surgió. Y en este sentido casi no hay diferencia entre el drama popular de plaza y los refinadísimos teatros profesionales de China y de Japón. En un calor de cuarenta grados, en las aceras y plazas de Tailandia se instalan biombos; luego aparecen jóvenes en vaqueros y, ante nuestros ojos, se transforman en los héroes del «Ramayana», con los trajes y las máscaras de aquel tiempo inmemorial. Todos sus movimientos son simbólicos; bailan y cantan. Estas máscaras-símbolo aparecen tras el biombo de repente, como si llegaran de otro mundo, del mito, al comienzo del siglo XXI. No se trata solo de las máscaras-caras particulares, sino de toda la organización teatral del misterio. Está genéticamente en la memoria de la nación. Todo tiene igual significación: el guion, la música, los movimientos, los trajes y —¡lo principal!— los espectadores, que comprenden el lenguaje simbólico de la representación y saben apreciar las virtudes del juego de los actores. La máscara tiene sus raíces en una profundidad aún más misteriosa: la simbólica antiquísima de las marionetas y la propia marioneta. La marioneta es el modelo-doble, el vaciado y la cuna del alma, es decir, lo más vulnerable y oculto del hombre. Mátala, pínchala, sácale un ojo. Tranquilízate. Cántale una canción, acaríciala. O déjala descender por el río, en un tronco ahuecado, hacia la corriente, hacia la irreversibilidad. El teatro de marionetas de hoy, profesional o popular, es carne de la carne de la esencia misma de la máscara. Y aún: la máscara mantiene relación directa con el mundo de los espejos, mejor dicho, con el allende del espejo. En toda la cultura universal la máscara, posiblemente, engendró el carnaval y es inseparable de la vida del carnaval, que fue, es y será siempre.</p>
+
+        <p>La máscara se nos muestra en multitud de apariencias; depende del tiempo y de la tradición. Y ahora, unas palabras sobre la antigüedad y el comentario contemporáneo a ella.</p>
+
+        <h3>I. Del epílogo al prólogo</h3>
+
+        <p>«El maestro y Margarita», de Mijaíl Bulgákov, es una novela polifacética, como un cristal mágico en la literatura universal y rusa. Es la novela del carnaval y de la máscara. Y no solo en las escenas de la «sesión de magia negra» en el teatro del jardín «Hermitage» o del baile de Satán. Estas escenas están ellas mismas inmersas en un juego de espejos. El carnaval dentro del carnaval. Lo interesante es que los héroes de Bulgákov viven según las leyes de la máscara. No llegan de ningún lugar concreto. Todos se aparecen, o se presentan de súbito, surgen ante nosotros. «Se precipitan» en el espacio de la novela, como los invitados al baile «desde el hogar de la esposa del joyero». El Maestro es un héroe absolutamente anónimo, sin nombre, oculto bajo la máscara. Aparece en la novela «desde el espacio del museo», es decir, desde algún lugar de la eternidad. Más tarde lo vemos en la «casa del dolor», con bata y con el gorro cosido por Margarita. El misterio de la vida del Maestro transcurre entre el museo, la casa del dolor y, ante todo, el vuelo hacia el lugar del reposo eterno. Los investigadores escriben mucho sobre los prototipos de los héroes de la novela, dotándolos de nombres y biografías, y al Maestro de los rasgos del retrato del propio Bulgákov. Sin embargo, los héroes de la novela son, al fin y al cabo, máscaras.</p>
+
+        <div class="image-placeholder">
+            <span>Imagen 1</span>
+            Helena Rubinstein (fundadora del imperio cosmético) con una máscara de Camerún, adquirida en los años treinta. Foto de Man Ray
+        </div>
+
+        <p>Especialmente imponente es Voland, su aparición en los Estanques del Patriarca. En las rendijas de la máscara-cara, dos ojos distintos por color y por esencia, y la indeterminación de su procedencia. Voland y todo su séquito de bufones son asimismo máscaras clásicas de la cultura universal.</p>
+
+        <p>Los ciudadanos simples, arrollados por el torbellino carnavalesco, resultan ser máscaras. Y nada menos interesantes que los héroes principales de la novela. Las tradiciones de la máscara antigua y del carnaval mistérico siguen siendo harto actuales en toda la cultura artística del siglo XX. En la novela de Bulgákov bajo las máscaras se ocultan mínimas nulidades, como Stepa o el administrador de la casa, el escritor Berlioz, la comparsa del GPU o el historiador Nikolai Ivánovich, convertido en verraco. Por el contrario, el poeta Bezdomny («sin hogar»), que no se conocía a sí mismo, su «casa», gracias al encuentro con el Maestro se quita la máscara de zoquete de poeta soviético, recobrándose a sí mismo y su nombre. Lo mismo Margarita Nikoláievna. Bajo la larva de la esposa nostálgica de un jefe, dama de sociedad, se aparece, como Beatriz, la musa, la Dama Bella, eterna compañera del Maestro: Margarita.</p>
+
+        <p>La máscara cambia bajo la influencia del tiempo y según las tareas que el arte se plantea. ¿Es esencia de esencias o recurso artístico? ¿Esencia del rito o recurso artístico? No es tan importante. Son preguntas del tiempo histórico. Lo importante es otra cosa: en Bulgákov, como en las culturas mágicas, se trata siempre de la muñequita-alma del amor, resucitada de entre los muertos, de la vida eterna o del olvido. Y si al alma del Maestro se le dio luz, a Berlioz: el vacío.</p>
+
+        <p>Para el herméticamente cerrado Antiguo Egipto las máscaras eran fundamento de la cultura. Por la transformación en la eternidad se erigían las pirámides. Los frescos mostraban gentes misteriosas en máscara, que cumplían los ritos de la muerte y de la resurrección. Asomarse bajo la máscara es imposible. Los ritos y los misterios del Antiguo Egipto, como los de todas las culturas antiguas, estaban vinculados, en lo esencial, con los ritos de la muerte y de la resurrección. «De la muerte y la resurrección del gran dios, los egipcios tomaban no solo el apoyo material en esta vida, sino también la esperanza de la vida eterna en el mundo ultraterreno», escribía James Frazer en el libro «La rama dorada», consagrado precisamente a este tema. La máscara en los rituales de sepelio y de resurrección era el instrumento principal del acto, como sabemos por el Libro de los Muertos de las pirámides. Antes del rito de la momificación, los sacerdotes se ponían en la cabeza máscaras especiales, casi siempre zoomórficas, lo que se aprecia muy bien en los frescos conservados. Momificaban, es decir, preparaban para la eternidad, con unas máscaras y vestiduras. Pero revivían con otras. Eran los ritos inversos de la momificación: la apertura del oído, de los ojos, de la boca. Quizá las máscaras rituales de todos los pueblos del mundo estén vinculadas con las nociones fundamentales de la muerte y de la resurrección. La continuidad ininterrumpida de la materia, del ser, la inmortalidad de Osiris, de Cibeles, de Deméter, de Dioniso (la lista podría continuar): temas de la Rueda del Mundo, de la partida-venida y de nuevo la partida…</p>
+
+        <div class="image-placeholder">
+            <span>Imagen 2</span>
+            Máscara. Símbolo de los ojos abiertos a la eternidad. Dinastías XVIII–XIX. Louvre, París
+        </div>
+
+        <p>Los griegos cuentan que Sémele, enamorada de Zeus, le pidió que se le apareciera no en sus incontables máscaras-apariencias, sino tal como es. Mujer necia, aunque se la puede comprender. ¿Y qué? Zeus se apareció en persona en forma de rayo, incinerándolo todo, incluida Sémele. Con la máscara conviene tratarse de «usted», aunque a menudo ella propone beber «a tu mano».</p>
+
+        <p>Los griegos llaman a Sémele madre de uno de los inmortales más enigmáticos del Olimpo: Dioniso. Dioniso es un dios vivo. Dios de la vid, de la vinificación, de la hiedra y de la naturaleza. Con su nombre los griegos vinculaban las tradiciones populares de las procesiones festivas: precursora del carnaval, de las canciones y danzas aldeanas. Con Dioniso se vinculan los banquetes filosóficos y de club helenos, así como el origen del teatro antiguo. Los helenos, hasta la época del helenismo, es decir, hasta el siglo III a. C., hasta el desarrollo de la cultura alejandrina, no fueron un pueblo lector. La poesía de Homero, sus cantos se transmitían de boca en boca, se aprendían en los gimnasios. En Atenas, según palabras de Pausanias, el primer gimnasio se remonta al año 70 a. C. Ya en tiempo de Solón había numerosos gimnasios polísticos y tres grandes gimnasios públicos. En el gimnasio se enseñaba a los jóvenes efebos gramática y música.</p>
+
+        <p>Además de la escultura y la arquitectura se formaba el arte del alto canto coral y de las danzas, en especial las militares. Hippolyte Taine, autor de la «Filosofía del arte», escribe con detalle cómo el culto al cuerpo armónicamente desarrollado estaba vinculado no solo con la gimnasia y los demás ejercicios físicos, sino en igual medida con las danzas, el juego de la cítara y el canto. Se cuenta cómo Sófocles danzó desnudo el peán de la victoria tras la batalla de Salamina. Y Alejandro, llegado a Troya, se desnudó por completo para danzar en honor de Aquiles ante su tumba.</p>
+
+        <p>Ya hemos dicho que en los gimnasios los jóvenes aprendían «a leer, escribir, contar, tocar la lira, luchar y ejecutar otros ejercicios corporales» (Platón, «El banquete»). Y luego los varones, al terminar los «diálogos sobre lo principal», cantaban el peán en honor de Apolo. Después comenzaba la fiesta en honor de Dioniso: el comos. El comos es declamación acompañada de mímica, canto, danzas, la ejecución «a compás» de la canción del encuentro de Dioniso y Ariadna. Venían los actores del mimo con máscaras. Los mimos parodiaban las conversaciones sublimes de la parte «apolínea» del banquete. Y, de la misma manera, anticipando lo que sigue, diré que, según las reglas teatrales, tras la representación de las tragedias se daba una comedia, cuyo origen se vincula con las fiestas populares y los banquetes «comos». Poco sabemos cómo se ejecutaban las canciones. La declamación de los cantos, los movimientos, no nos son familiares por su ritmo ni por sus recursos vocales. Pero este arte estaban obligados a dominarlo todos los helenos libres de las Olimpiadas.</p>
+
+        <p>«Según la concepción de los griegos, escribe Taine, el espectáculo más grato que podía ofrecerse a los dioses son los cuerpos hermosos y florecientes, que revelan fuerza y salud. Por eso las fiestas más sagradas de ellos eran puras procesiones operísticas y serios ballets» (I. Taine, Filosofía del arte, Moscú, 1996, p. 240). Los poetas y los maestros formaban los coros, eran maestros de ballet, componían música y versos.</p>
+
+        <p>Los participantes de los comos populares y de los banquetes, los muchachos efebos y las muchachas espartanas no eran actores, pero sí espectadores profesionales. No se les engañaba con representaciones mediocres. Sabían por experiencia propia el precio de la declamación y del gesto. Y, ¡oh dioses!, qué poco se parecen a nosotros, o cuán poco nos parecemos nosotros a ellos. Pero somos nosotros los que vamos tras sus pasos, y no ellos tras los nuestros. Ellos son el fundamento de aquella cultura que Europa sigue construyendo.</p>
+
+        <p>Volvamos, sin embargo, a la máscara. Hay descripciones de los misterios religiosos consagrados a Atenea Palas. La máscara que se ponían al dirigirse a ella era de plata. Atenea es la doncella, lo inmaculado, la pureza, la protectora de la ciudad. Atenea: los olivos de follaje plateado. Atenea: el frío y puro color de la plata y del búho blanco. Las máscaras dionisíacas, en cambio: desvergonzadas, satíricas, burlonas. Las imágenes de las máscaras podemos verlas en las vasijas antiguas. Hay que saber que la frontera que divide el mundo en divino y terrenal, en la conciencia griega, está fuertemente difuminada. Es difícil trazar la línea nítida entre la cultura laica y la religiosa. ¿Dónde está? La religiosidad de los griegos es de todo punto singular. Los mejores hijos-héroes nacidos del matrimonio de una mujer mortal y un dios inmortal. El vínculo físico del mundo de los inmortales con los mortales vuelve convencional la frontera entre ambos. Ellos son semejanzas. La imagen de los vencedores olímpicos e incluso los retratos («Pericles») equivalen a las imágenes de los dioses del Olimpo. Y hay (raros, es verdad) casos de tránsito de la frontera de los mundos: por ejemplo, Ulises u Orfeo. Los dioses griegos no están exentos de pecado. Están dotados de vicios harto humanos. Más allá de la vida: el reino de las sombras vagabundas y confusas.</p>
+
+        <p>Ulises, al encontrar a Aquiles en el Hades, lo felicita por ser también allí el primero. Aquiles lo reconoce y se asombra. Ulises está vivo, y por eso no está transfigurado. ¿Está sin máscara? Pero también Aquiles, al parecer, está sin máscara. ¿Y qué le dice Aquiles a Ulises? «No me hables de la muerte, valeroso Ulises. Prefiero ser labrador de la tierra y servir a sueldo antes que mandar sobre todos los muertos que jamás han vivido en el mundo hasta estos días. Hablemos mejor de mi glorioso hijo. Dime: ¿fue el primero en la guerra?». Incluso en el reino de las sombras vagabundas y confusas solo le interesan los asuntos terrestres. «El alma del de pies ligeros, Aquiles, se apartó luego con veloces pasos hacia el prado sembrado de flores doradas; se apartó alegre y gozosa, porque le había dicho que el hijo era valeroso y osado». Atenea, en cambio, protectora de Ulises, lo regaña como una mamá sin piedad alguna: que si bribón, que si embustero, que si ladrón, etc. Y Zeus no es tan invulnerable. Prometeo conoce su secreto, y qué interesante es seguir los diálogos de Prometeo con los dioses en la tragedia de Esquilo «Prometeo encadenado».</p>
+
+        <p>En la «Ilíada» se dice que en el escudo de Aquiles, que representa la guerra, «los hombres marchaban, guiados por Ares y por Atenea, de oro ellos mismos y vestidos de oro, hermosos y grandes, como corresponde a los dioses, solo que todos, sin excepción, menores».</p>
+
+        <p>Solo menores: he ahí toda la diferencia. Pero esta es una comprensión demasiado primitiva de la diferencia. La leyenda cuenta que supuestamente por semejante imagen en el escudo de Atenea Palas, donde entre los dioses estaban representados, en combate contra los gigantes, Fidias y Pericles, el escultor Fidias fue condenado a muerte con cicuta, igual que Sócrates. Otra leyenda dice que Fidias se justificó. Los ejemplos de divinidad inmortal penetrante en lo real son muchísimos. El estado del nuevo sentimiento religioso hace libres a los helenos. Admiramos su plástica y sus rostros claros. Claro está que el arte, como dijimos, se dirige a los estados ideales. Las máscaras griegas son otras, no como en Egipto o en Oriente. Las puertas entre los mundos de Grecia y de Oriente son distintas. Pero, por supuesto, se vigilaba la religiosidad de los ciudadanos y el cumplimiento de los ritos.</p>
+
+        <p>El arconte ateniense y legislador Solón publicó ya a mediados del siglo VI a. C. la ley sobre el castigo por la ofensa a la religión o la impiedad. Y ese mismo Solón, ataviado de «heraldo», con el sombrero en la cabeza, del Hermes que cruzaba la frontera de los mundos, leyó en la asamblea popular la elegía guerrera, compuesta por él, sobre la liberación de la isla de Salamina. Qué cerca está todo, qué al alcance de la mano yace. Político, arconte, poeta, orador, actor en una sola persona. Y marchaban los jóvenes atenienses cantando: «Luchemos valerosamente por esta tierra, nuestra patria, y muramos, sin regatear la vida, por nuestros hijos», etc.</p>
+
+        <p>Una vez más queremos repetir que en la cultura griega antigua todas las formas de la vida popular, social y religiosa estaban extremadamente cercanas. Las Olimpiadas creaban el gran diapasón de la Hélade. El banquete: medio de la filosofía y del teatro a un tiempo. En la educación: la base de la ciudadanía, de la estética y del genial diletantismo artístico. En el arte, la imagen del hombre y la impermeabilidad de la máscara son casi idénticas.</p>
+
+        <h3>II. Los misterios de Dioniso y el drama antiguo</h3>
+
+        <p>«Te honramos, oh Dioniso, tu padecer y tu gozo»: entonaban hace mucho, mucho tiempo los coros de los compañeros de Dioniso. Cantaban y no sabían que estas palabras, muchos años después, o quizá muchos siglos, nos indicarán la fuente de origen de toda la tragedia y la comedia europeas, del drama y de la sátira.</p>
+
+        <p>A mediados del siglo VI (hacia el año 550) a. C. aconteció un hecho muy importante en la cultura de Grecia. El tirano ateniense Pisístrato se hizo instituidor de la fiesta de Estado de las Grandes Dionisias. En nuestro tiempo es el mes de Posidón. Ahora los misterios populares, surgidos hace mucho tiempo con procesiones y «cantos de machos cabríos», danzas de sátiros, ménades ebrias, bromas deshonestas, máscaras atadas, colas y falos, adquirieron otro estatuto y el apoyo social. Y esto se convirtió, posiblemente, en el comienzo del nacimiento del drama ateniense.</p>
+
+        <p>Pero las fiestas comunales aldeanas continuaban de todos modos en todas partes. Su antigua naturaleza de llanto y alegría sobre el dios despedazado y resucitado, ligado a la tierra y a la vid, no podía irse. Pero apareció otra línea de los misterios: la culturada por el profesionalismo de los ejecutantes de los misterios y de los mitos sobre Dioniso. Por eso el siglo VI a. C. se considera el comienzo del teatro ático, y a Dioniso su patrón y progenitor. ¿Salió o no el teatro antiguo de drama de las Grandes misterios dionisíacas? No lo sabemos. Los «cantos de machos cabríos» o «ditirambos» entonados por los antiguos habitantes se transformaron rápidamente en diálogo con el «corifeo» (actor) conductor, y, según la leyenda, esta tradición la instauró el poeta Féstid. El coro mantenía el diálogo con el corifeo, contaba los mitos sobre Dioniso. Se acompañaba de danzas y pantomimas en honor del héroe de la fiesta. Y cómo se veía esto en escena: no lo sabemos.</p>
+
+        <p>El verdadero reformador, una especie de Stanislavski-Meierhold de la antigüedad, fue el dramaturgo, poeta trágico Esquilo. Quiero decir una vez más que no hubo un «trasvase» dialéctico de los misterios dionisíacos al teatro profesional. El teatro «llegó a ser», y punto. Y los misterios quedaron misterios. En todo el mundo (y en Rusia) las compañías ambulantes de empresa trabajaron durante siglos. Y después «de pronto» se volvió un teatro con dirección constante, lugar, compañía, escuela. Lo mismo en la Inglaterra del umbral de los siglos XVI–XVII. Lo mismo en la Francia del siglo XVI. Y siempre a la cabeza del teatro hubo genios-reformadores. Sus ideas teatrales tenían precursores, pero aparecía alguien «fundador», y el punto de referencia comienza con él. Tal fue Esquilo: genio fundador, dramaturgo, actor, teórico del teatro europeo.</p>
+
+        <p>En el quiebre de la guerra Greco-persa, en el ascenso del patriotismo y de la salida de Atenas al primer lugar en la unión marina délfica, el poeta Píndaro escribe la oda-oratorio consagrada a Hierón de Siracusa, y Esquilo crea su tragedia «Los persas», que fue presentada en Atenas en las Grandes Dionisias del año 472 a. C. Él escribió, montó la tragedia y al mismo tiempo creó el teatro. Creó la idea del teatro, su estructura, su constitución. El teatro del coro y de dos actores, con la especificidad del movimiento, del vestuario, de la arquitectura de la acción. Es el creador del verdadero teatro profesional. Del teatro griego de la máscara.</p>
+
+        <p>Según numerosos testimonios, entre ellos el del poeta romano Horacio, precisamente Esquilo puso al actor la máscara teatral trágica, que él mismo hizo y pintó de su propia mano. Esquilo procedía de un antiguo y noble linaje. Participó en la guerra contra los persas, en las batallas de Maratón y de Salamina, vivió y trabajó en Atenas. Escribió una enorme cantidad de tragedias, decían que casi 90, y dramas satíricos, pero solo siete han llegado hasta nosotros, entre ellos la trilogía «Agamenón», «Las coeforas» y «Las euménides». Todavía hoy no se comprende cómo pudo escribir «Prometeo» dos mil quinientos años antes de nuestros días. He ahí un genio de todos los tiempos y de todos los pueblos.</p>
+
+        <p>Él fue el primero que puso a los actores en un alto estrado sobre los espectadores y el coro, en la «skene», adonde los actores salían de la «tienda». Él creaba las decoraciones y las pintaba él mismo. Por ejemplo, la roca a la que Hefesto, bañado en lágrimas, por mandato del Poder y de la Fuerza, enviados de Zeus, encadenó a su hermano Prometeo, que no quería y sufría, pero no podía desobedecer al señor. Los actores vestían largos quitones de colores rojo, negro y blanco, donde el color simbolizaba al personaje. Esquilo puso máscaras de lino a los actores. Las máscaras cambiaban según lo que les acontecía a los héroes. Esquilo vistió de máscaras también al coro. En el coro había de 12 a 15 personas y el corifeo. ¿Qué significaban las máscaras teatrales de Esquilo? Una respuesta unívoca es imposible. A veces, por ejemplo, en los dramas satíricos, en la dramaturgia romana, las máscaras se sustituían por un fuerte maquillaje. En las comedias las máscaras eran de personaje, como en tiempos posteriores en la commedia dell'arte. ¿Pero las máscaras de Esquilo? El teatro es el lugar del encuentro del espectador con otro, superior, plano de la vida, donde retrocede la cotidianidad doméstica y llega el tiempo de otros encuentros. La dramaturgia se dirige a los valores absolutos y auténticos, a todo el pueblo. A todos y a cada uno. Las figuras de los actores: en alto, grandes, en otras imágenes. Todo agrandado: las figuras y las pasiones. Como en el escudo de Aquiles. La máscara oculta el rostro del actor y del coro. Ellos se presentan en las apariencias de fuerzas absolutas, pero sus diálogos son comprensibles.</p>
+
+        <blockquote>
+            <p>Hermes: ¿No dirás lo<br> que tu padre<br> desea saber?<br>Prometeo: ¿Y habría que?<br> ¡Es mi bienhechor!<br>Hermes: ¿De mí te burlas<br> como de un<br> niño?<br>Prometeo: ¿Acaso eres menos<br> necio que un niño,<br> si piensas que<br> yo te voy a responder?</p>
+        </blockquote>
+
+        <p>He ahí un ejemplo de claridad de pensamiento, de ironía, de firmeza en la verdad.</p>
+
+        <p>En un plazo muy breve, del decreto de Pisístrato al teatro ático profesional de drama, cambió mucho. Y el propio Dioniso desapareció de la dramaturgia por completo. De las entrañas de la mitología afloran los héroes trágicos y las situaciones en los puntos de elección existencial del destino. Semejante tensión no podía darla ningún arte ni ninguna Olimpiada. La misión recayó sobre los hombros del teatro. Desde este momento el teatro se convierte en el logro principal de la cultura europea.</p>
+
+        <p>El teatro europeo nació como «teatro de máscara».</p>
+
+        <p>Según Aristóteles, la tragedia surgió de los diálogos del ditirambo. Y al principio no se distinguía del «drama satírico». El mismo Aristóteles escribía que las raíces del origen del drama profesional no están muy claras. Y ya en la antigüedad existían al respecto opiniones diversas. Pero dudas especiales suscitaba la comedia. Los dorios atribuían la aparición del teatro a su historia. Y en verdad, conviene Aristóteles, con la palabra «comos» se designaban las representaciones jocosas aldeanas dorianas, divertimientos, a menudo vulgares. Los cantores cabezas del coro interrumpían el canto contando anécdotas de actualidad y cosas por el estilo. Los dorios dieron muchísimo a la cultura helenística. Así quedó establecido: la comedia, doria; la tragedia, ática. Cuando llegaba el tiempo de las fiestas dionisíacas, se daban siempre tres tragedias y una comedia. La comedia se representaba igualmente en máscara, pero para cuando apareció Aristófanes ya nadie conocía su origen ni sus fundadores.</p>
+
+        <p>De la fabricación de las máscaras masculinas y femeninas se ocupaban artistas especiales. «El catálogo de Pollux» contaba 28 máscaras. Edipo salía a escena cambiando seis máscaras, incluida la máscara del ciego. Había máscaras para distintas edades y estados, máscaras de los dioses fluviales y montañeses, de las ninfas y de los titanes. Para la comedia había muchas máscaras, pero las más interesantes eran las máscaras de papel (tipo) y las caricaturescas. Y para la comedia de Aristófanes «Las nubes» la máscara especial de Sócrates era extraordinariamente parecida al propio filósofo. A veces los dramaturgos se quejaban, por ejemplo Aristófanes, de que los artistas no comprendían ni podían hacer la máscara de tipo de sus héroes. Y lo más interesante: los actores, preparando el papel, ensayaban minuciosamente los rasgos de los héroes de las máscaras de su rol. Y aun así la máscara antigua, convertida en símbolo de cualquier teatro, queda como enigma con muchas respuestas. Por ejemplo, las máscaras cómicas emigraron a la escena romana, a Terencio y a Plauto. Y de allí, directas, al teatro medieval popular europeo. Y luego, hacia su triunfo: la commedia dell'arte en Italia, Francia y más lejos sin detenerse, entrando en el siglo XX, en su teatro, a Cocteau, a Tairov y a Brecht, en la pintura y en los brazos del genial Federico Fellini.</p>
+
+        <p>Sobre el dispositivo del teatro antiguo se ha escrito muchísimo. Como idea, como arquetipo, permanece hasta hoy en la significación de sus partes constitutivas principales. Teatro (sala de espectadores), orquesta y coro, escena. En el teatro lo principal es la sala y el espectador. Por eso, acústica y arquitectónicamente, estaba construido con relación a la escena. La escena estaba como adosada al anfiteatro de los espectadores, y a ella iban los radios-pasajes, que dividían el círculo completo del teatro en sectores. Los griegos jamás cerraron la elipse del anfiteatro, como lo hacían los romanos. A los espectadores romanos les apasionaban las emociones generales, colectivas, en torno a la acción. Para los griegos, cada espectador debía estar vinculado con la escena y con la acción. Los viejos especialistas del teatro ático escriben que en el espacio del teatro la figura del actor sin máscara y sin el color local del quitón habría sido indiscernible; además, los matices de la expresión del rostro están ausentes en la tragedia antigua. Quizá estas observaciones utilitarias no carecen de sentido. Solo que la máscara, igual que en los misterios rituales, es instrumento de transformación de la imagen y del espacio. Los coturnos, el rigor de los drapeados de los vestidos vistosos, la máscara, los elementos de la decoración elevan la acción al grado «supra-cotidiano», más exacto: mitológico. La base de la dramaturgia está siempre en el mito. La acción del espectáculo se mueve inexorablemente hacia el final. El espectador es verdaderamente no solo testigo, sino participante de la alta tragedia. Sus sentimientos, preguntas, su diálogo los confía, por así decirlo, al coro, fundiéndose con él en uno. ¿Qué es más importante en el teatro antiguo: los asientos para los espectadores o la escena? El teatro en Grecia son los asientos para el espectador. El espectador es el teatro. Teatro solo hay donde hay espectador. Y literatura donde hay lector, etc. El espectador en Grecia, como ya dijimos, era exigente y profesional al nivel del teatro. Después, poco a poco, los sublimes espectáculos cedieron su lugar a los espectáculos-justa con estrellas-gladiadores.</p>
+
+        <p>Es verdad también que en los tiempos helenísticos, cuando el espectador y sus exigencias comenzaron a cambiar, en los teatros se daba «varietés» y «circo»: bailarines de moda, cupletistas, mimos, prestidigitadores y luchadores. Nuestra opinión es que de los dos componentes del teatro, es el espectador quien determina el nivel de cualquier arte, no solo del teatral. Así que la «publicidad» existió siempre. En las épocas de ascenso espiritual los ciudadanos lloran sobre los destinos de los héroes. La época de vaciamiento, también en Grecia, exigía placeres, hartura, diversiones y olvido. Las refinadas aristócratas hacían alarde de gladiadores como concubinos. Y los grandes actores griegos comenzaron a representar a los «difuntos» en los funerales romanos. Así, por ejemplo, el genial Demetrio interpretó a Sabina, la esposa de Nerón, muerta a manos del tirano. El pueblo lloraba, y el dictador también.</p>
+
+        <h3>III. Las máscaras romanas</h3>
+
+        <p>Es conocida de todos, en sentido literal de la palabra, la influencia que la cultura griega ejerció sobre Roma. La filosofía, el círculo de lecturas, el teatro, la arquitectura. Pero la cultura griega, injertada en el tronco latino, no era popular, sino elitista. Solo en las capas privilegiadas e ilustradas de la sociedad romana los griegos tenían desarrollo a través de su arte, su mitología, la refinación del habla, la escuela del actor… Y sin embargo (ya lo dijimos), la idea romana seguía siendo enteramente autóctona.</p>
+
+        <p>La cultura popular veneraba a los lares domésticos, protectores de la casa, del hogar, del granero. Era campesina, supersticiosa, aplicada. Las imágenes animadas de la naturaleza y de los fenómenos naturales de Grecia están mucho más lejos de nuestra experiencia contemporánea que los duendes, los gnomos, los traviesos del bosque y del hogar, las hadas y la chiquillada mágica de los latinos. La fe en los agüeros, en los curanderos y en los amuletos. En cuanto a la máscara, temo que no estemos a la altura de este tema. La máscara romana tiene muchísimos hogares, aspectos, y aún no ha sido pensada como fenómeno cultural.</p>
+
+        <p>Primero. La tradición misteriosa, sin respuesta unívoca, procedente de los etruscos, y después moda de decorar con máscaras de cerámica los tejados de las casas, de proteger las casas con máscaras. En los etruscos la manera de decorar con máscaras, sabemos, está ligada a los enterramientos: casas-sarcófago. Simplemente pasas, te trasladas a otra casa con la copa del banquete en las manos, a la casa de la eternidad. Sin tragedia, ligeramente, con la sonrisa congelada en el rostro de la máscara. Y sin embargo no es la respuesta. Y cuántas preguntas así. ¿Y qué significan las máscaras en los pórticos de las catedrales de Vladímir de los siglos XII–XIII? Aparecieron y desaparecieron. En nuestro próximo libro, el medieval, hablaremos de ello con mucho más detalle. Así, máscaras en aleros y tejados, en tapas, escudos, corazas… La cuestión queda sin respuesta. Nosotros, al menos, no la conocemos.</p>
+
+        <p>El segundo tema de la máscara en la tradición romana es el principal. Está ligado directamente con el rito funerario y con el origen del retrato a partir de la máscara funeraria. Ya hemos hablado del fenómeno de la tríada: muerte, máscara de atrio, retrato. La máscara funeraria es el atributo más antiguo del ritual espiritual-místico. En Egipto todas las manipulaciones con las máscaras eran secreto entre secretos. En la tradición romana, en cambio, casi nada de secretos. Quítate la máscara, aun en vida. Ella vuelve a tu casa, a la plaza, al Senado, como retrato reconocido por todos. A través de la máscara se cumple también la acción inversa: por así decirlo, el retorno pleno. Hoy conocemos no de oídas, sino de vista, a los grandes personajes y ciudadanos de la historia romana. En el Museo Capitolino uno va a un encuentro con políticos, poetas y malvados hace tiempo idos pero no olvidados, con sus damas y sus hijos. No menos interesante es el retrato de Fayum, proveniente de las provincias egipcias: maravilla de la pintura realista con colores de cera. Tablillas-máscara que se fajaban en la momia del difunto. Yace semejante enorme capullo y te mira con ojos vivos, exhibe su riqueza y su certeza de permanecer eternamente, «allá» y «aquí» a la vez. He ahí el fenómeno de la máscara ritual. Une lo inunible.</p>
+
+        <p>El tercero: las máscaras del carnaval saturnal de las «Saturnales». El carnaval de invierno: júbilo desenfrenado, licencia absoluta, peligro. La máscara en el rostro, y todas las compuertas abiertas. Este carnaval, como misterio popular del encuentro con los seres queridos idos, sigue popular hasta hoy. En todo el mundo coincidía con la Navidad. Pero su patria es Italia. Allí nació como tradición. Tanto en las Dionisias como en otras romerías populares están presentes las máscaras del carnaval. Y esta forma artística la creó Italia. De los carnavales de Florencia, Roma y Venecia hablaremos aparte, en otras épocas, en su lugar en las páginas de nuestro libro. Hablaremos también del carnaval en la tradición latinoamericana, y de los bailes de máscaras, de las máscaras de Japón y de otros países.</p>
+
+        <p>Cuarto. De la psicología de los latinos y de su pasión por el juego en la vida y con la vida. La aceptación del suicidio, la aceptación de la partida hermosa y pública de la vida. Representar el papel en la escena de la vida quedó y queda en la sangre, en la moda, en el gesto y en la pose. A diferencia del mundo refinado y espiritualizado de los helenos, atravesado por la continuidad del mito, los latinos creían que el mundo es un escenario y el hombre un actor-marioneta, y que los hilillos se estiran hacia el misterioso titiritero. Creyendo, al mismo tiempo, que cortar estos hilos lo pueden las personas avisadas a su arbitrio, sin consultar a quien las suspendió. Mirad los frescos conservados en las casas de Pompeya. Cuántos temas con máscaras y escenas teatrales. ¿Qué relación tiene esta pintura de las paredes de las casas con el teatro, con el teatro dramático? ¿O la pintura de las paredes es una necesidad más amplia de un medio teatral, que, siendo muros de una habitación, se rodea de «decorados» en los que discurre la vida privada?</p>
+
+        <p>«La comedia de mi vida ha llegado a su fin»: palabras de despedida del último discurso público de Augusto Octaviano, personaje desde luego nada cómico de la historia romana. Quizá él entendía la palabra «comedia» como Antón Pávlovich Chéjov? La máscara vital de juego de los grandes y de los pequeños ciudadanos de la primera Roma fue fácilmente asimilada por los ciudadanos de la segunda Roma, ya cristiana. En Bizancio las bellas cristianas tenían la costumbre de tensar sobre su rostro una finísima máscara con larva pintada. Probaban larvas de todo género, es decir, hacían hipocresía.</p>
+
+        <p>La vida se acercaba muy de cerca, muy de cerca, al teatro. Y la máscara, a la conducta. En Grecia el teatro era un acontecimiento de significación nacional. Experiencia histórica. Espejo del autoconocimiento. Sustituía al libro, mantenía a la nación en forma. La teatralidad del gesto romano, de la conducta pública de la persona, o de la multitud, o del caudillo, su amor por los espectáculos de plaza y los estadios debilitaban el teatro profesional.</p>
+
+        <p>Y sin embargo, precisamente el teatro profesional, la dramaturgia, ejercen en adelante la influencia decisiva sobre el teatro europeo.</p>
+
+        <p>Figura notable se vuelve el satírico romano (de Sátiro; el sátiro es compañero de Dioniso) Varrón Reatino. Vivió en el umbral de los siglos II y I a. C. y era oriundo de la ciudad de Rieti. Se dice que era un conservador; sirvió largo tiempo a las órdenes de Cneo Pompeyo. Sin embargo, al triunvirato de Pompeyo, César y Craso lo llamaba en sus sátiras «el tricéfalo», aludiendo al monstruo subterráneo Cérbero. Este Varrón conquistó la fama de sabio enciclopedista, pero lo principal que dejó son las «Saturnas de Menipo» (sátiras). Estas «Saturnas de Menipo», ligadas a la figura del filósofo griego Menipo, «el que se reía en el infierno», fueron superventas de lectura no solo romana, sino también en los siglos XIV–XV, en la Europa del tardío Medievo. En su libro «La vida y la obra de Rabelais», consagrado a la cultura de la risa, Mijaíl Mijáilovich Bajtín cuenta que la «sátira menipea» era lectura de cabecera de la élite intelectual de Europa. En el taller del pintor Diego Velázquez colgaban dos retratos de los grandes satíricos de la antigüedad: Menipo y Esopo. Esto revela mucho de la personalidad y de la obra de Velázquez. No todas las sátiras de Varrón se han conservado, no han llegado hasta nosotros. Es la desgracia común de los autores antiguos. Conocemos fragmentos o solo citas. Con eso basta. Varrón veneraba en alto a sus predecesores, los dramaturgos Plauto y Terencio.</p>
+
+        <p>La comedia de Plauto «El grosero» no se puede leer sin asombro. Se trata de la astuta hetera Astafia, que burlaba a la vez a tres héroes: el Guerrero, el joven ateniense necio y el propio Grosero, misógino. Sus disquisiciones sobre las mujeres recuerdan «El oso» de Chéjov, y el final es el mismo. Se casó con Astafia. Y la astuta pícara, y los tres hombres, en especial el Guerrero, como personajes, como máscaras, se lanzaron a peregrinar por todos los caminos dramatúrgicos de Europa. La cuestión es interesante por los argumentos «deslizantes» eternos, por el problema de la conciencia, por la cultura de los espectáculos. Por eso nos proponemos seguir, más de una vez, el desarrollo del teatro de situaciones en cada uno de nuestros libros. Para Plauto es muy importante la dinámica de la acción, y sus héroes son un repertorio de tipos populares: pillos, simples, ingenuos y honrados Bobos, conocidos desde hace mucho en tal o cual variante. Es simplemente asombroso cuán inmóvil es el tiempo entre el nacimiento de las máscaras de Plauto y esos mismos héroes de hoy. La máscara como objeto la comedia latino-antigua casi no la usaba, prefiriendo el maquillaje. En máscara alardeaba, vivía la comedia popular, la «atelana». Asombrémonos de nuevo: qué poco han cambiado las costumbres en dos mil años. Cuán inmóviles e inmunes al cambio son las situaciones ridículas. Recordemos, por cierto, las inscripciones dejadas por los aficionados de los estadios romanos en los asientos del Coliseo, y obtendremos la confirmación de nuestro pensamiento sobre la «inmovilidad» de la comedia humana.</p>
+
+        <p>Jean-Baptiste Molière, en el siglo XVI, fue gran admirador tanto de Plauto como de Terencio, estudiando y reelaborando a su manera sus comedias.</p>
+
+        <p>Terencio: contemporáneo más joven de Plauto, hombre de otro destino. Llegó a Roma no se sabe de dónde. Se decía que era liberto de África. Lo cual es del todo posible, pues pertenecía al círculo de Escipión el Africano y del ilustrador de mediados del siglo II a. C. Emilio Paulo. Sus contemporáneos admiraban su lengua literaria, su estilo, su ingenio. Su estilo lo estudió Cicerón. Sus comedias se representaban con éxito. Terencio se hizo célebre con la pieza «La suegra», que tradujo para su puesta en escena nuestro genio teatral Ostrovski. Terencio escribió también la comedia «El adulador», sobre cierto joven pícaro acogido en una casa rica. Naturalmente, habéis reconocido a Molchalin? En el final, el desenmascaramiento, y he ahí la matriz de la comedia de A. Griboedov «El mal del ingenio». Molière y Goldoni utilizaron (lo cual era muy usual) los personajes y los argumentos de Terencio. Goldoni escribió incluso una pieza que tituló precisamente «Terencio». Terencio apareció en la dramaturgia de súbito y, trazando con su biografía-cometa la literatura romana, desapareció. Nadie sabe cómo ni adónde desapareció Terencio. Solo dijo que iba a Grecia a aprender el oficio teatral.</p>
+
+        <p>Las comedias de Plauto y de Terencio las representaban los actores maquillados, y cada tipo tenía su maquillaje, su vestuario, sus accesorios. Los actores ya en Grecia tenían un papel definido. Representaban y aprendían el texto escrito de la pieza. Pero había también la comedia popular, cuyos textos no han llegado hasta nosotros, puesto que no se sabe si fueron siquiera puestos por escrito. Solo se daba el argumento: el tema para la improvisación. Era la improvisación dentro de cuatro-cinco máscaras constantes, con expresiones del rostro absolutamente inmóviles, como las de Buster Keaton: el Glotón, el Tonto, el Fanfarrón, el Inocente y el astuto Jorobado. Hacían travesuras, divertían al público y hacían exactamente lo mismo que hoy los héroes de los balaganes populares, los payasos del circo y del cine mudo. Bromas gruesas, zancadillas, la tarta en la cara; en una palabra, farses y gags conocidos. Esta comedia nació en el lugarejo de Atella, y por eso el teatro popular improvisado de máscaras en Roma recibió el nombre de «atelanas».</p>
+
+        <p>Los héroes decían toda clase de sandeces, de abracadabras, pero al público le gustaba todo, y se reía a mandíbula batiente y se relajaba. Las atelanas eran un entretenimiento harto romano. Repartían golpes, proferían malas palabras, se permitían obscenidades. La historia de la farsa popular es casi desconocida hasta la aparición de los poetas Polibio y Nevio, que le dieron forma escénica. Las máscaras se multiplicaban. Aparecieron los gemelos Maccus. Los confundían; eran guerreros, taberneros, mujeres, etc. Y ya desde hace mucho se ha notado que el Jorobado recuerda a Arlequín de la commedia dell'arte. Y Maccus: Brighella: ora criado, ora pastor, ora incluso bandido; ora burlón, ora temible.</p>
+
+        <p>El tiempo de vida de uno de los más grandes teatros del mundo, el teatro popular de la commedia dell'arte, abarca del siglo XVI a comienzos del XIX. Pero sus raíces se hunden profundamente en la cultura antigua de la máscara y del carnaval, en la cultura de la risa del teatro popular. Las máscaras de la commedia dell'arte italiana eran de diferentes regiones, hablaban en distintos dialectos, a menudo no se entendían entre sí. «Nuestro oficio es la representación de comedias. Todos somos "zannis": comediantes extraordinarios e inimitables», escribía el poeta del siglo XVI Lasca. Las máscaras más populares del norte de Italia, de donde vinieron las «atelanas». Pantalone: el mercader infortunado; el Doctor: el jurista boloñés. Pantalone lleva la chaqueta roja, la gorrita, la máscara con barbita. El Doctor viste todo de negro y blanco. En el rostro, la máscara. El criado Arlequín, de Bérgamo, con el traje de retales. Supiera este Arlequín qué larga le estaba destinada la carretera de la vida. Salió de la tiniebla de los siglos, por observación o por necesidad del pueblo. Solo finge ser un bufón y un alegre con la espada de madera al cinto: nació de fuerzas demoníacas. Todas las apariencias de Arlequín quedan genialmente reveladas en la película de commedia dell'arte «Los niños del paraíso» (1945), del cineasta francés Marcel Carné. Marcel Carné rodó esta película al final de la guerra, para mostrar cuán fuertes e inextinguibles son las raíces y las tradiciones populares del arte antiguo, y cuán eternamente vivos e inextinguibles son Arlequín, Pierrot y Colombina.</p>
+
+        <p>La heredera de la «atelana» en el siglo XVIII, la commedia dell'arte, encontró a su genio dramaturgo en el veneciano Carlo Gozzi, resucitado en los turbios años veinte del siglo XX por Evgueni Vajtángov en el montaje de 1924: «La princesa Turandot».</p>
+
+        <p>Entre las máscaras de la commedia italiana, además de los tipos y bromistas enumerados, están previstas las parejas de enamorados. La muchacha enérgica, ingeniosa, osada, con el pretendiente soñador. O la tierna, lírica, con el hombre volitivo, comandante, héroe. También la criada con sus diabluras, sus tramas y una compañía de máscaras no del todo inocente. Estas comedias «se daban» al final del carnaval, antes de la cuaresma. Y las reconocemos, con toda la compañía de máscaras, en la comedia de Shakespeare «La duodécima noche». Viola, y Olivia, y la criada María, y las tramas de las máscaras: el bufón, y sir Toby, y todo el enredo de la vida, del amor, de los prodigios, de la traición, de las zancadillas. O en «La fierecilla domada». Digamos, la traducción de las antiguas tradiciones de la commedia italiana, latina, al genio inglés de Shakespeare.</p>
+
+        <p>A la cultura carnavalesca y a la máscara del siglo XVIII le será consagrado un trabajo aparte. Contaremos con detalle sobre el carnaval, sobre Carlo Gozzi, sobre Hoffmann, sobre el filósofo alemán Leibniz y sobre otros héroes del abigarrado balagán de la vida.</p>
+
+        <p>Pero el relato más amplio sobre este tema concierne, por supuesto, a todos los aspectos de la cultura y del arte del siglo XX: su poesía, su pintura, su cinematografía, su prosa y, desde luego, el florecimiento del teatro de máscara del siglo XX.</p>
+
+        <p>Y si comenzamos nuestros paseos con el patio del Arbat de Bulgákov, los concluiremos en la Casa de la Fuente, más bien junto a ella, en el pabellón anexo, donde vivió durante algún tiempo Anna Andréievna Ajmátova y donde, en la víspera del año nuevo de 1941, ocurrieron acontecimientos misteriosos. Del «Poema sin héroe», igual que de «El maestro y Margarita», existe una investigación tan amplia y minuciosa que no convendría siquiera tocar ambas obras. Quizá les haga falta, un poquito, descansar de nosotros. Así sucede. Pero las circunstancias del tema exigen algunas palabras. Ajmátova y Bulgákov son gentes de un mismo tiempo y de una misma cultura; respiraban un aire común y estaban atormentadas por un único presentimiento. El comienzo del siglo XX: tiempo de ironía, de máscara, de carnaval; tiempo del «Teatrillo» de Blok y de la pintura del «Mundo del Arte»! Quemar las naves y un miedo inconsciente, el presentimiento de la catástrofe, el frío interior, y por eso: un fervor de carnaval todavía mayor. «Desde niña temía a los disfrazados, / siempre me parecía, no sé por qué, que alguna sombra sobrante / entre ellos, sin rostro y sin nombre / se había infiltrado…»</p>
+
+        <p>«Nochevieja. La Casa de la Fuente. Hacia la autora, en lugar del que se esperaba, llegan las sombras del año trece disfrazadas. Salón blanco y especular. Digresión lírica. El huésped del porvenir. Mascarada. Poeta. Espectro». Así comienza el poema de 1940, concluido en la evacuación de Taskent en 1942.</p>
+
+        <p>Los disfrazados, las máscaras, las sombras del año 13, es decir, de la víspera de la Primera Guerra Mundial, llegan hacia la autora en la noche previa al Año Nuevo, en la víspera de la Segunda Guerra Mundial. Para la autora del «Poema» no hay casualidades en este mundo. Las sombras del carnaval no pueden aparecer en su propia apariencia, sino solo bajo máscara. Su aparición —por un instante, mientras el reloj no dé las 12— es un gran presagio. «Este, de Fausto; aquél, de Don Juan, / de Dapertutto, de Iokanaan…» Y aún alguien «contemporáneo del roble de Mambre, / interlocutor centenario de la Luna». Y otra sombra más. «En el muro su perfil firme: / ¿Gabriel o Mefistófeles, / tu paladín, hermosa? / Demonio él mismo, con la sonrisa de Tamara, / pero qué hechizos se ocultan en ese terrible rostro humeante». Los prototipos ocupan a los investigadores desde hace tiempo. Las máscaras fueron descifradas y descritas hace mucho; Ajmátova no las oculta. Velimir Jlébnikov (contemporáneo del roble de Mambre) y Aleksandr Blok (el demonio con la sonrisa de Tamara). Ella
+
+        <!-- [El documento fuente se interrumpe aquí a mitad de frase: «Она…»] -->
+    </article>
+
+    <script>
+        const toggle = document.getElementById('theme-toggle');
+        const icon = document.getElementById('theme-icon');
+
+        toggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+            toggle.title = isDark ? 'Modo Diurno' : 'Modo Nocturno';
+            toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+        });
+    </script>
+
+</body>
+</html>
