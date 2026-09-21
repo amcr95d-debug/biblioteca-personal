@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El gato de Cheshire, o El eterno retorno</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* =========================================
+           COLORES (Modo Diurno - International Klein Blue)
+           ========================================= */
+        :root {
+            --bg-body: #002FA7;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.88);
+            --text-muted: rgba(255, 255, 255, 0.6);
+            --border-color: rgba(255, 255, 255, 0.35);
+            --border-light: rgba(255, 255, 255, 0.15);
+            --fab-bg: #ffffff;
+            --fab-color: #002FA7;
+            --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+            --quote-border: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Modo Nocturno - Deep Navy Blue */
+        body.dark-mode {
+            --bg-body: #001233;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.85);
+            --text-muted: rgba(255, 255, 255, 0.5);
+            --border-color: rgba(255, 255, 255, 0.2);
+            --border-light: rgba(255, 255, 255, 0.1);
+            --fab-bg: #ffffff;
+            --fab-color: #001233;
+            --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+            --quote-border: rgba(255, 255, 255, 0.4);
+        }
+
+        /* =========================================
+           ESTILOS GENERALES
+           ========================================= */
+        * { transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease; }
+        
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            line-height: 1.75;
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 2em 1.5em 5em;
+            color: var(--text-primary);
+            background-color: var(--bg-body);
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            text-align: center;
+            margin-bottom: 0.2em;
+            font-weight: normal;
+            letter-spacing: 0.05em;
+            color: var(--text-primary);
+        }
+
+        h2 {
+            font-size: 1.3em;
+            text-align: center;
+            margin-top: 2.5em;
+            margin-bottom: 1.5em;
+            font-weight: bold;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        h3 {
+            font-size: 1.1em;
+            text-align: center;
+            margin-top: 2.5em;
+            margin-bottom: 1em;
+            font-weight: bold;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        p {
+            text-align: justify;
+            margin-bottom: 1.2em;
+            text-indent: 1.5em;
+        }
+
+        p.no-indent { text-indent: 0; }
+
+        blockquote {
+            margin: 1.5em 2em;
+            padding-left: 1.5em;
+            border-left: 3px solid var(--quote-border);
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        blockquote p { text-indent: 0; margin-bottom: 0.8em; }
+
+        .poem {
+            margin: 1.5em 2em;
+            font-style: italic;
+            text-indent: 0;
+        }
+
+        .poem p {
+            text-indent: 0;
+            margin-bottom: 0.3em;
+            text-align: left;
+            padding-left: 2em;
+            text-indent: -2em;
+        }
+
+        em { font-style: italic; }
+
+        sup {
+            font-size: 0.75em;
+            vertical-align: super;
+            line-height: 0;
+        }
+
+        .section-break {
+            text-align: center;
+            margin: 2.5em 0;
+            font-weight: bold;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.1em;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 2em;
+        }
+
+        .epigraph {
+            margin: 1.5em 2em 2.5em;
+            padding-left: 1.5em;
+            border-left: 3px solid var(--quote-border);
+            font-style: italic;
+            color: var(--text-secondary);
+            font-size: 0.95em;
+        }
+
+        .epigraph p {
+            text-indent: 0;
+            margin-bottom: 0.5em;
+            text-align: left;
+        }
+
+        .epigraph .attribution {
+            text-align: right;
+            font-style: normal;
+            font-size: 0.9em;
+            color: var(--text-muted);
+            margin-top: 0.5em;
+        }
+
+        /* =========================================
+           BOTÓN FLOTANTE (Modo Nocturno)
+           ========================================= */
+        .fab-toggle {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background-color: var(--fab-bg);
+            color: var(--fab-color);
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease;
+            z-index: 1000;
+            outline: none;
+        }
+        .fab-toggle:hover { transform: scale(1.1); }
+        .fab-toggle:active { transform: scale(0.95); }
+        .fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            body { padding: 1.2em 1em 4em; }
+            h1 { font-size: 1.6em; }
+            h2 { font-size: 1.1em; }
+            .fab-toggle { bottom: 16px; right: 16px; width: 50px; height: 50px; }
+            .fab-toggle .material-icons { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo Nocturno">
+        <i class="material-icons" id="theme-icon">dark_mode</i>
+    </button>
+
+    <article id="content">
+        <h1>El gato de Cheshire, o El eterno retorno</h1>
+
+        <div class="epigraph">
+            <p>«No hay muerte —<br>esto todos lo saben».</p>
+            <p class="attribution">A. Ajmátova</p>
+            <p>«Los sistemas del mundo —<br>vaciados de almas antiguas».</p>
+            <p class="attribution">Maximilián Voloshin</p>
+        </div>
+
+        <h2>Capítulo 5</h2>
+
+        <p>Esto se refiere en especial a la Grecia antigua. Ella está en todas partes: fuera y dentro de nosotros. Somos su derivado a través del alfabeto, el arte, la filosofía, el teatro. Y, al mismo tiempo, ¿dónde está ella? Ruinas, fragmentos de textos, retazos de informaciones. Del poeta Arquíloco, del siglo VI a. C., apenas han quedado unas pocas líneas. La Antigüedad, que es «nuestro todo», es, al mismo tiempo, «la sonrisa del gato de Cheshire». La sonrisa está; el gato, no.</p>
+
+        <p>«Los sistemas del mundo son vaciados de almas antiguas», escribía el poeta Maximilián Voloshin. Del alma antigua, quiénes no han hecho vaciados, en sentido literal y figurado. Desde los genios del Renacimiento hasta los clasicistas de los siglos VIII—XIX —los neoclásicos de la Alemania fascista y de Italia—, del «Imperio socialista», y los genios de comienzos del siglo XX, con Picasso a la cabeza.</p>
+
+        <h3>I. La democracia olímpica</h3>
+
+        <p>No se apaga la lucha de opiniones y conceptos: ¿qué es la democracia? Consideramos así: la participación del pueblo en el gobierno y la igualdad de todos los ciudadanos ante la ley —he ahí la democracia. «Todas las leyes sirven a un solo fin: hacer a los ciudadanos iguales en la mayor medida posible… Es imposible hallar un principio mejor para la más admirable forma de Estado», escribía en su obra «La República» el filósofo Platón. La democracia es la igual responsabilidad ante el código. Y eso es todo. Nada romántico. Pero cuando unos son más iguales que otros, eso no puede ser democracia. La democracia ideal no ha existido nunca, pero en ciertas épocas hubo aspiración hacia ella. En las disputas contemporáneas los adeptos citan a menudo la Antigua Grecia como ejemplo, pero solo tienen en mente la democracia ateniense del siglo V a. C. ¿Y qué hay del resto de la Antigua Grecia? A Sócrates lo juzgaron por librepensamiento y lo condenaron a muerte en el año 399 a. C. precisamente en Atenas, en la época del florecimiento furioso de la democracia. Aquí hacen falta precisiones, o mejor, preguntas. ¿Qué es la Antigua Grecia? ¿Qué queremos decir?</p>
+
+        <p>1. No fue un Estado. Jamás tuvo territorio unificado ni fronteras estatales. (Mapa de Grecia: antes de las campañas y después de las campañas). Y cuando, como resultado de las campañas de Alejandro, quiso convertirse en imperio, nada salió de ello. Perdida la antigua fragmentación polística, se volvió irreconocible, desapareció para siempre, se desmoronó, se disolvió.</p>
+
+        <p>2. El sistema convencional multipolístico que hoy llamamos Antigua Grecia no conoció ni paz ni sosiego. Infinitas guerras intestinas. Las ambiciones, no solo de los pequeños Estados, sino de los pequeños grupos étnicos que poblaban la península y las islas del Mediterráneo —más exactamente, de la cuenca del Egeo—, conducían a permanentes ajustes de cuentas armados: comerciales, políticos, territoriales y de otras clases.</p>
+
+        <p>3. Estos polis mal avenidos no tenían un régimen uniforme. Esparta-Laconia era una unión militar-aristocrática que vivía según las leyes severas de Licurgo (de ningún modo democráticas). Macedonia, una patria esclavista encabezada por el rey y su séquito regio. Describir todas las variantes de la vida político-social de los polis y de los Estados no entra en nuestra tarea.</p>
+
+        <p>4. Única, común para todos y eternamente disputada era solo la cuenca del mar Egeo, y en torno a ella, el edredón polístico de retales. Aquello que denominamos Antigua Grecia. Más las colonias. Si se mira con atención el mapa, parece que una explosión interior hendió la península que antaño fue una. Todo voló en jirones; solo quedaron las esquirlas de las islas, y el espacio de tierra firme lo ocupó el actual mar Egeo.</p>
+
+        <p>Pero uno quiere preguntar: ¿de qué manera, al margen del Estado, de un territorio unificado, de fronteras, de un ejército único, de leyes únicas, con las continuas discordias intestinas, fue posible la creación de un arte y una cultura únicos que, desde hace casi tres mil años, sirven al mundo entero? Nadie ha respondido a esta pregunta. Y nosotros no podemos, pero podemos proponer una versión más.</p>
+
+        <p>Fuera de la filosofía antigua, del teatro, de la arquitectura, de la escultura, de la cerámica pintada, la civilización europea es impensable hasta hoy. Parafraseando el aforismo «Toda la filosofía europea no es más que un comentario a Platón», digamos: «Todo el arte europeo es comentario de la antigüedad griega». El eterno retorno hacia ella. Nos zambullimos a esta profundidad en busca de la belleza, de la armonía, del equilibrio. Digámoslo aún más duramente. Casi no sabemos nada de cómo era la Antigua Grecia. Hasta nosotros solo llegaron cascotes, retazos, citas. Incluso la mitología antigua, formándose gradualmente, no fue una representación del mundo tan unificada, a semejanza de lo que en tiempos posteriores fue el cristianismo —pese a la diversidad de culturas dentro de la fe única—. Pero fuera de la mitología griega no hay ni helenos, ni nosotros, hasta el día de hoy. Nuestras relaciones con la Antigüedad a través de los siglos son una persecución jamás acabada de un prodigioso fantasma. Y lo que conocemos no es la antigüedad griega, sino a nosotros mismos a través de ella, fundamento de fundamentos, cimiento de la conciencia europea en todos sus niveles. Cada vez componiendo, con cubitos-fragmentos sueltos, una Arcadia intelectualmente nueva. Ni siquiera sabemos de qué color eran el mar y el cielo. La historia nos llegó en los relatos de los historiadores tardíos y en los mitos. Grecia no es Roma, donde la cultura escrita, la historia, fue casi la ocupación principal de los estadistas, escritores, oradores y juristas, de los historiadores profesionales.</p>
+
+        <p>Volvamos, sin embargo, a la cuestión de cómo pudo suceder que, contra todos los criterios habituales, precisamente el prodigio mediterráneo —la Hélade— llegara a consumarse. He ahí justamente: contra todas las categorías y nociones pragmáticas de siempre.</p>
+
+        <p>La antigüedad griega se consumó gracias a la pura metafísica o a esa caprichosidad del desarrollo histórico que no podemos comprender, pero sentimos la necesidad de una constante y expresiva resurrección de la juventud de los dioses. En realidad no sabemos cómo era la Antigua Grecia, cómo vivía, qué allí acontecía, pero queremos pensar que lo sabemos. Sabemos que hubo Olimpiadas. La Antigua Grecia, o la Hélade, es gloriosa no por sus guerras civiles, sino por su antítesis: la paz olímpica.</p>
+
+        <p>Los Juegos Olímpicos fueron instituidos aproximadamente en el año 776 a. C. (ya lo hemos escrito) y se celebraban cada cuatro años en el lugarejo de Olimpia. Olimpia está en el Peloponeso, pero en esencia era extraterritorial. Allí los templos, los estadios, todos los servicios necesarios para las Olimpiadas y demás.</p>
+
+        <p>Las excavaciones de las últimas décadas en Olimpia nos dan idea del paseo de los vencedores, de los estadios, de los templos. Del aliento de las construcciones, incluso del lujo de la técnica criselefantina de la escultura. Como, por ejemplo, la estatua de Zeus. De la armonía del cielo de azur con la marmórea blancura-azul-terracota de los cuerpos juveniles, bronceados y lustrosos, vestidos de túnicas blancas. Del olor de la lana, del laurel, del sudor… Del cuento de un mundo paralelo…</p>
+
+        <p>Las Olimpiadas y la paz olímpica son más importantes que la guerra y todos los demás asuntos. El tiempo en Grecia se computaba por Olimpiadas. «Se cuenta que nació en la septuagésima primera Olimpiada, en su segundo año…»: así se describe la fecha de nacimiento del dramaturgo Sófocles, es decir, a nuestro modo, en 488 a. C. o en la primera mitad del siglo V a. C. Era siete años más joven que Esquilo y 24 años mayor que Eurípides.</p>
+
+        <p>La ley de la Olimpiada es común para todos. Iguala deberes y derechos de todos los ciudadanos de los polis, participantes de los juegos. La noción del tiempo es siempre el alfabeto fundamental del orden, el cronos-lógos. Avanzando, retorna en espiral; es eternamente joven. Se «renueva», se baña en la eterna juventud de sus sueños. A los griegos no les gustaban las imágenes de la vejez, del decaimiento, sino solo de la adolescencia y de la varonil madurez. Solo las ciudades que participan en las Olimpiadas son la Hélade. Las que no participan: bárbaras. Y el tiempo «cada cuatro años» es uno para los helenos y otro para el resto del mundo. Aunque, hay que decirlo, el cómputo del tiempo, como imagen del orden cósmico, fue especialmente venerado en Mesopotamia, entre los fenicios y en el Antiguo Egipto. Orden (tiempo) y caos: dos lados del equilibrio cósmico. Cuatro años son parte del ciclo sótico (solar), y 4 por 365 días es el tiempo del retorno, o nacimiento, del fénix. Los Juegos Olímpicos son el orden supremo, la forma. La cultura de la Antigua Grecia creó la Forma en contraposición a la no-forma, como eterna victoria y triunfo del cronos-lógos sobre el caos y la intemporalidad. Cuando, atormentado por el presagio y el presentimiento, Picasso escribió la «Guernica», el «fin» para él era el retorno del mundo al Caos. El mundo otra vez de un gris-negro indefinido; el color se apagó; desapareció. Derribados y dispersos todos los símbolos de la cultura. La vida perdida sin remedio. Fin de la materia ordenada; el toro loco del caos resucitó de nuevo del no-ser. Los signos de la tragedia apocalíptica nos remiten de nuevo al comienzo: a la pre-antigüedad, cuando junto a las costas de Chipre del mar salió la Afrodita de dorados rizos. El fin es el fin de aquella Forma que, como comienzo, encontraron genialemente los griegos de la Hélade. Precisamente la Forma, como idea, principio e imagen del mundo, fue creada por la Hélade.</p>
+
+        <p>Y hoy, entre las ruinas de Olimpia, seguimos viendo y palpando ese mundo eternamente joven de la armonía de las formas. Estamos en la pista por la que corrían los bronceados y desnudos «nosotros» de la Hélade.</p>
+
+        <p>Los atletas corrían, saltaban, lanzaban el disco, la jabalina, participaban en los combates de pugilato. Pero la competición principal eran las carreras de carros. Los fundadores de los juegos carroides, los héroes mitológicos Pélope y Enomao, están representados en el frontón del templo de Zeus Olímpico. Los vencedores eran coronados con la corona de olivo. El vencedor por tres veces era distinguido con una estatua.</p>
+
+        <p>El valor en la guerra es el cumplimiento del deber cívico. La victoria en los Juegos es gloria para la patria-polis y camino hacia la inmortalidad. Hablamos del fenómeno de la Grecia antigua, jamás repetido, de una conciencia que el hombre contemporáneo no puede imaginar: tan lejana y fabulosa.</p>
+
+        <p>Las condiciones que engendraron el teatro antiguo, las artes, son tan irrepetibles como irrepetible es la democracia olímpica. El filósofo Pável Aleksándrovich Florenski, en su disertación «La columna y el fundamento de la verdad», ofrece una exégesis de la palabra «Hélade», revelando la esencia del concepto. «Lada» es como «corriente», y «el» es el prefijo que significa «detención de la corriente». La corriente de la vida del mundo tenso y abigarrado de la Antigua Grecia se detiene durante el tiempo de la Olimpiada. Grecia se vuelve Hélade. Recordemos: el tiempo de las Olimpiadas es sagrado, tiempo que se desgaja de la «corriente», tiempo detenido. En ese punto acontece todo: la unión, la igualdad y la tensión de la competición. Eso es, al parecer, la Hélade. La vida cotidiana, el día a día, se llenan de otro sentido. La sociedad se vuelve otra, que vive la «instantánea detenida». La Olimpiada: punto, costura del tiempo en el límite entre el pasado y el futuro, como el tañido de las campanas a las 12 de la noche del 31 de diciembre según la era única de nuestro mundo.</p>
+
+        <p>La Olimpiada es el centro del mundo, semejante al sistema heliocéntrico, donde el vínculo del Sol y de los planetas está fuera de nuestra voluntad y competencia. Cuando Grecia quedó exhausta por la guerra del Peloponeso, se debilitó; muchas cosas cambiaron. La llegada de los reyes macedonios aplastó el modelo único del «Estado fuera de los Estados», la democracia olímpica que habitaba en la conciencia y el subconsciente de los helenos. La aplastó, la derribó no de golpe, pero creó la grieta fatal dentro de aquel sistema único. Además de la sagrada paz olímpica (cada cuatro años), no menor significación tenía la paz Pítica (cada tres años). Los Juegos Píticos se celebraban en otro oasis sagrado: en Delfos. Los Juegos Olímpicos, masculinos, bajo el patrocinio de Zeus. Los Píticos: juveniles. Sus patrones: el resplandeciente Apolo y su hermano Hermes.</p>
+
+        <p>Cuando hoy uno se encuentra en Grecia, comprende cuán difícilmente vivían los hombres en su mundo pedregoso, vertical, con subidas y bajadas constantes. Cómo conquistaban la tierra para la vid y los olivos, pastoreaban cabras y ovejas, hacían queso, cazaban, extraían y fundían el metal. Y solo cuando, por el duro y escarpado serpenteante, se asciende al templo de Poseidón en el cabo Sunión, se comprende que la conciencia determina el ser, y no al revés. En la dicha física de la armonía, el templo se cierne al borde del precipicio sobre el mar Egeo.</p>
+
+        <p>«A 65 kilómetros de Atenas, en Sunión, en la cima del peñasco que cae a pique sobre el mar, se alza el templo de Poseidón, construido casi al mismo tiempo que el Partenón de Atenas —una diferencia de unos cincuenta años—. Lleva ya dos mil quinientos años en pie. Es diez veces menor que el Partenón. Cuántas veces es más hermoso, difícil es decirlo, pues no se comprende qué debe tomarse como unidad de perfección. No tiene techo. En torno: ni un alma. Allí, en la cima del peñasco oscuro, en la bruma vespertina, desde lejos el templo parece más bien descendido del cielo que erigido en la tierra. El mármol tiene más parentesco con las nubes que con el suelo.</p>
+
+        <p>Dieciocho columnas blancas, unidas por una basa igualmente blanca de mármol, están a igual distancia entre sí. Entre ellas y la tierra, entre ellas y el mar, entre ellas y el cielo de la Hélade: nadie y nada. Como casi en toda Europa, aquí estuvo Byron, que grabó en la basa de una de las columnas su nombre. Tras sus pasos, el autobús trae a los turistas, y luego se los lleva. La erosión, de la que la superficie de las columnas sufre de manera notable, no tiene nada que ver con la intemperie. Es la viruela de las miradas, de los objetivos, de los flashes» (Iósif Brodski. Homenaje a la sombra. 2006).</p>
+
+        <p>Si se contaran los días, serían sesenta millones. De lejos, sin embargo, en la bruma vespertina, gracias a los intervalos iguales, sus blancos cuerpos verticales se ven también ellos mismos como un ornamento.</p>
+
+        <p>¿Idea del orden? ¿Principio de simetría? ¿Sentido del ritmo? ¿Idolatría? He ahí lo que nos ha dejado la Antigua Grecia. El único caso en la historia de la civilización en que el genio de la nación fue invertido en las ideas de la cultura.</p>
+
+        <p>Grecia nos dejó no tanto la arquitectura, el arte, sino las ideas de la arquitectura y del arte. Las ideas del teatro. Las ideas de la filosofía. Son suficientes para todos desde hace más de dos mil años. El mundo inmortal de las imágenes-ideas, al que le fue otorgada la larga vida del eterno retorno, donde la belleza vive tanto en los elementos sueltos como en su armónica proporcionalidad. Camino continuo a través de los siglos, las culturas, las civilizaciones.</p>
+
+        <h3>II. En el mundo de las imágenes-ideas</h3>
+
+        <p>En mayo de 2006 se inauguró en Düsseldorf el Instituto de Literatura Friedrich Schiller. La función clásica de este instituto encuentra expresión exacta en la imagen del templo griego: el períptero, rectángulo alargado con relación de lados de 1 × 0,65. Otros materiales, otra técnica constructiva, otro espacio interior. El Instituto de Düsseldorf resuena, con eco lejano, con el Partenón, devolviendo desde lejos su imagen transfigurada.</p>
+
+        <p>El mito cuenta que las abejas llevaron a Apolo un modelo de cera del templo que se convirtió en el arquetipo del períptero griego antiguo, o, como se suele decir, del orden. La leyenda sobre el origen de la idea del templo confirma que no sabemos cómo surgió, por mucho que se escriba al respecto. No conocemos la evolución del templo antiguo, como no conocemos la «aparición» de las pirámides egipcias y de tantas otras cosas. Aparecieron —y punto. Las imágenes-ideas fundamentales del templo son dos. La más severa y lacónica: el dórico. Masculino. Y la ligera, el jónico, con las volutas decorativas de los capiteles, el friso y el perfil de la basa de la columna.</p>
+
+        <p>Son ideas de templos-módulo con constante relación de proporciones. Por ejemplo, en la arquitectura dórica, 6 diámetros de la columna equivalen a una altura. En la jónica: 7–8 diámetros a la altura. Vitruvio (siglo I a. C.), en el libro «Sobre la arquitectura», anotó: «La esbeltez de los edificios de los templos se fundamenta en la simetría, cuyas leyes los arquitectos deben conocer con el máximo rigor. La exacta proporción de las partes es semejante a la proporción de las partes del cuerpo de un hombre bien compuesto». Pero esta es una poética seca de los números. ¿Y quién calculó? ¿Pitágoras?</p>
+
+        <p>Pitágoras, tras estudiar la sabiduría egipcia, expresó el pensamiento de que el principio de todas las cosas es el número. Las relaciones numéricas establecen el orden. Cuando en el umbral de los siglos VII y VI a. C. los filósofos presocráticos griegos, como Tales de Mileto y Anaximandro, comenzaron a discutir en qué consiste el principio de todas las cosas, y lo veían quien en el agua, quien en la infinitud originaria, en el aire, ellos aspiraban a dar definición y explicación del Universo como todo único, regido por leyes únicas. Demócrito, en cambio, insistía en que el Universo está compuesto de átomos, en lo que los científicos contemporáneos están con él casi por completo de acuerdo.</p>
+
+        <p>«Cuando en el círculo de los pitagóricos, hacia el año 540, se llegó a la comprensión de que la esencia de todas las cosas es el número, esto no fue un paso adelante en el desarrollo de la matemática, sino el nacimiento de una matemática completamente nueva desde las honduras de la interioridad antigua», escribía Oswald Spengler. Esta nueva comprensión del mundo, nuevo «sentir del mundo del alma», pues en el mundo de los números reinan la armonía y la perfección de las formas.</p>
+
+        <p>El mundo era pensado como forma, y los griegos identificaban claramente forma y belleza. El mundo como forma y belleza fue creación de la cultura de la Hélade. Aquí se esconde el misterio del eterno retorno. Y cómo ellos vivían, eso se fue con ellos, arrastrado por las corrientes del tiempo. «Si supierais de qué desecho crecen los versos…», escribió alguna vez Ajmátova.</p>
+
+        <p>Las ideas del paso de la aritmética de los números a las formas espacio-geométricas pertenecen a Pitágoras. Y muchos siglos después, en la época del Renacimiento y del humanismo, en la época del retorno a las ideas de Platón y de Pitágoras, las figuras se estudiaban como ideas ideales. Leonardo en sus trabajos sobre la perspectiva, Piero della Francesca en el libro «La divina proporción», Leon Battista Alberti, Alberto Durero desarrollaban las ideas de la forma filosófica y de la belleza antiguas. El sabio monje-humanista Luca Pacioli escribió: «La proporción divina es la sección dorada». Por cierto, la definición «sección dorada» se atribuye tanto a Leonardo como al matemático y astrólogo alemán del siglo XVI Johannes Kepler.</p>
+
+        <p>En la espiral del eterno retorno, el modelo de cera del templo fue el arquetipo divino de la verdadera idea de la belleza, en cuya base yacía la poesía de la armonía del número y de la forma. Pensemos solo: entre los seguidores de los pitagóricos están los filósofos Hegel y Kant, los astrónomos Nicolás Copérnico y Giordano Bruno, Alberto Durero, el médico francés Louis Pasteur, los teólogos y escolásticos del Medievo, Albert Einstein. En la enumeración, aunque incompleta, hay una expresividad de la continuidad y del desarrollo de las ideas antiguas.</p>
+
+        <p>Pero en otro lugar de nuestro trabajo mostraremos el desarrollo paralelo de las ideas del «número y la forma» en la filosofía de la Antigua China, especialmente en la cosmogonía universal del «ba-gua» y en el Taoísmo.</p>
+
+        <p>Podría parecer que toda la armonía se comprueba por el álgebra. Pero no. No menor significación que el conocimiento de la ley de las relaciones tiene la intuición artística o, en el arte, el «elemento no contabilizado». No entraremos en detalles del quiebro y la curvatura. Leonardo da Vinci, estudiando las leyes de la sección dorada, valoró la necesidad artística del elemento «no contabilizado» o «sobra», notando al mismo tiempo que también él debe ser contabilizado. El significado filosófico y arquitectónico de la idea del «orden griego» lo investigó primero el historiador, teórico y arquitecto romano Vitruvio. Vitruvio fue el primero en comentar la arquitectura griega, y a comienzos del siglo XX el creador de la nueva filosofía arquitectónica de la gran ciudad y del nuevo urbanismo, Le Corbusier, escribía tratados investigando el orden griego: «Modulor 1», «Modulor 2», etc.</p>
+
+        <p>La arquitectura civil de la Antigua Grecia no nos ha llegado, ni siquiera entonces se ocupaban de ella. La arquitectura civil es el genio de Roma, y de ella hablaremos más adelante. La antigüedad griega es sacra. En lo que fue invertido el genio de la nación, eso atraviesa el espesor de los tiempos. Hay que decir, sin embargo, que como constructores eran malos. La solución del espacio interior de los templos, la iluminación, las cubiertas, el cálculo de las cargas hacían frágiles las construcciones arquitectónicas. Bastó que el insensato Heróstrato arrojara una pequeña antorcha a la cubierta del templo de Artemisa en Éfeso, y este se derrumbó sin esperar auxilio, y eso que figuraba entre las siete maravillas del mundo. La historia griega antigua, más bien su mitología, escribió mucho sobre este templo. El complejo de Heróstrato es estudiado por la medicina como complejo de inferioridad. Solo que el templo nadie lo vio.</p>
+
+        <p>La arquitectura proporcionada a las proporciones de la sección dorada es siempre armónica con el paisaje. El sentido de la naturaleza, propio de las gentes de conciencia mitológica, su animación hacían infalible la elección del lugar de edificación del templo. A diferencia de las culturas pre-antiguas, de sacralidad rupestre y oculta, Grecia está empapada de aire, de espacio. Por destruidos, ruinados que estén los restos de los templos, producen igualmente una impresión total, no perdida. Ellos siempre lindan la tierra y el cielo. Se ciernen, trazando un signo en el cielo. La idea del templo como unión de la tierra y el cielo la heredó la arquitectura rusa antigua y la conservó por mucho tiempo: del siglo XII al XIX. La penetración celeste de lo terrenal y la aspiración de lo terrenal hacia lo Divino.</p>
+
+        <p>El templo de Poseidón en el cabo Sunión, el conjunto acropolitano y muchas otras cosas son afines por su dramaturgia a nuestra percepción. Hay algo inexplicable en el sentimiento de la Antigüedad, cuyos fragmentos conservan la plenitud de la percepción, pero jamás pueden explicar nada. Disuélvete y no preguntes. ¿Y cómo no preguntar, si esta pregunta está siempre sin respuesta o tiene muchas?</p>
+
+        <p>No empleamos por casualidad la palabra teatral «dramaturgia» en relación con el arte antiguo. Está calculado siempre para el diálogo. Para la cultura helenística el diálogo es lo principal. El diálogo del templo con el paisaje. Nuestro diálogo con Grecia, que dura siglos. La marcha de los ciudadanos a la Acrópolis, el paso por las puertas-propíleos, el ritual de conducta en la Acrópolis. Sus formas de vida social: todo es diálogo. Hemos llamado a la Hélade democracia olímpica. Pero en su base está la escucha, o el diálogo intracultural. Los diálogos de las competiciones, del teatro, de las pinturas de los vasos, de los apuntes de los textos filosóficos, de las injurias del Ágora, de los banquetes…: todo es diálogo, absurdo sin la escucha, la mudez social.</p>
+
+        <h3>III. «La escucha»</h3>
+
+        <p>El diálogo es posible a condición de escucha, es decir, de la acústica de la «comprensión». Yo te escucho-comprendo con la conciencia, y no solo con el oído. Yo te escucho, es decir, comprendo lo que dices. «A todo sonido, su resonancia en el aire vacío». El eco. La Antigüedad es universalmente «eco-sonora». El diálogo y la escucha mutua de aquel país disuelto en el mito son tan únicos como toda su materia enigmática. Los diálogos helénicos tampoco se repitieron jamás, como las demás ideas de la antigüedad. La fragmentariedad de los textos escritos no es solo pérdidas y avatares del destino, sino también el hecho de que en la Antigua Grecia el gran volumen de información era oral. Una industria verdaderamente escrita es propia de un tiempo más tardío. Por ejemplo, del helenismo alejandrino y sobre todo de Roma. El desarrollo de la escritura, la invención del pergamino en el helenístico Pérgamo fueron condicionados por necesidades ya distintas de la cultura. El alfabeto griego es literal, no silábico ni de palabras. El alfabeto no desapareció en ninguna parte, sino que se volvió protoalfabeto de nuestra habla oral y escrita. Crea una nueva movilidad, nuevas posibilidades de la lengua escrita, pero el valor de los diálogos orales y públicos en la Grecia de los polis es superior al de los escritos. La eco-sonoridad de Grecia ya en la época del helenismo (siglos III–I a. C.) prácticamente comenzó a desaparecer gradualmente. Y desapareció por mucho tiempo. Y hasta la elocuencia jurídica en la Roma democrática no puede compararse con los diálogos de Grecia. Sin hablar de Bizancio, que escribía una cosa, decía otra y pensaba una tercera.</p>
+
+        <p>La idea de la acústica está resuelta idealmente por la arquitectura del teatro antiguo. El efecto acústico del anfiteatro teatral-concha lo comprueban todavía hoy todos los turistas haciendo crujir un papel. La arquitectura del teatro une el acto teatral con el espectador. La estructura de cualquier pieza griega supone el coro. El coro en las tragedias es el «nosotros» ideal, nuestro diálogo con los héroes dentro de la pieza. Como si delegáramos en el coro nuestra actitud, nuestras emociones. En la arquitectura del teatro está previsto necesariamente el lugar para el coro, así como la «escena» y la «orquesta». A todos los espectadores se ve la escena. La acción de la pieza no es solo intradialógica, sino dirigida a todos y a cada uno. La base de la dramaturgia clásica eran los temas heróico-mitológicos (que significa históricos) bien conocidos, es decir, textos no inventados por los autores, sino por ellos interpretados. El siglo XX, ahogado en la antigüedad, excede todas las normas de montaje de los grandes trágicos y comediógrafos antiguos en variantes canonizadas y remozadas. ¿Qué nos importa el rey Edipo o un tal Agamenón que secuestró de Troya a Casandra? ¿Qué nos importan las Medeas, los Jasón, las Antígonas? ¿Los diálogos de Prometeo con los dioses antiguos? No creemos ni en los dioses ni en los mitos, bellos cuentos de un mundo desaparecido hace mucho. Pero ¿qué obliga hoy, en el siglo del experimento con la naturaleza, el cosmos y el hombre, a retornar incesantemente a la tragedia antigua? Para los griegos «llorar lágrimas trágicas es reflexionar», según la exacta definición de André Bouchard. Ellos reflexionaban sobre lo principal en el hombre, su doble naturaleza totémica-tenebrosa y divinamente iluminada por la razón. Sobre la lucha entre el instinto oscuro y la voluntad-razón, es decir, los problemas más actuales de nuestro tiempo igual que entonces. La fórmula de Bouchard consta de dos partes: «llorar lágrimas trágicas» no lo hemos olvidado. Nos ahogamos en esas lágrimas. Pero no reflexionamos, es decir, no sacamos ninguna conclusión de nuestras lágrimas, no aprendemos nada… y se multiplican las lágrimas. La tragedia antigua suponía la catarsis: el cambio de sí a partir de la toma de conciencia de sí.</p>
+
+        <p>El rey Edipo es un varón noble, un gran gobernante. El pueblo confía en él.</p>
+
+        <blockquote>
+            <p>Sacerdote: ¡Oh, el más noble de los varones, Edipo,<br>a ti acudimos ahora con súplica…</p>
+            <p>Edipo: ¡Desdichados hijos! Sé, bien sé,<br>lo que os hace falta. Veo con claridad: todos<br>padecéis. Pero ninguno de vosotros<br>padece, aun así, como yo padezco:<br>vuestra pena es solo por vosotros mismos,<br>y no más; y yo sufro en el alma<br>por mi ciudad, por vosotros y por mí.</p>
+        </blockquote>
+
+        <p>A Edipo le toca investigar las causas de las grandes desdichas del pueblo. Busca al culpable y lo encuentra en sí mismo. «¿Qué me importa la muerte, si con ella salvo mi país?»</p>
+
+        <p>Sin conocer su pecado (el parricidio, el incesto con la madre), su pasado, él mismo se volvió causa de la peste y de las desdichas. A los de alrededor no les agradaría que supiera la verdad. Pero Edipo rey investigó hasta el culpable, hasta la raíz del mal. Él es la causa de todas las desdichas. Edipo se ciega a sí mismo y parte al destierro. Su lazarillo, que compartió su suerte, fue Antígona, hija de Edipo.</p>
+
+        <p>El destino fatal de Edipo, de su familia y de su país se dirige a los espectadores como posibilidad para cualquier hombre. Llorar lágrimas trágicas es reflexionar sobre uno mismo. El pobre Edipo cometió un crimen horroroso, aunque fuese en la ignorancia. Violó la ley de la naturaleza, la ley del Universo, la ley suprema que existe fuera de nosotros, fuera de nuestro saber. Su autoceguera no es un simple acto de acción física, sino de diálogo, vuelto hacia adentro, hacia el autoconocimiento. La apertura de los ojos del alma y de la conciencia. Cabe recordar la historia del apóstol Pablo, cegado por el Maestro en el camino a Damasco, y su iluminación. El apóstol Pablo fue Saulo, judío y ciudadano de Roma. Saulo perseguía con furia a los «disidentes de pensamiento» de su tiempo: los cristianos. La ceguera del alma es la ceguera de la vista. No vemos verdaderamente, no con perspicacia. El deslumbramiento de Saulo abrió la luz en su alma; su razón se esclareció y, una vez iluminado, se volvió Pablo y nunca más regresó al «Saulo», falso error sobre sí. Hoy está probado que las Epístolas evangélicas del apóstol Pablo son documentos auténticos.</p>
+
+        <p>Sófocles se dirigió dos veces a la historia de Edipo. A los 70 años escribe «Edipo rey». A los 90, «Edipo en Colono». Edipo imparte justicia sobre sí mismo, y no sobre su pueblo. Restablece la armonía violada por el hombre, la ecología, el equilibrio. Él se reprime a sí mismo, no a los que lo rodean. Las represiones contra los demás desgarran las leyes del ser, que no están determinadas por nosotros.</p>
+
+        <p>Los dioses de la antigüedad no son benévolos. A menudo suscitan perplejidad y se portan como quiera. La trompeta del destino toca el tema del Hado. El misterio del Universo teje su conjuro también sobre las cabezas de los dioses.</p>
+
+        <p>El coraje de Edipo, la responsabilidad masculina al cometer el acto lo hacen un hombre libre. Con su propia mano cometió el acto de un hombre libre. «Tan grande es mi padecimiento que ninguno de los hombres es capaz de expresar su peso: nadie, salvo yo», dice Edipo.</p>
+
+        <p>La aldea de Colono, donde muere Edipo, es la patria de Sófocles. Precisamente a esta aldea llegó, por voluntad del destino, a morir el desdichado rey. Aquí supera aquella distancia que a él, mortal, rechazado, privado de hogar y techo, lo incorpora a la inmortalidad de los héroes. La libertad y la inmortalidad no se alcanzan por decretos. Semejante integridad de conciencia y noción de que por el hombre que hay en uno debe luchar cada uno, y cada uno responde, y ningún mortal puede absolverte tus pecados. No nos sorprendamos, pues, del eterno retorno de la antigüedad, de la relectura incesante de los griegos, de la infatigabilidad del esfuerzo teatral. Quizá no convenga comparar la tragedia histórica de Pushkin sobre el zar Borís con el existencialismo antiguo, pero nosotros, espectadores y lectores, comprendemos que el origen de la Smuta y de la discordia lo entiende Pushkin como el pecado de Borís: el asesinato del zarévich, heredero legítimo, en Uglich. Borís fue un buen gobernante, un hombre bueno y amante. Pero violó la ley que no él había dado. He ahí el resultado, a la vista. Y los «Otrepiev» —Gríshkas, Míshkas, Iváshkas— siempre se encuentran. Pero no son ellos quienes engendran la Smuta. La Smuta engendra Otrepievs. No escribimos sobre las numerosas y complejas versiones del propio tema. En el prefacio a la «Antígona», el escritor francés del siglo XX Jean Anouilh escribió que la tragedia se distingue del drama por su «blancura», es decir, por su pureza y su irreversibilidad. Uno de los mejores filósofos del siglo XX, Thomas Mann, escribía sobre el pecado y la misericordia, sobre la lucha por el hombre en uno mismo. Es la novela «El elegido». Thomas Mann, como él mismo se llama, el «artista del tiempo tardío». Su héroe es el eco de un lejano arquetipo; como sombra-Edipo ha atravesado dos mil quinientos años. Pero los esfuerzos de la transfiguración en el camino hacia el hombre siguen siendo los mismos.</p>
+
+        <p>En el teatro antiguo, a la mujer se le asigna un papel dual, complejo.</p>
+
+        <blockquote>
+            <p>¿Qué hay que temer para los mortales?<br>Estamos en poder<br>del azar; al presentimiento somos<br>ajenos.<br>Hay que vivir sin cuidado,<br>cada cual como pueda…<br>Y no temas<br>desposarte con la madre:<br>en sueños a menudo ven los hombres<br>que duermen<br>con la madre, pero esos sueños son<br>vanidad.<br>Luego se vive otra vez sin pena.</p>
+        </blockquote>
+
+        <p>Esto es del monólogo de Ismena, la esposa-madre de Edipo, abuela de sus propios hijos. Ismena, Antígona, Fedra, Medea son furiosas en los sentimientos de amor, de venganza, de deber (como ellas lo entienden). Su furia es destructora. La esposa-vientre, lo incognoscible, lo inexorable. A Antígona, en su inflexible furia de lucha contra Creonte, la impulsa no solo el amor, sino también el antiguo ancestral uso de los padres. Ella debe sepultar a su hermano Polinices. El enfrentamiento de Antígona y Creonte termina en mucha sangre. Hemón se atraviesa con la espada; Eurídice (esposa de Creonte y madre de Hemón) se da muerte. Creonte pierde a todos los que amaba. Todavía hoy nos inquieta la esencia del enfrentamiento entre el jefe de gobierno, el legalista Creonte, y Antígona, que ama a su hermano y honra las leyes de los antepasados.</p>
+
+        <p>Y por mucho que se nos escapen los detalles y los hechos de su vida y de su historia: lo que conmovía entonces conmueve hoy. Igual que ellos hace dos mil quinientos años, nosotros luchamos infinitamente por la integridad en nosotros. Creemos que el teatro antiguo, por su significación, es igual a las Olimpiadas. Igual en publicidad; pero en esencia, el teatro es más importante.</p>
+
+        <p>La inclusión común, espectatorial, coral en el conflicto de la tragedia, construida a menudo como una investigación policíaca, la intriga, hacen la acción escénica siempre cautivante y tensa. No somos solo espectadores: somos participantes. A diferencia de la dramaturgia teatral, las artes, la escultura en el paseo de los vencedores en los estadios son siempre extraconflictivas, positivas. El héroe principal de la escultura es el varón, y es natural: es guerrero y olímpico.</p>
+
+        <p>En la dramaturgia, donde la acción es conflictiva, el nudo de la tragedia, y también de la comedia, está atado por la mujer. Quisiéramos recordar también a Ifigenia, hija de Agamenón y de Clitemnestra. Artemisa, por profecía, determinó el vínculo entre la Guerra de Troya e Ifigenia. Para que la flota aquea pudiera partir de Áulide y dirigirse a las costas de Troya, Agamenón debía sacrificar a Ifigenia. Al conocer la profecía de la diosa, Ifigenia va voluntariamente al sacrificio por la victoria de su pueblo. En el último minuto, sobre la piedra sacrificial aparece la cierva de Artemisa, e Ifigenia está en la Táurida, adonde la llevó la diosa. Qué gran ejemplo de servicio al dios y a la patria. ¿Y acaso este tema histórico no tiene el destino del eterno retorno, desde el sacrificio de Abraham hasta las grandes heroínas de la historia universal? Es verdad que en la parábola bíblica del sacrificio de Abraham las víctimas del degüello se comportan de distinto modo. Y aun así esto no cambia la esencia de la dramaturgia, determinada por la alta ética de la conciencia antigua. Los actos del hombre deben corresponder a la armonía suprema. He ahí la fuerza que todavía hoy nos impulsa fuera de las simas ctónicas.</p>
+
+        <p>La Antigüedad, que creó por primera vez las formas modernas del arte en la sociedad civil, sentía con finura la diferencia entre las posibilidades de la palabra y la pura imagen, la dramaturgia, cuya base es el conflicto, y el arte monumental, cuya base es la afirmación.</p>
+
+        <p>Los frontones y frisos de los templos, los altares, los héroes vencedores, las imágenes de los dioses son siempre únicamente sublimes y perfectos. Llegan a nosotros, ay, semidestruidos, «cita de cita», es decir, fragmento de fragmento de la composición perdida, pero más a menudo en copias. Bien está cuando helenísticas o romanas. Cualquier fragmento auténtico es una rara maravilla y difícilmente se deja describir con la palabra. La escultura griega es un texto visual-dramatúrgico, visual-sensible. La palabra explica solo tus emociones; el objeto mismo del arte es siempre mayor. Por eso describir obras del arte figurativo es prácticamente imposible. Tanto más cuanto que las obras auténticas de la escultura griega son contadas.</p>
+
+        <p>En el Museo Histórico-Arqueológico de Roma, en la exposición, se encuentra un bajorrelieve. Es un fragmento del «Altar del amor» (siglo V a. C.) del templo de Afrodita, o, como se denomina de otro modo, el «Trono Ludovisi». El bajorrelieve es un relato plástico sobre la diosa del amor: la Cípride. Ella se alza lentamente, surge, se eleva desde las aguas. Su cuerpo joven y fuerte está tenso por el esfuerzo del movimiento, de la superación, y el agua que corre en chorros le da fulgor y humedad. El cabello se esparce por los hombros en madejas-trenzas. Dos jovencísimas coristas-ninfa en finos quitones sostienen a la diosa. El éxtasis lo provocan el ritmo y la forma, la composición. El movimiento hacia arriba (de Afrodita), el movimiento hacia abajo: de los brazos y de los cuerpos inclinados de las ninfas, de los pliegues de los quitones, de los piececitos sobre los guijarros de la playa. La redondez sensual de las formas perfectas. La misteriosa sensación del trepidar de los cuerpos en el confín imperceptible: o de la conversión en mármol, o de la carne haciéndose desde la piedra. Nunca más ni nadie en el mundo pudo sentir y transmitir ese confín del palpitar de la vida, la perfección, el sentido de la proporcionalidad, del ritmo, del claroscuro del relieve, pues a aquellos artistas no los volvió a haber ja-más.</p>
+
+        <p>En el lado izquierdo: una doncella desnuda. Está sentada, reclinada en los cojines, con la pierna cruzada, toca la doble flauta. En el derecho: una matrona, envuelta en la larga tela, la palla, que ofrece incienso junto al hogar doméstico. Dos lados, dos iguales hipóstasis de Afrodita: la esposa y la cortesana. La matrona, madre y esposa. Las heteras de la Hélade son el adorno de la sociedad. No parias, sino la doncella graduada en la escuela especial de cortesanas, la tíasas. Educada, bella, inteligente, puede entretener con una conversación intelectual. Al terminar la escuela, la hetera recibía dinero y abría su propio club, donde se reunía la élite de la sociedad: filósofos, militares, políticos. La escuela de las heteras fue un instituto tan único e irrepetible en la historia europea como todas las formas sociales de la vida de Grecia. Son los andamios de la historia. Desaparecieron los andamios: quedó aquello en torno a lo cual fueron erigidos. Lo que quedó lo sabemos en parte, pero los «andamios», tan importantes para comprender la historia, desaparecieron.</p>
+
+        <p>La leyenda histórica cuenta que una de las escuelas-tíasas, consagradas a Afrodita, se hallaba en la isla de Lesbos, y la organizó la grande Safo (siglo VI a. C.), ella misma musa de la poesía y de la danza. Enseñaba a las doncellas a tocar la lira, la flauta, el canto, la versificación, la danza, los misterios de la comunicación y del ritual. Según la misma leyenda, en la tíasas estudiaba también la hija de Safo, que era bailarina y poetisa. Escuchemos la voz de Safo, que no cede en poesía a nuestras contemporáneas:</p>
+
+        <div class="poem">
+            <p>¿Por qué con corona de hojas de laurel</p>
+            <p>mi frente ceñí</p>
+            <p>y de mirto vestí mi lira?</p>
+            <p>¡Así! No en vano el oráculo de Epidauro</p>
+            <p>me anunció la copa de tormentos.</p>
+            <p>No me eres fiel, querido amigo.</p>
+            <p>Te ha hechizado una pasión nueva</p>
+            <p>a los pies de la hermosura de otra.</p>
+        </div>
+
+        <p>La lírica amorosa no tiene prescripción. El amor, la infidelidad, la deslealtad-fidelidad. Hagamos la rebaja por las traducciones tardías: igualmente está desnuda la raíz de aquella flor divina sin la cual es impensable nuestra poesía y nosotros mismos.</p>
+
+        <div class="poem">
+            <p>A los dioses igual por dicha</p>
+            <p>me parece</p>
+            <p>el hombre que tan cerca</p>
+            <p>frente a ti se sienta, tu</p>
+            <p>voz que suena tierna</p>
+            <p>escucha</p>
+            <p>y tu risa encantadora…</p>
+        </div>
+
+        <p>Los versos de Safo que nos han llegado pudieron ser resultado también de una autoría colectiva, pero eso no tiene importancia. La poesía de la tíasas canta la juventud, la eterna juventud de las afroditas, la alegría de la luz, del amor, del calor, del libre movimiento del cuerpo.</p>
+
+        <div class="poem">
+            <p>Yo amo la molicie,</p>
+            <p>amo la juventud,</p>
+            <p>amo la alegría</p>
+            <p>y el sol.</p>
+            <p>Mi suerte es estar</p>
+            <p>en la luz solar</p>
+            <p>y en la belleza</p>
+            <p>enamorada.</p>
+        </div>
+
+        <p>A las mujeres eolias de la isla de Lesbos el propio Homero las llamó «las mujeres más bellas de la Hélade».</p>
+
+        <p>Se suele considerar los siglos VII–VI a. C. el siglo de la poesía lírica. A diferencia del venidero siglo V a. C., llamado época de la tragedia antigua. La naturaleza interna de estas ondas, de estos relevos, teniendo muchas explicaciones, permanece inexplicable. La poesía, en todos los tiempos, es libre y uno de los testimonios más exactos del tiempo. Por eso la tiranía no ama a los poetas.</p>
+
+        <p>Entre los líricos del siglo VI a. C. se nombran los nombres de Arquíloco y de Alceo. Se decía que Arquíloco, este nativo de la isla de Paros, fue hijo de un rico y de una esclava. Sin tener derechos al nombre del padre ni a la herencia, se volvió guerrero profesional. Arquíloco escribía:</p>
+
+        <div class="poem">
+            <p>Con la lanza afilada está amasado mi pan,</p>
+            <p>y con la lanza</p>
+            <p>obtengo el vino. Bebo, apoyado</p>
+            <p>en la lanza.</p>
+        </div>
+
+        <p>Una biografía entera cabe en tres líneas de poeta.</p>
+
+        <p>No es de excluir que la escritura alfabética, compuesta de 24 signos-letras, tenga la significación de matriz de toda Europa, lugar de nacimiento de nuestra cultura, no menos que los Juegos Olímpicos de la Hélade. El alfabeto griego y la escritura de sus signos ya no son «eterno retorno», como el arte, el teatro, la filosofía, es decir, las ideas de la antigüedad. El alfabeto es eterna permanencia dentro de nosotros, casi a nivel inconsciente. Y si para la cultura de Europa occidental la significación de la letralidad alfabética está en el origen latino (romano), para los herederos de Bizancio y de Rusia, en el griego.</p>
+
+        <p>Nos permitiremos una pequeña digresión hacia la educación escolar de los países de la democracia olímpica: los polis. Si las niñas en las escuelas de las heteras, las tíasas, estudiaban no solo deporte y danza, sino también versificación, significa que les enseñaban también escritura, letras. Los muchachos, es decir, toda la población masculina libre de los polis, futuros participantes de los «juegos», desde la edad de ocho-siete años estaban obligados a concurrir al «gimnasio».</p>
+
+        <p>¿Qué sabemos de la vida de los gimnasios y de sus habitantes? No más que de todo lo demás. Fragmentos de fragmentos. La severidad de la educación espartana. La leyenda del muchacho que robó un zorrito. El agotador trabajo de la «palestra», el hambre. Pero la reconstrucción puede ser otra. En el friso occidental del Partenón (Londres, Museo Británico) está representada la procesión festiva de los efebos-gimnasistas hacia el trono de los dioses. Son hermosos como jóvenes apolos, y el propio friso, por genio artístico de la ejecución, puede compararse con el «Trono Ludovisi». Hoy nuestro contacto con el arte de Grecia es literalmente sanador. Es inexplicable la fuerza del influjo de lo absolutamente bello sobre el hombre de cualquier época. Es omnipenetrante. Y es imposible imaginar aquel tiempo en que todo esto era integridad, unidad, generando imágenes de la armonía del universo. El camino a la Acrópolis: la vía de los ciudadanos que ascienden de la vida cotidiana a las alturas celestes. El cortar la respiración ante la belleza: hasta el día de hoy. El paso del mundo donde reina el tiempo hacia aquel donde el tiempo se ha detenido. La misma filosofía de la detención del tiempo que el tiempo de las Olimpiadas. Quizá sea verdad que «la belleza salvará al mundo». El arte antiguo de los siglos VI-IV a. C., gracias a la especial sensibilidad del artista hacia el material y al conocimiento de las leyes pitagóricas de la armonía, posee sin duda un poderoso campo de energía sanador para el alma. No lo percibimos, pero existe y está presente incluso en las buenas copias. Miguel Ángel, en un místico arrebato, repetía la liberación de los «cautivos» de la mazmorra del bloque de mármol. Él «veía» a aquel que está encerrado en ella y con esmero lo liberaba «por eliminación de lo superfluo». Eso era, precisamente, la «es-cultura». Se recuerda a «papá Carlo», que liberaba al niño Buratino de su cautiverio: todavía no había salido a la luz y ya parloteaba con ganas. Otro «artista», el bebedor Nariz Gris, con cada toque del cincel causaba sufrimiento al pequeño cautivo, hasta que asustado arrojó el tronco. Miguel Ángel veía la «idea» entera antes aún de ponerse a trabajar. En esto, él, genial heredero de la Antigüedad y de Platón, era semejante a los antiguos. Acaso ellos también veían a sus jóvenes dioses antes de su nacimiento del caos, en la tiniebla del material.</p>
+
+        <p>Los efebos salían cada día de los dormitorios occidentales o cuarteles donde vivían, o mejor dicho dormían, y se dirigían a la parte oriental de la ciudad, a las palestras del entrenamiento deportivo y a las clases del gimnasio. Los muchachos cruzaban la ciudad sobre blancos caballos de crines doradas (o plateadas); con los cuerpos ungidos hasta el bronce con el aceite de oliva deportivo. ¿En dónde reconocerías en este desfile a tu propio hijo? Son «nuestros jóvenes», futuros ciudadanos, guerreros, políticos, artistas. «E-febos»: hijos de Febo-Apolo. Hijos de Apolo-luz. Los entrenamientos en las palestras templaban sus cuerpos para la guerra, y sobre todo para los Juegos Olímpicos y demás juegos de la Hélade. Precisamente ellos, al terminar el gimnasio, eran los participantes de los Juegos. En la guerra, perder o ganar es en gran medida asunto también del azar. La victoria en los Juegos: camino hacia la inmortalidad, sellado con el bronce y el mármol de los monumentos-escultura. Entonces tu nombre está en el pedestal, y tú has roto la cinta del tiempo. Como cierto joven Gregor: reliquia del museo de Delfos, vencedor de los aurigas.</p>
+
+        <p>Precisamente los jóvenes efebos eran, en lo fundamental, el tema principal de la escultura griega. En el gimnasio, además de la palestra, aprendían gramática, aritmética, historia (según Homero). Todos sabían escribir, contar, conocían a Homero y la música, tocaban el instrumento de Apolo. El efebo citaredo es otra parte del Altar de Afrodita de seis caras, el Trono Ludovisi. Acaso toda la población masculina libre de la Grecia Antigua, del siglo VIII al III a. C., era alfabetizada: sabía contar, conocía a Homero y los fundamentos del arte de los bardos. Y además todos: espartanos, asiánicos, macedonios, eran iguales ante la democracia olímpica. Filipo, rey de Macedonia, envió repetidamente a su hijo Alejandro a las Olimpiadas. Se sabe también que con los poemas de Homero Alejandro no se separaba ni en las campañas. Es hijo de rey, pero ante la Olimpiada todos son iguales. Otra cosa es que Filipo podía permitirse, para su heredero y además de la educación común, un maestro privado, invitando a este servicio a Aristóteles, cuyo padre era médico de corte. Las malas lenguas dicen de Filipo que bebía de más y era un hombre grosero. Sin embargo, por Aristóteles pagó caro.</p>
+
+        <p>Muy le preocupaba al filósofo Sócrates la ciencia de la educación de los jóvenes. En el diálogo «Teeteto» se llama a sí mismo «partera». Decía que había heredado ese arte de su madre, que era partera. Y él, Sócrates, ayuda a liberar del cautiverio del cuerpo-cueva, para el conocimiento, al alma-razón. Para ser un hombre noble, una personalidad, no basta saber leer y escribir. Sócrates conversaba con los discípulos, sostenía con ellos el diálogo. Obligaba al discípulo a pensar, le descubría sus propias posibilidades no realizadas. Este método es conocido como dialéctica, es decir, conversación, disputa. Al parecer, Sócrates se apasionó demasiado en el terreno educativo. La sociedad se cansó de los esfuerzos de humanización y lo recompensó con la cicuta, por cierto, en plena época de florecimiento de la democracia ateniense.</p>
+
+        <p>En una sociedad fragmentada, privada de unidad estatal, operaban reguladores hoy ocultos para nosotros. La sociedad no era una, pero era igual en las gradas de los estadios y del teatro; ante la palestra y la escena. En los diálogos y las competiciones surgía la tensión de la genialidad que expresaba el espíritu único de los helenos. De una nación que no existía. «El genio del lugar». Como dice el poeta Iósif Brodski en los «Diálogos con Solomón Volkov»: «Por eso hablamos del genio del lugar: el lugar ya es otro, ha cambiado, pero el genio del lugar permanece». Lo que ha llegado hasta nosotros de la Hélade es precisamente el genio del lugar. «Y también nosotros estuvimos en Arcadia» se llama el cuadro de Nicolás Poussin (el clasicista francés), en el que los eternos «pastores» leen la inscripción sobre la eterna lápida.</p>
+
+        <p>Desde hace más de doscientos años está aceptada la periodización para la Grecia Antigua:</p>
+        <p class="no-indent">1 — homérico — siglos XI-IX a. C. Homero, Hesíodo, cerámica pintada, los vasos-tumba del Dípylon (o depósitos), el ornamento geométrico del meandro.</p>
+        <p class="no-indent">2 — arcaico — siglos VIII-VI a. C. Institución de los Juegos Olímpicos y Píticos, formación del «templo de órdenes» (templo in antis, templo de Apolo en Corinto). Escultura de «kuroi» y «korai». Formación del banquete clásico. Cerámica de figuras negras y su división en tipos. Poesía lírica. Filosofía presocrática. Pitágoras. La periodización aceptada, como toda estructura cronológica, es una convención. Y sin embargo se crea la impresión de que todo el orden del que hemos escrito, toda la «infraestructura» de la Hélade comenzó a formarse a partir del impulso que fue la institución de los Juegos Olímpicos del siglo VIII a. C., punto de partida de la formación del arte y la cultura grecoantiguos como totalidad.</p>
+        <p class="no-indent">3 — clásico — siglo V a. C., y clasicismo pleno — siglo IV a. C. Florecimiento de la arquitectura. Conjuntos olímpicos y délficos. Arquitectura de templos. El canon en la escultura (Fidias, Mirón, Policleto, Lisipo). Arquitectura teatral (Epidauro, teatro de Dioniso). Florecimiento de la tragedia antigua (Esquilo, Sófocles, Eurípides). El banquete. Cerámica de figuras rojas y de fondo blanco. Florecimiento de la filosofía (Protágoras, Sócrates, Platón, Aristóteles). Cínicos, estoicos, escépticos. Heródoto.</p>
+        <p class="no-indent">4 — helenismo — finales del siglo II a. C. Fin de la democracia olímpica. Desintegración del imperio de Alejandro. No hay, probablemente, un solo nombre en la historia universal igual al de Alejandro Magno de Macedonia (356-323 a. C.), hijo de Filipo. No se trata solo de que él, deliberada e ideológicamente, buscara convertir el aislamiento polico de la Hélade cerrada en un imperio occidental-oriental. Se trata de su propia personalidad, de su misterio. Desde Alejandría hasta China se contaban y se escribían historias sobre Alejandro Magno. Y tanto los vikingos de Islandia como los guerreros de Batú, los beduinos nómadas, los autores de novelas caballerescas e incluso los narradores de la Rus antigua lo consideraban su «propio» héroe. El «Relato del nacimiento y las victorias de Alejandro Magno» era ya en el siglo III d. C. un libro de lectura asidua. Y se dice que el propio Ferdousí adornó el «Shahnameh» con la biografía de Iskander el Bicornudo, que salvó al mundo de «Gog y Magog», que simbolizan el fin del mundo. En el portal del templo de la Intercesión sobre el Nerl, del siglo XII, Iskander está representado ascendiendo al cielo en una cestilla, arrastrado por dos águilas.</p>
+
+        <p>Él fue el punto culminante y final de la fabulosa Hélade antigua.</p>
+
+        <p>Sobre las ruinas del imperio: Alejandría, Rodas, Pérgamo, Quersoneso, el estado de los Seléucidas, etc. Arquitectura urbana, desarrollo de la literatura, cultura alejandrina. Desarrollo de la escultura decorativa y de jardín. Poesía. La comedia de Menandro. La historia de Plutarco. Arquímedes. El helenismo continúa las tradiciones de la cultura helénica clásica. Como escribió cierto helenista, «Grecia ganó en difusión, pero perdió el estilo (la pureza)».</p>
+
+        <p>No debe pensarse que la aparición de lo nuevo anula lo precedente. Por ejemplo, que la cerámica de figuras rojas anula la de figuras negras, el «orden corintio» al dórico, etc. Las cuestiones de la constitución de las nuevas formas, en el caso del arte helénico, no nos interesan tanto como la formación del «estilo». La periodización aceptada no son etapas de un «desarrollo» entendido de forma vulgar, sino eslabones iguales de una forma única. Quizá incluso esto no sea una especificidad de la Antigüedad, sino de cualquier cultura íntegra.</p>
+
+        <p>Las culturas «locales» helenísticas están saturadas de antigüedad, pero desprovistas de su integridad, del estilo por ella creado. ¿Qué es el estilo? Definimos este concepto como la UNIDAD de todos los componentes de la cultura. Y solo eso es el estilo. Por ejemplo, el gótico creó un estilo. El modernismo europeo creó un estilo. El islam creó un estilo. Otra cosa es que el estilo se desarrolla hasta cierto momento y después, durante larguísimo tiempo, se explota o se comenta a sí mismo.</p>
+
+        <p>El estilo es reconocible por el detalle, pues este siempre porta la característica del todo. Por el detalle de la columna, en la que vemos los pliegues del peplo. Por la forma y la proporción de los vasos, que viven también bajo la ley del «módulo» arquitectónico. El estilo del peinado a los talones, en el modo de vivir, moverse, comunicarse. El estilo es la composición micromolecular y la forma de la sociedad, su reconocimiento instantáneo en todo. Decimos «clásico» y en seguida vemos el arquetipo, el lugar genérico a través de los estratos seculares, el comentario a la idea fundamental del helenismo: el estilo creado por los griegos. Por ejemplo, las «Korai» del Erecteión. ¿Son escultura o detalle arquitectónico? Lo uno y lo otro, y además — tercero: el portar en igualdad lo que sobre ellas descansa.</p>
+
+        <p>Filolao, filósofo del siglo V a. C., en la época del florecimiento y la perfección del estilo, escribía: «Las cosas semejantes y de la misma naturaleza no necesitan en absoluto de la armonía, mientras que las que no son semejantes ni de la misma naturaleza deben ser unidas por la armonía, a fin de mantenerse juntas en el orden cósmico. Allí, en el orden cósmico, están los fundamentos del estilo». Difícil es objetar al filósofo del siglo V a. C.: «en el orden cósmico están los fundamentos del estilo», desde la mitología del Logos hasta el vestido y el vaso.</p>
+
+        <p>La escultura antigua, como la arquitectura, a diferencia del teatro, siempre dice «sí», aspirando a la imagen positiva perfecta. Incluso cuando en el argumento se trata de la lucha contra los centauros (hijos de la naturaleza y de los instintos) o contra los titanes, hijos del caos. Incluso en este caso el artista no quebranta las leyes del equilibrio de lo bello. En el arte de la Rus antigua basta con que el pintor escriba una espada alzada sobre la cabeza. Comprendemos: es el verdugo, pero está pintado según las mismas reglas que el santo.</p>
+
+        <p>En lo fundamental, la escultura antigua que conocemos representa a dioses, a vencedores en las competiciones panhelénicas, héroes, bajorrelieves de lápidas funerarias. Las esculturas arcaicas eran tensas, simétricas. Permanecían en posición firme o daban un paso apenas perceptible hacia adelante. No pueden moverse fuera de aquel pilar de piedra-columna en el que fueron encerrados. Nacieron dentro de la columna. Pitágoras pidió que le mostraran, en Delfos, el secreto santuario de Apolo. Vio un pilar con los contornos apenas trazados del cuerpo, de los brazos y de los pies. Pero en su rostro, delineado igualmente de manera convencional, ardían los ojos incrustados de piedra verdiazul. Era terrorífico. La mirada desde la tiniebla de la piedra-pilar, desde lo no-revelado. Sin embargo, los artistas enamorados del cuerpo humano ya en el período temprano modelan de manera excelente el pecho y la espalda del atleta. Y con especial minuciosidad, las rótulas. La escultura, todavía tensamente petrificada, gracias a estos detalles es potencialmente veloz en el movimiento.</p>
+
+        <p>El período arcaico es célebre por sus desnudos kuroi y sus korai en hermosos drapeados, con mechones rizados de cabellos dorados. Estas tallas de mármol conservan todavía huellas de su policromía. ¿Los kuroi son atletas, guerreros o jóvenes de Apolo? Es difícil responder a la pregunta. ¿Lo arcaico es el inicio del camino de desarrollo de la escultura antigua? ¿O lo arcaico es autosuficiente como estilo, aunque no siempre comprendible para nosotros en su tarea, en lo emocional y lo plástico? ¿Por qué, o a qué, sonríen los kuroi y las korai arcaicas con sus frías, incomprensibles sonrisas? Se deslizaron de los rostros de los héroes del período clásico para no volver jamás, salvo por el coqueteo travieso de las bellezas del helenismo alejandrino. Conocemos más lo clásico. La imagen de las korai pequeñas, encantadoramente femeninas y poéticas, desaparece asimismo en el período clásico. Ya no las hay, por alguna razón. Se recuerda la enorme tela de Lev Bakst del Museo Ruso «La muerte de la Atlántida». En primer plano del cuadro, sobre el fondo de relámpagos, lluvia y muerte, está pintada una impasible korai de sonrisa misteriosamente fría, con una paloma en el brazo.</p>
+
+        <p>Las sonrisas de los kuroi y las korai… ¿Quién descifrará su código secreto? Dos mil años después sonreirá igualmente inasible la Gioconda.</p>
+
+        <p>Y de pronto (la palabra «de pronto» mueve la historia y el cuento) la sonrisa se borra, y los kuroi de ayer se vuelven sin sonrisa y de algún modo interiormente concentrados. La multiethnicidad se nivela hasta el tipo helénico ideal, bien conocido por sus características. Aquellos hermosos jóvenes y doncellas serán amados por muchos a través de los siglos. Por los santos genios y no genios de todos los renacimientos y academias del mundo, por el arte fascista del Tercer Reich y por el realismo socialista de los Soviets. Los recuerdos de lo arcaico destellarán solo a comienzos del siglo XX, cuando se abran todas las ventanas y postigos del mundo.</p>
+
+        <p>El criterio fundamental para el comentario histórico-artístico serán los siglos V y IV a. C. Los nombres de Mirón, Policleto, Fidias, Lisipo, Escopas se ordenan en una serie tan incuestionable como los nombres de Esquilo, Sófocles, Eurípides o Heráclito, Pitágoras, Sócrates, Arquímedes. Ellos formulan las ideas básicas del pensamiento europeo: plástico y teatral, filosófico.</p>
+
+        <h3>IV. El «Canon» y su destino</h3>
+
+        <p>Pero precisamente a Policleto de Argos pertenece la escultura llamada «Doríforo»: el vencedor en los Juegos Olímpicos de lanzamiento de jabalina. Ya por sus contemporáneos fue reconocido como «canon», modelo de estilo, análogo al orden dórico. Un robusto hoplita, joven espartano con el rostro clásico del helénico ideal, está de pie, apoyado sobre una pierna, como si se dispusiera a dar un paso adelante. (La escultura de Policleto no ha llegado hasta nosotros en su original.) Es vencedor en las competiciones olímpicas de lanzamiento de jabalina. Es varonilmente sencillo, concentrado y sereno. No son héroes positivos, sino hombres perfectos de la sociedad. A diferencia de los héroes existenciales y trágicos de la dramaturgia, la escultura apela exclusivamente al héroe equilibrado, sano física y espiritualmente. «Un espíritu sano en un cuerpo sano». Así se convencían ellos mismos, sin quebrantar la «calma olímpica».</p>
+
+        <p>El historiador romano Plinio el Viejo (siglo I d. C.) anotó en el libro «Historia natural»: «Policleto de Sición (decimos nosotros: de Argos), discípulo de Agéladas, hizo el «Diadúmeno», estatua de un esbelto joven. Él mismo creó el «Doríforo», imagen de un joven y varonil portador de lanza, figura a la que los artistas llaman «canon»: por ella, como por una ley, determinan las reglas de su arte. Policleto es considerado el único hombre que expresó la teoría del arte en una obra de arte».</p>
+
+        <p>«Expresó la teoría en una obra de arte»: definición exactísima. Hasta nosotros no han llegado los originales de Policleto, Mirón, Lisipo, Critias y Nesiotes y de muchos otros. Esculturas convertidas desde hace tiempo en clásicas de manual. Pero gracias a las reglas de la escultura (especialmente si se trata de réplicas romanas o helenísticas), puede considerarse que las conocemos aproximadas al original. ¿Cuáles son esas reglas?</p>
+
+        <p>Policleto fue indudablemente «pitagórico». La base del «canon» está en la armonía calculada, que «no es ausencia de contrarios, sino su equilibrio».</p>
+
+        <p>El joven «Doríforo» quiere pasar del reposo al movimiento. ¿O al revés: del movimiento al reposo? Aquí está oculto lo principal. Este punto es inaprensible e indeterminado, como la partícula llamada «cuanto». Es, y no es: punto y onda a la vez. Entre la inmovilidad y el movimiento. Se apoya sobre una pierna. Tal composición se llama «quiasmo». Cuántos estudios están dedicados a este fenómeno: la composición del «quiasmo». Es difícil hablar de las cualidades estéticas del original, pues este se ha perdido. Pero el reconocimiento unánime, por el consejo artístico del año 457 a. C., de Policleto como autor sin par, «genio del lugar» que expresó el ideal nacional del hombre-héroe, dice mucho. El «Canon» es bello. Las cualidades físicas del hombre perfecto de rostro, alma y cuerpo: la medida de todas las cosas. He aquí solo los parámetros fundamentales de la perfección. La igualdad tripartita cabeza-torso-piernas corresponde a la trinidad de la esencia divina. La cabeza es 1/8 de la figura, el rostro, 1/10. Si la figura es de 18 unidades, el pie es de 3, la longitud del brazo, de 5. La envergadura de los brazos corresponde a la estatura. El quiasmo es asimétrico. Si de las dos piernas la más fuerte es la izquierda, de los brazos es la derecha. Movimiento de balancín. En lo arcaico, el espacio de la figura lo limitaba una invisible funda. Aquí, en cambio, el cuerpo es libre en el espacio: el movimiento le es fácil.</p>
+
+        <p>No citaremos todo el extenso comentario al «canon», de los filósofos antiguos a Miguel Ángel, Rodin y Picasso. Tan solo una cita del tratado teológico del siglo XIII «Guía del alma hacia Dios», escrito por el monje benedictino san Buenaventura.</p>
+
+        <blockquote>
+            <p>«Como todo lo creado es bello y de algún modo produce placer, y la belleza y el placer no pueden existir sin proporciones, y la proporción consiste ante todo en los números, se sigue necesariamente que todo está lleno de números, y por medio de esto el número aparece sobre todo en el alma del creador, y en las cosas — como la huella principal que conduce a la sabiduría».</p>
+        </blockquote>
+
+        <p>En una de las miniaturas del libro de 1250 «Biblia moralizada», Dios Creador está representado creando el mundo —la Tierra y los planetas— con un compás en las manos. Con un compás representa asimismo Albrecht Dürer al genio en el grabado «Melancolía». De ahí la medieval denominación latina del creador como Maestro. Pero de eso hablaremos a su tiempo.</p>
+
+        <p>El astrólogo y matemático alemán Johannes Kepler no soltaba el compás de sus manos. La mecánica celeste de las dependencias matemáticas del Sol y los planetas fue definida por él también mediante el concepto de «proporción áurea».</p>
+
+        <p>Ay, en otros tiempos las mediciones de las normas ideales despertaban la fantasía patológica de los racistas, que medían narices rectas, proporciones del cráneo y demás partes del cuerpo de los «arios» y soñaban con purificar de la pintoresca escoria racial todo, hasta la raíz de Policleto. Al pobre muchacho de Argos no le habría soñado semejante gloria. Sin embargo, la conciencia de la superioridad de los helenos sobre los bárbaros no era ajena a la altivez espartana y ática. Los fascistas tomaron como modelo el tipo espartano de joven. He aquí un triste ejemplo de cómo una y la misma idea genial del «canon» del hombre perfecto puede ser comentada en dirección directamente opuesta. Cierto es que a los colosos sin alma y formalistas de los «arios» del Tercer Reich les fue otorgado un plazo breve, como a una variante farsesca y carente de talento.</p>
+
+        <p>Hasta nosotros han llegado tres variantes de la idea única de Policleto: el «Canon», el «Doríforo», la «Amazona», con distintas posiciones de los brazos. Para el siglo V a. C. la escultura había adquirido otra propiedad fundacional de la futura plástica europea. Había abandonado el bloque del pilar y se había aparecido en el resplandor del volumen, transformándose a medida del rodeo circular. De bronce y mármol, a escala humana, viven en sus pedestales, respirando el aire y la azurina del cielo, entre bosques de cipreses y olivos o bajo la lluvia, siempre en armonía con las leyes generales del Universo y del Hombre. Solo condiciones creadas por un sistema que nos es desconocido podían darles vida inmortal y eterno retorno.</p>
+
+        <p>El «quiasmo», con la indeterminación de la detención del tiempo entre el «era» y el «será», se opone al discurrir del tiempo. La pausa puede considerarse la base de la mayoría de las composiciones del período maduro de la Antigüedad.</p>
+
+        <p>Un pequeño relieve («fragmento de fragmento») del Museo de la Acrópolis: «Niké ajustándose la sandalia». A la diosa de la victoria, la Niké áptera de los atenienses, está dedicado un pequeño y elegante templo jónico en el promontorio de la colina de la Acrópolis. Parece flotar entre el cielo y la tierra. Bajada a la Acrópolis, según creían los atenienses, permanecería aquí para siempre. Trágico error de los vencedores acerca de su inconmovibilidad. De modo que se desprendió de las alas prematuramente. Volvamos, sin embargo, al relieve del friso. Niké corre y «de pronto» se detuvo para ajustarse la sandalia. Una detención de un segundo durante la carrera. Como un fotograma detenido de una película. Los movimientos del cuerpo y de la túnica, de la pierna alzada, del brazo caído: todo es inexpresable y divinamente bello. Mármol dorado, resplandor translúcido, sensual, palpitante, joven. Un segundo de aliento interrumpido, y de nuevo la carrera. Miren las esculturas antiguas, los relieves, la pintura de los vasos: la composición siempre se construye sobre el instante del movimiento detenido. ¿Quién escribió eso, no será Goethe? «Detente, instante: eres hermoso». Qué nostalgia por lo irreversible. Detener el instante perfecto, que ante sus ojos se hizo inmortal, solo pudieron ellos, entonces. A la pregunta «¿cómo?» es imposible responder.</p>
+
+        <p>¿De dónde salían los artistas «únicamente geniales»? He aquí una de las preguntas que tampoco tiene respuesta. Han llegado hasta nosotros fragmentos de la cultura de la Grecia antigua, que suponemos bien estudiada, y todos ellos son geniales, irrepetiblemente perfectos. No solo por la idea, sino por la particular sensibilidad en la relación con el material del divino cincel. Acaso los artistas eran ya seleccionados en los gimnasios. Se convertían en discípulos de grandes maestros y luego, los más talentosos, ellos mismos se convertían en maestros. Existía un «sindicato de artistas» de distintas regiones de Grecia, y este sindicato vivía según sus propias leyes. Los estados guerreaban, y los artistas esculpían, construían. Como los actores, estaban exentos del servicio militar. Un privilegio único. En la guerra pueden matarte, y un genio es insustituible. ¿Y dónde conseguir entonces otro Peonio que esculpiera a la Niké flotando en el aire, suspendida sobre la colina de la Acrópolis, deslizándose con sus desnudos taloncitos por el peñasco? ¿Y para que el viento ligero y suave agitara sus vestiduras?</p>
+
+        <p>Unidos en la alianza, los artistas recibían un salvoconducto de privilegios extraterritoriales. ¿Cómo entender esto?</p>
+
+        <p>El patriotismo de la polis es sagrado. Es honor varonil y ciudadano. Los artistas-maestros, como los actores, no pertenecían a la polis, sino a la comunidad, la misma que los Juegos, la que se llamaba Hélade. La polis de los artistas era la Hélade, y no la ciudad donde nacía. La violación del deber cívico, la falta, se castigaban con la pena máxima: la expulsión de la polis, el ostracismo, la separación de la patria chica. ¿A quién eres necesario si no eres necesario a la patria? A Fidias, sin embargo, lo condenaron a la cicuta, como a Sócrates, por haberse representado en el escudo de Atenea a sí mismo y a Pericles, es decir, por haberse igualado a los dioses. Es, desde luego, una leyenda hermosa y trágica. Según otra leyenda, Fidias fue absuelto, diciendo: «Del que ustedes llaman Pericles, media cara la tapa el asta de la jabalina alzada: ¿qué parecido se puede juzgar aquí? Y aquel a quien ustedes llaman Fidias está representado como un viejo calvo y torpe: ¿acaso me habría yo representado así?». Solo aquel que ha merecido ser representado es el Héroe. El retrato, en cambio, es en todo caso la imagen de un hombre concreto, de una persona, de una personalidad. Los retratos de la Grecia antigua son imagen de la figura perfecta, apersonal, sobre-personal, del héroe de la Hélade. Como, por ejemplo, el joven Gregor, vencedor de los Juegos Píticos y auriga de Delfos. Su nombre está grabado en el zócalo del pedestal. Pero el que está en el pedestal ya se desprende del nombre, del tiempo, de la polis. Qué alta y dolorosa actitud hacia el hombre para nuestra conciencia. La leyenda cuenta de una madre (espartana, por supuesto) de gemelos vencedores en las carreras de carros. Ella rezaba en el bosque sagrado (mientras sus muchachos dormían tras la victoria) a Apolo, para que se los llevara en el sueño, pues nada más alto habría ya en su vida. Apolo atendió las lágrimas y la plegaria de esta ejemplar madre. Pero cualesquiera que sean las bellas leyendas que se cuenten, la cuestión de las condiciones creadas especial y artificialmente dio un resultado increíble: la explosión de genialidad en el arte. Hasta nosotros han llegado solo algunos nombres. Alguien anónimo, tocando con la mano el mármol, crea una pequeña korai o el Altar del amor y produce un milagro de belleza que jamás podrá ser repetido. Los griegos adoraban la belleza y la deificaban.</p>
+
+        <div class="poem">
+            <p>No, no es posible reprochar que</p>
+            <p>los hijos de Troya y los aqueos</p>
+            <p>por tal mujer sufran guerra</p>
+            <p>y males tan largos soporten.</p>
+            <p>Verdaderamente a las diosas eternas</p>
+            <p>(Elena) en hermosura</p>
+            <p>se asemeja.</p>
+        </div>
+        <p class="no-indent" style="text-align: right;">Homero, «Ilíada»</p>
+
+        <p>Los artistas, como creadores de la idea nacional, servían a la belleza y a la armonía como orden supremo, religión, sin tener propiedad ni familia. No les correspondía ni familia ni propiedad. Los artistas trabajaban por encargo del templo, de la ciudad o de (lo principal) las Olimpiadas. Cinco o siete personas tomaban un mismo encargo y para su ejecución recibían las mismas posibilidades de trabajo. Vencido el plazo, los maestros se reunían, se mostraban unos a otros sus obras y decidían qué escultura dejar. ¿Y quién decidía? ¿Quién era el árbitro objetivo? Por regla general, decidían solo aquellos que trabajaban en el encargo, y nadie más: ni los políticos, ni los militares, ni el pueblo. Al artista le colocaban una tablilla de arcilla con los nombres de los participantes y marcaban los primeros nombres de los vencedores. Quien recibía la mayoría de los votos era el vencedor. ¿Y las demás obras maestras? Las destruían los propios escultores; las convertían, por así decirlo, en polvo y cascote. Ya lo dijo cierto escritor ruso: «La frescura es una sola: la primera, que es también la última». También es verdad que en el concurso de dramaturgos tenían derecho a la representación los dos primeros premios. Dicen que Sófocles recibía siempre el segundo número.</p>
+
+        <p>Conocemos un concurso: el del encargo de la escultura del vencedor en el lanzamiento de jabalina. Por unanimidad fue elegido Policleto. Esta unión democrática de artistas fue destruida por la guerra del Peloponeso. El helenismo eligió otro camino. Aún no se había derrumbado la democracia olímpica, pero ya había aparecido el encargo cortesano. En consecuencia, el resultado era otro. El mito de Pigmalión, en cambio, pertenece al siglo de oro de la Antigüedad. El artista podía amar solo a su criatura, y a nadie más. Debía infundirle vida, espiritualizar su creación, animar la materia inerte, hacerla igual a sí mismo; no: superior, porque inmortal. De todas las variantes quedaba la mejor ante el tribunal de profesionales exigentes. Mucho después, en la Florencia del siglo XV, los «olleros» (el gremio de artistas), encabezados por Donatello, se esforzaron por resucitar, aunque fuera en parte, las ideas éticas y organizativas del fenómeno de la Grecia antigua. El resultado también fue bueno, pero es imposible regresar dos mil años atrás, e incluso en un plazo menor no se puede regresar a ninguna parte. Sin embargo, según el testimonio de Vasari, los preceptos de la «unión de olleros» fueron tal intento. «Olleros»: quienes de la masa informe y amorfa de piedra, colores y barro crean la forma, el supremo designio artístico. La idea-imagen, semejante a aquel «ollero»-maestro que creó todas las imágenes y del polvo, a su semejanza, la imagen del hombre. Los olleros-maestros: creadores de las formas-imágenes perfectas. La Antigüedad es la genética de la conciencia artística europea. No necesariamente en la adivinación directa de formas o imágenes. La Antigüedad está en la búsqueda de las armonías sistémicas del mundo, en la filosofía europea, en las tradiciones del teatro, por ejemplo del teatro ruso, y de la arquitectura. En la positividad espiritual del hombre y en la fe en la consumación.</p>
+
+        <p>Copas, jarras, lucernas, bebederos, platos, envases para conservar alimentos, urnas funerarias. Los objetos del uso doméstico y de los misteriosos ritos rituales eran creación de las manos de los olleros, los alfareros ceramistas de la Hélade.</p>
+
+        <p>El orgullo de cualquier museo: el vaso griego pintado; y para los manuales y las investigaciones científicas, la cerámica de figuras negras y rojas era, en realidad, en su origen (antes de convertirse en objeto de la industria de souvenirs), el ajuar del banquete ritual antiguo.</p>
+
+        <h3>V. El banquete</h3>
+
+        <p>El banquete antiguo es un ritual especial de la Hélade, único, tan carente de analogías como los Juegos Olímpicos, las escuelas de efebos, la unión de artistas. Salvo que recuerde remotamente al té chino o japonés. Por esencia, no por la forma del ritual. Porque tanto el banquete como el té son, según la expresión del teólogo padre Pável Florenski, «un recorte de la vida». El «recorte de la vida» es la vida ritual y festiva en relación con la vida cotidiana doméstica, con su discurrir. Y el banquete es, de nuevo, como todo lo principal en la Hélade, la detención del discurrir. El banquete griego era tan importante que la casa donde se vivía se llamaba «triclinio». El «triclinio» es cuando los lechos-klínai se disponen a manera de la letra «pi» (Π), es decir, tres (o cinco) klínai crean una composición-diseño que corresponde con la mayor exactitud a las condiciones del banquete.</p>
+
+        <p>Los lechos-klínai eran el principal mobiliario de la casa. Servían de lecho, bajo cuya tapa se guardaban la ropa y la vajilla. El diseño: el espacio del interior artísticamente comprendido. Al parecer, el nombre de la casa «triclinio» surgió junto con el banquete, en aquel mismo siglo VIII o VII, y se desdibujó, como todas las tradiciones helénicas en el helenismo, con la desintegración de la potencia macedonia, cuando en lugar de los reguladores «artísticos» de la Hélade prevalecieron las tradiciones locales, lo cual es bastante comprensible. La casa romana, en cambio, se llama «atrio», y su sentido está en la unión en torno a otro centro social.</p>
+
+        <p>Así pues, cuando llegaba la hora del banquete, las klínai se disponían en triclinio. Había una gran variedad de banquetes: con ocasión de las fiestas estatales, familiares y religiosas. Pero entendemos el banquete que debía ofrecer el marido, ciudadano libre de la polis. Por ejemplar se tiene el «banquete ático».</p>
+
+        <p>El banquete se considera correcto si los invitados casi no se conocen entre sí. El banquete constaba de dos partes: los diálogos y la orgía. O, como suele decirse, la «apolínea» y la «dionisíaca». Las conversaciones y los diálogos en el banquete tampoco son cotidianos, sino sobre los valores que elevan al hombre por encima del tiempo, en el fuera-de-tiempo detenido. Una de las obras de Platón que han llegado hasta nosotros se titula precisamente así: «El Banquete», es decir, diálogos sobre los valores verdaderos. Sócrates (según una de las versiones sobre su muerte), al llevar la copa de cicuta a los labios, pronunció como última palabra la del banquete. Antes del banquete los invitados ungían el cuerpo con una crema especial preparada a base de aceite de oliva, lo que hacía el cuerpo hermosamente dorado; se ponían el himatión festivo y adornaban la cabeza con una corona de hojas de vid. El banquete era servido por los hijos o se invitaban expresamente adolescentes de la escuela de efebos. Tras las abluciones y los preparativos, los invitados se reclinaban en las klínai. En medio del triclinio se ponía una mesa larga con frugal comida: algo así como un ligero tentempié de aceitunas, torta seca, uvas pasas. Traían el ajuar festivo. Colocaban la vajilla del banquete: cílicas para las libaciones, en hidrias traían agua de manantial, en ánforas el vino, que se mezclaba con agua en cráteras especiales.</p>
+
+        <p>Los griegos no sabían conservar el vino: bebían una magnífica bebida agria. En cuanto a los espartanos, al «banquete lacónico» (para 15 personas) pocos podían resistir. Bebían también cierta porquería hecha de menudillos de buey. Los antiguos chismeaban sobre Alcibíades, general tránsfuga y filósofo, discípulo de Sócrates. Que el hermoso Alcibíades, pasándose a los espartanos, se presentó al banquete lujosamente vestido y maquillado, y bebió aquel brebaje sin torcer el gesto. Mejor prueba ante los ojos de los propios anfitriones no podía haber. El banquete no era entretenimiento ni consuelo: era una prueba. En el banquete hay que saber comportarse tanto durante los diálogos como durante la orgía.</p>
+
+        <p>¿De qué se hablaba entre los hombres durante el banquete? ¿De política, de la bolsa, de las carreras, de las mujeres, de los hijos? No. En el banquete quedaban excluidos temas como: los gobernantes buenos y malos, las personas buenas y malas, mi riqueza y la de mis vecinos, mi familia, mi mujer y mis hijos y, finalmente, mis convicciones. ¿De qué hablar, si de dinero no se puede, chismear tampoco y de la familia tampoco? Para eso servían los vasos y las imágenes en sus costados y fondos. Es decir, la pintura de figuras negras y rojas no era simple adorno del tiesto. Se las contemplaba, se las acercaba a los ojos, o mejor dicho, daban la salida, el impulso a las conversaciones-diálogos del banquete. No en vano, al decir «vaso de figuras rojas» subrayamos la primacía o primogenitura de los argumentos pintados, de las figuras, y solo después su significado.</p>
+
+        <p>Más tarde, cuando el ritual del banquete se convirtió en juerga de soldados (y este período llegó ya con Alejandro) o en desenfreno, aproximadamente desde la segunda mitad del siglo IV a. C., la cerámica griega pintada comenzó a venderse más ampliamente que antes y a pintarse para la exportación, es decir, a hacerse tiradas. Se convirtió en adorno caro y objeto de coleccionismo. Hoy es la industria de souvenirs. Pero en la legendaria época de la democracia olímpica, los vasos cerámicos del banquete eran una parte sustancial de la vida. El tiesto pintado de la cerámica antigua, riqueza y adorno de los museos, es estudiado por la ciencia en la sección de «pintura». La pintura de los vasos cerámicos fue llamada a la vida por las mismas causas que toda la vida artística de la Grecia Antigua, es decir, menos que nada por causas decorativas. Hoy las imágenes en las paredes de las ánforas y las cílicas nos cuentan del mundo desaparecido más que cualquier historiador y libro.</p>
+
+        <p>El paso de la pintura arcaica de figuras negras a la más tardía de fondo blanco no es simple progreso técnico, sino proceso de un cuadro complejo del desarrollo espiritual. El vaso antiguo, en el período de florecimiento de la cultura helénica, es decir, del siglo VII al IV a. C., lentamente «iba siendo», pero «llegó a ser» sí mismo. En la época del helenismo no se desarrolló, sino que se repetía con algunas variaciones. Fue entonces cuando los fabricantes organizaron la producción de objetos de lujo para la exportación. Y en la época del florecimiento, los vasos eran necesarios para una ocupación vitalmente importante, para algo principal en la vida, y su significado era absolutamente utilitario y único. Desde luego, había muchas formas (más de 24) y muchos usos. Pero la cerámica doméstica para el día a día, para almacenar el grano, en este caso no la consideramos. Se fabricaba de otra arcilla y artísticamente era otra. La cerámica, las obras de barro: material que ya entonces se usaba ampliamente, en los más diversos fines económicos. De vidrio se gloría Roma. En Egipto sabían hacer fayenza. La vajilla para la economía, para almacenar y transportar el vino, el trigo, las aceitunas, se fabricó siempre, en todos los tiempos y civilizaciones. Eso era envase.</p>
+
+        <p>Ya desde la época del Medievo los artistas se llamaban a sí mismos maestros, pues eran semejantes a aquel MAESTRO que creó todo lo que existe y a nosotros. Él creó de la arcilla del polvo a Adán. Lo modeló de tierra, de barro. El tiesto y el cráneo tienen una única raíz. Y muchos cílicos para libaciones los hacían los maestros de la cerámica de Grecia en forma de hermosas cabezas, y de ellos se bebía en el banquete, creando cierta tradición. Y como eco tardísimo (¿lo recuerdan?), en la mezcla de todas las tradiciones, según la descripción de Mijaíl Bulgákov, del cráneo de Berlioz bebió en su banquete el propio Voland, en la novela «El maestro y Margarita».</p>
+
+        <p>En los ritos misteriosos, sobre todo en épocas más tardías, de tiestos e incluso de cráneos se hacían copas, adornándolas con piedras preciosas. Diógenes, que vivía en una tinaja (siglo IV a. C.), para quien la filosofía y el modo de vida son inseparables, mendigaba filosóficamente, y lo último a lo que renunció fue su copa, o mejor dicho, un fragmento, un tiesto de copa. Es una cuestión muy interesante la del maestro y su creación y su tiesto.</p>
+
+        <p>Por ahora volvamos a nuestro ajuar festivo. Está pintado con argumentos mitológicos, históricos, deportivos. Los argumentos de las imágenes eran objeto de discusión. Cada uno de los comensales hablaba, expresaba su juicio, improvisaba, citaba a Homero o a otros poetas, discuría, es decir, participaba dialógicamente en la disputa histórico-literaria sobre temas «principales», y no cotidianos y pasajeros.</p>
+
+        <p>¿Cabe sorprenderse de que precisamente Grecia, cuna del diálogo sobre las cosas verdaderas, se convirtiera en cuna de la filosofía europea? Los diálogos democráticos sobre la verdad en el banquete: ¿no es esa la base para el desarrollo de la filosofía?</p>
+
+        <p>El vino se mezclaba con el agua del manantial: la sangre de Dioniso con la pureza de las aguas nacidas. Dioniso y Apolo se unían en uno solo, incorporando, comulgando a los helenos en las formas supremas del ser. Los banquetes, desde luego, iban acompañados de música. En especial la parte orgiástica, dionisíaca, del banquete. Citaras, flautas, pequeños tambores. La música, dicho sea de paso, acompañaba también la guerra, las solemnidades, las competiciones y los banquetes. En la obra «La República» Platón pone la música a la cabeza de todas las artes. Su melodía: los modos y el ritmo, que son reflejo de la «música de las esferas». El filósofo Boecio, que vivió en el tránsito de los siglos IV-V d. C., fue cortesano en la bárbara corte goda de Teodorico. En el tratado «De institutione musica» afirma que el «alma del mundo» está entonada precisamente por la concordia musical. Ya los pitagóricos sabían que los distintos modos musicales influyen de manera diversa en la psique del hombre, y distinguían los ritmos agudos y moderados, aptos para fortalecer el espíritu. Las melodías y los ritmos lánguidos y sensuales. Pitágoras, se decía, devolvió la calma y la confianza en sí a un joven achispado, haciéndole escuchar una melodía en ritmo de espondeo, basada en el modo hipofrigio (pues el modo frigio lo afectaba excitándolo). Los pitagóricos se dormían bajo ciertos ritmos y despertaban bajo otros. Las teorías modernas de la curación por la música no se han alejado mucho de las pitagóricas y platónicas. La música enloquece y cura las heridas del alma. El mago Próspero, héroe de «La tempestad» de Shakespeare, domina toda la partitura del influjo de la música sobre el hombre. Shakespeare desarrolla la teoría de la energía musical cuando Próspero cuenta a Miranda sobre la virtud vital. Su servidor, el espíritu Ariel, con su canto curó el alma hasta a los duques enloquecidos.</p>
+
+        <p>Sin embargo, es hora de volver al comienzo del banquete, con la comida y el ajuar dispuestos ante los comensales. Los reclinados en las klínai eran libres en la conversación, y cada uno estaba obligado a hablar. El director del banquete (débil sombra del cual llegó a ser el moderno maestro de ceremonias) dirigía con destreza la conversación. El banquete, al igual que los juegos y el teatro, significa el orden supremo de las cosas, el resonar del orden divino del Universo. El banquete, como el teatro o las Olimpiadas, tiene por objetivo un tipo especial de purificación ritual, de renovación, es decir, la catarsis. Y por eso el comportamiento y los diálogos del banquete son especiales, y especial es el ajuar que, como ya mencionamos, era parte del banquete.</p>
+
+        <p>Las formas de los vasos del banquete repetían la estricta conceptualidad del orden arquitectónico. Es también testimonio del banquete como parte del estilo. Las cílicas, las cráteras, las ánforas, las hidrias, por la exactitud de formas y proporciones, son semejantes a los eternos absolutos de los cánones escultórico-arquitectónicos. Los imprescindibles ornamentos de meandros suásticos y de vegetación: símbolos del tiempo cíclico que eternamente retorna. Y los argumentos pintados son escenas de la vida, del deporte, del mito, de la historia. Ilustraciones de argumentos dramatúrgicos que aproximan el ritual del banquete al teatro, a la filosofía, al deporte. Con Apolo y Dioniso.</p>
+
+        <p>Los vasos de figuras negras son locuaces, con exposición detallada de los detalles del argumento, de las escenas de los combates, de los sucesos guerreros y heroicos. Cada uno de los comensales debía conocer el argumento, ilustrarlo con versos de Homero o con un comentario de la dramaturgia de los grandes trágicos. Nombrar con exactitud los nombres de los actores, etc. No era cosa fácil, el banquete.</p>
+
+        <p>En el banquete se hablaba en estilo elevado. Se ensalzaba la belleza del ritual y de las copas. «Ánforas, lécitos, fialas, / aríbalos y el más pequeño / cílic: todo es milagro viviente; / en los rasgos del vaso quebrado, / resolviendo el enigma de la muerte, / languidece el alma eterna. / Vivir de la belleza y la sabiduría de valores imperecederos: breve instante del banquete».</p>
+
+        <div class="poem">
+            <p>Quiero cantar de Troya,</p>
+            <p>quiero cantar de Cadmo,</p>
+            <p>mas la lira, mi lira,</p>
+            <p>me canta de Eros», —</p>
+        </div>
+
+        <p>eso es sobre el dionisismo del banquete. Así escribía el cantor del amor y del gozo Anacreonte (siglo V a. C.), creador de todo un género de la lírica «anacreóntica» europea. «¿Por qué calló la voz del gozo? / ¡Resonad cantos báquicos, / vivan las jóvenes doncellas!», cantaba dos mil quinientos años después Pushkin.</p>
+
+        <p>En el banquete se hablaba con inspiración de Troya, de Cadmo, de las hazañas de Heracles, de la carrera y de Eros, del lanzamiento de jabalina y de los carros.</p>
+
+        <p>Apolo y Dioniso protegen el teatro, la poesía, la música, la elocuencia. El ave de Apolo: el cuervo adivino. Apolo profetiza por medio de la Pitia délfica, sentada en el asiento profético sobre la grieta de la roca. Apolo Musageta, conductor de las musas. Las artes y ciencias supremas bajo su protección. Él es Febo-luz y maestro de la juventud: los efebos. A la elocuencia y a los diálogos del banquete los protege igualmente Apolo. Él es el citaredo y afina la «música de las esferas» en la armonía del mundo. ¿Qué significa la armonía de las esferas? Son los siete planetas (las siete notas de la escala moderna) que, girando en torno a la Tierra, suenan cada uno en su único registro (y color), creando el «concierto de las esferas». Hoy los planetas son más. Pero por eso la «música de las esferas» no desaparece a ninguna parte. Él es fundador y protector del teatro. Dioniso, en cambio, es la intuición, la sensibilidad, la organicidad, el protector de los vencidos. Dioniso, acompañado de panderos, flautas y tambores, va con su alegre cortejo de ménades y sátiros. Sus misterios están ligados al antiguo culto de la Tierra, la Muerte y el Renacimiento. El Macedonio gustaba de repetir que era hijo de Dioniso y de Osiris.</p>
+
+        <p>Dioniso es el dios trágico, el dios viviente. La tierra y el pan, el agua y el vino-sangre están ligados a los cultos dionisíacos. El retorno de la Antigüedad a comienzos del siglo XX fue impetuoso en todo el mundo, en Rusia especialmente. El cimmerio Koktebel, Max (Voloshin), encarnado personaje dionisíaco antiguo, no eran ya «retorno», sino encarnación, sentimiento físico de la Antigüedad. «Insomnio… Homero… Velas tensas. / Leí la lista de las naves hasta la mitad: / esa larga prole, ese tren de grullas / que sobre la Hélade un día se alzó», escribía Mandelshtam.</p>
+
+        <p>En la complejísima mística cultural del banquete, los dioses se encuentran no en oposición, sino complementándose.</p>
+
+        <p>Las imágenes resbalan por el volumen de los vasos, de modo que parecen un teatro de sombras sobre la superficie plana de la pantalla. Los vasos se pintaban de modo que el volumen del costado convexo se percibía como plano. ¿En qué está el secreto de la ilusión? En el siglo XX ese truco espacial lo descifró Pablo Picasso. Pero para él tiene mucha mayor importancia, que el teatro de sombras de figuras negras, la movilidad sensual, la ligereza de los dibujos del período de figuras rojas y de fondo blanco, cuando la línea crea la sensación de volumen.</p>
+
+        <p>Para el siglo V a. C. en las pinturas aparecieron temas nuevos: más competiciones deportivas, imágenes del banquete, de las orgías dionisíacas, de las danzas en corro, de los bailes, de las heteras, de los sátiros. Y de cómo era el ritual del banquete lo sabemos por los dibujos en los vasos. Cambió la vida: cambió el libro del banquete. Es imposible exagerar el significado del vaso de figuras rojas para toda la cultura ulterior. Todavía no está escrito el tratado «La cerámica de figuras rojas y de fondo blanco en la pintura y la danza europeas». La pintura de vasos es justamente la base del grafismo europeo.</p>
+
+        <div class="poem">
+            <p>En los rizos pálidos, cuernecillos malignos,</p>
+            <p>ebria de una danza maldita: —</p>
+            <p>como si de un vaso de figuras negras</p>
+            <p>hubiera corrido hasta la ola celeste,</p>
+            <p>tan solemne de desnuda», —</p>
+        </div>
+
+        <p>describía Ajmátova en el «Poema sin héroe» a una ménade, la «Colombina de los años diez», su amiga Olga Glebova-Sudeikina. Nosotros lo corregiríamos: «de figuras rojas». La de figuras negras estaba privada de la libertad y la ligereza del movimiento. Se parece más a un teatro de sombras. Los cuerpos se mueven con libertad en el espacio de figuras rojas, y no solo paralelamente al plano, como en los dramas de figuras negras del teatro de sombras.</p>
+
+        <p>La diferencia entre los dos principios, el «negro» y el «rojo», es espacial. En la «escritura roja» el artista se relaciona de otro modo con el terso costado de las cráteras y las ánforas.</p>
+
+        <p>El reformador del ballet clásico Mijaíl Fokín cuenta en su libro «Contra la corriente» los años diez, cuando montaba los ballets «antiguos» «Dafnis y Cloe», «El sueño del fauno». Pidió al compositor de «Dafnis y Cloe», Ravel, que encontrara música antigua, pero esta, naturalmente, resultó insuficiente para semejante trabajo. Al igual que el alfabeto de letras, que hizo posible la poesía y la escritura modernas, los griegos crearon la octava con el sonido dividido, crearon los modos musicales, pero esto, como casi todo en la Hélade, ha llegado en fragmentos de ideas. Pero la coreografía de los vasos está descrita como movimiento y danza en el vaso de figuras rojas: plenamente. «El ballet "El fauno" está montado por completo de tal suerte que los héroes se mueven de perfil. Resulta una serie de frisos. Los grupos son muy bellos y reproducen con exactitud los bajorrelieves y la pintura de los vasos». (p. 303, M. F.)</p>
+
+        <p>Mijaíl Fokín escribe cuánto tiempo pasó en el Ermitage, estudiando y anotando las posturas, los movimientos, el ritmo de aquellas imágenes que hoy podemos llamar «ballet de la pintura de vasos».</p>
+
+        <p>Lo mismo, y en mayor grado aún, cabe decir de la genial Isadora Duncan, que ella misma fue como una «Ménade» de Escopas encarnada que se nos apareció. En sus frenéticas danzas dionisíacas renacieron el alma y el cuerpo de las heteras del sueño antiguo. Y a ningún género del arte de la Antigüedad se le puede llamar texto íntegro del libro de los helenos en tal medida como al vaso ático. La pintura de figuras negras, por el canon estético de la imagen del cuerpo humano, corresponde más a lo arcaico en la escultura de los kuroi. La de figuras rojas: al clasicismo pleno. No solo se dirige al mito y al deporte. En ella hay muchos detalles vivos de la vida. Es el espejo de los «diálogos del banquete», del aliento vivo del pasado. Las sombras negras están proyectadas desde algún lugar por la fuerza de una doble proyección: del arquetipo al vaso y del vaso a través de los milenios hacia nosotros. Los detalles de la escritura roja son sensuales, próximos, cantados por Matisse y Picasso. (Con más detalle sobre el influjo antiguo, tanto en la pintura como en el grafismo del siglo XX, en otro texto.) Entre las formas cerámicas se encuentran con frecuencia las figurativas: lécitos y copas para vino escultóricos. Son cabezas femeninas, de piel negra, doncellas-esfinges. El vaso escultórico: el saborear y el eterno receptáculo. Es el labros, el doble significado de la forma: cabeza, cráneo, el eterno contener lo viviente. Y si es verdad que el estilo universal creado por los helenos retorna eternamente, se trata ante todo de ideas-formas, pero han llegado hasta nosotros fragmentariamente, salvo quizá los vasos pintados, comparables apenas con la crónica visual de una cultura cuyos contornos reales se alejan cada vez más.</p>
+
+        <p>Es imposible definir la esencia del fenómeno en su presente y futuro mejor de lo que lo hizo el padre de la filosofía europea, Platón, en el tratado «El Banquete». «¿Y qué sería (…) si a alguien le fuera dado ver esa suprema belleza pura, sin mezcla ni distorsión, no gravada por la carne humana, los colores humanos y todo otro vano fardo, si esa belleza divina pudiera contemplarse cara a cara en la integridad de su idea?</p>
+
+        <p>¿Acaso no comprendes que solo contemplando la belleza con aquello con que conviene contemplarla, podrá engendrar no fantasmas de perfección, sino perfección verdadera, porque aprehende la verdad y no el fantasma? Y a quien engendre y nutra la perfección verdadera, le toca en suerte el amor de los dioses, y si alguno de los hombres llega a ser inmortal, es precisamente él».</p>
+
+        <p>Platón veía con la mirada interior del genio no solo la inmensidad del camino de aquello que llamaba «integridad de su idea», sino la bifurcación de este camino en «verdadero» y «fantasmal». Y nosotros iremos tras el pensamiento de Platón y procuraremos separar la «perfección verdadera» de los «fantasmas de la perfección». Las balanzas de botica no son instrumento de determinación artística. En la palabra «procuraremos» no hay nada absoluto. El cristianismo, en especial la iconografía cristiana, absorbe la antigüedad de la perfección verdadera.</p>
+
+        <p>Desde el centro de la provincia griega de Asia Menor, Constantinopla, se irradian los caminos hacia el cristianismo latino-occidental y el greco-oriental. A la «Segunda Roma» hereda la ortodoxa «Tercera Roma» de Rusia. (De ello hablaremos con detalle en los capítulos correspondientes.)</p>
+
+        <p>En el arte de la Rus antigua, tanto el conjunto paisajístico de la arquitectura como la iconografía «de los rostros», en su aspiración a la armonía y a la perfección espiritual, se acercan más que nada a la idea platónica de la «perfección verdadera». Pero el largo camino cansó al héroe. A medida que se aleja de su patria chica, pierde volumen y peso. De atleta y comensal helénico se convirtió en asceta. Abandonando el mundo de aquí abajo, pasó al mundo de las alturas: así la Antigüedad se trasvasaba al cristianismo de los rostros.</p>
+
+        <p>Con la adopción del cristianismo la Antigüedad no desaparece, sino que existe paralelamente al pensamiento bizantino, lo alimenta, sobre todo en su época temprana.</p>
+
+        <p>La Antigüedad y la cultura cristiana: objeto especial de estudio del siguiente libro.</p>
+
+        <p>En cuanto a la imitación formal, al retorno a las formas y las imágenes del mundo antiguo, a la evocación de «fantasmas», búsquenlo en los «clasicismos» y las tradiciones de Europa. Lo más brillante está en la experiencia filosófica, literaria, arquitectónica y escultórica del eterno retorno. El retorno de la Antigüedad griega es multifacético y constante. Por extraño que parezca, comienza ya en los siglos III y II a. C., en la época del helenismo.</p>
+
+        <p>Todos los visitantes del Louvre se detienen sin falta junto a la Venus hallada en 1820 en la isla de Milos, y por ello llamada de Milo. Cuántas leyendas sobre guerras por ella entre países europeos, peleas y raptos. Eco de la Elena troyana. En las cajitas de perfumes y polvos de antes de la guerra, llamadas «Hélade», ella se identificaba con el mundo de la Grecia Antigua. «¿Dónde tienen ustedes puesta la Hélade?», preguntaban los visitantes del Museo de Bellas Artes, deseosos de ver la copia de la diosa glorificada. Es casi tan famosa como la «Gioconda».</p>
+
+        <p>El poeta Ósip Mandelshtam escribía en un poema trágico-irónico:</p>
+
+        <div class="poem">
+            <p>«Los griegos se llevaron a Elena por las olas /</p>
+            <p>y a mí: espuma salada en los labios. /</p>
+            <p>Con espuma salada en los labios me untará la belleza. /</p>
+            <p>Con un severo gesto de desdén me lo mostrará el vacío…»</p>
+        </div>
+
+        <p>La «Venus» fue creada, al parecer, en el tránsito de los siglos II al I a. C., a imitación de la escuela de Praxíteles, estilizada a la manera del clasicismo pleno. La mirada atenta percibirá la diferencia también en la actitud del artista hacia el material. Un drapeado pesado y algo tosco; se esfumó el palpitante aliento espiritualizado, la plasticidad, el misterio… Entre su creación y el modelo clásico transcurrieron 250-300 años. Aproximadamente el mismo tiempo que separa al «Mundo del Arte» de comienzos del siglo XX, de Alexandr Benois, de sus imágenes de la Francia de Luis XIV. No es una comparación literal, más bien una imagen o una analogía. Pero algo hay en la esterilidad de los esfuerzos de su restauración. Los arqueólogos del siglo I a. C. ya se enfrentaban a obras perdidas y dañadas del arte griego temprano. Ya Alejandría hacía copias de esculturas antiguas para estadios, palacios y parques. La auténtica Antigüedad (siglos V-IV a. C.) era ya entonces valorada altísimamente.</p>
+
+        <p>¿O acaso la Venus de Milo no tenía brazos desde el principio? No es una afirmación, sino una conjetura. ¿Puede ser que esta composición fuera originalmente tal como la encontraron? ¿Y que sea imposible colocar los brazos?</p>
+
+        <p>La fuerza del genio artístico era todavía grande en la época del helenismo, pero las condiciones que engendraron la cultura de las democracias olímpicas, de las escuelas de efebos, del banquete, naturalmente, ya no existían. Para la Grecia prehelénica, para la Hélade «anterior al Macedonio», como siempre en todo el mundo, lo importante era la mística de la creación, cuando precisamente el arte era más importante que la guerra, y los banquetes que la cotidianidad. Para los estados regidos por las dinastías de sátrapas de Alejandro, la vida era otra. La loba romana ya había alzado su cabeza, dispuesta a devorar tanto a Grecia como todo el imperio macedonio.</p>
+
+        <p>Y en tiempos de Augusto Octaviano, emperador romano y coleccionista de la antigüedad griega, en el siglo I d. C., fue articulado el concepto de lo «clásico»; fue enumerado aquello que entra en este concepto. El helenismo ya no era entonces considerado clásico. Comienza la época de los «clasicismos» con una Grecia Antigua imaginaria, y no auténtica: escolar, obligatoria, doctrinal, que llegó hasta el Renacimiento y los grandes descubrimientos arqueológicos del mundo antiguo en el siglo XIX.</p>
+
+    </article>
+
+    <script>
+        const toggle = document.getElementById('theme-toggle');
+        const icon = document.getElementById('theme-icon');
+
+        toggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+            toggle.title = isDark ? 'Modo Diurno' : 'Modo Nocturno';
+            toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+        });
+    </script>
+
+</body>
+</html>
