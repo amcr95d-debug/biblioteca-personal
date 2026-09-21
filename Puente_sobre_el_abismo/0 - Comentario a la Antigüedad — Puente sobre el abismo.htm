@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comentario a la Antigüedad — Puente sobre el abismo</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* =========================================
+           COLORES (Modo Diurno - International Klein Blue)
+           ========================================= */
+        :root {
+            --bg-body: #002FA7;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.88);
+            --text-muted: rgba(255, 255, 255, 0.6);
+            --border-color: rgba(255, 255, 255, 0.35);
+            --border-light: rgba(255, 255, 255, 0.15);
+            --fab-bg: #ffffff;
+            --fab-color: #002FA7;
+            --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+            --quote-border: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Modo Nocturno - Deep Navy Blue */
+        body.dark-mode {
+            --bg-body: #001233;
+            --text-primary: #ffffff;
+            --text-secondary: rgba(255, 255, 255, 0.85);
+            --text-muted: rgba(255, 255, 255, 0.5);
+            --border-color: rgba(255, 255, 255, 0.2);
+            --border-light: rgba(255, 255, 255, 0.1);
+            --fab-bg: #ffffff;
+            --fab-color: #001233;
+            --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+            --quote-border: rgba(255, 255, 255, 0.4);
+        }
+
+        /* =========================================
+           ESTILOS GENERALES
+           ========================================= */
+        * { transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease; }
+        
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            line-height: 1.75;
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 2em 1.5em 5em;
+            color: var(--text-primary);
+            background-color: var(--bg-body);
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 0.2em;
+            font-weight: normal;
+            letter-spacing: 0.05em;
+            color: var(--text-primary);
+        }
+
+        h2 {
+            font-size: 1.4em;
+            text-align: center;
+            margin-top: 2.5em;
+            margin-bottom: 1.5em;
+            font-weight: bold;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        h3 {
+            font-size: 1.1em;
+            text-align: center;
+            margin-top: 2.5em;
+            margin-bottom: 1em;
+            font-weight: bold;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        p {
+            text-align: justify;
+            margin-bottom: 1.2em;
+            text-indent: 1.5em;
+        }
+
+        p.no-indent { text-indent: 0; }
+
+        blockquote {
+            margin: 1.5em 2em;
+            padding-left: 1.5em;
+            border-left: 3px solid var(--quote-border);
+            font-style: italic;
+            color: var(--text-secondary);
+        }
+
+        blockquote p { text-indent: 0; margin-bottom: 0.8em; }
+
+        .poem {
+            margin: 1.5em 2em;
+            font-style: italic;
+            text-indent: 0;
+        }
+
+        .poem p {
+            text-indent: 0;
+            margin-bottom: 0.3em;
+            text-align: left;
+            padding-left: 2em;
+            text-indent: -2em;
+        }
+
+        em { font-style: italic; }
+
+        sup {
+            font-size: 0.75em;
+            vertical-align: super;
+            line-height: 0;
+        }
+
+        .page-number {
+            display: block;
+            text-align: center;
+            font-size: 0.8em;
+            color: var(--text-muted);
+            margin: 2em 0 1em 0;
+        }
+
+        .footnotes {
+            margin-top: 4em;
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5em;
+            font-size: 0.9em;
+            color: var(--text-secondary);
+        }
+
+        .footnotes h3 {
+            text-align: left;
+            font-size: 1em;
+            margin-bottom: 1em;
+            text-transform: none;
+            letter-spacing: normal;
+            color: var(--text-primary);
+        }
+
+        .footnotes p {
+            text-align: left;
+            text-indent: -1.5em;
+            padding-left: 1.5em;
+            margin-bottom: 0.6em;
+            font-size: 0.9em;
+        }
+
+        .section-break {
+            text-align: center;
+            margin: 2.5em 0;
+            font-weight: bold;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 1.1em;
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 2em;
+        }
+
+        .source-note {
+            text-align: center;
+            font-size: 0.85em;
+            color: var(--text-muted);
+            margin-bottom: 2em;
+            font-style: normal;
+        }
+
+        .author {
+            text-align: center;
+            font-size: 1.1em;
+            color: var(--text-secondary);
+            margin-bottom: 2em;
+            letter-spacing: 0.05em;
+        }
+
+        /* =========================================
+           BOTÓN FLOTANTE (Modo Nocturno)
+           ========================================= */
+        .fab-toggle {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background-color: var(--fab-bg);
+            color: var(--fab-color);
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease;
+            z-index: 1000;
+            outline: none;
+        }
+        .fab-toggle:hover { transform: scale(1.1); }
+        .fab-toggle:active { transform: scale(0.95); }
+        .fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            body { padding: 1.2em 1em 4em; }
+            h1 { font-size: 1.8em; }
+            h2 { font-size: 1.1em; }
+            .fab-toggle { bottom: 16px; right: 16px; width: 50px; height: 50px; }
+            .fab-toggle .material-icons { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+    <button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo Nocturno">
+        <i class="material-icons" id="theme-icon">dark_mode</i>
+    </button>
+
+    <article id="content">
+        <h1>Comentario a la Antigüedad 5</h1>
+
+        <p>Tiene en sus manos la nueva edición de las conferencias únicas de Paola Vólkova, «Puente sobre el abismo».</p>
+
+        <p>Según la propia Paola Dmítrievna, se trata de un «libro extraordinario». Ofrece una nueva mirada sobre la historia del arte, sobre la creación y sobre la personalidad del artista. En el libro se trazan nuevas conexiones entre formas alejadas entre sí, que no yacen ni en la superficie ni ante los ojos: como, por ejemplo, entre la antigua cultura de Creta y las tradiciones de raíz de la cultura española, entre otras muchas cosas.</p>
+
+        <p>Paola Dmítrievna hablaba de su proyecto: «Me resulta muy difícil escribir. Todos se sorprenden siempre de que escriba tan poco. El caso es que la palabra oral y la escrita se diferencian la una de la otra… Solo en los últimos tiempos he aprendido a escribir de manera breve, económica, lapidaria. He dado un paso muy grande. He concebido una serie de cinco libros, el primero de los cuales ya he publicado».</p>
+
+        <p>Paola fue siempre una personalidad singular. Discípula del legendario historiador del arte Abram Efros, quien «le enseñó lo esencial: esforzarse por mirar la obra de arte con independencia y criterio propios», no solo enseñó en el VGIK (Instituto Estatal de Cinematografía) y en los Cursos Superiores de Guionistas y Realizadores, sino que fue la mayor especialista en la obra de Tarkovski. En su círculo de amistades figuraban personalidades tan notables como Lev Gumiliov, el escultor Ernst Neizvéstny, los filósofos Merab Mamardashvili y Aleksandr Piátigorski; su retrato fue pintado por Nikolái Akímov y por Vladímir Veisberg, cuya obra se conserva en la Galería Tretiakov, y el artista Dmitri Plavinski sostenía que nadie como ella podía comprender y valorar su obra.</p>
+
+        <p>Sus conferencias fueron célebres en Moscú desde los años cincuenta: en ellas se formaron varias generaciones de cineastas. Quienes tuvieron una sola vez la fortuna de asistir a las clases de esta mujer asombrosa jamás las olvidarán. Pedagoga y narradora brillante, a través de sus libros, de sus conferencias e incluso de una simple conversación, inculcaba en sus alumnos e interlocutores el sentido de la belleza, procurando llegar a su alma y purificarla de la grisura acumulada.</p>
+
+        <p>Paola poseía una colosal libertad interior, una independencia de carácter y unos conocimientos ilimitados. Su fuerza motriz eran la pasión, la imaginación y una percepción sutil de las vibraciones del universo. Defender sus puntos de vista exigía un coraje cotidiano, y solo cabía admirarse de dónde lo sacaba cada vez. Vestida siempre con belleza y elegancia, incluso cuando la ropa era un lujo inaccesible, y en plena forma, Paola era una interlocutora ingeniosa e insuperable, dispuesta a abordar cualquier tema de conversación. Era imposible no quererla, e imposible no admirarla.</p>
+
+        <p>En las obras de arte sabía ver lo que habitualmente permanece oculto a la mirada ajena; conocía aquel mismo lenguaje de los símbolos que para los demás constituye un gran misterio, y era capaz de explicar con las palabras más sencillas lo que encierra tal o cual obra. De las conferencias de Paola Vólkova puede discreparse; con ellas se puede estar de acuerdo o no. Ella nunca dijo que pretendiera la exactitud científica: invitaba al lector a reflexionar sobre el arte y sobre el mundo. «El punto de vista siempre tiene derecho a existir como proposición de reflexión», decía Paola Dmítrievna. Sus conferencias se convertían en una revelación no solo para el público profano, sino también para los profesionales. Sus relatos sobre el mundo antiguo, sobre los grandes maestros de la pintura, sobre sus creaciones y sus destinos, eran tan verosímiles y tan ricos en minuciosos pormenores y detalles que involuntariamente sugerían la idea de que ella no solo había vivido en aquellos tiempos, sino que había tratado personalmente a cada uno de sus protagonistas.</p>
+
+        <p>«Creo —decía Paola Dmítrievna— que toda esa historia de la cultura que conocemos no la conocemos solo porque sea objeto de custodia museística o de hallazgos arqueológicos, sino también porque todavía hoy responde a ciertas preguntas. Es la historia ininterrumpida del comentario. Comentamos la Antigüedad hasta el día de hoy. El siglo XX es el siglo del comentario. Es el puente sobre el abismo. Es el eco, las resonancias, las respuestas. Conversamos con nuestro pasado. Nos es necesario como memoria, porque la memoria es lo principal. Gracias a ese comentario infinito con la cultura artística universal poseemos una riqueza psicológica, intelectual y espiritual. Hoy asistimos a una crisis innegable de las ideas y de la ideología. ¿Por qué no mirar el mundo desde una posición distinta, aún no adoptada? A los lectores, y en especial a los jóvenes, les es necesario un libro así».</p>
+
+        <p>Paola Dmítrievna no llegó a concluir su proyecto: publicó en vida un solo libro. Han pasado más de dos años desde su partida. Su sueño de crear un ciclo de cinco libros se ha cumplido. Al principio, los libros alcanzaron un éxito colosal gracias al ciclo de programas del canal de televisión «Kultura», «Puente sobre el abismo». Ahora viven su propia vida.</p>
+
+        <p>La presente edición ofrece el ciclo «Puente sobre el abismo» en la forma en que fue concebido por Paola Dmítrievna: en orden histórico-cronológico. En él se incluirán asimismo conferencias inéditas procedentes de su archivo personal.</p>
+
+        <p>El libro está concebido para un público amplio de lectores interesados en la literatura sobre el arte, con un abanico que abarca desde la Antigüedad y el Mediterráneo europeo hasta el conceptualismo del siglo XX.</p>
+
+        <p class="no-indent" style="text-align: right;">María Lafont</p>
+
+        <h2>Introducción</h2>
+
+        <p>Desde hace muchos años, estudiantes de distintas generaciones consideran que debo publicar mis conferencias de «Historia Universal del Arte», impartidas en el VGIK y en los Cursos Superiores de Guionistas y Realizadores.</p>
+
+        <p>Esto resultó imposible, para gran pena mía.</p>
+
+        <p>En primer lugar, una conferencia es siempre, hasta cierto punto, improvisación más el campo emocional del contacto con el auditorio. En segundo lugar, la palabra escrita y la oral son completamente distintas. Mis conferencias fueron grabadas muchas veces. ¿Y qué? Incluso bien editadas, se leen mal. Envidio infinitamente a quien «habla como escribe».</p>
+
+        <p>En las conferencias ilustro mi tarea con una multitud de citas y de recuerdos de cómo tal o cual impresión se transformaba en el encuentro directo. Cuántos libros se han leído sobre la Acrópolis de Atenas. Pero, cuando «me encontré» con ella en 1991 y subí los escalones hacia la entrada de los Propileos, todos mis conocimientos, toda mi percepción del mundo quedaron trastocados, puestos del revés. La Antigüedad griega se comprende a través de Grecia, el lugar de su nacimiento. O el genial templo de Poseidón, en Sunión. ¿Quiénes fueron aquellos que vivieron entre piedras, en la verticalidad incesante de subidas y bajadas, y que crearon, en la superación de las dificultades, aquella armonía pura que aún hoy arranca lágrimas de fervor religioso, de asombro ante el milagro visible e imperecedero, y de felicidad? ¿Qué eran aquellas condiciones que engendraron un fenómeno de genialidad y de absoluto que nunca se repitió? Y uno empieza a pensar en esas causas, y no en lo que ya sabe y puede leer en los libros de los especialistas más autorizados. Lo mismo pasó a aplicarse prácticamente a todo el conjunto de mis conferencias. Una sacudida natural fue la «Venus» de Velázquez en la National Gallery de Londres, o la pintura de Tiziano en el Prado, la de Goya en el mismo Prado, el «Autorretrato con la Musa» de Vermeer en Viena. Lo que uno ve en la madurez de la vida poco se corresponde con las mejores ilustraciones e incluso con los textos más profundos. Aunque, por supuesto, los conocimientos adquiridos a lo largo de la vida son un fundamento sólido para la nueva construcción.</p>
+
+        <p>En tercer lugar. Mi discurso de conferenciante es prolijo, y para publicar el curso harían falta tomos enteros, lo cual resulta imposible. Yo, en cambio, escribo con economía: tiendo al texto condensado.</p>
+
+        <p>En cuarto lugar. Con el tiempo el contenido del curso cambia. Viajo mucho. Veo el mundo en el original, y no en una imagen. «Y siento y pienso de otra manera». Poco a poco nació la forma de escritura que propone este libro. Del resultado no me corresponde a mí juzgar.</p>
+
+        <p>En total está previsto publicar cinco libros, que abarcarán desde la Antigüedad hasta el conceptualismo del siglo XX.</p>
+
+        <p>«Puente sobre el abismo» es el primero, escrito sobre la base de la Antigüedad, de la que, como es sabido, solo quedan fragmentos de fragmentos. Su articulación entre sí (salvo la cronología canónica) es siempre, en sí misma, una concepción. Varios temas serán transversales a todos los libros. Uno de ellos es el comentario a la Antigüedad, es decir, cómo toda la historia posterior de la cultura europea le «hace eco». El segundo es el desfile carnavalesco de las máscaras a través de los siglos.</p>
+
+        <p>Nuestro conocimiento del pasado —de la historia universal o patria, o incluso simplemente de nuestra propia vida— cambia con el tiempo, y los hechos son muy importantes, pero no absolutos.</p>
+
+        <p>Cuánto cambió nuestra representación cuando en marzo de 1971, en Shaanxi, cerca de la actual Xi'an, unos campesinos cavaban un pozo y… comenzó el descubrimiento de la tumba del emperador Shihuangdi, el «Primer Emperador» de la dinastía Qin, que vivió en el siglo III a. C. A la luz salieron de bajo de los túmulos el ejército de terracota del emperador: el ejército de la eternidad. Este descubrimiento de finales del siglo XX cambió sustancialmente no solo la idea de la historia, la cultura y el arte de la Antigua China, sino la imagen del mundo en general. Y es que hoy vemos comparaciones e interconexiones allí donde hace apenas 100 años nada era posible ver. Hay muchos ejemplos así. Los fénix de la historia se alzan de entre las cenizas durante todo el siglo XIX y el XX, en especial el XX. Las imágenes del mundo cambian, y no podemos hacer caso omiso de ello. Estamos obligados a hacernos preguntas. La pregunta está por encima de la respuesta. He ahí nuestra tarea: intentar plantear preguntas a lo largo de los cinco libros previstos, si alcanzan las fuerzas y el tiempo para publicarlos. Como es sabido, hoy el tiempo está extraordinariamente comprimido, y la autora ya no es precisamente joven. Y tanto quisiera responder a tantas preguntas.</p>
+
+        <p>Nuestra conciencia, nuestra memoria son «de montaje»: todo depende del contexto. Los vencidos se proclaman vencedores, y los testigos, participantes activos de los acontecimientos. No existe una descripción objetiva de la historia universal ni de la propia. Un muchacho amigo mío cayó en una histeria histórica al ver la tumba de Napoleón bajo la cúpula de Los Inválidos: ¡cómo se atreven los franceses a honrar así al enemigo de Rusia! Al parecer, a la historia la hace la historia. Las personas son solo sus reclutas, talentosos o carentes de talento. Cocreadores o destructores. Por eso el «punto de vista» siempre tiene derecho a existir, como proposición de reflexión. Los hechos permanecen: el contexto cambia. Pero también los hechos, con el tiempo, se precisan en función de la arqueología o de la archivística.</p>
+
+        <p>A cada uno de los capítulos de este libro acompaña un pequeño álbum de ilustraciones. Uno quisiera mayor, pero tales son las condiciones de la edición. El libro está escrito de manera divulgativa, aunque presupone cierto caudal de conocimientos previos.</p>
+
+        <p>La autora agradece de todo corazón, por su ayuda en el proyecto previsto, a Oleg Galushko y a Dmitri Gurdzhia, así como a María Gogosova-Lafont y al personal de los Cursos Superiores de Guionistas y Realizadores.</p>
+
+        <p class="no-indent" style="text-align: right;">Paola Vólkova</p>
+    </article>
+
+    <script>
+        const toggle = document.getElementById('theme-toggle');
+        const icon = document.getElementById('theme-icon');
+
+        toggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+            toggle.title = isDark ? 'Modo Diurno' : 'Modo Nocturno';
+            toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+        });
+    </script>
+
+</body>
+</html>
