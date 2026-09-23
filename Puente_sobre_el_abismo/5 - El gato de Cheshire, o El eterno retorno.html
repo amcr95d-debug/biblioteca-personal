@@ -6,9 +6,6 @@
 <title>Capítulo 5. El gato de Cheshire, o El eterno retorno — Un puente sobre el abismo</title>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <style>
-/* =========================================
-   COLORES (Modo diurno — International Klein Blue)
-   ========================================= */
 :root {
     --bg-body: #002FA7;
     --text-primary: #ffffff;
@@ -22,7 +19,6 @@
     --realce: rgba(255, 255, 255, 0.78);
     --medida: 34rem;
 }
-
 body.dark-mode {
     --bg-body: #001233;
     --text-primary: #ffffff;
@@ -35,13 +31,8 @@ body.dark-mode {
     --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
     --realce: rgba(255, 255, 255, 0.72);
 }
-
-/* =========================================
-   TIPOGRAFÍA Y MAQUETACIÓN
-   ========================================= */
 * { box-sizing: border-box; }
 html { font-size: 17px; scroll-behavior: smooth; }
-
 body {
     margin: 0;
     background: var(--bg-body);
@@ -51,258 +42,43 @@ body {
     hyphens: auto;
     -webkit-tap-highlight-color: transparent;
 }
-
-main {
-    max-width: var(--medida);
-    margin: 0 auto;
-    padding: 4rem 16px 7rem;
-}
-
-/* Encabezado del capítulo */
-.cab {
-    text-align: center;
-    margin-bottom: 3.2rem;
-}
-.cab__num {
-    margin: 0 0 .7rem;
-    font-size: .8rem;
-    letter-spacing: .28em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-}
-.cab__tit {
-    margin: 0;
-    font-size: 1.85rem;
-    font-weight: 400;
-    line-height: 1.25;
-}
-.cab::after {
-    content: "";
-    display: block;
-    width: 4.5rem;
-    height: 1px;
-    margin: 2rem auto 0;
-    background: var(--border-color);
-}
-
-/* Subtítulo */
-.subtitulo {
-    text-align: center;
-    font-size: 1.05rem;
-    font-style: italic;
-    color: var(--text-secondary);
-    margin: 0 0 2.4rem;
-    text-indent: 0;
-    line-height: 1.45;
-}
-
-/* Epígrafes y subtítulos de sección */
-.epigrafe {
-    margin: 3.2rem 0 1.6rem;
-    font-size: .95rem;
-    font-weight: 700;
-    line-height: 1.45;
-    letter-spacing: .07em;
-    text-align: center;
-    text-transform: uppercase;
-    color: var(--realce);
-}
-
-/* Epígrafe inicial */
-.epigrafe-inicial {
-    margin: 3.2rem 0 2.4rem;
-    padding-left: 1.5rem;
-    border-left: 1px solid var(--border-color);
-    font-style: italic;
-    color: var(--text-secondary);
-    font-size: .95rem;
-    line-height: 1.55;
-}
-.epigrafe-inicial p {
-    text-indent: 0;
-    margin: 0 0 .6rem;
-    text-align: left;
-}
-.epigrafe-inicial .attribution {
-    text-align: right;
-    font-style: normal;
-    font-size: .85rem;
-    color: var(--text-muted);
-    margin-top: .4rem;
-}
-
-/* Párrafos */
-p {
-    margin: 0;
-    text-align: justify;
-    text-indent: 1.35em;
-    position: relative;
-}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.subtitulo { text-align: center; font-size: 1.05rem; font-style: italic; color: var(--text-secondary); margin: 0 0 2.4rem; text-indent: 0; line-height: 1.45; }
+.epigrafe { margin: 3.2rem 0 1.6rem; font-size: .95rem; font-weight: 700; line-height: 1.45; letter-spacing: .07em; text-align: center; text-transform: uppercase; color: var(--realce); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
 p + p { margin-top: 0; }
-
-/* Sin sangría tras encabezados, figuras, versos, citas, firmas y enumeraciones */
-.cab + p,
-.subtitulo + p,
-.epigrafe + p,
-.epigrafe-inicial + p,
-figure + p,
-.verso + p,
-.cita + p,
-.firma + p,
-.sin-sangria + p { text-indent: 0; }
-
-/* Párrafos sin sangría (enumeraciones, versos sueltos, etc.) */
+.cab + p, .subtitulo + p, .epigrafe + p, .epigrafe-inicial + p, figure + p, .verso + p, .cita + p, .firma + p, .sin-sangria + p, .image-placeholder + p { text-indent: 0; }
 .sin-sangria { text-indent: 0; }
-
-/* Firma / atribución a la derecha */
-.firma {
-    margin: .8rem 0 0;
-    text-align: right;
-    text-indent: 0;
-    font-style: italic;
-    color: var(--text-secondary);
-    font-size: .92rem;
-}
-
-/* Ilustraciones */
-figure {
-    margin: 2.4rem 0;
-    text-align: center;
-}
-figure img {
-    max-width: 100%;
-    height: auto;
-    border: 1px solid var(--border-color);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    border-radius: 2px;
-}
-figcaption {
-    margin-top: .7rem;
-    font-size: .84rem;
-    font-style: italic;
-    line-height: 1.45;
-    text-align: left;
-    color: var(--text-muted);
-}
-
-/* Marcador de posición de imagen */
-.img-placeholder {
-    max-width: 100%;
-    min-height: 180px;
-    background: rgba(255,255,255,0.08);
-    border: 1px dashed var(--border-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-muted);
-    font-style: italic;
-    font-size: .85rem;
-    padding: 1.5rem;
-    text-align: center;
-    border-radius: 2px;
-    line-height: 1.4;
-}
-
-/* Versos */
-.verso {
-    margin: 1.6rem 0 1.6rem 2.2rem;
-    font-style: italic;
-    line-height: 1.5;
-}
-.verso .v {
-    display: block;
-    text-indent: -1.2em;
-    padding-left: 1.2em;
-}
-
-/* Citas en bloque */
-.cita {
-    margin: 1.6rem 0 1.6rem 2.2rem;
-    padding: 0;
-    font-style: italic;
-    font-size: .95rem;
-}
-.cita p {
-    text-indent: 0;
-    text-align: left;
-}
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+figure { margin: 2.4rem 0; text-align: center; }
+figure img { max-width: 100%; height: auto; border: 1px solid var(--border-color); box-shadow: 0 4px 12px rgba(0,0,0,0.3); border-radius: 2px; }
+figcaption { margin-top: .7rem; font-size: .84rem; font-style: italic; line-height: 1.45; text-align: left; color: var(--text-muted); }
+figcaption strong { color: var(--text-secondary); font-style: normal; font-weight: 700; display: block; margin-bottom: .2rem; }
+.image-placeholder { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; margin: 2.4rem auto; padding: 1.5rem; border: 1px dashed var(--border-color); background-color: rgba(255,255,255,0.08); border-radius: 2px; color: var(--text-muted); font-style: italic; font-size: .85rem; min-height: 180px; max-width: 100%; line-height: 1.4; }
+.image-placeholder span { font-weight: 700; font-style: normal; color: var(--text-secondary); margin-bottom: .5rem; letter-spacing: .07em; text-transform: uppercase; font-size: .78rem; }
+.verso { margin: 1.6rem 0 1.6rem 2.2rem; font-style: italic; line-height: 1.5; }
+.verso .v { display: block; text-indent: -1.2em; padding-left: 1.2em; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
 .cita p + p { margin-top: .45rem; }
-.cita .attribution {
-    text-align: right;
-    font-style: normal;
-    font-size: .85rem;
-    color: var(--text-muted);
-    margin-top: .5rem;
-}
-
-/* Separador de sección */
-.separador {
-    margin: 2rem 0;
-    text-align: center;
-    letter-spacing: .6em;
-    color: var(--text-muted);
-    text-indent: 0;
-}
-
-/* Notas al pie */
-.footnotes {
-    margin-top: 4rem;
-    border-top: 1px solid var(--border-color);
-    padding-top: 1.5rem;
-    font-size: .88rem;
-    color: var(--text-secondary);
-}
-.footnotes h3 {
-    margin: 0 0 1rem;
-    font-size: .8rem;
-    font-weight: 700;
-    letter-spacing: .28em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    text-align: left;
-}
-.footnotes p {
-    text-align: left;
-    text-indent: -1.4em;
-    padding-left: 1.4em;
-    margin-bottom: .6rem;
-    line-height: 1.5;
-}
-sup {
-    font-size: .7em;
-    vertical-align: super;
-    line-height: 0;
-    color: var(--text-secondary);
-}
-
-/* =========================================
-   BOTÓN FLOTANTE (Modo nocturno)
-   ========================================= */
-.fab-toggle {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    background-color: var(--fab-bg);
-    color: var(--fab-color);
-    border: none;
-    cursor: pointer;
-    box-shadow: var(--shadow);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease;
-    z-index: 1000;
-    outline: none;
-}
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
 .fab-toggle:hover { transform: scale(1.1); }
 .fab-toggle:active { transform: scale(0.95); }
 .fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
 body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
-
-/* Diseño adaptable */
 @media (max-width: 46rem) {
     html { font-size: 16px; }
     main { padding: 2.5rem 16px 4rem; }
@@ -310,9 +86,7 @@ body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
     .epigrafe-inicial { padding-left: 1rem; }
     .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
     .fab-toggle .material-icons { font-size: 23px; }
-    .fab-nav { bottom: 18px; left: 18px; gap: 10px; }
-    .fab-nav__btn { width: 50px; height: 50px; }
-    .fab-nav__btn .material-icons { font-size: 23px; }
+    .image-placeholder { padding: 1rem; min-height: 100px; }
 }
 </style>
 </head>
@@ -325,17 +99,11 @@ body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
 
 <main>
 
-    <!-- ============================================
-         ENCABEZADO DEL CAPÍTULO
-         ============================================ -->
     <header class="cab">
         <p class="cab__num">Capítulo 5</p>
         <h1 class="cab__tit">El gato de Cheshire, o El eterno retorno</h1>
     </header>
 
-    <!-- ============================================
-         EPÍGRAFES
-         ============================================ -->
     <div class="epigrafe-inicial">
         <p>«No hay muerte —<br>esto todos lo saben».</p>
         <p class="attribution">A. Ajmátova</p>
@@ -346,16 +114,10 @@ body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
         <p class="attribution">Maximilián Voloshin</p>
     </div>
 
-    <!-- ============================================
-         INTRO
-         ============================================ -->
     <p>Esto se refiere en especial a la Grecia antigua. Ella está en todas partes: fuera y dentro de nosotros. Somos su derivado a través del alfabeto, el arte, la filosofía, el teatro. Y, al mismo tiempo, ¿dónde está ella? Ruinas, fragmentos de textos, retazos de informaciones. Del poeta Arquíloco, del siglo VI a. C., apenas han quedado unas pocas líneas. La Antigüedad, que es «nuestro todo», es, al mismo tiempo, «la sonrisa del gato de Cheshire». La sonrisa está; el gato, no.</p>
 
     <p>«Los sistemas del mundo son vaciados de almas antiguas», escribía el poeta Maximilián Voloshin. Del alma antigua, quiénes no han hecho vaciados, en sentido literal y figurado. Desde los genios del Renacimiento hasta los clasicistas de los siglos VIII—XIX —los neoclásicos de la Alemania fascista y de Italia—, del «Imperio socialista», y los genios de comienzos del siglo XX, con Picasso a la cabeza.</p>
 
-    <!-- ============================================
-         I. LA DEMOCRACIA OLÍMPICA
-         ============================================ -->
     <h2 class="epigrafe">I. La democracia olímpica</h2>
 
     <p>No se apaga la lucha de opiniones y conceptos: ¿qué es la democracia? Consideramos así: la participación del pueblo en el gobierno y la igualdad de todos los ciudadanos ante la ley —he ahí la democracia. «Todas las leyes sirven a un solo fin: hacer a los ciudadanos iguales en la mayor medida posible… Es imposible hallar un principio mejor para la más admirable forma de Estado», escribía en su obra «La República» el filósofo Platón. La democracia es la igual responsabilidad ante el código. Y eso es todo. Nada romántico. Pero cuando unos son más iguales que otros, eso no puede ser democracia. La democracia ideal no ha existido nunca, pero en ciertas épocas hubo aspiración hacia ella. En las disputas contemporáneas los adeptos citan a menudo la Antigua Grecia como ejemplo, pero solo tienen en mente la democracia ateniense del siglo V a. C. ¿Y qué hay del resto de la Antigua Grecia? A Sócrates lo juzgaron por librepensamiento y lo condenaron a muerte en el año 399 a. C. precisamente en Atenas, en la época del florecimiento furioso de la democracia. Aquí hacen falta precisiones, o mejor, preguntas. ¿Qué es la Antigua Grecia? ¿Qué queremos decir?</p>
@@ -406,9 +168,6 @@ body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
 
     <p>Grecia nos dejó no tanto la arquitectura, el arte, sino las ideas de la arquitectura y del arte. Las ideas del teatro. Las ideas de la filosofía. Son suficientes para todos desde hace más de dos mil años. El mundo inmortal de las imágenes-ideas, al que le fue otorgada la larga vida del eterno retorno, donde la belleza vive tanto en los elementos sueltos como en su armónica proporcionalidad. Camino continuo a través de los siglos, las culturas, las civilizaciones.</p>
 
-    <!-- ============================================
-         II. EN EL MUNDO DE LAS IMÁGENES-IDEAS
-         ============================================ -->
     <h2 class="epigrafe">II. En el mundo de las imágenes-ideas</h2>
 
     <p>En mayo de 2006 se inauguró en Düsseldorf el Instituto de Literatura Friedrich Schiller. La función clásica de este instituto encuentra expresión exacta en la imagen del templo griego: el períptero, rectángulo alargado con relación de lados de 1 × 0,65. Otros materiales, otra técnica constructiva, otro espacio interior. El Instituto de Düsseldorf resuena, con eco lejano, con el Partenón, devolviendo desde lejos su imagen transfigurada.</p>
@@ -439,9 +198,6 @@ body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
 
     <p>No empleamos por casualidad la palabra teatral «dramaturgia» en relación con el arte antiguo. Está calculado siempre para el diálogo. Para la cultura helenística el diálogo es lo principal. El diálogo del templo con el paisaje. Nuestro diálogo con Grecia, que dura siglos. La marcha de los ciudadanos a la Acrópolis, el paso por las puertas-propíleos, el ritual de conducta en la Acrópolis. Sus formas de vida social: todo es diálogo. Hemos llamado a la Hélade democracia olímpica. Pero en su base está la escucha, o el diálogo intracultural. Los diálogos de las competiciones, del teatro, de las pinturas de los vasos, de los apuntes de los textos filosóficos, de las injurias del Ágora, de los banquetes…: todo es diálogo, absurdo sin la escucha, la mudez social.</p>
 
-    <!-- ============================================
-         III. «LA ESCUCHA»
-         ============================================ -->
     <h2 class="epigrafe">III. «La escucha»</h2>
 
     <p>El diálogo es posible a condición de escucha, es decir, de la acústica de la «comprensión». Yo te escucho-comprendo con la conciencia, y no solo con el oído. Yo te escucho, es decir, comprendo lo que dices. «A todo sonido, su resonancia en el aire vacío». El eco. La Antigüedad es universalmente «eco-sonora». El diálogo y la escucha mutua de aquel país disuelto en el mito son tan únicos como toda su materia enigmática. Los diálogos helénicos tampoco se repitieron jamás, como las demás ideas de la antigüedad. La fragmentariedad de los textos escritos no es solo pérdidas y avatares del destino, sino también el hecho de que en la Antigua Grecia el gran volumen de información era oral. Una industria verdaderamente escrita es propia de un tiempo más tardío. Por ejemplo, del helenismo alejandrino y sobre todo de Roma. El desarrollo de la escritura, la invención del pergamino en el helenístico Pérgamo fueron condicionados por necesidades ya distintas de la cultura. El alfabeto griego es literal, no silábico ni de palabras. El alfabeto no desapareció en ninguna parte, sino que se volvió protoalfabeto de nuestra habla oral y escrita. Crea una nueva movilidad, nuevas posibilidades de la lengua escrita, pero el valor de los diálogos orales y públicos en la Grecia de los polis es superior al de los escritos. La eco-sonoridad de Grecia ya en la época del helenismo (siglos III–I a. C.) prácticamente comenzó a desaparecer gradualmente. Y desapareció por mucho tiempo. Y hasta la elocuencia jurídica en la Roma democrática no puede compararse con los diálogos de Grecia. Sin hablar de Bizancio, que escribía una cosa, decía otra y pensaba una tercera.</p>
@@ -588,9 +344,6 @@ body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
 
     <p>El criterio fundamental para el comentario histórico-artístico serán los siglos V y IV a. C. Los nombres de Mirón, Policleto, Fidias, Lisipo, Escopas se ordenan en una serie tan incuestionable como los nombres de Esquilo, Sófocles, Eurípides o Heráclito, Pitágoras, Sócrates, Arquímedes. Ellos formulan las ideas básicas del pensamiento europeo: plástico y teatral, filosófico.</p>
 
-    <!-- ============================================
-         IV. EL «CANON» Y SU DESTINO
-         ============================================ -->
     <h2 class="epigrafe">IV. El «Canon» y su destino</h2>
 
     <p>Pero precisamente a Policleto de Argos pertenece la escultura llamada «Doríforo»: el vencedor en los Juegos Olímpicos de lanzamiento de jabalina. Ya por sus contemporáneos fue reconocido como «canon», modelo de estilo, análogo al orden dórico. Un robusto hoplita, joven espartano con el rostro clásico del helénico ideal, está de pie, apoyado sobre una pierna, como si se dispusiera a dar un paso adelante. (La escultura de Policleto no ha llegado hasta nosotros en su original.) Es vencedor en las competiciones olímpicas de lanzamiento de jabalina. Es varonilmente sencillo, concentrado y sereno. No son héroes positivos, sino hombres perfectos de la sociedad. A diferencia de los héroes existenciales y trágicos de la dramaturgia, la escultura apela exclusivamente al héroe equilibrado, sano física y espiritualmente. «Un espíritu sano en un cuerpo sano». Así se convencían ellos mismos, sin quebrantar la «calma olímpica».</p>
@@ -646,9 +399,6 @@ body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
 
     <p>El orgullo de cualquier museo: el vaso griego pintado; y para los manuales y las investigaciones científicas, la cerámica de figuras negras y rojas era, en realidad, en su origen (antes de convertirse en objeto de la industria de souvenirs), el ajuar del banquete ritual antiguo.</p>
 
-    <!-- ============================================
-         V. EL BANQUETE
-         ============================================ -->
     <h2 class="epigrafe">V. El banquete</h2>
 
     <p>El banquete antiguo es un ritual especial de la Hélade, único, tan carente de analogías como los Juegos Olímpicos, las escuelas de efebos, la unión de artistas. Salvo que recuerde remotamente al té chino o japonés. Por esencia, no por la forma del ritual. Porque tanto el banquete como el té son, según la expresión del teólogo padre Pável Florenski, «un recorte de la vida». El «recorte de la vida» es la vida ritual y festiva en relación con la vida cotidiana doméstica, con su discurrir. Y el banquete es, de nuevo, como todo lo principal en la Hélade, la detención del discurrir. El banquete griego era tan importante que la casa donde se vivía se llamaba «triclinio». El «triclinio» es cuando los lechos-klínai se disponen a manera de la letra «pi» (Π), es decir, tres (o cinco) klínai crean una composición-diseño que corresponde con la mayor exactitud a las condiciones del banquete.</p>
