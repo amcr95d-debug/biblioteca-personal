@@ -6,9 +6,6 @@
 <title>Capítulo 4. Puente sobre el abismo — Un puente sobre el abismo</title>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <style>
-/* =========================================
-   COLORES (Modo diurno — International Klein Blue)
-   ========================================= */
 :root {
     --bg-body: #002FA7;
     --text-primary: #ffffff;
@@ -22,7 +19,6 @@
     --realce: rgba(255, 255, 255, 0.78);
     --medida: 34rem;
 }
-
 body.dark-mode {
     --bg-body: #001233;
     --text-primary: #ffffff;
@@ -35,13 +31,8 @@ body.dark-mode {
     --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
     --realce: rgba(255, 255, 255, 0.72);
 }
-
-/* =========================================
-   TIPOGRAFÍA Y MAQUETACIÓN
-   ========================================= */
 * { box-sizing: border-box; }
 html { font-size: 17px; scroll-behavior: smooth; }
-
 body {
     margin: 0;
     background: var(--bg-body);
@@ -51,258 +42,43 @@ body {
     hyphens: auto;
     -webkit-tap-highlight-color: transparent;
 }
-
-main {
-    max-width: var(--medida);
-    margin: 0 auto;
-    padding: 4rem 16px 7rem;
-}
-
-/* Encabezado del capítulo */
-.cab {
-    text-align: center;
-    margin-bottom: 3.2rem;
-}
-.cab__num {
-    margin: 0 0 .7rem;
-    font-size: .8rem;
-    letter-spacing: .28em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-}
-.cab__tit {
-    margin: 0;
-    font-size: 1.85rem;
-    font-weight: 400;
-    line-height: 1.25;
-}
-.cab::after {
-    content: "";
-    display: block;
-    width: 4.5rem;
-    height: 1px;
-    margin: 2rem auto 0;
-    background: var(--border-color);
-}
-
-/* Subtítulo */
-.subtitulo {
-    text-align: center;
-    font-size: 1.05rem;
-    font-style: italic;
-    color: var(--text-secondary);
-    margin: 0 0 2.4rem;
-    text-indent: 0;
-    line-height: 1.45;
-}
-
-/* Epígrafes y subtítulos de sección */
-.epigrafe {
-    margin: 3.2rem 0 1.6rem;
-    font-size: .95rem;
-    font-weight: 700;
-    line-height: 1.45;
-    letter-spacing: .07em;
-    text-align: center;
-    text-transform: uppercase;
-    color: var(--realce);
-}
-
-/* Epígrafe inicial */
-.epigrafe-inicial {
-    margin: 3.2rem 0 2.4rem;
-    padding-left: 1.5rem;
-    border-left: 1px solid var(--border-color);
-    font-style: italic;
-    color: var(--text-secondary);
-    font-size: .95rem;
-    line-height: 1.55;
-}
-.epigrafe-inicial p {
-    text-indent: 0;
-    margin: 0 0 .6rem;
-    text-align: left;
-}
-.epigrafe-inicial .attribution {
-    text-align: right;
-    font-style: normal;
-    font-size: .85rem;
-    color: var(--text-muted);
-    margin-top: .4rem;
-}
-
-/* Párrafos */
-p {
-    margin: 0;
-    text-align: justify;
-    text-indent: 1.35em;
-    position: relative;
-}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.subtitulo { text-align: center; font-size: 1.05rem; font-style: italic; color: var(--text-secondary); margin: 0 0 2.4rem; text-indent: 0; line-height: 1.45; }
+.epigrafe { margin: 3.2rem 0 1.6rem; font-size: .95rem; font-weight: 700; line-height: 1.45; letter-spacing: .07em; text-align: center; text-transform: uppercase; color: var(--realce); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
 p + p { margin-top: 0; }
-
-/* Sin sangría tras encabezados, figuras, versos, citas, firmas y enumeraciones */
-.cab + p,
-.subtitulo + p,
-.epigrafe + p,
-.epigrafe-inicial + p,
-figure + p,
-.verso + p,
-.cita + p,
-.firma + p,
-.sin-sangria + p { text-indent: 0; }
-
-/* Párrafos sin sangría (enumeraciones, versos sueltos, etc.) */
+.cab + p, .subtitulo + p, .epigrafe + p, .epigrafe-inicial + p, figure + p, .verso + p, .cita + p, .firma + p, .sin-sangria + p, .image-placeholder + p { text-indent: 0; }
 .sin-sangria { text-indent: 0; }
-
-/* Firma / atribución a la derecha */
-.firma {
-    margin: .8rem 0 0;
-    text-align: right;
-    text-indent: 0;
-    font-style: italic;
-    color: var(--text-secondary);
-    font-size: .92rem;
-}
-
-/* Ilustraciones */
-figure {
-    margin: 2.4rem 0;
-    text-align: center;
-}
-figure img {
-    max-width: 100%;
-    height: auto;
-    border: 1px solid var(--border-color);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    border-radius: 2px;
-}
-figcaption {
-    margin-top: .7rem;
-    font-size: .84rem;
-    font-style: italic;
-    line-height: 1.45;
-    text-align: left;
-    color: var(--text-muted);
-}
-
-/* Marcador de posición de imagen */
-.img-placeholder {
-    max-width: 100%;
-    min-height: 180px;
-    background: rgba(255,255,255,0.08);
-    border: 1px dashed var(--border-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-muted);
-    font-style: italic;
-    font-size: .85rem;
-    padding: 1.5rem;
-    text-align: center;
-    border-radius: 2px;
-    line-height: 1.4;
-}
-
-/* Versos */
-.verso {
-    margin: 1.6rem 0 1.6rem 2.2rem;
-    font-style: italic;
-    line-height: 1.5;
-}
-.verso .v {
-    display: block;
-    text-indent: -1.2em;
-    padding-left: 1.2em;
-}
-
-/* Citas en bloque */
-.cita {
-    margin: 1.6rem 0 1.6rem 2.2rem;
-    padding: 0;
-    font-style: italic;
-    font-size: .95rem;
-}
-.cita p {
-    text-indent: 0;
-    text-align: left;
-}
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+figure { margin: 2.4rem 0; text-align: center; }
+figure img { max-width: 100%; height: auto; border: 1px solid var(--border-color); box-shadow: 0 4px 12px rgba(0,0,0,0.3); border-radius: 2px; }
+figcaption { margin-top: .7rem; font-size: .84rem; font-style: italic; line-height: 1.45; text-align: left; color: var(--text-muted); }
+figcaption strong { color: var(--text-secondary); font-style: normal; font-weight: 700; display: block; margin-bottom: .2rem; }
+.image-placeholder { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; margin: 2.4rem auto; padding: 1.5rem; border: 1px dashed var(--border-color); background-color: rgba(255,255,255,0.08); border-radius: 2px; color: var(--text-muted); font-style: italic; font-size: .85rem; min-height: 180px; max-width: 100%; line-height: 1.4; }
+.image-placeholder span { font-weight: 700; font-style: normal; color: var(--text-secondary); margin-bottom: .5rem; letter-spacing: .07em; text-transform: uppercase; font-size: .78rem; }
+.verso { margin: 1.6rem 0 1.6rem 2.2rem; font-style: italic; line-height: 1.5; }
+.verso .v { display: block; text-indent: -1.2em; padding-left: 1.2em; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
 .cita p + p { margin-top: .45rem; }
-.cita .attribution {
-    text-align: right;
-    font-style: normal;
-    font-size: .85rem;
-    color: var(--text-muted);
-    margin-top: .5rem;
-}
-
-/* Separador de sección */
-.separador {
-    margin: 2rem 0;
-    text-align: center;
-    letter-spacing: .6em;
-    color: var(--text-muted);
-    text-indent: 0;
-}
-
-/* Notas al pie */
-.footnotes {
-    margin-top: 4rem;
-    border-top: 1px solid var(--border-color);
-    padding-top: 1.5rem;
-    font-size: .88rem;
-    color: var(--text-secondary);
-}
-.footnotes h3 {
-    margin: 0 0 1rem;
-    font-size: .8rem;
-    font-weight: 700;
-    letter-spacing: .28em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    text-align: left;
-}
-.footnotes p {
-    text-align: left;
-    text-indent: -1.4em;
-    padding-left: 1.4em;
-    margin-bottom: .6rem;
-    line-height: 1.5;
-}
-sup {
-    font-size: .7em;
-    vertical-align: super;
-    line-height: 0;
-    color: var(--text-secondary);
-}
-
-/* =========================================
-   BOTÓN FLOTANTE (Modo nocturno)
-   ========================================= */
-.fab-toggle {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    background-color: var(--fab-bg);
-    color: var(--fab-color);
-    border: none;
-    cursor: pointer;
-    box-shadow: var(--shadow);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease;
-    z-index: 1000;
-    outline: none;
-}
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
 .fab-toggle:hover { transform: scale(1.1); }
 .fab-toggle:active { transform: scale(0.95); }
 .fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
 body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
-
-/* Diseño adaptable */
 @media (max-width: 46rem) {
     html { font-size: 16px; }
     main { padding: 2.5rem 16px 4rem; }
@@ -310,9 +86,7 @@ body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
     .epigrafe-inicial { padding-left: 1rem; }
     .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
     .fab-toggle .material-icons { font-size: 23px; }
-    .fab-nav { bottom: 18px; left: 18px; gap: 10px; }
-    .fab-nav__btn { width: 50px; height: 50px; }
-    .fab-nav__btn .material-icons { font-size: 23px; }
+    .image-placeholder { padding: 1rem; min-height: 100px; }
 }
 </style>
 </head>
@@ -325,17 +99,11 @@ body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
 
 <main>
 
-    <!-- ============================================
-         ENCABEZADO DEL CAPÍTULO
-         ============================================ -->
     <header class="cab">
         <p class="cab__num">Capítulo 4</p>
         <h1 class="cab__tit">Puente sobre el abismo</h1>
     </header>
 
-    <!-- ============================================
-         EPÍGRAFES
-         ============================================ -->
     <div class="epigrafe-inicial">
         <p>«Aquello fue hace mucho tiempo,<br>en otro planeta».</p>
         <p class="attribution">A. Vertinski</p>
@@ -346,9 +114,6 @@ body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
         <p class="attribution">I. Brodski</p>
     </div>
 
-    <!-- ============================================
-         I. EL «BA-GUA»
-         ============================================ -->
     <h2 class="epigrafe">I. El «ba-gua» como cosmogonía arcaica de la Antigua China</h2>
 
     <p>Esto sucedió hace muchísimo tiempo. Tan tiempo atrás que es realmente imposible representarse el tiempo que nos separa, por ejemplo, de la construcción de las Grandes Pirámides de Guiza, de los conjuntos de Stonehenge o del Laberinto de Creta. Según Rudyard Kipling, «aquello fue cuando el alma del hombre era inmortal». Pues bien, en aquel tiempo (según la historia mitológica) a uno de los emperadores chinos, que vivía a comienzos del III milenio a. C., le ocurrió un prodigio.</p>
@@ -415,9 +180,6 @@ body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
 
     <p>La tensión de las oposiciones, la interdependencia sin la cual la vida es impensable, el círculo del desplazamiento de la luz a la tiniebla, el renacer hacia una nueva encarnación. Hasta aquí dejamos momentáneamente el relato sobre la idea arcaica y primaria del «ba-gua», donde de las ocho hemos tomado solo cuatro significaciones.</p>
 
-    <!-- ============================================
-         II.
-         ============================================ -->
     <h2 class="epigrafe">II.</h2>
 
     <p>En 1960 salió en lengua rusa el «Libro de las Mutaciones», o «I Ching», en la traducción de Yulián Shchutski, represaliado en 1936 por su vinculación con la antroposofía. A Shchutski le debemos lo mismo que al traductor de Homero al ruso, A. Gnédich. Gracias a estas personas admirables Rusia adquirió tesoros inapreciables de la cultura universal. El «I Ching» lo crearon generaciones de filósofos-científicos chinos. Es un libro sobre los caminos de la mutación, sobre el Universo y el Hombre, sobre lo Eterno y lo Instantáneo. Pues el instante es parte de la eternidad y participación en ella. El «I Ching» atraviesa los siglos de toda la cultura china. Testimonio del altísimo desarrollo, de la síntesis de la conciencia científica, artística y poética. Pero hay en él algo que permanece enigma hasta hoy. Con él adivinaban sobre la guerra y la paz los emperadores de China, que no confiaban en nadie. Sin haber envejecido lo más mínimo, ha llegado hasta nuestro tiempo. Pueden no creerlo, pero el director de cine italiano Federico Fellini llevaba el «I Ching» constantemente en el bolsillo y, en caso de necesidad, consultaba con ese extraño libro. Interesa cada vez más a los filólogos, a los historiadores y a los matemáticos (la combinatoria). Los sesenta y cuatro versos del «I Ching» los comenta más de una generación de sabios «de alto saber», presentando todo lo existente como cadena ininterrumpida de oposiciones y mutaciones.</p>
@@ -470,9 +232,6 @@ body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
 
     <p>El Templo del Cielo fue rehecho, ampliado, pero lo principal permaneció inmutable. Pintaron el templo de quimeras, representando los símbolos del Cielo y de la Tierra. Dragones, serpientes, tortugas: símbolos esotéricos de la inmortalidad y del infinito. Uno de los símbolos de la Tierra es la tortuga. ¿Qué tiene de interesante la tortuga? El reptil gigante vive ora en tierra firme, ora en el agua, pero los huevos los pone en la arena, protegiéndolos con fiabilidad del expolio. La tortuga es símbolo de sabiduría y de inmortalidad. Con su imagen está vinculado el libro «I Ching», pues se adivinaba buscando la propia hexagrama sobre el caparazón de la tortuga. Con la tortuga está ligada una multitud de leyendas y creencias, de predestinaciones misteriosas y de recetas médicas. Es interesante que en la mitología de la Antigua Grecia la tortuga ocupa también su lugar. El joven Hermes, deseando agradar a su hermano Apolo, cazó una tortuga y con su caparazón hizo un excelente instrumento musical. Tensó sobre el caparazón venas de búfalo, y así resultó una espléndida cítara, sin la cual Apolo es impensable. Con su mano divina pasaba por las cuerdas y afinaba en la armonía universal de la «música de las esferas», como unidad de lo celeste y lo terrenal. Al hablar de los enigmas de las culturas antiguas, no olvidemos a la tortuga.</p>
 
-    <!-- ============================================
-         III. ALGUNAS PALABRAS SOBRE CHINA EN EUROPA
-         ============================================ -->
     <h2 class="epigrafe">III. Algunas palabras sobre China en Europa</h2>
 
     <p>A lo largo de milenios, la cultura de China ha ejercido influencia sobre todos los países del mundo.</p>
@@ -485,9 +244,6 @@ body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
 
     <p>John Galsworthy, en la novela «La saga de los Forsyte», al describir la habitación de Fleur, dice que, según la alta moda, estaba amueblada al estilo chino, con muebles, biombos, etc. Los motivos chinos, los objetos de uso y de vestido en los siglos XIX y XX se volvieron una industria masiva. ¿Qué dama sin biombos y sin bata china con dragones, y qué filosofía sin la alta sabiduría de las «100» escuelas chinas? Y cada niño del mundo conoce el cuento de Hans Christian Andersen «El ruiseñor». Los museos de todo el mundo y las colecciones privadas disponen de posibilidades para el estudio serio y de colecciones inapreciables.</p>
 
-    <!-- ============================================
-         IV. SOBRE LAS TRADICIONES... Y EL SUPREMATISMO RUSO
-         ============================================ -->
     <h2 class="epigrafe">IV. Sobre las tradiciones de la antigua cultura china y el suprematismo ruso</h2>
 
     <p>Pero el vínculo más profundo y serio no es el externo, sino el interno: el de la arcaica del «ba-gua» y el suprematismo.</p>
@@ -643,9 +399,6 @@ body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
         <figcaption>Aves: insignias de rango de los funcionarios civiles.</figcaption>
     </figure>
 
-    <!-- ============================================
-         V. CONFUCIO Y LAO-TSÉ
-         ============================================ -->
     <h2 class="epigrafe">V. Confucio y Lao-tsé</h2>
 
     <p>Por extraño que parezca, la conciencia cultural contemporánea de China está vinculada ante todo con los nombres de Confucio (así llamaban en Europa al maestro Kun-tsiu desde el siglo XVII) y del sabio, poeta y bibliotecario Lao-tsé. Sus contemporáneos fueron el griego Pitágoras, el príncipe Gautama de la India, Zoroastro de Irán.</p>
@@ -730,9 +483,6 @@ body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
 
     <p>«La vacuidad del espejo: potencial receptáculo de toda la potencia del espíritu humano, de todo lo existente en general, según aquello hacia lo que se le dirija. Es sacro y misterioso. Es la segunda vida, el ser enigmático». (S. A. Serova. «El espejo del espíritu iluminado». P. 33)</p>
 
-    <!-- ============================================
-         VI. NOS MIRAMOS EN EL ESPEJO...
-         ============================================ -->
     <h2 class="epigrafe">VI. Nos miramos en el espejo. El espejo se mira en nosotros…</h2>
 
     <p>Sí, he ahí la cuestión. En primer lugar, nos miramos en el espejo. Parece que el hombre comprendió que «yo soy yo» cuando vio su reflejo en el agua. El agua es también un espejo, y no es casual que los espejos pulidos, de mercurio, de amalgama y otros se parezcan a pequeños lagos. Nosotros, reflejados en el espejo, como que nos autoidentificamos.</p>
@@ -788,17 +538,11 @@ body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
 
     <p>Es completamente claro que «purificar el propio corazón» y «huir de la gloria fácil» son preceptos taoístas. Y «penetrar en los libros» y «buscar la amistad de gentes elevadas»: recomendación del confucianismo. Actuales siguen siendo estas recomendaciones hoy para las gentes creativas, sea cual fuere su ocupación: poesía, matemáticas, cine o pintura.</p>
 
-    <!-- ============================================
-         NOTAS
-         ============================================ -->
     <div class="footnotes">
         <h3>Notas</h3>
         <p><sup>1</sup> Los ases son históricamente oriundos de la Grecia de Asia Menor. Odín es un ase, como narra la «Saga de los Velsungos». Así, la raíz antiguo-mitológica o histórica de Homero y de Odín es una sola.</p>
     </div>
 
-    <!-- ============================================
-         VII. EPÍLOGO
-         ============================================ -->
     <h2 class="epigrafe">VII. Epílogo</h2>
 
     <p>Ya hemos hablado del significado que la cultura de China tiene para Europa, Rusia y hoy para el mundo entero. El neoconfucianismo, donde ya es imposible separar el entrelazamiento de los brotes del confucianismo y del taoísmo de la tradición antigua firmemente enraizada, se ha vuelto hoy «medicina china», «feng-shui» y los milagros contemporáneos de los ritmos de desarrollo.</p>
