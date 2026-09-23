@@ -1,552 +1,641 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Capítulo 3. Insomnio… Homero…</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <style>
-        /* =========================================
-           COLORES (Modo Diurno - International Klein Blue)
-           ========================================= */
-        :root {
-            --bg-body: #002FA7;
-            --text-primary: #ffffff;
-            --text-secondary: rgba(255, 255, 255, 0.88);
-            --text-muted: rgba(255, 255, 255, 0.6);
-            --border-color: rgba(255, 255, 255, 0.35);
-            --border-light: rgba(255, 255, 255, 0.15);
-            --fab-bg: #ffffff;
-            --fab-color: #002FA7;
-            --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
-            --quote-border: rgba(255, 255, 255, 0.5);
-            --img-shadow: 0 4px 8px rgba(0,0,0,0.4);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Capítulo 3. Insomnio… Homero… — Un puente sobre el abismo</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+/* =========================================
+   COLORES (Modo diurno — International Klein Blue)
+   ========================================= */
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
 
-        /* Modo Nocturno - Deep Navy Blue */
-        body.dark-mode {
-            --bg-body: #001233;
-            --text-primary: #ffffff;
-            --text-secondary: rgba(255, 255, 255, 0.85);
-            --text-muted: rgba(255, 255, 255, 0.5);
-            --border-color: rgba(255, 255, 255, 0.2);
-            --border-light: rgba(255, 255, 255, 0.1);
-            --fab-bg: #ffffff;
-            --fab-color: #001233;
-            --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
-            --quote-border: rgba(255, 255, 255, 0.4);
-            --img-shadow: 0 4px 8px rgba(0,0,0,0.7);
-        }
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
 
-        /* =========================================
-           ESTILOS GENERALES
-           ========================================= */
-        * { transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease; }
-        
-        html { scroll-behavior: smooth; }
+/* =========================================
+   TIPOGRAFÍA Y MAQUETACIÓN
+   ========================================= */
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
 
-        body {
-            font-family: Georgia, 'Times New Roman', serif;
-            line-height: 1.75;
-            max-width: 750px;
-            margin: 0 auto;
-            padding: 2em 1.5em 5em;
-            color: var(--text-primary);
-            background-color: var(--bg-body);
-            -webkit-tap-highlight-color: transparent;
-        }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
 
-        h1 {
-            font-size: 2.2em;
-            text-align: center;
-            margin-bottom: 0.2em;
-            font-weight: normal;
-            letter-spacing: 0.05em;
-            color: var(--text-primary);
-        }
+main {
+    max-width: var(--medida);
+    margin: 0 auto;
+    padding: 4rem 16px 7rem;
+}
 
-        h2 {
-            font-size: 1.4em;
-            text-align: center;
-            margin-top: 2.5em;
-            margin-bottom: 1.5em;
-            font-weight: bold;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-        }
+/* Encabezado del capítulo */
+.cab {
+    text-align: center;
+    margin-bottom: 3.2rem;
+}
+.cab__num {
+    margin: 0 0 .7rem;
+    font-size: .8rem;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+.cab__tit {
+    margin: 0;
+    font-size: 1.85rem;
+    font-weight: 400;
+    line-height: 1.25;
+}
+.cab::after {
+    content: "";
+    display: block;
+    width: 4.5rem;
+    height: 1px;
+    margin: 2rem auto 0;
+    background: var(--border-color);
+}
 
-        h3 {
-            font-size: 1.1em;
-            text-align: center;
-            margin-top: 2.5em;
-            margin-bottom: 1em;
-            font-weight: bold;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
+/* Subtítulo */
+.subtitulo {
+    text-align: center;
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--text-secondary);
+    margin: 0 0 2.4rem;
+    text-indent: 0;
+    line-height: 1.45;
+}
 
-        p {
-            text-align: justify;
-            margin-bottom: 1.2em;
-            text-indent: 1.5em;
-        }
+/* Epígrafes y subtítulos de sección */
+.epigrafe {
+    margin: 3.2rem 0 1.6rem;
+    font-size: .95rem;
+    font-weight: 700;
+    line-height: 1.45;
+    letter-spacing: .07em;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--realce);
+}
 
-        p.no-indent { text-indent: 0; }
+/* Epígrafe inicial */
+.epigrafe-inicial {
+    margin: 3.2rem 0 2.4rem;
+    padding-left: 1.5rem;
+    border-left: 1px solid var(--border-color);
+    font-style: italic;
+    color: var(--text-secondary);
+    font-size: .95rem;
+    line-height: 1.55;
+}
+.epigrafe-inicial p {
+    text-indent: 0;
+    margin: 0 0 .6rem;
+    text-align: left;
+}
+.epigrafe-inicial .attribution {
+    text-align: right;
+    font-style: normal;
+    font-size: .85rem;
+    color: var(--text-muted);
+    margin-top: .4rem;
+}
 
-        blockquote {
-            margin: 1.5em 2em;
-            padding-left: 1.5em;
-            border-left: 3px solid var(--quote-border);
-            font-style: italic;
-            color: var(--text-secondary);
-        }
+/* Párrafos */
+p {
+    margin: 0;
+    text-align: justify;
+    text-indent: 1.35em;
+    position: relative;
+}
+p + p { margin-top: 0; }
 
-        blockquote p { text-indent: 0; margin-bottom: 0.8em; }
+/* Sin sangría tras encabezados, figuras, versos y citas */
+.cab + p,
+.subtitulo + p,
+.epigrafe + p,
+.epigrafe-inicial + p,
+figure + p,
+.verso + p,
+.cita + p,
+.separador + p { text-indent: 0; }
 
-        .poem {
-            margin: 1.5em 2em;
-            font-style: italic;
-            text-indent: 0;
-        }
+/* Ilustraciones */
+figure {
+    margin: 2.4rem 0;
+    text-align: center;
+}
+figure img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    border-radius: 2px;
+}
+figcaption {
+    margin-top: .7rem;
+    font-size: .84rem;
+    font-style: italic;
+    line-height: 1.45;
+    text-align: left;
+    color: var(--text-muted);
+}
 
-        .poem p {
-            text-indent: 0;
-            margin-bottom: 0.3em;
-            text-align: left;
-            padding-left: 2em;
-            text-indent: -2em;
-        }
+/* Marcador de posición de imagen */
+.img-placeholder {
+    max-width: 100%;
+    min-height: 180px;
+    background: rgba(255,255,255,0.08);
+    border: 1px dashed var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-style: italic;
+    font-size: .85rem;
+    padding: 1.5rem;
+    text-align: center;
+    border-radius: 2px;
+    line-height: 1.4;
+}
 
-        .caption {
-            text-align: center;
-            font-style: italic;
-            font-size: 0.9em;
-            color: var(--text-muted);
-            margin: 1em 0 2em;
-            text-indent: 0;
-        }
+/* Versos */
+.verso {
+    margin: 1.6rem 0 1.6rem 2.2rem;
+    font-style: italic;
+    line-height: 1.5;
+}
+.verso .v {
+    display: block;
+    text-indent: -1.2em;
+    padding-left: 1.2em;
+}
 
-        em { font-style: italic; }
+/* Citas en bloque */
+.cita {
+    margin: 1.6rem 0 1.6rem 2.2rem;
+    padding: 0;
+    font-style: italic;
+    font-size: .95rem;
+}
+.cita p {
+    text-indent: 0;
+    text-align: left;
+}
+.cita p + p { margin-top: .45rem; }
+.cita .attribution {
+    text-align: right;
+    font-style: normal;
+    font-size: .85rem;
+    color: var(--text-muted);
+    margin-top: .5rem;
+}
 
-        sup {
-            font-size: 0.75em;
-            vertical-align: super;
-            line-height: 0;
-        }
+/* Separador de sección */
+.separador {
+    margin: 2rem 0;
+    text-align: center;
+    letter-spacing: .6em;
+    color: var(--text-muted);
+    text-indent: 0;
+}
 
-        .page-number {
-            display: block;
-            text-align: center;
-            font-size: 0.8em;
-            color: var(--text-muted);
-            margin: 2em 0 1em 0;
-        }
+/* Notas al pie */
+.footnotes {
+    margin-top: 4rem;
+    border-top: 1px solid var(--border-color);
+    padding-top: 1.5rem;
+    font-size: .88rem;
+    color: var(--text-secondary);
+}
+.footnotes h3 {
+    margin: 0 0 1rem;
+    font-size: .8rem;
+    font-weight: 700;
+    letter-spacing: .28em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    text-align: left;
+}
+.footnotes p {
+    text-align: left;
+    text-indent: -1.4em;
+    padding-left: 1.4em;
+    margin-bottom: .6rem;
+    line-height: 1.5;
+}
+sup {
+    font-size: .7em;
+    vertical-align: super;
+    line-height: 0;
+    color: var(--text-secondary);
+}
 
-        .footnotes {
-            margin-top: 4em;
-            border-top: 1px solid var(--border-color);
-            padding-top: 1.5em;
-            font-size: 0.9em;
-            color: var(--text-secondary);
-        }
+/* =========================================
+   BOTÓN FLOTANTE (Modo nocturno)
+   ========================================= */
+.fab-toggle {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: var(--fab-bg);
+    color: var(--fab-color);
+    border: none;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease;
+    z-index: 1000;
+    outline: none;
+}
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
 
-        .footnotes h3 {
-            text-align: left;
-            font-size: 1em;
-            margin-bottom: 1em;
-            text-transform: none;
-            letter-spacing: normal;
-            color: var(--text-primary);
-        }
+/* =========================================
+   BOTONES FLOTANTES DE NAVEGACIÓN
+   ========================================= */
+.fab-nav {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    display: flex;
+    gap: 12px;
+    z-index: 1000;
+}
+.fab-nav__btn {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background-color: var(--fab-bg);
+    color: var(--fab-color);
+    border: none;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+.fab-nav__btn:hover { transform: scale(1.1); }
+.fab-nav__btn:active { transform: scale(0.95); }
+.fab-nav__btn .material-icons { font-size: 26px; }
+.fab-nav__btn[aria-disabled="true"] {
+    opacity: .35;
+    pointer-events: none;
+    box-shadow: none;
+}
 
-        .footnotes p {
-            text-align: left;
-            text-indent: -1.5em;
-            padding-left: 1.5em;
-            margin-bottom: 0.6em;
-            font-size: 0.9em;
-        }
-
-        .section-break {
-            text-align: center;
-            margin: 2.5em 0;
-            font-weight: bold;
-            letter-spacing: 0.2em;
-            color: var(--text-muted);
-        }
-
-        .subtitle {
-            text-align: center;
-            font-size: 1.1em;
-            font-style: italic;
-            color: var(--text-secondary);
-            margin-bottom: 2em;
-        }
-
-        .epigraph {
-            margin: 1.5em 2em 2.5em;
-            padding-left: 1.5em;
-            border-left: 3px solid var(--quote-border);
-            font-style: italic;
-            color: var(--text-secondary);
-            font-size: 0.95em;
-        }
-
-        .epigraph p {
-            text-indent: 0;
-            margin-bottom: 0.5em;
-            text-align: left;
-        }
-
-        .epigraph .attribution {
-            text-align: right;
-            font-style: normal;
-            font-size: 0.9em;
-            color: var(--text-muted);
-            margin-top: 0.5em;
-        }
-
-        /* =========================================
-           ESTILOS DE IMÁGENES Y PIES DE FOTO
-           ========================================= */
-        figure {
-            margin: 2em auto;
-            text-align: center;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 6px;
-            box-shadow: var(--img-shadow);
-            display: block;
-            margin: 0 auto;
-        }
-
-        figcaption {
-            text-align: center;
-            font-size: 0.85em;
-            color: var(--text-muted);
-            margin-top: 0.8em;
-            margin-bottom: 1.5em;
-            font-style: italic;
-            text-indent: 0;
-            padding: 0 1em;
-            line-height: 1.4;
-        }
-
-        /* =========================================
-           BOTÓN FLOTANTE (Modo Nocturno)
-           ========================================= */
-        .fab-toggle {
-            position: fixed;
-            bottom: 24px;
-            right: 24px;
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            background-color: var(--fab-bg);
-            color: var(--fab-color);
-            border: none;
-            cursor: pointer;
-            box-shadow: var(--shadow);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease;
-            z-index: 1000;
-            outline: none;
-        }
-        .fab-toggle:hover { transform: scale(1.1); }
-        .fab-toggle:active { transform: scale(0.95); }
-        .fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
-        body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
-
-        /* Responsive */
-        @media (max-width: 600px) {
-            body { padding: 1.2em 1em 4em; }
-            h1 { font-size: 1.6em; }
-            h2 { font-size: 1.1em; }
-            .fab-toggle { bottom: 16px; right: 16px; width: 50px; height: 50px; }
-            .fab-toggle .material-icons { font-size: 24px; }
-            figcaption { font-size: 0.8em; }
-        }
-    </style>
+/* Diseño adaptable */
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .verso, .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+    .fab-nav { bottom: 18px; left: 18px; gap: 10px; }
+    .fab-nav__btn { width: 50px; height: 50px; }
+    .fab-nav__btn .material-icons { font-size: 23px; }
+}
+</style>
 </head>
+
 <body>
 
-    <button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo Nocturno">
-        <i class="material-icons" id="theme-icon">dark_mode</i>
-    </button>
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
 
-    <article id="content">
-        <h1>«La voz de la verdad celestial<br>contra la verdad terrenal…»</h1>
+<nav class="fab-nav" aria-label="Navegación entre capítulos">
+    <a class="fab-nav__btn" href="https://amcr95d-debug.github.io/biblioteca-personal/Puente_sobre_el_abismo/2%20-%20%C2%ABEspectador%20de%20los%20sublimes%20espect%C3%A1culos%E2%80%A6%C2%BB.html" title="Capítulo anterior" aria-label="Capítulo anterior">
+        <i class="material-icons">arrow_back</i>
+    </a>
+    <a class="fab-nav__btn" href="https://amcr95d-debug.github.io/biblioteca-personal/Puente_sobre_el_abismo/4%20-%20Aquello%20fue%20hace%20mucho%20tiempo,%20en%20otro%20planeta.html" title="Capítulo siguiente" aria-label="Capítulo siguiente">
+        <i class="material-icons">arrow_forward</i>
+    </a>
+</nav>
 
-        <div class="epigraph">
-            <p>«La voz de la verdad celestial<br>contra la verdad terrenal…»</p>
-            <p class="attribution">M. Tsvetaeva</p>
-        </div>
+<main>
 
-        <h2>Capítulo 3</h2>
-        <p class="subtitle">Insomnio… Homero…</p>
+    <!-- ============================================
+         ENCABEZADO DEL CAPÍTULO
+         ============================================ -->
+    <header class="cab">
+        <p class="cab__num">Capítulo 3</p>
+        <h1 class="cab__tit">«La voz de la verdad celestial<br>contra la verdad terrenal…»</h1>
+    </header>
 
-        <figure>
-            <img src="3A.jpg" alt="Retrato de Homero">
-            <figcaption>Retrato de Homero.</figcaption>
-        </figure>
+    <!-- ============================================
+         EPÍGRAFE
+         ============================================ -->
+    <div class="epigrafe-inicial">
+        <p>«La voz de la verdad celestial<br>contra la verdad terrenal…»</p>
+        <p class="attribution">M. Tsvetaeva</p>
+    </div>
 
+    <!-- ============================================
+         INSOMNIO… HOMERO…
+         ============================================ -->
+    <p class="subtitulo">Insomnio… Homero…</p>
 
-	<p>Homero vivió nueve siglos antes de nuestra era, y no sabemos cómo era el mundo en aquel entonces, ni aquel lugar que hoy llamamos Grecia Antigua, o clásica. Todos los olores y los colores eran más densos, más penetrantes. Al alzar el dedo, el hombre entraba de lleno en el cielo, pues para él este era tan material como animado. Grecia olía a mar, a piedra, a lana de oveja, a aceitunas, a la sangre de guerras interminables. Pero no sabemos, no podemos imaginarnos los cuadros de la vida de aquella época a la que se suele llamar «período homérico», es decir, los siglos IX y VIII a. C. ¿No resulta extraño? ¿Que a todo un período histórico se le dé, tres milenios después, el nombre de un poeta? Ha corrido mucha agua bajo el puente y los acontecimientos se han desdibujado, pero su nombre ha quedado como la definición de todo un período, sellado por dos poemas: la *Ilíada* (sobre la guerra de los aqueos contra Ilión) y la *Odisea* (sobre el regreso a Ítaca del guerrero Odiseo tras la Guerra de Troya).</p>
+    <figure>
+        <img src="3A.jpg" alt="Retrato de Homero">
+        <figcaption>Retrato de Homero.</figcaption>
+    </figure>
 
-	<p>Todos los sucesos descritos en los poemas ocurrieron aproximadamente en el año 1200 a. C., es decir, trescientos años antes de la vida del poeta, y fueron puestos por escrito en el siglo VI a. C., o sea, trescientos años después de su muerte. Para el siglo VI a. C. el mundo había cambiado de manera increíble, hasta volverse irreconocible. Ya el principal acontecimiento panhelénico —las Olimpiadas— establecía cada cuatro años la «tregua sagrada» y era el «punto de verdad» y de unidad durante el breve instante de unión de todos los helenos.</p>
+    <p>Homero vivió nueve siglos antes de nuestra era, y no sabemos cómo era el mundo en aquel entonces, ni aquel lugar que hoy llamamos Grecia Antigua, o clásica. Todos los olores y los colores eran más densos, más penetrantes. Al alzar el dedo, el hombre entraba de lleno en el cielo, pues para él este era tan material como animado. Grecia olía a mar, a piedra, a lana de oveja, a aceitunas, a la sangre de guerras interminables. Pero no sabemos, no podemos imaginarnos los cuadros de la vida de aquella época a la que se suele llamar «período homérico», es decir, los siglos IX y VIII a. C. ¿No resulta extraño? ¿Que a todo un período histórico se le dé, tres milenios después, el nombre de un poeta? Ha corrido mucha agua bajo el puente y los acontecimientos se han desdibujado, pero su nombre ha quedado como la definición de todo un período, sellado por dos poemas: la <i>Ilíada</i> (sobre la guerra de los aqueos contra Ilión) y la <i>Odisea</i> (sobre el regreso a Ítaca del guerrero Odiseo tras la Guerra de Troya).</p>
 
-        <p>Pero en el siglo IX a. C. nada de esto existía. Homero, según testimonio de los investigadores contemporáneos (Gaspárov, Grecia, p. 17, Moscú, 2004, y muchos otros), pertenecía al número de los cantores errantes: los aedos. Andaban de ciudad en ciudad, de caudillo en caudillo y, al acompañamiento de la cítara de cuerdas, contaban «las hazañas de los días ya lejanos, las tradiciones de la vetusta antigüedad».</p>
+    <p>Todos los sucesos descritos en los poemas ocurrieron aproximadamente en el año 1200 a. C., es decir, trescientos años antes de la vida del poeta, y fueron puestos por escrito en el siglo VI a. C., o sea, trescientos años después de su muerte. Para el siglo VI a. C. el mundo había cambiado de manera increíble, hasta volverse irreconocible. Ya el principal acontecimiento panhelénico —las Olimpiadas— establecía cada cuatro años la «tregua sagrada» y era el «punto de verdad» y de unidad durante el breve instante de unión de todos los helenos.</p>
 
-        <p>Así, uno de los aedos, llamado Homero, con cuyo nombre se vincula todo un período cultural, permanece hasta nuestro tiempo como aquello que se denomina «modelo» para la poesía y los poetas europeos. Cualquier poeta sueña con que lo citen, lo recuerden largo tiempo, lo estudien los historiadores y los filólogos, y que la fama de cien bocas haga de su nombre un sinónimo de verdad, de fe, por muchos milagros que ocurran con sus héroes. Cualquier poeta quiere crear su universo, sus héroes, es decir, asemejarse al Demiurgo. Precisamente por eso Anna Ajmátova pronunció: «El poeta siempre tiene razón».</p>
+    <p>Pero en el siglo IX a. C. nada de esto existía. Homero, según testimonio de los investigadores contemporáneos (Gaspárov, Grecia, p. 17, Moscú, 2004, y muchos otros), pertenecía al número de los cantores errantes: los aedos. Andaban de ciudad en ciudad, de caudillo en caudillo y, al acompañamiento de la cítara de cuerdas, contaban «las hazañas de los días ya lejanos, las tradiciones de la vetusta antigüedad».</p>
 
-        <p>Una época entera se denomina homérica. Igual que el umbral de los siglos XIII y XIV de Italia es llamado época de Dante y de Giotto, o el umbral de los siglos XVI–XVII en Inglaterra, shakespeariano. Estos nombres son frontera, punto de referencia, siempre comienzo de una nueva época en la cultura, creación de una lengua nueva, de formas jamás vistas hasta entonces del arte de la conciencia, descubrimiento de un mundo nuevo para los contemporáneos y los descendientes.</p>
+    <p>Así, uno de los aedos, llamado Homero, con cuyo nombre se vincula todo un período cultural, permanece hasta nuestro tiempo como aquello que se denomina «modelo» para la poesía y los poetas europeos. Cualquier poeta sueña con que lo citen, lo recuerden largo tiempo, lo estudien los historiadores y los filólogos, y que la fama de cien bocas haga de su nombre un sinónimo de verdad, de fe, por muchos milagros que ocurran con sus héroes. Cualquier poeta quiere crear su universo, sus héroes, es decir, asemejarse al Demiurgo. Precisamente por eso Anna Ajmátova pronunció: «El poeta siempre tiene razón».</p>
 
-        <p>En los textos de Homero el cosmos mitológico se nos muestra en toda la plenitud de la vida de los dioses y de los héroes, de su conducta, del vínculo con los acontecimientos históricos y con los detalles cotidianos del diario vivir.</p>
+    <p>Una época entera se denomina homérica. Igual que el umbral de los siglos XIII y XIV de Italia es llamado época de Dante y de Giotto, o el umbral de los siglos XVI–XVII en Inglaterra, shakespeariano. Estos nombres son frontera, punto de referencia, siempre comienzo de una nueva época en la cultura, creación de una lengua nueva, de formas jamás vistas hasta entonces del arte de la conciencia, descubrimiento de un mundo nuevo para los contemporáneos y los descendientes.</p>
 
-        <p>La medida de seis pies, el hexámetro, hace el espacio del poema solemne y espacioso. Escuchad lo que dice el héroe troyano Héctor a su esposa Andrómaca antes del combate con Aquiles. Él lo sabe todo, lo que sucederá. Casandra es su hermana de sangre:</p>
+    <p>En los textos de Homero el cosmos mitológico se nos muestra en toda la plenitud de la vida de los dioses y de los héroes, de su conducta, del vínculo con los acontecimientos históricos y con los detalles cotidianos del diario vivir.</p>
 
-        <div class="poem">
-            <p>… pero me avergonzaría</p>
-            <p>ante los troyanos y las troyanas de túnica larga,</p>
-            <p>si como un cobarde vil me sustrajera a la batalla.</p>
-            <p>Bien lo sé yo, créeme, y de corazón y de alma:</p>
-            <p>Llegará un día —y la sagrada Troya perecerá,</p>
-            <p>con ella perecerá Príamo y el pueblo del lanzador Príamo.</p>
-            <p>Mas no me aflijo ahora por la muerte de tantos troyanos,</p>
-            <p>ni por mis valerosos hermanos, que pronto</p>
-            <p>caerán al polvo, muertos por la mano de los airados enemigos: —</p>
-            <p>solo por ti me aflijo. Un aqueo, en coraza de bronce</p>
-        </div>
+    <p>La medida de seis pies, el hexámetro, hace el espacio del poema solemne y espacioso. Escuchad lo que dice el héroe troyano Héctor a su esposa Andrómaca antes del combate con Aquiles. Él lo sabe todo, lo que sucederá. Casandra es su hermana de sangre:</p>
 
-        <p>te llevará, toda en lágrimas, muy lejos, al cautiverio: en Argos tejerás el lino para otra señora…</p>
+    <div class="verso">
+        <span class="v">… pero me avergonzaría</span>
+        <span class="v">ante los troyanos y las troyanas de túnica larga,</span>
+        <span class="v">si como un cobarde vil me sustrajera a la batalla.</span>
+        <span class="v">Bien lo sé yo, créeme, y de corazón y de alma:</span>
+        <span class="v">Llegará un día —y la sagrada Troya perecerá,</span>
+        <span class="v">con ella perecerá Príamo y el pueblo del lanzador Príamo.</span>
+        <span class="v">Mas no me aflijo ahora por la muerte de tantos troyanos,</span>
+        <span class="v">ni por mis valerosos hermanos, que pronto</span>
+        <span class="v">caerán al polvo, muertos por la mano de los airados enemigos: —</span>
+        <span class="v">solo por ti me aflijo. Un aqueo, en coraza de bronce</span>
+    </div>
 
-        <p>Héctor marcha al duelo con Aquiles, «semejante a los dioses», sabiendo tanto de su propia derrota como de la muerte de Troya, afligido por la muerte de su linaje, de su pueblo, por la esclavitud de la esposa amada. Es claro: la visión fue concedida al gran héroe de Troya y a su hermana Casandra. La retórica heroico-patética de la despedida y el llanto la trasladó a la pintura no un contemporáneo de Homero, sino un artista del gran estilo: Louis David, el clasicismo de comienzos del siglo XIX.</p>
+    <p>te llevará, toda en lágrimas, muy lejos, al cautiverio: en Argos tejerás el lino para otra señora…</p>
 
-        <p>Los dioses no perdonan a los mortales que poseen el don propio de los inmortales: el saber de «comienzos y fines». Pero el propio Homero estaba dotado del don divino de la luz a través de las tinieblas, del conocimiento supremo: la visión, de la que solo están dotados los profetas y los poetas. Quizá por eso la leyenda lo dota de ceguera para los confines cercanos, para lo que está ante las narices, pero, en cambio, de visión de los mundos de lo alto y de los que fueron. Ve los acontecimientos de hace trescientos años, para abrir horizontes hacia milenios por delante. Y las pruebas de ello son muchas, hasta llegar a la arqueología del siglo XX.</p>
+    <p>Héctor marcha al duelo con Aquiles, «semejante a los dioses», sabiendo tanto de su propia derrota como de la muerte de Troya, afligido por la muerte de su linaje, de su pueblo, por la esclavitud de la esposa amada. Es claro: la visión fue concedida al gran héroe de Troya y a su hermana Casandra. La retórica heroico-patética de la despedida y el llanto la trasladó a la pintura no un contemporáneo de Homero, sino un artista del gran estilo: Louis David, el clasicismo de comienzos del siglo XIX.</p>
 
-        <p>¿Qué sabemos de Homero? Casi nada y muchísimo. Fue, según se afirma, un cantor ciego y pobre, errante: un aedo. «Si me dais dinero, cantaré, alfareros, os cantaré una canción». No se sabe dónde nació. Pero ya en aquellos tiempos remotos Homero era tan célebre que «siete ciudades se disputan la sabia raíz de Homero: Esmirna, Quíos, Colofón, Salamina, Pilos, Argos, Atenas». Su propia personalidad, en nuestra percepción, es la conjunción de los enigmas de la historia mitológica, documental y aun cotidiana.</p>
+    <p>Los dioses no perdonan a los mortales que poseen el don propio de los inmortales: el saber de «comienzos y fines». Pero el propio Homero estaba dotado del don divino de la luz a través de las tinieblas, del conocimiento supremo: la visión, de la que solo están dotados los profetas y los poetas. Quizá por eso la leyenda lo dota de ceguera para los confines cercanos, para lo que está ante las narices, pero, en cambio, de visión de los mundos de lo alto y de los que fueron. Ve los acontecimientos de hace trescientos años, para abrir horizontes hacia milenios por delante. Y las pruebas de ello son muchas, hasta llegar a la arqueología del siglo XX.</p>
 
-        <p>Hasta hace poco se mostraba en la Acrópolis de Atenas el primer olivo, nacido del golpe de lanza de Atenea durante su disputa con Poseidón. Así como el pozo, la fuente surgida del golpe del tridente de Poseidón en esa misma disputa. En la Acrópolis se guardaba asimismo la nave en la que Teseo navegó a Creta. La genealogía de Licurgo remontaba a Heracles, etc. El arquetipo fue siempre la mitología: punto de referencia incuestionable. Del arquetipo del propio Homero, más abajo. El mundo descrito en los himnos y en ambos poemas se volvió, para contemporáneos y descendientes, indudablemente histórico solo gracias al «cantor igual a los dioses».</p>
+    <p>¿Qué sabemos de Homero? Casi nada y muchísimo. Fue, según se afirma, un cantor ciego y pobre, errante: un aedo. «Si me dais dinero, cantaré, alfareros, os cantaré una canción». No se sabe dónde nació. Pero ya en aquellos tiempos remotos Homero era tan célebre que «siete ciudades se disputan la sabia raíz de Homero: Esmirna, Quíos, Colofón, Salamina, Pilos, Argos, Atenas». Su propia personalidad, en nuestra percepción, es la conjunción de los enigmas de la historia mitológica, documental y aun cotidiana.</p>
 
-        <p>Si se elige entre los hechos documentales y los poéticos, vence siempre no nuestra elección, sino la elección del tiempo. El tiempo se imprime en la memoria con las imágenes del documento hecho poesía.</p>
+    <p>Hasta hace poco se mostraba en la Acrópolis de Atenas el primer olivo, nacido del golpe de lanza de Atenea durante su disputa con Poseidón. Así como el pozo, la fuente surgida del golpe del tridente de Poseidón en esa misma disputa. En la Acrópolis se guardaba asimismo la nave en la que Teseo navegó a Creta. La genealogía de Licurgo remontaba a Heracles, etc. El arquetipo fue siempre la mitología: punto de referencia incuestionable. Del arquetipo del propio Homero, más abajo. El mundo descrito en los himnos y en ambos poemas se volvió, para contemporáneos y descendientes, indudablemente histórico solo gracias al «cantor igual a los dioses».</p>
 
-        <p>Ya en tiempos del emperador Augusto (siglo I d. C.), cierto Dión Crisóstomo, filósofo y orador errante, recorriendo las ciudades, refutaba la autenticidad de los hechos de los poemas. «Mis amigos troyanos —arengaba Dión a los habitantes de Troya—, al hombre es fácil engañarlo… Homero, con sus relatos sobre la Guerra de Troya, engañó a la humanidad durante casi mil años». Y luego seguían argumentos harto razonables en contra de la historia homérica. Él demuestra con hechos que no hubo victoria de los aqueos sobre los habitantes de Ilión, que precisamente los troyanos obtuvieron la victoria y se convirtieron en el futuro del mundo antiguo. «Pasa muy poco tiempo —dice Dión— y vemos que el troyano Eneas, con sus amigos, conquista Italia, el troyano Heleno, el Epiro, y el troyano Anténor, Venecia. …Y esto no es invención: en todos estos lugares se alzan ciudades fundadas, según la tradición, por héroes troyanos, y entre estas ciudades, la fundada por los descendientes de Eneas: Roma».</p>
+    <p>Si se elige entre los hechos documentales y los poéticos, vence siempre no nuestra elección, sino la elección del tiempo. El tiempo se imprime en la memoria con las imágenes del documento hecho poesía.</p>
 
-        <p>Y más de dos mil años después, en uno de los versos del poeta de fines del siglo XX Iósif Brodski, su Odiseo dice: «No recuerdo cómo acabó la guerra, / ni cuántos años tienes ya, no recuerdo. / Crece, mi Telémaco, crece. / Solo los dioses saben si volveremos a vernos». La causa que engendró el verso de Brodski es profundamente personal, pero el poeta, que afirmaba estar compuesto en un noventa por ciento de antigüedad, revisa su vida a través del mito, como testigo presencial.</p>
+    <p>Ya en tiempos del emperador Augusto (siglo I d. C.), cierto Dión Crisóstomo, filósofo y orador errante, recorriendo las ciudades, refutaba la autenticidad de los hechos de los poemas. «Mis amigos troyanos —arengaba Dión a los habitantes de Troya—, al hombre es fácil engañarlo… Homero, con sus relatos sobre la Guerra de Troya, engañó a la humanidad durante casi mil años». Y luego seguían argumentos harto razonables en contra de la historia homérica. Él demuestra con hechos que no hubo victoria de los aqueos sobre los habitantes de Ilión, que precisamente los troyanos obtuvieron la victoria y se convirtieron en el futuro del mundo antiguo. «Pasa muy poco tiempo —dice Dión— y vemos que el troyano Eneas, con sus amigos, conquista Italia, el troyano Heleno, el Epiro, y el troyano Anténor, Venecia. …Y esto no es invención: en todos estos lugares se alzan ciudades fundadas, según la tradición, por héroes troyanos, y entre estas ciudades, la fundada por los descendientes de Eneas: Roma».</p>
 
-        <p>¿Quién recuerda a Dión Crisóstomo con sus argumentos demoledores? Nadie… Vence el ciego anónimo. «El poeta siempre tiene razón». Añadamos: un poeta especial, cuyo misterio de inmortalidad no se descifra, como tampoco el ineludible misterio de su anonimato.</p>
+    <p>Y más de dos mil años después, en uno de los versos del poeta de fines del siglo XX Iósif Brodski, su Odiseo dice: «No recuerdo cómo acabó la guerra, / ni cuántos años tienes ya, no recuerdo. / Crece, mi Telémaco, crece. / Solo los dioses saben si volveremos a vernos». La causa que engendró el verso de Brodski es profundamente personal, pero el poeta, que afirmaba estar compuesto en un noventa por ciento de antigüedad, revisa su vida a través del mito, como testigo presencial.</p>
 
-        <p>Contemporáneo y rival de Homero fue el poeta Hesíodo, campesino del lugarejo de Ascra. También él fue un cantor-aedo. Sus enseñanzas poéticas tenían carácter práctico: cómo administrar la hacienda, cómo sembrar, etc. Su poema más conocido se titula «Trabajos y días». En la ciudad de Calcis, Hesíodo desafió a Homero a una competición poética. Hesíodo comenzó:</p>
+    <p>¿Quién recuerda a Dión Crisóstomo con sus argumentos demoledores? Nadie… Vence el ciego anónimo. «El poeta siempre tiene razón». Añadamos: un poeta especial, cuyo misterio de inmortalidad no se descifra, como tampoco el ineludible misterio de su anonimato.</p>
 
-        <div class="poem">
-            <p>Cántanos, oh Musa, un canto, mas no el canto acostumbrado.</p>
-            <p>No cantes en él lo que fue, lo que es y lo que será.</p>
-        </div>
+    <p>Contemporáneo y rival de Homero fue el poeta Hesíodo, campesino del lugarejo de Ascra. También él fue un cantor-aedo. Sus enseñanzas poéticas tenían carácter práctico: cómo administrar la hacienda, cómo sembrar, etc. Su poema más conocido se titula «Trabajos y días». En la ciudad de Calcis, Hesíodo desafió a Homero a una competición poética. Hesíodo comenzó:</p>
 
-        <p>Hesíodo planteaba el tema de significación práctica. Nada de fantasías, según él. Homero respondió en su estilo y replicó sobre lo que no será:</p>
+    <div class="verso">
+        <span class="v">Cántanos, oh Musa, un canto, mas no el canto acostumbrado.</span>
+        <span class="v">No cantes en él lo que fue, lo que es y lo que será.</span>
+    </div>
 
-        <div class="poem">
-            <p>Es verdad tal: jamás en la carrera de los carros correrán</p>
-            <p>los hombres mortales, celebrando honras por el Zeus inmortal.</p>
-        </div>
+    <p>Hesíodo planteaba el tema de significación práctica. Nada de fantasías, según él. Homero respondió en su estilo y replicó sobre lo que no será:</p>
 
-        <p>De modo que, señores, hay que cantar sobre lo imperecedero y lo eterno. Cómo sembrar la tierra también es importante, pero a modo de manual de agricultura. He ahí el siglo IX antes de la nueva era: la disputa de dos poetas sobre la esencia y las tareas de la poesía. (Añadamos entre paréntesis que esta disputa no terminará jamás.)</p>
+    <div class="verso">
+        <span class="v">Es verdad tal: jamás en la carrera de los carros correrán</span>
+        <span class="v">los hombres mortales, celebrando honras por el Zeus inmortal.</span>
+    </div>
 
-        <p>Hesíodo pregunta de nuevo:</p>
+    <p>De modo que, señores, hay que cantar sobre lo imperecedero y lo eterno. Cómo sembrar la tierra también es importante, pero a modo de manual de agricultura. He ahí el siglo IX antes de la nueva era: la disputa de dos poetas sobre la esencia y las tareas de la poesía. (Añadamos entre paréntesis que esta disputa no terminará jamás.)</p>
 
-        <div class="poem">
-            <p>Dime, te pido, aún de otra cosa, Homero semejante a los dioses:</p>
-            <p>¿hay para los mortales, para nosotros, alguna delicia en el mundo?</p>
-        </div>
+    <p>Hesíodo pregunta de nuevo:</p>
 
-        <p>Homero responde con afirmación de vida y con enseñanza:</p>
+    <div class="verso">
+        <span class="v">Dime, te pido, aún de otra cosa, Homero semejante a los dioses:</span>
+        <span class="v">¿hay para los mortales, para nosotros, alguna delicia en el mundo?</span>
+    </div>
 
-        <div class="poem">
-            <p>Lo mejor en la vida: junto a la mesa abundante, en dicha y en paz,</p>
-            <p>alzar las sonoras copas y oír canciones alegres.</p>
-        </div>
+    <p>Homero responde con afirmación de vida y con enseñanza:</p>
 
-        <p>Y aún más:</p>
+    <div class="verso">
+        <span class="v">Lo mejor en la vida: junto a la mesa abundante, en dicha y en paz,</span>
+        <span class="v">alzar las sonoras copas y oír canciones alegres.</span>
+    </div>
 
-        <div class="poem">
-            <p>Vida sin aversiones, goces sin dolor y muerte sin padecimientos.</p>
-        </div>
+    <p>Y aún más:</p>
 
-        <p>He ahí el deseo para todos los tiempos; por decirlo así, un brindis de banquete, un aforismo para siempre.</p>
+    <div class="verso">
+        <span class="v">Vida sin aversiones, goces sin dolor y muerte sin padecimientos.</span>
+    </div>
 
-        <p>Del diálogo de Hesíodo con Homero es evidente asimismo cuán famoso era Homero. Hesíodo, el hermano mayor, lo llama «igual a los dioses», es decir, prácticamente un héroe, un inmortal. El tiempo siempre sabe de sus inmortales; la cuestión es solo cómo se porta con ellos. Y como se porte, será siempre de modo inadecuado.</p>
+    <p>He ahí el deseo para todos los tiempos; por decirlo así, un brindis de banquete, un aforismo para siempre.</p>
 
-        <p>Quedará como misterio para siempre por qué Lev Nikoláievich Tolstói fue excomulgado de la Iglesia por el propio Juan de Kronstadt, y no por cualquier ignorante. Por qué Mozart fue enterrado en una fosa común teniendo protectores y ricos mecenas. Por qué Andréi Platonov, el mejor, el único genial escritor soviético (esto los contemporáneos lo sabían bien), barría, siendo conserje, precisamente aquel patio donde se alzaba el Instituto Literario. ¿Y Shakespeare? Se desconoce quién es, dónde nació y dónde está enterrado. Intentad escribir la biografía de Diego Velázquez o de Cervantes. No lo conseguiréis. Todos ellos se nos escabullirán.</p>
+    <p>Del diálogo de Hesíodo con Homero es evidente asimismo cuán famoso era Homero. Hesíodo, el hermano mayor, lo llama «igual a los dioses», es decir, prácticamente un héroe, un inmortal. El tiempo siempre sabe de sus inmortales; la cuestión es solo cómo se porta con ellos. Y como se porte, será siempre de modo inadecuado.</p>
 
-        <p>Volvamos, sin embargo, al certamen de Homero y de Hesíodo. Los jueces declararon vencedor a Hesíodo, «porque Homero canta la guerra, y Hesíodo el trabajo pacífico». Pero para la cultura universal, que todavía no ha vivido un solo día sin Homero, Hesíodo es solo su contemporáneo.</p>
+    <p>Quedará como misterio para siempre por qué Lev Nikoláievich Tolstói fue excomulgado de la Iglesia por el propio Juan de Kronstadt, y no por cualquier ignorante. Por qué Mozart fue enterrado en una fosa común teniendo protectores y ricos mecenas. Por qué Andréi Platonov, el mejor, el único genial escritor soviético (esto los contemporáneos lo sabían bien), barría, siendo conserje, precisamente aquel patio donde se alzaba el Instituto Literario. ¿Y Shakespeare? Se desconoce quién es, dónde nació y dónde está enterrado. Intentad escribir la biografía de Diego Velázquez o de Cervantes. No lo conseguiréis. Todos ellos se nos escabullirán.</p>
 
-        <p>Cuentan que Homero sintió una gran nostalgia, murió de pena y fue enterrado en la isla de Íos. Allí mostraban su tumba.</p>
+    <p>Volvamos, sin embargo, al certamen de Homero y de Hesíodo. Los jueces declararon vencedor a Hesíodo, «porque Homero canta la guerra, y Hesíodo el trabajo pacífico». Pero para la cultura universal, que todavía no ha vivido un solo día sin Homero, Hesíodo es solo su contemporáneo.</p>
 
-        <p>Y Homero tuvo también su arquetipo. Se llamaba Orfeo: cantor tracio, creador de la música y de la versificación. Con su nombre está vinculada la idea de unir la palabra con el acompañamiento musical de cuerdas. Podemos llamar a Orfeo fundador de la lírica de bardos. Fue un bardo cuyo genio universal afinaba el mundo en la absoluta armonía. Lo escuchaban las plantas, las piedras, el agua; con su canto podía sosegar a Cerbero, que guardaba las entradas del Hades; arrancaba lágrimas de entusiasmo a las erinias y a la diosa del reino subterráneo, Perséfone. Si fue hijo de Apolo o de Dioniso es gran disputa. Más bien de Apolo, cuya sensible cítara afinaba en tono armónico la música de las esferas, es decir, era fundamento de la armonía cósmica, y no solo terrenal. Emparenta a Apolo con Orfeo otro fascinante y significativo personaje, creador del instrumento musical común para ambos: la cítara. Es Hermes. En su infancia de bebé cazó una tortuga, y su caparazón, misterioso con los enigmáticos signos de la creación primigenia, se convirtió en la base del resonador musical. Sobre el caparazón tensó venas de vaca, y así quedó espléndida la cítara de siete cuerdas. Hermes es, por supuesto, el protector de los geniales citaredos. Precisamente él fue el conductor de Orfeo al Hades, de donde el poeta, inconsolable por el amor perdido, quería recuperar a su novia, la ninfa Eurídice. Ay: las novias no vuelven de allá; los poetas, fieles a su sombra, lloran a sus Eurídices.</p>
+    <p>Cuentan que Homero sintió una gran nostalgia, murió de pena y fue enterrado en la isla de Íos. Allí mostraban su tumba.</p>
 
-        <figure>
-            <img src="3B.jpg" alt="Orfeo ejecutando sus cantos. Fragmento de cerámica.">
-            <figcaption>Orfeo ejecutando sus cantos. Fragmento de cerámica. Mediados del s. V a. C.</figcaption>
-        </figure>
+    <p>Y Homero tuvo también su arquetipo. Se llamaba Orfeo: cantor tracio, creador de la música y de la versificación. Con su nombre está vinculada la idea de unir la palabra con el acompañamiento musical de cuerdas. Podemos llamar a Orfeo fundador de la lírica de bardos. Fue un bardo cuyo genio universal afinaba el mundo en la absoluta armonía. Lo escuchaban las plantas, las piedras, el agua; con su canto podía sosegar a Cerbero, que guardaba las entradas del Hades; arrancaba lágrimas de entusiasmo a las erinias y a la diosa del reino subterráneo, Perséfone. Si fue hijo de Apolo o de Dioniso es gran disputa. Más bien de Apolo, cuya sensible cítara afinaba en tono armónico la música de las esferas, es decir, era fundamento de la armonía cósmica, y no solo terrenal. Emparenta a Apolo con Orfeo otro fascinante y significativo personaje, creador del instrumento musical común para ambos: la cítara. Es Hermes. En su infancia de bebé cazó una tortuga, y su caparazón, misterioso con los enigmáticos signos de la creación primigenia, se convirtió en la base del resonador musical. Sobre el caparazón tensó venas de vaca, y así quedó espléndida la cítara de siete cuerdas. Hermes es, por supuesto, el protector de los geniales citaredos. Precisamente él fue el conductor de Orfeo al Hades, de donde el poeta, inconsolable por el amor perdido, quería recuperar a su novia, la ninfa Eurídice. Ay: las novias no vuelven de allá; los poetas, fieles a su sombra, lloran a sus Eurídices.</p>
 
-        <blockquote>
-            <p>Para quienes han arrancado los últimos jirones</p>
-            <p>del velo (¡ni labios, ni mejillas!..)</p>
-            <p>Oh, ¿no es acaso exceso de atribuciones</p>
-            <p>Orfeo, descendiendo al Hades?</p>
-            <p>Marina Tsvetaeva</p>
-        </blockquote>
+    <figure>
+        <img src="3B.jpg" alt="Orfeo ejecutando sus cantos. Fragmento de cerámica.">
+        <figcaption>Orfeo ejecutando sus cantos. Fragmento de cerámica. Mediados del s. V a. C.</figcaption>
+    </figure>
 
-        <p>Orfeo es uno de los héroes de la expedición de los argonautas a la Cólquida por el vellocino de oro. Con su canto salvó la vida a sus amigos, hechizando con el canto a las propias sirenas. El fin de Orfeo, como el de todo poeta genial, fue trágico. Lo despedazaron las salvajes compañeras de Dioniso: las ménades. No están claras las causas de su acto. Aunque estas causas pueden ser las mismas que hoy, cuando los fanáticos de los cantores y de los actores de cine están también dispuestos a despedazarlos en pedazos de puro amor salvaje y entusiasmo. Se ha notado desde hace mucho que las pasiones humanas cambian poco, tanto en esencia como en manifestaciones. Al poeta se le podía despedazar en jirones, puede ser víctima de la furia ajena, pero es imposible obligar a callar su voz. La cabeza de Orfeo flotaba junto a la cítara. Él (ya eterno) profetizaba. «No, todo yo no moriré: / el alma en la lira amada mi polvo sobrevivirá, y la corrupción eludirá»: palabras de Pushkin sobre la inmortalidad de los orfeos, sobre el alma en la lira amada. La imagen de Homero, ¿no es acaso eco de Orfeo? He ahí lo primigenio y principal en el legado de la Antigüedad a la cultura. Lo originario desde Homero: la escucha, el eco sonoro. La escucha es ley, idea, medida del mundo griego. La escucha nos incluye en el círculo de la acústica como comprensión. La escucha es comprensión mutua. La escucha como comprensión, unión a través de la comprensión. ¿No está ahí acaso la superagenda oculta de todo el arte griego? ¿Y del teatro, y de la escultura, y, por supuesto, de los diálogos del banquete, cuyos temas eran propuestos por las imágenes de las vasijas de banquete (ánforas, dibujos en las vasijas)? ¿Y no está ahí la base de la democracia de la polis? Pues comprender es volverse igual, hablar la misma lengua. El ejemplo inverso: la Torre de Babel, el efecto de la inescucha mutua, del caos y de la desigualdad, de lo cual contaremos más detalladamente en otra parte de nuestro libro. La órbita de eco de Orfeo es inmensa. Lo atiende toda criatura: los Cerberos, las fieras, las flores, las aves… «A todo sonido, su propia resonancia en el aire vacío…» La eco-sonoridad de la poesía está en la escucha recíproca. Y esta ley nació, como se dijo, en las entrañas profundas de la historia mitológica antigua, con Orfeo-Homero.</p>
+    <div class="cita">
+        <p>Para quienes han arrancado los últimos jirones</p>
+        <p>del velo (¡ni labios, ni mejillas!..)</p>
+        <p>Oh, ¿no es acaso exceso de atribuciones</p>
+        <p>Orfeo, descendiendo al Hades?</p>
+        <p class="attribution">Marina Tsvetaeva</p>
+    </div>
 
-        <p>Orfeo no fue feliz. La felicidad personal no es para los poetas. Y su muerte fue trágica. A semejanza de Orfeo, ¿acaso el poeta Dante, guiado por su Hermes, Virgilio, no descendía al Infierno? ¿Y no era la sombra de la donna Beatrice el eco tardío, el estribillo de Eurídice?</p>
+    <p>Orfeo es uno de los héroes de la expedición de los argonautas a la Cólquida por el vellocino de oro. Con su canto salvó la vida a sus amigos, hechizando con el canto a las propias sirenas. El fin de Orfeo, como el de todo poeta genial, fue trágico. Lo despedazaron las salvajes compañeras de Dioniso: las ménades. No están claras las causas de su acto. Aunque estas causas pueden ser las mismas que hoy, cuando los fanáticos de los cantores y de los actores de cine están también dispuestos a despedazarlos en pedazos de puro amor salvaje y entusiasmo. Se ha notado desde hace mucho que las pasiones humanas cambian poco, tanto en esencia como en manifestaciones. Al poeta se le podía despedazar en jirones, puede ser víctima de la furia ajena, pero es imposible obligar a callar su voz. La cabeza de Orfeo flotaba junto a la cítara. Él (ya eterno) profetizaba. «No, todo yo no moriré: / el alma en la lira amada mi polvo sobrevivirá, y la corrupción eludirá»: palabras de Pushkin sobre la inmortalidad de los orfeos, sobre el alma en la lira amada. La imagen de Homero, ¿no es acaso eco de Orfeo? He ahí lo primigenio y principal en el legado de la Antigüedad a la cultura. Lo originario desde Homero: la escucha, el eco sonoro. La escucha es ley, idea, medida del mundo griego. La escucha nos incluye en el círculo de la acústica como comprensión. La escucha es comprensión mutua. La escucha como comprensión, unión a través de la comprensión. ¿No está ahí acaso la superagenda oculta de todo el arte griego? ¿Y del teatro, y de la escultura, y, por supuesto, de los diálogos del banquete, cuyos temas eran propuestos por las imágenes de las vasijas de banquete (ánforas, dibujos en las vasijas)? ¿Y no está ahí la base de la democracia de la polis? Pues comprender es volverse igual, hablar la misma lengua. El ejemplo inverso: la Torre de Babel, el efecto de la inescucha mutua, del caos y de la desigualdad, de lo cual contaremos más detalladamente en otra parte de nuestro libro. La órbita de eco de Orfeo es inmensa. Lo atiende toda criatura: los Cerberos, las fieras, las flores, las aves… «A todo sonido, su propia resonancia en el aire vacío…» La eco-sonoridad de la poesía está en la escucha recíproca. Y esta ley nació, como se dijo, en las entrañas profundas de la historia mitológica antigua, con Orfeo-Homero.</p>
 
-        <p>En la mitología antigua Orfeo tiene un doble-antípoda. Es Tamiris el citaredo. Era pariente de Orfeo en algún grado y vivió cuando nacieron la música-poesía y las musas de los poetas. De Tamiris corrían leyendas como de músico y, además, bello. Pero Tamiris era arrogante y vanidoso, y desafió a competición a las propias musas. En su sed de victoria y de poseerlas, Tamiris perdió. Perdió la voz, el don de citaredo y la vista. Orfeo profetizaba incluso en la muerte. A Tamiris, en cambio, se le privó de su don aún en vida. Los griegos sentían finamente la frontera de las normas éticas. Sabían: el solo talento no basta. ¿Qué añadir a esto hoy? Sófocles escribió sobre Tamiris una tragedia y él mismo representó en ella el papel principal. Lamentablemente, esta obra de Sófocles no ha llegado hasta nosotros.</p>
+    <p>Orfeo no fue feliz. La felicidad personal no es para los poetas. Y su muerte fue trágica. A semejanza de Orfeo, ¿acaso el poeta Dante, guiado por su Hermes, Virgilio, no descendía al Infierno? ¿Y no era la sombra de la donna Beatrice el eco tardío, el estribillo de Eurídice?</p>
 
-        <p>Las excavaciones realizadas por Heinrich Schliemann en los años setenta y ochenta del siglo XIX en la colina que se consideraba la antigua Troya, y en Micenas, fueron un descubrimiento científico y una prueba documental de la veracidad de los poemas de Homero. La casa de Schliemann en Atenas está decorada con citas de los poemas. Las citas, con mosaico de oro, decoran el techo, los muros del gabinete, del cuarto de los niños, etc. Desde el punto de vista de la psicología, semejante insistencia se asimila con menos frecuencia; más a menudo se rechaza, lo que quizá ocurrió con los hijos de Schliemann.</p>
+    <p>En la mitología antigua Orfeo tiene un doble-antípoda. Es Tamiris el citaredo. Era pariente de Orfeo en algún grado y vivió cuando nacieron la música-poesía y las musas de los poetas. De Tamiris corrían leyendas como de músico y, además, bello. Pero Tamiris era arrogante y vanidoso, y desafió a competición a las propias musas. En su sed de victoria y de poseerlas, Tamiris perdió. Perdió la voz, el don de citaredo y la vista. Orfeo profetizaba incluso en la muerte. A Tamiris, en cambio, se le privó de su don aún en vida. Los griegos sentían finamente la frontera de las normas éticas. Sabían: el solo talento no basta. ¿Qué añadir a esto hoy? Sófocles escribió sobre Tamiris una tragedia y él mismo representó en ella el papel principal. Lamentablemente, esta obra de Sófocles no ha llegado hasta nosotros.</p>
 
-        <p>Todas las dudas (y no son pocas, incluidas las excavaciones) retroceden ante la evidencia de la inagotabilidad de la enciclopedia de la Antigüedad en la cultura universal.</p>
+    <p>Las excavaciones realizadas por Heinrich Schliemann en los años setenta y ochenta del siglo XIX en la colina que se consideraba la antigua Troya, y en Micenas, fueron un descubrimiento científico y una prueba documental de la veracidad de los poemas de Homero. La casa de Schliemann en Atenas está decorada con citas de los poemas. Las citas, con mosaico de oro, decoran el techo, los muros del gabinete, del cuarto de los niños, etc. Desde el punto de vista de la psicología, semejante insistencia se asimila con menos frecuencia; más a menudo se rechaza, lo que quizá ocurrió con los hijos de Schliemann.</p>
 
-        <p>La imagen del cantor y del poeta de toda la tradición europea y rusa se forma evidentemente bajo la influencia del código complejo de la imagen del cantor-aedo de la temprana cultura antigua. Más aún: el anonimato y la ausencia de biografía de hechos son ya ejemplo de la biografía del poeta. Solo se subrayan dos rasgos: el tema de las peregrinaciones (la carencia de hogar) y la actitud ante la vocación.</p>
+    <p>Todas las dudas (y no son pocas, incluidas las excavaciones) retroceden ante la evidencia de la inagotabilidad de la enciclopedia de la Antigüedad en la cultura universal.</p>
 
-        <p>La matriz de Orfeo y de Homero, a través de todos los siglos y milenios hasta el día de hoy, ha conservado la adhesión únicamente al propio don. En este sentido todos los poetas son hijos del mito más que de su familia.</p>
+    <p>La imagen del cantor y del poeta de toda la tradición europea y rusa se forma evidentemente bajo la influencia del código complejo de la imagen del cantor-aedo de la temprana cultura antigua. Más aún: el anonimato y la ausencia de biografía de hechos son ya ejemplo de la biografía del poeta. Solo se subrayan dos rasgos: el tema de las peregrinaciones (la carencia de hogar) y la actitud ante la vocación.</p>
 
-        <p>De la biografía del poeta citaredo Arión, realmente vivido en el siglo VII a. C., quedó el relato de cómo cayó prisionero de los piratas del mar. Les pidió clemencia: cantar antes de morir. Terminada la canción, Arión se arrojó al mar, pero lo salvó y lo llevó a la orilla el sagrado Delfín de Apolo. El eco del siglo XIX, Pushkin, responde con el poema «Arión» («Éramos muchos en la barca…»): «Canto las canciones de siempre, y mi pobre vestido / lo seco al sol bajo la roca». El emerger del abismo y la señal de que vuelves a vivir: la canción. ¿Necesita el poeta, errante y viajero, una biografía? ¿Qué puede explicar en el genio de Shakespeare el hecho de si fue hijo de un carnicero de Stratford o de un lord Redcliffe? Shakespeare repitió la biografía ideal orfico-homérica o, más bien, su ausencia. Se encarnó y disolvió por entero y sin residuo en su poesía. El inglés de la época isabelina, cuyas traducciones de obras a todas las lenguas del mundo están en todas las librerías y cuyas piezas se representan sin interrupción en todos los teatros del mundo. Es el anónimo misterioso.</p>
+    <p>La matriz de Orfeo y de Homero, a través de todos los siglos y milenios hasta el día de hoy, ha conservado la adhesión únicamente al propio don. En este sentido todos los poetas son hijos del mito más que de su familia.</p>
 
-        <figure>
-            <img src="3C.jpg" alt="Safo y Alceo. Poetas del s. VII a. C.">
-            <figcaption>Safo y Alceo. Poetas del s. VII a. C. Pintura de cálato. S. V a. C. Museo de Arte Antiguo, Múnich.</figcaption>
-        </figure>
+    <p>De la biografía del poeta citaredo Arión, realmente vivido en el siglo VII a. C., quedó el relato de cómo cayó prisionero de los piratas del mar. Les pidió clemencia: cantar antes de morir. Terminada la canción, Arión se arrojó al mar, pero lo salvó y lo llevó a la orilla el sagrado Delfín de Apolo. El eco del siglo XIX, Pushkin, responde con el poema «Arión» («Éramos muchos en la barca…»): «Canto las canciones de siempre, y mi pobre vestido / lo seco al sol bajo la roca». El emerger del abismo y la señal de que vuelves a vivir: la canción. ¿Necesita el poeta, errante y viajero, una biografía? ¿Qué puede explicar en el genio de Shakespeare el hecho de si fue hijo de un carnicero de Stratford o de un lord Redcliffe? Shakespeare repitió la biografía ideal orfico-homérica o, más bien, su ausencia. Se encarnó y disolvió por entero y sin residuo en su poesía. El inglés de la época isabelina, cuyas traducciones de obras a todas las lenguas del mundo están en todas las librerías y cuyas piezas se representan sin interrupción en todos los teatros del mundo. Es el anónimo misterioso.</p>
 
-        <p>En la peregrinación poética de la tradición homérica no solo hay carencia de hogar en vida, sino «carencia de hogar», «carencia de espacio» póstumas. Claridad ante la lengua y el tiempo de todo lo existente. Asombro del lector contemporáneo: en el mostrador del quiosco de libros de la Duma del Estado, entre la literatura económica y política, la edición de regalo, ilustrada, del año 2006, de la «Odisea» de Homero.</p>
+    <figure>
+        <img src="3C.jpg" alt="Safo y Alceo. Poetas del s. VII a. C.">
+        <figcaption>Safo y Alceo. Poetas del s. VII a. C. Pintura de cálato. S. V a. C. Museo de Arte Antiguo, Múnich.</figcaption>
+    </figure>
 
-        <p>Los bardos jamás desaparecieron de la cultura, salvo en los episodios de total falta de libertad de la sociedad, es decir, el totalitarismo. Pues el errante es libre. Cruza sin esfuerzo las fronteras y encuentra oyentes en todas partes. El errante, poeta y filósofo del siglo XII, Francisco de Asís, que cantaba bajo la nieve extrañas oraciones, hallaba respuesta y comprensión en las almas de las aves, como Orfeo. El vagabundo loco fue canonizado, escribió el libro «Las florecillas», y a sus seguidores se les llama franciscanos.</p>
+    <p>En la peregrinación poética de la tradición homérica no solo hay carencia de hogar en vida, sino «carencia de hogar», «carencia de espacio» póstumas. Claridad ante la lengua y el tiempo de todo lo existente. Asombro del lector contemporáneo: en el mostrador del quiosco de libros de la Duma del Estado, entre la literatura económica y política, la edición de regalo, ilustrada, del año 2006, de la «Odisea» de Homero.</p>
 
-        <p>En los «Comentarios a la guerra de las Galias» (siglo I a. C.) César describía a los bardos celtas, que pertenecían a la casta sacerdotal espiritual de los druidas. Transmitían los relatos sobre la historia y las hazañas militares, sobre el valor de los antepasados. La memoria histórica vive en su canto; los contemporáneos los consideran portadores de la verdad. Igual que los antiguos poetas escandinavos, los escaldos. El origen de la poesía escáldica no tiene una respuesta unívoca, pero los vínculos celtas están desde hace tiempo fuera de toda duda. «En las heridas ardían / los resplandores del combate; / los aguijones de hierro / atentaban contra la vida; / las gotas de la contienda siseaban / en el campo de las lanzas; / torrentes de flechas / manaban sobre el Ströd…»: así escribía el bardo Eivindr el Destrozador. Los versos-vísur de Eivindr resonaron, con eco lejano, en la poesía del escaldo ruso del siglo XX Velimir Jlébnikov.</p>
+    <p>Los bardos jamás desaparecieron de la cultura, salvo en los episodios de total falta de libertad de la sociedad, es decir, el totalitarismo. Pues el errante es libre. Cruza sin esfuerzo las fronteras y encuentra oyentes en todas partes. El errante, poeta y filósofo del siglo XII, Francisco de Asís, que cantaba bajo la nieve extrañas oraciones, hallaba respuesta y comprensión en las almas de las aves, como Orfeo. El vagabundo loco fue canonizado, escribió el libro «Las florecillas», y a sus seguidores se les llama franciscanos.</p>
 
-        <p>En el предание del norte hay un héroe que, semejante a Prometeo o a Heracles de la antigüedad griega, puede llamarse héroe y dios. Su nombre: Odín. Con él se vincula el comienzo de la cultura de la civilización nórdica, el don de los signos mágicos de la escritura —las runas— y la miel de la poesía.</p>
+    <p>En los «Comentarios a la guerra de las Galias» (siglo I a. C.) César describía a los bardos celtas, que pertenecían a la casta sacerdotal espiritual de los druidas. Transmitían los relatos sobre la historia y las hazañas militares, sobre el valor de los antepasados. La memoria histórica vive en su canto; los contemporáneos los consideran portadores de la verdad. Igual que los antiguos poetas escandinavos, los escaldos. El origen de la poesía escáldica no tiene una respuesta unívoca, pero los vínculos celtas están desde hace tiempo fuera de toda duda. «En las heridas ardían / los resplandores del combate; / los aguijones de hierro / atentaban contra la vida; / las gotas de la contienda siseaban / en el campo de las lanzas; / torrentes de flechas / manaban sobre el Ströd…»: así escribía el bardo Eivindr el Destrozador. Los versos-vísur de Eivindr resonaron, con eco lejano, en la poesía del escaldo ruso del siglo XX Velimir Jlébnikov.</p>
 
-        <p>En torno a su nombre —progenitor del linaje de los Velsungos— se desarrollan los temas de la cosmogonía escandinava, la genealogía de los héroes, el bullicio de la densamente poblada mitología escandinava de hadas, gnomos, gigantes, sirenas y dragones. La epopeya heroica «Edda menor», «Edda mayor», la «Saga de los Velsungos» es para la Europa del Norte lo mismo que la poesía épica de Homero para el Mediterráneo antiguo. Y los escaldos son los mismos aedos. Los druidas: la gran tribu sagrada portadora de la memoria del mundo y de la compleja experiencia de las relaciones de los hombres con el mundo de la naturaleza, entre sí y con Dios. En una palabra: son errantes, poetas con la ligera carga-lira (cítara, gusli, guitarra, arpa) en bandolera a la espalda y la gran carga de responsabilidad por la palabra ante su vocación. El tiempo de la inmortalidad, en cambio, los arrea por los caminos del espacio sin límites, es decir, carente de fronteras.</p>
+    <p>En la tradición del norte hay un héroe que, semejante a Prometeo o a Heracles de la antigüedad griega, puede llamarse héroe y dios. Su nombre: Odín. Con él se vincula el comienzo de la cultura de la civilización nórdica, el don de los signos mágicos de la escritura —las runas— y la miel de la poesía.</p>
 
-        <p>Tanto la «Edda menor» como la «Edda mayor» narran sobre el árbol del mundo, el fresno Yggdrasil. La «Edda menor» escribe: «Sus ramas se extienden sobre todo el mundo y se elevan por encima del cielo. Tres raíces sostienen el árbol y muy lejos se extienden estas raíces. Una raíz está entre los ases<sup>1</sup>, otra entre los gigantes, allí donde antes estuvo el Abismo del mundo. La tercera se extiende hacia Niflheim». La «Edda mayor» repite la descripción de Yggdrasil: «Con tres raíces / aquel árbol-fresno / brotó hacia tres lados: / bajo la primera, Hel; la segunda, hacia los hrimthurs; / la tercera, hacia el linaje de los hombres».</p>
+    <p>En torno a su nombre —progenitor del linaje de los Velsungos— se desarrollan los temas de la cosmogonía escandinava, la genealogía de los héroes, el bullicio de la densamente poblada mitología escandinava de hadas, gnomos, gigantes, sirenas y dragones. La epopeya heroica «Edda menor», «Edda mayor», la «Saga de los Velsungos» es para la Europa del Norte lo mismo que la poesía épica de Homero para el Mediterráneo antiguo. Y los escaldos son los mismos aedos. Los druidas: la gran tribu sagrada portadora de la memoria del mundo y de la compleja experiencia de las relaciones de los hombres con el mundo de la naturaleza, entre sí y con Dios. En una palabra: son errantes, poetas con la ligera carga-lira (cítara, gusli, guitarra, arpa) en bandolera a la espalda y la gran carga de responsabilidad por la palabra ante su vocación. El tiempo de la inmortalidad, en cambio, los arrea por los caminos del espacio sin límites, es decir, carente de fronteras.</p>
 
-        <p>Odín, padre de los dioses, hijo del cielo, se sacrificó a sí mismo y se crucificó en el «árbol Yggdrasil», traspasado por su propia lanza. A cambio obtuvo el derecho a beber la miel sagrada y a transmitir esa miel a los ases y a «las gentes que saben componer versos». Así narra la «Edda menor»: «Sé que colgué / en las ramas, al viento, / nueve largas noches, / traspasado por la lanza /… Nadie me dio alimento, / nadie me dio bebida, / miré hacia la tierra, / alcé las runas, / gimiendo las alcé — / y del árbol caí». Las raíces del árbol se hunden en lo desconocido, hacia el comienzo de los comienzos, hacia la incalculabilidad de los días. Por cierto, el calendario, es decir, el cómputo de los días, las «Eddas» lo vinculan asimismo con la sabiduría de Odín. Así, pues, el cómputo de los días y de los años —el número—, los signos rúnicos —la magia de la escritura— y la miel de la poesía tienen un mismo tiempo y una única fuente, en la frontera entre el sueño y la vigilia del Odín crucificado.</p>
+    <p>Tanto la «Edda menor» como la «Edda mayor» narran sobre el árbol del mundo, el fresno Yggdrasil. La «Edda menor» escribe: «Sus ramas se extienden sobre todo el mundo y se elevan por encima del cielo. Tres raíces sostienen el árbol y muy lejos se extienden estas raíces. Una raíz está entre los ases<sup>1</sup>, otra entre los gigantes, allí donde antes estuvo el Abismo del mundo. La tercera se extiende hacia Niflheim». La «Edda mayor» repite la descripción de Yggdrasil: «Con tres raíces / aquel árbol-fresno / brotó hacia tres lados: / bajo la primera, Hel; la segunda, hacia los hrimthurs; / la tercera, hacia el linaje de los hombres».</p>
 
-        <p>Odín y sus sacerdotes se llamaban «maestros del canto», y de ellos procedió este arte en los países del norte. Y cuando cantaban, sus enemigos en el combate se volvían impotentes, se llenaban de terror, y sus armas no herían más que una ramita de leña. Y a los guerreros de Odín, los cantores, nada podía dañar. Tales guerreros-cantores se llamaban «berserkers» (escaldos, aedos).</p>
+    <p>Odín, padre de los dioses, hijo del cielo, se sacrificó a sí mismo y se crucificó en el «árbol Yggdrasil», traspasado por su propia lanza. A cambio obtuvo el derecho a beber la miel sagrada y a transmitir esa miel a los ases y a «las gentes que saben componer versos». Así narra la «Edda menor»: «Sé que colgué / en las ramas, al viento, / nueve largas noches, / traspasado por la lanza /… Nadie me dio alimento, / nadie me dio bebida, / miré hacia la tierra, / alcé las runas, / gimiendo las alcé — / y del árbol caí». Las raíces del árbol se hunden en lo desconocido, hacia el comienzo de los comienzos, hacia la incalculabilidad de los días. Por cierto, el calendario, es decir, el cómputo de los días, las «Eddas» lo vinculan asimismo con la sabiduría de Odín. Así, pues, el cómputo de los días y de los años —el número—, los signos rúnicos —la magia de la escritura— y la miel de la poesía tienen un mismo tiempo y una única fuente, en la frontera entre el sueño y la vigilia del Odín crucificado.</p>
 
-        <p>Los acompañantes de Odín, su séquito, además de los poetas-guerreros, eran las doncellas guerreras. Se les llamaba valquirias, doncellas del destino: las que llevan a los guerreros desde el campo de batalla al paraíso de la inmortalidad, el Valhalla. Las valquirias son hermosas. Sus cabellos rubios envuelven los yelmos, y sus ojos de una vividez azul tan intensa que es difícil describirla. Una de tales valquirias se llamaba Brunilda, y con ella está vinculada la muerte del gran guerrero Sigurd o Sigfrido, el vencedor del Dragón.</p>
+    <p>Odín y sus sacerdotes se llamaban «maestros del canto», y de ellos procedió este arte en los países del norte. Y cuando cantaban, sus enemigos en el combate se volvían impotentes, se llenaban de terror, y sus armas no herían más que una ramita de leña. Y a los guerreros de Odín, los cantores, nada podía dañar. Tales guerreros-cantores se llamaban «berserkers» (escaldos, aedos).</p>
 
-        <p>A semejanza de Aquiles, Sigfrido era invulnerable, con excepción de un único punto: la escápula derecha, a la que se adhirió una hoja de arce mientras Sigfrido tomaba el baño de sangre del Dragón que él mismo había matado. La escápula era su «talón de Aquiles». ¡Oh, las mujeres! El secreto de Sigfrido solo lo conocía su esposa Gudrun. Después, en la saga heroica del «Oro del Rin», comienza una historia digna de las querellas en el Olimpo o en la «Ilíada». Historias de celos, de vanidad, de maldad, de traición, de amor. «El mejor de todos era el rey Sigurd: / ¡mis hermanos / lo dieron muerte!», gime Gudrun, sin recordar que fue ella quien reveló su secreto a la celosa Brunilda y a los hermanos envidiosos. Más le valiera guardar la lengua tras los dientes.</p>
+    <p>Los acompañantes de Odín, su séquito, además de los poetas-guerreros, eran las doncellas guerreras. Se les llamaba valquirias, doncellas del destino: las que llevan a los guerreros desde el campo de batalla al paraíso de la inmortalidad, el Valhalla. Las valquirias son hermosas. Sus cabellos rubios envuelven los yelmos, y sus ojos de una vividez azul tan intensa que es difícil describirla. Una de tales valquirias se llamaba Brunilda, y con ella está vinculada la muerte del gran guerrero Sigurd o Sigfrido, el vencedor del Dragón.</p>
 
-        <p>A mediados del siglo XVII fue hallada una copia en pergamino de los cantares de la «Edda mayor», como escrita en el siglo XIII. Más bien «transcrita» en el siglo XIII a partir de cantares escáldicos existentes en la tradición oral. La adopción del cristianismo y las tradiciones cristianas se entretejen con la antigua mitología nórdica. Así, las piedras rúnicas erigidas en el siglo XI se coronan con la imagen de Cristo. Y la versión completa del «Cantar de los Nibelungos», registrada en los siglos XII–XIII, ordenada en cierta unidad poética, es una epopeya heroica con el velo de las ideas cristianas. (Beowulf. Edda mayor. Cantar de los Nibelungos. Moscú, 1975. Artículos introductorios de L. Y. Gurévich. Traducción de A. I. Korsún)</p>
+    <p>A semejanza de Aquiles, Sigfrido era invulnerable, con excepción de un único punto: la escápula derecha, a la que se adhirió una hoja de arce mientras Sigfrido tomaba el baño de sangre del Dragón que él mismo había matado. La escápula era su «talón de Aquiles». ¡Oh, las mujeres! El secreto de Sigfrido solo lo conocía su esposa Gudrun. Después, en la saga heroica del «Oro del Rin», comienza una historia digna de las querellas en el Olimpo o en la «Ilíada». Historias de celos, de vanidad, de maldad, de traición, de amor. «El mejor de todos era el rey Sigurd: / ¡mis hermanos / lo dieron muerte!», gime Gudrun, sin recordar que fue ella quien reveló su secreto a la celosa Brunilda y a los hermanos envidiosos. Más le valiera guardar la lengua tras los dientes.</p>
 
-        <p>La saga del «Anillo del Nibelungo» aflora de nuevo, suscitando interés por la cultura medieval, en la investigación y en la poesía, no menor que las excavaciones de Heinrich Schliemann en el siglo XIX. Fue un acontecimiento la publicación, en 1835, de la investigación fundamental de Jacob Grimm «Mitología alemana». Y las puestas en escena que le siguieron, de 1854 a 1874, es decir, a lo largo de 20 años, de las cuatro óperas de Richard Wagner del «Anillo del Nibelungo»: «El oro del Rin», «La valquiria», «Sigfrido» y «El ocaso de los dioses».</p>
+    <p>A mediados del siglo XVII fue hallada una copia en pergamino de los cantares de la «Edda mayor», como escrita en el siglo XIII. Más bien «transcrita» en el siglo XIII a partir de cantares escáldicos existentes en la tradición oral. La adopción del cristianismo y las tradiciones cristianas se entretejen con la antigua mitología nórdica. Así, las piedras rúnicas erigidas en el siglo XI se coronan con la imagen de Cristo. Y la versión completa del «Cantar de los Nibelungos», registrada en los siglos XII–XIII, ordenada en cierta unidad poética, es una epopeya heroica con el velo de las ideas cristianas. (Beowulf. Edda mayor. Cantar de los Nibelungos. Moscú, 1975. Artículos introductorios de L. Y. Gurévich. Traducción de A. I. Korsún)</p>
 
-        <p>Todo el siglo XIX está apasionado por la Antigüedad, por sus ideas, su arte, su poesía. La arqueología hace literalmente estallar la cultura con su evidencia. Se crean museos y colecciones de arte antiguo. Al mismo tiempo, con no menor entusiasmo, el siglo XIX recibe, sobre la ola del romanticismo, el mundo misterioso de la mitología y de la poesía medievales europeas. Clasicismo y romanticismo viven juntos, en un complejo entrelazamiento de la Antigüedad con la epopeya heroica romanico-gótica de los «Nibelungos», del «Cantar de Roldán» y del «Rey Arturo», etc.</p>
+    <p>La saga del «Anillo del Nibelungo» aflora de nuevo, suscitando interés por la cultura medieval, en la investigación y en la poesía, no menor que las excavaciones de Heinrich Schliemann en el siglo XIX. Fue un acontecimiento la publicación, en 1835, de la investigación fundamental de Jacob Grimm «Mitología alemana». Y las puestas en escena que le siguieron, de 1854 a 1874, es decir, a lo largo de 20 años, de las cuatro óperas de Richard Wagner del «Anillo del Nibelungo»: «El oro del Rin», «La valquiria», «Sigfrido» y «El ocaso de los dioses».</p>
 
-        <p>Quisiéramos recordar también el poema heroico-lírico ruso «Cantar de las huestes de Igor», en la versión del poeta Vasili Zhukovski, edición de 1824. La autenticidad de los textos del poema suscitó no pocas disputas. Pero esta cuestión la dejamos fuera. El poema es auténtico. Según los testimonios, fue escrito hacia 1185 y narraba la historia trágica de la campaña del príncipe Ígor Sviatoslávich contra los polovtsianos, apenas cincuenta años antes del comienzo de la invasión mongola de la Rus. ¡Y qué prodigio! Cómo, por su construcción externa, recuerda a la «Ilíada». El poema tiene como dos autores: un historiador objetivo y un viejo poeta. El historiador polemiza con el cantor llamado Boián. Boián «el vidente», hijo de Veles (Odín). «Oh Boián —se le dirige nuestro objetivo historiador—, ruiseñor del tiempo antiguo: si hubieras cantado estas huestes, habrías remontado con la mente bajo las nubes, trenzando las palabras en torno a nuestro tiempo, elevándote por la senda de Troyán desde los campos hasta las montañas…» Pero nuestro objetivo testigo-documentalista no puede vencer a Boián y, aun así, tuerce hacia la «senda de Troyán». El papel de Andrómaca lo interpreta la esposa del príncipe Ígor, Yaroslavna. «Insomnio… Homero». ¿Por qué caminos tan misteriosos la Rus del siglo XII «se empapa» de la matriz universal de Homero? Viene al mundo un hombre y desvía para siempre las agujas de la cultura, de la imagen, del estilo, convirtiéndose en frontera en la historia de la conciencia cultural. El autor del «Cantar» es tan anónimo como los autores precedentes. Contemos convencionalmente que es uno de los escaldos-bardos-cantores, desde cuya voz se narra. El siglo XII es notable para Europa, para el mundo entero. Es explosión, quiebra, ideas nuevas, Cruzadas. Un cambio de rumbo no menos global que la época del Renacimiento. Pero detalladamente del siglo XII y de los héroes de aquel tiempo hablaremos en su momento y en otra sección. Ahora solo mencionamos aquellos nuevos valores espirituales a los que estaba destinado un largo camino hacia el futuro y cuyas raíces del árbol ya habían brotado mil quinientos años antes del «Cantar». Llamamos a este tiempo (del siglo XII a. C. al siglo XII d. C.) el camino de formación de la conciencia nueva, para la cual el alfabeto, la palabra, el teatro, la imagen y la música constituyen un nuevo texto continuo de la cultura.</p>
+    <p>Todo el siglo XIX está apasionado por la Antigüedad, por sus ideas, su arte, su poesía. La arqueología hace literalmente estallar la cultura con su evidencia. Se crean museos y colecciones de arte antiguo. Al mismo tiempo, con no menor entusiasmo, el siglo XIX recibe, sobre la ola del romanticismo, el mundo misterioso de la mitología y de la poesía medievales europeas. Clasicismo y romanticismo viven juntos, en un complejo entrelazamiento de la Antigüedad con la epopeya heroica romanico-gótica de los «Nibelungos», del «Cantar de Roldán» y del «Rey Arturo», etc.</p>
 
-        <p>Volviendo al «Cantar», quisiéramos recordar además que, semejante a la cuadrología operística wagneriana de los «Nibelungos», casi al mismo tiempo, el gran compositor ruso Borodin escribe la ópera «El príncipe Ígor». La ópera es el «gran estilo», la gran forma, donde la palabra, los diálogos de las geniales fuentes originarias, suelen ser simplificados por libretistas muy débiles, y toda la responsabilidad de la dramaturgia la asume la música de Wagner, de Verdi, de Chaikovski, de Mussorgski, de Borodin.</p>
+    <p>Quisiéramos recordar también el poema heroico-lírico ruso «Cantar de las huestes de Igor», en la versión del poeta Vasili Zhukovski, edición de 1824. La autenticidad de los textos del poema suscitó no pocas disputas. Pero esta cuestión la dejamos fuera. El poema es auténtico. Según los testimonios, fue escrito hacia 1185 y narraba la historia trágica de la campaña del príncipe Ígor Sviatoslávich contra los polovtsianos, apenas cincuenta años antes del comienzo de la invasión mongola de la Rus. ¡Y qué prodigio! Cómo, por su construcción externa, recuerda a la «Ilíada». El poema tiene como dos autores: un historiador objetivo y un viejo poeta. El historiador polemiza con el cantor llamado Boián. Boián «el vidente», hijo de Veles (Odín). «Oh Boián —se le dirige nuestro objetivo historiador—, ruiseñor del tiempo antiguo: si hubieras cantado estas huestes, habrías remontado con la mente bajo las nubes, trenzando las palabras en torno a nuestro tiempo, elevándote por la senda de Troyán desde los campos hasta las montañas…» Pero nuestro objetivo testigo-documentalista no puede vencer a Boián y, aun así, tuerce hacia la «senda de Troyán». El papel de Andrómaca lo interpreta la esposa del príncipe Ígor, Yaroslavna. «Insomnio… Homero». ¿Por qué caminos tan misteriosos la Rus del siglo XII «se empapa» de la matriz universal de Homero? Viene al mundo un hombre y desvía para siempre las agujas de la cultura, de la imagen, del estilo, convirtiéndose en frontera en la historia de la conciencia cultural. El autor del «Cantar» es tan anónimo como los autores precedentes. Contemos convencionalmente que es uno de los escaldos-bardos-cantores, desde cuya voz se narra. El siglo XII es notable para Europa, para el mundo entero. Es explosión, quiebra, ideas nuevas, Cruzadas. Un cambio de rumbo no menos global que la época del Renacimiento. Pero detalladamente del siglo XII y de los héroes de aquel tiempo hablaremos en su momento y en otra sección. Ahora solo mencionamos aquellos nuevos valores espirituales a los que estaba destinado un largo camino hacia el futuro y cuyas raíces del árbol ya habían brotado mil quinientos años antes del «Cantar». Llamamos a este tiempo (del siglo XII a. C. al siglo XII d. C.) el camino de formación de la conciencia nueva, para la cual el alfabeto, la palabra, el teatro, la imagen y la música constituyen un nuevo texto continuo de la cultura.</p>
 
-        <p>En el siglo XI, en el sur de Francia, en Provenza, en Aquitania, surge (no se ha inventado otra palabra) —surge, como si se autogenerara— una nueva tradición cultural, a la vez tan vieja como la creación: la poesía lírica y heroica, acompañada de acompañamiento musical.</p>
+    <p>Volviendo al «Cantar», quisiéramos recordar además que, semejante a la cuadrología operística wagneriana de los «Nibelungos», casi al mismo tiempo, el gran compositor ruso Borodin escribe la ópera «El príncipe Ígor». La ópera es el «gran estilo», la gran forma, donde la palabra, los diálogos de las geniales fuentes originarias, suelen ser simplificados por libretistas muy débiles, y toda la responsabilidad de la dramaturgia la asume la música de Wagner, de Verdi, de Chaikovski, de Mussorgski, de Borodin.</p>
 
-        <p>Los poetas escribían ellos mismos los textos, la música, y ellos mismos los ejecutaban, errando de castillo en castillo o partiendo a Oriente bajo las banderas de los templarios-cruzados. Y aquellos poetas se llamaban trovadores, y su poesía, cortés. Por cierto, cuán significativo que el significado literal de la palabra «trovador» sea «el que halla lo nuevo». Acompañaban sus relatos o los desbordes del alma tocando algo semejante a un arpa, una viola o un laúd.</p>
+    <p>En el siglo XI, en el sur de Francia, en Provenza, en Aquitania, surge (no se ha inventado otra palabra) —surge, como si se autogenerara— una nueva tradición cultural, a la vez tan vieja como la creación: la poesía lírica y heroica, acompañada de acompañamiento musical.</p>
 
-        <figure>
-            <img src="3D.jpg" alt="Bufón-improvisador. Intérprete de parábolas y anécdotas populares al son de los sonajeros.">
-            <figcaption>Bufón-improvisador. Intérprete de parábolas y anécdotas populares al son de los sonajeros. Finales del s. XV. Miniatura. Museo Marmottan-Monet, París.</figcaption>
-        </figure>
+    <p>Los poetas escribían ellos mismos los textos, la música, y ellos mismos los ejecutaban, errando de castillo en castillo o partiendo a Oriente bajo las banderas de los templarios-cruzados. Y aquellos poetas se llamaban trovadores, y su poesía, cortés. Por cierto, cuán significativo que el significado literal de la palabra «trovador» sea «el que halla lo nuevo». Acompañaban sus relatos o los desbordes del alma tocando algo semejante a un arpa, una viola o un laúd.</p>
 
-        <p>Los trovadores contaban historias diversas: heroicas, militares, sobre héroes como Roldán, el Cid, San-Cyr conde de Toulouse, o Raimbaut de Orange, o el conde Hugo, sobre vencedores de dragones, de sarracenos y de otros infieles, y de santos. Contaban también chismes a modo de baladas: quién duerme con quién, quién de qué padece, cuántos bienes tiene cada cual. Espiaban un poquito. Pero lo principal, lo nuevo de lo que fueron creadores, es la lírica amorosa, es el culto nuevo. El culto de la Dama Bella. Surgió bajo la influencia del benedictino san Bernardo de Claraval. María, Madre de Dios, se unió, en la teología espiritual del catolicismo, al culto platónico de la Dama Bella. Aparecida ante nosotros en los siglos XI–XII, la nueva Mariología no abandonó ya nunca las tablas de la historia cultural europea, hasta el siglo XX. En Rusia su cantor fue el poeta Aleksandr Blok. Todo ello recuerda a la princesa Uta, arrebujada en su manto en el portal de la catedral de Braunburgo. Ella mira a lo lejos: ¿no vendrá acaso su esposo, el caballero Eckart?</p>
+    <figure>
+        <img src="3D.jpg" alt="Bufón-improvisador. Intérprete de parábolas y anécdotas populares al son de los sonajeros.">
+        <figcaption>Bufón-improvisador. Intérprete de parábolas y anécdotas populares al son de los sonajeros. Finales del s. XV. Miniatura. Museo Marmottan-Monet, París.</figcaption>
+    </figure>
 
-        <p>Por ahora digamos solo a grandes rasgos de los poetas-trovadores: historiadores, errantes, desesperados aventureros sin futuro y sin pasado, gentes del origen más abigarrado, desde aristócratas hasta plebeyos.</p>
+    <p>Los trovadores contaban historias diversas: heroicas, militares, sobre héroes como Roldán, el Cid, San-Cyr conde de Toulouse, o Raimbaut de Orange, o el conde Hugo, sobre vencedores de dragones, de sarracenos y de otros infieles, y de santos. Contaban también chismes a modo de baladas: quién duerme con quién, quién de qué padece, cuántos bienes tiene cada cual. Espiaban un poquito. Pero lo principal, lo nuevo de lo que fueron creadores, es la lírica amorosa, es el culto nuevo. El culto de la Dama Bella. Surgió bajo la influencia del benedictino san Bernardo de Claraval. María, Madre de Dios, se unió, en la teología espiritual del catolicismo, al culto platónico de la Dama Bella. Aparecida ante nosotros en los siglos XI–XII, la nueva Mariología no abandonó ya nunca las tablas de la historia cultural europea, hasta el siglo XX. En Rusia su cantor fue el poeta Aleksandr Blok. Todo ello recuerda a la princesa Uta, arrebujada en su manto en el portal de la catedral de Braunburgo. Ella mira a lo lejos: ¿no vendrá acaso su esposo, el caballero Eckart?</p>
 
-        <p>A las historias de los albigenses-trovadores, de los minnesänger, están dedicadas muchas investigaciones. El autor de una de ellas, «Historia de los albigenses», Napoleón Peyrat, escribe: «A semejanza de Grecia, Aquitania comenzó con la poesía. En Aquitania, como en la Hélade, la fuente de la inspiración poética se hallaba en las cimas de las montañas cubiertas de nubes» (Historia de los albigenses, Moscú, 1992, pp. 47 y 51).</p>
+    <p>Por ahora digamos solo a grandes rasgos de los poetas-trovadores: historiadores, errantes, desesperados aventureros sin futuro y sin pasado, gentes del origen más abigarrado, desde aristócratas hasta plebeyos.</p>
 
-        <p>Y así se cierra el círculo de la continuidad de la tradición homérica de aedos-trovadores, regresando en espiral a sus propios órdenes, pues también en la lírica de la Europa medieval vemos sombras de la epopeya heroica y oímos los sonidos de cuerdas de las cítaras.</p>
+    <p>A las historias de los albigenses-trovadores, de los minnesänger, están dedicadas muchas investigaciones. El autor de una de ellas, «Historia de los albigenses», Napoleón Peyrat, escribe: «A semejanza de Grecia, Aquitania comenzó con la poesía. En Aquitania, como en la Hélade, la fuente de la inspiración poética se hallaba en las cimas de las montañas cubiertas de nubes» (Historia de los albigenses, Moscú, 1992, pp. 47 y 51).</p>
 
-        <p>El caballero Bertran de Born fue guerrero y participante de la 2.ª Cruzada.</p>
+    <p>Y así se cierra el círculo de la continuidad de la tradición homérica de aedos-trovadores, regresando en espiral a sus propios órdenes, pues también en la lírica de la Europa medieval vemos sombras de la epopeya heroica y oímos los sonidos de cuerdas de las cítaras.</p>
 
-        <div class="poem">
-            <p>En mi amor está el manantial de la poesía:</p>
-            <p>para cantar, el amor importa más que el saber;</p>
-            <p>mediante el amor todo lo pude comprender,</p>
-            <p>pero a alto precio: al precio del sufrimiento.</p>
-        </div>
+    <p>El caballero Bertran de Born fue guerrero y participante de la 2.ª Cruzada.</p>
 
-        <div class="section-break">* * *</div>
+    <div class="verso">
+        <span class="v">En mi amor está el manantial de la poesía:</span>
+        <span class="v">para cantar, el amor importa más que el saber;</span>
+        <span class="v">mediante el amor todo lo pude comprender,</span>
+        <span class="v">pero a alto precio: al precio del sufrimiento.</span>
+    </div>
 
-        <div class="poem">
-            <p>Nuestro siglo está lleno de dolor y de angustia.</p>
-            <p>No se cuentan las pérdidas y las terribles desdichas,</p>
-            <p>pero todas son nimias y livianas</p>
-            <p>ante la desdicha que no tiene otra más amarga: —</p>
-            <p>la muerte del joven rey.</p>
-        </div>
+    <p class="separador">* * *</p>
 
-        <div class="section-break">* * *</div>
+    <div class="verso">
+        <span class="v">Nuestro siglo está lleno de dolor y de angustia.</span>
+        <span class="v">No se cuentan las pérdidas y las terribles desdichas,</span>
+        <span class="v">pero todas son nimias y livianas</span>
+        <span class="v">ante la desdicha que no tiene otra más amarga: —</span>
+        <span class="v">la muerte del joven rey.</span>
+    </div>
 
-        <div class="poem">
-            <p>Cantemos del incendio y de la discordia,</p>
-            <p>pues el Sí y el No ensangrentó su daga:</p>
-            <p>con la guerra se hace más dadivoso el señor.</p>
-            <p>Olvidando el lujo, el rey sin hogar</p>
-            <p>no preferirá al camino el suntuoso trono.</p>
-        </div>
+    <p class="separador">* * *</p>
 
-        <p>La carencia de hogar, la de incluso un rey, en aquel siglo de poesía y de sangre, de la Dama Bella, de las expediciones tras el Sepulcro del Señor y del nuevo conocimiento.</p>
+    <div class="verso">
+        <span class="v">Cantemos del incendio y de la discordia,</span>
+        <span class="v">pues el Sí y el No ensangrentó su daga:</span>
+        <span class="v">con la guerra se hace más dadivoso el señor.</span>
+        <span class="v">Olvidando el lujo, el rey sin hogar</span>
+        <span class="v">no preferirá al camino el suntuoso trono.</span>
+    </div>
 
-        <div class="poem">
-            <p>¡Querida! Mi corazón vive —</p>
-            <p>en el tormento del apasionado ímpetu —</p>
-            <p>porque la luz del amor imperecedero</p>
-            <p>veo yo en vuestros ojos.</p>
-            <p>Y sin vos soy miserable polvo.</p>
-            <p>¡Ay!</p>
-            <p>Aimeric de Peguilhan</p>
-        </div>
+    <p>La carencia de hogar, la de incluso un rey, en aquel siglo de poesía y de sangre, de la Dama Bella, de las expediciones tras el Sepulcro del Señor y del nuevo conocimiento.</p>
 
-        <p>De algún modo se conjuntó que en 1894 el filósofo alemán Friedrich Nietzsche escribió el ensayo-filosófico de investigación que tituló «El nacimiento de la tragedia a partir del espíritu de la música. Prólogo a Wagner».</p>
+    <div class="verso">
+        <span class="v">¡Querida! Mi corazón vive —</span>
+        <span class="v">en el tormento del apasionado ímpetu —</span>
+        <span class="v">porque la luz del amor imperecedero</span>
+        <span class="v">veo yo en vuestros ojos.</span>
+        <span class="v">Y sin vos soy miserable polvo.</span>
+        <span class="v">¡Ay!</span>
+        <span class="v">Aimeric de Peguilhan</span>
+    </div>
 
-        <p>Nietzsche: la culminación de la tradición clásica de la filosofía europea. Murió, simbólicamente, en 1900, en la frontera del éxodo de la tradición clásica del pensamiento. El nombre de Wagner se conjuró misteriosamente, en su obra, con la Antigüedad. Los comienzos, con los acordes finales.</p>
+    <p>De algún modo se conjuntó que en 1894 el filósofo alemán Friedrich Nietzsche escribió el ensayo-filosófico de investigación que tituló «El nacimiento de la tragedia a partir del espíritu de la música. Prólogo a Wagner».</p>
 
-        <p>«… la canción popular tiene, ante todo, para nosotros el significado de un espejo musical del mundo, de la melodía primigenia que busca ahora su fenómeno paralelo en el ensueño y expresa este último en la poesía».</p>
+    <p>Nietzsche: la culminación de la tradición clásica de la filosofía europea. Murió, simbólicamente, en 1900, en la frontera del éxodo de la tradición clásica del pensamiento. El nombre de Wagner se conjuró misteriosamente, en su obra, con la Antigüedad. Los comienzos, con los acordes finales.</p>
 
-        <p>Según Nietzsche, el espejo musical del mundo, expresado a través de la poesía, es algo principal, como primofundamento del ser cultural. Y se expresa mediante dos nombres-conceptos de la mitología grecorromana, la música de las esferas y la pasión de la tierra: Apolo y Dioniso.</p>
+    <p>«… la canción popular tiene, ante todo, para nosotros el significado de un espejo musical del mundo, de la melodía primigenia que busca ahora su fenómeno paralelo en el ensueño y expresa este último en la poesía».</p>
 
-        <p>Recordamos cómo las bacantes-ménades despedazaron a Orfeo por su puro servicio a Apolo, y cómo las musas de Apolo castigaron a Tamiris.</p>
+    <p>Según Nietzsche, el espejo musical del mundo, expresado a través de la poesía, es algo principal, como primofundamento del ser cultural. Y se expresa mediante dos nombres-conceptos de la mitología grecorromana, la música de las esferas y la pasión de la tierra: Apolo y Dioniso.</p>
 
-        <p>La lucha de Apolo y de Dioniso en la naturaleza de la cultura, no solo antigua sino también contemporánea: «¿Quién vence a quién: Apolo a Dioniso o Dioniso a Apolo?», gritaba en su salón poético, la «Torre», Viacheslav Ivánov en 1913, enfrentando a Nikolái Gumiliov con Maximilián Voloshin, donde a Voloshin, por supuesto, le estaba reservado el lugar de Dioniso.</p>
+    <p>Recordamos cómo las bacantes-ménades despedazaron a Orfeo por su puro servicio a Apolo, y cómo las musas de Apolo castigaron a Tamiris.</p>
 
-        <p>Entre Apolo y Dioniso; entre la razón luminosa, la disciplina, la palabra, y la intuición, las emociones; entre la luminosidad victoriosa y la tragicidad del Dioniso despedazado; entre el néctar de los olímpicos y el zumo de la vid. La tradición homérica, continua a través de toda la cultura europea, aúna la poética de la palabra con los inquietantes sonidos de las cítaras y de las arpas eólicas, de Dioniso y de Apolo.</p>
+    <p>La lucha de Apolo y de Dioniso en la naturaleza de la cultura, no solo antigua sino también contemporánea: «¿Quién vence a quién: Apolo a Dioniso o Dioniso a Apolo?», gritaba en su salón poético, la «Torre», Viacheslav Ivánov en 1913, enfrentando a Nikolái Gumiliov con Maximilián Voloshin, donde a Voloshin, por supuesto, le estaba reservado el lugar de Dioniso.</p>
 
-        <p>Desde uno de los portales de la catedral de San Demetrio en Vladímir, decorada con talla de piedra blanca en el siglo XII, nos mira un cantor. Está sentado en un trono, su cabeza está coronada, viste toga. Canta, acompañándose con el arpa. Suele llamársele con el nombre del rey bíblico David, autor del «Saltirio». Dicen que caía en éxtasis durante la ejecución de los salmos por él escritos. De su canto florecen las hierbas, los árboles, las flores inclinan la cabeza, lo escuchan las aves. Todo el mundo creado atiende al cantor. Pero si no supiéramos su nombre, podríamos decir: es la imagen de un cantor-poeta, su imagen colectiva y universal, fuera del tiempo. La ubicación del bajorrelieve en el muro del templo es tal que, por así decirlo, repetimos el ritual de comunicación entre Orfeo —o David, u Homero— y el mundo entero que lo rodea. Nosotros también atendemos, mirándolo. Y él canta sobre lo Principal, mirándonos a nosotros y a lo lejos que hay tras nosotros. Y en torno ruge, se transforma la vida, y solo él, en medio del mundo bajo el cielo estrellado, para siempre. «Insomnio… Homero».</p>
+    <p>Entre Apolo y Dioniso; entre la razón luminosa, la disciplina, la palabra, y la intuición, las emociones; entre la luminosidad victoriosa y la tragicidad del Dioniso despedazado; entre el néctar de los olímpicos y el zumo de la vid. La tradición homérica, continua a través de toda la cultura europea, aúna la poética de la palabra con los inquietantes sonidos de las cítaras y de las arpas eólicas, de Dioniso y de Apolo.</p>
 
-        <div class="footnotes">
-            <h3>Notas</h3>
-            <p><sup>1</sup> Los ases son históricamente oriundos de la Grecia de Asia Menor. Odín es un ase, como narra la «Saga de los Velsungos». Así, la raíz antiguo-mitológica o histórica de Homero y de Odín es una sola.</p>
-        </div>
-    </article>
+    <p>Desde uno de los portales de la catedral de San Demetrio en Vladímir, decorada con talla de piedra blanca en el siglo XII, nos mira un cantor. Está sentado en un trono, su cabeza está coronada, viste toga. Canta, acompañándose con el arpa. Suele llamársele con el nombre del rey bíblico David, autor del «Saltirio». Dicen que caía en éxtasis durante la ejecución de los salmos por él escritos. De su canto florecen las hierbas, los árboles, las flores inclinan la cabeza, lo escuchan las aves. Todo el mundo creado atiende al cantor. Pero si no supiéramos su nombre, podríamos decir: es la imagen de un cantor-poeta, su imagen colectiva y universal, fuera del tiempo. La ubicación del bajorrelieve en el muro del templo es tal que, por así decirlo, repetimos el ritual de comunicación entre Orfeo —o David, u Homero— y el mundo entero que lo rodea. Nosotros también atendemos, mirándolo. Y él canta sobre lo Principal, mirándonos a nosotros y a lo lejos que hay tras nosotros. Y en torno ruge, se transforma la vida, y solo él, en medio del mundo bajo el cielo estrellado, para siempre. «Insomnio… Homero».</p>
 
-    <script>
-        const toggle = document.getElementById('theme-toggle');
-        const icon = document.getElementById('theme-icon');
+    <!-- ============================================
+         NOTAS
+         ============================================ -->
+    <div class="footnotes">
+        <h3>Notas</h3>
+        <p><sup>1</sup> Los ases son históricamente oriundos de la Grecia de Asia Menor. Odín es un ase, como narra la «Saga de los Velsungos». Así, la raíz antiguo-mitológica o histórica de Homero y de Odín es una sola.</p>
+    </div>
 
-        toggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            const isDark = document.body.classList.contains('dark-mode');
-            icon.textContent = isDark ? 'light_mode' : 'dark_mode';
-            toggle.title = isDark ? 'Modo Diurno' : 'Modo Nocturno';
-            toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
-        });
-    </script>
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
 
 </body>
 </html>
