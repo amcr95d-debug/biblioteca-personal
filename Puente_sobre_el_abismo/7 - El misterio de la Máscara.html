@@ -6,9 +6,6 @@
 <title>Capítulo 7. El misterio de la Máscara — Un puente sobre el abismo</title>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <style>
-/* =========================================
-   COLORES (Modo diurno — International Klein Blue)
-   ========================================= */
 :root {
     --bg-body: #002FA7;
     --text-primary: #ffffff;
@@ -22,7 +19,6 @@
     --realce: rgba(255, 255, 255, 0.78);
     --medida: 34rem;
 }
-
 body.dark-mode {
     --bg-body: #001233;
     --text-primary: #ffffff;
@@ -35,13 +31,8 @@ body.dark-mode {
     --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
     --realce: rgba(255, 255, 255, 0.72);
 }
-
-/* =========================================
-   TIPOGRAFÍA Y MAQUETACIÓN
-   ========================================= */
 * { box-sizing: border-box; }
 html { font-size: 17px; scroll-behavior: smooth; }
-
 body {
     margin: 0;
     background: var(--bg-body);
@@ -51,270 +42,72 @@ body {
     hyphens: auto;
     -webkit-tap-highlight-color: transparent;
 }
-
-main {
-    max-width: var(--medida);
-    margin: 0 auto;
-    padding: 4rem 16px 7rem;
-}
-
-/* Encabezado del capítulo */
-.cab {
-    text-align: center;
-    margin-bottom: 3.2rem;
-}
-.cab__num {
-    margin: 0 0 .7rem;
-    font-size: .8rem;
-    letter-spacing: .28em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-}
-.cab__tit {
-    margin: 0;
-    font-size: 1.85rem;
-    font-weight: 400;
-    line-height: 1.25;
-}
-.cab::after {
-    content: "";
-    display: block;
-    width: 4.5rem;
-    height: 1px;
-    margin: 2rem auto 0;
-    background: var(--border-color);
-}
-
-/* Subtítulo */
-.subtitulo {
-    text-align: center;
-    font-size: 1.05rem;
-    font-style: italic;
-    color: var(--text-secondary);
-    margin: 0 0 2.4rem;
-    text-indent: 0;
-    line-height: 1.45;
-}
-
-/* Epígrafes y subtítulos de sección */
-.epigrafe {
-    margin: 3.2rem 0 1.6rem;
-    font-size: .95rem;
-    font-weight: 700;
-    line-height: 1.45;
-    letter-spacing: .07em;
-    text-align: center;
-    text-transform: uppercase;
-    color: var(--realce);
-}
-
-/* Epígrafe inicial */
-.epigrafe-inicial {
-    margin: 3.2rem 0 2.4rem;
-    padding-left: 1.5rem;
-    border-left: 1px solid var(--border-color);
-    font-style: italic;
-    color: var(--text-secondary);
-    font-size: .95rem;
-    line-height: 1.55;
-}
-.epigrafe-inicial p {
-    text-indent: 0;
-    margin: 0 0 .6rem;
-    text-align: left;
-}
-.epigrafe-inicial .attribution {
-    text-align: right;
-    font-style: normal;
-    font-size: .85rem;
-    color: var(--text-muted);
-    margin-top: .4rem;
-}
-
-/* Párrafos */
-p {
-    margin: 0;
-    text-align: justify;
-    text-indent: 1.35em;
-    position: relative;
-}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.subtitulo { text-align: center; font-size: 1.05rem; font-style: italic; color: var(--text-secondary); margin: 0 0 2.4rem; text-indent: 0; line-height: 1.45; }
+.epigrafe { margin: 3.2rem 0 1.6rem; font-size: .95rem; font-weight: 700; line-height: 1.45; letter-spacing: .07em; text-align: center; text-transform: uppercase; color: var(--realce); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
 p + p { margin-top: 0; }
-
-/* Sin sangría tras encabezados, figuras, versos, citas, firmas y enumeraciones */
-.cab + p,
-.subtitulo + p,
-.epigrafe + p,
-.epigrafe-inicial + p,
-figure + p,
-.verso + p,
-.cita + p,
-.firma + p,
-.sin-sangria + p,
-.img-placeholder + p { text-indent: 0; }
-
-/* Párrafos sin sangría (enumeraciones, versos sueltos, etc.) */
+.cab + p, .subtitulo + p, .epigrafe + p, .epigrafe-inicial + p, figure + p, .verso + p, .cita + p, .firma + p, .sin-sangria + p, .image-placeholder + p { text-indent: 0; }
 .sin-sangria { text-indent: 0; }
-
-/* Firma / atribución a la derecha */
-.firma {
-    margin: .8rem 0 0;
-    text-align: right;
-    text-indent: 0;
-    font-style: italic;
-    color: var(--text-secondary);
-    font-size: .92rem;
-}
-
-/* Ilustraciones */
-figure {
-    margin: 2.4rem 0;
-    text-align: center;
-}
-figure img {
-    max-width: 100%;
-    height: auto;
-    border: 1px solid var(--border-color);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    border-radius: 2px;
-}
-figcaption {
-    margin-top: .7rem;
-    font-size: .84rem;
-    font-style: italic;
-    line-height: 1.45;
-    text-align: left;
-    color: var(--text-muted);
-}
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+figure { margin: 2.4rem 0; text-align: center; }
+figure img { max-width: 100%; height: auto; border: 1px solid var(--border-color); box-shadow: 0 4px 12px rgba(0,0,0,0.3); border-radius: 2px; }
+figcaption { margin-top: .7rem; font-size: .84rem; font-style: italic; line-height: 1.45; text-align: left; color: var(--text-muted); }
+figcaption strong { color: var(--text-secondary); font-style: normal; font-weight: 700; display: block; margin-bottom: .2rem; }
 
 /* Marcador de posición de imagen */
-.img-placeholder {
-    max-width: 100%;
-    min-height: 180px;
-    background: rgba(255,255,255,0.08);
-    border: 1px dashed var(--border-color);
+.image-placeholder {
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    color: var(--text-muted);
-    font-style: italic;
-    font-size: .85rem;
-    padding: 1.5rem;
+    align-items: center;
     text-align: center;
-    border-radius: 2px;
+    margin: 2.4rem auto;
+    padding: 1.5rem;
+    border: 2px dashed var(--border-color);
+    background-color: rgba(255,255,255,0.08);
+    border-radius: 8px;
+    color: var(--text-muted);
+    font-family: sans-serif;
+    font-size: .9rem;
+    min-height: 150px;
+    max-width: 90%;
     line-height: 1.4;
-    margin: 2.4rem 0;
 }
-.img-placeholder span {
+.image-placeholder span {
     font-weight: 700;
     font-style: normal;
     color: var(--text-secondary);
     margin-bottom: .5rem;
+    display: block;
     letter-spacing: .07em;
     text-transform: uppercase;
     font-size: .78rem;
 }
 
-/* Versos */
-.verso {
-    margin: 1.6rem 0 1.6rem 2.2rem;
-    font-style: italic;
-    line-height: 1.5;
-}
-.verso .v {
-    display: block;
-    text-indent: -1.2em;
-    padding-left: 1.2em;
-}
-
-/* Citas en bloque */
-.cita {
-    margin: 1.6rem 0 1.6rem 2.2rem;
-    padding: 0;
-    font-style: italic;
-    font-size: .95rem;
-}
-.cita p {
-    text-indent: 0;
-    text-align: left;
-}
+.verso { margin: 1.6rem 0 1.6rem 2.2rem; font-style: italic; line-height: 1.5; }
+.verso .v { display: block; text-indent: -1.2em; padding-left: 1.2em; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
 .cita p + p { margin-top: .45rem; }
-.cita .attribution {
-    text-align: right;
-    font-style: normal;
-    font-size: .85rem;
-    color: var(--text-muted);
-    margin-top: .5rem;
-}
-
-/* Separador de sección */
-.separador {
-    margin: 2rem 0;
-    text-align: center;
-    letter-spacing: .6em;
-    color: var(--text-muted);
-    text-indent: 0;
-}
-
-/* Notas al pie */
-.footnotes {
-    margin-top: 4rem;
-    border-top: 1px solid var(--border-color);
-    padding-top: 1.5rem;
-    font-size: .88rem;
-    color: var(--text-secondary);
-}
-.footnotes h3 {
-    margin: 0 0 1rem;
-    font-size: .8rem;
-    font-weight: 700;
-    letter-spacing: .28em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    text-align: left;
-}
-.footnotes p {
-    text-align: left;
-    text-indent: -1.4em;
-    padding-left: 1.4em;
-    margin-bottom: .6rem;
-    line-height: 1.5;
-}
-sup {
-    font-size: .7em;
-    vertical-align: super;
-    line-height: 0;
-    color: var(--text-secondary);
-}
-
-/* =========================================
-   BOTÓN FLOTANTE (Modo nocturno)
-   ========================================= */
-.fab-toggle {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    background-color: var(--fab-bg);
-    color: var(--fab-color);
-    border: none;
-    cursor: pointer;
-    box-shadow: var(--shadow);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease;
-    z-index: 1000;
-    outline: none;
-}
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
 .fab-toggle:hover { transform: scale(1.1); }
 .fab-toggle:active { transform: scale(0.95); }
 .fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
 body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
-
-/* Diseño adaptable */
 @media (max-width: 46rem) {
     html { font-size: 16px; }
     main { padding: 2.5rem 16px 4rem; }
@@ -322,9 +115,7 @@ body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
     .epigrafe-inicial { padding-left: 1rem; }
     .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
     .fab-toggle .material-icons { font-size: 23px; }
-    .fab-nav { bottom: 18px; left: 18px; gap: 10px; }
-    .fab-nav__btn { width: 50px; height: 50px; }
-    .fab-nav__btn .material-icons { font-size: 23px; }
+    .image-placeholder { padding: 1em; min-height: 100px; }
 }
 </style>
 </head>
@@ -337,17 +128,11 @@ body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
 
 <main>
 
-    <!-- ============================================
-         ENCABEZADO DEL CAPÍTULO
-         ============================================ -->
     <header class="cab">
         <p class="cab__num">Capítulo 7</p>
         <h1 class="cab__tit">El misterio de la Máscara</h1>
     </header>
 
-    <!-- ============================================
-         EPÍGRAFES
-         ============================================ -->
     <div class="epigrafe-inicial">
         <p>«Desde niña temía a los disfrazados».</p>
         <p class="attribution">A. Ajmátova</p>
@@ -358,9 +143,6 @@ body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
         <p class="attribution">Ferani</p>
     </div>
 
-    <!-- ============================================
-         INTRO
-         ============================================ -->
     <p>La máscara es un instrumento de transfiguración o de metamorfosis. Instrumento misterioso y antiguo. Nació junto con la cultura. Sus significaciones y exégesis son ilimitadas, a la vez difusas y concretas. La máscara es la base de toda historia artístico-religiosa, universal o de pequeña etnia: los pueblos de Oceanía, del Continente Negro, de China, de la India, del Yucatán, del Antiguo Egipto, del Cercano, del Medio y del Lejano Oriente, de Europa: todo no cabe en la enumeración. El significado absoluto de la máscara es indiscutible; carece de prescripción. Cuándo y cómo apareció la máscara, no se sabe a ciencia cierta.</p>
 
     <p>Las tradiciones artísticas de la máscara en la historia de la cultura universal son diversas, pero atestiguan una cierta comunidad excepcional del pensamiento por imágenes de la humanidad de cualquier lado del mundo.</p>
@@ -369,15 +151,12 @@ body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
 
     <p>La máscara se nos muestra en multitud de apariencias; depende del tiempo y de la tradición. Y ahora, unas palabras sobre la antigüedad y el comentario contemporáneo a ella.</p>
 
-    <!-- ============================================
-         I. DEL EPÍLOGO AL PRÓLOGO
-         ============================================ -->
     <h2 class="epigrafe">I. Del epílogo al prólogo</h2>
 
     <p>«El maestro y Margarita», de Mijaíl Bulgákov, es una novela polifacética, como un cristal mágico en la literatura universal y rusa. Es la novela del carnaval y de la máscara. Y no solo en las escenas de la «sesión de magia negra» en el teatro del jardín «Hermitage» o del baile de Satán. Estas escenas están ellas mismas inmersas en un juego de espejos. El carnaval dentro del carnaval. Lo interesante es que los héroes de Bulgákov viven según las leyes de la máscara. No llegan de ningún lugar concreto. Todos se aparecen, o se presentan de súbito, surgen ante nosotros. «Se precipitan» en el espacio de la novela, como los invitados al baile «desde el hogar de la esposa del joyero». El Maestro es un héroe absolutamente anónimo, sin nombre, oculto bajo la máscara. Aparece en la novela «desde el espacio del museo», es decir, desde algún lugar de la eternidad. Más tarde lo vemos en la «casa del dolor», con bata y con el gorro cosido por Margarita. El misterio de la vida del Maestro transcurre entre el museo, la casa del dolor y, ante todo, el vuelo hacia el lugar del reposo eterno. Los investigadores escriben mucho sobre los prototipos de los héroes de la novela, dotándolos de nombres y biografías, y al Maestro de los rasgos del retrato del propio Bulgákov. Sin embargo, los héroes de la novela son, al fin y al cabo, máscaras.</p>
 
-    <div class="img-placeholder">
-        <span>Imagen</span>
+    <div class="image-placeholder">
+        <span>Imagen 1</span>
         Helena Rubinstein (fundadora del imperio cosmético) con una máscara de Camerún, adquirida en los años treinta. Foto de Man Ray
     </div>
 
@@ -389,8 +168,8 @@ body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
 
     <p>Para el herméticamente cerrado Antiguo Egipto las máscaras eran fundamento de la cultura. Por la transformación en la eternidad se erigían las pirámides. Los frescos mostraban gentes misteriosas en máscara, que cumplían los ritos de la muerte y de la resurrección. Asomarse bajo la máscara es imposible. Los ritos y los misterios del Antiguo Egipto, como los de todas las culturas antiguas, estaban vinculados, en lo esencial, con los ritos de la muerte y de la resurrección. «De la muerte y la resurrección del gran dios, los egipcios tomaban no solo el apoyo material en esta vida, sino también la esperanza de la vida eterna en el mundo ultraterreno», escribía James Frazer en el libro «La rama dorada», consagrado precisamente a este tema. La máscara en los rituales de sepelio y de resurrección era el instrumento principal del acto, como sabemos por el Libro de los Muertos de las pirámides. Antes del rito de la momificación, los sacerdotes se ponían en la cabeza máscaras especiales, casi siempre zoomórficas, lo que se aprecia muy bien en los frescos conservados. Momificaban, es decir, preparaban para la eternidad, con unas máscaras y vestiduras. Pero revivían con otras. Eran los ritos inversos de la momificación: la apertura del oído, de los ojos, de la boca. Quizá las máscaras rituales de todos los pueblos del mundo estén vinculadas con las nociones fundamentales de la muerte y de la resurrección. La continuidad ininterrumpida de la materia, del ser, la inmortalidad de Osiris, de Cibeles, de Deméter, de Dioniso (la lista podría continuar): temas de la Rueda del Mundo, de la partida-venida y de nuevo la partida…</p>
 
-    <div class="img-placeholder">
-        <span>Imagen</span>
+    <div class="image-placeholder">
+        <span>Imagen 2</span>
         Máscara. Símbolo de los ojos abiertos a la eternidad. Dinastías XVIII–XIX. Louvre, París
     </div>
 
@@ -418,9 +197,6 @@ body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
 
     <p>Una vez más queremos repetir que en la cultura griega antigua todas las formas de la vida popular, social y religiosa estaban extremadamente cercanas. Las Olimpiadas creaban el gran diapasón de la Hélade. El banquete: medio de la filosofía y del teatro a un tiempo. En la educación: la base de la ciudadanía, de la estética y del genial diletantismo artístico. En el arte, la imagen del hombre y la impermeabilidad de la máscara son casi idénticas.</p>
 
-    <!-- ============================================
-         II. LOS MISTERIOS DE DIONISO Y EL DRAMA ANTIGUO
-         ============================================ -->
     <h2 class="epigrafe">II. Los misterios de Dioniso y el drama antiguo</h2>
 
     <p>«Te honramos, oh Dioniso, tu padecer y tu gozo»: entonaban hace mucho, mucho tiempo los coros de los compañeros de Dioniso. Cantaban y no sabían que estas palabras, muchos años después, o quizá muchos siglos, nos indicarán la fuente de origen de toda la tragedia y la comedia europeas, del drama y de la sátira.</p>
@@ -458,9 +234,6 @@ body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
 
     <p>Es verdad también que en los tiempos helenísticos, cuando el espectador y sus exigencias comenzaron a cambiar, en los teatros se daba «varietés» y «circo»: bailarines de moda, cupletistas, mimos, prestidigitadores y luchadores. Nuestra opinión es que de los dos componentes del teatro, es el espectador quien determina el nivel de cualquier arte, no solo del teatral. Así que la «publicidad» existió siempre. En las épocas de ascenso espiritual los ciudadanos lloran sobre los destinos de los héroes. La época de vaciamiento, también en Grecia, exigía placeres, hartura, diversiones y olvido. Las refinadas aristócratas hacían alarde de gladiadores como concubinos. Y los grandes actores griegos comenzaron a representar a los «difuntos» en los funerales romanos. Así, por ejemplo, el genial Demetrio interpretó a Sabina, la esposa de Nerón, muerta a manos del tirano. El pueblo lloraba, y el dictador también.</p>
 
-    <!-- ============================================
-         III. LAS MÁSCARAS ROMANAS
-         ============================================ -->
     <h2 class="epigrafe">III. Las máscaras romanas</h2>
 
     <p>Es conocida de todos, en sentido literal de la palabra, la influencia que la cultura griega ejerció sobre Roma. La filosofía, el círculo de lecturas, el teatro, la arquitectura. Pero la cultura griega, injertada en el tronco latino, no era popular, sino elitista. Solo en las capas privilegiadas e ilustradas de la sociedad romana los griegos tenían desarrollo a través de su arte, su mitología, la refinación del habla, la escuela del actor… Y sin embargo (ya lo dijimos), la idea romana seguía siendo enteramente autóctona.</p>
