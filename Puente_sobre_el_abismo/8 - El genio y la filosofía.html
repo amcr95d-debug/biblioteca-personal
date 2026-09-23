@@ -3,12 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>El genio y la filosofía</title>
+<title>Capítulo 8. El genio y la filosofía — Un puente sobre el abismo</title>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <style>
-/* =========================================
-   COLORES (Modo Diurno - International Klein Blue)
-   ========================================= */
 :root {
     --bg-body: #002FA7;
     --text-primary: #ffffff;
@@ -19,12 +16,9 @@
     --fab-bg: #ffffff;
     --fab-color: #002FA7;
     --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
-    --quote-border: rgba(255, 255, 255, 0.5);
-    --placeholder-bg: rgba(255, 255, 255, 0.08);
-    --placeholder-border: rgba(255, 255, 255, 0.3);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
 }
-
-/* Modo Nocturno - Deep Navy Blue */
 body.dark-mode {
     --bg-body: #001233;
     --text-primary: #ffffff;
@@ -35,216 +29,85 @@ body.dark-mode {
     --fab-bg: #ffffff;
     --fab-color: #001233;
     --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
-    --quote-border: rgba(255, 255, 255, 0.4);
-    --placeholder-bg: rgba(255, 255, 255, 0.05);
-    --placeholder-border: rgba(255, 255, 255, 0.15);
+    --realce: rgba(255, 255, 255, 0.72);
 }
-
-/* =========================================
-   ESTILOS GENERALES
-   ========================================= */
-* { transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease; }
-html { scroll-behavior: smooth; }
-
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
 body {
-    font-family: Georgia, 'Times New Roman', serif;
-    line-height: 1.75;
-    max-width: 750px;
-    margin: 0 auto;
-    padding: 2em 1.5em 5em;
+    margin: 0;
+    background: var(--bg-body);
     color: var(--text-primary);
-    background-color: var(--bg-body);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
     -webkit-tap-highlight-color: transparent;
 }
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.subtitulo { text-align: center; font-size: 1.05rem; font-style: italic; color: var(--text-secondary); margin: 0 0 2.4rem; text-indent: 0; line-height: 1.45; }
+.epigrafe { margin: 3.2rem 0 1.6rem; font-size: .95rem; font-weight: 700; line-height: 1.45; letter-spacing: .07em; text-align: center; text-transform: uppercase; color: var(--realce); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .subtitulo + p, .epigrafe + p, .epigrafe-inicial + p, figure + p, .image-container + p, .verso + p, .cita + p, .firma + p, .sin-sangria + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+figure { margin: 2.4rem 0; text-align: center; }
+figure img { max-width: 100%; height: auto; border: 1px solid var(--border-color); box-shadow: 0 4px 12px rgba(0,0,0,0.3); border-radius: 2px; }
+figcaption { margin-top: .7rem; font-size: .84rem; font-style: italic; line-height: 1.45; text-align: left; color: var(--text-muted); }
+figcaption strong { color: var(--text-secondary); font-style: normal; font-weight: 700; display: block; margin-bottom: .2rem; }
 
-h1 {
-    font-size: 2.2em;
-    text-align: center;
-    margin-bottom: 0.2em;
-    font-weight: normal;
-    letter-spacing: 0.05em;
-    color: var(--text-primary);
-}
+/* Contenedores de imagen tal como venían en el original */
+.image-container { margin: 2.4rem auto; text-align: center; max-width: 100%; }
+.image-container img { max-width: 100%; height: auto; display: block; margin: 0 auto .8rem auto; border: 1px solid var(--border-color); box-shadow: 0 4px 12px rgba(0,0,0,0.3); border-radius: 2px; }
+.image-caption { margin: 0; text-align: left; font-size: .84rem; color: var(--text-muted); font-style: italic; text-indent: 0; line-height: 1.45; }
 
-h2 {
-    font-size: 1.3em;
-    text-align: center;
-    margin-top: 2.5em;
-    margin-bottom: 1.5em;
-    font-weight: bold;
-    color: var(--text-secondary);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-}
-
-h3 {
-    font-size: 1.1em;
-    text-align: center;
-    margin-top: 2.5em;
-    margin-bottom: 1em;
-    font-weight: bold;
-    color: var(--text-secondary);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-p {
-    text-align: justify;
-    margin-bottom: 1.2em;
-    text-indent: 1.5em;
-}
-
-p.no-indent { text-indent: 0; }
-
-blockquote {
-    margin: 1.5em 2em;
-    padding-left: 1.5em;
-    border-left: 3px solid var(--quote-border);
-    font-style: italic;
-    color: var(--text-secondary);
-}
-
-blockquote p { text-indent: 0; margin-bottom: 0.8em; }
-
-.poem {
-    margin: 1.5em 2em;
-    font-style: italic;
-    text-indent: 0;
-}
-
-.poem p {
-    text-indent: 0;
-    margin-bottom: 0.3em;
-    text-align: left;
-    padding-left: 2em;
-    text-indent: -2em;
-}
-
-em { font-style: italic; }
-
-sup {
-    font-size: 0.75em;
-    vertical-align: super;
-    line-height: 0;
-}
-
-.section-break {
-    text-align: center;
-    margin: 2.5em 0;
-    font-weight: bold;
-    letter-spacing: 0.2em;
-    color: var(--text-muted);
-}
-
-.subtitle {
-    text-align: center;
-    font-size: 1.1em;
-    font-style: italic;
-    color: var(--text-secondary);
-    margin-bottom: 2em;
-}
-
-.epigraph {
-    margin: 1.5em 2em 2.5em;
-    padding-left: 1.5em;
-    border-left: 3px solid var(--quote-border);
-    font-style: italic;
-    color: var(--text-secondary);
-    font-size: 0.95em;
-}
-
-.epigraph p {
-    text-indent: 0;
-    margin-bottom: 0.5em;
-    text-align: left;
-}
-
-.epigraph .attribution {
-    text-align: right;
-    font-style: normal;
-    font-size: 0.9em;
-    color: var(--text-muted);
-    margin-top: 0.5em;
-}
-
-/* =========================================
-   IMÁGENES CON PIE DE FOTO
-   ========================================= */
-.image-container {
-    margin: 2em auto;
-    text-align: center;
-    max-width: 90%;
-}
-
-.image-container img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    display: block;
-    margin: 0 auto 0.8em auto;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-}
-
-.image-caption {
-    text-align: center;
-    font-size: 0.85em;
-    color: var(--text-muted);
-    font-style: italic;
-    text-indent: 0;
-    margin: 0;
-    line-height: 1.4;
-}
-
-/* =========================================
-   BOTÓN FLOTANTE (Modo Nocturno)
-   ========================================= */
-.fab-toggle {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    background-color: var(--fab-bg);
-    color: var(--fab-color);
-    border: none;
-    cursor: pointer;
-    box-shadow: var(--shadow);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease;
-    z-index: 1000;
-    outline: none;
-}
+.verso { margin: 1.6rem 0 1.6rem 2.2rem; font-style: italic; line-height: 1.5; }
+.verso .v { display: block; text-indent: -1.2em; padding-left: 1.2em; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
 .fab-toggle:hover { transform: scale(1.1); }
 .fab-toggle:active { transform: scale(0.95); }
 .fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
 body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
-
-/* Responsive */
-@media (max-width: 600px) {
-    body { padding: 1.2em 1em 4em; }
-    h1 { font-size: 1.6em; }
-    h2 { font-size: 1.1em; }
-    .fab-toggle { bottom: 16px; right: 16px; width: 50px; height: 50px; }
-    .fab-toggle .material-icons { font-size: 24px; }
-    .image-container { max-width: 100%; }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .verso, .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
 }
 </style>
 </head>
+
 <body>
 
-<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar de tema" title="Modo nocturno">
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
     <i class="material-icons" id="theme-icon">dark_mode</i>
 </button>
 
-<article id="content">
+<main>
 
-    <!-- ============================================
-         EPÍGRAFE INICIAL (M. Voloshin)
-         ============================================ -->
-    <div class="epigraph">
+    <header class="cab">
+        <p class="cab__num">Capítulo 8</p>
+        <h1 class="cab__tit">El genio y la filosofía</h1>
+    </header>
+
+    <div class="epigrafe-inicial">
         <p>¿De quién es la mano, fugaz como la llama,<br>
         que me guía por los caminos de la pasión?<br>
         Bajo el pie no siento la resonante llama,<br>
@@ -257,30 +120,22 @@ body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
         <p class="attribution">M. Voloshin</p>
     </div>
 
-    <!-- ============================================
-         TÍTULO DE CAPÍTULO
-         ============================================ -->
-    <h2>Capítulo 1</h2>
-    <h1>El genio y la filosofía</h1>
-    <p class="subtitle">Francisco de Asís y Giotto di Bondone</p>
+    <p class="subtitulo">Francisco de Asís y Giotto di Bondone</p>
 
-    <h3>En medio del mundo</h3>
+    <h2 class="epigrafe">En medio del mundo</h2>
 
-    <!-- ============================================
-         TEXTO PRINCIPAL
-         ============================================ -->
     <p>Caminaba descalzo, cubierto tan solo con un sayal, por el bosque. La nieve caía en copos. Y él seguía avanzando hacia un destino ignoto, tras abandonar la casa paterna, y cantaba. Cantaba a Dios, al amor, al amor apasionado y no carnal, universal, hacia los hombres, Dios, la tierra, las aves y las hierbas.</p>
 
-    <div class="poem">
-        <p>Loado seas por la tierra, nuestra</p>
-        <p>madre,</p>
-        <p>que nos sostiene sobre sí,</p>
-        <p>que nos cuida, y sus frutos ofre-</p>
-        <p>ce</p>
-        <p>junto a hierbas variadas y vistosas</p>
-        <p>florecillas…<sup>1</sup></p>
+    <div class="verso">
+        <span class="v">Loado seas por la tierra, nuestra</span>
+        <span class="v">madre,</span>
+        <span class="v">que nos sostiene sobre sí,</span>
+        <span class="v">que nos cuida, y sus frutos ofre-</span>
+        <span class="v">ce</span>
+        <span class="v">junto a hierbas variadas y vistosas</span>
+        <span class="v">florecillas…<sup>1</sup></span>
     </div>
-    <p class="no-indent" style="text-align: right;">___________________<br><sup>1</sup> «Florecillas de san Francisco de Asís» (traducción de A. Yelcháninov), San Petersburgo, 2006, pág. 336.</p>
+    <p class="firma">___________________<br><sup>1</sup> «Florecillas de san Francisco de Asís» (traducción de A. Yelcháninov), San Petersburgo, 2006, pág. 336.</p>
 
     <p>No temía a nada, no calculaba nada; su corazón rebosaba de Dios y de poesía. Se llamaba Giovanni Bernardone y era el hijo único de un rico mercader de paños y otras telas de la ciudad de Asís, en Umbría.</p>
 
@@ -300,9 +155,8 @@ body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
 
     <p>Discípulo de Alberto Magno fue Tomás de Aquino (1225–1274). Tomás de Aquino compuso un comentario a la «Biblia» y doce tratados sobre Aristóteles, libros sobre Cicerón, el sabio árabe Avicena y el judío Maimónides. Tomás de Aquino reunió sus obras en dos folios: la «Suma de filosofía» y la «Suma de teología». Se ocupó de los problemas del conocimiento y de la psicología, y sus trabajos sobre el intelecto «pasivo» y el «activo» siguen interesando hoy. Escribió sobre la diferencia entre el conocimiento científico y la «revelación sobrenatural», es decir, sobre lo mismo que escribimos nosotros ahora. Sobre aquello que puede y no puede enseñarse. Santo Tomás de Aquino comprendía con nitidez la diferencia entre la enseñanza y el don innato. Traducido al lenguaje conceptual de hoy, esto significa que en el Instituto de Literatura es imposible, por muchos esfuerzos que se hagan, enseñar a alguien a ser Pushkin. ¿Un helenista y dominico, un místico escolástico y pensador moderno en el siglo XIII? Sostuvo una disputa con san Buenaventura, franciscano y fiel seguidor de san Francisco, sobre el ser de Dios y sobre las pruebas de ese ser.</p>
 
-    <!-- Imagen 8A: San Francisco de Asís -->
     <div class="image-container">
-        <img src="8A.jpg" alt="San Francisco de Asís. Fresco de Giotto di Bondone">
+        <img src="8A.jpg" alt="San Francisco de Asís. Fresco de Giotto di Bondone" loading="lazy">
         <p class="image-caption">San Francisco de Asís. Fresco obra de Giotto di Bondone.</p>
     </div>
 
@@ -334,18 +188,18 @@ body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
 
     <p>No así san Francisco. Difícilmente algún otro santo tuvo semejante «dama gentil»:</p>
 
-    <div class="poem">
-        <p>Una corona de locura y de fuego</p>
-        <p>ardía sobre ella.</p>
-        <p>Y la llama del tormento,</p>
-        <p>y las manos clarividentes,</p>
-        <p>y el plomo de los ojos que no ven,</p>
-        <p>el rostro de una sibila gótica,</p>
-        <p>y la severidad de las mejillas, y el peso de los párpados,</p>
-        <p>la carrera desigual de sus pasos —</p>
-        <p>todo estaba colmado de fuerza profética.</p>
-        <p class="no-indent" style="text-align: right;">(M. Voloshin)</p>
+    <div class="verso">
+        <span class="v">Una corona de locura y de fuego</span>
+        <span class="v">ardía sobre ella.</span>
+        <span class="v">Y la llama del tormento,</span>
+        <span class="v">y las manos clarividentes,</span>
+        <span class="v">y el plomo de los ojos que no ven,</span>
+        <span class="v">el rostro de una sibila gótica,</span>
+        <span class="v">y la severidad de las mejillas, y el peso de los párpados,</span>
+        <span class="v">la carrera desigual de sus pasos —</span>
+        <span class="v">todo estaba colmado de fuerza profética.</span>
     </div>
+    <p class="firma">(M. Voloshin)</p>
 
     <p>Clara, por fuerza de espíritu, por constancia, por fe, era igual a san Francisco. Las damas gentiles de los señores terrenales… Uta, arrebujada en su largo manto, a la espera del caballero Ekkehart. Damas inventadas y reales de la cultura caballeresca. Las Donnas y las Musas de la poesía y de la pintura de las épocas venideras nacieron de la imaginación y del genio de los creadores. Clara fue realidad. Ella es la compañera de armas de la nueva misión del predicador.</p>
 
@@ -364,11 +218,10 @@ body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
     <p>El monte, igual que la cueva, son las señales del destino de los elegidos. La cueva es el vientre de la tierra, el lugar del nuevo nacimiento. El monte es la vertical, el eje del mundo, la cercanía del cielo, la ascensión. La cueva (el pesebre) es el lugar del nacimiento de Jesús. La luz del monte Tabor es el lugar de la Transfiguración. Francisco, por así decirlo, repite —no copia, sino reproduce— la vida del Salvador. Él es la sombra y el laúd del Soberano. La corrección del camino de los justos. Asciende al monte y queda «en medio del mundo». En medio del mundo en la tierra, entre los hombres, los animales, las aves, los árboles. Y en la cima del Alverno, que está ella misma en medio, en el centro del mundo. Precisamente allí recibió la señal de la comunión indiscutible con el Maestro. El solitario Francisco fue allí traspasado y se hundió en el éxtasis; al volver en sí, vio en sus palmas las huellas de los clavos. Eran los estigmas del Señor crucificado. «Y me abrió el pecho con la espada, y me arrancó el corazón palpitante»: esto escribió Pushkin del serafín que se le apareció «en el desierto tenebroso». La aparición del serafín al poeta es la definición última, la postrera precisión de la forma del poeta-profeta.</p>
 
     <p>Tras recorrer venciendo su Camino durante toda la vida, hacia el final de ella exclamó: «¡Nunca, nunca traicionéis estos lugares! Adondequiera que vayáis, dondequiera que os extraviéis, volved siempre a casa»<sup>2</sup>.</p>
-    <p class="no-indent" style="text-align: right;">___________________<br><sup>2</sup> Ibídem. «Florecillas de san Francisco de Asís» (traducción de A. Yelcháninov), San Petersburgo, 2006, pág. 436.</p>
+    <p class="firma">___________________<br><sup>2</sup> Ibídem. «Florecillas de san Francisco de Asís» (traducción de A. Yelcháninov), San Petersburgo, 2006, pág. 436.</p>
 
-    <!-- Imagen 8B: Santo Tomás de Aquino -->
     <div class="image-container">
-        <img src="8B.jpg" alt="Santo Tomás de Aquino. Cuadro de Carlo Crivelli">
+        <img src="8B.jpg" alt="Santo Tomás de Aquino. Cuadro de Carlo Crivelli" loading="lazy">
         <p class="image-caption">Santo Tomás de Aquino. Cuadro obra de Carlo Crivelli.</p>
     </div>
 
@@ -395,19 +248,20 @@ body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
 
     <p>Y ya en nuestros días, en 1933, el hermano Antonio Farmuzzi, director del instituto arqueológico franciscano de Florencia, dirigió en Jordania la búsqueda del monte bíblico desde cuya cumbre ascendió a los cielos el profeta Moisés. Los arqueólogos hallaron el monte Nebo, crearon allí un museo, demostraron la historicidad del lugar. Y, terminado el trabajo, regalaron toda su obra al estado de Jordania y se volvieron a casa. Para que nada estorbara la labor, habían comprado antes, con el dinero reunido, un terreno con el monte desconocido para todos; y, concluido todo el ciclo de trabajos, entregaron el monte Nebo y se marcharon. Ya hemos dicho que el monte es siempre el medio del mundo. La cima es un punto, y en torno, la panorámica; y tú estás en el centro, o mejor dicho, en medio del mundo. Cuando estás sobre la cima del monte Nebo, no cabe duda de que precisamente desde ese punto partió hacia el que lo envió a la tierra el profeta Moisés. El franciscanismo humanista es hoy la posición más vigente. Es la ayuda desinteresada al mundo, la comprensión, la conciencia de sí a través de los otros, la responsabilidad «en medio del mundo».</p>
 
-    <!-- Imagen 8C: San Buenaventura -->
     <div class="image-container">
-        <img src="8C.jpg" alt="San Buenaventura. Cuadro de Vittorio Crivelli">
+        <img src="8C.jpg" alt="San Buenaventura. Cuadro de Vittorio Crivelli" loading="lazy">
         <p class="image-caption">San Buenaventura. Cuadro obra de Vittorio Crivelli.</p>
     </div>
 
-    <p>Soy un hombre, estoy en medio del mundo,<br>
-    tras de mí, miríadas de infusorios,<br>
-    ante mí, miríadas de estrellas.<br>
-    Entre ellos me tendí cuan largo soy —<br>
-    mar que une dos orillas,<br>
-    puente que unió dos cosmos.<br>
-    (Arseni Tarkovski)</p>
+    <div class="verso">
+        <span class="v">Soy un hombre, estoy en medio del mundo,</span>
+        <span class="v">tras de mí, miríadas de infusorios,</span>
+        <span class="v">ante mí, miríadas de estrellas.</span>
+        <span class="v">Entre ellos me tendí cuan largo soy —</span>
+        <span class="v">mar que une dos orillas,</span>
+        <span class="v">puente que unió dos cosmos.</span>
+    </div>
+    <p class="firma">(Arseni Tarkovski)</p>
 
     <p>«Mar que une dos orillas, puente que unió dos cosmos»… Así fue también Giotto di Bondone, el florentino.</p>
 
@@ -420,7 +274,7 @@ body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
     <p>En el umbral de los siglos XIII y XIV, Giotto cambió la dirección en que se desarrollaba el arte. La Madonna, solemne, henchida de dignidad femenina terrenal, se manifiesta con el Niño al mundo. Es madre, esposa, reina. Ni tristeza ni sacrificio. Es majestuosa y serena. Giotto pintaba a las mujeres entre las que había crecido: recias, sosegadas, con trenzas en torno a la cabeza, de manos tiernas y fuertes y hermosos rostros. Alrededor del trono de la Madonna, un coro de ángeles que sostienen grandes cirios de iglesia. Ante el trono, incrustado cual joyel, un arqueta preciosa — ángeles-pajes arrodillados con ramos de flores. Y las flores están pintadas como en un buen bodegón académico contemporáneo. La flor, hacia el ramo; el pétalo, hacia la flor. De esto, por lo demás, hablaremos más adelante.</p>
 
     <p>La aparición de Giotto fue acogida con júbilo y con amplitud. El mundo aguardaba la renovación. «Pintaba con tal perfección que conquistó grandísima gloria»<sup>3</sup>.</p>
-    <p class="no-indent" style="text-align: right;">___________________<br><sup>3</sup> Giorgio Vasari. «Las Vidas». Moscú, 2007, pág. 109.</p>
+    <p class="firma">___________________<br><sup>3</sup> Giorgio Vasari. «Las Vidas». Moscú, 2007, pág. 109.</p>
 
     <p>En Florencia, en la iglesia de Santa Croce, en la capilla Bardi, aún hoy puede verse el fresco «La muerte de san Francisco de Asís». Es un cuadro grande y de composición compleja. A los frescos de Giotto conviene llamarlos ya cuadros, y a él mismo, creador del cuadro moderno en cuanto a composición.</p>
 
@@ -442,25 +296,22 @@ body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
 
     <p>Como artista, Giotto estuvo siempre sujeto a los encargos, en su mayor parte decoraciones al fresco de temas religiosos. Trabajó para papas, príncipes y ricos comitentes, para ciudades; y no solo, sino al frente de una nutrida cuadrilla de discípulos y oficiales. Como maestro principal y célebre, Giotto determinaba la escala de los trabajos, la retribución y, sobre todo, el estilo. Y casi todo lo hacía «con sus compañeros», como se decía en la Rus. El trabajo de Giotto se pagaba como se paga cualquier trabajo gremial. A tan célebre maestro, los comitentes le pagaban con largueza. Si hemos de ser precisos, Giotto y Dante no solo pertenecían a gremios distintos, sino a capas sociales diferentes. Y esto importa mucho para comprender las condiciones de la creación. Pero respiraban un mismo aire.</p>
 
-    <!-- Imagen 8D: El sueño del papa Inocencio III -->
     <div class="image-container">
-        <img src="8D.jpg" alt="El sueño del papa Inocencio III. Fresco de Giotto di Bondone">
+        <img src="8D.jpg" alt="El sueño del papa Inocencio III. Fresco de Giotto di Bondone" loading="lazy">
         <p class="image-caption">El sueño del papa Inocencio III. Fresco obra de Giotto di Bondone.</p>
     </div>
 
     <p>De Dante han quedado muchos retratos. Como auténtico puede admitirse el retrato de Dante «de perfil aguilino» salido de la mano de Giotto, lo cual ha sido confirmado por la reconstrucción a partir del cráneo. Rafael Sanzio, en la «Disputa» del ciclo vaticano, dejó acaso el retrato-imagen más cercano, intuido, del genio de Dante. ¡Y los prerrafaelitas ingleses, de cuántas maneras no cantaron, en la nostalgia romántica de sus lienzos, tanto a Dante como a Beatriz!</p>
 
-    <!-- Imagen 8E: Presunto retrato de Dante -->
     <div class="image-container">
-        <img src="8E.jpg" alt="Presunto retrato de Dante Alighieri. Fragmento de fresco de Giotto di Bondone">
+        <img src="8E.jpg" alt="Presunto retrato de Dante Alighieri. Fragmento de fresco de Giotto di Bondone" loading="lazy">
         <p class="image-caption">Presunto retrato de Dante Alighieri. Fragmento del fresco obra de Giotto di Bondone.</p>
     </div>
 
     <p>Pero el más aleccionador parece ser el retrato de Dante sobre el fondo de Florencia con el modelo dantesco del mundo, pintado por el artista del siglo XV Domenico di Francesco en el muro de la catedral de Florencia, Santa María del Fiore. Los florentinos organizaron, como hoy diríamos, una suntuosa conferencia en memoria de su paisano y (para entonces) genio mundial de la ciencia, la poesía y la filosofía Dante Alighieri. No escatimaron ni palabras, ni dinero, ni los muros de la catedral. La época del Renacimiento formuló muchos estereotipos modernos de conducta, entre ellos este: «No fuimos nosotros quienes lo expulsamos, pero lo honramos y le rendimos justicia en la estimación tardía». Rávena, como es de rigor, sigue sin devolver los restos hasta hoy, y el mausoleo de Dante es todavía punto obligado del itinerario turístico. Dante terminó el «Infierno» en Lucca, el «Purgatorio» en Verona y Rávena, y el «Paraíso» en Venecia y Rávena, donde murió en la noche del 13 al 14 de septiembre de 1321. Escribió su poema en las ciudades de su peregrinar, no en la patria por la que añoraba sin fin.</p>
 
-    <!-- Imagen 8F: Dante Alighieri (Domenico di Michelino) -->
     <div class="image-container">
-        <img src="8F.jpg" alt="Dante Alighieri. Retrato de Domenico di Michelino">
+        <img src="8F.jpg" alt="Dante Alighieri. Retrato de Domenico di Michelino" loading="lazy">
         <p class="image-caption">Dante Alighieri. Retrato obra de Domenico di Michelino (Domenico di Francesco).</p>
     </div>
 
@@ -476,21 +327,18 @@ body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
 
     <p>La catedral de la ciudad de Arezzo, pintada por Giotto en el fresco «La expulsión de los demonios», hoy luce igual. Es un documento de la época. Se la reconoce de lejos y de cerca por su alargamiento, por el cristal del ábside, por los detalles de la arquitectura. Semejante carácter documental del lugar de la acción refuerza la verdad del milagro. Todo un neorrealismo del siglo XIII en Italia. La perspectiva del paisaje y de la ciudad, que avanza hacia ti, no que se aleja de ti. Todo muy exacto. De esa perspectiva italiana de las ciudades antiguas se quejaba Andréi Tarkovski. Decía que añoraba la amplitud y los espacios llanos de Rusia. La densidad arquitectónica que avanza hacia uno le quitaba el aire. Pero precisamente esa «densidad del espacio» la emplea admirablemente Giotto en las decoraciones de la acción escénica de su dramaturgia. En la «Expulsión de los demonios» de Arezzo, san Francisco ora de rodillas. Pero su oración es tan prodigiosa que al monje, puesto en medio del proscenio, le bastó con agitar la mano para que todos los demonios, aullando, huyeran de la ciudad. La oración engendra literalmente el milagro de la expulsión. Todos los cuadros y frescos de Giotto pueden contemplarse cuanto se quiera. Describen minuciosamente la acción, donde cualquier detalle importa. Y cada detalle es igual de real, igual de milagrosa.</p>
 
-    <!-- Imagen 8G: Catedral de Arezzo -->
     <div class="image-container">
-        <img src="8G.jpg" alt="Catedral de Arezzo, Toscana">
+        <img src="8G.jpg" alt="Catedral de Arezzo, Toscana" loading="lazy">
         <p class="image-caption">Catedral de Arezzo. Toscana. Nuestros días.</p>
     </div>
 
-    <!-- Imagen 8H: Giotto. Lamentación sobre Cristo -->
     <div class="image-container">
-        <img src="8H.jpg" alt="Giotto. Lamentación sobre Cristo. Fragmentos">
+        <img src="8H.jpg" alt="Giotto. Lamentación sobre Cristo. Fragmentos" loading="lazy">
         <p class="image-caption">Giotto di Bondone. Lamentación sobre Cristo. Fragmentos.</p>
     </div>
 
-    <!-- Imagen 8I: Giotto. El beso de Judas -->
     <div class="image-container">
-        <img src="8I.jpg" alt="Giotto. El beso de Judas. Fragmento">
+        <img src="8I.jpg" alt="Giotto. El beso de Judas. Fragmento" loading="lazy">
         <p class="image-caption">Giotto di Bondone. El beso de Judas. Fragmento.</p>
     </div>
 
@@ -518,7 +366,7 @@ body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
 
     <p>¡Qué diferencia de retratos! Cristo es bello: Judas es feo. La frente despejada, el oro de los cabellos ondulados, el cuello fuerte. Judas no tiene cuello alguno; ojos de cerdo bajo la frente cóncava de un neandertal. La acción histórica, ética, dramática, psicológica está descrita por el contraste de los tipos de rostros y de personalidades. ¡Cuánto de nuevo a la vez! Tal es lo nuevo: todo y de golpe. Para eso está el genio: para adelantar los relojes a otra hora. Los dioses del lugar son los agujas; su oficio es mover las agujas del reloj de un tiempo a otro.</p>
 
-    <p>En Giotto la categoría del tiempo es muy importante para la acción artística en su teatro. Fluye en la acción real. Pero… Judas aún no ha besado a Cristo, solo se dispone a hacerlo. El artista magnetiza todo y a todos hacia esta pausa. La acción en curso se detuvo de pronto. Se detuvieron las personas. En el cielo oscuro se detuvo el movimiento caótico e inquieto de las antorchas, de las garrotes, de las alabardas. Y de pronto… De pronto se oye, en la muerta quietud de la tensión, un sonido agudo, prolongado, jubiloso. Los sones del cuerno de marfil, en el que toca, hinchando las mejillas, alguien de la multitud. Es el sonido de la Resurrección. Los ángeles anuncian la Resurrección con las trompetas alzadas hacia arriba. El olifante (cuerno) es deliberadamente blanco: es un colmillo de elefante adornado con ornamento dorado.</p>
+    <p>En Giotto la categoría del tiempo es muy importante para la acción artística en su teatro. Fluye en la acción real. Pero… Judas aún no ha besado a Cristo, solo se dispone a hacerlo. El artista magnetiza todo y a todos hacia esta pausa. La acción en curso se detuvo de pronto. Se detuvieron las personas. En el cielo oscuro se detuvo el movimiento caótico e inquieto de las antorchas, de los garrotes, de las alabardas. Y de pronto… De pronto se oye, en la muerta quietud de la tensión, un sonido agudo, prolongado, jubiloso. Los sones del cuerno de marfil, en el que toca, hinchando las mejillas, alguien de la multitud. Es el sonido de la Resurrección. Los ángeles anuncian la Resurrección con las trompetas alzadas hacia arriba. El olifante (cuerno) es deliberadamente blanco: es un colmillo de elefante adornado con ornamento dorado.</p>
 
     <p>Las maravillas vanguardistas de Giotto no terminan aquí. Su composición multitudinaria no cabe en la escena histórica. A derecha e izquierda la línea corta la acción justo por los rostros de los participantes, porque los que quieren estar aquí son muchos más de los que cabe el espacio. Giotto parece decirnos: hacia este punto de la alta tragedia, hacia esta acción edificante única para la humanidad, confluyen muchos, pero no a todos los acogerá en ese tiempo este lugar.</p>
 
@@ -536,13 +384,13 @@ body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
 
     <p>Giotto murió en su Florencia natal en 1337 y fue sepultado con honores en Santa Maria del Fiore. Pero solo un siglo después, por diligencia y con el dinero de Lorenzo de Médici, «en señal de veneración» fue erigido en la catedral un monumento esculpido por el escultor Benedetto da Maiano, con versos de Angelo Poliziano, poeta del Renacimiento, que compuso además la canción «Somos hijos de la Primavera» (es decir, el himno del Renacimiento). Los versos del memorial de Giotto suenan, en traducción, así:</p>
 
-    <div class="poem">
-        <p>Yo soy aquel por quien la pintura extinguida</p>
-        <p>resucitó de nuevo,</p>
-        <p>cuya mano, tan fina cuanto ligera, era…</p>
-        <p>Giotto es mi apodo. ¿Qué creación lo expresará?</p>
-        <p>Mi nombre se mantiene ante loores largos</p>
-        <p>como la eternidad.</p>
+    <div class="verso">
+        <span class="v">Yo soy aquel por quien la pintura extinguida</span>
+        <span class="v">resucitó de nuevo,</span>
+        <span class="v">cuya mano, tan fina cuanto ligera, era…</span>
+        <span class="v">Giotto es mi apodo. ¿Qué creación lo expresará?</span>
+        <span class="v">Mi nombre se mantiene ante loores largos</span>
+        <span class="v">como la eternidad.</span>
     </div>
 
     <p>Poliziano no se equivocó, no sobrevaloró. Las personas entonces (se amaran o no) sabían apreciar y comprender a sus predecesores y contemporáneos.</p>
@@ -553,15 +401,17 @@ body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
 
     <p>Los que sirven a la inmortalidad se vuelven también inmortales.</p>
 
-    <h3>El beso de Judas</h3>
+    <h2 class="epigrafe">El beso de Judas</h2>
 
-    <p>Soy hombre, estoy en medio del mundo,<br>
-    tras de mí, miríadas de infusorios,<br>
-    ante mí, miríadas de estrellas.<br>
-    Entre ellas me tendí a todo mi largo:<br>
-    mar que enlaza dos orillas,<br>
-    puente que unió dos cosmos.</p>
-    <p class="no-indent" style="text-align: right;">Arseni Tarkovski</p>
+    <div class="verso">
+        <span class="v">Soy hombre, estoy en medio del mundo,</span>
+        <span class="v">tras de mí, miríadas de infusorios,</span>
+        <span class="v">ante mí, miríadas de estrellas.</span>
+        <span class="v">Entre ellas me tendí a todo mi largo:</span>
+        <span class="v">mar que enlaza dos orillas,</span>
+        <span class="v">puente que unió dos cosmos.</span>
+    </div>
+    <p class="firma">Arseni Tarkovski</p>
 
     <p>Estos versos de Tarkovski son el epígrafe ideal para el relato sobre el artista Giotto. Antes de pasar a su fresco «El beso de Judas», tratemos de comprender quién fue el artista Giotto di Bondone. ¿Por qué precisamente este epígrafe, por qué precisamente esta definición: «mar que enlaza dos orillas, puente que unió dos cosmos»? «Estoy en medio del mundo»: son palabras muy importantes que caracterizan no solo a Giotto, sino a toda la época en que vivió.</p>
 
@@ -613,17 +463,17 @@ body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
 
     <p>Así pues, con toda probabilidad, cierto Orlando de Chiusi regaló a san Francisco la montaña. Lo que con él ocurrió en esta montaña y aquella transfiguración que se producen entran perfectamente en el contexto mundial de lo que es la montaña mágica, porque precisamente allí recibió los estigmas del Salvador. Y este cuadro justamente representa la recepción de los estigmas por san Francisco, y el Salvador está representado de un modo muy interesante e inusual: no lo representaron así ni antes ni después. Está representado en forma de serafín de seis alas: él, como con un abrigo, está vestido con esas plumas, como si estuviera en alguna piel de oveja, pero en realidad son seis alas desgreñadas. Pushkin tiene un texto magnífico sobre el serafín de seis alas. Precisamente el serafín de seis alas realiza acciones muy decisivas de transfiguración:</p>
 
-    <div class="poem">
-        <p>Y él a mis labios se ciñó,</p>
-        <p>y arrancó mi lengua pecadora,</p>
-        <p>la charlatana y retorcida,</p>
-        <p>y el aguijón de la sabia serpiente</p>
-        <p>en mis labios entumecidos</p>
-        <p>puso con su diestra sangrienta.</p>
-        <p>Y me abrió el pecho con su espada,</p>
-        <p>y me arrancó el corazón tembloroso,</p>
-        <p>y un carbón, que ardía en llamas,</p>
-        <p>en mi pecho abierto ensartó.</p>
+    <div class="verso">
+        <span class="v">Y él a mis labios se ciñó,</span>
+        <span class="v">y arrancó mi lengua pecadora,</span>
+        <span class="v">la charlatana y retorcida,</span>
+        <span class="v">y el aguijón de la sabia serpiente</span>
+        <span class="v">en mis labios entumecidos</span>
+        <span class="v">puso con su diestra sangrienta.</span>
+        <span class="v">Y me abrió el pecho con su espada,</span>
+        <span class="v">y me arrancó el corazón tembloroso,</span>
+        <span class="v">y un carbón, que ardía en llamas,</span>
+        <span class="v">en mi pecho abierto ensartó.</span>
     </div>
 
     <p>Es decir, el serafín aquí es el principio transfigurador. El signo «seraficus» es el signo de la acción. El signo «anjelus» (o «angelis») es el signo de la oración milagrosa. Pushkin describe la aparición del serafín de seis alas y cuenta qué acciones este realizó sobre él. El serafín de seis alas actúa igualmente en el cuadro de Giotto. Cuando atraviesa a Francisco con los rayos, le deja estos cinco estigmas. Vemos cómo las lanzas rojas entran en el cuerpo de san Francisco y él se transfigura: en este momento es incorporado al alto misterio mediante la recepción de los estigmas. Es decir, ya es venerable, ya es santo; ha sido incorporado al misterio.</p>
@@ -646,86 +496,4 @@ body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
 
     <p>Y cuando miramos el fresco «El beso de Judas», destacamos de inmediato con los ojos el centro de la composición. En este centro ocurre el principal acontecimiento dramático. Vemos cómo Judas, abrazando a Cristo, cerrando tras su espalda las manos, lo absorbe. Estas dos figuras son el centro de la composición. Y la composición, si uno la escruta, se vuelve centrípeta: desde los telones laterales crece y crece en energía de acción, acercándose al centro. Y después, desde el centro, se vuelve centrífuga y se dispersa de nuevo no solo hacia los telones, sino que se mueve velozmente hacia arriba, al peine del escenario. Vemos a derecha e izquierda a dos héroes de segundo plano en sus réplicas. Vemos a la derecha cómo ha entrado el sumo sacerdote del templo de Jerusalén y muestra con el dedo a Cristo. Es decir, si seguimos el movimiento de su dedo, precisamente topamos con el rostro de Cristo. Y a la izquierda vemos al apóstol Pedro que, aunque renegó tres veces mientras el gallo cantó tres veces, sin embargo sacó el cuchillo de pan y con ese cuchillo cortó la oreja al siervo del sumo sacerdote. Y vemos cómo se lanza adelante con este cuchillo, pero la multitud le bloquea el camino. Y si seguimos la dirección de la mano y la dirección del cuchillo, veremos que estas líneas convergen sobre el manto de Judas: sobre los rostros. Por eso podemos decir que el centro de la composición no son siquiera las dos figuras unidas, sino dos rostros. Y es desde este punto desde donde es interesante leer esta composición: como acción dramática tomada en el momento de la tensión suprema. Es interesante leerla tanto como el centro de la composición dramatúrgica, como el centro de la composición teatral, donde hay héroes y comparsa.</p>
 
-    <p>Si ustedes miran con atención estos dos rostros, que (precisamente los rostros, no las figuras enteras) son el centro de la composición, verán la diferencia en su tratamiento. El noble y hermoso rostro de Cristo, los cabellos dorados y densos, la frente luminosa, la mirada serena, y ese cuello limpio, tal columna de cuello… un rostro serio, concentrado, hermoso. Representar así a Cristo —como héroe, como hombre maravillosamente bello— será más adelante, cien años después, el Renacimiento italiano. No es el cuerpo consumido, atormentado por el sufrimiento, que se desangra en la cruz de la lanza de Longino; no es la carne martirizada: es un hermoso varón, joven, lleno de fuerzas, de hermosos rizos dorados. Y hacia él acerca su rostro alguien semejante a un jabalí negro, a un lechón negro. Si la frente de Cristo es convexa, la de Judas es cóncava, como la de un neandertal, y los ojillos, bajo los huesos frontales salientes, escrutan sus ojos. He aquí lo más interesante: aquello que en el arte europeo prácticamente nadie hizo: cuando el centro de la composición ni siquiera son estos dos rostros, sino cuando el centro de la composición se traslada al estado psicológico interior. En el centro está lo que ocurre solo entre estas dos personas: la explicación silenciosa, la explicación con los ojos. Abajo, el tipo grueso, torpe, feo, repugnante de Judas Iscariote escruta el rostro de Cristo; busca para sí alguna respuesta. No siquiera una justificación de su acto, sino algo otro que él no conoce pero quiere saber: qué es la causa de su terrible caída.</p>
-
-    <p>Y Cristo no le responde con la mirada: Judas no puede leer nada en sus ojos. Cristo tiene un rostro sereno; no desprecia a Judas, sino que lo mira con calma, sin responder nada, reflejando su mirada. Esto se llama pausa.</p>
-
-    <p>Esa pausa suspendida se logra mejor en el cine y en el teatro, especialmente en el teatro moderno, en el teatro de Chéjov. Nos parece que ocurren acciones muy turbulentas, pero en realidad la acción se detiene en el punto culminante; todo está suspendido de la pausa, del silencio, del segundo antes de que Judas bese a Cristo. En la interpretación de Giotto no lo besa. Solo se ha acercado para besarlo. Aquí hay algo que solo dos personas entienden y nadie más. Hay aquí una explicación que solo entre dos personas, y es la principal, porque el beso ya es consecuencia, ya es punto, es final. Y la dramaturgia, la verdadera dramaturgia, está en esta revelación psicológica, en este esclarecimiento de relaciones en la pausa.</p>
-
-    <p>En general, en la dramaturgia mundial la pausa es una cosa sumamente rara. Después de Giotto el arte se convirtió en el arte de la composición, es decir, de la acción y del relato: los artistas comenzaron a contar o a mostrar, y no a representar mediante signos, símbolos. Por la fuerza de la pausa que hay en el cuadro, con Giotto solo puede compararse Rembrandt. En Rembrandt, que vivió en el siglo XVII, a tales pausas psicológicas está como suspendida la idea dramatúrgica principal e interior del cuadro. Se ve en su obra «Asuero, Amán y Ester», que se encuentra en el Museo de Bellas Artes Pushkin. Allí precisamente la acción está detenida en la pausa: ella ya ha hablado, Asuero aún no ha decidido nada y Amán ya ha comprendido la respuesta, y entre ellos la pausa. O «El hijo pródigo»… En estos cuadros se ve que el artista sentía esta dramaturgia psicológica, la trágicidad de la pausa. Cuando un hombre, un artista, de quien en general nada semejante provenía, hace tales cosas: es verdaderamente el puente sobre el abismo, que unió dos cosmos.</p>
-
-    <p>Así pues, la piedra ha sido arrojada al agua y de ella comienzan a divergir círculos. Los centros composicional y psicológico del cuadro coinciden de manera ideal; están ligados entre sí por un solo nudo. Si ustedes miran los cuadros de la pintura europea, verán más adelante que no siempre los centros compositivos y los centros de la acción psicológica están combinados entre sí; a veces están separados deliberadamente. Pero en este caso es un monolito, donde todo está junto. Y después comienzan a divergir los círculos por el agua: Pedro, que está dispuesto a cortar la oreja; los fariseos; los guardias, que vinieron con garrotes y lanzas. Hay que decir que el beso de Judas, del Evangelio cuatriforme, está descrito en tres partes. Está descrito en el Evangelio de Mateo, en el Evangelio de Marcos y en el Evangelio de Lucas, y en el Evangelio de Juan este argumento no existe. Pero aquel argumento que vemos en el cuadro «El beso de Judas» está descrito en el Evangelio de Mateo: precisamente en Mateo está descrita esa multitud que trajo consigo Judas Iscariote. Y no simplemente vinieron: venían con lanzas y garrotes, es decir, estaban armados. Giotto lo muestra: ese dedo que señala a Jesús: «¡A él, prendedlo!». Judas dio la señal; dijo: «A quien yo bese, ése es; tomadlo».</p>
-
-    <p>Según las concepciones franciscanas y según las concepciones evangélicas, el beso no es un simple saludo. Es el abrazo fraterno: besaré a mi hermano. Magdalena besó los pies de Cristo y con ello se purificó del pecado. Y Judas era un discípulo acogido por el maestro. Besó a Jesús y pervirtió, volvió del revés el acto supremo de la afición, de la fraternidad, de la humanidad: el beso. Como estaba escrito en cierto texto apócrifo bizantino sobre Judas: entonces los demonios le torcían la soga, riendo a carcajadas.</p>
-
-    <p>Y Pushkin tiene versos:</p>
-
-    <div class="poem">
-        <p>Como del árbol cayó el discípulo traidor,</p>
-        <p>el diablo llegó volando, a su rostro se ciñó,</p>
-        <p>sopló vida en él, se alzó con su hedionda presa</p>
-        <p>y arrojó el cadáver vivo a la garganta de la gehena famélica…</p>
-        <p>Allí los demonios, gozosos y dando palmadas,</p>
-        <p>se prendieron a los cuernos, riendo a carcajadas,</p>
-        <p>del enemigo universal</p>
-        <p>y con estruendo lo llevaron al amo maldito,</p>
-        <p>y Satán, incorporándose, con alegría en el semblante,</p>
-        <p>con su ósculo atravesó los labios</p>
-        <p>que, en la noche de la traición, besaron a Cristo.</p>
-    </div>
-
-    <p>Pushkin también conocía estos textos; poseía magníficamente la cultura universal y el pensamiento cultural universal. El texto era conocido también de Giotto; el texto era conocido después también de Pushkin: la cultura cristiana es la cultura del gran espacio; era transversal, era muy bien conocida; hoy la hemos perdido en gran parte. Y he aquí que mencionamos por segunda vez el nombre de Pushkin precisamente porque él, muchos siglos después, se hallaba en el espacio de esa misma cultura. Sus reflexiones, éticas y morales, versaban sobre lo mismo que las de Giotto.</p>
-
-    <p>Giotto era ya un hombre de conciencia europea absolutamente nueva y de nuevo enfoque del cuadro, del plano. Sobre Giotto siempre se escriben determinadas cosas; esto se ha vuelto incluso un poco irónico. ¿Qué descubrió Giotto? La perspectiva. Está representado muy cómicamente en «Amarcord» de Fellini. En la escuela, la maestra de dibujo come un pastelito y se lo bebe con café durante la clase y dice: «¿Qué creó Giotto?». Y le responden a coro, cantando: «Giotto creó la perspectiva». Pues bien: Giotto no creó ninguna perspectiva. Es una convicción equivocada. Él no creó la perspectiva; creó otro espacio del cuadro, donde por espacio debe entenderse la acción que ocurre. Y esta acción no simplemente ocurre como acción histórica: ocurre también como acción psicológica, ocurre como acción energética (en este caso se puede incluso emplear esta palabra). Vemos cómo, en anillo, se acercan a Cristo las personas que entraron en el huerto de Getsemaní, donde antes el Salvador oraba por la copa, pidiendo a su Padre que le diera fuerzas para pasar sus Pasiones hasta el final. Y cuando terminó la oración por la copa, ellos entraron en el huerto de Getsemaní y lo tomaron, lo arrestaron bajo la dirección de Judas Iscariote.</p>
-
-    <p>¿Qué podía ser más terrible para un hombre como el franciscano Giotto que la traición del maestro? ¡En general, nada! Es traicionar a Cimabue, que fue su maestro, porque el maestro es más que el padre. El padre es quien dio la vida; el maestro es quien creó tu alma, quien te creó como persona. Esto es muy importante: el maestro es creador, demiurgo. Por cierto, esta es una parte muy seria, en general, de la filosofía y la pedagogía de Europa occidental: la creación del hombre por el maestro. El maestro crea, te ayuda a encontrarte a ti mismo, te ayuda a entrar en tu camino, como Cimabue en el caso de Giotto. ¿Podía él traicionar alguna vez a Cimabue, podrían traicionarlo sus discípulos? Es la traición más terrible que puede existir. Ellos pasaban de un partido a otro: Giotto ora trabajaba como artista para los güelfos, ora tomaba encargos de los gibelinos: esto no tenía importancia. Pero la traición del maestro es muy importante; es lo principal, lo más terrible: eso hay que marcarlo a fuego. Y por eso la multitud: está presente en el acontecimiento extraordinario, en el acontecimiento en que el maestro es traicionado por su discípulo. El maestro lo amaba; le entregó parte de sí. Y esta multitud entró… y no simplemente entró: entró de noche, bajo el cielo oscuro. Las antorchas encendidas oscilan a derecha y a izquierda. Ustedes sienten ese movimiento, el movimiento sobre el fondo del cielo, y el movimiento desordenado de esos garrotes y lanzas, la agitación y la electrización de la multitud.</p>
-
-    <p>Lo interesante del comparsa: en absoluto es indiferente; si ustedes miran con atención, notarán que casi cada participante está muy elaborado. ¡Allí hay estados transmitidos de un modo simplemente increíble! A la derecha de Judas, en la parte derecha del cuadro, hay una pareja muy curiosa. La figura vestida con una esclavina frambuesa: un hombre militar con grebas de hierro, y de tensión simplemente se le ha estirado el cuello, tiene la boca abierta y los ojos desorbitados: se ha tensado y mira. Y si se mira la parte inferior del fresco, se ve que él, con su greba metálica, pisa la pierna desnuda y descalza de un joven que está de pie con la antorcha y mira concentrado; se ha volcado entero en la atención. El guerrero lo ha apretado muy fuerte con su talón de hierro, pero este joven ni siquiera se estremeció: no siente el dolor, ni siquiera presta atención a que sobre él está parado un hombre en coraza de hierro: tan tenso está, tan concentrado. ¿Cómo encontrar tales detalles? ¿No en una época en que el arte ya estaba acostumbrado a trabajar con tal dramaturgia, sino en aquellos tiempos en que todavía nada de esto conocía?</p>
-
-    <p>Giotto fue el primero, pero también el último, porque no solo planteó, sino que resolvió una enorme cantidad de tareas. No solo creó la composición: yo, Giotto, así veo la solución dramatúrgica; he aquí mis personajes, he aquí mi coro. Él elabora además el aspecto psicológico, cuando muestra en una sola acción la multiplicidad de tiempos. Miren con atención el cuadro: en él la acción ocurre aquí y ahora, en este momento, en este minuto, en este segundo. El tiempo está suspendido del minuto: un segundo más, y ya se puede disolver, todo ha terminado: la función ha acabado, el tigre se comió al domador, todos contentos, nos vamos a casa a comentar. Pero mientras esto aún no ha ocurrido, está esta tensión del instante, hacia la cual todo está magnetizado.</p>
-
-    <p>El segundo tiempo es el tiempo histórico, porque Giotto nos muestra una acción histórica. Es uno de los episodios centrales de la historia de Cristo, que entra en las Pasiones del Señor. Pero el artista nos muestra también el tiempo de la eternidad, ilimitado. ¿Cómo lo hace? Los bordes del fresco se cortan simplemente por los rostros y por las figuras. Se puede suponer que allí hay todavía muchísima gente: muchísima, ciudad entera, país entero, globo terráqueo entero… son tantos que sencillamente no caben allí. Pueden ustedes imaginarse qué enorme cantidad de personas ve esta acción desde otro espacio y otro tiempo. Es interesante también que la acción ocurre en la escena de proscenio, pero ustedes ven que los héroes están rodeados de gente. Es decir, si ustedes miraran el fresco desde arriba, verían que es como un círculo dividido en dos partes, y que allí también hay una cantidad muy grande de personas. Esto va más allá del argumento; es más: su imaginación debe insinuarles cuánto es de más. Pero aquí hay una sutileza, sencillamente increíble: en el fondo más lejano hay una figura que está desplazada un poco hacia la derecha del eje de la figura central, para que se la vea bien. De perfil hacia nosotros, un muchacho con las mejillas hinchadas como globos. Mira al cielo y toca el olifante, es decir, el cuerno de marfil incrustado de oro. Toca hacia arriba, el único en este fresco. ¿Qué significa esto? La resurrección de los muertos. Cuando los ángeles tocan hacia abajo: es el rebato, el Juicio Final; y cuando tocan hacia arriba: es la resurrección de los muertos. Precisamente esto da a entender el artista. Giotto muestra: Judas aún no ha besado a Jesús, y allá arriba ya se toca la resurrección de los muertos, la gloria de la inmortalidad.</p>
-
-    <p>Si así se desmenuzara cada uno de sus frescos, cada uno provocaría igual asombro y perplejidad. ¿De qué modo un solo hombre, en una sola vida, sin precedentes, «saliendo al cero trascendente», creó desde una hoja en blanco el arte europeo moderno, la composición? ¿La composición como acción, como nexo causal, como acción temporal, saturada de pluritemporalidad y de una cantidad muy grande de matices psicológicos? Por eso decimos que todo el arte europeo fue teatral; simplemente, en este teatro se reordenaban las decoraciones, los muebles. Por eso decimos que hasta el impresionismo dominó en el arte aquello que descubrió Giotto.</p>
-
-    <p>En la pintura de los impresionistas el héroe ya no es el hombre: el héroe del cuadro de los impresionistas es la luz. Ellos se apartaron de la acción dramatúrgica a la que nos hemos acostumbrado en la pintura durante tantos años. En ellos el objeto de la pintura se convierte en la luz. No es mejor ni peor que lo que hubo antes de ellos: es simplemente un hecho. Hasta mediados del siglo XIX prevaleció el lenguaje de Giotto. Por lenguaje entendemos no el modo concreto de representar la figura, sino la esencia misma: la aparición de un arte absolutamente moderno, con la posibilidad de una nueva lectura cada vez. Hemos visto en nuestra vida muchos argumentos idénticos que se repiten, argumentos transversales. Pero el asunto no está en el argumento mismo, sino en su transmisión, en el comentario a él, en cómo ese argumento está expuesto por el artista, en cómo él se dirige a nosotros, en cómo nosotros participamos en él personalmente con nuestra propia experiencia. Por eso la composición es la ejecución de un cierto guion, dado por el artista como testigo presencial, como partícipe de los acontecimientos.</p>
-
-    <p>En el ejemplo de «El beso de Judas» vemos en qué consistía el designio de Giotto. Este cuadro es muy valioso no solo por sus cualidades artísticas: es valioso por su profundo sentido ético. Después de la Segunda Guerra Mundial aparece muchísima literatura que dice que Cristo mismo dio la orden a Judas, le insinuó que debía hacerlo. En una novela francesa Cristo le dice literalmente: y entonces en los siglos tú serás el fiel: yo primero, y tú el fiel. Aquí todo está vuelto del revés: Judas es fiel, porque escuchó lo que Jesús le dijo. ¡Pero esto no es así! Él es un traidor; comete una traición. Para Bulgákov es el traidor en sus chirriantes sandalias amarillas, con los treinta dineros en las manos. Es avaro, es deforme; cayó en la agit-prop de la espía a la que allí cortejaba.</p>
-
-    <p>Y para Giotto la traición del maestro es el pecado más terrible, que no tiene perdón. Y él hace que miremos de cerca a este hombre, que contemplemos su fealdad física. Él, por primera vez, identifica la fealdad física con la fealdad moral, y la belleza y la perfección físicas con la belleza moral perfecta. Giotto traza el camino por el que irá la época del Renacimiento, cuando siempre se representará a Judas como un deforme, como en el cuadro de Leonardo da Vinci, como en el cuadro de Ghirlandaio. Es en general siempre un ser deforme. Para estas personas no existía otra variante de conducta: fue única y tan terrible que al traidor no le queda sino ahorcarse en el álamo.</p>
-
-    <p>El propio Giotto, al mismo tiempo, como ya hemos señalado, era un hombre en la vida muy afable y alegre, y los escritores de aquel tiempo nos dejaron sus agudezas y colecciones de sus agudezas. No hay imágenes de Giotto, pero Vasari y Boccaccio comunican que era alegre, benévolo, amplio, generoso, un excelente padre de familia y que con él venía siempre la alegría. Él y sus compañeros entraban carnavalescamente en la ciudad, tocaban tambores, iban sobre asnos. Giotto era un italiano carnavalesco, un hombre sano y armonioso.</p>
-
-    <p>Trabajó muchísimo en la corte del rey napolitano Roberto y fue amigo suyo, y entre ellos ocurrían conversaciones que fueron anotadas. Una vez, con tiempo caluroso, Giotto pintaba el retrato del rey napolitano o hacía algo para él, y el rey le dijo: «Ah, Giotto, si yo fuera tú, iría ahora mismo a descansar un poco». Y entonces Giotto le respondió: «Ah, majestad, si yo fuera usted, también iría ahora mismo a descansar un poco». No se quedaba corto a la hora de responder.</p>
-
-    <p>Cuando Giotto volvió a su Florencia, encabezó allí el gremio de los artistas, gozaba de honores, recibía de Florencia sumas muy grandes como artista principal de Florencia. Estaba a sueldo del Estado florentino.</p>
-
-    <p>En Florencia Giotto construyó el campanile, es decir, el campanario. Este campanario está muy cerca de Santa Maria del Fiore, la catedral de Florencia. Mucho más tarde Brunelleschi levantó sobre la catedral aquella cúpula que vemos ahora, y entonces la iglesia se veía algo distinta. Giotto construyó el campanile. La catedral se puede contemplar estando dentro de este campanario, y exactamente igual el propio campanile se puede mirar desde la catedral. Recuerda un cristal muy hermoso que se eleva junto a Santa Maria del Fiore, y está adornado con una incrustación admirable. Es una incrustación muy rica, saturada: allí se ha empleado mármol de distinto color. Algo parecido se puede ver en Siena y en todas las ciudades del trecento, donde estaba aceptado el estilo bizantino tardío, ligado a la vistosidad exterior. Aún no se había producido la transformación completa de las formas arquitectónicas, del gótico tardío a Leon Battista Alberti, a Brunelleschi, a los grandes filósofos del nuevo sentido de conjunto. La arquitectura del trecento se distingue por otros rasgos: la fantasía, el ingenio, una vistosidad extraordinaria, el aire festivo. Es un campanario muy esbelto, severo, hermoso. Cuando Giotto murió, fue sepultado en Santa Maria del Fiore; allí se encuentra su tumba. Con esto se le rindió el mayor honor que puede rendirse.</p>
-
-    <p>Giotto tenía familia; tuvo ocho hijos. El hijo mayor también llegó a ser artista. Giotto conocía todo el mundo de entonces; de verdad fue glorificado. El tiempo comprendía quién era; lo aceptaba y lo apreciaba. Era una valoración hecha no solo de reconocimiento: se expresaba también en equivalente monetario, porque Giotto era un ciudadano muy rico. Cuando el tiempo espera lo nuevo, lo valora. En el caso de Dante el asunto no está en que Dante no fuera glorificado como filósofo, poeta y teólogo. El asunto está en que Dante fue arrastrado al fragor de la lucha política y se encontró en el destierro en Rávena. Y, desde luego, en el futuro se condenó a Florencia por el destierro de Dante, especialmente los poetas del siglo XX, que dedicaron muchos versos a ese amargo pan del destierro.</p>
-
-    <p>Los maestros geniales son portadores de determinadas ideas, pero ¿quién sabe qué es la genialidad? El hombre no puede hacerse genio: nace genio, y bueno es si él mismo se lo explica, y todavía más admirable si lo comprende y lo ve el tiempo. Giotto Bondone es una figura rara: fue valorado por su tiempo y permaneció en el tiempo como el más grande artista, como el hombre que comenzó de cero.</p>
-
-    <p>Cien años después de su muerte el famoso poeta Angelo Poliziano escribió versos. Fue un poeta conocido de la época del quattrocento y miembro de la academia de Lorenzo de Médici. Por deseo de Lorenzo el Magnífico, junto al sarcófago de Giotto fue hecha una escultura a él dedicada: un monumento. Y Angelo Poliziano, como a nombre de Giotto, como era aceptado, escribió: yo, Giotto, reposo aquí, y mi nombre será glorificado en los siglos. Son palabras muy importantes, porque son personas que ya pensaban históricamente. Para ellos el hombre era una figura de la historia, y no solo el panteón de los dioses o de los santos cristianos o paganos. Era otro cosmos. El siglo de la escolástica se convertía en siglo del humanismo. Tanto Dante como Giotto fueron grandes escolásticos de aquel tiempo, tales como, por ejemplo, Abelardo, Bernardo de Claraval o Buenaventura y, desde luego, como Francisco de Asís.</p>
-
-    <p>Su fuerza estaba todavía en la bipolaridad. Eran, por un lado, todavía hombres de aquella época que representaba el mundo como indiviso, aún no diseccionado, cuando dominaba la doctrina de la unidad del mundo, donde el hombre no puede ser el centro, y en el centro está el Creador, el Hacedor, el Salvador. Por otro lado, ya llegaba la época del humanismo, que en el siglo XX fue expresada con las palabras «yo soy hombre, estoy en medio del mundo», pero del mismo modo fue expresada en la obra de Dante y de Giotto.</p>
-
-    <p>En 1921, cuando se cumplían los 600 años del nacimiento de Dante, el padre Pável Florenski pronunció una gran ponencia. Pável Florenski es la figura más grande de nuestro Renacimiento ruso: fue físico, matemático, filósofo que escribió la gran tesis «La columna y el fundamento de la verdad». Fue un gran teólogo. Se puede decir que fue un hombre de aquel tiempo en que vivían Giotto y Dante, solo que en el siglo XX. Y ellos fueron hombres de los siglos XIII-XIV, pero podrían haberlo sido en el XX. Todos ellos son figuras integrales. Florenski era matemático y físico, y pudo hacer lo que otros no podían: intentó trazar el modelo del cosmos que Dante propuso en su poema. Y lo trazó. El hombre humanitario no puede hacer esto, pero un matemático genial podía hacerlo. El cosmos de Dante ya no es la geometría de Euclides: el cosmos de Dante es ya un cosmos curvado, es decir, es el modelo de la representación moderna del cosmos. Así se cierran los puntos del pasado y del futuro: esos mismos puentes que unen dos cosmos distintos.</p>
-
-</article>
-
-<script>
-    const toggle = document.getElementById('theme-toggle');
-    const icon = document.getElementById('theme-icon');
-
-    toggle.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
-        const isDark = document.body.classList.contains('dark-mode');
-        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
-        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
-        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
-    });
-</script>
-
-</body>
-</html>
+    <p>Si ustedes miran con atención estos dos rostros, que (precisamente los rostros, no las figuras enteras) son el centro de la composición, verán la diferencia en su tratamiento. El noble y hermoso rostro de Cristo, los cabellos dorados y densos, la frente luminosa, la mirada serena, y ese cuello limpio, tal columna de cuello… un rostro serio, concentrado, hermoso. Representar así a Cristo —como héroe, como hombre maravillosamente bello— será más adelante, cien años después, el Renacimiento italiano. No es el cuerpo consumido, atormentado por el sufrimiento, que se desangra en la cruz de la lanza de Longino; no es la carne martirizada: es un hermoso varón, joven, llen
