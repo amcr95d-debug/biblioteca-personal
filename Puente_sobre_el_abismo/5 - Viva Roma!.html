@@ -6,9 +6,6 @@
 <title>Capítulo 6. Viva Roma! — Un puente sobre el abismo</title>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <style>
-/* =========================================
-   COLORES (Modo diurno — International Klein Blue)
-   ========================================= */
 :root {
     --bg-body: #002FA7;
     --text-primary: #ffffff;
@@ -22,7 +19,6 @@
     --realce: rgba(255, 255, 255, 0.78);
     --medida: 34rem;
 }
-
 body.dark-mode {
     --bg-body: #001233;
     --text-primary: #ffffff;
@@ -35,13 +31,8 @@ body.dark-mode {
     --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
     --realce: rgba(255, 255, 255, 0.72);
 }
-
-/* =========================================
-   TIPOGRAFÍA Y MAQUETACIÓN
-   ========================================= */
 * { box-sizing: border-box; }
 html { font-size: 17px; scroll-behavior: smooth; }
-
 body {
     margin: 0;
     background: var(--bg-body);
@@ -51,258 +42,54 @@ body {
     hyphens: auto;
     -webkit-tap-highlight-color: transparent;
 }
-
-main {
-    max-width: var(--medida);
-    margin: 0 auto;
-    padding: 4rem 16px 7rem;
-}
-
-/* Encabezado del capítulo */
-.cab {
-    text-align: center;
-    margin-bottom: 3.2rem;
-}
-.cab__num {
-    margin: 0 0 .7rem;
-    font-size: .8rem;
-    letter-spacing: .28em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-}
-.cab__tit {
-    margin: 0;
-    font-size: 1.85rem;
-    font-weight: 400;
-    line-height: 1.25;
-}
-.cab::after {
-    content: "";
-    display: block;
-    width: 4.5rem;
-    height: 1px;
-    margin: 2rem auto 0;
-    background: var(--border-color);
-}
-
-/* Subtítulo */
-.subtitulo {
-    text-align: center;
-    font-size: 1.05rem;
-    font-style: italic;
-    color: var(--text-secondary);
-    margin: 0 0 2.4rem;
-    text-indent: 0;
-    line-height: 1.45;
-}
-
-/* Epígrafes y subtítulos de sección */
-.epigrafe {
-    margin: 3.2rem 0 1.6rem;
-    font-size: .95rem;
-    font-weight: 700;
-    line-height: 1.45;
-    letter-spacing: .07em;
-    text-align: center;
-    text-transform: uppercase;
-    color: var(--realce);
-}
-
-/* Epígrafe inicial */
-.epigrafe-inicial {
-    margin: 3.2rem 0 2.4rem;
-    padding-left: 1.5rem;
-    border-left: 1px solid var(--border-color);
-    font-style: italic;
-    color: var(--text-secondary);
-    font-size: .95rem;
-    line-height: 1.55;
-}
-.epigrafe-inicial p {
-    text-indent: 0;
-    margin: 0 0 .6rem;
-    text-align: left;
-}
-.epigrafe-inicial .attribution {
-    text-align: right;
-    font-style: normal;
-    font-size: .85rem;
-    color: var(--text-muted);
-    margin-top: .4rem;
-}
-
-/* Párrafos */
-p {
-    margin: 0;
-    text-align: justify;
-    text-indent: 1.35em;
-    position: relative;
-}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.subtitulo { text-align: center; font-size: 1.05rem; font-style: italic; color: var(--text-secondary); margin: 0 0 2.4rem; text-indent: 0; line-height: 1.45; }
+.epigrafe { margin: 3.2rem 0 1.6rem; font-size: .95rem; font-weight: 700; line-height: 1.45; letter-spacing: .07em; text-align: center; text-transform: uppercase; color: var(--realce); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
 p + p { margin-top: 0; }
-
-/* Sin sangría tras encabezados, figuras, versos, citas, firmas y enumeraciones */
-.cab + p,
-.subtitulo + p,
-.epigrafe + p,
-.epigrafe-inicial + p,
-figure + p,
-.verso + p,
-.cita + p,
-.firma + p,
-.sin-sangria + p { text-indent: 0; }
-
-/* Párrafos sin sangría (enumeraciones, versos sueltos, etc.) */
+.cab + p, .subtitulo + p, .epigrafe + p, .epigrafe-inicial + p, figure + p, .verso + p, .cita + p, .firma + p, .sin-sangria + p, .image-placeholder + p { text-indent: 0; }
 .sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
 
-/* Firma / atribución a la derecha */
-.firma {
-    margin: .8rem 0 0;
-    text-align: right;
-    text-indent: 0;
-    font-style: italic;
-    color: var(--text-secondary);
-    font-size: .92rem;
-}
+/* Ilustraciones con clase .imagen (capítulo 6) */
+figure.imagen { margin: 2.4rem 0; text-align: center; }
+figure.imagen img { display: block; max-width: 100%; height: auto; border: 1px solid var(--border-color); box-shadow: 0 4px 12px rgba(0,0,0,0.3); border-radius: 2px; margin: 0 auto; }
+figure.imagen figcaption { margin-top: .7rem; font-size: .84rem; font-style: italic; line-height: 1.45; text-align: left; color: var(--text-muted); }
+figure.imagen figcaption strong { color: var(--text-secondary); font-style: normal; font-weight: 700; display: block; margin-bottom: .2rem; }
 
-/* Ilustraciones */
-figure {
-    margin: 2.4rem 0;
-    text-align: center;
-}
-figure img {
-    max-width: 100%;
-    height: auto;
-    border: 1px solid var(--border-color);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    border-radius: 2px;
-}
-figcaption {
-    margin-top: .7rem;
-    font-size: .84rem;
-    font-style: italic;
-    line-height: 1.45;
-    text-align: left;
-    color: var(--text-muted);
-}
+/* Figure genérico */
+figure { margin: 2.4rem 0; text-align: center; }
+figure img { max-width: 100%; height: auto; border: 1px solid var(--border-color); box-shadow: 0 4px 12px rgba(0,0,0,0.3); border-radius: 2px; }
+figcaption { margin-top: .7rem; font-size: .84rem; font-style: italic; line-height: 1.45; text-align: left; color: var(--text-muted); }
+figcaption strong { color: var(--text-secondary); font-style: normal; font-weight: 700; display: block; margin-bottom: .2rem; }
 
-/* Marcador de posición de imagen */
-.img-placeholder {
-    max-width: 100%;
-    min-height: 180px;
-    background: rgba(255,255,255,0.08);
-    border: 1px dashed var(--border-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-muted);
-    font-style: italic;
-    font-size: .85rem;
-    padding: 1.5rem;
-    text-align: center;
-    border-radius: 2px;
-    line-height: 1.4;
-}
+/* Placeholder de imagen */
+.image-placeholder { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; margin: 2.4rem auto; padding: 1.5rem; border: 1px dashed var(--border-color); background-color: rgba(255,255,255,0.08); border-radius: 2px; color: var(--text-muted); font-style: italic; font-size: .85rem; min-height: 180px; max-width: 100%; line-height: 1.4; }
+.image-placeholder span { font-weight: 700; font-style: normal; color: var(--text-secondary); margin-bottom: .5rem; letter-spacing: .07em; text-transform: uppercase; font-size: .78rem; }
 
-/* Versos */
-.verso {
-    margin: 1.6rem 0 1.6rem 2.2rem;
-    font-style: italic;
-    line-height: 1.5;
-}
-.verso .v {
-    display: block;
-    text-indent: -1.2em;
-    padding-left: 1.2em;
-}
-
-/* Citas en bloque */
-.cita {
-    margin: 1.6rem 0 1.6rem 2.2rem;
-    padding: 0;
-    font-style: italic;
-    font-size: .95rem;
-}
-.cita p {
-    text-indent: 0;
-    text-align: left;
-}
+.verso { margin: 1.6rem 0 1.6rem 2.2rem; font-style: italic; line-height: 1.5; }
+.verso .v { display: block; text-indent: -1.2em; padding-left: 1.2em; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
 .cita p + p { margin-top: .45rem; }
-.cita .attribution {
-    text-align: right;
-    font-style: normal;
-    font-size: .85rem;
-    color: var(--text-muted);
-    margin-top: .5rem;
-}
-
-/* Separador de sección */
-.separador {
-    margin: 2rem 0;
-    text-align: center;
-    letter-spacing: .6em;
-    color: var(--text-muted);
-    text-indent: 0;
-}
-
-/* Notas al pie */
-.footnotes {
-    margin-top: 4rem;
-    border-top: 1px solid var(--border-color);
-    padding-top: 1.5rem;
-    font-size: .88rem;
-    color: var(--text-secondary);
-}
-.footnotes h3 {
-    margin: 0 0 1rem;
-    font-size: .8rem;
-    font-weight: 700;
-    letter-spacing: .28em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    text-align: left;
-}
-.footnotes p {
-    text-align: left;
-    text-indent: -1.4em;
-    padding-left: 1.4em;
-    margin-bottom: .6rem;
-    line-height: 1.5;
-}
-sup {
-    font-size: .7em;
-    vertical-align: super;
-    line-height: 0;
-    color: var(--text-secondary);
-}
-
-/* =========================================
-   BOTÓN FLOTANTE (Modo nocturno)
-   ========================================= */
-.fab-toggle {
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    background-color: var(--fab-bg);
-    color: var(--fab-color);
-    border: none;
-    cursor: pointer;
-    box-shadow: var(--shadow);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease;
-    z-index: 1000;
-    outline: none;
-}
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
 .fab-toggle:hover { transform: scale(1.1); }
 .fab-toggle:active { transform: scale(0.95); }
 .fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
 body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
-
-/* Diseño adaptable */
 @media (max-width: 46rem) {
     html { font-size: 16px; }
     main { padding: 2.5rem 16px 4rem; }
@@ -310,9 +97,7 @@ body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
     .epigrafe-inicial { padding-left: 1rem; }
     .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
     .fab-toggle .material-icons { font-size: 23px; }
-    .fab-nav { bottom: 18px; left: 18px; gap: 10px; }
-    .fab-nav__btn { width: 50px; height: 50px; }
-    .fab-nav__btn .material-icons { font-size: 23px; }
+    .image-placeholder { padding: 1rem; min-height: 100px; }
 }
 </style>
 </head>
@@ -325,28 +110,19 @@ body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
 
 <main>
 
-    <!-- ============================================
-         ENCABEZADO DEL CAPÍTULO
-         ============================================ -->
     <header class="cab">
         <p class="cab__num">Capítulo 6</p>
         <h1 class="cab__tit">Viva Roma!</h1>
     </header>
 
-    <!-- ============================================
-         EPÍGRAFE
-         ============================================ -->
     <div class="epigrafe-inicial">
         <p>Soy el hijastro de una potencia salvaje<br>de hocico despedazado.<br>De otra, no menos grande, —<br>acogido orgulloso,<br>y feliz en esta cuna<br>de Musas, del Derecho, de las Gracias,<br>donde cantaron Nasón y Virgilio,<br>y arengó Horacio.</p>
         <p class="attribution">Iósif Brodski</p>
     </div>
 
-    <!-- ============================================
-         INTRO
-         ============================================ -->
-    <figure>
-        <img src="5A.jpg" alt="Mapa de las regiones de Italia">
-        <figcaption>Mapa de las regiones de Italia</figcaption>
+    <figure class="imagen">
+        <img src="5A.jpg" alt="Mapa de las regiones de Italia" loading="lazy">
+        <figcaption><strong>Imagen 5A</strong>Mapa de las regiones de Italia</figcaption>
     </figure>
 
     <p>Qué ciudad asombrosa esta Roma. Eterna de verdad. No inmortal, sino eterna. Sobre ninguna ciudad del mundo, en toda la historia memorable para la humanidad, se ha escrito tal cantidad de libros, investigaciones, ensayos, tales versos y confesiones.</p>
@@ -363,23 +139,20 @@ body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
 
     <p>Cierto Ciriaco Pizzicolli d'Ancona, comerciante y anticuario, recorría la ciudad a diario a caballo blanco y hacía inventario de los templos, teatros, palacios y termas antiguas, obeliscos, acueductos y arcos triunfales, puentes y columnas. Estudiaba su historia precristiana, «deseando revivir a los muertos y darlos a conocer a los contemporáneos». Este hombre notable compuso la primera «Guía». Levantaba planos de la ciudad y hacía croquis de lo que quedaba de tiempos remotos. Hizo un trabajo extraño: acercó y fundió la Roma antigua con la Roma cristiana, mostrando el asombroso fenómeno de la «transparencia» de un decorado histórico a través de otro. Ya a comienzos del siglo VII, en el año 609, el Panteón romano, erigido en el siglo II, se convirtió en la iglesia de Santa María Rotonda, y lo es hasta hoy.</p>
 
-    <figure>
-        <img src="5B.jpg" alt="Cicerón. Siglo I a. C. Mármol. Galería Uffizi, Florencia">
-        <figcaption>Cicerón. Siglo I a. C. Mármol. Galería Uffizi, Florencia</figcaption>
+    <figure class="imagen">
+        <img src="5B.jpg" alt="Cicerón. Siglo I a. C. Mármol. Galería Uffizi, Florencia" loading="lazy">
+        <figcaption><strong>Imagen 5B</strong>Cicerón. Siglo I a. C. Mármol. Galería Uffizi, Florencia</figcaption>
     </figure>
 
-    <figure>
-        <img src="5C.jpg" alt="Bruto. Siglo I a. C. Bronce. Museo del Capitolio, Roma">
-        <figcaption>Bruto. Siglo I a. C. Bronce. Museo del Capitolio, Roma</figcaption>
+    <figure class="imagen">
+        <img src="5C.jpg" alt="Bruto. Siglo I a. C. Bronce. Museo del Capitolio, Roma" loading="lazy">
+        <figcaption><strong>Imagen 5C</strong>Bruto. Siglo I a. C. Bronce. Museo del Capitolio, Roma</figcaption>
     </figure>
 
     <p>Los primeros arqueólogos y coleccionistas de la antigüedad romana fueron los sabios monjes benedictinos ya en el siglo V o VI. A finales del siglo VI el poder (tras la invasión de los lombardos) pasó de Bizancio de nuevo a los obispos-papas romanos.</p>
 
     <p>Roma conservó siempre el aliento de la vida viva, y existe incluso el término latino «renovatio»: renovación. Las renovaciones fueron muchas, porque incluso en la época del Medievo temprano se conservaba un vínculo estrecho con toda la cultura antigua y se veneraban profundamente sus ruinas. Y en las basílicas se acondicionaban iglesias.</p>
 
-    <!-- ============================================
-         I. LA VIDA COMO TEATRO
-         ============================================ -->
     <h2 class="epigrafe">I. La vida como teatro</h2>
 
     <p>Todo el genio de la Antigua Grecia se invirtió en la creación de las ideas de la arquitectura de órdenes, del teatro, de la filosofía, de la escultura: fundamento de la ideología espiritual de todo el futuro mundo europeo hasta el día de hoy.</p>
@@ -415,9 +188,6 @@ body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
 
     <p>«Teatro de operaciones militares». Esto también es Roma. Las operaciones militares, y el uniforme del ejército, y la formación, y el paso, y los saludos entraron en la carne y la sangre del «ballet» castrense de los desfiles y de la disciplina militar. Así pues, la acción militar. El propio concepto de «acción» acerca la vida y el teatro en el detrás de las bambalinas guionizado. Qué mentes profundas y serias participaron en las grandiosas puestas públicas. El emperador-filósofo Marco Aurelio, sentado en las gradas del anfiteatro durante los combates de gladiadores, corregía los manuscritos de sus escritos para expresar el desprecio, la discrepancia con las aficiones sangrientas de sus conciudadanos. En casa, mirándose al espejo, decía: «No me gustas, Marco. Hoy tienes cara de César». ¿De dónde lo sabemos? Todo era público. Lo escribían los secretarios. Roma amaba la pose y el gesto. El gesto, como en el teatro, adquiría significación lingüística. El gesto-acción de la mano derecha alzada para saludar y de la izquierda doblada en el codo al recibir el saludo. «¡Salve! Pero Cartago debe ser destruida». «¡Te saludan los que van a la muerte!». «¡Saludo a los que van a la muerte!». Etcétera. La vida, la muerte, el juego con la vida y la muerte en paralelo a todas las alegrías terrenales. A la vez: el amor a la tierra, a los huertos, a las flores, al agua. El amado «dios de los manzanos Vetrum», que nunca estuvo en ninguna parte, esposo de la diosa protectora de la familia, la casta Vesta. El instituto de la familia con el patio en medio de la casa: el atrio, donde se guardaban los lares (protectores) y los retratos de los antepasados, la crónica familiar. El primer árbol genealógico privado-familiar: la historia genealógica del pórtico de la soberbia «de linaje» de Europa.</p>
 
-    <!-- ============================================
-         II. LOS FUNERALES COMO TEATRO
-         ============================================ -->
     <h2 class="epigrafe">II. Los funerales como teatro</h2>
 
     <p>Quizá, entre todos los rituales teatralizados de Roma, el más fascinante sea el funeral. La vida y la muerte se fundían en el juego artificioso del funeral. En Roma se embalsamaba a los muertos a la manera oriental, y se los quemaba, incinerándolos a la usanza griega. Interesaba el ritual mismo, que se formó gradualmente hasta adquirir finalmente los rasgos estables de una auténtica acción teatral. El difunto, hasta el lugar de su reposo (el crematorio), recorría un largo camino acompañado de amigos y allegados. Los mayores de la familia llevaban tras el féretro las «máscaras de los antepasados». Entre los ciudadanos existía la costumbre muy difundida de hacerse sacar la máscara aún en vida. A la máscara y a su significación en la cultura le dedicamos una lección aparte. Y esa máscara era, por un lado, un retrato del atrio, como un álbum de fotografías familiares o los retratos de las fincas familiares y las galerías de antepasados en los castillos, etc. Pero por otro lado, precisamente a la máscara podríamos llamarla la base del retrato escultórico romano y europeo. Del retrato hablaremos un poco más tarde; por ahora volvamos a los funerales de ciudadanos y magnates. Esto es muy importante. Las máscaras de los antepasados las llevaban tras el féretro los miembros de la familia, y junto al féretro iba un actor maquillado como el difunto. Antes de la incineración o la sepultura, el actor decía ante el pueblo y los descendientes la última palabra, con el obligado desenlace final, que los presentes esperaban con tensión. «¿Quién me llevó a la muerte?». A todos interesa. Aquí no es cosa de banquete fúnebre. Después la máscara del recién finado ocupaba de nuevo su lugar de honor en el atrio o en la hornacina del crematorio.</p>
@@ -426,14 +196,14 @@ body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
 
     <p>Las tradiciones nacionales de la antigüedad latina, nacidas del Estado y del derecho, pasaron muchos umbrales del flujo del tiempo. En las entrañas de las costumbres romanas nació el prototipo psicológico europeo. Por eso él se transparenta a través de los estratos de todas las «hierbas y credos», permaneciendo vivo y actual a diferencia de otras culturas antiguas ya muertas. Los rostros de los retratos romanos nos son afines, reconocibles, especulares tanto en las virtudes como en las enfermedades, bellos y abominables.</p>
 
-    <figure>
-        <img src="5D.jpg" alt="Loba capitolina amamantando a Rómulo y Remo. Moneda, 269 a. C. Museo Nacional, Roma">
-        <figcaption>Loba capitolina amamantando a Rómulo y Remo. Moneda, 269 a. C. Museo Nacional, Roma</figcaption>
+    <figure class="imagen">
+        <img src="5D.jpg" alt="Loba capitolina amamantando a Rómulo y Remo. Moneda, 269 a. C. Museo Nacional, Roma" loading="lazy">
+        <figcaption><strong>Imagen 5D</strong>Loba capitolina amamantando a Rómulo y Remo. Moneda, 269 a. C. Museo Nacional, Roma</figcaption>
     </figure>
 
-    <figure>
-        <img src="5E.jpg" alt="Victoria (Niké). Signo del poder de los Césares, emperadores de Roma">
-        <figcaption>Victoria (Niké). Signo del poder de los Césares, emperadores de Roma</figcaption>
+    <figure class="imagen">
+        <img src="5E.jpg" alt="Victoria (Niké). Signo del poder de los Césares, emperadores de Roma" loading="lazy">
+        <figcaption><strong>Imagen 5E</strong>Victoria (Niké). Signo del poder de los Césares, emperadores de Roma</figcaption>
     </figure>
 
     <p>Todos los relatos literarios y cinematográficos sobre la Antigua Roma son de algún modo denunciatorios. Todos los romanos parecen groseros, disolutos, crueles, glotones y holgazanes. El cristianismo es irreconciliable con las culturas paganas. A Roma le tocó en suerte especialmente. Podría pensarse que Bizancio, o los celadores de la fe pura —los inquisidores—, o los católicos-conquistadores en América Latina eran misericordiosos.</p>
@@ -444,9 +214,6 @@ body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
 
     <p>En Roma se construían ínsulas (viviendas municipales para desempleados y ciudadanos de escasos recursos), templos, casas y palacios, termas, puentes, calzadas, mercados, anfiteatros, bibliotecas, arcos de triunfo y foros. Puede decirse que la arquitectura de los edificios reflejaba por primera vez la estructura de la sociedad civil urbana tal como la conocemos hoy.</p>
 
-    <!-- ============================================
-         III. LA ARQUITECTURA COMO TEATRO
-         ============================================ -->
     <h2 class="epigrafe">III. La arquitectura como teatro</h2>
 
     <p>Pero lo que de verdad impresiona es la potencia, el alcance de la construcción y la perfección de la técnica constructiva.</p>
@@ -455,9 +222,9 @@ body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
 
     <p>La historia tiene diversos puntos de partida. Son quizá convencionales, como, por ejemplo, los primeros Juegos Olímpicos del año 773 a. C. para la Antigua Grecia. Y para Roma tal fecha convencional puede ser el año 451 a. C.: el tiempo de la adopción de las Doce Tablas, de la formación del nuevo Estado republicano de derecho con capital en Roma. El indicador del nivel de la civilización romana son las calzadas, el abastecimiento de agua (acueductos), los puentes, etc., todo lo que también hoy en todo el mundo es indicador del nivel de cultura. Las calzadas de Roma son además una cosmovisión, un vínculo con el mundo circundante, con el tiempo. Si se piensa, se mantuvo en Europa hasta comienzos del siglo XX. La técnica del desplazamiento y la velocidad del desplazamiento casi no cambiaron. El mismo hombre a caballo, o en carroza, o en carreta tirada por seis, y más a menudo cuatro caballos. Muchos siglos la gente viajó a la misma velocidad. El hombre tenía la posibilidad de reflexionar en el camino, de contemplar los detalles. El detalle tenía enorme significación. El cuadro del mundo se componía de multitud de elementos equivalentes, y el hombre no estaba fuera, sino dentro de él. Las velocidades de las máquinas y de los aeroplanos barrieron los detalles y las minucias del mundo. ¿Qué podemos ver desde la ventana de un tren, de un coche o de un avión? El tiempo estrecha el espacio. Pero hasta el siglo XX las potentes calzadas romanas eran además filosofía, y reflexión, y percepción del mundo, cuadros del mundo. Detalles artísticos, minucias de la palabra-descripción.</p>
 
-    <figure>
-        <img src="5F.jpg" alt="Columna triunfal del emperador Trajano. Erigida en honor de la campaña contra los dacios. 113 d. C. Roma">
-        <figcaption>Columna triunfal del emperador Trajano. Erigida en honor de la campaña contra los dacios. 113 d. C. Roma</figcaption>
+    <figure class="imagen">
+        <img src="5F.jpg" alt="Columna triunfal del emperador Trajano. Erigida en honor de la campaña contra los dacios. 113 d. C. Roma" loading="lazy">
+        <figcaption><strong>Imagen 5F</strong>Columna triunfal del emperador Trajano. Erigida en honor de la campaña contra los dacios. 113 d. C. Roma</figcaption>
     </figure>
 
     <p>Las calzadas de la civilización: he ahí lo que Roma dejó a Europa tras de sí. ¿Qué más dejó en memoria de sí la civilización romana?</p>
@@ -466,9 +233,9 @@ body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
 
     <p>Como hoy, la construcción se dividía en obras militares, civiles y únicas. Las casas de vivienda, las ínsulas, los puentes, los arcos, aunque no eran idénticos, eran semejantes, pues en la base de sus construcciones estaba la experiencia (o la escuela) de la construcción tipificada. El elemento básico, frecuentemente repetido, era, se piensa, el ARCO. El arco romano equivale al períptero griego. Puentes de arcos y pilotes, que se usan hasta hoy. Otra construcción fue propuesta solo a finales del siglo XIX por Jean Eiffel. El puente Golden Gate de San Francisco. Y antes se construían puentes de arcos y pilotes, como en Roma. Arcos de triunfo: de un solo vano, como el arco de Tito, o de tres vanos, como el de Septimio Severo. O, por ejemplo, la solución arquitectónica de los anfiteatros. Despleguemos el elipsoide del volumen y resultará un puente o un acueducto con la repetición rítmica de los vanos de arco por toda la longitud o el perímetro del edificio. Ejemplo de laconsimo y racionalismo que yacen en la base de la conciencia artística. Puede llamárselos formadores de estilo. El arco: base de la arquitectura de cúpula creada por Roma, la misma base figurativo-constructiva del arte de construir latino que para Grecia fue el períptero con relación de lados largo y corto de 1 a 0,65. Por lo demás, es recordatorio de que esto lo sabe todo el mundo desde hace más de dos mil años.</p>
 
-    <figure>
-        <img src="5G.jpg" alt="Fragmento de la cinta de la columna de Trajano con el relato de la campaña contra los dacios. 113 d. C. Roma">
-        <figcaption>Fragmento de la cinta de la columna de Trajano con el relato de la campaña contra los dacios. 113 d. C. Roma</figcaption>
+    <figure class="imagen">
+        <img src="5G.jpg" alt="Fragmento de la cinta de la columna de Trajano con el relato de la campaña contra los dacios. 113 d. C. Roma" loading="lazy">
+        <figcaption><strong>Imagen 5G</strong>Fragmento de la cinta de la columna de Trajano con el relato de la campaña contra los dacios. 113 d. C. Roma</figcaption>
     </figure>
 
     <p>Hoy el arco de Tito está solitario, privado de su conjunto: el foro de los Flavios. Aunque del foro algo ha quedado. El anfiteatro Flavio, el Coliseo, construido sobre el lugar de los estanques de la Casa Dorada de Nerón. Pero nuestra imaginación calla, y el arco de Constantino está más cerca del Coliseo que el arco de Tito. Salta a la vista el parecido casi calco del Arco de Triunfo de Napoleón, erigido en París tras la campaña de Egipto, con el arco de Tito, erigido en honor de la victoria en la tercera guerra judía. Igual que la columna Vendôme de Napoleón en la plaza Vendôme de París repite la idea y la construcción de la columna de Trajano, en honor de la victoria del emperador sobre los dacios, que vivían a orillas del Danubio. Es la pulsación romana en el clasicismo europeo del siglo XIX. El clasicismo europeo respira el aire de las cumbres montañosas, se eleva sobre la tierra, está sobre coturnos. El patetismo de los vencedores coronados con laureles de triunfadores, con la Victoria alada a la espalda. El clasicismo es la afirmación de las virtudes civiles del servicio y del sentimiento de lo bello en el mundo visible ordenado.</p>
@@ -477,9 +244,9 @@ body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
 
     <p>Los espectáculos del Coliseo: concentración, coágulo del comportamiento de los fanáticos de todos los tiempos en los estadios. La descifración de las inscripciones rayadas en los bancos y las paredes del Coliseo es un testimonio interesante de una conciencia plebeya de masas casi inmóvil o disuelta en el tiempo. Dejar el propio nombre, escribir a qué equivalen «Agripa + Marcelo + Silvia». Y también dibujitos obscenos y simples, como los que los adolescentes dibujan en el baño escolar. Y todo esto chapotea dentro del elipsoide construido, que no tiene igual por su dirección arquitectónica y su técnica constructiva. Hacia el siglo I d. C. la tecnología constructiva, el pensamiento ingenieril alcanzan las cimas de la genialidad. El anfiteatro destruido en dos tercios nos cuenta que en el ámbito de la arquitectura del espectáculo la humanidad no solo no ha avanzado, sino que no puede repetir lo que fue creado. Quizá solo copiar débilmente la idea misma del anfiteatro. En tiempo lluvioso o ventoso, sobre el Coliseo se tensaba un techo, construido por ingenieros navales. Aún más asombroso es que el Coliseo fue levantado sobre el agua y su enorme masa reposa sobre pilotes. El enigma del arte constructivo lo es literalmente todo. Las investigaciones del fundamento del Coliseo a mediados del siglo XIX mostraron que bajo los arcos superficiales del anfiteatro hay además otros subterráneos, de indestructible hormigón romano sumergido en el agua, que soportan todo ese peso. Hoy, cuando se camina entre las ruinas, asombra la misteriosa e incomprensible potencia del imperio romano. La desnudez del material permite examinar de cerca la fábrica de ladrillo, o más bien la multitud de fábricas de ladrillo en combinación con bloques de piedra, construcciones de hormigón y plinfas (combinación de finas capas de arcilla cocida con cascote). Tal examen minucioso de los detalles de la técnica constructiva recuerda el placer que obtenemos de las costuras de los vestidos antiguos, de la tecnología de la costura a mano. Y uno comprende que la estética oculta de los secretos de cualquier construcción es prenda de la belleza y la solidez del producto acabado. En tal comparación no hay nada paradójico. Solo la arquitectura y el traje son, en esencia, la unión de la materia con la idea. Precisamente del dominio de la tecnología, de la ingeniería depende la perfección de las ideas absolutas, que son las obras de arquitectura. Como de la exactitud del corte y del acabado depende la perfección de las líneas del vestido.</p>
 
-    <figure>
-        <img src="5H.jpg" alt="Retrato del emperador Septimio Severo con su familia. 200 d. C. Museo de la Ciudad. Colección de antigüedades, Berlín">
-        <figcaption>Retrato del emperador Septimio Severo con su familia. 200 d. C. Museo de la Ciudad. Colección de antigüedades, Berlín</figcaption>
+    <figure class="imagen">
+        <img src="5H.jpg" alt="Retrato del emperador Septimio Severo con su familia. 200 d. C. Museo de la Ciudad. Colección de antigüedades, Berlín" loading="lazy">
+        <figcaption><strong>Imagen 5H</strong>Retrato del emperador Septimio Severo con su familia. 200 d. C. Museo de la Ciudad. Colección de antigüedades, Berlín</figcaption>
     </figure>
 
     <p>A mediados del siglo XV, el genio de la arquitectura del Renacimiento, tardío descendiente de la cultura latina, Filippo Brunelleschi, resolvía muchas cuestiones ingenieriles y constructivas para la erección de la cúpula de la catedral florentina de Santa María del Fiore. Había que construir una cúpula que no se deformara con el tiempo. Y halló la única solución correcta: aplicó la fábrica romana de ladrillo (típica de la arquitectura romana) «a cola de pez».</p>
@@ -492,25 +259,22 @@ body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
 
     <p>Ya desde hace dos milenios entran y salen del Panteón romano millones de turistas de todo el mundo. Contemporáneo del historiador Tácito y del filósofo en el trono Marco Aurelio, del siglo II d. C., el Panteón representa la cumbre del genio espiritual y constructivo de Roma. El Panteón fue concebido como templo de todos los dioses. Hoy es la iglesia de Santa María Rotonda. El Panteón se construyó a lo largo de más de 10 años (116-128): primero el cónsul Agripa, y después el emperador Adriano Antonino. Existe la versión, apoyada por el historiador y escritor Ebers, de que Adriano, gran admirador del arte griego, arqueólogo, admirador de Platón, cedió a la influencia de los cristianos. Su guardaespaldas era un sirio, el hermoso Antínoo, adepto de las ideas y valores cristianos. La fama histórica le atribuía la intención de poner en el Panteón, en una de las hornacinas del primer piso, los símbolos cristianos de la fe. Pero esta intención no se llevó a cabo. En una conjura fue muerto el guardaespaldas. Conmocionado e inconsolable, Adriano se marchó a Grecia. En Atenas, ante el templo de Zeus, se conserva el hermoso y aéreo arco de Adriano y algunas construcciones forales. No hay historia en modo subjuntivo; sin embargo, como hipótesis, es interesante suponer cómo se habría desarrollado la historia cristiana si Adriano hubiera abierto la primera iglesia oficial en el Panteón… No pudo ocurrir, pues otro era el Designio. En las hornacinas del primer piso del Panteón se alternaban los dioses grecorromanos con los orientales, Zeus con Mitra. El Panteón era necesario, pues Roma se había convertido en rehén de su inabarcable condición imperial y de que la ciudadanía en el Imperio Romano la obtenían ciertos grupos de extranjeros bárbaros. A partir de Tiberio, y bajo el emperador Caracalla, todos los habitantes del imperio se hicieron ciudadanos suyos. En lo sucesivo la política nacional y la política de las relaciones jurídicas civiles se volvían cada vez más complejas y peligrosas para el imperio. Así que el templo reconciliador de todos los dioses —el Panteón— era necesario. Con el tiempo perdió su esplendor externo, pero se mantuvo en pie en todas las catástrofes históricas. Su fachada hoy es de un gris aburrido. Se parece a un tanque de petróleo con un pórtico ático pegado, como de otro edificio. Pero, como antaño, la impresión emocional principal la produce el interior. La semiesfera ideal se apoya directamente sobre la base, sobre el suelo. Hoy el suelo del Panteón ni remotamente recuerda la hermosa «tierra» original del templo. El primer piso está dedicado a todos los dioses, y los dioses son accesibles al sacrificio de los fieles. La plaza circular del templo con acceso simple a los altares: igualdad y corrección política del hipócrita Roma respecto a todos los súbditos. Todos son iguales en el imperio en su plegaria a dios en lengua materna. Aunque Zeus está, con todo, más cerca del pueblo, y su altar se distingue por su tamaño y belleza justo frente a la entrada del Panteón. Entre el primer y el segundo piso hay una ancha cornisa saliente, interrumpida solo por la hornacina-concha del altar de Zeus. ¿Qué significan esas hornacinas-ventanas monótonas, a intervalos iguales, ciegas, es decir, que no tienen salida al exterior? Se llaman ventanas porque así están resueltas arquitectónicamente. Esto, desde luego, no es simple ornamento decorativo del templo. Los altares son distintos para cada uno, pero las ventanas, vueltas hacia dentro de sí mismas, son univalorativas para todos. Son únicos para todos los valores éticos del orden interior en todas las lenguas y todas las tradiciones. Sobre la ancha cornisa continua del segundo piso reposa la poderosa cúpula del Panteón, con un único ojo de nueve metros de diámetro que mira al cielo. ¿O alguien mira día y noche al Panteón a través de su Ojo? La cúpula maciza de hormigón se compone de casetones perfilados. A veces bajo la cúpula pende una nube de polvo solar, y los rayos se vuelven flechas visibles de luz. A veces está nublado. Pero nunca la iluminación es igual, a causa de las sombras deslizantes por los cuadrados de los casetones. La cúpula es cósmicamente abstracta y a la vez concreta. El cielo sobre nosotros, multilingües pendencieros, santos y pecadores, buenos y ávidos, es uno. El Panteón es sin precedentes. Repetir su arquitectura es imposible, como imposible responder a una serie de preguntas ligadas al nivel de las ideas filosóficas y al nivel ingenieril de la realización del Panteón. Sí, los romanos guerreaban, eran crueles en sus diversiones y relaciones. Pero construyeron el Panteón. Horacio, Ovidio Nasón, Plauto, Tácito: esos son sus poetas, sus historiadores.</p>
 
-    <figure>
-        <img src="5I.jpg" alt="Panteón. Vista interior. Roma">
-        <figcaption>Panteón. Vista interior. Roma</figcaption>
+    <figure class="imagen">
+        <img src="5I.jpg" alt="Panteón. Vista interior. Roma" loading="lazy">
+        <figcaption><strong>Imagen 5I</strong>Panteón. Vista interior. Roma</figcaption>
     </figure>
 
     <p>En el Panteón se conserva bien el fresco del siglo XV del pintor Melozzo da Forlì «La Anunciación». Pintura maravillosa. Melodía de alta armonía, pureza y belleza. Se ha fundido en uno con la hornacina del Panteón romano. Hace mucho que son uno y continuos, como la ciudad misma, como los museos del Vaticano. Adivinación a través del sueño del «recuerdo del futuro».</p>
 
     <p>En medio de la plaza ante los edificios del Capitolio, sobre la colina Capitolina, se alza la copia en bronce de la estatua del emperador Marco Aurelio. Aquí la Antigüedad y el Renacimiento se han entrelazado y conjugan el enigma del genio de Miguel Ángel y el enigma del genio de Roma.</p>
 
-    <!-- ============================================
-         IV. EL MUNDO ES UN TEATRO...
-         ============================================ -->
     <h2 class="epigrafe">IV. El mundo es un teatro, y los hombres en él, actores</h2>
 
     <p>El filósofo Marco Aurelio conmovía a Fiódor Mijáilovich Dostoievski por la pugna de su alma. En verdad, el alma de este hombre era arena de la lucha de la luz con las tinieblas. Aurelio está representado sentado sobre un caballo, elevado sobre los conciudadanos, los pueblos, la historia. Sin signos de valor militar, con el gesto de bendición, nos presenta la imagen del «padre de la Patria». ¿Y qué milagro es este? La composición del monumento ecuestre, prácticamente sin cambios (como los puentes, acueductos, arcos, anfiteatros, palacios), llegó hasta nosotros a través de los siglos y se encarnó (lejos de la mejor variante) en Moscú del siglo XX, frente al Soviet de Moscú, en la persona del fundador de nuestra capital, el príncipe vladimiriano Yuri Dolgoruki. La Antigüedad nos dejó los modelos del arte religioso y civil de la arquitectura, la escultura, la pintura.</p>
 
-    <figure>
-        <img src="5J.jpg" alt="Estatua ecuestre de Marco Aurelio. Plaza del Capitolio, Roma">
-        <figcaption>Estatua ecuestre de Marco Aurelio. Plaza del Capitolio, Roma</figcaption>
+    <figure class="imagen">
+        <img src="5J.jpg" alt="Estatua ecuestre de Marco Aurelio. Plaza del Capitolio, Roma" loading="lazy">
+        <figcaption><strong>Imagen 5J</strong>Estatua ecuestre de Marco Aurelio. Plaza del Capitolio, Roma</figcaption>
     </figure>
 
     <p>Recordemos las comedias del dramaturgo Plauto, ingeniosas comedias populares de la vida de los plebeyos, mercaderes, guerreros, esclavos. Plauto vivió una vida abigarrada, llena de viajes y peripecias. Fue actor, cambió de profesión y de lugar de residencia. Y si no se tiene en cuenta que su dramaturgia estaba bajo la influencia del helenismo, si se olvida que vivió a finales del siglo III y comienzos del II a. C., en tiempos de pasiones republicanas, batallas legislativas, a Plauto puede considerársele un dramaturgo europeo. Lean su «Soldado fanfarrón», «El grosero», «El persa», y comprenderán que sus obras están fuera del tiempo. Tal comedia con héroes populares bien podría haberla escrito Carlo Goldoni.</p>
@@ -554,9 +318,9 @@ body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
 
     <p>El emperador Adriano fue un gran admirador del helenismo y de Grecia. Tenía un gusto impecable. Pero precisamente la construcción de su tiempo muestra de forma palpable que las influencias helénicas, el barniz estético y espiritual estaban en un nivel de arte de Roma principialmente distinto. La tumba: conjunto urbano formado por una torre redonda-torreón (el mausoleo), el cuadrado del patio y un hermoso puente sobre el Tíber, adornado con esculturas. La tumba estaba abierta a la visita. Cualquier habitante de la ciudad podía realizar el complejo tránsito desde la vida, hirviente de cotidianidad, a través del río por el puente, entrar en el patio y subir por las escaleras de caracol arriba, y luego regresar por el mismo camino a la ciudad. Pero tras esta simple descripción del itinerario se esconde hoy una compleja vivencia emocional: el desplazamiento de uno mismo de un espacio a otro. Uno entra en el puente, adornado con esculturas mitológicas, con antorchas en las manos. El puente es el eslabón que une dos orillas: «esta» y «la otra», el otro mundo. Uno cruza el río del tiempo, el Leteo; la ciudad a la espalda, delante la entrada al otro mundo. Un filósofo diría: este camino es «ejercicio de muerte». Por la escalera que sube, al alcanzar la plataforma superior, uno mira «desde allí» el mundo que ha dejado. Uno llora de tristeza y de dicha, del amor al mundo en la otra orilla del río. Pero —¡oh, milagro!— uno puede volver a sus niños, a la tienda o al cargo senatorial. Pues al marchar, uno regresará de todos modos, espiritualmente renacido, transfigurado.</p>
 
-    <figure>
-        <img src="5K.jpg" alt="Castillo del Ángel (Tumba de Adriano). Roma">
-        <figcaption>Castillo del Ángel (Tumba de Adriano). Roma</figcaption>
+    <figure class="imagen">
+        <img src="5K.jpg" alt="Castillo del Ángel (Tumba de Adriano). Roma" loading="lazy">
+        <figcaption><strong>Imagen 5K</strong>Castillo del Ángel (Tumba de Adriano). Roma</figcaption>
     </figure>
 
     <p>No hablamos de la arquitectura como nivel de construcción. Roma conocía todos los tipos y géneros de arquitectura civil que se demandan hoy, a comienzos del siglo XXI. Calzadas, templos, casas de varios pisos, edificios de negocios, puentes, signos simbólico-arquitectónicos de estatalidad, industria del entretenimiento. La pequeña y mediana empresa para la fabricación de vidrio, cosméticos, joyas, objetos de lujo, las grandes fábricas de hormigón y de toda clase de encargos estatales. ¿Y qué? Esta potencia poderosa, mecanismo perfectamente ajustado por la legislación civil y la disciplina, se derrumbó. Aceptando influencias del helenismo, de los etruscos, de Oriente, eran sin embargo excepcionalmente originales y autosuficientes. Esto es especialmente visible en cómo se representaban a sí mismos y a sus dioses.</p>
