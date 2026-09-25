@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oedipus — What to Read on Love, Not Sex</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.subtitulo { text-align: center; font-size: 1.05rem; font-style: italic; color: var(--text-secondary); margin: 0 0 2.4rem; text-indent: 0; line-height: 1.45; }
+.epigrafe { margin: 3.2rem 0 1.6rem; font-size: .95rem; font-weight: 700; line-height: 1.45; letter-spacing: .07em; text-align: center; text-transform: uppercase; color: var(--realce); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .subtitulo + p, .epigrafe + p, .epigrafe-inicial + p, figure + p, .image-container + p, .verso + p, .cita + p, .firma + p, .sin-sangria + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+figure { margin: 2.4rem 0; text-align: center; }
+figure img { max-width: 100%; height: auto; border: 1px solid var(--border-color); box-shadow: 0 4px 12px rgba(0,0,0,0.3); border-radius: 2px; }
+figcaption { margin-top: .7rem; font-size: .84rem; font-style: italic; line-height: 1.45; text-align: left; color: var(--text-muted); }
+figcaption strong { color: var(--text-secondary); font-style: normal; font-weight: 700; display: block; margin-bottom: .2rem; }
+.image-container { margin: 2.4rem auto; text-align: center; max-width: 100%; }
+.image-container img { max-width: 100%; height: auto; display: block; margin: 0 auto .8rem auto; border: 1px solid var(--border-color); box-shadow: 0 4px 12px rgba(0,0,0,0.3); border-radius: 2px; }
+.image-caption { margin: 0; text-align: left; font-size: .84rem; color: var(--text-muted); font-style: italic; text-indent: 0; line-height: 1.45; }
+.verso { margin: 1.6rem 0 1.6rem 2.2rem; font-style: italic; line-height: 1.5; }
+.verso .v { display: block; text-indent: -1.2em; padding-left: 1.2em; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .verso, .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+    .image-container { max-width: 100%; }
+}
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Toggle theme" title="Night mode">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">Chapter Two</p>
+        <h1 class="cab__tit">Oedipus</h1>
+    </header>
+
+    <p>In chapter five of <em>The Interpretation of Dreams</em>, on the subject of King Oedipus of Thebes, we read:</p>
+
+    <div class="cita">
+        <p>His destiny moves us only because it might have been ours&mdash;because the oracle laid the same curse upon us before our birth as upon him. It is the fate of all of us, perhaps, to direct our first sexual impulse towards our mother and our first hatred and our first murderous wish against our father.</p>
+    </div>
+
+    <p>Our dreams convince us, Freud says, that the fate of Oedipus is our tragedy in love and life. If such were not the case, the tragedy of Oedipus would not move us to the degree that it has since antiquity.</p>
+
+    <p>Let&rsquo;s pause&mdash;in fact, let&rsquo;s come to a full stop. In a work of tragedy, Freud finds corroboration for many clinical observations in his <em>Interpretation of Dreams</em>, including material from his own dreams. If we put to one side the &ldquo;typicality&rdquo; of dreams about sex with one parent and the death of the other, what is to be made of the terms &ldquo;destiny,&rdquo; &ldquo;oracle,&rdquo; &ldquo;curse,&rdquo; &ldquo;fate,&rdquo; and, most of all, <em>tragedy</em> in the experience of love? I suggest a short digression, because it isn&rsquo;t immediately apparent to me why a psychology of love and the mode of tragedy should be related to one another.</p>
+
+    <p>In a minor thought experiment, what if we chose a different story as an archetype for human intimacy? The alternative should be familiar to all of us and still within the genre of tragedy; we would discuss it without preconceptions about lovers, families, and incest. Would a concept of the tragic be just as crucial, if not more so than sexuality, to Freud&rsquo;s argument about unconscious determinants for emotion?</p>
+
+    <h2 class="epigrafe">I</h2>
+
+    <p>My vote for an alternative would be Shakespeare&rsquo;s <em>Romeo and Juliet</em>, which has inspired many renditions or adaptations of its apparently universal theme. As we know, the play has to do with young, ill-destined love in an unforgiving world, but it&rsquo;s not merely about immature love or a love that older people wouldn&rsquo;t indulge in their wizened maturity. It&rsquo;s a play, also, about how we fall, or rather <em>accelerate</em>, into love.</p>
+
+    <div class="verso">
+        <span class="v">Romeo</span>
+        <span class="v">When, and where, and how</span>
+        <span class="v">We met, we wooed, and made exchange of vow,</span>
+        <span class="v">I&rsquo;ll tell thee as we pass; but this I pray,</span>
+        <span class="v">That thou consent to marry us to-day.</span>
+    </div>
+
+    <div class="verso">
+        <span class="v">Friar</span>
+        <span class="v">Holy Saint Francis! What a change is here!</span>
+    </div>
+
+    <p>Juliet is circumspect:</p>
+
+    <div class="verso">
+        <span class="v">Although I joy in thee,</span>
+        <span class="v">I have no joy of this contract to-night:</span>
+        <span class="v">It is too rash, too unadvis&rsquo;d, too sudden,</span>
+        <span class="v">Too like the lightning, which doth cease to be</span>
+        <span class="v">Ere one can say &lsquo;It lightens.&rsquo;</span>
+    </div>
+
+    <p>But just a few lines later, we realize that speed has always been the essence, that Juliet (more than immediately) answers Romeo&rsquo;s questions <em>before</em> he asks them, and that she is oceanically in love:</p>
+
+    <div class="verso">
+        <span class="v">My bounty is as boundless as the sea,</span>
+        <span class="v">My love as deep. The more I give to thee</span>
+        <span class="v">The more I have, for both are infinite.</span>
+    </div>
+
+    <p>It&rsquo;s not Sophocles, but surely it is love that we can appreciate, or wish we had for ourselves. One could be skeptical about Juliet&rsquo;s affection, but then one would miss a very lovely emotion and the playwright&rsquo;s insight, which is true (I hope) at any age: when love happens, it can be astonishing in its ineluctable power over us.</p>
+
+    <p>&ldquo;Cynics are fond of saying that if Romeo and Juliet had lived their love would not have &lsquo;lasted.&rsquo; Of course it wouldn&rsquo;t&mdash;in the cynic&rsquo;s sense,&rdquo; wrote Harold Goddard in <em>The Meaning of Shakespeare</em>. As we read <em>Romeo and Juliet</em>, we can try to have a sense of humor about the proceedings (a wickedly cynical Mercutio in the play instructs us in this effort), but, finally, people die and tragic necessity prevails.</p>
+
+    <p>A reader who has followed me thus far would say, &ldquo;Of course &lsquo;tragic necessity prevails.&rsquo; It&rsquo;s a tragedy.&rdquo; Let me return to Goddard&rsquo;s remark: &ldquo;If Romeo and Juliet had lived&rdquo; is an impossible subjunctive. Goddard knows as much; he adds that we can no more expect Romeo and Juliet &ldquo;to last&rdquo; than we can expect the month of April not to end. Two people fall in love; it&rsquo;s a tragedy: why must it be so? Goddard says it just <em>is</em> so, like the ephemerality of April and of Spring.</p>
+
+    <p>Replace <em>Romeo and Juliet</em> for the Oedipus story, and we don&rsquo;t substitute a star-crossed-lover&rsquo;s complex for an Oedipal one; we merely ask about the interrelationship between tragedy, necessity, and love. Freud saw little disparity between these three ideas; they were perspectives on and of each other, as he learned directly from ancient tragedy.</p>
+
+    <p>Freud&rsquo;s debt to Sophocles was not solely the &ldquo;discovery&rdquo; of patricidal and incestuous wish.</p>
+
+    <h2 class="epigrafe">II</h2>
+
+    <p>&ldquo;Things that have to do with love,&rdquo; Freud wrote in 1915, &ldquo;are incommensurable with everything else; they are, as it were, written on a special page on which no other writing is tolerated.&rdquo; At any given time in his writing, we should be interested to decide whether he discusses sex or &ldquo;the special page.&rdquo; But often it&rsquo;s difficult to decide a difference; it is a pivotal problem when we read him. Here he is on October 15, 1897, writing to Wilhelm Fliess (somewhat breathlessly) as he worked on <em>The Interpretation of Dreams</em>:</p>
+
+    <div class="cita">
+        <p>A single idea of general value dawned on me. I have found, in my own case too, [the phenomenon of] being in love with my mother and jealous of my father, and I now consider it a universal event in early childhood, even if not so early in children who have been made hysterical. (Similar to the invention of parentage [family romance] in paranoia&mdash;heroes, founders of religion). If this is so, we can understand the gripping power of <em>Oedipus Rex</em>, in spite of all the objections that reason raises against the presupposition of fate . . . but the Greek legend seizes upon a compulsion which everyone recognizes because he senses its existence in himself.</p>
+    </div>
+
+    <p>In this letter, often quoted because it is Freud&rsquo;s first rough articulation of the Oedipus complex, the vast conceptual leaps&mdash;from &ldquo;my&rdquo; case to a &ldquo;universal event&rdquo;; from childhood to psychopathology; from family relations to religions; from Greek drama to compulsive behavior&mdash;have been discussed at length by Freud&rsquo;s detractors and advocates. The upshot of the commentaries seems to be: if you think Freud is a genius, the leaps are brilliant; if you think he&rsquo;s daft, the letter cinches the case. The greatest leap is implied. We have already seen how his &ldquo;single idea of general value&rdquo; develops in his <em>Three Essays on the Theory of Sexuality</em>. To recite a key phrase from that book, the &ldquo;first beginning of sexual satisfaction&rdquo; <em>is</em> the phenomenon of &ldquo;being in love&rdquo; to which Freud refers in the above passage. First attachment to mom is erotic in Freud&rsquo;s view (for boys and girls) whether or not we agree with his description. He wants to broaden our idea of sexuality and demystify what we too romantically call &ldquo;being in love.&rdquo;</p>
+
+    <p>Freud&rsquo;s jealousy is also a type of love. We shouldn&rsquo;t mystify love when we use the word; we also shouldn&rsquo;t mystify it when we talk about a feeling very different from love. What Freud feels for his dad is tinged by jealousy, fear, paranoia, or perhaps frank hate, but it still could be love. Describing exactly what he feels requires some acknowledgment of &ldquo;complexity&rdquo; (or, at least, of paradox: a mix of love and hate) whether or not we happen to know about Oedipus.</p>
+
+    <p>Dream interpretation or just raw waking experience teaches that an acknowledgment of complexity is fundamental to the psychological explanation of normalcy and abnormality. Put differently, it isn&rsquo;t pathological to think that the person you love most is also the person you could hate most. But so complicated a sentiment could easily be pathological in its manifestations, as we surmise when we hear about bizarre crimes of passion in the tabloids or on the evening news.</p>
+
+    <p>Freud alludes to Sophocles in <em>The Interpretation of Dreams</em> as in his letter to Fliess. When he mentions &ldquo;a legend that come down to us from antiquity,&rdquo; he refers us, again, to the love children feel for their parents and the corroborating evidence of the Oedipus legend:</p>
+
+    <div class="cita">
+        <p>Being in love with one parent and hating the other are among the essential constituents of the stock of psychical impulses which is formed [in childhood] . . . It is not my belief, however, that psychoneurotics differ sharply in this respect from other human beings who remain normal&mdash;that they are able, that is, to create something absolutely new and peculiar to themselves. It is far more probable&mdash;and this is confirmed by occasional observations on normal children&mdash;that they are only distinguished by exhibiting on a magnified scale feelings of love and hatred to their parents which occur less obviously and less intensely in the minds of most children.</p>
+        <p>This discovery is confirmed by a legend that has come down to us from classical antiquity: a legend whose profound and universal power to move can only be understood if the hypothesis I have put forward in regard to the psychology has an equally universal validity. What I have in mind is the legend of King Oedipus and Sophocles&rsquo; drama which bears his name.</p>
+    </div>
+
+    <p>What does Sophocles&rsquo; <em>Oedipus the King</em> prove or confirm for all of us, whether abnormal or normal? (Regarding the meaning of &ldquo;psychoneurosis,&rdquo; note Freud&rsquo;s suggestion that there isn&rsquo;t much difference between any of us, whether we suffer psychopathology or not, in terms of the origin of love.) If our answer runs along the lines of, &ldquo;well, the play validates the Oedipus complex,&rdquo; then we confuse ourselves. Sophocles proves and confirms nothing Freudian.</p>
+
+    <p>In <em>Oedipus the King</em> Sophocles paints the picture of a person who: 1. thinks he knows about X; 2. finds he doesn&rsquo;t know as much about X as he had thought; 3. inevitably comes to grief because of 1. and 2. In Sophocles, X is &ldquo;the personal history of Oedipus, king of Thebes;&rdquo; in Freud, X is &ldquo;love in one&rsquo;s personal history.&rdquo;</p>
+
+    <p>A take-home point, articulated by classicist J.-P. Vernant with brilliant understatement, would be: &ldquo;If [Oedipus] kills his father and sleeps with his mother it is not because, in some obscure way, he hates the former and is in love with the latter.&rdquo; Oedipus kills his father and sleeps with his mother without murky fuss about how he feels or why he loves; he operates without any psychological complex regarding his behavior. On this view, <em>Oedipus the King</em> is a lousy case-in-point for Freud, except that there is a separate matter about the tragedy&rsquo;s &ldquo;profundity&rdquo; and &ldquo;universality.&rdquo; A description of love should be no less profound and universal in its power to stimulate and disturb our thinking, as Freud clearly believes.</p>
+
+    <p>The actual term &ldquo;Oedipus complex&rdquo; appears a decade after <em>The Interpretation</em> in &ldquo;A Special Type of Object Choice Made by Men&rdquo; (1910). In that essay, Freud sounds tentative; he talks about how people come &ldquo;under the sway&rdquo; of the Oedipus complex, as if one could deftly swerve to avoid it. Psychoanalysts Jean Laplanche and J.-B. Pontalis in <em>The Language of Psychoanalysis</em> assure us that Freud was convinced of the universal validity of the Oedipus complex early in his psychological career, even when he wrote to Fliess. The &ldquo;universal validity&rdquo; depends, however, on how we think Freud <em>might be</em> valid. In <em>The Interpretation</em>, Freud thought to describe the complex of emotions that all children feel (and what they feel could be very complicated, so his point could be valid), but it is rather different to say that the Oedipus complex describes universal urges, whatever they might be. We could discuss any number of other complexes with no less validity. Indeed, when it comes to the Greeks, one could choose among many flavors of complexes based on one&rsquo;s taste for this or that tragedy. In Aeschylus&rsquo;s <em>Oresteia</em>, Clytemnestra kills her husband Agamemnon because he sacrificed their daughter Iphigenia as he prepared for war; his case wasn&rsquo;t improved by the fact that he slept with the siren named Cassandra. Someone has offered that since all wives desire&mdash;unconsciously, of course&mdash;to murder their husbands for myriad good reasons, perhaps the power of Aeschylean tragedy relates to a tacit identification with Clytemnestra: thus, we have a &ldquo;Clytemnestra complex.&rdquo; If one thinks that the desire to kill one&rsquo;s spouse is not universal, nevertheless, life between Agamemnon and Clytemnestra is like an apocalyptically bad day in marriage.</p>
+
+    <p>What explains the power of marital tragedy in Aeschylus? Clytemnestra kills Agamemnon, but she has a paramour as well (the hapless Aegisthus). Her son Orestes and daughter Electra do away with both Clytemnestra and Aegisthus; Orestes feels tormented after the deed. In the end, only an act of god fixes the mess. (Sophocles and Euripides would write their own versions of the Electra story in which the daughter eerily starts to resemble her mother.) If we felt strongly motivated to do so, we could think about how Aeschylean tragedy needs at least several psychological complexes to account for its power: a Clytemnestra complex if you hate your husband, an Orestes complex if you hate your mother, a very dangerous Electra complex in which you start to resemble the people you most despise, and so on. No one today seems to be busy identifying new psychological complexes, and that is for the better. The exercise leads us nowhere, and it dilutes Freud&rsquo;s idea that in a truly immortal tragedy, its insights into the human condition are absolutely inescapable. Deciding in what way an insight is inescapable is a more difficult matter.</p>
+
+    <p class="separador">&#8258;</p>
+
+    <p>By 1919, in the essay &ldquo;A Child is Being Beaten,&rdquo; the Oedipus complex is an &ldquo;actual nucleus&rdquo; and &ldquo;true determinant&rdquo; for most, if not all, psychological problems, according to Freud. He does not describe hate separate from love (he is not saying that we <em>only</em> hate one parent and love the other); he describes the complexity of an emotion, especially the paradoxes built within it. If, for whatever reason, we aren&rsquo;t capable of dealing with a dense mix of sometimes violently contrary feelings, then it&rsquo;s likely that some type of problem (either clinical psychopathology or &ldquo;normal&rdquo; psychological difficulty) will manifest later. The Oedipus complex describes this emotional mix for both men and women. Freud and all psychiatrists after him have invited us, therefore, to inquire how we feel about our fathers and mothers, if only to begin the long work that reveals how confused we really are.</p>
+
+    <p>There is a fascinating illogic in Freud&rsquo;s argument. The Oedipus complex cannot be proved wrong, like any statement whose irrefutability is built into how one makes the statement. Similar self-referential validity is common: &ldquo;living in a violent age encourages violence&rdquo; (in violent times, yes, one would expect violence); &ldquo;love will keep us together&rdquo; (if it doesn&rsquo;t, it wasn&rsquo;t love); or &ldquo;all past beliefs sooner or later turn out to be false&rdquo; (I&rsquo;d italicize <em>past</em> belief; what one believes now must be true); and we could cite many other instances. If we read <em>Oedipus the King</em> with an eye towards its psychological significance, then, certainly, murder and attraction are themes to address, especially if we already believe that hate and love are important in an infant&rsquo;s (and the adult&rsquo;s) emotional world. But the &ldquo;profound and universal power&rdquo; of a legend does not relate to, and does not impart, &ldquo;universal validity&rdquo; of a theory, which requires a different kind of validation, as Freud knows perfectly well. Freud hedges his discovery regarding the role of conflicting emotions in mental life by way of a literary allusion to the &ldquo;perfect&rdquo; tragedy, as Aristotle described <em>Oedipus the King</em>.</p>
+
+    <p>Philosopher of science Sir Karl Popper has said that Freud&rsquo;s irrefutability didn&rsquo;t make him scientific. Science, Popper said, is much more flawed, and it needs to be fallible, because discovering how science errs is part of the scientific process. In Freud&rsquo;s time and to a greater degree now in our science-dominated time, it is unusual that any imaginative work should corroborate a supposedly scientific argument. Consider the matter of behaving &ldquo;out of love&rdquo;: it would be bizarre if a psychiatrist suggested regular viewing of <em>Casablanca</em> to understand the heroic Rick syndrome, an Ilsa complex, or a dreaded Victor Lazlo disease. A Casablanca school of psychology might never be a science, but one suspects it would have its adherents. To read Sophocles is a profounder business, not unimportant for not being scientific.</p>
+
+    <p>Mainly, Freud is curious to explain why <em>Oedipus the King</em> affected him. Today, maybe the only people who brood over Sophocles are undergraduates under duress of an assignment or scholars in a long and fruitless search to find something original to say about it. But Freud believes that the tragedy is a text of psychology and should be read as such, for our ongoing psychological edification. He thinks that we identify emotionally with the hero, and in fact I think we do, but, as with any serious private reading, the question to ask is why a story matters, and in what sense it is personally relevant. It comes as a bit of a surprise, as J.-P. Vernant suggests, that the depth of Oedipus as a character has little to do with the psychological complex the play supposedly illustrates.</p>
+
+    <p class="separador">&#8258;</p>
+
+    <p>What is the play about? We answer the question best by understanding its dramatic context, which extends beyond <em>Oedipus the King</em>. To say it is about patricide and incest is a misrepresentation; it is about a family, and the story actually begins with Oedipus&rsquo;s daughter. Sophocles produced <em>Oedipus the King</em> as the second of three plays about the family history of a king of Thebes. Sophocles&rsquo; audience would already have been familiar with the legend of family Oedipus; they would have known the play&rsquo;s essentials as one is familiar today with a stock plot in advance of a contemporary rendering. <em>Antigone</em>, the first of the Theban plays, which dates to about 440 BCE, addresses the end rather than the beginning of the family&rsquo;s demise. Sophocles always relies upon&mdash;and often toys with&mdash;the audience&rsquo;s familiarity with basic plot. Unlike the tragedies of Aeschylus, who was a bit older than Sophocles and whose <em>Oresteia</em> was intended specifically as a trilogy, Sophocles&rsquo; three &ldquo;Theban plays&rdquo; stand as three independent perspectives on a well-known saga.</p>
+
+    <p>Antigone is one of four children by King Oedipus and Queen Jocasta. In <em>Antigone</em>, she and her sister, Ismene, contend with the death of their two brothers, Eteocles and Polynices. After Oedipus&rsquo;s self-banishment from Thebes (as will be described in <em>Oedipus the King</em>), Jocasta&rsquo;s brother, Creon, assumes power together with Eteocles and Polynices. The triumvirate is unsettled from the start; the brothers bicker regarding succession to the throne. Creon and Eteocles assume joint power. Polynices, now without an ally, leaves Thebes to build an army abroad. When he returns, backed by new forces against Thebes, he and Eteocles kill each other. Creon becomes sole ruler.</p>
+
+    <p>As <em>Antigone</em> begins, we learn that she intends to violate Creon&rsquo;s royal edict that Polynices&rsquo; corpse will not be buried. Her crime, which she promptly commits (actually, she tries to bury him not once, but twice), is punishable by death. To complicate matters, Antigone is betrothed to Creon&rsquo;s son, Haemon. Creon and Haemon offer a frightful Punch-and-Judy show that counterpoints Antigone&rsquo;s defiance of law. Creon nags at Haemon; Haemon pleads with Creon on behalf of Antigone; Creon gets enraged on cue. (Haemon plays psychiatrist, &ldquo;If you weren&rsquo;t my father, I would say you were insane&rdquo;; Creon spits back that Haemon is weak and should die; Haemon concedes, &ldquo;you will never see me again,&rdquo; and adds with particular venom, &ldquo;Rage your heart out, rage with friends who can stand the sight of you.&rdquo;) Haemon wanted his father to stay Antigone&rsquo;s death sentence; Creon acquiesces only after a tragic delay, during which time Haemon, viscerally angry beyond appeasement, goes to Antigone&rsquo;s tomb, where he meets his father a last time, spits in his face, and then commits suicide.</p>
+
+    <p>From the very start of the play, Ismene implores her sister to avoid tragedy by thinking about all the grief that has already visited their family, not only the brothers&rsquo; mutual murders, but also their mother&rsquo;s suicide by hanging and Oedipus&rsquo;s own death, which she mentions rather incidentally. <em>Oedipus the King</em> culminates in Jocasta&rsquo;s death and the king&rsquo;s self-blinding; <em>Oedipus at Colonus</em> ends with the exiled Oedipus&rsquo;s death, but both are later Theban plays. <em>Antigone</em> exemplifies the Sophoclean idea of heroism long before we first meet Sophocles&rsquo; Oedipus.</p>
+
+    <p>&ldquo;I will bury him myself,&rdquo; Antigone tells Ismene (referring to Polynices, though she will also attend her father&rsquo;s burial at Colonus), &ldquo;And even if I die in the act, that death will be a glory.&rdquo; Her very next sentence (here translated by Robert Fagles) articulates the subject of all the Theban plays: &ldquo;I will lie with the one I love and loved by him&mdash;an outrage sacred to the gods.&rdquo; David Grene&rsquo;s translation is clearer perhaps: &ldquo;I shall lie by his side, loving him as he loved me. I shall be a criminal&mdash;but a religious one.&rdquo; But the phrase &ldquo;sacred outrage&rdquo; (more than religious crime) is useful, especially if we think of the root meaning of &ldquo;sacred&rdquo;: &ldquo;to cut, cleave, or sever.&rdquo; <em>Antigone</em> is more than a play about whatever outrage she engenders by her actions, just as <em>Oedipus the King</em> is more than a play about outrage over the violation of sexual taboos.</p>
+
+    <p>Antigone&rsquo;s quiet rage sets her apart, quite severs her from human company, including Haemon&rsquo;s or Ismene&rsquo;s. <em>Oedipus the King</em> is also a play about how Oedipus sets himself apart as a kind of fearful example for all men and women; outrage in his play is a hero&rsquo;s lamentation over how he has been terribly singled out by fate.</p>
+
+    <p>Old, blind, and exiled, the Oedipus in the last of Sophocles&rsquo; Theban plays, <em>Oedipus at Colonus</em>, ends his homeless wandering. Colonus is a sacred grove inhabited by the Eumenides, or &ldquo;kindly&rdquo; furies, who both punish and protect. Antigone is her father&rsquo;s tireless companion, his set of eyes, guide, and protector. Ismene shows up with news from Thebes, and prepares offerings to the Eumenides on her father&rsquo;s behalf. The city of Athens, which is visible on the horizon past Colonus, accepts Oedipus and will protect him, by mandate of the kind Theseus, King of Athens. Ismene brings news from Thebes about the internecine conflict over who will rule after Oedipus. Oedipus laments that his sons have an &ldquo;Egyptian&rdquo; taste for war, and he prophecies that the two will kill each other. Although there is great kindness in the play (Antigone&rsquo;s and Theseus&rsquo;s), there is also an Oedipal fury for retribution.</p>
+
+    <p>On meeting the old king, Theseus says, &ldquo;I know all about you&rdquo;&mdash;i.e., about the story of Oedipus. But he doesn&rsquo;t quite know the changed person before him. Oedipus in his last days becomes a more furious and enigmatic figure than he is at any other time in his life.</p>
+
+    <p>According to prophesy, the locale where Oedipus dies will be protected from all aggression by foreign force. It becomes clear, after Creon makes his appearance at Colonus, that Thebes will be punished and Athens spared because Oedipus will die near Athens. Creon invites Oedipus back to Thebes, because the exile&rsquo;s return would be in Creon&rsquo;s best interest. Creon seeks protection for Thebes; his transparent insincerity outrages Oedipus, and Creon doesn&rsquo;t help matters when he kidnaps Antigone and Ismene (Theseus summarily stops Creon). Thebes will pay dearly because of Oedipus&rsquo;s death at Colonus, but the retribution is an irony, since Oedipus&rsquo;s lifework has been the protection of Thebes.</p>
+
+    <p>At the start of <em>Oedipus at Colonus</em>, Oedipus famously says (I pause at the words, because there is beautiful resignation in them) that acceptance is what suffering teaches. But &ldquo;acceptance,&rdquo; like the kindness of the Eumenides, is a mix of emotions, only some of which are beneficent. <em>Oedipus at Colonus</em>, like <em>Antigone</em>, depicts what has been called Sophoclean &ldquo;heroic temper,&rdquo; both in the sense of a heroic character who transcends circumstance and the intricate rage of someone who has fallen from grace.</p>
+
+    <p class="separador">&#8258;</p>
+
+    <p>Writing about the origin of tragedy in Greece, a young Friedrich Nietzsche (at the time, he was an academic philologist) offers the best one-sentence perspective on Sophoclean heroism, whether in the person of Antigone, old Oedipus, or Oedipus the king: &ldquo;we immediately delude ourselves that we have looked into the innermost depth of their essence, with some surprise that the bottom of these depths lies so near the surface.&rdquo; &ldquo;Delude&rdquo; is the problematic and important word: we think, if we now return to <em>Oedipus the King</em>, that it is a story with a simple premise&mdash;the investigator of a crime discovers that he is the perpetrator. We also think that Oedipus is relentless in sounding the depths of his history. Certainly he does not yield in finding out who killed Laius, the previous king of Thebes. But Nietzsche correctly surmises that there is no shock in the knowledge that Oedipus has committed deep, dark crimes. (Nor is there shock in <em>Antigone</em> that the heroine will commit a crime. She announces it in the first lines of <em>Antigone</em>, and, later, she admits it with gusto.) To peer into the depth of Oedipus is, in part, to miss a premise of his tragedy&mdash;that his temper, temperament, and curse are plain for all to see. Antigone was a heroine of the obvious (&ldquo;I don&rsquo;t deny a thing,&rdquo; she tells Creon, to his utter consternation). Oedipus is tragic partly because he is so obviously oblivious.</p>
+
+    <p>I don&rsquo;t refer to &ldquo;unconscious&rdquo; motivations that become &ldquo;clear.&rdquo; The point of the Unconscious in Freud is that the Unconscious is not obvious, that much is hidden by a process called repression, which is a type of forgetting. A great oddness in the history of psychology is that we now seem to know all dark unconscious corners as a result of textbook renditions of Freud. Using <em>Oedipus the King</em> as a primary textbook, we know, just as an Attic audience would have known, that he killed his father, Laius, and slept with his mother, Jocasta. These are edgy issues of course, but maybe less so these days, because we have heard too much about the Oedipus complex. &ldquo;Freud argues,&rdquo; says Jonathan Lear in a thoughtful survey of Freud, &ldquo;that on the right interpretation, [<em>Oedipus the King</em>] describes us all, man and woman, boy and girl. But he [Freud] calls his interpretation a &lsquo;simplification,&rsquo; a &lsquo;schematization,&rsquo; which he admits does not likely occur as such in human beings. . . [Regarding the] familiar structure of the Oedipus complex. . . <em>Freud basically admits that it never occurs</em>&rdquo; (Lear&rsquo;s italics). J. Lear means that, as a general rule, we don&rsquo;t kill dad, have children by mom, eat our parents or offspring, etc.</p>
+
+    <p>The Oedipus complex describes a complex mix of love and hate; the complexity&mdash;or &ldquo;ambivalence,&rdquo; in Freudian terminology&mdash;operates whether we talk about either love or hate. Likewise, Sophoclean heroism is an uneasy mix of many emotional ingredients, but Sophocles&rsquo; Oedipus doesn&rsquo;t seem emotionally ambivalent. As said, he is virtually straightforward (Nietzsche: &ldquo;so near the surface&rdquo;), and, in all the Theban plays, the audience, like the prophets and choruses in those plays, seem to know more about him than he knows of himself. The possibility of delusion is ever present, however, for hero and audience alike. All that we really know is that any clarity in the Oedipus saga (at any point in his family&rsquo;s saga) comes at a severe price. Could the same statement be true for the condition we call love?</p>
+
+    <h2 class="epigrafe">III</h2>
+
+    <p>A British writer once remarked that at a certain time of year in her country, in August, a person can take a long walk in fine weather and feel that &ldquo;for some reason everything seems dangerously simple.&rdquo; She deftly adds, in what I also take to be germane to the study of Sophocles, &ldquo;There is something truly or falsely spiritual about this state. . . which if prolonged may easily lead to disaster.&rdquo; In <em>Oedipus the King</em>, it seems dangerously simple to think, for example, that Oedipus saved Thebes by answering the riddle of the Sphinx&mdash;or, in the language of the play, that Oedipus was a &ldquo;sword of thought&rdquo; to save a dying army of his citizens. Much has been made of the hero&rsquo;s intelligence in the play, and we know that Freud identified with Oedipus, probably enamored by his talent at solving riddles (Freud also affectionately called his daughter Anna &ldquo;his Antigone&rdquo;). But one recalls the first line of prophet Tiresias in the play (from the Bernard Knox translation), &ldquo;wisdom is a dreadful thing when it brings no profit to its possessor.&rdquo; Wisdom can also be dreadful as one gains it, as <em>Oedipus the King</em> amply shows.</p>
+
+    <p>J.-P. Vernant has observed, based on a study of puns and double meanings throughout <em>Oedipus the King</em>, that maybe the answer to the famous riddle of the Sphinx was straightforward, that its solution couldn&rsquo;t have been plainer to Oedipus. Before citing exactly how the Sphinx&rsquo;s riddle was obvious, we should understand some background about the questioner. The Sphinx in Sophocles and in Attic Greece was always female, a Gorgonic amalgam of woman, lion (some think dog), bird, and serpent&rsquo;s tail. According to the <em>Theogony</em> of Hesiod, she sat on a promontory or &ldquo;Sphinx mountain&rdquo; outside of Thebes, asking questions of visitors like some guardian at a gate. She differs from the Sphinx represented in Egypt, though the Egyptian Sphinx was the archetype for later Mycenaean and Greek versions. The Egyptian Sphinx is male, typically with a pharaoh&rsquo;s head (like Khafra, Pharaoh when the second Pyramid was constructed), as we see today in the worn face of the Sphinx at Giza.</p>
+
+    <p>In <em>Oedipus the King</em>, the &ldquo;harsh, brutal singer,&rdquo; as the chorus describes the Theban Sphinx, doesn&rsquo;t immortalize and memorialize a king. She reminds a future king of who he is&mdash;at very least, of his unique name. There is a passing comment in the play, spoken by Creon, that Thebes would have investigated the death of King Laius more carefully at the time of his murder, had it not been for the Sphinx. She &ldquo;persuaded&rdquo; Thebes to forgo all investigation of the king&rsquo;s possible murder and to concentrate on &ldquo;what lies at the feet&rdquo; of the citizenry. Ancient lore has it (Sophocles alludes to this myth, later described in the so-called <em>Library</em> attributed to Apollodorus) that, after killing all those who hadn&rsquo;t guessed an answer to her riddle, the Sphinx hurled herself to her death once Oedipus came along with his idiosyncratic knowledge.</p>
+
+    <p>Here is Vernant on her famous query: &ldquo;The baleful songstress&rsquo; question is: who is the being that is at the same time <em>dípous, trípous, tetrápous</em>? For <em>oi-dípous</em> the mystery is an apparent not a real one: <em>of course</em> the answer is himself [i.e., man].&rdquo; But &ldquo;Man,&rdquo; who crawls with four limbs in infancy, walks with two in life, then hobbles in age with the third leg of a cane, partly doesn&rsquo;t answer the Sphinx. <em>Oi-dípous</em> is the &ldquo;knower&rdquo; (&ldquo;I know&rdquo; or <em>Oîda</em>) of &ldquo;feet&rdquo; (<em>poús</em>); he is the person with swollen feet (<em>oîdos</em>) from birth, because his ankles were pinned when his biological parents sent him away from Thebes, when he should have been crawling on all fours. When threatened by a stranger bearing a double prong where the three roads meet, he kills his father; and, late in his life, he will get around only with Antigone&rsquo;s help, as it were on his two feet and hers. &ldquo;Oedipus&rdquo; is the answer to the Sphinx&rsquo;s riddle&mdash;we gather as much with the help of scholarly readings of Sophoclean word-play.</p>
+
+    <p>The Sphinx killed a number of Thebans who couldn&rsquo;t answer her riddle; &ldquo;I came, know-nothing Oedipus, I stopped the Sphinx,&rdquo; Oedipus says with the first-person emphasis. For him, the answer to the riddle was a self-recognition. The disaster (tragedy) of such simple answers is Sophocles&rsquo; interest in <em>Oedipus the King</em>.</p>
+
+    <p>There is natural embarrassment in discussing a book that has been read and re-read for millennia. All summaries cast peculiar angles of light on the play, most notably the Freudian perspective that &ldquo;it can scarcely be owing to chance&rdquo; that a canonical masterpiece deals with &ldquo;the naked admission of an intention to commit parricide,&rdquo; once we look past all the ways in which an artist &ldquo;softens&rdquo; and &ldquo;disguises&rdquo; the intention (these are excerpts from Freud in 1928, discussing three powerhouse geniuses at once&mdash;Sophocles, Shakespeare in <em>Hamlet</em>, and Fyodor Dostoevsky in <em>The Brothers Karamazov</em>). Freud misrepresents Sophocles, since the one certainty in the play is that Oedipus never intended to live out the life that was prophesied for him. The only really naked admission in the play comes from Tiresias, who offers the following plot summary of <em>Oedipus the King</em> (from the Knox translation):</p>
+
+    <div class="cita">
+        <p>Listen to me now. The man you are trying to find . . . the murderer of Laius, that man is here in Thebes. He is apparently an immigrant of foreign birth, but he will be revealed as a native-born Theban. He will take no pleasure in that revelation. Blind instead of seeing, beggar instead of rich, he will make his way to foreign soil, feeling his way with a stick. He will be revealed as brother and father of the children with whom he now lives, the son and husband of the woman who gave him birth, the murderer and marriage-partner of his father. Go think this out.</p>
+    </div>
+
+    <p>With utter simplicity (made even more intelligible by Knox, who intended his translation for the modern stage), Tiresias re-asks a riddle about the identity of Oedipus, but, this time around, Oedipus cannot answer immediately. Tiresias advises that Oedipus &ldquo;think this out,&rdquo; which is as profound a general recommendation as I can imagine in any circumstance. Then Tiresias leaves the stage.</p>
+
+    <p>The prophet reveals what Oedipus doesn&rsquo;t know for the time being, like an insight-oriented psychiatrist who is too quick with what he understands as &ldquo;psychological truth.&rdquo; The Sophoclean chorus responds with some charm despite its befuddlement, &ldquo;I cannot agree with him, nor speak against him. I do not know what to say.&rdquo; Their reaction is what ours might be to Freudian insight about the Unconscious. If any person with any psychological training, psychoanalytic or otherwise, says that he or she knows what our problem is, then we are understandably curious about the truth-value in what we hear. But if Sophoclean (and Freudian) insight is correct, then we are the last people who can judge truth-value, since he speaks of intentions and motivations which are not conscious to us, or which belong to some part of our past that we no longer recall.</p>
+
+    <p>In <em>The Interpretation of Dreams</em> early in his psychoanalytic career, Freud goes on to say that we actively rather than passively forget important moments in our lives. Such active forgetting is defensive in nature&mdash;defensive, because there are aspects of our past that we need to forget or &ldquo;get past,&rdquo; if only to get along somehow in life. The more we &ldquo;repress,&rdquo; since forgetfulness (or repression) is the most powerful of our psychological defenses, the more self-fulfilling and prophetic psychoanalytic insight becomes. How do we avoid such conundrums of analysis? Simply, we don&rsquo;t, and, increasingly, people just don&rsquo;t go into psychoanalysis. But we can&rsquo;t dismiss Freud quite so easily, because one of his questions stubbornly will not die, unlike the Sphinx: in any psychology, including any theory of love, can we be sure of our own insight? If the answer is yes, because we believe in what we believe &ldquo;now,&rdquo; then there&rsquo;s no perceived need for psychological theory, Freudian or otherwise. If we are not so sure, or if love and truth undergo what Freud plangently called &ldquo;vicissitude,&rdquo; then we need to re-think, as Tiresias recommends.</p>
+
+    <p>Oedipus is in conflict with his past even if he thinks he remembers all its details. What he remembers turns out to be true, just not the truth as he understood it. As happens repeatedly in <em>Oedipus the King</em>, revelation of the past involves the obviousness of the present. He believes his parents were King Polybus and Queen Merope of Corinth, and indeed they raised him with great love, far away from Thebes. He flees Corinth because of a prophecy that he will kill his father and sleep with his mother. Late in the play, on the cusp of Oedipus&rsquo;s moment of full revelation, we have an &ldquo;insight-oriented&rdquo; exchange with an old Corinthian messenger. The messenger arrives with the news that King Polybus has died from natural causes, and&mdash;this is a nice touch&mdash;he asks, would Oedipus consider becoming the King of Corinth? But there is other news from that city:</p>
+
+    <div class="verso">
+        <span class="v">Messenger</span>
+        <span class="v">Polybus was not related to you in any way.</span>
+    </div>
+
+    <div class="verso">
+        <span class="v">Oedipus</span>
+        <span class="v">What do you mean? Was Polybus not my father?</span>
+    </div>
+
+    <div class="verso">
+        <span class="v">Messenger</span>
+        <span class="v">No more than I am&mdash;he was as much your father as I.</span>
+    </div>
+
+    <div class="verso">
+        <span class="v">Oedipus</span>
+        <span class="v">How can my father be on the same level as you who are nothing to me?</span>
+    </div>
+
+    <div class="verso">
+        <span class="v">Messenger</span>
+        <span class="v">Because he was no more your father than I am.</span>
+    </div>
+
+    <p>Even in the context of a relentless tragedy, the back-and-forth is funny: we can be absolutely certain that the old Corinthian messenger is not, was not, and couldn&rsquo;t have been father to Oedipus, King of Thebes. But all certainties become dubious as the messenger and the king discuss pertinent details:</p>
+
+    <div class="verso">
+        <span class="v">Messenger</span>
+        <span class="v">He [Polybus] had been childless, that was why he loved you.</span>
+    </div>
+
+    <div class="verso">
+        <span class="v">Oedipus</span>
+        <span class="v">You gave me to him? Did you . . . buy me? or find me somewhere?</span>
+    </div>
+
+    <div class="verso">
+        <span class="v">Messenger</span>
+        <span class="v">I found you in the shady valleys of Mount Cithaeron.</span>
+    </div>
+
+    <div class="verso">
+        <span class="v">Oedipus</span>
+        <span class="v">What were you doing there?</span>
+    </div>
+
+    <div class="verso">
+        <span class="v">Messenger</span>
+        <span class="v">Watching over my flocks on the mountainside.</span>
+    </div>
+
+    <p>&ldquo;What were you doing there?&rdquo; and the old man&rsquo;s deadpan response is as good as any Shakespearean exchange with a fool or gravedigger. Tragedy lies in what the messenger was in fact doing there:</p>
+
+    <div class="verso">
+        <span class="v">Oedipus</span>
+        <span class="v">A shepherd, were you? A wandering day laborer?</span>
+    </div>
+
+    <div class="verso">
+        <span class="v">Messenger</span>
+        <span class="v">Yes, but at that moment I was your savior.</span>
+    </div>
+
+    <div class="verso">
+        <span class="v">Oedipus</span>
+        <span class="v">When you picked me up, was I in pain?</span>
+    </div>
+
+    <div class="verso">
+        <span class="v">Messenger</span>
+        <span class="v">Your ankles would bear witness on that point.</span>
+    </div>
+
+    <p>That would be: the <em>pinned</em> ankles. Thus, Oedipus is the biological son of Laius the Theban. Jocasta, wife and mother, has witnessed all the above; soon, she will vanish into the palace, and we later learn of her suicide. Earlier in the play, Jocasta recommended that Oedipus simply look the other way&mdash;if he were to stop being so good an investigator, it would be to his benefit (less personal pain). Her premonition that knowledge gained would be dangerous was acute. In <em>Oedipus the King</em>, unequivocal truth is revealed; Jocasta hangs herself and Oedipus blinds himself because of it. If false certainty is hazardous, so too are the revelations of knowledge.</p>
+
+    <h2 class="epigrafe">IV</h2>
+
+    <p>If psychotherapy involves self-discovery, Oedipus endures severe psychotherapy. As a patient, he talks about what burdens him&mdash;namely, his responsibility as a king. His crisis doesn&rsquo;t abate as a result of his talk or investigation; nor can he ignore his situation, especially since he is the last person to overlook or ignore detail. His crisis intensifies. Part patient, but also a doctor, he attempts to cure himself and lessen his difficulty through the acquisition of knowledge, just as his daughter will heal herself by way of a bold action in <em>Antigone</em>. He says that he will end the plague that grips Thebes. As <em>Oedipus the King</em> begins, a &ldquo;pollution&rdquo; has already killed crops and animals and, mysteriously, has caused the women to become infertile. Thebes suffers a winter of discontent, as critic Francis Fergusson might claim (his <em>The Idea of a Theater</em> insists that tragedy participates in a rhythm of life&mdash;in the case of <em>Oedipus the King</em>, a &ldquo;perennial quest&rdquo; for well-being, beginning in the dead of winter).</p>
+
+    <p>When Oedipus confers with Tiresias, he hopes that the prophet will cure the sterile season. Oedipus would be one of grateful: &ldquo;Save yourself and this city, save me, from all the infection,&rdquo; Oedipus pleads. But the prophet in Greek tragedy, as critic H. D. F. Kitto has nicely argued, is just a prophet, someone who works under the premise that events are not random and, therefore, can be predicted. Tiresias is vaguely scientific (with his love of prediction and so on), but he doesn&rsquo;t assume the role either of doctor, scientist, or savior for anyone, despite the fact that he exposes truth and points to cure when he speaks. So, Oedipus must assume a doctor&rsquo;s role; and, because treatment for Thebes also involves self-discovery for Oedipus, he becomes rather like his own therapist.</p>
+
+    <p>As Fergusson says, there&rsquo;s rhythm in the play, but it is not redemptive. A cycle of inquiry and disquiet leading to more inquiry happens with each visitor, like the Corinthian messenger, whose news, like all news in the play, is both good and bad (mainly bad).</p>
+
+    <p>&ldquo;A <em>shepherd</em> were you? A <em>wandering</em> day-labourer?&rdquo; Even single words are disconcerting. In what sense did he &ldquo;shepherd&rdquo;? &ldquo;Wandering&rdquo; at Mt. Cithaeron (where, incidentally, Sophocles was born) anticipates old Oedipus as a nomadic exile approaching Colonus. The Corinthian messenger plainly informs us that he wasn&rsquo;t idle in the least at Mt. Cithaeron; he was busy &ldquo;saving&rdquo; the baby Oedipus. To do well by the king&mdash;to provide him information or to save him&mdash;is no good news, but at least Oedipus was saved. Nothing is random; there is no wandering. Dr. Oedipus wanted to &ldquo;save Thebes,&rdquo; but playing the doctor-king for Thebes started the whole catastrophe, from the moment he met the Sphinx. If <em>Oedipus the King</em> in any way recapitulates the process of discovery in a doctor-patient relationship, it is a fearful advertisement for psychotherapy.</p>
+
+    <p class="separador">&#8258;</p>
+
+    <p>Any effort, including Freud&rsquo;s, at making Oedipus into a modern psychological study runs into the issue of &ldquo;the Greek mind,&rdquo; which the modern sensibility may not fully understand. Is <em>Oedipus the King</em> a psychological work? Some scholars have doubts. Here is Sir Maurice Bowra in his <em>Sophoclean Tragedy</em>: &ldquo;just as in life a complex situation may force us to take sides and to pass judgements, so in Sophoclean tragedy the conflicts make the same demand. And when this happens, we are particularly likely to be led astray by modern notions. The Greeks had strong feelings, but these did not always work in the same way or the same field as our own.&rdquo; Next, G. M. Kirkwood in his <em>Study of Sophoclean Drama</em>; he quotes colleague Gilbert Murray (not to flatter Murray, but to bury him): &ldquo;[in discussing Shakespeare and Aeschylus, Murray speaks of] &lsquo;stories and situations &hellip; deeply implanted in the memory of the race, implanted, as it were, upon our physical organism &hellip; We say that they are strange to us. Yet there is that within us which leaps at the sight of them, a cry of blood which tells us that we have known them always.&rsquo;&rdquo; Kirkwood responds that such a view, with its cries of blood and so forth, &ldquo;appear as a deplorable leap in the dark.&rdquo; Did Freud (do we) leap in the dark by understanding Oedipus as a doctor and patient rolled into one? Most severely, because he&rsquo;s probably right, here is Vernant in his <em>Myth and Tragedy in Ancient Greece</em>: &ldquo;Freud&rsquo;s interpretation of tragedy in general and <em>Oedipus Rex</em> in particular has had no influence on the work of Greek scholars.&rdquo; The implication is that the scholars have thought Freud too superficial to be taken seriously, and that Freud is no Greek scholar.</p>
+
+    <p>But Vernant himself, like many other classicists, observes <em>at minimum</em> a dual role in the person of Oedipus. He is a victim as hero and an exile as native and king. &ldquo;Oedipus&rdquo; has inherent multiple meanings, and to call him the incarnation of the patient-doctor relationship is just another way of saying that &ldquo;Oedipus is &lsquo;double,&rsquo;&rdquo; as Vernant says. And he continues, &ldquo;He is a &lsquo;savior&rsquo; king who, at the beginning of the play, is the object of prayers of an entire people as if he were a god . . . but he is also an abominable defilement, a monster of impurity concentrating within himself all the evil and sacrilege of the world, who must be ejected as a <em>pharmakos</em>, a scapegoat, so that the city can become pure once again.&rdquo; Single-minded heroism is not in the spirit of Greek tragedy, if I read Vernant correctly. The Greek hero is more of a muddle, and Oedipus is an archetypal muddle. He is a <em>pharmakos</em>, which is a complicated word connoting &ldquo;scapegoat,&rdquo; &ldquo;recipe,&rdquo; &ldquo;good drug,&rdquo; and &ldquo;bad drug.&rdquo; A <em>pharmakos</em> in the family is like a doctor who really shouldn&rsquo;t treat relatives or himself.</p>
+
+    <p>Professional psychology might not offer much to the interpretation of <em>Oedipus the King</em>, but the converse is not true. Take the concept of <em>pharmakos</em>, which critic René Girard calls &ldquo;the theme of the ambivalent drug.&rdquo; Girard sees the same theme&mdash;or &ldquo;double structure&rdquo;&mdash;in many literary places, as in Shakespeare&rsquo;s <em>Romeo and Juliet</em>, where Laurence as friar-pharmacist observes, &ldquo;Within the infant rind of this small flower/Poison had residence and medicine power.&rdquo; A very early &ldquo;discussion&rdquo; of the <em>pharmakos</em> can be found in Plato&rsquo;s <em>Phaedrus</em>, which I described as a tacit source for Freud in chapter one. In the <em>Phaedrus</em>, Plato mentions <em>pharmakos</em> as an aside: <em>What should be a remedy need not be</em>, he says.</p>
+
+    <p>The precise context at the conclusion of the <em>Phaedrus</em> is a discussion about how we can weaken memory as we try to help it, but the tragedy of a remedy is my concern. Plato&rsquo;s observation has two implications. First: love is a medicine; but the <em>pharmakos</em> can never be simply beneficial. Second: the more powerful the emotional drug, the more &ldquo;ambivalent&rdquo; its effects.</p>
+
+    <p>In other words, <em>Oedipus the King</em> is important to psychology because after we read it, or re-read it with new sensibility, we begin to understand that, as Thomas Mann wrote, &ldquo;all heightened healthiness must be achieved by the route of illness.&rdquo; Mann refers to what he understood as Freud&rsquo;s debt to Nietzsche, but, more probably, the insight about our &ldquo;route&rdquo; is purely Greek or Sophoclean. Cure by love is a problematic or tragic remedy for us, a rock-strewn path.</p>
+
+    <p class="separador">&#8258;</p>
+
+    <p>In search of any cure, I think people seek to understand whatever difficulty lies beneath appearances, with a thought that if a cause is known, a fix is possible. That is a rational approach. When Freud studied dreams or symptoms in the clinic, he adopted the same stance. What is the latent (not the obvious) content of a dream? What do psychological symptoms mean in terms of processes of which we are not aware (unconscious ones)? Both questions were revolutionary in the history of ideas. For our contemporary purpose, however, at a time when dream analysis on a couch is more a stereotype than a common practice, and when symptoms demand &ldquo;real&rdquo; treatment more than gratuitous interpretation, Freud&rsquo;s revolutionary questions seem to preoccupy intellectuals and no one else, and the Freudian revolution no longer drives therapeutics in psychiatry and psychology.</p>
+
+    <p>Yet: by far the greatest amount of psychotherapy conducted in the world never happens in a therapist&rsquo;s office or by way of medications. People have a tendency to work through problems at great lengths themselves, or they fall in and out of love, in the expectation that happiness in the emotional life will be its own curative reward. Can happiness be the remedy we envision it to be? When Freud writes, in the trickiest sentence of his masterwork <em>Die Traumdeutung</em>, that <em>the interpretation of dreams is the royal road to knowledge of unconscious activity</em>, he does not say that the deepest knowledge regarding our dreams or symptoms equals cure. We certainly hope that interpretation and knowledge will help us in our struggles; Freud hoped as much for his psychoanalysis, since he was a closeted optimist, even late into his career. To be clear, however, he offers potential remedy instead of nostrum; he describes the road, not the end of it.</p>
+
+    <h2 class="epigrafe">V</h2>
+
+    <p>A detailed reading of <em>The Interpretation of Dreams</em> is not my intention in this chapter or in this book, but precisely in <em>The Interpretation</em>, Freud inaugurates a method that will repeat itself in his career. A work of literature speaks to a problem that he wants to address; he might allude to the work, quote bits of it, or perhaps he will write at some length about the meaning of the work for him. These references are not incidental; Oedipus is a case in point, only partly because the Oedipus complex is so central to Freudian psychological theory. To read <em>Oedipus the King</em> and the Theban plays as books in parallel with Freud invites us to think about how the plays could have been helpful to him as more than corroboration of a theory. It is hardly possible to read about the Oedipus complex in Freud without thinking for oneself about relationships between children and parents. Regarding parental love and the love of children for their parents, Freud suggests that we consult Sophocles. When we do, it comes as a surprise that thinking about &ldquo;a complex&rdquo; becomes just the opposite of a reiteration of stock theory.</p>
+
+    <p>Compared to the 230-odd dreams described in sometimes oppressive detail in <em>The Interpretation</em>, I prefer a few sentences from his chapter V (in a discussion of &ldquo;Typical Dreams&rdquo;) as a primer to Freud&rsquo;s &ldquo;dream of interpretation,&rdquo; in critic Ken Frieden&rsquo;s useful turn of phrase:</p>
+
+    <div class="cita">
+        <p>If anyone dreams, with any sign of pain, that his father or mother or brother or sister has died, I should never use the dream as evidence that he wishes that person&rsquo;s death <em>at the present time</em>. The theory of dreams does not require as much as that; it is satisfied with the inference that this death has been wished for at some time or other during the dreamer&rsquo;s childhood. I fear, however, that this reservation will not appease the objectors; they will deny the possibility of their <em>ever</em> having had such a thought with just as much energy as they insist that they harbour no such wishes now. I must therefore reconstruct a portion of the vanished mental life of children on the basis of the evidence of the present.</p>
+    </div>
+
+    <p>The reconstruction sounds like the investigative work Oedipus performs so fiercely in <em>Oedipus the King</em>, except that an interpretation in psychology differs from, say, the latest news from Corinth. We can doubt all interpretations; sometimes we reject them out of hand as unbelievable, like one of Freud&rsquo;s objectors. Oedipus has no such luxury; what the messenger says turns out to be absolutely true. What, then, is the truth-value of an interpretation in psychology, whether of a dream or anything else?</p>
+
+    <p>Much depends on what might be called the level of the interpretation. If someone says, &ldquo;I had a dream in which my father died&rdquo; or even if he says outright &ldquo;I wish my father were dead,&rdquo; Freud&rsquo;s interpretation at its highest level offers that the hidden wish or the expressed wish is <em>nothing new</em>. At a very low level of interpretation, one could say &ldquo;ah, yes, all of us hate our loved ones to the point that we want them dead on occasion.&rdquo; To take a different example of the same point, Freud tells the story about a child whose father <em>did</em> die. The boy told Freud, &ldquo;I know my father&rsquo;s dead, but what I can&rsquo;t understand is why he doesn&rsquo;t come home for supper.&rdquo; One could say that the boy misconceives what a biological death is&mdash;and the misconception is very touching. But perhaps a better reading would have it that, for a long time, the idea of his father was the anticipation that he would come home for supper. The confusion that he experiences now, even in the face of what he knows as indisputable fact, has a no-less irrefutable history.</p>
+
+    <p>We are close to understanding the main implication of a statement offered in my last chapter, that love is always form of memory. It would be most unfortunate if, by that statement, one inferred that love involved some recollection in tranquility of all moments in which we felt love. The logic is circular, and the interpretation is not particularly helpful in articulating how complicated love is. Freud&rsquo;s best dream for what interpretation could accomplish involves &ldquo;reconstruction,&rdquo; which really can&rsquo;t be completed, and could be doomed from the start (tragically), because of the fallibility of our memory. At so stratospheric a level of interpretation, does it help us to think about how love, as reconstruction, is probably how we love? Is Freud just trying to confuse us?</p>
+
+    <p>The tragic world-view of Oedipus comes to mind just at this moment: there are so few things that are certain in life; it&rsquo;s quite tragic that we are so certain about anything in life. Actually, we can&rsquo;t be absolutely certain that Oedipus loved Jocasta: she didn&rsquo;t raise him; when he married her, he had &ldquo;won&rdquo; her and the Theban throne like lottery prizes; and we have rather little information about how husband (son) and wife (mother) got along in their domestic life. I suspect that Oedipus truly loved Merope, his mother in Corinth, but I don&rsquo;t have data to prove it. Based on the Theban plays altogether, Oedipus was capable of vast love (and extreme rage), as his relationships with Antigone and his sons attest. He is as complicated as any of us, and his problem lay in certainties that inevitably bring him to hazard: what can we possibly conclude from so much grim experience?</p>
+
+    <p>No one wants &ldquo;ambivalent&rdquo; love. Spouses and children would object to the sophisticated, professorial sort who says, &ldquo;I love you, provided that you understand that all love is ambivalent.&rdquo; As we know, psychological sophistication is simply not good for a rhetoric of love. So, in expedient fashion, we pronounce love as if our ambivalence didn&rsquo;t exist, despite vast evidence (Sophocles&rsquo; Theban plays, personal history, Freud&rsquo;s writings) which suggests that the course of an affection is usually rocky, not a just-so story, nothing like a dream in midsummer. Tragedy lurks in the difference between what we know about emotional ambivalence and how we ignore it for compelling reasons.</p>
+
+    <p>Maybe it isn&rsquo;t necessary that our world view be tragic; love actually helps us believe that tragedy is not our fate, and we certainly would prefer to think so. But aren&rsquo;t we reentering a vicious cycle when we indulge that preference? Love as a nostrum is a fantasy, but no one in their right mind would refuse such a drug. Likewise: to say, &ldquo;I love you without ambivalence,&rdquo; is a fantastical statement, but we want to hear precisely those words, and will go to desperate lengths to believe them when we hear them. Freud, via Sophocles, tries to tell us about this morbid, cyclical, and viciously tragic state of affairs. The Oedipus complex is an obsession with tragic recurrence, and Freud will visit tragedy again in his career.</p>
+
+    <p>The Oedipus story is just a prelude.</p>
+
+    <p>After <em>The Interpretation</em>, at a watershed in his career, Freud considers not tragedy, but a mythic transformation.</p>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Day mode' : 'Night mode';
+        toggle.setAttribute('aria-label', isDark ? 'Switch to day mode' : 'Switch to night mode');
+    });
+</script>
+
+</body>
+</html>

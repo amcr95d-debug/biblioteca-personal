@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Postscript — What to Read on Love, Not Sex</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.subtitulo { text-align: center; font-size: 1.05rem; font-style: italic; color: var(--text-secondary); margin: 0 0 2.4rem; text-indent: 0; line-height: 1.45; }
+.epigrafe { margin: 3.2rem 0 1.6rem; font-size: .95rem; font-weight: 700; line-height: 1.45; letter-spacing: .07em; text-align: center; text-transform: uppercase; color: var(--realce); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .subtitulo + p, .epigrafe + p, .epigrafe-inicial + p, figure + p, .image-container + p, .verso + p, .cita + p, .firma + p, .sin-sangria + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+figure { margin: 2.4rem 0; text-align: center; }
+figure img { max-width: 100%; height: auto; border: 1px solid var(--border-color); box-shadow: 0 4px 12px rgba(0,0,0,0.3); border-radius: 2px; }
+figcaption { margin-top: .7rem; font-size: .84rem; font-style: italic; line-height: 1.45; text-align: left; color: var(--text-muted); }
+figcaption strong { color: var(--text-secondary); font-style: normal; font-weight: 700; display: block; margin-bottom: .2rem; }
+.image-container { margin: 2.4rem auto; text-align: center; max-width: 100%; }
+.image-container img { max-width: 100%; height: auto; display: block; margin: 0 auto .8rem auto; border: 1px solid var(--border-color); box-shadow: 0 4px 12px rgba(0,0,0,0.3); border-radius: 2px; }
+.image-caption { margin: 0; text-align: left; font-size: .84rem; color: var(--text-muted); font-style: italic; text-indent: 0; line-height: 1.45; }
+.verso { margin: 1.6rem 0 1.6rem 2.2rem; font-style: italic; line-height: 1.5; }
+.verso .v { display: block; text-indent: -1.2em; padding-left: 1.2em; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .verso, .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+    .image-container { max-width: 100%; }
+}
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Toggle theme" title="Night mode">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">Chapter Eight</p>
+        <h1 class="cab__tit">Postscript</h1>
+    </header>
+
+    <p>&ldquo;There is scarcely anything more difficult than to love one another . . . it is work, day labor, day labor, God knows there is no other word for it. And look, added to this is the fact that young people are not prepared for such difficult loving; for convention has tried to make this most complicated and ultimate relationship into something easy and frivolous, has given it the appearance of everyone&rsquo;s being able to do it. It is not so.&rdquo; That is poet Rainer Rilke, writing at age twenty-nine. He sounds older. His own love-life&mdash;which included marriage to sculptress Clara Westhoff, separation from her not long after he wrote the above in a letter (not to her), and a fierce lifelong attachment to Lou Andreas-Salomé, Freud&rsquo;s patient and correspondent&mdash;was an archetype of difficult love, but what he has to say applies not just to his particular circumstances.</p>
+
+    <p>The first sentence, &ldquo;There is scarcely anything more difficult . . .&rdquo; rings inevitably true (love isn&rsquo;t easy), but his counter-intuition in the last sentence is my interest: he denies the universal ability to love, because so few understand or even realize its cognitive and emotional demands. <em>It is not so</em> is made more disturbing when the poet observes that &ldquo;at bottom, no one in life can help anyone else in life; this one experiences over and over in every conflict and every perplexity: that one is alone.&rdquo; Interpret a negation (e.g., love is not what one thinks it is), Freud believed, and you won&rsquo;t be disappointed, but you won&rsquo;t necessarily be comforted, either.</p>
+
+    <p>We tend to think that love is not &ldquo;cognitively&rdquo; difficult. We all need to give and receive love; what&rsquo;s so hard to understand? Yet I think Rilke describes what one learns after a few years of marriage (or in the second one), after a good amount of time working closely with people, or after enough disappointment that one begins to question how love is possible. The questioning is important, says our poet Rilke, who, many years later, would sound like a slightly exhausted veteran of psychological warfare:</p>
+
+    <div class="cita">
+        <p>You are so young . . . I want to beg you, as much as I can, to be patient toward all that is unsolved in your heart and to try to love the questions themselves like locked rooms and like books that are written in a very foreign tongue. Do not seek the answers, which cannot be given you because you would not be able to live them.</p>
+    </div>
+
+    <p>The pain of this advice (there is pain in it, because: why is the room locked? Why the interest in otherness that will always be foreign?) returns us to the shrewd vagueness of Rilke&rsquo;s word &ldquo;difficulty.&rdquo;</p>
+
+    <p>Love &ldquo;as difficulty&rdquo; makes sense from the perspective of experience: the reason why some people aren&rsquo;t prepared for &ldquo;difficult loving&rdquo; is because they were critically misinformed at some point about what love means and entails. Only experience teaches us to know love in both its joy and disappointment, but sometimes, due to our own recalcitrance, we prefer to remain mystified about it, thereby making love even more difficult than it always was. Mainly, Rilke advises against overly simple answers, under the assumption that love is too complex to be explained by them&mdash;or, as he puts it more enigmatically and meaningfully, one might not be able &ldquo;to live&rdquo; the answers even if they were simply given to us. There is scarcely anything more difficult than to love one another, except the task of describing the difficulty, in Rilke&rsquo;s sophisticated sense of the word.</p>
+
+    <p>Some chapters ago, I quoted a question (J. H. van den Berg&rsquo;s) that deserves a last look: who can feel at ease with psychological explanation? Description and explanation are not equivalent, but when we think about Freud on the subject of love, there is a tendency to assume that they are. Van den Berg had a specific case in mind: a husband whose leg moved up and down, in a kicking motion, as he spoke to his wife. At one point in the history of ideas, before Freud&rsquo;s obsessive search for meaning in everything, the leg might have meant nothing, but, to van den Berg&rsquo;s understated astonishment, he notices that &ldquo;we have different ideas now.&rdquo; Regarding the meaning of seemingly random events (a leg motion, a roll of the eyes, a sigh), we frankly don&rsquo;t need to study Freud today to invent scenarios of meaning. Freud&rsquo;s usefulness, I think, no longer has to do with stock explanations of intrapsychic or interpersonal conflict, especially in an era predisposed to think about alternative scientific, genetic, neurochemical, and many other types of explanation. One lesson that we should gather from Freud is that one needn&rsquo;t feel at ease with any type of explanation or description, certainly not with respect to human love, unless it is &ldquo;difficult&rdquo; enough.</p>
+
+    <p>I am aware of a bias that simplicity is more compelling than complexity in any explanation. So, getting back to the leg, one says that husband wants to kick his wife out of the room&mdash;but, look, she sits there calmly, and she hasn&rsquo;t budged, so the leg movement is sublimely pointless. What does the gesture symbolize? Aggression or futility or nothing? While justifiable to indulge the bias for simple explanations in many contexts, the problem of love requires just the reverse. Simplification of what Rilke calls &ldquo;this most complicated and ultimate relationship&rdquo; is like a synopsis that mars the story.</p>
+
+    <p>It is very easy to fall into a language trap of saying that, for example, love is complicated knowledge, or that it is an &ldquo;ultimate relationship,&rdquo; thus subverting, by way of platitudes, the whole point of referring to its intricate complexity. Many stories of love refer to what is unsolved in our hearts, but the greatest stories don&rsquo;t offer solutions so much as they capture the problem and the mystery better than other kinds of discourse.</p>
+
+    <p>Freud spent his entire psychological career interpreting the love between children and parents, siblings and each other, love within the same sex, between the sexes, love of intellectual and artistic pursuit, and even of one&rsquo;s god, but it&rsquo;s noteworthy that he largely avoided the word &ldquo;love.&rdquo; When he did broach the subject directly, say, in his &ldquo;Contributions to the Psychology of Love&rdquo; (1910), he ambivalently deferred to the power of artistic representation:</p>
+
+    <div class="cita">
+        <p>Hitherto we have left it to poets and imaginative writers to depict for us the &ldquo;conditions of love&rdquo; under which men and women make their choice of an object, and the way in which they reconcile the demands expressed in their phantasy with the exigencies of real life. Writers indeed have certain qualities which fit them for such a task; more especially, a sensitiveness of perception in regard to the hidden feelings of others, and the courage to give voice to their own unconscious minds. But from the point of view of knowledge one circumstance lessens the value of what they tell us. Writers are bound to certain conditions; they have to evoke intellectual and aesthetic pleasure as certain effects on the emotions. For this reason they cannot reproduce reality unchanged; they have to isolate portions of it, detach them from their connection with disturbing elements, fill up gaps and soften the whole. This is the privilege of what is called &ldquo;poetic license.&rdquo; They can display no great interest, moreover, in the origin and growth of those conditions of mind which they portray in being. It is inevitable, therefore, that science should lay hands on the stuff which poets have fashioned so as to give pleasure to mankind for thousands of years, although its touch must be clumsier and result in less pleasure. These contributions may serve to vindicate our handling of the loves of men and women as well as other things in a strictly scientific way. For science betokens the most complete renunciation of the pleasure principle of which are minds are capable.</p>
+    </div>
+
+    <p>How best to respond to such compromised praise of artists and imaginative writers? The phrase &ldquo;from the point of view of knowledge&rdquo; is a loaded one, and we might begin with it. By his account, the knowledge conveyed by art is dubious because it is staged like a play and artificial like a pose. Reality, the truth about origins and developments, distorts through the artist&rsquo;s lens, and clear-eyed science objects to such a mediated vision of how life operates. The subject of love needs an investigator prepared to renounce the pleasure principle in an effort to see without fantasy or distortion, and to arrive at a knowledge without delusion or self-mystification. To study love is work and knowledge, not pleasure, says Freud.</p>
+
+    <p>The &ldquo;most complete renunciation of the pleasure principle of which minds are capable&rdquo;&mdash;the phrase puts me in mind of faculty meetings at my university&mdash;is probably not what Freud wanted to accomplish through psychoanalysis. All kinds of day labor, including psychological insight, involve the renunciation of pleasure, but it&rsquo;s hardly the case that absence of pleasure and the psychology of love go together. In what Freud has to say, ostensibly a critique of poets as artificers, we are back to the theme of love (or the study of it) as a subspecies of work. Freud advocates for a &ldquo;sensitiveness of perception&rdquo; which is not without its profound pleasures. Freud always worked towards rigorous psychological explanation, while the poet Rilke, in contemplating love, tries to articulate how inexplicable its difficulties turn out to be. Yet both authors seem to agree on one critical point: since reality is always a bit hard to see, for both the artist and scientist, some work is necessary to appreciate (and to enjoy) love.</p>
+
+    <p>In seven separate instances in this book, Freudian insight and the privilege of poetic license couldn&rsquo;t be more akin. (There are more examples of Freud&rsquo;s indebtedness to art; I chose only seven.) He contemplates what critics call the representation of reality in each case; he runs the gamut of such contemplation, from allusion (Narcissus), to reinterpretation of plot (discovery of knowledge in <em>Oedipus</em>; choice of death in <em>Lear</em>), to psychoanalytical portraiture (Leonardo), to the novel recreation of a history of faith (Moses). He quotes, interprets, defers to, but, most of all, uses these sources to achieve what Hamlet called &ldquo;confounding the ignorant.&rdquo; That we remain largely ignorant and terribly confounded by human love is no mean conclusion to draw, especially if we think in terms of the stories Freud asked us to contemplate. A lover is a Narcissus who seeks like an Oedipus, and could mature into a Hamlet, but in certain acts of profoundest love and memory, could also achieve beauty in understanding, and redefine his relationship with that which is greater than himself.</p>
+
+    <p>In the opening paragraph from &ldquo;Contributions&rdquo; quoted above, Freud sounds less than exuberant about poets and the imaginative writers, though I think the conclusion can&rsquo;t be avoided that Freud is nothing but exuberant about them, if we read him with reasonable care. <em>From the point of view of knowledge one circumstance lessens the value of what they [the artists] tell us</em>: Freud says that the artist alters reality (the artist cannot reproduce reality unchanged); but he doesn&rsquo;t admit that, as a consequence, a great artist also introduces strangeness and surprise, qualities that were points of origin for Freud&rsquo;s own psychological work. A person can study patients in the clinical setting and call himself an empiricist, as Freud did on a regular basis; he can also study the language of poets, scripture, and visual art and be no less grounded in an exceedingly rich empiricism, in which, as Freud said of da Vinci, we recognize aspects of who we are. We shouldn&rsquo;t underestimate the significance of Freud&rsquo;s aside that it was inevitable that psychology would lay clumsy hands on the artist&rsquo;s &ldquo;stuff.&rdquo; Why &ldquo;inevitable&rdquo;?</p>
+
+    <p>For thousands of years, the purpose of art, Freud says, was human pleasure, but Freud wrestled with reality and pleasure as dialectically related principles, as we have seen in our discussion of <em>Beyond the Pleasure Principle</em>. To speak of pleasure in art as a way to justify mankind&rsquo;s interest in it is rather like the argument, prevalent in the nineteenth century, that art was important because it gratified certain aesthetic instincts. Critic Kenneth Burke has nicely said that such self-fulfilling arguments reminded him of a desperate last stand: &ldquo;against the accusation that art was &lsquo;useless,&rsquo; . . . [the artist] pitted the challenge that art was important to those whom art was important.&rdquo; Far more generously, artistic representation for Freud had implicitly to do with the problematics of representing any human psychology, and therefore art related as much to truth, knowledge, reality, and even madness (à la Plato) as to pleasure. Just as Socrates relied on myth to describe a relationship, based in memory, to truth and the forms of truth, Freud&rsquo;s &ldquo;point of view of knowledge&rdquo; could hardly deprecate what Plato called the blessing of poetical madness. It is not merely that artists of genius have certain qualities which fit them for the representation of complex truths. It is more likely that the truth will always have plain sense and maddening obscurity built within it.</p>
+
+    <p class="separador">&#8258;</p>
+
+    <p>Once upon a time, as I began medical training, I was under the impression that if one thought of some great novel, poem, or Shakespeare as the best use of one&rsquo;s reading time (better than, say, a book on biochemistry), then study of the brain recommended itself as a career. In the biochemical age of diazepams and citaloprams (among so many other drugs), it would appear that I was deluded.</p>
+
+    <p>But not entirely. Both before and after Freud, psychiatry has always confused mind-reading (in the clairvoyant or magical sense) and mere reading. Earlier in this book I quoted Freud&rsquo;s tongue-in-cheek claim that he invented psychoanalysis because it had no literature. But the man who resurrected <em>Oedipus the King</em> as a text of psychology, who quietly recommended <em>Hamlet</em> as an even-better textbook, who borrowed altogether liberally from Western literary and artistic tradition, was nothing but a reader and admirer of the imagination. In many ways, he read books and art better than people.</p>
+
+    <p>One of Freud&rsquo;s fundamental contributions to the study of the mind was that psychology as a science would have to contend&mdash;inevitably&mdash;with art. It is still a very striking hypothesis, one that we might reconsider at a time when biological notions of the inner life are so dominant. The story of the mind these days is very scientific, perhaps overwhelmingly so. I read the other day about a medical treatment to erase bad memories; I think about that report now, because if &ldquo;mind editing&rdquo; is in our future, it would do us well to understand basic reading before we go about editing. I personally doubt that erasing memory will have much success, because our personal fictions have an astonishing sticking power, far greater than the power of drugs to unstick them, provided that those drugs leave us at least partly conscious.</p>
+
+    <p>Freud, a powerful writer, was always opinionated. Psychology after Freud has held strong opinions that we should evaluate for ourselves. The Unconscious, perhaps Freud&rsquo;s singular contribution to the history of ideas, has sadly transmogrified into a false confidence that we can know it. &ldquo;How do you know?&rdquo; is the reasonable question that most patients ask, if they are critical types. J. H. van den Berg, whom we met early in this book, says that &ldquo;[t]he discovery that every symptom has meaning leads to the separation of conscious and subconscious.&rdquo; One might rephrase his sentence to read that the discovery of meaning is always a less-than-tranquil recollection. If what the doctor has to say doesn&rsquo;t resonate with some phantom of the past somehow already known to us, then we probably won&rsquo;t pay for more psychoanalysis or therapy unless insurance covers it.</p>
+
+    <p class="separador">&#8258;</p>
+
+    <p>Freud&rsquo;s problem in interpreting other minds is still our problem: we are unable to read anyone&rsquo;s mind as effectively as we would like, because an individual psychology is stubbornly mysterious. The idea of truly knowing others (or ourselves)&mdash;which is the essential problem of love&mdash;remains one of our most cherished hopes and impossibilities. Psychiatric therapeutics, whatever form they may take, give doctors a sense that they do something powerful, and sometimes they do. But to &ldquo;raze the written troubles of the brain,&rdquo; as Macbeth would have medicine do for Lady Macbeth, might be beyond the doctor&rsquo;s art in any age. That is not a statement of therapeutic pessimism: I merely observe that for thousands of years, the book of the mind has been a fascination for the precise reason that we cannot know it fully. The psychiatric reading of literature and art has served as a wish-fulfillment dream to know the mind better.</p>
+
+    <p>Someone has observed that, today, there are more people writing books than reading them. The surge in self-expression, if true, shouldn&rsquo;t surprise us. One reads to learn about things and people in a drive to satisfy curiosity, but most curiosities turn inward, and eventually everyone (all the people writing so many books) quietly writes an autobiography. Freud would say that those autobiographies, as diverse as they might seem, still read much the same. He would also say that we probably rewrite some key books over and over again. Such was his view of the mind, and we are still wrestling with that theory or perspective, whether or not we read literature, study art, or contemplate Freud.</p>
+
+    <p class="separador">&#8258;</p>
+
+    <p>Today, in the death throes of professional &ldquo;talking therapies&rdquo; (because taking pills is easier), the power of any theory or science doesn&rsquo;t consist in what it says about who we are. &ldquo;I don&rsquo;t believe psychology explains one&rsquo;s self. . . . I don&rsquo;t pretend to know myself the way someone fresh from psychoanalysis would claim. I think that&rsquo;s silly,&rdquo; critic Alfred Kazin has said in an interview. Freud was not silly; but the author of &ldquo;Analysis Terminable and Interminable&rdquo; would have agreed with Kazin more eloquently.</p>
+
+    <p>Perhaps since ancient time, the study of the mind has been essentially Socratic insofar as we question, follow a line of thought with the best rigor we can, and usually find ourselves asking more questions. &ldquo;Working through,&rdquo; one of Freud&rsquo;s favorite conceptions of psychology, leads to questions, not answers. An important corollary observation, which I have attributed to van den Berg (because I finally understood it by reading him, though the point is Freud&rsquo;s), is that the very existence of psychology, as a discipline and practice, underlines the separation between knower and known&mdash;it emphasizes and parades it. I wonder whether van den Berg&rsquo;s basic argument also applies to human science of any type, that the very existence and practice of a medical and psychological science, for example, emphasizes and parades an interpersonal distance that we so very much want to minimize.</p>
+
+    <p>Rather few people today are psychoanalyzed on the couch, and modern psychiatric training, however influenced by considerations of the Unconscious, cannot be called Freudian. We think that Freudianism has been assimilated into the way we think about love, particularly whenever we wonder about what we really, truly desire. Unfortunately, much of the assimilation has involved a vast misuse of Freud&rsquo;s method when he read books or looked at art. He re-read great literature, not for plot; he stared at the art he loved. For him, imaginative work was the representation of another mind in its magnificent strangeness. I fantasize that he thought reading and study could return him, as it were, to an early wonder, to an almost Greek appreciation of the plain sense of things or to an Hebraic appreciation of background and shadow&mdash;but, either way, back to the fascination of otherness.</p>
+
+    <p>A modern problem has been that, too often, we allow psychological thinking to get in our own way. At such times, we have what Virginia Woolf deftly chastised as &ldquo;beautiful positivity.&rdquo;</p>
+
+    <p class="separador">&#8258;</p>
+
+    <p>In his writing, Freud often engaged in question-and-answer dialogues with himself. By the end of his career, his Oedipal style of interrogation achieves a level of mastery not matched by many authors. In <em>The Future of an Illusion</em>, for example, he worries that his psychoanalysis is nothing more than occultism or bad religion. Perhaps religion is not so bad, he wonders:</p>
+
+    <div class="cita">
+        <p>I will moderate my zeal and admit the possibility that I, too, am chasing an illusion. Perhaps the effect of the religious prohibition of thought may not be so bad as I suppose. . . . <em>I do not know and you cannot know either.</em> It is not only the great problems of this life that seem insoluble at the present time; many lesser questions too are difficult to answer.</p>
+    </div>
+
+    <p>The &ldquo;you&rdquo; in this passage is his own best critic (Sigmund Freud on himself), and his italicized sentence describes a man at the precise intersection of ignorance and insight. The inner dialogue, part Sophoclean and part Socratic, is relentless; it questions even the primacy of intelligence:</p>
+
+    <div class="cita">
+        <p>What you have been expounding seems to me to be built upon errors which, following your example, I may call illusions, because they betray clearly enough the influence of your wishes. You pin your hope on the possibility that generations which have not experienced the influence of religious doctrines in early childhood will easily attain the desired primacy of the intelligence over the life of instincts.</p>
+        <p>This is surely an illusion . . .</p>
+    </div>
+
+    <p>His interlocutor dogs him; I think history has and will continue to dog Freud as well, since I think (as do others in American states, both red and blue) that religion will vastly outlive psychoanalysis and Sigmund Freud. But what should survive as Freud&rsquo;s legacy is the practice of reading for the sake of discovery. Reading Freud shouldn&rsquo;t make us Freudian so much as it should make us better readers of anything that we choose, including our patients, loved ones, and our books.</p>
+
+    <p>What I&rsquo;ve called &ldquo;talking therapies&rdquo; (including psychotherapy, but not excluding our closest friendships) court two fundamental and related dangers. The first is banality or triteness. In the future, psychotherapy may never be reimbursed by payors, because talk as talk will be judged as valueless. There is a legitimate point in this view, because talk is often trite. The value of human communication should never be underestimated, but since that value can&rsquo;t be accurately estimated for any given encounter, a session of talk therapy floats in a vague estimation of its worth, at best. When Freud contemplated whether an analysis could be brief and terminable rather than extended and endless, he decided that, in the end, analysis is both. In the modern era, no one will pay forever for a brief treatment that doesn&rsquo;t end.</p>
+
+    <p>I said that psychotherapy courts the danger of banality, but perhaps I was being too cautious. I mean that achieving insight that is not trite could be the single longest exercise in delayed gratification known to man. But I anticipate my next and last point.</p>
+
+    <p>The second danger, related to the first, is dogmatism. A defense of psychotherapy is a loser&rsquo;s game even before the apology begins, because we enter into debatable assertions of validity and value. Therapists who prescribe medications are particularly guilty of this kind of argument, because they invoke studies to prove the validity of a profession. There are many important published reports that teach us about (a.) the value of drugs, (b.) the value of drugs prescribed along with talking therapies, (c.) how the talk helps the effects of drugs, and (d.) how the drugs don&rsquo;t help as well without the talk. Speaking as a clinical person, I certainly hope that we offer something with our drugs, talk, and empathy, because otherwise we would be complete charlatans. But it is a dangerous leap to say that we glean the human condition more profoundly because we have some incomplete idea about how our drugs and talk work. One sniffs unexamined dogma rather than truth in such claims.</p>
+
+    <p>Freud consulted powerful fictions to understand mental illness and health. The reason he did so, and why we should as well, is that the validity of psychology as a human discipline might well have to do with how and why certain fictions speak to us with a strange and powerful veracity, stronger than dogma and the often-reversed claims of any new psychological science. What fictions contain your own personal truth I cannot say; but, in reading Freud, I think we can be sure that he had his list.</p>
+
+    <p>Irving Singer, a philosopher who observed the ascendency of a new psychology at the beginning of this century (a psychology based on what we know of cognitive and brain science), lamented the insufficiency of its lexicon for the emotional or affective life: &ldquo;When cognitive psychologists write about emotion, as they have started to do, they tend to think it can be explained in terms of the rationalistic concepts that science has on hand and that look as if they may suffice. . . . What one needs is a completely new lexicon and analytic approach to understand the nature of affect, which includes all of what we normally call feelings, emotions, sensations, &lsquo;intuitive&rsquo; and &lsquo;instinctive&rsquo; dispositions . . . hatred as well as love . . . For that job, we require a totally different type of methodology.&rdquo; Freud routinely asked whether his lexicon might not suffice; if he hadn&rsquo;t done so, we would have no such frontier concepts as narcissism or the life and death drives. He wanted to write a new and revolutionary science, but Singer rightly observes that &ldquo;Freud is an especially interesting case study because his aspirations and achievements illustrate the more extensive question about the mission of science as a whole and its passionate pursuit of knowledge.&rdquo; Freud saw no need reinvent where mankind had been cognitively or rationally. His science depended for its ultimate authority on the words of poets and the nuances of portrait. He culled a lexicon from the history of creative production in the West.</p>
+
+    <p>Freud liked many artists I haven&rsquo;t discussed, including Germany&rsquo;s Goethe, Russia&rsquo;s Dostoevsky, and America&rsquo;s Mark Twain (by far, one of Freud&rsquo;s favorite authors), but I think debating Freud&rsquo;s list is an evasion and a waste of time. Some truths are so complicated that Freud sought elsewhere&mdash;to the Greeks, myth, Shakespeare, Scripture, and some remarkable representations of a human smile. In Freud&rsquo;s case, unlike any psychologist after him, <em>that</em> he invoked a pantheon of imagination is interesting in itself, not as the act of an anti-scientist, but rather as the habit of an ardent scientist.</p>
+
+    <p>When we encounter a new theory of mind in the future, whether next month or next century, we might welcome it to the club of psychological genius, <em>if</em> it invites us to ponder complicated and ultimate matters, especially that of love&mdash;and <em>only if</em> it strikes us as anything but easy and frivolous, because love is neither. How striking it would be, and how Freudian, to discover that the next new theory had been in circulation for a long time in our past, in other vernaculars, such as the lexicons of our art. If such a theory would appear, it would remind us that representation is not the sovereign domain of either science or art, and that, as we need to relearn repeatedly, truth is often both strange and familiar, like the profounder fictions about who we really are.</p>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Day mode' : 'Night mode';
+        toggle.setAttribute('aria-label', isDark ? 'Switch to day mode' : 'Switch to night mode');
+    });
+</script>
+
+</body>
+</html>
