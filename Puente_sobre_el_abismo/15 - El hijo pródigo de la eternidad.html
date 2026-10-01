@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Capítulo 15. El hijo pródigo de la eternidad — Un puente sobre el abismo</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.subtitulo { text-align: center; font-size: 1.05rem; font-style: italic; color: var(--text-secondary); margin: 0 0 2.4rem; text-indent: 0; line-height: 1.45; }
+.epigrafe { margin: 3.2rem 0 1.6rem; font-size: .95rem; font-weight: 700; line-height: 1.45; letter-spacing: .07em; text-align: center; text-transform: uppercase; color: var(--realce); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .subtitulo + p, .epigrafe + p, .epigrafe-inicial + p, figure + p, .image-container + p, .verso + p, .cita + p, .firma + p, .sin-sangria + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+figure { margin: 2.4rem 0; text-align: center; }
+figure img { max-width: 100%; height: auto; border: 1px solid var(--border-color); box-shadow: 0 4px 12px rgba(0,0,0,0.3); border-radius: 2px; }
+figcaption { margin-top: .7rem; font-size: .84rem; font-style: italic; line-height: 1.45; text-align: left; color: var(--text-muted); }
+figcaption strong { color: var(--text-secondary); font-style: normal; font-weight: 700; display: block; margin-bottom: .2rem; }
+.image-container { margin: 2.4rem auto; text-align: center; max-width: 100%; }
+.image-container img { max-width: 100%; height: auto; display: block; margin: 0 auto .8rem auto; border: 1px solid var(--border-color); box-shadow: 0 4px 12px rgba(0,0,0,0.3); border-radius: 2px; }
+.image-caption { margin: 0; text-align: left; font-size: .84rem; color: var(--text-muted); font-style: italic; text-indent: 0; line-height: 1.45; }
+.verso { margin: 1.6rem 0 1.6rem 2.2rem; font-style: italic; line-height: 1.5; }
+.verso .v { display: block; text-indent: -1.2em; padding-left: 1.2em; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .verso, .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+    .image-container { max-width: 100%; }
+}
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+
+    <header class="cab">
+        <p class="cab__num">Capítulo 15</p>
+        <h1 class="cab__tit">El hijo pródigo de la eternidad</h1>
+    </header>
+
+    <p>Rembrandt van Rijn es un gran pintor holandés. No analizaremos toda su biografía, toda su vida; atendamos solo a su final, a su gran testamento: el cuadro «El hijo pródigo», que se conserva en el Ermitage.</p><sup>1</sup>
+
+    <p>Rembrandt coincidió en su vida, en su obra, con el más alto florecimiento del arte holandés: vivió en el siglo XVII, una época asombrosa en la historia de Holanda. Holanda era un país completamente singular en Europa. Venció a España en la guerra por su independencia. Y era un país protestante, no católico. Por eso todos los valores aquí estaban ligados a lo que hoy llamamos clase media, a la burguesía media acomodada. En Holanda faltaban por completo los habituales encargos europeos de suntuosos temas religiosos, de suntuosos cuadros que adornaban los palacios. Holanda debía saciar de arte las casas, y Holanda amaba mucho la representación de su propia vida en los cuadros: los propios holandeses, sus casas, su vida cotidiana, su confort.</p>
+
+    <p>A estos pintores se los suele llamar «pequeños holandeses».<sup>2</sup> Pero no eran en absoluto pequeños: eran pintores muy grandes, y el siglo XVII es la época de su florecimiento. Empezaron a llamarlos «pequeños», con toda probabilidad, en relación con el gran holandés, es decir, con Rembrandt. Es difícil decir hasta qué punto esto es justo, y si en general lo es. Simplemente eran una escuela, tenían valores artísticos comunes, valores culturales comunes y, lo más importante, tenían valores éticos comunes.</p>
+
+    <p>Estos valores estaban dirigidos al pueblo holandés. Los holandeses querían mucho a sus maestros y a sus cuadros. Pero Rembrandt era completamente distinto, no como ellos. Era otro hombre, llevaba otro modo de vida y pintaba cuadros completamente distintos. Y si ahora comparamos cualquiera de los cuadros de Rembrandt pintados por él después de 1634–1635 con cualquiera de los cuadros holandeses, surge la perplejidad: ¿es posible que estas personas pudieran vivir en la misma época? Los llamados «pequeños holandeses», como Terborch o Pieter de Hooch, o maestros del bodegón como Heda o van Beyeren, amaban representar el mundo superficial de la vida, el mundo superficial de las cosas, su belleza tranquila, pausada, perfecta. Aquella belleza que era demandada por la mayoría de los holandeses. ¡Cómo se habían cansado de la guerra despiadada con los españoles, cómo se habían cansado del hambre, del frío, cómo se habían cansado del pathos revolucionario, de las cenizas de Claes que golpeaban en el corazón!<sup>3</sup></p>
+
+    <figure>
+        <img src="15A.jpg" alt="Gerard ter Borch. Entrada del embajador Adriaen Pauw en Münster">
+        <figcaption><strong>Gerard ter Borch. Entrada del embajador Adriaen Pauw en Münster</strong>Hacia 1646. Stadtmuseum, Münster.</figcaption>
+    </figure>
+
+    <figure>
+        <img src="15B.jpg" alt="Pieter de Hooch. Patio de una casa en Delft">
+        <figcaption><strong>Pieter de Hooch. Patio de una casa en Delft</strong>1658. National Gallery, Londres.</figcaption>
+    </figure>
+
+    <figure>
+        <img src="15C.jpg" alt="Pieter de Hooch. Mujer con un niño en una despensa">
+        <figcaption><strong>Pieter de Hooch. Mujer con un niño en una despensa</strong>1658. Rijksmuseum, Ámsterdam.</figcaption>
+    </figure>
+
+    <figure>
+        <img src="15D.jpg" alt="Pieter de Hooch. Mujer con una cesta de habas en un huerto">
+        <figcaption><strong>Pieter de Hooch. Mujer con una cesta de habas en un huerto</strong>1651. Kunstmuseum, Basilea.</figcaption>
+    </figure>
+
+    <p>Y, por supuesto, cuando vencieron y cuando Holanda se convirtió en un notable país burgués, cuando empezó a dirigir el comercio europeo, cuando sus barcos surcaban los mares de todo el mundo, querían una vida confortable, saciada, hermosa, decente, y eso representaban en sus cuadros. Se atenían a determinados géneros de pintura: bodegones, representación de casas, retratos, paisajes; esta es una observación muy importante respecto a lo que hablamos. Porque si Rembrandt pintaba retratos, bodegones o paisajes, siempre eran no solo y no del todo retratos y paisajes. En esto se distinguía mucho de todos sus contemporáneos: su pasión, su atención, su interés interior estaban concentrados precisamente en aquella pintura religiosa cuyos encargos en la Holanda del siglo XVII, en un país protestante, eran completamente impopulares.</p>
+
+    <figure>
+        <img src="15E.jpg" alt="Rembrandt. Autorretrato">
+        <figcaption><strong>Rembrandt. Autorretrato</strong>1659. National Gallery of Art, Washington.</figcaption>
+    </figure>
+
+    <p>Miremos uno de los numerosos autorretratos del pintor holandés Rembrandt van Rijn. Puede llamársele «El hombre de todos los tiempos». Está de pie ante nosotros con la ropa de trabajo, con las manos escondidas tras el cinturón, con una extraña gorra blanda, caída como una hoja de bardana, y mira con mucha atención hacia nosotros, hacia las personas que pasan ante él cada día, o más bien escruta con fijeza la lejanía de la intemporalidad. Se siente en un punto en el que se unen el momento de pintar el retrato, es decir, un tiempo determinado, y el tiempo infinito que ve ante sí. En efecto, Rembrandt van Rijn pertenece al tiempo. Y cuanto más nos adentramos en su obra, cuanto más pensamos en él, más preguntas nos suscita esta personalidad.</p>
+
+    <figure>
+        <img src="15F.jpg" alt="Rembrandt. Autorretrato con dos círculos">
+        <figcaption><strong>Rembrandt. Autorretrato con dos círculos</strong>Hacia 1665–1669. Kenwood House, Londres.</figcaption>
+    </figure>
+
+    <p>La obra de Rembrandt coincidió con el florecimiento del arte holandés del siglo XVII. El arte holandés floreció con extraordinaria fuerza tras la victoria de la revolución holandesa sobre los españoles.</p>
+
+    <p>Los holandeses sufrieron mucho en esa guerra, quedaron completamente extenuados: pasaban hambre, tenían frío. Como en toda guerra que trae destrucción, sufren las personas corrientes, el pueblo llano. Y cuando esa guerra terminó, cuando en Holanda se instauró la paz, los holandeses empezaron a embriagarse con su feliz vida pacífica. Querían que esa vida pacífica, próspera, laboriosa, limpia, bella, no terminara nunca. Y los pintores holandeses reflejaban siempre la aspiración de los holandeses a representar su vida: quizá no del todo tal como era, sino tal como ellos querrían verla en sus retratos, en sus acogedoras casas limpias, en sus bodegones con limones y langostas. Querían ver a muchachas encantadoras, musicando, tocando el clavecín y la guitarra, leyendo cartas de amor y, si enfermaban, enfermando levemente. Eran pintores notables, una escuela completamente singular, asombrosa. Y en Rusia se volvió especialmente popular, porque Pedro el Grande, que amaba mucho Holanda, trabajó en Holanda en el astillero<sup>4</sup>, aprendiendo construcción naval, e inculcó a Rusia el gusto por los «pequeños holandeses».</p>
+
+    <figure>
+        <img src="15G.jpg" alt="Willem Claesz. Heda. Bodegón con jarra de plata y pastel">
+        <figcaption><strong>Willem Claesz. Heda. Bodegón con jarra de plata y pastel</strong>1645. Museo del Castillo de Weimar.</figcaption>
+    </figure>
+
+    <p>Rusia posee una enorme colección de estos pintores. Pero, como observó el notable estudioso, jefe de la escuela filológica de Tartu, Yuri Mijáilovich Lotman, toda cultura está estructurada, y tiene su escuela clásica, su orden, sus principios éticos, estéticos y artísticos claramente expresados. Pero obligatoriamente en esa estructura o en esa cultura hay pérdidas. ¡Y así es! Una de esas pérdidas de la escuela clásica holandesa fue, sin duda, Rembrandt van Rijn. En la historia del arte se suele llamar a estos pintores «pequeños holandeses», y a Rembrandt, «el gran holandés». Pero esta división es incorrecta: ellos no eran «pequeños», y él no era «grande». Simplemente era otro, completamente otro.</p>
+
+    <p>Y si ellos representaban una cosa, veían una cosa, querían esas hermosas faldas de seda, esa bella vajilla y esas casas limpias, a él le interesaba algo completamente distinto: no lo exterior, sino lo interior. Y más que nada le conmovían las entrañas del ser humano, las entrañas del alma humana. Quizá por eso tiene una cantidad tan enorme de autorretratos, ejecutados tanto en pintura como en la técnica del aguafuerte, en la que hasta hoy es uno de los mayores maestros del mundo. Le interesaba esa vida invisible que es la principal, que es la vida esencial. Y a los «pequeños holandeses» no les interesaba esa vida invisible; les interesaba la epidermis de la vida, las imágenes superficiales, y eran hermosas. Aquí la elección carece de sentido.</p>
+
+    <p>Rembrandt procedía de la ciudad de Leiden y era hijo de un molinero acomodado. Era allí como el patito feo. Simplemente como un querubín: «nos trajo algunas canciones paradisíacas».<sup>5</sup> Era completamente distinto.</p>
+
+    <p>Y su vida se distingue del curso habitual del programa vital. Como si para él hubiese sido elegido un destino especial, que él recorrió hasta el final. Precisamente por eso, deseando infinitamente unirse a la escuela holandesa, tener clientes, cumplir encargos, comprendió muy pronto, y a quienes lo rodeaban les era evidente, que eso era simplemente imposible en virtud de su absoluta otredad. Y esa otredad estaba en él mismo. No solo le interesaba la profunda naturaleza interior del hombre, sino que le interesaba además otra cuestión. Quizá precisamente con ese interés se relaciona el que pintara tal cantidad de cuadros sobre temas bíblico-evangélicos, que constituyen dos tercios de su obra, mientras que los holandeses no pintaban cuadros sobre esos temas. Cuando era muy joven, estudió en el taller de Utrecht, con el pintor Terbrugghen.<sup>6</sup> Terbrugghen sí pintaba temas bíblicos. Tiene un cuadro que representa a José el Carpintero.<sup>7</sup></p>
+
+    <figure>
+        <img src="15H.jpg" alt="Retrato de Hendrick ter Brugghen">
+        <figcaption><strong>Retrato de Hendrick ter Brugghen</strong></figcaption>
+    </figure>
+
+    <p>Se llamaban a sí mismos «caravaggistas de Utrecht». Caravaggio influyó en la pintura europea, en la formación del lenguaje realista europeo en la pintura. Y en el cuadro, José cepilla las tablas: es un anciano fuerte, un carpintero corriente, un ebanista, y un niño pequeño, muy lindo, le sostiene la lámpara. Es decir, el tema es como bíblico y, al mismo tiempo, uno lo lee como un tema cotidiano, corriente. Para Rembrandt era importante el misterio no solo del ser humano, sino también los misterios históricos. Por supuesto, era un hombre profundamente religioso, y sin embargo había en él una peculiaridad extraordinaria. Estaba casado, muy afortunadamente, como diríamos ahora. Estaba casado con una de las herederas de la mayor fortuna de Ámsterdam, con Saskia van Uylenburgh.</p><sup>8</sup>
+
+    <figure>
+        <img src="15I.jpg" alt="Rembrandt. Retrato de Saskia van Uylenburgh">
+        <figcaption><strong>Rembrandt. Retrato de Saskia van Uylenburgh</strong>1633. Rijksmuseum, Ámsterdam.</figcaption>
+    </figure>
+
+    <p>Todos estaban contra ese matrimonio, pero Saskia era una dama así: si lo decía, conseguía lo que quería. Amaba a ese hombre y se casó con él. Por eso él podía permitirse muchas cosas que fuera de ese matrimonio no habría podido permitirse. Y la pasión de él era el mercado, el mercado de Ámsterdam. Le gustaba mucho ir al mercado de Ámsterdam, porque allí se podían encontrar cosas asombrosas, y él buscaba esas cosas. Eran antiguos manuscritos árabes que no podía leer, pero sobre los que pasaba simplemente los dedos para palpar todas aquellas escrituras, acariciaba las cubiertas. Compraba telas antiguas asombrosas, armas, muebles, incluso animales. Le fascinaba el tiempo que vivía en esas cosas, transformándolas en espléndidos, como diríamos ahora, artefactos.</p>
+
+    <p>Hay un documento interesante: el inventario de la casa de Rembrandt. Cuando abandonaba su casa en Ámsterdam, se hizo un inventario para vender esa casa.<sup>9</sup> Y por ese inventario comprendemos que vivía en un espacio único, anticuario, histórico-artístico, del que simplemente no salía. ¡Qué antigüedad había allí, qué Oriente había allí! ¡Qué antigüedades orientales había allí! El deseo de entrar, por así decirlo, en la historia, en su interior, de sentirse parte de ese espacio descrito por la Biblia: es una cualidad o un sentimiento completamente asombroso. Tiene raíces psicológicas muy profundas. Rembrandt era otro, y todo el mundo con el que se rodeaba era distinto. Miren sus cuadros sobre temas bíblicos<sup>10</sup> y verán que a través de todos los cuadros pasa un extraño pensamiento sobre el tiempo, que cambia los trajes, el ambiente, la decoración de sus vidas. Y el tiempo no tiene poder sobre las pasiones humanas, sobre el alma humana, sobre los actos humanos, la pasión, el amor, la traición, la infidelidad, las lágrimas, la desesperación, el amor: esto es completamente asombroso.</p>
+
+    <figure>
+        <img src="15J.jpg" alt="Rembrandt. Artemisa">
+        <figcaption><strong>Rembrandt. Artemisa</strong>1634. Museo del Prado, Madrid.</figcaption>
+    </figure>
+
+    <p>El destino dispuso que Rembrandt van Rijn estuviera destinado a perder sus vínculos con el mundo, con los clientes, con los pintores, a causa de su otredad; a perder sus vínculos con la parentela; a perder sucesivamente a sus seres queridos. Y al mismo tiempo no solo a no perderse a sí mismo, sino a sumergirse cada vez más y más en su único y singular mundo. Cuando quedó prácticamente solo, su casa fue vendida, se fueron las cosas artísticas que le eran valiosas, que amaba ver, tocar, que amaba mucho pintar, y él también se marchó. Y de la parte corriente de Ámsterdam se trasladó al gueto judío de Ámsterdam<sup>11</sup>, con el que estaba muy vinculado: pintaba muy a menudo a los habitantes del gueto de Ámsterdam. Holanda era muy tolerante en materia de fe, pero en este caso ellos encarnaban para él, por así decirlo, a los representantes del mundo bíblico, una parte de esa historia física bíblica. Probablemente esto explica su interés por esos rostros, por esas manos nudosas, por esa contemplación profunda.</p>
+
+    <p>«El hijo pródigo» es el testamento de Rembrandt, prácticamente el último cuadro que pintó en su vida. En cualquier caso, así lo datan los historiadores del arte: 1669<sup>12</sup>, el año de su muerte. Existe la suposición de que Rembrandt se dirigió al tema del «Hijo pródigo» en más de una ocasión. Tiene aguafuertes con ese mismo título<sup>13</sup>: «El hijo pródigo». En general hay que decir que este tema estaba bastante difundido en los siglos XVI y XVII. Cuadros muy interesantes sobre este tema los pintó El Bosco, especialmente un cuadro que representa al hijo pródigo abandonando la casa de su padre.</p><sup>14</sup>
+
+    <figure>
+        <img src="15K.jpg" alt="Rembrandt. El regreso del hijo pródigo. Aguafuerte">
+        <figcaption><strong>Rembrandt. El regreso del hijo pródigo. Aguafuerte</strong>1636.</figcaption>
+    </figure>
+
+    <figure>
+        <img src="15L.jpg" alt="El Bosco. El vendedor ambulante (El hijo pródigo)">
+        <figcaption><strong>El Bosco. El vendedor ambulante (El hijo pródigo)</strong>Hacia 1500. Museum Boijmans Van Beuningen, Róterdam.</figcaption>
+    </figure>
+
+    <p>Y Rembrandt se dirigió también a este tema en más de una ocasión. Más aún: Rembrandt tiene un cuadro célebre —incluso las personas que conocen poco a Rembrandt conocen bien esta obra suya—. Se titula «Autorretrato con Saskia en las rodillas», pintado en 1635, expuesto en la Galería de Dresde.<sup>15</sup> Se considera que este cuadro también está pintado según el tema del «Hijo pródigo». Pero el tema de este cuadro es el siguiente: el hijo pródigo dilapida la fortuna de su padre, y el pintor representa precisamente el momento de su juerga y sus francachelas. Los investigadores consideran que este cuadro puede ser una de las variantes del «Hijo pródigo». ¿Por qué no estar de acuerdo con ellos? Después de todo, el cuadro final de su vida también está vinculado con el hijo pródigo, ya que él se identificaba un poco con ese personaje.</p>
+
+    <figure>
+        <img src="15M.jpg" alt="Rembrandt. El hijo pródigo en la taberna (Autorretrato con Saskia en las rodillas)">
+        <figcaption><strong>Rembrandt. El hijo pródigo en la taberna (Autorretrato con Saskia en las rodillas)</strong>Hacia 1635. Gemäldegalerie Alte Meister, Dresde.</figcaption>
+    </figure>
+
+    <p>Hay un hombre cuyo nombre es imposible no mencionar al hablar de Rembrandt o de la técnica de los viejos maestros: es un gran investigador, Armen Vagarshákovich Vartanián. Hizo una brillante copia del «Autorretrato con Saskia en las rodillas». La copia era tan buena que los investigadores prácticamente no podían distinguirla del original. En general existe una historia aparte de estas copias de Armen Vartanián. Contó que para pintar como pintaba Rembrandt, la técnica que existía entonces en Holanda era insuficiente. Y Rembrandt creó su propia técnica, y Vartanián reprodujo su paleta. Explicó que Rembrandt no pintaba del todo con colores al óleo, sino que en su paleta había tacitas y resinas muy espesas. Y aquellos colores que Rembrandt prefería (dorados, ocres, rojo vino —colores pesados—), los pintaba con esas resinas viscosas. Creaban un efecto extraordinario. Por eso cuando ustedes miran el cuadro «Artajerjes, Amán y Ester»<sup>16</sup>, que se conserva en nuestro Museo de Bellas Artes, y miran la cola dorada de Ester, tienen la impresión de que está completamente viva, de que sienten, por así decirlo, el vivo brillo húmedo del oro: precisamente gracias a esa técnica.</p>
+
+    <figure>
+        <img src="15N.jpg" alt="Rembrandt. Asuero, Amán y Ester">
+        <figcaption><strong>Rembrandt. Asuero, Amán y Ester</strong>1660. Museo Estatal de Bellas Artes Pushkin, Moscú.</figcaption>
+    </figure>
+
+    <p>Y Vartanián hizo la copia del «Autorretrato con Saskia en las rodillas» precisamente con la técnica de Rembrandt, con esas pesadas resinas al óleo. Por supuesto, Armen Vagarshákovich era simplemente un hombre genial en la recreación de la técnica de los viejos maestros. No es casual, porque el pintor que va en otra dirección o busca su propio mundo busca siempre también un lenguaje adecuado para expresarlo. El pintor innovador en cualquier campo —ya sea la poesía, la literatura, el arte o incluso el diseño— crea siempre su propia técnica, su propio lenguaje peculiar. Y su mundo propio no se realiza si no tiene un lenguaje para describirlo. Cuando ustedes miran el «Autorretrato con Saskia en las rodillas», que los investigadores consideran una de las variantes del «Hijo pródigo», se crea la impresión de que Rembrandt capta el instante en que nos mira, exultante, feliz, cuando nos dice: «¡Uníos a mi alegría, a mi amor, a mi gozo secreto, a mi vida secreta, y mirad qué mujer tan hermosa tengo, cómo vivo!»</p>
+
+    <figure>
+        <img src="15O.jpg" alt="Rembrandt. Autorretrato con Saskia. Aguafuerte">
+        <figcaption><strong>Rembrandt. Autorretrato con Saskia. Aguafuerte</strong>1636.</figcaption>
+    </figure>
+
+    <p>Fíjense: esto ocurre en un punto muy extraño, en la frontera de un tiempo extraño y del futuro, es decir, de aquello que somos nosotros.</p>
+
+    <p>De Rembrandt se dice que es un pintor de la luz y la sombra, que es el mayor maestro de la luz y la sombra. Esto es justo respecto a los caravaggistas clásicos. Sí, son maestros de la luz y la sombra, pero Rembrandt era maestro no de la luz y la sombra: era maestro del surgir de la sombra. Como si hubiera un cristal negro de espejo, un espejo negro o un vidrio ahumado; uno empieza a limpiarlo y de pronto ve que tras ese vidrio comienza un resplandor dorado y empiezan a fluir hacia nosotros imágenes.</p>
+
+    <p>Es aquello de lo que hablaba Zabolotski: «¿Recuerdas cómo de las tinieblas de lo pasado...?»<sup>17</sup>. Emergen, como de las tinieblas de lo pasado, emergen por un breve instante, se detienen ante nosotros y quedan fijos para siempre. Y un asombroso sentido del tiempo, que se compone de eternidad, de un tiempo desconocido para él por delante y de un tiempo instantáneo. Los holandeses no tenían en el arte esa categoría del tiempo en absoluto: pintaban como si pintaran casas de muñecas. No tienen tiempo en absoluto: tienen antigüedad objetual. Y Rembrandt tiene tiempo vivo, que lo inquietaba y lo rodeaba muy intensamente.</p>
+
+    <p>Todo este relato sobre Rembrandt avanza hacia su cuadro-testamento final, que se conserva en el Ermitage: hacia «El hijo pródigo».</p>
+
+    <p>«El hijo pródigo» es un cuadro sobre el que se ha escrito muchísimo. Los contemporáneos de Rembrandt, desde luego, no escribieron sobre él, porque los contemporáneos lo olvidaron, no tenían la menor noticia de él. Para ellos ni siquiera existía de modo especial; tampoco se preocupaban por él. En general se tiene la impresión de que Holanda no ama mucho a Rembrandt. Sabe cuán grande es, sabe cuánto vale, sabe cuán valioso es, pero no hay impresión de que sea grato a Holanda hasta hoy. Si no, en las numerosas películas sobre Rembrandt no se enumerarían diversas bajezas de su vida, que fueron o no fueron: nadie lo sabe. Nadie lo sabe, pero obligatoriamente se hace hincapié en ellas. Los cuadros religiosos de Rembrandt, por alguna razón, no se muestran en esas películas. Solo se muestran cuadros fallidos sobre algún tema, algunos retratos, pero cuadros religiosos no hay. No puede decirse que el amor de Holanda hacia Rembrandt sea muy grande. Holanda se queda con sus queridos «pequeños holandeses», y Rembrandt sigue sin ser querido.</p>
+
+    <p>«El hijo pródigo» atrae la atención de pintores, investigadores y escritores, y especialmente mucho escribió sobre este cuadro Vasili Kandinski<sup>18</sup>. A Vasili Kandinski le atraía mucho Rembrandt. Puede decirse que Rembrandt es uno de los primeros abstraccionistas del arte universal. No porque pinte abstracciones, sino porque su propia pintura no describe el objeto: la pintura del objeto no coincide con el color y la forma de ese objeto; expresa más bien su esencia artística o emocional, y no su función objetual-cotidiana. Rembrandt siguió un camino impensable. No es que haya adelantado mucho a su tiempo tanto en la pintura como en la psicología del arte, sino que realmente creó un precedente de otra reflexión pictórica y psicológica, temporal, sobre la historia, el amor, el hombre.</p>
+
+    <p>El cuadro «El hijo pródigo» fue adquirido por el príncipe Golitsin para Catalina II en Francia en 1766. Fue comprado a los herederos de Colbert<sup>19</sup>, que vivieron largo tiempo en Holanda y, al parecer, allí adquirieron el cuadro. Catalina II encargó a Golitsin comprar este cuadro: eso dice mucho. En general hay que decir que Rusia posee una de las colecciones más notables de cuadros de Rembrandt, un conjunto realmente único de obras, entre las que hay obras maestras como «Dánae», «El sacrificio de Abraham», «Autorretrato con Saskia»<sup>20</sup>, «Retrato de un anciano de rojo», pero, por supuesto, la principal entre ellas es «El regreso del hijo pródigo».</p>
+
+    <figure>
+        <img src="15P.jpg" alt="Rembrandt. Dánae">
+        <figcaption><strong>Rembrandt. Dánae</strong>1636–1643. Museo del Ermitage, San Petersburgo.</figcaption>
+    </figure>
+
+    <figure>
+        <img src="15Q.jpg" alt="Rembrandt. El sacrificio de Abraham">
+        <figcaption><strong>Rembrandt. El sacrificio de Abraham</strong>1635. Museo del Ermitage, San Petersburgo.</figcaption>
+    </figure>
+
+    <figure>
+        <img src="15R.jpg" alt="Rembrandt. Retrato de un anciano de rojo">
+        <figcaption><strong>Rembrandt. Retrato de un anciano de rojo</strong>1652–1654. Museo del Ermitage, San Petersburgo.</figcaption>
+    </figure>
+
+    <p>«El regreso del hijo pródigo»: ¿qué es este cuadro? Es el final de la historia bíblica, cuando el joven, tras abandonar la casa, quemó su vida, dilapidó toda la fortuna, mucho quiso, nada alcanzó, intentó comenzar de nuevo y de nuevo no pudo alcanzar nada. Con toda probabilidad, le estorbaban pasiones internas desenfrenadas. Su camino fue, al parecer, muy pesado, porque el hombre que llegó al umbral de su padre, el hombre que describe Rembrandt, tiene la cabeza rapada de un penado. Quizá tenía a sus espaldas el presidio.</p>
+
+    <figure>
+        <img src="15S.jpg" alt="Rembrandt. El regreso del hijo pródigo">
+        <figcaption><strong>Rembrandt. El regreso del hijo pródigo</strong>1666–1669. Museo del Ermitage, San Petersburgo.</figcaption>
+    </figure>
+
+    <p>En el cuadro vemos a un hombre que ha vivido su vida, que ha gastado las suelas de sus pies, es decir, en sentido figurado, absolutamente incapaz de seguir. Y llega al umbral de su padre: de aquel cuyas esperanzas no justificó. No se trata siquiera de que dilapidara los bienes paternos: simplemente no justificó el amor paterno, las esperanzas paternas. Rembrandt es un narrador asombroso; siempre construye magníficamente la dramaturgia de sus relatos, y la construye mucho más interesante que los «pequeños holandeses», porque estos representan casas de muñecas. No tanto narran como muestran personajes marioneta, inmovilizados, en los cuadros.</p>
+
+    <p>Y en Rembrandt hay siempre un relato vivo de lo que ocurre. Más aún: ese relato vivo de lo que ocurre emplea muy a menudo lo que la dramaturgia narrativa en las artes plásticas no emplea, a saber: la pausa. Esa pausa la encontró en su día Giotto<sup>21</sup>, y muy pocos pintores cuelgan el momento culminante de su dramaturgia de esa pausa. El hijo que ha regresado al umbral de su padre, que ha dilapidado todo —todo el caudal de sus fuerzas, de sus medios, de sus ambiciones—. Un penado desengañado. Un final terrible de vida.</p>
+
+    <p>Y el padre sale a su encuentro, y el hijo se echa en silencio sobre el padre, y el padre pone las manos sobre su espalda. No hablemos ahora de cómo está pintado este cuadro, porque es casi inútil. Hablar de la pintura de Rembrandt es muy difícil, como de toda pintura verdadera, y no simplemente del coloreado de una superficie. Es ese resplandor, como si desde las tinieblas arrancara un rayo dorado un cuadro de luz. En ese rayo dorado se encienden, se prenden y llamean el escarlata sobre los hombros del padre, los andrajos dorados sobre el cuerpo del hijo, y ese extraño perfil, casi en estado de desmayo, reclinado sobre el padre, esas manos del padre sobre la espalda del hijo. Es simplemente un cuadro asombroso. Es más que un cuadro. Cuando uno mira las obras de Rembrandt, no puede comprender en absoluto que esto sea la Holanda del siglo XVII. Muchos cuadros de Rembrandt, sobre todo los tardíos, por ejemplo «El descendimiento de la cruz»<sup>22</sup> o algunos aguafuertes, por extraño que parezca, se asocian más con el mundo interior de Fiódor Mijáilovich Dostoievski que con los contemporáneos de Rembrandt.</p>
+
+    <p>En la historia del arte se discute qué representan los otros personajes situados en el espacio compositivo del cuadro. El centro del cuadro, como todos advierten, está desplazado a la izquierda. Y precisamente aquí, por así decirlo, ocurre toda la acción, mientras que en el lado derecho otros personajes construyen la profundidad del espacio. ¿Quiénes son, esos personajes? Hay una multitud de suposiciones sobre quiénes son esas personas. De un modo u otro, son testigos de lo que ocurre. Ven el regreso de este hombre, en el umbral de su muerte, al umbral de su padre, que también está en el umbral de su muerte.</p>
+
+    <p>En el arte universal hay cuadros que son más que pintura. Los cuadros de Rembrandt son más que cuadros, salen de los límites de la simple pintura. Es una pintura grandiosa, porque tiene un lenguaje complejo y rico, puede dar impulso a su reflexión sobre algo más. ¿Sobre qué? Sobre uno de los temas más importantes y actuales. Rembrandt pintó un cuadro sobre qué es el pecado y la misericordia. ¿Y qué puede haber hoy para nosotros más importante que esto? Debemos conocer nuestro pecado, debemos confiar en la misericordia divina. Es un cuadro sobre el pecado y la misericordia, sobre lo más importante que en los minutos fatales deben recordar los hombres.</p>
+
+    <p>El cuadro «El hijo pródigo» es una de las mayores obras maestras de la pintura universal. ¿En qué pensaba el pintor cuando lo pintaba? Probablemente pensaba en que él, hijo pródigo en esta vida, espera recibir de su padre el perdón, el perdón silencioso y la misericordia.</p>
+
+    <p>El cuadro nunca fue olvidado. Muchísimas personas vienen expresamente para verlo; lo necesitan. Es un cuadro que tiene un eco muy largo. Y recordemos que una de las últimas resonancias de este cuadro es uno de los finales de la película de Andréi Arsénievich Tarkovski «Solaris». En su película hay varios finales, y uno de ellos es el regreso de Kris Kelvin a la Tierra desde el planeta Solaris. Kris Kelvin, que se quedó en la estación en el océano mundial, según la película regresa a la casa de su padre, metafísicamente regresa.<sup>23</sup> Y Tarkovski construye ese regreso, ese final, según la composición del «Hijo pródigo» de Rembrandt: Kris Kelvin está de rodillas ante su padre, e incluso el giro de la cabeza es el mismo que en el cuadro de Rembrandt. Cae igualmente de rodillas: el hijo pródigo de la eternidad y del espacio eterno, que abandonó la Tierra, su casa, cae de rodillas ante su padre. Tarkovski repite literalmente la composición de Rembrandt. Esto es muy asombroso, porque para crear conscientemente esa composición, que hace eco lejano con el cuadro de Rembrandt, el autor debe tener vivencias del mismo nivel, y son importantes no solo para Kris Kelvin. Probablemente el propio Andréi Arsénievich Tarkovski vivió algo semejante en relación con su padre, el poeta Arseni Aleksándrovich Tarkovski. Sea como fuere, ese final de «Solaris» produce una impresión muy profunda por su ternura y su dramatismo. Y esto en sí mismo es muy significativo, porque es realmente el tema del extravío y el regreso, del pecado y la misericordia. Es aquello sobre lo que están escritos los versos de Arseni Aleksándrovich Tarkovski:</p>
+
+    <div class="verso">
+        <span class="v">Perdóname también a mí este pecado.</span>
+        <span class="v">Perdóname, como a ti te perdonaron.</span>
+        <span class="v">La nieve yace sobre tu tumba.</span>
+        <span class="v">La nieve desciende a la tierra ante todos.</span>
+    </div>
+
+    <section class="footnotes">
+        <h3>Notas del editor</h3>
+        <p>1. El título canónico del cuadro del Ermitage es «El regreso del hijo pródigo» (h. 1666–1669). La autora alterna a lo largo del capítulo «El hijo pródigo» y «El regreso del hijo pródigo»; se ha respetado su uso.</p>
+        <p>2. El término «pequeños holandeses» (en ruso, «малые голландцы»; en neerlandés se habla de «kleinmeesters») alude sobre todo al pequeño formato de los cuadros de gabinete y a la modestia de sus temas, pensados para casas particulares, y no a una comparación con Rembrandt. La propia autora matiza enseguida que la etiqueta no expresa una jerarquía de calidad.</p>
+        <p>3. Alusión a «La leyenda de Ulenspiegel» (1867), de Charles de Coster. Claes, el padre de Till, muere en la hoguera de la Inquisición, y su hijo lleva al cuello una bolsita con sus cenizas: «Las cenizas de Claes golpean en mi corazón». La novela se ambienta en la sublevación de los Países Bajos contra España.</p>
+        <p>4. Pedro I trabajó como carpintero de ribera en 1697, durante la «Gran Embajada», primero en Zaandam y después en los astilleros de la Compañía de las Indias Orientales en Ámsterdam.</p>
+        <p>5. Cita de «Mozart y Salieri» (1830), de Pushkin. Salieri dice de Mozart: «Como un querubín, / nos trajo algunas canciones del paraíso».</p>
+        <p>6. Error de la autora. Rembrandt no se formó en Utrecht ni con Hendrick ter Brugghen. Sus maestros fueron Jacob van Swanenburgh, en Leiden (h. 1621–1624), y Pieter Lastman, en Ámsterdam (h. 1624–1625). Lastman era un pintor de historia de formación italiana. El caravaggismo de Utrecht (Ter Brugghen, Honthorst, Baburen) influyó en el joven Rembrandt de Leiden, pero de forma indirecta.</p>
+        <p>7. El cuadro que se describe a continuación (José cepillando una tabla mientras un niño le alumbra con una vela) no es de Ter Brugghen. Es «San José carpintero» (h. 1642, Museo del Louvre), del lorenés Georges de La Tour. No se conoce ninguna obra de Ter Brugghen con ese tema. Por esa atribución errónea no se reproduce aquí.</p>
+        <p>8. Saskia van Uylenburgh (1612–1642) era hija de Rombertus van Uylenburgh, burgomaestre de Leeuwarden, en Frisia. Aportó al matrimonio (1634) una dote considerable, pero exagera la autora al hablar de «la mayor fortuna de Ámsterdam»: su familia era frisona y, en Ámsterdam, Rembrandt la conoció a través de su primo, el marchante Hendrick van Uylenburgh.</p>
+        <p>9. El inventario se levantó en julio de 1656, cuando Rembrandt solicitó la «cessio bonorum» (una forma de quiebra) y sus bienes quedaron bajo administración judicial. Sus colecciones se subastaron en 1657–1658 y la casa de la Breestraat se vendió en 1658. Hoy es el Museo Casa de Rembrandt.</p>
+        <p>10. La «Artemisa» del Prado no se menciona en el texto, pero el índice de láminas del libro la asigna a este capítulo. Se coloca aquí como ejemplo de esos personajes históricos y bíblicos vestidos con los ropajes y joyas de la colección del pintor. La modelo suele identificarse con Saskia. La identificación del tema (Artemisa o Sofonisba) es discutida.</p>
+        <p>11. La autora invierte los hechos. Desde 1639 Rembrandt vivía en la Sint-Antoniesbreestraat (hoy Jodenbreestraat), precisamente en el barrio donde se habían asentado los judíos sefardíes, y allí pintó y dibujó a muchos de sus vecinos. Además, Ámsterdam no tenía un gueto cerrado. Tras la ruina, en 1658, se mudó a una casa alquilada en la Rozengracht, en el popular barrio del Jordaan, donde murió en 1669.</p>
+        <p>12. La datación más habitual es h. 1666–1669 (así figura en el índice de láminas). Que sea literalmente su último cuadro es una hipótesis, no un hecho documentado.</p>
+        <p>13. Rembrandt grabó un único aguafuerte con este tema, «El regreso del hijo pródigo» (1636), y le dedicó además varios dibujos.</p>
+        <p>14. Se trata probablemente de la tabla circular del Museum Boijmans Van Beuningen de Róterdam (h. 1500), llamada «El vendedor ambulante» o «El hijo pródigo». El Bosco repitió un personaje muy parecido en las puertas exteriores del tríptico del «Carro de heno» (Museo del Prado). La identificación del tema es discutida.</p>
+        <p>15. Hoy se data hacia 1635. Se conserva en la Gemäldegalerie Alte Meister de Dresde y el índice de láminas lo titula «El hijo pródigo en la taberna». La lectura como escena del hijo pródigo se apoya, entre otras cosas, en la pizarra de cuentas que cuelga al fondo, a la izquierda.</p>
+        <p>16. El título del Museo Pushkin es «Asuero, Amán y Ester» (1660). El rey Asuero del libro de Ester se identificó tradicionalmente con Artajerjes (así en la Septuaginta), de ahí la denominación rusa que usa la autora.</p>
+        <p>17. Primer verso de «Retrato» (1953), de Nikolái Zabolotski, dedicado al retrato de Aleksandra Struiskaya pintado por Fiódor Rokótov: «¿Recuerdas cómo de las tinieblas de lo pasado, / apenas envuelta en raso, / desde el retrato de Rokótov / otra vez nos miraba la Struiskaya?».</p>
+        <p>18. Kandinski evoca su descubrimiento de Rembrandt en el Ermitage en «Mirada retrospectiva» (1913): habla del gran claroscuro, que para él era como un «acorde», y de la acción prolongada en el tiempo de sus cuadros. No consta un escrito extenso suyo dedicado específicamente a «El regreso del hijo pródigo».</p>
+        <p>19. Es sustancialmente correcto. El cuadro se compró en París en 1766, por encargo de Catalina II y a través del príncipe Dmitri Alekséyevich Golitsin, de la colección del duque de Caderousse. Este la había heredado por vía de su esposa, descendiente de Charles Colbert de Croissy, diplomático de Luis XIV que pudo adquirir el lienzo en Holanda.</p>
+        <p>20. El Ermitage no posee ningún «Autorretrato con Saskia»: ese cuadro está en Dresde, como la propia autora dijo antes. Quizá pensaba en «Flora» (1634, Ermitage), para la que posó Saskia. «Dánae» (1636, repintada h. 1643) sufrió en 1985 un ataque con ácido y cuchillo, y fue restaurada durante doce años.</p>
+        <p>21. Véase el capítulo dedicado a Giotto y Francisco de Asís («Aquel que una vez pensó y actuó»).</p>
+        <p>22. Los dos «Descendimientos» pintados de Rembrandt no son tardíos: el de Múnich es de h. 1633 y el del Ermitage, de 1634. Sí lo es, en cambio, el aguafuerte «El descendimiento de la cruz a la luz de una antorcha» (1654).</p>
+        <p>23. En el plano final de «Solaris» (1972), la cámara se eleva y revela que la casa paterna, ante la que Kelvin se arrodilla, está en una isla del océano de Solaris. Es una materialización del planeta, no un regreso real a la Tierra, de ahí que la autora hable de un regreso «metafísico».</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>
