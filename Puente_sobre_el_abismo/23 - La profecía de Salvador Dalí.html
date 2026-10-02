@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Capítulo 23. La profecía de Salvador Dalí — Un puente sobre el abismo</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.subtitulo { text-align: center; font-size: 1.05rem; font-style: italic; color: var(--text-secondary); margin: 0 0 2.4rem; text-indent: 0; line-height: 1.45; }
+.epigrafe { margin: 3.2rem 0 1.6rem; font-size: .95rem; font-weight: 700; line-height: 1.45; letter-spacing: .07em; text-align: center; text-transform: uppercase; color: var(--realce); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .subtitulo + p, .epigrafe + p, .epigrafe-inicial + p, figure + p, .image-container + p, .verso + p, .cita + p, .firma + p, .sin-sangria + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+figure { margin: 2.4rem 0; text-align: center; }
+figure img { max-width: 100%; height: auto; border: 1px solid var(--border-color); box-shadow: 0 4px 12px rgba(0,0,0,0.3); border-radius: 2px; }
+figcaption { margin-top: .7rem; font-size: .84rem; font-style: italic; line-height: 1.45; text-align: left; color: var(--text-muted); }
+figcaption strong { color: var(--text-secondary); font-style: normal; font-weight: 700; display: block; margin-bottom: .2rem; }
+.image-container { margin: 2.4rem auto; text-align: center; max-width: 100%; }
+.image-container img { max-width: 100%; height: auto; display: block; margin: 0 auto .8rem auto; border: 1px solid var(--border-color); box-shadow: 0 4px 12px rgba(0,0,0,0.3); border-radius: 2px; }
+.image-caption { margin: 0; text-align: left; font-size: .84rem; color: var(--text-muted); font-style: italic; text-indent: 0; line-height: 1.45; }
+.verso { margin: 1.6rem 0 1.6rem 2.2rem; font-style: italic; line-height: 1.5; }
+.verso .v { display: block; text-indent: -1.2em; padding-left: 1.2em; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .verso, .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+    .image-container { max-width: 100%; }
+}
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+
+    <header class="cab">
+        <p class="cab__num">Capítulo 23</p>
+        <h1 class="cab__tit">La profecía de Salvador Dalí</h1>
+    </header>
+
+    <p>El pintor español Salvador Dalí tenía una excelente opinión de sí mismo… o fingía tener una excelente opinión de sí mismo. Decía: «El surrealismo soy yo».<sup>1</sup> No, no puede decirse que el surrealismo sea él. Pero era un genial inventor, un tipo extravagante, extraordinario; había mucho de él, era espléndidamente extravagante y se esforzaba por no parecerse en nada a los demás, cosa que le salía a la perfección. Y al mismo tiempo precisamente Salvador Dalí, como ningún otro surrealista, estaba dolorosa, sensiblemente vinculado a su tiempo.</p>
+
+    <p>Cuando miramos los cuadros de los impresionistas, vemos cómo están vinculados al mundo, pero no cómo están vinculados, por ejemplo, a la guerra franco-prusiana. Y cuando vemos a un surrealista como Salvador Dalí, vemos cómo él, con toda su bufonería (y la bufonería era programática: él mismo decía que en la sociedad debe haber un bufón, refiriéndose, por supuesto, al bufón shakespiriano, que puede decir la verdad sin pestañear), está vinculado a todos los problemas actuales del mundo, a las nuevas teorías sobre el mundo y el hombre, a la cultura universal. Los impresionistas se alejaron del mito, y Dalí volvió de nuevo a él, porque el mito está vinculado al sueño, está vinculado al pensamiento arquetípico. Para Dalí el mito tiene una importancia enorme. Y le inquietaba todo lo que ocurría en el mundo: los ensayos atómicos, la Segunda Guerra Mundial…</p>
+
+    <p>En 1955 Salvador Dalí<sup>2</sup>, que en ese tiempo se ocupaba en serio de los problemas del cristianismo (y no simplemente del cristianismo, sino del significado de la religión en el mundo y de la situación histórica en la que se encuentra), pinta uno de sus cuadros principales: «La Última Cena». Es la última comida en la noche de Pascua, la comida de Cristo y de los doce discípulos elegidos por él, a los que llamó apóstoles. Salvador Dalí se apasionaba mucho por Leonardo da Vinci. Para él era muy importante el cuadro pintado por Leonardo en 1495–1498<sup>3</sup> y conservado hoy en el refectorio del monasterio de Santa Maria delle Grazie.</p>
+
+    <figure>
+        <img src="23A.jpg" alt="Salvador Dalí. El sacramento de la Última Cena">
+        <figcaption><strong>Salvador Dalí. El sacramento de la Última Cena</strong>1955. National Gallery of Art, Washington.</figcaption>
+    </figure>
+
+    <figure>
+        <img src="23B.jpg" alt="Leonardo da Vinci. La Última Cena">
+        <figcaption><strong>Leonardo da Vinci. La Última Cena</strong>1495–1498. Refectorio de Santa Maria delle Grazie, Milán.</figcaption>
+    </figure>
+
+    <p>El día en que ocurren los acontecimientos representados en el cuadro era el día del sacrificio del cordero. Cristo es el cordero del sacrificio, y lo advierte a los discípulos. Y ellos entienden poco, como después se sabe. Lo único que entendieron fue que era una sentencia acusatoria, pues Él dijo: «Uno de vosotros me traicionará». ¿Qué hacen? Miremos el cuadro. Preguntan: «¿Soy yo, Señor?» Para Leonardo da Vinci, en la composición de este fresco es muy interesante la dinámica misma; recuerda a una piedra arrojada al agua: ¡pum!, cayó la piedra, se dispersan las ondas, una, otra, otra… Así también aquí: las palabras de Cristo, va una onda, tres discípulos a la derecha y a la izquierda, cesura, va la segunda onda… Pronunció esas palabras, y después viene la reacción psicológica. Leonardo muestra hasta qué punto el gesto es más veraz e instantáneo que la palabra: «¡Tú eres el traidor!» — «¿Yo?» — «¡No, yo no!» Reaccionan a esas palabras al instante, como si hubiera sonado un disparo, y la reacción a él. Es una investigación psicológica grandiosa, y aún más profunda: es el estudio de la unión de la reacción psíquica y el gesto. Y Leonardo no podía comprender de ningún modo (después se ocupó expresamente de este problema): de qué modo va la reacción del gesto y después la de la palabra. Pero la tarea es tal que incluso hoy no se sabe cómo resolverla.</p>
+
+    <p>Situación existencial, crítica, tajante, peligrosa, y su relación con ella. Entre todos los apóstoles hay uno, Tomás, que está en el grupo de la derecha.<sup>4</sup> Tomás no responde, sino que pregunta. Levanta un dedo: es un gesto muy importante. Tomás pregunta: «¿Uno?» Sabemos qué ocurrió después, sabemos que los apóstoles se durmieron, aunque habían sido advertidos. Detengámonos en ese gesto: «¿uno?…». Lo recordaremos cuando volvamos al cuadro de Dalí.</p>
+
+    <figure>
+        <img src="23C.jpg" alt="Leonardo da Vinci. La Última Cena (detalle). Santo Tomás, Santiago el Mayor y Felipe">
+        <figcaption><strong>Leonardo da Vinci. La Última Cena (detalle). Santo Tomás, Santiago el Mayor y Felipe</strong>1495–1498. Refectorio de Santa Maria delle Grazie, Milán.</figcaption>
+    </figure>
+
+    <p>Recordemos también el cuadro «La Última Cena», pintado por N.N. Ge en 1863. Fue mostrado en una exposición en la Academia de Bellas Artes. Ese cuadro provocó toda una tempestad en la sociedad rusa, nadie podía contenerse y no expresar su opinión sobre él. Es un asunto que no entra en la tradición religiosa rusa. En la tradición rusa de la pintura religiosa entran en lo fundamental los asuntos de las fiestas: la Anunciación, la Navidad, la Trinidad. Pero los temas dramatúrgicos negativos, como la traición, no entran en ella. Puede decirse que a mediados del siglo XIX N.N. Ge fue prácticamente el primero que escribió ese tema así.<sup>5</sup> En Occidente es una tradición continua, no tienen cerrazón sobre ese tema: cualquier asunto del Antiguo y del Nuevo Testamento tiene derecho a ser representado. Para Occidente, mostrar a la Madre de Dios con los rasgos de la amada, la madre o la hija es cosa corriente. Cristo o los apóstoles también tienen prototipos. En Rusia, en cambio, es imposible que Cristo tenga un prototipo. Y en el cuadro de Ge Cristo tiene un prototipo: Herzen.<sup>6</sup> En la figura del apóstol Pedro el pintor se pintó a sí mismo. Y la figura de Judas está pintada muy bellamente: oscura, frágil… Se ha cubierto con el talit. En el Evangelio de Juan Cristo dice que lo traicionará aquel a quien él, mojando, dé el pan. Y después se dice de Judas: «Él, tomando el bocado, salió en seguida; y era noche»<sup>7</sup>. Era de noche, y en la ventana vemos una luz verde fosforescente, una sombra casi incorpórea: el misterioso signo del mal que sale, el presagio de la desgracia. Y todos están agitados, y solo Él lo sabe… En el Evangelio de Mateo se dice: «Y Judas, el que le entregaba, respondiendo, dijo: ¿Soy yo, Maestro? Le dijo: Tú lo has dicho».</p>
+
+    <figure>
+        <img src="23D.jpg" alt="Nikolái Gue. La Última Cena">
+        <figcaption><strong>Nikolái Gue. La Última Cena</strong>1863. Museo Estatal Ruso, San Petersburgo.</figcaption>
+    </figure>
+
+    <p>«La Última Cena», además de todo lo demás, tiene un aspecto místico. Mientras los apóstoles vociferaban: «¿Yo?… ¿No soy yo?…», Jesús partió el pan y, repartiéndolo, dijo: «esto es mi Cuerpo».</p>
+
+    <p>Y he aquí 1955, y Salvador Dalí. Veamos qué pintó. Pinta un cuadro muy cabalístico, hermético. Hay en él una simbología cifrada. Dalí pinta un cuadro en el que no se puede separar una cosa de otra: el espacio en el que están sentados los apóstoles, la gran mesa de piedra, la figura de Cristo, el paisaje que a todos los rodea. Es un paisaje asombroso, que Dalí pintaba siempre. Si se miran sus cuadros, puede verse que no pinta otro paisaje. Es el paisaje del lugar donde vivía cuando fue expulsado de la casa paterna, cuando se casó con su Gala. Ese lugar se llama Port Lligat.<sup>8</sup> Dalí pinta siempre precisamente ese, no hay ni un solo cuadro suyo en el que tenga otro paisaje. Hay en él una cosmicidad del espacio aún no creado por el Padre y Creador, una cierta primariedad, un carácter originario.</p>
+
+    <p>Volvamos a la esencia de la cena en Leonardo o en Ge. Recordemos el dedo de Tomás, levantado hacia arriba: «¿El traidor es uno?» Salvador Dalí responde: «No, traidor es cada uno». Miremos a los apóstoles: cada uno de los sentados traicionó, y Pedro también. Son especulares: seis sentados a la derecha repiten a los seis sentados a la izquierda. Todos están sumidos en sí mismos, en su conciencia, en sus reflexiones.</p>
+
+    <p>Este cuadro tiene muchísimos subtextos, muchas interpretaciones. Empecemos por el hecho de que en el cristianismo primitivo, en el arte de las catacumbas, están presentes las imágenes de dos peces: el signo del zodíaco. Pueden verse en Roma, en el museo del cristianismo primitivo. Si ahora nuestro mundo ha pasado al signo de Acuario, en la época en que nació Cristo pasaba al signo de Piscis, y Cristo aparece con frecuencia representado en forma de pez. Incluso lo llamaban «ichthys», es decir, pez.<sup>9</sup> En Dalí está representado como Cristo y como pez: «ichthys». Y también las barcas: las barcas están también vinculadas al tema de los apóstoles, pescadores, pescadores de almas. Y ni siquiera están tanto vinculadas al texto evangélico cuanto que crean una distancia espacial mística entre nosotros y el otro elemento, en el que Él se encuentra. Esas barcas hiperrealistas tras la mesa de piedra, flotando en el agua… Él está muy cerca y muy lejos; está aquí y no aquí.</p>
+
+    <p>Todo ese espacio está señalado por un cristal transparente pentagonal.<sup>10</sup> Están sentados en un cristal transparente, y cada cara de ese cristal tiene cinco ángulos. Esos cinco ángulos no son en absoluto casuales: ese pentágono se llama pentagrama, o pentáculo. Es una construcción cristalina: un pentáculo compuesto de pentáculos. Y el pentáculo representa todos los elementos: tierra, agua, fuego, aire y éter: el ángulo superior. Ese cuerpo etéreo pende sobre nosotros. O puede describirse esa figura así: cuadrado más triángulo. El cuadrado es símbolo místico; sobre su base se construyó toda la arquitectura medieval, a él está vinculado el concepto de tierra. El triángulo es el concepto de resurrección, de éter. Ese pentáculo tiene además otra lectura, la más antigua, cuando a Cristo se le llamaba «ichthys»: Jesús Cristo, Hijo de Dios, Salvador. En la palabra «ichthys» hay cinco letras que se inscriben en el pentáculo. Y no es casual que Bulgákov llame a su héroe Yeshúa. Yeshúa es también un nombre temprano de Cristo, y también se inscribe en ese pentáculo. Dalí se apasionaba mucho por la numerología. Formas, símbolos, números: todo eso son características de la imagen. Y en el cuadro tenemos ante nosotros la imagen de ese cristal, de ese espacio místico, que es el «ichthys».</p>
+
+    <p>Eso es lo que entra en el tejido plástico del cuadro: todo él es como hiperreal, y al mismo tiempo flota, se desvanece. ¡Qué rígidos parecen esos travesaños, pero también ellos se desvanecen…! Un lugar muy grande ocupa en este cuadro el cielo. Está pintado de un modo sin par. Salvador Dalí escribe en sus memorias: «No sé qué es el cielo.<sup>11</sup> El cielo arriba y abajo, está a la derecha y a la izquierda… No lo siento. No sé qué es el cielo. El cielo está en nosotros. Somos nosotros quienes contenemos el cielo en nosotros».</p>
+
+    <p>Así, vemos que cada uno de los elementos de la imagen creada en este cuadro tiene un sentido muy profundo.</p>
+
+    <p>Y aún otro sentido de «La Última Cena» de Dalí: es el tema de la traición, del conocimiento y de la inmersión en sí mismo. Después de la Segunda Guerra Mundial adquieren gran importancia las reflexiones sobre qué es la culpabilidad y la inocencia, qué es la elección, en qué mundo nuevo comenzamos a vivir. Para Salvador Dalí esas reflexiones son muy importantes. ¿Y qué conclusión saca cuando pinta «La Última Cena»? Salvador Dalí odia la guerra. Tiene un cuadro de 1940 en el que expresó por completo su odio a la guerra<sup>12</sup>: en el cuadro está representado un gran cráneo, y en sus cuencas y en su boca, otros cráneos. Para él la guerra es destrucción, y la odia. Pero no odia solo la guerra. Escribía: «Odio la guerra. Odio toda clase de ideologías colectivas<sup>13</sup>, gregarias: el nacionalsocialismo, el comunismo, el radicalismo. Todas son agresivas, arrojan a la sociedad a la Edad Media». Pero nosotros vivimos hoy precisamente como en la Edad Media: una fragmentación política infinita, una enorme cantidad de instituciones internacionales que intentan regular de algún modo esa fragmentación… Y lo más importante: la enemistad nacional y confesional. ¿Acaso no es la Edad Media? Y Dalí decía: «No importa, pasaremos por la Edad Media, creo que lo sobreviviremos y tras ello llegará de nuevo el Renacimiento. Y será una época de individualización». Y en el cuadro «La Última Cena» todo eso está presente.</p>
+
+    <figure>
+        <img src="23E.jpg" alt="Salvador Dalí. El rostro de la guerra">
+        <figcaption><strong>Salvador Dalí. El rostro de la guerra</strong>1940. Museo Boijmans Van Beuningen, Róterdam.</figcaption>
+    </figure>
+
+    <p>Sobre Salvador Dalí se discute hasta hoy mucho. Pero este cuadro suyo, «La Última Cena», contiene un enunciado muy moderno y proféticamente optimista. Dalí se preocupaba mucho por el mundo en el que vive. Y todo lo colectivo le provocaba siempre aversión, pero estaba seguro de que sobreviviríamos a ello, de que tomaríamos conciencia de todas nuestras traiciones y saldríamos al grado más alto de la sociedad humana: a la sociedad de alta individualización, a la posibilidad de la manifestación personal.</p>
+
+    <section class="footnotes">
+        <h3>Notas del editor</h3>
+        <p>1. «Le surréalisme, c’est moi»: la frase se atribuye a Dalí tras su expulsión del grupo surrealista de André Breton en 1939.</p>
+        <p>2. «El sacramento de la Última Cena» (1955, National Gallery of Art, Washington). El índice de láminas del libro lo fecha por error en 1951; el pie de la imagen da la fecha correcta.</p>
+        <p>3. No es un fresco, aunque la autora lo llame así más abajo: Leonardo pintó al temple y óleo sobre una preparación seca del muro, lo que explica su rápido deterioro.</p>
+        <p>4. Tomás aparece a la izquierda de Cristo, en el grupo que para el espectador queda a la derecha, con el índice levantado, entre Santiago el Mayor y Felipe.</p>
+        <p>5. La Última Cena sí forma parte de la tradición religiosa rusa. Suele ocupar un lugar fijo en el iconostasio, sobre las Puertas Reales, en su variante eucarística (la Comunión de los apóstoles). Lo nuevo en Gue (o Ge, 1831–1894) es el tratamiento dramático, a la manera occidental, de la traición de Judas. El cuadro se expuso en la Academia de Bellas Artes en 1863 y fue comprado por Alejandro II.</p>
+        <p>6. La afirmación procede de la tradición crítica rusa: Gue, que conoció a Herzen en Florencia, se habría inspirado en una fotografía suya para la cabeza de Cristo. La crítica también ha visto un autorretrato del pintor en el apóstol Pedro. No hay documentación directa de ninguna de las dos cosas.</p>
+        <p>7. Juan 13, 30. La cita siguiente es Mateo 26, 25.</p>
+        <p>8. Dalí compró una barraca de pescadores en Portlligat (Cadaqués) en 1930, tras romper con su padre por su relación con Gala; se casaron por lo civil en 1934. El paisaje del cabo de Creus y de la bahía de Portlligat aparece en muchísimos de sus cuadros, pero no en todos.</p>
+        <p>9. Ἰχθύς es un acróstico griego: Ἰησοῦς Χριστὸς Θεοῦ Υἱὸς Σωτήρ, «Jesús Cristo, Hijo de Dios, Salvador». La relación con el signo zodiacal de Piscis es una especulación moderna. En el cuadro de Dalí no hay ningún pez: sobre la mesa se ve un torso de brazos abiertos, sin cabeza, que suele interpretarse como Dios Padre o el Cristo glorioso.</p>
+        <p>10. La estructura que envuelve la escena es un dodecaedro, el sólido de doce caras pentagonales que Platón asocia en el «Timeo» con el cosmos y que dibujó Leonardo para la «Divina proporción» de Luca Pacioli (1509). Un pentágono no es un pentagrama (la estrella de cinco puntas) ni un pentáculo.</p>
+        <p>11. No hemos podido localizar esta cita en «Vida secreta de Salvador Dalí» (1942) ni en el «Diario de un genio» (1964).</p>
+        <p>12. «El rostro de la guerra» (1940, Museo Boijmans Van Beuningen, Róterdam), pintado en California al final de la Guerra Civil española y al comienzo de la Segunda Guerra Mundial.</p>
+        <p>13. No hemos podido localizar esta cita. Conviene recordar que Dalí, tras regresar a España en 1948, se declaró públicamente partidario de Franco.</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>
