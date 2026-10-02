@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Capítulo 22. La pintura más humana — Un puente sobre el abismo</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.subtitulo { text-align: center; font-size: 1.05rem; font-style: italic; color: var(--text-secondary); margin: 0 0 2.4rem; text-indent: 0; line-height: 1.45; }
+.epigrafe { margin: 3.2rem 0 1.6rem; font-size: .95rem; font-weight: 700; line-height: 1.45; letter-spacing: .07em; text-align: center; text-transform: uppercase; color: var(--realce); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .subtitulo + p, .epigrafe + p, .epigrafe-inicial + p, figure + p, .image-container + p, .verso + p, .cita + p, .firma + p, .sin-sangria + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+figure { margin: 2.4rem 0; text-align: center; }
+figure img { max-width: 100%; height: auto; border: 1px solid var(--border-color); box-shadow: 0 4px 12px rgba(0,0,0,0.3); border-radius: 2px; }
+figcaption { margin-top: .7rem; font-size: .84rem; font-style: italic; line-height: 1.45; text-align: left; color: var(--text-muted); }
+figcaption strong { color: var(--text-secondary); font-style: normal; font-weight: 700; display: block; margin-bottom: .2rem; }
+.image-container { margin: 2.4rem auto; text-align: center; max-width: 100%; }
+.image-container img { max-width: 100%; height: auto; display: block; margin: 0 auto .8rem auto; border: 1px solid var(--border-color); box-shadow: 0 4px 12px rgba(0,0,0,0.3); border-radius: 2px; }
+.image-caption { margin: 0; text-align: left; font-size: .84rem; color: var(--text-muted); font-style: italic; text-indent: 0; line-height: 1.45; }
+.verso { margin: 1.6rem 0 1.6rem 2.2rem; font-style: italic; line-height: 1.5; }
+.verso .v { display: block; text-indent: -1.2em; padding-left: 1.2em; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .verso, .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+    .image-container { max-width: 100%; }
+}
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+
+    <header class="cab">
+        <p class="cab__num">Capítulo 22</p>
+        <h1 class="cab__tit">La pintura más humana</h1>
+    </header>
+
+    <p>Desde finales de los años 1860, y más exactamente desde 1869, en París, en el café «Guerbois»<sup>1</sup> de Batignolles, comenzó a reunirse un grupo de pintores. En ese grupo entraban Auguste Renoir, Claude Monet, Edgar Degas, Berthe Morisot, Alfred Sisley y otros. Todos ellos fueron después adscritos al número de los pintores impresionistas. Su líder fue Édouard Manet, entonces ya universalmente conocido y reconocido líder del nuevo arte francés.</p>
+
+    <p>Édouard Manet fue discípulo del académico Couture. Hoy es muy interesante ver en el museo de Orsay sus obras: en una pared, el enorme lienzo académico de Couture «Los romanos de la decadencia», y enfrente cuelgan los pequeños cuadros de Édouard Manet. Y da la impresión de que entre ellos hay realmente un abismo, de que pertenecen a dos épocas completamente distintas. Édouard Manet era un auténtico hombre de la nueva época, del nuevo tiempo. Édouard Manet era un hombre que pensaba y vivía de un modo absolutamente distinto. Dijo: «Es hora de volver a la pintura. El fin de la pintura es la pintura<sup>2</sup>, la tarea del cuadro es la pintura». ¿Y cómo volvía él a ella? Decía: «Para volver a la pintura hay que girar la cabeza hacia atrás, hacia su origen, hacia aquel punto donde surgió el cuadro pictórico europeo, donde surgió el arte de caballete europeo, donde fue declarado, donde se plantearon las tareas de la pintura y donde fueron resueltas. Es decir, hacia los venecianos del siglo XVI».</p>
+
+    <figure>
+        <img src="22A.jpg" alt="Thomas Couture. Los romanos de la decadencia">
+        <figcaption><strong>Thomas Couture. Los romanos de la decadencia</strong>1847. Museo de Orsay, París.</figcaption>
+    </figure>
+
+    <p>Miremos el cuadro de Giorgione «Concierto campestre», donde sobre la hierba, en el calor sofocante del verano, están sentados dos hombres vestidos con instrumentos musicales y dos hermosas mujeres desnudas. Ese calor, ese pastor que lleva los rebaños por el camino… El cuadro se llama «Concierto», pero no en absoluto porque allí las personas toquen instrumentos musicales, sino porque hay en él una cierta armonía: armonía del hombre y la naturaleza, cierta consonancia, el asombroso sonar simultáneo de distintas voces, instrumentos, sinfonismo pictórico.</p>
+
+    <figure>
+        <img src="22B.jpg" alt="Giorgione (o Tiziano). Concierto campestre">
+        <figcaption><strong>Giorgione (o Tiziano). Concierto campestre</strong>H. 1509. Museo del Louvre, París.</figcaption>
+    </figure>
+
+    <p>Ese cuadro, después de tantos años, Édouard Manet de algún modo lo repite, como copia de autor, y pinta su «Desayuno sobre la hierba». Eso significaba el regreso a los orígenes pictóricos. Cosa asombrosa: volviendo a los orígenes de la pintura, creaba un cuadro absolutamente nuevo, que no representa nada más que lo que vemos en él. Pero es extraordinariamente interesante, muy inusual por su composición, por su tarea. Ese picnic, esas dos mujeres: semivestida y desnuda… Y además toda Francia reconocía a la desnuda: era la famosa cortesana Victorine Meurent<sup>3</sup>. Y toda Francia reconocía a los hombres que estaban sentados sobre la hierba. Por supuesto, fue un shock, una provocación. Pero la cosa no está en la provocación, la cosa está en que eso era precisamente el regreso a la pintura. El cuadro era una obra de pintura, y no agitación, ni moral, ni sermón.</p>
+
+    <figure>
+        <img src="22C.jpg" alt="Édouard Manet. Desayuno sobre la hierba">
+        <figcaption><strong>Édouard Manet. Desayuno sobre la hierba</strong>1863. Museo de Orsay, París.</figcaption>
+    </figure>
+
+    <p>Estos pintores no se interesaban en absoluto por la vida social: no leían a nadie moralejas, no se interesaban por ricos y pobres. Simplemente describían la vida a su alrededor. ¿Y cómo la describían? Iban a los pequeños circos-carpa, iban entre bastidores del teatro, pintaban palcos, bailes. El famoso «La Grenouillère» de Renoir representa a simples empleados, a mujeres de lo más corriente, que se reunían los domingos a divertirse. Estos pintores nos dejaron la imagen de París. Gracias a ellos conocemos los talleres donde se hacían sombreros, conocemos los pequeños cafés, las cantantes… lo conocemos todo. Una descripción tan completa de la vida, del mundo vivo, real, no inventado, que respira, como la que ellos dejaron, no la dejó nunca más nadie. No es el intelectualismo de las construcciones sobre el tema del bien y del mal, es la vida misma.</p>
+
+    <figure>
+        <img src="22D.jpg" alt="Pierre-Auguste Renoir. La Grenouillère">
+        <figcaption><strong>Pierre-Auguste Renoir. La Grenouillère</strong>1869. Museo Nacional, Estocolmo.</figcaption>
+    </figure>
+
+    <p>En todos estos cuadros hay una cosa asombrosa: cierta fragmentariedad; parecen describir un fragmento arrancado de la vida. Miremos «El palco» de Renoir: podemos mover el marco del cuadro en cualquier dirección, ante nosotros hay como simplemente un fragmento de espacio. El espacio se vuelve fragmentario, el tiempo se vuelve corto, y no prolongado, no petrificado. Esos gemelos alzados del hombre que otea los otros palcos, esa mirada lánguida de la mujer, ese ramo sobre su pecho… O la niña acróbata bajo la cúpula del circo en Degas<sup>4</sup>: está representado el instante en que echa la cabeza hacia atrás. Es un fragmento de tiempo, de espacio, de acción, de movimiento.</p>
+
+    <figure>
+        <img src="22E.jpg" alt="Pierre-Auguste Renoir. El palco">
+        <figcaption><strong>Pierre-Auguste Renoir. El palco</strong>1874. Courtauld Gallery, Londres.</figcaption>
+    </figure>
+
+    <figure>
+        <img src="22F.jpg" alt="Edgar Degas. Miss La La en el circo Fernando">
+        <figcaption><strong>Edgar Degas. Miss La La en el circo Fernando</strong>1879. National Gallery, Londres.</figcaption>
+    </figure>
+
+    <p>La tarea del pintor ha cambiado, la finalidad del cuadro ha cambiado. En esa fragmentariedad, en el elemento del tiempo y del espacio, probablemente está contenida la aguda sensación de contacto con la vida. Miremos «Las carreras» de Degas<sup>5</sup> o sus cuadros sobre el tema del ballet: se crea la impresión de que usted es partícipe de esa acción. Las personas del cuadro no posan para usted; usted es como un observador, como si espiara tras ellos. Cualesquiera cuadros pinten estos artistas, usted tiene siempre, en primer lugar, una sensación muy aguda de presencia dentro, de unidad en el espacio y, en segundo lugar, un sentimiento vivo, como el que uno tiene en la calle, en la conversación: «esto es aquí y ahora, esto no se ha petrificado para los siglos». Por eso los impresionistas se convierten en los primeros grandes poetas de la nueva ciudad, del nuevo mundo, de la plenitud de toda su vida. Es la sensación de que usted vivió entonces, estuvo en aquel café del cuadro de Degas «Ajenjo»<sup>6</sup>, donde estaban sentados esos dos, tan solos, tan desgarrados. Qué luz perlada se vierte desde la ventana… Y después usted lo olvida, olvida siempre ese instante de observación, cae en un estado de goce por contemplar los cuadros. Están pintados de un modo tan asombroso que después usted pierde la conexión con la acción y comienza a vivir la belleza de la pintura misma. Los impresionistas fueron los primeros en hacer de la pintura el objeto de su arte. Fueron ante todo pintores.</p>
+
+    <figure>
+        <img src="22G.jpg" alt="Edgar Degas. Antes de la salida">
+        <figcaption><strong>Edgar Degas. Antes de la salida</strong>1882–1884. Walters Art Museum, Baltimore.</figcaption>
+    </figure>
+
+    <figure>
+        <img src="22H.jpg" alt="Edgar Degas. La absenta">
+        <figcaption><strong>Edgar Degas. La absenta</strong>1876. Museo de Orsay, París.</figcaption>
+    </figure>
+
+    <p>Y he aquí que en 1874 ocurrió un acontecimiento importante, bien conocido por nosotros: en el bulevar de los Capuchinos, en el fotoatelier del fotógrafo Nadar, se inauguró la primera exposición de los impresionistas. Allí se mostró un pequeño cuadro de Claude Monet que se titulaba «Impresión. Sol naciente». Ese cuadro se convirtió en un hito en la historia del arte. Los críticos llamaron a estos pintores impresionistas, de la palabra impression, es decir, «impresión». Pintan la impresión.</p>
+
+    <figure>
+        <img src="22I.jpg" alt="Claude Monet. Impresión. Sol naciente">
+        <figcaption><strong>Claude Monet. Impresión. Sol naciente</strong>1872. Museo Marmottan-Monet, París.</figcaption>
+    </figure>
+
+    <p>Es un nombre convencional, aceptado en la literatura. Pero el único verdadero y consecuente impresionista fue Claude Monet. Siempre pintó el mundo exterior, la naturaleza. No le ocupaban en absoluto las escenas de la vida. Le interesaba el estado de la naturaleza, la impresión de la naturaleza.</p>
+
+    <p>Hubo un episodio interesante en 1824, cuando el poeta y crítico de arte Charles Baudelaire<sup>7</sup> visitó el taller de Delacroix. Delacroix lo invitó para mostrarle su cuadro «La matanza de Quíos». Baudelaire miró largo tiempo el lienzo y después dijo: «El cuadro hay que pintarlo de tal modo que, si se le da la vuelta, no pierda nada en su contenido pictórico ni en su equilibrio pictórico». Si se da la vuelta al «Concierto campestre» de Giorgione, no perderá nada en su equilibrio pictórico. En Claude Monet eso existe desde el principio: ese equilibrio, como en un juego de espejos, el asombroso reflejo del cielo en el agua y del agua en el cielo. Al cuadro «Sol naciente» se le puede dar la vuelta, y tampoco perderá nada.</p>
+
+    <p>Miremos una obra suya más tardía: «La abadía de Westminster».<sup>8</sup> Quizá no sea un cuadro, sino un estudio, porque está pintado del natural en un breve intervalo de tiempo: si se pinta más tiempo, cambiará la iluminación, cambiará el contenido del cuadro. ¿Es un estudio o un cuadro? ¿Un cuadro o un estudio? Se borra la frontera, el mundo pierde su densidad material. La abadía de Westminster es como una sombra; la niebla y el agua son todas sustancias iguales. Si se da la vuelta al cuadro, resultará que vemos el reflejo de la abadía de Westminster.</p>
+
+    <figure>
+        <img src="22J.jpg" alt="Claude Monet. El Parlamento de Londres, reflejos sobre el Támesis («La abadía de Westminster»)">
+        <figcaption><strong>Claude Monet. El Parlamento de Londres, reflejos sobre el Támesis («La abadía de Westminster»)</strong>1905. Museo Marmottan-Monet, París.</figcaption>
+    </figure>
+
+    <p>En el arte ahora hay otro héroe. Antes era el hombre y todas las relaciones humanas. Y ahora el héroe ha dejado de ser el hombre: el hombre está simplemente incluido en ese espacio que se ha convertido en héroe. El verdadero héroe ahora es la luz. Los impresionistas pintan la luz. Pintan la vibración de la sustancia cromático-lumínica del mundo. Esto es propio de todos los impresionistas en distinta medida, y para Claude Monet es el tema principal. De ahí surgen géneros pictóricos absolutamente nuevos. Por ejemplo, la representación de un mismo motivo, porque ya no hay asunto, o de un mismo objeto repetido muchas veces. Por ejemplo, la serie de representaciones de la catedral de Ruan: a distintas horas del día esa vista tiene distinto contenido. Como escribió Mandelstam: «Sé encaje, piedra, y vuélvete telaraña…»<sup>9</sup> La catedral también en la vida es encaje y telaraña, y cuando la pinta Claude Monet, casi se disuelve, se vuelve un todo único con el aire y la luz. La estación de Saint-Lazare también la pinta a distintas horas del día, desde distintos escorzos. Y es siempre una estación distinta. Es la combinación del vidrio, los hangares, el tren que llega, el humo de la locomotora que lo envuelve todo… Impresión.</p>
+
+    <figure>
+        <img src="22K.jpg" alt="Claude Monet. La catedral de Ruan. El portal a pleno sol">
+        <figcaption><strong>Claude Monet. La catedral de Ruan. El portal a pleno sol</strong>1894. Museo de Orsay, París.</figcaption>
+    </figure>
+
+    <figure>
+        <img src="22L.jpg" alt="Claude Monet. La estación de Saint-Lazare">
+        <figcaption><strong>Claude Monet. La estación de Saint-Lazare</strong>1877. Museo de Orsay, París.</figcaption>
+    </figure>
+
+    <p>Las últimas cosas de Claude Monet son muy interesantes.<sup>10</sup> Se le volvió indiferente qué pintaba: puede pintar un solo nenúfar, una sola flor… Agua, y en ella un nenúfar, y todo eso es un gran lienzo. Sus cuadros resisten cualquier ampliación. Están pintados de un modo muy interesante; usted todo el tiempo piensa: aquí termina el cielo y empieza el agua, aquí están los sauces que se inclinan desde arriba y se reflejan en el agua… ¿o al revés? Resulta una saturación estética y artística extraordinariamente profunda. Y es descanso: Claude Monet relaja; durante la contemplación de sus cuadros usted descansa y recibe al mismo tiempo tanto, tal carga de vida…</p>
+
+    <figure>
+        <img src="22M.jpg" alt="Claude Monet. Los nenúfares. Mañana clara con sauces (detalle)">
+        <figcaption><strong>Claude Monet. Los nenúfares. Mañana clara con sauces (detalle)</strong>1914–1926. Museo de la Orangerie, París.</figcaption>
+    </figure>
+
+    <p>Claude Monet abrió una nueva página en la pintura europea. Propuso un nuevo héroe, un nuevo método. Claude Monet no era un hombre de tradición, pero creó tradición. He ahí lo interesante: creó una tradición que existe hasta hoy. Hoy, sin lo que Claude Monet abrió en el ámbito de la pintura, es impensable cualquier pintura. Hay un cuadro muy pomposo de A.M. Guerásimov, donde Stalin y Voroshílov pasean en el Kremlin; se le llama irónicamente «Dos líderes después de la lluvia»<sup>11</sup>. Y allí lo principal no es que sean líderes, sino que todo ocurre después de la lluvia: así está pintado ese cielo, esa acera mojada, esa hierba mojada. Ese cuadro lo pintó un artista soviético, uno de los baluartes del realismo socialista, pero habría sido imposible sin los descubrimientos en el ámbito de la pintura hechos no por unos impresionistas cualesquiera, sino precisamente por Claude Monet. Como si hubiera llegado un hombre y hubiera tirado del mantel de la mesa: ¡todo salió volando! Así también Monet: propuso otra mirada sobre el mundo, abrió nuevos horizontes.</p>
+
+    <figure>
+        <img src="22N.jpg" alt="Aleksandr Guerásimov. Stalin y Voroshílov en el Kremlin">
+        <figcaption><strong>Aleksandr Guerásimov. Stalin y Voroshílov en el Kremlin</strong>1938. Galería Estatal Tretiakov, Moscú.</figcaption>
+    </figure>
+
+    <p>Hoy vemos muchas cosas con los ojos de los impresionistas. Ellos como que nos lavan los ojos: uno ve de otro modo el cielo y el agua, tal como los veían ellos. Genialmente dijo de Claude Monet Camille Pissarro: «Él no solo me abrió los ojos, liberó mi conciencia»<sup>12</sup>. Y es realmente así: Monet liberó nuestra conciencia.</p>
+
+    <p>Hay que decir además lo más importante sobre los impresionistas, no como pintores, sino sobre por qué estamos todos enamorados de su pintura. No solo porque mirar sus cuadros es puro goce, alimento estético, sino también porque es el único grupo de pintores que estaba absolutamente positivamente dispuesto hacia el mundo. No le desgarran a uno, no le inquietan. Lo mismo puede decirse de los retratos rusos del siglo XVIII: sus autores se relacionaban positivamente con sus modelos, los pintaban positivamente, con mucha humanidad. Y en grado aún mayor esto es cierto respecto a los impresionistas: hasta qué punto es humano el modo en que ven el mundo, y lo que ven en el mundo, y cómo describen sus impresiones sobre el mundo. Es la pintura más humana en toda la extensión de los siglos XIX y XX.</p>
+
+    <section class="footnotes">
+        <h3>Notas del editor</h3>
+        <p>1. Las reuniones del café Guerbois (Grande-Rue des Batignolles, hoy avenida de Clichy) comenzaron hacia 1866 y duraron hasta mediados de la década de 1870. Berthe Morisot, como mujer de buena familia, no pudo frecuentarlas. Se relacionaba con el grupo en los salones y talleres.</p>
+        <p>2. No hemos podido documentar esta frase en boca de Manet. Recuerda el lema de «el arte por el arte» y la conocida fórmula de Maurice Denis (1890) sobre el cuadro como superficie plana cubierta de colores.</p>
+        <p>3. Victorine Meurent (1844–1927) fue modelo profesional, además de pintora (expuso en el Salón desde 1876), no una «famosa cortesana». Los hombres del cuadro no eran figuras públicas que «toda Francia reconocía»: posaron Eugène o Gustave, hermanos de Manet, y el escultor Ferdinand Leenhoff, futuro cuñado del pintor.</p>
+        <p>4. Edgar Degas, «Miss La La en el circo Fernando» (1879, National Gallery, Londres): la acróbata Anna Olga Albertina Brown, suspendida de una cuerda que sujeta con los dientes.</p>
+        <p>5. Degas pintó numerosas escenas de carreras. La lámina del libro reproduce «Antes de la salida» (1882–1884, Walters Art Museum, Baltimore).</p>
+        <p>6. «La absenta» (1875–1876, Orsay): la actriz Ellen Andrée y el grabador Marcellin Desboutin en el café de la Nouvelle Athènes. Véase la nota del capítulo 21.</p>
+        <p>7. Imposible: Baudelaire nació en 1821. Véase la nota correspondiente del capítulo 20.</p>
+        <p>8. Monet no pintó la abadía de Westminster. La lámina del libro, así titulada, es una de las más de cien vistas del Parlamento de Londres (Palacio de Westminster) que Monet pintó entre 1900 y 1905, a partir de sus estancias londinenses de 1899–1901. Las terminó en su taller de Giverny: no son, pues, obras pintadas «del natural en un breve intervalo de tiempo».</p>
+        <p>9. Verso de Ósip Mandelstam, del poema «Odio la luz…» («Я ненавижу свет…», 1912), incluido en «Piedra» (1913).</p>
+        <p>10. Se refiere a los «Nenúfares», el gran ciclo pintado en Giverny entre 1914 y 1926. Monet los donó al Estado francés, y en 1927 se instalaron en las dos salas ovales del Museo de la Orangerie.</p>
+        <p>11. Aleksandr Guerásimov, «Stalin y Voroshílov en el Kremlin» (1938, Galería Tretiakov), premio Stalin en 1941. El apodo popular juega con la rima rusa «Два вождя после дождя».</p>
+        <p>12. No hemos podido localizar esta frase de Pissarro.</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>
