@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shylock — Elmer Edgar Stoll</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">Elmer Edgar Stoll</p>
+        <h1 class="cab__tit">Shylock</h1>
+    </header>
+
+    <p>To get at Shakespeare’s intention (after a fashion) is, after all, not hard. As with popular drama, great or small, he who runs may read—he who yawns and scuffles in the pit may understand. The time is past for speaking of Shakespeare as utterly impartial or inscrutable: the study of his work and that of his fellows as an expression of Elizabethan ideas and technique is teaching us better. The puzzle whether the <i>Merchant of Venice</i> is not meant for tragedy, for instance, is cleared up when, as Professor Baker suggests, we forget Sir Henry Irving’s acting, and remember that the title—and the hero—is not the ‘Jew of Venice’ as he would lead us to suppose; that this comedy is only like others, as <i>Measure for Measure</i> and <i>Much Ado</i>, not clear of the shadow of the fear of death; and that in closing with an act where Shylock and his knife are forgotten in the unravelling of the mystery between the lovers and the crowning of Antonio’s happiness in theirs, it does not, from the Elizabethan point of view, perpetrate an anti-climax, but, like many another Elizabethan play, carries to completion what is a story for story’s sake. ‘Shylock is, and always has been the hero,’ says Professor Schelling. But why, then, did Shakespeare drop his hero out of the play for good before the fourth act was over? It is a trick which he never repeated—a trick, I am persuaded, of which he was not capable.</p>
+
+    <p>Hero or not, Shylock is given a villain’s due. His is the heaviest penalty to be found in all the pound of flesh stories, including that in <i>Il Pecorone</i>, which served as model for the play. Not in the Servian, the Persian, the African version, or even that of the <i>Cursor Mundi</i>, does the money-lender suffer like Shylock—impoverishment, sentence of death, and an outrage done to his faith from which Jews were guarded even by decrees of German emperors and Roman pontiffs. It was in the old play, perhaps, source of the present one; but that Shakespeare retained it shows his indifference, at least, to the amenities, as regards either Jews or Judaism. In not a single heart do Shylock’s griefs excite commiseration; indeed, as they press upon him they are barbed with gibes and jeers. Coriolanus is unfortunate and at fault, but we know that the poet is with him. We know that the poet is not with Shylock, for on that point, in this play as in every other, the impartial, inscrutable poet leaves little or nothing to suggestion or surmise. As is his custom elsewhere, by the comments of the good characters, by the methods pursued in the disposition of scenes, and by the downright avowals of soliloquy, he constantly sets us right.</p>
+
+    <p>As for the first of these artifices, all the people who come in contact with Shylock except Tubal—among them being those of his own house, his servant and his daughter—have a word or two to say on the subject of his character, and never a good one. And in the same breath they spend on Bassanio and Antonio, his enemies, nothing but words of praise. Praise or blame, moreover, is, after Shakespeare’s fashion, usually in the nick of time to guide the hearer’s judgment. Lest at his first appearance the Jew should make too favourable an impression by his Scripture quotations, Antonio is led to observe that the devil can cite Scripture for his purpose; lest the Jew’s motive in foregoing interest (for once in his life) should seem like the kindness Antonio takes it to be, Bassanio avows that he likes not fair terms and a villain’s mind; and once the Jew has caught the Christian on the hip, every one, from Duke to Gaoler, has words of horror or detestation for him and of compassion for his victim.</p>
+
+    <p>As for the second artifice, the ordering of the scenes is such as to enforce this contrast. First impressions, every playwright knows (and no one better than Shakespeare himself), are momentous, particularly for the purpose of ridicule. Launcelot and Jessica, in separate scenes, are introduced before Shylock reaches home, that, hearing their story, we may side with them, and, when the old curmudgeon appears, may be moved to laughter as he complains of Launcelot’s gormandizing, sleeping, and rending apparel out, and as he is made game of by the young conspirators to his face. Here, as Mr. Poel has noticed, when there might be some danger of our sympathy becoming enlisted on Shylock’s side because he is about to lose his daughter and some of his property, Shakespeare forestalls it. He lets Shylock, in his hesitation whether to go to the feast, take warning from a dream, but nevertheless, though he knows that they bid him not for love, decide to go in hate, in order to feed upon the prodigal Christian. And he lets him give up Launcelot, whom he has half a liking for, save that he is a huge feeder, to Bassanio—‘to one that I would have him help to waste his borrowed purse.’ Small credit these sentiments do him; little do they add to his pathos or dignity. Still more conspicuous is this care when Shylock laments over his daughter and his ducats. Lest then by any chance a stupid or tender-hearted audience should not laugh but grieve, Salanio reports his outcries—in part word for word—two scenes in advance, as matter of mirth to himself and all the boys in Venice. It is exactly the same method as that employed in <i>Twelfth Night</i>, Act III, scene ii, where Maria comes and tells not only Sir Toby, Sir Andrew, and Fabian, but, above all, the audience, how ridiculously Malvolio is acting, before they see it for themselves. The art of the theatre, but particularly the art of the comic theatre, is the art of preparations, else it is not securely comic. But the impression first of all imparted to us is of Shylock’s villainy—an impression which, however comical he may become, we are not again allowed to lose. In the first scene in which he appears, the third in the play, there is one of the most remarkable instances in dramatic literature of a man saying one thing but thinking another and the audience made to see this. He prolongs the situation, keeps the Christians on tenterhooks, turns the terms of the contract over and over in his mind, as if he were considering the soundness of it and of the borrower, while all the time he is hoping, for once in his life, that his debtor may turn out not sound but bankrupt. He casts up Antonio’s hard usage of him in the past, defends the practice of interest-taking, is at the point of stipulating what the rate this time shall be, and then—decides to be friends and take no interest at all. He seems, and is, loath to part for a time with three thousand ducats—‘’tis a good round sum!’—but at the bottom of his heart he is eager.</p>
+
+    <p>And as for the third artifice, that a sleepy audience may not make the mistake of the cautious critic and take the villain for the hero, Shakespeare is at pains to label the villain by an aside at the moment the hero appears on the boards:</p>
+
+    <div class="cita">
+        <p>I hate him for he is a Christian,</p>
+        <p>But more for that in low simplicity</p>
+        <p>He lends out money gratis, and brings down</p>
+        <p>The rate of usance here with us in Venice.</p>
+    </div>
+
+    <p>Those are his motives, later confessed repeatedly; and either one brands him as a villain more unmistakably in that day, as we shall see, than in ours. Of the indignities which he has endured he speaks also, and of revenge; but of none of these has he anything to say at the trial. There he pleads his oath, perjury to his soul should he break it, his ‘lodged hate’, or his ‘humour’; further than that, ‘I can give no reason nor I will not,’—for some reasons a man does not give; but here to himself and later to Tubal—‘were he out of Venice I can make what merchandise I will’—he tells, in the thick of the action, the unvarnished truth. As with Shakespeare’s villains generally—Aaron, Iago, or Richard III—only what they say concerning their purposes aside or to their confidants can be relied upon; and Shylock’s oath and his horror of perjury are, as Dr Furness observes, belied by his clutching at thrice the principal when the pound of flesh escapes him, just as is his money-lender’s ruse of pretending to borrow the cash from ‘a friend’ (avowed as such by Moses in the <i>School for Scandal</i>) by his going home ‘to purse the ducats straight.’</p>
+
+    <p>His arguments, moreover, are given a specious, not to say a grotesque colouring. Similar ones used by the Jew in Silvayn’s <i>Orator</i> (1596), probably known to Shakespeare, are there called ‘sophisticall’. But Hazlitt and other critics strangely say that in argument Shylock has the best of it.</p>
+
+    <div class="cita">
+        <p>What if my house be troubled with a rat</p>
+        <p>And I be pleas’d to give ten thousand ducats</p>
+        <p>To have it ban’d?</p>
+    </div>
+
+    <p>This particular rat is a human being; but the only thing to remark upon, in Shylock’s opinion, is his willingness to squander ten thousand ducats on it instead of three. ‘Hates any man the thing,’ he cries (and there he is ticketed), ‘he would not kill!’ Even in Hazlitt’s time, moreover, a choice of ‘carrion flesh’ in preference to ducats could not be plausibly compared as a ‘humour’—the Jew’s gross jesting here grates upon you—with an aversion to pigs or to the sound of the bag-pipe, or defended as a right by the analogy of holding slaves; nor could the practice of interest-taking find a warrant in Jacob’s pastoral trickery while in the service of Laban; least of all in the day when Sir John Hawkins, who initiated the slave-trade, with the Earls of Pembroke and Leicester and the Queen herself for partners, bore on the arms which were granted him for his exploits a demi-Moor, proper, in chains, and in the day when the world at large still held interest-taking to be robbery. Very evidently, moreover, Shylock is discomfited by Antonio’s question ‘Did he take interest?’ for he falters and stumbles in his reply—</p>
+
+    <div class="cita">
+        <p>No, not take interest, not, as you would say,</p>
+        <p>Directly, interest,—</p>
+    </div>
+
+    <p>and is worsted, in the eyes of the audience if not in his own, by the repeated use of the old Aristotelian argument of the essential barrenness of money, still gospel in Shakespeare’s day, in the second question,</p>
+
+    <div class="cita">
+        <p>Or is your gold and silver ewes and rams?</p>
+    </div>
+
+    <p>For his answer is meant for nothing better than a piece of complacent shamelessness:</p>
+
+    <div class="cita">
+        <p>I cannot tell: I make it breed as fast.</p>
+    </div>
+
+    <p>Only twice does Shakespeare seem to follow Shylock’s pleadings and reasonings with any sympathy—‘Hath a dog money?’ in the first scene in which he appears, and ‘Hath not a Jew eyes?’ in the third act—but a bit too much has been made of this. Either plea ends in such fashion as to alienate the audience. To Shylock’s reproaches the admirable Antonio, ‘one of the gentlest and humblest of all the men in Shakespeare’s theatre,’ praised and honoured by everyone but Shylock, retorts, secure in his virtue, that he is just as like to spit on him and spurn him again. And Shylock’s celebrated justification of his race runs headlong into a justification of his villainy: ‘The villainy which you teach me I will execute, and it shall go hard but I will better the instruction.’ ‘Hath not a Jew eyes?’ and he proceeds to show that your Jew is no less than a man, and as such has a right, not to respect or compassion, as the critics for a century have had it, but to revenge. Neither large nor lofty are his claims. The speech begins with the answer to Salanio’s question about the pound of flesh. ‘Why, I am sure, if he forfeit, thou wilt not take his flesh. What’s that good for?’ ‘To bait fish withal,’ he retorts in savage jest; ‘if it will feed nothing else it will feed my revenge;’ and he goes on to complain of insults, and of thwarted bargains to the tune of half a million, and to make a plea for which he has already robbed himself of a hearing. Quite as vigorously and (in that day) with as much reason, the detestable and abominable Aaron defends his race and colour, and Edmund, the dignity of bastards. The worst of his villains Shakespeare allows to plead their cause: their confidences in soliloquy or aside, if not (as here) slight touches in the plea itself, sufficiently counteract any too favourable impression. This, on the face of it, is a plea for indulging in revenge with all its rigours; not a word is put in for the nobler side of Jewish character; and in lending Shylock his eloquence Shakespeare is but giving the devil his due.</p>
+
+    <p class="separador">II</p>
+
+    <p>By all the devices, then, of Shakespeare’s dramaturgy Shylock is proclaimed, as by the triple repetition of a crier, to be the villain, though a comic villain or butt. Nor does the poet let pass any of the prejudices of that day which might heighten this impression. A miser, a money-lender, a Jew,—all three had from time immemorial been objects of popular detestation and ridicule, whether in life or on the stage. The union of them in one person is in Shakespeare’s time the rule, both in plays and in ‘character’-writing: to the popular imagination a money-lender was a sordid miser with a hooked nose. So it is in the acknowledged prototype of Shylock, Marlowe’s ‘bottle-nosed’ monster, Barabas, the Jew of Malta. Though far more of a villain, he has the same traits of craft and cruelty, the same unctuous friendliness hiding a thirst for a Christian’s blood, the same thirst for blood outreaching his greed for gold, and the same spirit of unrelieved egoism which thrusts aside the claims of his family, his nation, or even his faith. If Barabas fawns like a spaniel when he pleases, grins when he bites, heaves up his shoulders when they call him dog, Shylock, for his part, ‘still bears it with a patient shrug’, and ‘grows kind’, seeking the Christian’s ‘love’ in the hypocritical fashion of Barabas with the suitors and the friars. If Barabas ignores the interests of his brother Jews, poisons his daughter, ‘counts religion but a childish toy’, and, in various forms, avows the wish that ‘so I live perish may all the world’, Shylock has no word for the generous soul but ‘fool’ and ‘simpleton’, and cries (‘fervid patriot’ that he is, ‘martyr and avenger’): ‘A diamond gone, cost me two thousand ducats in Frankfort! The curse never fell upon our nation until now. I never felt it till now.’ Such is his love of his race, which, Professor Raleigh says, is ‘deep as life’. And in the next breath he cries, as ‘the affectionate father’: ‘Two thousand ducats in that, and other precious, precious jewels. I would my daughter were dead at my foot, and the jewels in her ear . . . and the ducats in her coffin.’</p>
+
+    <p>This alternation of daughter and ducats itself comes from Marlowe’s play, as well as other ludicrous touches, such as your Jew’s stinginess with food and horror of swine-eating, and the confounding of Jew and devil. This last is an old, wide-spread superstition: on the strength of holy writ the Fathers (with the suffrage in this century of Luther) held that the Jews were devils and the synagogue the house of Satan. In both plays in affords the standing joke, in the <i>Merchant of Venice</i> nine times repeated. ‘Let me say Amen betimes,’ exclaims Salanio in the midst of his good wishes for Antonio; ‘lest the devil cross my prayer, for here he comes in the likeness of a Jew.’ And in keeping with these notions Shylock’s synagogue is, as Luther piously calls it, <i>ein Teuffels Nest</i>, the nest for hatching his plot once he and Tubal and the others of his ‘tribe’ can get together. ‘Go, go, Tubal,’ he cries in the unction of his guile, ‘and meet me at our synagogue; go, good Tubal, at our synagogue, Tubal!’ In any one such eagerness for the sanctuary is suspicious; but all the more in those times, when the congregation was of Jews and the business of a Christian’s flesh. These sly and insinuating Oriental repetitions would of themselves have given the Saxon audience a shudder.</p>
+
+    <p>It is highly probable, moreover, that Shylock wore the red hair and beard, mentioned by Jordan, from the beginning, as well as the bottle-nose of Barabas. So Judas was made up from of old; and in their immemorial orange-tawny, high-crowned hats and ‘Jewish gabardines,’ the very looks of the two usurers provoked derision. In both plays the word Jew, itself a badge of opprobrium, is constantly in use instead of the proper name of the character and as a byword for cruelty and cunning. . . .</p>
+
+    <p>Those who will have it that Shylock, though bad, was made so, do violence to Shakespeare in two different ways. In the first place, they have recourse to an all-pervading irony. Antonio, gentlest and humblest of Shakespeare’s heroes, kicking and spitting at Jews and thrusting salvation down their throats,—such, they say, is the spectacle of race-hatred pointed at by the poet. And those others who will have it that Shylock is a noble spirit brought to shame, carry the irony still further, into the characterization of Antonio and his friends. He, not Shylock, is the caricature: ‘his virtues are but affectations and shams; his friends are parasites, spendthrifts, and fribbles!’ They make no effort to raise the three thousand ducats to save him, they do not even provide him with a surgeon against his need. That is, nothing is what it seems; a comedy ending in moonlight blandishments and badinage is a tragedy, and the play written for the customers of the Globe flies over their honest heads to the peaks of nineteenth-century criticism. Irony is surely unthinkable unless the author intends it, and here not the slightest trace of such an intention appears. Moreover, a play of Shakespeare’s is self-contained; the irony is within it, so to speak, not underneath it. There is irony in the appearance of Banquo at the moment when Macbeth presumes hypocritically to wish for his presence at the feast; or, more obviously still, in the fulfilment of the Witches’ riddling oracles; but there is no irony, as we have seen, such as Mr Yeats discovers in the success of Henry V and the failure of Richard II. There is irony in the situation of a king so powerful reduced to a state so pitiful, before he has ‘shook off the regal thoughts wherewith he reigned’; but Shakespeare does not dream that to fail and be a Richard is better than to succeed and be a Henry—or an Antonio. He knows not the way of thinking which lightly sets the judgment of the world aside, nor the ways of modern artistic expression, which almost withholds the purport of the higher judgment from the world. No abysmal irony undermines his solid sense and straightforward meaning. Shylock is indeed condemned; Sir Henry Irving took no counsel of the poet when he made his exit from the ducal palace in pathetic triumph.</p>
+
+    <p>Nor is Jessica treated with malice, in mockery or irony, as, having forsaken him and robbed him and never since given him a regretful or pitying thought, she now revels in jest and sentiment, in moonlight and melody, at Belmont. What right has Signor Croce to call her ecstasy sensual? Since her father had made home a hell to her and Launcelot, and in robbing him she has acted with the approval of everybody, as did the son who robbed Harpagon, has she not a right, in the world where she now lives, to be really happy? Signor Croce may be horrified at Jessica as was Rousseau at the unfilial Cléante; but just as sympathy at the theatre traditionally is for the debtor and against the money-lender, so it is for the amorous son or eloping daughter and against the hard-hearted, stingy father. Thus it had been on the stage since the days of Plautus; cheating the old man was both sport for the slave and relief for the son’s necessities. Either consideration gave pleasure in the comic theatre. It is not ideal justice—that is not the business of comedy; but as Monsieur Donnay says of Harpagon’s gold, ‘nous sommes enchantés que cet or, mal acquis, rentre dans la circulation. De tous les vices qui peuvent s’emparer d’un homme, l’avarice est certainement le plus détestable, et qui excite le moins notre pitié.’</p>
+
+    <p>And as for the Jew—‘’tis charity to undo a Jew,’ both thought and said the age. Indeed, is not Jessica what might have been taken for a true daughter of her tribe, like Rachel, who ‘stole the images that were her father’s’ before she fled; and like the daughters of Israel, who before they went up out of the land of Egypt, ‘borrowed’ of their neighbours jewels of silver and jewels of gold? ‘And they spoiled the Egyptians,’ adds naively and complacently the ancient chronicler; and, having turned Christian, why should not Jessica spoil the Jew? the Christians will be likely to ask. But here, as in Antonio’s notion of conversion, or the Duke’s notion of clemency to Jews, is the irony of history, not of art. Shakespeare’s thought is as simple and sincere as is the old hagiographer’s about the balancing of Jews’ ledgers by royal edict—<i>pacem operatur justicia</i>.</p>
+
+    <p>In the second place, they do violence to Shakespeare, as Mr Hudson observes, in representing Shylock as the product of his environment. The thoughts of men had hardly begun to run in such channels; the ancient rigours of retribution held fast; men still believed in heaven and hell, in villains and heroes. Though in Shakespeare there is little of George Eliot’s moral austerity, as brought to bear on Tito Melema, for instance, Mr Yeats errs, I think, in the opinion that his plays are, like all great literature, ‘written in the spirit of the Forgiveness of Sin.’ Macbeth is not forgiven, nor is Othello. Richard III and Iago were damned even in the making. Though the shortcomings of Falstaff, Bardolph, Pistol, and Nym serve a while as food for mirth, Shakespeare is in full accord with Henry V as he casts his fellows out of his company and out of his mind, to meet their end, maybe, in the brothel or on the gallows. And he is in full accord with Portia and the Duke in the judgement scene. Except in comedy, he has not the spirit of forgiveness which, like Uncle Toby’s towards the Devil, comes of mere kindness of heart; and neither in comedy nor in tragedy has he the forgiveness of our psychological and social drama and novel, where both villains and heroes are no more, which comes of fulness of knowledge. Thus he deals with poverty, the hard-hearted, greasy, foul-smelling, ignorant and ungrateful multitude, for which he so often utters his aversion; and thus he deals with the kindred subject of heredity. If a scoundrel is a bastard, or is mean of birth, the fact is not viewed as an extenuating circumstance, but is turned to a reproach. It may in a sense explain his depravity, but never explain it away. It sets the seal upon it. It confirms the prejudice that there is a difference between noble blood and that of low degree. So, though our hearts are softened by Shylock’s recital of the indignities he has suffered, the hearts of the Elizabethans, by a simpler way of thinking, are hardened. It confirms the prejudice that there is a difference betwixt Christian and Jew. The Fathers, Protestant theologians like Luther, seventeenth-century lawyers like Coke and Prynne, review the pitiful story of the Jews in Europe grimly, with at best a momentary and furtive pathos. It proves their notion of the curse. What else, in an age when it was the universal belief that Jew and Gentile alike took upon their heads the curse of Adam’s sin on issuing from the mother’s womb? Even to-day a man who is abused in the street is supposed, by bystanders, to deserve it: the world barks at rags and poverty like the dogs: and everyone knows that there are certain scars (as of branding) and certain diseases (though people without them may be equally guilty) which a canny man does not complain of or betray. And how much more in the days of literary and theological bludgeoning; when the reformers were to the common enemy, and to one another, dogs, hogs, and asses; when Shakespeare himself let one of his noblest characters cast it up to another that he possessed but one trunk of clothes; when Milton was reviled, in scholarly Latin, for his blindness and (in defiance of fact) for his guttering eyelids; and when Dryden never heard the last of the beating he got at the instigation of a fellow poet in a London street. For everything there is someone to blame, is the point of view, and who so much as he who has the worst of it?</p>
+
+    <div class="cita">
+        <p>And every loss the men of Jebus bore,</p>
+        <p>They still were thought God’s enemies the more!</p>
+    </div>
+
+    <p>Such is the logic of Luther as he puts to the Jews the crushing question (naively exhorting Christians, if they must speak to Jews at all, to do likewise, and ‘not to quarrel with them’): ‘Hear’st thou, Jew, dost thou know that Jerusalem, your temple, and your priesthood have been destroyed now over fourteen hundred and sixty years?’ Even at the end of the seventeenth century Robert South, as he considers the universal detestation in which, through the ages, Jews have been held, must conclude that there is ‘some peculiar vileness essentially fixed in the genius of this people.’ That no one is to blame does not occur to him, or that the cause of the detestation lies in race-hatred, the incompatibility of temperament and customs. ‘What’s his reason?’ cries Shylock. It is the reason which Antonio—that is Shakespeare—is not analytical enough to recognize or cynical enough to avow. Steadily the Jewishness of Shylock is kept before us; like Barabas, he loses his name in his nationality—‘the Jew,’ ‘the dog Jew,’ ‘the villain Jew,’ ‘his Jewish heart’;—and it is not merely according to the measure of his villainy that at the end and throughout the play he suffers. With Robert South Shakespeare himself might have said that the reason was his ‘essential Jewish vileness’; but we, who, in the light of modern psychology and the history of society, are aware that no man and no age can render adequately the reason why they themselves do anything, recognize that the famous reason given by Shylock himself, in the heat of his <i>ex parte</i> pleading with which Shakespeare so little sympathizes, curiously enough hits the mark.</p>
+
+    <p>. . . Then there is inversion, the tables turned. ‘L’histoire du persécuteur victime de sa persécution, du dupeur dupé, du voleur volé, fait le fond de bien des comédies.’ The trial scene is an example. To most critics Shylock has here seemed to be more or less pathetic, despite the fact that, as I take it, Shakespeare has employed almost every possible means to produce a contrary, quite incompatible effect.</p>
+
+    <p>Professor Baker holds that Shakespeare evinces a sense of dramatic values in presenting Shylock’s disappointment as tragic in his own eyes, amusing in Gratiano’s. How is the tragic value presented? By the miser and usurer’s prostrate prayer to the Duke to take his life if he would take his wealth, or by the plea that he is not well? The biter bitten, is the gibe cast at him at the end of <i>Il Pecorone</i>; and that, exactly, is the spirit of the scene. It is the same spirit and almost the same situation as at the close of Sheridan’s <i>Duenna</i>, where another Jew, not nearly so culpable as Shylock, having now been fast married to the dragon herself, not, as he thinks, to the maiden that she guards, is jeered at for it, while one of the characters gives the reason,—that ‘there is not a fairer subject for contempt and ridicule than a knave become the dupe of his own art.’ Shylock’s disappointment is tragic to him, but good care is taken that it shall not be to us. Shakespeare is less intent on values than on the conduct and direction of our sympathies through the scene. This he manages both by the action and the comment. The scene is a rise and a fall, a triumph turned into a defeat, an apparent tragedy into a comedy; and the defeat is made to repeat the stages of the triumph so as to bring home to us the fact—the comic fact—of retribution. When fortune turns, almost all the steps of the ladder whereby Shylock with scales and knife had climbed to clutch the fruit of revenge he must now descend empty-handed and in bitterness; and what had been offered to him and refused by him, he is now, when he demands it again, refused. With the course of the action the comment is in perfect accord and unison, marking and signalizing the stages of Shylock’s fall. The outcries against the Jew and his stony heart, of the Duke, Bassanio, and Gratiano—protested against by Antonio as futile—give place to the jeers of Gratiano and the irony of the fair judge. Gratiano is not the only one to crow. ‘Thou shalt have justice, more than thou desir’st—Soft! The Jew shall have all justice—Why doth the Jew pause? Take thy forfeiture—Tarry, Jew; the law hath yet another hold on you—Art thou contented, Jew? What dost thou say?’ Aimed at Shylock as he pleads and squirms, these words fall from lips which had a moment before extolled the heavenly qualities of mercy! But for more than the meagre mercy which Shylock is shown there is neither time nor place, the crowing fits the latter part of the action as perfectly as the indignant comment had fitted the earlier, and we must equally accept it or divest the scene of meaning and sense. The Jew’s very words are echoed by Portia and Gratiano as they jeer, and at every turn that the course of justice takes (welcomed by Shylock, while it was in his favour, with hoarse cries of gloating and triumph) there are now peals and shouts of laughter, such laughter as arises when Tartuffe the hypocrite is caught by Orgon,—‘un rire se lève de tous les coins de la salle, un rire de vengeance si vous voulez, un rire amer, un rire violent.’ The running fire assails him to the very moment—and beyond it—that Shylock says he is not well, and staggers out, amid Gratiano’s jeers touching his baptism, to provoke in the audience the laughter of triumph and vengeance in his own day and bring tears to their eyes in ours. How can we here for a moment sympathize with Shylock unless at the same time we indignantly turn, not only against Gratiano, but against Portia, the Duke, and all Venice as well? But Shakespeare’s scene it is—Shakespeare’s comedy,—not ours or Hazlitt’s.</p>
+
+    <p>One reason why the critics have, despite all, even in this scene, found pathos in Shylock, is that they well know that comic effects may keep company with the pathetic, in Shakespeare as in Dostoevsky and Chekhov. They remember Mercutio’s last words, Mrs Quickly’s report of Falstaff’s death, or the Fool’s babblings in <i>King Lear</i>. Laughter may indeed blend with tears when the character is treated tenderly; but here and in the daughter-ducats scene it is, as I have said, only the laughter of derision. In the judgment scene, moreover, there is—very clearly marked—the spirit of retaliation; it is a harsh and vindictive laughter; and if Shakespeare had here intended any minor and momentary pathetic effects such as critics nowadays discover, he simply overwhelms them. Professor Matthews says that Shakespeare meant the spectators to hate Shylock and also to laugh at him, and yet made him pathetic—supremely pathetic too. The combination seems to me impossible, at least in a comedy, and Professor Matthews seems to me to be talking metaphysics and forgetting the stage which he knows so well. If hateful, Shylock would provoke in the audience the <i>rire de vengeance</i>, an echo of Gratiano’s jeer; if pathetic also, he would—and should—provoke no laughter (at least of such kind as is known to me) at all. In comedy, at any rate, things must be simple and clear-cut; a character which is to provoke laughter cannot be kept, like Buridan’s ass, in equilibrium, exciting, at the same time, both sympathy and hatred. For then the audience will keep its equilibrium too.</p>
+
+    <section class="footnotes">
+        <h3>Note</h3>
+        <p>From <i>Shakespeare Studies: Historical and Comparative in Method</i>. Copyright © 1927 by Macmillan Publishing Co.</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>

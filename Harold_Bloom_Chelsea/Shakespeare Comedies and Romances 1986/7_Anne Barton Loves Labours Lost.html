@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>‘Love’s Labour’s Lost’ — Anne Barton</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">Anne Barton</p>
+        <h1 class="cab__tit">‘Love’s Labour’s Lost’</h1>
+    </header>
+
+    <p>In a sense the play has ended; an epilogue has been spoken by Berowne and that haunting and beautiful kingdom created by the marriage of reality with illusion destroyed, seemingly beyond recall. In the person of Marcade, the world outside the circuit of the park has at last broken through the gates, involving the people of the play in its sorrows and grim actualities, the plague-houses and desolate retreats, the mourning cities and courts of that vaster country overshadowing the tents and the fantastic towers of Navarre. Yet before the final dissolution of that minute and once isolated kingdom of the play, when some of the characters seem already to have disappeared and the others are preparing sadly to journey into the realms beyond the walls of the royal close, there is granted suddenly a little moment of grace. In the waning afternoon, all the people of the play return to the stage and stand quietly together to hear the song which “the two learned men have compiled in praise of the Owl and the Cuckoo,” a song into which the whole of that now-vanished world of <i>Love’s Labour’s Lost</i> seems to have passed, its brilliance, its strange mingling of the artificial and the real, its loveliness and laughter gathered together for the last time to speak to us in the form of a single strain of music.</p>
+
+    <div class="cita">
+        <p>When daisies pied and violets blue</p>
+        <p>And lady-smocks all silver-white</p>
+        <p>And Cuckoo-buds of yellow hue</p>
+        <p>Do paint the meadows with delight. . . .</p>
+    </div>
+
+    <p>It is the landscape of the royal park that lies outstretched before us, a little world of thickets and smooth lawns, meadows and wooded hills. In the foreground, their appearance and speech as decorative and charming as the setting in which they have met to solemnize their vows of asceticism and study, stand four young men, Berowne, Dumain, Longaville, and that ruler of Navarre whose slender kingdom of foresters and dairy-maids, courtiers, pedants, and fools seems bounded by the park and its single, rustic village. Mannered and artificial, reflecting an Elizabethan delight in patterned and intricate language, Navarre’s lines at the beginning of the play are nevertheless curiously urgent and intense.</p>
+
+    <div class="cita">
+        <p>Let fame, that all hunt after in their lives,</p>
+        <p>Live regist’red upon our brazen tombs,</p>
+        <p>And then grace us in the disgrace of death;</p>
+        <p>When, spite of cormorant devouring Time,</p>
+        <p>Th’ endeavour of this present breath may buy</p>
+        <p>That honour which shall bate his scythe’s keen edge,</p>
+        <p>And make us heirs of all eternity.</p>
+    </div>
+
+    <p>With the King’s first words, an expression of that peculiarly Renaissance relationship of the idea of Fame with that of Time and Death, a shadow darkens for a moment the delicate dream landscape of the park. Touched by this shadow, affected by its reality, the four central characters of <i>Love’s Labour’s Lost</i> enter the world of the play.</p>
+
+    <p>Fantastic and contrived as they are, those absurd vows to which the four friends commit themselves in the initial scene spring from a recognition of the tragic brevity and impermanence of life that is peculiarly Renaissance. For the people of the sixteenth century, the world was no longer the mere shadow of a greater Reality, the imperfect image of that City of God whose towers and golden spires had dominated the universe of the Middle Ages. While the thought of Death was acquiring a new poignancy in its contrast with man’s increasing sense of the value and loveliness of life in this world, Immortality tended to become, for Renaissance minds, a vague and even a somewhat dubious gift unless it could be connected in some way with the earth itself, and the affairs of human life there. Thus there arose among the humanist writers of Italy that intense and sometimes anguished longing, voiced by Navarre at the beginning of <i>Love’s Labour’s Lost</i>, to attain ‘an immortality of glory, survival in the minds of men by the record of great deeds or of intellectual excellence. . . .’ At the very heart of the plan for an Academe lies the reality of Death, the Renaissance desire to inherit, through remarkable devotion to learning, an eternity of Fame, and thus to insure some continuity of personal existence, however slight, against the ravages of “cormorant devouring Time.”</p>
+
+    <p>It is obvious, however, from the very beginning of the play, that the Academe and the idea of immorality which it embodies must fail. Less remote and docile than Dumain and Longaville, existing upon a deeper level of reality within the play, the brilliant and sensitive Berowne, a Chorus character throughout, first realizes how unnatural the vows are, how seriously they trespass, despite their three-year limit, against the normal laws of life and reality. The paradox of the Academe and the reason why its failure is not only understandable but absolutely necessary lie in the fact that this elaborate scheme which intends to enhance life and extend it through Fame even beyond the boundaries of the grave would in reality, if successfully carried out, result in the limitation of life and, ultimately, in its complete denial. In their very attempt to retain hold upon life, the King and his companions, as Berowne alone understands, are cutting themselves off from it, from love, and the beauty of women, from all those simple sensuous pleasures of the world which have prompted the establishment of the Academe in the first place by making the “too much loved earth more lovely,” and the thought of its loss in Death so unbearably grim.</p>
+
+    <p>Long before the appearance of those two delightful but sobering characters, Holofernes and Nathanial, Berowne has seen the barrenness of learning that is divorced from life, the tragedy of industrious men of science who find a name for every star in the western skies and yet “have no more profit of their shining nights / Than those that walk and wot not what they are.” Even in the first scene of the play, before his love for Rosaline has made his perception deeper and more sensitive, Berowne realizes in some sense that the only way to deal with the bleak reality of Death and Time is to accept it, to experience as much of life’s sensory loveliness as possible while the opportunity is still given. Implicit in his earliest lines is the knowledge, related somehow to the first group of the “Sonnets,” that “we cannot cross the cause why we were born,” and although he agrees at last to take the oath, it is through him that we first sense the conviction expressed by the play as a whole that this idea of intellectual glory is an essentially sterile one, that the price exacted is too great to pay for a fame and a memory on earth that will soon be lost in the unimagined reaches of Time.</p>
+
+    <p>It was one of Walter Pater’s most famous dictums that “All art constantly aspires towards the condition of music,” and in his beautiful essay on “Shakespeare’s English Kings” he asserted more particularly that “into the unity of a choric song the perfect drama ever tends to return, its intellectual scope deepened, complicated, enlarged, but still with an unmistakable singleness, or identity, in its impression on the mind.” Such a unity is evident throughout <i>Love’s Labour’s Lost</i>, and, indeed, the quality of the whole is very much that of a musical composition, an inexorable movement forward, the appearance and reappearance in the fabric of the play of certain important themes, forcing the harmony into a series of coherent resolutions consistent with each other and with the drama as a whole. Berowne has scarcely finished speaking before his assertion that “every man with his affects is born, / Not by might mast’red, but by special grace” is echoed in the structure of the comedy itself, with the entrance of Constable Dull and the reluctant Costard, the first to disobey the edicts of the new Academe.</p>
+
+    <p>The little episode which follows is not only significant of the trend of future action but, in itself, one of the most delightful moments of the play. As the King reads Armado’s incredible accusation and Costard tries feebly to avert impending doom by making Navarre laugh, it becomes obvious for the first time how much enchantment the play holds for the ear, how subtly it combines highly individual idioms of speech into a single conversation. <i>Love’s Labour’s Lost</i> is a play of many voices, and much of its beauty grows from the sheer music of their rise and fall, the exploitation of their differences of quality and tone, accent and complication. Here in the first scene, the frank simplicity of Dull, the awed monosyllables of Costard, are placed by Shakespeare in a deliberate musical relationship with the studied sentences of Longaville, the fantastic style of Armado, and the more attractive elegance of Berowne, and the whole episode is given the quality of a polyphonic composition half artificial and half real.</p>
+
+    <p>Beyond its humor and fascination of language, the Costard scene has, of course, a more serious purpose in the play, a purpose virtually identical with that fulfilled by a scene in <i>Measure for Measure</i>. In the later comedy, Angelo appears in the opening scene of the second act in a role analogous to Navarre’s in <i>Love’s Labour’s Lost</i>, and the old counsellor Escalus in one similar to Berowne’s. The scheme of justice which Angelo would enforce in Vienna is as ridiculously inflexible, as ignorant of the nature of human beings as Navarre’s Academe, and it is protested by Escalus. Not, however, until the sudden entrance of Constable Elbow, an Austrian cousin of Dull’s, and Pompey, who can in some measure be compared to Costard, does it become completely obvious how impractical the system is, how helpless its high-minded idealism when forced to deal with real individuals, their private standards of morality and unpredictable human weaknesses. The fate of Angelo’s justice is settled even before he himself has sinned against it, in the process of that riotous contention between Elbow, Froth, and Pompey, and in the same way, Navarre’s Academe has failed before he and his friends are actually forsworn, from the moment that the real and intensely individual figures of Costard and Dull appear in their respective roles as transgressor and upholder. Among the lower social levels of the park, life itself destroys the King’s scheme almost in the moment of its foundation.</p>
+
+    <p>Walter Pater found <i>Love’s Labour’s Lost</i> particularly charming in its changing “series of pictorial groups, in which the same figures reappear, in different combinations but on the same background,” a composition, for him, like that of some ancient tapestry, studied, and not a little fantastic. The grouping of the characters into scenes would appear, however, to have been dictated by a purpose far more serious than the mere creation of such patterns; it is one of the ways in which Shakespeare maintains the balance of the play world between the artificial and the real, and indicates the final outcome of the comedy.</p>
+
+    <p>There are, of course, huge differences in the reality of the people who walk and speak together within the limits of the royal park. From the artificial and virtually indistinguishable figures of Dumain and Longaville, never really more than fashionable voices, the scale of reality rises gradually towards Berowne, in whom the marriage of a certain remote and fantastic quality with the delightful realism which first recognized the flaws in the Academe reflects the comedy as a whole, and reaches its apogee in the utter substantiality and prosaic charm of Constable Dull, who could never in any sense be accused of retreating into unreality, or affecting an, elegant pose. Again and again, characters from different levels along this scale are grouped into scenes in a manner that helps to maintain the delicate balance of the play world; thus, in the first scene, with the incredible idea of the Academe and the sophisticated dialogue of Berowne and Longaville, Costard and the bewildered Dull are employed in much the same way that the mocking voice of the cuckoo is in the glowing spring landscape of the closing song, to keep the play in touch with a more familiar and real world, as well as to indicate the ultimate victory of reality over artifice and illusion.</p>
+
+    <p>As the first act ends, this theme is repeated again, and the inevitability of future events made even more clear with the abandonment of the edicts of the Academe by the very individual who was responsible for the deliverance of Costard into the righteous hands of Dull, the intense and serious Armado. The grave figure of the Spanish traveller is one of the most interesting and in a sense enigmatic to appear in <i>Love’s Labour’s Lost</i>, and his sudden love for Jaquenetta certainly the strangest of the five romances which develop within the park. Like Berowne, Armado is a very real person who is playing a part, but in his case it is far more difficult to separate the actor from the man underneath, and the pose itself is more complex than the fashionable role of Berowne. Even in his soliloques, Armado seems to be acting to some invisible audience, and it is only in one moment at the end of the play that we are granted a glimpse of the man without the mask.</p>
+
+    <p>Romantic and proud, intensely imaginative, he has retreated into illusion much further than has Berowne, creating a world of his own within the world of the park, a world peopled with the heroes of the past, Samson and Hercules, Hector and the knights of Spain. Somehow, it is among these long-dead heroes that Armado really exists, rather than among the people of the play itself, and his bizarre language, so strange and artificial when placed beside the homely speech of Costard, was created for that remote, imaginative environment and possesses there a peculiar beauty and aptness of its own. A character with some of the isolation of Jacques, always separated from the gibes and chatter of Moth, he falls in love with Jaquenetta without accepting her as the real country-wench she is, but creates a little drama about the object of his passion in which his is the central role, and Jaquenetta appears in any likeness that he pleases, Delilah or Deianira. The illusion in which the real character of Armado lives has its own beauty and charm, but as the play progresses it becomes evident that this illusion is not strong enough to withstand the pressure of reality and must in the end be destroyed.</p>
+
+    <p>With the coming into the King’s park of the Princess of France and her companions a new stage in the development of <i>Love’s Labour’s Lost</i> has been reached, and a theme we have not heard before begins slowly to rise in the musical structure of the play. Before the arrival of the ladies, it has been made clear that the Academe must fail, and it is no surprise when in the opening scene of the second act we find each of the four friends stealing back alone after the initial meeting to learn the name of his love from the obliging Boyet. As life itself breaks swiftly through the artificial scholarship of the court, the vitality of the play rises to an amazing height; the Academe is kept constantly before us, the reasons for its failure elaborated and made more plain, but at the same time, while the world of the royal park becomes more and more delightful, while masque and pageantry, sensuous beauty and laughter flower within the walls, it becomes slowly obvious that more than the Academe will be destroyed by the entrance of the ladies. Not only its scholarship, but the entire world of the play, the balance of artifice and reality of which it was formed, must also be demolished by forces from without the walls.</p>
+
+    <p>The Princess and her little retinue represent the first penetration of the park by the normal world beyond, a world composed of different and colder elements than the fairy-tale environment within. Through them, in some sense, the voice of Reality speaks, and although they seem to fit perfectly into the landscape of the park, indulge in highly formal, elaborate skirmishes of wit with each other and with the men, they are somehow detached from this world of illusion and artificiality in a way that none of its original inhabitants are. The contrived and fashionable poses which they adopt are in a sense less serious, more playful than those of the other characters, and they are conscious all the time, as even Berowne is not, that these attitudes are merely poses, and that Reality is something quite different. With them into the park they bring past time and a disturbing reminder of the world outside, and from them come the first objective criticisms which pass beyond the scheme of the Academe to attack the men who have formed it. Maria, remembering Longaville as she saw him once before in Normandy, criticizes in her first speech the unreality with which the four friends have surrounded themselves, and points out for the first time in the play the danger of attitudes which develop without regard for the feelings of others, of wit that exercises itself thoughtlessly upon all.</p>
+
+    <p>In the wit of the ladies themselves, it is a certain edge of reality, an uncompromising logic, which cuts through the pleasant webs of artifice, the courtly jests and elaborations in the humor of the men, and emerges victorious with an unfailing regularity. Unlike the women, the King and his companions play, not with facts themselves, but with words, with nice phrases and antithetical statements, and when their embroidered language itself has been attacked, their courteous offers disdained as mere euphemisms, they can only retire discomfited. Even Berowne is utterly defeated when he approaches Rosaline with his graceful conceits.</p>
+
+    <div class="cita">
+        <p>BER: Lady, I will commend you to mine own heart.</p>
+        <p>ROS: Pray you, do my commendations;</p>
+        <p>I would be glad to see it.</p>
+        <p>BER: I would you heard it groan.</p>
+        <p>ROS: Is the fool sick?</p>
+        <p>BER: Sick at the heart.</p>
+        <p>ROS: Alack, let it blood.</p>
+        <p>BER: Would that do it good?</p>
+        <p>ROS: My physic says “ay.”</p>
+    </div>
+
+    <p>Witty as Berowne, as agile of mind, Rosaline attacks his conventional protestations with a wit based on realism, a ridicule springing from a consciousness of the absurdity of artifice. That Berowne could be expressing a real passion in these artificial terms never enters her mind; he is merely mocking her, and she defends herself in the most effective way she can.</p>
+
+    <p>Berowne is, however, like the King, Dumain, and Longaville, suddenly and genuinely in love. The Academe has been thoroughly demolished and now, in the fourth act, Shakespeare introduces, in the characters of Holofernes and Nathaniel, reminders of what such a scheme might have led to, examples of the sterility of learning that is unrelated to life. As usual, Dull, surely the most delightful of that illustrious Shakespearian series of dim-witted but officious representatives of constabulary law, appears with them as the realistic element in the scene, the voice of the cuckoo which mocks, unconsciously, the intricate speech of the two pedants. Bewildered as usual, Dull shows here a quality of stubbornness we had not quite expected in him, maintaining stolidly against the fantastic perorations of Holofernes and Nathaniel that the deer killed by the Princess was “not a haud credo; ’twas a pricket.” It is one of the most charming of his infrequent appearances, matched only by that little scene later in the play in which, utterly stupefied by the conversation which he has endured from Holofernes and Nathanial at dinner, he sits mute and quiescent through all the arrangements for the pageant of the Nine Worthies, only at the very last, when roused by another character, entering the dialogue at all to offer us a personal performance upon the tabor, a talent as engaging and unexpected in Dull as song is in the Justice Silence of <i>2 Henry IV</i>.</p>
+
+    <p>Unlike Dull, the schoolmaster and the curate are in some sense mere types, elements of a satire, but Shakespeare is after all not writing a treatise, and even though their absurdity is emphasized, the two have a certain charm of their own, and their interminable quibblings a faint and grotesque beauty. On a lower, less refined level, they reflect the love of words themselves that is visible throughout the play, reveling, not like Armado in the romance and wonder of the past, but in Latin verbs and bits of forgotten erudition, spare and abstract. As Moth says, “They have been at a great feast of languages and stol’n the scraps,” and in their conversation the wisdom of ages past appears in a strangely mutilated form, the life drained from it, curiously haphazard and remote.</p>
+
+    <p>When in the third scene of Act Four, Berowne appears alone on the stage, we move from the two pedants to a higher level of reality, but one in which artifice is still present. Berowne’s love for Rosaline is becoming increasingly intense, and although he seems at first only to be adopting another pose, that of melancholy lover, he is slowly becoming, as the play progresses, a more convincing and attractive figure, and his love more real.</p>
+
+    <div class="cita">
+        <p>By heaven, I do love; and it hath taught me to rhyme and to be melancholy; and here is part of my rhyme, and here my melancholy. Well, she hath one of my sonnets already; the clown bore it, the fool sent it, and the lady hath it; sweet clown, sweeter fool, sweetest lady.</p>
+    </div>
+
+    <p>Often, beneath ornament and convention the Elizabethans disguised genuine emotion. Berowne’s love for Rosaline is as sincere as Philip Sidney’s for Stella, his longing as real as that of the unknown Elizabethan lover in Nicholas Hillyarde’s strangest and most haunting miniature who stands in the attitude of a familiar poetic conceit, gaunt and disheveled, against a background of flames.</p>
+
+    <p>The episode which follows Berowne’s introductory soliloquy is, of course, one of the finest in the entire play. It is the first of three scenes in <i>Love’s Labour’s Lost</i> which possess the quality of a play within the play, formal in construction, somehow contrived, always beautifully handled. Here, above the whole scene, Berowne acts as spectator and as Chorus, establishing the play atmosphere in his various asides, crying out upon the entrance of Longaville, “Why, he comes in like a perjure, wearing papers,” or in a more general affirmation,</p>
+
+    <div class="cita">
+        <p>All hid, all hid””—an old infant play,</p>
+        <p>Like a demigod here sit I in the sky,</p>
+        <p>And wretched fools’ secrets heedfully o’er-eye.</p>
+    </div>
+
+    <p>Throughout <i>Love’s Labour’s Lost</i>, the play is a symbol of illusion, of unreality, as it is in <i>A Midsummer Night’s Dream</i>, and here it is employed to render the artificiality, the convenient but obvious device of having each of the four lovers appear alone upon the stage, read aloud the poem addressed to his lady, and step aside for the advance of the next one, not only acceptable, but completely delightful. In this play environment, a level of unreality beyond that of the comedy as a whole, the multiple discoveries are perfectly convincing, and the songs and sonnets read by the lovers the charming testimonies of a passion that is not to be questioned.</p>
+
+    <p>Through the comments of the spectator, Berowne, the scene is still, however, kept in touch with reality. From his wonderful, rocketing line upon the entrance of the King, “Shot, by heaven!” to the moment when he steps from his concealment in all the splendor of outraged virtue, Berowne’s role is again analogous to that of the cuckoo in the closing song, mocking the lovers “enamelling with pied flowers their thoughts of gold,” maintaining the balance of the play. When he actually appears among his shamefaced friends to chide them for this “scene of fool’ry,” the play within the play ends, as the spectator becomes actor, and we return, with his beautifully sanctimonious sermon, to the more usual level of reality.</p>
+
+    <p>The sheer delight of the scene rises now towards its peak as, only a few lines after the close of the play scene, another and even more effective climax is built up. Costard appears with Berowne’s own sonnet written to Rosaline, and suddenly the play rises into magnificence. “Guilty, my lord, guilty. I confess, I confess.” Berowne has become more real and brilliant than ever before, and at the same time, his speech attains a power and a radiance new in the comedy, an utterance still fastidious, still choice, but less self-conscious, as he sums up for Navarre, Dumain, and Longaville all that Shakespeare has been saying long before, in the Costard scene, in the fall from grace of Don Armado.</p>
+
+    <div class="cita">
+        <p>Sweet lords, sweet lovers, O let us embrace!</p>
+        <p>As true we are as flesh and blood can be.</p>
+        <p>The sea will ebb and flow, heaven show his face;</p>
+        <p>Young blood doth not obey an old decree.</p>
+        <p>We cannot cross the cause why we were born,</p>
+        <p>Therefore of all hands must be we forsworn.</p>
+    </div>
+
+    <p>Following these lines, there is a deliberate slackening of intensity, and the scene descends for a moment into a completely artificial duel of wits among the King, Berowne, and Longaville, on a somewhat hackneyed conceit. Berowne’s toying with the various meanings of dark and light is as artificial and contrived as anything we have heard from him earlier in the play, but from these lines the scene suddenly rises to its final climax in that speech justifying the breaking of the vows, which is without doubt the most beautiful in the entire play. “Have at you then, affection’s men-at-arms.” Finally and completely, the Academe has crumbled, and it is Berowne, as is perfectly proper, who sums up all that the play has been saying up to this point in his exquisite peroration upon earthly love.</p>
+
+    <p>“Other slow arts entirely keep the brain, / And therefore, finding barren practisers, / Scarce show a harvest of their heavy toil.” Holofernes and Nathaniel are indirectly brought before us, the symbols of learning divorced from life, and having thus disposed of scholarship, Berowne passes on to speak of Love itself, and the task of justifying his own perjury and that of his three friends. Gradually, his speech rises to a lyrical height unequalled in the rest of the play, his customary eloquence and delicacy of language transfigured and made splendid, the sincerity perfectly blended with the surviving mannerism. “And when Love speaks, the voice of all the gods / Make heaven drowsy with the harmony.” With these two lines, the final climax of the scene has been reached, lines of an almost incredible beauty, sensuous and languid, their exact meaning a little puzzling perhaps, but communicating all that is necessary, in a realm beyond precise explanation.</p>
+
+    <p>After these lines, the speech loses something of its beauty, but its intensity remains and fires the King, Dumain, and Longaville. The action flares up suddenly in great, vibrant lines; “Shall we resolve to woo these girls of France?” “Saint Cupid, then! and, soldiers, to the field,” and in a whirlwind of vitality and excitement the scene moves toward its close. “For revels, dances, masks, and merry hours, / Forerun fair Love, strewing her way with flowers.” Yet, as is customary with Shakespeare, the scene ends quietly, with two thoughtful, foreboding lines which are prophetic of what is to come in the next act. As though he turned back for a second, musingly, in the act of going off with the others, Berowne, as Chorus, remarks more to himself and that deserted little glade which was the scene of the play within the play than to his retreating friends, “Light wenches may prove plagues to men forsworn; / If so, our copper buys no better treasure,” lines which despite their apparent gaiety are curiously disturbing.</p>
+
+    <p>With the beginning of that long, last act, a turning point in the action of the play has been reached. The Academe defeated by life itself on all levels of the park, one might except that <i>Love’s Labour’s Lost</i> would move now, as <i>Much Ado About Nothing</i> does in its final act, into an untroubled close, a romantic ending like that of the Beatrice-Benedick plot. As we have in some sense been told by the title, and by the comments of the ladies, such as ending is, in this case, impossible. From the Academe theme the play turns now to the destruction of the half-real world within the royal park, a destruction which, in the actual moment in which it is accomplished, is unexpected and shocking, and yet has been prepared for and justified by previous events within the comedy. As we enter the Fifth Act, shadows begin to fall across the play world. Life within the park, its brilliance and laughter, mounts higher and higher, yet it is the winter stanzas of the closing song that this act suggests, and a new darkness, a strange intensity forces the harmony of the play into unforeseen resolutions. Vanished now are the untroubled meadows of spring, and the landscape acquires a realism that is somehow a little harsh.</p>
+
+    <div class="cita">
+        <p>When icicles hang by the wall,</p>
+        <p>And Dick the shepherd blows his nail,</p>
+        <p>And Tom bears logs into the hall,</p>
+        <p>And milk comes frozen home in pail,</p>
+        <p>When blood is nipp’d and ways be foul. . . .</p>
+    </div>
+
+    <p>With Act Five, the thought of Death enters the park. The play opened, of course, under the shadow of death, the great motivation of the Academe, but after that opening speech of Navarre’s, it vanished altogether, never appearing again even in the imagery of the play until the entrance of the ladies. Significantly, it is they, the intruders from the outside world of reality, who first, in Act Three, bring death into the park itself. In this act, the Princess kills a deer, but in the lines in which the hunt is spoken of, those of Holofernes and the Princess herself, the animal’s death is carefully robbed of any disturbing reality. After Holofernes has told us how “The preyful Princess pierc’d and pricked / A pretty, pleasing pricket,” the fate of the deer is as unreal as the wooded landscape over which it ran. It might just as well have sprung to its feet and gamboled off when the forester’s back was turned.</p>
+
+    <p>Not until Act Five does the death image become real and disturbing, and even here, until the final entrance of Marcade, it is allowed to appear only in the imagery, or else in the recollection by some character of a time and a place beyond the scope of the play itself, the country of France where Katherine’s sister died of her melancholy and longing, or that forgotten antiquity in which the bones of Hector were laid to rest. Appearing thus softened, kept in the background of the comedy, it is neverthless a curiously troubling image, and as it rises slowly through the fabric of the play, the key of the entire final movement is altered. In the mask scene, Berowne, half-serious about his love and that of the King, Dumain, and Longaville, cries to the ladies,</p>
+
+    <div class="cita">
+        <p>Write “Lord have mercy on us” on those three;</p>
+        <p>They are infected; in their hearts it lies;</p>
+        <p>They have the plague, and caught it of your eyes.</p>
+        <p>These lords are visited; you are not free,</p>
+        <p>For the Lord’s tokens on you I do see.</p>
+    </div>
+
+    <p>and while the image is playfully treated still, it is surely a curious and grotesque figure, this marriage of love, the symbol throughout the comedy of life itself, with death. One cannot imagine such an image appearing earlier in the play, before the outside world, the echoes of its great plague bells sounding through desolate streets, the lugubrious cries of the watchmen marking the doors of the infected houses, began to filter obscurely through the little kingdom of the park.</p>
+
+    <p>It is the tremendous reality of death which will destroy the illusory world of Navarre as thoroughly as the gentler forces of life destroyed the Academe and the artificial scheme it represented, earlier in the play. At the very beginning of the Fifth Act, it is made apparent why this must happen, why it is completely necessary for the world of the comedy, despite its beauty and grace, to be demolished. The Princes and her gentlewomen have been discussing the favors and the promises showered upon them by the King and his courtiers, laughing and mocking one another gently. Suddenly, the atmosphere of the entire scene is altered with a single, curious comment, a kind of overheard aside, made by Katherine, upon the real nature of Love. Rosaline turns to her, and as she remembers past time and a tragedy for which the god of Love was responsible then, the scene suddenly becomes filled with the presence of death.</p>
+
+    <div class="cita">
+        <p>ROS: You’ll ne’er be friends with him: ’a kill’d your sister.</p>
+        <p>KATH: He made her melancholy, sad, and heavy;</p>
+        <p>And so she died. Had she been light, like you,</p>
+        <p>Of such a merry, nimble, stirring spirit,</p>
+        <p>She might have been a grandam ere she died.</p>
+        <p>And so may you; for a light heart lives long.</p>
+    </div>
+
+    <p>Against such a memory of the reality of love, the Princess and her three companions place the fantastic protestations of Navarre, Berowne, Dumain, and Longaville. As we have seen, their love is genuine; it has made the character of Berowne immeasurably more attractive, caused him no little anguish of spirit, created that great speech of his at the end of Act Four. Beneath the delicate language, the elegance and the gaiety, lies a real passion, but the women from the world outside, where love has been coupled for them with death and reality, see only artifice and pose. The artificiality which has become natural to the four friends and the environment in which they live holds them from the accomplishment of their desire, for the ladies, hearing from Boyet of the masque in which their lovers intend to declare themselves, are unable to perceive in the scheme anything but attempted mockery, and in defending themselves, frustrate the serious purpose of the entertainment.</p>
+
+    <div class="cita">
+        <p>They do it but in mocking merriment,</p>
+        <p>And mock for mock is only my intent. . . .</p>
+        <p>There’s no such sport as sport by sport o’erthrown,</p>
+        <p>To make theirs ours, and ours none but our own;</p>
+        <p>So shall we stay, mocking intended game,</p>
+        <p>And they well mock’d depart away with shame.</p>
+    </div>
+
+    <p>This masque scene is, of course, the second of the plays within the play, less delightful than the one before it, but immensely significant, the part of audience and commentator played in this instance by Boyet. As usual, the men are completely defeated by the ladies, the delicate fabric of their wit and artifice destroyed by the realistic humour of their opponents. Berowne, approaching the supposed Rosaline with a courteous request, “White-handed mistress, one sweet word with thee,” is mercilessly rebuffed by the Princess—“Honey, and milk, and sugar; there is three”—and the charming illusion of the masque itself ruined by the satiric comments of Boyet who, unlike Berowne in the earlier play scene, actually insinuates himself into the unreal world of the entertainment, and totally upsets it.</p>
+
+    <p>Even when the exposure is complete and the men have asked pardon from their loves, the women think only that they have defeated a mocking jest directed against them, not that they have prevented their lovers from expressing a genuine passion. For the first time, Berowne reaches utter simplicity and humbleness in his love; his declaration to Rosaline at the end of the masque scene is touching and deeply sincere, but for her, this passion is still unbelievable, a momentary affectation, and she continues to mock her lover and the sentiments he expresses.</p>
+
+    <div class="cita">
+        <p>BER: I am a fool, and full of poverty.</p>
+        <p>ROS: But that you take what doth to you belong,</p>
+        <p>It were a fault to snatch words from my tongue.</p>
+        <p>BER: O, I am yours, and all that I possess.</p>
+        <p>ROS: All the fool mine?</p>
+    </div>
+
+    <p>More sensitive, gifted with a deeper perception of reality than his companions, Berowne seems to guess what is wrong, and he forswears “Taffeta phrases, silken terms precise, / Three pil’d hyperboles, spruce affectation, / Figures pedantical . . . ,” at least to Rosaline, but the rejection itself is somewhat artificial, and he remains afterwards with more than “a trick of the old rage.”</p>
+
+    <p>The masque has failed, and Berowne’s more direct attempt to announce to the ladies the purpose behind the performance and detect in them an answering passion has been turned away by the unbelieving Princess. At this point, Costard enters to announce that Holofernes and Nathaniel, Moth and Armado are at hand to present the pageant of the Nine Worthies, and the third and last of the plays within the play begins. As we enter this play scene, the vitality and force of the comedy reaches its apogee, but in its laughter there rings now a discordant note that we have not heard before. The actors themselves are, after all, no less sincere than Bottom and his troupe in <i>A Midsummer Night’s Dream</i>, and they are a great deal more sensitive and easy to hurt. They are real people whose intentions are of the very best, their loyalty to their King unquestioned, and although their performance is unintentionally humorous, one would expect the audience to behave with something of the sympathy and forbearance exhibited by Duke Theseus and the Athenians.</p>
+
+    <p>The only civil members of the audience in <i>Love’s Labour’s Lost</i>, however, are the ladies. The Princess cannot resist one sarcasm upon the entrance of Armado, but it is addressed quietly to Berowne, before the play itself begins, while Armado is engrossed with the King and obviously does not hear. Thereafter, every one of her comments to the players is one of interest or pity: “Great thanks, great Pompey,” “Alas, poor Maccabaeus, how hath he been baited,” “Speak, brave Hector; we are much delighted.” The players have only the Princess to appeal to in the storm of hilarity which assails them, and it is only she, realistic as she is, who understands that a play is an illusion, that it is to be taken as such and respected in some sense for itself, regardless of its quality. Like Theseus in <i>A Midsummer Night’s Dream</i>, she realizes somehow that “the best in this kind are but shadows; and the worst are no worse, if imagination amend them,” and when she addresses the players she is wise and sensitive enough to do so not by their own names, which she has read on the playbill, but by the names of those whom they portray, thus helping them to sustain that illusion which is the very heart of a play.</p>
+
+    <p>In contrast to that of the Princess, the behaviour of the men is incredibly unattractive, particularly that of Berowne. It is difficult to believe that this is the same man who spoke so eloquently a short time ago about the soft and sensible feelings of love, and promised Rosaline to mend his ways. Costard manages to finish his part before the deluge, and Nathaniel, although unkindly treated, is not personally humiliated. Only with the appearance of Holofernes as Judas Maccabaeus and Armado as Hector is the full force of the ridicule released, and it is precisely with these two characters that the infliction of abuse must be most painful. Costard, after all, is a mere fool; he takes part in the baiting of the others with no compunction at all, and Nathanial throughout the comedy has been little more than a foil for Holofernes, but the village pedagogue is a more sensitive soul, and not at all unsympathetic.</p>
+
+    <p>Holofernes has his own reality, his own sense of the apt and the beautiful which, though perverse, is meaningful enough for him, and it is exceedingly painful to see him stand here on the smooth grass of the lawn, his whole subjective world under merciless attack, a storm of personal epithets exploding about him.</p>
+
+    <div class="cita">
+        <p>DUM: The head of a bodkin.</p>
+        <p>BER: A death’s face in a ring</p>
+        <p>LONG: The face of an old Roman coin, scarce seen.</p>
+        <p>BOYET: The pommel of Caesar’s falchion.</p>
+        <p>DUM: The carv’d bone face on a flask.</p>
+        <p>BER: Saint George’s half-cheek in a brooch.</p>
+    </div>
+
+    <p>The laughter is unattractive, wild, and somehow discordant, made curiously harsh by the introduction of Berowne’s “death’s face,” and it has little resemblance to the laughter which we have heard in the play before this, delicate, sophisticated, sometimes hearty, but never really unkind. When Holofernes cries at the last, “This is not generous, not gentle, not humble,” he becomes a figure of real dignity and stature, restrained and courteous in the face of the most appalling incivility.</p>
+
+    <p>Meanwhile, around the pedagogue and his little audience the afternoon has been waning slowly into evening, long shadows falling horizontally across the lawn, and Boyet calls after the retreating Holofernes in a strangely haunting line, “A light for Monsieur Judas. It grows dark, he may stumble.” A kind of wildness grips all the men, and though Dumain says in a weird and prophetic line, “Though my mocks come home by me, I will now be merry,” Armado faces a jeering throng ever before he has begun to speak. Of all the players, Armado is the one for whom we have perhaps the most sympathy. He is a member of the court itself, has had some reason to pride himself upon the King’s favor, and has been good enough to arrange the pageant in the first place. The people represented in it are those who inhabit that strange world of his fancy, and one knows that his anguish is not alone for his personal humiliation, but for that of the long-dead hero he portrays, when he cries, “The sweet war-man is dead and rotten; sweet chucks, beat not the bones of the buried; when he breathed, he was a man.” A little grotesque, as Armado’s sentences always are, the line is nevertheless infinitely moving in its summoning up of great spaces of time, its ironic relation to the idea of immortality through fame expressed in the opening speech of the comedy. Not since the reference to Katherine’s sister have we had such a powerful and disturbing image of death brought before us, death real and inescapable although still related to a world and a time beyond the play itself.</p>
+
+    <p>In the remaining moments of the play scene, the hilarity rises to its climax, a climax becoming increasingly harsh. During the altercation between Costard and Armado which results from Berowne’s ingenious but unattractive trick, images of death begin to hammer through the fabric of the play. The painfulness of the realism grows as Armado, poor, but immensely proud, is finally shamed and humbled before all the other characters. For the first time in the play, the mask falls from Armado’s face, and the man beneath it is revealed, his romanticism, his touching personal pride, the agony for him of the confession that in his poverty he wears no shirt beneath his doublet. Still acting, he tries feebly to pass off this lack as some mysterious and romantic penance, but the other characters know the truth; Armado knows they do, and the knowledge is intensely humiliating. The illusion of the role he has played throughout <i>Love’s Labour’s Lost</i> is destroyed for others as well as for himself, and he stands miserably among the jeers of Dumain and Boyet while complete reality breaks over him, and the little personal world which he has built up around himself so carefully shatters at his feet.</p>
+
+    <p>The other people in the play are so concerned with Armado’s predicament that no one notices that someone, in a sense Something, has joined them. His entrance unremarked by any of the other characters, materializing silently from those shadows which now lie deep along the landscape of the royal park, the Messenger has entered the play world.</p>
+
+    <div class="cita">
+        <p>MAR: I am sorry, madam, for the news I bring</p>
+        <p>Is heavy in my tongue. The King your father—</p>
+        <p>PRIN: Dead, for my life!</p>
+        <p>MAR: Even so; my tale is told.</p>
+    </div>
+
+    <p>There is perhaps nothing like this moment in the whole range of Elizabethan drama. In the space of four lines the entire world of the play, its delicate balance of reality and illusion, all the hilarity and overwhelming life of its last scene has been swept away and destroyed, as Death itself actually enters the park, for the first time, in the person of Marcade. Only in one Elizabethan madrigal, Orlando Gibbons’ magnificent “What Is Our Life?” is there a change of harmony and mood almost as swift and great as this one, and it occurs under precisely the same circumstances, the sudden appearance among the images of life in Raleigh’s lyric of “the graves that hide us from the searching sun” the memory of the inescapable and tremendous reality of Death.</p>
+
+    <p>Clumsy, as one always is in the presence of sudden grief, the King can think of nothing to say but to ask the Princess “How fares your Majesty?” a question to which she, from the depths of her sorrow and bewilderment, gives no reply, but prepares with the dignity characteristic of her to leave for France. Now, the men come forward uncertainly, and first the King and then Berowne, clinging still to a world no longer existing, attempt to express their love in terms which had been appropriate to that world, terms at first still incomprehensible to the women and then, at last, understood, but not altogether trusted.</p>
+
+    <p>As vows had begun the play, so vows end it. The King is assigned as his symbol of reality a “forlorn and naked hermitage” without the walls of the royal park, in the real world itself, in which he must try for a twelvemonth if this love conceived in the sunlit landscape of Navarre can persist in the colder light of actuality. For Dumain and Longaville, those shadowy figures, penances more vague but of a similar duration are assigned, and then at last, Berowne, shaken and moved to the depths of his being, inquires from Rosaline, who has been standing a little apart from the others, lost in thought,</p>
+
+    <div class="cita">
+        <p>Studies my lady? Mistress, look on me;</p>
+        <p>Behold the window of my heart, mine eye,</p>
+        <p>What humble suit attends thy answer there.</p>
+        <p>Impose some service on me for thy love.</p>
+    </div>
+
+    <p>Slowly, speaking with great care, Rosaline answers, and in the strangest and most grotesque of the penances, Berowne is condemned to haunt the hospitals and plague-houses of the world outside the park, to exercise his wit upon the “speechless sick,” and try the power of his past role, the old artificiality that had no concern for the feelings of others, that humiliated Armado in the play scene, the careless mocks of the old world, upon the reality of the ailing and the dying. “A jest’s prosperity lies in the ear / Of him that hears it, never in the tongue / Of him that makes it.” It was this reality of actual living that Berowne was unconscious of when he led the unthinking merriment of the play scene just past. Yet, at the end of the year, love’s labors will be won for Berowne, and he will receive Rosaline’s love, not in the half real world of the park, but in the actuality outside its walls. Thus the play which began with a paradox, that of the Academe, closes with one as well. Only through the acceptance of the reality of Death are life and love in their fullest sense made possible for the people of the play.</p>
+
+    <p>The world of the play past has now become vague and unreal, and it is not distressing that Berowne, in a little speech that is really a kind of epilogue, should refer to all the action before the entrance of Marcade, the people who took part in that action and the kingdom they inhabited and in a sense created, as having been only the elements of a play. It is a play outside which the characters now stand, bewildered, a little lost in the sudden glare of actuality, looking back upon that world of mingled artifice and reality a trifle wistfully before they separate in the vaster realm beyond the royal park. Through <i>Love’s Labour’s Lost</i>, the play has been a symbol of illusion, of delightful unreality, the masque of the Muscovites, or the pageant of the Nine Worthies, and now it becomes apparent that there was a further level of illusion above that of the plays within the play. The world of that illusion has enchanted us; it has been possessed of a haunting beauty, the clear loveliness of those landscapes in the closing song, but Shakespeare insists that it cannot take the place of reality itself, and should not be made to. Always, beyond the charming, frost-etched countryside of the pastoral winter, like the background of some Flemish Book of Hours, lies the reality of the greasy kitchen-maid and her pot, a reality which must sooner or later break through and destroy the charm of the artificial and the illusory.</p>
+
+    <p>For us, however, knowing how Shakespeare’s later work developed, and how the play image itself took on another meaning for him, there is a strange poignancy in this closing moment, with its confident assertion of the concrete reality of the world into which the characters are about to journey, the necessity for them to adjust themselves to that reality. Later, in <i>As You Like It</i> and <i>Hamlet</i> Shakespeare would begin to think of the play as the symbol, not of illusion, but of the world itself and its actuality, in <i>Macbeth</i> and <i>King Lear</i> as the symbol of the futility and tragic nature of that actuality, “that great stage of fools.” Yet he must always have kept in mind the image as it had appeared years before in the early comedy of <i>Love’s Labour’s Lost</i>, for returning to it at the very last, he joined that earlier idea of the play as illusion with its later meaning as a symbol of the real world, and so created the final play image of <i>The Tempest</i> in which illusion and reality have become one and the same, and there is no longer any distinction possible between them. The world itself into which Berowne and his companions travel to seek out reality will become for Shakespeare at the last merely another stage, a play briefly enacted,</p>
+
+    <div class="cita">
+        <p>And, like the baseless fabric of this vision,</p>
+        <p>The cloud-capp’d towers, the gorgeous palaces,</p>
+        <p>The solemn temples, the great globe itself,</p>
+        <p>Yea, all which it inherit, shall dissolve,</p>
+        <p>And, like this insubstantial pageant faded,</p>
+        <p>Leave not a rack behind. We are such stuff</p>
+        <p>As dreams are made on; and our little life</p>
+        <p>Is rounded with a sleep.</p>
+    </div>
+
+    <section class="footnotes">
+        <h3>Note</h3>
+        <p>From <i>Shakespeare Quarterly</i> 4 (1953). Copyright © 1953 by Folger Shakespeare Library.</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>

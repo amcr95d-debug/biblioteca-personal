@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Virtue is the True Nobility — M.C. Bradbrook</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">M.C. Bradbrook</p>
+        <h1 class="cab__tit">Virtue is the True Nobility: A Study of the Structure of “All’s Well that Ends Well”</h1>
+    </header>
+
+    <p><i>All’s Well that Ends Well</i> might have as its subtitle “Two Plays in One.” In this [essay] I shall be concerned with one of the plays only—the play that is revealed by the structure and the plot. Such a partial and one-sided approach is justified because, I believe, it reveals the governing idea of the whole composition. This is perhaps a dangerous assumption, for</p>
+
+    <div class="cita">
+        <p>in attempting to isolate the idea that governs a play we run the risk of fixing it and deadening it, especially when the idea discerned is expressed as a philosophical proposition and stated in a sentence or two.</p>
+    </div>
+
+    <p>The governing idea of this particular play is one which I believe belongs rather to Shakespeare’s age than to all time. To display it therefore requires what may seem a humorless and over-detailed study of the background of ideas. The method by which the idea is presented is not quite Shakespeare’s usual one, though not unlike that discerned by modern critics elsewhere in his work. No one could dare to suggest that Shakespeare took a moral idea and dressed it up in human terms; yet the allegorical mode of thought and the conception that literature should promote good actions were still very much alive in his day. They were not secure. Shakespeare himself, in that period of the mid-nineties when he more or less has the stage to himself—the period between the death of Marlowe and the arrival of Jonson—transformed the conception of dramatic art and produced those ripe and humane works which for ever made impossible such plays as Robert Wilson’s.</p>
+
+    <p>The modern reader of <i>All’s Well</i>—“the new Cambridge production is the first for many years”—may feel that the play contains one superb character study, that of Bertram; and at least one speech of great poetic power, Helena’s confession to the Countess. Seen through Helena’s eyes Bertram is handsome, brave, “the glass of fashion and the mould of form”: seen through the eyes of the older characters he is a degenerate son, an undutiful subject, a silly boy. The two images blend in the action, as we see him sinking from irresponsibility to deceit, but making a name for himself in the wars. He ends in an abject position, yet Helena’s devotion continues undiminished. Her medieval counterpart, patient Griselda, whose virtues are passive, is not called on for more than obedience, and the audience need not stop to wonder what kind of a person the Marquis could be, whether such barbarity could be justified as an assay of virtue, and how the final revelation could leave his wife with any palate for his company. As a character, he exists only to demonstrate Griselda’s patience. But Bertram is not “blacked out” in this way. The connection of his character and Helena’s feelings with the general theme can be explained, but they are not identified with it.</p>
+
+    <p>In <i>All’s Well</i> the juxtaposition of the social problem of high birth versus native merit and the human problem of unrequited love recalls the story of the Sonnets; the speeches of Helena contain echoes from the Sonnets, but the story to which her great speeches are loosely tied does not suit their dramatic expression. It illustrates the nature of social distinctions, of which the personal situation serves only as example. It might be hazarded that this first tempted Shakespeare, who then found himself saying more, or saying other, than his purely structural purpose could justify. Helena’s speech to the Countess is the poetic center of the play, but the structural center is the King’s judgment on virtue and nobility. For once, the dramatist and the poet in Shakespeare were pulling different ways. <i>All’s Well that Ends Well</i> expresses in its title a hope that is not fulfilled; all did not end well, and it is not a successful play.</p>
+
+    <p>My contention is that <i>All’s Well</i> fails because Shakespeare was trying to write a moral play, a play which he proposed to treat with the gravity proper, for example, to “a moral history.” He was not writing allegorically but his characters have a symbolic and extra-personal significance. To write such a play the writer must be detached and in complete control of his material; and Shakespeare was not happy when he was theorizing. Here he is not driven to bitter or cynical or despairing comment on the filth that lies below the surface of life. Instead of the stews of Vienna, the activities of Pandarus and Thersites, we have the highly moral comments of the young Lords on Bertram. Yet compared with <i>Measure for Measure</i>—to which it is most closely linked by similarities of plot—the play appears more confused in purpose, more drab and depressing, if less squalid. Both are concerned with what Bacon called Great Place; the one with the nature and use of power, the other with the nature and grounds of true nobility. The characters are occasionally stiffened into types: the King becomes <i>Vox Dei</i>, which means that he is merely a voice. Yet at other times, but chiefly in soliloquy, deep personal feeling breaks through. Angelo’s temptations and Helena’s love are not completely adjusted to the stories which contain them. These feelings burst out irrepressibly, and in a sense irrelevantly, though they are the best things in the plays.</p>
+
+    <p>To compare <i>Measure for Measure</i> with its source play, <i>Promos and Cassandra</i>, is to see the shaping process of imagination at work: to compare <i>All’s Well</i> with Painter’s translation of Boccaccio is at least revealing. The alterations are perfectly consistent, tending to greater dependence, humility, and enslavement on Helena’s part and greater weakness and falsehood on Bertram’s. New characters are added to voice Helena’s claims to virtue and dignity—this is the chief purpose of the Countess, Lafeu, and the additions to the King’s part—while others are created to stigmatize Bertram. An outline of Painter will make this clear.</p>
+
+    <p>Giletta of Narbonne is brought up with Beltramo and several other children; though not noble she is rich, and refuses many suitors for love of him. After his departure she waits some time—years are implied—before following him, and she sees him before she seeks the King. The conditions of her bargain are that she cures the King in eight days or she offers to be burnt, the King spontaneously adding that he will give her a husband if she succeeds. She asks the right to choose and, somewhat to the royal chagrin, names Beltramo. The King almost apologizes to the firmly protesting Count, but pleads that he has given his royal word. After the wedding Giletta goes to Rossiglione, puts the estate in order, tells the people the whole story and goes away openly with a kinsman and a good deal of treasure. She reaches Florence, ferrets out Beltramo’s mistress, plans the substitution and eventually gives birth to twin sons. At her leisure she returns, and entering on a day of feast, presents her two sons; Beltramo, to honor his word, and to please his subjects and the ladies, his guests who make suit to him, receives her as his wife.</p>
+
+    <p>These shrewd, unsentimental, vigorous Italians, who come to terms after a brisk skirmish, resemble Benedick and Beatrice rather than their own Shakespearian descendants. Two principal characters, the Countess and Parolles, have been added by Shakespeare, and two lesser ones, Lafeu and the Fool. The climaxes are heightened, and in the last scene Bertram is in danger of the law. Shakespeare’s hero is a very young man, highly conscious of his birth. He is handsome, courageous in battle, winning in manners: he is also an inveterate liar.</p>
+
+    <p>The Elizabethan code of honor supposed a gentleman to be absolutely incapable of a lie. In law his word without an oath was in some places held to be sufficient. To give the lie was the deadliest of all insults and could not be wiped out except in blood. Honor was irretrievably lost only by lies or cowardice. These were more disgraceful than any crimes of violence. Alone among Shakespeare’s heroes Bertram is guilty of the lie. Claudio, in <i>Much Ado</i>, is clear, and Bassanio, though he thinks of a lie to get himself out of an awkward situation at the end of the play, does not utter it. By such conduct Bertram forfeits his claims to gentility: a gentleman, as Touchstone remembered, swore by his troth, as a knight by his honor. For this he is shamed and rebuked openly, not only by his elders but by his contemporaries and even by his inferiors. The feelings of a modern audience towards Claudio or Bassanio may be due to a change in social standards, but Bertram is roundly condemned.</p>
+
+    <p>The fault, however, is not entirely his, for like Richard II, Prince Hal, and all other great ones in search of an excuse, he can shelter behind ill company. Parolles, or Wordy, a character of Shakespeare’s own invention, is perceived in the end by Bertram himself to be the Lie incarnate. From the beginning the Countess had known him as</p>
+
+    <div class="cita">
+        <p>a verie tainted fellow, and full of wickedness,</p>
+        <p>My sonne corrupts a well-derived nature</p>
+        <p>With his inducement</p>
+        <p class="attribution">(III. ii. 90–2)</p>
+    </div>
+
+    <p>whilst Helena describes him before he appears as “a notorious Liar,” “a great way foole, solie a coward.” It is not till the final scene that Bertram too acknowledges him</p>
+
+    <div class="cita">
+        <p>a most perfidious slave . . .</p>
+        <p>Whose nature sickens: but to speake a truth.</p>
+        <p class="attribution">(V. iii. 207–9)</p>
+    </div>
+
+    <p>In the earlier part of the play he is completely gulled by Parolles, who gains his ends by flattery. To the Elizabethan, the flatterer was the chief danger of noble youth, and his ways were exposed in most of the manuals of conduct. In Stefano Guazzo’s <i>Civile Conversation</i>, a book of manners designed for the lesser nobility, much of Book II is taken up with the subject. Shakespeare in his comedy makes little use of the figure of the flatterer, and this differentiates him from Chapman, Jonson, and Middleton, who took the parasite of ancient comedy and furnished him with the latest tricks of the coney-catcher. Falstaff is in some sense a flatterer, but he is never more deceived than when he thinks to govern his sweet Hal.</p>
+
+    <p>Flattery thrives on detraction, and Parolles’s evil speaking, which finally exposes him, has been anticipated by his double-dealing with Helena and Lafeu. His cowardice is of no power to infect Bertram, but his lying is contagious, and in the last scene the count shows how deeply he is tainted. The unmasking of Bertram re-echoes the unmasking of Parolles.</p>
+
+    <p>Shakespeare is unlikely to have felt deeply about the minutiae of social procedure, the punctilio of a modern and Frenchified fashion like the duel, or the niceties of address. Saviolo’s discourse on the lie is put into the mouth of Touchstone, Segar’s observations on Adam <i>armigero</i> are given to the First Gravedigger, and Falstaff has the longest if not the last word on Honor. But the question “Wherein lies true honor and nobility?” was older than the new and fantastic codes of honor, or the new ideas of what constituted a gentleman. It is the theme of the first English secular drama, <i>Fulgens and Lucres</i> (c. 1490), where Medwall gave the lady’s verdict for the worthy commoner against the unworthy nobleman, thereby proving his independence of his original, Buonaccorso, who in <i>De Vere Nobilitate</i> had left the matter open. In 1525, Rastell, <i>Of Gentylnes &amp; Nobylyte</i>, treated the same subject, and it was an obvious theme for secular moralities. The question of blood and descent had been touched on by Shakespeare in <i>King John</i> in the triple contrast of Arthur, the legal successor, John the King <i>de facto</i>, and Richard the Bastard, whose royalty of nature makes him the natural leader. Civil nobility seen in relation to courtly life was a different aspect of the same problem and it is with this that Shakespeare is concerned in <i>All’s Well</i>.</p>
+
+    <p>When at the turn of the fifteenth century, the ruling caste had ceased also to be a fighting caste, there remained for the elder and wiser the role of statesman or politician and for the younger sort that of courtier. The feudal tenant-in-chief had derived his standing from his military prowess and his local territorial responsibilities of delegated rule. Although the military profession was no longer paramount, the young noble was trained in war. The perfect courtier was required to be witty, full of counsel and of jests, skilled in music and poetry, a horseman, a patron of all noble science. Such arts of living could be learned only at the court. He should be ambitious of honor—like Hotspur and Prince Hal—truthful and loyal, kindly and modest. His life was devoted to glory, and his reward was good fame. Such employments as the professions afforded—of which that of physician was held least worthy, as too close to the barber and the apothecary—were the refuge of impoverished families and of younger sons. As the king was the fount of honor, the young noble’s place was at court; but the vanity and corruption of court life were especially dangerous for the young. In actuality, the scramble for preferment was a dangerous game in which the player might lose his all. Warnings against the court had been set forth in literature for more than a century. Spenser’s <i>Colin Clout’s Come Home Again</i> depicts both the glories and miseries of the court. A sick or aging ruler left the courtiers exposed to all the natural dangers of the place without restraint. Such a situation is depicted at the beginning of <i>All’s Well</i>. The metaphor of the sick King was always something more than a metaphor for Shakespeare. The Countess bids farewell to her “unseason’d courtier” with open misgivings, and Helena, too, is openly afraid of the influence of the court on Bertram: Parolles’s description is not inviting, and even the clown is not improved by it. When the court is reached, all the virtuous characters turn out to be elderly. The King describes the perfect courtier in the person of Bertram’s father, recalled to his mind by the young man’s likeness (a resemblance already twice commented on):</p>
+
+    <div class="cita">
+        <p>Youth, thou bear’st thy Father’s face,</p>
+        <p>Franke Nature rather curious then in hast</p>
+        <p>Hath well compos’d thee: Thy Father’s morall parts</p>
+        <p>Maist thou inherit too.</p>
+        <p class="attribution">(I. ii. 18–21)</p>
+    </div>
+
+    <p>The elder Rousillon is but lately dead when the play opens. In an extensive picture or mirror of his father, the King sets up to Bertram that model which had already been recommended to him by his mother. It constitutes one of the main statements of the play, embodying the idea of true nobility.</p>
+
+    <div class="cita">
+        <p>He did look farre</p>
+        <p>Into the service of the time, and was</p>
+        <p>Discipled of the bravest . . . in his youth</p>
+        <p>He had the wit, which I can well observe</p>
+        <p>To day in our young Lords: but they may jest</p>
+        <p>Till their owne scorne returne to them unnoted</p>
+        <p>Ere they can hide their levitie in honour:</p>
+        <p>So like a Courtier, contempt nor bitternesse</p>
+        <p>Were in his pride, or sharpnesse; if they were,</p>
+        <p>His equall had awak’d them, and his honour</p>
+        <p>Clocke to it selfe, knew the true minute when</p>
+        <p>Exception bid him speake: and at this time</p>
+        <p>His tongue obeyd his hand. Who were below him,</p>
+        <p>He us’d as creatures of another place,</p>
+        <p>And bow’d his eminent top to their low rankes,</p>
+        <p>Making them proud of his humilitie,</p>
+        <p>In their poor praise he humbled. . . .</p>
+        <p class="attribution">(I. ii. 26 ff.)</p>
+    </div>
+
+    <p>The model which Bertram actually takes is very antithesis of this. Parolles claims to be both courtier and soldier, but his courtliness is entirely speech, as his soldiership is entirely dress. Even the clown calls Parolles knave and fool to his face (II. iv). He is ready to play the pander and to tempt Bertram (“a filthy Officer he is in those suggestions for the young Earle,” III. v. 17–18), yet at the end he crawls to the protection of old Lafeu, who had been the first to meet with provocative insults the challenge of the “counterfeit.”</p>
+
+    <p>Affability to inferiors was indeed not always recommended: Elyot held that courtesy consisted in giving every man his due, whilst Guazzo thought “to be too popular and plausible, were to make largesse of the treasures of his courtesie, to abase himself, and to shew a sign of folly or flatterie.” Yet on the other hand, Theseus’s gracious kindness to the tradesmen, or Hamlet’s sharp answer to Polonius’s “I will use them according to their desert”—</p>
+
+    <div class="cita">
+        <p>God’s bodkin, man, much better. Use everie man after his desert, and who should scape whipping: use them after your own Honor and Dignity. The lesse they deserve, the more merit is in your bountie</p>
+    </div>
+
+    <p>illustrate the same virtue which the King praised in the elder Rousillon.</p>
+
+    <p>The arts of speech were indeed in themselves the very stuff of which a courtier was made. Guazzo describes first of all the speech and bearing to be cultivated, and then the truthfulness, fair speaking, and modesty which should characterize the matter of discourse. Hence the ungraciousness of Bertram’s petulance. “A poore Physitian’s daughter my wife?” did not perhaps sound quite so outrageous as it does now, for marriage out of one’s degree was a debasing of the blood which blemished successive heirs. But Helena is of gentle, though not of noble blood, and all the other young nobles who have been offered to her have been ready to accept her.</p>
+
+    <p>The question that is raised by Bertram’s pride and the King’s act is one central to all discussion on the nature of nobility.</p>
+
+    <div class="cita">
+        <p>One standard commonplace on nobility took shape: that lineage alone was not enough, but that the son of a noble family should increase and not degrade the glory of his ancestors.</p>
+    </div>
+
+    <p>Aristotle had said that Nobility consisted in virtue and ancient riches. Lord Burghley, a potent authority in his day, lopped the phrase down: “Nobility is nothing but ancient riches.” Whilst it was admitted that the King could confer nobility upon anyone, gentility was sometimes held to be conferred only by descent; hence the saying, “The King cannot make a gentleman.” At the court of Elizabeth, herself the granddaughter of a London citizen and surrounded by new nobility, the more rigid views were not likely to prevail. Nevertheless “nobility native” was inevitably preferable to “nobility dative.” Through inheritance it conferred a disposition to virtue, and even the degenerate were shielded in some manner by their descent, “the fame and wealth of their ancestors serves to cover them as long as it can, as a thing once gilded, though it be copper within, till the gilt be worn away.” Education and the example of his ancestors would also help the nobleman, though a bad education might corrupt him entirely. The debate on old and new titles in Osorio’s <i>Discourse of Civil and Christian Nobility</i> went in favour of blood, while Nenna’s <i>Il Nennio</i> supported the lowly born. But all would agree with Mulcaster: “The well-born and virtuous doth well deserve double honor among men . . . where desert for virtue is coupled with descent in blood.”</p>
+
+    <p>Desert for virtue is Helena’s claim, and the two words echo significantly throughout the play. The causes for ennobling the simple were headed by “virtue public,” i.e. some great public service, and this it is which ennobles her. Learning and riches were other causes. Elyot declared that nobility is “only the prayse and surname of virtue” and set forth the eleven moral virtues of Aristotle as the model for his Governor. The essentially competitive nature of honour, while it was recognized, was not stressed.</p>
+
+    <p>In Helena and Bertram, the true and the false nobility are in contest. Helena seeks recognition: Bertram denies it. The King, with the Countess and Lafeu, whom Shakespeare created to act as arbiters, are all doubly ennobled by birth and virtue and therefore judge dispassionately. By these three judges the young people are compared at intervals throughout the play, to the increasing disadvantage of Bertram. In the first scene, the Countess introduces Helena as inheriting virtue and yet improving on it. The technical terms of honor emphasize her point:</p>
+
+    <div class="cita">
+        <p>I have those hopes of her good, that her education promises: her dispositions shee inherits, which makes faire gifts fairer . . . she derives her honestie, and atcheeves her goodnesse</p>
+        <p class="attribution">(I. i. 47 ff.)</p>
+    </div>
+
+    <p>Of Bertram she cherishes hopes less assured, but wishes that his blood and virtue may contend for precedence, and his goodness share with his birthright.</p>
+
+    <p>By making his social climber a woman, Shakespeare took a good deal of the sting out of the situation. Helena’s virtues were derived from her father and from heaven, to whose intervention she ascribes all her power to cure the King. She protests she is richest in being simply a maid, and the King offers her to Bertram with the words</p>
+
+    <div class="cita">
+        <p>Vertue and shee</p>
+        <p>Is her owne dower: Honour and wealth, from mee.</p>
+    </div>
+
+    <p>The promotion of a modest but dignified young woman is far from arousing jealousy. Helena had been conscious of her lowliness and in her first soliloquy she almost despairs:</p>
+
+    <div class="cita">
+        <p>Twere all one,</p>
+        <p>That I should love a bright particuler starre,</p>
+        <p>And think to wed it, he is so above me.</p>
+        <p class="attribution">(I. i. 97–9)</p>
+    </div>
+
+    <p>To the Countess, before making her confession, she says:</p>
+
+    <div class="cita">
+        <p>I am from humble, he from honored name:</p>
+        <p>No note upon my Parents, his all noble,</p>
+        <p>My Master, my deere Lorde he is, and I</p>
+        <p>His servant live, and will his vassall die.</p>
+        <p class="attribution">(I. iii. 164–7)</p>
+    </div>
+
+    <p>These words are not retracted by her confession for she protests that she does not follow him by any token of presumptuous suit: “Nor would I have him till I doe deserve him” (I. iii. 199). At her first encounter with the King, Helena is almost driven off by her first rebuff. In stately couplets which mark out the solemnity of the moment she suddenly returns and offers herself as “the weakest minister” of heaven. She frankly claims “inspired Merit” and warns the King that it is presumption to think Heaven cannot work through the humble. “Of heaven, not me, make an experiment.” The King recognizes the power of something greater than herself in Helena’s voice and he submits. She is “undoubted blest.”</p>
+
+    <p>Such claims shift the ground of Helena’s nobility. To fail to recognize her as already ennobled in a superior way by the choice of heaven is an aggravation of Bertram’s offence in refusing the consummation of the marriage—itself a religious duty as Diana reminds him (IV. ii. 12–13). The countess feels nothing but indignation with the “rash and unbridled boy,” for</p>
+
+    <div class="cita">
+        <p>the misprising of a Maide too vertuous</p>
+        <p>For the contempt of Empire.</p>
+        <p class="attribution">(III. ii. 27–8)</p>
+    </div>
+
+    <p>Even before the journey to court she had loved Helena as her own child (I. iii. 98, 143–4) and now she prefers her, disclaiming her proper son (III. ii. 68–9), who in rejecting such a wife has lost more honor than he can ever win with his sword. Helena’s penitential pilgrimage raises her yet higher in the Countess’s estimation, and finally, with the report of her death, she becomes “the most vertuous gentlewoman, that ever Nature had praise for creating” (IV. v. 9–10).</p>
+
+    <p>In bestowing a wife on one of the royal wards, the King was certainly doing no more than Elizabeth and James had done. Much lesser persons regarded their wards as legitimate matrimonial prizes. The customary formula (which the King uses): “Can you like of this man?” “Can you like of this maid?” did not imply love but only the ability to live harmoniously together. Bertram, who is succinctly described by Lafeu as an “asse,” has, it is clear from the first scene, no dislike to Helena, but he knows her as his mother’s servant and “I cannot love her, nor will strive to doo’t.” Only later does the brilliant idea occur to him that he was really in love with Lafeu’s daughter. His seduction of Diana “contrives against his owne Nobilitie,” and his responsibility for the death of Helena means that “the great dignitie that his valour hath here acquir’d for him (i.e. in Florence), shal at home be encountred with a shame as ample” (IV. iii. 25–30, 79–82).</p>
+
+    <p>Bertram’s “folly,” though excused as the fault of Parolles’s ill counsel (IV. ii. 1), and as “Naturall rebellion, done i’ th blaze of youth” (V. iii. 6), remains in the eyes of Lafeu a blot upon his honor. However much Bertram wronged his King, his mother, and his wife, he wronged himself much more (V. iii. 12–19). Lafeu champions Helena’s memory rather in the way in which Paulina champions Hermoine’s, and the rapidity with which the King jumps to thoughts of murder when he sees the royal gem offered as “an amorous token for fair Maudlin” is a proof of his feeling for Helena no less than of his well-merited distrust of Bertram. Like the rings of Bassanio and Portia, the jewels which are bandied about in the last scene are symbolic of a contract and an estate of life. The King’s gem derived from him to Helena, and Bertram neither knows nor cares what it is. His own monumental ring symbolizes all that he has thrown away:</p>
+
+    <div class="cita">
+        <p>an honour longing to our house,</p>
+        <p>Bequeathed downe from manie Ancestors,</p>
+        <p>Which were the greatest obloquie i’ th world,</p>
+        <p>In me to loose.</p>
+        <p class="attribution">(IV. ii. 42–5)</p>
+    </div>
+
+    <p>This jewel, with which he had taunted Helena, is found at the end in her keeping.</p>
+
+    <p>Nevertheless, though Helena is wise and Bertram foolish, though she is humble and he is proud, his final acknowledgment of her would constitute a strong ending. When Brachiano marries Vittoria, or when in <i>A Woman Killed with Kindness</i>, Sir Francis marries Susan, the condescension of the noble partner is matter for astonishment. Even in realistic comedy, such as <i>Eastward Ho!</i>, the marriage of court and city provides grounds for satire and for farce. Helena’s success would lose all point if it were not a great exception. If this suggests that social theory enabled the judicious spectator both to eat his cake and have it, the answer is that the same dilemma lies at the center of the play, and is expounded by the king in a full account of the nature of title and dignity—a speech which had tradition behind it, but which is sharply at variance with the nigglers who measured whether honor came with the first or third generation of a new title.</p>
+
+    <div class="cita">
+        <p>Tis onely title thou disdainst in her, the which</p>
+        <p>I can build up: strange is it that our bloods</p>
+        <p>Of Colour, waight and heat, pour’d all together,</p>
+        <p>Would quite confound distinction: yet stands off</p>
+        <p>In differences so mightie. If she bee</p>
+        <p>All that is vertuous (save what thou dislikst),</p>
+        <p>A poore Phisitian’s daughter, thou dislikst</p>
+        <p>Of vertue for the name: but doe not so:</p>
+        <p>From lowest place, whence vertuous things proceed,</p>
+        <p>The place is dignified by th’ doers’ deede.</p>
+        <p>When great addition swells, and vertue none,</p>
+        <p>It is a dropsied honour. Good alone,</p>
+        <p>Is good without a name. Vilenesse is so:</p>
+        <p>The propertie by what it is, should go,</p>
+        <p>Not by the title. She is young, wise, faire,</p>
+        <p>In these, to Nature shee’s immediate heire:</p>
+        <p>And these breed honour: that is honour’s scorne,</p>
+        <p>Which challenges it selfe as honour’s borne,</p>
+        <p>And is not like the sire: Honour’s thrive</p>
+        <p>When rather from our acts we them derive</p>
+        <p>Then our fore-goers: the meere words a slave</p>
+        <p>Deboshed on everie tombe, on everie grave:</p>
+        <p>A lying Trophee, and as ofte is dumbe,</p>
+        <p>Where dust, and damn’d oblivion is the Tombe</p>
+        <p>Of Honour’d bones indeed. . . .</p>
+        <p class="attribution">(II. iii. 124 ff.)</p>
+    </div>
+
+    <p>Helena already possesses the essential attributes and therefore the potentiality of honor, which the King by his recognition of her claims will bestow. “The name and not the thing” is vanity.</p>
+
+    <p>Medieval tradition recognized three classes of nobility. Christian, natural, and civil. Pre-eminence must be given to sanctity, but the saints included poor fishers, even slaves. Natural nobility or perfection of kind might be ascribed to animals, and a noble falcon justly so termed. The writers of books of honor often mentioned these two classes but pointed out that they could not discuss them. One of the fullest treatments of the subject is by Dante in his <i>Convivio</i>. He denies civil nobility any real value. Nobility, he says, cannot be defined by riches, which in themselves are vile, or by time, because all men ultimately derive from a common stock, but only by its effects. The necessary outcome or effect of Nobility is Virtue: where Virtue exists, Nobility must therefore exist as its cause. Nobility descends upon an individual by the grace of God (<i>Convivio</i>, IV. XV) and is “the seed of blessedness dropped by God into a rightly placed soul.” Dante goes on to expound the eleven moral virtues (much like Elyot). The claim to nobility by descent is then refuted, natural and Christian nobility identified, and civil nobility wiped out. Dante’s Third Ode, upon which this section of the <i>Convivio</i> provides a commentary, is addressed to Beatrice, who, like Helena, is an example of active virtue, received by a direct infusion of grace. The language of religion is used with particular frequency by Shakespeare in this play, and the gravest words of all are spoken by the Clown (IV. V. 50–9) when he describes how “the Prince of this world” entices nobility “into his court.”</p>
+
+    <div class="cita">
+        <p>I am for the house with the narrow gate, which I take to be too little for pompe to enter: some that humble themselves may, but the manie will be too chill and tender, and theyll bee for the flowrie way that leads to the broad gate, and the great fire.</p>
+    </div>
+
+    <p>Helena is “a Jewell” (V. iii. 1) which Bertram throws away. His rejection of her must be seen not in isolation but as linked with his choice of Parolles. The first dialogue of Helena and Parolles, the Liar and Vertue as she herself has labelled them, must be seen as the encounter of Bertram’s good and evil angels, who, if this were a morality, would contend for his soul in open debate. In the final scene Parolles turns the tables on Bertram, and though the King dismisses the informer with contempt, an elaborate and inexorable shaming of the now utterly silenced young man proceeds. This last scene, in which Shakespeare completely forsakes his original, has the closest affinities with <i>Measure for Measure</i>. It is a judgment scene with charge and countercharge piled up in bewildering contradiction till they are resolved as if by miracle in the sudden appearance of the central figure. In this scene the King appears as the fount of justice: he deprives Bertram of all honor (V. iii. 184–6), though the revenges with which he threatens the young man should not be taken in any personal sense. Such a finale, with a royal judgment, and a distribution of rewards and punishments, was a well-established comic convention, though it is difficult to resist the thought that in offering Diana a husband, the King shows some inability to profit by experience. The riddles with which Diana led up to the <i>dénouement</i> recall those in which Portia swore she lay with Doctor Balthazar to obtain the ring, and they are not to modern taste.</p>
+
+    <p>Bertram’s conversion must be reckoned among Helena’s miracles. What is well ended is her struggle for recognition, which he concedes her. Her devotion, tinged for the first time with bitterness, requires another mode of expression than the last dozen lines allow. She has been acknowledged by her lord: that her personal happiness is simply irrelevant, and the ending therefore neither hypocritical nor cynical, can be granted only if the play is seen as a study of the question of “Wherein lies true honor and nobility?”</p>
+
+    <section class="footnotes">
+        <h3>Note</h3>
+        <p>From <i>The Review of English Studies</i> 26 (1950). Copyright © 1965 by Prentice-Hall, Inc.</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>

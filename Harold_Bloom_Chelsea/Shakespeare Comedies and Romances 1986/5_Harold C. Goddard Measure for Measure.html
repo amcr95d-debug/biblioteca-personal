@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>‘Measure for Measure’ — Harold C. Goddard</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">Harold C. Goddard</p>
+        <h1 class="cab__tit">‘Measure for Measure’</h1>
+    </header>
+
+    <p>“Would you know a man? Give him power.” History sometimes seems little else than an extended comment on that ancient maxim. Our own day has elucidated it on a colossal scale. <i>Measure for Measure</i> might have been expressly written to drive home its truth. It is little wonder, then, that the play of Shakespeare’s in which the word “authority” occurs more often than in any other should have an extraordinary pertinence for a century in which the word “authoritarian” is on so many lips. The central male figure of the drama is one of the most searching studies ever made of the effect of power upon character.</p>
+
+    <p><i>Measure for Measure</i>, like <i>Troilus and Cressida</i>, is closely bound to <i>Hamlet</i>. It is as if Shakespeare, having exposed in that masterpiece and the plays that culminated in it the futility of revenge as a method of requiting wrong, asked: what then? How, when men fail to keep the peace, shall their quarrels be settled, their misconduct penalized, without resort to personal violence? To that question the all but universal reply of the wiser part of human experience seems to have been: by law. In place of revenge—justice. Instead of personal retaliation—legal adjudication. “A government of laws and not of men”: that is the historic answer of those peoples at least who have some freedom. And there is the imposing body of common and statute law to back it up. Trial by jury. Equality before the law. The advance of civilization that these concepts and conquests register cannot be overestimated. Under their spell men are even tempted to the syllogism:</p>
+
+    <div class="cita">
+        <p>Quarrels are settled by law.</p>
+        <p>Wars are just larger quarrels.</p>
+        <p>Therefore: wars can be settled by law.</p>
+    </div>
+
+    <p>Recent history is little more than the story of the world’s disillusionment with regard to this conclusion. The weakness of the syllogism lies in its major premise. “A government of laws and not of men.” It sounds august. But there never was, there is not, and there never will be, any such thing. If only laws would construe, administer, and enforce themselves! But until they do, they will rise no nearer justice than the justice in the minds and hearts of their very human agents and instruments. Those with power may sedulously inculcate in subjects the illusion that there is a necessary connection between law and justice as the very cement of the state, without which the political structure would collapse (as well it might); but, philosophically, any mental structure erected on this illusion is built on quicksand. Disillusionment on this subject, if it comes at all, usually comes gradually. We cling to the older and more comforting notion here as we do to infantile ideas of God. When at last we realize that the blessings of the law (which cannot be exaggerated) are due to the wisdom and goodness of man, and its horrors (which also cannot be exaggerated) to his cruelty and greed, we have grasped the fact that law is just an instrument—no more good or bad in itself than the stone we use as a hammer or a missile—and we will never again be guilty of thinking of law and war as opposites, or of confusing peace with the reign of law. Whether the horrors of war are greater or less than the horrors of law may be debated. Shelley, for one, put “legal crime” at the nadir of human baseness. In cowardice, at any rate, it ranks below open violence. <i>Measure for Measure</i> records, possibly, Shakespeare’s first full disillusionment on this subject.</p>
+
+    <div class="cita">
+        <p>It is the law, not I, condemn your brother.</p>
+    </div>
+
+    <p>The entire play might be said to have been written just to italicize that lie. The angle-villain tries to hide behind it as behind a shield. So-called civilization tries to do the same. But civilization—as Emerson remarked—crowed too soon.</p>
+
+    <p class="separador">II</p>
+
+    <p>For fourteen years Vienna has suffered from so lax an enforcement of the laws that the very babies have taken to beating their nurses, and a visitor from outside the city might actually</p>
+
+    <div class="cita">
+        <p>have seen corruption boil and bubble</p>
+        <p>Till it o’er-run the stew: laws for all faults,</p>
+        <p>But faults so countenanc’d, that the strong statutes</p>
+        <p>Stand like the forfeits in a barber’s shop,</p>
+        <p>As much in mock as mark.</p>
+    </div>
+
+    <p>The ruling Duke decides that, with such a reputation for lenity, he is not the one to rein in a steed that has known no curb. He will delegate his power to a sterner hand and let justice get a fresh start under a new regime. At least, such seems his motive on the surface. But the Duke is a curious character—“the old fantastical Duke of dark corners”—whether born so or made so by the exigencies of Shakespeare’s plot. He is as fond of experimenting on human beings and inquiring into their inner workings as a vivisector is of cutting up guinea pigs. And when he retires not for a trip to Poland, as he gives out, but to return, disguised as a friar, to note the results of his temporary abdication, his motive seems less political and social than psychological. He is really not so much giving up his power as increasing it by retaining it in secret form. The Duke is as introspective as Hamlet, “one that, above all other strifes, contended especially to know himself,” and his theatrical instinct also reminds us of the Prince of Denmark, though in his fondness for dazzling his audience he is more like Hal. In spite of his professed love of retirement and hatred of crowds and applause, he is the very reverse of a hermit, and intends (though he doesn’t announce the fact in advance and may even be unconscious of it) to burst forth out of the clouds of disguise in full dramatic glory, as he does in the fifth act. His whole plan may be viewed as a sort of play witnin a play to catch the conscience of his deputy—and of the city. Moreover, he does not intend to miss the performance of his play any more than Hamlet did. The proof that his impulse is melodramatic, or at best psychological, is the fact that he knows at the time he appoints his deputy of a previous act of turpitude on his part. Angelo—for so the deputy is ironically named—deserted the girl to whom he was betrothed when her worldly prospects were wrecked, and slandered her into the bargain to escape the world’s censure. He succeeded. His reputation for virtue and austerity is unimpeached. He can be reckoned on to put the screws on all offenders. It is as if the Duke were saying to himself: “Granted that my dispensation has been too lenient; I’ll show you what will happen under a paragon of strictness. See how you like it then!” If he had not been more bent on proving his point than on the public welfare, why did he pick out a man whose secret vices he knew? How often have men been given temporary power precisely in order to prove them unworthy of it! Lord Angelo, says the Duke in the first act,</p>
+
+    <div class="cita">
+        <p>is precise;</p>
+        <p>Stands at a guard with envy; scarce confesses</p>
+        <p>That his blood flows, or that his appetite</p>
+        <p>Is more to bread than stone; hence shall we see,</p>
+        <p>If power change purpose, what our seemers be.</p>
+    </div>
+
+    <p>That last is tolerably explicit. And that there may be no doubt as to what the Duke has in mind. Shakespeare has him again call him “this well-seeming Angelo,” when, much later in the play, he reveals his outrageous treatment of Mariana.</p>
+
+    <p class="separador">III</p>
+
+    <p>So Angelo comes to power—ostensibly in association with the kindly and humane but weak-kneed Escalus, who, however, is chiefly a figurehead. The new ruler’s hammer comes down first on Claudio, who, under an obsolete blue law, is condemned to death for anticipating the state of marriage with the girl to whom he was betrothed. The judgment is the more reprehensible because the worldly circumstances of the guilty pair demanded a certain concealment, their union was a marriage in fact if not in law, and no question of premeditated infidelity or broken vows was involved. The moral superiority of Claudio to the man who is to judge him is sufficiently pointed. Isabella, Claudio’s chaste and virtuous sister, who is about to enter a nunnery, in spite of her reluctance to condone any laxity, intercedes with Angelo on Claudio’s behalf. Angelo, at first, will do nothing but repeat “he must die,” but as Isabella’s beauty mounts with her ardor, the Deputy, who prides himself on being above all such appetites, is suddenly aware of a passion for her, his attitude alters, and he says, with a new sensation at his heart:</p>
+
+    <div class="cita">
+        <p>I will bethink me. Come again tomorrow.</p>
+    </div>
+
+    <div class="cita">
+        <p>Hark how I’ll bribe you;</p>
+    </div>
+
+    <p>retorts Isabella, carried beyond discretion by her sense of coming victory.</p>
+
+    <div class="cita">
+        <p>How! bribe me?</p>
+    </div>
+
+    <p>cries Angelo, startled by a word that fits with deadly accuracy a criminal thought he has not dared confess to himself. He can fairly see him turn on his heel and grow pale.</p>
+
+    <div class="cita">
+        <p>Ay, with such gifts that heaven shall share with you,</p>
+    </div>
+
+    <p>the innocent Isabella replies. But what other Isabella, or what devil within the innocent one, had put that fatally uncharacteristic and inopportune word “bribe” on her tongue? It is one of those single words on which worlds turn that Shakespeare was growing steadily more fond of.</p>
+
+    <p>Isabella returns the next day, and Angelo, after hints that produce as little effect as did Edward IV’s on Lady Grey, makes the open shameful proposal that the sister herself be the “bribe” to save her brother. Isabella, spurning the infamous suggestion, cries that she will proclaim him to the world if he does not give her an instant pardon for her brother. But when he reminds her that his impeccable reputation will protect him like a wall, she realizes it is true, and goes to report her failure to Claudio and to prepare him for death.</p>
+
+    <p>The scene between brother and sister (on which the disguised Duke eavesdrops) is one of the dramatic and poetic pinnacles of Shakespeare, and we scarcely need to except anything even in <i>Hamlet</i> when we say that few scenes in his works elicit from different readers more diametrically opposite reactions. Is Isabella to be admired or despised? Some think her almost divine in her virtue; others almost beneath contempt in her self-righteousness. You could fancy the two parties were talking about two different Isabellas. They are. There are two Isabellas.</p>
+
+    <p><i>Hamlet</i> acquaints us with the psychological proximity of heaven and hell. This play goes on to demonstrate that, despite their polarity, the distance between them can be traversed in just about one-fortieth of the time it took Puck to put a girdle round about the earth.</p>
+
+    <p>A pendulum is ascending. It reaches the limit gravity will permit and instantly it is descending. A ball is sailing through the air. It touches the bound interposed by a wall and instantly it is sailing in the opposite direction. And even when the reaction is not instantaneous the same principle holds: everything breeds within itself the seed of its contrary. Human passion is no exception to the rule. At the extremity, it too turns the other way around, upside down, or inside out.</p>
+
+    <p>“Why, how now, Claudio!” cries Lucio, meeting his friend under arrest and on his way to jail, “whence comes this restraint?”</p>
+
+    <div class="cita">
+        <p>CLAUD.: From too much liberty, my Lucio, liberty:</p>
+        <p>As surfeit is the father of much fast,</p>
+        <p>So every scope by the immoderate use</p>
+        <p>Turns to restraint. Our natures do pursue—</p>
+        <p>Like rats that ravin down their proper bane,—</p>
+        <p>A thirsty evil, and when we drink we die.</p>
+    </div>
+
+    <p>To which Lucio, ever the wit, replies: “I had as lief have the foppery of freedom as the morality of imprisonment.” The play is saturated with antitheses like that, and abounds in examples that recall Claudio’s rat.</p>
+
+    <p>There is a woman in it, a bawd and keeper of a brothel, Mistress Overdone, almost the double in marital virtue of Chaucer’s Wife of Bath.</p>
+
+    <div class="cita">
+        <p>Hath she had any more than one husband?</p>
+    </div>
+
+    <p>Escalus inquires of Pompey, her tapster, and the loyal Pompey proudly replies:</p>
+
+    <div class="cita">
+        <p>Nine, sir; Overdone by the last.</p>
+    </div>
+
+    <p>Overdone! it might be the name of most of the leading characters of the play. Each of them is too something-or-other. And what they do is likewise overdone. Good and evil get inextricably mixed throughout <i>Measure for Measure</i>, for virtue is no exception to the rule, and, pushed to the limit, it turns into vice.</p>
+
+    <p>Which brings us back to the two Isabellas.</p>
+
+    <p>Whatever it may be to an inveterately twentieth-century mind, the question for Shakespeare does not concern Isabella’s rejection of Angelo’s advances and her refusal to save her brother at such a price. Any one of his greater heroines—Imogen, Cordelia, Desdemona, Rosalind—in the same position would have decided, instantly, as she did. Who will doubt it? The notion that Isabella is just a self-righteous prude guarding her precious chastity simply will not stand up to the text. Lucio’s attitude toward her alone is enough to put it out of court. Her presence can sober this jesting “fantastic” and elicit poetry and sincerity from his loose lips:</p>
+
+    <div class="cita">
+        <p>I hold you as a thing ensky’d and sainted,</p>
+        <p>By your renouncement in immortal spirit,</p>
+        <p>And to be talk’d with in sincerity,</p>
+        <p>As with a saint.</p>
+    </div>
+
+    <p>Prudes do not produce such effects on libertines and jesters.</p>
+
+    <p>The question rather concerns what follows. The sister comes to the brother religiously exalted by a consciousness of the righteousness of what she had done—ever a dangerous aftermath of righteousness. The brother catches something of her uplifted mood.</p>
+
+    <div class="cita">
+        <p>CLAUD.: If I must die,</p>
+        <p>I will encounter darkness as a bride,</p>
+        <p>And hug it in mine arms.</p>
+    </div>
+
+    <div class="cita">
+        <p>There spake my brother,</p>
+    </div>
+
+    <p>the sister, thrilled, replies. And there indeed the noblest Claudio did speak, or Shakespeare would never have put such poetry on his lips. But Isabella, whom we interrupted, has instantly gone on:</p>
+
+    <div class="cita">
+        <p>there my father’s grave</p>
+        <p>Did utter forth a voice. Yes, thou must die.</p>
+    </div>
+
+    <p>What a flash of illumination! Is there a ghost in this play too?</p>
+
+    <p>And when Isabella reveals the terrible price that Angelo has put on his life, Claudio is equal to that too—or he and his sister’s spirit are together. Pushed to his limit by that spirit, his instantaneous reaction—it cannot be marked too strongly—is exactly hers:</p>
+
+    <div class="cita">
+        <p>O heavens! it cannot be,</p>
+    </div>
+
+    <p>and, again,</p>
+
+    <div class="cita">
+        <p>Thou shalt not do’t.</p>
+    </div>
+
+    <p>If it were my life, Isabella cries, I would throw it down like a pin. And she would have at that moment, as Claudio perceives:</p>
+
+    <div class="cita">
+        <p>Thanks, dear Isabel.</p>
+    </div>
+
+    <p>But Claudio is made of more human stuff than his sister, and, held as she has held him to an extremity of courage and resolution almost beyond his nature, the law of reaction asserts itself and he drops into fear:</p>
+
+    <div class="cita">
+        <p>Death is a fearful thing.</p>
+    </div>
+
+    <p>And then follows that terrific Dantesque-Miltonic picture of life after death with its “viewless winds” and “thrilling region of thick-ribbed ice” that leaves even Hamlet’s similar speculations nowhere—nowhere in appalling power at least. Obscurity made vivid.</p>
+
+    <div class="cita">
+        <p>Sweet sister, let me live.</p>
+    </div>
+
+    <p>And what does the sweet sister reply?</p>
+
+    <div class="cita">
+        <p>O you beast!</p>
+    </div>
+
+    <p>Imagine Desdemona saying that! Claudio has said, or done, nothing to deserve such a term. A weak wretch on the threshold of execution, yes. But surely no “beast.” What has happened? What always happens. What happened a few seconds before Claudio himself in another fashion. The overstretched string of Isabella’s righteous passion snaps. She has herself dropped from saintliness to beastliness—and projects her own beastliness on her brother. “Isabella—beastly!” her defenders will cry. Why not? There is both beast and saint in every one of us, and whoever will not admit it had better close his Shakespeare once for all, or, rather, open it afresh and learn to change his mind. It is now, not before, that those who have harsh things to say about Isabella may have their innings. Drunk with self-righteousness, she who but a moment ago was offering her life for her brother cries:</p>
+
+    <div class="cita">
+        <p>Die, perish! Might but my bending down.</p>
+        <p>Reprieve thee from thy fate, it should proceed.</p>
+        <p>I’ll pray a thousand prayers for thy death,</p>
+        <p>No word to save thee.</p>
+    </div>
+
+    <p>This is religion turned infernal. And it is the worse because of her allusion, in her scene with Angelo, to Christ’s atonement:</p>
+
+    <div class="cita">
+        <p>Alas, alas!</p>
+        <p>Why, all the souls that were were forfeit once;</p>
+        <p>And He that might the vantage best have took</p>
+        <p>Found out the remedy. How would you be,</p>
+        <p>If He, which is the top of judgement, should</p>
+        <p>But judge you as you are? O, think on that;</p>
+        <p>And mercy then will breathe within your lips,</p>
+        <p>Like man new made.</p>
+    </div>
+
+    <p>And then, “O you beast!”</p>
+
+    <p>What is there to question is this psychology? Is there any human being who cannot confirm it—on however diminished a scale—from his own experience? Who in the midst of making a speech, performing a part, or carrying a point, realizing with delight that it is “coming off,” has not paused for a fraction of a second to pat himself on the back, and then—it was indeed all “off” in another sense! The whole thing collapsed, instantly or gradually according to the degree of the complacency.</p>
+
+    <p>Commentators have wondered at the pure Isabella’s quick acquiescence in the disguised Duke’s scheme for having her go back and seem to consent to Angelo’s proposal while he arranges to substitute the rejected Mariana, once the Deputy’s betrothed, at the rendezvous. You may call the Duke’s strategem vile, shady, or inspired, as you will, and Isabella’s reaction to it laudable or damnable. Commendable or not, her conduct is one thing at any rate: credible. It is just the next swing of the pendulum. Conscious, or underconscious, of the fearful injustice she did her brother in that final outburst, she now seeks to set the balance straight. She would not have turned a hand to save him: therefore, she will now do anything to save him. Whatever we say, and whatever the Elizabethans said, to the morality of this much debated point, the psychology of it at any rate is sound. Shakespeare’s part was done when he showed how a girl made like Isabella would act in those circumstances. And her conduct here coheres perfectly with another bone of contention at the end of the play: her apparent abandonment of getting herself to a nunnery in favor of getting a husband to herself—or at least taking one when offered. Her religious fervor at the outset—with which the ghost of her father plainly had something to do—was “overdone.”</p>
+
+    <p>And that prospective husband, the Friar—otherwise the Duke? He is tarred with the same brush of excess. He professes to affect retirement and shun publicity. But it is not solitude that he loves. Whatever he was as a ruler, he becomes a moral meddler as a friar, as intoxicated over the human puppet-show whose strings he is pulling as Angelo is in another way over the moral-social drama of which he is manager. He will lie right and left, and even make innocence suffer cruelly (as in his concealing from Isabella the fact that her brother is not dead), merely for the sake of squeezing the last drops of drama or melodrama from the situation. And we must admit that it is a situation indeed, a dozen situations in one, in that last act. <i>Measure for Measure</i> has been widely criticized as an example of Shakespeare’s own too great concession to theatrical effect. The point is in one sense well taken. But the author very shrewdly shifts the responsibility from himself to the Duke by making the man who was guilty of the worst offenses of that sort just the sort of man who would have been guilty of them. The man who made the great speech beginning:</p>
+
+    <div class="cita">
+        <p>Heaven doth with us as we with torches do,</p>
+        <p>Not light them for themselves,</p>
+    </div>
+
+    <p>had rare insight. It is Shakespeare’s own ideal of going forth from ourselves and shining in, and being reflected from, the lives of others. But torches can serve the incendiary as well as the illuminator, and while the Duke did not go quite that far, if we reread the fifth act—with special attention to his part—the verdict will be: “Overdone by the last.”</p>
+
+    <p>The only way to make the Duke morally acceptable is frankly to take the whole piece as a morality play with the Duke in the role of God, omniscient and unseen, looking down on the world. As has often been pointed out, there is one passage that suggests this specifically:</p>
+
+    <div class="cita">
+        <p>O my dread lord,</p>
+    </div>
+
+    <p>cries the exposed Angelo, when the Duke at last throws off his disguise,</p>
+
+    <div class="cita">
+        <p>I should be guiltier than my guiltiness,</p>
+        <p>To think I can be undiscernible,</p>
+        <p>When I perceive your Grace, like power divine,</p>
+        <p>Hath look’d upon my passes.</p>
+    </div>
+
+    <p>The title of the play—the most “moral” one Shakespeare used—gives some warrant to the suggestion, as does the general tone of forgiveness at the end. But if the Duke is God, he is at first a very lax and later a very interfering God, and both the atmosphere and the characterization of the play are too intensely realistic to make that way out of the difficulty entirely satisfactory. If Shakespeare wants us to take it so, the execution of his intention is not especially successful. But we may at any rate say there is a morality play lurking behind <i>Measure for Measure</i>.</p>
+
+    <p class="separador">IV</p>
+
+    <p>And this brings us to the apex of the triangle, or the pyramid, Angelo, for the illumination of whom almost everything in the play seems expressly inserted.</p>
+
+    <p>Angelo is one of the clearest demonstrations in literature of the intoxicating nature of power as such. Power means unbounded opportunity, and opportunity acts on the criminal potentialities in man as gravitation does on an apple. Shakespeare wrote his <i>Rape of Lucrece</i> around this theme (and came back to it in <i>Macbeth</i>), and the stanzas on Opportunity in that poem are the best of glosses on <i>Measure for Measure</i>, such lines, to cull out just a few, as</p>
+
+    <div class="cita">
+        <p>O Opportunity, thy guilt is great! . . .</p>
+        <p>Thou sett’st the wolf where he the lamb may get. . .</p>
+        <p>And in thy shady cell, where none may spy him,</p>
+        <p>Sits Sin, to seize the souls that wander by him. . .</p>
+        <p>Thou blow’st the fire when temperance is thaw’d. . .</p>
+        <p>Thou foul abettor! thou notorious bawd!</p>
+    </div>
+
+    <p>This is why power as such is so often synonymous with crime. “Power as such,” said Emerson, “is not known to the angels.” But it was known to Angelo.</p>
+
+    <p>Angelo, in spite of his treatment of his betrothed, Mariana, was not an intentional villain or tyrant. His affinities are not with Pandulph and Richard III, but with Edward IV and Claudius. His soliloquy, on his knees,</p>
+
+    <div class="cita">
+        <p>When I would pray and think, I think and pray</p>
+        <p>To several subjects. Heaven hath my empty words,</p>
+    </div>
+
+    <p>looks back to Hamlet’s uncle, as his</p>
+
+    <div class="cita">
+        <p>Would yet he had liv’d!</p>
+    </div>
+
+    <p>when he supposes Claudio is dead at his command looks forward to Macbeth. But his case is in a way worse than theirs, for, supposing himself a mountain of virtue, when the temptation—and with it a sensation he has never experienced—comes, he rolls almost instantly into the abyss. Spiritual pride erects no defenses.</p>
+
+    <div class="cita">
+        <p>ANG.: I have begun,</p>
+        <p>And now I give my sensual race the rein.</p>
+    </div>
+
+    <p>He loathes himself:</p>
+
+    <div class="cita">
+        <p>The tempter or the tempted: who sins most?</p>
+        <p>Ha!</p>
+        <p>Not she; nor doth she tempt: but it is I</p>
+        <p>That, lying by the violet in the sun,</p>
+        <p>Do as the carrion does, . . . Most dangerous</p>
+        <p>Is that temptation that doth goad us on</p>
+        <p>To sin in loving virtue.</p>
+    </div>
+
+    <p>In loving Isabella, he thinks he means. But how much profounder the second construction that the sentence bears, which makes it embrace both intending violator and intended victim! Though poles apart, the virtuous maid and the respected head of the state are here identical. Their vulnerable spot is the same: the sin of loving their own virtue.</p>
+
+    <p>There are few passages in Shakespeare that give a more inescapable impression of coming from the poet himself than Isabella’s great speech to Angelo on power. It is the speech perhaps above any other in his works that seems written to the twentieth century and that the twentieth century should know by heart. The spectacle of</p>
+
+    <div class="cita">
+        <p>man, proud man,</p>
+        <p>Dress’d in a little brief authority,</p>
+    </div>
+
+    <p>“like an angry ape” playing “fantastic tricks before high heaven” made Shakespeare as well as the angels weep. But her words recoil too perfectly on Isabella’s own head not to make them also perfectly in character:</p>
+
+    <div class="cita">
+        <p>Merciful Heaven!</p>
+        <p>Thou rather with thy sharp and sulphurous bolt</p>
+        <p>Split’st the unwedgeable and gnarled oak</p>
+        <p>Than the soft myrtle.</p>
+    </div>
+
+    <p>This shaft is aimed at the man who would make the soft Claudio a public example of the moral austerity of his regime. But how about Isabella herself, who is shortly to launch thunderbolts against the same weakling in the scene where she calls him beast?—not to mention what she is doing at the moment, for Angelo in strength is nearer the myrtle than the oak he considers himself. <i>Tu quoque!</i> Shakespeare perceives that spiritual power is quite as open to abuse as political power. The sheer theatrical effectiveness of his astonishing scene can easily blind us to the tangle of moral ironies and boomerangs it involves. This retiring girl, who had fairly to be pushed into the encounter by Lucio, finally standing up with audacity to the first man of the state is thrilling drama. But unfortunately Isabella gets an inkling of that fact herself.</p>
+
+    <div class="cita">
+        <p>Go to your bosom,</p>
+    </div>
+
+    <p>she cautions Angelo,</p>
+
+    <div class="cita">
+        <p>Knock there, and ask your heart what it doth know</p>
+        <p>That’s like my brother’s fault.</p>
+    </div>
+
+    <p>If only she could have said those lines to herself, substituting for the last one,</p>
+
+    <div class="cita">
+        <p>That’s like this man’s offence,</p>
+    </div>
+
+    <p>she never would have let slip from her lips that fatal word that ties some unplumbed sensual element in her own nature to the very corruption of justice and virtue she is condemning.</p>
+
+    <p>But Angelo’s blackest act is not his sin of sensuality against Isabella, which he commits in wish and as he thinks in fact. Nor is it even the prostitution of his office that that involves. It is his acceptance of Isabella’s sacrifice of herself and his then sending Claudio to death nevertheless. This final infamy—completed in intention though defeated in fact—ranks with John of Lancaster’s treachery to the rebels in <i>II Henry IV</i>. Nothing worse need be said of it than that.</p>
+
+    <div class="cita">
+        <p>Alack! when once our grace we have forgot,</p>
+        <p>Nothing goes right,</p>
+    </div>
+
+    <p>Angelo cries, in anguish at what he has done. He might just as well have said,</p>
+
+    <div class="cita">
+        <p>Alack! when once our power is unbounded,</p>
+        <p>Nothing goes right,</p>
+    </div>
+
+    <p>for his are the typical sins and crimes of unlimited authority.</p>
+
+    <p>“Power is poison.”</p>
+
+    <p>What power is has never been more tersely summed up than in those three words of Henry Adams in the section of the <i>Education</i> in which he analyzes its effect on Presidents of the United States, as he had observed it in Washington.</p>
+
+    <div class="cita">
+        <p>Power is poison. Its effect on Presidents had been always tragic, chiefly as an almost insane excitement at first, and a worse reaction afterwards; but also because no mind is so well balanced as to bear the strain of seizing unlimited force without habit or knowledge of it; and finding it disputed with him by hungry packs of wolves and hounds whose lives depend on snatching the carrion. . . . <i>The effect of unlimited power on limited mind is worth noting in Presidents because it must represent the same process in society, and the power of self-control must have limit somewhere in face of the control of the infinite.</i></p>
+    </div>
+
+    <p>Shakespeare was saying precisely that, I think, in <i>Measure for Measure</i>. If concentration of authority in time of “peace” can let loose such demons of Opportunity in those who possess power, and transform their subjects either into pelting petty officers, hungry packs of wolves and hounds, or into their victims, what will the same thing do in time of war? In “peace” such unadulterated authority is at least not “necessary.” It is the crowning infamy of war that it does make it essential. Victory demands efficiency, and efficiency calls for undisputed unity of command. War is authority—overdone.</p>
+
+    <p class="separador">V</p>
+
+    <p>The underplot of this play is unsavory. But of its kind it is a masterpiece of the first order, both in itself and in its integration with the main plot and its themes. Mistress Overdone, the keeper of a Viennese brothel, Abhorson, the executioner in a Viennese prison, and Barnardine, a condemned murderer, may be said to be its symbolic triad. A prison is presumably a place where Justice is done. Pompey, Mistress Overdone’s tapster, is struck rather by its resemblance to his employer’s establishment.</p>
+
+    <p>“I am as well acquainted here as I was in our house of profession: one would think it were Mistress Overdone’s own house, for here be many of her old customers. First, here’s young Master Rash . . .” and foregoing acquaintance with the rest of the inmates whom Pompey goes on to introduce, we are sent back in astonished recognition, by that name “Master Rash,” to <i>Hamlet</i> (and his “prais’d be rashness”) who first made known to us the idea that the world is a prison. This play carries Hamlet’s analogy a step further, and continually suggests the resemblance of the main world, not so much to a prison—though it is that too—as to a house of ill fame, where men and women sell their honors in a dozen senses.</p>
+
+    <p>Lucio, for instance, mentions “the sanctimonious pirate, that went to sea with the Ten Commandments, but scraped one out of the table.” If this is not an oblique, if a bit blunt, hit at Angelo (on Shakespeare’s part of course, not Lucio’s), then a cap that fits should never be put on. It was “Thou shalt not steal,” of course, that the pirate scraped out. We know which one of the ten Angelo eliminated, if, indeed, it was not half-a-dozen of them. It would be interesting, taking Lucio’s hint, to run through the cast and ask which and how many of the Commandments each character discarded. Isabella certainly could close her eyes to the first one. But without taking time for the experiment, one thing is certain. There would be no perfect scores—either way. The man in ermine in this play casts wanton eyes on the same woman whom the libertine looks on as a saint. That is typical of almost everything in it.</p>
+
+    <p>“’Twas never merry world,” declares Pompey, comparing his profession with a more respectable one, “since, of two usuries, the merriest was put down, and the worser allowed by order of law a furred gown to keep him warm; and furred with fox and lambskins too, to signify that craft, being richer than innocency, stands for the facing.” This might be dismissed as the irresponsible chatter of the barroom, did not the main plot so dreadfully confirm it and Angelo himself confess it in soliloquy:</p>
+
+    <div class="cita">
+        <p>Thieves for their robbery have authority</p>
+        <p>When judges steal themselves.</p>
+    </div>
+
+    <p>If it will help any ultramodern person to understand Pompey’s “usuries,” read “rackets” in their place.</p>
+
+    <p>When the Provost tells this same Pompey, then in prison, that he may earn his freedom if he will act as assistant to the executioner, Shakespeare gives us another of his deadly parallels between the world of law and the world of lawbreakers. Pompey jumps at the chance: “Sir, I have been an unlawful bawd time out of mind; but yet I will be content to be a lawful hangman.” But Abhorson, who is proud of his calling, is scandalized at the suggestion: “A bawd, sir? Fie upon him! he will discredit our mystery.” To which the Provost replies: “A feather will turn the scale.” (Between being bawd and executioner, he means, of course.) As to what Shakespeare thought, we get a hint when we remember the Duke’s tribute:</p>
+
+    <div class="cita">
+        <p>This is a gentle Provost: seldom when</p>
+        <p>The steeled gaoler is the friend of men.</p>
+    </div>
+
+    <p>So recklessly does Shakespeare go on heaping up analogies between persons and things of low and those of high estate that when Elbow, the Constable, who must have been Dogberry’s cousin, brings Froth and Pompey before Angelo and Escalus in judicial session, and introduces his prisoners as “two notorious benefactors,” we begin to wonder, in the general topsy-turvydom, whether there may not be relative truth in his malapropism. At any rate, the upperworld characters are guilty of far worse moral and mental, if not verbal, confusions. “Which is the wiser here,” asks Escalus, “Justice or Iniquity?”</p>
+
+    <div class="cita">
+        <p>And you shall have your bosom on this wretch,</p>
+    </div>
+
+    <p>cries the disguised Duke to Isabella, when Angelo’s infamy becomes known to him,</p>
+
+    <div class="cita">
+        <p>Grace of the Duke, revenges to your heart,</p>
+        <p>And general honour.</p>
+    </div>
+
+    <p>An odd idea of honor for a supposed friar to impart to a prospective nun: the time-worn notion that it consists in having all your old scores settled. And when he hears that “a most notorious pirate” has just died in prison of a fever, thus supplying a head that can be sent to Angelo in place of Claudio’s, he exclaims:</p>
+
+    <div class="cita">
+        <p>O, ’tis an accident that Heaven provides!</p>
+    </div>
+
+    <p>—an equally odd idea of Heaven. But he far exceeds these lapses. At the end of the play, in an atmosphere of general pardon, Lucio, who—unwittingly but not unwittily—has abused the Duke to his face when disguised as a friar, does not escape. The Duke orders him married to the mother of his illegitimate child, and, the ceremony over, whipped and hanged. “I beseech your Highness,” Lucio protests, “do not marry me to a whore.” And the Duke relents to the extent of remitting the last two but not the first of the three penalties.</p>
+
+    <p>The emphasis on this incident at the very end brings to mind the moment when Lucio pulls off the Duke’s hood:</p>
+
+    <div class="cita">
+        <p>DUKE: Thou art the first knave that e’er mad’st a duke. . .</p>
+        <p>Come hither, Mariana.</p>
+        <p>Say, wast thou e’er contracted to this woman?</p>
+        <p>ANG.: I was, my lord.</p>
+        <p>DUKE: Go take her hence, and marry her instantly.</p>
+    </div>
+
+    <p>Poor Mariana’s willingness, in contrast with Lucio, to marry her “knave” makes the parallelism more rather than less pointed.</p>
+
+    <p><i>Measure for Measure</i>—once one gives the underplot its due—fairly bristles with disconcerting analogies and moral paradoxes like this last one. Only a hopelessly complacent person will not be challenged by it. And whoever will be honest with himself will confess, I believe, to a strange cumulative effect that it produces. Barring Escalus and the Provost, who are put in to show that not all judges are harsh nor all jailers hardhearted, we are more in love in the end with the disreputable than with the reputable characters. Overworld and underworld threaten to change places.</p>
+
+    <p>Whether <i>Measure for Measure</i> was a favorite play of Samuel Butler’s I do not know. It ought to have been. In it Shakespeare certainly proves himself a good Butlerian, an adherent to the principle that “every proposition has got a skeleton in its cupboard.” Many entries in the <i>Note-Books</i> might have been composed to illuminate Shakespeare’s play:</p>
+
+    <div class="cita">
+        <p>God is not so white as he painted, and he gets on better with the Devil than people think. The Devil is too useful for him to wish him ill and, in like manner, half the Devil’s trade would be at an end should any great mishap bring God well down in the world. . . . The conception of them as the one absolutely void of evil and the other of good is a vulgar notion taken from science whose priests have ever sought to get every idea and every substance pure of all alloy.</p>
+        <p>God and the Devil are about as four to three. There is enough preponderance of God to make it far safer to be on his side than on the Devil’s, but the excess is not so great as his professional <i>claqueurs</i> pretend it is.</p>
+    </div>
+
+    <p>What is this but the repentant Angelo’s</p>
+
+    <div class="cita">
+        <p>Let’s write good angel on the devil’s horn,</p>
+    </div>
+
+    <p>slightly expanded?</p>
+
+    <p>Quite in conformity with Butler’s dicta, I am not sure that honest readers do not find Barnardine, the condemned murderer, the most delectable character in <i>Measure for Measure</i>—he who for God knows how long has defied the efforts of the prison authorities to execute him. We like him so well that we do not wish to inquire too curiously into his past. For my part, I am certain the murder he did—if he really did it—was an eminently good-natured one. “Thank you kindly for your attention,” he says in effect, when they come to hale him to the gallows, “but I simply cannot be a party to any such proceeding. I am too busy—sleeping.” Let him sleep. Let anyone sleep to his heart’s content who puts to rout one Abhorson. He has earned his nap.</p>
+
+    <p>Like Falstaff, Barnardine tempts the imagination to play around him. No higher tribute can be paid to a character in a play, as none can to a person in life. The fascination he has for us—he, and, in less degree, the rest of the underworld of which he is a member—is partly because these men and women, being sinners, have some tolerance for sin. And some humor, which comes to much the same thing. <i>Judge not</i>: they come vastly nearer obeying that injunction (of which <i>Measure for Measure</i> sometimes seems a mere amplification) than do their betters. Never will anyone say of them as Escalus said of Angelo: “my brother justice have I found so severe, that he hath forced me to tell him he is indeed Justice.” They are not forever riding the moral high horse. They make no pretensions. They mind their own business, bad as it is, instead of telling, or compelling, other people to mind theirs or to act in their way. It is a relief to find somebody of whom that is true. “Our house of profession.” No, Pompey is wrong. It is not the establishment to which he is bawd and tapster, but the main world, that better deserves that name. For everybody with power—save a few Abraham Lincolns—is, <i>ipso facto</i>, professing and pretending all day long. “I am convinced, almost instinctively,” says Stendhal, “that as soon as he opens his mouth every man in power begins to lie, and so much the more when he writes.” It is a strong statement, and Shakespeare would certainly have inserted an “almost” in his version of it, but there are his works, from the History Plays on, to show his substantial agreement with it. Why does Authority always lie? Because it perpetuates itself by lies and thereby saves itself from the trouble of crude force: costumes and parades for the childish, decorations and degrees for the vain and envious, positions for the ambitious, propaganda for the docile and gullible, orders for the goosesteppers, fine words (like “loyalty” and “co-operation”) for the foolishly unselfish—to distract, to extort awe, to flatter and gratify inferiority, as the case may be. Dr. Johnson ought to have amended his famous saying. Patriotism is only one of the last refuges of a scoundrel.</p>
+
+    <p>Angelo and the Duke, if anyone, ought to know, and in their hearts they agree exactly. Hear them in soliloquy. The identity is not accidental.</p>
+
+    <div class="cita">
+        <p>ANG.: O place, O form,</p>
+        <p>How often dost thou with thy case, thy habit,</p>
+        <p>Wrench awe from fools and tie the wiser souls</p>
+        <p>To thy false seeming!</p>
+    </div>
+
+    <div class="cita">
+        <p>DUKE: O place and greatness! millions of false eyes</p>
+        <p>Are stuck upon thee. Volumes of report</p>
+        <p>Run with these false and most contrarious quests</p>
+        <p>Upon thy doings; thousand escapes of wit</p>
+        <p>Make thee the father of their idle dream</p>
+        <p>And rack thee in their fancies.</p>
+    </div>
+
+    <p>The effect of power on those who do not possess it but wish that they did, Shakespeare concludes, is scarcely better than on those who do.</p>
+
+    <p>And here is the deepest reason—is it not?—why we prefer the “populace” in this play to the powers-that-be. The vices of the two ends of “society” turn out under examination to be much alike. But the lower stratum has one virtue to which the possessors and pursuers of power, for all their pretensions, cannot pretend: namely, lack of pretension. Here is a genuine basis for envying the dispossessed. Revolutions by the downtrodden, abortive or successful, to regain their share of power have occurred throughout history. The world awaits a revolution by the powerful to gain relief from the insincerities to which their privileges and position forever condemn them. Thoreau staged a one-man revolution based on a kindred principle. If this is what it implies, <i>Measure for Measure</i> may yet be banned by the authorites. . . . But no! it is as safe as the music of Beethoven. “The authorities” will never understand it.</p>
+
+    <p class="separador">VI</p>
+
+    <p>If we do not want a world presided over by a thundering Jove—this play seems to say—and under him a million pelting petty officers and their understudies, and under them millions of their victims, we must renounce Power as our god—Power and all his ways. And not just in the political and military worlds, there the evils of autocracy with its inevitable bureaucracy of fawning yes-men, while obvious to all but autocratic or servile eyes, may be more or less “necessary.” It is the more insidiously personal bondages to power that should concern us first. Revolution against authority—as Isabella, for all her great speech, did not perceive, and as Barnardine did—begins at home. Let men in sufficient numbers turn into Barnardines, who want to run no one else but will not be run by anyone, even to the gallows, and what would be left for the pelting petty officers, and finally for Jove himself, but to follow suit? There would be a revolution indeed. The more we meditate on Barnardine the more he acquires the character of a vast symbol, the key perhaps to all our troubles. Granted, with Hamlet, that the world is a prison. We need not despair with Hamlet. We may growl rather with Barnardine at all intruders on our daydreams, and learn with him that even in a prison life may be lived—independently. Why wait, as modern gospels preach, until we are out of prison before beginning to live? “Now is a time.”</p>
+
+    <p>Approximately three hundred years before the twentieth century, <i>Measure for Measure</i> made clear the truths that it has taken two world wars to burn into the consciousness of our own generation: that Power lives by Authority and that Authority is always backed by two things, the physical force that tears bodies and the mental violence that mutilates brains:</p>
+
+    <div class="cita">
+        <p>In every cry of every Man,</p>
+        <p>In every Infant’s cry of fear,</p>
+        <p>In every voice, in every ban,</p>
+        <p>The mind-forg’d manacles I hear.</p>
+    </div>
+
+    <p>The two—dynamite and propaganda, to use modern terms—are always found together. “By skilful and sustained propaganda,” said Hitler, “an entire people can be made to see even heaven as hell and the most miserable life as paradise.” Where there is an Angelo on the bench, there will always be an Abhorson in the cellar. And how well Shakespeare liked Abhorson, his name proclaims.</p>
+
+    <div class="cita">
+        <p>O, it is excellent.</p>
+        <p>To have a giant’s strength; but it is tyrannous</p>
+        <p>To use it like a giant. . . .</p>
+        <p>Could great men thunder</p>
+        <p>As Jove himself does, Jove would ne’er be quiet;</p>
+        <p>For every pelting, petty officer</p>
+        <p>Would use his heaven for thunder,</p>
+        <p>Nothing but thunder! Merciful Heaven!</p>
+        <p>Thou rather with thy sharp and sulphurous bolt</p>
+        <p>Split’st the unwedgeable and gnarled oak</p>
+        <p>Than the soft myrtle; but man, proud man,</p>
+        <p>Dress’d in a little brief authority,</p>
+        <p>Most ignorant of what he’s most assur’d,</p>
+        <p>His glassy essence, like an angry ape,</p>
+        <p>Plays such fantastic tricks before high heaven</p>
+        <p>As make the angels weep; who, with our spleens,</p>
+        <p>Would all themselves laugh mortal.</p>
+    </div>
+
+    <section class="footnotes">
+        <h3>Note</h3>
+        <p>From <i>The Meaning of Shakespeare</i>. Copyright © 1951 by The University of Chicago. The University of Chicago Press.</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>
