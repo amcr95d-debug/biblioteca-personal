@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>6. Revocation — Therapeutic Action</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">Chapter 6</p>
+        <h1 class="cab__tit">Revocation</h1>
+    </header>
+
+    <p>How is one to end a book on therapeutic action? Or, rather, what would a therapeutic ending be? With a recovered memory? Here it again seems useful to take a step back to a moment in Western intellectual and emotional life just before the introduction of psychoanalysis. The great therapeutic book, written in the generation before Freud, is <i>Concluding Unscientific Postscript</i> by Johannes Climacus. This book is written in the midst of Christian life, and its official topic, the manifest content, is the difficulty involved in becoming a Christian. This may seem an alien topic for secular readers today. All the more so for psychoanalysts who have been persuaded by Freud’s critique of religious belief. Still, no matter what your religious orientation or lack of orientation, we cut ourselves off from our own past if we simply disregard the great works of nineteenth century Europe. For this is the soil from which psychoanalysis grew. Whatever one’s current religious belief or lack of belief or hostility to belief, it is antipsychoanalytic to refuse to look back to one’s heritage. Here I am not interested in any particular influence on Freud the individual, but rather in a diagnosis of the spiritual climate of his time.</p>
+
+    <p>Climacus’ ending is bizarre: he revokes his entire book. What could this possibly mean?<sup>1</sup> Climacus, for his part, certainly takes the revocation to be essential to the therapeutic action of his book. In an appendix entitled “For an Understanding with the Reader,” he says, “The undersigned, Johannes Climacus, who has written this book, does not give himself out to be a Christian; <i>he is completely taken up with the thought how difficult it must be to be a Christian</i>; . . . In the aloofness of the experiment the whole work has to do with me myself, solely and simply with me.” He then goes on to quote himself from the introduction, reminding the reader that he was warned at the beginning:</p>
+
+    <div class="cita">
+        <p>“I, Johannes Climacus, now thirty years of age, born in Copenhagen, a plain man like the common run of them, have heard tell of a highest good in prospect, which is called eternal blessedness, and that Christianity will bestow this upon me on condition of adhering to it—now I ask how I am to become a Christian” (cf. the Introduction). I ask only for my own sake, yes, certainly that I do, or rather I have asked this question, for that indeed is the content of the whole work.<sup>2</sup></p>
+    </div>
+
+    <p>On the face of it, one might think that the revocation is a reaffirmation of the fact that the therapeutic action embodied in his book is for him, and for him alone. At the beginning of the book he says this is his own therapy, and the revocation at the end ostensibly reaffirms that writing the book has been for him and him alone. But then why publish the book? Is Climacus not behaving like the religious leader he mocks, the one who teaches that a religious figure should have no disciples? For, after all, the revocation begins in an appendix that itself begins on page 545 of my English translation. The reader who has slogged through the previous 544 pages of philosophy and theology, as I have, might be forgiven for thinking: Does this really have nothing to do with me? Am I nothing more than the Other in the presence of whom Climacus has gone through his own private therapy? What is Climacus doing such that he wants to suggest to me that that is my role?</p>
+
+    <p>Climacus says that he is a “humorist in private practice.” He pictures himself as author and audience of his own jokes. (At first this may seem strange but, if you think about it, a good many joke-tellers are precisely that.) Climacus is someone who has written the book for his own amusement. Or, at least, so he says. But why, then, does he say that? If the book really is for his own amusement, why did he feel the need to tack on an appendix entitled, “For an Understanding with the Reader”? It seems that the understanding he is seeking with his reader is that he has written the book for himself! Imagine the termination phase of an analysis in which the analysand keeps reassuring the analyst that she has really gone through the analysis for herself. The analyst ought to wonder what all this reassurance is about. Indeed, if the analyst doesn’t wonder, then they are both ensnared in a comic performance. The analysand is reciting the dogma of antidogmatism—“I’ve done this analysis for myself!”—and the analyst is tacitly congratulating himself, by congratulating her. To paraphrase that famous line from <i>My Fair Lady</i>: “I think she’s got it! By George, she’s got it! Now once again, who’s this analysis for?” “For me! For me! . . .”</p>
+
+    <p>Climacus assures us that he is a humorist in private practice. Might this not be an ironic performance that is also utter earnestness? That is, in assuring us that he is in private practice, he makes himself ludicrous, but he simultaneously frees us from participating in a comic duet. The performance is so ridiculous—ridiculous in our eyes—that we are thereby liberated from the routine. In particular, we are going to be freed from the temptation to say, “Psst. The Master teaches us that it’s very difficult to become a Christian, and above all you can’t become a Christian by learning his teaching. Be careful about passing this along!” This might have been the position of a reader at the end of the book, before the appendix. But by going on to revoke the entire book, by insisting he is in private practice, however ridiculous that assertion may be after 544 published pages of goings on, he effectively puts himself into private practice. He is a comic sacrificial lamb. In ostensibly cutting himself off from the reader, he enables the reader to separate from him.</p>
+
+    <p>Climacus describes his act this way:</p>
+
+    <div class="cita">
+        <p>As in Catholic books, especially those of an earlier age, one finds at the back of the volume a note which informs the reader that everything is to be understood conformably with the doctrine of the Holy Catholic Mother Church—so what I write contains also a piece of information to the effect that everything is to be so understood that it is understood to be revoked, and the book has not only a Conclusion but a Revocation.<sup>3</sup></p>
+    </div>
+
+    <p>This passage is dripping with irony. Climacus, if he were able to become a Christian, would no doubt become a Protestant, so the genre that he mentions is for him a specifically Catholic form of decadence. If the body of one’s text is blasphemy, can one really get off the hook by saying in an appendix that everything is to be understood as in conformity with the doctrines of the Church? If Galileo had appended such a disclaimer to his <i>Dialogue of the Great World Systems</i>, would he thereby have brought his teachings into conformity with the Church? What kind of a “revocation” could such a performance possibly bring about? If Climacus likens his own act of revocation to this kind of performance, isn’t he thereby undermining his own act? Does Climacus, in the very act of revoking his own work, undermine his revocation?</p>
+
+    <p>Yet earnestness is also present. Climacus writes that what he writes also contains “a piece of information”—namely, the information that everything is to be understood as revoked. But by now we readers ought to be wary of “pieces of information.” For the crucial issue cannot be <i>what</i> pieces of information we have, but <i>how we live</i> with them. If the “revocation” is only a piece of information, it deserves the skeptical scare-quotes I am giving it: for it is “revocation” in name only.<sup>4</sup> It seems that Climacus is trying at once to put on display both the gesture and its emptiness. Climacus tells us as much himself: “So then the book is superfluous; let no one therefore take the pains to appeal to it as an authority; for he who thus appeals to it has <i>eo ipso</i> misunderstood it.”<sup>5</sup> So even if the reader appeals to the “piece of information” that the entire book is revoked, hasn’t he thereby misunderstood it? But, then, what is this revocation? If we cannot appeal to it, what are we to make of it?</p>
+
+    <p>The reader knows all along that Johannes Climacus is a pseudonymous author. He is not a mere pen name for Kierkegaard, but he never quite inhabited flesh and blood either. Although these are the last words of Climacus, they are not the last word. After the <i>Concluding Unscientific Postscript</i> concludes, after this appendix in which the book is revoked, there is, as I said at the beginning of this work, “A First and Last Declaration,” and this three-and-a-half page document is signed by S. Kierkegaard. In it, Kierkegaard declares that he is the author “as people would call it” of the <i>Concluding Unscientific Postscript</i>, as well as the other pseudonymous works. But, he continues:</p>
+
+    <div class="cita">
+        <p>My pseudonymity . . . has not had a casual ground in my person . . . but it has an <i>essential</i> ground in the character of the <i>production</i>. . . . What is written therefore is in fact mine, but only in so far as I put into the mouth of the poetically actual individuality whom I <i>produced</i>, his life-view expressed in audible lines. For my relation is even more external than that of a poet, who poetizes characters, and yet in the preface is himself the author. For I am impersonal, or personal in the second person, a <i>souffleur</i> who has poetically produced the <i>authors</i>, whose preface in turn is their own production, as are even their own names. So in the pseudonymous works there is not a single word which is mine, I have no opinion about these works except as a third person, no knowledge of their meaning except as a reader, not the remotest private relation to them, since such a thing is impossible in the case of a doubly reflected communication. One single word of mine uttered personally in my own name would be an instance of presumptuous self-forgetfulness, and dialectically viewed it would incur with one word the guilt of annihilating the pseudonyms.<sup>6</sup></p>
+    </div>
+
+    <p>OK, so we are dealing with a pseudonymous author, not with a mere pen name. Does not this put us in a position analogous to an analyst listening to an analysand? For a reader confronted with an author he knows to be pseudonymous needs to figure out not merely <i>what</i> this author is saying, but <i>who the author is</i> who is saying it. Who is this Climacus who is saying these things to me? The aim is not to discover what Kierkegaard really meant to say, as though he were hiding behind the pseudonym. Nothing so cutesy is going on. Yet, knowing that Johannes Climacus is a poetical creation, we are in a position to ask about the poetical meaning of the alleged revocation.</p>
+
+    <p>Similarly, an analysand typically presents him- or herself as a poetical creation. The analyst must perpetually listen not merely to what the analysand is saying, but also with the question, Who is this who is saying this to me? The analysand may come with all sorts of fantasies about getting over her past, getting rid of emotional baggage, of being able to start a new kind of intimate life, and so on. Yet there is reason to suspect that any alleged revocation of the past will be utterly entangled in the pseudonymous author whose past it is. Psychoanalysis needs to be able to expose the pseudo-revocations of the pseudonymous authors who spend time on our couches.</p>
+
+    <p>Climacus is a master at exposing the hypocrisy, the false starts, the illusions of the Christianity of his day. It is a stunning exposition of the spiritual malaise of an age. Official Christianity, what Climacus calls Christendom, was not entirely moribund, but it had become too easy. One symptom, for Climacus, was the facility with which philosophically minded authors could pronounce on the spiritual meaning of the age. Thus Climacus meant his revocation as a healthy (and ironic) antidote to any such solemn pronouncement. “Let no one put himself out to say that the book is entirely superfluous and quite irrelevant to the times—unless in the end he has to say something, for in that case he pronounces the wished-for judgment, which indeed I have already passed upon the author.”<sup>7</sup> Climacus thus pronounces his own work as “entirely superfluous,” “quite irrelevant to the times.”</p>
+
+    <p>There is a deep meaning here, embedded in the comic gesture. Climacus is reminding us by his own example, that when it comes to Christianity we ought to spend less time paying attention to the pronouncements of supposed religious or philosophical guides, and look to our own souls. In the revocation, Climacus subverts the idea that his book can be used as another philosophical guide, subverts the idea that he is another wise man pronouncing on the meaning of the age. The revocation insists that the book is nothing more than his own spiritual exercise. Yet, in so insisting, he shifts the literary genre. Consider, by way of analogy, another great philosophical work, Descartes’s <i>Meditations</i>. The <i>Meditations</i> are not trying to convince another to adopt any particular beliefs. Rather, they purport to be the journey of a solitary ego, an I, on the path of secure knowledge. If a reader wants, any I can take up that path. It is an intellectual journey that can be imitated, and in so doing, any I can go through the “therapeutic action” for itself. In a similar vein, Climacus’ revocation is meant to bring this book back to an exercise for himself alone; yet it simultaneously provides a model that anyone could imitate for himself or herself alone. As Climacus puts it with ironic understatement, “To write a book and revoke it is something else than not writing it at all.”<sup>8</sup></p>
+
+    <p>And yet, and yet. However incisive the critiques of his society, however intimate the act of revocation, the reader arrives at an uncanny sense that something pathological is also being put on display. We are in a world of compromise formation. We may not yet know what the compromises are, but we readers have become, almost imperceptibly, hermeneutically suspicious of our author. What is he up to? What we come to suspect is that although he is a master in explaining to us how Christianity has become too easy, in his life he puts on display how, for him, it has become too difficult. Not that any of his specific criticisms are wrong, but why does he need to keep telling us about them? Indeed, if his revocation really is an act by which he declares that he is really only talking to himself, why does he need to keep telling himself? Climacus tells us that “he is completely taken up with the thought how difficult it must be to be a Christian,” and after 550 pages of going on, we believe him! What we, the readers, slowly come to see is that whatever the genuine difficulties involved in becoming a Christian, for Climacus these difficulties are serving to prevent him ever becoming one. Climacus is wallowing in difficulty.</p>
+
+    <p>Compare the analysis of a high-functioning neurotic. There will typically be incisive critiques of the immediate social scene, of parents, siblings, friends, colleagues. But, as one listens, one wonders, what are these critiques for? However accurate they may be in what they say, what pathology is being put on display in how they are said? Think of young Dora’s stunning accounts of the hypocrisies of the adult world that surrounded her. Isn’t her central criticism that her father, Frau K., and Herr K. are all making it too easy on themselves? Dora is convinced that there is something more difficult involved in life well lived, and yet pathology infects her own sense of difficulty. Freud’s self-acknowledged failure in this case can be put like this: although he was attentive to the difficulties Dora described (the what), he was obtuse to the difficulties she had in living (the how). One might say that the category of becoming a woman in relation to men and other women was as difficult for Dora as the category of becoming a Christian was for Climacus. In other words, in their idiosyncratic ways, both were stuck in (a pathological sense of) difficulty. As a result of Freud’s therapeutic failure, Dora brought about an epoch-making revocation of her own.</p>
+
+    <p>It would be tempting as a literary conceit to end this book by offering a revocation of my own. Couldn’t I offer this last chapter as a revocation of the entire book? No I cannot. As I said at the beginning, this book is written to a significant extent for myself, to continue the process of deepening myself as a psychoanalyst. But it is also written for others. While it is written in a style that I hope will encourage the reader to play with the concepts, it is also the case that I think that what I said about subjectivity and objectivity, internalization, drives, and transference is true. Thus I have not had to construct a pseudonymous author to write this book; I am writing this book in my own person. Thus to enact a revocation would be worse than an empty gesture, it would be false.</p>
+
+    <p>What I can do, though, and what seems analytically appropriate, is to offer a loose association, and associations to that association. From <i>revocation</i> to <i>re-vocation</i>. The activity in this book is meant to recall us to our vocation as psychoanalysts. It is a recalling to our calling. Here the issue is not, à la Climacus, that one should forever be taken up with how difficult it is to become a psychoanalyst. The secular-therapeutic equivalent of Climacus would be a person who felt he could never become a psychoanalyst because he was so absorbed in all the difficulties of really being one. He would be someone who was brilliant at exposing the hypocrisies of the psychoanalytic profession, but who himself remained stuck in difficulty; a person who could never quite enter the promised land, the subjective category of psychoanalyst. Here, by contrast, we begin already inside the life of analysis, and the examination of difficulties is part of our never-ending process of deepening ourselves as analysts. Rather than obstacles to becoming a psychoanalyst, these are the intellectual challenges by which we reaffirm our subjective identity. Thus it does not seem far-fetched or false to think of this book not only as about therapeutic action but as part of the continuing therapeutic action of psychoanalysis.</p>
+
+    <section class="footnotes">
+        <h3>Notes</h3>
+        <p>1. For marvelous discussions of Kierkegaard and issues related to revocation, see James Conant (1992, 1996).</p>
+        <p>2. Kierkegaard (1846), op. cit., p. 545 (my emphasis). The quoted sentence from introduction also appears on p. 19.</p>
+        <p>3. Kierkegaard (1846), op. cit., p. 547.</p>
+        <p>4. By way of analogy, consider the marvelous article by Lewis Carroll, “What the Tortoise Said to Achilles” (<i>Mind</i>, 1895). In it the Tortoise challenges Achilles to a logical race: Achilles is to get the Tortoise to move from the premises <i>A</i> and <i>If A, then B</i> to the conclusion <i>B</i>. The Tortoise agrees to both of the premises. Indeed, they are valuable “pieces of information.” But he can’t see how to get to the conclusion. For doesn’t he need another premise? Namely, <i>If A and If A, then B, then B</i>. Achilles lets him have that premise, an additional piece of information. But still the Tortoise can’t see how to get to <i>B</i>. Doesn’t he need another piece of information, viz., <i>If A and If A, then B, then B, then B</i>? And so on. One of the many lessons of this marvelous tale is that “pieces of information” on their own are not by themselves going to force a particular way of living with them.</p>
+        <p>5. Kierkegaard (1846), op. cit., p. 546.</p>
+        <p>6. Kierkegaard (1846), op. cit., p. 551.</p>
+        <p>7. Kierkegaard (1846), op. cit., p. 545.</p>
+        <p>8. Kierkegaard (1846), op. cit., p. 548.</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>
