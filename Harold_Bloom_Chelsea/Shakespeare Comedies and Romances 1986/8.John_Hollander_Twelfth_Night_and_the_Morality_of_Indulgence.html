@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>“Twelfth Night” and the Morality of Indulgence — John Hollander</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">John Hollander</p>
+        <h1 class="cab__tit">“Twelfth Night” and the Morality of Indulgence</h1>
+    </header>
+
+    <p>To say that a play is “moral” would seem to imply that it represents an action which concretizes certain ethical elements of human experience, without actually moralizing at any point, and without having any of the characters in it state univocally a dogma, precept, or value that would coincide completely with the play’s own moral intention. It was just this univocal didacticism, however, which characterized what was becoming in 1600 a prevailing comic tradition. The moral intent of the Jonsonian “comedy of humours” was direct and didactic; its purpose was to show</p>
+
+    <div class="cita">
+        <p>the times deformitie</p>
+        <p>Anatomiz’d in euery nerue and sinnew</p>
+        <p>With constant courage, and contempt of feare.</p>
+    </div>
+
+    <p>For moral purposes, a humour is an identifying emblem of a man’s moral nature, graven ineradicably onto his physiological one. In the world of a play, a humour could be caricatured to such a degree that it would practically predestine a character’s behaviour. It was made to</p>
+
+    <div class="cita">
+        <p>. . . so possesse a man, that it doth draw</p>
+        <p>All his affects, his spirits and his powers,</p>
+        <p>In their confluctions, all to runne one way,</p>
+        <p>This may be truly said to be a Humour.</p>
+    </div>
+
+    <p>The emblematic character of the humour, and the necessity for its use, were affirmed even more directly by Sidney, whose dramatic theory Jonson seems to have greatly admired:</p>
+
+    <div class="cita">
+        <p>Now, as in Geometry the oblique must bee knowne as wel as the right, and in Arithmeticke the odde as well as the euen, so in the actions of our life who seeth not the filthiness of euil wanteth a great foile to perceiue the beauty of vertue. This doth the Comedy handle so in our priuate and domestical matters, as with hearing it we get as it were an experience, what is to be looked for of a nigardly Demea, of a crafty Dauus, of a flattering Gnato, of a vaine glorious Thraso, and not onely to know what effects are to be expected, but to know who be such, by the signifying badge giuen them by the Comedian.</p>
+    </div>
+
+    <p>Now <i>Every Man In His Humour</i> was first acted in 1598, and it is known that Shakespeare appeared in it. He seems in <i>Twelfth Night</i> (for which I accept the traditional date of 1600-1601) to have attempted to write a kind of moral comedy diametrically opposed to that of Jonson, in which “the times deformitie” was not to be “anatomiz’d,” but represented in the core of an action. For a static and deterministic Humour, Shakespeare substituted a kinetic, governing Appetite in the action, rather than in the bowels, of his major characters. In his plot and language, he insists continually on the fact and importance of the substitution. Characters in a comedy of humours tend to become caricatures, and caricatures tend to become beasts, inhuman personifications of moral distortions that are identified with physiological ones. I believe that it was Shakespeare’s intention in <i>Twelfth Night</i> to obviate the necessity of this dehumanization by substituting what one might call a moral process for a moral system. While it is true that the play contains quite a bit of interesting discussion of humours as such, and that there is some correspondence between appetites and humours, it is equally true that the only person in the play who believes in the validity of humourous classifications, who, indeed, lives by them, is himself a moral invalid. I will have more to say about this later. At this point I merely wish to suggest that the primary effective difference between Shakespeare’s and Jonson’s techniques in making moral comedy is the difference between what is merely a display of anatomy, and a dramatization of a metaphor, the difference between a Pageant and an Action.</p>
+
+    <p class="separador">II</p>
+
+    <p>The Action of <i>Twelfth Night</i> is indeed that of a Revels, a suspension of mundane affairs during a brief epoch in a temporary world of indulgence, a land full of food, drink, love, play, disguise and music. But parties end, and the reveller eventually becomes satiated and drops heavily into his worldly self again. The fact that plays were categorized as “revells” for institutional purposes may have appealed to Shakespeare; he seems at any rate to have analyzed the dramatic and moral nature of feasting, and to have made it the subject of his play. His analysis is schematized in Orsino’s opening speech.</p>
+
+    <p>The essential action of a revels is: To so surfeit the Appetite upon excess that it “may sicken and so die.” It is the Appetite, not the whole Self, however, which is surfeited: the Self will emerge at the conclusion of the action from where it has been hidden. The movement of the play is toward this emergence of humanity from behind a mask of comic type.</p>
+
+    <p>Act I, Scene i, is very important as a statement of the nature of this movement. Orsino’s opening line contains the play’s three dominant images:</p>
+
+    <div class="cita">
+        <p>If music be the food of love, play on.</p>
+        <p>Give me excess of it, that, surfeiting,</p>
+        <p>The appetite may sicken, and so die.</p>
+        <p class="attribution">(I. i. 1-3)</p>
+    </div>
+
+    <p>Love, eating, and music are the components of the revelry, then. And in order that there be no mistake about the meaning of the action, we get a miniature rehearsal of it following immediately:</p>
+
+    <div class="cita">
+        <p>That strain again! It had a dying fall.</p>
+        <p>Oh, it came o’er my ear like the sweet sound</p>
+        <p>That breathes upon a bank of violets</p>
+        <p>Stealing and giving odor! Enough, no more.</p>
+        <p>’Tis not so sweet now as it was before.</p>
+        <p>O spirit of love, how quick and fresh art thou!</p>
+        <p>That, notwithstanding thy capacity</p>
+        <p>Receiveth as the sea, naught enters there,</p>
+        <p>Of what validity and pitch soe’er,</p>
+        <p>But falls into abatement and low price,</p>
+        <p>Even in a minute! So full of shapes is fancy</p>
+        <p>That it alone is high fantastical.</p>
+        <p class="attribution">(I. i. 4-15)</p>
+    </div>
+
+    <p>A bit of surfeiting is actually accomplished here; what we are getting is a proem to the whole play, and a brief treatment of love as an appetite. The substance of a feast will always fall into “abatement and low price” at the conclusion of the feasting, for no appetite remains to demand it. We also think of Viola in connection with the “violets / Stealing and giving odor,” for her actual position as go-between-turned-lover is one of both inadvertent thief and giver. The Duke’s rhetoric is all-embracing, however, and he immediately comments significantly upon his own condition.</p>
+
+    <div class="cita">
+        <p>Oh, when mine eyes did see Olivia first,</p>
+        <p>Methought she purged the air of pestilence!</p>
+        <p>That instant was I turned into a hart,</p>
+        <p>And my desires, like fell and cruel hounds,</p>
+        <p>E’er since pursue me.</p>
+        <p class="attribution">(I. i. 19-23)</p>
+    </div>
+
+    <p>Like Actaeon, he is the hunter hunted; the active desirer pursued by his own desires. As embodying this overpowering appetite for romantic love, he serves as a host of the revels.</p>
+
+    <p>The other host is Olivia, the subject of his desire. We see almost at once that her self-indulgence is almost too big to be encompassed by Orsino’s. Valentine, reporting on the failure of his mission, describes her state as follows:</p>
+
+    <div class="cita">
+        <p>So please my lord, I might not be admitted,</p>
+        <p>But from her handmaid do return this answer:</p>
+        <p>The element itself, till seven years’ heat,</p>
+        <p>Shall not behold her face at ample view;</p>
+        <p>But, like a cloistress, she will veiled walk</p>
+        <p>And water once a day her chamber round</p>
+        <p>With eye-offending brine—all this to season</p>
+        <p>A brother’s dead love, which she would keep fresh</p>
+        <p>And lasting in her sad remembrance.</p>
+        <p class="attribution">(I. i. 24-32)</p>
+    </div>
+
+    <p>“To season a brother’s dead love”: she is gorging herself on this fragrant herb, and though she has denied herself the world, she is no true anchorite, but, despite herself, a private glutton. The Duke looks forward to the end of her feast of grief,</p>
+
+    <div class="cita">
+        <p>. . . when liver, brain, and heart,</p>
+        <p>These sovereign thrones, are all supplied, and filled</p>
+        <p>Her sweet perfections with one self king!</p>
+        <p class="attribution">(I. i. 37-39)</p>
+    </div>
+
+    <p>The trinitarian overtone is no blasphemy, but a statement of the play’s teleology. When everyone is supplied with “one self king,” the action will have been completed.</p>
+
+    <p>The first three scenes of the play stand together as a general prologue, in which the major characters are introduced and their active natures noted. Viola is juxtaposed to Olivia here; she is not one to drown her own life in a travesty of mourning. It is true that she is tempted to “serve that lady” (as indeed she does, in a different way). But her end in so doing would be the whole play’s action in microcosm; the immersion in committed self-indulgence would result in the revelation of her self:</p>
+
+    <div class="cita">
+        <p>And might not be delivered to the world</p>
+        <p>Till I had made mine own occasion mellow,</p>
+        <p>What my estate is.</p>
+        <p class="attribution">(I. ii. 42-44)</p>
+    </div>
+
+    <p>She will serve the Duke instead, and use her persuasive talents to accomplish the ends to which his own self-celebrating rhetoric can provide no access. “I can sing,” she says, “and speak to him in many sorts of music.” Her sense of his character has been verified; the Captain tells her that his name is as his nature. And “what is his name?” she asks. “Orsino,” answers the Captain. Orsino—the bear, the ravenous and clumsy devourer. Her own name suggests active, affective music; and the mention of Arion, the Orpheus-like enchanter of waves and dolphins with his music, points up the connotation. Orsino’s “music,” on the other hand, is a static well of emotion to which he allows his own rhetoric to submerge; Viola’s is more essentially instrumental, effective, and convincing.</p>
+
+    <p>The third scene of Act I complete the prologue by further equating the moral and psysiological. Here we first encounter the world of what Malvolio calls “Sir Toby and the lighter people” (it is indeed true that there is none of Malvolio’s element of “earth” in them). The continued joking about dryness that pervades the wit here in Olivia’s house, both above and below stairs, is introduced here, in contrast to Olivia’s floods of welling and self-indulgent tears. The idea behind the joking in this and the following scenes is that drinking and merriment will moisten and fulfill a dry nature. As Feste says later on, “Give the dry fool drink, then the fool is not dry.” Toby’s sanguine temperament and Aguecheek’s somewhat phlegmatic one are here unveiled. They are never identified as such, however; and none of the wit that is turned on the associations of “humours,” “elements,” and “waters,” though it runs throughout the play, ever refers to a motivating order in the universe, except insofar as Malvolio believes in it.</p>
+
+    <p>What is most important is that neither Feste, the feaster embodying not the spirit but the action of revelry, nor Malvolio, the ill-wisher (and the bad appetite as well), his polar opposite, appears in these introductory scenes. It is only upstairs in Olivia’s house (I. v.) that the action as such commences. The revels opens with Feste’s exchange with Maria in which she attempts three times to insist on innocent interpretations of “well-hanged” and “points.” But Feste is resolute in his ribaldry. Thus Olivia, momentarily voicing Malvolio’s invariable position, calls Feste a “dry fool,” and “dishonest”; Malvolio himself refers to him as a “barren rascal.” From here on in it will be Feste who dances attendance on the revelry, singing, matching wit with Viola, and being paid by almost everyone for his presence. To a certain degree he remains outside the action, not participating in it because he represents its very nature; occasionally serving as a comic angel or messenger, he is nevertheless unmotivated by any appetite, and is never sated of his fooling. His insights into the action are continuous, and his every remark is telling. “<i>Cucullus non facit monachum</i>. That’s as much as to say I wear not motley in my brain.” Indeed, he does not, but more important is the fact that his robe and beard are not to make him a real priest later on. And neither he as Sir Thopas, nor Olivia as a “cloistress,” nor Malvolio in his black suit or travestied virtue, nor the transvestite Viola is what he appears to be. No one will be revealed in his true dress until he has doffed his mask of feasting. And although neither Feste nor Malvolio will change in this respect, it is for completely opposite reasons that they will not do so.</p>
+
+    <p>Every character in the play, however, is granted some degree of insight into the nature of the others. It is almost as if everyone were masked with the black side of his vizard turned inwards; he sees more clearly past the persona of another than he can past his own. Valentine, for the Duke, comments on Olivia, as we have seen before. Even Malvolio is granted such an insight. Olivia asks him “What manner of man” Caesario is; unwittingly, his carping, over self-conscious and intellectualized answer cuts straight to the heart of Viola’s disguise: “Not yet old enough for a man, nor young enough for a boy, as a squash is before ’tis a peascod, or a codling when ’tis almost an apple. ’Tis with him in standing water, between boy and man. He is very well-favored and he speaks very shrewishly. One would think his mother’s milk were scarce out of him” (I. v. 165-171).</p>
+
+    <p>The puns on “cod” and “codling” insist on being heard here, and as with the inadvertently delivered obscenity about Olivia’s “great P’s” and their source in the letter scene, Malvolio does not know what he is saying. The point is that Malvolio asserts, for an audience that knows the real facts, that Viola can scarcely be a male creature.</p>
+
+    <p>A more significant case of this hide-and-seek is Olivia’s retort to Malvolio in the same scene: “O you are sick of self-love, Malvolio, and taste with a distempered appetite”; it provides the key to his physiological-moral nature. “Sick of self-love” means “sick with a moral infection called self-love,” but it can also mean “already surfeited, or fed up with your own ego as an object of appetite.” Malvolio’s “distempered appetite” results from the fact that he alone is not possessed of a craving directed outward, towards some object on which it can surfeit and die; he alone cannot morally benefit from a period of self-indulgence. Actually this distemper manifests itself in terms of transitory desires on his part for status and for virtue, but these desires consume him in their fruitlessness; he is aware of the nature of neither of them. This is a brilliant analysis of the character of a melancholic, and Shakespeare’s association of the melancholy, puritanic, and status-seeking characters in Malvolio throws considerable light on all of them. The moral nature of the plot of <i>Twelfth Night</i> can be easily approached through the character of Malvolio, and this, I think, is what Lamb and his followers missed completely in their egalitarian sympathy for his being no “more than steward.” For Malvolio’s attachment to self-advancement is not being either aristrocratically ridiculed or praised as an example of righteous bourgeois opposition to medieval hierarchies. In the context of the play’s moral physiology, his disease is shown forth as a case of indigestion due to his self-love, the result of a perverted, rather than an excessive appetite. In the world of feasting, the values of the commercial society outside the walls of the party go topsy-turvey: Feste is given money for making verbal fools of the donors thereof; everyone’s desire is fulfilled in an unexpected way; and revellers are shown to rise through realms of unreality, disguise, and luxurious self-deception. We are seduced, by the revelling, away from seeing the malice in the plot to undo Malvolio. But whatever malice there is remains peculiarly just. It is only Malvolio who bears any ill will, and only he upon whom ill will can appear to be directed. He makes for himself a hell of the worldly heaven of festivity, and when Toby and Maria put him into darkness, into a counterfeit hell, they are merely representing in play a condition that he has already achieved.</p>
+
+    <p>The plot against Malvolio, then, is no more than an attempt to let him surfeit on himself, to present him with those self-centered, “time-pleasing” objects upon which his appetite is fixed. In essence, he is led to a feast in which his own vision of himself is spread before him, and commanded to eat it. The puritan concern with witchcraft and the satanic, and its associations of them with madness are carried to a logical extreme; and once Malvolio has been permitted to indulge in his self-interest by means of the letter episode, he is only treated as he would himself treat anyone whom he believed to be mad. His puritanism is mocked by allusions to his praying made by Toby and Maria; a priest (and a false, dissembling one at that, the answer to a puritan’s prayer) is sent to him; and the implications of the darkness are eventually fulfilled as his prison becomes his hell.</p>
+
+    <p>It is interesting to notice how carefully Shakespeare analyzed another characteristic of the melancholic in his treatment of Malvolio. L. C. Knights has suggested that the vogue of melancholy at the turn of the seventeenth century was occasioned to some degree by the actual presence in England of a large number of “<i>intellectuels en chômage</i>” (in Denis de Rougemont’s words), unemployed, university-trained men whose humanistic education had not fitted them for any suitable role in society. Malvolio is no patent and transparent university intellectual (like Holofernes, for example). He contrives, however, to over-rationalize his point (where the Duke will over-sentimentalize it) on almost every occasion. Even his first introduction of Viola, as has been seen before, is archly over-reasoned. His venture into exegesis of a text is almost telling.</p>
+
+    <p>It is not merely self-interest, I think, that colors the scrutiny of Maria’s letter. His reading is indeed a close one: he observes that, after the first snatch of doggerel, “The numbers altered.” But Malvolio is incapable of playing the party-game and guessing the riddle. Of “M,O,A,I doth sway my life,” he can only say “And yet to crush this a little it would bow to me, for every one of these letters are in my name.” He even avoids the reading that should, by all rights, appeal to him: Leslie Hotson has suggested that “M,O,A,I” probably stands for <i>Mare, Orbis, Aer</i>, and <i>Ignis</i>, the four elements to which Malvolio so often refers. Malvolio himself fails as a critic, following a “cold scent” that, as Fabian indicates, is “as rank as a fox” for him in that it tantalizes his ambition.</p>
+
+    <p>But he continues to aspire to scholarship. In order to let his tongue tang with arguments of state, he intends to “read politic authors.” His intrusion on the scene of Toby’s and Andrew’s merry-making involves a most significant remark: “Is there no respect of persons, time, or place in you?”, he asks. In other words, “Do you not observe even the dramatic unities in your revelling? Can you not apply even the values that govern things as frivolous as plays to your lives?” Coming from Malvolio, the ethical theorist, the remark feels very different from the remark made to Sir Toby by Maria, the practical moralist: “Aye, but you must confine yourself within the modest levels of order.” Maria, presiding over the festivities, would keep things from getting out of hand. It is not only the spirit in which Malvolio’s comment is uttered that accounts for this difference, however. I think that one of the implications is quite clearly the fact that Jonson’s ordered, would-be-classic, but static and didactic comedy would disapprove of <i>Twelfth Night</i> as a moral play, and mistake its intention for a purely frivolous one.</p>
+
+    <p>The prank played on Malvolio is not merely an “interwoven” second story, but a fully developed double-plot. Like the Belmont episodes in <i>The Merchant of Venice</i>, it is a condensed representation of the action of the entire play. In <i>Twelfth Night</i>, however, it operates in reverse, to show the other side of the coin, as it were. For Malvolio there can be no fulfillment in “one self king.” His story effectively and ironically underlines the progress towards this fulfillment in everybody else, and helps to delineate the limitations of the moral domain of the whole play. In contrast to Feste, who appears in the action at times as an abstracted spirit of revelry, Malvolio is a model of the sinner.</p>
+
+    <p>The whole play abounds in such contrasts and parallels of character, and the players form and regroup continually with respect to these, much in the manner of changing figurations in a suite of <i>branles</i>. Viola herself indulges in the festivities in a most delicate and (literally) charming way. She is almost too good a musician, too effective an Orpheus: “Heaven forbid my outside have not charmed her,” she complains after her first encounter with Olivia. But as soon as she realizes that she is part of the game, she commits herself to it with redoubled force. If her “outside” is directed toward Olivia, her real identity and her own will are concentrated even more strongly on Orsino. In the most ironic of the love scenes she all but supplants Olivia in the Duke’s affections. Orsino, glutting himself in his own version of romantic love, allows himself to make the most extravagant and self-deceptive statements about it:</p>
+
+    <div class="cita">
+        <p>Come hither, boy. If ever thou shalt love,</p>
+        <p>In the sweet pangs of it remember me;</p>
+        <p>For such as I am all true lovers are,</p>
+        <p>Unstaid and skittish in all motions else</p>
+        <p>Save in the constant image of the creature</p>
+        <p>That is beloved.</p>
+        <p class="attribution">(II. iv. 15-20)</p>
+    </div>
+
+    <p>This skittishness, beneath the mask of the ravenous and constant bear, is obvious to Feste at least: “Now, the melancholy god protect thee, and the tailor make thy doublet of changeable taffeta, for thy mind is a very opal. I would have men of such constancy put to sea, that their business might be everything and their intent everywhere; for that’s it that always makes a good voyage of nothing.” (II. iv. 75-80)</p>
+
+    <p>Orsino also gives us a curious version of the physiology of the passions on which the plot is based; it is only relatively accurate, of course, for he will be the last of the revellers to feel stuffed, to push away from him his heaping dish.</p>
+
+    <div class="cita">
+        <p>There is no woman’s sides</p>
+        <p>Can bide the beating of so strong a passion</p>
+        <p>As love doth give my heart, no woman’s heart</p>
+        <p>So big to hold so much. They lack retention.</p>
+        <p>Alas, their love may be called appetite—</p>
+        <p>No motion of the liver, but the palate—</p>
+        <p>They suffer surfeit, cloyment and revolt.</p>
+        <p>But mine is all as hungry as the sea</p>
+        <p>And can digest as much.</p>
+        <p class="attribution">(II. iv. 96-104)</p>
+    </div>
+
+    <p>Viola has been giving him her “inside” throughout the scene, and were he not still ravenous for Olivia’s love he could see her for what she is: a woman with a constancy in love (for himself and her brother) that he can only imagine himself to possess. She is indeed an Allegory of Patience on some baroque tomb at this point. She is ironically distinguished from Olivia in that her “smiling at grief” is a disguising “outside” for her real sorrow, whereas Olivia’s is a real self-indulgent pleasure taken at a grief outworn. It is as if Olivia had misread Scripture and taken the letter of “Blessed are they that mourn” for the spirit of it. Her grief is purely ceremonial.</p>
+
+    <p>The “lighter people,” too, are engaged in carrying out the action in their own way, and they have more business in the play than merely to make a gull of Malvolio. Toby’s huge stomach for food and drink parallels the Duke’s ravenous capacity for sentiment. The drinking scene is in one sense the heart of the play. It starts out by declaring itself in no uncertain terms. “Does not our life consist of the four elements?” catechizes Sir Toby. “Faith, so they say,” replies Andrew, “but I think it rather consists of eating and drinking.” No one but Feste, perhaps, really knows the extent to which this is true, for Andrew is actually saying “We are not merely comic types, mind you, being manipulated by a dramatist of the humours. The essence of our lives lies in a movement from hunger to satiety that we share with all of nature.”</p>
+
+    <p>When Toby and Andrew cry out for a love song, Feste obliges them, not with the raucous bawdy thing that one would expect, but instead, with a direct appeal to their actual hostess, Olivia. This is all the more remarkable in that it is made on behalf of everyone in the play. “O Mistress Mine” undercuts the Duke’s overwhelming but ineffectual mouthings. Viola’s effective but necessarily misdirected charming, and, of course, Aguecheek’s absolute incompetence as a suitor. The argument is couched in purely naturalistic terms: “This feast will have to end, and so will all of our lives. You are not getting younger (‘sweet and twenty’ is the contemporaneous equivalent of ‘sweet and thirty,’ at least). Give up this inconstant roaming; your little game had better end in your marriage, anyway.” The true love “that can sing both high and low” is Viola-Sebastian, the master-mistress of Orsino’s and Olivia’s passion. (Sebastian has just been introduced in the previous scene, and there are overtones here of his being invoked as Olivia’s husband.) Sebastian has, aside from a certain decorative but benign courtly manner, no real identity apart from Viola. He is the fulfillment of her longing (for she has thought him dead) and the transformation into reality of the part she is playing in the <i>ludus amoris</i>. The prognostication is borne out by Sebastian’s own remark: “You are betrothed both to a man and maid.” He is himself characterized by an elegance hardly virile; and, finally, we must keep in mind the fact that Viola was played by a boy actor to begin with, and that Shakespeare’s audience seemed to be always ready for an intricate irony of this kind.</p>
+
+    <p>But if Viola and Sebastian are really the same, “One face, one voice, one habit, and two persons, A natural perspective that is and is not,” there is an interesting parallel between Viola and Aguecheek as well. Both are suitors for Olivia’s hand: Andrew, ineffectively, for himself; Viola for Orsino, and (effectively) for Sebastian. Their confrontation in the arranged duel is all the more ironic in that Andrew is an effective pawn in Toby’s game (Toby is swindling him), whereas Viola is an ineffective one in the Duke’s (she is swindling him of Olivia’s love).</p>
+
+    <p>Feste’s other songs differ radically from “O Mistress Mine.” He sings for the Duke a kind of languorous ayre, similar to so many that one finds in the songbook. It is aimed at Orsino in the very extravagance of its complaint. It is his own song, really, if we imagine him suddenly dying of love, being just as ceremoniously elaborate in his funeral instructions as he has been in his suit of Olivia. And Feste’s bit of handy-dandy to Malvolio in his prison is a rough-and-tumble sort of thing, intended to suggest in its measures a scrap from a Morality, plainly invoking Malvolio in darkness as a devil in hell. Feste shows himself throughout the play to be a master of every convention of fooling.</p>
+
+    <p>If Feste’s purpose is to serve as a symbol of the revels, however, he must also take a clear and necessary part in the all-important conclusion. <i>Twelfth Night</i> itself, the feast of the Epiphany, celebrates the discovery of the “True King” in the manger by the Wise Men. “Those wits,” says Feste in Act I, Scene v, “that think they have thee [wit] do very oft prove fools, and I that am sure I lack thee many pass for a wise man.” And so it is that under his influence the true Caesario, the “one self king,” is revealed. The whole of Act V might be taken, in connection with “the plot” in a trivial sense, to the other <i>epiphany</i>, the perception that follows the <i>anagnorisis</i> or discovery of classic dramaturgy. But we have been dealing with the Action on <i>Twelfth Night</i> as representing the killing off of excessive appetite through indulgence of it, leading to the rebirth of the unencumbered self. The long final scene, then, serves to show forth the Caesario-King, and to unmask, discover, and reveal the fulfilled selves in the major characters.</p>
+
+    <p>The appearance of the priest (a real one, this time) serves more than the simple purpose of a proving the existence of a marriage between Olivia and “Caesario.” It is a simple but firm intrusion into the world of the play of a way of life that has remained outside of it so far. The straightforward solemnity of the priest’s rhetoric is also something new; suggestions of its undivided purpose have appeared before only in Antonio’s speeches. The priest declares that Olivia and her husband have been properly married:</p>
+
+    <div class="cita">
+        <p>And all the ceremony of this compact</p>
+        <p>Sealed in my function, by my testimony.</p>
+        <p>Since when, my watch hath told me, toward my grave</p>
+        <p>I have travelled but two hours.</p>
+        <p class="attribution">(V. i. 163-166)</p>
+    </div>
+
+    <p>It is possible that the original performances had actually taken about two hours to reach this point. At any rate, the sombre acknowledgment of the passage of time in a real world is there. Antonio has prepared the way earlier in the scene; his straightforward confusion is that of the unwitting intruder in a masquerade who has been accused of mistaking the identities of two of the masquers.</p>
+
+    <p>That the surfeiting has gradually begun to occur, however, has become evident earlier. In the prison scene, Sir Toby has already begun to tire: “I would we were well rid of this knavery.” He gives as his excuse for this the fact that he is already in enough trouble with Olivia, but such as this has not deterred him in the past. And, in the last scene, very drunk as he must be, he replies to Orsino’s inquiry as to his condition that he hates the surgeon, “a drunken rogue.” Self-knowledge has touched Sir Toby. He could not have said this earlier.</p>
+
+    <p>As the scene plays itself out, Malvolio alone is left unaccounted for. There is no accounting for him here, though; he remains a bad taste in the mouth. “Alas poor fool,” says Olivia, “How have they baffled thee!” And thus, in Feste’s words, “the whirligig of time brings in his revenges.” Malvolio has become the fool, the “barren rascal.” He leaves in a frenzy, to “be revenged,” he shouts, “on the whole pack of you.” He departs from the world of this play to resume a role in another, perhaps. His reincarnation might be as Middleton’s De Flores, rather than even Jaques. His business has never been with the feasting to begin with, and now that it is over, and the revellers normalized, he is revealed as the true madman. He is “The Madly-Used Malvolio” to the additional degree that his own uses have been madness.</p>
+
+    <p>For Orsino and Viola the end has also arrived. She will be “Orsino’s mistress and his fancy’s queen.” He has been surfeited of his misdirected voracity; the rich golden shaft, in his own words, “hath killed the flock of all affections else” that live in him. “Liver, brain and heart” are indeed all supplied; for both Olivia and himself, there has been fulfillment in “one self king.” And, lest there be no mistake, each is to be married to a Caesario or king. Again, “Liver, brain and heart” seems to encompass everybody: Toby and Maria are married, Aguecheek chastened, etc.</p>
+
+    <p>At the end of the scene, all exit. Only Feste, the pure fact of feasting, remains. His final song is a summation of the play in many ways at once. Its formal structure seems to be a kind of quick rehearsal of the Ages of Man. In youth, “A foolish thing was but a toy”; the fool’s bauble, emblematic of both his <i>membrum virile</i> and his trickery, is a trivial fancy. But in “man’s estate,” the bauble represents a threat of knavery and thievery to respectable society, who shuts its owner out of doors. The “swaggering” and incessant drunkenness of the following strophes bring Man into prime and dotage, respectively. Lechery, trickery, dissembling, and drunkenness, inevitable and desperate in mundane existence, however, are just those activities which, mingled together in a world of feasting, serve to purge Man of the desire for them. The wind and the rain accompany him throughout his life, keeping him indoors with “dreams and imaginations” as a boy, pounding and drenching him unmercifully, when he is locked out of doors, remaining eternal and inevitable throughout his pride in desiring to perpetuate himself. The wind and the rain are the most desperate of elements, that pound the walls and batter the roof of the warm house that shuts them out, while, inside it, the revels are in progress. Only after the party is ended can Man face them without desperation.</p>
+
+    <p>It is a metaphor of the rain that lasts longest, though, and it recapitulates the images of water, elements and humours that have pervaded the entire play. Feste himself, who tires of nothing, addresses Viola: “Who you are and what you would are out of my welkin—I might say ‘element’ but the word is overworn.” He adroitly comments on Malvolio’s line “Go to; I am not of your element” by substituting a Saxon word for a Latin one. The additional association of the four elements with the humours cannot be overlooked. It is only Malvolio, of course, who uses the word “humour” with any seriousness: “And then to have the humour of State,” he muses, as he imagines himself “Count Malvolio.” Humours are also waters, however. And waters, or fluids of all kinds, are continually being forced on our attention. Wine, tears, seawater, even urine, are in evidence from the first scene on, and they are always being metaphorically identified with one another. They are all fluids, bathing the world of the play in possibilities for change as the humours do the body. Feste’s answer to Maria in the prison scene has puzzled many editors; if we realize, however, that Feste is probably hysterically laughing at what he has just been up to. “Nay, I’m for all waters” may have the additional meaning that he is on the verge of losing control of himself. He is “for all waters” primarily in that he represents the fluidity of revelling celebration. And finally, when all is done, “The rain it raineth every day,” and Feste reverts to gnomic utterance in a full and final seriousness. Water is rain that falls to us from Heaven. The world goes on. Our revels now are ended, but the actors solidify into humanity, in this case. “But that’s all one, our play is done / And we’ll strive to please you every day.”</p>
+
+    <p class="separador">III</p>
+
+    <p>In this interpretation of <i>Twelfth Night</i>, I have in no sense meant to infer that Malvolio is to be identified as Ben Jonson, or that the play functioned in any systematic way in the war of the theatres. There are, of course, a number of propitious coincidences: Marston’s <i>What You Will</i>, coming some six or seven years after <i>Twelfth Night</i>, devotes much effort to lampooning Jonson. What could have been meant by the title, however, as well as Shakespeare’s real intention in his subtitle, remains obscure. Perhaps they both remain as the first part of some forgotten proverb to the effect that what you will (want) may come to you in an unexpected form. Perhaps they are both merely throwaway comments to the effect that the play is really “what you may call it.” (It has been frequently suggested that it is a translation of Rabelais’ “<i>Fay ce que vouldras</i>.”) Then there is the dig, in <i>Every Man Out of His Humour</i>, at a comedy with a romantic (Italianate) plot more than vaguely resembling that of <i>Twelfth Night</i>. <i>Every Man Out</i> has been dated in 1599, but the idea that Shakespeare may have chosen just such a “romantic” story with which to oppose Jonson’s comic theories is not inconceivable.</p>
+
+    <p>My point, however, is that <i>Twelfth Night</i> is opposed by its very nature to the kind of comedy that Jonson was not only writing, but advocating at the time; that is a moral comedy, representing human experience in terms of a fully dramatized metaphor rather than a static emblematic correspondence; and, finally, that it operates to refute the moral validity of comedy of humours in its insistence on the active metaphor of surfeiting the appetite, upon which the whole plot is constructed. It is only romantic in that it shares, with <i>As You Like It</i> (and with <i>Love’s Labour’s Lost</i>, too, for that matter), a hint of the world of transformation of the last plays. Its moral vision is as intense as that of the problem comedies.</p>
+
+    <section class="footnotes">
+        <h3>Note</h3>
+        <p>From <i>The Sewanee Review</i> 2, vol. 68 (1959). Copyright © 1959 by The University of the South.</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>
