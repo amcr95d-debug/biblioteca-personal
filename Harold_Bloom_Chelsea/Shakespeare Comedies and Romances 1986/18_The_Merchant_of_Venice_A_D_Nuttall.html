@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>“The Merchant of Venice” — A. D. Nuttall</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">A. D. Nuttall</p>
+        <h1 class="cab__tit">“The Merchant of Venice”</h1>
+    </header>
+
+    <p>Shakespeare saw that Rome was not England. He also saw that Venice was not London.</p>
+
+    <p>Venice, to the Elizabethans, was in some ways what Hollywood was to the rest of the world in the 1930s, or perhaps it would be better to say a mixture of Hollywood and Paris: the glamorous, daring, brilliant, wicked city. Even today as the senile, jewel-encrusted Bride of the Adriatic sinks malodorously beneath the waters of the Lagoon, one can glimpse, in the real city, what the effect must once have been. The rest of the world is black, white and grey and here alone, among gilded lions, rosy brick and white marble stained with green, is the Coloured City. The most neutral description of Venice begins to sound like overwriting. Many things, to be sure, have changed. The city of sexual licence has become oddly puritanical; notices in the <i>vaporetto</i> stops alert the visitor to the possible indecorousness of his or her costume. Meanwhile the frescoed walls still blaze with the great Venetian scenes of social splendour, ruffs, brocade, fruit, wine and amazing people. Here is the only adequate equivalent in visual art to the Shakespearean mode of, say, <i>Antony and Cleopatra</i>. The painters of his own land, Isaac Oliver or Nicholas Hilliard, lacked the necessary physical amplitude and much more besides. In Shakespeare’s time travellers’ reports of the city abounded and moralists debated whether it was better, in the name of Experience, to send one’s son to Venice (with all its attendant perils) or to provide him with suitable books about the place instead.</p>
+
+    <p>But the strangest thing of all, to the Elizabethan Englishman, is still unsaid. In 1597 (the probable date of <i>The Merchant of Venice</i>) the cycle by which we are sustained was plainly visible to any inhabitant of this country. The food he ate he saw first in his own or his neighbour’s fields. Even in the nineteenth century Thomas Hardy tells in the fourteenth chapter of <i>The Mayor of Casterbridge</i> how from the streets of an ordinary English country town you could actually nod to the men cutting corn in the fields. Corn, bread, beans, pigs, cows, sheep, wool, cloth, all made a natural sense, authorized and watched over by the seasonally changing English sky. But Venice is actually built in the sea. Salt, undrinkable seawater flows in its great streets. Again and again the traveller to Venice must have thought, first, ‘How can anyone live in this barren place?’ and, next, ‘How can these people be so rich?’ No trees, no grass, but everywhere brick, marble, porphyry, bronze and gold. Here was a people living in a way that in Shakespeare’s time must still have seemed partly unnatural, for they appeared to live on money alone. Money, traditionally defined as the medium of exchange, itself barren, had here proved strangely fruitful and multiplied itself hourly in the market place.</p>
+
+    <p>To put the case in this simple way involves both exaggeration and some distortion. The English practised usury and Venice had her subject territories. Yet the fundamental contrast retains a certain force. Venice was the single, most spectacular example of the power of wealth to beget wealth, and its miraculous setting in the sea is emblematic of that power. Venice is the landless landlord over all.</p>
+
+    <p>The crucial part of this finds expression in Shakespeare’s <i>The Merchant of Venice</i>. It is in a way futile to search for the sources of Shakespeare’s knowledge of Venice. By the time he came to write <i>Othello</i> he was able to consult Contarini’s <i>The Commonwealth and Government of Venice</i>, perhaps in Lewis Lewkenor’s translation of 1599. But meanwhile London was full of vigorous talk and Venice was an excellent subject of conversation. For all we know Shakespeare may have visited Venice himself in ‘the missing years’. The word ‘merchant’ alerts us first. In his plays set in England merchants hardly figure. We may revive the original impact of the title if we substitute ‘the Capitalist’ for ‘the Merchant’, but such ‘equivalents’ are never truly equivalent. Then, the imagery of money, the chink of coins pervades this play as it does no other. Moreover, this golden imagery is in places pointed very sardonically; it is applied with an almost brutal directness to the central romantic love story of the play. There was of course a convention of applying the language of finance to love, but the point of the convention lay in a paradox, the paradox of applying the lowest and most contemptible terms to the highest and at the same time most human situation, love. Thus the usual thing is to set the metaphor at odds with its application. The lady ‘out-values value’, makes wealth into poverty as long as she is lacking, and so on. In place of this serviceable and well-worn ingenuity <i>The Merchant of Venice</i> offers a disquieting simplicity. Bassanio tells of his love in these words:</p>
+
+    <div class="cita">
+        <p>In Belmont is a lady richly left,</p>
+        <p>And she is fair and fairer than that word,</p>
+        <p>Of wondrous virtues.</p>
+        <p class="attribution">(1. i. 161-2)</p>
+    </div>
+
+    <p>First he tells us of the money and then, in simple, joyous juxtaposition, of her beauty and virtue. Bassanio is not an out-and-out fortune-hunter who is after Portia for her money. He really loves her and her wealth is simply a component of her general attractiveness. There is a certain repellent ingenuousness about Bassanio. He can trust his own well-constituted nature. It would never allow him to fall in love with a poor woman; for, after all, poor women are not attractive. After such a start a strange light is cast on the rest of his speech:</p>
+
+    <div class="cita">
+        <p>her sunny locks</p>
+        <p>Hang on her temples like a golden fleece,</p>
+        <p>Which makes her seat of Belmont Colchos’ strond,</p>
+        <p>And many Jasons come in quest of her.</p>
+        <p class="attribution">(1. i. 169-72)</p>
+    </div>
+
+    <p>The Golden Fleece in another context would have been a paradox of love language. Here it is uncomfortably close to the centre of Bassanio’s interest.</p>
+
+    <p>Shakespeare deliberately involves Bassanio’s love from the outset in a faintly humiliating financial atmosphere. But he plants no overt stylistic signals of what he is about so that the effect is faint indeed. The flow is as smooth as that of any poem by Drayton or Daniel and one almost begins to suspect Shakespeare of a cynical contempt for his audience (‘I’ll make them drink this and they’ll never know what they swallowed’) were it not for the fact that, in the trial scene, he plainly relies on the fact that some of this, at least, has stuck in the mind. Bassanio’s first move in his courtship is less than heroic. It is to touch his friend Antonio for a loan so that he can improve his sartorial image.</p>
+
+    <p>It is curious how wit can consist in the very avoidance of an expected complexity. One may compare the conversational practice known in the slang of forty years ago as ‘kidding on the level’; the speaker makes a remark which sounds ironic but the real joke lies in the fact that every word is literally intended: ‘Hello darling, you know I hate your guts.’ Shakespeare with his strangely bland coupling in this play of the language of love and the language of money is in a manner kidding on the level. Even Portia, who is generous in her love, speaks of her own money as one of her attractions in a strangely unconscious manner when she says to Bassanio,</p>
+
+    <div class="cita">
+        <p>You see me, Lord Bassanio, where I stand,</p>
+        <p>Such as I am. Though for myself alone</p>
+        <p>I would not be ambitious in my wish</p>
+        <p>To wish myself much better, yet for you</p>
+        <p>I would be trebled twenty times myself,</p>
+        <p>A thousand times more fair, ten thousand times more rich,</p>
+        <p>That only to stand high in your account</p>
+        <p>I might in virtues, beauties, livings, friends,</p>
+        <p>Exceed account. But the full sum of me</p>
+        <p>Is sum of something which, to term in gross,</p>
+        <p>Is an unlesson’d girl.</p>
+        <p class="attribution">(111. ii. 149-60)</p>
+    </div>
+
+    <p>Notice how wealth is twice placed at the summit of an ascending rhetorical scale involving character and beauty. The accountant’s language, ‘to term in gross’, is uncomfortably close to what is actually going on. An imprudent director—I could not call him perverse—might well have Bassanio surprised by these words in the very act of appraising with his eye the value of the room’s hangings.</p>
+
+    <p>But Portia is not really unconscious. She understands Bassanio with that peculiar, pitiless clarity of love which characterizes all the great Shakespearean heroines, these women who so utterly transcend their contemptible lovers. After she has said that she will pay off Antonio’s debt for Bassanio, she says to her betrothed,</p>
+
+    <div class="cita">
+        <p>Since you are dear bought, I will love you dear.</p>
+        <p class="attribution">(ll. it. 315)</p>
+    </div>
+
+    <p>The play on ‘dear’ is not wholly comfortable and, at the same time, the love is real and unstinting.</p>
+
+    <p>It is perhaps not surprising that this speech should help to make one of the principal ‘echoes’ of the play:</p>
+
+    <div class="cita">
+        <p>"Tis dearly bought, ’tis mine, and I will have it.</p>
+        <p class="attribution">(IV. i. 100)</p>
+    </div>
+
+    <p>This time it is not one of the nice people who speaks. It is Shylock and he is talking about a pound of flesh cut from the breast of Antonio.</p>
+
+    <p><i>The Merchant of Venice</i> is about the Old Law and the New; about the low Jewish justice of an eye for an eye and a tooth for a tooth and the way this justice is transcended by Christian charity and mercy. The climactic trial scene is archetypal. The black-clad Jew haggling for the flesh of the fair-skinned Christian, the supervening figure of Justice who is also Love, all this is the stuff of legend. It recalls the medieval <i>Processus Belial</i>, as has often been observed, in which the Virgin Mary defends Man against the Devil who lays legal claim to his soul. Behind this analogue lies the doctrine of the atonement itself, in which God paid the legal price for man with his son who was also himself. In the fact of such powerful patterning all ethical ambiguities, we shall be told, must surely fall silent. The Jew is wicked, unhappy, usurious, greedy, vengeful. The Christians are happy, generous, forgiving. This, it might be said, is the plain meaning of the play, and it takes a determined ‘Transparent’ critic to darken it. In fact it is not difficult to do so. For as soon as we enter the fiction and treat the figures of the drama as possible human beings in a possible, great mercantile city, everything feels slightly different.</p>
+
+    <p>It is true, of course, that certain archetypes operate powerfully in the play. But it is not true that they are the only thing there, that the mind should be arrested at their level of generality, that there is nothing behind them. It is Shakespeare’s way to take an archetype or a stereotype and then work, so to speak, against it, without ever overthrowing it. Shakespeare himself darkens the pristine clarity of these ethical oppositions and he does so, in the first instance, with allusions to money. To this he adds the figure of Antonio, about whom shadows gather from the beginning. If Bassanio’s love for Portia sounds uneasily shallow and mercenary, Antonio’s love for Bassanio is disquietingly intense. The stereotypical impression of Christian society in <i>The Merchant of Venice</i> is of a world of felicity, conviviality, parties, easy commerce of like spirits, harmony. In all this Antonio is from the first incongruous. He is melancholic. Later, when he is in great peril, he sees himself as in some way polluted and wishes to die:</p>
+
+    <div class="cita">
+        <p>I am a tainted wether of the flock,</p>
+        <p>Meetest for death; the weakest kind of fruit</p>
+        <p>Drops earliest to the ground, and so let me.</p>
+        <p class="attribution">(Iv. i. 114-16)</p>
+    </div>
+
+    <p>In the first scene of the play Antonio is left alone with Bassanio and says, with an air of one coming to the point,</p>
+
+    <div class="cita">
+        <p>Well; tell me now what lady is the same</p>
+        <p>To whom you swore a secret pilgrimage,</p>
+        <p>That you to-day promis’d to tell me of?</p>
+        <p class="attribution">(1. i.119-21)</p>
+    </div>
+
+    <p>Bassanio does not answer, but dwells at length on his lack of cash. Antonio with extreme generosity places at his friend’s disposal,</p>
+
+    <div class="cita">
+        <p>My purse, my person, my extremest means.</p>
+        <p class="attribution">(14.138)</p>
+    </div>
+
+    <p>The reference to ‘person’ and ‘extremest means’ evidently looks forward to the horror so narrowly averted in Act IV. The ‘Opaque’ critic will feel an impulse at this point to arrest the structure of allusion at the level of thematic motifs: Antonio’s words ‘pre-echo’ the situation in Act IV as an early musical phrase may ‘pre-echo’ a major development in the last movement of a symphony. The ‘Transparent’ critic will not be patient of such impediments to humane inference; he will at once begin to wonder if Antonio, aware of the dangerous extremity of his own love for Bassanio, senses the obscure likelihood of a violent outcome. Some may go further, and surmise a kind of deathwish in Antonio. None of this is verifiable or has the force of necessary truth. A moderate alliance of Opaque and Transparent criticism might tell us that Antonio speaks with sudden violence because of the strength of his love, but neither foresees nor deliberately invokes the later horror; that is ‘inadvertently’ alluded to, by a species of dramatic irony. But what happens to the ordinary spectator, sitting in the audience? It is possible that the majority of spectators, since 1597, had no conscious reaction at all; simply did not separately ‘notice’ the connection between Antonio’s words. But those who did, explicitly, notice the connection will have construed it in terms of character, to a greater or lesser extent. For the bias of theatrical apprehension, oddly enough, is to ‘Transparency’. The figures on the stage are apprehended as people. The very tawdriness of the visible means of presentation in a theatre renders this compensatory exercise of Transparent interpretation the more necessary. Otherwise all audiences would see as Natasha saw in Tolstoy’s <i>War and Peace</i> (VIII. ix) and drama would die. In the history of drama Brechtian alienation is very much the special case, but even it is not fully Opaque, entirely formalist. Brecht, admittedly, deliberately arrests the apprehension of the spectator at the level of the ostentatiously artificial means; he ‘foregrounds’ the mechanisms of his art. But he counts on a residuum of unused imaginative sympathy, which he is able to channel the more efficiently in the direction of ‘doctrine’. In so far as this channelling occurs (and it is essential to his enterprise) his art is neither abstract nor formalist. Meanwhile it is manifestly, creakingly unlike other forms of dramatic experience. It may resemble the drama of ‘primitive’ societies as that drama appears to a cultural outsider, but the <i>Towneley Play of Noah</i>, say, never felt to its first observers as Brechtian drama feels to us.</p>
+
+    <p>The most natural inference from any or all of the Transparent interpretations of Antonio’s words, from the most modest to the most speculative, is that Antonio loves Bassanio with a love so intense as to throw Bassanio’s more decorous love for Portia into unhappy relief. Some may feel that this secondary inference is merely monstrous and inherently improbable. But in a manner the thought of Antonio in love occurred to Solanio within the play before it occurred to any spectator or reader outside it, for at I. i.46 he suddenly says to Antonio,</p>
+
+    <div class="cita">
+        <p>Why, then, you are in love.</p>
+    </div>
+
+    <p>Antonio answers, ‘Fie, fie!’ Solanio treats this as a negative but, strictly speaking, it is not. The New Arden editor J. Russell Brown notes with admirable precision that it is ‘an exclamation of reproach rather than a clear negative’. Of course Solanio does not suggest that Antonio is in love with Bassanio. He merely plants the idea that Antonio’s melancholy is connected with love and then the play itself, with overwhelming singleness of purpose, directs us to a single love object. Antonio’s love is exercised against the bias of financial interest. Setting aside the more obvious impediments, one could not imagine Antonio speaking of Bassanio in the unconsciously self-interested way Bassanio spoke of Portia. Bassanio sees Portia as the centre of his future happiness and wealth. Antonio looks very differently at Bassanio; he sees the beloved extinction of both wealth and happiness.</p>
+
+    <p>A seed is thus planted at the back of our minds and the progress of the drama brings it to an obscure flowering. In II. viii Solanio describes the parting of Bassanio and Antonio, in which Antonio was unable to hold back his tears, and comments, ‘I think he only loves the world for him’ (II. viii.50). While the dapper Bassanio seeks joy and a fortune in Belmont, Antonio, for mere love, faces mutilation and death in the city. When all seems to be over Antonio says to Bassanio,</p>
+
+    <div class="cita">
+        <p>Commend me to your honourable wife;</p>
+        <p>Tell her the process of Antonio’s end;</p>
+        <p>Say how I lov’d you; speak me fair in death;</p>
+        <p>And, when the tale is told, bid her be judge</p>
+        <p>Whether Bassanio had not once a love.</p>
+        <p class="attribution">(IV. i.268-72)</p>
+    </div>
+
+    <p>What gives the business of the ring-begging in V. i its extraordinary tension if it is not the half-buried conflict between male love and heterosexual love? Here formally—and not so formally—a brief dramatic ‘minuet’ enacts the rivalry of Antonio and Portia. At its end, although we are in a comedy and the figures are pairing off in the soft Italian night, Antonio does not get a partner. We may remember that great, drab line from the Sonnets:</p>
+
+    <div class="cita">
+        <p>I may not evermore acknowledge thee.</p>
+        <p class="attribution">(xxxvi.9)</p>
+    </div>
+
+    <p>Given this ‘transparent’ psychological intuition the story of the caskets ceases to be an inert, decorative centerpiece and becomes charged with latent irony. Bassanio, dressed up to the nines with someone else’s money, is mockingly rewarded with the gift proper to plain virtue. The leaden casket bore as its legend,</p>
+
+    <div class="cita">
+        <p>Who chooseth me must give and hazard all he hath.</p>
+        <p class="attribution">(II. vii. 16)</p>
+    </div>
+
+    <p>W. H. Auden in one of the most brilliant critical remarks of the century observed that this requirement is met by two people in the play, neither of whom is Bassanio. It is met by Antonio and Shylock. That is where the real <i>agon</i> lies.</p>
+
+    <p>I have granted that the stereotype gives us a mercenary Shylock and merciful Christians (the Christians being ‘above’ vengeance) and that this stereotype is observed in the play. But we have already seen how Shylock’s savage “Tis dearly bought’ was pre-echoed, in a more elevated setting, by Portia. ‘My daughter! O my ducats!’ cries the grief-stricken, confused, mercenary Shylock (II. viii.15). ‘Like a golden fleece’, says Bassanio (leash70):</p>
+
+    <div class="cita">
+        <p>I will make fast the doors, and gild myself</p>
+        <p>With some moe ducats, and be with you straight.</p>
+        <p class="attribution">(il. vi.49—50)</p>
+    </div>
+
+    <p>says Jessica to her Christian lover, as they make off in the night with the turquoise Leah gave to Shylock when he was a bachelor (III. i.105). All of which gives added force to Shylock’s plea at the trial, where he says, in effect, ‘Remember me? I’m the usurer, the man who makes deals. So where is the pound of flesh which is owed me?’</p>
+
+    <p>In the course of the play we are told certain things about the state of Venice. The Christians have among them ‘many a purchased slave’ (IV. i.90). Jews are employed when ready capital is needed. They are considered as aliens (as emerges when Shylock forfeits his goods and places his life at the Doge’s mercy, on the ground that he sought the life of a Venetian citizen). All this Auden brings out in his admirable essay. Shakespeare is clearly aware of the covert manner in which Christian merchants make money breed, which is by the ancient doctrine a kind of usury (‘usury’ originally referred to any form of interest and was later—very revealingly—trestricted to excessive interest). Shakespeare is likewise aware of the lower, ‘coarser’ kinds of interest for which Shylock and his kind are needed. He shows with great clarity the almost exclusively mercantile character of the Venetian economy:</p>
+
+    <div class="cita">
+        <p>the trade and profit of the city</p>
+        <p>Consisteth of all nations.</p>
+        <p class="attribution">(111. iii. 30-1)</p>
+    </div>
+
+    <p>Here it is Antonio who speaks. The tenor of his argument is that justice must be maintained because if it is not foreign investors may withdraw their money. It is hard to imagine a similar subordination of justice to the profit motive in one of the English histories. In this way Shakespeare shows both the separateness and the economic symbiosis of Christian and Jew.</p>
+
+    <p>In I. iii Antonio tells Shylock that he makes no use of usury (line 65) and Shylock in reply tells the curious story of Laban, who agreed with Jacob that he (Laban) should have any particoloured lambs that were born while Jacob could have the others. At conception time Laban set peeled wands before the ewes, who subsequently gave birth to particoloured lambs. Antonio in reply eagerly distinguishes ‘venturing’ from ‘usury’; Laban, he insists, merely trusted in God, he had no power of his own to affect the outcome of the bargain. Or are the ewes to be understood as themselves signifying gold and silver . . . ? Shylock, sardonic, uncooperative, turns the question aside (91):</p>
+
+    <div class="cita">
+        <p>I cannot tell; I make it breed as fast.</p>
+    </div>
+
+    <p>Antonio, one senses, is not confident that he has won the argument (it is hard to be sure that Laban did not intervene, with his peeled wands, for had he simply wanted to accept God’s dispensation he could surely have waited till it became evident at lambing time). Antonio’s words ‘The devil can cite scripture for his purpose’ are the words of a man who is holding fast to a conviction that his opponent must be wrong, but cannot quite see how. Meanwhile we sense that Antonio’s money (whether by ‘venturing’ or indirect usury) may breed as fast as Shylock’s. He is the merchant, after all.</p>
+
+    <p>We thus have a curious situation in this play. Shakespeare employs throughout a latent system of allusions to the economic character of Venetian society and this system of allusions, instead of corroborating the stark opposition of good and evil proposed in the play’s main action, subtly undermines it. The economic allusions tell us—against the simple plot—that the Jews and the Christians are deeply similar, for all are mercenary. The general vice which Christians ascribe to the Jews is one of which they are themselves—in a less obvious manner—guilty. The Jews therefore perform a peculiar ethical function in that they bear the brunt of the more obvious dirty work necessary to the glittering city. This counter-system of allusions is organically joined to the drama as a whole and therefore exhibits artistic form. But at the same time it is mimetic of reality, in a pretty specific manner. For it can hardly be pure coincidence that Venice really was thus. A recent historian of Venice in the sixteenth century, Brian Pullan, notes, ‘Jews were deemed to be there for the purpose of saving Christians from committing the sin of usurious lending’, and again, ‘The Venetians had consistently combined the attitude of ritual contempt for the Jews with a shrewd and balanced appreciation of their economic utility.’ He quotes the diarist, Marino Sanuto, ‘Jews are even more necessary than bakers to a city, and especially to this one, for the sake of the general welfare.’ It is quite obvious that Shakespeare, Sanuto, Pullan are all discussing a single, real object.</p>
+
+    <p>As commonly with Transparent criticism there is a penumbra of unverifiable, remoter possibilities. Since these also compose a relevant system they are worth noting. Shakespeare’s sense of background may be very detailed indeed. Anyone who knew anything about Jewish religion would be aware that Shylock, no less than Antonio, was out on a limb. First, the practice of usury is, in the Jewish religion also, tainted with moral dubiety. <i>Leviticus</i> 25: 35-7 simply forbids usury, but <i>Deuteronomy</i> 23:19-20 permits the exaction of interest from a stranger, though not from a brother (hence the title of Auden’s essay). Thus as the Christians need the Jews, so the Jews need the Christians to practise usury on. The symbiosis is more perfectly symmetrical than we may have thought. Shylock, however, breaks with his religion, in particular with <i>Deuteronomy</i> 24:6, when he agrees to take Antonio’s life as a pledge. The passage in <i>Deuteronomy</i> uses the metaphor of a millstone: ‘No man shall take the nether or the upper millstone to pledge: for he taketh a man’s life to pledge’; the metaphor suggests that ‘life’ is here equivalent to ‘means of living’. We may compare <i>Ecclesiasticus</i> 34:22, ‘He that taketh away his neighbour’s living, slayeth him.’ Shylock makes precisely this equation at IV. i.371-2:</p>
+
+    <div class="cita">
+        <p>you take my life</p>
+        <p>When you do take the means whereby I live.</p>
+    </div>
+
+    <p>This pattern of scriptural reference would tend to reinforce an impression, already subliminally present in the play, that the Christians, in taking away Shylock’s capital, are doing to him what he wished to do to Antonio. The act of mercy has an inner likeness to the act of revenge. Shakespeare completes the ironic pattern by making Antonio say to Portia, “Sweet lady, you have given me life and living’ (V. i.286). It is typical of Shakespeare’s genius that in his great comedy of economic reality he finds the single point where language most powerfully asserts the interdependence of economics and humanity, in the etymological affinity between a person’s life and a person’s living. This is in its turn analogous to the economic and ethical meanings of worth and value.</p>
+
+    <p>One effect of Shakespeare’s economic subtheme is to make one suspect that the high-minded talk of the Christians is a luxury available only to the dominant class. Old money can afford to talk in this way. We notice that Portia speaks of mercy when Shylock is sharpening his knife for Antonio, but as soon as the tables are turned and Shylock is on the run, Gratiano cries out again and again that Shylock must hang. Shylock is in fact forgiven and the central ethical plot is clearly dominant at this point. Yet even here one senses something less than ethical, a faint smell of patronizing contempt in the very exercise of mercy. Again, though Shylock’s money is new and the Christian’s old, the misfortune of Antonio the merchant shows us that we are now in a world in which even old money can be horribly at risk. Portia alone has so much old money that she rises above the rest, as Belmont rises above Venice in the sweet summer night. In this way a cruel reductive pun is worked, dramatically rather than verbally, on the notion of transcendence.</p>
+
+    <p>That Shakespeare’s picture of Venice is not one of minute, documentary accuracy is obvious. The law shown in this play, for example, is fairy-tale law, not real law. But Shakespeare’s art in this play remains—not only in the obvious triumphs of probable human motivation at the level of individual character, but also at the less accessible level of influences and conditions—cognitive, with a breath-taking intelligence. He saw the economic peculiarity of Venice and then made the second, greater leap of perceiving how an economic fabric may condition the very nature of moral action: mercy and charity lose their primal simplicity; in the new order personal loyalty, bereft of traditional feudal support, is both sharpened and made more dubious. The ancient stratagem of the Atonement, whereby God sends his substitute to take on himself our sins and save the world, fascinated Shakespeare both in this play and in <i>Measure for Measure</i>. There a figure of Christian mercy discovers that his city needs not mercy but rigorous justice, finds a substitute to do his dirty work for him and, when the substitute is drawn into evil of the worst sort, forgives him with a charity at once generous and insulting. In both plays Shakespeare admits what others might have wished to exclude, the ugly anthropological ancestor of the Atonement, the scapegoat, the unhappy creature on which a society vents its bad conscience.</p>
+
+    <p>But the most difficult point remains. These half-buried echoes and subauditions in the play really do compose a structure, and an exciting subversive thesis. But they are not the play. After years of pious criticism the views of A. D. Moody and H. C. Goddard are very seductive. Moody says, ‘Shylock avows the moral sense by which they actually live. We can see that in condemning Shylock they are condemning their own sins. It would seem then that they are making him literally their scapegoat . . . or, as H. C. Goddard puts it, “They project onto him what they have dismissed from their own consciousness as too disturbing.” ’ But in agreeing with this we are in danger of forgetting the real generosity, however produced, of the Christians, the real ferocity, however explained, of Shylock. They did forgive Shylock. Shylock would have torn open the breast of Antonio. These are things which no theatrical experience of the play will ever let you forget. As William Empson says, we must view the Bassanio-Portia relationship with ‘a generous scepticism which can believe at once that people are and are not guilty.’ So Shakespeare will not let us rest even here. The subversive counter-thesis is itself too easy. We may now begin to see that he is perhaps the least sentimental dramatist who ever lived. We begin to understand what is meant by holding the mirror up to nature.</p>
+
+    <section class="footnotes">
+        <h3>Note</h3>
+        <p>From <i>A New Mimesis: Shakespeare and the Representation of Reality</i>. Copyright © 1983 by A. D. Nuttall. Methuen &amp; Co., Ltd.</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>
