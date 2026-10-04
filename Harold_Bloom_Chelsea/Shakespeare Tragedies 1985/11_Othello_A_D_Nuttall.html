@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>“Othello” — A. D. Nuttall</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">A. D. Nuttall</p>
+        <h1 class="cab__tit">“Othello”</h1>
+    </header>
+
+    <p>Shakespeare’s play about Venice, <i>Othello</i>, has been the occasion of a classic dispute in Transparent criticism. There is disagreement about the hero: is he, in fact, heroic? Othello’s speech at the end of the play causes most of the trouble:</p>
+
+    <div class="cita">
+        <p>Soft you; a word or two before you go.</p>
+        <p>I have done the state some service, and they know’t—</p>
+        <p>No more of that. I pray you, in your letters,</p>
+        <p>When you shall these unlucky deeds relate,</p>
+        <p>Speak of me as I am; nothing extenuate,</p>
+        <p>Nor set down aught in malice. Then must you speak</p>
+        <p>Of one that loved not wisely, but too well;</p>
+        <p>Of one not easily jealous, but, being wrought,</p>
+        <p>Perplexed in the extreme; of one whose hand,</p>
+        <p>Like the base Indian, threw a pearl away</p>
+        <p>Richer than all his tribe; of one whose subdu’d eyes,</p>
+        <p>Albeit unused to the melting mood,</p>
+        <p>Drops tears as fast as the Arabian trees</p>
+        <p>Their med’cinable gum. Set you down this;</p>
+        <p>And say besides that in Aleppo once,</p>
+        <p>Where a malignant and a turban’d Turk</p>
+        <p>Beat a Venetian and traduc’d the state,</p>
+        <p>I took by th’throat the circumcised dog,</p>
+        <p>And smote him—thus.</p>
+        <p>(He stabs himself)</p>
+        <p class="attribution">(V. ii. 341–59)</p>
+    </div>
+
+    <p>T.S. Eliot in ‘Shakespeare and the Stoicism of Seneca’ observed that in this speech Othello seems to be ‘cheering himself up’: ‘He is endeavouring to escape reality, he has ceased to think about Desdemona, and is thinking about himself.’ F.R. Leavis in his ‘Diabolic intellect and the noble hero’ picked up a word applied by Eliot to the Stoic hero, ‘self-dramatization’, and said that this speech by Othello, though it begins in quiet authority, ends precisely in self-dramatization: no tragic hero this, but one who has learned nothing from his misfortune and would rather rant than think. On the other side stands Dame Helen Gardner. In her article, ‘The noble Moor’, she reaffirmed the essential nobility of Othello, his generosity, the greatness of his heart, his absoluteness and disinterestedness; and many felt that the cynics had been silenced.</p>
+
+    <p>My general argument has been that Shakespeare’s mimesis is unusually comprehensive. He moves forward on a total front. He imitates individuals but he also imitates contexts. My response to this disagreement of Transparent critics is to stand further back for a while. There are more things in this play than the figure of Othello, and it may be that in understanding some of them we shall understand him. To begin with we may be utterly formalist and ask what kind of play <i>Othello</i> is.</p>
+
+    <p>Shakespeare’s plays have come down to us in the triple division into comedies, histories and tragedies laid down by the editors of the First Folio. There is in this division a large measure of editorial accident, for the three categories are not co-ordinate. <i>Richard II</i> is, clearly, a history, but, equally clearly, it is also a tragedy. Indeed it is formally a better tragedy than <i>Othello</i> in that it deals with the fall of a prince. <i>Othello</i>, on the other hand, is about an almost bourgeois Italian household, a misunderstanding and a murder at a level which involves no repercussions among nations. Its social milieu is that normally inhabited by comedy. This social difference is enough to stamp <i>Richard II</i> as central tragedy and <i>Othello</i> as peripheral tragedy.</p>
+
+    <p><i>Othello</i>, to be sure, is not the only Shakespearean tragedy to deal with upper-middle-class goings-on. <i>Romeo and Juliet</i> refers to a similar section of society, but then it has long been commonplace to observe that <i>Romeo and Juliet</i> opens like a comedy. The long dynastic rivalry of Montagues and Capulets brings us nearer to the proper political stature of central tragedy than anything that can happen behind Othello’s closed front door.</p>
+
+    <p>But there is the phrase ‘domestic tragedy’. Is this appropriate to <i>Othello</i>? The phrase ‘domestic tragedy’ is commonly used to connote a distinct genre: all those Elizabethan and Jacobean plays which dealt with real-life murders and scandals, such as Jonson’s and Dekker’s <i>The Lamentable Tragedy of the Page of Plymouth</i>, Yarrington’s <i>Two Lamentable Tragedies</i>, <i>A Yorkshire Tragedy</i> (about a man who murdered his two children) and <i>Arden of Faversham</i> (about the murder in 1551 of Thomas Arden by his wife), Wilkin’s <i>The Miseries of Enforced Marriage</i>, Heywood’s <i>A Woman Killed with Kindness</i>. It is fairly obvious that these plays catered for appetites which are served today by the more sensational Sunday newspapers. The title pages of these domestic tragedies repeatedly strike a note of prurient censoriousness which is immediately recognizable. <i>Othello</i> is not in any straightforward manner a member of this class, although we may note in passing that both <i>The Miseries of Enforced Marriage</i> and <i>A Woman Killed with Kindness</i> deal, like <i>Othello</i>, with the then uncommon theme of marriage. Moreover, Michel Grivelet has pointed to the popularity among writers of domestic tragedy of the <i>novellas</i> of Bandello, Boccaccio and Cinthio. The principal source of <i>Othello</i> is a novella by Cinthio. Again, the stories of domestic tragedies tend to crop up later in ballads. This is true of <i>Arden of Faversham</i> and it is also true, as it happens, of <i>Othello</i>.</p>
+
+    <p>The authors of these plays seem not to be have used the term ‘domestic tragedy’ themselves. The word ‘domestic’ was used of ‘what goes on in a house’ (in accordance with its etymological derivation from <i>domus</i>, ‘house’) and also of national as opposed to foreign affairs. Thomas Heywood does occasionally play on this ambiguity, but in the only place where he uses ‘domestic’ to designate genre (‘domestic histories’) he is referring to chronicles of England. The earliest example in the <i>Oxford English Dictionary</i> of <i>domestic</i> as opposed to <i>regal</i> (where the <i>Dictionary</i> offers the slightly misleading gloss ‘devoted to home life’) is from Davenant’s <i>Playhouse to be Let</i>:</p>
+
+    <div class="cita">
+        <p>Kings who move</p>
+        <p>Within a lowly sphere of private love,</p>
+        <p>Are too domestic for a throne.</p>
+    </div>
+
+    <p>Nevertheless, it is plain that the idea of a contrast between the tragedy of courts and the tragedy of private, household events was current in Shakespeare’s time. The unknown author of <i>A Warning for Fair Women</i> (1599) refers to his play as ‘a true and home-born tragedy’. Yves Bescou has remarked that in <i>A Woman Killed with Kindness</i> the house is itself a principal character. But in the common run of Elizabethan domestic tragedy there is admittedly little sense of tension between the idea of tragedy and the idea of domesticity.</p>
+
+    <p>Here Shakespeare is unlike the rest. For if we say that <i>Othello</i> is his domestic tragedy we must note that in this case the term connotes a paradox, domestic and yet a tragedy, tragic and yet domestic. If this is acknowledged the phrase has a certain utility as a description of the play. Thomas Rymer’s celebrated attack on <i>Othello</i>, published in 1693, turns primarily on the fact that the play is bathetically domestic. Speaking of its moral, he says,</p>
+
+    <div class="cita">
+        <p>First, This may be a caution to all Maidens of Quality how, without their Parents consent, they run away with Blackamoors. . . . Secondly, This may be a warning to all good Wives, that they look well to their Linnen.</p>
+    </div>
+
+    <p>Othello’s tragedy indeed is strangely—and formally—introverted; it consists in the fact that he left the arena proper to tragedy, the battlefield, and entered a subtragic world for which he was not fitted. <i>Othello</i> is the story of a hero who went into a house.</p>
+
+    <p>Long ago A.C. Bradley observed that, if the heroes of <i>Hamlet</i> and <i>Othello</i> change places, each play ends very quickly. Hamlet would see through Iago in the first five minutes and be parodying him in the next. Othello, receiving clear instructions like ‘Kill that usurper’ from a ghost, would simply have gone to work. Thus, as the classic problem of <i>Hamlet</i> is the hero’s delay, so the classic problem of <i>Othello</i> is the hero’s gullibility. The stronger our sense of Othello’s incongruity in the domestic world, the less puzzling this becomes. Certainly, <i>Othello</i> is about a man who, having come from a strange and remote place, found his feet in the world of Venetian professional soldiership—and then exchanged that spacious world for a little, dim world of unimaginable horror. ‘War is no strife/To the dark house and the detested wife’ comes not from <i>Othello</i> but from a comedy, but it will serve here. Its note of peculiarly masculine pain and hatred can still score the nerves. It is therefore not surprising that Shakespeare avails himself of the metaphor of the caged hawk. Desdemona says, ‘I’ll watch him tame’, at III. iii. 23. The real process of taming a hawk by keeping it awake and so breaking its spirit is described at length in T.H. White’s <i>The Goshawk</i> (1953). Othello turns the image round when he says of Desdemona,</p>
+
+    <div class="cita">
+        <p>If I do prove her haggard,</p>
+        <p>Though that her jesses were my dear heart-strings,</p>
+        <p>I’d whistle her off and let her down the wind</p>
+        <p>To prey at fortune.</p>
+        <p class="attribution">(III.iii.264–7)</p>
+    </div>
+
+    <p>He speaks formally of Desdemona, but it is hard not to feel that in the last words it is his own dream of liberty which speaks.</p>
+
+    <p><i>Othello</i> is also about insiders and outsiders. The exotic Moor finds when he leaves the public, martial sphere that he is not accepted, is not understood and cannot understand. The Venetian colour bar is sexual, not professional. Iago plays on this with his ‘old black ram . . . tupping your white ewe’ (I. i. 89–90) and the same note is struck by Roderigo with his ‘gross clasps of a lascivious Moor’ (I. i. 127). Othello’s gullibility is not really so very strange. Coal-black among the glittering Venetians, he is visibly the outsider and in his bewilderment he naturally looks for the man who is visibly the insider, the man who knows the ropes, the sort of man who is always around in the bar, the ‘good chap’ or (as they said then) the ‘honest’ man. And he finds him.</p>
+
+    <p>There are two schools of thought on the sort of actor who should play Iago. School A chooses a dark, waspish fellow. School B chooses a bluff, straw-haired, pink-faced sort of man, solid-looking with no nonsense about him. In production School B triumphs, for the role, cast in this way, becomes both credible and terrifying. Although Iago is everywhere spoken of as a ‘good chap’, he has no friends, no loves, no positive desires. He, and not Othello, proves to be the true outsider of the play, for he is foreign to humanity itself. Othello comes from a remote clime, but Iago, in his simpler darkness, comes from the far side of chaos—hence the pathos of Shakespeare’s best departure from his source. In Cinthio’s <i>novella</i> the Ensign (that is, the Iago-figure) with a cunning affection of reluctance, suggests that Desdemona is false and then seeing his chance, adds, ‘Your blackness already displeases her.’ In Shakespeare’s play we have instead a note of bar-room masculine intimacy, in assumed complicity of sentiment. Iago says, in effect ‘Well, she went with black man, so what is one to think?’ (III. iii. 232–7). Othello’s need to be accepted and guided makes him an easy victim of this style. The hero is set for his sexual humiliation.</p>
+
+    <p>From the beginning of the play Othello is associated with outdoor weather, with openness: ‘The Moor is of a free and open nature’ (I. iii. 393); ‘But that I loved the gentle Desdemona,/I would not my unhoused free condition/Put into circumscription and confine/For the sea’s worth’ (I. ii. 25–8). Note the important word ‘unhoused’ and the powerful emphasis on the last four monosyllables. In II. i, set on the quayside in Cyprus, the language bursts into profusion of images of wind and weather, before it brings Othello down from the high seas into the encircling arms of his wife. The effect is best represented by sporadic quotation: ‘What from the cape can you discern at sea?/Nothing at all, it is a high-wrought flood./I cannot twixt the heaven and the main/Descry a sail./Methinks the wind hath spoke aloud at land;/A fuller blast ne’er shook our battlements./. . . The chidden billow seems to pelt the clouds;/The windshaked surge, with high and monstrous mane,/Seems to cast water on the burning Bear,/And quench the guards of th’ever fixed Pole. . . . The town is empty; on the brow o’th’sea/Stand ranks of people, and they cry “A sail!”. . . . Great Jove Othello guard,/And swell his sail with thine own powerful breath,/That he may bless this bay with his tall ship,/Make love’s quick pants in Desdemona’s arms. . . . O my soul’s joy!/If after every tempest came such calms’ (II. i. 1–6, 12–15, 53–4, 77–80, 182–3). The diminuendo is marvellously managed: the bay becomes the arms of Desdemona, the tall ship Othello himself. When, in III. iii, Othello thinks his married happiness is irretrievably lost, he makes a formal speech of valediction. This speech turns insensibly from a farewell to married contentment into the real farewell, the real loss, which is the loss of that military action and freedom in which alone Othello’s true personality could move:</p>
+
+    <div class="cita">
+        <p>I had been happy if the general camp,</p>
+        <p>Pioneers and all, had tasted her sweet body,</p>
+        <p>So I had nothing known. O, now for ever</p>
+        <p>Farewell the tranquil mind! farewell content!</p>
+        <p>Farewell the plumed troops, and the big wars</p>
+        <p>That makes ambition virtue! O, farewell!</p>
+        <p>Farewell the neighing steed and the shrill trump,</p>
+        <p>The spirit-stirring drum, th’ear-piercing fife,</p>
+        <p>The royal banner, and all quality,</p>
+        <p>Pride, pomp and circumstance, of glorious war!</p>
+        <p>And O ye mortal engines whose rude throats</p>
+        <p>Th’immortal Jove’s dread clamours counterfeit,</p>
+        <p>Farewell! Othello’s occupation’s gone.</p>
+        <p class="attribution">(III. iii. 349–61)</p>
+    </div>
+
+    <p>The word ‘big’ in line 353 is exactly right. He is surrounded by things which are too small to fight with, things like handkerchiefs. When, later in the same scene, he envisages a dark release from the dreadful circumscription of the house, once more a great flood surges in the language of the play:</p>
+
+    <div class="cita">
+        <p>Like to the Pontic sea,</p>
+        <p>Whose icy current and compulsive force</p>
+        <p>Ne’er feels retiring ebb, but keeps due on</p>
+        <p>To the Propontic and the Hellespont;</p>
+        <p>Even so my bloody thoughts, . . . .</p>
+        <p class="attribution">(III. iii. 457–61)</p>
+    </div>
+
+    <p>Othello’s gradual disintegration is mirrored in his style of speech, at first swiftly authoritative, then broken and at last full of a barbaric extremism. The thing is done slowly through the play, but there are certain speeches in which the entire triple development is gone through in little. When near the beginning of the play the truculent gang comes crowding in with weapons and torches, Othello easily controls them:</p>
+
+    <div class="cita">
+        <p>Keep up your bright swords, for the dew will rust them.</p>
+        <p class="attribution">(I. ii. 59)</p>
+    </div>
+
+    <p>When he is brought before the Duke and the Senators in I. iii he is at first similar. Asked to account for his conduct he gives the reverend ‘signiors’ a very gentlemanly account (smooth, unflustered, almost majestic) of the way he won Brabantio’s daughter (I. iii. 128–70). There is no sign of any break in this style until we reach line 260. Here Othello’s language suddenly becomes problematic, so much so that most editors assume that the text is corrupt. The speech appears in Alexander’s edition of the <i>Works</i> in the following form (Desdemona has just asked to be allowed to go with him to the wars):</p>
+
+    <div class="cita">
+        <p>OTHELLO: Let her have your voice.</p>
+        <p>Vouch with me, heaven, I therefore beg it not</p>
+        <p>To please the palate of my appetite;</p>
+        <p>Nor to comply with heat—the young affects</p>
+        <p>In me defunct—and proper satisfaction;</p>
+        <p>But to be free and bounteous to her mind</p>
+        <p>And heaven defend your good souls that you think</p>
+        <p>I will your serious and great business scant</p>
+        <p>For she is with me.</p>
+        <p class="attribution">(I. iii. 260–8)</p>
+    </div>
+
+    <p>The crux occurs in the baffling third and fourth lines, which remain puzzling even after they have been amended and repunctuated, as here, by a modern editor. In the case of this play, it is not easy to determine whether the first Quarto of 1622 or the Folio of 1623 has the higher authority. In the crux before us, however, this thorny problem fortunately does not arise, for the two are virtually identical. The first Quarto gives: ‘Nor to comply with heat, the young affects in my defunct, and proper satisfaction’. The difficulties are evident. Is ‘affects’ a noun, in apposition to ‘heat’, or a verb (the relative pronoun ‘which’ having been elided) which would turn ‘young’ into a noun, the object of ‘affects’? Should we change ‘my’ to ‘me’ (as Alexander did) so that we can read ‘the young affects in me defunct’ as an absolute construction, equivalent to ‘the youthful passions being dead in me’? Does ‘proper’ mean ‘legitimate’ or ‘my own’? Quite obviously, the sentence is a mess. But a Transparent reading may suggest that nevertheless we can accept it as it stands; that is, if we look <i>through</i> the fractured form to the possible person we may understand the forms as we never could if we looked at form alone.</p>
+
+    <p>A certain meaning comes through, and indeed it is strange. Othello seems to be saying, ‘Do not think that I am asking for this out of lust, for I am past all that, rather I am interested in Desdemona’s mind.’ This does not have to be a full profession of impotence (though the powerful word <i>defunct</i> might be held to imply that), but only of diminished desires, but this in a newly married hero is sufficiently arresting. Attempts to make <i>defunct</i> bear some such meaning as ‘discharged’ or ‘freed’ by analogy with the Latin <i>defunctus periculis</i> (‘freed from perils’) will not do. This sense is not found elsewhere in English and, even in Latin, only emerges when there is an accompanying ablative (<i>periculis</i>). If Othello had said, ‘defunct <i>from</i> x’, this gloss might have been defensible, but he did not. No audience hearing these words would understand ‘discharged’. Othello, beginning to explain that his request does not arise from lust, for the first time loses control of his sentence and so, we may infer, of his thoughts. Why?</p>
+
+    <p>Desdemona has just intervened in the men’s world of senatorial debate with a sexual candour almost as startling as Othello’s sexual retreat:</p>
+
+    <div class="cita">
+        <p>My heart’s subdu’d</p>
+        <p>Even to the very quality of my lord:</p>
+        <p>I saw Othello’s visage in his mind;</p>
+        <p>And to his honours and his valiant parts</p>
+        <p>Did I my soul and fortunes consecrate.</p>
+        <p>So that, dear lords, if I be left behind,</p>
+        <p>A moth of peace, and he go to the war,</p>
+        <p>The rites for why I love him are bereft me,</p>
+        <p>And I a heavy interim shall support</p>
+        <p>By his dear absence. Let me go with him.</p>
+        <p class="attribution">(I. iii. 250–9)</p>
+    </div>
+
+    <p>There is no serious doubt that ‘rites’ in line 257 is a reference to the consummation of the marriage. This is what throws Othello off balance. She began by speaking of his mind—that part was excellent, carried no danger in terms of the stereotype of the lascivious Moor—but then she asked to be allowed to consummate the marriage. Othello’s status in Venetian society is strong as long as it is kept separate from questions of sexuality. His speech is a stumbling, eager attempt to quash the implication of lasciviousness and to recover balance by catching at Desdemona’s initial emphasis on mental affinity. The two speeches, Desdemona’s and Othello’s, are chiastically arranged: ABBA, mind, desire, desire, mind, but Othello’s answering version is strangled and broken. To emend is to make it smooth. But the very roughness can be seen as correct, if one intuits a person in the part.</p>
+
+    <p>The editorial questions may still need answers (I think ‘affects’ is probably a noun and that ‘proper’ means here ‘my own’) but an actor can deliver the speech as given in the first Quarto, if he is allowed to stammer or hesitate. It remains true that the speech, thus unamended, would count as the most extreme piece of naturalistic confusion in the canon (though Leontes’ speech, ‘Affection! thy intention stabs the centre’ in <i>The Winter’s Tale</i>, I. ii. 138–46, comes very close). The collapse of Othello’s language is microcosmic of the collapse of his personality in the entire tragedy. Othello was perplexed in the extreme before Iago went to work on him. Marriage itself disoriented him. Naturally, his valediction of marital happiness became a valediction of the military life. It was there that he last knew himself. We are now in a position to return to his final speech before he stabs himself (V. ii. 341–59). Othello quietly stops the captors who would lead him away; he speaks briefly of his service to the state and then asks that, when the story of his actions and his fate is told, it should be fairly told; if it is fair, it will tell not of a pathologically jealous man but rather of a confused man, one who threw away a treasure and weeps for it; moreover the story should also include the slaying of the Turk long ago in Aleppo. As he tells of the slaying of the Turk, he kills himself on the clinching word ‘thus’.</p>
+
+    <p>In this speech the pathos of the outsider reaches a climax. It is true that Othello has not attained full understanding, but there is a kind of dignity, for that very reason, in ‘perplexed in the extreme’ (V. ii. 349). In the course of the speech his mind flinches away from the mangled, unintelligible scene around him, back to his heroic past, when he had an honoured part to play. It is no accident that Othello’s memory, in its search for a feat proper to be remembered, should light on the slaying of the turbanned Turk. To assert his Venetian status to the full he needs as enemy a spectacularly foreign figure. Yet, as we watch him, we see, not a Venetian but—precisely—a spectacularly foreign figure. That this is art of the highest order rather than accident is brought home by the conclusion of the speech. For at the moment when Othello comes, in his remote narrative, to the slaying of the foreigner, before our eyes he stabs himself, in a horrific parallelism. It is as if as his last act of devoted service, his last propitiatory offering to the state, he kills the outsider, Othello.</p>
+
+    <p>Let us now turn to the questions we posed at the outset. Is the rhetoric of his speech self-dramatizing, histrionic, or is it noble? I answer, it is noble, but its nobility is tragically deracinated. I said before that Othello’s tragedy lay in the fact that he left the arena proper to tragedy. The logical ‘shimmer’ of this suggestion affects our perceptions of his final speech. Nobility thus isolated and astray is infected with absurdity, but the very absurdity is tragic. Othello’s rhetoric is the rhetoric of a shame-culture. . . . Othello’s shame-culture is more primitive, more thoroughly pre-Stoic than Coriolanus’s, and his difference from the society around him is also greater.</p>
+
+    <p>Othello is actually <i>simpler</i> than those around him. A shame-culture identifies glory and virtue. The manner in which this survived in Shakespeare’s time (and, to some extent in ours) was in the notions of honour and reputation. Thus Cassio harps desperately on his ‘reputation’ as ‘the immortal part’ of himself (II. iii. 253–7). But it is in Othello that we find the notion of reputation, not as something extrinsic but as the centre of his moral identity, operating with enough force (as Iago knows) to kill him. At I. iii. 274 Othello says, in the first Quarto, ‘Let . . . all indign and base adversities/Make head against my reputation.’ There he is insisting still on a confidence which is seriously threatened. But then, in a marvellous scene, Iago gets to work within Othello’s mind, thinking his thoughts aloud for him and he knows well on which nerve he should press:</p>
+
+    <div class="cita">
+        <p>But he that filches from me my good name</p>
+        <p>Robs me of that which not enriches him</p>
+        <p>And makes me poor indeed.</p>
+        <p class="attribution">(III. iii. 163–5)</p>
+    </div>
+
+    <p>In the world of professional military action Othello was a human being. When he passed through the door of the house he became a kind of nothing. The word ‘occupation’ is in our day and was in Shakespeare’s a relatively colourless word (it had a few extra meanings then, but that is by the way). Shakespeare is therefore doing something very deliberate when he places it at the climax of Othello’s speech of valediction at III. iii. 349–61: ‘Othello’s occupation’s gone.’ He is making sure that we notice that the idea of profession or <i>métier</i> has an ethical status in Othello’s mind which it does not naturally have in ours.</p>
+
+    <p>Venice in <i>Othello</i> is the same city we [see] in <i>The Merchant of Venice</i>. Othello is thus no feudal baron or chieftain, but a professional mercenary, paid by the state. Thus a certain continuity of economic reference links the two plays. But in <i>Othello</i> Shakespeare plays down the references to money. Instead he develops at greater length something which is also present in <i>The Merchant of Venice</i>. At III. iii. 31 Antonio said, ‘the trade and profit of the city/Consisteth of all nations.’ Venice is the landless city where different kinds and races meet in a strangely abstract effort of aggrandizement. The sea is the medium of their wars as money is the medium of their wealth. This, in <i>The Merchant of Venice</i>, yielded the endlessly fruitful contrast between a Jewish and a Christian consciousness. In <i>Othello</i> it permits the study of a primitive consciousness yoked to the service of a complex, civic society. Venice is for Shakespeare an anthropological laboratory. Itself nowhere, suspended between sea and sky, it receives and utilizes all kinds of people.</p>
+
+    <p>Othello in his last speech is reverting to the earlier phase. Utterly beaten by his domestic environment, he goes back into his heroic past and delivers his formal vaunt (characteristic of the shame-culture hero from the boasts of the Homeric warrior to the <i>beot-word</i> of the Anglo-Saxons, and thence to the ‘I killed me a b’ar when I was three’ of the American folk hero) though, at the beginning of his speech at least, Othello is restrained by his civilized environment. The speech, properly delivered, should not sound more and more shrilly histrionic as it goes on. On the contrary, it should gather strength and confidence. The actor must draw himself up to his full physical height. Of course there is immense pathos. For—though we dispute their judgement—we are now in a position to account for the reaction of Eliot and Leavis. Othello’s behaviour, if judged by the <i>mores</i> of the city, <i>would</i> be merely theatrical. It may really have a therapeutic function, if not of ‘cheering him up,’ of galvanizing muscles trained to kill. But ultimately all talk of self-dramatization is a product of the discrepancy between Othello’s own nature and the place in which he finds himself. Shame-culture is more concerned than later cultures with outward behaviour; indeed, it locates identity in outward features. Thus for a shame-culture what in us would be artificial posturing may be a means of recovering one’s true self. For all the pathos of incomprehension Othello is at last more authentically himself than at any time since the beginning of the play. This recovery of self, however achieved, corresponds to the ‘moment of insight’ customary in tragedies and successfully prevents Othello from turning into a ‘sick’ paraphrase or serious parody of tragic form. The core of Othello’s nobility is real. He has reached a clearing in the forest, a small but sufficient open space in the labyrinth. He has come to a place where, once more, he has a job to do—a job like the jobs he did before—and he knows how to do it well. It is to kill himself. His words recall his feats against the foreign dog and his conclusion is another feat, both like and horribly unlike those.</p>
+
+    <p>Thus <i>Othello</i> joins the basically economic insight into cultural variation which we find in <i>The Merchant of Venice</i> to the contrast of heroic and civic cultures which is so finely treated in the Roman plays. Although <i>Othello</i> postdates <i>Coriolanus</i> and is more primitive than he, there is nevertheless implicit in what I have been saying a shadowy version of the ‘evolving human nature’ we [see] in the Roman plays. The civic state naturally succeeds the heroic. Othello does not merely belong to another culture but to an earlier one. In the first of the three great dramatists of ancient Greece, Aeschylus, there is virtually no distinction between motive and public situation (this is a continuation of a shame-culture refusal to separate inner and outer). The dilemma of Orestes is essentially public: one god says ‘Do this,’ another god says, ‘Do that.’ There is no question of attributing hesitation or procrastination to Orestes as a feature of his character (indeed, he can hardly be said to have character). This holds to some extent for Othello, or for Othello’s conception of Othello. Remember here Bradley’s remark, cited earlier, about Hamlet and Othello changing places. One thing Othello does not suffer from is hesitation or infirmity of purpose. Between the thing which is to be done and the doing of it no mental shadow falls.</p>
+
+    <p>At a later stage of cultural evolution people become aware that their actions are not only provoked by the outside world but are also inwardly motivated. The notion of self, as we saw, begins to contract. The shame-culture hero is his strength, his gleaming arms, even, at times, his cloud of assisting goddesses. Later we begin to assume that the self is separate from such external factors; we say ‘Oh, yes, she did well in the four-hour examination, but that’s just because she happens to have a strong constitution—it’s not <i>merit</i>.’ I suppose this is the present phase for most of us. Can one <i>imagine</i> a further phase? By continuing the trend, we would get an even more narrowly contracted ego, perhaps one which might even view its own motives as separate from itself. Certainly a person like that would seem civilized—rather horribly so—and would be a proper product of a world grown very old.</p>
+
+    <p>One cannot ascribe to <i>Othello</i> as developed a conspectus of evolving human nature as we find in <i>Julius Caesar</i> and <i>Coriolanus</i> but it may be, nevertheless, that in <i>Othello</i>, some four or five years later than <i>Julius Caesar</i>, Shakespeare began to push harder at the idea I have just let fall. If Othello is the underevolved man, who is overevolved? The answer is Iago. For if the workings of Othello’s mind recall the oldest literature we have, Iago’s evoke a literature as yet unwritten, the literature of existentialism, according to which any assumption of motive by the ego is an act of unconditional, artificial choice. Mark Antony is strange but Iago is far stranger. Mark Antony exploits the emotion he really feels; Iago chooses which emotions he will experience. He is not just motivated, like other people. Instead he <i>decides</i> to be motivated. He concedes that he has no idea whether Othello has had sexual relations with his wife. He simply opts, in a vacuum, for that as a possible motive.</p>
+
+    <p>I think I know how this astonishing idea occurred to Shakespeare. In the seventh story of the third decade of the <i>Hecatommithi</i> of Giraldi Cinthio, the following passage occurs (I quote from the careful translation by Raymond Shaw, given in an appendix to M. R. Ridley’s New Arden edition of <i>Othello</i>):</p>
+
+    <div class="cita">
+        <p>The wicked ensign, caring nothing for the loyalty due to his wife or the friendship, loyalty and duty he owed the Moor, fell passionately in love with Disdemona and turned all his thoughts to seeing whether he might enjoy her. . . . Everything that the ensign did to kindle in her a love for him was useless. So he imagined that the reason was that Disdemona had become enamoured of the captain and so decided to put him out of the way. Furthermore he changed the love that he bore the lady into the bitterest hatred.</p>
+    </div>
+
+    <p>The important phrase is ‘So he imagined’ and the crucial word is ‘so’. The Italian, which Shakespeare may have read, reproduces this feature. I assume that in fact it is merely verbal slackness on Cinthio’s part. But, taken literally, it implies that the ensign <i>deliberately</i> imagined that something was the case, and this impression is reinforced by the active voice of ‘changed’ a few lines below where we might have expected ‘his love changed’. Most readers would hardly notice these two tiny anomalies. But Shakespeare, I suspect, did notice them, and paused in his reading. For here is the germ of the existentialist Iago.</p>
+
+    <section class="footnotes">
+        <h3>Note</h3>
+        <p>From <i>A New Mimesis</i>. Copyright © 1983 by A. D. Nuttall. Methuen &amp; Co., Ltd.</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>
