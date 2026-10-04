@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Editor’s Note &amp; Introduction</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">Editor’s Note</p>
+    </header>
+
+    <p>This volume brings together a representative selection of the best modern and contemporary critical essays that seek to illuminate Shakespeare’s principal comedies and romances. They are arranged in the order of their publication, and range from Elmer Edgar Stoll’s exemplary consideration of Shylock, revised from its original version of 1911, to A. D. Nuttall’s important defense of Shylock as Shakespearean mimesis, published in 1983.</p>
+
+    <p>The editor’s “Introduction” also centers upon Shylock as a mimesis of the Jew, and both builds upon and severely revises the very different readings of <i>The Merchant of Venice</i> by Stoll and Nuttall. These three interpretations of Shylock frame the volume, which also gives two essays or extracts each to <i>A Midsummer Night’s Dream</i> and <i>The Tempest</i>, and at least one discussion to each of the other major comedies and romances, as well as an overview of many in Northrop Frye’s general essay.</p>
+
+    <p>After Stoll’s urgent refusal to sentimentalize Shylock, the volume’s chronological sequence continues with G. Wilson Knight’s reading of <i>Pericles</i> as a fair field of symbolic action. Muriel C. Bradbrook’s study of the ethical structure of <i>All’s Well that Ends Well</i> is complemented by Harold C. Goddard’s deft moral analysis of <i>Measure for Measure</i>, a comedy as problematical as <i>The Merchant of Venice</i>.</p>
+
+    <p>With Reuben Brower’s analogical reading of <i>The Tempest</i>, we continue in the complex critical quest to encompass the moral perplexities of Shakespearean representation. This emphasis is lightened in Anne Barton’s intensely theatrical reading of <i>Love’s Labour’s Lost</i>, but then returns in a finer tone with John Hollander’s examination of what he calls “the morality of indulgence” in the delightfully problematic <i>Twelfth Night</i>. A spirit akin to Hollander’s is manifested in C. L. Barber’s supple balancing of seriousness and levity in <i>As You Like It</i>, and can be apprehended, in a lesser mode, in A. P. Rossiter’s reading of <i>Much Ado About Nothing</i>.</p>
+
+    <p>A new movement begins as we advance towards the critical present with Northrop Frye’s synoptic overview of what he calls “the natural perspective” of Shakespearean comedy and romance. Frye’s direct influence is reflected in Howard Felperin’s meditation upon Prospero, which complements Reuben Brower’s earlier interpretation of <i>The Tempest</i>. Rosalie Colie’s reading of <i>The Winter’s Tale</i>, itself providing a new perspective upon the pastoral convention, offers a useful contrast to Frye’s mythopoeic approach.</p>
+
+    <p>René Girard, reacting antithetically both to Frye and to Freud, interprets myth and ritual in <i>A Midsummer Night’s Dream</i> by contextualizing them in his own vision of sacred violence and the agon of the family romance. Juxtaposed with Girard, directly after him, is Alvin B. Kernan’s corrective emphasis upon the role of the Elizabethan audience in <i>A Midsummer Night’s Dream</i>. More in Kernan’s mode than in Girard’s, Ruth Nevo’s reading of <i>The Taming of the Shrew</i> as farce also emphasizes the stagecraft of Shakespeare’s art, particularly in Petruchio’s flamboyant artifices.</p>
+
+    <p>With Meredith Skura’s acute psychoanalytic interpretation of <i>Cymbeline</i>, we advance to a brilliant instance of both the present and the likely future of Shakespearean criticism. Current perspectives that are at once Freudian and feminist (in the subtlest sense) are then followed by the concluding essay, A. D. Nuttall’s examination of <i>The Merchant of Venice</i> as a crucial instance of Shakespeare’s new mimesis. Nuttall shrewdly opposes himself to the current post-Structuralist school of deconstructionism, with its Derrida-inspired questioning of the very possibility of the representation of human character and human action by language. Since Shakespeare remains the strongest instance of such a representation in all Western literature, it is appropriate that the volume end with a defense of the reality of that representation. We are thus returned full circle to where we began in the “Introduction,” where the editor meditated both upon the strength of Shakespearean representation, and upon the unhappiness of Shylock’s being the major instance of Shakespeare’s rare refusal of originality.</p>
+
+    <header class="cab">
+        <p class="cab__num">Introduction</p>
+    </header>
+
+    <p class="separador">I</p>
+
+    <p>Shylock is to the world of the comedies and romances what Hamlet is to the tragedies, and Falstaff to the histories: a representation so original as to be perpetually bewildering to us. What is beyond us in Hamlet and Falstaff is a mode of vast consciousness crossed by wit, so that we know authentic disinterestedness only by knowing the Hamlet of Act V, and know the wit that enlarges existence best by knowing Falstaff before his rejection by King Henry V, who has replaced Hal. Shylock is not beyond us in any way, and yet he resembles Hamlet and Falstaff in one crucial regard; he is a much more problematical representation than even Shakespeare’s art could have intended. Like Hamlet and Falstaff, he dwarfs his fellow characters. Portia, despite her aura, fades before him just as Claudius recedes in the clash of mighty opposites with Hamlet, and as Hotspur is dimmed by Falstaff.</p>
+
+    <p>I know of no legitimate way in which <i>The Merchant of Venice</i> ought to be regarded as other than an anti-Semitic text, agreeing in this with E. E. Stoll as against Harold Goddard, my favorite critic of Shakespeare. Goddard sees Antonio and Portia as self-betrayers, who should have done better. They seem to me perfectly adequate Christians, with Antonio’s anti-Semitism being rather less judicious than Portia’s, whose attitude approximates that of the T. S. Eliot of <i>After Strange Gods</i>, <i>The Idea of a Christian Society</i> and the earlier poems. If you accept the attitude towards the Jews of the Gospel of John, then you will behave towards Shylock as Portia does, or as Eliot doubtless would have behaved towards British Jewry, had the Nazis defeated and occupied Eliot’s adopted country. To Portia, and to Eliot, the Jews were what they are called in the Gospel of John: descendants of Satan, rather than of Abraham.</p>
+
+    <p>There is no real reason to doubt that the historical Shakespeare would have agreed with his Portia. Shakespeare after all wrote what might as well be called <i>The Jew of Venice</i>, in clear rivalry with his precursor Marlowe’s <i>The Jew of Malta</i>. Were I an actor, I would take great pleasure in the part of Barabas, and little or none in that of Shylock, but then I am a Jewish critic, and prefer the exuberance of Barabas to the wounded intensity of Shylock. There is nothing problematic about Barabas. We cannot imagine <i>him</i> asking: “If you prick us, do we not bleed?,” anymore than we can imagine Shylock proclaiming: “As for myself, I walk abroad a-nights . . . and poison wells.” Marlowe, subtly blasphemous and cunningly outrageous, gives us Christians and Muslims who are as reprehensible as Barabas, but who lack the Jew of Malta’s superb delight in his own sublime villainy. Despite his moralizing scholars, Marlowe the poet <i>is</i> Barabas, or rhetorically so akin to his creation as to render the difference uninteresting. Shakespeare possibly intended to give us a pathetic monster in Shylock, but being Shakespeare, he gave us Shylock, concerning whom little can be said that will not be at least oxymoronic, if not indeed self-contradictory.</p>
+
+    <p>That Shylock got away from Shakespeare seems clear enough, but that is the scandal of Shakespearean representation; so strong is it that nearly all his creatures break out of the temporal trap of Elizabethan and Jacobean mimesis, and establish standards of imitation that do seem to be, not of an age, but for all time. Shylock also—like Hamlet, Falstaff, Cleopatra—compels us to see differences in reality we otherwise could not have seen. Marlowe is a great caricaturist; Barabas is grotesquely magnificent, and his extravagance mocks the Christian cartoon of the Jew as usurer and fiend. It hardly matters whether the mockery is involuntary, since inevitably the hyperbolic force of the Marlovian rhetoric raises word-consciousness to a level where everything joins in an over-reaching. In a cosmos where all is excessive, Barabas is no more a Jew than Tamburlaine is a Scythian or Faustus a Christian. It is much more troublesome to ask: Is Shylock a Jew? Does he not now represent something our culture regards as being essentially Jewish? So immense is the power of Shakespearean mimesis that its capacity for harm necessarily might be as substantial as its enabling force has been for augmenting cognition and for fostering psychoanalysis, despite all Freud’s anxious assertions of his own originality.</p>
+
+    <p class="separador">II</p>
+
+    <p>Harold Goddard, nobly creating a Shakespeare in his own highly humane image, tried to persuade himself “that Shakespeare planned his play from the outset to enforce the irony of Portia’s failure to be true to her inner self in the trial scene.” E. E. Stoll, sensibly declaring that Shakespeare’s contemporary audience set societal limits that Shakespeare himself would not have thought to transcend, reminds us that Jew-baiting was in effect little different than bear-baiting for that audience. I do not hope for a better critic of Shakespeare than Goddard. Like Freud, Goddard always looked for what Shakespeare shared with Dostoevsky, which seems to me rather more useful than searching for what Shakespeare shared with Kyd or even with Marlowe or Webster. Despite his authentic insistence that Shakespeare always was poet as well as playwright, Goddard’s attempt to see <i>The Merchant of Venice</i> as other than anti-Semitic was misguided.</p>
+
+    <p>At his very best, Goddard antithetically demonstrates that the play’s “spiritual argument” is quite simply unacceptable to us now:</p>
+
+    <div class="cita">
+        <p>Shylock’s conviction that Christianity and revenge are synonyms is confirmed. “If a Christian wrong a Jew, what should his sufferance be by Christian example? Why, revenge.” The unforgettable speech from which that comes, together with Portia’s on mercy, and Lorenzo’s on the harmony of heaven, make up the spiritual argument of the play. Shylock asserts that a Jew is a man. Portia declares that man’s duty to man is mercy—which comes from heaven. Lorenzo points to heaven but laments that the materialism of life insulates man from its harmonies. A celestial syllogism that puts to shame the logic of the courtroom.</p>
+    </div>
+
+    <p>Alas, the celestial syllogism is Goddard’s, and Portia’s logic is Shakespeare’s. Goddard wanted to associate <i>The Merchant of Venice</i> with Chekhov’s bittersweet “Rothschild’s Fiddle,” but Dostoevsky again would have been the right comparison. Shakespeare’s indubitable anti-Semitism is no lovelier than Dostoevsky’s, being compounded similarly out of xenophobia and The Gospel of John. Shylock’s demand for justice, as contrasted to Portia’s supposed mercy, is part of the endless consequence of the New Testament’s slander against the Pharisees. But the authors of the New Testament, even Paul and John, were no match for the authors of the Hebrew Bible. Shakespeare, more even than Dostoevsky, is of another order, the order of the Yahwist, Homer, Dante, Chaucer, Cervantes, Tolstoi—the great masters of Western literary representation. Shylock is essentially a comic representation rendered something other than comic because of Shakespeare’s preternatural ability to accomplish a super-mimesis of essential nature. Shakespeare’s intellectual, Hamlet, is necessarily the paradigm of the intellectual, even as Falstaff is the model of wit, and Cleopatra the sublime of eros. Is Shakespeare’s Jew fated to go on being the representation of the Jew?</p>
+
+    <p>“Yes and no,” would be my answer, because of Shakespeare’s own partial failure when he allows Shylock to invoke an even stronger representation of the Jew, the Yahwist’s vision of the superbly tenacious Jacob tending the flocks of Laban and not directly taking interest. Something very odd is at work when Antonio denies Jacob’s own efficacy:</p>
+
+    <div class="cita">
+        <p>This was a venture, sir, that Jacob serv’d for;</p>
+        <p>A thing not in his power to bring to pass,</p>
+        <p>But sway’d and fashion’d by the hand of heaven.</p>
+    </div>
+
+    <p>That is certainly a Christian reading, though I do not assert necessarily it was Shakespeare’s own. Good Christian merchant that he is, Antonio distinguishes his own profits from Shylock’s Jewish usury, but Shylock, or rather the Yahwist, surely wins the point over Antonio, and perhaps over Shakespeare. If the Jewish “devil can cite Scripture for his purpose,” so can the Christian devils, from John through Shakespeare, and the polemical point turns upon who wins the agon, the Yahwist or Shakespeare? Shakespeare certainly intended to show the Jew as caught in the repetition of a revenge morality masking itself as a demand for justice. That is the rhetorical force of Shylock’s obsessive “I will have my bond,” with all its dreadfully compulsive ironic plays upon “bond.” But if Shylock, like the Yahwist’s Jacob, is a strong representation of the Jew, then “bond” has a tenacity that Shakespeare himself may have underestimated. Shakespeare’s most dubious irony, as little persuasive as the resolution of <i>Measure for Measure</i>, is that Portia triumphantly out-literalizes Shylock’s literalism, since flesh cannot be separated from blood. But Shylock, however monstrously, has a true bond or covenant to assert, whether between himself and Antonio, or between Jacob and Laban, or ultimately between Israel and Yahweh. Portia invokes an unequal law, not a covenant or mutual obligation, but only another variant upon the age-old Christian insistence that Christians may shed Jewish blood, but never the reverse. Can it be said that we do not go on hearing Shylock’s “I will have my bond,” despite his forced conversion?</p>
+
+    <p class="separador">III</p>
+
+    <p>Shakespearean representation presents us with many perplexities throughout the comedies and romances: Angelo and Malvolio, among others, are perhaps as baffling as Shylock. What makes Shylock different may be a strength in the language he speaks that works against what elsewhere is Shakespeare’s most original power. Shylock does not change by listening to himself speaking; he becomes only more what he always was. It is as though the Jew alone, in Shakespeare, lacks originality. Marlowe’s Barabas sounds less original than Shylock does, and yet Marlowe employs Barabas to satirize Christian moral pretensions. The curious result is that Marlowe, just this once, seems “modern” in contrast to Shakespeare. What are we to do with Shylock’s great outbursts of pathos when the play itself seems to give them no dignity or value in context? I do not find it possible to contravene E. E. Stoll’s judgment in this regard:</p>
+
+    <div class="cita">
+        <p>Shylock’s disappointment is tragic to him, but good care is taken that it shall not be to us. . . The running fire assails him to the very moment—and beyond it—that Shylock says he is not well, and staggers out, amid Gratiano’s jeers touching his baptism, to provoke in the audience the laughter of triumph and vengeance in his own day and bring tears to their eyes in ours. How can we here for a moment sympathize with Shylock unless at the same time we indignantly turn, not only against Gratiano, but against Portia, the Duke, and all Venice as well?</p>
+    </div>
+
+    <p>We cannot, unless we desire to read or see some other play. <i>The Merchant of Venice</i> demands what we cannot accept: Antonio’s superior goodness, from the start, is to be demonstrated by his righteous scorn for Shylock, which is to say, Antonio most certainly represents what now is called a Jew-baiter. An honest production of the play, sensitive to its values, would now be intolerable in a Western country. The unhappy paradox is that <i>The Jew of Malta</i>, a ferocious farce, exposes the madness and hypocrisy of Jew-baiting, even though its Machiavel, Barabas, is the Jewish monster or Devil incarnate, while <i>The Merchant of Venice</i> is at once a comedy of delightful sophistication and a vicious Christian slander against the Jews.</p>
+
+    <p>In that one respect, Shakespeare was for an age, and not for all time. Bardolatry is not always an innocent disease, and produces odd judgments, as when J. Middleton Murry insisted: “<i>The Merchant of Venice</i> is not a problem play; it is a fairy story.” For us, contemporary Jews and Gentiles alike, it had better be a problem play, and not a fairy story. Shylock, Murry admitted, was not “coherent,” because a Shakespearean character had no need to be coherent. Yet Shylock is anything but incoherent. His palpable mimetic force enhances his rapacity and viciousness, and works to make an ancient bogeyman come dreadfully alive. For the reader or playgoer (though hardly the latter, in our time), Shylock is at once comic and frightening, a walking embodiment of the death drive.</p>
+
+    <p>We must not underestimate the power and influence of Shakespearean mimesis, even when it is <i>deliberately</i> unoriginal, as it is in Shylock. Hamlet and Falstaff contain us to our enrichment. Shylock has the strength to contain us to our destruction. Something of the same could be said for Angelo, in <i>Measure for Measure</i>, or of Malvolio, in <i>Twelfth Night</i>, or of nearly everyone in <i>Troilus</i>. History renders Shylock’s strength as representation socially destructive, whereas Angelo and Malvolio inhabit the shadows of the individual consciousness. I conclude by noting that Shakespeare’s comedies and romances share in the paradox that Gershom Scholem said the writings of Kafka possessed. They have for us “something of the strong light of the canonical, of the perfection that destroys.”</p>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>
