@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>“Much Ado About Nothing” — A.P. Rossiter</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">A.P. Rossiter</p>
+        <h1 class="cab__tit">“Much Ado About Nothing”</h1>
+    </header>
+
+    <p>The play’s date (1598 seems secure) invites one of two general approaches to interpretation. Either this is all trivial, however clever: the author is totally disengaged throughout, and we are foolish to look for anything in any way deep, ourselves solemnly making ado about nothing; or it is a brilliantly superficial and deliberately limited ‘Italian’ love-fantasia on the theme of deception by appearances (all sorts of deceptions, by several sorts of appearances): and we remember that seeming and being will provide plots in very different tones from this, in the plays that Shakespeare goes on to write in 1599 and later.</p>
+
+    <p>In 1923 (<i>Much Ado</i>: New Cambridge ed.) Dover Wilson advanced the hypothesis of an Old Play in verse, put through ‘prose revision’ which left loose tags and oddments that no longer had meaning, as well as ‘verse fossils’. This revision made the most of the Benedick-Beatrice sub-plot; less of Hero and Claudio; and reduced the original Borachio-Margaret ‘sub-sub-plot’ (on the parallel loves of the serving-man and maid pattern) to next to nothing. Undeniably there are some discrepancies in the text which this hypothesis explains away nicely. But on one important point I have my objections. In II.ii. Borachio, sketching the defamation-scheme, says that ‘instances’ will be offered: he is to be seen at Hero’s window, and they are to ‘hear me call Margaret Hero, hear Margaret term me Claudio’. On pp. 105-7 of ‘The Note on the Copy’, Dover Wilson makes this ‘slip’ the one certain evidence for the existence of a Borachio-Margaret sub-plot in ‘the unrevised text’, which Shakespeare here repeated accidentally: aware only that in the old play ‘Margaret was deceived as well as the Prince and Claudio’, when vanity would make her dress as Hero, and welcoming ‘Borachio’ would look like Hero’s being faithless with him. Theobald substituted ‘Borachio’ for ‘Claudio’: the original Cambridge editors were not satisfied. Theobald wanted to know how it could displease Claudio to hear his mistress using <i>his</i> name tenderly; and the Cambridge editors commented that ‘Hero’s supposed offence would not be enhanced by calling one lover by the name of another’. With respect, I find both attitudes obtuse. It <i>would</i> offend Claudio to hear his name misused (and to a servant); and while adultery-in-advance is a severe offence to any bridegroom, it is made more offensive if the morrow’s marriage is mocked in the meeting of the guilty lovers. The Cambridge editors went on to suggest that Shakespeare may have meant Borachio to persuade Margaret to play, ‘as children say, at being Hero and Claudio’; but they did not see that this was a <i>sufficient</i> explanation, which it surely is. The use of Hero’s name would have convinced the onlookers that what they saw was not just her dress; and that of Claudio’s would have the most powerful effect on those who knew the real Claudio was with them. It would seem the acme of jadishness. Indeed, all Borachio need do is to deliver the names in a mocking tone of soupy infatuation.</p>
+
+    <p>If this convinces, the difficulty vanishes; and the best evidence for the Borachio-Margaret sub-plot with it. Shakespeare had a reasonably clear idea of how he <i>could</i> present the scene (which he never did); and it is not significant enough, as Dover Wilson claims, that ‘we are not informed’ of the ‘detail’ of ‘Margaret in Hero’s garments’ till V.i.232. It shows what was in Shakespeare’s mind: if he <i>had</i> written the scene to be played out, then we do not need informing of what we see (for Margaret must, obviously, have appeared in whatever Hero had worn before: probably the ball-dress from II.i.).</p>
+
+    <p>This weakens the Old Play hypothesis: although it remains possible that the 1598 composition may have been from an earlier draft (perhaps a mere sketch); and true that writing of distinguishably different sorts is juxtaposted in it, together with the uncertainties and dead-ends which result from quick composition. Detective-story consistency, and the elimination of all redundancies and contradictions, are not to be expected of an Elizabethan and especially not of a dramatist. In short, the slight internal contradictions seen on reading do not signify (if Shakespeare saw them); and do not matter much, if we do. The ‘old’ matter (if it was old) suited certain contrasts which Shakespeare wanted to draw around 1598, and gave the ‘main’ plot the right lack of emphasis for the task in hand. There is no reason to doubt that the emphasis on Benedick and Beatrice is deliberate, whether he worked from a draft, a sketch, or in some other way. Nor, I think, can we fail to observe that in the ‘main’ plot <i>some</i> passages of a tone too disturbed or disturbing for the ‘Old Play’, or for early work, ‘arrived’ in the course of writing out, because there were already in his mind feelings and reflections on, say, ‘what men daily do, not knowing what they do’: feelings which were, after 1598, to lead his work towards tragicomedy (of a sort that this play is not).</p>
+
+    <p>Deception by appearances in love is patently what most of <i>Much Ado</i> is ‘about’. As Hero puts it:</p>
+
+    <div class="cita">
+        <p>Of this matter</p>
+        <p>Is little Cupid’s crafty arrow made,</p>
+        <p>That only wounds by hearsay . . .</p>
+        <p class="attribution">(III. i. 21-3)</p>
+    </div>
+
+    <p>Cupid is not responsible for calumny; but ‘hearsay’ is a main force in both love-plots: each is about its effects on proud, self-willed, self-centred and self-admiring creatures, whose comedy is at bottom that of imperfect self-knowledge, which leads them on to fool themselves. Is it exaggeration to bring even Dogberry into this pattern? to point to his manifest self-admiration (‘a fellow that hath had losses; and one that hath two gowns, and everything handsome about him’), and to hint that the little arrow that wounds <i>him</i> ‘by hearsay’ is magnificent language and ‘wit’? Are not words and wisdom his Cupids? No doubt that stretches ‘love’ too far. But self-love is a common term to all three of the splendid comedians of the piece.</p>
+
+    <p>The play’s wit has been justly praised and is worth some examination in detail. It is of several distinguishable sorts: the simpler important only in so far as contributing to the cumulative effect, one of impetuous exuberance, a kind of competitive vitality, expressing itself in quick manipulations of language. The Messinans have dancing minds, and make words dance or caper to their unpremeditated tunes. At its simplest level, it is mere quibble: where A has used a word capable of two meanings in different contexts, and B shows his awareness of both, by displacing it. This may be no more than a conventional game, ‘comic wit degenerating into clenches’; and though editors explain them, ‘the mind’, as Johnson says, ‘is refrigerated by interruption’. <i>Much Ado</i> suffers but little from this. It may, again, be an elaboration of that: when A and B are the same person, as when Beatrice ‘takes herself up’ on Claudio: ‘The Count is neither sad, nor sick, nor merry, nor well; but civil count—civil as an orange, and something of that jealous complexion.’ (II.i.262—4). That is exactly at the point where mere verbal cleverness, non-significant quibble, passes over into relevant wit: evocative here either of Beatrice’s vitality (the ‘character’ view), or of the exuberant quality of lively minds which strike fire by scoring off each other: the quality I called <i>competitive vitality</i>, as of a ‘college of wit-crackers’.</p>
+
+    <p>In the wit-game Benedick and Beatrice rightly regard themselves as ‘seeded’ players. Beatrice makes this clear in the scene in Hero’s apartment before the wedding (III.iv.), when Margaret scores off her for once. Shown Hero’s new gloves, she is not interested (her mind is bothered with Benedick), and unguardedly pretends to have a cold:</p>
+
+    <div class="cita">
+        <p>I am stuff’d, cousin, I cannot smell.</p>
+        <p>MARGARET: A maid and stuff’d! There’s goodly catching of cold.</p>
+        <p>BEATRICE: O, God help me! God help me! How long have you profess’d apprehension?</p>
+    </div>
+
+    <p>(‘Since when have you been a wit-cracker in this line?’—which Beatrice regards, with good reason, as her own.) Beatrice gets more of her own medicine later, over the prescription of ‘Carduus Benedictus’: here the wit is both verbal and something more—we might call it the wit of situation. No precise <i>double-entendre</i> is made; but Beatrice’s state of mind is such that she feels (like Benedick before her) ‘there’s a double meaning in that’; and she lays herself open to another laugh by again using the wrong word:</p>
+
+    <div class="cita">
+        <p>Benedictus! why Benedictus? You have some moral in this ‘Benedictus’.</p>
+        <p>MARGARET: Moral? No, by my troth, I have no moral meaning.</p>
+    </div>
+
+    <p>It is a notable point in Shakespeare’s contrivance that he gives both wits their off-day, as soon as love has disturbed their freedom.</p>
+
+    <p>As a rule, bawdy quibble outlives its contemporaries—simply because of ‘human nature’; or because the fundamental situation is practically constant. In this play, jesting about sex is apposite: its subjects are sex-opposition, wooing, wedding, wiving (with due attention to the dangers of the last in making sport of a man). The audience certainly laughed at Benedick’s ‘Well, a horn for my money, when all’s done’ (II.iii.56), the second time they saw the play. It becomes comic dramatic irony, if you read Elizabethanly. Yet, quite often, I see no great gain by doing so. There is something pathetic in the detailed scholarship which laboriously strives to conjure from its grave every ghost of an expired laugh. ‘Lighthearted bawdry’ has its point in <i>Much Ado</i> (as in Mercutio); but only the best of points can stand heavy-handed annotation. Much of it turns on obsolete phrases: the fuse of the whole firework has to be replaced with a dry note; and the verbal transaction, by losing all its speed, loses nearly all its crack. Quibble in slow-motion ceases to be witty. None the less, by noticing or examining the dexterities of verbal switch required, we are speeded up to a better awareness of the Elizabethan manipulations of language; and, at the same time, made more conscious of the vitality evoked individually by characters, and cumulatively by quibble, pun and jest together.</p>
+
+    <p>Shakespeare’s wit in devising the linguistic mishaps and semantic excesses of Dogberry is the other side to the flat and despised ‘mere quibble’. Dogberry exaggerates, by accident and in self-satisfied ignorance, the processes by which the true wits divert the meanings of words deliberately, knowingly, and with pride in their craft. But the one is the antithesis to the other; and both sides could be told, ‘Thou hast frighted the word out of his right sense, so forcible is thy wit’ (Benedick to Beatrice, V.ii.48). Wit and nitwit share a common obsessive delight in the wonders of words. This is largely what makes Dogberry the apposite farce-fool for a play in which all three plots turn on understandings and misunderstandings: quite apart from his being a marvel of the official numbskull’s capacity to make extreme ado about genuine nothing.</p>
+
+    <p>But has the ‘Malaprop’ had its day? It took the stage in <i>Woodstock</i> (? 1594), was cornered by Sheridan, survived to Dickens. It is perhaps funniest in hierarchical societies, where clever and witty management (or mismanagement) of language distinguishes the élite; and aping this makes the linguistic lower orders flatteringly absurd. My impression is that Malaprops are only comic nowadays to over-language-conscious schoolmasters; or, of course, when bawdily Dogburian: when the right idea comes out in very much the wrong word. But, unless I mistake, Dogberry’s skids are never improper. Impropriety in this play is the privilege of the educated.</p>
+
+    <p>The wit that does <i>not</i> turn on word-play is best shown by examples. Essentially it is the exuberance which leaps beyond expectation in ‘improving the occasion’. Not only Benedick and Beatrice have this hyperbolic comic inventiveness: the former his strokes of Falstaffian invention, the latter her alarming opportunism (she is likely to score suddenly off anyone, at any time). The qualities of swiftness and unexpectedness are just as neatly shown by old Leonato’s perfectly timed shot at Benedick. Don Pedro asks if Hero is Leonato’s daughter. ‘Her mother hath many times told me so’, is the conventional formula in reply. ‘Were you in doubt, sir, that you ask’d her?’ asks Benedick. ‘Signior Benedick, no; for then were you a child’ (a palpable hit). They appear equally in Beatrice’s magnificent impertinence to Don Pedro. She must cry ‘Heigh ho for a husband!’—</p>
+
+    <div class="cita">
+        <p>DON PEDRO: Lady Beatrice, I will get you one.</p>
+        <p>BEATRICE: I would rather have one of your father’s getting. . . .</p>
+    </div>
+
+    <p>And the quality of ‘comic inventiveness’ is shown immediately after, when he teasingly offers himself, and she says she will not have him unless she can have another for working-days: he is so costly she would have to keep him for best.</p>
+
+    <p>Both quickness of repartee and comic inventiveness (hyperbolic feats of exaggeration and elaboration) are intrinsic to the attitudes of self-dramatization upon which the comedy of character depends. Energy is delight and accomplished dexterity a pleasure to watch. Benedick and Beatrice have both: all the more because they are playing a part before themselves, and playing it high in an infectious sort of daring: figures of pride, which is at once humanly splendid, and ‘goes before a fall’. There is no need to repeat what others have said of their proud hearts as a source of misogamy, because marriage means submission and commonplaceness. Benedick shows a more delicately amusing self-conceit than this in, for example, the admirable lines (V.ii.63ff.), where the two mock-solemnly agree (a) that they are too wise to woo peaceably, and (b) that not one wise man among twenty will praise himself. Benedick then hits the high note impeccably with ‘Therefore is it most expedient for the wise, if Don Worm, his conscience, find no impediment to the contrary, to be the trumpet of his own virtues, as I am to myself—a pause, to let the conceit of it shock all modest minds; then he goes one better—‘So much for praising myself, who, I myself will bear witness, is praiseworthy.’ Here he is playing the Falstaffian game of carrying outrageousness as far as it will go. The <i>other</i> side of this self-conceit is in II.iii.200ff., his solemn resolutions to profit morally by what he has overheard on his character: ‘I must not seem proud; happy are they that hear their detractions and can put them to mending’; and the heroic resolve to make the supreme sacrifice: ‘No; the world must be peopled.’ There, he is magnificently <i>absurd</i>, and totally unaware of himself. I stress the point to bring out the unappreciated fact that the common distinction between persons we laugh <i>at</i> and those we laugh <i>with</i> is too naive and crude, at any rate for Shakespeare. Benedick’s subsequent efforts to extract a double meaning from two snubbing sentences of Beatrice’s repeat this vista of ingenious absurdity. Besides being excellent comedy of mistaken meanings, the last speech in II.iii. is a perfect miniature sample of love-humour racing a man past himself: ‘I will go get her picture.’ (Exit)</p>
+
+    <p>It may seem a wantonly paradoxical view, in so verbally brilliant a piece, but I would contend that some of the wittiest work is to be found in the interrelations and inter-inanimations of the plots. Of the three, the one that takes attention foremost is technically a sub-plot. We hardly notice that it gets going before the ‘main’ plot, but Beatrice is ‘at’ Benedick before Claudio appears; and this sex-antagonism in a fencing match between experts with sharp words is musically ‘the first subject’. The comedy of this Benedick and Beatrice plot is not the simple, sentimental indulgence of the ‘boy meets girl’ pattern, although that is included; rather it lies in the entertaining, good-natured, critically aware contemplation of the bents in human nature shown in (<i>a</i>) their antagonism (their incapacity to leave one another alone); (<i>b</i>) their deception by contrived intrigue; (<i>c</i>) the revelations which spring from this, under the pressure of circumstances (that arise from the main plot): leading to (<i>d</i>) reversal of all their first positions. The audience is always in a slightly superior position, <i>not</i> identifying itself with either of them, though sympathetic. When all the analysers have anatomized, and perhaps reconstructed Benedick and Beatrice, they remain ‘just representations of general nature’, and hence, as Johnson says, ‘please many and please long’.</p>
+
+    <p>If I were to answer in a word what the Benedick and Beatrice plot turns on, I should say <i>misprision</i>. Benedick and Beatrice misapprehend both each other <i>and</i> themselves: each misprizes the other sex, and misapprehends the possibility of a complete agreement between them, as individuals,<sup>1</sup> on what causes that misprision: love of freedom and a superior conceit of themselves as ‘wise’ where others are fools; as ‘free’ and untied; and as having a right to enjoy kicking over other people’s traces. They fancy they are quite different <i>from</i>, and quite indifferent <i>to</i> each other. Indifferent they are not; and the audience is ‘superior’ in seeing their humours <i>as</i> humours; and in being aware that the opposite to love (as passionate, obsessive interest) is not hate (another passionate interest), but cool or unnoting indifference. How little Beatrice’s ‘disdain’ for Benedick is truly disdainful is shown in her immediately thinking of him as a measure for Don John (II.i.6ff.).</p>
+
+    <p>Because the mind of each runs on the other, they can both be simply gulled by hearsay; provided that it is overheard and includes the sort of freedom of comment we all use on absent friends: mildly malicious in tone, unspiteful in intent, and near enough true on their recognizable oddities and shortcomings. The overhearers, for all their sharpness of wit, know that the <i>comments</i> have some truth, and naturally accept the rest as also true. Thus the introduction of love-thoughts into both results from a species of misapprehension. They take the sense of the words, but totally fail to apprehend their intention. The two gulling scenes belong to the comedy of advertisement. Even the advertisers’ nice touches of flattery are not lacking. The criticism is spiced with proper appreciation, as when Don Pedro hints—a very subtle inducement—that he would quite like to have Beatrice himself.</p>
+
+    <p>That the ‘main’ plot of Hero and Claudio turns on misapprehension leading to the misprision of violent disprizing, is too obvious to need commentary: but much of the play’s total effect hangs on the structural mainness of this plot being displaced. As in Mannerist pictures sometimes, the emphasis is made to fall on what appears structurally to be a corner. This displaced emphasis helps to maintain the sense that the ‘Ado’ is about ‘Nothing’ (it is only through the distortion that reading gives, that much attention is given to the ‘character’ of Claudio).</p>
+
+    <p>But though the misapprehension from judging by appearances is quite obvious, it is easy to overlook the incidental touches by which the theme of false report, misunderstanding and jumping to conclusions is strengthened. Not logically strengthened: the ‘incidents’ are not necessary to the story; but the whole sub-episode of the proxy wooing does chime in cleverly with what is to follow. Don Pedro agrees to woo Hero; immediately Leonato’s ‘good sharp fellow’ overhears and misreports (I.ii.5ff.); the correct report gets into the wrong ears, Borachio’s; he tells Don John, who straightaway uses it maliciously on Claudio (pretending to think him Benedick behind the masque-vizor). And Claudio at once anticipates his later violent and self-regarding impetuosity by assuming that Don Pedro <i>has</i> cheated him of Hero. Call this ‘atmosphere’, if you like; say, perhaps, that Messina is no place to trust any man’s word; whatever you say, it strengthens the theme; and the ready <i>and perhaps drastic</i> misapprehensions of quick and apprehensive minds appear as of major importance in the play, as a play and not as a merely logical story.</p>
+
+    <p>I say ‘perhaps drastic’ to suggest how the matter of this part is balanced neatly on a tonal frontier: not between comedy and tragedy, but between comedy and tragi-comedy. Hence the ‘limited’ of my description of the play at the beginning: the drastic possibilities are so lightly touched that there is a sense of withholding—as if the author, in another mood, could give these incidents quite another tone: but not now; not yet. This feeling is most evident in the Church-scene, which is not tragic. T. W. Craik’s line here is mainly sound; and his interpretation that <i>all</i> the passions are presented to be viewed with comic detachment is preferable to the conventional explanation, that ‘the audience is throughout in the know’, etc.</p>
+
+    <p>Without striving to make too much of it, the dance in II.i. is beautifully apposite. The couples walk their round, two by two, all masked; and all are using words to back the disguise of false faces with trivial deceit. The play-acted defamation of Hero, by means of a false dress on the wrong woman and names used falsely, is exactly parallel. In both, the truth is <i>behind</i> the looks and words. The <i>bal masqué</i> is only a game of seeming; yet it is a most apt symbol of the whole. The vizor is half deceit, half no deceit: you can never be sure. Believe it, and you make ado about what is nothing. And in the social order and shared delight of the dance—all moving to the controlling rhythm, in their appointed patterns—there is too the emblem of the harmony in which all will conclude: as the play does, with another dance, all the vizors laid aside. The real play is not ended with ‘Strike up, pipers’. The very movement of II.i., where all the main misapprehensions started, is repeated and completed; and even the professed misogamists are dancing to the same tune. It is as neat and pretty as ‘Sigh no more, ladies, sigh no more’.</p>
+
+    <p>The third plot—Dogberry, Verges, and Watch—though mainly Dogberry, is not a mere farcical variety-turn: there is a threat of connected episode. The Watch overhear Borachio’s scheme and hear it correctly enough (their invention of a thief named ‘Deformed’ is a nice touch: he has arrived at official constabulary existence by the end). They only overhear because they carry out Dogberry’s ridiculous orders and make the policeman’s lot a not-unhappy one by, as far as possible, doing nothing whatever. Despite their superb stupidity they do disentangle the plot: though only because, Don John having fled, Borachio tells everything, and gives them the game hands down. This is very natural and well-managed. For had Borachio set out to bluff, the Watch would have been utterly bamboozled in no time. <i>Superb</i> stupidity, however, belongs more rightly to Dogberry alone. One side of him is his art of ‘comprehending vagrom’ <i>words</i>: there a more ‘senseless and fit man’ could not be found. But this is not the whole of him; though a part entirely harmonious with the whole. Dogberry is a perfect instance of the comic mirth which Plato explained in <i>Philebus</i>: ‘mirth’, he says, ‘is generally evoked by the sight of self-ignorance or self-conceit, as when a man fancies himself richer, more handsome, more virtuous or wiser than he really is; and this mirth must be present in one who is powerless to inflict hurt on others, otherwise he would cease to be a source of mirth and become a source of danger instead’. As a <i>real</i> official Dogberry would be a terror. Conceited ignorance and vast self-importance in local government officers is—and was, in the time of Elizabeth—as good a joke in fiction as a very bad joke in fact.</p>
+
+    <p>But misprision and misapprehension are present here too, in a different guise. The incomprehension of the stupid ass is a limiting case of failure to apprehend; and over and above his miscomprehensions of language, Dogberry’s own view of Dogberry is a vast misprision. To himself a superb creature, a wise fellow, as pretty a piece of flesh as any in Messina, he is superbly asinine in the Messina of wit and word-play. Yet, while apparently an <i>opposite</i> to the wit-crackers, he is also a <i>parallel</i>: in that pride of self-opinion and a nice appreciation of one’s own wisdom and cleverness is as much theirs as his. There is no caustic correction of self-love in Benedick or Beatrice. But the parallel gives another common term, showing on analysis how the three plots have their implicit correspondences, how they genuinely belong together.</p>
+
+    <p>‘Nothing can permanently please, which does not contain in itself the reason why it is so, and not otherwise.’ I have been trying to probe down to the nervous system of those interrelations which <i>Much Ado</i> contains within itself, and which give it, as comedy, the poetic unity Coleridge there demands. I find a complex harmony of interdependent themes, some parallels, some direct oppositions; and it seems to me that misapprehensions, misprisions, misunderstandings, misinterpretations and misapplications are the best names for what the comedy <i>as a whole</i> is ‘about’. The misapprehensions of language are one side of the play; those of human beings and states of affairs the other. At root the two are one; and both you can regard with Dogberry’s formula for obdurate drunks: ‘You may say they are not the men you took them for.’ A step or stage beyond this, and what a different pattern of seemings might result: where neither looks nor words are to be trusted, but everything distrusted. . . . But <i>Much Ado</i> touches that for only a moment, and that unsymptomatic of the whole: for a few lines of Claudio’s in the Church-scene. They only point to what <i>might</i> be thought and felt: in the real tragi-comedies it <i>will</i> be. Yet even in <i>Much Ado</i>, all appearances <i>are</i> equivocal.</p>
+
+    <p>Before leaving the plots, mark how deftly they are intertwined. Benedick and Beatrice misapprehend themselves and misprize each other. Claudio’s contrived misprision of Hero, the result of intrigue, is finally dissipated by the <i>coup</i> of the Watch, which reduces all the ado to nothing. But at its zenith this same disprizing is the catalyst which liquidates the mutual misprisons of Benedick and Beatrice in the Church-scene. But the reactions to that scene (the confessions of love and Beatrice’s implicit admission that she needs a man—to ‘kill Claudio’) only occur because Benedick and Beatrice have been prepared to ‘apprehend’: prepared by intrigue, which, like Don John’s, is dependent on hearsay and overhearing, taking appearances at their face-value, and being led or misled by words.</p>
+
+    <p><i>Words</i> I must stress, because Dogberry is no essential part of this intertwining as I have summarized it. I suppose you could formulate it all again by saying that the controlling theme might be styled ‘mistaken identities’; for, in their pride or conceit, all the principals in some degree mistake themselves: as they mistake or wrongly take situations, and mistake or wrongly take words, on purpose and wittily or accidentally and absurdly. Leonato and Antonio, the two old men lashing themselves back into a youthful fury, and threatening duels, equally mistake themselves: they are pathetic and laughable at once. And, in a way, they reflect on Benedick’s sternly assuming the role of truculent executioner to Claudio—and having a comical difficulty in maintaining the part. This is a good example of Shakespeare’s detachment in this play: of the amused distance at which his creations should be held, if we are to take <i>Much Ado</i> as an artistic whole.</p>
+
+    <p>Despite Coleridge’s too often quoted comment, ‘The interest in the plot is always in fact on account of the characters, not vice versa, as in almost all other writers; the plot is a mere canvas and no more’, I still think that plot (in a deeper sense than ‘story’) is here even more important. His implied contention that the ‘interest’ in the main plot is ‘on account of the characters’ (Hero and Claudio, chiefly; and I suppose Don John) seems to me simply untrue. Against Coleridge and his echoers we might set Jonson, putting Aristotelian principle in his own words, and answering the question ‘What is a Poet?’: ‘A poet . . . is a maker, or a feigner: his art, an art of imitation or feigning; expressing the life of man in fit measure, numbers, and harmony. . . . Hence he is called a poet, not he which writeth in measure only, but that feigneth and formeth a fable, and writes things like the truth. For the fable and fiction is, as it were, the form and soul of any poetical work or poem.’ In a later note, ‘the very fiction itself’, he says, is ‘the reason or form of the work’ (cxxx). ‘Reason’ and ‘form’ are abstractions from the apprehended ‘felt’ interrelations between distinguishable parts of a whole. Such interrelations I have made the central matter of my examination, attempting to resolve the theme to which the three ‘plots’ are subservient.</p>
+
+    <p><i>Much Ado</i> is not a ‘serious’ play: it is ‘limited’ in managing potentially serious matters with a deft nonchalance which passes by the possibility of some being sharp things that might cut. At the same time, it is a play full of themes which are to have sufficiently serious explorations and consequences in Shakespeare’s later work. Othello’s situation, for example, is a variant of Claudio’s; just as Claudio’s behaviour to Hero is a sketch of Bertram’s (hurt pride turned spiteful: providing we do not see Claudio as only ‘mechanical’). Deceit by words (especially words of great meaning) is a constant in the tragi-comedies; and the comedy or farce of crediting too much of what is heard, or thought to be heard, is only the other side to ‘O love’s best habit is in seeming trust’, and the self-imposed deception by seeming and fair words which are found in the Sonnets.</p>
+
+    <p>Seeming and being in the later plays have a quite different seriousness. But such a theme exists here, as it does in <i>1 Henry IV</i>; and if we say that the one is on <i>love</i> (and sex), the other on <i>honour</i>, then, looking ahead, the change in Shakespeare’s playwriting is partially represented by <i>Much Ado</i> leading to <i>Measure for Measure</i>; and <i>1 Henry IV</i> leading to <i>Troilus and Cressida</i>. By this I suggest that potentially serious and distressing human situations (involving love and honour) are in <i>Much Ado</i> and <i>1 Henry IV</i> handled ‘lightly’, as we say: contrived so as to keep them amusing, diverting, stimulating; but also so as to hold them more or less insulated from the deeper and more trenchant inquisitions into values of the tragi-comedies.</p>
+
+    <p>The place where we can hardly not notice little points of contact with the tragi-comedy outlook is the Church-scene. ‘Seeming’ is harshly emphasized; Claudio seems on the edge of playing a part that would make it quite another <i>sort</i> of play; and the Friar’s moral lines on lost affections—sad, uncomfortable thoughts—are echoed by the King in <i>All’s Well</i>. But those points mark the real insulation of <i>Much Ado</i>. The disturbed feeling of <i>Measure for Measure</i>—its troubled thinking—is not here. We can hardly speak of ‘lack of feeling’ in so bright, lively, glittering a piece: but is there not a certain <i>hard</i> quality, as with the bright colours of some Italian painting?</p>
+
+    <p>It is a <i>Decameron</i>-like story (barring the Watch), with some of the <i>Decameron</i> qualities of volatility in the persons, no wasting of sympathy on victims of jests, and the expectation of swift, unreflecting volte-faces of attitudes and emotions at the call of Fortune’s pipe. That usually leaves an impression of shallowness, of a lack of <i>depth</i> of emotion, in northern European minds. The people seem rather heartless, while not in the least ‘cold’; and the stories are apt to leave us thinking more about ‘Now what did X really feel when . . . ?’ than we know we <i>should</i>. In <i>Much Ado</i>, the brushing aside of the tone of calamity, the expectations of volatile changes of feeling in Claudio, the jocular (for so it is) ‘Think not on him till to-morrow. I’ll devise thee brave punishments for him. Strike up, pipers’, only catch up a bright hardness (the result of a <i>deliberate</i> limitation of sympathies in the author?) which runs through the play.</p>
+
+    <p><i>Much Ado</i> is a fantasy of equivocal appearances in a glittering world of amiable fools of all sorts. As naturally as Italians talk Italian, the Messinans talk ‘equivocal’; but their ‘double tongues’ are as harmless as those of the ‘spotted snakes’ in <i>A Midsummer Night’s Dream</i>. This equivocal quality, moreover, is deftly restricted to appearances: there are only the slightest touches of suggestion of any intrinsic equivocation in things themselves (in love, for example). Ambivalence is not a term to apply here.</p>
+
+    <p>These qualities urge me to ‘place’ the play in the course of Shakespeare’s writing as follows. In the breaking down of sensitive endurance, and of mental resistance to the revelation of the unfairness of human nature, there is a point where a sense of humour <i>fails</i>; where to see life and the world in humorous proportions is no longer possible: it cannot be assumed by any act of will, or, if so, the assumption cannot be maintained. At this point distresses distress, and cannot be accepted tolerantly as the world’s way, muffled by an easy ‘they soon get over it’ and by the cant of time. (I think of John Keats, of course; but without ‘Keatsifying’ Shakespeare. In the <i>later</i> plays the ‘miseries of the world / Are misery’; but not here in <i>Much Ado</i>). Immediately <i>before</i> that point, the besieged mind and invaded heart may defend themselves by the assumption of a certain hardness: assume the <i>Decameron virtu</i>—the trappings and the suits of <i>joy</i>—though they have it not within. They may also find a certain high-flown gaiety—not hysterical, but making the best, and most, of the farce of human misunderstanding, deception, misprision—in the comedy of language (devised, so one may suppose, to communicate: but often used for just the reverse, either in game or in earnest). It is as if the sensitive mind and heart sought to persuade themselves by demonstration that life is a jest, and that the wider the comic net the likelier it is to resolve all the unmentioned but implied and subjective troubles in one great humorous or laughable plan, in which Fortune favours the laughers. This is the point at which great clowns who are melancholic—Chaplin, Raimu, Jouvet, Fernandel—stand and abide. One step from that strange equilibrium may turn to ‘cynicism’ (especially in England): the cynicism where the attitudes I called ‘hardness’ (self-defensive) and ‘farce’ (offensive, debunking) combine to ‘place’ love, honour, truth, only to devalue them. <i>Much Ado</i> stands in the Shakespearian canon just at that point.</p>
+
+    <section class="footnotes">
+        <h3>Note</h3>
+        <p>From <i>Angel with Horns: Fifteen Lectures on Shakespeare</i>, edited by Graham Storey. Copyright © 1961 by Longman Group Ltd. Theatre Arts Books.</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>
