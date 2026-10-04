@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>“A Midsummer Night’s Dream” — Alvin B. Kernan</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">Alvin B. Kernan</p>
+        <h1 class="cab__tit">“A Midsummer Night’s Dream”</h1>
+    </header>
+
+    <p>In his first decade as a dramatist, Shakespeare seems to have been on the whole optimistic about the power of playing to affect, even in less than ideal circumstances, the real world. He laughs at actors for their clumsiness and audiences for their literal-mindedness, chiding both for their inability to forget themselves and enter fully into the play; but the laughter, while it bears witness to some uneasiness on the part of the dramatist about his theater, seems in many ways merely the graceful modesty of an accomplished and self-assured professional dramatic poet continuing the proud humanistic tradition of claiming high value for his theatrical art. Nowhere is the modesty so complete, and at the same time the claim for the potential value of playing so extensive, as in <i>A Midsummer Night’s Dream</i>, where Shakespeare dramatizes Sidney’s boast that in place of nature’s brazen world the poet creates a golden one, that imagination can perceive and art reveal an unseen reality just beyond the range of the senses and of the rational mind. In the <i>Dream</i>, art is no longer defined only by its ability to shape and transform an obstinate reality, as in <i>Shrew</i> and <i>Love’s Labour’s Lost</i>, but is shown to have an ability to penetrate the screen of the immediate world and reveal an imaginative truth that lies behind it.</p>
+
+    <p>Again Shakespeare glances, with an amusement that still betrays uneasiness, at the crudities of actors and stage and at the limitations of audiences. No players could be more hopeless than Nick Bottom the weaver and his mechanical friends who, in the hope of winning a small pension, perform the internal play, “Pyramus and Thisbe,” to celebrate the marriage of Duke Theseus of Athens to the Amazon queen, Hippolyta. Bottom’s company, a parody of the amateur players and provincial touring companies who performed in aristocratic houses on special occasions, is so literal-minded as to require that the moon actually shine on the stage, that the wall through which Pyramus and Thisbe speak be solidly there, and that the actor who plays the lion assure the ladies in the audience, lest they be afraid, that he is only a make-believe lion. The deficiency of imagination which lies behind such a laughable conception of theater, carries over into the playing style of the actors as well. Their stumbling rant, missed cues, mispronounced words and lines, willingness to converse directly with the audience, doggerel verse, and general ineptitude, constitute a playwright’s nightmare and completely destroy any possibility of creating the necessary illusion. As one critic describes it:</p>
+
+    <div class="cita">
+        <p>actors do intervene between audience and playwright. The play clearly indicates that intervention, and, as Bottom demonstrates in his failure as an actor, the actor, like the playwright, must be able both to perceive and to express the imaginative idea if the play is to be successful. For Bottom’s audience to imagine a credible Pyramus, Bottom the actor’s Pyramus, as well as Bottom the playwright’s Pyramus, must be credible. If the playlet is to succeed, both the playwright’s and actor’s Pyramuses must be believably dead. Long before Bottom rises with his assurances that he is alive, the imaginative expression has been so disrupted that the audience’s imaginative perception is prevented. Imagination cannot amend the matter; judgment takes over, and judgment tells us that this is the silliest matter that we have ever heard.</p>
+    </div>
+
+    <p>The audience at “Pyramus and Thisbe,” Duke Theseus, his queen Hippolyta, and the young lovers who attend them, are socially superior to the actors but little more sophisticated about their proper roles in making a play work. Theseus does understand that, though this may be “the silliest stuff” ever heard, it lies within the power of a gracious audience to improve it, for “The best in this kind are but shadows; and the worst are no worse, if imagination amend them” (5.1.211-12). But the noble audience seems to have little of the necessary imagination, for they violate the imaginative space of the play, which the players have first breached, by mocking the actors, laughing at their tragic efforts, and talking loudly among themselves during the performance. For them a play is only the means to while away a dull wait on their wedding night and, secure in an untroubled sense of their own substantial reality, they can laugh at what unrealistic and trivial things all plays and players are. Theseus, that champion of Athenian rationalism, has already publicly declared that the poet’s imagination is no more truthful than the lunatic’s delusions or the lover’s belief in the perfect beauty of his beloved:</p>
+
+    <div class="cita">
+        <p>The poet’s eye, in a fine frenzy rolling,</p>
+        <p>Doth glance from heaven to earth, from earth to heaven;</p>
+        <p>And as imagination bodies forth</p>
+        <p>The forms of things unknown, the poet’s pen</p>
+        <p>Turns them to shapes, and gives to airy nothing</p>
+        <p>A local habitation and a name.</p>
+        <p class="attribution">(5.1.12-17)</p>
+    </div>
+
+    <p>Shakespeare seems to have constructed in <i>Dream</i> the “worst case” for theater, voicing all the attacks on drama being made in his time and deliberately showing plays, actors, and audiences at their worst. And since “the best in this kind are but shadows,” “Pyramus and Thisbe” seems to indict all plays, including <i>A Midsummer Night’s Dream</i>, as mere rant of awkward actors and unrealistic dreaming of frenzied poets. But, while admitting the worst, Shakespeare has contrived at the same time to defend plays in a most subtle fashion. Even as Theseus and his friends sit watching “Pyramus and Thisbe,” laughing at poetry and plays and actors, they are themselves, seen from our vantage point in the outer audience, only the “forms of things unknown” which the imagination of William Shakespeare bodied forth and gave the habitation of Athens and such odd names as Helena and Hermia, Demetrius and Lysander. The situation is the same as that in <i>Love’s Labour’s Lost</i>, where the scorn for plays is also discredited by showing the audience to be themselves only players, and not such very good ones at that, in a larger play of which they are totally unaware.</p>
+
+    <p>This is true in <i>Dream</i> in the literal sense that the stage audience is made up of actors in Shakespeare’s play, and also in the sense that they have already been unwitting players in another internal play written and produced by that master of illusion, Oberon, king of the fairies. He and Titania between them have earlier managed the lives of Theseus and Hippolyta as if they were unconscious actors in a play, and during the course of <i>Dream</i>, Oberon contrives on the stage of his magical forest a little illusion which instructs the young lovers, feelingly not consciously, in the dangers of unleashed passion and brings them at last to a happy conclusion in which every Jack has his Jill. Oberon’s magical forest is a perfect image of what a theater might ideally be and do, but even here the most all-powerful of playwrights is subject to the ability of the imperfect instruments through whom he must implement his art, and Puck nearly ruins the play by putting “idleness” in the wrong eyes.</p>
+
+    <p>As we in the audience watch Theseus watching Bottom pretend to be Pyramus, the extended dramatic perspective forces us to consider the possibility that we too may be only another player audience on another larger stage. And if this is the case, then the audience is not only once again reminded by the bad manners of the stage audience of the positive part it must play in making theater work, but it is also being told that its own sense of the real may be no more valid than Theseus’s. If his rationalistic scorn of plays and players is called into question by his status as only another player, then perhaps our skepticism about Shakespeare’s play is equally compromised, for we stand in the same relationship to the things unknown that the imagination of William Shakespeare has bodied forth as <i>A Midsummer Night’s Dream</i> as Theseus does to “Pyramus and Thisbe.” A forest ruled over by a contentious fairy king and queen, a magical love potion which causes love at first sight, a comic trickster like Puck, all are at least as real as a player duke who marries a queen of Amazons, rules over a city named Athens, and believes that a way of thinking called reason shows the truth of things. And they may finally be as real as that “sure and firm-set earth” we take to be our own reality. If all the world is a play, then one play may be as true as another; and if the conditions are right, as in Oberon’s play but not in Bottom’s, then the theater may reveal the true nature of the world and effect its transformation.</p>
+
+    <p>The playwright drives home his point in the final scene. After Theseus and Hippolyta and the other couples, Bottom’s play finished, make their way to bed thinking that reality reigns again, the stage fills with all those fairies which Shakespeare’s imagination created to embody his vision of the beneficent but tricky forces at work in nature, just beyond the range of the daylight eye. Again it is done lightly, the claim half concealed and discounted even as it is so charmingly made, but immediate reality is being heavily discounted and a visionary power is being claimed for the dramatic poet by leaving his fairies in possession of a stage which now extends outward to claim the entire theater and the world beyond as a part of its imaginative realm.</p>
+
+    <p>In <i>Dream</i> Shakespeare claims for the dramatic poet all the powers which the Renaissance conferred on art, but his image of the theater still acknowledges the crudity and accidents of stage presentation, the clumsiness of actors, the incomprehension of audiences, and the danger that plays may be mere fantasy without much relation to reality. If the play is to work, as he tries to make <i>Dream</i> work, and its full powers are to be realized, then actors and audience must accept that they and their “real” world are finally as illusory as a play, are simply another play called reality, and enter with their imaginations into the full spirit of creating between them on the stage an alternate fictional world of fairies and lovers which can reveal another aspect of truth.</p>
+
+    <p>In Shakespeare’s exploration of theater in his plays of the 1590s, the poet-playwright does not himself appear openly but only in some surrogate form of creator such as the Prince of Navarre and his companions, who construct an academy and a masque; or Petruchio, who writes his shrew play as he goes along; or Oberon, who commands the illusory power of the fairy world; or perhaps even the enthusiastic actor Bottom, who is always willing to stretch a part or add a piece of business to the script of the mercifully anonymous “Pyramus.” The absence of any direct image of the playwright accords with the actual situation in the public theater, where the playwright and his text remained invisible behind the production of the play. It was the play in performance in the theater before an audience that was the artistic reality, and it is on production that Shakespeare focused his attention in his internal plays, showing always in these early plays a less than ideal situation.</p>
+
+    <section class="footnotes">
+        <h3>Note</h3>
+        <p>From <i>The Playwright as Magician: Shakespeare’s Image of the Poet in the English Public Theater</i>. Copyright © 1979 by Yale University. Yale University Press.</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>
