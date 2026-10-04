@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Myth and Ritual in Shakespeare’s “A Midsummer Night’s Dream” — René Girard</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">René Girard</p>
+        <h1 class="cab__tit">Myth and Ritual in Shakespeare’s “A Midsummer Night’s Dream”</h1>
+    </header>
+
+    <p>The opening scene of <i>A Midsummer Night’s Dream</i> leads the audience to expect an ordinary comedy plot. Boy and girl love each other. A mean old father is trying to separate them, with the help of the highest authority in the land, Theseus, duke of Athens. Unless she gives up Lysander, Hermia will have no choice but death or the traditional convent. As soon as this formidable edict is proclaimed, the father figures depart, leaving the lovers to their own devices. They launch into a duet on the impediments of love: age difference, social conditions, and, last but not least, coercion by those in authority.</p>
+
+    <p>The two victimized youngsters leisurely and chattingly prepare to flee their ferocious tyrants; they plunge into the woods; Hermia is pursued by Demetrius, himself pursued by Helena, Hermia’s best friend, whom, of course, he spurns. The first couple’s happiness appears threatened from the outside, but the second couple, even from the start, insist on being unhappy by themselves, always falling in love with the wrong person. We soon realize that Shakespeare is more interested in this systematically self-defeating type of passion than in the initial theme of “true love,” something unconquerable by definition and always in need of villainous enemies if it is to provide any semblance of dramatic plot.</p>
+
+    <p>It quickly turns out that self-defeating passion dominates the relationship of not just one but both couples, involving them in a fourway merry-go-round that never seems to allow any amorous reciprocity even though partners are continually exchanged. At first the two young men are in love with Hermia: then, during the night, both abandon that girl and fall in love with the other. The only constant element in the configuration is the convergence of more than one desire on a single object, as if perpetual rivalries were more important to the four characters than their changing pretexts.</p>
+
+    <p>Although the theme of outside interference is not forgotten, it becomes even more flimsy. In the absence of the father figures, the role is entrusted to Puck, who keeps pouring his magical love juice into the “wrong” eyes. When Oberon rebukes Puck for his mistake, he does so with a show of emotion, in a precipitous monologue that ironically reflects the confusion it pretends to clear, thereby casting doubt upon the reality of the distinctions it pretends to restore:</p>
+
+    <div class="cita">
+        <p>What hast thou done? Thou hast mistaken quite,</p>
+        <p>And laid the love juice on some true love’s sight:</p>
+        <p>Of thy misprision must perforce ensue</p>
+        <p>Some true love turned, and not a false turned true.</p>
+        <p class="attribution">(III. ii.88-91)</p>
+    </div>
+
+    <p>Who will tell the difference between some true love turned and a false turned true? We may suspect a more serious rationale for the four protagonists’ miseries, for the growing hysteria of the mid-summer night. A close look reveals something quite systematic about the behavior of the four, underlined by more than a few ironic suggestions. The author is hinting at something which is never made fully explicit, but which seems cogent and coherent enough to call for a precise formulation.</p>
+
+    <p>The midsummer night is a process of increasing violence. Demetrius and Lysander end up in a duel; the violence of the girls’ rivalry almost matches that of the boys. Their fierce quarreling certainly contradicts—or does it?—Helena’s earlier expression of unbounded admiration for her friend Hermia:</p>
+
+    <div class="cita">
+        <p>Your eyes are lodestars, and your tongue’s sweet air,</p>
+        <p>More tunable than lark to shepherd’s ear.</p>
+        <p>When wheat is green, when hawthorn buds appear.</p>
+        <p>Sickness is catching. O! were favor so,</p>
+        <p>Yours would I catch, fair Hermia, ere I go;</p>
+        <p>My ear should catch your voice, my eye your eye,</p>
+        <p>My tongue should catch your tongue’s sweet melody.</p>
+        <p>Were the world mine, Demetius being bated,</p>
+        <p>The rest I’d give to be to you translated.</p>
+        <p class="attribution">(I. i. 183-191)</p>
+    </div>
+
+    <p>This is a strange mixture of quasi-religious and yet sensuous worship. The last line admirably sums up the significance of the passage. Desire speaks here, and it is desire for another’s being. Helena would like to be <i>translated</i>, metamorphosed into Hermia, because Hermia enjoys the love of Demetrius. Demetrius, however, is hardly mentioned. The desire for him appears less pressing than the desire for Hermia’s being. In that desire, what truly stands out is the irresistible sexual dominance that Hermia is supposed to exert upon Demetrius and all those who approach her. It is this sexual dominance that Helena envies: “O teach me how you look and with what art / You sway the motion of Demetrius’ heart” (I.i. 192-193). Helena sees Hermia as the magnetic pole of desires in their common little world, and she would like to be that. The other three characters are no different; they all worship the same erotic absolute, the same ideal image of seduction which each girl and boy in turn appears to embody in the eyes of the others. This absolute has nothing to do with concrete qualities; it is properly metaphysical. Even though obsessed with the flesh, desire is divorced from it; it is not instinctive and spontaneous; it never seems to know directly and immediately where its object lies; in order to locate that object, it cannot rely on such things as the pleasure of the eyes and the other senses. In its perpetual <i>noche oscura</i>, metaphysical desire must therefore trust in another and supposedly more enlightened desire on which it patterns itself. As a consequence, desire, in <i>A Midsummer Night’s Dream</i>, perpetually runs to desire just as money runs to money in the capitalistic system. We may say, of course, that the four characters are in love with love. That would not be inaccurate; but there is no such thing as love or desire in general, and such a formulation obscures the most crucial point, the necessarily jealous and conflictual nature of mimetic convergence on a single object. If we keep borrowing each other’s desires, if we allow our respective desires to agree on the same object, we, as individuals, are bound to disagree. The erotic absolute will inevitably be embodied in a successful rival. Helena cannot fail to be torn between worship and hatred of Hermia. Imitative desire makes all reciprocal rapports impossible. Shakespeare makes this point very clear, but for some reason no one wants to hear. The audience resembles the lovers themselves, who talk ceaselessly about “true love” but obviously do not care to understand the mechanism of their own feelings.</p>
+
+    <p>Metaphysical desire is mimetic, and mimetic desire cannot be let loose without breeding a midsummer night of jealousy and strife. Yet the protagonists never feel responsible for the state of their affairs: they never hesitate to place the blame where it does not belong, on an unfavorable fate, on reactionary parents, on mischievous fairies, and on other such causes. Throughout the play, the theme of outside interference provides much of the obvious dramatic structure; and we must suspect that it is not simply juxtaposed to the midsummer night which, in a sense, it contradicts: the two may well be in a more complex relationship of disguise and reality, never clearly spelled out and formalized, allowing enough juxtaposition and imbrication so that the play, at least in some important respects, can really function as two plays at once. On one level it is a traditional comedy, destined for courtly audiences and their modern successors; but, underneath, mimetic desire holds sway, responsible not only for the delirium and frenzy of the midsummer night but also for all the mythical themes which reign supreme at the upper level.</p>
+
+    <p>The real obstacles are not outside the enchanted circle of the lovers: each of them is an obstacle to the others in a game of imitation and rivalry that is their mode of alienation, and this alienation finally verges on trancelike possession. The outside obstacle is an illusion, often a transparent one, a telltale disguise of the real situation, constructed so that it can serve as an allegory. It even happens that absolutely nothing has to be changed in order to pass from the truth to the lie and back again to the truth: the same words mean both the one and the other. Shakespeare loves to play on these ambiguities. I have already mentioned the love duet between Lysander and Hermia: most critics would agree that it constitutes a parody of fashionable clichés, and they are no doubt correct; but we cannot view this parodic character as sufficient justification in itself. The real purpose cannot be parody for parody’s sake. There must be something more, something which Shakespeare definitely wants to say and which we are likely to miss because it will appear in the form of “rhetoric.” In the duet part of that love scene, the first seven lines seem to mark a gradation which leads up to the eighth, on which the emphasis falls:</p>
+
+    <div class="cita">
+        <p>LYSANDER: The course of true love never did run smooth;</p>
+        <p>But either it was different in blood—</p>
+        <p>HERMIA: O cross! Too high to be enthralled to low.</p>
+        <p>LYSANDER: Or else misgraffed in respect of years—</p>
+        <p>HERMIA: O spite! Too old to be engaged to young.</p>
+        <p>LYSANDER: Or else it stood upon the choice of friends—</p>
+        <p>HERMIA: O hell! To choose love by another’s eyes.</p>
+        <p class="attribution">(I. i. 134-140)</p>
+    </div>
+
+    <p>The last two lines can be read as only one more “cross,” the most relevant really, the one we would expect to see mentioned first in the present context. The reference to “friends” is somewhat unexpected, but not so strange as to merit a second thought for most listeners. But if we isolate these last two lines, if we replace the love mystique in the spirit of which they are uttered with the present context, the context of the preceding remarks and of countless Shakespearean scenes (not only in <i>A Midsummer Night’s Dream</i> but also in amost every other play), another meaning will appear, a meaning more evident and infinitely more significant.</p>
+
+    <p>Everywhere in Shakespeare there is a passion which is primarily the copy of a model, a passion that is destructive not only because of its sterile rivalries but because it dissolves reality: it tends to the abstract, the merely representational. The model may be present in the flesh and strut on the stage of the theater; and it may also rise from the pages of a book, come out of the frame of a picture, turn into the worship of a phantom, verbal or iconic. The model is always a text. It is Othello’s heroic language, the real object of fascination for Desdemona rather than Othello himself. It is the portrait of Portia which her lover chooses to contemplate in preference to the original. This metaphysical passion is a corruption of life, always open to the corruptive suggestions of mediators and go-betweens, such as the Pandarus of <i>Troilus and Cressida</i>. The paramount role that Shakespeare attributes to such desire, in an obviously calculated way, even in relationships where we may least expect it, is matched only in the works of such writers as Cervantes, Moliére, or Dostoevsky. <i>O hell! To choose love by another’s eyes.</i> Since the phrase is uttered in conformity with the ideology of “true love,” surely appropriate to a royal wedding (the occasion of <i>A Midsummer Night’s Dream</i>), the true Shakespearean meaning must dawn upon us, prompted not only by the events that follow but by a thousand echoes from all the other plays.</p>
+
+    <p>Mimetic desire remains unperceived even when it is most obvious. In the very process of being denied, displaced, reified, it still manages to proclaim its own truth. Almost every time they open their mouths, the lovers unwittingly proclaim that at the same time they ignore, and we generally go on ignoring it along with them. The midsummer night is a hell of the lover’s own choosing, a hell into which they all avidly plunge, insofar as they all choose to choose love by another’s eyes. Hermia, talking about the turn her love affair with Lysander has given her own life, naively recognizes that the hell is all hers, and that it was already there before the appearance of the parental and supernatural bugaboos that are supposed to be its cause:</p>
+
+    <div class="cita">
+        <p>Before the time I did Lysander see,</p>
+        <p>Seemed Athens as a paradise to me.</p>
+        <p>O then, what graces in my love do dwell,</p>
+        <p>That he hath turned a heaven into a hell!</p>
+        <p class="attribution">(I. i. 204-207)</p>
+    </div>
+
+    <p>Shakespeare is making fun of us, of course. He seems intent on proving that you can say almost anything in a play as long as you provide the audience with the habitual props of comedy, the conventional expressions of “true love,” even in minimal amounts, adding, of course, a ferocious father figure or two to satisfy the eternal Freudian in us. As long as the standard plot is vaguely outlined, even in the crudest and least believable fashion, the author can subvert his own myths and state the truth at every turn, with no consequences whatsoever. The audience will instinctively and automatically rally around the old clichés, so completely blind and deaf to everything which may contradict them that the presence of this truth will not even be noticed. The continued misunderstanding of the play throughout the centuries gives added resonance to the point Shakespeare is secretly making, providing ironic confirmation that the most worn-out myth will always triumph over the most explicit demythification.</p>
+
+    <p>If the subject persists in his self-defeating path, the rivalries into which mimetic desire inevitably runs must logically be viewed as glorious signs and heralds of the absolute that keeps eluding him. Mimetic desire breeds rejection and failure; it is rejection and failure that it must ultimately seek. The impossible is always preferred to the possible, the unreal to the real, the hostile and unwilling to the willing and available. This self-destructive character flows directly and automatically from the mechanical consequences of the first definition: to <i>choose love by another’s eyes</i>. Are these consequences really spelled out in the play? They are in the most specific fashion, in perfectly unambiguous statements that somehow never manage to be heard; and even when they are noticed, a label is immediately placed on them, canceling out their effectiveness. The following lines, for example, will be labeled “rhetorical,” which means that they can be dismissed at will, treated as insignificant. Recall that when Helena seeks the secret of Hermia’s power over Demetrius, Hermia answers:</p>
+
+    <div class="cita">
+        <p>I frown upon him, yet he loves me still.</p>
+        <p>HELENA: O that your frowns would teach my smiles such skill!</p>
+        <p>HERMIA: I give him curses, yet he gives me love.</p>
+        <p>HELENA: O that my prayers could such affection move!</p>
+        <p>HERMIA: The more I hate, the more he follows me.</p>
+        <p>HELENA: The more I love, the more he hateth me.</p>
+        <p class="attribution">(I. i. 194-199)</p>
+    </div>
+
+    <p>It cannot be denied that there is a great deal of rhetoric in <i>A Midsummer Night’s Dream</i>. Rhetoric in the pejorative sense means that certain figures of speech are repeated unthinkingly by people who do not even notice their meaning. The four protagonists of <i>A Midsummer Night’s Dream</i> certainly are unthinking repeaters of modish formulas. But mere parodies of rhetorical vacuity would be themselves vacuous, and Shakespeare does not indulge in them. With him the most exhausted clichés can become bolts of lightning. When Helena calls Demetrius a “hard-hearted adamant,” she speaks the most literal truth. Harshness and cruelty draw her and her friends as a magnet draws iron. The supposedly artificial figures of speech really describe the truth of desire with amazing exactitude. When an impeccably educated reader comes upon the lines. “Where is Lysander and fair Hermia? / The one I’ll slay, the other slayeth me” (II.i.189-190), he feels a secret anxiety at the thought that a cultural monument like Shakespeare may be lapsing into less than impeccable taste. These lines are satirical; but, in order to be completely reassured, we have to know what the satirical intent is about. Shakespeare is not mocking a particular “rhetoric” and a particular “bad taste.” Considerations of “style” are mainly relevant to professors of literature. It is rather the whole language of passion, with its constant borrowings from the fields of war, murder, and destruction, that Shakespeare is commenting upon. A book like De Rougemont’s <i>Love in the Western World</i> throws more light on the type of meditation that nourishes Shakespearean satire than all stylistics put together. Shakespeare is almost contemporary in his recourse to the debased language of degraded human relations. With us, however, debased language generally remains just what it is and nothing more; the work never rises above the mire it pretends to stigmatize, or else it immediately sinks gently back into it. Not so with Shakespeare. The interest of the so-called rhetoric is its frightening pertinence; the destiny it spells for the four lovers, the destiny they unthinkingly announce, is really the one that they are busily forging for themselves; it is a tragic destiny from which they escape only by the sheer luck of being in a comedy.</p>
+
+    <p>This ambiguous nature of “rhetoric” is essential to the twofold nature of the play. As long as we listen as unthinkingly as the protagonists speak, we remain in the superficial play which is made up of “figures of speech,” as well as of fairies and father figures. At the purely aesthetic and thematic level of “poetic imagination,” we operate with the same conceptual tools as Theseus and the lovers; good and bad metaphors, true love turned false and false turned true. We understand little more than the lovers themselves. If, on the contrary, we stop long enough to hear what is being said, a pattern begins to emerge: the disquieting infrastructure of mimetic desire, which will erupt into hysterical violence a little later.</p>
+
+    <p>One of the most striking features in the amorous discourse of the protagonists is the abundance of animal images. These images express the self-abasement of the lover in front of his idol. As he vainly tries to reach for the absolute that appears incarnated in the model, the lover exalts his successful rival to greater and greater heights; as a result, he feels degraded to lower and lower depths. The first animal images appear immediately after Helena’s hysterical celebration of her rival’s beauty:</p>
+
+    <div class="cita">
+        <p>No, no, I am as ugly as a bear.</p>
+        <p>For beasts that meet me run away for fear. . .</p>
+        <p>What wicked and dissembling glass of mine</p>
+        <p>Made me compare with Hermia’s sphery eyne?</p>
+        <p class="attribution">(II. ii. 94-99)</p>
+    </div>
+
+    <p>We will be told once again that such images are “pure rhetoric”; their source has been identified: most of them, it appears, come from Ovid. This is true, but the existence of a literary source for a figure of speech does not necessarily imply that it is used in a purely formal and inconsequential manner, that it cannot be given a vital significance by the second writer. It can be shown, I believe, that the animal images are part of the process which leads from mimetic desire to myth; this process is a continuous one, but a certain number of steps can be distinguished which have an existential as well as a functional significance. Far from raising himself to the state of a superman, a god, as he seeks to do, the subject of mimetic desire sinks to the level of animality. The animal images are the price the self has to pay for its idolatrous worship of otherness. This idolatry is really “selfish” in the sense that it is meant for the sake of the self; the self wants to appropriate the absolute that it perceives, but its extreme thirst for self-elevation results in extreme self-contempt, quite logically if parodoxically, since this self always meets and invites its own defeat at the hands of a successful rival.</p>
+
+    <p>Animal images are thus a direct consequence of the inordinate metaphysical ambition that makes desire mimetic. They are an integral part of the rigorous pattern I am trying to unravel; the law of that pattern could be defined by Pascal’s aphorism, <i>Qui fait l’ange fait la béte</i>. The whole midsummer night looks like a dramatization of that aphorism. Here again is Helena, who <i>fait la béte</i> with Demetrius:</p>
+
+    <div class="cita">
+        <p>I am your spaniel, and, Demetrius,</p>
+        <p>The more you beat me, I will fawn on you.</p>
+        <p>Use me but as your spaniel, spurn me, strike me,</p>
+        <p>Neglect me, lose me—only give me leave,</p>
+        <p>Unworthy as I am, to follow you.</p>
+        <p>What worser place can I beg in your love—</p>
+        <p>And yet a place of high respect with me—</p>
+        <p>Than to be used as you use your dog?</p>
+        <p class="attribution">(II. i.203—210)</p>
+    </div>
+
+    <p>Partners in mimetic desire cannot think of each other as equal human beings; their relationship becomes less and less human; they are condemned to an angel-beast or superman-slave relationship. Helena’s near worship of Hermia might be described, today, in terms of an “inferiority complex.” But psychiatrists view their so-called complexes almost as physical entities, almost as independent and stable as the self they are supposed to affect. Shakespeare is alien to this substantial thinking; he sees everything in terms of relations. Helena’s “inferiority complex,” for example, is only the “wrong” or the “beast” end of her relationship with Hermia and Demetrius. Ultimately, everyone ends up with the same “inferiority complex,” since everyone feels deprived of an absolute superiority that always appears to belong to someone else.</p>
+
+    <p>Being purely mimetic, this relationship is anchored in no stable reality; it is therefore bound to be unstable. The metaphysical absolute seems to shift from character to character. With each shift the entire configuration is reorganized, still on the basis of the same polarities, but reversed. The beast becomes a god and the god becomes a beast. Inferiority becomes superiority and vice versa. Up is down and down is up.</p>
+
+    <p>During the first scenes, Hermia, being worshiped by everyone, appears to be and feel divine. Helena, being truly rejected and despised, feels despicable. But then it is Helena’s turn to be worshiped and Hermia feels like a despicable beast. After the initial moment of relative stability, the four lovers enter a world of more and more rapid reversals and inversions. The necessities of dramatic presentation force Shakespeare to be selective and somewhat schematic in his description of the process, but the principles at work are obvious. As soon as the midsummer night crisis begins in earnest, the animal metaphors are not only multiplied but turned upside down and jumbled together. As the reversals become more and more precipitous, we obviously move toward complete chaos. All this, of course, to the renewed chagrin of our guardians of “good taste,” who do not see any purpose to this unseemly spectacle and view it as mere stylistic self-indulgence on the part of the author. The “rhetoric” was bad enough before, but now it is going out of its rhetorical mind. Here is Helena, once more, getting ready to chase Demetrius through the woods:</p>
+
+    <div class="cita">
+        <p>Run when you will, the story shall be changed.</p>
+        <p>Apollo flies, and Daphne holds the chase;</p>
+        <p>The dove pursues the griffin; the mild hind</p>
+        <p>Makes speed to catch the tiger.</p>
+        <p class="attribution">(II. i.230-233)</p>
+    </div>
+
+    <p>Reversal is so pervasive a theme in <i>A Midsummer Night’s Dream</i>, as in most of Shakespeare’s plays, that it finally extends to the whole of nature. Titania tells us, for example, that the seasons are out of turn. Scholars assume that the weather must have been particularly bad in the year Shakespeare wrote the play; this, in turn, gives some clues to the dating of the play. It must be true, indeed, that Shakespeare needed some really inclement weather to write what he did; however, the bad weather serves a specifically Shakespearean purpose, providing still another opportunity for more variations on the major theme of the play, the theme of differences reversed and inverted:</p>
+
+    <div class="cita">
+        <p>... The spring, the summer,</p>
+        <p>The childing autumn, angry winter, change</p>
+        <p>Their wonted liveries, and the mazed world,</p>
+        <p>By their increase now knows not which is which.</p>
+        <p class="attribution">(II. i. 111-114)</p>
+    </div>
+
+    <p>The very pervasiveness of reversal makes it impossible for commentators not to acknowledge the theme, but it also provides a means of minimizing its significance by shifting the emphasis where it should not be shifted, onto nature and the cosmos. This, of course, is exactly what myth itself does in its constant projection and expulsion of human violence. The nineteenth- and twentieth-century mythologists who asserted and still assert that myth is mostly a misreading of natural phenomena really perpetuate the mythical dissimulation and disguise of human violence. Shakespeare seems to be doing the same thing when he inserts his midsummer night into the poetic frame of a crisis of quasi-comic proportions. In that vast macrocosm, our four protagonists’ antics appear as a tiny dot moved by forces beyond its own control, automatically relieved, once more, of all responsibility for whatever harm its even tinier components may be doing to one another and to themselves. Nature, in other words, must be included among the other mythical excuses, such as the mean father and the fairies. Shakespeare certainly gives it a major poetic and dramatic role, in keeping with the principles of what I earlier called the surface play. This is true; but, as in the other instances, he also makes sure that the truth becomes explicit. The real Shakespearean perspective is clearly suggested immediately below the lines just quoted. Titania ascribes disarray neither to herself nor to Oberon nor even to both, insofar as they would remain serene divinities manipulating humanity from outside, but to the conflict between them, a very human conflict, to be sure, which implies the same reversals of roles as the midsummer night and which duplicates perfectly the strife among the four lovers:</p>
+
+    <div class="cita">
+        <p>And this same progeny of evils comes</p>
+        <p>From our debate, from our dissensions;</p>
+        <p>We are their parents and original.</p>
+        <p class="attribution">(II. i.115-117)</p>
+    </div>
+
+    <p>Reversals in nature are only reflections, metaphoric expressions, and poetic orchestrations of the mimetic crisis. Instead of viewing myth as a humanization of nature, as we always tend to do, Shakespeare views it as the naturalization as well as the supernaturalization of a very human violence. Specialists on the subject might be well advised to take a close look at this Shakespearean view; what if it turned out to be less mythical than their own!</p>
+
+    <p>The lopsided view that the lovers take of their own relationships keeps reversing itself with increasing speed. This constant exchange of the relative positions within the total picture is the cause of the vertigo, the loss of balance which the four characters experience. That feeling is inseparable from the sense of extreme difference to which the same characters never cease to cling, even as this difference keeps shifting around at a constantly accelerating tempo. It is a fact, to be sure, that two characters who face each other in fascination and rivalry can never occupy the same position together, since they themselves constitute the polarity that oscillates between them. They resemble a seesaw, with one rider always going up when the other is going down and vice versa. Never, therefore, do they cease to feel out of tune with each other, radically different from each other. In reality, of course, the positions successively occupied are the same; whatever difference remains is a purely <i>temporal</i> one which must become smaller and, as the movement keeps accelerating, even tend to zero, though without actually reaching it.</p>
+
+    <p>Even though they persevere in difference (an ever more vertiginous difference to be sure, but difference nevertheless), the protagonists become more and more undifferentiated. We have seen that the seasons lose their relative specificity, but the true loss of differentiation comes from the crisis among men who are caught in the vicious circle of mimetic desire. Progressive undifferentiation is not an illusion but the objective truth of the whole process, in the sense that reciprocity becomes more and more perfect. There is never anything on one side of a rivalry which, sooner or later, will not be found on the other. Here and there it is exactly the same mixture of fascination and hatred, the same curses, the same everything. It can be said that mimetic desire really <i>works</i>: it really achieves the goal it has set for itself, which is the <i>translation</i> of the follower into his model, the metamorphosis of one into the other, the absolute identity of all. As the climax of the midsummer night approaches, the four protagonists lose whatever individuality they formerly appeared to have; they wander like brutes in the forest, trading the same insults and finally the same physical blows, all drugged with the same drug, all bitten by the same serpent.</p>
+
+    <p>The more our characters tend to see one another in terms of black and white, the more alike they really <i>make</i> one another. Every slightest move, every single reaction becomes more and more immediately self-defeating. The more these characters deny the reciprocity among them, the more they bring it about, each denial being immediately reciprocated.</p>
+
+    <p>At the moment when difference should be most formidable, it begins to elude not one protagonist but the four of them all at once. Characters dissolve and personalities disintegrate. Glaring contradictions multiply, no firm judgment will hold. Each protagonist becomes a masked monster in the eyes of the other three, hiding his true being behind deceptive and shifting appearances. Each points at the hypocrite and the cheat in the others, partly in order not to feel that the ground is also slipping from under him. Helena, for example, accuses Hermia of being untrue to her real self: “Fie, fie! You counterfeit, you puppet, you!” (III.ii.288). Hermia misunderstands and thinks Helena is making fun of her shortness:</p>
+
+    <div class="cita">
+        <p>Puppet? Why so? Aye, that way goes the game.</p>
+        <p>Now I perceive that she hath made compare</p>
+        <p>Between our statures, she hath urged her height.</p>
+        <p>And with her personage, her tall personage,</p>
+        <p>Her height, forsooth, she hath prevailed with him.</p>
+        <p>And are you grown so high in his esteem</p>
+        <p>Because I am so dwarfish and so low?</p>
+        <p>How low am I, thou painted maypole?</p>
+        <p>How low am I? I am not yet so low</p>
+        <p>But that my nails can reach unto thine eyes.</p>
+        <p class="attribution">(III. ii. 289-298)</p>
+    </div>
+
+    <p>C. L. Barber correctly observes that the four young people vainly try to interpret their conflicts through something “manageably related to their individual identities,” but they never achieve their purpose:</p>
+
+    <div class="cita">
+        <p>Only accidental differences can be exhibited. Helena tall, Hermia short. Although the men think that “reason says” now Helena is “the worthier maid,” personalities have nothing to do with the case. . . . The life in the lovers’ part is not to be caught in individual speeches, but by regarding the whole movement of the farce, which swings and spins each in turn through a common pattern, an evolution that seems to have an impersonal power of its own.</p>
+    </div>
+
+    <p>The time comes when the antagonists literally no longer know who they are: “Am I not Hermia? Are you not Lysander?” (III.ii.273).</p>
+
+    <p>Here it is no exaggeration or undue modernization to speak of a “crisis of identity.” To Shakespeare, however, the crisis is primarily one of differentiation. The four characters lose a self-identity which they and the philosophers would like to turn into an absolute and which becomes relative for that very reason; it is made to depend upon the otherness of a model. When Barber points out that Shakespeare fully intends for his characters, in the course of the play, to lose whatever distinctiveness they had or appeared to have at the beginning (which wasn’t much anyway), he runs counter to a long tradition of criticism, the whole tradition of “realism” and of “psychology.” Many critics do not find it conceivable that a writer like Shakespeare might be more interested in the undoing and dissolving of “characters” than in their creation, viewing as they do the latter task as the one assigned to all artists of all eternity. Only the most honest will face squarely their own malaise and formulate the obvious consequences of their own inadequate principles: they blame Shakespeare for “insufficient characterization.”</p>
+
+    <p>The question is truly fundamental. The whole orientation of criticism depends on it. It is usually the wrong solution that is adopted, all the more blindly because it remains implicit. I personally believe that the conflictual undifferentiation of the four lovers is the basic Shakespearean relationship in both his tragedies and comedies. It is the relationship of the four <i>doubles</i> in <i>A Comedy of Errors</i>; it is the relationship of the Montagues and the Capulets, of course, but also of Caesar, Brutus, and his coconspirators, of Shylock and Bassanio, of all the great tragic and comic characters. There is no great theater without a gripping awareness that, far from sharpening our differences, as we like to believe, our violence obliterates them, dissolving them into that reciprocity of vengeance which becomes its own self-inflicted punishment. Shakespeare is fully aware, at the same time, that no theater audience can assume the full force of this revelation. Its impact must and will necessarily be blunted. Some violence will be made “good” and the rest “bad” at the expense of some sacrificial victim, with or without the complicity of the writer. There is no doubt that, in many instances, Shakespeare is a willing accomplice; but his is never an absolute betrayal of his own vision, because the differences he provides are always at the same time undermined and treated as quasi-allegories. An excessive appetite for “characterization” and catharsis will take nothing of this into account: it will systematically choose as most Shakespearean what really is least so, at least in the form in which it is chosen. It will thus provide not only our realistic stodginess but also our romantic self-righteousness with the only type of nourishment they can absorb.</p>
+
+    <p>It is in a comedy like <i>A Midsummer Night’s Dream</i>, if we only agree to read through the transparence of the “airy nothing,” that the truth will stare us most openly in the face. Far from lacking substance and profundity, as even George Orwell inexplicably maintained, this play provides a quintessence of the Shakespearean spirit.</p>
+
+    <p>Am I not “going too far” when I assimilate the midsummer night to the tragic crisis; am I not running the risk of betraying the real Shakespeare? The language of differences and undifferentiation is not Shakespeare’s own, after all. This is true if we take the matter quite literally; but it is also true that Shakespeare, in some of his writing, comes close to using that same language. A case in point is the famous speech of Ulysses in <i>Troilus and Cressida</i>: it describes that very same crisis, but does so in purely theoretical language and on as vast a scale as the most ambitious tragedies, as the crisis of an entire culture. The speech is built around one single word, <i>degree</i>, which would certainly be condemned as too “abstract,” too “philosophical,” if it were applied to Shakespeare by anyone but Shakespeare himself. And obviously Shakespeare applies it to himself as well as to the Greeks: it is the social framework of tragedy which is at stake.</p>
+
+    <div class="cita">
+        <p>. . . O when degree is shaked,</p>
+        <p>Which is the ladder to all high designs,</p>
+        <p>The enterprise is sick! How could communities,</p>
+        <p>Degrees in schools, and brotherhoods in cities,</p>
+        <p>Peaceful commerce from dividable shores,</p>
+        <p>The primogenitive and due of birth,</p>
+        <p>Prerogative of age, crowns, sceptres, laurels,</p>
+        <p>But by degree, stand in authentic place?</p>
+        <p>Take but degree away, untune that string,</p>
+        <p>And, hark, what discord follows! Each thing meets</p>
+        <p>In mere oppugnancy. The bounded waters</p>
+        <p>Should lift their bosoms higher than the shores,</p>
+        <p>And make a sop of all this solid globe;</p>
+        <p>Strength should be lord of imbecility,</p>
+        <p>And the rude son should strike his father dead;</p>
+        <p>Force should be right, or rather, right and wrong,</p>
+        <p>Between whose endless jar justice resides,</p>
+        <p>Should lose their names, and so should justice too.</p>
+        <p>Then every thing include itself in power,</p>
+        <p>Power into will, will into appetite;</p>
+        <p>And appetite, an universal wolf,</p>
+        <p>So doubly seconded with will and power,</p>
+        <p>Must make perforce an universal prey,</p>
+        <p>And last eat up himself.</p>
+        <p class="attribution">(I. iii. 101-124)</p>
+    </div>
+
+    <p>The word <i>degree</i>, from the Latin <i>gradus</i> (step, degree, measure of distance), means exactly what is meant here by difference. Culture is conceived not as a mere collection of unrelated objects, but as a totality, or, if we prefer, a structure, a system of people and institutions always related to one another in such a way that a single differentiating principle is at work. This social transcendence does not exist as an object, of course. That is why, as soon as an individual member, overcome by <i>hubris</i>, tries to usurp Degree, he finds imitators; more and more people are affected by the contagion of mimetic rivalry, and Degree collapses, being nothing more than the mysterious absence of such rivalry in a functional society. The crisis is described as the “shaking,” the “vizarding,” or the taking away of Degree; all cultural specificities vanish, all identities disintegrate. Conflict is everywhere, and everywhere meaningless: <i>Each thing meets in mere oppugnancy.</i> We must note this use of the word “thing,” the least determined, perhaps, in the English language. The meaningless conflict is that of the <i>doubles</i>. Unable to find a way out, men err and clash stupidly, full of hatred but deprived of real purpose; they resemble objects loose on the deck of a ship tossed about in a storm, destroying one another as they collide endlessly and mindlessly.</p>
+
+    <p>In the light of the above remarks, a precise analysis of the midsummer crisis becomes possible. The four protagonists do not see one another as <i>doubles</i>; they misunderstand their relationship as one of extreme if unstable differentiation. A point must finally be reached where all of these illusory differences oscillate so rapidly that the contrasting specificities they define are no longer perceived separately; they begin to impinge on one another, they appear to merge. Beyond a certain threshold, in other words, the dizziness mentioned earlier will make normal perception impossible; hallucination must prevail, of a type that can be ascertained with some precision, being not purely capricious and random but predetermined by the nature of the crisis.</p>
+
+    <p>When polarities such as the ones described earlier between the “beast” and the “angel” oscillate so fast that they become one, the elements involved remain too incompatible for a harmonious “synthesis,” and they will simply be juxtaposed or superimposed on each other. A composite picture should emerge which will include fragments of the former “opposites” in a disorderly mosaic. Instead of a god and a beast facing each other as two independent and irreducible entities, we are going to have a mixture and a confusion of the two, a god that is a beast or a beast that is a god. When the polarities revolve fast enough, all antithetic images must be viewed simultaneously, through a kind of cinematic effect that will produce the illusion of a more or less single being in the form or rather the formlessness of “some monstrous shape.”</p>
+
+    <p>What <i>A Midsummer Night’s Dream</i> suggests, in other words, is that the mythical monster, as a conjunction of elements which normally specify different beings, automatically results from the more and more rapid turnover of animal and metaphysical images, a turnover which depends on the constantly self-reinforcing process of mimetic desire. We are not simply invited to witness the dramatic but insignificant birth of bizarre mythical creatures; rather we are confronted with a truly fascinating and important view of mythical genesis.</p>
+
+    <p>In a centaur, elements specific to man and to horse are inexplicably conjoined, just as elements specific to man and ass are conjoined in the monstrous metamorphosis of Bottom. Since there is no limit to the differences that can be jumbled together, since the picture will necessarily remain blurred, the diversity of monsters will appear properly limitless and the infinite seems to be at hand. Insofar as separate entities can be distinguished within the monstrous whole, there will be individual monsters; but they will have no stability: they will constantly appear to merge and marry one another. The birth of monsters, their scandalous commingling with human beings, and the wedding of the one with the other, all these mythical phenomena are part of one and the same experience. The wedding of Titania with the ass-headed Bottom, under the influence of that same “love juice” that makes the lovers crazy, can take place only because the difference between the natural and the supernatural is gone; haughty Titania finds to her dismay that the barrier between her and ordinary mortals is down:</p>
+
+    <div class="cita">
+        <p>Tell me how it came this night</p>
+        <p>That I sleeping there was found</p>
+        <p>With these mortals on the ground.</p>
+        <p class="attribution">(IV. i. 103-105)</p>
+    </div>
+
+    <p>The conjunction of man, god, and beast takes place at the climax of the crisis and is the result of a process which began with the play itself. It is the ultimate metamorphosis, the supreme <i>translation</i>.</p>
+
+    <p>In that process the animal images play a pivotal role. I noted earlier that their perfect integration into the disquieting symphony conducted by Shakespeare was not at all incompatible with their identification as literary reminiscences. We must now go further. To say that these images are compatible with the role that Shakespeare himself wants them to play in his own work is no longer enough. It is evident that these animal images are especially appropriate to that role and that Shakespeare has selected them for that reason. Most of them come from Ovid’s <i>Metamorphoses</i>. They are directly implicated in an earlier genesis of myth, still quite mythical, and far removed from the obviously psychosocial interpretation implicitly proposed by Shakespeare. It is no exaggeration to assert that <i>A Midsummer Night’s Dream</i>, because it is a powerful reinterpretation of Ovid, also provides, at least in outline, Shakespeare’s own genetic theory of myth. It is a mistake, therefore, to view the animal images as if they were suspended in midair between the matter-of-fact interplay of desires on the one hand and purely fantastic shapes on the other. They are the connecting link between the two. Thus we can no longer see the play as a collage of heterogeneous elements, as another monstrosity; it is a continuous development, a series of logically related steps that will account even for the monsters in its own midst if they are only followed to the end, if enough trust is placed in the consistency of the author.</p>
+
+    <p>At the climax of the crisis, Demetrious and Lysander are about to kill each other, but Puck, on Oberon’s orders, substitutes himself for the doubles and puts the four lovers to sleep. When they wake up the next morning, they find themselves reconciled, neatly arranged this time in well-assorted couples. Good weather is back, everything is in order once more. Degree is restored. Theseus appears upon the scene. He and his future wife hear an account of the midsummer night, and it is for the duke to pronounce the final word, to draw the official conclusion of the whole episode in response to a slightly anxious question asked by Hippolyta. Then comes the most famous passage of the entire play. Theseus dismisses the entire midsummer night as the inconsequential fruit of a gratuitous and disembodied imagination. He seems to believe that the real question is whether or not to believe in the fairies. Hippolyta’s later words will reveal that her concern is of an entirely different sort; but, like all rationalists of a certain type, Theseus has a marvelous capacity for simplifying the issues and displacing a debate toward his favorite stomping ground. Much of what he says is true, of course; but it is beside the point. To believe or not to believe, that is not the question; and, by trumpeting his fatuous skepticism, Theseus dispenses himself from looking at the remarkable pattern of the midsummer night and the disturbing clues it may contain concerning the nature of all social beliefs, including his own. Who knows if the crisis and its cathartic resolution are responsible only for the monsters of the night? Who knows if the peace and order of the morning after, if even the majestic confidence of the unchallenged ruler are not equally in their debt? Theseus’ casual dismissal of myth is itself mythical in the sense that it will not ask such questions. There is irony in the choice of a great mythical figure to embody this rationalistic dismissal. Here Theseus acts as the high priest of a benign casting-out of all disturbing phenomena under the triple heading of poetry, lunacy, and love. This neat operation frees respectable men of all responsibility for whatever tricks, past, present, and future, their own desires and mimetic violence might play on them, thus perfectly duplicating the primary genesis of myth, the one that I have just noted:</p>
+
+    <div class="cita">
+        <p>HIPPOLYTA: 'Tis strange, my Theseus, that these lovers speak of.</p>
+        <p>THESEUS: More strange than true. I never may believe</p>
+        <p>These antique fables, nor these fairy toys.</p>
+        <p>Lovers and madmen have such seething brains,</p>
+        <p>Such shaping fantasies, that apprehend</p>
+        <p>More than cool reason ever comprehend.</p>
+        <p>The lunatic, the lover, and the poet</p>
+        <p>Are of imagination all compact.</p>
+        <p>One sees more devils than vast Hell can hold,</p>
+        <p>That is the madman. The lover, all as frantic,</p>
+        <p>Sees Helen’s beauty in a brow of Egypt.</p>
+        <p>The poet’s eye, in a fine frenzy rolling,</p>
+        <p>Doth glance from heaven to earth, from earth to heaven,</p>
+        <p>And as imagination bodies forth</p>
+        <p>The form of things unknown, the poet’s pen</p>
+        <p>Turns them to shapes, and gives to airy nothings</p>
+        <p>A local habitation and a name.</p>
+        <p>Such tricks hath strong imagination</p>
+        <p>That if it would but apprehend some joy,</p>
+        <p>It comprehends some bringer of that joy;</p>
+        <p>Or in the night, imagining some fear,</p>
+        <p>How easy is a bush supposed a bear!</p>
+        <p class="attribution">(V. i. 1-22)</p>
+    </div>
+
+    <p>This positivism <i>avant la lettre</i> seems to contradict much of what I have said so far. Evidence so laboriously assembled seems scattered once more. Where are the half-concealed yet blatant disclosures, the allusive ambiguities artfully disposed by the author (or so I supposed) for our enlightenment? Long before I came to it, I am sure, many skeptical readers had the passage in mind, and they will rightly want to know how it fits into my reading. Here it is, finally, an obvious ally of the traditional readings that quite naturally regard it as the unshakable rock upon which they are founded. As such, it must constitute a formidable stumbling block for my own intricate revisionism.</p>
+
+    <p>The lead is provided by Shakespeare himself, and the present status of the passage as a piece of anthology, a <i>lieu commun</i> of modern aestheticism, testifies to the willingness of posterity to take up that lead. The reading provided by Theseus is certainly the most pleasant, the one which conforms to the wishes of the heart and to the tendency of the human mind not to be disturbed. We must note, besides, that the text is centrally located, placed in the mouth of the most distinguished character, couched in sonorous and memorable phrases, well fit to adorn academic dissertations on the so-called “imaginative faculty.”</p>
+
+    <p>This speech has been so successful, indeed, that no one ever pays any attention to the five quiet lines that follow. Hippolyta’s response does not have the same resounding eloquence, but the dissatisfaction she expresses with the slightly pompous and irrelevant <i>postmortem</i> of Theseus <i>was written by Shakespeare himself</i>. It cannot fail to be of immense significance:</p>
+
+    <div class="cita">
+        <p>But the story of the night told over,</p>
+        <p>And all their minds transfigured so together,</p>
+        <p>More witnesseth than fancy’s images,</p>
+        <p>And grows to something of great constancy,</p>
+        <p>But howsoever strange and admirable.</p>
+        <p class="attribution">(V. i.23-47)</p>
+    </div>
+
+    <p>Hippolyta clearly perceives Theseus’ failure to come up with the holistic interpretation that is necessary. He and his innumerable followers deal with the play as if it were a collection of separate cock-and-bull stories. To them imagination is a purely individual activity, unrelated to the interplay of the four lovers. They themselves are the true inheritors of myth when they confidently believe in their simplistic objectivity. They see myth as something they have already left behind with the greatest of ease, as an object of passing amusement, perhaps, when the occasion arises to watch some light entertainment such as <i>A Midsummer Night’s Dream</i>.</p>
+
+    <p>There is no doubt that we are dealing with two critical attitudes and that Shakespeare himself vindicates the one that has always been least popular. When I suggest that <i>A Midsummer Night’s Dream</i>, behind all the frills, is a serious genetic theory of myth, I am only translating the five lines of Hippolita into contemporary parlance. It is not I but Shakespeare who writes, that the midsummer night is more than a few graceful arabesques about English folklore and Elizabethan lovers. It is not I but Shakespeare who draws our attention to <i>all their minds transfigured so together</i> and to the final result as <i>something of great constancy</i>, in other words, a common structure of mythical meaning.</p>
+
+    <p>I have suggested that <i>A Midsummer Night’s Dream</i> might well be two plays in one. This hypothesis is now strengthened. At this point, the two plays are coming to life as individuals; they are speaking to us and to each other, one through Theseus, the other through Hippolyta. The exchange between the bridegroom and his acutely perceptive but eternally overshadowed bride amounts to the first critical discussion of the play. Representing as he does blissful ignorance and the decorum of Degree enthroned, Theseus must hold the stage longer, speaking with a brilliance and finality that confirms the dramatic preeminence of the surface play, a preeminence that is maintained throughout. Since he gives a voice to all those—the immense majority—who want nothing more in such an affair than “airy nothings,” Theseus must be as deaf and blind to his bride’s arguments as Shakespeare’s audiences and critics seem to have been ever since. The debate seems one-sided in the duke’s favor, but how could we fail, at this juncture, to realize that the real last word belongs to Hippolyta, both literally and figuratively? In the context of the evidence gathered earlier, how could we doubt that Hippolyta’s words are the decisive ones, that they represent Shakespeare’s own view of how the play really hangs together? If we really understand that context, we cannot be surprised that Shakespeare makes his correction of Theseus as discreet and unobstrusive as it is illuminating, visible only to the same thoughtful attention already needed to appreciate such pregnant ambiguities as “to choose love by another’s eyes” and other similar gems of exquisitely direct, yet almost imperceptible revelation.</p>
+
+    <p>Hippolyta is gently tugging at Theseus’ sleeve, but Theseus hears nothing. Posterity hears nothing. Hippolyta has been tugging at that sleeve for close to four hundred years now, with no consequence whatever, her words forever buried under the impressive scaffoldings of Degree once more triumphant in the guise of rationalism, eternally silenced by that need for reassurance which is answered first by belief in myths, then by a certain kind of disbelief. Shakespeare seems to give his blessing to both, ironically confounded in the person of Theseus. He places in the hands of his pious and admiring betrayers the instruments best designed to blunt the otherwise intolerably sharp edge of their favorite bard’s genius.</p>
+
+    <section class="footnotes">
+        <h3>Note</h3>
+        <p>From <i>Textual Strategies: Perspectives in Post-Structuralist Criticism</i>, edited by Josue V. Marari. Copyright © 1979 by Cornell University. Cornell University Press.</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>
