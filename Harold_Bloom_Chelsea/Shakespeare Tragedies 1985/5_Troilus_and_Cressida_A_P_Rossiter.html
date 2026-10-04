@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>“Troilus and Cressida” — A. P. Rossiter</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">A. P. Rossiter</p>
+        <h1 class="cab__tit">“Troilus and Cressida”</h1>
+    </header>
+
+    <p>How does a man give a ‘popular lecture’ on a play undeniably unpopular; which is (with <i>Timon</i>) the least liked of Shakespeare’s mature works; and which (unlike <i>Andronicus</i> and <i>1 Henry VI</i>) cannot even be said to have been ‘a popular success in its own day’? How can you expect to interest a theatre-going audience in what even its admirers admit to be a bad stage-play: a play whose twenty-four scenes (in modern editions)—you can reduce them to fifteen or sixteen by imagining it in an Elizabethan theatre—include at most a mere <i>four</i> that can be called ‘dramatic’?</p>
+
+    <p>We have reason to believe that <i>Troilus and Cressida</i> was written for a specific time and for a special audience: the time, between <i>Henry V</i> and <i>Julius Caesar</i> (1599) and early 1601; the audience, young intellectuals, many of them law-students from the Inns of Court—young, critical, discontented minds who were attracted by the new poetry of Donne, the newish ‘snarling-satire’ of Hall, Donne and Marston: attracted by the challenge of deliberate and wanton obscurity—and obscenity, also deliberate and wanton: minds trained in logic and rhetoric, swift to grasp the general principles behind an argument and to distinguish the sound from the specious: trained and habituated to debate and therefore prepared to look beyond the mere immediate action (even of a stage-play and ostensibly about love), and to extract and consider the moral, ethical or legal points at issue—seeking to relate them to their own times, about which their late-Elizabethan heads were troubled.</p>
+
+    <p>They were troubled (by and large) because old traditional standards seemed to be failing; ‘new Philosophy’ put ‘all in doubt’; the succession to the throne was unsettled, the Queen old, and her death might be the signal for a civil war; the country was weary of the wars with Spain, the rebels in Ireland; there were uneasy rumours about the ambitions of the Earl of Essex; and (to come nearest home) Donne and the satirists were demonstrating that neither life nor love was what it had been supposed to be.</p>
+
+    <p>The evidence for this is the play’s style—the intellectual demands it makes; and, with that, the strange address to the reader attached to one of the two impressions of the 1609 quarto: where it is stressed that ‘you have heere a new play neuer stal’d with the Stage, neuer clapper-clawd with the palmes of the vulger . . . not . . . sullied with the smoaky breath of the multitude’. It is patent that (whether from the seven books of Homer translated by Chapman in 1598 or from some other source) the audience is expected to know who everybody is; and even more obvious that a knowledge of Chaucer’s story is assumed (e.g., Calchas in III. iii. 1 ff: never named till 1. 31, at that). This knowledge makes a <i>kind</i> of Sophoclean irony possible; and, again, a particular sort of deflation of the heroic (the chivalric, not the Homeric of Homer: for Homer had no more heard of Troilus and Cressida than he had of Aristotle). It is <i>not</i> an assertion that the Homeric or heroic story was ‘really only like that’ (flat, unheroic, rather sordid or absurd). That is Shaw’s method in <i>Caesar and Cleopatra</i> (a more amusing play, in that kind). The Troilus and Cressida story is medieval and chivalric, and it is this which is deflated. Much of the effect of the play depends on expecting what you do not get.</p>
+
+    <p>That is why there are only two proper costumes: either the ‘modern dress’ of 1600 or the modern dress of the 1938 Westminster production (when it achieved fame for the first time). <i>Troilus and Cressida</i> never was a play about Ancient Greeks, and it should not look like one; that only substitutes a banal, Samuel-Butler-like debunking for something more unsettling: the expectation of certain courtly and noble (chivalric) standards in war and love which are found not to apply to life as it ‘really is’ in these modern times. The names, so to speak, need to look a little <i>désorientés</i> in their dresses.</p>
+
+    <p>For one essence of this sort of Elizabethan play is that it invited a kind of ‘application’: i.e. evoked in the minds of the judicious stimulating and disturbing reflections, which revealed the world as it is—not <i>was</i>, more than several centuries B.C. At any rate, that is my basic assumption; as it would be with the Vienna of <i>Measure for Measure</i> and the <i>ancien régime</i> of <i>All’s Well</i>: that all three are more about ‘this-here’ than any ‘that-there’; and all ‘modernist’ plays full of vexing questions and perplexing riddles of the human mind, of feeling, conduct, <i>value</i>. That is how I shall examine <i>Troilus and Cressida</i>, which (<i>pace</i> W. W. Lawrence and Dr. E. M. W. Tillyard) is <i>not</i> ‘chronicle-history’ any more than <i>All’s Well</i> is ‘only a Fairy-Tale’. Its very appearance ought to have made the well-read Elizabethan ready for a neat pair of lines from Seneca: ‘<i>Hic Troia non est</i>’ (Agamemnon to Cassandra); and the rejoinder, ‘<i>Ubi Helena est, Troiam puto</i>’ (Agamemnon, 795).</p>
+
+    <p>If you consider only the main plot by itself and follow it to its climax (V. ii.), you feel that it belongs to a play with a false bottom. Another layer opens below the love-story, and if you see into it, you find Shakespeare ‘importing’ something different from what his title has declared. But even the opening of the play shows that anything in the nature of <i>Romeo and Juliet</i> would be a mistaken expectation. The Prologue leads off with military-heroical rhetoric, like that of the <i>Henry V</i> choruses, proclaiming an epic occasion. The first scene presents a languid, lovelorn young man, too amorous to fight; and to emphasize that hint of a let-down, all his poetically impassioned rhapsodizing is made somewhat absurd by the presence—and the comments—of a buffoonish old Pandarus who is simply a go-between, a mere broker of sexual stock. Chaucer (who invented the middle-aged Pandare) has been perverted: humorous sophistication has been turned to a trick of blatantly flat-footed comment—a knack of saying the wrong thing—which reminds me of Groucho Marx. Troilus’s passionate hyperbole is jarred against by what turns the whole scene into a pattern of ridicule. We laugh at Pandarus, but the very aptness of his better ineptitudes makes the amorous-literary frenzies absurd. Throughout the love-scenes, Pandarus is never entirely out of the way. More than once he is utterly in it. An ambiguity of attitude towards Troilus’s love is introduced before we even glimpse Cressida.</p>
+
+    <p>The second scene introduces her—mainly with Pandarus—and it is immediately plain that Troilus’s idealized queen of courtly romance is not there. She is a chatty, vulgar little piece, and in the rhyming soliloquy at the end (where she speaks what she takes for her mind), the principles of the loftily chaste heroines of <i>amour courtois</i> are brought down exactly to the level of Mrs. Peachum’s advice in <i>The Beggar’s Opera</i>:</p>
+
+    <div class="cita">
+        <p>O Polly, you might have toy’d and kissed,</p>
+        <p>By keeping men off you keep them on;</p>
+    </div>
+
+    <p>and</p>
+
+    <div class="cita">
+        <p>The wiles of men we should resist,</p>
+        <p>Be wooed at length but never won.</p>
+    </div>
+
+    <p>‘Things won are done; joy’s soul lies in the doing.’ This suggestion runs throughout the play. Sexual doings are soon over; and, as Ulysses tells Achilles, deeds in war soon forgotten. Up to a point, we all, doubtless, know that. Beyond that point, it becomes a principle of canny selfishness, and creates the woman who uses sexual attraction for power. The scene (III. ii.) where Cressida declares her love shows her still clinging to her mean ideal—and fearing to give herself: ‘Let me go,’ she says, ‘my own company offends me.’ ‘You cannot shun yourself,’ says Troilus. And she:</p>
+
+    <div class="cita">
+        <p>Let me go and try.</p>
+        <p>I have a kind of self resides with you;</p>
+        <p>But an unkind self, that it self will leave</p>
+        <p>To be another’s fool . . .</p>
+        <p class="attribution">(III.ii. 143—46)</p>
+    </div>
+
+    <p>i.e. the ‘self’ which would give herself seems to her ‘unkind’ (unnatural), because it would put her entirely in his power. The character-item is important, for it explains her seduction by Diomedes in the crucial scene before Calchas’s tent. Diomedes pretends to be walking out on her in a huff; only one thing will stop him quitting; and as she <i>must</i> have power and (as she thinks) make every man dance to her tune, he gets all he wants. As she is highly-sexed by nature, yielding is the easier; and, hiding from the betraying torch-light, Troilus mutters to Ulysses his horrified version of <i>Cosi fan tutte</i>:</p>
+
+    <div class="cita">
+        <p>Let it not be believ’d for womanhood.</p>
+        <p>Think, we had mothers . . .</p>
+        <p class="attribution">(V. ii. 127-28)</p>
+    </div>
+
+    <p>Ulysses does not in the least understand: the Cressida whom he has encountered, kissing the Greek generals all round as soon as she meets them, was one of the ‘sluttish spoils of opportunity, And daughters of the game’. Shakespeare underlined that verdict with one of his wickedest puns. Ulysses has barely finished speaking when a flourish sounds from Troy (for Hector’s entry); and all the Greek generals exclaim in chorus: ‘The Troyans’ trumpet’. A knavish piece of work. Despite this, the Ulyssean word on her is not final. Cressida is not simply a little harlot; and, though admittedly ‘designing’, is too frail to stick to her design. Her passion is quite genuine (so far as that goes); so is her grief at her separation from Troilus. Only nothing is deep-rooted in her. She drops short of all her intentions in a way that is common enough in this play of ‘fools on both sides’. ‘<i>Vorrei e non vorrei</i>’ labels her throughout, and she makes her final exit trying to say just that, through the obscurity of more Shakespearian verbiage (V. ii. 104-09). Thersites has the last word on her; but she is only the feminine of the rest of them. They <i>all</i> fancy or pretend they are being or doing one thing, whereas they are shown up as something quite different: something which egoism, or lack of moral insight, prevents their recognizing. This is true of Achilles and Ajax from the start: it is shown to be true of Hector and Troilus—even of Ulysses. It is the final verdict on the whole war, as I shall try to demonstrate when I deal with the other plots.</p>
+
+    <p>Pandarus is not present at the betrayal-scene before Calchas’s tent. The harsh croak of Thersites is adequate comment on those who ‘war for a placket’. Anyone who believes that the medieval story has not been degraded and defiled should pay attention to the residue of Pandarus. He appears twice more: to be cast off by Troilus (after lamenting various symptoms of disease which no Elizabethan could fail to identify), and to conclude with a lamentation for bawds in his thoroughly venereal Epilogue. I shall touch on this (discreetly) in a moment.</p>
+
+    <p>The splendid but difficult lines spoken by Troilus at the revelation of Cressida’s faithlessness hold one of the springs of the play’s ‘double bottom’. On the face of it, the unhappy lover is trying to hold on to his illusion, to bully himself out of the evidence of his own eyes (as Thersites says). But in so doing, he repeats a movement of thought which is noticeable all through the play: the sudden shift from some particular question to an appeal to, or discussion of, the widest and most universal principles.</p>
+
+    <div class="cita">
+        <p>This she? No; this is Diomed’s Cressida.</p>
+        <p>If beauty have a soul, this is not she;</p>
+        <p>If souls guide vows, if vows be sanctimonies,</p>
+        <p>If sanctimony be the gods’ delight,</p>
+        <p>If there be rule in unity itself,</p>
+        <p>This was not she. O madness of discourse,</p>
+        <p>That cause sets up with and against itself!</p>
+        <p>Bifold authority! where reason can revolt</p>
+        <p>Without perdition, and loss assume all reason</p>
+        <p>Without revolt: this is, and is not, Cressid.</p>
+        <p class="attribution">(V. ii. 135-44)</p>
+    </div>
+
+    <p>The key is ‘If there be rule in unity itself’. He is not simply saying, ‘There ought to be one and one only Cressida, and she the image in my heart and mind’ (though that is included in the sense). He is being made to think philosophically by Shakespeare, and his assumptions are those of Ulysses in his speech about ‘Degree’ in the Greek war-council in Act I. The assumption is that the universe <i>ought</i> to be an integral whole, in which everything has its proper status in a divinely-ordained hierarchical order, and therefore an absolute value, an absolute integrity. To recognize this ordered universe is right reason: its principle at the terrestrial level is Natural Law. But what Troilus has seen appears to him as the refutation of those principles. ‘<i>If</i> beauty have a soul . . . <i>if</i> souls guide vows, <i>if</i> vows be sanctimonies . . . this was <i>not</i> she.’ Those ifs turn into negative propositions. For since this <i>is</i> she, there is no ‘rule in unity itself’, no principle of integrity. He can only try to think that he is insane. What seemed to him right reason in loving Cressid now seems madness, though he cannot believe he is mad; and the ‘loss’ of his reason (for loving) comes with all the sane authority of reason, though the result is rational insanity—alienation. ‘Bifold authority’, as he calls it, sets up ‘cause’ (a logical legal case) with and against the same propositions; and one apparently integral being, his love, ‘a thing inseparate/Divides more wider than the sky and earth’, though he can find no pin-point to mark off the one from the other of the irreconcilable contraries. He, certainly, is in the ‘chaos, when degree is suffocate’; or, rather, he <i>is</i> it, it he.</p>
+
+    <p>If you like to look at it through twentieth-century eyes, this remarkable scene is a thoroughly Existentialist performance on Shakespeare’s part. Troilus represents a mind which thinks in terms of the traditional (Platonic) absolute values, confronted with an <i>existence</i>: a phenomenon undeniably his, yet with all the sickening insolence of brute fact. For this is not ‘Diomed’s Cressida’: the existence whose being agonizes him is solely his own. As if to invite this kind of examination, Shakespeare makes it utterly clear that for every participant in the scene there is a phenomenon called ‘Cressida’: Thersites’ is no more Ulysses’ (though both think her a mere flirt) than Diomed’s is Troilus’; nor is Cressida’s Cressida like any of these. In each, the individual consciousness spontaneously generates its own norms, and enjoys complete freedom in ‘making its own existence.’ But this is the same as showing that there are <i>no</i> norms, in the sense in which traditional philosophy assumes them. The absolutes are myths. The supposed ‘rule in unity itself’ is only a fallacious attempt to stifle my awareness that I am I, and (whichever I may be: Ulysses or Thersites or Troilus) that my ‘her’ is for me the only ‘she’. This is the consciousness which Troilus struggles to evade. M. Sartre would tell him that his anguish was the index of awareness of existence come alive for the first time; and, simultaneously, a demonstration of his ‘responsibility’ for the Trojan War (which is about something called ‘Helen’).</p>
+
+    <p>Troilus has a mind incapable of irony. ‘Irony’, as Patrick Cruttwell puts it, ‘implies the ability to see and to feel more than one thing at once, and to feel one’s own self as multiple. The single- and the simple-minded cannot achieve it.’ He adds that this ‘sense of a multiple and divided personality . . . is also a vital part, deep and widespread, of the new spirit of the age. Civil war—war inside the individual—is a favourite image’ (used, e.g., by Shakespeare in <i>Sonnet</i> 35, ‘Such civil war is in my love and hate’). <i>Sonnet</i> 137, ‘Thou blind fool, Love . . .’, marks the essential difference between this consciousness and Troilus’s character and cast of mind. Troilus is <i>in</i> an ironic situation, but its tortured victim, incapable of commanding it; the sonnet-writer is capable of the shrewdest ironies.</p>
+
+    <p>Before you dismiss all this as far-fetched, wait till I have gone back from this climax of the play to the other plot-threads which are nothing to do with the love-theme; or are only the mechanisms which part the lovers (<i>via</i> the exchange of prisoners—Antenor for Cressida).</p>
+
+    <p>There are two other plots: one Greek, one Trojan. The Greek (I. iii, II. i, II. iii, etc.) is about the insubordinate and disorderly conduct of the proud Achilles and the plot hatched by Ulysses and old Nestor to give him a snub: by rigging the lottery so that Ajax becomes the champion for a single-combat with Hector. Achilles will then feel that he is no longer the Greeks’ unquestioned supreme warrior, and he will come out and drive the Trojans all over the field. It is also about the general principle of order; for Achilles’ example has infected the conceited and stupid Ajax, and the morale of the whole army is bad.</p>
+
+    <p>As a plot, the scheme is a fiasco. It generates two swollen-headed military nuisances instead of one; and though Achilles does come out and fight, it is only because his catamite Patroclus is killed: he then flies into a barbarous rage and has Hector slaughtered, unarmed and against odds, while he stands by like a gangster watching his gang do his work. Shakespeare did not invent this: it is in Lydgate’s <i>Troy Book</i>. It would be none the less shocking to Elizabethan standards of fair combat.</p>
+
+    <p>The treatment of Achilles is one of several points which prevent my agreeing with the American view—from J. S. P. Tatlock and H. E. Rollins through W. W. Lawrence to Alfred Harbage—that there is no deflation of the classical heroes here: that this is merely a ‘chronicle-history’. Another point is the transformation of Ajax. Steevens pointed out that in Lydgate Ajax was one who ‘learning did adore’ and ‘hated pride and flattery’. I fail to see how these American critics reconcile his treatment in the play with their contention that Shakespeare is merely keeping to the traditional lines of the story—as transmitted by the Middle Ages. Again, the treatment of Menelaus as the contemptible Cornuto is purely Elizabethan. Finally, the degradation of Pandarus, with the syphilitic emphasis (pox as a brutal joke), is totally different from the austere—and cruel—handling of the leprosy in Henryson. Nor is there any suggestion of a curse of disease on Cressida.</p>
+
+    <p>Through the snub to Achilles, this plot throws up an excursus on <i>honour</i>: in a discussion between Achilles and Ulysses (III. iii). And the whole Greek plot is accompanied, as chorus, by the scurrilous abuse of Thersites, to whom warmongering and whoremongery are as indivisible as anything in the Athanasian Creed: therefore all deserve boils, blains, scabs, bone-aches and every other symptom which the Elizabethans associated with venereal disease. One cannot just dismiss this as ‘nasty’. Caroline Spurgeon shows that the play has a dominant image of disease in the body-politic. Disease is the result of imbalance of ‘humours’; and the humour in excess is here ‘blood’—the essential principle at once of <i>lust</i> and <i>pride</i>. When I was a boy, country people still thought that boils and eruptions were caused by ‘richness of the blood’.</p>
+
+    <p>There are, furthermore, <i>social</i> considerations about the Elizabethan realization of syphilis, into which I do not propose to enter. I believe, on Charles Sherrington’s authority, that it was a ‘new’ disease (perhaps a mutant?), certainly generated in America and brought to Europe by Columbus. Its existence was one of the ‘disturbing new ideas’ of the later sixteenth century. Myxomatosis is not a good analogy; but if you imagine a thinking rabbit trying to order its notions of Nature, then you may go on to understand why certain parts of Jacobean thought are ‘pathological’.</p>
+
+    <p>Now this Greek plot shows exactly that same shift of attention from particulars to wide generalities I have already called your attention to. I assume that Ulysses’s ‘Degree’ speech is familiar. It has been suggested that ‘Commentators have been perhaps too much impressed by this piece of rhetoric.’ Maybe. But nothing hints we should not take it in earnest (though no one would question Professor Knights’ view that Shakespeare is most deeply engaged at the end). It is a ‘star’ piece, yes; but quite untouched by the uncertainties one has about the exact degree of caricature in the orations of Agamemnon and Nestor. Both these certainly tend towards the comic: the first in pomposity (saying little, and that trite, as if it were much), the second in old politicians’ prolixity. I am content myself to see both as fully intended caricatures of public men: or even as types of Mr. Huxley’s third category of intelligence (as classified in the encyclopaedia—human, animal, military). But even on this extreme view, the proper dramatic effect is to produce a complete change of tone as soon as Ulysses speaks: i.e. to get the audience to attend by amusing them, and then to make use of that attention to carry them through a big, sweeping rhetorical unit, with an intensely important climax as its peroration.</p>
+
+    <p>In a weighty rhetorical address, meant to be followed with the concentration due to a legal argument, Ulysses shows how all order—in the heavens, the State, the human microcosm—depends on hierarchical subordination, or ‘degree’. Observation of degree means that everything has its right place, and value is determined by that place. Thus when degree is ‘vizarded,/Th’unworthiest shows as fairly in the mask’: i.e. ‘seemings’ cannot be distinguished from ‘beings’—which is Troilus’s dilemma over ‘Cressid’. Later on, it is Achilles’ problem about his value and Ajax’s.</p>
+
+    <p>Ulysses goes on to speak of ‘the unity and married calm of states’, which is rent and deracinated by loss of order; and from that turns his argument to generalizations which apply with equal force to human society <i>and</i> to the individual man or mind:</p>
+
+    <div class="cita">
+        <p>Take but degree away, untune that string,</p>
+        <p>And hark what discord follows! . . .</p>
+        <p>Force should be right; or, rather, right and wrong—</p>
+        <p>Between whose endless jar justice resides—</p>
+        <p>Should lose their names, and so should justice too.</p>
+        <p>Then everything includes itself in power,</p>
+        <p>Power into will, will into appetite;</p>
+        <p>And appetite, an universal wolf,</p>
+        <p>So doubly seconded with will and power,</p>
+        <p>Must make perforce an universal prey,</p>
+        <p>And last eat up himself. Great Agamemnon,</p>
+        <p>This chaos, when degree is suffocate,</p>
+        <p>Follows the choking.</p>
+        <p class="attribution">(I. iii. 109-26)</p>
+    </div>
+
+    <p>With that he comes to the particular case: Achilles deriding the Supreme Command; and the next scene shows us Achilles and Ajax in—inaction (just as Cressida was shown to us, to follow Troilus’s rhapsodies and the practicalities of Pandarus).</p>
+
+    <p>But I must pause there to call attention to two remarkable echoes of those closing lines. The first is in II. iii., when the Generals go to call on Achilles. Ulysses (having been in and seen him) returns to say that Achilles will not fight—makes no excuses—merely goes his own way</p>
+
+    <div class="cita">
+        <p>Without observance or respect of any,</p>
+        <p>In will peculiar and in self-admission.</p>
+    </div>
+
+    <p>Further:</p>
+
+    <div class="cita">
+        <p>possess’d he is with greatness,</p>
+        <p>. . . Imagin’d worth</p>
+        <p>Holds in his blood such swol’n and hot discourse</p>
+        <p>That ’twixt his mental and his active parts</p>
+        <p>Kingdom’d Achilles in commotion rages,</p>
+        <p>And batters down himself.</p>
+        <p class="attribution">(II. iii. 160-61; 165-71)</p>
+    </div>
+
+    <p>The falling rhythm insistently recalls ‘and last eat up himself’, even if we do not realize that Achilles’ wilful <i>pride</i> was the <i>point d’appui</i> of Ulysses’ oration on degree. ‘In will peculiar’ and ‘imagin’d worth’ have echoes elsewhere, as you will see when I come to Troy and the other plot. This same phrase of Ulysses’ comes a second time, quaintly echoed by Thersites during the battle. He has sought everywhere for ‘the wenching rogues’, Troilus and Diomed, cannot find them, and concludes they have eaten each other like the Kilkenny cats: ‘I would laugh at that miracle. Yet, in a sort, lechery eats itself’ (V. iv. 34-36).</p>
+
+    <p>I need hardly remind you that one meaning of the word <i>will</i> in Elizabethan English was ‘lust’, as is more than adequately shown by the surprising games Shakespeare plays with it in <i>Sonnet</i> 135:</p>
+
+    <div class="cita">
+        <p>Whoever hath her wish, thou hast thy Will,</p>
+        <p>And Will to boot, and Will in over-plus. . . .</p>
+        <p>Wilt thou, whose will is large and spacious,</p>
+        <p>Not once vouchsafe to hide my will in thine?</p>
+        <p>Shall will in others seem right gracious,</p>
+        <p>And in my will no fair acceptance shine?</p>
+    </div>
+
+    <p>With that borne in mind, I can leave the Achilles-Ajax or ‘Pride’ theme (one sort of ‘imagin’d worth’), and turn to the third strand of plot-material: that about Troy and Hector.</p>
+
+    <p>This begins with the middle scene of Act II, where there is a council of war, and a debate, on the question of whether Helen shall be returned to the Greeks. Hector says ‘Let Helen go’. Immediately Troilus shows his contempt for ‘reason’, arguing that honour demands that they do not so lower themselves. When Hector insists ‘she is not worth what she doth cost the keeping’, the discussion plunges abruptly downwards into the question of the nature of values. For Troilus the subjective is all: ‘What’s aught but as ’tis valued?’ To this Hector replies:</p>
+
+    <div class="cita">
+        <p>But value dwells not in particular will:</p>
+        <p>It holds his estimate and dignity</p>
+        <p>As well wherein ’tis precious of itself</p>
+        <p>As in the prizer. . . .</p>
+        <p class="attribution">(II. ii. 53-56)</p>
+    </div>
+
+    <p>That is: ‘The wilful inclination of an individual cannot of itself confer value: it depends on intrinsic merit, as well as on being precious to someone. “ ’Tis mad idolatry / To make the service greater than the god”; and the will which ascribes value to what attracts it (and infectiously) is a <i>doting</i> will, if it sees imaginary excellences in the object of its affection.’ (I have paraphrased the whole of Hector’s answer. The lines are extremely difficult, and a convincing example of the close critical attention that Shakespeare expected from his audience for this play—whoever they may have been).</p>
+
+    <p>The importance of the thought in this speech is evident as soon as we see that it draws a distinction which applies to all the main characters. ‘Particular will’ gives the valuation of the impassioned, wilful and egoistic man who is deaf to reason—and therefore blind to Natural Law. This point is made explicitly. Hector tells Paris and Troilus that they argue like youths incapable of moral philosophy (precisely following Ulysses’ argument already quoted):</p>
+
+    <div class="cita">
+        <p>The reasons you allege do more conduce</p>
+        <p>To the hot passion of distemp’red blood</p>
+        <p>Than to make up a free determination</p>
+        <p>’Twixt right and wrong.</p>
+        <p class="attribution">(II. ii. 168-71)</p>
+    </div>
+
+    <p>He follows this with a direct appeal to Natural Law, by which wife belongs to husband (Helen to Menelaus), thus making nonsense of Troilus’s argument that you cannot take and marry a woman and then send her back like clothes on approval (any more than you can buy clothes and return them).</p>
+
+    <p>I remark again how Shakespeare seems to be writing for a legal-minded and acutely attentive audience. Troilus’s argument was quite specious and self-deluding—rape confers no rights—but critics have been taken in by his ‘chivalrous passion’ and never noticed that his argument is nonsense, and <i>meant</i> to be seen to be nonsense. Carrying off Helen established no contract: the analogy of marriage is therefore totally spurious. Hector replies very justly: ‘Statute law exists to curb wilful people who are as blind to right and wrong as you are.’</p>
+
+    <p>Now this obfuscation by ‘particular will’—and the resulting self-delusion—explains the false estimates that Troilus makes of both Helen and Cressida. He ‘idealizes’ both: both are ‘pearls’; but the idealization is not respectable (that alone totally marks off this love-story from <i>Romeo and Juliet</i>). Troilus is, indeed, equated with Paris—whose will to keep Helen is merely desire or lust. Helen is to Troy as Cressida is to Troilus; but the whole Trojan destruction is not women, but <i>will</i>.</p>
+
+    <p>Shakespeare conscientiously produces Helen in III. i., suitably accompanied by Pandarus (who accompanies himself with an obscene little song); and she is silly and empty, with some of Cressida’s tricks of playing the men up prettily. To leave the true valuation in no doubt, he blasts her later through the mouth of Diomed:</p>
+
+    <div class="cita">
+        <p>She’s bitter to her country . . .</p>
+        <p>For every false drop in her bawdy veins</p>
+        <p>A Grecian’s life hath sunk; for every scruple</p>
+        <p>Of her contaminated carrion weight</p>
+        <p>A Troyan hath been slain.</p>
+        <p class="attribution">(IV. i. 70-74)</p>
+    </div>
+
+    <p>The Trojans have good reason to fear ‘bad success in a bad cause’; but at the end of this scene of close debate, Hector commits an inexplicable volte-face, and swings over to the side of Paris and Troilus against his own reasoning. That switch is his death-warrant. In V. iii. he rejects all the pleadings of Andromache and the inspired ravings of the prophetess Cassandra, goes out to fight because he has said he would and ‘honour’ (he insists) demands that he keeps his word: and so meets his end, and Troy with him. Both are victims to Troilus’s style of ‘thinking’.</p>
+
+    <p>Such is the very sketchy and attenuated Trojan plot. But now clues can be carried back to the Greeks. ‘Particular will’ offers the same diagnosis as ‘imagin’d worth’. Just as Troilus is infatuated with a false image of love, so is Achilles with an image of self-love. Ajax, when swollen with flattery, is at once a monstrous balloon of conceit <i>and</i> a caricature of Achilles. On a final analysis, the <i>love-theme</i>, the <i>pride-themes</i>, and the <i>fall-of-Troy-theme</i> (for Helen and honour), presents a single core of thought. The play is a comedy of ideas, and coherent on no other assumption.</p>
+
+    <p>Its special technique (like that of <i>Henry IV</i>) is that the scenes and episodes cast changing lights on one another: as ‘cutting’ achieves in film-production. This can be shown by the long scene (III. iii.), where Achilles is slighted by the off-hand manner of the Generals, then left to be played on by Ulysses. As intrigue, it is only another attempt to persuade him to fight; but as thought, it belongs to the over-all debate on values. ‘What is honour?’ is Achilles’ problem: ‘Am I no longer what I was, because these men slight me?’ To this wavering in ‘imagin’d worth’ Ulysses arrives with ready answers. The measure of worth is recognized effectiveness in the world of action:</p>
+
+    <div class="cita">
+        <p>. . . no man is the lord of anything,</p>
+        <p>Though in and of him there be much consisting,</p>
+        <p>Till he communicate his parts to others;</p>
+        <p>Nor doth he of himself know them for aught</p>
+        <p>Till he behold them formed in th’ applause</p>
+        <p>Where th’are extended.</p>
+        <p class="attribution">(III. iii. 115-20)</p>
+    </div>
+
+    <p>He develops this in the famous lines about Time’s wallet (in which good deeds are done and dropped and lost); and thus to</p>
+
+    <div class="cita">
+        <p>Perseverance, dear my lord,</p>
+        <p>Keeps honour bright. To have done is to hang</p>
+        <p>Quite out of fashion, like a rusty nail</p>
+        <p>In monumental mock’ry.</p>
+        <p class="attribution">(III. iii. 150-53)</p>
+    </div>
+
+    <p>Consequently:</p>
+
+    <div class="cita">
+        <p>O, let not virtue seek</p>
+        <p>Remuneration for the thing it was;</p>
+        <p>For beauty, wit,</p>
+        <p>High birth, vigour of bone, desert in service,</p>
+        <p>Love, friendship, charity, are subjects all</p>
+        <p>To envious and calumniating Time.</p>
+        <p class="attribution">(III. iii. 169-74)</p>
+    </div>
+
+    <p>‘One touch of nature makes the whole world kin’: that is, immediate and transitory appeal wins their praise (as Samuel Butler said, it might better be ‘One touch of <i>ill</i>-nature’).</p>
+
+    <p>Ulysses is disingenuous; but though I recognize his intention to fool Achilles into action, his real ‘fooling’ is much more serious. He has turned his back on all the absolute values implicit in his ‘Degree’ oration; is telling Achilles in effect that there are <i>no</i> absolute values: that ‘honour’ is the dividend in a ceaseless business of self-advertisement. Look critically at what he says, and how does the thought differ from the reflections of another experienced practical philosopher on the same subject?</p>
+
+    <div class="cita">
+        <p>What is honour? A word. What is in that word? Honour. What is that honour? Air. A trim reckoning! Who hath it? He that died o’ Wednesday. Doth he feel it? No. Doth he hear it? No. ’Tis insensible, then? Yea, to the dead. But will it not live with the living? No. Why? Detraction will not suffer it. Therefore I’ll none of it. Honour is a mere scutcheon. And so ends my catechism.</p>
+        <p class="attribution">(1. Hy. IV. V. i. 132 ff.)</p>
+    </div>
+
+    <p>It sounds very different in blank verse and Greek costume. Yet the ‘rusty mail in monumental mock’ry’ is ‘a mere scutcheon’. In practice, Ulysses shows nothing but a glib and oily art, and denies the ‘estimate and dignity’ of intrinsic merit. The ‘Degree’ thinking asserts universal, eternal values: this practical, ‘realist’ argument denies them. But the <i>motif of Time</i>, which from this point pervades the love-scenes, cannot be dismissed as a politician’s cynicism. Time is love’s remorseless enemy. Time is the theme of those tragic Sonnets which seem to have the closest connections with some of the deepest feelings in this play. In the agony of separation Troilus is made to catch up Ulysses’ image of Time with a wallet; only now as the hurried burglar:</p>
+
+    <div class="cita">
+        <p>Injurious time now with a robber’s haste</p>
+        <p>Crams his rich thievery up, he knows not how.</p>
+        <p class="attribution">(IV. iv. 41-42)</p>
+    </div>
+
+    <p>There is keener feeling in these time-references than in anything else; and, for all that, and simultaneously, the implied verdicts of time add their weight to the general riddling and exposure of seemings and appearances. It is not merely Cressida who is ‘inconstant’: inconstancy is the quality of everyone.</p>
+
+    <p>There is no such thing as true honour (based on genuine values) on either side, Trojan or Greek. All the high thinking comes to nothing: ceases to apply the moment men have to act. It is <i>doing</i> that counts; and whether in war or love the effects are brief, soon over and forgotten. Moreover, it is passion that leads to the act; and the impassioned will (lustful or furious) is impervious to right reason. Achilles fights, not because order and integrity have been re-established, but from personal rage. Troilus also. I know that Dr. Tillyard says Troilus has effected a ‘self-cure’, and found ‘vent in action’ for a new ‘fierce and resolute temper’. But what Shakespeare shows me is that he has exchanged one mad passion for another: his rebuking Hector for his magnanimous habit of not striking men when they are down marks the chaos in his mind (if chivalry is old-fashioned folly and ‘total war’ laudable, what is wrong with Achilles’ method of disposing of Hector?).</p>
+
+    <p>If the battle-scenes at the end <i>have</i> any intended meaning, it is that the whole universe of discourse has become chaotic. As Cassandra says,</p>
+
+    <div class="cita">
+        <p>Behold distraction, frenzy, and amazement,</p>
+        <p>Like witless antics, one another meet.</p>
+        <p class="attribution">(V. iii. 85-86)</p>
+    </div>
+
+    <p>Witness the whole battlefield croaked over by Thersites, like a moral vulture, feeding his mind’s eye on carrion. But these later scenes are so incoherent—with so many undeveloped hints in them—that I am not at all sure that Shakespeare was not simply using stuff from some older play (cf. the hasty, ineffectual, careless ends of the two plays of 1599, <i>Henry V</i> and <i>Julius Caesar</i>).</p>
+
+    <p>I can now make an attempt to pull the results of my examination of the different plot-strands together. The play has been called ‘a comedy of disillusion’ (Dowden), ‘a wry-mouthed comedy’ (Ridley), a satire (Ulrici, Boas, O. J. Campbell), a piece of propaganda (Dover Wilson and G. B. Harrison), a morality, and (of course) a Problem play. I call it an ‘inquisition’. It has been forgotten that c. 1850 the German critic Gervinus made some very shrewd comments which seem apt for its appearance on the stage: ‘It is very remarkable, but every reader will confess that this piece creates throughout no real effect on the mind’ (the context shows he means no <i>emotional</i> or <i>sympathetic</i> effect. This is the final answer to those who would try to see the play as a tragedy).</p>
+
+    <div class="cita">
+        <p>We feel throughout the play a wider bearing, a more remote object, and this alone prevents the immediate effect of the subject represented from appearing. The understanding is required to seek out this further aim of our comedy, and the sympathy of the heart is cooled. Here, as in Aristophanes, the action turns not upon the emotions of the soul, but upon the views of the understanding, and accordingly the personages acting occupy the mind as symbols rather than the heart.</p>
+    </div>
+
+    <p>He also remarked that we feel no ready engagement with any of the characters, ‘not even in the affair of Troilus and Cressida, which speaks to the heart more than any other incident’. He might have backed this strongly, if he had noticed how, from the very beginning, a romantic, indulging self-identification with Troilus is checked by the implicit derision of Pandarus’s very existence. There is, again, that queer, totally unrealistic ending of III. ii. (where the lovers are brought together), when each in turn steps right out of character and speaks as if the end of the story were already known: as to the audience it <i>was</i>. Troilus says (in effect), ‘Let “True as Troilus” become a proverb’; Cressida, ‘If I am false, then let “False as Cressid” become one too’; and Pandarus, ‘Good; and if that is so, all go-betweens shall be panders’. He ends with a bawdy joke directed at the audience—but never mind that. The important thing is that all the genuine notes of passion come in the <i>next</i> scenes: and we (knowing our Chaucer) have been ironically inhibited from taking them at full face-value. At the same time, the verdict of <i>Time</i> has been thrust on us—underminingly.</p>
+
+    <p>This rather uncomfortable detachment characterizes the play. We see codes of conduct, standards of values, ethical principles and passions, all standing on trial; and the conclusion appears to be that while the system of thought expounded by Ulysses and relied on by Hector <i>ought</i> to be the measure of human conduct, the proper calculus of right and wrong, it simply does not apply to realistically observed human conduct in war or love or diplomacy. This is what has given some the impression of a ‘disillusioned Shakespeare’, a man embittered by the Sonnet-story, etc.; and others the impression of a satire (where everyone’s conduct is measured against Medieval principle, and shown to be wrong—and contemptible).</p>
+
+    <p>I do not accept either alternative. I can see this as nothing but a Jacobean play, concerned with the questioning of values in the new and sceptical atmosphere generated from the decay of the worlds of Spenser and the Petrarchan sonneteers: a world in which the perplexities (rather than the triumphs) of Renaissance individualism occupy the attention; where the dismissing of the old stable Medieval universal leaves thoughtful minds with the distressing discovery that if every individual thinks freely for himself and follows his own will, then chaos results, in which all order is lost. Donne plotted the position on the map of the contemporary climate of opinion quite adequately. In <i>An Anatomie of the World</i> (1612), having sketched the current devolution-theory (that the world has been in steady decline since the Fall), he turns to his own times:</p>
+
+    <div class="cita">
+        <p>And now the Springs and Sommers which we see,</p>
+        <p>Like sonnes of women after fiftie bee.</p>
+        <p>And new Philosophy calls all in doubt,</p>
+        <p>The Element of fire is quite put out;</p>
+        <p>The sun is lost, and th’earth, and no mans wit</p>
+        <p>Can well direct him where to looke for it.</p>
+        <p>And freely men confesse that this world’s spent.</p>
+        <p>When in the Planets, and the Firmament</p>
+        <p>They seeke so many new; they see that this</p>
+        <p>Is crumbled out againe to his Atomies.</p>
+        <p class="attribution">(203-12)</p>
+    </div>
+
+    <p>So much, on the disturbing ideas generated by the ‘new’ Science. Then he turns to the changes in men’s attitudes towards themselves:</p>
+
+    <div class="cita">
+        <p>’Tis all in peeces, all cohaerence gone;</p>
+        <p>All just supply, and all Relation:</p>
+        <p>Prince, Subject, Father, Sonne, are things forgot,</p>
+        <p>For every man alone thinkes he hath got</p>
+        <p>To be a Phoenix, and that then can bee</p>
+        <p>None of that kinde, of which he is, but hee.</p>
+        <p class="attribution">(213-18)</p>
+    </div>
+
+    <p>In <i>Troilus and Cressida</i> such Phoenixes are only too frequent.</p>
+
+    <p>You notice how Donne explicitly refers to ‘Degree’ in ‘Prince, Subject, Father, Sonne’, and contrasts that with a ‘modern’ attitude of self-assertion, self-centredness—‘will peculiar and self-admission’. The ‘will peculiar and self-admission’ of Achilles, the ‘particular will’ of Troilus, the blatant selfishness of Cressida, Paris, Diomed, Ajax: all seem to belong to this world of ‘all cohaerence gone’. So too do the three quite distinct cynicisms of the three commentators: Pandarus (who defames love), Ulysses (a Machiavellian puppet-master, as shrewd as unprincipled), and Thersites (who defiles everything).</p>
+
+    <p>This last is unmistakably the Jacobean malcontent: the self-advertising moral critic whose avid curiosity about life brings him only a raging misery at its meanness and meaninglessness, and a self-tormented rage which spits itself out in railing, contempt and abuse (the filthier the better). Whether or not this play had anything to do with the ‘War of the theatres’ (the Poetomachia, that stage-lampooning-match of 1599-1602, which was really Jonson <i>versus</i> the rest), there is much John Marston in Thersites. But despite that (quite irrelevant) ‘character’ of Ajax in I. ii. (Alexander to Cressida), which sounds like a caricature of Jonson, I cannot be convinced that this is the ‘purge’ which Shakespeare is said to have administered to him. None the less, it has <i>resemblances</i> to the Poetomachia plays. It is a debating-piece, where the Greek and Trojan setting means no more than Rome in <i>The Poetaster</i> or Rufus’s England in <i>Satiromastix</i>; and much of it is tuned to the carping notes which appealed to the active young discontents of the Court and the Inns of Court. As you know, Shakespeare never staged his own times: his settings are historic, exotic, fairy-tale; he never touched the ‘realistic’ modern-life, satirical-comedy field worked by Jonson, Chapman, Marston and Middleton. Maybe this is the nearest he came to it: a debating-play on moral and philosophical values, in which (as with Marston’s <i>Antonio and Mellida</i>, etc. and Chapman’s <i>Bussy D’Ambois</i>) the <i>ideas</i> mattered immeasurably more than the action. It can be called ‘somewhat un-Shakespearian’ in its refusal to engage our sympathies; yet there is a resembling aloofness about <i>All’s Well</i> and, it seems to me, <i>Measure for Measure</i>, in which sexuality appears in an unlovely light and the old stable values have dissolved into a chaotic confusion of seemings.</p>
+
+    <p>Yet <i>Troilus and Cressida</i> shows even stronger Shakespearian continuities. It stands between the <i>Henry IV</i> plays (which are about honour and action, rule and order) and <i>Othello</i>, which I agree with Dr. Leavis in regarding as the tragedy not of perfect idealist love, but of the overwhelming of reason and self-knowledge by passion and self-love, in a self-glorifying egoist—‘naturally jealous’ (for all that Othello himself or Coleridge or Bradley may say). Human egocentricity and a wincing at human degradation mark, for me, these middle-period plays. The tone begins with <i>2 Henry IV</i>, and if I were compelled to illustrate it in a single phrase, it would be from the exchange of the two French Lords in <i>All’s Well</i> on Bertram’s seduction of Diana.</p>
+
+    <p>Beyond doubt, the exposure of self-treachery goes further in <i>Troilus and Cressida</i> than elsewhere. Go through the play, and who is there left unscathed? The old are old fools, the young either young fools or thriving young cads. All the high talk comes down to Troilus’s contemptuous dismissal of Cressida’s letter: ‘Words, words, mere words, no matter from the heart.’ It perplexes me that Shakespeare did not make an overt symbol of the ‘one in sumptuous armour’ whom Hector kills and strips (V. vi. and viii); only to find him somehow disgustingly diseased—‘Most putrified core so fair without . . .’</p>
+
+    <p>One character alone comes out of it without a scratch: Antenor. When I used to be told, long ago, to write essays on ‘The character in Shakespeare (or fiction) you would most like to have met’, I had never heard of Antenor. Now, he would be my man. But perhaps you have not noticed him? Never mind, you will next time you read the play. Five times he enters for certain (it may even be six), and five times he goes out as noncommittally as he came. Pandarus sums him up at I. ii. 182f.: ‘He has a shrewd wit, I can tell you; and he’s a man good enough; he’s one o’ th’ soundest judgments in Troy, whosoever, and a proper man of person.’ But even when the exchange of prisoners is afoot, they speak of him as if he was not there and he does not mind. He never speaks a line; he never utters a word. I see in him the prophetic outline of the average man of good will involved in war: never knowing why he is there nor what is really going on: as muddled as Fabrizio at Waterloo in <i>La Chartreuse de Parme</i>, but less scandalized—and, most certainly, Shakespeare’s one strong silent man.</p>
+
+    <section class="footnotes">
+        <h3>Note</h3>
+        <p>From <i>Angel With Horns</i>, edited by Graham Storey. Copyright © 1961 by Longman Group Ltd.</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>
