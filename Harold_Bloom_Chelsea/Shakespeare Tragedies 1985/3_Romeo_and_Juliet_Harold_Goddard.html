@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>“Romeo and Juliet” — Harold Goddard</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">Harold Goddard</p>
+        <h1 class="cab__tit">“Romeo and Juliet”</h1>
+    </header>
+
+    <p>One word has dominated the criticism of <i>Romeo and Juliet</i>: “star-cross’d.”</p>
+
+    <div class="cita">
+        <p>From forth the fatal loins of these two foes,</p>
+    </div>
+
+    <p>says the Prologue-Chorus,</p>
+
+    <div class="cita">
+        <p>A pair of star-cross’d lovers take their life.</p>
+    </div>
+
+    <p>“Star-cross’d” backed by “fatal” has pretty much surrendered this drama to the astrologers. “In this play,” says one such interpreter, “simply the Fates have taken this young pair and played a cruel game against them with loaded dice, unaided by any evil in men.” That is merely an extreme expression of the widely held view that makes <i>Romeo and Juliet</i>, in contrast with all Shakespeare’s later tragedies, a tragedy of accident rather than of character and on that account a less profound and less universal work. That this play betrays signs of immaturity and lacks some of the marks of mastery that are common to the other tragedies may readily be granted. But that its inferiority is due to the predominance of accident over character ought not to be conceded without convincing demonstration. The burden of proof is certainly on those who assert it, for nowhere else does Shakespeare show any tendency to believe in fate in this sense. The integrity of his mind makes it highly unlikely that in just one instance he would have let the plot of the story he was dramatizing warp his convictions about freedom.</p>
+
+    <p>The theme of <i>Romeo and Juliet</i> is love and violence and their interactions. In it these two mightiest of mighty opposites meet each other squarely—and one wins. And yet the other wins. This theme in itself makes <i>Romeo and Juliet</i> an astrological play in the sense that it is concerned throughout with Venus and Mars, with love and “war,” and with little else. Nothing ever written perhaps presents more simply what results from the conjunction of these two “planets.” But that does not make it a fatalistic drama. It all depends on what you mean by “stars.” If by stars you mean the material heavenly bodies exercising from birth a predestined and inescapable occult influence on man, Romeo and Juliet were no more star-crossed than any lovers, even though their story was more unusual and dramatic. But if by stars you mean—as the deepest wisdom of the ages, ancient and modern, does—a psychological projection on the planets and constellations of the unconsciousness of man, which in turn is the accumulated experience of the race, then Romeo and Juliet and all the other characters of the play are star-crossed as every human being is who is passionately alive.</p>
+
+    <div class="cita">
+        <p>In tragic life, God wot,</p>
+        <p>No villain need be! Passions spin the plot,</p>
+        <p>We are betrayed by what is false within.</p>
+    </div>
+
+    <p>The “villain” need not be a conspicuous incarnation of evil like Richard III or Iago; the “hero” himself may be the “villain” by being a conspicuous incarnation of weakness as was another Richard or a Troilus. Or the “villain” may consist in a certain chemical interplay of the passions of two or more characters. To seek a special “tragic flaw” in either Romeo or Juliet is foolish and futile. From pride down, we all have flaws enough to make of every life and of life itself a perpetual and universal tragedy. Altering his source to make the point unmistakable, Shakespeare is at pains to show that, however much the feud between Capulets and Montagues had to do with it incidentally, the tragedy of this play flowed immediately from another cause entirely. But of that in its place. Enough now if we have raised a suspicion that the “star-cross’d” of the Prologue should be taken in something other than a literal sense, or, better, attributed to the Chorus, not to the poet. The two are far from being the same.</p>
+
+    <p>In retrospect, Shakespeare’s plays, which in one sense culminate in <i>King Lear</i> and in another in <i>The Tempest</i>, are seen to deal over and over with the same underlying subject that dominates the Greek drama: the relation of the generations. <i>Romeo and Juliet</i>, as the first play of its author in which this subject is central, assumes a profound seminal as well as intrinsic interest on that account. It points immediately in this respect to <i>Henry IV</i> and <i>Hamlet</i>, and ultimately to <i>King Lear</i> and <i>The Tempest</i>.</p>
+
+    <p>This theme of “the fathers” is merely another way of expressing the theme of “the stars.” For the fathers are the stars and the stars are the fathers in the sense that the fathers stand for the accumulated experience of the past, for tradition, for authority, and hence for the two most potent forces that mold and so impart “destiny” to the child’s life. Those forces, of course, are heredity and training, which between them create that impalpable mental environment, inner and outer, that is even more potent than either of them alone. The hatred of the hostile houses in <i>Romeo and Juliet</i> is an inheritance that every member of these families is born into as truly as he is born with the name Capulet or Montague. Their younger generations have no more choice in the matter than they have choice of the language they will grow up to speak. They suck in the venom with their milk. “So is the will of a living daughter curbed by the will of a dead father,” as Portia puts it in <i>The Merchant of Venice</i>. The daughter may be a son and the father may be living, but the principle is the same. Thus the fathers cast the horoscopes of the children in advance—and are in that sense their stars. If astrology is itself, as it is, a kind of primitive and unconscious psychology, then the identity of the stars and the fathers becomes even more pronounced.</p>
+
+    <p>Now there is just one agency powerful enough in youth to defy and cut across this domination of the generations, and that is love. Love also is a “star” but in another and more celestial sense. Romeo, of the Montagues, after a sentimental and unrequited languishing after one Rosaline, falls in love at first sight with Juliet, of the Capulets, and instantly the instilled enmity of generations is dissipated like mist by morning sunshine, and the love that embraces Juliet embraces everything that Juliet touches or that touches her.</p>
+
+    <div class="cita">
+        <p>My bounty is as boundless as the sea,</p>
+        <p>My love as deep; the more I give to thee,</p>
+        <p>The more I have, for both are infinite.</p>
+    </div>
+
+    <p>The words—music, imagery, and thought uniting to make them as wonderful as any ever uttered about love—are Juliet’s, but Romeo’s love is as deep—almost. It is love’s merit, not his, that his enemies suddenly become glorified with the radiance of the medium through which he now sees everything. Hostility simply has nothing to breathe in such a transcendental atmosphere. It is through this effect of their love on both lovers, and the poetry in which they spontaneously embody it, that Shakespeare convinces us it is no mere infatuation, but love indeed in its divine sense. Passion it is, of course, but that contaminated term has in our day become helpless to express it. Purity would be the perfect word for it if the world had not forgotten that purity is simply Greek for fire.</p>
+
+    <p class="separador">II</p>
+
+    <p>Shakespeare sees to it that we shall not mistake this white flame of Romeo’s love, or Juliet’s, for anything lower by opposing to the lovers two of the impurest characters he ever created, Mercutio and the Nurse. And yet, in spite of them, it has often been so mistaken. Mercutio and the Nurse are masterpieces of characterization so irresistible that many are tempted to let them arrogate to themselves as virtue what is really the creative merit of their maker. They are a highly vital pair, brimming with life and fire—but fire in a less heavenly sense than the one just mentioned. Juliet, at the most critical moment of her life, sums up the Nurse to all eternity in one word. When, in her darkest hour, this woman who has acted as mother to her from birth goes back on her completely, in a flash of revelation the girl sees what she is, and, reversing in one second the feeling of a lifetime, calls her a fiend (“most wicked fiend”). She could not have chosen a more accurate term, for the Nurse is playing at the moment precisely the part of the devil in a morality play. And Juliet’s “ancient damnation” is an equally succinct description of her sin. What more ancient damnation is there than sensuality—and all the other sins it brings in its train? Those who dismiss the Nurse as just a coarse old woman whose loquacity makes us laugh fail hopelessly to plumb the depth of her depravity. It was the Nurse’s desertion of her that drove Juliet to Friar Laurence and the desperate expedient of the sleeping potion. Her cowardice was a link in the chain that led to Juliet’s death.</p>
+
+    <p>The Nurse has sometimes been compared with Falstaff—perhaps the poet’s first comic character who clearly surpassed her. Any resemblance between them is superficial, for they are far apart as the poles. Falstaff was at home in low places but the sun of his imagination always accompanied him as a sort of disinfectant. The Nurse had no imagination in any proper sense. No sensualist—certainly no old sensualist—ever has. Falstaff loved Hal. What the Nurse’s “love” for Juliet amounted to is revealed when she advises her to make the best of a bad situation and take Paris (bigamy and all). The man she formerly likened to a toad suddenly becomes superior to an eagle.</p>
+
+    <div class="cita">
+        <p>Go, counsellor,</p>
+    </div>
+
+    <p>cries Juliet, repudiating her Satan without an instant’s hesitation,</p>
+
+    <div class="cita">
+        <p>Thou and my bosom henceforth shall be twain.</p>
+    </div>
+
+    <p>It is the rejection of the Nurse. But unlike Falstaff, when he is rejected, she carries not one spark of our sympathy or pity with her, and a pathetic account of her death, as of his, would be unthinkable. We scorn her as utterly as Juliet does.</p>
+
+    <p class="separador">III</p>
+
+    <p>The contrast between Friar Laurence and the Nurse even the most casual reader or spectator could scarcely miss. The difference between the spiritual adviser of Romeo and the worldly confidant of Juliet speaks for itself. The resemblance of Mercutio to the Nurse is more easily overlooked, together with the analogy between the part he plays in Romeo’s life and the part she plays in Juliet’s. Yet it is scarcely too much to say that the entire play is built around that resemblance and that analogy.</p>
+
+    <p>The indications abound that Shakespeare created these two to go together. To begin with, they hate each other on instinct, as two rival talkers generally do, showing how akin they are under the skin. “A gentleman, nurse,” says Romeo of Mercutio, “that loves to hear himself talk, and will speak more in a minute than he will stand to in a month.” The cap which Romeo thus quite innocently hands the Nurse fits her so perfectly that she immediately puts it on in two speeches about Mercutio which are typical examples of her love of hearing herself talk and of saying things she is powerless to stand by:</p>
+
+    <div class="cita">
+        <p>An a’ speak any thing against me, I’ll take him down, an ’a were lustier than he is, and twenty such Jacks; and if I cannot, I’ll find those that shall. Scurvy knave! I am none of his flirt-gills; I am none of his skains-mates. (<i>Turning to</i> PETER, <i>her man</i>) And thou must stand by too, and suffer every knave to use me at his pleasure! . . . Now, afore God, I am so vexed, that every part about me quivers. Scurvy knave!</p>
+    </div>
+
+    <p>That last, and the tone of the whole, show that there was a genuinely vicious element in the Nurse under her superficial good nature, as there invariably is in an old sensualist; and I do not believe it is exceeding the warrant of the text to say that the rest of the speech in which she warns Romeo against gross behavior toward her young gentlewoman—quite in the manner of Polonius and Laertes warning Ophelia against Hamlet—proves that in her heart she would have been delighted to have him corrupt her provided she could have shared the secret and been the go-between. “A bawd, a bawd, a bawd!” is Mercutio’s succinct description of her.</p>
+
+    <p>But, as usual, when a man curses someone else, he characterizes himself. In what sense Mercutio is a bawd appears only too soon. In the meantime what a pity it is that he is killed off so early in the action as to allow no full and final encounter between these two fountains of loquacity! “Nay, an there were two such, we should have none shortly.” Mercutio himself says it in another connection, but it applies perfectly to this incomparable pair. Their roles are crowded with parallelisms even down to what seem like the most trivial details. “We’ll to dinner thither,” says Mercutio, for example, parting from Romeo in Act II, scene 4. “Go, I’ll to dinner,” says the Nurse on leaving Juliet at the end of scene 5. A tiny touch. But they are just the two who would be certain never to miss a meal. In Shakespeare even such trifles have significance.</p>
+
+    <p>The fact is that Mercutio and the Nurse are simply youth and old age of the same type. He is aimed at the same goal she has nearly attained. He would have become the same sort of old man that she is old woman, just as she was undoubtedly the same sort of young girl that he is young man. They both think of nothing but sex—except when they are so busy eating or quarreling that they can think of nothing. (I haven’t forgotten Queen Mab; I’ll come to her presently.) Mercutio cannot so much as look at the clock without a bawdy thought. So permeated is his language with indecency that most of it passes unnoticed not only by the innocent reader but by all not schooled in Elizabethan smut. Even on our own unsqueamish stage an unabridged form of his role in its twentieth-century equivalent would not be tolerated. Why does Shakespeare place the extreme example of this man’s soiled fantasies precisely before the balcony scene? Why but to stress the complete freedom from sensuality of Romeo’s passion? Place Mercutio’s dirtiest words, as Shakespeare does, right beside Romeo’s apostrophe to his “bright angel” and all the rest of that scene where the lyricism of young love reaches one of its loftiest pinnacles in all poetry—and what remains to be said for Mercutio? Nothing—except that he is Mercutio. His youth, the hot weather, the southern temperament, the fashion among Italian gentlemen of the day, are unavailing pleas; not only Romeo, but Benvolio, had those things to contend with also. And they escaped. Mercury is close to the sun. But it was the material sun, Sol, not the god, Helios, that Mercutio was close to. Beyond dispute, this man had vitality, wit, and personal magnetism. But personal magnetism combined with sexuality and pugnacity is one of the most dangerous mixtures that can exist. The unqualified laudation that Mercutio has frequently received, and the suggestion that Shakespeare had to kill him off lest he quite set the play’s titular hero in the shade, are the best proof of the truth of that statement. Those who are themselves seduced by Mercutio are not likely to be good judges of him. It may be retorted that Mercutio is nearly always a success on the stage, while Romeo is likely to be insipid. The answer to that is that while Mercutios are relatively common, Romeos are excessively rare. If Romeo proves insipid, he has been wrongly cast or badly acted.</p>
+
+    <p>“But how about Queen Mab?” it will be asked. The famous description of her has been widely held to be quite out of character and has been set down as an outburst of poetry from the author put arbitrarily in Mercutio’s mouth. But the judgment “out of character” should always be a last resort. Undoubtedly the lines, if properly his, do reveal an unsuspected side of Mercutio. The prankish delicacy of some of them stands out in pleasing contrast with his grosser aspects. The psychology of this is sound. The finer side of a sensualist is suppressed and is bound to come out, if at all, incidentally, in just such a digression as this seems to be. Shakespeare can be trusted not to leave such things out. Few passages in his plays, however, have been more praised for the wrong reasons. The account of Queen Mab is supposed to prove Mercutio’s imagination: under his pugnacity there was a poet. It would be nearer the truth, I think, to guess that Shakespeare put it in as an example of what poetry is popularly held to be and is not. The lines on Queen Mab are indeed delightful. But imagination in any proper sense they are not. They are sheer fancy. Moreover, Mercutio’s anatomy and philosophy of dreams prove that he knows nothing of their genuine import. He dubs them</p>
+
+    <div class="cita">
+        <p>the children of an idle brain,</p>
+        <p>Begot of nothing but vain fantasy.</p>
+    </div>
+
+    <p>Perhaps his are—the Queen Mab lines would seem to indicate as much. Romeo, on the other hand, holds that dreamers “dream things true,” and gives a definition of them that for combined brevity and beauty would be hard to better. They are “love’s shadows.” And not only from what we can infer about his untold dream on this occasion, but from all the dreams and premonitions of both Romeo and Juliet throughout the play, they come from a fountain of wisdom somewhere beyond time. Primitives distinguish between “big” and “little” dreams. (Aeschylus makes the same distinction in <i>Prometheus Bound</i>.) Mercutio, with his aldermen and gnats and coachmakers and sweetmeats and parsons and drums and ambuscadoes, may tell us a little about the littlest of little dreams. He thinks that dreamers are still in their day world at night. Both Romeo and Juliet know that there are dreams that come from as far below the surface of that world as was that prophetic tomb at the bottom of which she saw him “as one dead” at their last parting. Finally, how characteristic of Mercutio that he should make Queen Mab a midwife and blemish his description of her by turning her into a “hag” whose function is to bring an end to maidenhood. Is this another link between Mercutio and the Nurse? Is Shakespeare here preparing the way for his intimation that she would be quite capable of assisting in Juliet’s corruption? It might well be. When Shakespeare writes a speech that seems to be out of character, it generally, as in this case, deserves the closest scrutiny.</p>
+
+    <p>And there is another justification of the Queen Mab passage. Romeo and Juliet not only utter poetry; they are poetry. The loveliest comment on Juliet I ever heard expressed this to perfection. It was made by a girl only a little older than Juliet herself. When Friar Laurence recommends philosophy to Romeo as comfort in banishment, Romeo replies:</p>
+
+    <div class="cita">
+        <p>Hang up philosophy!</p>
+        <p>Unless philosophy can make a Juliet . . .</p>
+        <p>It helps not, it prevails not. Talk no more.</p>
+    </div>
+
+    <p>“Philosophy can’t,” the girl observed, “but poetry can—and it did!” Over against the poetry of Juliet, Shakespeare was bound, by the demands of contrast on which all art rests, to offer in the course of his play examples of poetry in various verbal, counterfeit, or adulterate estates.</p>
+
+    <div class="cita">
+        <p>This precious book of love, this unbound lover,</p>
+        <p>To beautify him, only lacks a cover.</p>
+    </div>
+
+    <p>That is Lady Capulet on the prospective bridegroom, Paris. It would have taken the play’s booby prize for “poetry” if Capulet himself had not outdone it in his address to the weeping Juliet:</p>
+
+    <div class="cita">
+        <p>How now! a conduit, girl? What, still in tears?</p>
+        <p>Evermore showering? In one little body</p>
+        <p>Thou counterfeit’st a bark, a sea, a wind;</p>
+        <p>For still thy eyes, which I may call the sea,</p>
+        <p>Do ebb and flow with tears; the bark thy body is,</p>
+        <p>Sailing in this salt flood; the winds, thy sighs;</p>
+        <p>Who, raging with thy tears, and they with them,</p>
+        <p>Without a sudden calm, will overset</p>
+        <p>Thy tempest-tossed body.</p>
+    </div>
+
+    <p>It is almost as if Shakespeare were saying in so many words: That is how poetry is not written. Yet, a little later, when the sight of his daughter, dead as all suppose, shakes even this egotist into a second of sincerity, he can say:</p>
+
+    <div class="cita">
+        <p>Death lies on her like an untimely frost</p>
+        <p>Upon the sweetest flower of all the field.</p>
+    </div>
+
+    <p>There is poetry, deep down, even in Capulet. But the instant passes and he is again talking about death as his son-in-law—and all the rest. The Nurse’s vain repetitions in this scene are further proof that she is a heathen. Her O-lamentable-day’s only stress the lack of one syllable of genuine grief or love such as Juliet’s father shows. These examples all go to show what Shakespeare is up to in the Queen Mab speech. It shines, and even seems profound, beside the utterances of the Capulets and the Nurse. But it fades, and grows superficial, beside Juliet’s and Romeo’s. It is one more shade of what passes for poetry but is not.</p>
+
+    <p class="separador">IV</p>
+
+    <p>The crisis of <i>Romeo and Juliet</i>, so far as Romeo is concerned, is the scene (just after the secret marriage of the two lovers) in which Mercutio and Tybalt are slain and Romeo banished. It is only two hundred lines long. Of these two hundred lines, some forty are introduction and sixty epilogue to the main action. As for the other hundred that come between, it may be doubted whether Shakespeare to the end of his career ever wrote another hundred that surpasssed them in the rapidity, inevitability, and psychologic truth of the succession of events that they comprise. There are few things in dramatic literature to match them. And yet I think they are generally misunderstood. The scene is usually taken as the extreme precipitation in the play of the Capulet-Montague feud; whereas Shakespeare goes out of his way to prove that at most the feud is merely the occasion of the quarrel. Its cause he places squarely in the temperament and character of Mercutio, and Mercutio, it is only too easy to forget, is neither a Capulet nor a Montague, but a kinsman of the Prince who rules Verona, and, as such, is under special obligation to preserve a neutral attitude between the two houses.</p>
+
+    <p>This will sound to some like mitigating the guilt of Tybalt. But Tybalt has enough to answer for without making him responsible for Mercutio’s sins.</p>
+
+    <p>The nephew of Lady Capulet is as dour a son of pugnacity as Mercutio is a dashing one:</p>
+
+    <div class="cita">
+        <p>What, drawn, and talk of peace! I hate the word,</p>
+        <p>As I hate hell.</p>
+    </div>
+
+    <p>These words—almost the first he speaks in the play—give Tybalt’s measure. “More than prince of cats,” Mercutio calls him, which is elevated to “king of cats” in the scene in which he mounts the throne of violence. (It is a comment on the Nurse’s insight into human nature that she speaks of this fashionable desperado as “O courteous Tybalt! honest gentleman!”) Mercutio’s contempt for Tybalt is increased by the latter’s affectation of the latest form in fencing: “He fights as you sing prick-song, keeps time, distance, and proportion. . . . The pox of such antic, lisping, affecting fantasticoes; these new tuners of accents!” Yet but a moment later, in an exchange of quips with Romeo, we find Mercutio doing with his wit just what he has scorned Tybalt for doing with his sword. For all their differences, as far as fighting goes Mercutio and Tybalt are two of a kind and by the former’s rule are predestined to extinction: “an there were two such, we should have none shortly, for one would kill the other.” When one kills the other, there is not one left, but none. That is the arithmetic of it. The encounter is not long postponed.</p>
+
+    <p>Tybalt is outraged when he discovers that a Montague has invaded the Capulet mansion on the occasion of the ball when Romeo first sees Juliet. But for his uncle he would assail the intruder on the spot:</p>
+
+    <div class="cita">
+        <p>Patience perforce with wilful choler meeting</p>
+        <p>Makes my flesh tremble in their different greeting.</p>
+        <p>I will withdraw; but this intrusion shall</p>
+        <p>Now seeming sweet convert to bitter gall.</p>
+    </div>
+
+    <p>He is speaking of the clash between patience and provocation in himself. But he might be prophesying his meeting with Romeo. As the third act opens, he is hunting his man.</p>
+
+    <p>Tybalt is not the only one who is seeking trouble. The first forty lines of the crisis scene are specifically devised to show that Mercutio was out to have a fight under any and all circumstances and at any price. As well ask a small boy and a firecracker to keep apart as Mercutio and a quarrel. Sensuality and pugnacity are the poles of his nature. In the latter respect he is a sort of Mediterranean Hotspur, his frank southern animality taking the place of the idealistic “honour” of his northern counterpart. He is as fiery in a literal as Romeo is in a poetic sense.</p>
+
+    <p>The scene is a public place. Enter Mercutio and Benvolio. Benvolio knows his friend:</p>
+
+    <div class="cita">
+        <p>I pray thee, good Mercutio, let’s retire.</p>
+        <p>The day is hot, the Capulets abroad,</p>
+        <p>And, if we meet, we shall not ’scape a brawl,</p>
+        <p>For now, these hot days, is the mad blood stirring.</p>
+    </div>
+
+    <p>Mercutio retorts with a description of the cool-tempered Benvolio that makes him out an inveterate hothead:</p>
+
+    <div class="cita">
+        <p>Thou! why, thou wilt quarrel with a man that hath a hair more, or a hair less, in his beard, than thou hast. Thou wilt quarrel with a man for cracking nuts, having no other reason but because thou hast hazel eyes. What eye but such an eye would spy out such a quarrel? Thy head is as full of quarrels as an egg is full of meat, and yet thy head hath been beaten as addle as an egg for quarrelling. Thou hast quarrelled with a man for coughing in the street, because he hath wakened thy dog that hath lain asleep in the sun. Didst thou not fall out with a tailor for wearing his new doublet before Easter? with another, for tying his new shoes with old riband?</p>
+    </div>
+
+    <p>This, the cautious and temperate Benvolio! As Mercutio knows, it is nothing of the sort. It is an ironic description of himself. It is he, not his friend, who will make a quarrel out of anything—out of nothing, rather, and give it a local habitation and a name, as a poet does with the creatures of his imagination. Mercutio is pugnacity in its pure creative state. At the risk of the Prince’s anger, he makes his friend Romeo’s cause his own and roams the streets in the hope of encountering some Capulet with whom to pick a quarrel. The feud is only a pretext. If it hadn’t been that, it would have been something else. The Chorus may talk about “stars,” but in this case Mars does not revolve in the skies on the other side of the Earth from Venus, but resides on earth right under the jerkin of this particular impulsive youth, Mercutio. Or if this “fate” be a god rather than a planet, then Mercutio has opened his heart and his home to him with unrestrained hospitality. So Romeo is indeed “star-cross’d” in having Mercutio for a friend.</p>
+
+    <p>Mercutio has no sooner finished his topsy-turvy portrait of Benvolio than Tybalt and his gang come in to reveal which of the two the description fits. Tybalt is searching for Romeo, to whom he has just sent a challenge, and recognizing Romeo’s friends begs “a word with one of you.” He wishes, presumably, to ask where Romeo is. But Mercutio, bent on provocation, retorts, “make it a word and a blow.” Benvolio tries in vain to intervene. Just as things are getting critical, Romeo enters, and Tybalt turns from Mercutio to the man he is really seeking:</p>
+
+    <div class="cita">
+        <p>Romeo, the love I bear thee can afford</p>
+        <p>No better term than this,—thou art a villain.</p>
+    </div>
+
+    <p>Here is the most direct and galling of insults. Here are Mercutio, Benvolio, and the rest waiting to see how Romeo will take it. The temperature is blistering in all senses. And what does Romeo say?</p>
+
+    <div class="cita">
+        <p>Tybalt, the reason that I have to love thee</p>
+        <p>Doth much excuse the appertaining rage</p>
+        <p>To such a greeting; villain am I none;</p>
+        <p>Therefore farewell; I see thou know’st me not.</p>
+    </div>
+
+    <p>We who are in the secret know that “the reason” is Juliet and that his love for her is capable of wrapping all Capulets in its miraculous mantle, even “the king of cats.”</p>
+
+    <p>But Tybalt is intent on a fight and will not be put off by kindness however sincere or deep. “Boy,” he comes back insolently,</p>
+
+    <div class="cita">
+        <p>this shall not excuse the injuries</p>
+        <p>That thou hast done me; therefore turn and draw.</p>
+    </div>
+
+    <p>Romeo, however, is in the power of something that makes him impervious to insults:</p>
+
+    <div class="cita">
+        <p>I do protest I never injur’d thee,</p>
+        <p>But love thee better than thou canst devise</p>
+        <p>Till thou shalt know the reason of my love;</p>
+        <p>And so, good Capulet,—which name I tender</p>
+        <p>As dearly as my own,—be satisfied.</p>
+    </div>
+
+    <p>The world has long since decided what to think of a man who lets himself be called a villain without retaliating. Romeo, to put it in one word, proves himself, according to the world’s code, a mollycoddle. And indeed a mollycoddle might act exactly as Romeo appears to. But if Romeo is a mollycoddle, then Jesus was a fool to talk about loving one’s enemies, for Romeo, if anyone ever did, is doing just that at this moment. And Juliet was demented to talk about love being boundless and infinite, for here Romeo is about to prove that faith precisely true. Those who think that Jesus, and Juliet, and Romeo were fools will have plenty of backing. The “fathers” will be on their side. They will have the authority of the ages and the crowd. Only a philosopher or two, a few lovers, saints, and poets will be against them. The others will echo the</p>
+
+    <div class="cita">
+        <p>O calm, dishonourable, vile submission!</p>
+    </div>
+
+    <p>with which Mercutio draws his rapier and begins hurling insults at Tybalt that make Tybalt’s own seem tame:</p>
+
+    <div class="cita">
+        <p>MER: Tybalt, you rat-catcher, will you walk?</p>
+        <p>TYB: What wouldst thou have with me?</p>
+        <p>MER: Good king of cats, nothing but one of your nine lives.</p>
+    </div>
+
+    <p>And Mercutio threatens to stick him before he can draw if he does not do so instantly. What can Tybalt do but draw? “I am for you,” he cries, as he does so.</p>
+
+    <p>Such, however, is the power of Romeo’s love that even now he attempts to prevent the duel:</p>
+
+    <div class="cita">
+        <p>Gentle Mercutio, put thy rapier up.</p>
+    </div>
+
+    <p>But Mercutio pays no attention and the two go to it. If ever a quarrel scene defined the central offender and laid the responsibility at one man’s door, this is the scene and Mercutio is the man. It takes two to make a quarrel. Romeo, the Montague, will not fight. Tybalt, the Capulet, cannot fight if Romeo will not. With Mercutio Tybalt has no quarrel. The poet takes pains to make that explicit in a startling way. “Peace be with you, sir,” are the words Tybalt addresses to Mercutio when Romeo first enters. That from the man who once cried,</p>
+
+    <div class="cita">
+        <p>peace! I hate the word,</p>
+        <p>As I hate hell.</p>
+    </div>
+
+    <p>Now we see why Shakespeare had him say it. It was in preparation for this scene. Thus he lets one word exonerate Tybalt of the responsibility for what ensues between himself and Mercutio.</p>
+
+    <p>And now, condensed into the fractional part of a second, comes the crisis in Romeo’s life. Not later, when he decides to kill Tybalt, but now. Now is the moment when two totally different universes wait as it were on the turning of a hand. There is nothing of its kind to surpass it in all Shakespeare, not even in <i>Hamlet</i> or <i>King Lear</i>, not, one is tempted to think, in all the drama of the world. Here, if anywhere, Shakespeare shows that the fate we attribute to the stars lies in our own souls.</p>
+
+    <div class="cita">
+        <p>Our remedies oft in ourselves do lie,</p>
+        <p>Which we ascribe to heaven: the fated sky</p>
+        <p>Gives us free scope.</p>
+    </div>
+
+    <p>Romeo had free scope. For, if we are free to choose between two compulsions, we are in so far free. Romeo was free to act under the compulsion of force or under the compulsion of love—under the compulsion of the stars, that is, in either of two opposite senses. Granted that the temptation to surrender to the former was at the moment immeasurably great, the power of the latter, if Juliet spoke true, was greater yet:</p>
+
+    <div class="cita">
+        <p>My bounty is as boundless as the sea,</p>
+        <p>My love as deep; the more I give to thee,</p>
+        <p>The more I have, for both are <i>infinite</i>.</p>
+    </div>
+
+    <p>Everything that has just preceded shows that the real Romeo wanted to have utter faith in Juliet’s faith. “Genius trusts its faintest intimation,” says Emerson, “against the testimony of all history.” But Romeo, whose intimations were not faint but strong, falls back on the testimony of all history that only force can overcome force. He descends from the level of love to the level of violence and attempts to part the fighters with his sword.</p>
+
+    <div class="cita">
+        <p>Draw, Benvolio; beat down their weapons.</p>
+        <p>Gentlemen, for shame, forbear this outrage!</p>
+        <p>Tybalt, Mercutio, the prince expressly hath</p>
+        <p>Forbidden bandying in Verona streets.</p>
+        <p>Hold, Tybalt! good Mercutio!</p>
+    </div>
+
+    <p>Here, if anywhere, the distinction between drama and poetry becomes clear. Drama is a portrayal of human passions eventuating in acts. Poetry is a picture of life in its essence. On the level of drama, we are with Romeo absolutely. His purpose is noble, his act endearingly impulsive. We echo that purpose and identify ourselves with that act. In the theater we do, I mean, and under the aspect of time. But how different under the aspect of eternity! There the scene is a symbolic picture of life itself, of faith surrendering to force, of love trying to gain its end by violence—only to discover, as it soon does, and as we do too, that what it has attained instead is death. A noble motive never yet saved a man from the consequences of an unwise act, and Romeo’s own words to Mercutio as he draws his sword are an unconscious confession in advance of his mistake. Having put aside his faith in Juliet’s faith, his appeal is in the name of law rather than of love: “The prince expressly hath forbidden.” That, and his “good Mercutio,” reveal a divided soul. And it is that divided soul, in a last instant of hesitation, that causes an awkward or uncoordinated motion as he interferes and gives the cowardly Tybalt his chance to make a deadly thrust at Mercutio under Romeo’s arm. If Romeo had only let those two firebrands fight it out, both might have lost blood with a cooling effect on their heated tempers, or, if it had gone to a finish, both might have been killed, as they ultimately were anyway, or, more likely, Mercutio would have killed Tybalt. (“An there were two such, we should have none shortly, for one would kill the other.”) In any of these events, the feud between the two houses would not have been involved. As it is, the moment of freedom passes, and the rest is fate.</p>
+
+    <p>The fallen Mercutio reveals his most appealing side in his good humor at death. But why his reiterated “A plague o’ both your houses”? He is one more character in Shakespeare who “doth protest too much.” Four times he repeats it, or three and a half to be exact. How ironical of Mercutio to attribute his death to the Capulet-Montague feud, when the Capulet who killed him had plainly been reluctant to fight with him, and the chief Montague present had begged and begged him to desist. That “plague o’ both your houses” is Mercutio’s unwitting confession that his own intolerable pugnacity, not the feud at all, is responsible. And if that be true, how much that has been written about this tragedy must be retracted.</p>
+
+    <p>What follows puts a final confirmation on Romeo’s error in trying to part the duelists by force. With Mercutio dead as a direct result of his interference, what can Romeo say? We heard him fall from love to an appeal to law and order while the fight was on. Now it is over, he descends even lower as he bemoans his “reputation stain’d with Tybalt’s slander.” Reputation! Iago’s word.</p>
+
+    <div class="cita">
+        <p>O sweet Juliet,</p>
+        <p>Thy beauty hath made me effeminate</p>
+        <p>And in my temper soften’d valour’s steel!</p>
+    </div>
+
+    <p>Were ever words more tragically inverted? That fire should soften metal must have seemed a miracle to the man who first witnessed it. How much greater the miracle whereby beauty melts violence into love! That is the miracle that was on the verge of occurring in <i>Romeo and Juliet</i>.</p>
+
+    <p>Instead, Benvolio enters to announce Mercutio’s death. Whereat Romeo, throwing the responsibility of his own mistake on destiny, exclaims:</p>
+
+    <div class="cita">
+        <p>This day’s black fate on more days doth depend;</p>
+        <p>This but begins the woe others must end.</p>
+    </div>
+
+    <p>Could words convey more clearly the fact that the crisis has passed? Freedom has had its instant. The consequences are now in control.</p>
+
+    <p>Tybalt re-enters. Does Romeo now remember that his love for Juliet makes every Capulet sacred? Does he recall his last words to her as he left the orchard at dawn?—</p>
+
+    <div class="cita">
+        <p>Sleep dwell upon thine eyes, peace in thy breast!</p>
+        <p>Would I were sleep and peace, so sweet to rest!</p>
+    </div>
+
+    <p>Does he now use his sword merely to prevent bloodshed?</p>
+
+    <div class="cita">
+        <p>Away to heaven, respective lenity,</p>
+    </div>
+
+    <p>he cries, implying without realizing it the infernal character of his decision,</p>
+
+    <div class="cita">
+        <p>And fire-ey’d fury be my conduct now!</p>
+    </div>
+
+    <p>Fury! Shakespeare’s invariable word for animal passion in man gone mad. And in that fury Romeo’s willingness to forgive is devoured like a flower in a furnace:</p>
+
+    <div class="cita">
+        <p>Now, Tybalt, take the villain back again</p>
+        <p>That late thou gav’st me; for Mercutio’s soul</p>
+        <p>Is but a little way above our heads,</p>
+        <p>Staying for thine to keep him company.</p>
+        <p>Either thou, or I, or both, must go with him.</p>
+    </div>
+
+    <p>The spirit of Mercutio does indeed enter Romeo’s body, and though it is Tybalt who is to go with the slain man literally, it is Romeo who goes with him in the sense that he accepts his code and obeys his ghost. Drawing his rapier, he sends Tybalt to instant death—to the immense gratification of practically everyone in the audience, so prone are we in the theater to surrender to the ancestral emotions. How many a mother, suspecting the evil influence of some companion on her small son, has put her arms about him in a desperate gesture of protection. Yet that same mother will attend a performance of <i>Romeo and Juliet</i>, and, seduced by the crowd, will applaud Romeo’s capitulation to the spirit of Mercutio to the echo. So frail is the tenderness of the mothers in the face of the force of the fathers.</p>
+
+    <p>In this respect the scene is like the court scene in <i>The Merchant of Venice</i> when we gloat over Shylock’s discomfiture. Here, as there, not only our cooler judgment when we are alone but all the higher implications of the tragedy call for a reversal of our reaction when with the crowd. In this calmer retrospect, we perceive that between his hero’s entrance and exit in this scene Shakespeare has given us three Romeos, or, if you will, one Romeo in three universes. First we see him possessed by love and a spirit of universal forgiveness. From this he falls, first to reason and an appeal to law, then to violence—but violence in a negative or “preventive” sense. Finally, following Mercutio’s death, he passes under the control of passion and fury, abetted by “honour,” and thence to vengeance and offensive violence. In astrological terms, he moves from Venus, through the Earth, to Mars. It is as if Dante’s <i>Divine Comedy</i> were compressed into eighty lines and presented in reverse—Romeo in an inverted “pilgrimage” passing from Paradise, through Purgatory, to the Inferno.</p>
+
+    <p>This way of taking the scene acquits Romeo of doing “wrong,” unless we may be said to do wrong whenever we fail to live up to our highest selves. Love is a realm beyond good and evil. Under the aspect of time, of common sense, possibly even of reason and morality, certainly of “honour,” Romeo’s conduct in the swift succession of events that ended in Tybalt’s death was unexceptionable. What else could he have done? But under the aspect of eternity, which is poetry’s aspect, it was less than that. We cannot blame a man because he does not perform a miracle. But when he offers proof of his power, and the very next moment has the opportunity to perform one, and does not, the failure is tragic. Such was the “failure” of Romeo. And he himself admits it in so many words. Death, like love, lifts us for a moment above time. Just before he drinks the poison, catching sight of the body of Tybalt in the Capulet vault, Romeo cries, “Forgive me, cousin.” Why should he ask forgiveness for what he did in honor, if honor be the guide to what is right?</p>
+
+    <p>Romeo as an honorable man avenges his friend. But in proving himself a man in this sense, he proves himself less than the perfect lover. “Give all to love,” says Emerson:</p>
+
+    <div class="cita">
+        <p>Give all to love . . .</p>
+        <p>’Tis a brave master;</p>
+        <p>Let it have scope:</p>
+        <p>Follow it utterly,</p>
+        <p>Hope beyond hope . . .</p>
+        <p>Heartily know,</p>
+        <p>When half-gods go,</p>
+        <p>The gods arrive.</p>
+    </div>
+
+    <p>Juliet’s love had bestowed on Romeo power to bring down a god, to pass even beyond the biblical seventy times seven to what Emily Brontë calls the “first of the seventy-first.” But he did not. The play is usually explained as a tragedy of the excess of love. On the contrary it is the tragedy of a deficiency of it. Romeo did not “follow it utterly,” did not give quite “all” to love.</p>
+
+    <p class="separador">V</p>
+
+    <p>Romeo’s mental condition following the death of Tybalt is proof of the treason he has committed against his own soul. Up to this point in the scene, as we saw, Shakespeare has given us three Romeos. Now he gives us a fourth: the man rooted to the spot at the sight of what he has done. The citizens have heard the tumult and are coming. “Stand not amaz’d,” cries Benvolio—and it is a case where one poet’s words seem to have been written to illuminate another’s. Wordsworth’s lines are like a mental stage direction for the dazed Romeo:</p>
+
+    <div class="cita">
+        <p>Action is transitory—a step, a blow,</p>
+        <p>The motion of a muscle—this way or that—</p>
+        <p>’Tis done; and in the after-vacancy</p>
+        <p>We wonder at ourselves like men betrayed:</p>
+        <p>Suffering is permanent, obscure and dark,</p>
+        <p>And has the nature of infinity.</p>
+    </div>
+
+    <p>“O! I am Fortune’s fool,” cries Romeo. “Love’s not Time’s fool,” says Shakespeare, as if commenting on this very scene, in that confession of his own faith, the 116th sonnet:</p>
+
+    <div class="cita">
+        <p>O, no! it is an ever-fixed mark,</p>
+        <p>That looks on tempests and is never shaken;</p>
+        <p>It is the star to every wandering bark,</p>
+        <p>Whose worth’s unknown, although his height be taken.</p>
+    </div>
+
+    <p>There is an astrology at the opposite pole from that of the Chorus to this play. Romeo’s love looked on a tempest—and it was shaken. He apparently has just strength enough left to escape and seek refuge in Friar Laurence’s cell, where, at the word of his banishment, we find him on the floor,</p>
+
+    <div class="cita">
+        <p>Taking the measure of an unmade grave,</p>
+    </div>
+
+    <p>in a fit of that suicidal despair that so often treads on the heels of “fury.” It is not remorse for having killed Tybalt that accounts for his condition, nor even vexation with himself for having spoiled his own marriage, but shame for having betrayed Juliet’s faith in the boundlessness of love.</p>
+
+    <p>Meanwhile, at the scene of the duels, citizens have gathered, followed by the Prince with Capulets and Montagues. Lady Capulet, probably the weakest character in the play, is the first to demand more blood as a solution of the problem:</p>
+
+    <div class="cita">
+        <p>Prince, as thou art true,</p>
+        <p>For blood of ours, shed blood of Montague.</p>
+    </div>
+
+    <p>But the Prince asks first for a report of what happened.</p>
+
+    <div class="cita">
+        <p>Benvolio, who began this bloody fray?</p>
+    </div>
+
+    <p>Benvolio mars what is otherwise a remarkably accurate account of the affair by failing utterly to mention Mercutio’s part in instigating the first duel, placing the entire blame on Tybalt.</p>
+
+    <div class="cita">
+        <p>He is a kinsman to the Montague,</p>
+    </div>
+
+    <p>cries Lady Capulet,</p>
+
+    <div class="cita">
+        <p>Affection makes him false; he speaks not true.</p>
+        <p>Some twenty of them fought in this black strife,</p>
+        <p>And all those twenty could but kill one life.</p>
+    </div>
+
+    <p>Her sense of reality and character are on a level with her courage.</p>
+
+    <p>In Capulet’s orchard, the Nurse brings to Juliet the rope ladder by which her husband is to reach her chamber—and with it the news of Tybalt’s death and Romeo’s banishment.</p>
+
+    <div class="cita">
+        <p>O serpent heart, hid with a flowering face!</p>
+        <p>Did ever dragon keep so fair a cave?</p>
+    </div>
+
+    <p>cries Juliet,</p>
+
+    <div class="cita">
+        <p>O nature, what hadst thou to do in hell,</p>
+        <p>When thou didst bower the spirit of a fiend</p>
+        <p>In mortal paradise of such sweet flesh?</p>
+    </div>
+
+    <p>Even in the exaggeration of her anguish, Juliet diagnoses what has happened precisely as Shakespeare does: a fiend—the spirit of Mercutio—has taken possession of her lover-husband’s body. Contrast her insight at such a moment with the Nurse’s drivellings:</p>
+
+    <div class="cita">
+        <p>There’s no trust,</p>
+        <p>No faith, no honesty in men; all perjur’d,</p>
+        <p>All forsworn, all naught, all dissemblers.</p>
+        <p>Ah, where’s my man?</p>
+    </div>
+
+    <p>A fair sample of how well her inane generalizations survive the test of a concrete need.</p>
+
+    <p>Back in Friar Laurence’s cell, the stunned Romeo is like a drunken man vaguely coming to himself after a debauch. When he draws his sword to make away with himself, the Friar restrains him not by his hand, as Romeo had once sought to restrain Mercutio at a similarly critical moment, but by the force of his words:</p>
+
+    <div class="cita">
+        <p>Hold thy desperate hand!</p>
+        <p>Art thou a man?</p>
+    </div>
+
+    <p>And he seeks to sting him back to manhood by comparing his tears to those of a woman and his fury to that of a beast.</p>
+
+    <div class="cita">
+        <p>Thou hast amaz’d me. . . .</p>
+        <p>Why rail’st thou on thy birth, the heaven, and earth?</p>
+        <p>Since birth, and heaven, and earth, all three do meet</p>
+        <p>In thee at once, which thou at once wouldst lose.</p>
+    </div>
+
+    <p>No nonsense about “star-cross’d lovers” for Friar Laurence. Shakespeare, like Dante before him and Milton after him, knew where the stars are, knew that heaven and hell, and even earth, are located within the human soul. Romeo is the “skilless soldier” who sets afire the powder in his own flask.</p>
+
+    <p class="separador">VI</p>
+
+    <p>Juliet too in her despair can think of death. But with what relative calmness and in what a different key! The contrast between the two lovers at this stage is a measure of the respectively innocent and guilty states of their souls.</p>
+
+    <p>Their meeting at night is left to our imagination, but their parting at dawn is Shakespeare’s imagination functioning at its highest lyrical intensity, with interwoven symbols of nightingale and lark, darkness and light, death and love. Then follow in swift succession the mother’s announcement of her daughter’s impending marriage with Paris, Juliet’s ringing repudiation of the idea, the rejection of her, in order, by her father, her mother, and the Nurse—the first brutal, the second supine, the third Satanic. And then, with an instantaneousness that can only be called divine, Juliet’s rejection of the Nurse. In a matter of seconds the child has become a woman. This is the second crisis of the drama, Juliet’s, which, with Romeo’s, gives the play its shape as certainly as its two foci determine the shape of an ellipse. If ever two crises were symmetrical, and opposite, these are.</p>
+
+    <p>Romeo, in a public place, lured insensibly through the influence of Mercutio to the use of force, falls, and as a direct result of his fall, kills Tybalt. Juliet, in her chamber, deserted by father and mother and enticed to faithlessness by the Nurse, child as she is, never wavers for an instant, puts her tempter behind her, and consents as the price of her fidelity to be “buried” alive. Can anyone imagine that Shakespeare did not intend this contrast, did not build up his detailed parallelism between Mercutio and the Nurse to effect it? Romeo, as we said, does not give quite “all” for love. But Juliet does. She performs her miracle and receives supernatural strength as her reward. He fails to perform his and is afflicted with weakness. But eventually her spirit triumphs in him. Had it done so at first, the tragedy would have been averted. Here again the heroine transcends the hero. And yet Romeo had Friar Laurence as adviser while Juliet was brought up by the Nurse! The profounder the truth, the more quietly Shakespeare has a habit of uttering it. It is as if he were saying here that innocence comes from below the sources of pollution and can run the fountain clear.</p>
+
+    <p>To describe as “supernatural” the strength that enables Juliet “without fear or doubt” to undergo the ordeal of the sleeping potion and the burial vault does not seem excessive:</p>
+
+    <div class="cita">
+        <p>Give me, give me! O! tell me not of fear!</p>
+    </div>
+
+    <p>Long before—in the text, not in time—when she had wondered how Romeo had scaled the orchard wall below her balcony, he had said:</p>
+
+    <div class="cita">
+        <p>With love’s light wings did I o’erperch these walls;</p>
+        <p>For stony limits cannot hold love out,</p>
+        <p>And what love can do that dares love attempt.</p>
+    </div>
+
+    <p>Juliet is now about to prove the truth of his words, in a sense Romeo never dreamed of, “in that dim monument where Tybalt lies.” The hour comes, and after facing the terrors her imagination conjures up, Juliet goes through her “dismal scene” alone, is found “dead,” and following a scene that anticipates but reverses <i>Hamlet</i> in that a wedding is turned into a funeral, is placed in the Capulet vault in accordance with Friar Laurence’s desperate plan. But after force has had its instant way, fate in the guise of fear usually has its protracted way, and to oppose it is like trying to stay an avalanche with your hand.</p>
+
+    <p class="separador">VII</p>
+
+    <p>The pestilence prevents the Friar’s messenger from reaching Romeo. Instead, word is brought to him that Juliet is dead, and, armed with a drug of an apothecary who defies the law against selling poison, he ends his banishment to Mantua and starts back to Verona to seek beside Juliet the eternal banishment of death. The fury with which he threatens his companion Balthasar, on dismissing him when they reach the churchyard, if he should return to pry, reveals Romeo’s mood:</p>
+
+    <div class="cita">
+        <p>By heaven, I will tear thee joint by joint</p>
+        <p>And strew this hungry churchyard with thy limbs.</p>
+        <p>The time and my intents are savage-wild,</p>
+        <p>More fierce and more inexorable far</p>
+        <p>Than empty tigers or the roaring sea.</p>
+    </div>
+
+    <p>And when he encounters and slays Paris, the contrast between his death and that of Mercutio, or even Tybalt, shows that we are dealing here not so much with the act of a free agent choosing his course in the present as with the now fatal consequences of an act in the past, of an agent then free but now no longer so. Paris is little more than the branch of a tree that Romeo pushes aside—and his death affects us almost as little. It is all like a dream, or madness. Finding the sleeping—as he supposes the dead—Juliet, Romeo pours out his soul in words which, though incomparable as poetry, err in placing on the innocent heavens the responsibility for his own venial but fatal choice:</p>
+
+    <div class="cita">
+        <p>O, here</p>
+        <p>Will I set up my everlasting rest,</p>
+        <p>And shake the yoke of inauspicious stars</p>
+        <p>From this world-wearied flesh.</p>
+    </div>
+
+    <p>And then, by one of those strokes that, it sometimes seems, only Shakespeare could achieve, the poet makes Romeo revert to and round out, in parting from Juliet forever, the same metaphor he had used when she first gazed down on him from her balcony and he had tried to give expression to the scope and range of his love. How magically, placed side by side, the two passages fit together, how tragically they sum up the story:</p>
+
+    <div class="cita">
+        <p>I am no pilot; yet, wert thou as far</p>
+        <p>As that vast shore wash’d with the farthest sea,</p>
+        <p>I would adventure for such merchandise.</p>
+    </div>
+
+    <div class="cita">
+        <p>Come, bitter conduct, come, unsavoury guide!</p>
+        <p>Thou desperate pilot, now at once run on</p>
+        <p>The dashing rocks thy sea-sick weary bark!</p>
+        <p>Here’s to my love! (<i>Drinks.</i>) O true apothecary!</p>
+        <p>Thy drugs are quick. Thus with a kiss I die. (<i>Dies.</i>)</p>
+    </div>
+
+    <p><i>Enter</i> Friar Laurence—a moment too late. That fear is with him Shakespeare shows by another echo. “Wisely and slow; they stumble that run fast,” the Friar had warned Romeo on dismissing him after his first confession of his love for Juliet, and now he says:</p>
+
+    <div class="cita">
+        <p>How oft to-night</p>
+        <p>Have my old feet stumbled at graves! . . .</p>
+        <p>. . . Fear comes upon me.</p>
+    </div>
+
+    <p>He discovers the dead Romeo. Just then Juliet awakes. But at the same moment he hears a noise. The watch is coming! He cannot be found here.</p>
+
+    <div class="cita">
+        <p>Come, go, good Juliet, I dare no longer stay,</p>
+    </div>
+
+    <p>and when she refuses to follow, he deserts her. With a glance into the empty cup in Romeo’s hand and a kiss on the lips that she hopes keep poison for her own—anticipating touches at the deaths of both Hamlet and Cleopatra—she snatches Romeo’s dagger and kills herself.</p>
+
+    <p>Why did Shakespeare, after building up so noble a character as Friar Laurence, permit him to abandon Juliet at so fatal a moment? Why add <i>his</i> name to the so different ones of Capulet, Lady Capulet, and the Nurse, no matter how much better the excuse for his desertion of her? For two reasons, I think: first, to show how far the infection of fear extends that Romeo’s use of force had created. “Here is a friar, that trembles, sighs, and weeps,” says the Third Watchman, and Laurence himself confesses, when he tells his story,</p>
+
+    <div class="cita">
+        <p>But then a noise did scare me from the tomb.</p>
+    </div>
+
+    <p>And then, to show that Juliet, abandoned <i>even by religion</i>, must fall back for courage finally on love alone.</p>
+
+    <p>The pestilence plays a crucial part toward the end of the action. It is a symbol. Whatever literal epidemic there may have been in the region, it is plain that fear is the real pestilence that pervades the play. It is fear of the code of honor, not fate, that drives Romeo to seek vengeance on Tybalt. It is fear of the plague, not accident, that leads to the miscarriage of Friar Laurence’s message to Romeo. It is fear of poverty, not the chance of his being at hand at the moment, that lets the apothecary sell the poison. It is fear of the part he is playing, not age, that makes Friar Laurence’s old feet stumble and brings him to the tomb just a few seconds too late to prevent Romeo’s death. It is fear of being found at such a spot at such a time, not coincidence, that lets him desert Juliet at last just when he does. Fear, fear, fear, fear, fear. Fear is the evil “star” that crosses the lovers. And fear resides not in the skies but in the human heart.</p>
+
+    <p class="separador">VIII</p>
+
+    <p>The tragedy ends in the reconciliation of the two houses, compensation, it is generally held, for the deaths of the two lovers. Doubtless the feud was not renewed in its former form. But much superfluous sentiment has been spent on this ending. Is it not folly to suppose that Capulet or Lady Capulet was spiritually transformed by Juliet’s death? And as for Montague, the statue of her in pure gold that he promised to erect in Verona is proof in itself how incapable he was of understanding her spirit and how that spirit alone, and not monuments or gold, can bring an end to feuds. (Lady Montague, who died of a broken heart, was far and away the finest of the four parents.) Shakespeare’s happy endings are, almost without exception, suspect. Or rather they are to be found, if at all, elsewhere than in the last scene and final speeches, and are “happy” in a quite untheatrical sense.</p>
+
+    <p>Cynics are fond of saying that if Romeo and Juliet had lived their love would not have “lasted.” Of course it wouldn’t—in the cynic’s sense. You can no more ask such love to last than you can ask April to last, or an apple blossom. Yet April and apple blossoms do last and have results that bear no resemblance to what they come from—results such as apples and October—and so does such love. Romeo, in his last words, referred to the phenomenon known as “a lightning before death.” Here is that lightning, and here, if it have one, is the happy ending of <i>Romeo and Juliet</i>:</p>
+
+    <div class="cita">
+        <p>ROM: If I may trust the flattering truth of sleep,</p>
+        <p>My dreams presage some joyful news at hand.</p>
+        <p>My bosom’s lord sits lightly in his throne,</p>
+        <p>And all this day an unaccustom’d spirit</p>
+        <p>Lifts me above the ground with cheerful thoughts.</p>
+        <p>I dreamt my lady came and found me dead—</p>
+        <p>Strange dream, that gives a dead man leave to think!—</p>
+        <p>And breath’d such life with kisses in my lips,</p>
+        <p>That I reviv’d and was an emperor.</p>
+        <p>Ah me! how sweet is love itself possess’d,</p>
+        <p>When but love’s shadows are so rich in joy!</p>
+        <p><i>Enter</i> BALTHASAR—<i>with news of Juliet’s death.</i></p>
+    </div>
+
+    <p>Dreams go by contraries, they say, and this seems to be an example. But is it?</p>
+
+    <section class="footnotes">
+        <h3>Note</h3>
+        <p>From <i>The Meaning of Shakespeare</i>. Copyright © 1951 by The University of Chicago Press.</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>
