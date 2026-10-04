@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Imagery and Meaning in “Antony and Cleopatra” — David Daiches</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">David Daiches</p>
+        <h1 class="cab__tit">Imagery and Meaning in “Antony and Cleopatra”</h1>
+    </header>
+
+    <p><i>Antony and Cleopatra</i> is at once the most magnificent and the most puzzling of Shakespeare’s tragedies. Its magnificence resides in the splendour and amplitude of its poetry, in the apparently effortless brilliance with which language is employed in order to search and illuminate the implications of the action; it puzzles because the action itself seems to be of no moral interest yet it compels a kind of wondering attention which would normally be given only to a play with a profoundly challenging moral pattern. Bradley sensed this paradox when he asked, “Why is it that, although we close the book in a triumph which is more than reconciliation, this is mingled, as we look back on the story, with a sadness so peculiar, almost the sadness of disenchantment?” And he added: “With all our admiration and sympathy for the lovers we do not wish them to gain the world. It is better for the world’s sake, and not less for their own, that they should fail and die.” This is surely to simplify the problem to the point of distortion, for it is not that Antony and Cleopatra arouse our admiration while doing wrong, so that we thrill to them yet cannot in conscience wish them success. It is rather that in this play Shakespeare seems to be building a moral universe out of non-moral materials. Yet I do not think that we can answer Bradley merely by making a spirited defence of the characters of the hero and heroine, as Dover Wilson does, convincingly enough, if not altogether relevantly.</p>
+
+    <p>Shakespeare, taking the familiar story, and many details, from North’s Plutarch, turns it into a poetic drama in which the poetry works continuously to give quite new dimensions to the action. In no other tragedy of Shakespeare does the actual story, the summarisable plot, seem at such a distance from the way it emerges in the play. Of course a great work of literature, most of all a great poetic drama, is always very much more than its summarisable plot. But a prose account of the action of <i>Hamlet</i> or <i>Othello</i> or <i>Macbeth</i> would at least give us some faint idea of the kind of tragedy that we are here involved with; certainly it would not lead us in the directly opposite direction and suggest a wholly different kind of play. This, however, is precisely what a prose account of the action of <i>Antony and Cleopatra</i> would do: if we read Plutarch’s <i>Life of Antony</i> without thinking at all of Shakespeare’s play (admittedly, this is now difficult for most of us to do) it suggests altogether different kinds of dramatic possibilities. In short, Shakespeare in this play puts poetic imagery to work in order to make the story tell far more than we could have conceived possible of this particular story and to involve it in aspects of the human situation from which the events themselves seem to be at the farthest possible remove. And <i>this</i>, I suggest, is what lies at the bottom of Bradley’s disquiet—a disquiet which cannot be banished by any defence of the characters’ behaviour or by pooh-poohing Bradley’s Victorian morality. What strikes us, after we have given ourselves to the play and emerged from it again, is the incredibility of Shakespeare’s achievement: it is the wonder of his having succeeded in making this action stretch to this meaning. It is impossible, and yet it happens. Coleridge considered the play “perhaps the most wonderful” of all Shakespeare’s, and wonder is indeed one of our many reactions to it. He sticks to history minutely, argued Coleridge, yet in few even of his own plays does he impress “the notion of his giant strength so much, perhaps [there is] none in which he impresses it more strongly”. Whether Shakespeare stuck to history as minutely as Coleridge thought is beside the point; Coleridge here puts his finger on a central feature of the play—the wonder of Shakespeare’s having made a play with this kind of life and richness and exploratory quality out of the particular tract of history and biography which he used.</p>
+
+    <p>Shakespeare’s play is not, of course, as Dryden’s was to be, about “All for Love, or the World Well Lost”, though this is one strand woven into the total fabric. It is—to summarise it crudely—about the different roles that man can play on the various stages which human activity provides for him, and about the relation of these roles to the player’s true identity. Shortly before his suicide, when Antony sees events as having cheated him out of his role both of lover and of conqueror, he expresses his sense of the dissolution of identity:</p>
+
+    <div class="cita">
+        <p>Sometime we see a cloud that’s dragonish,</p>
+        <p>A vapour sometime, like a bear, or lion,</p>
+        <p>A tower’d citadel, a pendent rock,</p>
+        <p>A forked mountain, or blue promontory</p>
+        <p>With trees upon ’t, that nod unto the world,</p>
+        <p>And mock our eyes with air.</p>
+    </div>
+
+    <p>He goes on to say that he</p>
+
+    <div class="cita">
+        <p>made these wars for Egypt, and the queen,</p>
+        <p>Whose heart I thought I had, for she had mine,</p>
+    </div>
+
+    <p>and having, as he believes, lost Cleopatra’s heart, he no longer has a real identity as lover or as man of action. The melancholy music of the lines rises up to involve us in this sad sense of loss of self. When, however, he is informed by Mardian that Cleopatra has killed herself for love of him, his identity as lover is immediately re-established and he assumes this role again with a new confidence:</p>
+
+    <div class="cita">
+        <p>I will o’ertake thee, Cleopatra, and</p>
+        <p>Weep for my pardon. So it must be, for now</p>
+        <p>All length is torture: since the torch is out,</p>
+        <p>Lie down and stray no farther. Now all labour</p>
+        <p>Mars what it does: yea, very force entangles</p>
+        <p>Itself with strength: seal then, and all is done.</p>
+        <p>Eros!—I come, my queen:—Eros!—Stay for me,</p>
+        <p>Where souls do couch on flowers, we’ll hand in hand,</p>
+        <p>And with our sprightly port make the ghosts gaze:</p>
+        <p>Dido, and her Aeneas, shall want troops,</p>
+        <p>And all the haunt be ours.</p>
+    </div>
+
+    <p>At first it seems that the re-establishment of his identity as lover means the abandonment of his identity as soldier—“No more a soldier”, he exclaims; but soon it becomes clear that in his resolution to follow Cleopatra to death he is at last adequately uniting both roles. Cleopatra has now assumed the role of conqueror, and he will imitate her:</p>
+
+    <div class="cita">
+        <p>I, that with my sword</p>
+        <p>Quarter’d the world, and o’er green Neptune’s back</p>
+        <p>With ships made cities, condemn myself, to lack</p>
+        <p>The courage of a woman, less noble mind</p>
+        <p>Than she which by her death our Caesar tells</p>
+        <p>“I am conqueror of myself.”</p>
+    </div>
+
+    <p>When he discovers that Cleopatra has not killed herself after all, he does not fall back into his earlier state of disillusion with her; he remains the lover and the loved, ready to act out the last of love’s gestures:</p>
+
+    <div class="cita">
+        <p>I am dying, Egypt, dying; only</p>
+        <p>I here importune death awhile, until</p>
+        <p>Of many thousand kisses, the poor last</p>
+        <p>I lay upon thy lips.</p>
+    </div>
+
+    <p>Finally, at the moment of death, he reassumes the character of conqueror also:</p>
+
+    <div class="cita">
+        <p>but please your thoughts</p>
+        <p>In feeding them with those my former fortunes</p>
+        <p>Wherein I liv’d: the greatest prince o’ the world,</p>
+        <p>The noblest; and do now not basely die,</p>
+        <p>Not cowardly put off my helmet to</p>
+        <p>My countryman: a Roman, by a Roman</p>
+        <p>Valiantly vanquish’d.</p>
+    </div>
+
+    <p>Cleopatra’s great cry of grief at his death is the equivalent from her side of Antony’s speech about the changing shapes of the clouds: no identities are now left in the world, no distinction between mighty and trivial; she is overwhelmed in a patternless and so meaningless world in which all roles are interchangeable:</p>
+
+    <div class="cita">
+        <p>O, wither’d is the garland of the war,</p>
+        <p>The soldier’s pole is fall’n: young boys and girls</p>
+        <p>Are level now with men: the odds is gone,</p>
+        <p>And there is nothing left remarkable</p>
+        <p>Beneath the visiting moon.</p>
+    </div>
+
+    <p>Her love for Antony, we now realise, had been what gave meaning to reality for her; it had been the top in a hierarchy of facts, and when Antony is gone there is no hierarchy, no order, and so no significance in reality. Her own position as queen equally becomes meaningless: she is</p>
+
+    <div class="cita">
+        <p>No more but e’en a woman, and commanded</p>
+        <p>By such poor passion as the maid that milks,</p>
+        <p>And does the meanest chares.</p>
+    </div>
+
+    <p>At the end of the play Cleopatra re-establishes order by the culminating role-taking of her death. So Othello, once he has learned that it was Iago’s malevolence and not the order-destroying and meaning-destroying fact of Desdemona’s faithlessness that produced the appearance of Desdemona’s guilt, is enabled to assume again the role of proud warrior: suicide is inevitable for him, as it is for Antony and Cleopatra, yet it is now an act possessing meaning. (I might add, in passing, that it seems to me that there has been much misguided criticism of <i>Othello</i> and <i>Hamlet</i> in recent years by critics who wrongly assume that, for Shakespeare, characters who act histrionically are therefore acting immorally. A proper reading of <i>Antony and Cleopatra</i> can help us to correct this error.)</p>
+
+    <p>Let me go back to the beginning of the play and see if I can trace some of the ways in which Shakespeare uses poetic imagery to establish his main patterns of meaning. The opening lines give us with startling immediacy the stern Roman view of Antony’s love for Cleopatra, separating at once the Roman from the Egyptian word:</p>
+
+    <div class="cita">
+        <p>Nay, but this dotage of our general’s</p>
+        <p>O’erflows the measure: those his goodly eyes,</p>
+        <p>That o’er the files and musters of the war</p>
+        <p>Have glow’d like plated Mars, now bend, now turn</p>
+        <p>The office and devotion of their view</p>
+        <p>Upon a tawny front: his captain’s heart,</p>
+        <p>Which in the scuffles of great fights hath burst</p>
+        <p>The buckles on his breast, reneges all temper,</p>
+        <p>And is become the bellows and the fan</p>
+        <p>To cool a gipsy’s lust.</p>
+    </div>
+
+    <p>Granville-Barker has well described the quality of the verse:</p>
+
+    <div class="cita">
+        <p>This is as ample and virile in substance, as luminous and as consonant in its music as anything well could be. One tremendous sentence, the ends of the lines not answering to pauses either; these, such as they are, fall midway . . . , so that fresh impulse may overleap the formal vision, and the force be the force of the whole. Note, too, the placing of the dominant “o’erflows the measure” and its complement “reneges all temper” with the doubled parenthesis between them, and how the “now bend, now turn” saves this from slackness; how “files and musters” and “office and devotion” strengthen the beat of the verse, with “plated Mars” coming like the sudden blare of a trumpet, and “burst the buckles on his breast” to sound the exploding indignation which culminates in the deadly</p>
+        <p>And is become the bellows and the fan</p>
+        <p>To cool a gipsy’s lust.</p>
+    </div>
+
+    <p>Granville-Barker has noted how the force of the imagery here is carried over to the reader or hearer. But what of the imagery itself? The word “dotage” strikes hard in the very first line—a damning and degrading word. But note that it is “<i>this</i> dotage of <i>our</i> general’s”. Antony is still, to the Roman onlooker, “our general”: there is a shared pride in that word “our” and a deliberate placing in the hierarchy of command in the word “general”. The general is a general, but his observed behaviour is to be described by this viewer as dotage. <i>This</i> viewer, because when Philo says “<i>this</i> dotage” he is pointing at what he sees, drawing his companion’s attention to the visible paradox, a general, yet in his dotage. Antony is seen by Philo as playing two contrary roles at the same time—and this is not in accordance with the proper proportions of things, it “o’erflows the measure”. It would be proportionate for a general to love, but not for him to <i>dote</i>. For a general to dote “reneges all temper”, that is, it renounces all decent self-restraint, it is disproportionate, an improper placing of a particular kind of behaviour in the hierarchy of human activities and emotions.</p>
+
+    <p>A general has his proper “office and devotion”, his appropriate service and loyalty. For a general’s eyes—“goodly eyes”, it is emphasised, that have in the past appropriately and suitably “glowed like plated Mars”—now to turn</p>
+
+    <div class="cita">
+        <p>The office and devotion of their view</p>
+        <p>Upon a tawny front</p>
+    </div>
+
+    <p>is again outrageous indecorum, wild disproportion. This disproportion is emphasised again and brought to a climax with</p>
+
+    <div class="cita">
+        <p>his captain’s heart,</p>
+        <p>Which in the scuffles of great fights hath burst</p>
+        <p>The buckles on his breast, reneges all temper,</p>
+        <p>And is become the bellows and the fan</p>
+        <p>To cool a gipsy’s lust.</p>
+    </div>
+
+    <p>What has military glory to do with such domestic objects as a bellows and a fan? The juxtaposition is deliberately outrageous. Similarly, the captain’s heart put at the service of a gipsy’s lust reiterates the disproportion, the total scrambling of that hierarchy which gives people and objects their proper virtue and their proper meaning. Yet “tawny front” can suggest not only “dusky face” but also a leonine façade, and “gipsy” is etymologically and phonetically linked with the noble adjective “Egyptian”. While Philo’s language suggests his shocked awareness of a supreme disproportion, it also suggests that this is one man’s interpretation. “Egyptian” is wilfully degraded into “gipsy”. As the spectacle of the two lovers moves across to the middle of the stage to Philo’s cry of “Look, where they come”—the lovers are now before our eyes as well as his—Philo’s sense of the disproportion involved becomes agonising:</p>
+
+    <div class="cita">
+        <p>Take but good note, and you shall see in him</p>
+        <p>The triple pillar of the world transform’d</p>
+        <p>Into a strumpet’s fool.</p>
+    </div>
+
+    <p>And he invites his companion, in biblical-sounding language, to “behold and see”.</p>
+
+    <p>But it is <i>we</i>, the audience or the reader, who now both see and hear. And what is it that we hear?</p>
+
+    <div class="cita">
+        <p>CLEOPATRA: If it be love indeed, tell me how much.</p>
+        <p>ANTONY: There’s beggary in love that can be reckon’d.</p>
+        <p>CLEOPATRA: I’ll set a bourn how far to be belov’d.</p>
+        <p>ANTONY: Then must thou needs find out new heaven, new earth.</p>
+    </div>
+
+    <p>We move at once from the Roman soldier’s view of Antony’s behaviour to the view of the lovers themselves. Here, too, is disproportion, but disproportion of a very different kind from that seen by Philo. Antony declares that there is no limit to his love, that to measure it would involve going beyond the confines of both heaven and earth. This indeed “reneges all temper”—but in glory, not in a shocking confusion of categories. The public entry of Antony and Cleopatra is a posed affair; it is preceded by a flourish of trumpets and accompanied by all the panoply of a royal progress; the lovers are acting out their love. To part of the audience—Philo and Demetrius, the shocked Roman soldiers—the role represents a monstrous confounding of categories; to the actors themselves, it is a glorious extravagance and subsumes everything else; to us who read or watch the play—well, what is it to us? Whose side are we on? We are jolted from Philo’s offensively debasing comments to the sight and sound of the two lovers protesting their love. “All the world loves a lover”, the proverb goes, and one naturally takes the lovers’ side. But with Philo’s words ringing in our ears we remain watchful, eager, interested: what is the true identity of this pair?</p>
+
+    <p>No pause for speculation is allowed. At once an attendant enters, saying</p>
+
+    <div class="cita">
+        <p>News, my good lord, from Rome</p>
+    </div>
+
+    <p>—from that Rome whose representative has just so devastatingly described Antony’s behaviour. The brisk official announcement crashes into the world of amorous extravagance that the lovers’ dialogue has been building up. Antony’s barked, annoyed response—“Grates me, the sum”—shows him forced suddenly out of one role into another which he is most reluctant to play. At this Cleopatra suddenly changes too, quite unexpectedly yet wholly convincingly, into the playful, teasing mocker of her lover:</p>
+
+    <div class="cita">
+        <p>Nay, hear them, Antony:</p>
+        <p>Fulvia perchance is angry; or who knows</p>
+        <p>If the scarce-bearded Caesar have not sent</p>
+        <p>His powerful mandate to you, “do this, or this;</p>
+        <p>Take in that kingdom, and enfranchise that;</p>
+        <p>Perform’t, or else we damn thee.”</p>
+    </div>
+
+    <p>This shocks Antony out of his second role—the lover whose lovemaking is broken into by the claims of business—into yet a third, the surprised and puzzled lover:</p>
+
+    <div class="cita">
+        <p>How, my love?</p>
+    </div>
+
+    <p>With what wonderful economy does Shakespeare capture this third movement of mind and feeling in Antony. He is surprised out of his annoyance with the interrupter, wondering what Cleopatra is up to. She soon shows him, as she goes on:</p>
+
+    <div class="cita">
+        <p>Perchance? nay, and most like:</p>
+        <p>You must not stay here longer, your dismission</p>
+        <p>Is come from Caesar, therefore hear it, Antony.</p>
+        <p>Where’s Fulvia’s process? Caesar’s I would say. Both?</p>
+        <p>Call in the messengers. As I am Egypt’s queen,</p>
+        <p>Thou blushest, Antony, and that blood of thine</p>
+        <p>Is Caesar’s homager: else so thy cheek pays shame</p>
+        <p>When shrill-tongued Fulvia scolds. The messengers!</p>
+    </div>
+
+    <p>She ends, note, by brusquely telling him to attend to the messengers: but she has made sure that, for the time being at least, he won’t. Her mocking references to Fulvia, Antony’s deserted wife—and we remember that Plutarch has described Fulvia as “a woman not so basely minded to spend her time in spinning and housewivery, and was not contented to master her husband at home but would also rule him in his office abroad”—sting Antony into rejection of all that Rome means. In his next speech he confirms Philo’s view of the monstrous disproportion of his behaviour in a remarkable outburst which gains our sympathy not by any explicit or implicit moral justification but by its taking in all of human existence by the way and then including and surpassing it:</p>
+
+    <div class="cita">
+        <p>Let Rome in Tiber melt, and the wide arch</p>
+        <p>Of the rang’d empire fall! Here is my space,</p>
+        <p>Kingdoms are clay: our dungy earth alike</p>
+        <p>Feeds beast as man; the nobleness of life</p>
+        <p>Is to do thus: when such a mutual pair,</p>
+        <p>And such a twain can do’t, in which I bind,</p>
+        <p>On pain of punishment, the world to weet</p>
+        <p>We stand up peerless.</p>
+    </div>
+
+    <p>When Coleridge, in the passage I have already quoted, referred to Shakespeare’s “impressing the notion of giant strength” in this play, he added: “This is owing to the manner in which it is sustained throughout—that he lives in and through the play—to the numerous momentary flashes of nature counteracting the historic abstraction, . . .” Here is the living in and through the play, here are the flashes of nature. “Let . . . the wide arch of the rang’d empire fall.” This is hyperbole with real content. “Rang’d” suggests “ordered” as well as “widely ranging”. The ordered variety of political life, which is how Rome lies in the imagination, must give way to the subsuming of all order and all variety in the oneness of this present experience, which is how the passion of love fills the imagination. It is the obverse of truth that John Donne expressed:</p>
+
+    <div class="cita">
+        <p>For love, all love of other sights controules,</p>
+        <p>And makes one little roome, an every where.</p>
+    </div>
+
+    <p>All nobility of action is subsumed in the embrace of “such a noble pair”. If the two poles between which Antony moves are Rome and Egypt, for the moment the Roman pole is annihilated. But Antony has a long way to go before he can find a role which combines his character of man of action and lover, which <i>justifies</i> him (not perhaps in a moral sense but in the sense that it accommodates his full <i>psyche</i>): the chain of events which finally drives him to suicide is made, in virtue of the poetic imagery in the play, to be the only way in which his various roles can come together in the same action. At this stage, we see him changing parts, but every change is accompanied by some awareness of what is being given up by not participating in other kinds of human action. How compelling and inclusive is the phrase “our dungy earth alike / Feeds beast as man”, taking as it does into its purview in one sweep of perception the very basis of human and animal life and their common dependence on this “dungy earth”. And how that phrase “dungy earth” stresses the coarse and common, yet rich and life-giving, elements that link the highest with the lowest in any hierarchy. In a sense Antony is not here abandoning everything in the world by his and Cleopatra’s mutual love: he is taking it all with him. But only in a sense: as the play moves on Shakespeare develops more and more ways of taking all life with him in presenting the adventures of this couple. Between this speech and the recurrence of the image in a different context in Cleopatra’s speech in Act V, scene II, whole worlds of meaning have been established:</p>
+
+    <div class="cita">
+        <p>My desolation does begin to make</p>
+        <p>A better life: ’tis paltry to be Caesar:</p>
+        <p>Not being Fortune, he’s but Fortune’s knave,</p>
+        <p>A minister of her will: and it is great</p>
+        <p>To do that thing that ends all other deeds,</p>
+        <p>Which shackles accidents, and bolts up change;</p>
+        <p>Which sleeps, and never palates more the dung,</p>
+        <p>The beggar’s nurse, and Caesar’s.</p>
+    </div>
+
+    <p>Here the search for a timeless identity, “which shackles accidents, and bolts up change”, is movingly linked to a profound sense of the common necessities of all human existence. And when the dying Cleopatra, with the aspic at her breast, exclaims</p>
+
+    <div class="cita">
+        <p>Peace, peace!</p>
+        <p>Dost thou not see my baby at my breast,</p>
+        <p>That sucks the nurse asleep?</p>
+    </div>
+
+    <p>the imagery takes on yet another new dimension, so that not only does Cleopatra establish herself at the end as combining the roles of mistress and wife, of courtesan and queen, of Egyptian and Roman, of live-giver and life-taker, but this final unification of roles is linked—in ways that go far beyond the actual story—to a compassionate awareness of the sad yet satisfying realities of human needs and human experience.</p>
+
+    <p>But to return to the dialogue in Act I, scene I. Antony’s moment of abandon to his vision of his and Cleopatra’s mutual love cannot be sustained, for it cannot at this stage correspond to all the demands of his and Cleopatra’s nature. He again repudiates his Roman business and then, by associating love with pleasure and pleasure with mere sport, modulates rapidly from the lover to the mere hedonist:</p>
+
+    <div class="cita">
+        <p>There’s not a minute of our lives should stretch</p>
+        <p>Without some pleasure now. What sport tonight?</p>
+    </div>
+
+    <p>Cleopatra with continuing provocativeness acts the part of his Roman conscience—“Hear the ambassadors” is her only reply to the speech just quoted—but Antony, who has moved from passion to hedonism to joviality, insists on taking this as simply part of her attractive variety:</p>
+
+    <div class="cita">
+        <p>Fie, wrangling queen!</p>
+        <p>Whom everything becomes, to chide, to laugh,</p>
+        <p>To weep: how every passion fully strives</p>
+        <p>To make itself, in thee, fair and admired!</p>
+    </div>
+
+    <p>This topic of Cleopatra’s infinite variety is to sound again and again, in many different ways, throughout the play before the hero and the heroine come to rest in the final and fatal gesture that can make variety into true identity. At this stage in the play Shakespeare deftly moves the royal lovers off the stage to let us hear again the two tough Roman soldiers whose comments had opened the action.</p>
+
+    <div class="cita">
+        <p>I am full sorry</p>
+        <p>That he approves the common liar, who</p>
+        <p>Thus speaks of him at Rome,</p>
+    </div>
+
+    <p>says Demetrius, giving another shake to the kaleidoscope so that we now see Antony neither as the debauched general nor as the passionate lover but simply as a nasty item in a gossip column.</p>
+
+    <p>We move straight from this splendid opening, with its shifting points of view and provocative contrasts between the former and the present Antony and between the Roman and the Egyptian view, to be given what Granville-Barker calls “a taste of the chattering, shiftless, sensual, credulous Court, with its trulls and wizards and effeminates”. The dialogue is in prose before Cleopatra’s entrance, and it is indeed low chatter, though even here the quiet, almost but not quite embittered, realism of Enobarbus’ speech stands out: “Mine, and most of our fortunes to-night, shall be—drunk to bed.” This, then, it would seem, is the atmosphere that has bred Cleopatra. The queen enters, seeking Antony, aware that “A Roman thought hath struck him”, and worried. She prepares her tactics, bidding Enobarbus fetch Antony and then sweeping out as Antony enters. Antony, when he appears, is purely Roman: the blank verse he speaks is brisk and business-like, moving in short sentences. The news from Rome shames him. He is shaken into wishing to hear Cleopatra named “as she is call’d in Rome” and to see himself through Fulvia’s eyes. He has changed roles very thoroughly, and the atmosphere of the Egyptian Court, to which we have just been exposed, helps to make us sympathise. When Cleopatra reappears she has already been diminished, not only by the Court atmosphere and by Antony’s Roman speech, but—and most of all—by Enobarbus’ sardonic commentary on her behaviour and motives. Her tricks are all in vain, and after trying out a variety of moods and responses she is firmly shut up by Antony’s Roman “Quarrel no more, but be prepared to know / The purposes I bear.” She then tries the pathetic—</p>
+
+    <div class="cita">
+        <p>Sir, you and I must part, but that’s not it:</p>
+        <p>Sir, you and I have lov’d, but there’s not it;—</p>
+    </div>
+
+    <p>and in the end, unable to deflect him from his “Roman thought”, she acts the goddess of Victory and leaves him with the memory of an impressive parting:</p>
+
+    <div class="cita">
+        <p>Upon your sword</p>
+        <p>Sit laurel victory, and smooth success</p>
+        <p>Be strew’d before your feet!</p>
+    </div>
+
+    <p>But Antony has already come to see himself as Philo and Demetrius had seen him at the play’s opening; we have heard him repeat Philo’s very word, “dotage”—</p>
+
+    <div class="cita">
+        <p>These strong Egyptian fetters I must break,</p>
+        <p>Or lose myself in dotage.</p>
+    </div>
+
+    <p>At this point it looks as though the play is to be a tug-of-war comedy, with Antony being pulled now by Egyptian sensuality, now by Roman duty. And indeed, there is an element of this in the play, and some critics have seen this element as its main theme. But this is surely to take too narrow a view, a view, moreover, which makes nonsense of some of the play’s finest features as well as of the responses of most careful readers. Of course one might take a mechanical view of the pattern of action and argue that because in the end Antony plays a Roman part (committing suicide) in Egypt for love of his Egyptian Queen he reconciles Rome and Egypt in his death, while Cleopatra, who similarly dies a Roman death in vindication of her Egyptian grandeur, similarly unites the two worlds. But this misses out so much that it cannot begin to be a proper account of what really goes on in the play. True, the conflict between Rome and Egypt is important in the play; it is also true that, as has often been noted, this is the most spacious of the plays, and the whole known Roman world is involved. But any attempt to see the play as merely a balancing of opposites, geographical and psychological, impoverishes it intolerably and also results in the sharpening of the dilemma I described at the beginning. <i>Antony and Cleopatra</i> is a play about ways of confronting experience, about variety and identity.</p>
+
+    <p>In Act I, scene IV we suddenly see Antony in yet another light, when Octavius Caesar refers to him as “our great competitor”, and this is followed by further images of disproportion applied to Antony—“tumble on the bed of Ptolemy”, “give a kingdom for a mirth”, and so on; yet with these words still in our ears we are brought back to Alexandria to hear Cleopatra, seeing Antony’s meaning for her more clearly at a distance, describe him as</p>
+
+    <div class="cita">
+        <p>The demi-Atlas of this earth, the arm</p>
+        <p>And burgonet of men</p>
+    </div>
+
+    <p>—a first foretaste of the grand mythological description she gives of him after his death to Dolabella:</p>
+
+    <div class="cita">
+        <p>His legs bestrid the ocean, his rear’d arm</p>
+        <p>Crested the world: his voice was propertied</p>
+        <p>As all the tuned spheres, and that to friends:</p>
+        <p>But when he meant to quail, and shake the orb,</p>
+        <p>He was rattling thunder. For his bounty,</p>
+        <p>There was no winter in’t: an autumn ’twas</p>
+        <p>That grew the more by reaping: his delights</p>
+        <p>Were dolphin-like, they show’d his back above</p>
+        <p>The element they lived in: in his livery</p>
+        <p>Walk’d crowns and crownets: realms and islands were</p>
+        <p>As plates dropp’d from his pocket.</p>
+    </div>
+
+    <p>These tremendous images of power, benevolence, and sensuality—or of greatness, love, and joy—sum up the different aspects of Antony’s identity, which are seen together, as co-existing, at last after his death. In life they interfered with each other, and can only be described separately. Nevertheless, the introduction of the figure of “the demi-Atlas of this earth” so soon after Octavius Caesar’s complaints about what Antony has declined to, is deliberate and effective. We should note, too, that even Caesar shows himself fully aware of the heroic Antony, though he sees him as the Antony who was and who may be again, not as the present Antony:</p>
+
+    <div class="cita">
+        <p>Antony,</p>
+        <p>Leave thy lascivious wassails. When thou once</p>
+        <p>Was beaten from Modena, where thou slew’st</p>
+        <p>Hirtius and Pansa, consuls, at thy heel</p>
+        <p>Did famine follow, whom thou fought’st against,</p>
+        <p>Though daintily brought up, with patience more</p>
+        <p>Than savages could suffer. Thou didst drink</p>
+        <p>The stale of horses, and the gilded puddle</p>
+        <p>Which beasts would cough at: thy palate then did deign</p>
+        <p>The roughest berry, on the rudest hedge;</p>
+        <p>Yea, like the stag, when snow the pasture sheets,</p>
+        <p>The barks of trees thou browsed. On the Alps</p>
+        <p>It is reported thou didst eat strange flesh,</p>
+        <p>Which some did die to look on: and all this—</p>
+        <p>It wounds thine honour that I speak it now—</p>
+        <p>Was borne so like a soldier, that thy cheek</p>
+        <p>So much as lank’d not.</p>
+    </div>
+
+    <p>This is not only imagery suggestive of almost super-human heroism: it is also violently anti-sensual imagery. The contrast between “lascivious wassails” and “thy palate then did deign / The roughest berry” is absolute. Victory in Egypt is associated with riotous celebration; in Rome with endurance. Cleopatra at the end of the play combines both these notions in her death, which is both a suffering and a ceremony.</p>
+
+    <p>When Caesar and Antony confront each other in Rome, Antony admits the most important charge—that in Egypt he had not sufficiently known himself:</p>
+
+    <div class="cita">
+        <p>And then when poisoned hours had bound me up</p>
+        <p>From mine own knowledge.</p>
+    </div>
+
+    <p>Caesar, cold and passionless, never has any doubt of his own identity; that is one of the advantages of having such a limited character. Lepidus’ character consists in wanting to like and be liked by everybody; he has no real identity at all. Not that Shakespeare presents all this schematically. The presentation teems with life at every point, and some of the situations in which Lepidus is involved are richly comic.</p>
+
+    <p>Meanwhile, Antony acts out his re-acquired <i>persona</i> of the good Roman leader and dutiful family man. He marries Caesar’s sister Octavia, and is all courtesy and affection. But Enobarbus has been with the back-room boys satisfying their eager curiosity about Egypt. It is somewhat reminiscent of late Victorian—or even twentieth century—English businessmen interrogating one of their number who has returned from a visit to Paris. “Is it really true what they say about it? Can you really see this and do that?” “Eight wild boars roasted whole at a breakfast, and but twelve persons there. Is this true?” asks Maecenas: the detail is lifted boldly from Plutarch but Shakespeare puts it to his own use. Enobarbus is being pumped about Egypt, and in replying, this sardonic realist with no illusions tells the simple truth about Cleopatra’s irresistible seductiveness. It is into his mouth that Shakespeare puts the magnificent and well-known description of Antony’s first meeting with Cleopatra (again from Plutarch, but how transmuted!), thus guaranteeing its truth; it is Enobarbus too who evokes her quintessential sex appeal with the brief but brilliant account of her captivating breathlessness after hopping “forty paces through the public street”, and above all it is Enobarbus who replies to Maecenas’ “Now Antony must leave her utterly” with</p>
+
+    <div class="cita">
+        <p>Never; he will not:</p>
+        <p>Age cannot wither her, nor custom stale</p>
+        <p>Her infinite variety: other women cloy</p>
+        <p>The appetites they feed, but she makes hungry,</p>
+        <p>Where most she satisfies. For vilest things</p>
+        <p>Become themselves in her, that the holy priests</p>
+        <p>Bless her, when she is riggish.</p>
+    </div>
+
+    <p>This is not role-taking: it is the considered opinion of a hard-boiled campaigner, and in the light of it we know that Antony has a long way to go before his different <i>personae</i> can unite.</p>
+
+    <p>If <i>we</i> are never allowed to forget Cleopatra, how can Antony? It takes only a casual encounter with an Egyptian soothsayer—whether sent by Cleopatra to weaken Antony’s Roman will or not Shakespeare doesn’t say—to turn him to Egypt again:</p>
+
+    <div class="cita">
+        <p>I will to Egypt;</p>
+        <p>And though I make this marriage for my peace,</p>
+        <p>I’ the east my pleasure lies.</p>
+    </div>
+
+    <p>Mere sensuality is drawing him, it appears. Never up to this point has the love theme, as Antony reflects it, seemed so tawdry. It almost seems as though there is an obvious moral pattern emerging, with Rome on the good side and Egypt on the bad. This is further suggested by the following scene in Alexandria showing Cleopatra’s reaction to the news of Antony’s marriage to Octavia. Yet, after all her tantrums, with her</p>
+
+    <div class="cita">
+        <p>Pity me, Charmian,</p>
+        <p>But do not speak to me,</p>
+    </div>
+
+    <p>a new note of quiet genuineness emerges in Cleopatra’s love for Antony. And if we come to feel that the political world of Roman efficiency represents the moral good in this conflict between Rome and Egypt, we are soon brought to the scene in Pompey’s galley in which power and politics are reduced to their lowest level. Antony fools the drunken Lepidus by talking meaningless nonsense in reply to Lepidus’ questions about Egypt; Menas tries to persuade Pompey to slaughter his guests and so secure the sole rule of the world, and Pompey replies that Menas should have done it first and told him about it afterwards; the reluctant Caesar is persuaded to join in the heavy drinking. Lepidus, “the third part of the world”, has already been carried off drunk. And finally Enobarbus persuades Caesar to join in a dance with Antony and Pompey while a boy sings a drinking song. The utter emptiness of this revelry is desolating, and it casts a bleak light on the whole Roman world. When the song and dance are over Caesar says he has had enough:</p>
+
+    <div class="cita">
+        <p>What would you more? Pompey, good-night.</p>
+        <p>Good brother,</p>
+        <p>Let me request you off: our graver business</p>
+        <p>Frowns at this levity.</p>
+    </div>
+
+    <p>Menas and Enobarbus retire to the former’s cabin for more music and drinking.</p>
+
+    <p>In the light of this dreary and almost enforced celebration we think of Enobarbus’ description of Cleopatra’s first welcome to Antony or the later presentation [Act IV, scene VIII] of Antony’s response to temporary victory and realise that there is another aspect to Egyptian revelry than the dissolute chatter of Act I, scene II. Egyptian celebration has a humanity and a fullness wholly lacking on Pompey’s galley.</p>
+
+    <div class="cita">
+        <p>Enter the city, clip your wives, your friends,</p>
+        <p>Tell them your feats, whilst they with joyful tears</p>
+        <p>Wash the congealment from your wounds, and kiss</p>
+        <p>The honour’d gashes whole,</p>
+    </div>
+
+    <p>exclaims Antony in genial triumph to his men and, to Cleopatra when she enters:</p>
+
+    <div class="cita">
+        <p>My nightingale,</p>
+        <p>We have beat them to their beds. What, girl, though grey</p>
+        <p>Do something mingle with our younger brown, yet ha’ we</p>
+        <p>A brain that nourishes our nerves, and can</p>
+        <p>Get goal for goal of youth. Behold this man,</p>
+        <p>Commend unto his lips thy favouring hand:</p>
+        <p>Kiss it, my warrior: he hath fought to-day</p>
+        <p>As if a god in hate of mankind had</p>
+        <p>Destroy’d in such a shape.</p>
+    </div>
+
+    <p>And Antony goes on to proclaim a victory celebration:</p>
+
+    <div class="cita">
+        <p>Give me thy hand,</p>
+        <p>Through Alexandria make a jolly march,</p>
+        <p>Bear our hack’d targets like the men that owe them.</p>
+        <p>Had our great palace the capacity</p>
+        <p>To camp this host, we all would sup together,</p>
+        <p>And drink carouses to the next day’s fate,</p>
+        <p>Which promises royal peril. Trumpeters,</p>
+        <p>With brazen din blast you the city’s ear,</p>
+        <p>Make mingle with our rattling tabourines,</p>
+        <p>That heaven and earth may strike their sounds together,</p>
+        <p>Applauding our approach.</p>
+    </div>
+
+    <p>Kissing, touching, and shaking of hands are frequent where Antony is the centre of a celebratory scene: it is the human touch, the contact, the insistence on sharing feeling. So against “I’ the east my pleasure lies” we must set on the one hand Roman pleasure as symbolised by the scene in Pompey’s galley and on the other the warm human responsiveness to environment which Antony evinces in so many of his Egyptian moods. Antony’s behaviour in the scene just referred to, when he joyfully celebrates a belated and temporary success which can already be seen as the prelude to almost certain defeat, can be interpreted (and has been interpreted) as the old roué breaking up, losing his grip and his sense of proportion. But surely this is to apply an irrelevant kind of psychologising to the development of the action. Shakespeare’s concern here, it seems to me, is to keep providing Antony with ever changing emotional environments, to bring out all the weaknesses and strengths of his character, as a prelude to his finding his integrating identity in death. There is of course a sense of decline; Antony’s power and fortune are shown as waning together, and the ups and downs in his moods become as a result increasingly violent. But the latter part of the play is not simply a psychological study of the decline of the sensual man in intellectual and emotional stability as his fortunes decline (as Granville-Barker, brilliant though his study of the play is, seems to imply). If it were that, it would be merely pathetic, and it would be hard to account for the note of triumph that rises more than once as the play moves to its conclusion. The play is in fact both triumph and tragedy; Antony, and more especially Cleopatra, achieve in death what they have been unable to achieve in life: the triumph lies in the achievement, the tragedy in that the price of the achievement is death. In the last analysis the play rises above morality to strike a blow in vindication of the human species. Queen or courtesan or lover or sensualist, or all of these, Cleopatra in her death does not let humankind down.</p>
+
+    <p>When Antony returns to Egypt, his defection is announced by Caesar as involving total surrender to oriental perversity and showmanship. The scene opens in the middle of his catalogue:</p>
+
+    <div class="cita">
+        <p>Contemning Rome he has done all this, and more</p>
+        <p>In Alexandria: here’s the manner of’t:</p>
+        <p>I’ the market-place, on a tribunal silver’d,</p>
+        <p>Cleopatra and himself in chairs of gold</p>
+        <p>Were publicly enthron’d: at the feet sat</p>
+        <p>Caesarion, whom they call my father’s son,</p>
+        <p>And all the unlawful issue that their lust</p>
+        <p>Since then hath made between them. Unto her</p>
+        <p>He gave the stablishment of Egypt, made her</p>
+        <p>Of Lower Syria, Cyprus, Lydia,</p>
+        <p>Absolute queen.</p>
+    </div>
+
+    <p>Quite apart from the contempt of Caesar which this implies, it offends the Romans because it is not Caesar’s cool use of power but the histrionic public exhibition of power, acting out a ceremony of power “in the public eye” (in Maecenas’ incredulous phrase). This is an important aspect of Antony’s character: speech and gesture are for him part of action; we make love partly by talking about it, we enjoy power by announcing it with proper pageantry. Caesar goes on to report in horror:</p>
+
+    <div class="cita">
+        <p>I’ the common show-place, where they exercise,</p>
+        <p>His sons he there proclaim’d the kings of kings;</p>
+        <p>Great Media, Parthia, and Armenia,</p>
+        <p>He gave to Alexander; to Ptolemy he assign’d</p>
+        <p>Syria, Cilicia, and Phoenicia: she</p>
+        <p>In the habiliments of the goddess Isis</p>
+        <p>That day appear’d, and oft before gave audience,</p>
+        <p>As ’tis reported, so.</p>
+    </div>
+
+    <p>This is acting, role-taking. The grandeur of the ceremonies seems to come through even Caesar’s repugnant description. He waits, however, for Octavia’s arrival to reduce all this at one blow to what seems to him its proper meaning:</p>
+
+    <div class="cita">
+        <p>He hath given his empire</p>
+        <p>Up to a whore, who now are levying</p>
+        <p>The kings o’ the earth for war. He hath assembled</p>
+        <p>Bocchus, the king of Libya, Archelaus</p>
+        <p>Of Cappadocia, Philadelphos, king</p>
+        <p>Of Paphlagonia; the Thracian king Adallas;</p>
+        <p>King Manchus of Arabia, King of Pont,</p>
+        <p>Herod of Jewry; Mithridates, king</p>
+        <p>Of Comagene, Polemon and Amyntas,</p>
+        <p>The kings of Mede and Lycaonia,</p>
+        <p>With a more larger list of sceptres.</p>
+    </div>
+
+    <p>The litany of eastern names suggests both exotic power and sinister threat to the familiar Roman world; but the chief force of the speech comes in the shocked association of the words “empire” and “whore”. The “kings o’ the earth”—how abstractly absolute the phrase is; the largeness and grandeur of the company seem unlimited. For Caesar, a thing is either one thing or another, and everything should belong to its proper place. A whore to whom an empire has been given up is perhaps made by that fact into something else: certainly, there is a transcending of normal categories. And this is the point. The outlandish assembly of the kings of the earth is monstrous enough, but that all this should be done in the name of a whore is an outrageous confounding of categories. One feels that this, rather than Antony’s disloyalty, is Caesar’s real complaint. It is not that it is totally ridiculous to call Cleopatra a whore. Antony sees her as such on occasion: he uses language much less moderate than Caesar’s when he imagines that she has betrayed him. “Triple-turned whore”, he calls her. But Antony, even in his moments of highest rage with Cleopatra, is aware that the identity he fastens on her in his abuse of her is but one of her identities—“What’s her name, / Since she was Cleopatra?” He can apply to her a term much worse than “whore”, employing that contemptuous food imagery which reduces a woman to a mere object to satisfy the appetite:</p>
+
+    <div class="cita">
+        <p>I found you as a morsel, cold upon</p>
+        <p>Dead Caesar’s trencher: nay, you were a fragment</p>
+        <p>Of Gnaeus Pompey’s, besides what hotter hours,</p>
+        <p>Unregister’d in vulgar fame, you have</p>
+        <p>Luxuriously pick’d out.</p>
+    </div>
+
+    <p>Antony’s emotional vagaries in the long movement of his decline exhibit him as beyond the control of any stabilising self; it is almost as though Shakespeare is making the point that in order to gain one’s identity one must lose it. Antony is seen by his friend Scarus, whose military advice he rejects as he rejects everybody’s except Cleopatra’s, as “the noble ruin of her (i.e., Cleopatra’s) magic”, and Shakespeare makes it clear that this is one aspect of the truth. Antony’s military judgment is overborne by Cleopatra’s reckless desires and intuitions. Even Enobarbus breaks out of his sardonic acquiescence in whatever goes on, to expostulate with Cleopatra herself in a tone of rising anxiety: notice how effectively Shakespeare uses his urgent repetitions;</p>
+
+    <div class="cita">
+        <p>CLEOPATRA: I will be even with thee, doubt it not.</p>
+        <p>ENOBARBUS: But why, why, why?</p>
+        <p>CLEOPATRA: Thou hast forspoke my being in these wars,</p>
+        <p>And say’st it is not fit.</p>
+        <p>ENOBARBUS: Well, is it, is it?</p>
+    </div>
+
+    <p>Soldier and lover are here contradictory roles, which must be acted separately. To attempt to act them out simultaneously is to risk ruining both. Shakespeare spares us nothing—the bickering, the infatuate action, the changes of mood, the melodramatic gesturing. Yet the poetic imagery works in another direction, not so much in its actual verbal suggestions as in its rising energy and human comprehensiveness. And at least Antony acts all his own parts. His chief reason for scorning Octavius Caesar is that he plays simply the role of cunning policy spinner and refuses to prove himself in any other capacity:</p>
+
+    <div class="cita">
+        <p>his coin, ships, legions,</p>
+        <p>May be a coward’s, whose ministers would prevail</p>
+        <p>Under the service of a child, as soon</p>
+        <p>As i’ the command of Caesar: I dare him therefore</p>
+        <p>To lay his gay comparisons apart</p>
+        <p>And answer me declin’d, sword against sword,</p>
+        <p>Ourselves alone.</p>
+    </div>
+
+    <p>Of course, Caesar will not take so preposterous a risk—</p>
+
+    <div class="cita">
+        <p>Caesar to Antony: let the old ruffian know,</p>
+        <p>I have many other ways to die.</p>
+    </div>
+
+    <p>Antony has descended to “old ruffian” now: but it would never occur to Caesar that there is—perhaps must be—an element of the ruffian in every good soldier. He keeps his categories too separate for that kind of thought to be able to emerge. As for Caesar’s “gay comparisons”, it is only Antony’s language that makes them so: the very notion is Antonine, not Caesarian.</p>
+
+    <p>The richness of Antony’s humanity increases with the instability of his attitudes. His rage with the presumptuous Thidias, who dares to kiss Cleopatra’s hand, is of course partly the result of Thidias’ being Caesar’s messenger and of Cleopatra’s looking kindly on him—he himself shortly afterwards gives Cleopatra Scarus’ hand to kiss. But more than that, it is a release of something humanly real within him, and his expression of it has a ring of appeal about it, appeal to our understanding of his emotional predicament, of the full human-ness of his situation:</p>
+
+    <div class="cita">
+        <p>If that thy father live, let him repent</p>
+        <p>Thou wast not made his daughter, and be thou sorry</p>
+        <p>To follow Caesar in his triumph, since</p>
+        <p>Thou hast been whipp’d for following him: henceforth</p>
+        <p>The white hand of a lady fever thee,</p>
+        <p>Shake thou to look on’t. Get thee back to Caesar,</p>
+        <p>Tell him thy entertainment: look thou say</p>
+        <p>He makes me angry with him. For he seems</p>
+        <p>Proud and disdainful, harping on what I am</p>
+        <p>Not what he knew I was. He makes me angry,</p>
+        <p>And at this time most easy ’tis to do’t:</p>
+        <p>When my good stars, that were my former guides,</p>
+        <p>Have empty left their orbs, and shot their fires</p>
+        <p>Into the abysm of hell.</p>
+    </div>
+
+    <p>It is interesting to compare this with the version in North’s <i>Plutarch</i> from which Shakespeare took the incident. “He was longer in talke with her then any man else was, and the Queene her selfe also did him great honor: insomuch as he made Antonius gealous of him. Whereupon Antonius caused him to be taken and well favouredly whipped, and so sent him unto Caesar: and bad him tell him that he made him angrie with him, bicause he shewed him selfe prowde and disdainfull towards him, and now specially when he was easie to be angered, by reason of his present miserie.”</p>
+
+    <p>The phrase “harping on what I am / Not what he knew I was” has no equivalent in Plutarch. Antony’s consciousness of his different selves represents an important part of Shakespeare’s intention. At the same time Antony’s almost genial acknowledgement of his own weakness has not only an engaging confessional aspect but also draws on its rhythm and movement to achieve a suggestion of human fallibility which increases rather than diminishes Antony’s quality as a man:</p>
+
+    <div class="cita">
+        <p>He makes me angry,</p>
+        <p>And at this time most easy ’tis to do ’t: . . .</p>
+    </div>
+
+    <p>When Cleopatra approaches him, hoping that his angry mood has passed, he is still talking to himself:</p>
+
+    <div class="cita">
+        <p>Alack, our terrene moon</p>
+        <p>Is now eclips’d, and it portends alone</p>
+        <p>The fall of Antony!</p>
+    </div>
+
+    <p>It is Cleopatra who is the moon—the changeable planet. (We recall Juliet’s reproof to Romeo:</p>
+
+    <div class="cita">
+        <p>O, swear not by the moon, th’ inconstant moon,</p>
+        <p>That monthly changes in her circled orb . . .)</p>
+    </div>
+
+    <p>But while he is lamenting Cleopatra’s changeableness, she is awaiting the change in him that will bring him back to a full recognition of her love for him: “I must stay his time.” He accuses her of flattering Caesar, and she replies simply: “Not know me yet?” To which in turn he replies with another simple question: “Cold-hearted toward me?” Her answer to this, beginning with the quietly moving “Ah, dear, if I be so, . . .” brings him round at once. “I am satisfied”, is all he says to conclude the dispute, then proceeds at once to talk about his military plans. Having declared these, he suddenly realises just who Cleopatra is and where he stands in relation to her:</p>
+
+    <div class="cita">
+        <p>Where hast thou been, my heart? Dost thou hear, lady?</p>
+        <p>If from the field I shall return once more</p>
+        <p>To kiss these lips, I will appear in blood,</p>
+        <p>I, and my sword, will earn our chronicle:</p>
+        <p>There’s hope in’t yet.</p>
+    </div>
+
+    <p>He is both warrior and lover now, and well may Cleopatra exclaim “That’s my brave lord!” This in turn encourages Antony to move to his third role, that of reveller:</p>
+
+    <div class="cita">
+        <p>I will be treble-sinew’d, hearted, breath’d,</p>
+        <p>And fight maliciously: for when mine hours</p>
+        <p>Were nice and lucky, men did ransom lives</p>
+        <p>Of me for jests: but now, I’ll set my teeth,</p>
+        <p>And send to darkness all that stop me. Come,</p>
+        <p>Let’s have one other gaudy night: call to me</p>
+        <p>All my sad captains, fill our bowls once more;</p>
+        <p>Let’s mock the midnight bell.</p>
+    </div>
+
+    <p>More role-taking now takes place on a very simple and moving plane. Cleopatra adjusts herself to Antony’s recovered confidence:</p>
+
+    <div class="cita">
+        <p>It is my birth-day,</p>
+        <p>I had thought t’ have held it poor. But since my lord</p>
+        <p>Is Antony again, I will be Cleopatra.</p>
+    </div>
+
+    <p>Cleopatra’s reference to her birthday is almost pathos, but it rises at once to grandeur with “But since my lord / Is Antony again, I will be Cleopatra.” The question posed by the play is, what do these two characters finally add up to? When Antony is Antony again and Cleopatra Cleopatra who <i>are</i> they? One cannot give any answer less than the total meaning of the play.</p>
+
+    <p>Enobarbus, the “realist”, gives his comment on this dialogue. He knows his Antony; his shrewd and knowing mind give its ironic diagnosis:</p>
+
+    <div class="cita">
+        <p>Now he’ll outstare the lightning; to be furious</p>
+        <p>Is to be frighted out of fear, and in that mood</p>
+        <p>The dove will peck the estridge; and I see still,</p>
+        <p>A diminution in our captain’s brain</p>
+        <p>Restores his heart; when valour preys on reason,</p>
+        <p>It eats the sword it fights with: I will seek</p>
+        <p>Some way to leave him.</p>
+    </div>
+
+    <p>But it is the realist who does not see the reality, and Enobarbus’ death in an agony of remorse for having deserted Antony in the name of <i>Realpolitik</i> is Shakespeare’s final comment on this interpretation.</p>
+
+    <p>The strangely haunting scene in which the soldiers hear the music which signifies the departure of “the god Hercules, whom Antony lov’d” projects the loss of faith in Antony’s success even by those who love him: this is one soldier’s view of their leader. Antony has already started to play an elegiac role before his men, and this is a consequence of it.</p>
+
+    <p>The death of Antony leaves a whole act for Cleopatra’s duel with Caesar before she finally outwits him and dies in her own way and in her own time. It is an act in which she plays continuously shifting roles, and while these are obviously related to the exigencies of her conflict with Caesar and the fluctuations in her position, they also show her exhibiting varied facets of her character before deciding on the final pose she will adopt before the world and before history. She is not fooled by Caesar or by anybody, despite superficial evidence to the contrary. In the scene with Caesar and Seleucus where she is clearly playing a part designed to fool Caesar into thinking that she wants to live and make the best bargain possible for herself, she exclaims contemptuously to her ladies in waiting: “He words me, girls, he words me”. Caesar is not an accomplished actor—he is not used to role-taking—and he gives himself away. “Feed and sleep”, he tells Cleopatra, thinking that the exhortation will disarm and soothe her. But the words suggest the treatment one gives to a caged beast and give away, what Dolabella is easily charmed by Cleopatra into confirming, that Caesar intends to lead Cleopatra and her children as captives in his triumphal procession. This role, for all her infinite variety, is one Cleopatra will never play. If she does not arrange her last act properly, the Romans will put her in <i>their</i> play:</p>
+
+    <div class="cita">
+        <p>Nay, ’tis most certain, Iras: saucy lictors</p>
+        <p>Will catch at us like strumpets, and scald rhymers</p>
+        <p>Ballad us out o’ tune. The quick comedians</p>
+        <p>Extemporally will stage us, and present</p>
+        <p>Our Alexandrian revels: Antony</p>
+        <p>Shall be brought drunken forth, and I shall see</p>
+        <p>Some squeaking Cleopatra boy my greatness</p>
+        <p>I’ the posture of a whore.</p>
+    </div>
+
+    <p>The pageant of her death which she arranges is a sufficient antidote to this. Preceded as it is by the characteristically enlarging dialogue with the clown who brings the figs—enlarging, that is, the human implications of the action—she goes through death to Antony whom at last she can call by the one name she was never able to call him in life—“Husband, I come”. The splendour and dignity of the final ritual brings together in a great vindication the varied meanings of her histrionic career and temperament:</p>
+
+    <div class="cita">
+        <p>Give me my robe, put on my crown, I have</p>
+        <p>Immortal longings in me.</p>
+    </div>
+
+    <p>It is both a subsuming and a sublimating ritual. Love and loyalty and courage and queenliness are here together at last. And so is sexiness and sensuality, for this is a vindication through <i>wholeness</i>, not through a choice of the “proper” and the respectable elements only. Iras dies first and Cleopatra exclaims:</p>
+
+    <div class="cita">
+        <p>This proves me base:</p>
+        <p>If she first meet the curled Antony,</p>
+        <p>He’ll make demand of her, and spend that kiss</p>
+        <p>Which is my heaven to have.</p>
+    </div>
+
+    <p>This almost flippant sensuality has its place in the summing up, which transcends morality. Charmian, who dies last, lingers to set her dead mistress’s crown straight:</p>
+
+    <div class="cita">
+        <p>Your crown’s awry,</p>
+        <p>I’ll mend it, and then play.</p>
+    </div>
+
+    <p>“Play” means play her part in the supreme pageant of ceremonial death and at the same time refers back, with controlled pathos, to Cleopatra’s earlier</p>
+
+    <div class="cita">
+        <p>And when thou hast done this chare, I’ll give thee leave</p>
+        <p>To play till doomsday: . . .</p>
+    </div>
+
+    <p>When Caesar arrives, the striking and moving spectacle of the dead queen in all her regal splendour flanked by her two dead handmaidens forces even this cold schemer to see her in the great inclusive role she has arranged for herself. Love, which in the Roman view of the matter has hitherto been opposed to duty, the enemy of action and dignity and honour, is now at last, and by the very epitome of Roman authority and efficiency, pronounced to be part of history and of honour:</p>
+
+    <div class="cita">
+        <p>Take up her bed,</p>
+        <p>And bear her women from the monument;</p>
+        <p>She shall be buried by her Antony.</p>
+        <p>No grave upon the earth shall clip in it</p>
+        <p>A pair so famous: high events as these</p>
+        <p>Strike those that make them: and their story is</p>
+        <p>No less in pity than his glory which</p>
+        <p>Brought them to be lamented. Our army shall</p>
+        <p>In solemn show attend this funeral,</p>
+        <p>And then to Rome. Come, Dolabella, see</p>
+        <p>High order, in this great solemnity.</p>
+    </div>
+
+    <p>“Famous”, “high”, “glory”, “solemn”, “order”, “solemnity”—these are the terms which Caesar now applies to a love story which earlier he had dismissed as “lascivious wassails”. Is the play about human frailty or human glory? We are left with the feeling that one depends on the other, an insight too subtly generous for any known morality.</p>
+
+    <section class="footnotes">
+        <h3>Note</h3>
+        <p>From <i>More Literary Essays</i>. Copyright © 1968 by David Daiches. The University of Chicago Press.</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>
