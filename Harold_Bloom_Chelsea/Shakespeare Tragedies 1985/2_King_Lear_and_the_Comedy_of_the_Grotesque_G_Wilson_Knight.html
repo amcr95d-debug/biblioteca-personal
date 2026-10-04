@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>“King Lear” and the Comedy of the Grotesque — G. Wilson Knight</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">G. Wilson Knight</p>
+        <h1 class="cab__tit">“King Lear” and the Comedy of the Grotesque</h1>
+    </header>
+
+    <p>It may appear strange to search for any sort of comedy as a primary theme in a play whose abiding gloom is so heavy, whose reading of human destiny and human actions so starkly tragic. Yet it is an error of aesthetic judgement to regard humour as essentially trivial. Though its impact usually appears vastly different from that of tragedy, yet there is a humour that treads the brink of tears, and tragedy which needs but an infinitesimal shift of perspective to disclose the varied riches of comedy. Humour is an evanescent thing, even more difficult of analysis and intellectual location than tragedy. To the coarse mind lacking sympathy an incident may seem comic which to the richer understanding is pitiful and tragic. So, too, one series of facts can be treated by the artist as either comic or tragic, lending itself equivalently to both. Sometimes a great artist may achieve significant effects by a crisscross of tears and laughter. Chekov does this, especially in his plays. A shifting flash of comedy across the pain of the purely tragic both increases the tension and suggests, vaguely, a resolution and a purification. The comic and the tragic rest both on the idea of incompatibilities, and are also, themselves, mutually exclusive: therefore to mingle them is to add to the meaning of each; for the result is then but a new sublime incongruity.</p>
+
+    <p><i>King Lear</i> is roughly analogous to Chekov where <i>Macbeth</i> is analogous to Dostoievsky. The wonder of Shakespearian tragedy is ever a mystery—a vague, yet powerful, tangible, presence; an interlocking of the mind with a profound meaning, a disclosure to the inward eye of vistas undreamed, and but fitfully understood. <i>King Lear</i> is great in the abundance and richness of human delineation, in the level focus of creation that builds a massive oneness, in fact, a universe, of single quality from a multiplicity of differentiated units; and in a positive and purposeful working out of a purgatorial philosophy. But it is still greater in the perfect fusion of psychological realism with the daring flights of a fantastic imagination. The heart of a Shakespearian tragedy is centred in the imaginative, in the unknown; and in <i>King Lear</i>, where we touch the unknown, we touch the fantastic. The peculiar dualism at the root of this play which wrenches and splits the mind by a sight of incongruities displays in turn realities absurd, hideous, pitiful. This incongruity is Lear’s madness; it is also the demonic laughter that echoes in the <i>Lear</i> universe. In pure tragedy the dualism of experience is continually being dissolved in the masterful beauty of passion, merged in the sunset of emotion. But in comedy it is not so softly resolved—incompatibilities stand out till the sudden relief of laughter or its equivalent of humour: therefore incongruity is the especial mark of comedy. Now in <i>King Lear</i> there is a dualism continually crying in vain to be resolved either by tragedy or comedy. Thence arises its peculiar tension of pain: and the course of the action often comes as near to the resolution of comedy as to that of tragedy. So I shall notice here the imaginative core of the play, and, excluding much of the logic of the plot from immediate attention, analyse the fantastic comedy of <i>King Lear</i>.</p>
+
+    <p>From the start, the situation has a comic aspect. It has been observed that Lear has, so to speak, staged an interlude, with himself as chief actor, in which he grasps expressions of love to his heart, and resigns his sceptre to a chorus of acclamations. It is childish, foolish—but very human. So, too, is the result. Sincerity forbids play-acting, and Cordelia cannot subdue her instinct to any judgement advising tact rather than truth. The incident is profoundly comic and profoundly pathetic. It is, indeed, curious that so storm-furious a play as <i>King Lear</i> should have so trivial a domestic basis: it is the first of our many incongruities to be noticed. The absurdity of the old King’s anger is clearly indicated by Kent:</p>
+
+    <div class="cita">
+        <p>Kill thy physician, and the fee bestow</p>
+        <p>Upon the foul disease.</p>
+        <p class="attribution">(I. i. 166)</p>
+    </div>
+
+    <p>The result is absurd. Lear’s loving daughter Cordelia is struck from his heart’s register, and he is shortly, old and grey-haired and a king, cutting a cruelly ridiculous figure before the cold sanity of his unloving elder daughters. Lear is selfish, self-centred. The images he creates of his three daughters’ love are quite false, sentimentalized: he understands the nature of none of his children, and demanding an unreal and impossible love from all three, is disillusioned by each in turn. But, though sentimental, this love is not weak. It is powerful and firm-planted in his mind as a mountain rock embedded in earth. The tearing out of it is hideous, cataclysmic. A tremendous soul is, as it were, incongruously geared to a puerile intellect. Lear’s senses prove his idealized love-figments false, his intellect snaps, and, as the loosened drive flings limp, the disconnected engine of madness spins free, and the ungeared revolutions of it are terrible, fantastic. This, then, is the basis of the play: greatness linked to puerility. Lear’s instincts are themselves grand, heroic—noble even. His judgement is nothing. He understands neither himself nor his daughters:</p>
+
+    <div class="cita">
+        <p>REGAN: Tis the infirmity of his age: yet he hath ever but slenderly known himself.</p>
+        <p>GONERIL: The best and soundest of his time hath been but rash . . .</p>
+        <p class="attribution">(I. i. 296)</p>
+    </div>
+
+    <p>Lear starts his own tragedy by a foolish misjudgement. Lear’s fault is a fault of the mind, a mind unwarrantably, because selfishly, foolish. And he knows it:</p>
+
+    <div class="cita">
+        <p>O Lear, Lear, Lear!</p>
+        <p>Beat at this gate that let thy folly in,</p>
+        <p>And thy dear judgement out!</p>
+        <p class="attribution">(I. iv. 294)</p>
+    </div>
+
+    <p>His purgatory is to be a purgatory of the mind, of madness. Lear has trained himself to think he cannot be wrong: he finds he is wrong. He has fed his heart on sentimental knowledge of his children’s love: he finds their love is not sentimental. There is now a gaping dualism in his mind, drawn asunder by incongruities, and he endures madness. So the meaning of the play is embodied continually into a fantastic incongruity, which is implicit in the beginning—in the very act of Lear’s renunciation, retaining the ‘title and addition’ of King, yet giving over a king’s authority to his children. As he becomes torturingly aware of the truth, incongruity masters his mind, and fantastic madness ensues; and this peculiar fact of the Lear-theme is reflected in the <i>Lear</i> universe:</p>
+
+    <div class="cita">
+        <p>GLOUCESTER: These late eclipses in the sun and moon portend no good to us: though the wisdom of nature can reason it thus and thus, yet nature finds itself scourged by the sequent effects: love cools, friendship falls off, brothers divide: in cities, mutinies; in countries, discord; in palaces, treason; and the bond cracked ’twixt son and father. This villain of mine comes under the prediction; there’s son against father: the King falls from bias of nature; there’s father against child. We have seen the best of our time: machinations, hollowness, treachery, and all ruinous disorders, follow us disquietly to our graves.</p>
+        <p class="attribution">(I. ii. 115)</p>
+    </div>
+
+    <p>Gloucester’s words hint a universal incongruity here: the fantastic incongruity of parent and child opposed. And it will be most helpful later to notice the Gloucester-theme in relation to that of Lear.</p>
+
+    <p>From the first signs of Goneril’s cruelty, the Fool is used as a chorus, pointing us to the absurdity of the situation. He is indeed an admirable chorus, increasing our pain by his emphasis on a humour which yet will not serve to merge the incompatible in a unity of laughter. He is not all wrong when he treats the situation as matter for a joke. Much here that is always regarded as essentially pathetic is not far from comedy. For instance, consider Lear’s words:</p>
+
+    <div class="cita">
+        <p>I will have such revenges on you both</p>
+        <p>That all the world shall—I will do such things—</p>
+        <p>What they are, yet I know not; but they shall be</p>
+        <p>The terrors of the earth.</p>
+        <p class="attribution">(II. iv. 282)</p>
+    </div>
+
+    <p>What could be more painfully incongruous, spoken, as it is, by an old man, a king, to his daughter? It is not far from the ridiculous. The very thought seems a sacrilegious cruelty, I know: but ridicule is generally cruel. The speeches of Lear often come near comedy. Again, notice the abrupt contrast in his words:</p>
+
+    <div class="cita">
+        <p>But yet thou art my flesh, my blood, my daughters;</p>
+        <p>Or rather a disease that’s in my flesh,</p>
+        <p>Which I must needs call mine: thou art a boil,</p>
+        <p>A plague-sore, an embossed carbuncle,</p>
+        <p>In my corrupted blood. But I’ll not chide thee . . .</p>
+        <p class="attribution">(II. iv. 224)</p>
+    </div>
+
+    <p>This is not comedy, nor humour. But it is exactly the stuff of which humour is made. Lear is mentally a child; in passion a titan. The absurdity of his every act at the beginning of his tragedy is contrasted with the dynamic fury which intermittently bursts out, flickers—then flames and finally gives us those grand apostrophes lifted from man’s stage of earth to heaven’s rain and fire and thunder:</p>
+
+    <div class="cita">
+        <p>Blow, winds, and crack your cheeks! rage! blow!</p>
+        <p>You cataracts and hurricanoes, spout</p>
+        <p>Till you have drench’d our steeples, drown’d the cocks!</p>
+        <p class="attribution">(III. ii. 1)</p>
+    </div>
+
+    <p>Two speeches of this passionate and unrestrained volume of Promethean curses are followed by:</p>
+
+    <div class="cita">
+        <p>No, I will be the pattern of all patience;</p>
+        <p>I will say nothing.</p>
+        <p class="attribution">(III. ii. 37)</p>
+    </div>
+
+    <p>Again we are in touch with potential comedy: a slight shift of perspective, and the incident is rich with humour. A sense of self-directed humour would have saved Lear. It is a quality he absolutely lacks.</p>
+
+    <p>Herein lies the profound insight of the Fool: he sees the potentialities of comedy in Lear’s behaviour. This old man, recently a king, and, if his speeches are fair samples, more than a little of a tyrant, now goes from daughter to daughter, furious because Goneril dares criticize his pet knights, kneeling down before Regan, performing, as she says, ‘unsightly tricks’ (II. iv. 159)—the situation is excruciatingly painful, and its painfulness is exactly of that quality which embarrasses in some forms of comedy. In the theatre, one is terrified lest some one laugh: yet, if Lear could laugh—if the Lears of the world could laugh at themselves—there would be no such tragedy. In the early scenes old age and dignity suffer, and seem to deserve, the punishments of childhood:</p>
+
+    <div class="cita">
+        <p>Now, by my life,</p>
+        <p>Old fools are babes again; and must be used</p>
+        <p>With checks as flatteries.</p>
+        <p class="attribution">(I. iii. 19)</p>
+    </div>
+
+    <p>The situation is summed up by the Fool:</p>
+
+    <div class="cita">
+        <p>LEAR: When were you wont to be so full of songs, sirrah?</p>
+        <p>FOOL: I have used it, nuncle, ever since thou madest thy daughters thy mother: for when thou gavest them the rod, and put’st down thine own breeches . . .</p>
+        <p class="attribution">(I. iv. 186)</p>
+    </div>
+
+    <p>The height of indecency in suggestion, the height of incongruity. Lear is spiritually put to the ludicrous shame endured bodily by Kent in the stocks: and the absurd rant of Kent, and the unreasonable childish temper of Lear, both merit in some measure what they receive. Painful as it may sound, that is, provisionally, a truth we should realize. The Fool realizes it. He is, too, necessary. Here, where the plot turns on the diverging tugs of two assurances in the mind, it is natural that the action be accompanied by some symbol of humour, that mode which is built of unresolved incompatibilities. Lear’s torment is a torment of this dualistic kind, since he scarcely believes his senses when his daughters resist him. He repeats the history of Troilus, who cannot understand the faithlessness of Cressid. In <i>Othello</i> and <i>Timon of Athens</i> the transition is swift from extreme love to revenge or hate. The movement of Lear’s mind is less direct: like Troilus, he is suspended between two separate assurances. Therefore Pandarus, in the latter acts of <i>Troilus and Cressida</i>, plays a part similar to the Fool in <i>King Lear</i>: both attempt to heal the gaping wound of the mind’s incongruous knowledge by the unifying, healing release of laughter. They make no attempt to divert, but rather to direct the hero’s mind to the present incongruity. The Fool sees, or tries to see, the humorous potentialities in the most heart-wrenching of incidents:</p>
+
+    <div class="cita">
+        <p>LEAR: O me, my heart, my rising heart! but, down!</p>
+        <p>FOOL: Cry to it, nuncle, as the cockney did to the eels when she put ’em i’ the paste alive; she knapped ’em o’ the coxcombs with a stick, and cried ‘Down, wantons, down!’ ’Twas her brother that, in pure kindness to his horse, buttered his hay.</p>
+        <p class="attribution">(II. iv. 122)</p>
+    </div>
+
+    <p>Except for the last delightful touch—the antithesis of the other—that is a cruel, ugly sense of humour. It is the sinister humour at the heart of this play: we are continually aware of the humour of cruelty and the cruelty of humour. But the Fool’s use of it is not aimless. If Lear could laugh he might yet save his reason.</p>
+
+    <p>But there is no relief. Outside, in the wild country, the storm grows more terrible:</p>
+
+    <div class="cita">
+        <p>KENT: . . . Since I was man</p>
+        <p>Such sheets of fire, such bursts of horrid thunder,</p>
+        <p>Such groans of roaring wind and rain, I never</p>
+        <p>Remember to have heard . . .</p>
+        <p class="attribution">(III. ii. 45)</p>
+    </div>
+
+    <p>Lear’s mind keeps returning to the unreality, the impossibility of what has happened:</p>
+
+    <div class="cita">
+        <p>Your old kind father, whose frank heart gave all—</p>
+        <p>O, that way madness lies; let me shun that;</p>
+        <p>No more of that.</p>
+        <p class="attribution">(III. iv. 20)</p>
+    </div>
+
+    <p>He is still self-centred; cannot understand that he has been anything but a perfect father; cannot understand his daughters’ behaviour. It is</p>
+
+    <div class="cita">
+        <p>as this mouth should tear this hand</p>
+        <p>For lifting food to’t . . .</p>
+        <p class="attribution">(III. iv. 15)</p>
+    </div>
+
+    <p>It is incongruous, impossible. There is no longer any ‘rule in unity itself’. Just as Lear’s mind begins to fail, the Fool finds Edgar disguised as ‘poor Tom’. Edgar now succeeds the Fool as the counterpart to the breaking sanity of Lear; and where the humour of the Fool made no contact with Lear’s mind, the fantastic appearance and incoherent words of Edgar are immediately assimilated, as glasses correctly focused to the sight of oncoming madness. Edgar turns the balance of Lear’s wavering mentality. His fantastic appearance and lunatic irrelevancies, with the storm outside, and the Fool still for occasional chorus, create a scene of wraith-like unreason, a vision of a world gone mad:</p>
+
+    <div class="cita">
+        <p>. . . Bless thy five wits! Tom’s a-cold—O, do de, do de, do de. Bless thee from whirlwinds, star-blasting, and taking! Do poor Tom some charity, whom the foul fiend vexes: there could I have him now—and there—and there again, and there.</p>
+        <p class="attribution">(III. iv. 57)</p>
+    </div>
+
+    <p>To Lear his words are easily explained. His daughters ‘have brought him to this pass’. He cries:</p>
+
+    <div class="cita">
+        <p>LEAR: Is it the fashion that discarded fathers</p>
+        <p>Should have thus little mercy on their flesh?</p>
+        <p>Judicious punishment! ’twas this flesh begot</p>
+        <p>Those pelican daughters.</p>
+        <p>EDGAR: Pillicock sat on Pillicock-hill:</p>
+        <p>Hallo, halloo, loo, loo!</p>
+        <p>FOOL: This cold night will turn us all to fools and madmen.</p>
+        <p class="attribution">(III. iv. 71)</p>
+    </div>
+
+    <p>What shall we say of this exquisite movement? Is it comedy? Lear’s profound unreason is capped by the blatant irrelevance of Edgar’s couplet suggested by the word ‘pelican’; then the two are swiftly all but unified, for us if not for Lear, in the healing balm of the Fool’s conclusion. It is the process of humour, where two incompatibles are resolved in laughter. The Fool does this again. Lear again speaks a profound truth as the wild night and Edgar’s fantastic impersonation grip his mind and dethrone his conventional sanity:</p>
+
+    <div class="cita">
+        <p>LEAR: Is man no more than this? Consider him well. Thou owest the worm no silk, the beast no hide, the sheep no wool, the cat no perfume. Ha! Here’s three on ’s are sophisticated! Thou art the thing itself: unaccommodated man is no more but such a poor, bare, forked animal as thou art. Off, off, you lendings! come unbutton here. (<i>Tearing off his clothes.</i>)</p>
+        <p>FOOL: Prithee, nuncle, be contented; ’tis a naughty night to swim in.</p>
+        <p class="attribution">(III. iv. 105)</p>
+    </div>
+
+    <p>This is the furthest flight, not of tragedy, but of philosophic comedy. The autocratic and fiery-fierce old king, symbol of dignity, is confronted with the meanest of men: a naked lunatic beggar. In a flash of vision he attempts to become his opposite, to be naked, ‘unsophisticated’. And then the opposing forces which struck the lightning-flash of vision tail off, resolved into a perfect unity by the Fool’s laughter, reverberating, trickling, potent to heal in sanity the hideous unreason of this tempest-shaken night: ‘ ’tis a naughty night to swim in’. Again this is the process of humour: its flash of vision first bridges the positive and negative poles of the mind, unifying them, and then expresses itself in laughter.</p>
+
+    <p>This scene grows still more grotesque, fantastical, sinister. Gloucester enters, his torch flickering in the beating wind:</p>
+
+    <div class="cita">
+        <p>FOOL: . . . Look, here comes a walking fire.</p>
+        <p>(<i>Enter</i> GLOUCESTER, <i>with a torch.</i>)</p>
+        <p>EDGAR: This is the foul fiend Flibbertigibbet: he begins at curfew and walks till the first cock . . .</p>
+        <p class="attribution">(III. iv. 116)</p>
+    </div>
+
+    <p>Lear welcomes Edgar as his ‘philosopher’, since he embodies that philosophy of incongruity and the fantastically-absurd which is Lear’s vision in madness. ‘Noble philosopher’, he says (III. iv. 176), and ‘I will still keep with my philosopher’ (III. iv. 180). The unresolved dualism that tormented Troilus and was given metaphysical expression by him (<i>Troilus and Cressida</i>, V. ii. 134-57) is here more perfectly bodied into the poetic symbol of poor Tom: and since Lear cannot hear the resolving laugh of foolery, his mind is focused only to the ‘philosopher’ mumbling of the foul fiend. Edgar thus serves to lure Lear on: we forget that he is dissimulating. Lear is the centre of our attention, and as the world shakes with tempest and unreason, we endure something of the shaking and the tempest of his mind. The absurd and fantastic reign supreme. Lear does not compass for more than a few speeches the ‘noble anger’ (II. iv. 279) for which he prayed, the anger of Timon. From the start he wavered between affection and disillusionment, love and hate. The heavens in truth ‘fool’ (II. iv. 278) him. He is the ‘natural fool of fortune’ (IV. vi. 196). Now his anger begins to be a lunatic thing, and when it rises to any sort of magnificent fury or power it is toppled over by the ridiculous capping of Edgar’s irrelevancies:</p>
+
+    <div class="cita">
+        <p>LEAR: To have a thousand with red burning spits</p>
+        <p>Come hissing in upon ’em—</p>
+        <p>EDGAR: The foul fiend bites my back.</p>
+        <p class="attribution">(III. vi. 17)</p>
+    </div>
+
+    <p>The mock trial is instituted. Lear’s curses were for a short space terrible, majestic, less controlled and purposeful than Timon’s but passionate and grand in their tempestuous fury. Now, in madness, he flashes on us the ridiculous basis of his tragedy in words which emphasize the indignity and incongruity of it, and make his madness something nearer the ridiculous than the terrible, something which moves our pity, but does not strike awe:</p>
+
+    <div class="cita">
+        <p>Arraign her first; ’tis Goneril. I here take my oath before this honourable assembly, she kicked the poor king her father.</p>
+        <p class="attribution">(III. vi. 49)</p>
+    </div>
+
+    <p>This stroke of the absurd—so vastly different from the awe we experience in face of Timon’s hate—is yet fundamental here. The core of the play is an absurdity, an indignity, an incongruity. In no tragedy of Shakespeare does incident and dialogue so recklessly and miraculously walk the tight-rope of our pity over the depths of bathos and absurdity.</p>
+
+    <p>This particular region of the terrible bordering on the fantastic and absurd is exactly the playground of madness. Now the setting of Lear’s madness includes a sub-plot where these same elements are presented in stark nakedness, with no veiling subtleties. The Gloucester-theme is a certain indication of our vision and helps us to understand, and feel, the enduring agony of Lear. As usual, the first scene of this play strikes the dominant note. Gloucester jests at the bastardy of his son Edmund, remarking that, though he is ashamed to acknowledge him, ‘there was good sport at his making’ (I. i. 23). That is, we start with humour in bad taste. The whole tragedy witnesses a sense of humour in ‘the gods’ which is in similar bad taste. Now all the Lear effects are exaggerated in the Gloucester theme. Edmund’s plot is a more Iago-like, devilish, intentional thing than Goneril’s and Regan’s icy callousness. Edgar’s supposed letter is crude and absurd:</p>
+
+    <div class="cita">
+        <p>. . . I begin to find an idle and fond bondage in the oppression of aged tyranny . . .</p>
+        <p class="attribution">(I. ii. 53)</p>
+    </div>
+
+    <p>But then Edmund, wittiest and most attractive of villains, composed it. One can almost picture his grin as he penned those lines, commending them mentally to the limited intellect of his father. Yes—the Gloucester theme has a beginning even more fantastic than that of Lear’s tragedy. And not only are the Lear effects here exaggerated in the directions of villainy and humour: they are even more clearly exaggerated in that of horror. The gouging out of Gloucester’s eyes is a thing unnecessary, crude, disgusting: it is meant to be. It helps to provide an accompanying exaggeration of one element—that of cruelty—in the horror that makes Lear’s madness. And not only horror: there is even again something satanically comic bedded deep in it. The sight of physical torment, to the uneducated, brings laughter. Shakespeare’s England delighted in watching both physical torment and the comic ravings of actual lunacy. The dance of madmen in Webster’s <i>Duchess of Malfi</i> is of the same ghoulish humour as Regan’s plucking Gloucester by the beard: the groundlings will laugh at both. Moreover, the sacrilege of the human body in torture must be, to a human mind, incongruous, absurd. This hideous mockery is consummated in Regan’s final witticism after Gloucester’s eyes are out:</p>
+
+    <div class="cita">
+        <p>Go, thrust him out at gates, and let him smell</p>
+        <p>His way to Dover.</p>
+        <p class="attribution">(III. vii. 93)</p>
+    </div>
+
+    <p>The macabre humoresque of this is nauseating: but it is there, and integral to the play. These ghoulish horrors, so popular in Elizabethan drama, and the very stuff of the <i>Lear</i> of Shakespeare’s youth, <i>Titus Andronicus</i>, find an exquisitely appropriate place in the tragedy of Shakespeare’s maturity which takes as its especial province this territory of the grotesque and the fantastic which is Lear’s madness. We are clearly pointed to this grim fun, this hideous sense of humour, at the back of tragedy:</p>
+
+    <div class="cita">
+        <p>As flies to wanton boys are we to the gods;</p>
+        <p>They kill us for their sport.</p>
+        <p class="attribution">(IV. i. 36)</p>
+    </div>
+
+    <p>This illustrates the exact quality I wish to emphasize: the humour a boy—even a kind boy—may see in the wriggles of an impaled insect. So, too, Gloucester is bound, and tortured, physically; and so the mind of Lear is impaled, crucified on the cross-beams of love and disillusion.</p>
+
+    <p>There follows the grim pilgrimage of Edgar and Gloucester towards Dover Cliff: an incident typical enough of <i>King Lear</i>—</p>
+
+    <div class="cita">
+        <p>’Tis the times’ plague when madmen lead the blind.</p>
+        <p class="attribution">(IV. i. 46)</p>
+    </div>
+
+    <p>They stumble on, madman and blind man, Edgar mumbling:</p>
+
+    <div class="cita">
+        <p>. . . five fiends have been in poor Tom at once; of lust, as Obidicut; Hobbididance, prince of dumbness; Mahu, of stealing; Modo, of murder; Flibbertigibbet, of mopping and mowing, who since possesses chambermaids and waiting-women . . .</p>
+        <p class="attribution">(IV. i. 59)</p>
+    </div>
+
+    <p>They are near Dover. Edgar persuades his father that they are climbing steep ground, though they are on a level field, that the sea can be heard beneath:</p>
+
+    <div class="cita">
+        <p>GLOUCESTER: Methinks the ground is even.</p>
+        <p>EDGAR: Horrible steep.</p>
+        <p>Hark, do you hear the sea?</p>
+        <p>GLOUCESTER: No, truly.</p>
+        <p>EDGAR: Why, then your other senses grow imperfect</p>
+        <p>By your eyes’ anguish.</p>
+        <p class="attribution">(IV. vi. 3)</p>
+    </div>
+
+    <p>Gloucester notices the changed sanity of Edgar’s speech, and remarks thereon. Edgar hurries his father to the supposed brink, and vividly describes the dizzy precipice over which Gloucester thinks they stand:</p>
+
+    <div class="cita">
+        <p>How fearful</p>
+        <p>And dizzy ’tis to cast one’s eyes so low!</p>
+        <p>The crows and choughs that wing the midway air</p>
+        <p>Show scarce so gross as beetles: half way down</p>
+        <p>Hangs one that gathers samphire, dreadful trade! . . .</p>
+        <p class="attribution">(IV. vi. 12)</p>
+    </div>
+
+    <p>Gloucester thanks him, and rewards him; bids him move off; then kneels, and speaks a prayer of noble resignation, breathing that stoicism which permeates the suffering philosophy of this play:</p>
+
+    <div class="cita">
+        <p>O you mighty gods!</p>
+        <p>This world I do renounce, and, in your sights,</p>
+        <p>Shake patiently my great affliction off:</p>
+        <p>If I could bear it longer, and not fall</p>
+        <p>To quarrel with your great opposeless wills,</p>
+        <p>My snuff and loathed part of nature should</p>
+        <p>Burn itself out.</p>
+        <p class="attribution">(IV. vi. 35)</p>
+    </div>
+
+    <p>Gloucester has planned a spectacular end for himself. We are given these noble descriptive and philosophical speeches to tune our minds to a noble, tragic sacrifice. And what happens? The old man falls from his kneeling posture a few inches, flat, face foremost. Instead of the dizzy circling to crash and spill his life on the rocks below—just this. The grotesque merged into the ridiculous reaches a consummation in this bathos of tragedy: it is the furthest, most exaggerated, reach of the poet’s towering fantasticality. We have a sublimely daring stroke of technique, unjustifiable, like Edgar’s emphasized and vigorous madness throughout, on the plane of plot-logic, and even to a superficial view somewhat out of place imaginatively in so dire and stark a limning of human destiny as is <i>King Lear</i>; yet this scene is in reality a consummate stroke of art. The Gloucester-theme throughout reflects and emphasizes and exaggerates all the percurrent qualities of the Lear-theme. Here the incongruous and fantastic element of the Lear-theme is boldly reflected into the tragically-absurd. The stroke is audacious, unashamed, and magical of effect. Edgar keeps up the deceit; persuades his father that he has really fallen; points to the empty sky, as to a cliff:</p>
+
+    <div class="cita">
+        <p>. . . the shrill-gorged lark</p>
+        <p>Cannot be heard so far . . .</p>
+        <p class="attribution">(IV. vi. 59)</p>
+    </div>
+
+    <p>and finally paints a fantastic picture of a ridiculously grotesque devil that stood with Gloucester on the edge:</p>
+
+    <div class="cita">
+        <p>As I stood here below, methought his eyes</p>
+        <p>Were two full moons; he had a thousand noses,</p>
+        <p>Horns whelk’d and waved like the enridged sea;</p>
+        <p>It was some fiend . . .</p>
+        <p class="attribution">(IV. vi. 70)</p>
+    </div>
+
+    <p>Some fiend, indeed.</p>
+
+    <p>There is masterful artistry in all this. The Gloucester-theme has throughout run separate from that of Lear, yet parallel, and continually giving us direct villainy where the other shows cold callousness; horrors of physical torment where the other has a subtle mental torment; culminating in this towering stroke of the grotesque and absurd to balance the fantastic incidents and speeches that immediately follow. At this point we suddenly have our first sight of Lear in the full ecstasy of his later madness. Now, when our imaginations are most powerfully quickened to the grotesque and incongruous, the whole surge of the Gloucester-theme, which has just reached its climax, floods as a tributary the main stream of our sympathy with Lear. Our vision has thus been uniquely focused to understand that vision of the grotesque, the incongruous, the fantastically-horrible, which is the agony of Lear’s mind:</p>
+
+    <div class="cita">
+        <p><i>Enter Lear, fantastically dressed with wild flowers.</i></p>
+        <p class="attribution">(IV. vi. 81)</p>
+    </div>
+
+    <p>So runs Capell’s direction. Lear, late ‘every inch a king’, the supreme pathetic figure of literature, now utters the wild and whirling language of furthest madness. Sometimes his words hold profound meaning. Often they are tuned to the orthodox Shakespearian hate and loathing, especially sex-loathing, of the hate-theme. Or again, they are purely ludicrous, or would be, were it not a Lear who speaks them:</p>
+
+    <div class="cita">
+        <p>. . . Look, look, a mouse! Peace, peace; this piece of toasted cheese will do’t . . .</p>
+        <p class="attribution">(IV. vi. 90)</p>
+    </div>
+
+    <p>It is certainly as well that we have been by now prepared for the grotesque. Laughter is forbidden us. Consummate art has so forged plot and incident that we may watch with tears rather than laughter the cruelly comic actions of Lear:</p>
+
+    <div class="cita">
+        <p>LEAR: I will die bravely, like a bridegroom. What!</p>
+        <p>I will be jovial: come, come; I am a king,</p>
+        <p>My masters, know you that?</p>
+        <p>GENTLEMAN: You are a royal one, and we obey you.</p>
+        <p>LEAR: Then there’s life in’t. Nay, if you get it, you shall get it with running. Sa, sa, sa, sa.</p>
+        <p class="attribution">(IV. vi. 203)</p>
+    </div>
+
+    <p>Lear is a child again in his madness. We are in touch with the exquisitely pathetic, safeguarded only by Shakespeare’s masterful technique from the bathos of comedy.</p>
+
+    <p>This recurring and vivid stress on the incongruous and the fantastic is not a subsidiary element in <i>King Lear</i>: it is the very heart of the play. We watch humanity grotesquely tormented, cruelly and with mockery impaled: nearly all the persons suffer some form of crude indignity in the course of the play. I have noticed the major themes of Lear and Gloucester: there are others. Kent is banished, undergoes the disguise of a servant, is put to shame in the stocks; Cornwall is killed by his own servant resisting the dastardly mutilation of Gloucester; Oswald, the prim courtier, is done to death by Edgar in the role of an illiterate country yokel—</p>
+
+    <div class="cita">
+        <p>. . . keep out, che vor ye, or ise try whether your costard or my ballow be the harder . . .</p>
+        <p class="attribution">(IV. vi. 247)</p>
+    </div>
+
+    <p>Edgar himself endures the utmost degradation of his disguise as ‘poor Tom’, begrimed and naked, and condemned to speak nothing but idiocy. Edmund alone steers something of an unswerving tragic course, brought to a fitting, deserved, but spectacular end, slain by his wronged brother, nobly repentant at the last:</p>
+
+    <div class="cita">
+        <p>EDMUND: What you have charged me with, that have I done;</p>
+        <p>And more, much more; the time will bring it out:</p>
+        <p>’Tis past, and so am I. But what art thou</p>
+        <p>That hast this fortune on me? If thou’rt noble,</p>
+        <p>I do forgive thee.</p>
+        <p>EDGAR: Let’s exchange charity.</p>
+        <p>I am no less in blood than thou art, Edmund;</p>
+        <p>If more, the more thou hast wrong’d me.</p>
+        <p>My name is Edgar . . .</p>
+        <p class="attribution">(V. iii. 164)</p>
+    </div>
+
+    <p>The note of forgiving chivalry reminds us of the deaths of Hamlet and Laertes. Edmund’s fate is nobly tragic: ‘the wheel has come full circle; I am here’ (V. iii. 176). And Edmund is the most villainous of all. Again, we have incongruity; and again, the Gloucester-theme reflects the Lear-theme. Edmund is given a noble, an essentially tragic, end, and Goneril and Regan, too, meet their ends with something of tragic fineness in pursuit of their evil desires. Regan dies by her sister’s poison; Goneril with a knife. They die, at least, in the cause of love—love of Edmund.</p>
+
+    <p>Compared with these deaths, the end of Cordelia is horrible, cruel, unnecessarily cruel—the final grotesque horror in the play. Her villainous sisters are already dead. Edmund is nearly dead, repentant. It is a matter of seconds—and rescue comes too late. She is hanged by a common soldier. The death which Dostoievsky’s Stavrogin singled out as of all the least heroic and picturesque, or rather, shall we say, the most hideous and degrading: this is the fate that grips the white innocence and resplendent love-strength of Cordelia. To be hanged, after the death of her enemies, in the midst of friends. It is the last hideous joke of destiny: this—and the fact that Lear is still alive, has recovered his sanity for this. The death of Cordelia is the last and most horrible of all the horrible incongruities I have noticed:</p>
+
+    <div class="cita">
+        <p>Why should a dog, a horse, a rat have life,</p>
+        <p>And thou no breath at all?</p>
+        <p class="attribution">(V. iii. 308)</p>
+    </div>
+
+    <p>We remember: ‘Upon such sacrifices, my Cordelia, the gods themselves throw incense’ (V. iii. 20). Or do they laugh, and is the <i>Lear</i> universe one ghastly piece of fun?</p>
+
+    <p>We do not feel that. The tragedy is most poignant in that it is purposeless, unreasonable. It is the most fearless artistic facing of the ultimate cruelty of things in our literature. That cruelty would be less were there not this element of comedy which I have emphasized, the insistent incongruities, which create and accompany the madness of Lear, which leap to vivid shape in the mockery of Gloucester’s suicide, which are intrinsic in the texture of the whole play. Mankind is, as it were, deliberately and comically tormented by ‘the gods’. He is not even allowed to die tragically. Lear is ‘bound upon a wheel of fire’ and only death will end the victim’s agony:</p>
+
+    <div class="cita">
+        <p>Vex not his ghost: O, let him pass! he hates him</p>
+        <p>That would upon the rack of this tough world</p>
+        <p>Stretch him out longer.</p>
+        <p class="attribution">(V. iii. 315)</p>
+    </div>
+
+    <p><i>King Lear</i> is supreme in that, in this main theme, it faces the very absence of tragic purpose: wherein it is profoundly different from <i>Timon of Athens</i>. Yet, as we close the sheets of this play, there is no horror, nor resentment. The tragic purification of the essentially untragic is yet complete.</p>
+
+    <p>Now in this essay it will, perhaps, appear that I have unduly emphasized one single element of the play, magnifying it, and leaving the whole distorted. It has been my purpose to emphasize. I have not exaggerated. The pathos has not been minimized: it is redoubled. Nor does the use of the words ‘comic’ and ‘humour’ here imply disrespect to the poet’s purpose: rather I have used these words, crudely no doubt, to cut out for analysis the very heart of the play—the thing that man dares scarcely face: the demonic grin of the incongruous and absurd in the most pitiful of human struggles with an iron fate. It is this that wrenches, splits, gashes the mind till it utters the whirling vapourings of lunacy. And, though love and music—twin sisters of salvation—temporarily may heal the racked consciousness of Lear, yet, so deeply planted in the facts of our life is this unknowing ridicule of destiny, that the uttermost tragedy of the incongruous ensues, and there is no hope save in the broken heart and limp body of death. This is of all the most agonizing of tragedies to endure: and if we are to feel more than a fraction of this agony, we must have sense of this quality of grimmest humour. We must beware of sentimentalizing the cosmic mockery of the play.</p>
+
+    <p>And is there, perhaps, even a deeper, and less heart-searing, significance in its humour? Smiles and tears are indeed most curiously interwoven here. Gloucester was saved from his violent and tragic suicide that he might recover his wronged son’s love, and that his heart might</p>
+
+    <div class="cita">
+        <p>’Twixt two extremes of passion, joy and grief,</p>
+        <p>Burst smilingly.</p>
+        <p class="attribution">(V. iii. 200)</p>
+    </div>
+
+    <p>Lear dies with the words</p>
+
+    <div class="cita">
+        <p>Do you see this? Look on her, look, her lips,</p>
+        <p>Look there, look there!</p>
+        <p class="attribution">(V. iii. 312)</p>
+    </div>
+
+    <p>What smiling destiny is this he sees at the last instant of racked mortality? Why have we that strangely beautiful account of Cordelia’s first hearing of her father’s pain:</p>
+
+    <div class="cita">
+        <p>. . . patience and sorrow strove</p>
+        <p>Who should express her goodliest. You have seen</p>
+        <p>Sunshine and rain at once: her smiles and tears</p>
+        <p>Were like a better way: those happy smilets,</p>
+        <p>That play’d on her ripe lip, seem’d not to know</p>
+        <p>What guests were in her eyes; which parted thence,</p>
+        <p>As pearls from diamonds dropp’d. In brief,</p>
+        <p>Sorrow would be a rarity most belov’d,</p>
+        <p>If all could so become it.</p>
+        <p class="attribution">(IV. iii. 18)</p>
+    </div>
+
+    <p>What do we touch in these passages? Sometimes we know that all human pain holds beauty, that no tear falls but it dews some flower we cannot see. Perhaps humour, too, is inwoven in the universal pain, and the enigmatic silence holds not only an unutterable sympathy, but also the ripples of an impossible laughter whose flight is not for the wing of human understanding; and perhaps it is this that casts its darting shadow of the grotesque across the furrowed pages of <i>King Lear</i>.</p>
+
+    <section class="footnotes">
+        <h3>Note</h3>
+        <p>From <i>The Wheel of Fire</i>. Copyright © 1930 by Oxford University Press.</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>
