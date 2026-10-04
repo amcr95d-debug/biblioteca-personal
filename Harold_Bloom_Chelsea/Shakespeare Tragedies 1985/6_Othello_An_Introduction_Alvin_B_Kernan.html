@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>“Othello”: An Introduction — Alvin B. Kernan</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">Alvin B. Kernan</p>
+        <h1 class="cab__tit">“Othello”: An Introduction</h1>
+    </header>
+
+    <p>When Shakespeare wrote <i>Othello</i>, about 1604, his knowledge of human nature and his ability to dramatize it in language and action were at their height. The play offers, even in its minor characters, a number of unusually full and profound studies of humanity: Brabantio, the sophisticated, civilized Venetian senator, unable to comprehend that his delicate daughter could love and marry a Moor, speaking excitedly of black magic and spells to account for what his mind cannot understand; Cassio, the gentleman-soldier, polished in manners and gracious in bearing, wildly drunk and revealing a deeply rooted pride in his ramblings about senior officers being saved before their juniors; Emilia, the sensible and conventional waiting woman, making small talk about love and suddenly remarking that though she believes adultery to be wrong, still if the price were high enough she would sell—and so, she believes, would most women. The vision of human nature which the play offers is one of ancient terrors and primal drives—fear of the unknown, pride, greed, lust—underlying smooth, civilized surfaces—the noble senator, the competent and well-mannered lieutenant, the conventional gentlewoman.</p>
+
+    <p>The contrast between surface manner and inner nature is even more pronounced in two of the major characters. “Honest Iago” conceals beneath his exterior of the plain soldier and blunt, practical man of the world a diabolism so intense as to defy rational explanation—it must be taken like lust or pride as simply a given part of human nature, an anti-life spirit which seeks the destruction of everything outside the self. Othello appears in the opening acts as the very personification of self-control, of the man with so secure a sense of his own worth that nothing can ruffle the consequent calmness of mind and manner. But the man who has roamed the wild and savage world unmoved by its terrors, who has not changed countenance when the cannon killed his brother standing beside him, this man is still capable of believing his wife a whore on the slightest of evidence and committing murders to revenge himself. In Desdemona alone do the heart and the hand go together: she is what she seems to be. Ironically, she alone is accused of pretending to be what she is not. Her very openness and honesty make her suspect in a world where few men are what they appear, and her chastity is inevitably brought into question in a world where every other major character is in some degree touched with sexual corruption.</p>
+
+    <p>Most criticism of <i>Othello</i> has concerned itself with exploring the depths of these characters and tracing the intricate, mysterious operations of their minds. I should like, however, to leave this work to the individual reader . . . in order to discuss, briefly, what might be called the “gross mechanics” of the play, the larger patterns in which events and characters are arranged. These patterns are the context within which the individual characters are defined, just as the pattern of a sentence is the context which defines the exact meaning of the individual words within it.</p>
+
+    <p><i>Othello</i> is probably the most neatly, the most formally constructed of Shakespeare’s plays. Every character is, for example, balanced by another similar or contrasting character. Desdemona is balanced by her opposite, Iago; love and concern for others at one end of the scale, hatred and concern for self at the other. The true and loyal soldier Cassio balances the false and traitorous soldier Iago. These balances and contrasts throw into relief the essential qualities of the characters. Desdemona’s love, for example, shows up a good deal more clearly in contrast to Iago’s hate, and vice versa. The values of contrast are increased and the full range of human nature displayed by extending these simple contrasts into developing series. The essential purity of Desdemona stands in contrast to the more practical view of chastity held by Emilia, and her view in turn is illuminated by the workaday view of sensuality held by the courtesan Bianca, who treats love, ordinarily, as commodity. Or, to take another example, Iago’s success in fooling Othello is but the culmination of a series of such betrayals that includes the duping of Roderigo, Brabantio, and Cassio. Each duping is the explanatory image of the other, for in every case Iago’s method and end are the same: he plays on and teases to life some hitherto controlled and concealed dark passion in his victim. In each case he seeks in some way the same end, the symbolic murder of Desdemona, the destruction in some form of the life principle of which she is the major embodiment.</p>
+
+    <p>These various contrasts and parallelisms ultimately blend into a larger, more general pattern that is the central movement of the play. We can begin to see this pattern in the “symbolic geography” of the play. Every play, or work of art, creates its own particular image of space and time, its own symbolic world. The outer limits of the world of <i>Othello</i> are defined by the Turks—the infidels, the unbelievers, the “general enemy” as the play calls them—who, just over the horizon, sail back and forth trying to confuse and trick the Christians in order to invade their dominions and destroy them. Out beyond the horizon, reported but unseen, are also those “anters vast and deserts idle” of which Othello speaks. Out there is a land of “rough quarries, rocks, and hills whose heads touch heaven” inhabited by “cannibals that each other eat” and monstrous forms of men “whose heads grow beneath their shoulders.” On the edges of this land is the raging ocean with its “high seas, and howling winds,” its “guttered rocks and congregated sands” hidden beneath the waters to “enclog the guiltless keel.”</p>
+
+    <p>Within the circle formed by barbarism, monstrosity, sterility, and the brute power of nature lie the two Christian strongholds of Venice and Cyprus. Renaissance Venice was known for its wealth acquired by trade, its political cunning, and its courtesans; but Shakespeare, while reminding us of the tradition of the “supersubtle Venetian,” makes Venice over into a form of <i>The City</i>, the ageless image of government, of reason, of law, and of social concord. Here, when Brabantio’s strong passions and irrational fears threaten to create riot and injustice, his grievances are examined by a court of law, judged by reason, and the verdict enforced by civic power. Here, the clear mind of the Senate probes the actions of the Turks, penetrates through their pretenses to their true purposes, makes sense of the frantic and fearful contradictory messages which pour in from the fleet, and arranges the necessary defense. Act I, Scene iii—the Senate scene—focuses on the magnificent speeches of Othello and Desdemona as they declare their love and explain it, but the lovers are surrounded, guarded, by the assembled, ranked governors of Venice, who control passions that otherwise would have led to a bloody street brawl and bring justice out of what otherwise would have been riot. The solemn presence and ordering power of the Senate would be most powerfully realized in a stage production, where the senators would appear in their rich robes, with all their symbols of office, seated in ranks around several excited individuals expressing such primal passions as pride of race, fear of dark powers, and violent love. In a play where so much of the language is magnificent, rich, and of heroic proportions, simpler statements come to seem more forceful; and the meaning of <i>The City</i> is perhaps nowhere more completely realized than in Brabantio’s brief, secure answer to the first fearful cries of theft and talk of copulating animals that Iago and Roderigo send up from the darkness below his window:</p>
+
+    <div class="cita">
+        <p>What tell’st thou me of robbing? This is Venice;</p>
+        <p>My house is not a grange.</p>
+        <p class="attribution">(I.i.102–03)</p>
+    </div>
+
+    <p>Here then are the major reference points on a map of the world of <i>Othello</i>: out at the far edge are the Turks, barbarism, disorder, and amoral destructive powers; closer and more familiar is Venice, <i>The City</i>, order, law, and reason. Cyprus, standing on the frontier between barbarism and <i>The City</i>, is not the secure fortress of civilization that Venice is. It is rather an outpost, weakly defended and far out in the raging ocean, close to the “general enemy” and the immediate object of his attack. It is a “town of war yet wild” where the “people’s hearts [are] brimful of fear.” Here passions are more explosive and closer to the surface than in Venice, and here, instead of the ancient order and established government of <i>The City</i>, there is only one man to control violence and defend civilization—the Moor Othello, himself of savage origins and a converted Christian.</p>
+
+    <p>The movement of the play is from Venice to Cyprus, from <i>The City</i> to the outpost, from organized society to a condition much closer to raw nature, and from collective life to the life of the solitary individual. This movement is a characteristic pattern in Shakespeare’s plays, both comedies and tragedies: in <i>A Midsummer Night’s Dream</i> the lovers and players go from the civilized, daylight world of Athens to the irrational, magical wood outside Athens and the primal powers of life represented by the elves and fairies; Lear moves from his palace and secure identity to the savage world of the heath where all values and all identities come into question; and everyone in <i>The Tempest</i> is shipwrecked at some time on Prospero’s magic island, where life seen from a new perspective assumes strange and fantastic shapes. At the other end of this journey there is always some kind of return to <i>The City</i>, to the palace, and to old relationships, but the nature of this return differs widely in Shakespeare’s plays. In <i>Othello</i> the movement at the end of the play is back toward Venice, the Turk defeated; but Desdemona, Othello, Emilia, and Roderigo do not return. Their deaths are the price paid for the return.</p>
+
+    <p>This passage from Venice to Cyprus to fight the Turk and encounter the forces of barbarism is the geographical form of an action that occurs on the social and psychological levels as well. That is, there are social and mental conditions that correspond to Venice and Cyprus, and there are forces at work in society and in man that correspond to the Turks, the raging seas, and “cannibals that each other eat.”</p>
+
+    <p>The exposure to danger, the breakdown and the ultimate reestablishment of society—the parallel on the social level to the action on the geographical level—is quickly traced. We have already noted that the Venetian Senate embodies order, reason, justice, and concord, the binding forces that hold <i>The City</i> together. In Venice the ancient laws and the established customs of society work to control violent men and violent passions to ensure the safety and well-being of the individual and the group. But there are anarchic forces at work in the city, which threaten traditional social forms and relationships, and all these forces center in Iago. His discontent with his own rank and his determination to displace Cassio endanger the orderly military hierarchy in which the junior serves his senior. He endangers marriage, the traditional form for ordering male and female relationships, by his own unfounded suspicions of his wife and by his efforts to destroy Othello’s marriage by fanning to life the darker, anarchic passions of Brabantio and Roderigo. He tries to subvert the operation of law and justice by first stirring up Brabantio to gather his followers and seek revenge in the streets; and then when the two warlike forces are met, Iago begins a quarrel with Roderigo in hopes of starting a brawl. The nature of the antisocial forces that Iago represents are focused in the imagery of his advice to Roderigo on how to call out to her father the news of Desdemona’s marriage. Call, he says,</p>
+
+    <div class="cita">
+        <p>with like timorous [frightening] accent and dire yell</p>
+        <p>As when, by night and negligence, the fire</p>
+        <p>Is spied in populous cities.</p>
+        <p class="attribution">(I.i.72–74)</p>
+    </div>
+
+    <p>Fire, panic, darkness, neglect of duty—these are the natural and human forces that destroy great cities and turn their citizens to mobs.</p>
+
+    <p>In Venice, Iago’s attempts to create civic chaos are frustrated by Othello’s calm management of himself and the orderly legal proceedings of the Senate. In Cyprus, however, society is less secure—even as the island is more exposed to the Turks—and Othello alone is responsible for finding truth and maintaining order. Here Iago’s poison begins to work, and he succeeds at once in manufacturing the riot that he failed to create in Venice. Seen on stage, the fight on the watch between Cassio and Montano is chaos come again: two drunken officers, charged with the defense of the town, trying to kill each other like savage animals, a bedlam of voices and shouts, broken, disordered furniture, and above all this the discordant clamor of the “dreadful” alarm bell—used to signal attacks and fire. This success is but the prologue for other more serious disruptions of society and of the various human relationships that it fosters. The General is set against his officer, husband against wife, Christian against Christian, servant against master. Justice becomes a travesty of itself as Othello—using legal terms such as “It is the <i>cause</i>”—assumes the offices of accuser, judge, jury, and executioner of his wife. Manners disappear as the Moor strikes his wife publicly and treats her maid as a procuress. The brightly lighted Senate chamber is now replaced with a dark Cyprus street where Venetians cut one another down and men are murdered from behind. This anarchy finally gives way in the last scene, when Desdemona’s faith is proven, to a restoration of order and an execution of justice on the two major criminals.</p>
+
+    <p>What we have followed so far is a movement expressed in geographical and social symbols from Venice to a Cyprus exposed to attack, from <i>The City</i> to barbarism, from Christendom to the domain of the Turks, from order to riot, from justice to wild revenge and murder, from truth to falsehood. It now remains to see just what this movement means on the level of the individual in the heart and mind of man. Of the three major characters, Desdemona, Othello, and Iago, the first and the last do not change their natures or their attitudes toward life during the course of the play. These two are polar opposites, the antitheses of each other. To speak in the most general terms, Desdemona expresses in her language and actions an innocent, unselfish love and concern for others. Othello catches her very essence when he speaks of her miraculous love, which transcended their differences in age, color, beauty, and culture:</p>
+
+    <div class="cita">
+        <p>She loved me for the dangers I had passed,</p>
+        <p>And I loved her that she did pity them.</p>
+        <p class="attribution">(I.iii.166–67)</p>
+    </div>
+
+    <p>This love in its various forms finds expression not only in her absolute commitment of herself to Othello, but in her gentleness, her kindness to others, her innocent trust in all men, her pleas for Cassio’s restoration to Othello’s favor; and it endures even past death at her husband’s hands, for she comes back to life for a moment to answer Emilia’s question, “who hath done this deed?” with the unbelievable words,</p>
+
+    <div class="cita">
+        <p>Nobody—I myself. Farewell.</p>
+        <p>Commend me to my kind lord. O, farewell!</p>
+        <p class="attribution">(V.ii.123–24)</p>
+    </div>
+
+    <p>Iago is her opposite in every way. Where she is open and guileless, he is never what he seems to be; where she thinks the best of everyone, he thinks the worst, usually turning to imagery of animals and physical functions to express his low opinion of human nature; where she seeks to serve and love others, he uses others to further his own dark aims and satisfy his hatred of mankind; where she is emotional and idealistic, he is icily logical and cynical. Desdemona and Iago are much more complicated than this, but perhaps enough has been said to suggest the nature of these two moral poles of the play. One is a life force that strives for order, community, growth, and light. The other is an anti-life force that seeks anarchy, death, and darkness. One is the foundation of all that men have built in the world, including <i>The City</i>; the other leads back toward ancient chaos and barbarism.</p>
+
+    <p>Othello, like most men, is a combination of the forces of love and hate, which are isolated in impossibly pure states in Desdemona and Iago. His psychic voyage from Venice to Cyprus is a passage of the soul and the will from the values of one of these characters to those of the other. This passage is charted by his acceptance and rejection of one or the other. He begins by refusing to have Iago as his lieutenant, choosing the more “theoretical” though less experienced Cassio. He marries Desdemona. Though he is not aware that he does so, he expresses the full meaning of this choice when he speaks of her in such suggestive terms as “my soul’s joy” and refers to her even as he is about to kill her, as “Promethean heat,” the vital fire that gives life to the world. Similarly, he comes to know that all that is valuable in life depends on her love, and in the magnificent speech beginning, “O now, forever / Farewell the tranquil mind” (III.iii.344–45), he details the emptiness of all human activity if Desdemona be proved false. But Iago, taking advantage of latent “Iagolike” feelings and thoughts in Othello, persuades him that Desdemona is only common clay. Othello then gives himself over to Iago at the end of III.iii, where they kneel together to plan the revenge, and Othello says, “Now art thou my lieutenant.” To which Iago responds with blood-chilling simplicity, “I am your own forever.” The full meaning of this choice is expressed, again unconsciously, by Othello when he says of Desdemona,</p>
+
+    <div class="cita">
+        <p>Perdition catch my soul</p>
+        <p>But I do love thee! and when I love thee not,</p>
+        <p>Chaos is come again.</p>
+        <p class="attribution">(III.iii.90–92)</p>
+    </div>
+
+    <p>The murder of Desdemona acts out the final destruction in Othello himself of all the ordering powers of love, of trust, of the bond between human beings.</p>
+
+    <p>Desdemona and Iago then represent two states of mind, two understandings of life, and Othello’s movement from one to the other is the movement on the level of character and psychology from Venice to Cyprus, from <i>The City</i> to anarchy. His return to <i>The City</i> and the defeat of the Turk is effected, at the expense of his own life, when he learns what he has killed and executes himself as the only fitting judgment on his act. His willingness to speak of what he has done—in contrast to Iago’s sullen silence—is a willingness to recognize the meaning of Desdemona’s faith and chastity, to acknowledge that innocence and love do exist, and that therefore <i>The City</i> can stand, though his life is required to validate the truth and justice on which it is built.</p>
+
+    <p><i>Othello</i> offers a variety of interrelated symbols that locate and define in historical, natural, social, moral, and human terms those qualities of being and universal forces that are forever at war in the universe and between which tragic man is always in movement. On one side there are Turks, cannibals, barbarism, monstrous deformities of nature, the brute force of the sea, riot, mobs, darkness, Iago, hatred, lust, concern for the self only, and cynicism. On the other side there are Venice, <i>The City</i>, law, senates, amity, hierarchy, Desdemona, love, concern for others, and innocent trust. As the characters of the play act and speak, they bring together, by means of parallelism and metaphor, the various forms of the different ways of life. There is, for example, a meaningful similarity in the underhanded way Iago works and the ruse by which the Turks try to fool the Venetians into thinking they are bound for Rhodes when their object is Cyprus. Or, there is again a flash of identification when we hear that the reefs and shoals that threaten ships are “ensteeped,” that is, hidden under the surface of the sea, as Iago is hidden under the surface of his “honesty.” But Shakespeare binds the various levels of being more closely together by the use of imagery that compares things on one level of action with things on another. For example, when Iago swears that his low judgment of all female virtue “is true, or else I am a Turk” (II.i.113), logic demands, since one woman, Desdemona, is true and chaste, that we account him “a Turk.” He is thus identified with the unbelievers, the Ottoman Turks, and that Asiatic power, which for centuries threatened Christendom, is shown to have its social and psychological equivalent in Iago’s particular attitude toward life. Similarly, when Othello sees the drunken brawl on the watchtower, he exclaims,</p>
+
+    <div class="cita">
+        <p>Are we turned Turks, and to ourselves do that</p>
+        <p>Which heaven hath forbid the Ottomites?</p>
+        <p class="attribution">(II.iii.169–70)</p>
+    </div>
+
+    <p>At the very time when the historical enemy has been defeated, his fleet providentially routed by the great storm, his characteristics—drunken loss of control, brawling over honor, disorder—begin to conquer the island only so recently and fortuitously saved. The conquest continues, and the defender of the island, Othello, convinced of Desdemona’s guilt, compares his determination to revenge himself to “the Pontic Sea, / Whose icy current and compulsive course / Nev’r keeps retiring ebb” (III.iii.450–52). The comparison tells us that in his rage and hatred he has become one with the savage seas and the brute, amoral powers of nature that are displayed in the storm scene at the beginning of Act II. But most important is Othello’s identification of himself at the end of the play as the “base Judean” who “threw a pearl away richer than all his tribe.” The more familiar Quarto reading is “base Indian,” but both words point toward the barbarian who fails to recognize value and beauty when he possesses it—the primitive savage who picks up a pearl and throws it away not knowing its worth; or the Jews (Judas may be specifically meant) who denied and crucified another great figure of love, thinking they were dealing with only a troublesome rabble-rouser. A few lines further on Othello proceeds to the final and absolute identification of himself with the infidel. He speaks of a “malignant and a turbaned Turk” who “beat a Venetian and traduced the state,” and he then acknowledges that he is that Turk by stabbing himself, even as he once stabbed the other unbeliever. So he ends as both the Turk and the destroyer of the Turk, the infidel and the defender of the faith.</p>
+
+    <p>When Iago’s schemes are at last exposed, Othello, finding it impossible for a moment to believe that a <i>man</i> could have contrived such evil, stares at Iago’s feet and then says sadly, “but that’s a fable.” What he hopes to find when he looks down are the cloven hoofs of the devil, and had they been there he would have been an actor in a morality play, tempted beyond his strength, like many a man before him, by a supernatural power outside himself. In some ways I have schematized <i>Othello</i> as just such a morality play, offering an allegorical journey between heaven and hell on a stage filled with purely symbolic figures. This is the kind of abstraction of art toward which criticism inevitably moves, and in this case the allegorical framework is very solidly there. But Othello does not see the cloven hoofs when he looks down; he sees a pair of human feet at the end of a very human body; and he is forced to realize that far from living in some simplified, “fabulous” world where evil is a metaphysical power raiding human life from without, he dwells where evil is somehow inextricably woven with good into man himself. On his stage the good angel does not return to heaven when defeated, but is murdered, and her body remains on the bed, “cold, cold.” He lives where good intentions, past services, psychic weaknesses, and an inability to see through evil cannot excuse an act, as they might in some simpler world where more perfect justice existed. In short, Othello is forced to recognize that he lives in a tragic world, and he pays the price for having been great enough to inhabit it.</p>
+
+    <p>Here is the essence of Shakespeare’s art, an ability to create immediate, full, and total life as men actually live and experience it; and yet at the same time to arrange this reality so that it gives substance to and derives shape from a formal vision of all life that comprehends and reaches back from man and nature through society and history to cosmic powers that operate through all time and space. His plays are both allegorical and realistic at once; his characters both recognizable men and at the same time devils, demigods, and forces in nature. I have discussed only the more allegorical elements in <i>Othello</i>, the skeleton of ideas and formal patterns within which the characters must necessarily be understood. But it is equally true that the exact qualities of the abstract moral values and ideas, their full reality, exist only in the characters. It is necessary to know that Desdemona represents one particular human value, love or charity, in order to avoid making such mistakes as searching for some tragic flaw in her which would justify her death. But at the same time, if we would know what love and charity <i>are</i> in all their fullness, then our definition can only be the actions, the language, the emotions of the character Desdemona. She is Shakespeare’s word for love. If we wish to know not just the obvious fact that men choose evil over good, but <i>why</i> they do so, then we must look both analytically and feelingly at all the evidence that the world offers for believing that Desdemona is false and at all the biases in Othello’s mind that predispose him to believe such evidence. Othello’s passage from Venice to Cyprus, from absolute love for Desdemona to extinguishing the light in her bedchamber, and to the execution of himself, these are Shakespeare’s words for tragic man.</p>
+
+    <section class="footnotes">
+        <h3>Note</h3>
+        <p>From <i>The Tragedy of Othello</i>, edited by Alvin B. Kernan. Copyright © 1963 by Alvin B. Kernan. Copyright © by Sylvan Barnet. New American Library.</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>
