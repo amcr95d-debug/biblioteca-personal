@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Introduction — Harold Bloom</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">Harold Bloom</p>
+        <h1 class="cab__tit">Introduction</h1>
+    </header>
+
+    <p class="separador">I</p>
+
+    <p>The last we see of Hamlet at the court in Act IV is his exit for England:</p>
+
+    <div class="cita">
+        <p>HAMLET: For England?</p>
+        <p>CLAUDIUS: Ay, Hamlet.</p>
+        <p>HAMLET: Good.</p>
+        <p>CLAUDIUS: So is it, if thou knew’st our purposes.</p>
+        <p>HAMLET: I see a cherub that sees them. But come, for England. Farewell, dear mother.</p>
+        <p>CLAUDIUS: Thy loving father, Hamlet.</p>
+        <p>HAMLET: My mother. Father and mother is man and wife, man and wife is one flesh; so my mother. Come, for England. <i>Exit.</i></p>
+    </div>
+
+    <p>It is a critical commonplace to assert that the Hamlet of Act V is a changed man: mature rather than youthful, certainly quieter, if not quietistic, and somehow more attuned to divinity. Perhaps the truth is that he is at last himself, no longer afflicted by mourning and melancholia, by murderous jealousy and incessant rage. Certainly he is no longer haunted by his father’s ghost. It may be that the desire for revenge is fading in him. In all of Act V he does not speak once of his dead father directly. There is a single reference to “my father’s signet” which serves to seal up the doom of those poor schoolfellows, Rosencrantz and Guildenstern, and there is the curious phrasing of “my king” rather than “my father” in the half-hearted rhetorical question the prince addresses to Horatio:</p>
+
+    <div class="cita">
+        <p>Does it not, think thee, stand me now upon—</p>
+        <p>He that hath kill’d my king and whor’d my mother,</p>
+        <p>Popp’d in between th’election and my hopes,</p>
+        <p>Thrown out his angle for my proper life</p>
+        <p>And with such coz’nage—is’t not perfect conscience</p>
+        <p>To quit him with this arm?</p>
+    </div>
+
+    <p>When Horatio responds that Claudius will hear shortly from England, presumably that Rosencrantz and Guildenstern have been executed, Hamlet rather ambiguously makes what might be read as a final vow of revenge:</p>
+
+    <div class="cita">
+        <p>It will be short. The interim is mine.</p>
+        <p>And a man’s life’s no more than to say ‘one.’</p>
+    </div>
+
+    <p>However this is to be interpreted, Hamlet forms no plot, and is content with a wise passivity, knowing that Claudius must act. Except for the scheme of Claudius and Laertes, we and the prince might be confronted by a kind of endless standoff. What seems clear is that the urgency of the earlier Hamlet has gone. Instead, a mysterious and beautiful disinterestedness dominates this truer Hamlet, who compels a universal love precisely because he is beyond it, except for its exemplification by Horatio. What we overhear is an ethos so original that we still cannot assimilate it:</p>
+
+    <div class="cita">
+        <p>Sir, in my heart there was a kind of fighting</p>
+        <p>That would not let me sleep. Methought I lay</p>
+        <p>Worse than the mutines in the bilboes. Rashly—</p>
+        <p>And prais’d be rashness for it: let us know</p>
+        <p>Our indiscretion sometimes serves us well</p>
+        <p>When our deep plots do pall; and that should learn us</p>
+        <p>There’s a divinity that shapes our ends,</p>
+        <p>Rough-hew them how we will—</p>
+    </div>
+
+    <p>Weakly read, that divinity is Jehovah, but more strongly “ends” here are not our intentions but rather our fates, and the contrast is between a force that can shape stone, and our wills that only hew roughly against implacable substance. Nor would a strong reading find Calvin in the echoes of the Gospel of Matthew as Hamlet sets aside his own: “Thou wouldst not think how ill all’s here about my heart.” In his heart, there is again a kind of fighting, but the readiness, rather than the ripeness, is now all:</p>
+
+    <div class="cita">
+        <p>Not a whit. We defy augury. There is special providence in the fall of a sparrow. If it be now, ’tis not to come; if it be not to come, it will be now; if it be not now, yet it will come. The readiness is all. Since no man, of aught he leaves, knows aught, what is’t to leave betimes? Let be.</p>
+    </div>
+
+    <p>The apparent nihilism more than negates the text cited from Matthew, yet the epistemological despair does not present itself as despair, but as an achieved serenity. Above all else, these are not the accents of an avenger, or even of someone who still mourns, or who continues to suffer the selfish virtues of the natural heart. Not nihilism but authentic disinterestedness, and yet what is that? No Elizabethan lore, no reading in Aristotle, or even in Montaigne, can help to answer that question. We know the ethos of disinterestedness only because we know Hamlet. Nor can we hope to know Hamlet any better by knowing Freud. The dead father indeed was, during four acts, more powerful than even the living one could be, but by Act V the dead father is not even a numinous shadow. He is merely a precursor, Hamlet the Dane before this one, and this one matters much more. The tragic hero in Shakespeare, at his most universally moving, is a representation so original that conceptually he contains us, and fashions our psychology of motives permanently. Our map or general theory of the mind may be Freud’s, but Freud, like all the rest of us, inherits the representation of mind, at its most subtle and excellent, from Shakespeare. Freud could say that the aim of all life was death, but not that readiness is all.</p>
+
+    <p class="separador">II</p>
+
+    <p>Originality in regard to Shakespeare is a bewildering notion, because we have no rival to set him against. “The originals are not original,” Emerson liked to remark, but he withdrew that observation in respect to Shakespeare. If Shakespeare had a direct precursor it had to be Marlowe, who was scarcely six months older. Yet, in comparison to Shakespeare, Marlowe represents persons only by caricature. The Chaucer who could give us the Pardoner or the Wife of Bath appears to be Shakespeare’s only authentic English precursor, if we forget the English renderings of the Bible. Yet we do not take our psychology from Chaucer or even from the Bible. Like Freud himself, we owe our psychology to Shakespeare. Before Shakespeare, representations in literature may change as they speak, but they do not change <i>because</i> of what they say. Shakespearean representation turns upon his persons listening to themselves simultaneously with our listening, and learning and changing even as we learn and change. Falstaff delights himself as much as he delights us, and Hamlet modifies himself by studying his own modifications. Ever since, Falstaff has been the inescapable model for nearly all wit, and Hamlet the paradigm for all introspection. When Yorick’s skull replaces the helmeted ghost, then the mature Hamlet has replaced the self-chastising revenger, and a different sense of death’s power over life has been created, and in more than a play or a dramatic poem:</p>
+
+    <div class="cita">
+        <p>HAMLET: To what base uses we may return, Horatio! Why may not imagination trace the noble dust of Alexander till a find it stopping a bunghole?</p>
+        <p>HORATIO: ’Twere to consider too curiously to consider so.</p>
+        <p>HAMLET: No, faith, not a jot, but to follow him thither with modesty enough, and likelihood to lead it.</p>
+    </div>
+
+    <p>Probability leads possibility, likelihood beckons imagination on, and Alexander is essentially a surrogate for the dead father, the Danish Alexander. Passionately reductive, Hamlet would consign his own dust to the same likelihood, but there we part from him, with Horatio as our own surrogate. Hamlet’s unique praise of Horatio sets forever the paradigm of the Shakespearean reader or playgoer in relation to the Shakespearean tragic hero:</p>
+
+    <div class="cita">
+        <p>Dost thou hear?</p>
+        <p>Since my dear soul was mistress of her choice,</p>
+        <p>And could of men distinguish her election,</p>
+        <p>Sh’ath seal’d thee for herself; for thou hast been</p>
+        <p>As one, in suff’ring all, that suffers nothing . . .</p>
+    </div>
+
+    <p>Which means, not that Horatio and the reader do not suffer with Hamlet, but rather that truly they suffer nothing precisely because they learn from Hamlet the disinterestedness they themselves cannot exemplify, though in possibility somehow share. And they survive, to tell Hamlet’s story “of accidental judgments” not so accidental and perhaps not judgments, since disinterestedness does not judge, and there are no accidents.</p>
+
+    <p>Only Hamlet, at the last, is disinterested, since the hero we see in Act V, despite his protestations, is now beyond love, which is not to say that he never loved Gertrude, or Ophelia, or the dead father, or poor Yorick for that matter. Hamlet is an actor? Yes, earlier, but not in Act V, where he has ceased also to be a play director, and finally even abandons the profession of poet. Language, so dominant as such in the earlier Hamlet, gives almost the illusion of transparency in his last speech, if only because he verges upon saying what cannot be said:</p>
+
+    <div class="cita">
+        <p>You that look pale and tremble at this chance,</p>
+        <p>That are but mutes or audience to this act,</p>
+        <p>Had I but time—as this fell sergeant, Death,</p>
+        <p>Is strict in his arrest—O, I could tell you—</p>
+        <p>But let it be.</p>
+    </div>
+
+    <p>Evidently he does know something of what he leaves, and we ache to know what he could tell us, since it is Shakespeare’s power to persuade us that Hamlet has gained a crucial knowledge. One clue is the abiding theatrical trope of “but mutes or audience,” which suggests that the knowledge is itself “of” illusion. But the trope is framed by two announcements to Horatio and so to us. “I am dead,” and no other figure in Shakespeare seems to stand so authoritatively on the threshold between the worlds of life and death. When the hero’s last speech moves between “O, I die, Horatio” and “the rest is silence,” there is a clear sense again that much more might be said, concerning our world and not the “undiscovered country” of death. The hint is that Hamlet could tell us something he has learned about the nature of representation, because he has learned what it is that he himself represents.</p>
+
+    <p>Shakespeare gives Fortinbras the last word on this, but that word is irony, since Fortinbras represents only the formula of repetition: like father, like son. “The soldier’s music and the rite of war” speak loudly for the dead father, but not for this dead son, who had watched the army of Fortinbras march past to gain its little patch of ground and had mused that: “Rightly to be great/Is not to stir without great argument.” The reader’s last word has to be Horatio’s, who more truly than Fortinbras has Hamlet’s dying voice: “and from his mouth whose voice will draw on more,” which only in a minor key means draw more supporters to the election of Fortinbras. Horatio represents the audience, while Fortinbras represents all the dead fathers.</p>
+
+    <p class="separador">III</p>
+
+    <p>We love Hamlet, then, for whatever reasons Horatio loves him. Of Horatio we know best that what distinguishes him from Rosencrantz and Guildenstern, and indeed from Polonius, Ophelia, Laertes, and Gertrude, is that Claudius <i>cannot use him</i>. Critics have remarked upon Horatio’s ambiguously shifting status at the court of Denmark, and the late William Empson confessed a certain irritation at Hamlet’s discovery of virtues in Horatio that the prince could not find in himself. Yet Shakespeare gives us a Hamlet we must love while knowing our inferiority, since he has the qualities we lack, and so he also gives us Horatio, our representative, who loves so stoically for the rest of us. Horatio is loyal, and limited; skeptical as befits a fellow-student of the profoundly skeptical Hamlet, yet never skeptical about Hamlet. Take Horatio out of the play, and you take us out of the play. The plot could be rearranged to spare the wretched Rosencrantz and Guildenstern, even to spare Laertes, let alone Fortinbras, but remove Horatio, and Hamlet becomes so estranged from us that we scarcely can hope to account for that universality of appeal which is his, and the play’s, most original characteristic.</p>
+
+    <p>Horatio, then, represents by way of our positive association with him; it is a commonplace, but not less true for that, to say that Hamlet represents by negation. I think this negation is Biblical in origin, which is why it seems so Freudian to us, because Freudian negation is Biblical and not Hegelian, as it were. Hamlet is Biblical rather than Homeric or Sophoclean. Like the Hebrew hero confronting Yahweh, Hamlet needs to be everything in himself yet knows the sense in which he is nothing in himself. What Hamlet takes back from repression is returned only cognitively, never affectively, so that in him thought is liberated from its sexual past, but at the high expense of a continued and augmenting sense of sexual disgust. And what Hamlet at first loves is what Biblical and Freudian man loves: the image of authority, the dead father, and the object of the dead father’s love, who is also the object of Claudius’ love. When Hamlet matures, or returns fully to himself, he transcends the love of authority, and ceases to love at all, and perhaps he can be said to be dying throughout all of Act V, and not just in the scene of the duel.</p>
+
+    <p>In Freud, we love authority, but authority does not love us in return. Nowhere in the play are we told, by Hamlet or by anyone else, of the love of the dead king for his son, but only for Gertrude. That Hamlet hovers always beyond our comprehension must be granted, yet he is not so far beyond as to cause us to see him with the vision of Fortinbras, rather than the vision of Horatio. We think of him not necessarily as royal, but more as noble, in the archaic sense of “noble” which is to be a seeing soul. It is surely no accident that Horatio is made to emphasize the word “noble” in his elegy for Hamlet, which contrasts angelic song to “the soldier’s music” of Fortinbras. As a noble or seeing heart, Hamlet indeed sees feelingly. Short of T. S. Eliot’s judgment that the play is an aesthetic failure, the oddest opinion in the <i>Hamlet</i> criticism of our time was that of W. H. Auden in his Ibsen essay, “Genius and Apostle,” which contrasts Hamlet as a mere actor to Don Quixote as the antithesis of an actor:</p>
+
+    <div class="cita">
+        <p>Hamlet lacks faith in God and in himself. Consequently he must define his existence in terms of others, e.g., I am the man whose mother married his uncle who murdered his father. He would like to become what the Greek tragic hero is, a creature of situation. Hence his inability to act, for he can only ‘act,’ i.e., play at possibilities.</p>
+    </div>
+
+    <p>Harold Goddard, whose <i>The Meaning of Shakespeare</i> (1951) seems to me still the most illuminating single book on Shakespeare, remarked that, “Hamlet is his own Falstaff.” In Goddard’s spirit, I might venture the formula that Brutus plus Falstaff equals Hamlet, though “equals” is hardly an accurate word here. A better formula was proposed by A. C. Bradley, when he suggested that Hamlet was the only Shakespearean character whom we could think had written Shakespeare’s plays. Goddard built on this by saying of Shakespeare: “He is an unfallen Hamlet.” From a scholarly or any Formalist perspective, Goddard’s aphorism is not criticism, but neither historical research nor Formalist modes of criticism have helped us much in learning to describe the unassimilated originality that Shakespearean representation still constitutes. Because we are formed by Shakespeare, paradoxically most fully where we cannot assimilate him, we are a little blinded by what might be called the originality of this originality. Only a few critics (A. D. Nuttall among them) have seen that the central element in this originality is its cognitive power. Without Shakespeare (and the Bible as his precursor text) we would not know of a literary representation that worked so as to compel “reality” (be it Platonic or Humean, Hegelian or Freudian) to reveal aspects of itself we previously could not discern. Such a representation cannot be considered anti-mimetic or an effect of language alone.</p>
+
+    <p class="separador">IV</p>
+
+    <p>One way, by no means unproductive, of accounting for the force of Shakespearean representation is to see it as the supreme instance of what the late Paul de Man called a poetics of modernity, of a revisionism of older literary conventions that at once subsumed and cancelled the illusions always present in all figurative language. Howard Felperin, working in de Man’s mode, adroitly reads Macbeth’s “modernity” as the dilemma of a figure totally unable to take his own nature for granted: “He cannot quite rest content in an action in which his role and his nature are determined in advance, but must continuously re-invent himself in the process of acting them out.” In such a view, Macbeth is a strong misreading of a figure like Herod in the old morality plays. I would go further and suggest that the drama, <i>Macbeth</i>, is an allusive triumph over more formidable precursors, just as <i>King Lear</i> is. The Shakespearean Sublime, too strong to find agonists in Seneca or in the native tradition (even in Marlowe), and too remote from Athenian drama to feel its force, confronts instead the Sublime of the Bible. What breaks loose in the apocalyptic cosmos of <i>Macbeth</i> or of <i>Lear</i> is an energy of the abyss or the original chaos that is ignored in the priestly first chapter of Genesis, but which wars fiercely against Jehovah in crucial passages of Job, the Psalms and Isaiah. To subsume and supersede the Bible could not have been the conscious ambition of Shakespeare, but if we are to measure the preternatural energies of <i>Macbeth</i> or of <i>Lear</i>, then we will require Job or Isaiah or certain Psalms as the standard of measurement.</p>
+
+    <p>What is the advance, cognitive and figurative, that Shakespearean representation achieves over Biblical depiction? The question is absurdly difficult, yet anything but meaningless. If Shakespeare has a true Western rival, then he is either the Yahwist, the Hebrew Bible’s great original, or the Homer of the <i>Iliad</i>. Can there <i>be</i> an advance over Jacob or Achilles as representations of reality, whatever that is taken to be? What the question reduces to is the unanswerable: can there be advances in reality? The arts, as Hazlitt insisted, are not progressive, and if reality is, then its progression suspiciously resembles a speeding up of what Freud called the death drive. Reality testing, like the reality principle, is Freud’s only transcendentalism, his last vestige of Platonism. Freud’s own originality, as he deeply sensed, tends to evaporate when brought too near either to the originality of the Yahwist or to the originality of Shakespeare. This may be the true cause of the disaster that is <i>Moses and Monotheism</i>, and of Freud’s own passion for the lunatic thesis that Shakespeare’s plays were written by the Earl of Oxford.</p>
+
+    <p>By Nietzsche’s genealogical test for the memorable, which is cognitive pain, Job is no more nor less forgettable than <i>Macbeth</i> or <i>Lear</i>. The rhetorical economy of Job’s wife, in her one appearance, unmatchable even out of context, is overwhelming within context, and may have set for Shakespeare one of the limits of representation:</p>
+
+    <div class="cita">
+        <p>So went Satan forth from the presence of the Lord, and smote Job with sore boils from the sole of his foot unto his crown.</p>
+        <p>And he took him a potsherd to scrape himself withal; and he sat down among the ashes.</p>
+        <p>Then said his wife unto him, Dost thou still retain thine integrity? Curse God, and die.</p>
+    </div>
+
+    <p>Lear’s Queen, the mother of Goneril, Regan and Cordelia, had she survived to accompany her husband onto the heath, hardly could have said more in less. In Shakespeare’s tragedies there are moments of compressed urgency that represent uncanny yet persuasive change with Biblical economy. The dying Edmund sees the bodies of Goneril and Regan brought in, and belatedly turns his lifetime about in four words: “Yet Edmund was belov’d.” The phrase is a vain attempt to countermand his own order for the murder of Cordelia. “Yet Edmund was belov’d”—though loved by two fiends, the shock of knowing he <i>was</i> loved, unto death, undoes “mine own nature.” One thinks of Hamlet’s “Let be” that concludes his “We defy augury” speech, as he goes into the trap of Claudius’ last plot. “Let be” epitomizes what I have called “disinterestedness,” though Horatio’s word “noble” may be more apt. That laconic “Let be,” repeated as “Let it be” in Hamlet’s death speech, is itself a kind of catastrophe creation, even as it marks another phase in Hamlet’s release from what Freud called the family romance, and even as it compels another transference for our veneration to Hamlet. Catastrophe creation, family romance, transference: these are the stigmata and consequently the paradigms for imaginative originality in the Bible and, greatly shadowed, in Freud, and I suggest now that they can be useful paradigms for the apprehension of originality in Shakespeare’s tragic representations. The fantasy of rescuing the mother from degradation is palpable in <i>Hamlet</i>; less palpable and far more revelatory is the sense in which the prince has molded himself into a pragmatic changeling. The ghost is armed for war, and Hamlet, grappling with Laertes in the graveyard, accurately warns Laertes (being to that extent his father’s son) that as the prince he has something dangerous in him. But is Hamlet psychically ever armed for war? Claudius, popping in between the election and Hamlet’s hopes, could have shrewdly pled more than his nephew’s youth and inexperience while properly arguing that his own nature was better qualified for the throne. Hamlet, in the graveyard, shocked back from beyond affect, accurately indicates whose true son he first became as changeling:</p>
+
+    <div class="cita">
+        <p>Alas, poor Yorick. I knew him, Horatio, a fellow of infinite jest, of most excellent fancy. He hath bore me on his back a thousand times, and now—how abhorred in my imagination it is. My gorge rises at it. Here hung those lips that I have kissed I know not how oft . . .</p>
+    </div>
+
+    <p>Harry Levin, for whom strong misreading is not serendipity but misfortune, advises us that “<i>Hamlet</i> without Hamlet has been thought about all too much.” One might reply, in all mildness, that little memorable has been written about <i>Hamlet</i> that does not fall into the mode of “<i>Hamlet</i> without Hamlet.” Far more even than <i>Lear</i> or <i>Macbeth</i>, the play is the figure; the question of <i>Hamlet</i> only can be Hamlet. He does not move in a Sublime cosmos, and truly has no world except himself, which would appear to be what he has learned in the interim between Acts IV and V. Changelings who move from fantasy to fact are possible only in romance, and alas Shakespeare wrote the tragedy of Hamlet, and not the romance of Hamlet instead. But the originality of Shakespearean representation in tragedy, and particularly in <i>Hamlet</i>, hardly can be overstressed. Shakespeare’s version of the Family Romance always compounds it with two other paradigms for his exuberant originality: with a catastrophe that creates and with a carrying across from earlier ambivalences within the audience to an ambivalence that is a kind of taboo settling in about the tragic hero like an aura. At the close of <i>Hamlet</i>, only Horatio and Fortinbras are survivors. Fortinbras presumably will be another warrior-king of Denmark. Horatio does not go home with us, but vanishes into the aura of Hamlet’s after-light, perhaps to serve as witness of Hamlet’s story over and over again. The hero leaves us with a sense that finally he has fathered himself, that he was beyond our touch though not beyond our affections, and that the catastrophes he helped provoke have brought about, not a new creation, but a fresh revelation of what was latent in reality but not evident without his own disaster.</p>
+
+    <p class="separador">V</p>
+
+    <p>As a coda, I return to my earlier implication that Shakespearean originality is the consequence of diction or a will over language changing his characters, and not of language itself. More than any other writer, Shakespeare is able to exemplify how meaning gets started rather than just renewed. Auden remarked that Falstaff is free of the superego; there is no over-I or above-I for that triumph of wit. Nietzsche, attempting to represent a man without a superego, gave us Zarathustra, a mixed achievement in himself, but a very poor representation when read side by side with Falstaff. Falstaff or Zarathustra? No conceivable reader would choose the Nietzschean rather than the Shakespearean over-man. Falstaff indeed is how meaning gets started: by excess, overflow, emanation, contamination, the will to life. Zarathustra is a juggler of perspectives, a receptive will to interpretation. Poor Falstaff ends in tragedy; his catastrophe is his dreadfully authentic love for Hal. Zarathustra loves only a trope, the solar trajectory, and essentially is himself a trope; he is Nietzsche’s metalepsis or transumption of the philosophical tradition. A Formalist critic would say that Falstaff is a trope also, a gorgeous and glowing hyperbole. Say rather that Falstaff is a representation, in himself, of how meaning gets started, of how invention is accomplished and manifested. But we remember Falstaff as we want to remember him, triumphant in the tavern, and not rejected in the street. We remember Hamlet as he wanted us to remember him, as Horatio remembers him, without having to neglect his end. Perhaps Hamlet is a representation, in himself, not just of how meaning gets started, but also of how meaning itself is invention, of how meaning refuses to be deferred or to be ended. Perhaps again that is why we can imagine Hamlet as the author of <i>Hamlet</i>, as the original we call Shakespeare.</p>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>
