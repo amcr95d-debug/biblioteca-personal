@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>“The Henriad”: Shakespeare’s Major History Plays — Alvin B. Kernan</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">ALVIN B. KERNAN</p>
+        <h1 class="cab__tit">“The Henriad”:<br>Shakespeare’s Major History Plays</h1>
+    </header>
+
+    <p>Taken together, Shakespeare’s four major history plays, <i>Richard II</i>, <i>1 Henry IV</i>, <i>2 Henry IV</i>, and <i>Henry V</i> constitute an epic, <i>The Henriad</i>. Obviously these four plays are not an epic in the usual sense—there is no evidence that Shakespeare planned them as a unit—but they do have remarkable coherence and they possess that quality which in our time we take to be the chief characteristic of epic: a large-scale, heroic action, involving many men and many activities, tracing the movement of a nation or people through violent change from one condition to another. In <i>The Iliad</i> that action involves the wrath of Achilles and the misfortunes which it brought to the Achaeans before Troy. In <i>The Aeneid</i> the action is the transferal of the Empire of Troy to Latium. And in <i>Paradise Lost</i> the action is man’s first disobedience and the fruit of that forbidden tree.</p>
+
+    <p>In <i>The Henriad</i>, the action is the passage from the England of Richard II to the England of Henry V. This dynastic shift serves as the supporting framework for a great many cultural and psychological transitions which run parallel to the main action, giving it body and meaning. In historical terms the movement from the world of Richard II to that of Henry V is the passage from the Middle Ages to the Renaissance and the modern world. In political and social terms it is a movement from feudalism and hierarchy to the national state and individualism. In psychological terms it is a passage from a situation in which man knows with certainty who he is to an existential condition in which any identity is only a temporary role. In spatial and temporal terms it is a movement from a closed world to an infinite universe. In mythical terms the passage is from a garden world to a fallen world. In the most summary terms it is a movement from ceremony and ritual to history:</p>
+
+    <div class="cita">
+        <p>The Renaissance was a moment when educated men were modifying a ceremonial conception of human life to create a historical conception. The ceremonial view, which assumed that names and meanings are fixed and final, expressed experience as pageant and ritual—pageant where the right names could march in proper order, or ritual where names could be changed in the right, the proper way. The historical view expresses life as drama. People in drama are not identical with their names, for they gain and lose their names, their status and meaning—and not by settled ritual: the gaining and losing of names, of meaning, is beyond the control of any set ritual sequence. . . . The people in [Shakespeare’s] plays try to organize their lives by pageant and ritual, but the plays are dramatic precisely because the effort fails.</p>
+    </div>
+
+    <p>It is by means of ceremony and ritual that the old kingdom is presented in the beginning of <i>The Henriad</i>. <i>Richard II</i> opens on a scene in which two furious peers, Mowbray and Hereford, confront and accuse one another of treason before their legitimate king. The place of judgment is the court itself, with all its ceremonial forms and symbols: crowns, trumpets, thrones, ranked retainers, robes of state and heraldic arms. This court, in its traditional setting with its ancient emblems and established procedures, repeats the pattern of innumerable former assemblies convoked for the same purpose, to absorb and reorder once again the disorderly elements in man and society.</p>
+
+    <p>When this ritual attempt fails, an even more solemn ritual is ordered, trial by combat. The ceremonial elements in I.iii are heavily emphasized, the combatant knights enter in the proper manner and take their assigned places in the lists. They make the expected speeches, and the marshal of the lists puts the formulaic questions to them.</p>
+
+    <div class="cita">
+        <p>The trumpets sound. Enter BOLINGBROKE, DUKE OF HEREFORD, appellant, in armour, and a HERALD.</p>
+        <p>KING RICHARD: Marshal, ask yonder knight in arms,</p>
+        <p>Both who he is and why he cometh hither</p>
+        <p>Thus plated in habiliments of war;</p>
+        <p>And formally, according to our law,</p>
+        <p>Depose him in the justice of his cause.</p>
+        <p>MARSHAL: What is thy name? and wherefore com’st thou hither</p>
+        <p>Before King Richard in his royal lists?</p>
+        <p>Against whom comest thou? and what’s thy quarrel?</p>
+        <p>Speak like a true knight, so defend thee heaven!</p>
+        <p>BOLINGBROKE: Harry of Hereford, Lancaster, and Derby,</p>
+        <p>Am I; who ready here do stand in arms</p>
+        <p>To prove, by God’s grace and my body’s valour,</p>
+        <p>In lists on Thomas Mowbray, Duke of Norfolk,</p>
+        <p>That he is a traitor, foul and dangerous,</p>
+        <p>To God of heaven, King Richard, and to me.</p>
+        <p>And as I truly fight, defend me heaven!</p>
+        <p class="attribution">(Richard II, I. iii.26—41)</p>
+    </div>
+
+    <p>Here, and throughout the early acts of the play, traditional ways of acting and traditional values—the law, the sanctity of a knight’s oath, established duty to God and king—reflected in the formulaic phrases, the conventional terms, and the orderly rhythms, control the violent passions, fury, fear, outrage, hatred, the lust for power, at work in Richard’s England. The individual is submerged within the role imposed upon him by prescribed ways of thinking, acting, and speaking.</p>
+
+    <p>But, even as we admire, this old world is breaking up. The patriarchs of England—the seven sons of Edward II—are, like the twelve sons of Jacob, passing from the land, and with them their world passes. The sense of an ancient, more perfect world, fading from existence into memory is focused in John of Gaunt’s comparison of England, as it was only yesterday, to another Eden:</p>
+
+    <div class="cita">
+        <p>This royal throne of kings, this scept’red isle,</p>
+        <p>This earth of majesty, this seat of Mars,</p>
+        <p>This other Eden, demi-paradise,</p>
+        <p>This fortress built by Nature for herself</p>
+        <p>Against infection and the hand of war,</p>
+        <p>This happy breed of men, this little world,</p>
+        <p>This precious stone set in the silver sea,</p>
+        <p>Which serves it in the office of a wall,</p>
+        <p>Or as a moat defensive to a house,</p>
+        <p>Against the envy of less happier lands;</p>
+        <p>This blessed plot, this earth, this realm, this England. . . .</p>
+        <p class="attribution">(Richard II, II. 1.40-50)</p>
+    </div>
+
+    <p>By III. iv when the “sea-walled garden” appears again, presided over by a gardener in “old Adam’s likeness,” it is full of weeds, the flowers choked, the trees unpruned, the hedges in ruin, the herbs eaten by caterpillars, and the great tree in its center dead.</p>
+
+    <p>What is passing in the course of <i>Richard II</i> is innocence, a sense of living in a golden world, and no one is more innocent than Richard himself. When Bolingbroke begins his rebellion, Richard confidently expects that God himself will send down soldiers to defend him and blast the usurper. The order of nature and the laws of men, he believes, guarantee his kingship:</p>
+
+    <div class="cita">
+        <p>Not all the water in the rough rude sea</p>
+        <p>Can wash the balm off from an anointed king;</p>
+        <p>The breath of worldly men cannot depose</p>
+        <p>The deputy elected by the Lord.</p>
+        <p>For every man that Bolingbroke hath press’d</p>
+        <p>To lift shrewd steel against our golden crown,</p>
+        <p>God for his Richard hath in heavenly pay</p>
+        <p>A glorious angel. Then, if angels fight,</p>
+        <p>Weak men must fall; for heaven still guards the right.</p>
+        <p class="attribution">(Richard II, III.ii. 54-62)</p>
+    </div>
+
+    <p>Richard, here and elsewhere in the play, manifests his belief in the conservative world view which has been variously called “The Great Chain of Being,” “The Elizabethan World Picture,” and “The Tudor Political Myth.” This world view imaged the whole of creation, from God down to the meanest pebble, as being organized hierarchically, as a series of rungs in a ladder or links in a chain. Each category in turn mirrored the systematic arrangement of the whole, and its parts were distributed in descending order of authority, responsibility, and power. To act “naturally,” to live in accordance with things as they are, was to accept your assigned place in society, controlled justly by the powers above and controlling justly those below entrusted to your care and authority. When man acted in a disorderly fashion, creating a disturbance within his own “little world” or microcosm, “Nature” quickly acted to right itself: all the other categories of being trembled sympathetically, the ripples spread through all creation, and the great powers began to react to restore order. This world view saw in all areas of life—religion, physics, psychology, government, zoology, and all social organizations—a reflection of the human dream of order, stability, harmony, coherence, and community. Life ideally lived was a dance or music.</p>
+
+    <p>Richard takes this great imaginative projection of human values for absolute fact, mistakes metaphor for science, and so believes that God will directly intervene in the coming battle and that the king’s appearance in England will cause rebellion to disappear just as the rising of the sun (the “king” of the cosmos) banishes night and darkness. Like a child, he fails to distinguish human desire from actuality and therefore fails to understand that he cannot trust to “Nature” to maintain him as a king, simply because he <i>is</i> king. From the outset of the play powerful political and personal forces are at work undermining the social system, making a mockery of ritual and ceremony. Mowbray has been involved in graft and assassination for political purposes. Henry Hereford has been courting popularity with the common people, and he accuses Mowbray of treason knowing that he is innocent. His motive may be to embarrass Richard, who is himself deeply implicated in the murder of his uncle, Duke of Gloucester, the crime of which Mowbray is accused. Richard is violently jealous and suspicious of his cousin Hereford and uses the trial as an occasion for banishing him under the pretense of being merciful. Pressed by the perpetual need for money, Richard sells his right to gather taxes to profiteers. He neglects affairs of state to spend his time reveling with male favorites. Each of these acts indirectly undermines the order which Richard thinks immutable, and when upon John of Gaunt’s death he seizes the banished Hereford’s lands, he strikes a direct blow, as the Duke of York points out, against the great law of orderly succession on which his kingship rests:</p>
+
+    <div class="cita">
+        <p>Take Hereford’s rights away, and take from Time</p>
+        <p>His charters and his customary rights;</p>
+        <p>Let not to-morrow then ensue to-day;</p>
+        <p>Be not thyself—for how art thou a king</p>
+        <p>But by fair sequence and succession?</p>
+        <p class="attribution">(Richard II, II. i.95-99)</p>
+    </div>
+
+    <p>In general, Richard treats his kingdom and subjects in an arbitrary manner, and the play realizes his implication in his own destruction in the scene in which he uncrowns himself, names Bolingbroke his successor, and confesses the sins which brought him down. This is, of course, good political strategy for Bolingbroke, who, like modern dictators, realizes that nothing is so valuable to an uneasy ruler as his victim’s public confession and admission of the justice of punishment. But the scene has another function. By uncrowning himself visibly, Richard is repeating and making manifest what he did earlier in the play when he worked so busily and blindly to destroy the values and rituals on which his kingship rested.</p>
+
+    <p>In <i>Paradise Lost</i> the results of the fall, Adam and Eve’s disobedience to God, are immediate and spectacular: the earth tilts and the seasons become intemperate, the animals become vicious and prey on one another and on man, and man himself knows fear, anger, lust, and shame. What Milton presents on the scale of the universe, Shakespeare presents on the scale of the kingdom and the individual. Most immediately, Richard’s disorders release a variety of other disorders on all levels of life. Richard having rebelled against the order which made and kept him king, Henry Bolingbroke immediately rebels against Richard. By the end of the play there is already another group of plotters planning to overthrow Henry. Throughout the three succeeding plays political scheming, plotting, raids on the commonwealth, and civil wars never cease. As one group of rebels dies, another group is already forming to take its place, each more desperate and violent than the last. Henry IV lives out his days facing one revolt after another, and even Henry V, whose reign in some ways is a restoration of political order, is still forced to deal with treasons which are “like / Another fall of man” (<i>Henry V</i>, II.ii. 141-42).</p>
+
+    <p>As the old political order weakens, simple men like the good old Duke of York become confused and inept. His duty is, he knows, to his king; but who is his king? what to do if that duty now conflicts with other primary duties? The confusion in his mind is reflected in the confusion in his family. His son, the Duke of Aumerle, intrigues against the new king, and the Duchess of York tells her husband that his primary duty lies not to the King but to his own son. But the anguished York goes to the King to accuse his son of treason. This civil war within the family eventuates in an absurd scene in which the King hears York ask him to execute his son, while the Duchess of York asks the King for mercy and pleads against her own husband. The most serious matters have become a kind of mad joke. The disorder in York’s family expands to the family of Henry, and by the end of the play we learn that Hal, the Prince of Wales, is already roistering in a tavern, defying his father, and using his power to break the law with impunity.</p>
+
+    <p>As the old order breaks up, a profound psychological confusion parallels the political confusion. In that Edenic world which Gaunt described and Richard destroyed, every man knew who he was. His religion, his family, his position in society, his assigned place in processions large and small, his coat of arms, his traditional duties, and even his clothing, which was then prescribed by sumptuary laws, told him who he was and what he should do and even gave him the formal language in which to express this socially-assigned self. But once, under the pressures of political necessity and personal desires, the old system is destroyed, the old identities go with it. Man then finds himself in the situation which Richard acts out in IV.i, the deposition scene. Richard is speaking, and when Northumberland attempts to break in with the exclamation “My lord, he responds with words which reveal how thoroughly shattered is his sense of the power of his name and the immutability of his identity as Richard Plantagenet, King of England:</p>
+
+    <div class="cita">
+        <p>No lord of thine, thou haught insulting man,</p>
+        <p>Nor no man’s lord; I have no name, no title—</p>
+        <p>No, not that name was given me at the font—</p>
+        <p>But ’tis usurp’d. Alack the heavy day,</p>
+        <p>That I have worn so many winters out,</p>
+        <p>And know not now what name to call myself!</p>
+        <p class="attribution">(Richard II, IV. i. 254-59)</p>
+    </div>
+
+    <p>Like the great actor he is, Richard cannot pass the opportunity to demonstrate visually the lesson he has learned. He calls for a looking glass, and holding it before his face he muses:</p>
+
+    <div class="cita">
+        <p>No deeper wrinkles yet? Hath sorrow struck</p>
+        <p>So many blows upon this face of mine</p>
+        <p>And made no deeper wounds? O flatt’ring glass,</p>
+        <p>Like to my followers in prosperity,</p>
+        <p>Thou dost beguile me! Was this face the face</p>
+        <p>That every day under his household roof</p>
+        <p>Did keep ten thousand men? Was this the face</p>
+        <p>That like the sun did make beholders wink?</p>
+        <p>Is this the face which fac’d so many follies,</p>
+        <p>That was at last out-fac’d by Bolingbroke?</p>
+        <p>A brittle glory shineth in this face;</p>
+        <p>As brittle as the glory is the face;</p>
+        <p>He breaks the mirror.</p>
+        <p class="attribution">(Richard II, IV. i.277-88)</p>
+    </div>
+
+    <p>Having already discovered that one’s name can change rapidly in the world, Richard now becomes self-conscious, aware that the unchanged face he views in the glass squares with neither his greatly changed political condition nor his equally changed inner sense of himself.</p>
+
+    <p>Richard is not the first man in this play to discover that he no longer knows who he is. He has already forced the question of identity on Bolingbroke by banishing him from England and robbing him of his succession as Duke of Lancaster. Bolingbroke—whose names change rapidly: Hereford, Bolingbroke, Lancaster, and Henry IV—has understood the lesson well. Speaking to Bushy and Green, two of Richard’s favorites, the man who had once confidently answered the question “What is thy name?” with the proud words “Harry of Hereford, Lancaster, and Derby / Am I,” now tells the bitterness of banishment and the pain that comes from loss of those possessions and symbols which had heretofore guaranteed identity:</p>
+
+    <div class="cita">
+        <p>Myself—a prince by fortune of my birth,</p>
+        <p>Near to the King in blood, and near in love</p>
+        <p>Till you did make him misinterpret me—</p>
+        <p>Have stoop’d my neck under your injuries</p>
+        <p>And sigh’d my English breath in foreign clouds,</p>
+        <p>Eating the bitter bread of banishment,</p>
+        <p>Whilst you have fed upon my signories,</p>
+        <p>Dispark’d my parks and fell’d my forest woods,</p>
+        <p>From my own windows torn my household coat,</p>
+        <p>Raz’d out my imprese, leaving me no sign</p>
+        <p>Save men’s opinions and my living blood</p>
+        <p>To show the world I am a gentleman.</p>
+        <p class="attribution">(Richard II, III. i. 16-27)</p>
+    </div>
+
+    <p>Man has not merely lost his true identity for a time; he has, once he abandoned the old hierarchies and rituals, broken into a strange, new existence where he is free to slide back and forth along the vast scale of being, coming to rest momentarily at various points, but never knowing for certain just who and what he is. John of Gaunt’s awkward punning on his name as he lies dying suggests the pervasiveness of the feeling that names and the identities they carry are no longer real and permanent but only the roles of the moment. This fluctuation in identity is the basic rhythm of the play, and we feel it everywhere, in Richard’s ever-changing moods, in Bolingbroke’s rising fortunes and changing names, in Richard’s decline from King of England to his last appearance on stage, a body borne in by his murderer. The pattern of up-down, of restless change in the self, appears in its most complete form in the great final speech Richard gives, sitting in the dungeon of Pomfret Castle, about to die, and trying desperately to understand himself and this strange world into which he has fallen. Richard began as a great and secure king, seated on a throne, sure of himself, surrounded by pomp, confirmed by ceremony, looking out over a world of light where everything in the universe was open and ordered. At the end of the play he is the isolated individual, solitary, sitting in a small circle of light, surrounded by darkness and by a flinty prison wall, uncertain of any reality or truth. Isolated, like some hero of Kafka, in a mysterious and a containing world, Richard takes the confusing and conflicting evidence which his mind offers him and attempts, by means of reason and the poetic power to construct analogies, to “hammer it out,” to give it shape and form, to achieve some new coherence. The results are not comforting. As hard as he hammers, he can discover only endless mutability in the life of man and endless restlessness in his soul. All evidence is now ambiguous: Where the Bible promises innocence an easy salvation in one passage, “come little ones,” turn the page and it speaks in tragic tones of the passage to the Kingdom of Heaven being as difficult as a camel’s threading the eye of a needle. Man’s powers at one moment seem infinite and he feels that he can “tear a passage through the flinty ribs / Of this hard world,” but at the next moment he is the most helpless of creatures and can only comfort himself that many others have endured like misery. Fate forces new identities on him, but even in his own mind man can find no stability, and reality becomes theatrical, a playing of many roles in a constantly changing play:</p>
+
+    <div class="cita">
+        <p>Thus play I in one person many people,</p>
+        <p>And none contented. Sometimes am I king;</p>
+        <p>Then treasons make me wish myself a beggar,</p>
+        <p>And so I am. Then crushing penury</p>
+        <p>Persuades me I was better when a king;</p>
+        <p>Then am I king’d again; and by and by</p>
+        <p>Think that I am unking’d by Bolingbroke,</p>
+        <p>And straight am nothing. But whate’er I be,</p>
+        <p>Nor I, nor any man that but man is,</p>
+        <p>With nothing shall be pleas’d till he be eas’d</p>
+        <p>With being nothing.</p>
+        <p class="attribution">(Richard II, V.v.31-41)</p>
+    </div>
+
+    <p>To accommodate the newly perceived paradoxical, shifting reality Richard changes from the formal, conventional style of the beginning of the play to a metaphysical style capable of handling irony and a reality in which the parts no longer mesh, capable of carrying deep, intense agitation and the passionate effort of thought.</p>
+
+    <p>The world continues to speak ambiguously to Richard in the form of two visitors. The first is a poor groom from his stables who, having seen the King before only from a distance, now risks his life to come to speak of sympathy and duty which alters not when it alteration finds. The second visitor is the murderer Exton, who has come to kill Richard in hopes of reward from Henry. Richard, having tried to define himself by means of poetry and failed, now takes the way of drama, and acts. He seizes a sword from one of Exton’s thugs and strikes two of them down before being killed himself. And so he defines himself in a dramatic or historic—not a philosophical—way. He has never solved the question whether he is king or beggar, never found the meaning he hoped to have; but he has stumbled through experience to quite a different answer. He, like the rest of men, has no stable identity certified by the order of things immutable. He is instead tragic man, whose identity fluctuates between hero and victim, king and corpse; whose values are not guaranteed by anything but his own willingness to die for them; whose life is a painful and continuing process of change. Richard traces the way that all other characters in this world must follow in their turn.</p>
+
+    <p>Looking back on the lost past, the men of Henry IV’s England see the “fall” occurring at that fatal moment when Richard threw down his warder, the symbol of his office and his duty, to stop for political reasons the ritual trial by combat between Bolingbroke and Mowbray. In <i>Richard II</i> the effects of that act are focused in the person of Richard and his passage into tragic existence. In the two parts of <i>Henry IV</i>, however, the effects are exploded to create an entire dramatic world and the many various characters who inhabit it. Richard’s internal disorders and conflicting values grow into the increasingly bitter political and social disorders of a world racked by rebellion, strife, ambition, self-seeking, squabbling, and desperate attempts to hold things together. Richard’s growing fear and awareness of the inevitable movement of time into an unknown future expand into polarities: a complete rejection of time (Falstaff) on one hand, and on the other an obsession with the limited amount of time available to man, and the necessity of using it as completely and efficiently as possible, which leads ultimately to a fearful vision of infinity. Richard’s loss of certainty and his increasing inability to reconcile the contrary evidence of his own feelings and experiences enlarge into the murky confusion of history, the world of rumor, suspicion, and half-truth, where men making decisions of the utmost importance to themselves and to their country never really know the necessary facts. There may even be no definite answer to such crucial questions as, “Is the King’s planned crusade genuine piety or political strategy?” “Is Hal really a riotous youth or is he only pretending to be a wastrel?” “Did Mortimer treasonously surrender his army to Glendower, and does Henry refuse to ransom him because he is a traitor or because he has a legal claim to the throne?” The kind of suspicion raised on suspicion, on which men must risk their lives in this world where truth is impossible to come by, is perfectly conveyed in the Earl of Worcester’s lines in which he sketches out the path of reasoning which leads him to rebellion: he helped the King, the King can never forget this and will always fear that his former friends will think themselves not fully rewarded, and therefore they must always fear the king who may fear them:</p>
+
+    <div class="cita">
+        <p>For, bear ourselves as even as we can,</p>
+        <p>The King will always think him in our debt,</p>
+        <p>And think we think ourselves unsatisfied,</p>
+        <p>Till he hath found a time to pay us home.</p>
+        <p class="attribution">(1 Henry IV, I.iii.285-88)</p>
+    </div>
+
+    <p>As Richard’s identity crumbles, he begins with increasing frequency to use images of the theater, of acting and role-playing, to reflect the growing gap between appearance and reality, and the instability of character. In the later plays, the impulse to theatricality, the sense of life as play and man as actor breaks into the open in repeated images of the theater, in numerous brief plays-within-the-play, in the conception of character and action. Playing becomes not only an instrument of deceit—Prince John’s pretense that he will pardon the rebels if they lay down their arms—but also a means to truth—Hal’s parodies of Hotspur’s excessive energy and violence. Men in the world of <i>Henry IV</i> no longer take their identities as settled but assume that life is a succession of roles, played with skill and style to achieve a desired end. Hal plays the part of the prodigal son and the wastrel in order to appear better when he is settled as king; the Protean Falstaff plays a succession of roles for pleasure and profit.</p>
+
+    <p>Richard’s discovery that man is a creature of infinite possibilities ranging all the way from dust to god, beggar to king, is also projected in the Henry plays into the wide and varied cast of characters, each of whom seems to be not a whole man but a fragment, some singular power inherent in human nature isolated and carried to its extreme. “Homo,” may be, as Gadshill says, “a common name to all men” (<i>1 Henry IV</i>, II.i.92—93), but the adjective which should follow is constantly questioned. Does man to realize his humanity properly seek power? pleasure? learning? love? order? glory? Is the truly human setting the place of pleasure and fellowship, the Boar’s Head Tavern in Eastcheap? the council table in the palace at Westminster? the desperate battlefields far to the north and west along the Scottish and the Welsh marches? Glendower’s castle where old songs of love are played and the vast mysteries of the universe are discussed? These are the principal symbolic places in the Henry plays, the places in which man now works out, in a sudden surge of freedom and released energy, his destiny and his nature. Each of these symbolic places has a resident deity, a genius of the place, whose speeches and actions provide the best understanding of its attitudes and values.</p>
+
+    <p>The Glendower world, which focuses the values of magic, science, poetry and love, remains strangely peripheral, as if, despite the high value Shakespeare elsewhere places on these powers, they were not of fundamental importance in the great conflict. There is perhaps even a disqualifying sensitivity here, a tendency to withdraw from the power struggle, for when Hotspur—who also finds love trivial—offends Glendower by laughing at his magic, the Welshman simply withdraws his support and is not heard of again.</p>
+
+    <p>Falstaff presides over the tavern world, and when first seen this latter-day Bacchus is waking from a nap on a bench. Sitting up, stretching, he asks the Prince, “What time of day is it, lad?” The Prince, who has a supreme sense of time, realizes that Falstaff is the one character in this play to whom time, the sequence of irrecoverable moments, is totally meaningless.</p>
+
+    <div class="cita">
+        <p>PRINCE: Thou art so fat-witted with drinking of old sack, and unbuttoning thee after supper, and sleeping upon benches after noon, that thou hast forgotten to demand that truly which thou wouldest truly know. What a devil hast thou to do with the time of the day? Unless hours were cups of sack, and minutes capons, and clocks the tongues of bawds, and dials the signs of leaping-houses, and the blessed sun himself a fair hot wench in flame-coloured taffeta, I see no reason why thou shouldst be so superfluous to demand the time of the day.</p>
+        <p class="attribution">(1 Henry IV, I.ii.2—11)</p>
+    </div>
+
+    <p>The old knight is enormously fat, a walking version of the roast beef of Old England, given over entirely to epicurean pleasures. He never pays his debts; he is a liar, a thief, a drunkard, the very energy of disorder and lawlessness. For him a true man follows the pleasures of the belly and the bed, avoiding pain and labor whenever possible. He takes what he wants without worrying about property rights or morality. Such abstracts as honor, truth, duty, and honesty, those hard, painful virtues which he is always being exhorted to practice, seem to him patently ridiculous and self-defeating, and he is an adept at sliding around and under such claims. When trapped in some obvious lie or charged with some gross weakness of the flesh, he will, without regard tor the restraints of logic, gaily change the subject, take up another pose, or make some such comment as “all’s one for that. He is a master at staying alive and comfortable in an extremely difficult, dangerous, and potentially painful world.</p>
+
+    <p>Viewed from a sternly moral direction, Falstaff is a vice, a demidevil, a tempter, a mere caterpillar of the commonwealth. W’hen viewed from a more tolerant perspective Falstaff is an amusing and cunning old rogue, but still an obvious, slow-witted glutton and braggart, a victim of his own appetites and a figure of fun. But Falstaff meets these challenges more than halfway by asking continually the eternal comic questions: What is so important about a well-run state? Why all this strange passion for this grinning honor,’ this order and honesty, which cost so much pain and suffering?” These questions are usually asked indirectly, by means of parody and wit, and the shrewdness of mind and the style of execution are exquisite at points. For example, when he is urging Hal to join the robbery at Gadshill, and Hal protests that the Prince of Wales cannot become a common thief, Falstaff remarks quickly, “Thou cam’st not of the blood royal, if thou darest not stand for ten shillings.” On the face of it he seems merely to be punning on the meaning of “royal,” a type of coin. But there is an edge to this remark, which Hal apparently misses, for it remembers that that royal blood of England achieved its present eminence by means of robbery, not a little robbery such as the thieves are planning on Gadshill, but a big robbery in which all of England was taken.</p>
+
+    <p>While Falstaff is efficient in use of the rapier thrust of wit, his most masterful attacks are delivered by means of parody. When Hal seems to have bested him in a wit-combat, Falstaff shifts ground and plays the misled youth, the penitent determined to return to the paths of righteousness:</p>
+
+    <div class="cita">
+        <p>Thou hast done much harm upon me, Hal—God forgive thee for it! Before I knew thee, Hal, I knew nothing; and now am I, if a man should speak truly, little better than one of the wicked. I must give over this life, and I will give it over. By the Lord, an I do not I am a villain! I’ll be damn’d for never a king’s son in Christendom.</p>
+        <p class="attribution">(1 Henry IV, I.ii.87-95)</p>
+    </div>
+
+    <p>To his appreciative audience this is no more than another of the Monsieur Remorse’s self-beguilements or posturings. Given over entirely to the life of the flesh, he can still fool himself and try to fool others into believing that he is about to repent and care for his soul. But several features of the speech—its style, its obvious exaggeration, and its sly suggestion that true wickedness comes from the palace, not the tavern—combine to create behind the lines an eye-twinkling self-consciousness which is aware at once of how ridiculous is this pretense and yet how good a game it is. The speech is then self-parody, but it goes further, for Falstaff is also acting out the ridiculous pretenses of the rest of the world to holiness. Behind each of his pretenses—the royal king, the brave captain, the innocent child, the loyal knight, the penitent sinner—stands Falstaff himself, the old Adam, fat, red-nosed, slothful, and lecherous, a living low-burlesque of the establishment.</p>
+
+    <p>Each of Falstaff’s parodies contains both the pretense of virtue (the pose) and what he takes to be human reality (himself), and as the play progresses he stages ever more pointed demonstrations of the gap between appearance and reality. On the eve of the great battle at Shrewsbury, Sir John, acting as draftmaster, has allowed all the healthy and prosperous to buy out and collected instead the poor, the battered, and the inept to assemble a remarkable regiment, “slaves as ragged as Lazarus in the painted cloth where the glutton’s dogs licked his sores.” As he marches this strange rout toward the battle, he encounters Hal and Westmoreland, banners flying, armor shining, horses snorting, filled with confidence and chivalry. These brave knights are astounded at the sight of such ridiculous soldiers, and Hal exclaims: “I did never see such pitiful rascals.” Falstaff’s reply contains a grimly realistic view of war and the function of the common soldier:</p>
+
+    <div class="cita">
+        <p>Tut, tut; good enough to toss; food for powder, food for powder; they’ll fill a pit as well as better: tush, man, mortal men, mortal men.</p>
+        <p class="attribution">(1 Henry IV, IV. ii.63-65)</p>
+    </div>
+
+    <p>War’s reality has been paraded before war’s pretenses. Falstaff’s view that since the soldier’s function is to be blown to pieces and fill a ditch, one man will do as well as another is proven by the events of the battle, in which only three of his men survive, and they so badly wounded that the rest of their lives will be spent begging. Falstaff’s most famous use of this parody technique is, of course, his catechism, in which he compares the abstraction, honor, with the reality, the body of the honorable but dead Blunt, and draws some very common-sense conclusions about the durability of honor and its ability to set a leg or take away the pain of a wound.</p>
+
+    <p>Falstaff, and the tavern world which he personifies, is a most dangerous antagonist to any moral point of view, to any set of abstractions such as honor, duty, and country. His questions, so pointedly put, so beautifully dramatized, about what honor means, what a king really is, and what a nation does, are never satisfactorily answered in the play. He is always acting out some hilarious and penetrating truth about the establishment, and each time he asserts such a truth, he strengthens his own case for leading a pleasant, harmless life, asleep behind the arras after lunch, drinking a bottle of sack, and laughing and joking with a few witty friends about the foolishness of life as most sober-sided citizens lead it.</p>
+
+    <p>In the figure of Henry Percy, Hotspur, Shakespeare has constructed the exact opposite of Falstaff. If the old knight is all earth and water, the heavy elements, then Hotspur is all fire and air, the light and ascending elements. Where Falstaff seems all flesh and bones and body, Hotspur appears to lack a body and be all spirit. Where Falstaff, who always longs for a horse, is always forced by circumstances to walk—Hal steals his horse and later procures for him “a charge of foot”—Hotspur is fully alive only on the back of his horse. Where Falstaff refuses to have anything to do with time, Hotspur is always rushing forward to meet time, to outrun it. Falstaff s natural habitat is in the tavern before the fire; Percy’s is on the battlefield. But the contrast between the two characters is best understood in terms of their distinct aims: where Falstaff always seeks pleasure, Hotspur always seeks fame, honor, <i>gloire</i>.</p>
+
+    <p>Scarcely aware of other people, never aware of their feelings, Hotspur is aimed like an arrow toward that mystical place where absolute honor is to be won. The farther away it is, the more difficult to arrive at, the more honor for the man who achieves it:</p>
+
+    <div class="cita">
+        <p>By heaven, methinks it were an easy leap</p>
+        <p>To pluck bright honour from the pale-fac’d moon;</p>
+        <p>Or dive into the bottom of the deep,</p>
+        <p>Where fathom-line could never touch the ground,</p>
+        <p>And pluck up drowned honour by the locks;</p>
+        <p>So he that doth redeem her thence might wear</p>
+        <p>Without corrival all her dignities.</p>
+        <p class="attribution">(1 Henry IV, I.iii.201-07)</p>
+    </div>
+
+    <p>Honor, as Hotspur understands it, is no longer the honor of the medieval knight, of Roland or Galahad, achieved by humbling one’s self and performing the difficult tasks imposed by one’s God, one’s feudal lord, or one’s lady. It is instead the Renaissance thirst for individual fame, for immortality of reputation in a world where all else dies and is forgotten, and it possesses Hotspur utterly. Even his sleep is a restless, impatient dream of battle, which culminates in a breath-taking vision of Fame:</p>
+
+    <div class="cita">
+        <p>And in thy face strange motions have appear’d,</p>
+        <p>Such as we see when men restrain their breath</p>
+        <p>On some great sudden hest.</p>
+        <p class="attribution">(1 Henry IV, II. iii.57-59)</p>
+    </div>
+
+    <p>Hotspur’s life is a surging rush onward which endures no obstacles. He has no time for love or poetry or song, for grace or manners or political maneuvering. He prides himself on being honest, direct, bluntly straightforward. What his heart feels his lips speak. In a world of actors, he alone refuses to pretend, and his virtues lead him on to greatness and to death. His bluntness alerts his enemies, his honesty offends his allies, his impetuousness and courage lead him to charge a superior army. The thirst for fame is death-marked even before it dies on Shrewsbury Field. Its republican cry for liberty cries also for blood, “If we live, we live to tread on kings.” It tastes the pleasure of the battle, feels the charge like a thunderbolt, is all on fire to hear that victims are coming to be offered to its god, “the fire-ey’d maid of smoky war.” Honor covers a sensual delight in the nearness of death, death for the self and death for all others: “Doomsday is near; die all, die merrily” (<i>1 Henry IV</i>, IV.i. 134).</p>
+
+    <p>A life and values which have so much death in them cannot endure for long, and Hotspur shortly dies at the hands of a more efficient and more durable force, embodied in the greatest of the Lancastrian kings, Prince Hal, later to be Henry V. As Hotspur dies, he glimpses, as Richard had earlier, the vast, infinite reaches of time where men briefly live, die, and are forgotten; where life and fame are but the fools of time; and where in some distant future even time itself gives way to some unthinkable emptiness:</p>
+
+    <div class="cita">
+        <p>But thoughts, the slaves of life, and life, time’s fool,</p>
+        <p>And time, that takes survey of all the world,</p>
+        <p>Must have a stop. O, I could prophesy,</p>
+        <p>But that the earthly and cold hand of death</p>
+        <p>Lies on my tongue. No, Percy, thou art dust</p>
+        <p>And food for—</p>
+        <p>Dies.</p>
+        <p class="attribution">(1 Henry IV, V.iv.81-86)</p>
+    </div>
+
+    <p>Hal’s completion of Percy’s thought, “for worms,” suggests the extent to which he understands and shares this modem vision of the transience of man in the vastness of time and space.</p>
+
+    <p>It is the work of the politician to control and adjust such extremes as Hotspur’s idealism and Falstaff’s sensuality, which threaten civil order in the pursuit of what they take as the good. Superb politician though he may be, it is Henry IV’s fate to spend his lifetime trying to order such contraries as these, and it is equally his fate never to succeed in doing so. All his skill and canniness cannot restrain the freedom, the individuality, and the energies he unleashed by usurping the throne and destroying the principle of traditional order that once kept such excesses in bounds. In seizing the throne from the weak and politically inept Richard, Henry sought his own advancement and perhaps even the good of the state (his motivation is never clear, even to himself), but the result is a life of anxiety and travail for him and for England. His life and reign are a great continuing irony: the politically effective king creates a disordered kingdom.</p>
+
+    <p>The irony begins to make itself felt from the moment of Henry’s assuming the kingship. At the end of <i>Richard II</i>, the new king sits on the throne at Windsor Castle with a sense of security bred of his own efficiency and power. Giving Richard the last of his many names, Exton enters and offers his body as Henry’s ultimate victory:</p>
+
+    <div class="cita">
+        <p>Great King, within this coffin I present</p>
+        <p>Thy buried fear. Herein all breathless lies</p>
+        <p>The mightiest of thy greatest enemies,</p>
+        <p>Richard of Bordeaux, by me hither brought.</p>
+        <p class="attribution">(Richard II, V.vi.30-33)</p>
+    </div>
+
+    <p>Without the slightest intention of doing so, Exton defines perfectly the problem which the body of Richard is going to constitute when he offers it to the King as “thy buried fear.” Buried the body is in the ground; but the fear is also buried deep in the heart of Henry IV. Neither he nor his son will ever forget that their throne was secured by the murder of a king, and throughout their lives, even to the eve of the battle of Agincourt, they continue to make promises of expiation. The ghost of Richard will haunt them in another way as well, for the Lancastrian kings will always remember, will always have buried deep within them, the fear that what they have shown as possible, the murder of a king to seize a throne, abides as a dreadful example for others. The politically necessary act of king-killing is at once a success and a failure.</p>
+
+    <p>At what should have been the highest moment of Henry’s triumph, this practical, efficient man begins to discover the tragic complexities of his being and his political situation. What are only hints in the closing scene of <i>Richard II</i> become obvious facts in the beginning of the first part of <i>Henry IV</i>. As the play opens, the King longs to undertake a crusade to the Holy Land to atone for the murder of Richard, but “dear expedience” has forced him to postpone this journey earlier and now is forcing him to delay it once more. Although he hopes that peace has come to England at last, even as he hopes word is brought of new disorders and barbarism on the far edges of the kingdom. The Welsh under the irregular and wild Glendower have defeated Henry’s army, and after the battle the Welsh women mutilated the bodies in unspeakable ways. In the north, where Hotspur commands, the battle has been won against the Scot and Douglas, but the bodies were piled in high windrows oozing blood. The winning general, young Harry Hotspur, has now refused to surrender his prisoners to the King, whom he earlier helped to power. While the kingdom trembles and totters, Hal, the Prince of Wales, spends his time drinking in the tavern and rioting in the streets.</p>
+
+    <p>Throughout <i>Part I</i>, rebellion and disorder intensify, culminating in the battle at Shrewsbury, but even as the sounds of that battle die away, new rebels spring up and new armies march. As these internal disorders continue in <i>Part II</i> they become more savage and fierce until Northumberland, crying out in fury over the death of his son Hotspur, calls for chaos and universal death:</p>
+
+    <div class="cita">
+        <p>Let heaven kiss earth! Now let not Nature’s hand</p>
+        <p>Keep the wild flood confin’d! Let order die!</p>
+        <p>And let this world no longer be a stage</p>
+        <p>To feed contention in a ling’ring act;</p>
+        <p>But let one spirit of the first-bom Cain</p>
+        <p>Reign in all bosoms, that, each heart being set</p>
+        <p>On bloody courses, the rude scene may end</p>
+        <p>And darkness be the burier of the dead!</p>
+        <p class="attribution">(2 Henry IV, I. i. 153-60)</p>
+    </div>
+
+    <p>As rebellion becomes more savage, so do the opposing political forces. In <i>Part I</i> the political maneuvering is adroit and skillful, but in <i>Part II</i> politics becomes a very dirty game indeed, and its full viciousness arrives when Henry’s younger son, Prince John, tricks the rebels into dismissing their army by promising them an honest hearing and redress of grievances. But as soon as the rebel army has been disbanded, John orders all the rebellious lords off to execution. His explanation is the Machiavellian one that there is no need to keep faith with traitors, and after his “victory” he remarks piously, “God, and not we, have safely fought today.” <i>The Prince</i>, not law and established duty, has become the guide to realistic politics.</p>
+
+    <p>As their leaders become more savage and more cynical, the ordinary Englishmen become, in the terms of the Archbishop of York, revolting animals, “beastly feeders,” never satisfied with any ruler they have, always restlessly seeking change in government, willing to embark on any adventure. Having cheered Bolingbroke and rejoiced in the death of Richard, they are now dissatisfied with Henry and, howling like dogs to find and eat their vomit, go crying to the grave of Richard, which has become a shrine (<i>2 Henry IV</i>, I.iii.97-102).</p>
+
+    <p>Struggling with endless rebellions and increasing savagery, Henry IV comes at last to the place where Richard and Hotspur have already stood—where Adam and Eve stand in Books 11 and 12 of <i>Paradise Lost</i>—looking out on that vast span of time and change which swallows hope and obliterates the meaning of individual life:</p>
+
+    <div class="cita">
+        <p>O God! that one might read the book of fate,</p>
+        <p>And see the revolution of the times</p>
+        <p>Make mountains level, and the continent,</p>
+        <p>Weary of solid firmness, melt itself</p>
+        <p>Into the sea; and other times to see</p>
+        <p>The beachy girdle of the ocean</p>
+        <p>Too wide for Neptune’s hips; how chances mock,</p>
+        <p>And changes fill the cup of alteration</p>
+        <p>With divers liquors! O, if this were seen,</p>
+        <p>The happiest youth, viewing his progress through,</p>
+        <p>What perils past, what crosses to ensue,</p>
+        <p>Would shut the book and sit him down and die.</p>
+        <p class="attribution">(2 Henry IV, III. i.45-56)</p>
+    </div>
+
+    <p>At the same time that he breaks into the vastness of time and space, the endlessness of change, man also discovers the iron law of historical necessity. Having rejected the old social restrictions of obedience, submission to tradition and ritual, and maintenance of assigned station and rank, having chosen freedom, men now begin to discover that freedom leads ironically, to another kind of necessity, the tragic necessity of history, which forces you to endure the unsuspected consequences of what you are and what you have done. “The main chance of things” to come “in their seeds / And weak beginning lie intreasured,” and just as Richard found himself surrounded by the stone walls of Pomfret dungeon, just as Hotspur followed fame to the point where he became food for worms, so Henry can only grimly meet what must be, the rebellion which follows endlessly from rebellion. The only possible virtue is dogged courage: “Are these things then necessities? / Then let us meet them like necessities” (<i>2 Henry IV</i>, III. i.92-93).</p>
+
+    <p>Near the end of <i>Part II</i> Henry at last receives the news he has waited for so long, the defeat of the last rebel army. But even as the news reaches him, he has a stroke and realizes that Fortune never comes “with both hands full,” but writes “her fair words still in foulest letters.” In the tragic world the past is never done with until you are dead, and even as Henry lies dying, the “polished perturbation” for which he has suffered so much lying beside him, Hal enters and, thinking his father dead, carries the crown away. The act is innocent, perhaps, but it reenacts another crime in which the wish was also father to the thought and the crown was also taken from its rightful possessor before he was dead. That crown which glittered so attractively has become for Henry “a rich armour worn in heat of day, / That scald’st with safety,” and so it will also be for the man who now carries it away.</p>
+
+    <p>Henry’s experience is the experience of his world. If at first men felt an exhilarating release from the restraints of the old traditional order and realized in themselves newly-discovered potentialities of self, they now begin to discover that freedom and the individual life have their terrifying as well as their grander sides. Having confidently relied on themselves to make of life whatever they will it to be, they now begin to discover what it means to live without some of the ultimate comforts provided by the older system: without the grace and mercy of God, without an unchanging nature which continues to circle in its great patterns and manifest an order and meaning in the universe quite independent of the actions of men, without a stable society in which the individual man can achieve permanence and meaning by living the same life his father did and passing that life on to his children.</p>
+
+    <p>The continuing turmoil and suffering of the new world are intensified by the will to power and the incompatibility of its dominant energies. The sensualist, the idealist, and the politician, each seeks to be king, to control the kingdom, to become, as it were, the whole world. Each way of life challenges and is challenged by the others. This mutual antagonism is implicit in Percy’s belief that he must have preeminent honor, “without co-rival,” and in his contempt for the “sword and buckler” Prince of Wales. It is in Hal’s and Falstaff’s mocking scorn of Percy’s bloodthirstiness, his reckless impatience, and his preference of his horse to his wife. It is in Falstaff’s cynical awareness of the great world’s hypocrisy and his continuing burlesques of its pretenses. It is in the King’s contempt for the tavern world and his fear of the northern lords.</p>
+
+    <p>Out of these antagonisms rises the plot of the play. The politician seeks social order and stability but runs athwart the headlong search for honor and sensuality’s absolute rejection of any kind of restraint. Sensuality and idealism in turn find that the social need for order imposes upon them limits which they cannot endure. At first the conflict is managed in terms of word-combats, such as Hotspur’s angry argument with the King about the return of prisoners, and Falstaff’s various parodies of the world of honor or of politics. Words issue into actions as the underworld disturbs the peace and ventures into the kingdom to rob and cheat. The desire for fame and honor finds no satisfaction in peaceful life and flares into open rebellion. The conflict intensifies as the play proceeds, and there is an inevitable drawing movement towards the north, where the King marches to encounter the opposing manifestations of will assembled under the banner of Hotspur. Politics and sensuality mix better than either does with idealism and its death-directedness, and Falstaff marches uneasily with the forces of order. Idealism, honor, and raw courage lack the sense and control needed for a world where only the fittest survive, and Hotspur’s body, with the strange wound in his thigh, is borne off on the back of Falstaff. Falstaff’s quick opportunism, raw common sense, and cat-footed sense of survival; and the politician’s hard, clear objectivity, practicality, and ability to control passions are the virtues which survive.</p>
+
+    <p>Despite all the disorders of <i>1 Henry IV</i>, life there has a saving vitality, exuberance, and even joy—so much so that it is impossible really to regret the loss of the stability and ceremonial order of the older, more peaceful world which lies behind. The release of energy and the exhilarating effects of freedom—the positive side of the transition from the Middle Ages to the Renaissance are so attractive that disorder seems almost a small price to pay for the wit and pleasure in life of Falstaff, the fiery idealism and high courage of the knight Harry Percy, the political skill and masterful strategy of statesmen like Henry IV and the Earl of Worcester. The vast possibilities of human nature and the mind of man come into view, and men begin to discover what they and their world are really like. As in <i>Paradise Lost</i>, the first experience of disobeying God, satisfying appetite, and eating of the tree of knowledge is hot and pleasurable. But as in Milton, so in <i>2 Henry IV</i> men soon learn that knowledge is knowledge of good and evil. The first joy of power and pleasure soon passes and the previously hidden side of freedom begins to turn into view. Justice Shallow and his cousin Silence sitting talking of the old days that are gone and agreeing that “Death is certain” set the tone of this darkening world. The Boar’s Head Tavern, formerly the center of wit and pleasure, now has an ugly quality about it. It is openly a brothel, run by Mistress Quickly, whose name takes on a new significance; and we learn that Pistol and Doll Tearsheet have killed one of the customers. The jokes have lost their cutting edge, and the characters seem to be wearily imitating their successes at wit in <i>Part I</i>. True honor and military virtue seem to have died with Hotspur, existing now only in their grotesque forms: in Prince John, who finds it unnecessary for a man of honor to be honorable with rebels, and in the crazed pimp and bully, Pistol, raving about glory and conquest in a jumble of fantastic language picked up in the theater listening to the heroic rant of such figures as Marlowe’s Tamburlaine.</p>
+
+    <p>The pleasure principle and common sense may be more durable than Hotspur’s idealism, but Falstaff also has his fatal necessities, which begin to appear prominently in <i>Part II</i>. He appears first reeling drunk, having just voided, and throughout the play his flesh reacts with illnesses and pain, gout and pox, to the excesses of pleasure, food, drink, sex. There are flashes here and there of the old Falstaff, but even his wit is blunted by a growing sense of self-satisfaction and sentimentality. As the old King sickens and Hal nears the throne, Falstaff begins to taste power and his imperial ambitions take open shape. His will to power has always been in the background of such actions as robbing the crown tax money, playing the king, and joking about the office he would hold when Hal assumed the throne; but he now displays an unconcerned insolence towards authority, mocks the Chief Justice in the streets, and cheats openly. As he begins to take himself more and more seriously, Falstaff turns philosopher, carrying his previously unexamined, amoral sense of life as pleasure to its inevitable and unpleasant extreme, a universal rule of dog-eat-dog: “If the young dace be a bait for the old pike, I see no reason in the law of nature but I may snap at [the gullible Justice Shallow].”</p>
+
+    <p>His moment comes, as it does to all the others. Upon hearing of the death of King Henry, Falstaff pauses only long enough to borrow a thousand pounds from Justice Shallow before riding hard toward London and his king, shouting the ominous words “The laws of England are at my commandment. Blessed are they that they have been my friends; and woe to my Lord Chief Justice!” In most matters Falstaff is a skeptic, but there remains a fatal innocence in this fascinating old man, who now expects that his old companion, Hal, will greet him with open arms and the tavern and the palace will at last become one. As Falstaff steps out from the crowd towards the coronation train with all its symbols of the power of England, he opens his arms and cries: “God save thy Grace, King Hal; my royal Hal! . . . God save thee, my sweet boy!” The mistake in identity is surprising for a man so adept at playing roles and changing masks to suit the need of the moment. It is not Hal who replies but King Henry V, the mirror of all Christian kings:</p>
+
+    <div class="cita">
+        <p>I know thee not, old man. Fall to thy prayers.</p>
+        <p>How ill white hairs become a fool and jester!</p>
+        <p>I have long dreamt of such a kind of man,</p>
+        <p>So surfeit-swell’d, so old, and so profane;</p>
+        <p>But, being awak’d, I do despise my dream. . . .</p>
+        <p>Presume not that I am the thing I was. . . .</p>
+        <p class="attribution">(2 Henry IV, V.v.48-57)</p>
+    </div>
+
+    <p>And so Falstaff, who long ago had been page to Thomas Mowbray, is also banished and comes to that vision of nothingness to which so many have preceded him. His understanding of where he is takes the form of a simple acceptance of a duty he has earlier steadfastly refused to acknowledge, the necessity of paying debts: “Master Shallow, I owe you a thousand pound.” We never see the knight again. He retires to the Boar’s Head to die early in <i>Henry V</i> with a broken heart, calling for sack, babbling of green fields, and swearing still that women are devils incarnate. Ambition should be made of sterner stuff, as another Shakespearean character says; but while pleasure, wit, and good-natured common sense may lack the restraint and calculation needed in the long struggle for survival and power, their absence impoverishes, as does the death of Hotspur’s frankness, courage, and idealism. The England which is made by killing Richard, Hotspur, and Falstaff is a more orderly but a less vital and less honest realm. And yet their deaths were certain, guaranteed by the very excess of their own virtue and by their own narrow interpretation of reality. The banishment of Falstaff and the destruction of wit and pleasure do not teach a moral lesson but present a tragic necessity. Henry V is not here making a wrong choice but simply instrumenting the inevitable triumph of politics over pleasure. If he is Falstaff s executioner, as he was Hotspur’s, then both Falstaff and Hotspur made that execution inevitable. If the gain of order achieved by their deaths is at the same time a loss of energy, pleasure, common sense, and selfless dedication to the ideal, that is the nature of existence East of Eden, where every gain is loss and every good an evil.</p>
+
+    <p>Politics and statecraft, the passion for order, ultimately triumph in the competition for rule. The genius of the palace and council table is finally not Henry IV but his son Hal, Henry V, and he alone escapes the decline into despair, and death. As others sicken he grows stronger, and as others make fatal mistakes he becomes ever more sure and certain in his actions. Critics have seen Hal as the ideal prince undergoing a process of education. Not a cold and careful schemer like his father, Hal, we are told, moves easily between the world of the flesh in the tavern and the world of honor on the battlefield. He excels in both ways of life and has in addition the ability to act with the temperance, prudence, and good sense necessary to the politician. His position at Shrewsbury Field standing between the body of Hotspur, whom he has killed, and the supposed body of Falstaff, playing dead in order to live, is thus an emblematic presentation of his situation in <i>The Henriad</i>. In other words, passing through a series of trials, Hal comes to be not only the ideal king but the ideal man, the only total man in a world where all the rest of the characters are possessed by a single great energy or virtue. As such he becomes the hero-king restoring life to a dying land, removing the curse of Richard’s murder from the kingdom.</p>
+
+    <p>There is much evidence to support these ethical and mythic readings, but Shakespeare complicates the situation enormously by his realistic portrayal of character. There is from the beginning something cold, withdrawn, and impersonal, even icily calculating, about Hal. He jokes, drinks, and joins in the fun of the tavern world, holds long conversations with the hostess and her servants, but he seems to be in not of, this lower world. Though he may enjoy the company of Falstaff and his gang, he is fully aware of a very practical, political reason for being here, and he regards his boon companions with a hard awareness of their worth:</p>
+
+    <div class="cita">
+        <p>I know you all, and will awhile uphold</p>
+        <p>The unyok’d humour of your idleness;</p>
+        <p>Yet herein will I imitate the sun,</p>
+        <p>Who doth permit the base contagious clouds</p>
+        <p>To smother up his beauty from the world,</p>
+        <p>That, when he please again to be himself,</p>
+        <p>Being wanted, he may be more wond’red at</p>
+        <p>By breaking through the foul and ugly mists</p>
+        <p>Of vapours that did seem to strangle him.</p>
+        <p>If all the year were playing holidays,</p>
+        <p>To sport would be as tedious as to work;</p>
+        <p>But when they seldom come, they wish’d-for come,</p>
+        <p>And nothing pleaseth but rare accidents.</p>
+        <p>So, when this loose behaviour I throw off</p>
+        <p>And pay the debt I never promised,</p>
+        <p>By how much better than my word I am,</p>
+        <p>By so much shall I falsify men’s hopes;</p>
+        <p>And, like bright metal on a sullen ground,</p>
+        <p>My reformation, glitt’ring o’er my fault,</p>
+        <p>Shall show more goodly and attract more eyes</p>
+        <p>Than that which hath no foil to set it off.</p>
+        <p>I’ll so offend to make offence a skill,</p>
+        <p>Redeeming time when men think least I will.</p>
+        <p class="attribution">(l Henry IV, I.ii. 188-210)</p>
+    </div>
+
+    <p>There is something grim about the phrase “I know you all,” and something even grimmer about the adjective “unyok’d,” suggesting an ethic in which only those things harnessed and made to draw are worthwhile. Furthermore, Hal has a very modern sense of the people’s love of change, the value of a political image,” and the mechanics of constructing one. Henry IV created his political image by appearing only rarely before the people but always acting with the utmost affability and kindness to all. Hals strategy, however, is to appear like a roisterer and a wastrel in order that expectations will be low and any achievements whatsoever as a ruler will seem magnificent by comparison. His strategy works perfectly, and in <i>Henry V</i> the Archbishop expresses the wonder of the King’s knowledge and ability (<i>Henry V</i>, I.i.38-59). Hal never seems to lose sight of the fact that he is preparing to be king of England, and each of his schemes works, each of his predictions is fulfilled. After Falstaff has played the king, Hal surveys him critically and finds that this is no king, and so Falstaff stands down and Hal plays the role with all the sternness, the rhetoric, the authority of true majesty. Falstaff, innocently thinking this is only a merry jape, takes the part of the penitent prince and uses the occasion to put in a good word for himself:</p>
+
+    <div class="cita">
+        <p>FALSTAFF: . . . .No, my good lord: banish Peto, banish Bardolph, banish Poins; but, for sweet Jack Falstaff, kind Jack Falstaff, true Jack Falstaff, valiant Jack Falstaff—and therefore more valiant, being, as he is, old Jack Falstaff—banish not him thy Harry’s company, banish not him thy Harry’s company. Banish plump Jack, and banish all the world.</p>
+        <p>PRINCE: I do, I will.</p>
+        <p class="attribution">(I Henry IV, II.iv.521-29)</p>
+    </div>
+
+    <p>In that “I do, I will,” we hear the voice of the future and see the coronation at Westminster, where a great king proves his ability to rule himself and others by the words addressed to an old rogue standing with open arms: “I know thee not, old man.”</p>
+
+    <p>Hal’s view of honor is equally detached and his calculations for achieving it are as precise as his management of the world of pleasure. He can be the chivalric knight, the man of honor, as well as he can be the tavern roisterer. But his parodies of the kind of honor which kills a dozen Scots before breakfast and complains of the quiet life suggest an objective view; and his completion of Hotspur’s dying sentence, “Food for worms,” measures the ultimate value of this kind of honor as coolly as the words “I do, I will” sum up Falstaff’s future. Hal values honor, however, knows that a king must have it, and he has a plan for acquiring it. When Henry IV berates his son for a wasted life, contrasting him unfavorably with Hotspur, Hal replies that he intends to become the very chief of honor on some battlefield where his features will be covered all in blood—a sign which will, he says, mark him as his father’s true son—and where he will tear honor from Hotspur’s heart:</p>
+
+    <div class="cita">
+        <p>Percy is but my factor, good my lord,</p>
+        <p>To engross up glorious deeds on my behalf;</p>
+        <p>And I will call him to so strict account</p>
+        <p>That he shall render every glory up,</p>
+        <p>Yea, even the slightest worship of his time,</p>
+        <p>Or I will tear the reckoning from his heart.</p>
+        <p class="attribution">(1 Henry IV, III.ii. 147-52, italics mine)</p>
+    </div>
+
+    <p>The bookkeeping imagery here suggests a view of honor as a negotiable commodity, not the insubstantial ideal of Chaucer’s “very, perfect, gentle knight,” nor the Renaissance gentleman’s honor achieved by a life of unremitting gentleness, of duty, of service, and of manners, nor Hotspur’s fame that must be sought steadfastly in hard and difficult places through a lifetime of honesty and courage and dedication. Percy is wrong about honor and Hal is, as usual, precisely correct. He kills Hotspur in battle, acquires his honor, which in time becomes the honor of the king and the pride of the national state he rules. Private virtues become national virtues in <i>The Henriad</i>, even as the absolute individuals become Englishmen.</p>
+
+    <p>Though the Prince’s bent is clearly political, his attitude toward the exercise of power and the rights of succession is remarkably clear-eyed and basic. When the old king on his deathbed tries to explain that the agonizing complexities resulting from his illegal seizure of the throne may continue to haunt his heir, Hal is rather surprised. His right to the crown is, he feels, absolute, and he intends to allow no questioning:</p>
+
+    <div class="cita">
+        <p>My gracious liege,</p>
+        <p>You won it, wore it, kept it, gave it me;</p>
+        <p>Then plain and right must my possession be;</p>
+        <p>Which I with more than with a common pain</p>
+        <p>’Gainst all the world will rightfully maintain.</p>
+        <p class="attribution">(2 Henry IV, IV.v. 221-25)</p>
+    </div>
+
+    <p>This modem view of succession and kingship, which is as direct and practical as Hal’s view of honor, is a world away from that mystical theory of legitimacy and the king’s sacred involvement with God and the order of the cosmos which Richard took for granted.</p>
+
+    <p>A great production sets the playing style and the interpretation of a play for a generation. The ruling version of <i>Henry V</i> in our time has been the Laurence Olivier film with its hearts-of-oak and roast-beef-of-old-England tone. It is the story of bluff and hearty King Hal, swaggering his way across France, wooing in good foursquare English words the shy, but delighted, Princess of France, twirling his crown and tossing it on the back of his throne, roaring defiance to the gift of tennis balls from the degenerate French dauphin, giving great battlefield speeches about St. Crispin’s Day, and exhorting the troops to close up the breaches in the wall with their English dead. It is the great swish of the arrows from the longbows of the sturdy English yeomanry—the first national army—which scythe down the gorgeously caparisoned but clumsy chivalry of France—the last feudal army—charging across the field at Agincourt. It is England becoming Britain as the hero-king unites his people and draws into his order the Welshman Fluellen, the Irishman Macmorris, and the Scot Captain Jamy, the violent and cantankerous representatives of those savage border lands where his predecessors fought so many barbarous battles. It is a land united as one man which marshals a democratic modern army to attack and defeat France; it roots out traitors with almost miraculous knowledge of their treason; it hangs thieves and looters without hesitation. It is, as Canterbury describes it, in an epic simile drawn from <i>The Aeneid</i>, a kingdom like the beehive where the “singing masons” build “roofs of gold,” and the justice delivers “o’er to executors pale / The lazy yawning drone.” Such rebellious elements as remain—traitorous peers and a gang of cutthroats and thieves at the Boar’s Head who go to France “to suck, to suck, the very blood to suck”—the King handles with remarkable ease.</p>
+
+    <p><i>Henry V</i> has the public virtues of a great king, magnanimity, courage, resourcefulness, energy, efficiency, and a great public presence. At the same time, certain private traits seen in him earlier—flat practicality, hard objectivity, a lack of complexity amounting almost to insensitivity, a sense of the uses of a public image, and a definite coldness—persist and contribute much to his political efficiency, even while raising questions about him as a man.</p>
+
+    <p>As <i>Henry V</i> opens, the Bishop of Ely and the Archbishop of Canterbury tell us that Parliament has proposed to expropriate church lands, but the King has not yet committed himself on the issue. Canterbury has offered a deal: if Henry will block the bill, the clergy will provide him with a great deal of money to support his proposed expedition to France. Rather than give a direct answer, Henry has asked the Archbishop what he thinks about the English king’s rights to the throne of France,</p>
+
+    <div class="cita">
+        <p>The severals and unhidden passages</p>
+        <p>Of his true titles to some certain dukedoms,</p>
+        <p>And generally to the crown and seat of France,</p>
+        <p>Deriv’d from Edward, his great-grandfather.</p>
+        <p class="attribution">(Henry V, I.i.86-89)</p>
+    </div>
+
+    <p>Taking up the hint, the Church is now here, in the persons of Canterbury and Ely, to interpret Henry’s French title for him. Before the Archbishop begins to speak Henry charges him most solemnly to speak nothing but certain truth, for a war between great nations and the deaths of many men hang upon his words. Happily for Canterbury, Hal’s title to the throne of France is “as clear as is the summer’s sun,” but the proof he offers is an incredible jumble of ancient geography, the customs of the primitive Germans, the workings of something called the Salic Law prohibiting females from ruling in central Europe, and other obscure pedantries. The King, still not clear about his title, or wishing to declare himself again, asks plainly, “May I with right and conscience make this claim?” When reassured once more, all doubt dies and Henry determines to seize France as his right or obliterate it:</p>
+
+    <div class="cita">
+        <p>Now are we well resolv’d; and, by God’s help</p>
+        <p>And yours, the noble sinews of our power,</p>
+        <p>France being ours, we’ll bend it to our awe,</p>
+        <p>Or break it all to pieces;</p>
+        <p class="attribution">(Henry V, I.ii.222-25)</p>
+    </div>
+
+    <p>Nothing more is heard about the expropriation of church lands. It would be most interesting to hear either Falstaff or Hotspur comment on these speeches and events, but their voices are no longer heard in Henry V’s England. What Hal’s thoughts are it is impossible to say—his motives are always as obscure as his father’s—but it is also impossible to forget the dying Henry IV’s advice to his son, “to busy giddy minds with foreign quarrels.”</p>
+
+    <p>This is not the only occasion on which there is something puzzling about Hal’s motives, on which it is possible to see him acting as both the hero-king and a subtle politician. Hal, in Ill.iii, has brought his army across the sea to the walls of Harfleur. The town at first resists siege, but the citizens then decide that there is no hope and ask for a parley. As the parley begins, Hal turns on the citizens and storms at them for defending their town so long and putting themselves and their dependents in such danger. Furthermore, if the town continues to resist he will batter it to pieces and burn it to ashes. His soldiers inflamed by battle will break loose into the town “with conscience wide as hell” to murder, rape, and pillage. “What is it to me,” the King shouts again and again, if these dreadful things happen? What responsibility do I have if these animals run lusting for blood through your streets, since it is you, the citizens of Harfleur, who by your stubbornness endanger your people? The repeated rhetorical question, What is it to me,’ with its implicit answer, “nothing,” sounds very strange in this context. Considering the brutalities that he is describing, it should be a great deal, and how does he think this army got across the English Channel and arrived before the walls of Harfleur? Who was it who assembled such cutthroats as Pistol and Nym and brought them to France to suck, to suck, the very blood to suck”? The very question by which the King disclaims responsibility, ironically forces a more profound consideration of the matter.</p>
+
+    <p>I offer one more example of this kind of thing. Shortly after the terrified Harfleur surrenders, the King rides by his army, and Fluellen tells him that no one has been lost in the recent battle except a man executed for looting a church, “one Bardolph, if your Majesty know the man; his face is all bubukles, and whelks, and knobs, and flames o’ fire; and his lips blows at his nose, and it is like a coal of fire, sometimes plue and sometimes red. This same Bardolph is the only one of Falstaff's gang who has survived all three Henry plays, and Hal has enjoyed with Falstaff and Poins many a joke about that great red nose in which the fire is at last out. But the Kings only response is A?e would have all such offenders so cut off. He then goes on to use the occasion to issue general orders to the army prohibiting looting, “for when lenity and cruelty play for a kingdom the gentler gamester is the soonest winner.”</p>
+
+    <p>Whether Henry’s reaction expresses indifference, forgetfulness, or an all-demanding sense of duty, it is impossible to say. His motives again escape us, but we can see that while there seems to be a thinness of personal feeling, there is at the same time a sure political sense of what is required of a king and the leader of a great army engaged in the conquest of a kingdom. This ambivalence emerges again and again, to reach full statement at last on the night before the battle of Agincourt. The King puts aside his public role, covering himself with a dark cloak, and walks in the night among the army. He comes to the campfire, flickering in the darkness like Richard’s candlelight in Pomfret dungeon, of three ordinary English soldiers, John Bates, Alexander Court, and Michael Williams. The soldiers are face to face on the eve of the battle with those fundamental questions which so many others have faced in <i>The Henriad</i>, and they voice these questions in a most simple way—a way which contrasts powerfully with the pedantic language of the Archbishop of Canterbury which launched this army on the French adventure and with the heroic rhetoric which exhorts the army to go once more into the breach. The soldiers are frightened about dying and worried about their families and their own souls. Is the cause for which they fight a just one? If it is not, what happens to the soul of a man who dies hating and killing other men? How can a man reconcile his duty to his king and his duty as a Christian?</p>
+
+    <div class="cita">
+        <p>But if the cause be not good, the King himself hath a heavy reckoning to make when all those legs and arms and heads, chopp’d off in a battle, shall join together at the latter day and cry all “We died at such a place”—some swearing, some crying for a surgeon, some upon their wives left poor behind them, some upon the debts they owe, some upon their children rawly left. I am afeard there are few die well that die in a battle; for how can they charitably dispose of anything when blood is their argument? Now, if these men do not die well, it will be a black matter for the King that led them to it; who to disobey were against all proportion of subjection.</p>
+        <p class="attribution">(Henry V, IV. i. 133-45)</p>
+    </div>
+
+    <p>Harry Plantagenet responds as authority must respond: The King’s cause is just, and his quarrel honorable, and therefore the men are absolved of any responsibility before God for shedding blood. But, almost as if in doubt, he goes on to argue that “the King is not bound to answer the particular endings of his soldiers” because he did not intend their deaths when he brought them to France. Here again, as before Harfleur, he is raising the questions he intends to avoid: Whether he intended death or not, he did bring his subjects to France, where they may die, and surely he bears some responsibility. And he continues to avoid the full question of responsibility by arguing that many of the soldiers carry mortal sins upon their souls and that therefore if they die in battle the King bears no responsibility for their damnation: “Every subject’s duty is the king’s, but every subject’s soul is his own.” But this really does not answer Williams’ objection that every man who dies in battle dies in sin trying to murder his fellow men, and he is doing so because his king has brought him to this place and ordered him to fight. It is impossible to forget in this discussion of the justice of the cause the doubtful way in which the French war began.</p>
+
+    <p>In this brief scene in the middle of darkness on the edge of a great battle, Michael Williams has faced for himself and his king the most fundamental questions about his responsibility as ruler and as man. But Henry does not answer the questions, either because he does not understand them or because no ruler of a state can ever answer such questions.</p>
+
+    <p>The actions and the speeches of King Henry V produce a curious ambiguity. On one hand he is the hero-king, the restorer of England’s glory, and the efficient manager of the realm; but he is at the same time, it would appear, a cunning Machiavel, a cynical politician, a man lacking in moral depth, perhaps even a limited intelligence. Our difficulties in understanding the King are intensified by the almost total absence from the play of speeches in which Henry speaks as a private man, directly revealing his own feelings. He lives in the full glare of public life, and even those usually private activities such as wooing a wife are carried out on the great stage of the world. Nor does his language yield insights into the depths of self of the kind found in the language of Richard II, Falstaff, Hotspur. Instead, Henry uses a political and heroic rhetoric whose brightly polished surface allows no penetration.</p>
+
+    <p>Faced with the absence of motives, critics have resolved the problem by judging Henry according to their particular moral bias and concluding that he is either a good and efficient ruler who sacrifices himself for the good of the state, or a hypocritical and cunning politician who relentlessly seizes every opportunity to extend and consolidate his power. We must, however, take Henry as Shakespeare gives him to us: a man who has no private personal self, but only a public character, a character which is supremely, unerringly political, which chooses without hesitation that course of action which will make the kingdom function efficiently, balance the divisive powers within, and strengthen the ruler’s grasp on the body politic. This type of man is not unknown to Shakespeare’s or our own time. Historians have been guessing for centuries about Elizabeth I’s motives for not marrying—hatred of men because of her father’s treatment of her mother? ingrown virginity? pelvic malformation? unhappy love affair in youth?—but whatever Elizabeth’s reasons, her constant hesitation was a political masterpiece. To have married a Protestant would have caused her Catholic subjects to despair and set Catholic Europe against her. To have married a Catholic would have driven her Protestant subjects to rebellion and alienated England from the growing Protestant powers in Europe. So long as she remained unmarried, but always considering marriage, she could prevent, even among the proud lords in her own court, that polarization of power which would have meant civil and world war.</p>
+
+    <p>Our own age shares with Shakespeare some understanding of political man, and the following description of an American politician is a perfect description, even down to the small details, of Henry V:</p>
+
+    <div class="cita">
+        <p>He is a totally political man, clever but not thoughtful, calculating more than reflective. He appears at once sentimental and ruthless, thinskinned and imperious, remarkably attuned to public moods and utterly expert at the “game” of political maneuver. He is all of a piece, seemingly monolithic, not only completely in but totally of politics. Upon the devices and costs of political manipulation he is capable of looking with some irony, but toward the idea of the manipulation itself and the kind of life it entails he shows no irony whatever.</p>
+    </div>
+
+    <p>No one would agree more completely than Henry V that political man “is the role,” that “the person [is] the function.” As he turns away from the bitter encounter with his soldiers around the campfire, draws back from the tragic place where Richard, Hotspur, Falstaff, and Henry IV looked and died, Henry pauses alone in the darkness and asks himself the question Richard had so long ago answered so confidently: “What is a king?” Even here his speech is still rhetoric rather than poetry; and rather than revealing a self, it is as if some vague memory of a real self were sadly contemplating its final disappearance into a role, into ceremony:</p>
+
+    <div class="cita">
+        <p>No, thou proud dream,</p>
+        <p>That play’st so subtly with a king’s repose,</p>
+        <p>I am a king that find thee; and I know</p>
+        <p>’Tis not the balm, the sceptre, and the ball,</p>
+        <p>The sword, the mace, the crown imperial,</p>
+        <p>The intertissued robe of gold and pearl,</p>
+        <p>The farced title running fore the king,</p>
+        <p>The throne he sits on, nor the tide of pomp</p>
+        <p>That beats upon the high shore of this world—</p>
+        <p>No, not all these, thrice gorgeous ceremony,</p>
+        <p>Not all these, laid in bed majestical,</p>
+        <p>Can sleep so soundly as the wretched slave</p>
+        <p>Who, with a body fill’d and vacant mind,</p>
+        <p>Gets him to rest, cramm’d with distressful bread;</p>
+        <p class="attribution">(Henry V, IV. i. 253-66)</p>
+    </div>
+
+    <p>But having seen the person fade into the political function, the King turns away from tragic knowledge and returns to his tent and to his role to become the conqueror of France, the greatest of the English kings, the husband of Katherine, and the father of Henry VI.</p>
+
+    <p>Henry reverses the path taken by Richard II, who believed that kingship and rule were his reality but discovered under the battering of circumstances that he was only a mortal man:</p>
+
+    <div class="cita">
+        <p>You have but mistook me all this while.</p>
+        <p>I live with bread like you, feel want,</p>
+        <p>Taste grief, need friends; subjected thus,</p>
+        <p>How can you say to me I am a king?</p>
+        <p class="attribution">(Richard II, III.ii. 174-77)</p>
+    </div>
+
+    <p>At the other end of the cycle, the King who has known from the beginning that he is a man playing king—“Yet herein will I imitate the sun”—discovers, however briefly, the claims of his humanity, only to turn away and lock himself forever into the role. <i>The Henriad</i> traces in its kings a great paradox: Necessity forces man out of role into reality—necessity forces man back out of reality into role. The movement is much like that of <i>The Aeneid</i>, where the establishment of New Troy and, eventually, Augustan order requires the absorption of the man Aeneas into the role of the founder of Rome, and the destruction of such turbulent energies as Dido and Turnus. In both the Roman and English epics the even balance of loss and gain creates finally a tone of great sadness inextricably mixed with great triumph.</p>
+
+    <p>The world of <i>Henry V</i> with its state rituals and ceremony looks much like a restoration of the English Eden, ordered, prosperous, and united under a hero king. But under the surface all is changed. In Richard’s feudal kingdom society was organized and life lived in accordance with the great unchanging patterns of order, mutual support, and hierarchy, which were believed to govern all the created world. In Henry’s national state, life is shifting and fluid, and action is taken not because it is morally, unchangeably right, but because it will bring about the desired result. Identity is now no longer God-given but only a role within which an individual is imprisoned by political necessity. The restored English garden, the beehive state, is superimposed on the ruined garden of France, a weed-filled, unfilled wildness (<i>Henry V</i>, V.ii.30-62). Man no longer confidently expects the future to repeat the past but stands on the edge of great vistas of time and lives in the historical process of endless change. What was small and coherent is now vast and tends to fragmentation, what was unchanging is now in ceaseless flux, what was real is now acted! and what was external and certain is now internalized and ambiguous.</p>
+
+    <p><i>The Henriad</i> is a brief but fairly accurate history of the reigns of Richard II, Henry IV, and Henry V. But the chronicle of the wars of succession between York and Lancaster is only the outward form of an action tracing the great psychological, social, and political shifts from the medieval to the modem world. Below the level of these great cultural shifts, however, a still more fundamental plot exists and gives to the plays much of their energy and perpetual fascination.</p>
+
+    <p>In the beginning there is a king, Richard II, and a society which believe like the child that the world is all of a piece, from the clod of earth up to God Himself. Man cannot be distinguished from world, for all parts of the indivisible universe move in sympathy with all other parts. God watches benevolently over this world overseeing the endless operation of justice and right. But man is at the center of this rich and brilliant universe. He trusts the authorities and traditions that he has inherited and assumes that nothing will ever change from the way it is.</p>
+
+    <p>Then, the knowledge of death, the conflicting pressures of reality, and the more violent passions—hate, blood-lust, the will to power—erupt and break up the old certainties. When the earthly king calls for help to the heavenly king there is not even the whisper of an answer. Feelings of isolation in great darkness grow. Certainty of identity is lost and the vastnesses of eternity and infinity are glimpsed. Man is driven inward upon himself, becomes self-conscious, as he realizes that there is a world “out there” which does not conform to his will or imagination. Confused, the old innocence dies with Richard II.</p>
+
+    <p>Life fragments, new energies are released, and many new possibilities of life appear: pleasure, politics, honor, war, poetry, and magic. The individual is no longer limited to “what he is” but is free to experiment and act out many parts. Prince Hal—shrewd and reality-oriented—now replaces Richard as the central figure in the psychic journey. At first he rejects the authority figures, the king, the father, the law, to live a life of pleasure and self-indulgence in the tavern, taking Falstaff as a father temporarily. He turns from the flesh to the spirit and seeks to find himself on the battlefield and in the search for honor and fame. In both tavern and battlefield, however, he “keeps his wits about him” and avoids the total involvement with these ultimately unrealistic extremes, both of which have death implicit in them.</p>
+
+    <p>In the end, the Prince kills wild idealism, Hotspur, and banishes unlimited pleasure, Falstaff, to return to his true father in spirit and person. With the death of the father, the Prince assumes the burdens of rule and takes up the adult role of trying to order and “make the world work.” In the process of becoming a ruler his personal self, the essential “I,” is lost forever as the man disappears into the role his work demands.</p>
+
+    <section class="footnotes">
+        <h3>Note</h3>
+        <p>From <i>Modern Shakespearean Criticism</i>, edited by Alvin B. Kernan. Copyright © 1970 by Harcourt Brace Jovanovich. First published in a shorter form in <i>The Yale Review</i> 1 (Fall 1969). Copyright © 1969 by <i>The Yale Review</i>.</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>

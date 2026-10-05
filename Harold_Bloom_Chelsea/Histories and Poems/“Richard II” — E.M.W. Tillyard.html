@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>“Richard II” — E.M.W. Tillyard</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">E.M.W. TILLYARD</p>
+        <h1 class="cab__tit">“Richard II”</h1>
+    </header>
+
+    <p>Richard II is imperfectly executed, and yet, that imperfection granted, perfectly planned as part of a great structure. It is sharply contrasted, in its extreme formality of shape and style, with the subtler and more fluid nature of <i>Henry IV</i>; but it is a necessary and deliberate contrast; resembling a stiff recitative composed to introduce a varied and flexible <i>aria</i>. Coming after <i>King John</i> the play would appear the strangest relapse into the official self which Shakespeare had been shedding; taken with <i>Henry IV</i> it shows that Shakespeare, while retaining and using this official self, could develop with brilliant success the new qualities of character and style manifested in the Bastard. <i>Richard II</i> therefore betokens no relapse but is an organic part of one of Shakespeare’s major achievements. . . .</p>
+
+    <p>Of all Shakespeare’s plays <i>Richard II</i> is the most formal and ceremonial. It is not only that Richard himself is a true king in appearance, in his command of the trappings of royalty, while being deficient in the solid virtues of the ruler; that is a commonplace: the ceremonial character of the play extends much wider than Richard’s own nature or the exquisite patterns of his poetic speech.</p>
+
+    <p>First, the very actions tend to be symbolic rather than real. There is all the pomp of a tournament without the physical meeting of the two armed knights. There is a great army of Welshmen assembled to support Richard, but they never fight. Bolingbroke before Flint Castle speaks of the terrible clash there should be when he and Richard meet:</p>
+
+    <div class="cita">
+        <p>Methinks King Richard and myself should meet</p>
+        <p>With no less terror than the elements</p>
+        <p>Of fire and water, when their thundering shock</p>
+        <p>At meeting tears the cloudy cheeks of heaven.</p>
+    </div>
+
+    <p>But instead of a clash there is a highly ceremonious encounter leading to the effortless submission of Richard. There are violent challenges before Henry in Westminster Hall, but the issue is postponed. The climax of the play is the ceremony of Richard’s deposition. And finally Richard, imprisoned at Pomfret, erects his own lonely state and his own griefs into a gigantic ceremony. He arranges his own thoughts into classes corresponding with men’s estates in real life; king and beggar, divine, soldier, and middle man. His own sighs keep a ceremonial order like a clock:</p>
+
+    <div class="cita">
+        <p>Now, sir, the sound that tells what hour it is</p>
+        <p>Are clamorous groans, which strike upon my heart,</p>
+        <p>Which is the bell: so sighs and tears and groans</p>
+        <p>Show minutes, times, and hours.</p>
+    </div>
+
+    <p>Second, in places where emotion rises, where there is strong mental action, Shakespeare evades direct or naturalistic presentation and resorts to convention and conceit. He had done the same when Arthur pleaded with Hubert for his eyes in <i>King John</i>, but that was exceptional to a play which contained the agonies of Constance and the Bastard’s perplexities over Arthur’s body. Emotionally Richard’s parting from his queen could have been a great thing in the play: actually it is an exchange of frigidly ingenious couplets.</p>
+
+    <div class="cita">
+        <p>RICH.: Go, count thy way with sighs; I mine with groans.</p>
+        <p>QU.: So longest way shall have the longest moans.</p>
+        <p>RICH.: Twice for one step I’ll groan, the way being short,</p>
+        <p>And piece the way out with a heavy heart.</p>
+    </div>
+
+    <p>This is indeed the language of ceremony, not of passion. Exactly the same happens when the Duchess of York pleads with Henry against her husband for her son Aumerle’s life. Before the climax, when York gives the news of his son’s treachery, there had been a show of feeling; but with the entry of the Duchess, when emotion should culminate, all is changed to prettiness and formal antiphony. This is how the Duchess compares her own quality of pleading with her husband’s:</p>
+
+    <div class="cita">
+        <p>Pleads he in earnest? Look upon his face;</p>
+        <p>His eyes do drop no tears, his prayers are jest;</p>
+        <p>His words come from his mouth, ours from our breast:</p>
+        <p>He prays but faintly and would be denied;</p>
+        <p>We pray with heart and soul and all beside:</p>
+        <p>His weary joints would gladly rise, I know;</p>
+        <p>Our knees shall kneel till to the ground they grow:</p>
+        <p>His prayers are full of false hypocrisy;</p>
+        <p>Ours of true zeal and deep integrity.</p>
+    </div>
+
+    <p>And to “frame” the scene, to make it unmistakably a piece of deliberate ceremonial, Bolingbroke falls into the normal language of drama when, having forgiven Aumerle, he vows to punish the other conspirators:</p>
+
+    <div class="cita">
+        <p>But for our trusty brother-in-law and the abbot,</p>
+        <p>And all the rest of that consorted crew,</p>
+        <p>Destruction straight shall dog them at the heels.</p>
+    </div>
+
+    <p>The cause of Gaunt is different but more complicated. When he has the state of England in mind and reproves Richard, though he can be rhetorical and play on words, he speaks the language of passion:</p>
+
+    <div class="cita">
+        <p>Now He that made me knows I see thee ill.</p>
+        <p>Thy death-bed is no lesser than thy land</p>
+        <p>Wherein thou liest in reputation sick.</p>
+        <p>And thou, too careless patient as thou art,</p>
+        <p>Commit’st thy anointed body to the cure</p>
+        <p>Of those physicians that first wounded thee.</p>
+        <p>A thousand flatterers sit within thy crown,</p>
+        <p>Whose compass is no bigger than thy hand.</p>
+    </div>
+
+    <p>But in the scene of private feeling, when he parts from his banished son, both speakers, ceasing to be specifically themselves, exchange the most exquisitely formal commonplaces traditionally deemed appropriate to such a situation.</p>
+
+    <div class="cita">
+        <p>Go, say I sent thee for to purchase honour</p>
+        <p>And not the king exil’d thee; or suppose</p>
+        <p>Devouring pestilence hangs in our air</p>
+        <p>And thou art flying to a fresher clime.</p>
+        <p>Look, what thy soul holds dear, imagine it</p>
+        <p>To lie that way thou go’st, not whence thou com’st.</p>
+        <p>Suppose the singing birds musicians,</p>
+        <p>The grass whereon thou tread’st the presence strew’d,</p>
+        <p>The flowers fair ladies, and thy steps no more</p>
+        <p>Than a delightful measure or a dance;</p>
+        <p>For gnarling sorrow hath less power to bite</p>
+        <p>The man that mocks at it and sets it light.</p>
+    </div>
+
+    <p>Superficially this may be maturer verse than the couplets quoted, but it is just as formal, just as mindful of propriety and as unmindful of nature as Richard and his queen taking leave. Richard’s sudden start into action when attacked by his murderers is exceptional, serving to set off by contrast the lack of action that has prevailed and to link the play with the next of the series. His groom, who appears in the same scene, is a realistic character alien to the rest of the play and serves the same function as Richard in action.</p>
+
+    <p>Thirdly, there is an elaboration and a formality in the cosmic references, scarcely to be matched in Shakespeare. These are usually brief and incidental, showing indeed how intimate a part they were of the things accepted and familiar in Shakespeare’s mind. But in <i>Richard II</i> they are positively paraded. The great speech of Richard in Pomfret Castle is a tissue of them: first the peopling of his prison room with his thoughts, making its microcosm correspond with the orders of the body politic; then the doctrine of the universe as a musical harmony; then the fantasy of his own griefs arranged in a pattern like the working of a clock, symbol of regularity opposed to discord; and finally madness as the counterpart in man’s mental kingdom of discord or chaos. Throughout the play the great commonplace of the king on earth duplicating the sun in heaven is exploited with a persistence unmatched anywhere else in Shakespeare. Finally (for I omit minor references to cosmic lore) there is the scene (III.4) of the gardeners, with the elaborate comparison of the state to the botanical microcosm of the garden. But this is a scene so typical of the whole trend of the play that I will speak of it generally and not merely as another illustration of the traditional correspondences.</p>
+
+    <p>The scene begins with a few exquisitely musical lines of dialogue between the queen and two ladies. She refines her grief in a vein of high ceremony and sophistication. She begins by asking what sport they can devise in this garden to drive away care. But to every sport proposed there is a witty objection.</p>
+
+    <div class="cita">
+        <p>LADY: Madam, we’ll tell tales.</p>
+        <p>QUEEN: Of sorrow or of joy?</p>
+        <p>LADY: Of either, madam.</p>
+        <p>QUEEN: Of neither, girl:</p>
+        <p>It doth remember me the more of sorrow;</p>
+        <p>Or if of grief, being altogether had,</p>
+        <p>It adds more sorrow to my want of joy.</p>
+        <p>For what I have I need not to repeat,</p>
+        <p>And what I want it boots not to complain.</p>
+    </div>
+
+    <p>Shakespeare uses language here like a very accomplished musician doing exercises over the whole compass of the violin. Then there enter a gardener and two servants: clearly to balance the queen and her ladies and through that balance to suggest that the gardener within the walls of his little plot of land is a king. Nothing could illustrate better the different expectations of a modern and of an Elizabethan audience than the way they would take the gardener’s opening words:</p>
+
+    <div class="cita">
+        <p>Go, bind thou up yon dangling apricocks,</p>
+        <p>Which, like unruly children, make their sire</p>
+        <p>Stoop with oppression of their prodigal weight.</p>
+    </div>
+
+    <p>The first thought of a modern audience is: what a ridiculous way for a gardener to talk. The first thought of an Elizabethan would have been: what is the symbolic meaning of those words, spoken by this king of the garden, and how does it bear on the play? And it would very quickly conclude that the apricots had grown inflated and overweening in the sun of the royal favour; that oppression was used with a political as well as a physical meaning; and that the apricots threatened, unless restrained, to upset the proper relation between parent and offspring, to offend against the great principle of order. And the rest of the gardener’s speech would bear out this interpretation.</p>
+
+    <div class="cita">
+        <p>Go thou, and like an executioner</p>
+        <p>Cut off the heads of too fast growing sprays,</p>
+        <p>That look too lofty in our commonwealth.</p>
+        <p>All must be even in our government.</p>
+        <p>You thus employ’d, I will go root away</p>
+        <p>The noisome weeds, which without profit suck</p>
+        <p>The soil’s fertility from wholesome flowers.</p>
+    </div>
+
+    <p>In fact the scene turns out to be an elaborate political allegory, with the Earl of Wiltshire, Bushy, and Green standing for the noxious weeds which Richard, the bad gardener, allowed to flourish and which Henry, the new gardener, has rooted up. It ends with the queen coming forward and joining in the talk. She confirms the gardener’s regal and moral function by calling him “old Adam’s likeness,” but curses him for his ill news about Richard and Bolingbroke. The intensively symbolic character of the scene is confirmed when the gardener at the end proposes to plant a bank with rue where the queen let fall her tears, as a memorial:</p>
+
+    <div class="cita">
+        <p>Rue, even for ruth, here shortly shall be seen</p>
+        <p>In the remembrance of a weeping queen.</p>
+    </div>
+
+    <p>. . . The one close Shakespearean analogy with this gardener is Iden, the unambitious squire in his Kentish garden, who stands for “degree” in <i>2 Henry VI</i>. But he comes in as an obvious foil to the realistic disorder just exhibited in Cade’s rebellion. Why was it that in <i>Richard II</i>, when he was so much more mature, when his brilliant realism in <i>King John</i> showed him capable of making his gardeners as human and as amusing as the gravediggers in <i>Hamlet</i>, Shakespeare chose to present them with a degree of formality unequalled in any play he wrote? It is, in a different form, the same question as that which was implied by my discussion of the other formal or ceremonial features of the play: namely, why did Shakespeare in <i>Richard II</i> make the ceremonial or ritual form of writing, found in differing quantities in the <i>Henry VI</i> plays and in <i>Richard III</i>, not merely one of the principal means of expression but the very essence of the play?</p>
+
+    <p>These are the first questions we must answer if we are to understand the true nature of <i>Richard II</i>. And here let me repeat that though Richard himself is a very important part of the play’s ceremonial content, that content is larger and more important than Richard. With that caution, I will try to explain how the ritual or ceremonial element in <i>Richard II</i> differs from that in the earlier History Plays, and through such an explanation to conjecture a new interpretation of the play. There is no finer instance of ceremonial writing than the scene of the ghosts at the end of <i>Richard III</i>. But it is subservient to a piece of action, to the Battle of Bosworth with the overthrow of a tyrant and the triumph of a righteous prince. Its duty is to make that action a matter of high, mysterious, religious import. We are not invited to dwell on the ritual happenings as on a resting-place, to deduce from them the ideas into which the mind settles when the action of the play is over. But in <i>Richard II</i>, with all the emphasis and the point taken out of the action, we are invited, again and again, to dwell on the sheer ceremony of the various situations. The main point of the tournament between Bolingbroke and Mowbray is the way it is conducted; the point of Gaunt’s parting with Bolingbroke is the sheer propriety of the sentiments they utter; the portents, put so fittingly into the mouth of a Welshman, are more exciting because they are appropriate than because they precipitate an event; Richard is ever more concerned with how he behaves, with the fitness of his conduct to the occasion, than with what he actually does; the gardener may foretell the deposition of Richard yet he is far more interesting as representing a static principle of order; when Richard is deposed, it is the precise manner that comes before all—</p>
+
+    <div class="cita">
+        <p>With mine own tears I wash away my balm,</p>
+        <p>With mine own hands I give away my crown,</p>
+        <p>With mine own tongue deny my sacred state,</p>
+        <p>With mine own breath release all duty’s rites.</p>
+    </div>
+
+    <p>We are in fact in a world where means matter more than ends, where it is more important to keep strictly the rules of an elaborate game than either to win or to lose it. . . .</p>
+
+    <p>I noted above that at the end of <i>2 Henry VI</i> Clifford and York, though enemies, do utter some of the chivalric sentiments proper to medieval warfare. Such sentiments do not recur in <i>3 Henry VI</i>, where we have instead the full barbarities of Wakefield and Towton. Shakespeare is probably recording the historical fact that the decencies of the knightly code went down under the stress of civil carnage. But the really convincing analogy with <i>Richard II</i> is the play of <i>Julius Caesar</i>. There, however slender Shakespeare’s equipment as historian and however much of his own time he slips in, he does succeed in giving his picture of antique Rome, of the dignity of its government and of the stoic creed of its great men. T. S. Eliot has rightly noted how much essential history Shakespeare extracted from Plutarch. And if from Plutarch, why not from Froissart likewise?</p>
+
+    <p>Till recently Shakespeare’s debt to Berners’s translation of Froissart’s <i>Chronicle</i> has been almost passed over, but now it is rightly agreed that it was considerable. To recognise the debt helps one to understand the play. For instance, one of the minor puzzles of the play is plain if we grant Shakespeare’s acquaintance with Froissart. When York, horrified at Richard’s confiscating Gaunt’s property the moment he died, goes on to enumerate all Richard’s crimes, he mentions “the prevention of poor Bolingbroke about his marriage.” There is nothing more about this in the play, but there is a great deal about it in Froissart—Richard had brought charges against the exile Bolingbroke which induced the French king to break off Bolingbroke’s engagement with the daughter of the Duke of Berry, the king’s cousin. If Shakespeare had been full of Froissart when writing <i>Richard II</i> he could easily have slipped in this isolated reference. But quite apart from any tangible signs of imitation it is scarcely conceivable that Shakespeare should not have read so famous a book as Berners’s Froissart, or that having read it he should not have been impressed by the bright pictures of chivalric life in those pages. Now among Shakespeare’s History Plays <i>Richard II</i> is the only one that falls within the period of time covered by Froissart. All the more reason why on this unique occasion he should heed this great original. Now though Froissart is greatly interested in motives, he also writes with an eye unmatched among chroniclers for its eager observation of external things and with a mind similarly unmatched for the high value it placed on the proper disposition of those things. In fact he showed a lively belief in ceremony and in the proprieties of heraldry akin to Elizabethan belief yet altogether more firmly attached to the general scheme of ideas that prevailed at the time. Shakespeare’s brilliant wit must have grasped this; and <i>Richard II</i> may be his intuitive rendering of Froissart’s medievalism.</p>
+
+    <p>But there were other reasons why the reign of Richard II should be notable. A. B. Steel, his most recent historian, begins his study by noting that Richard was the last king of the old medieval order:</p>
+
+    <div class="cita">
+        <p>the last king ruling by hereditary right, direct and undisputed, from the Conqueror. The kings of the next hundred and ten years . . . were essentially kings <i>de facto</i> not <i>de jure</i>, successful usurpers recognised after the event, upon conditions, by their fellow-magnates or by parliament.</p>
+    </div>
+
+    <p>Shakespeare, deeply interested in titles as he had showed himself to be in his early History Plays, must have known this very well; and Gaunt’s famous speech on England cannot be fully understood without this knowledge. He calls England</p>
+
+    <div class="cita">
+        <p>This nurse, this teeming womb of royal kings,</p>
+        <p>Fear’d by their breed and famous by their birth,</p>
+        <p>Renowned for their deeds as far from home,</p>
+        <p>For Christian service and true chivalry,</p>
+        <p>As is the sepulchre in stubborn Jewry</p>
+        <p>Of the world’s ransom, blessed Mary’s son.</p>
+    </div>
+
+    <p>Richard was no crusader, but he was authentic heir of the crusading Plantagenets. Henry was different, a usurper; and it is with reference to this passage that we must read the lines in <i>Richard II</i> and <i>Henry IV</i> which recount his desire and his failure to go to Palestine. That honour was reserved for the authentic Plantagenet kings. Richard then had the full sanctity of medieval kingship and the strong pathos of being the last king to possess it. Shakespeare probably realised that however powerful the Tudors were and however undisputed their hold over their country’s church, they had not the same sanctity as the medieval kings. He was therefore ready to draw from certain French treatises, anti-Lancastrian in tone, that made Richard a martyr and compared him to Christ and his accusers to so many Pilates giving him over to the wishes of the London mob. Shakespeare’s Richard says at his deposition:</p>
+
+    <div class="cita">
+        <p>Though some of you with Pilate wash your hands,</p>
+        <p>Showing an outward pity; yet you Pilates</p>
+        <p>Have here deliver’d me to my sour cross,</p>
+        <p>And water cannot wash away your sin.</p>
+    </div>
+
+    <p>Holy and virtuous as the Earl of Richmond is in <i>Richard III</i>, he does not pretend to the same kingly sanctity as Richard II. Such sanctity belongs to a more antique, more exotically ritual world; and Shakespeare composed his play accordingly.</p>
+
+    <p>Not only did Richard in himself hold a position unique among English kings, he maintained a court of excessive splendour. . . . In an age that was both passionately admiring of royal magnificence and far more retentive of tradition than our own the glories of Richard’s court must have persisted as a legend. Anyhow that Shakespeare was aware of them is plain from Richard’s address to his own likeness in the mirror:</p>
+
+    <div class="cita">
+        <p>Was this face the face</p>
+        <p>That every day under his household roof</p>
+        <p>Did keep ten thousand men?</p>
+    </div>
+
+    <p>The legend must have persisted of this court’s continental elegance, of the curiosities of its dress, of such a thing as Anne of Bohemia introducing the custom of riding side-saddle, of Richard’s invention of the handkerchief for nasal use. Then there were the poets. Shakespeare must have associated the beginnings of English poetry with Chaucer and Gower; and they wrote mainly in Richard’s reign. There must have been much medieval art, far more than now survives, visible in the great houses of Elizabeth’s day, illuminated books and tapestry; and it would be generally associated with the most brilliant reign of the Middle Ages. Finally in Richard’s reign there was the glamour of a still intact nobility: a very powerful glamour in an age still devoted to heraldry and yet possessing an aristocracy who, compared with the great men of Richard’s day, were upstarts.</p>
+
+    <p>All these facts would have a strong, if unconscious, effect on Shakespeare’s mind and induce him to present the age of Richard in a brilliant yet remote and unrealistic manner. He was already master of a certain antique lore and of a certain kind of ceremonial writing: it was natural that he should use them, but with a different turn, to do this particular work. Thus he makes more solemn and elaborates the inherited notions of cosmic correspondences and chivalric procedure and he makes his ritual style a central and not peripheral concern. Hence the portentous solemnity of the moralising gardeners, the powerful emphasis on the isolated symbol of the rue-tree, the elaborate circumstances of the tournament between Bolingbroke and Mowbray, and the unique artifice of Richard’s great speeches: speeches which are the true centre of the play but central with a far wider reference than to the mere character of Richard.</p>
+
+    <p>In speaking of medieval illuminated books and tapestry I do not wish to imply anything too literal: that Shakespeare had actual examples of such things in mind when he wrote <i>Richard II</i>. But it is true that many passages in this play call them up and that unconscious memory of them might have given Shakespeare help. Take a passage from one of Richard’s best known speeches.</p>
+
+    <div class="cita">
+        <p>For God’s sake, let us sit upon the ground</p>
+        <p>And tell sad stories of the death of kings:</p>
+        <p>How some have been depos’d, some slain in war,</p>
+        <p>Some haunted by the ghosts they have depos’d,</p>
+        <p>Some poison’d by their wives, some sleeping kill’d;</p>
+        <p>All murder’d: for within the hollow crown</p>
+        <p>That rounds the mortal temples of a king</p>
+        <p>Keeps Death his court, and there the antic sits,</p>
+        <p>Scoffing his state and grinning at his pomp,</p>
+        <p>Allowing him a breath, a little scene,</p>
+        <p>To monarchise, be fear’d, and kill with looks,</p>
+        <p>Infusing him with self and vain conceit,</p>
+        <p>As if this flesh which walls about our life</p>
+        <p>Were brass impregnable, and, humour’d thus,</p>
+        <p>Comes at the last and with a little pin</p>
+        <p>Bores through his castle walls, and farewell king!</p>
+    </div>
+
+    <p>Critics have seen a reference here to the <i>Mirror for Magistrates</i>, but Chaucer’s <i>Monk’s Tale</i> would suit much better. Death, keeping his court, is a pure medieval motive. Still, these motives were inherited and need imply nothing unusual. But Death the skeleton watching and mocking the king in his trappings is a clear and concrete image that reminds one of the visual arts: and above all the exquisiteness, the very remoteness from what could have happened in an actual physical attempt, of someone boring through the castle wall with a little pin precisely recaptures the technique of medieval illumination. Before the tournament Bolingbroke prays God:</p>
+
+    <div class="cita">
+        <p>And with thy blessings steel my lance’s point</p>
+        <p>That it may enter Mowbray’s waxen coat.</p>
+    </div>
+
+    <p>That again is just like medieval illumination. When a wound is given in medieval art there is no fusion of thing striking with thing stricken; the blow simply rests in a pre-existing hole, while any blood that spouts out had pre-existed just as surely. This is the kind of picture called up by Mowbray’s “waxen coat.” Or take this comparison. If anywhere in <i>Henry IV</i> we might expect medievalism it is in the description of the Prince performing the most spectacular of chivalric actions: vaulting onto his horse in full armour.</p>
+
+    <div class="cita">
+        <p>I saw young Harry, with his beaver on,</p>
+        <p>His cuisses on his thighs, gallantly arm’d,</p>
+        <p>Rise from the ground like feather’d Mercury,</p>
+        <p>And vaulted with such ease into his seat,</p>
+        <p>As if an angel dropp’d down from the clouds,</p>
+        <p>To turn and wind a fiery Pegasus</p>
+        <p>And witch the world with noble horsemanship.</p>
+    </div>
+
+    <p>There is nothing medieval here. It is a description recalling the art of the high Renaissance with fused colours and subtle transitions. Set beside it Gaunt’s advice to Bolingbroke about to go into exile:</p>
+
+    <div class="cita">
+        <p>Suppose the singing birds musicians,</p>
+        <p>The grass whereon thou tread’st the presence strew’d,</p>
+        <p>The flowers fair ladies, and thy steps no more</p>
+        <p>Than a delightful measure or a dance.</p>
+    </div>
+
+    <p>Here each item is distinct, and the lines evoke the mincing figures of a medieval tapestry in a setting of birds and flowers.</p>
+
+    <p>The case for the essential medievalism of <i>Richard II</i> is even stronger when it is seen that the conspirators, working as such, do not share the ceremonial style used to represent Richard and his court. Once again the usual explanation of such a contrast is too narrow. It has been the habit to contrast the “poetry” of Richard with the practical common sense of Bolingbroke. But the “poetry” of Richard is all part of a world of gorgeous tournaments, conventionally mournful queens, and impossibly sententious gardeners, while Bolingbroke’s common sense extends to his backers, in particular to that most important character, Northumberland. We have in fact the contrast not only of two characters but of two ways of life.</p>
+
+    <p>One example of the two different ways of life has occurred already: in the contrast noted between the mannered pleading of the Duchess of York for Aumerle’s life and Henry’s vigorous resolve immediately after to punish the conspirators. The Duchess and her family belong to the old order where the means, the style, the embroidery matter more than what they further or express. Henry belongs to a new order, where action is quick and leads somewhere. But other examples are needed to back up what to many readers will doubtless seem a dangerous and forced theory of the play’s significance. First, a new kind of vigour, the vigour of strong and swift action, enters the verse of the play at II. 1. 224, when, after Richard has seized Gaunt’s property and announced his coming journey to Ireland, Northumberland, Ross, and Willoughby remain behind and hatch their conspiracy. Northumberland’s last speech especially has a different vigour from any vigorous writing that has gone before: from the vigour of the jousters’ mutual defiance or York’s moral indignation at the king’s excesses. After enumerating Bolingbroke’s supporters in Brittany, he goes on:</p>
+
+    <div class="cita">
+        <p>All these well furnish’d by the Duke of Brittain</p>
+        <p>With eight tall ships, three thousand men of war,</p>
+        <p>Are making hither with all due expedience</p>
+        <p>And shortly mean to touch our northern shore:</p>
+        <p>Perhaps they had ere this, but that they stay</p>
+        <p>The first departing of the king for Ireland.</p>
+        <p>If then we shall shake off our slavish yoke,</p>
+        <p>Imp out our drooping country’s broken wing,</p>
+        <p>Redeem from broken pawn the blemish’d crown,</p>
+        <p>Wipe off the dust that hides our sceptre’s gift</p>
+        <p>And make high majesty look like itself,</p>
+        <p>Away with me in post to Ravenspurgh.</p>
+    </div>
+
+    <p>The four lines describing by different metaphors how the land is to be restored are not in a ritual manner but in Shakespeare’s normal idiom of Elizabethan exuberance. It is not for nothing that the next scene shows the Queen exchanging elegant conceits about her sorrow for Richard’s absence with Bushy and Green. But the largest contrast comes at the beginning of the third act. It begins with a very fine speech of Bolingbroke recounting to Bushy and Green all their crimes, before they are executed. It has the full accent of the world of action, where people want to get things and are roused to passion in their attempts:</p>
+
+    <div class="cita">
+        <p>Bring forth these men.</p>
+        <p>Bushy and Green, I will not vex your souls</p>
+        <p>(Since presently your souls must part your bodies)</p>
+        <p>With too much urging your pernicious lives,</p>
+        <p>For ’twere no charity.</p>
+    </div>
+
+    <p>That is the beginning, and the speech goes on to things themselves not to the way they are done or are embroidered. And when at the end Bolingbroke recounts his own injuries it is with plain and understandable passion:</p>
+
+    <div class="cita">
+        <p>Myself a prince by fortune of my birth,</p>
+        <p>Near to the king in blood, and near in love</p>
+        <p>Till you did make him misinterpret me,</p>
+        <p>Have stoop’d my neck under your injuries</p>
+        <p>And sigh’d my English breath in foreign clouds,</p>
+        <p>Eating the bitter bread of banishment.</p>
+    </div>
+
+    <p>The scene is followed by Richard’s landing in Wales, his pitiful inability to act, and his wonderful self-dramatisation. As a display of externals, as an exaltation of means over ends (here carried to a frivolous excess), it is wonderful; yet it contains no lines that for the weight of unaffected passion come near Bolingbroke’s single line,</p>
+
+    <div class="cita">
+        <p>Eating the bitter bread of banishment.</p>
+    </div>
+
+    <p>The world for which Bolingbroke stands, though it is a usurping world, displays a greater sincerity of personal emotion.</p>
+
+    <p>Thus <i>Richard II</i>, although reputed so simple and homogeneous a play, is built on a contrast. The world of medieval refinement is indeed the main object of presentation but it is threatened and in the end superseded by the more familiar world of the present.</p>
+
+    <p>In carrying out his object Shakespeare shows the greatest skill in keeping the emphasis sufficiently on Richard, while hinting that in Bolingbroke’s world there is the probability of development. In other words he makes the world of Bolingbroke not so much defective as embryonic. It is not allowed to compete with Richard’s but it is ready to grow to its proper fulness in the next plays. This is especially true of the conspirators’ characters. Hotspur, for instance, is faintly drawn yet in one place he speaks with a hearty abruptness that shows his creator had conceived the whole character already. It is when Hotspur first meets Bolingbroke, near Berkeley Castle. Northumberland asks him if he has forgotten the Duke of Hereford, and Hotspur replies:</p>
+
+    <div class="cita">
+        <p>No, my good lord, for that is not forgot</p>
+        <p>Which ne’er I did remember: to my knowledge</p>
+        <p>I never in my life did look on him.</p>
+    </div>
+
+    <p>At the beginning of the same scene Northumberland’s elaborate compliments to Bolingbroke show his politic nature: it is the same man who at the beginning of <i>2 Henry IV</i> lies “crafty-sick.” Bolingbroke too is consistent with his later self, though we are shown only certain elements in his character. What marks out the later Bolingbroke and makes him a rather pathetic figure is his bewilderment. For all his political acumen he does not know himself completely or his way about the world. And the reason is that he has relied in large part on fortune. Dover Wilson remarked truly of him in <i>Richard II</i> that though he acts forcibly he appears to be borne upward by a power beyond his volition. He is made the first mover of trouble in the matter of the tournament and he wants to do something about Woodstock’s murder. But he has no steady policy and having once set events in motion is the servant of fortune. As such, he is not in control of events, though by his adroitness he may deal with the unpredictable as it occurs. Now a man who, lacking a steady policy, begins a course of action will be led into those “by-paths and indirect crook’d ways” of which Henry speaks to his son in <i>2 Henry IV</i>. Shakespeare says nothing of them in <i>Richard II</i>, but they are yet the inevitable result of Henry’s character as shown in that play. It is worth anticipating and saying that Prince Hal differs from his father in having perfect knowledge both of himself and of the world around him. Of all types of men he is the least subject to the sway of fortune.</p>
+
+    <p>Another quality shown only in embryo is humour. It is nearly absent but there is just a touch: sufficient to assure us that Shakespeare has it there all the time in readiness. It occurs in the scene where Aumerle describes to Richard his parting from Bolingbroke.</p>
+
+    <div class="cita">
+        <p>RICH.: And say, what store of parting tears were shed?</p>
+        <p>AUM.: Faith, none for me: except the north-east wind</p>
+        <p>Which then blew bitterly against our faces,</p>
+        <p>Awak’d the sleeping rheum, and so by chance</p>
+        <p>Did grace our hollow parting with a tear.</p>
+    </div>
+
+    <p><i>Richard II</i> thus at once possesses a dominant theme and contains within itself the elements of those different things that are to be the theme of its successors. . . .</p>
+
+    <p><i>Richard II</i> does its work in proclaiming the great theme of the whole cycle of Shakespeare’s History Plays: the beginning in prosperity, the distortion of prosperity by a crime, civil war, and ultimate renewal of prosperity. The last stage falls outside the play’s scope, but the second scene with the Duchess of Gloucester’s enumeration of Edward III’s seven sons, her account of Gloucester’s death, and her call for vengeance is a worthy exordium of the whole cycle. The speeches of the Bishop of Carlisle and of Richard to Northumberland ... are worthy statements of the disorder that follows the deposition of the rightful king. In doctrine the play is entirely orthodox. Shakespeare knows that Richard’s crimes never amounted to tyranny and hence that outright rebellion against him was a crime. He leaves uncertain the question of who murdered Woodstock and never says that Richard was personally responsible. The king’s uncles hold perfectly correct opinions. Gaunt refuses the Duchess of Gloucester’s request for vengeance, the matter being for God’s decision alone. Even on his deathbed, when lamenting the state of the realm and calling Richard the landlord and not the king of England, he never preaches rebellion. And he mentions deposition only in the sense that Richard by his own conduct is deposing himself. York utters the most correct sentiments. Like the Bastard, he is for supporting the existing government. And though he changes allegiance he is never for rebellion. As stated above, the gardener was against the deposition of Richard.</p>
+
+    <p>As well as being a study of medievalism, Richard takes his place among Shakespeare’s many studies of the kingly nature. He is a king by unquestioned title and by his external graces alone. But others have written so well on Richard’s character that I need say no more.</p>
+
+    <p>Lastly, for political motives, there is the old Morality theme of Respublica. One of Shakespeare’s debts in <i>Richard II</i> is to <i>Woodstock</i>; and this play is constructed very plainly on the Morality pattern, with the king’s three uncles led by Woodstock inducing him to virtue, and Tressilian, Bushy and Green to vice. There are traces of this motive in Shakespeare’s play, but with Woodstock dead before the action begins and Gaunt dying early in it the balance of good and evil influences is destroyed. Bushy, Green and Bagot, however, remain very plainly Morality figures and were probably marked in some way by their dress as abstract vices. If Shakespeare really confused Bagot with the Earl of Wiltshire (according to a conjecture of Dover Wilson) he need not be following an old play heedlessly: he would in any case look on them all as a gang of bad characters, far more important as a gang than as individuals, hence not worth being careful over separately. Once again, as in the earlier tetralogy, England herself, and not the protagonist, is the main concern. Gaunt speaks her praises, the gardener in describing his own symbolic garden has her in mind. As part of the great cycle of English history covered by Hall’s chronicle the events of the reign of Richard II take their proper place. But here something fresh has happened. The early tetralogy had as its concern the fortunes of England in that exciting and instructive stretch of her history. <i>Richard II</i> has this concern too, but it also deals with England herself, the nature and not merely the fortunes of England. In <i>Richard II</i> it is the old brilliant medieval England of the last Plantagenet in the authentic succession; in <i>Henry IV</i> it will be the England not of the Middle Ages but of Shakespeare himself. We can now see how the epic comes in and how <i>Richard II</i> contributes to an epic effect. Those works which we honour by the epic title always, among other things, express the feelings or the habits of a large group of men, often of a nation. However centrally human, however powerful, a work may be, we shall not give it the epic title for these qualities alone. It is not the parting of Hector and Andromache or the ransoming of Hector’s body that make the <i>Iliad</i> an epic; it is that the <i>Iliad</i> expresses a whole way of life. Shakespeare, it seems, as well as exploiting the most central human affairs, as he was to do in his tragedies, was also impelled to fulfil through the drama that peculiarly epic function which is usually fulfilled through the narrative. Inspired partly perhaps by the example of Daniel and certainly by his own genius, he combined with the grim didactic exposition of the fortunes of England during her terrible ordeal of civil war his epic version of what England was.</p>
+
+    <p>This new turn given to the History Play is a great stroke of Shakespeare’s genius. Through it he goes beyond anything in Hall or Daniel or even Spenser. Hall and Daniel see English history in a solemn and moral light and they are impressive writers. Spenser is a great philosophical poet and epitomises the ethos of the Elizabethan age. But none of these can truly picture England. Of the epic writers Sidney in <i>Arcadia</i> comes nearest to doing this. It is indeed only in patches that authentic England appears through mythical Arcadia, but that it can this description of Kalander’s house in the second chapter of the book is sufficient proof:</p>
+
+    <div class="cita">
+        <p>The house itself was built of fair and strong stone, not affecting so much of any extraordinary kind of fineness as an honourable representing of a firm stateliness: the lights doors and stairs rather directed to the use of the guest than to the eye of the artificer, and yet, as the one chiefly heeded, so the other not neglected; each place handsome without curiosity and homely without loathsomeness; not so dainty as not to be trod on nor yet slubbered up with good fellowship; all more lasting than beautiful but that the consideration of the exceeding lastingness made the eye believe it was exceedingly beautiful.</p>
+    </div>
+
+    <p>This expresses the authentic genius of English domestic architecture.</p>
+
+    <p>Of this great new epic attempt <i>Richard II</i> is only the prelude. What of England it pictures is not only antique but partial: the confined world of a medieval courtly class. In his next plays Shakespeare was to picture (with much else) the whole land, as he knew it, in his own day, with its multifarious layers of society and manners of living.</p>
+
+    <section class="footnotes">
+        <h3>Note</h3>
+        <p>From <i>Shakespeare’s History Plays</i>. Copyright © 1944, 1956 by Chatto &amp; Windus, Ltd.</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>

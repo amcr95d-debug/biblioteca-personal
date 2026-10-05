@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>“They That Have Power” — William Empson</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">WILLIAM EMPSON</p>
+        <h1 class="cab__tit">They That Have Power</h1>
+    </header>
+
+    <p>It is agreed that <i>They that have power to hurt and will do none</i> is a piece of grave irony, but there the matter is generally left; you can work through all the notes in the Variorum without finding out whether flower, lily, ‘owner,’ and person addressed are alike or opposed. One would like to say that the poem has all possible such meanings, digested into some order, and then try to show how this is done, but the mere number of possible interpretations is amusingly too great. Taking the simplest view (that any two may be alike in some one property) any one of the four either is or is not and either should or should not be like each of the others; this yields 4096 possible movements of thought, with other possibilities. The niggler is routed here; one has honestly to consider what seems important.</p>
+
+    <p>‘The best people are indifferent to temptation and detached from the world; nor is this state selfish, because they do good by unconscious influence, like the flower. You must be like them; you are quite like them already. But even the best people must be continually on their guard, because they become the worst, just as the pure and detached lily smells worst, once they fall from their perfection’—(‘one’s prejudice against them is only one’s consciousness of this fact’—the hint of irony in the poem might be covered by this). It is a coherent enough Confucian sentiment, and there is no very clear hint as to irony in the words. No doubt <i>as stone</i> goes intentionally too far for sympathy, and there is a suggestive gap in the argument between octet and sestet, but one would not feel this if it was Shakespeare’s only surviving work.</p>
+
+    <p>There is no reason why the subtlety of the irony in so complex a material must be capable of being pegged out into verbal explanations. The vague and generalised language of the descriptions, which might be talking about so many sorts of people as well as feeling so many things about them, somehow makes a unity like a cross-roads, which analysis does not deal with by exploring down the roads; makes a solid flute on which you can play a multitude of tunes, whose solidity no list of all possible tunes would go far to explain. The balance of feeling is both very complex and very fertile; experiences are recorded, and metaphors invented, in the Sonnets, which he went on ‘applying’ as a dramatist, taking particular cases of them as if they were wide generalisations, for the rest of his life. One can’t expect, in writing about such a process, to say anything very tidy and complete.</p>
+
+    <p>But one does not start interpreting out of the void, even though the poem once partly interpreted seems to stand on its own. If this was Shakespeare’s only surviving work it would still be clear, supposing one knew about the other Elizabethans, that it involves somehow their feelings about the Machiavellian, the wicked plotter who is exciting and civilised and in some way right about life; which seems an important though rather secret element in the romance that Shakespeare extracted from his patron. In any case one has only to look at the sonnets before and after it to be sure that it has some kind of irony. The one before is full of fear and horror at the hypocrisy he is so soon to recommend; and yet it is already somehow cuddled, as if in fascination or out of a refusal to admit that it was there.</p>
+
+    <div class="cita">
+        <p>So shall I liue, supposing thou art true,</p>
+        <p>Like a deceiued husband, . . .</p>
+        <p>For ther can liue no hatred in thine eye</p>
+        <p>Therefore in that I cannot know thy change, . . .</p>
+        <p>How like <i>Eaues</i> apple doth thy beauty grow,</p>
+        <p>If thy sweet vertue answere not thy show.</p>
+    </div>
+
+    <p>So the <i>summer’s flower</i> may be its apple-blossom. His virtue is still sweet, whether he has any or not; the clash of fact with platonic idealism is too fearful to be faced directly. In the sonnet after, with a blank and exhausted humility, it has been faced; there remains for the expression of his love, in the least flaunting of poetry, the voice of caution.</p>
+
+    <div class="cita">
+        <p>How sweet and louely dost thou make the shame, . . .</p>
+        <p>Take heed (deare heart) of this large privilege.</p>
+    </div>
+
+    <p>The praise of hypocrisy is in a crucial and precarious condition of balance between these two states of mind.</p>
+
+    <p>The root of the ambivalence, I think, is that W. H. is loved as an arriviste, for an impudent worldliness that Shakespeare finds shocking and delightful. The reasons why he treated his poet badly are the same as the reasons why he was fascinating, which gives its immediate point to the profound ambivalence about the selfishness of the flower. Perhaps he is like the cold person in his hardness and worldly judgment, not in his sensuality and generosity of occasional impulse; like the flower in its beauty, vulnerability, tendency to excite thoughts about the shortness of life, self-centredness, and power in spite of it to give pleasure, not in its innocence and fertility; but the irony may make any of these change over. Both owner and flower seem self-centred and inscrutable, and the cold person is at least like the lily in that it is symbolically chaste, but the summer’s flower, unlike the lily, seems to stand for the full life of instinct. It is not certain that the owner is liable to fester as the lily is—Angelo did, but W. H. is usually urged to acquire the virtues of Angelo. Clearly there is a jump from octet to sestet; the flower is not like the owner in its solitude and its incapacity to hurt or simulate; it might be because of this that it is of a summer only and may fester; yet we seem chiefly meant to hold W. H. in mind and take them as parallel. As for punctuation, the only full stop is at the end; all lines have commas after them except the fourth, eighth, and twelfth, which have colons.</p>
+
+    <div class="cita">
+        <p>They that haue powre to hurt, and will doe none,</p>
+        <p>That doe not do the thing, they most do showe,</p>
+        <p>Who mouing others, are themselves as stone,</p>
+        <p>Vnmoued, could, and to temptation slow:</p>
+    </div>
+
+    <p>They may <i>show</i>, while hiding the alternative, for the first couplet, the power to hurt or the determination not to hurt—cruelty or mercy, for the second, the strength due to chastity or to sensual experience, for either, a reckless or cautious will, and the desire for love or for control; all whether they are stealers of hearts or of public power. They are a very widespread group; we are only sure at the end that some kind of hypocrisy has been advised and threatened.</p>
+
+    <div class="cita">
+        <p>They rightly do inherit heavens graces,</p>
+        <p>And husband natures ritches from expence,</p>
+    </div>
+
+    <p>Either ‘inherit, they alone, by right’ or ‘inherit what all men inherit and use it rightly’; these correspond to the opposed views of W. H. as aristocrat and vulgar careerist. There is a similar range of idea, half hidden by the pretence of easy filling of the form, in the pun on <i>graces</i> and shift to <i>riches</i>. <i>Heaven’s graces</i> may be prevenient grace (strength from God to do well), personal graces which seem to imply heavenly virtues (the charm by which you deceive people), or merely God’s gracious gift of <i>nature’s riches</i>; which again may be the personal graces, or the strength and taste which make him capable either of ‘upholding his house’ or of taking his pleasure, or merely the actual wealth of which he is an <i>owner</i>. Clearly this gives plenty of room for irony in the statement that the cold people, with their fine claims, do well all round; it also conveys ‘I am seeing you as a whole; I am seeing these things as necessary rather than as your fault.’</p>
+
+    <div class="cita">
+        <p>They are the Lords and owners of their faces,</p>
+        <p>Others, but stewards of their excellence:</p>
+    </div>
+
+    <p>It may be their beauty they put to their own uses, high or low, or they may just have poker-faces; this gives the same range of statement. The capital which tends to isolate <i>lords</i> from its phrase suggests ‘they are the only true aristocrats; if you are not like them you should not pretend to be one.’ <i>Others</i> may be stewards of their own excellence (in contrast with <i>faces</i>—‘though they are enslaved they may be better and less superficial than the cold people’) or of the cold people’s excellence (with a suggestion of ‘Their Excellencies’); the less plausible sense is insisted on by the comma after <i>others</i>. This repeats the doubt about how far the cold people are really excellent, and there may be a hint of a doubt about how far the individual is isolated, which anticipates the metaphor of the flower. And ‘stewards of their own excellence’ may be like ‘stewards of the buttery’ or like ‘stewards of a certain lord’; either ‘the good things they have do good to others, not to them’ (they are too generous; I cannot ask you to aim so high in virtue, because I desire your welfare, not other people’s, and indeed because you wouldn’t do it anyway) or ‘they are under the power of their own impulses, which are good things so long as they are not in power’ (they are deceived; acts caused by weakness are not really generous at all). Yet this may be the condition of the flower and the condition for fullness of life; you cannot know beforehand what life will bring you if you open yourself to it, and certainly the flower does not; it is because they are unnatural and unlike flowers that the cold people rule nature, and the cost may be too great. Or the flower and the cold person may be two unlike examples of the limitation necessary to success, one experienced in its own nature, the other in the world; both, the irony would imply, are in fact <i>stewards</i>.</p>
+
+    <p>There is a Christian parable at work in both octet and sestet; in the octet that of the talents. You will not be forgiven for hoarding your talents; some sort of success is demanded; you must at least use your powers to the full even if for your own squalid purpose. The pain and wit and solemnity of <i>rightly</i>, its air of summing up a long argument, depend on the fact that these metaphors have been used to recommend things to W. H. before.</p>
+
+    <div class="cita">
+        <p>Natures bequest giues nothing but doth lend,</p>
+        <p>And being franck she lends to those are free:</p>
+        <p>Who lets so faire a house fall to decay,</p>
+        <p>Which husbandry in honour might uphold,</p>
+    </div>
+
+    <p>Rightly to be free with yourself, in the first simple paradox, was the best saving of yourself (you should put your money into marriage and a son); it is too late now to advise that, or to say it without being sure to be understood wrongly (this is 94; the first sonnet about his taking Shakespeare’s mistress is 40); the advice to be generous as natural has become the richer but more contorted advice to be like the flower. Rightly to husband nature’s riches, earlier in the sequence, was to accept the fact that one is only steward of them;</p>
+
+    <div class="cita">
+        <p>Thou that art now the worlds fresh ornament,</p>
+        <p>And only herauld to the gaudy spring,</p>
+        <p>Within thine owne bud buriest thy content,</p>
+        <p>And tender chorle makst waste in niggarding:</p>
+    </div>
+
+    <p>the flower was wrong to live to itself alone, and would become a tottered weed (2) whether it met with infection or not.</p>
+
+    <p>Though indeed <i>husbandry</i> is still recommended; it is not the change of opinion that has so much effect but the use of the same metaphors with a shift of feeling in them. The legal metaphors (debts to nature and so forth) used for the loving complaint that the man’s chastity was selfish are still used when he becomes selfish in his debauchery; Shakespeare’s own notation here seems to teach him; the more curiously because the metaphors were used so flatly in the earliest sonnets (1, 2, 4, 6, then 13; not again till now), only formally urging marriage, and perhaps written to order. It is like using a mathematical identity which implies a proof about a particular curve and then finding that it has a quite new meaning if you take the old constants as variables. It is these metaphors that have grown, till they involve relations between a man’s powers and their use, his nature and his will, the individual and the society, which could be applied afterwards to all human circumstances.</p>
+
+    <div class="cita">
+        <p>The sommers flowre is to the sommer sweet,</p>
+        <p>Though to it selfe, it onely liue and die,</p>
+    </div>
+
+    <p>The use of <i>the summer’s flower</i> about a human being is enough to put it at us that the flower will die by the end of summer, that the man’s life is not much longer, and that the pleasures of the creature therefore cannot be despised for what they are. <i>Sweet to the summer</i> (said of the flower), since the summer is omnipresent and in a way Nature herself, may mean ‘sweet to God’ (said of the man); or may mean ‘adding to the general sweetness; sweet to everybody that comes across it in its time.’ It may do good to others though not by effort or may simply be a good end in itself (or combining these, may only be able to do good by concentrating on itself as an end); a preparatory evasion of the central issue about egotism.</p>
+
+    <p>Either ‘though it lives only for itself’ or ‘though, in its own opinion, so far as it can see, it does no more than live and die.’ In the first it is a rose, extravagant and doing good because the public likes to see it flaunting; in the second a violet, humble and doing good in private through an odour of sanctity. It is the less plausible sense which is insisted on by the comma after <i>itself</i>. Or you may well say that the flower is neither, but the final lily; the whole passage is hinting at the lilies of the field like whom Solomon was not arrayed.</p>
+
+    <p>This parable itself combines what the poem so ingeniously keeps on combining; the personal power of beauty and the political power of wisdom; so as to imply that the political power has in itself a sort of beauty and the personal beauty, however hollow it may be, a sort of moral grandeur through power. But in England ‘consider the lilies of the field,’ were we not at once told of their glory, would suggest lilies-of-the-valley; that name indeed occurs in the Song of Solomon, in surprising correspondence to the obviously grandiose Rose of Sharon. Shakespeare, I think, had done what the inventor of the name must have done, had read into the random flower-names of the Bible the same rich clash of suggestion—an implied mutual comparison that elevates both parties—as he makes here between the garden flower and the wild flower. The first sense (the rose) gives the root idea—‘a brilliant aristocrat like you gives great pleasure by living as he likes; for such a person the issue of selfishness does not arise’; this makes W. H. a Renaissance Magnificent Man, combining all the virtues with a manysidedness like that of these phrases about him. The unlikeness of the cold people and the flowers, if you accept them as like, then implies ‘man is not placed like flowers and though he had best imitate them may be misled in doing so; the Machiavellian is much more really like the flower than the Swain is.’ And yet there is a suggestion in the comparison to the flower (since only beauty is demanded of it—Sonnet 54 made an odd and impermanent attempt at quelling this doubt by equating truth with scent) that W. H. has only power to keep up an air of reconciling in himself the inconsistent virtues, or even of being a Machiavellian about the matter, and that it is this that puts him in danger like the flower. Or however genuine he may be he is pathetic; such a man is all too ‘natural’; there is no need to prop up our ideas about him with an aristocratic ‘artificial’ flower. So this class-centred praise is then careful half to hide itself by adding the second sense and the humble flower, and this leads it to a generalisation: ‘all men do most good to others by fulfilling their own natures.’ Full as they are of Christian echoes, the Sonnets are concerned with an idea strong enough to be balanced against Christianity; they state the opposite to the idea of self-sacrifice.</p>
+
+    <p>But the machinery of the statement is peculiar; its clash of admiration and contempt seems dependent on a clash of feeling about the classes. One might connect it with that curious trick of pastoral which for extreme courtly flattery—perhaps to give self-respect to both poet and patron, to show that the poet is not ignorantly easy to impress, nor the patron to flatter—writes about the poorest people; and with those jazz songs which give an intense effect of luxury and silk underwear by pretending to be about slaves naked in the fields. To those who care chiefly about biography this trick must seem monstrously tantalising; Wilde built the paradox of his essay on it, and it is true that Shakespeare might have set the whole thing to work from the other end about a highly trained mudlark brought in to act his princesses. But it is the very queerness of the trick that makes it so often useful in building models of the human mind; and yet the power no less than the universality of this poem depends on generalising the trick so completely as to seem independent of it.</p>
+
+    <div class="cita">
+        <p>But if that flowre with base infection meete,</p>
+        <p>The basest weed out-braues his dignity:</p>
+        <p>For sweetest things turn sowrest by their deedes,</p>
+        <p>Lilies that fester, smell far worse than weeds.</p>
+    </div>
+
+    <p>It is not clear how the metaphor from ‘meet’ acts; it may be like ‘meet with disaster’—‘if it catches infection, which would be bad luck,’ or like meeting someone in the street, as most men do safely—‘<i>any</i> contact with infection is fatal to so peculiarly placed a creature.’ The first applies to the natural and unprotected flower, the second to the lily that has the hubris and fate of greatness. They are not of course firmly separated, but <i>lilies</i> are separated from the <i>flower</i> by a colon and an intervening generalisation, whereas the flower is only separated from the cold people (not all of whom need be lilies) by a colon; certainly the flower as well as the lily is in danger, but this does not make them identical and equal to W. H. The neighbouring sonnets continually say that his deeds can do nothing to destroy his sweetness, and this seems to make the terrible last line point at him somewhat less directly. One may indeed take it as ‘Though so debauched, you keep your looks. Only mean people who never give themselves heartily to anything can do that. But the best hypocrite is found out in the end, and shown as the worst.’ But Shakespeare may also be congratulating W. H. on an imperfection which acts as a preservative; he is a son of the world and can protect himself, like the cold people, or a spontaneous and therefore fresh sinner, like the flower; he may safely stain, as heaven’s sun, the kisser of carrion, staineth. At any rate it is not of virginity, at this stage, that he can be accused. The smell of a big lily is so lush and insolent, suggests so powerfully both incense and pampered flesh—the traditional metaphor about it is so perfect—that its festering can only be that due to the hubris of spirituality; it is ironically generous to apply it to the careerist to whom hypocrisy is recommended; and yet in the fact that we seem meant to apply it to him there is a glance backwards, as if to justify him, at the ambition involved in even the most genuine attempt on heaven. You may say that Shakespeare dragged in the last line as a quotation from <i>Edward III</i> that doesn’t quite fit; it is also possible that (as often happens to poets, who tend to make in their lives a situation they have already written about) he did not till now see the full width of its application.</p>
+
+    <p>In a sense the total effect is an evasion of Shakespeare’s problem; it gives him a way of praising W. H. in spite of anything. In the flower the oppositions are transcended; it is because it is self-concentrated that it has so much to give and because it is undesigning that it is more grandiose in beauty than Solomon. But it is held in mind chiefly for comfort; none of the people suggested to us are able to imitate it very successfully; nor if they could would they be safe. Yet if W. H. has festered, that at least makes him a lily, and at least not a stone; if he is not a lily, he is in the less danger of festering.</p>
+
+    <p>I must try to sum up the effect of so complex an irony, half by trying to follow it through a gradation. ‘I am praising to you the contemptible things you admire, you little plotter; this is how the others try to betray you through flattery; yet it is your little generosity, though it show only as lewdness, which will betray you; for it is wise to be cold, both because you are too inflammable and because I have been so much hurt by you who are heartless; yet I can the better forgive you through that argument from our common isolation; I must praise to you your very faults, especially your selfishness, because you can only now be safe by cultivating them further; yet this is the most dangerous of necessities; people are greedy for your fall as for that of any of the great; indeed no one can rise above common life, as you have done so fully, without in the same degree sinking below it; you have made this advice real to me, because I cannot despise it for your sake; I am only sure that you are valuable and in danger.’</p>
+
+    <p style="text-align: center; text-indent: 0; margin: 2rem 0 1.5rem;">II</p>
+
+    <p>One may point out that the reason so little can be deduced about W. H., the reason why Butler and Wilde (though he had so much sympathy for snobbery) could make a plausible case for his being not a patron but an actor, is that this process of interaction between metaphors, which acts like a generalisation, is always carried so far; the contradictory elements in the relation are brought out and opposed absolutely, so that we cannot know their proportions in real life. It is hard not to go off down one of the roads at the crossing, and get one plain meaning for the poem from that, because Shakespeare himself did that so very effectively afterwards; a part of the situation of the Sonnets, the actual phrases designed for it, are given to Prince Henry, to Angelo, to Troilus, to the Greek army; getting further from the original as time went on. I shall look at the first two. It is only partly true that this untidy process, if successful, might tell one more about the original situation; discoveries of language and feeling made from a personal situation may develop themselves so that they can be applied to quite different dramatic situations; but to know about these might tell one more about the original discoveries. The fact that the feelings in this sonnet could be used for such different people as Angelo and Prince Henry, different both in their power and their coldness, is an essential part of its breadth.</p>
+
+    <p>The crucial first soliloquy of Prince Henry was put in to save his reputation with the audience; it is a wilful destruction of his claims to generosity, indeed to honesty, if only in Falstaff’s sense; but this is not to say that it was a mere job with no feeling behind it. It was a concession to normal and decent opinion rather than to the groundlings; the man who was to write <i>Henry V</i> could feel the force of that as well as take care of his plot; on the other hand, it cannot have been written without bitterness against the prince. It was probably written about two years after the second, more intimate dedication to Southampton, and is almost a cento from the Sonnets.</p>
+
+    <p>We would probably find the prince less puzzling if Shakespeare had re-written <i>Henry VI</i> in his prime. The theme at the back of the series, after all, is that the Henries are usurpers; however great the virtues of Henry V may be, however rightly the nation may glory in his deeds, there is something fishy about him and the justice of Heaven will overtake his son. In having some sort of double attitude to the prince Shakespeare was merely doing his work as a history-writer. For the critic to drag in a personal situation from the Sonnets is neither an attack nor a justification; it claims only to show where the feelings the play needed were obtained.</p>
+
+    <p>Sir Walter Raleigh said that the play was written when Shakespeare was becoming successful and buying New Place, so that he became interested in the problems of successful people like Henries IV and V rather than in poetical failures like Richard II. On this view we are to see in Prince Henry the Swan himself; he has made low friends only to get local colour out of them, and now drops them with a bang because he has made money and grand friends. It is possible enough, though I don’t know why it was thought pleasant; anyway such a personal association is far at the back of the mind and one would expect several to be at work together. Henry might carry a grim externalisation of self-contempt as well as a still half-delighted reverberation of Southampton; Falstaff an attack on some rival playwright or on Florio as tutor of Southampton as well as a savage and joyous externalisation of self-contempt. But I think only the second of these alternatives fits in with the language and echoes a serious personal situation. Henry’s soliloquy demands from us just the sonnets’ mood of bitter complaisance; the young man must still be praised and loved, however he betrays his intimates, because we see him all shining with the virtues of success. So I shall now fancy Falstaff as Shakespeare (he has obviously some great forces behind him) and Henry as the patron who has recently betrayed him.</p>
+
+    <div class="cita">
+        <p>I know you all, and will a-while vphold</p>
+        <p>The vnyoak’d humor of your idlenesse:</p>
+        <p>Yet heerein will I imitate the Sunne,</p>
+        <p>Who doth permit the base contagious cloudes</p>
+        <p>To smother vp his Beauty from the world,</p>
+        <p>That when he please again to be himselfe,</p>
+        <p>Being wanted, he may be more wondred at,</p>
+        <p>By breaking through the foule and vgly mists</p>
+        <p>Of vapours, that did seeme to strangle him.</p>
+    </div>
+
+    <p>This seems quite certainly drawn from the earliest and most pathetic of the attempts to justify W. H.</p>
+
+    <div class="cita">
+        <p>Fvll many a glorious morning haue I seene, . . .</p>
+        <p>Anon permit the basest cloudes to ride, . . .</p>
+        <p>With ougly rack on his celestiall face, . . .</p>
+        <p>Suns of the world may staine, when heauens sun staineth.</p>
+    </div>
+
+    <p>But it is turned backwards; the sun is now to free itself from the clouds by the very act of betrayal. ‘Oh that you were yourself’ (13) and ‘have eyes to wonder’ (106) are given the same twist into humility; Shakespeare admits, with Falstaff in front of him, that the patron would be better off without friends in low life. The next four lines, developing the idea that you make the best impression on people by only treating them well at rare intervals, are a prosaic re-hash of ‘Therefore are feasts so solemn and so rare,’ etc. (52); what was said of the policy of the friend is now used for the policy of the politician, though in both play and sonnet they are opposed. The connection in the next lines is more doubtful.</p>
+
+    <div class="cita">
+        <p>So when this loose behaviour I throw off</p>
+        <p>And pay the debt I never promised</p>
+        <p>By so much better than my word I am</p>
+        <p>By so much shall I falsify men’s hopes</p>
+    </div>
+
+    <p>(He does indeed, by just so much.) This <i>debt</i> looks like an echo of the debt to nature there was so much doubt about W. H.’s method of paying; it has turned into a debt to society. At any rate in the sonnet-like final couplet</p>
+
+    <div class="cita">
+        <p>I’ll so offend, to make offence a skill</p>
+    </div>
+
+    <p>(‘The tongue that tells the story of thy days . . . Cannot dispraise but in a kind of praise’) we have the central theme of all the sonnets of apology; the only difference, though it is a big one, is that this man says it about himself.</p>
+
+    <p>One element at least in this seems to reflect a further doubt on to the sonnet I have considered; the prince may be showing by this soliloquy that he can avoid infection, or may be an example of how sour a lord and owner can turn in his deeds on Coronation Day. The last irony and most contorted generosity one can extract from the sonnet is in the view that Shakespeare himself is the basest weed, that to meet him is to meet infection, that the result of being faithful to his friendship would be to be outbraved even by him, that the advice to be a cold person and avoid the fate of the lily is advice to abandon Shakespeare once for all.</p>
+
+    <p>This interpretation is more than once as firmly contradicted by Falstaff as it will be by my readers. He first comes on in a great fuss about his good name; he has been rated in the streets for leading astray Harry. At the end of the scene we find that this was unfair to him; the prince makes clear by the soliloquy that he is well able to look after himself. Meanwhile Falstaff amuses himself by turning the accusation the other way round.</p>
+
+    <div class="cita">
+        <p>O, thou hast damnable iteration, and art indeede able to corrupt a Saint. Thou hast done much harme vnto me <i>Hal</i>, God forgiue thee for it. Before I knew thee <i>Hal</i>, I knew nothing: and now I am (if a man shold speake truly) little better than one of the wicked. I must giue ouer this life, and I will giue it ouer: and I do not, I am a Villaine. Ile be damn’d for never a Kings sonne in Christendome.</p>
+        <p class="attribution">PRIN: Where shall we take a purse to morrow, Iacke?</p>
+    </div>
+
+    <p>The audience was not expected to believe this aspect of the matter, but there may well be some truth in it if applied to the situation Shakespeare had at the back of his mind. The other aspect is also preserved for us in the Sonnets.</p>
+
+    <div class="cita">
+        <p>I may not euer-more acknowledge thee,</p>
+        <p>Least my bewailed guilt should do thee shame,</p>
+        <p>Nor thou with publike kindnesse honour me,</p>
+        <p>Unlesse thou take that honour from thy name:</p>
+    </div>
+
+    <p>‘I only warn you against bad company; I admit I am part of it.’ One could throw in here that letter about Southampton wasting his time at the playhouse and out of favour with the Queen.</p>
+
+    <p>There are two sums of a thousand pounds concerned, so that the phrase is kept echoing through both parts of the history; it seems to become a symbol of Falstaff’s hopes and his betrayal. The first he got by the robbery at Gadshill, and the prince at once robbed him of it; supposedly to give back to its owner, if you take his reluctance to steal seriously (he does give it back later, but one is free to suspect only under threat of exposure). He says he will give it to Francis the drawer, and Falstaff pacifies the hostess by saying he will get it back.</p>
+
+    <div class="cita">
+        <p>HOSTESS: . . . and sayde this other day, You ought him a thousand pound.</p>
+        <p>PRINCE: Sirrah, do I owe you a thousand pound?</p>
+        <p>FALSTAFF: A thousand pound <i>Hal</i>? A Million. Thy loue is worth a Million: thou owe’st me thy loue.</p>
+        <p class="attribution">(Part I, III. iii.)</p>
+    </div>
+
+    <p>He will pay neither. But Falstaff gets another thousand pounds from Shallow, and the phrase is all he clings to in the riddling sentence at his final discomfiture: ‘Master Shallow, I owe you a thousand pound.’ This is necessary, to seem calm and reassure Shallow; it is either a sweeping gesture of renunciation (‘What use to me now is the money I need never have repaid to this fool?’) or a comfort since it reminds him that he has got the money and certainly won’t repay it; but it is meant also for the king to hear and remember (‘I class you with Shallow and the rest of my friends’). I cannot help fancying an obscure connection between this sum and the thousand pounds which, we are told, Southampton once gave Shakespeare, to go through with a purchase that he had a mind to.</p>
+
+    <p>It is as well to look at Falstaff in general for a moment, to show what this tender attitude to him has to fit in with. The plot treats him as a simple Punch, whom you laugh at with good-humour, though he is wicked, because he is always knocked down and always bobs up again. (Our attitude to him as a Character entirely depends on the Plot, and yet he is a Character who very nearly destroyed the Plot as a whole.) People sometimes take advantage of this to view him as a lovable old dear; a notion which one can best refute by considering him as an officer.</p>
+
+    <div class="cita">
+        <p>Part I. v. iii.</p>
+        <p>I haue led my rag of Muffins where they are pepper’d; there’s not three of my 150 left alive, and they for the Townes end, to beg during life.</p>
+    </div>
+
+    <p>We saw him levy a tax in bribes on the men he left; he now kills all the weaklings he conscripted, in order to keep their pay. A large proportion of the groundlings consisted of disbanded soldiers who had suffered under such a system; the laughter was a roar of hatred here; he is ‘comic’ like a Miracle Play Herod. (Whereas Harry has no qualities that are obviously not W. H.’s.) And yet it is out of his defence against this, the least popularisable charge against him, that he makes his most unanswerable retort to the prince.</p>
+
+    <div class="cita">
+        <p>PRINCE: Tell me, Jack, whose fellows are these that come after?</p>
+        <p>FAL: Mine, Hal, mine.</p>
+        <p>PRINCE: I never did see such pitiful rascals.</p>
+        <p>FAL: Tut, tut; good enough to toss; food for powder, food for powder; they’ll fill a pit as well as better; tush, man, mortal men, mortal men.</p>
+    </div>
+
+    <p><i>Mortal</i> conveys both ‘all men are in the same boat, all equal before God’ and ‘all you want is slaughter.’ No one in the audience was tempted to think Harry as wicked as his enemy Hotspur, who deserved death as much as Lear for wanting to divide England. But this remark needed to be an impudent cover for villainy if the strength of mind and heart in it were not to be too strong, to make the squabbles of ambitious and usurping persons too contemptible.</p>
+
+    <p>On the other hand, Falstaff’s love for the prince is certainly meant as a gap in his armour; one statement (out of so many) of this comes where the prince is putting his life in danger and robbing him of the (stolen) thousand pounds.</p>
+
+    <div class="cita">
+        <p>I haue foresworne his company hourely any time this two and twenty yeares, and yet I am bewitcht with the Rogues company. If the Rascal haue not giuen me medecines to make me loue him, Ile be hang’d; it could not be else; I haue drunke Medecines.</p>
+    </div>
+
+    <p>He could continually be made to say such things without stopping the laugh at him, partly because one thinks he is pretending love to the prince for his own interest; ‘never any man’s thought keeps the roadway’ as well as those of the groundlings who think him a hypocrite about it, but this phrase of mockery at them is used only to dignify the prince; the more serious Falstaff’s expression of love becomes the more comic it is, whether as hopeless or as hypocrisy. But to stretch one’s mind round the whole character (as is generally admitted) one must take him, though as the supreme expression of the cult of mockery as strength and the comic idealisation of freedom, yet as both villainous and tragically ill-used.</p>
+
+    <p>Angelo is further from the sonnets than Henry both in date and situation; he is merely an extreme, perhaps not very credible, example of the cold person and the lily; both simply as chaste and as claiming to be more than human, which involves being at least liable to be as much less. He has odd connections with this sonnet through <i>Edward III</i>, which may help to show that there is a real connection of ideas. In the following lines he is recoiling with horror from the idea that Isabella has been using her virtue as a temptation for him, which was just what her brother expected her to do (I. ii. 185—she is a cold person but can ‘move men’).</p>
+
+    <div class="cita">
+        <p>II. ii. 165–8.</p>
+        <p>Not she: nor doth she tempt; but it is I,</p>
+        <p>That, lying by the Violet in the Sunne,</p>
+        <p>Doe as the Carrion do’s, not as the flowre,</p>
+        <p>Corrupt with vertuous season:</p>
+    </div>
+
+    <p><i>Edward III</i> is also a man in authority tempting a chaste woman, and he too uses the notion that her qualities are a temptation, so that it is half her fault.</p>
+
+    <div class="cita">
+        <p>II. i. 58</p>
+        <p>the queen of beauty’s queens shall see</p>
+        <p>Herself the ground of my infirmity.</p>
+    </div>
+
+    <p>Both Angelo’s metaphor and the chief line of this sonnet come from a speech by the lady’s father, which contains the germ of most of the ideas we are dealing with.</p>
+
+    <div class="cita">
+        <p>II. i. 430–457.</p>
+        <p>The greater man, the greater is the thing,</p>
+        <p>Be it good or bad, that he shall undertake . . .</p>
+        <p>The freshest summer’s day doth soonest taint</p>
+        <p>The loathed carrion that it seems to kiss . . .</p>
+        <p>Lilies that fester smell far worse than weeds;</p>
+        <p>And every glory that inclines to sin,</p>
+        <p>The shame is treble by the opposite.</p>
+    </div>
+
+    <p>The freshest summer’s day is always likely to kiss carrion, and the suggestion from this is that the great man is always likely to do great harm as well as great good. The sun kissing carrion is brought out again both for Falstaff and by Hamlet (<i>I Henry IV</i>, II. iv. 113; <i>Hamlet</i>, II. ii. 158); it is clear that the complex of metaphor in this speech, whether Shakespeare wrote it or not, developed afterwards as a whole in his mind.</p>
+
+    <p>The obvious uses of the language of the Sonnets about Angelo all come in the first definition of his character by the Duke; once started like this he goes off on his own. The fascination of the irony of the passage is that it applies to Angelo’s incorruptible virtues, associated with his chastity, the arguments and metaphors which had been used to urge abrogation of chastity on W. H.; nor is this irrelevant to the play. As in <i>virtues</i>, <i>torches</i>, and <i>fine touches</i>, its language, here and throughout, is always perversely on the edge of a bawdy meaning; even <i>belongings</i> may have a suggestion, helped out by ‘longings,’ of nature’s gift of desire. It seems impossible even to praise the good qualities of Angelo without bringing into the hearer’s mind those other good qualities that Angelo refuses to recognise. The most brilliant example of this trick in the play is the continual pun on <i>sense</i>, for sensuality, sensibleness (which implies the claim of Lucio) and sensibility (which implies a further claim of the poet). The first use may be unequivocal, as if to force the sexual meaning on our notice.</p>
+
+    <div class="cita">
+        <p>I. iv. 59: The wanton stings, and motions of the sence.</p>
+        <p>II.ii.141. ANGELO: Shee speakes, and ’tis such sence</p>
+        <p>That my sence breeds with it; fare you well.</p>
+        <p>II.ii.168: Can it be</p>
+        <p>That Modesty may more betray our Sence</p>
+        <p>Than womans lightnesse?</p>
+        <p>II.iv.73: Nay, but heare me,</p>
+        <p>Your sence pursues not mine: either you are ignorant,</p>
+        <p>Or seeme so craft(il)y; and that’s not good.</p>
+        <p>IV.iv.27: He should haue liu’d,</p>
+        <p>Saue that his riotous youth with dangerous sence,</p>
+        <p>Might in the times to come have ta’en revenge.</p>
+        <p>V.i.225.MARIANA: As there is sence in truth, and truth in vertue,</p>
+        <p>I am affianced this man’s wife, as strongly</p>
+        <p>As words could make vp vowes:</p>
+    </div>
+
+    <p>But this sort of thing does not depend on echoes from the Sonnets, and I think those that occur have a further effect.</p>
+
+    <div class="cita">
+        <p>Thy selfe, and thy belongings</p>
+        <p>Are not thine owne so proper, as to waste</p>
+        <p>Thy selfe upon thy vertues; they on thee:</p>
+        <p>Heauen doth with us, as we, with Torches doe,</p>
+        <p>Not light them for themselves: For if our vertues</p>
+        <p>Did not goe forth of us, ’twere all alike</p>
+        <p>As if we had them not: Spirits are not finely touch’d,</p>
+        <p>But to fine issues: nor nature never lends</p>
+        <p>The smallest scruple of her excellence,</p>
+        <p>But like a thrifty goddesse, she determines</p>
+        <p>Her selfe the glory of a creditour,</p>
+        <p>Both thanks, and vse;</p>
+    </div>
+
+    <p>‘All are but stewards of her excellence’—indeed <i>their</i> in the sonnet might refer back to <i>nature’s riches</i>. Even Angelo is wrong to think he can be a lord and owner, though he seems the extreme case of those capable of reserve and power. He is a torch whom nature tricks because she destroys it by making it brilliant; it was because he accepted office and prepared to use his virtues that she could trick him all but disastrously into using more of them than he intended. For ‘virtues’ mean both ‘good qualities’ and ‘capacities’ (‘a dormitive virtue’) whether for good or ill; the same ambivalent attitude both towards worldly goods and towards what claim to be spiritual goods is conveyed by this as by the clash between <i>heaven’s graces</i> and <i>nature’s riches</i>. The same pun and irony on it, with a hint of a similar movement of thought about <i>honour</i>, are used when Isabella takes leave of Angelo after her first interviews.</p>
+
+    <div class="cita">
+        <p>II.ii.162–4. ISAB: Saue your Honour.</p>
+        <p>ANG: From thee: euen from thy vertue.</p>
+        <p>What’sthis? what’sthis? isthisherfault, ormine?</p>
+        <p>The Tempter, ortheTempted, whosinsmost?</p>
+    </div>
+
+    <p>It is his virtues and Isabella’s between them that both trick him and nearly destroy Claudio. Not of course that this is straightforward satire against virtue in the sense of chastity; the first great speech of Claudio about ‘too much liberty’ has all the weight and horror of the lust sonnet (129) from which it is drawn; only the still greater mockery of Claudio could so drag the play back to its attack on Puritanism.</p>
+
+    <p>The issue indeed is more general than the sexual one; it is ‘liberty, my Lucio, liberty,’ as Claudio makes clear at once; which runs through pastoral and is at the heart of the clowns. (Lawrence too seems to make sex the type of liberty; Shaw’s Don Juan liberty the type of sex.) ‘Nature in general is a cheat, and all those who think themselves owners are pathetic.’ Yet we seem here to transfer to Nature the tone of bitter complaisance taken up towards W. H. when he seemed an owner; she now, as he was, must be given the benefit of the doubt inseparable from these shifting phrases; she too must be let rob you by tricks and still be worshipped. There is the same suggestion with the same metaphors in that splendid lecture to Achilles to make him use his virtues as a fighter further; whether rightly to <i>thank</i> her is to view yourself as an owner or a steward, you must still in the end pay her the compound interest on her gifts, and still keep up the pretence that they are free. This tone of generous distaste for the conditions of life, which gives the play one of its few suggestions of sympathy for Angelo, I think usually goes with a suggestion of the Sonnets. For instance, it is the whole point about Bassanio; more than any other suitor he is an arriviste loved only for success and seeming; his one merit, and it is enough, is to recognise this truth with Christian humility. His speech before the caskets about the falsity of seeming is full of phrases from the Sonnets (e.g. 68, about hair) and may even have a dim reference to the Dark Lady. It is not surprising that this sentiment should make Shakespeare’s mind hark back to the Sonnets, because it was there so essential; these poems of idealisation of a patron and careerist depend upon it for their strength and dignity. ‘Man is so placed that the sort of thing you do is in degree all that any one can do; success does not come from mere virtue, and without some external success a virtue is not real even to itself. One must not look elsewhere; success of the same nature as yours is all that the dignity, whether of life or poetry, can be based upon.’ This queer sort of realism, indeed, is one of the main things he had to say.</p>
+
+    <p>The feeling that life is essentially inadequate to the human spirit, and yet that a good life must avoid saying so, is naturally at home with most versions of pastoral; in pastoral you take a limited life and pretend it is the full and normal one, and a suggestion that one must do this with all life, because the normal is itself limited, is easily put into the trick though not necessary to its power. Conversely any expression of the idea that all life is limited may be regarded as only a trick of pastoral, perhaps chiefly intended to hold all our attention and sympathy for some limited life, though again this is not necessary to it either on grounds of truth or beauty; in fact the suggestion of pastoral may be only a protection for the idea which must at last be taken alone. The business of interpretation is obviously very complicated. Literary uses of the problem of free-will and necessity, for example, may be noticed to give curiously bad arguments and I should think get their strength from keeping you in doubt between the two methods. Thus Hardy is fond of showing us an unusually stupid person subjected to very unusually bad luck, and then a moral is drawn, not merely by inference but by solemn assertion, that we are all in the same boat as this person whose story is striking precisely because it is unusual. The effect may be very grand, but to make an otherwise logical reader accept the process must depend on giving him obscure reasons for wishing it so. It is clear at any rate that this grand notion of the inadequacy of life, so various in its means of expression, so reliable a bass note in the arts, needs to be counted as a possible territory of pastoral.</p>
+
+    <section class="footnotes">
+        <h3>Note</h3>
+        <p>From <i>Some Versions of Pastoral</i>. Copyright © 1974 by William Empson. New Directions Books.</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>
