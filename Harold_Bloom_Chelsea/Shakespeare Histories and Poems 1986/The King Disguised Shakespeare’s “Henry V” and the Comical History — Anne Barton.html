@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The King Disguised: Shakespeare’s “Henry V” and the Comical History — Anne Barton</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">ANNE BARTON</p>
+        <h1 class="cab__tit">The King Disguised:<br>Shakespeare’s “Henry V”<br>and the Comical History</h1>
+    </header>
+
+    <p>In the worst moment of the French campaign, when the night before Agincourt finds the English army reduced, dispirited, and ailing, “even as men wrack’d upon a sand, that look to be wash’d off the next tide” (IV.i.97-98), Henry V pays two quite different visits to his despondent troops. Although the first of them, made in his own person as king, is not enacted, the Chorus testifies eloquently to its success:</p>
+
+    <div class="cita">
+        <p>. . . every wretch, pining and pale before,</p>
+        <p>Beholding him, plucks comfort from his looks.</p>
+        <p>A largess universal like the sun</p>
+        <p>His liberal eye doth give to every one,</p>
+        <p>Thawing cold fear, that mean and gentle all,</p>
+        <p>Behold, as may unworthiness define,</p>
+        <p>A little touch of Harry in the night.</p>
+        <p class="attribution">(IV.41-47)</p>
+    </div>
+
+    <p>Later, in the first scene of act IV, Henry borrows a cloak from Sir Thomas Erpingham, conceals his royal identity, and ventures alone among soldiers no longer able to recognize him as their king. His fortunes in this second sally are altogether less prosperous. Thorny and disquieting from the start, his conversation with Williams, Court, and Bates ends in an open quarrel. Moreover, it provokes Henry’s only soliloquy in the play: a bitter examination of kingship itself and of the irremovable barriers isolating the monarch from a world of private men.</p>
+
+    <p>Shakespeare may well have remembered from Holinshed, or from <i>The First English Life of Henry V</i>, that the historical Henry “daylie and nightlie in his owne person visited the watches, orders and stacions of everie part of his hoast.” Nowhere, however, is it suggested that he ever did so incognito. Geoffrey Bullough has argued that when Shakespeare made Henry muffle himself in Erpingham’s cloak he was thinking of a passage from Tacitus’s <i>Annals</i> in which Germanicus disguises himself on the eve of a battle in order to assess the morale of the Roman legions. Germanicus, however, lurks outside his soldiers’ tents as a mere eavesdropper; he never attempts a personal encounter. Although the passage cannot be discounted entirely as a source for Henry’s disguise, its importance has surely been overestimated. For those Elizabethans who watched <i>Henry V</i> in the new Globe theatre in 1599, the king’s behavior before Agincourt would have had analogues far more striking and immediate.</p>
+
+    <p>There is a surprising number of disguised kings to be found in those English history plays which have survived from the period 1587-1600. A few of these princes are driven to dissemble their identity for a time out of political necessity, as Marlowe’s Edward II does after the triumph of Young Mortimer and Queen Isabella, or Shakespeare’s Henry VI in the last part of the trilogy, when he rashly steals across the border into England “disguised, with a prayerbook,” only to be recognized despite this precaution by the two Keepers and haled away to the Tower. A larger and more interesting group is composed of kings who, like Shakespeare’s Henry V, adopt disguise as a caprice, for reasons that are fundamentally exploratory and quixotic.</p>
+
+    <p>Toward the end of <i>George a Greene, the Pinner of Wakefield</i> (?Robert Greene, c. 1590), an unspecified King Edward of England decides to “make a merrie journey for a moneth” along with his friend King James of Scotland, for the purpose of meeting the folk hero George a Greene, a loyal pinner in the north country who has been instrumental in putting down a rebellion against the Crown. The two monarchs travel on foot and in disguise. At the town of Bradford they yield meekly to the insolent demands of the locals, trailing their staves in order to pass without argument through the town. George a Greene, disgusted by such pusillanimity, berates the two kings soundly for cowardice and forces them to hold up their staves. King Edward gains a vivid and somewhat disconcerting idea of the character and temper of his subject before the revelation of his royal identity puts an end to the game. All is forgiven. George is offered a knighthood, which he politely refuses, preferring to remain an English yeoman. Edward unites him with Bettris, his love, over-riding the snobbish objections of her father, and the play ends harmoniously with a feast at which King Edward, King James, George a Greene, Robin Hood and Maid Marian, and all the shoemakers of Bradford sit side by side as friends and good companions.</p>
+
+    <p>Peele’s <i>Edward I</i> (c. 1591) also associates the king in disguise with the Robin Hood stories. Lluellen, the rebellious Prince of Wales, his mistress Elinor, and his friend Rice ap Meredith have taken to the greenwood in the company of a friar, “to live and die together like Chamber-Britaines, Robin Hood, Little John, Frier Tucke, and Maide Marrian.” King Edward, intrigued to learn of this little society, decides to pay it a secret visit, disguised, and accompanied only by Lluellen’s brother, Sir David of Brecknock:</p>
+
+    <div class="cita">
+        <p>. . . as I am a Gentleman,</p>
+        <p>Ile have one merrie flirt with little John,</p>
+        <p>And Robin Hood, and his Maide Marian.</p>
+        <p>Be thou my counsell and my companie,</p>
+        <p>And thou maist Englands resolution see.</p>
+        <p class="attribution">(x.1548-52)</p>
+    </div>
+
+    <p>In the forest, Edward adjudicates in a dispute between two rogues who have tried to cozen one another, agrees with Lluellen that his purse will belong to whichever man can overcome the other in a fair fight, and (exactly as his prototype Richard Coeur de Lion had done in the ballads) sends “Robin Hood” sprawling. The exigencies of Peele’s plot made it impossible for this forest scene to end with reconciliation and pardon in the ballad tradition. Lluellen, rebellious to the end, is killed in battle later in the play. It is remarkable, however, how close this personal encounter between the outlaw and the king he cannot recognize—in both senses of that word—has come to healing the breach between them. When “Longshanks” has gone, his identity disclosed, Lluellen admits ruefully that “his courage is like to the Lion, and were it not that rule and soveraigntie set us at jarre, I could love and honour the man for his valour” (xii. 1917-19).</p>
+
+    <p>The two anonymous plays <i>Fair Em</i> (c. 1590) and <i>The True Chronicle History of King Leir</i> (c. 1590) both present kings who disguise themselves in the cause of love. William the Conqueror, in <i>Fair Em</i>, falls in love with a picture of Blanch, Princess of Denmark, and travels to see her in her father’s court under the name of Sir Robert of Windsor. Finding the lady less glamorous in reality than she seemed in her portrait, he tries to elope with Mariana, a lady promised to his friend and traveling companion, the Marquis of Lubeck. Mariana, however, not only surmounts the temptation to abandon Lubeck for a crown but contrives to substitute a masked and lovesick Blanch for herself at the rendezvous appointed. William, who discovers the fraud on arrival in England, is understandably put out but decides that although Blanch is not Mariana she is nonetheless tolerable, and certainly preferable to war with Denmark. At the end of the play, William marries Blanch and, at the same time, restores Godard the supposed miller to his rightful place in society and bestows his daughter Em upon Valingford, the suitor who best deserves her.</p>
+
+    <p>In <i>King Leir</i>, the Gallian king comes to England disguised as a pilgrim, in order to determine which is the best and most marriageable of Leir’s three daughters. He meets Cordelia after her disgrace, finds her fair and good, and pretends that he has been sent as an ambassador by his royal master to make her the Gallian queen. Cordelia, who has most perspicaciously fallen in love with the humble palmer himself, spurns this splendid offer and bids him “cease for thy King, seeke for thy selfe to woo.” After this gratifying proof that Cordelia loves the man and not the monarch, the palmer reveals his identity and the two are married immediately and return to France. Disguise, however, remains a feature of their court. In scene xxiv, the Gallian king and queen mingle with their subjects in the guise of country folk and, thus obscured, discover and are reconciled with the wretched Leir and his counsellor Perillus on the seacoast of Brittany.</p>
+
+    <p>Finally, <i>The First Part of King Edward IV</i>, a play written by Thomas Heywood before 1599, presents two quite separate royal disguises. Edward conceals his identity when he goes into Lombard Street for the first time to lay amorous siege to Mistress Shore. More relevant to <i>Henry V</i>, however, is his encounter with John Hobs the tanner. The king, hunting incognito at Drayton Basset, becomes separated from his queen and courtiers. Hobs, meeting him in the forest, suspects him at first for a thief (“How these roysters swarm in the country, now the King is so near”), but is persuaded at length that Edward is a minor hanger-on at court; in fact, the king’s butler. Under this delusion, he prattles on merrily about the two kings of England, Edward at court and the deposed Henry VI in the Tower. Edward, slyly anxious to know how he is regarded by this outspoken subject, receives some disconcertingly frank answers to the questions he puts. The commons of England, according to Hobs, love King Edward as poor folk love holidays, glad to have them now and then; but to have them come too often will undo them. So, to see the King now and then ’tis comfort; but every day would beggar us; and I may say to thee, we fear we shall be troubled to lend him money; for we doubt he’s but needy.</p>
+
+    <p>Even more improbable in its light-hearted political inconsequence is Edward’s amused acceptance of the tanner’s shifting loyalties. “Shall I say my conscience?” he inquires cunningly. “I think Harry is the true king.”</p>
+
+    <div class="cita">
+        <p>HOBS: Art advised of that? Harry’s of the old house of Lancaster; and that progenity do I love.</p>
+        <p>KING: And thou dost not hate the house of York?</p>
+        <p>HOBS: Why, no; for I am just akin to Sutton Windmill; I can grind which way soe’er the wind blow. If it be Harry, I can say, “Well fare, Lancaster.” If it be Edward, I can sing, “York, York, for my money.”</p>
+    </div>
+
+    <p>Basically, as it turns out, Hobs approves of King Edward for reasons that have nothing to do with his government of the realm: “He’s a frank franion, a merry companion, and loves a wench well.” To his way of thinking, the king ought not to encourage patents and monopolies, but Hobs is willing to believe that Edward does so out of ignorance, because he has been misled by greedy counsellors and because he cannot see for himself how the system operates. As subject and king converse, Edward’s respect for this “honest true tanner” and for his powers of observation grows. Hobs, for his part, comes to like the supposed butler so well that he invites him home to his cottage for dinner and the night. The tanner has a pretty daughter and there is even some talk of a match, although Hobs would like his prospective son-in-law to have a steadier profession, not one of these fly-by-night court posts. Not until daybreak does Edward tear himself away from the tanner’s hospitality to return to London and the troubles of a kingdom in revolt. Again, the meeting between subject and king in disguise has generated harmony, good fellowship, and mutual understanding.</p>
+
+    <p>In all these English histories—and there must have been many more plays like them, now lost—the king’s disguise demands to be seen as a romantic gesture. Edward IV, William the Conqueror, Edward I, the Gallian king, or the brace of monarchs in <i>George a Greene</i>, all conceal their identities in much the spirit of Haroun al Raschid, the caliph of <i>The Arabian Nights</i> who liked to walk the streets of Baghdad incognito, in search of the marvellous and the strange. Moreover, the people they meet come from the world of balladry and legend. Robin Hood and Maid Marian, the folk-hero George a Greene, the miller and his daughter, thieves and outlaws, the beggar-maid destined to become a queen, or the tanner of Tamworth: all were characters nurtured in the popular imagination. Maurice Keen, in <i>The Outlaws of Medieval Legend</i>, describes the informal meeting of commoner and king as the wish-dream of a peasantry harried and perplexed by a new class of officials, an impersonal bureaucracy against which the ordinary man seemed to have no redress:</p>
+
+    <div class="cita">
+        <p>They only knew that the King was the ultimate repository of a law whose justice they acknowledged, and they saw treason against him as a betrayal of their allegiance to God himself. If they could only get past his corrupt officers, whose abuse of the trust reposed in them amounted to treason in itself, and bring their case before the King, they believed that right would be done. Their unshakeable faith in the King’s own justice was the most tragic of the misconceptions of the medieval peasantry, and the ballad-makers and their audiences shared it to the full.</p>
+    </div>
+
+    <p>In the ballads, king and unsuspecting subject meet time after time and discover unanimity of opinion and mutual respect. Richard Coeur de Lion banquets in Sherwood Forest on stolen venison, forgives Robin Hood and his men, and confounds the sheriff of Nottingham. Henry II so enjoys the rough but generous hospitality of the miller of Mansfield that he makes him a knight and gives him a royal license to keep the forest of Sherwood. Other ballads describe the meeting of Edward I and the reeve, King Alfred and the shepherd, Edward IV and the tanner, Henry VIII and the cobbler, James I and the tinker, William III and the forester, and many similar encounters.</p>
+
+    <p>That conversations of this sort represent a fantasy, the “misconception,” as Keen terms it, of a victimized agrarian class, is obvious. They derive from attitudes far removed from anything which the hard-headed citizens of Elizabeth’s London actually believed. Yet the old roots ran deep. This type of ballad not only survived through Jacobean and Caroline times: the idea behind it remained oddly resonant and haunting. Real Tudor monarchs sometimes played at enacting it. Henry VIII, as Hall tells us, graciously allowed himself to be “waylaid” and dragged off to a reconstruction of Coeur de Lion’s feast with Robin Hood, Maid Marian, and their fellows. Queen Elizabeth, walking in Wanstead gardens, suddenly found herself confronting a group of supposed country folk: “Though they knew not her estate, yet something there was which made them startle aside and gaze upon her.” Cunningly, Philip Sidney proceeded to involve the queen in a dispute between a shepherd and a forester for possession of the Lady of May, requesting her, after she had heard the rustic arguments of both sides, to award the lady to the suitor she considered most deserving. Traces of this kind of situation can be seen as well in some of the masques at court, but it was in the drama proper that the idea of the king’s personal engagement with his subjects and their problems flowered and was most fully exploited.</p>
+
+    <p>There are a few Elizabethan plays in which the king manages to mingle with his subjects freely and dispense justice without resorting to disguise. At the end of Dekker’s <i>The Shoemaker’s Holiday</i>, Henry V in his own person sweeps away the snobbery of his officers and nobles:</p>
+
+    <div class="cita">
+        <p>Dost thou not know that love respects no blood,</p>
+        <p>Cares not for difference of birth or state?</p>
+        <p>The maid is young, well born, fair, virtuous,</p>
+        <p>A worthy bride for any gentleman.</p>
+    </div>
+
+    <p>As benevolent <i>deus ex machina</i>, he joins the hands of Rose, the citizen’s daughter, and Lacy, nephew to the Earl of Lincoln. Annihilating objections based upon wealth or class, he acts from principles of perfect equity as soon as he examines the case himself, just as the medieval minstrels had always believed he would. Yet even Dekker’s Henry, in a play which could scarcely be described as realistic, worries about the constraints and inhibitions which his declared royal presence may impose on London’s madcap mayor, Simon Eyre, at the Shrove Tuesday banquet where these events take place. Most Elizabethan dramatists seem to have accepted the idea that disguise was an essential prerequisite for the ease and success of the meeting between private man and king. Only if the King’s identity was concealed could there be natural conversation, frankness, and a sense of rapport. It is the fundamental premise of all these plays that the king, rightly considered, is but a man, and a remarkably understanding man at that. If only, they seem to suggest, king and commoner could talk together in this way, without formality or embarrassment, how many problems would be solved, how many popular grievances redressed. Humanity and humor, an easy cameraderie: these qualities, usually obscured by ceremony, distance, and that hierarchy of officials standing between the monarch and his people, emerge clearly as soon as he steps down from his throne to speak, for a little while, as a private man.</p>
+
+    <p>When Shakespeare sent Henry V to converse incognito with Williams, Court, and Bates on the night before Agincourt, he was surely influenced by plays like these far more than by any distant memory of how Germanicus had behaved in the war against Arminius. Generically, Shakespeare’s disguised king belongs with Peele’s Edward I, Heywood’s Edward IV, or the accommodating monarchs of <i>George a Greene</i>. Yet the <i>Henry V</i> episode is unique. By 1599, the king who freely chooses disguise had become the hallmark of a particular kind of play. Polonius almost certainly would have defined the mode (quite shrewdly) as the “comical-historical.” <i>Henry V</i>, however, is not a comical history. Far more ironic and complicated than the plays which belong properly to that genre, it introduces the timeworn and popular dramatic motif of the king disguised into its fourth act in order to question, not to celebrate, a folk convention. In itself, the gesture could be relied upon to generate certain clearly defined emotional expectations in an Elizabethan audience powerfully conditioned by both a ballad and a stage tradition. Shakespeare built upon this fact. He used Henry’s disguise to summon up the memory of a wistful, naive attitude toward history and the relationship of subject and king which this play rejects as attractive but untrue: a nostalgic but false romanticism.</p>
+
+    <p>As the royal captain of a ruined band, a sun-god radiating his beams indiscriminately upon the soldiers among whom he walks, Henry is effective, as the Chorus makes plain. Throughout this play, the relation between the Chorus’s unequivocal celebration of Henry and his war in France and the complicated, ambiguous, and sometimes flatly contradictory scenes which these speeches are made to introduce is productive of irony and double focus. This duality of attitude is particularly striking in act IV, where the Chorus’s epic account of the king dispensing comfort to his troops in his own person leads directly into that altogether more dubious scene in which Henry visits the army a second time, disguised, in the manner of a ballad king. Once he has obliterated his identity, Henry falls into a series of nonencounters, meetings in which the difficulty of establishing understanding between subject and king is stressed, not the encouraging effect of “a little touch of Harry in the night” (IV.47).</p>
+
+    <p>It is true that Ancient Pistol, the first man Henry faces, is scarcely capable of rational discourse. Pistol lives in a wholly private world, a heightened and extravagant realm where everything appears twice life size. His overcharged style of speech, filled with contempt for Fortune, exotic geography, and resounding proper names, derives from Marlowe and from those lesser dramatists who imitated Marlowe. Pistol’s language is a tissue of play scraps. In his own mind, as Leslie Hotson has pointed out, he is Tamburlaine. “As good a gentleman as the emperor” (IV.i.42), he appears blatantly literary, a mere stage king, as soon as he confronts Henry. Linguistically, Shakespeare’s early histories had been intermittently Marlovian. Here, at the end of his Elizabethan cycle, he effectively laid the ghost of Tamburlaine as a hero, making it impossible for him to be taken seriously again until the Restoration. By deliberately weighing Pistol’s egotism, his histrionics, against the workaday prose of the true king, he indicated the distance between one kind of theatrical fantasy and fact.</p>
+
+    <p>Perhaps because he fears recognition by his captains, Henry makes no attempt to speak to Fluellen and Gower. He waits in silence until the entry of Williams, Court, and Bates: three ordinary soldiers for whom the king has always been an unapproachable and distant figure. This encounter is, of course, the mirror image of all those scenes in plays like <i>George a Greene</i> or <i>Edward IV</i> in which the king and his humble subject reach a frank and mutual accord. Here, nothing of the kind occurs. Instead, Henry finds himself embroiled in a tough and increasingly embarrassing argument. He is rhetorically dexterous, and he succeeds in convincing the soldiers that the king cannot be held responsible for the particular state of soul of those individuals who die in his wars. The other question raised by Williams, that of the goodness of the king’s cause in itself, his heavy reckoning at that latter day when he must confront the subjects who have been mutilated and have died for him in a war that perhaps was unjust, Henry simply evades. Here, as in the play as a whole, it is left standing, unresolved.</p>
+
+    <p>Even worse, Henry discovers with a sense of shock that his soothing account of the king as “but a man, as I am” (IV.i. 101-2), sensitive to the disapprobation or approval of his humblest subject, is treated as flatly absurd. For Williams, the gulf between commoner and king is unbridgeable. A man “may as well go about to turn the sun to ice with fanning in his face with a peacock’s feather” as expect his “poor and private displeasure” to influence the behavior of a monarch (IV.i. 194-99). This shaft strikes home, exposing the speciousness of Henry’s pretense that he can really be the friend and brother of these soldiers, as well as their king. The conversation ends in a quarrel, a failure to arrive at understanding which contradicts the romantic, ballad tradition. Left alone, Henry meditates acrimoniously on the pains of sovereignty, the doubtful worth of the “ceremony” that divides the king from a world of private men without providing him with any adequate compensation for his isolation and his crippling weight of responsibility.</p>
+
+    <p>Subsequently, after Agincourt has been won, Williams learns that it was the king himself whom he offended and with whom he has promised to fight. Like the outlaws of medieval legend, Williams meets not only with pardon but with royal largesse. He receives his glove again filled with golden crowns by Henry’s bounty. Yet this gift, unlike its archetypes in the ballads and in Elizabethan comical histories, seems strangely irrelevant. Consciously anachronistic, it provides not the ghost of an answer to the questions raised during this particular encounter between common man and king disguised. Is the king’s cause just? if not, what measure of guilt does he incur for requiring men to die for anything but the strict necessity of their country? Can the opinions and judgments of private men influence the sovereign on his throne? Henry is generous to Williams, but it is a dismissive generosity which places the subject firmly in an inferior position and silences his voice. The two men do not sit down at table together to any common feast, in the manner of Dekker’s Henry V or Heywood’s Edward IV. Indeed, Williams himself seems to be aware that the answer represented by the glove full of crowns is inadequate. He never thanks Henry for the present, accepting it without a word and turning, in the next instant, to repudiate the shilling offered him by Fluellen: “I will none of your money” (IV.viii. 70). That gift he can dare to refuse. Even his plea for pardon is filled with suppressed anger and resentment:</p>
+
+    <div class="cita">
+        <p>Your majesty came not like yourself: you appeared to me but as a common man; witness the night, your garments, your lowliness; and what your highness suffered under that shape, I beseech you, take it for your own fault, and not mine.</p>
+        <p class="attribution">(IV.viii.51-56)</p>
+    </div>
+
+    <p><i>Henry V</i> is a play concerned to force upon its audience a creative participation far more active than usual. The Chorus urges an unceasing visualization, bright pictures in the mind, of horses, ships under sail, silken banners, or the engines of siege warfare. Within the play itself, Shakespeare suggests without indicating priority a multiplicity of possible responses to every character and event. Celebration and denigration, heroism and irony exist uneasily side by side. The Chorus may regard England’s despoliation of France as a species of sacred obligation. Elsewhere, the attitude is far less clear-cut. Always in the background there hovers a disconcerting memory of Canterbury and Ely in the opening scene, busily fomenting the war in France to divert attention from the temporal wealth of the Church. Behind that lurks Henry IV’s deathbed advice to his son to “busy giddy minds with foreign quarrels” (<i>2 Henry IV</i>, IV. v. 213-14) in the hope that the shaky legitimacy of Lancastrian rule might thus escape scrutiny. Among Shakespeare’s other histories, only <i>Henry VIII</i> is so deliberately ambiguous, so overtly a puzzle in which the audience is left to forge its own interpretation of action and characters with only minimal guidance from a dramatist apparently determined to stress the equivalence of mutually exclusive views of a particular complex of historical event.</p>
+
+    <p>In both <i>Henry V</i> and <i>Henry VIII</i>, the fact that the mind and heart of the king are essentially opaque, that his true thoughts and feelings remain veiled behind a series of royal poses—as those of Richard II, Richard III, King John, Henry VI, or even Henry IV do not—contributes to the difficulty of assessment. Even Henry’s soliloquy before Agincourt is strangely externalized and formal, in no sense a revelation of the private workings of a mind. Neither here nor anywhere else in the play is the whole truth about the king’s personal decision to invade France disclosed. This reticence is not accidental. Henry is, by secular standards, an extraordinarily successful example of the God-man incarnate. The conception of kingship in this play derives not from the relaxed and essentially personal tradition of the ballads but from a complicated, inherently tragic Tudor doctrine of the king’s two bodies. Shakespeare had previously dealt with the violence of divorce or incompatibility between the twin natures of the king. <i>Henry V</i>, by contrast, has achieved a union of body natural and body politic difficult to flaw. Yet the price he pays for his subordination of the individual to the office is heavy, in personal terms. There is loss as well as gain in the gulf that now divides Henry from his old associates Bardolph and Pistol, from a world of private men in which he alone speaks out of a double nature. Hal’s sudden unavailability as a person, his retreat into an oddly declamatory series of stances, reflects neither his own nor Shakespeare’s weakness. It is simply a measure of the signal effectiveness of this man’s incarnation as king.</p>
+
+    <p>In many respects <i>Henry V</i> is a success story. Agincourt, at least from one angle, is a splendor. Within its own limited sphere the rhetoric of the Chorus rings true. Henry himself can be described as an “ideal” sovereign, God’s gift to an England weary of rebellion, usurpation, and civil war. At the same time, it is not easy for any mere mortal to support the psychological and moral burden of a double self. At a number of points in the play, particularly in situations which seem to demand an essentially personal response, the strain involved in maintaining such a constant ventriloquism becomes obvious. Even when Henry tries temporarily to obliterate one half of his identity, as he does in the scene with Williams, Court, and Bates, he finds it impossible to produce a natural and unforced imitation of a private man. Richard II, ironically enough, had experienced similar difficulties after his deposition. In Henry’s case, the suppression of one side of his nature is only momentary, the product of whim rather than political defeat. Nevertheless, his awkwardness with the soldiers points to the irrevocability of that mystic marriage of king and man accomplished in the ceremony of coronation. Only death can dissolve this union.</p>
+
+    <p>Meanwhile, the king must contrive to deal with a world of single-natured individuals from which he himself stands conspicuously apart. Henry cannot have personal friends as other men do. There is a sense in which the rejection of Falstaff at the end of <i>2 Henry IV</i> leads directly on to the rejection of the traitor Scroop in the Second act of <i>Henry V</i>. Precisely because Scroop is someone Henry has imagined was bound to him as a man by private ties of affection and liking, his treason is far more painful than the more neutral betrayal of Cambridge and Grey. With the latter he deals in an efficient, almost perfunctory fashion. Only Scroop evokes a long and suddenly emotional remonstrance in which Henry effectively bids farewell to the possibility of personal relationship. Significantly, this scene at Southampton is placed between the two episodes in London dealing with the death of Falstaff. The epic voyage to France is thus preceded by three scenes dealing not merely with the death of former friends but with the final severance of the new king’s remaining personal ties. Thereafter in the play, he will use the term “friend” in a special sense.</p>
+
+    <p>Not by accident, Henry abruptly abandons the royal “we” when he turns to accuse Scroop. In act I he had spoken almost entirely from this corporate position, allowing himself only infrequently to be jolted into an adventurer’s “I.” The Southampton scene is also one which insists throughout upon the double nature of the king and makes that nature grammatically clear through his habitual use of a plural first person. Cambridge and Grey, it seems, have conspired to kill “us” (II.ii.85-91): “But O, / What shall I say to thee, Lord Scroop?” (II. ii.93-94). In his long, passionate speech to this false friend “that knew’st the very bottom of my soul” (II.ii.97), Henry grieves more as man than as king. Not until the moment comes for sentencing all three conspirators does he regain his balance, discriminating calmly between the offense intended to his body natural and his body politic:</p>
+
+    <div class="cita">
+        <p>Touching our person seek we no revenge;</p>
+        <p>But we our kingdom’s safety must so tender,</p>
+        <p>Whose ruin you have sought, that to her laws</p>
+        <p>We do deliver you. Get you therefore hence,</p>
+        <p>Poor miserable wretches, to your death.</p>
+        <p class="attribution">(II.ii. 174-78)</p>
+    </div>
+
+    <p>The voice here is impersonal, speaking from behind the mask of kingship, deliberately avoiding the first person singular of individual response.</p>
+
+    <p>Once arrived in France, Henry refers to himself far more often as “I” or “me” than he does as “we” or “us,” at least up to the council of Troyes in the fifth act. As leader of an English host stranded in a foreign country and in a position of increasing danger, Henry finds it not only possible but necessary to simplify his royalty to some extent. After much painful marching in the rain-drenched field, he can describe himself as a soldier, “a name that in my thoughts becomes me best” (III.iii.5-6). In this role he achieves a measure of escape from the royal impersonality demanded under more ordinary and formal circumstances. When he warns the governor of Harfleur of the horrors that lie in store for his city if it fails to capitulate, when he exchanges badinage with Fluellen, or celebrates honor in the Crispin day speech in terms that Hotspur would have understood, he is playing a part—much as Prince Hal had done in the tavern scenes of the <i>Henry IV</i> plays or among the alien but imitable chivalries of Shrewsbury. In this context, the infrequent appearances of the royal “we” in acts III and IV become purposeful and striking reminders of the ineluctable reality of the king’s twin nature—a nature temporarily obscured by the adventurer’s pose appropriate to the French campaign.</p>
+
+    <p>Gravely, Henry reminds Williams that “it was ourself thou didst abuse,” before he dismisses him with pardon and reward (IV.viii.48). When his old associate Bardolph is summarily executed for robbing a church, Fluellen informs the king and, describing the dead man’s face in terms so vivid that there can be no possible mistake, inquires somewhat tactlessly: “If your majesty know the man” (III.vi.96-101). Henry’s stiff reply to this appeal to his memory of a time before his coronation is more than a politic evasion: “We would have all such offenders so cut off.” His sudden use here of the first person plural of majesty, occurring as it does in a scene where even the French herald Montjoy is addressed by Henry as “I,” constitutes the real answer to Fluellen’s question. As a twin-natured being, the king is stripped not only of personal friends but also of a private past. To recognize Bardolph, let alone to regret him, is impossible.</p>
+
+    <p>The war in France provides Henry with “friends” of a rhetorical and special kind. It also allows him an ambiguous use of the pronoun “we” which momentarily clothes the abstract doctrine of the king’s two bodies with flesh. Before Harfleur, Henry rallies “dear friends” to the breach, or urges them “to close the wall up with our English dead” (III.i. 1—2). The good yeomen whose limbs were made in England are asked to “show us here the mettle of your pasture” (III. i. 26-27). Later, before Agincourt, he will tell his cousin Westmoreland that “if we are mark’d to die, we are enow / To do our country loss” and speak of “we few, we happy few, we band of brothers” (IV. iii.20-21, 60). His encounter with Williams, Court, and Bates in act IV is prefaced by a speech addressed to Bedford and Gloucester in which the pronouns “we” and “our” are by implication both royal and collective:</p>
+
+    <div class="cita">
+        <p>Gloucester, ’tis true that we are in great danger;</p>
+        <p>The greater therefore should our courage be.</p>
+        <p>Good morrow, brother Bedford. God Almighty!</p>
+        <p>There is some soul of goodness in things evil,</p>
+        <p>Would men observingly distil it out;</p>
+        <p>For our bad neighbour makes us early stirrers,</p>
+        <p>Which is both healthful and good husbandry:</p>
+        <p>Besides, they are our outward consciences,</p>
+        <p>And preachers to us all; admonishing</p>
+        <p>That we should dress us fairly for our end.</p>
+        <p>Thus may we gather honey from the weed,</p>
+        <p>And make a moral of the devil himself.</p>
+        <p class="attribution">(IV.i. 1-12)</p>
+    </div>
+
+    <p>In passages like these, where Henry’s “we” and “our” seem to refer both to himself as king and to the nobles and soldiers around him as a group, a community in which he participates, the idea of the king’s two bodies acquires a meaning that is concrete and emotionally resonant. Rightly considered, Henry’s soldiers are part of his body politic and thus extensions of his own identity. But it is only in moments of stress and mutual dependence that the doctrine articulates itself naturally, allowing the king an easy jocularity which is familiar without being intimate, essentially distant at the same time that it creates an illusion of warmth and spontaneity. As the peril of the situation in France grows, so does Henry’s sense of fellowship. It is almost as though he extracts from danger a kind of substitute for the genuinely personal relationships abandoned with Falstaff and Scroop.</p>
+
+    <p>Ironically, Henry’s dazzling victory at Agincourt necessarily spells the end of this special accord. The king who speaks in the council chamber at Troyes in act V is once again firmly entrenched behind a royal “we” that is a diagram rather than a three-dimensional fact. Somewhat disconcertingly, he insists upon using the first person plural even in his request that the girl he intends to marry should remain in the room with him when the peers of France and England depart to discuss terms of peace:</p>
+
+    <div class="cita">
+        <p>Yet leave our cousin Katharine here with us:</p>
+        <p>She is our capital demand, compris’d</p>
+        <p>Within the fore-rank of our articles.</p>
+        <p class="attribution">(V.ii.95-97)</p>
+    </div>
+
+    <p>For all its political realism, this seems a desperately awkward beginning to a declaration of love. In the wooing scene that follows, Henry falls back upon his soldier’s persona. He resurrects this “I” to deal with a situation of peculiar difficulty. How should a king, encumbered by twin natures, embark upon what is necessarily the most personal of all relationships, that of love? Henry’s particular compromise is witty, and yet the problems of communication in this scene do not spring entirely from the fact that the king’s French is even more rudimentary than the lady’s English. Most of Henry s blunders, his various solecisms, derive from his uncertainty as to whether at a given instant he is speaking as Harry or as England, and whether the girl he addresses is the delectable Kate or the kingdom of France. Certainly the princess, when informed that her suitor loves France so well that “I will not part with a village of it; I will have it all mine: and Kate, when France is mine and I am yours, then yours is France and you are mine,” might well be excused for complaining that “I cannot tell wat is dat,” even if her linguistic skills were considerably greater than they are (V.ii. 178—83). The loving monarchs of <i>Fair Em</i> and <i>King Leir</i> recognized no such problems of expression. Whatever this wooing scene was like in the lost, original text of <i>The Famous Victories of Henry V</i>, it has been made in Shakespeare’s play to serve the theme of the king’s two bodies: the dilemma of the man placed at a disadvantage in the sphere of personal relations by the fact of a corporate self.</p>
+
+    <p>The first part of <i>Sir John Oldcastle</i>, a play belonging to the Lord Chamberlain’s rivals, the Admiral’s Men, was staged by 1600. Its four authors, Michael Drayton, Anthony Munday, Richard Hathway, and Robert Wilson, were certainly painfully conscious of Shakespeare’s <i>Henry IV</i> plays and probably of <i>Henry V</i> as well. In the absence of any Elizabethan equivalent to Vasari, a writer who would have relished and also recorded the whole imbroglio, there seems no way of knowing precisely what steps the Brooke family took to try and dissociate their ancestor Sir John Oldcastle, the Lollard martyr, from Shakespeare’s Falstaff. That Shakespeare had originally christened his fat knight Oldcastle is clear from surviving allusions within <i>1 Henry IV</i>, from the public apology in the epilogue to the second part—“For Oldcastle died a martyr, and this is not the man”—and from the malicious references of contemporaries as anxious to press the connection as Sir Henry Brooke was to repudiate it. Whether Shakespeare was forced to remove Falstaff from <i>Henry V</i> because of the protests of the Brookes and then permitted to display him at full length in <i>The Merry Wives of Windsor</i> at the direct request of Queen Elizabeth remains conjectural. It seems likely, however, that the Brooke family eventually realized that their repressive tactics were only serving to make them ridiculous and, in desperation, decided to fight fire with fire: to appeal to the stage itself to counteract the slanders of the stage.</p>
+
+    <p>There is no positive evidence that the mysterious sum of money received by Philip Henslowe “as a gefte” to the four authors of <i>Sir John Oldcastle</i> came from Sir Henry Brooke. On the other hand, everything about the first and only surviving part of their history suggests a work especially commissioned as an answer to the Falstaff plays:</p>
+
+    <div class="cita">
+        <p>The doubtfull Title (Gentlemen) prefixt</p>
+        <p>Upon the Argument we have in hand,</p>
+        <p>May breed suspence, and wrongfully disturbe</p>
+        <p>The peacefull quiet of your setled thoughts.</p>
+        <p>To stop which scruple, let this briefe suffise:</p>
+        <p>It is no pampered glutton we present,</p>
+        <p>Nor aged Councellor to youthfull sinne,</p>
+        <p>But one, whose vertue shone above the rest,</p>
+        <p>A valiant Martyr and a vertuous peere;</p>
+        <p>In whose true faith and loyaltie exprest</p>
+        <p>Unto his soveraigne, and his countries weale,</p>
+        <p>We strive to pay that tribute of our Love,</p>
+        <p>Your favours merite. Let faire Truthe be grac’te,</p>
+        <p>Since forg’de invention former time defac’te.</p>
+    </div>
+
+    <p>That the “pamperd glutton,” the “aged Councellor to youthfull sinne” referred to in this prologue in Shakespeare’s Falstaff admits of no doubt. Drayton, Munday, Wilson, and Hathway were out to soothe the Brooke family by presenting their ancestor as a hero, claiming in the process that they spoke truth where Shakespeare had lied. Furthermore, they had to construct an effective dramatic entertainment: a play which could support inevitable comparison with the popular <i>Henry IV</i> and <i>V</i> plays offered by the rival Lord Chamberlain’s Men at The Globe. The result is curious. The first part of <i>Sir John Oldcastle</i> is, in effect, a detailed demonstration of how to turn a tragical into a comical history.</p>
+
+    <p>The four <i>Sir John Oldcastle</i> authors faced from the beginning a problem even more difficult than that of rivaling Shakespeare’s invention. The historical Sir John Oldcastle, a follower of Wicliffe, had eventually given his life for the Protestant faith. As such, he was entirely eligible for the status of Elizabethan hero. Unfortunately, he happened to live in the reign of Henry V, a king who not only was not a Protestant himself, but one who firmly put down any outbreaks of this heresy that came to his attention. In writing his own <i>Henry V</i> play, Shakespeare had been able to ignore the inconvenient fact of the Henrician persecutions. The Oldcastle authors, on the other hand, could scarcely evade the religious issue, given a hero who was remembered solely because of it. Neither could they ask an Elizabethan audience to accept Henry V, the hero-king of the Agincourt ballad, the conqueror of France, as a villain. Because the second part of <i>Sir John Oldcastle</i> has been lost, it is impossible to know how they treated the awkward fact of the martyrdom itself. Part I, however, is remarkable for the consistency with which it romanticizes and obscures political and religious issues that were potentially dangerous. Carefully, and unhistorically, the four dramatists dissociated Oldcastle from a Lollard uprising aimed against the king as well as the pope. The rabble in the play is confused about its religious motives and activated chiefly by the hope of plunder. With this irresponsible and seditious mob the character Oldcastle is shown to have no connection. It is only the bishops, and certain nobles jealous of his popularity, who pretend that he leads the rebels. Henry himself is in no way distressed by Oldcastle’s Protestantism, so long as it remains unconnected with the elements of political disorder in the state. It is almost suggested that Henry yearns to become a Protestant himself, except that the time is somehow not right. (There were, after all, limits to the liberties Elizabethan dramatists could take with history.)</p>
+
+    <p>That the Oldcastle authors were perfectly familiar with Shakespeare’s histories is obvious. Indeed, they seem to have spent a good deal of their time wondering how to convert the fine things in the possession of the Lord Chamberlain’s Men to their own uses. Like <i>Henry V</i>, <i>Sir John Oldcastle</i> opens just before the expedition to France. Here too, the clergy are scheming to divert attention from the wealth and rich livings of the church through the judicious dispensation of a portion of their gold: some is destined to help finance the war; some is offered to the Earl of Suffolk as a bribe to persuade him to speak against the troublesome Oldcastle—the most articulate opponent of ecclesiastical wealth and ceremonies—to the king. At the beginning of act II, a summoner engaged by the wicked Bishop of Rochester arrives before Oldcastle’s house in Kent to serve a summons upon its master. Unluckily for him, he meets Harpoole, Oldcastle’s brusque but loyal steward, first. Harpoole examines the legal document carefully:</p>
+
+    <div class="cita">
+        <p>HARP.: Is this process parchment?</p>
+        <p>SUM.: Yes, mary.</p>
+        <p>HARP.: And this seale waxe?</p>
+        <p>SUM.: It is so.</p>
+        <p>HARP.: If this be parchment, & this waxe, eate you this parchment and this waxe, or I will make parchment of your skinne, and beate your brains into waxe: Sirra Sumner, dispatch; devoure, sirra, devoure.</p>
+        <p class="attribution">(II. i. 56—65)</p>
+    </div>
+
+    <p>After a comic struggle, in the course of which the wretched summoner is threatened with a beating and administered a cup of sack with which to wash down the last scraps, he duly eats the summons including the seal. “Wax,” as Harpoole opines, is wholesome: “the purest of the hony.”</p>
+
+    <p>This episode has its obvious parallel in <i>Henry V</i>. In act V, Fluellen invokes the aid of a cudgel to force a reluctant and histrionic Ancient Pistol to eat the leek he had previously mocked. The New Arden editor regards the similarity here as part of the evidence that the Oldcastle authors were familiar with <i>Henry V</i> as well as the two parts of <i>Henry IV</i> when they wrote their own play. He is probably right. Yet it is surely important to note that there is a third scene of this kind, earlier than either <i>Henry V</i> or <i>Sir John Oldcastle</i>, which should be taken into account. In <i>George a Greene</i>, Sir Nicholas Mannering arrives at the town of Wakefield bearing a commission from the rebellious Earl of Kendall for the requisition of victuals for his soldiers. George a Greene himself, outraged both by the request and by Mannering’s insolence in urging it, first tears the parchment and then compels this traitor to King Edward’s throne to eat the seals that were attached to it:</p>
+
+    <div class="cita">
+        <p>MAN.: Well, and there be no remedie, so, George:</p>
+        <p>Swallows one of the seals.</p>
+        <p>One is gone: I pray thee, no more nowe.</p>
+        <p>GEORGE: O sir,</p>
+        <p>If one be good, the others cannot hurt.</p>
+        <p>So, sir;</p>
+        <p>Mannering swallows the other two seals.</p>
+        <p>Nowe you may goe tell the Earle of Kendall,</p>
+        <p>Although I haue rent his large Commission,</p>
+        <p>Yet of curtesie I haue sent all his seales</p>
+        <p>Back againe by you.</p>
+        <p class="attribution">(144-53)</p>
+    </div>
+
+    <p>The episode involving Harpoole and the Summoner in <i>Sir John Oldcastle</i> may well have been inspired by Pistol’s encounter with Fluellen; it is nevertheless with this older scene from <i>George a Greene</i> that its real affinities lie. Like the pinner of Wakefield, Harpoole is a man of the people, someone who clings to a vanishing world of immediate feudal loyalties. His aggression stems not, like Fluellen’s, from the need to avenge a personal affront but from the desire to defend his master from traitors who obscure simple right and wrong with the aid of a new and suspect legalism. The spice of the incident lies in the audacity of the underdog: the simple, honest man converting rotten parchment bonds into matter-of-fact fodder. It reflects one of the wish-dreams of a lower class victimized by legislation forced upon it from above, by a sea of paper which it could not understand. In both <i>George a Greene</i> and <i>Sir John Oldcastle</i>, the plain old loyalties of master and servant, subject and king, achieve a triumph in the moment that the parchment (or the seals) slides down the officer’s unwilling throat. When Shakespeare converted the original legal document into a vegetable, the dapper courtier worsted by the pinner into an entirely personal matter involving Fluellen’s Welsh pride and Pistol’s unconsidered boasting, he was moving away from traditional forms in response both to the spirit of the time and to the shape of his own history play. By 1599, the comical history was a consciously reactionary, an outdated dramatic mode. That cycle of Shakespearean plays which begins with <i>Richard II</i> and ends with <i>Henry V</i> had helped to make it so. Yet Elizabethans could still be made to respond emotionally to the ballad and folk material upon which the genre depended, while withholding actual belief in such distant and half-legendary types of social protest.</p>
+
+    <p>Harpoole himself has nothing but praise for the constable who enters immediately after the discomfited summoner has crept away. This functionary has been sent to make hue and cry after a thief who has robbed two clothiers. He means to search the ale-house for the culprit, but because that building stands in Oldcastle’s “libertie” he refuses to exercise his function “except I had some of his servants, which are for my warrant” (II.i. 140-41). In effect, the constable of his own free will recognizes and honors an older order of jurisdiction and responsibility based on the autonomy of the great house and its demesne. That the inviolability of Oldcastle’s “libertie” from outside interference is no longer something taken for granted is apparent in Harpoole’s cry of relief: “An honest Constable! an honest Constable!” The steward is old-fashioned, a believer in relationships and prerogatives which, in his time, were beginning to be questioned and superseded. Later in the play, he will engineer his master’s escape from the Tower and loyally, without hope of reward, accompany Oldcastle and his Lady in their flight. His taste in literature reflects his attitudes toward society and the proper relationship of vassal and overlord. When the Bishop of Rochester orders the “heretical” books in Cobham’s house to be burned, Harpoole makes a heated defense of his own personal library: “for I have there English bookes, my lord, that ile not part with for your Bishoppricke: Bevis of Hampton, Owleglasse, the Erier and the Boy, Ellenor Rumming, Robin Hood, and other such godly stories” (IV. hi. 166-69).</p>
+
+    <p>Harpoole and his library are by no means the play’s only links with the ballad and romance tradition. The cast of characters includes another Sir John besides the hero: Sir John the parson of Wrotham. This cleric is a hanger-on of precisely those covetous bishops who cause Oldcastle so much trouble. He follows them, however, purely to serve his own ends:</p>
+
+    <div class="cita">
+        <p>Me thinkes the purse of gold the Bishop gave</p>
+        <p>Made a good shew; it had a tempting looke.</p>
+        <p>Beshrew me, but my fingers ends do itch</p>
+        <p>To be upon those rudduks. Well, ’tis thus:</p>
+        <p>I am not as the worlde does take me for;</p>
+        <p>If ever woolfe were cloathed in sheepes coate,</p>
+        <p>Then I am he,—olde huddle and twang, yfaith,</p>
+        <p>A priest in shew, but in plain termes a theefe.</p>
+        <p>Yet, let me tell you too, an honest theefe,</p>
+        <p>One that will take it where it may be sparde,</p>
+        <p>And spend it freely in good fellowship.</p>
+        <p>I have as many shapes as Proteus had,</p>
+        <p>That still, when any villainy is done,</p>
+        <p>There may be none suspect it was sir John.</p>
+        <p>Besides, to comfort me,—for whats this life,</p>
+        <p>Except the crabbed bittemes thereof</p>
+        <p>Be sweetened now and then with lechery?—</p>
+        <p>I have my Doll, my concubine, as t’were,</p>
+        <p>To frollicke with, a lusty bounsing gerle.</p>
+        <p class="attribution">(I. li. 155-73)</p>
+    </div>
+
+    <p>As an example of Shakespearean influence, this speech would be hard to surpass. It is perfectly evident that Sir John of Wrotham represents an attempt on the part of the Oldcastle authors to make use of precisely the character their play was designed to discredit and obliterate from the memory of Elizabethan audiences: Sir John Falstaff. Somehow, Drayton, Munday, Hathway, and Wilson were going to contrive to introduce the Gad’s Hill robbery into their work too. Doll, the parson’s paramour, is sister to Falstaff’s Doll Tearsheet and, in the course of the play, will display the same mixture of tenderness and fury as her prototype. The line about Proteus has been stolen from one of the speeches of the future Richard III, in <i>3 Henry VI</i> (III.iii.192). Otherwise, the speech appears on the surface to be all fake Falstaff. Yet something about the tone is alien. Falstaff, after all, was scarcely “an honest theefe,” concerned to “take it where it may be sparde.” A purse was a purse for him, whether it belonged to a wealthy traveler or was to be extracted from poor Mistress Quickly at the cost of all her plate. It is in the outlaw ballads of the late Middle Ages, particularly those centered upon Robin Hood, that the source of this Sir John’s attitude may be found. What the Oldcastle authors have done is to reach back through Falstaff to resurrect the far older figure of Friar Tuck.</p>
+
+    <p>When Shakespeare’s Henry V adopted disguise, the night before Agincourt, he found himself confronting men who inquired into the nature of the king’s responsibility with uncomfortable particularity. The Oldcastle Henry V also resorts to disguise, perhaps in imitation of Shakespeare’s play. At the end of act III, the king sets off to Westminster alone and incognito to gather news about the rebellion. On Blackheath he encounters Sir John disguised in green, the color traditionally worn by the followers of Robin Hood. Courteously and wittily the thief relieves his unknown sovereign of a purse containing one hundred pounds in gold. This Henry V, unlike his Shakespearean counterpart, evinces no hesitation in speaking about his disreputable past and old associates:</p>
+
+    <div class="cita">
+        <p>Wei, if thou wilt needs have it, there ’tis: just</p>
+        <p>the proverb, one thief robs another. Where the</p>
+        <p>divil are all my old theeves, that were wont to</p>
+        <p>keepe this walke? Falstaffe, the villaine, is</p>
+        <p>so fat, he cannot get on’s horse, but me thinkes</p>
+        <p>Poines and Peto should be stirring here aboute.</p>
+        <p class="attribution">(III.iv.59-65)</p>
+    </div>
+
+    <p>Sir John, informed that his victim is a gentleman of the King’s chamber, professes himself doubly pleased: this traveler can spare his money without hardship and may also be useful in future to “get a poor thiefe his pardon” (III.iv.82). With this latter contingency in mind, the concealed parson breaks a golden angel between them so that they may know each other again. Sir John swears that this token, when produced, will forestall any second robbery. Henry, in return, is to remember his promise of a pardon. In high good spirits, and without the least animosity on either side, the two men shake hands and separate.</p>
+
+    <p>Henry, now quite penniless, but delighted by this irregular encounter, proceeds on his way and joins his army in a field near London after dark. His lords greet their king ceremoniously, but find him strangely reluctant to abandon his disguise. “Peace, no more of that,” he tells Suffolk, who has addressed him formally as “your Highnesse”:</p>
+
+    <div class="cita">
+        <p>The King’s asleepe; wake not his majestie</p>
+        <p>With termes nor titles; hee’s at rest in bed.</p>
+        <p>Kings do not use to watch themselves; they sleepe,</p>
+        <p>And let rebellion and conspiracie</p>
+        <p>Revel and havocke in the common wealth. . . .</p>
+        <p>. . . this long cold winter’s night</p>
+        <p>How can we spend? King Harry is a sleepe</p>
+        <p>And al his Lords, these garments tel us so;</p>
+        <p>A1 friends at footebal, fellowes al in field,</p>
+        <p>Harry, and Dicke, and George. Bring us a drumme;</p>
+        <p>Give us square dice, weele keepe this court of guard</p>
+        <p>For al good fellowes companies that come.</p>
+        <p class="attribution">(IV.i.6-10, 29-35)</p>
+    </div>
+
+    <p>Predictably, Sir John is the first good fellow to wander in. In the gaming that ensues, the disguised king wins back his hundred pounds. When the parson produces his half of the broken coin as a final stake, Henry matches it, and challenges the thief to a combat. The two take up their positions and are about to engage when a horrified noble intervenes and reveals the identity of the king. Without this interruption, the episode would fairly clearly have terminated in the manner sanctioned by the Robin Hood ballads and actually demonstrated in Peele’s <i>Edward I</i>: with a victory for the king that vindicated his strength and manly prowess.</p>
+
+    <p>In <i>Sir John Oldcasde</i>, Henry amuses himself for a few moments by adopting a pose of mock severity toward this Friar Tuck. Reminded, however, by the culprit that “the best may goe astray, and if the world say true, your selfe (my liege) have bin a thiefe” (IV.i. 182-84), the king freely admits the fact and contents himself with urging upon the parson a repentance and reclamation like his own. He makes him a free present of the stolen gold, a gift which Sir John receives with an unfeigned gratitude and delight that is worlds away from Williams’s taciturn acceptance of the glove filled with crowns in Shakespeare’s play: “Vivat Rex & currat lex! My liege, if ye have cause of battell, ye shal see sir John of Wrootham bestirre himself in your quarrel” (IV.i. 197-99). One may well suspect the parson’s ability to forswear cards and wine and become an honest man—indeed, on his next appearance, in act V, he is confessing to Doll that drink, dice, and the devil have consumed the hundred pounds and preparing to recoup his fortunes by way of another robbery—but not the sincerity of his admiration for King Henry as a man.</p>
+
+    <p>Consistently, in borrowing from Shakespeare, the <i>Oldcasde</i> authors turned their material back in the direction of balladry and romance. That doctrine of the king’s two bodies which underlies all of Shakespeare’s histories from <i>Richard II</i> to <i>Henry V</i> is nowhere visible in their play, any more than it is in <i>George a Greene</i>, <i>James IV</i>, or the old <i>Famous Victories of Henry V</i>. The <i>Oldcasde</i> Henry shifts from the first person singular to the plural form much as he might put on a furred cloak for a state occasion: to mark the momentary appropriateness of formality. This king is first and foremost a man, an understanding good companion, happy to try conclusions with a thief, prevented only by lack of time and the necessary affairs of state from engaging more often in the kind of light-hearted, picaresque adventure he so clearly loves. Not even his confrontation with the traitors Cambridge, Scroop, and Grey in act V can shake his confidence in the possibility of personal relations. The whole idea of kingship in this play is uncomplicated, stripped of sacramental overtones, and essentially gay. It is also deliberately unreal, a fiction deriving from a distant and half-legendary past. <i>Henry V</i> may seem, by comparison with Shakespeare’s other histories, to be optimistic and celebratory, a simplified and epic account of certain events in the Hundred Years’ War. To set it for an instant beside <i>Sir John Oldcasde</i> is to realize, not only that Shakespeare was an incomparably finer dramatist than his four rivals put together, but that his conception of history, even when he was chronicling one of England’s moments of glory, was fundamentally tragic.</p>
+
+    <p>In the absence of any formal dramatic theory which could be said to connect with the productions of the public stage, Elizabethan drama seems to have developed to a large extent through a curious kind of dialogue among specific plays. The world of the London playhouses was small and intimate: everyone, as it seemed, knew everyone else. Kyd once shared a room with Marlowe, and lived to regret it; Ben Jonson loved Shakespeare but prided himself on being able to beat Marston and take his pistol from him; Shakespeare suffered from the animosity of Greene and was defended by Chettle; the so-called War of the Theatres sent a number of poets into battle with each other for reasons that must have been aesthetic and personal in about equal measure. The true history of the hostilities and allegiances, the jealousies and discipleships among the dramatists writing between 1587 and 1600 can never be recovered now. Yet the plays that have survived from this period are in a sense projections and records of these long vanished relationships and artistic controversies. Because the history play was a relatively new genre, without the classical sanction possessed by comedy and tragedy, and also because its brief flowering was effectively bounded by the reign of Elizabeth, it can provide a particularly rewarding study of the way writers tended to articulate their own dramatic ideas by reference to pre-existing plays. No Puttenham or Abraham Fraunce, no Sidney or Ben Jonson ever troubled to distinguish between the comical and the tragical history as dramatic forms. It is only from the plays themselves that these categories emerge as something more real and consequential than the private lunacy of a Polonius, or the rodomontade of Elizbethan printers concerned to imp out a title-page with words.</p>
+
+    <p>The roots of the tragical history lie, fairly obviously, in those Tudor entertainments which A.P. Rossiter called “the interludes of church and state.” The consequential dialogue between plays begins, however, in 1587 when Marlowe used the memory of Preston’s <i>Cambises</i> (1561) and plays like it to launch his own counterstatement in the form of <i>Tamburlaine the Great</i>. Plays like the anonymous <i>Locrine</i> (1591) or <i>Selimus</i> (1592) reveal much about the impact of Marlowe upon his contemporaries: the need to assimilate and learn from <i>Tamburlaine</i> but also to domesticate and render it harmless. In <i>Edward II</i> (1592), on the other hand, Marlowe himself seems to have felt impelled to imitate Shakespeare’s new style of history play, much in the way that Raphael, painting in the Vatican Stanza della Segnatura, suddenly was led to create figures patently Michaelangelesque after he had been shown the unfinished Sistine ceiling. Because Vasari thought such things important, the details of how and when Raphael managed to see the tormented grandeurs of the Sistine Chapel are known, even as the long hours Michaelangelo himself had spent absorbing the figure style of Masaccio in the Brancacci Chapel are known. Without the testimony of Vasari, there would only be certain stylistic features from which to construct a hypothesis that Raphael s experience of the Sistine ceiling was so unexpectedly intense that for a time it altered the character of his own work, or that Michaelangelo learned from Masaccio. The problem of identifying reaction and specific indebtedness would, in fact, strongly resemble the one which confronts the Elizabethan scholar trying to make sense of the development of dramatic forms during the crucial years 1587—1600.</p>
+
+    <p>As it was defined by Shakespeare, the tragical history became a serious, and politically a somewhat incendiary, examination into the nature of kingship. At the heart of the form lay the Tudor doctrine of the king’s two bodies, which, in the fullness of time, was to provide the Puritans with justification for the execution of Charles I. Shakespeare himself, absorbed by the difficulties of royal incarnation, never wrote a comical history, unlike Peele, Greene, Heywood, Dekker, and a host of other contemporary dramatists. Yet he must have been aware of it as an alternative form, stemming originally from ballads and romances, made dramatic at least as early as 1560, and still wistfully alive in his own time. Certainly he introduced its most characteristic motif, that of the king disguised, into <i>Henry V</i> because he expected to gain, by his atypical handling of it, a calculated and powerful emotional effect. For Shakespeare, <i>Henry V</i> seems to have marked the end of his personal interest in the tragical history. He had virtually exhausted the form, at least in its English version, and not only (as it turned out) for himself. When the four <i>Oldcastle</i> authors accepted the doubtful task of competing with Shakespeare’s <i>Henry IV</i> and <i>V</i> plays, it cannot have been only the religious difficulties posed by their subject matter which led them to turn tragical history so completely into comical. <i>Sir John Oldcastle</i> is a tribute to Shakespeare not only because it is haunted everywhere by characters, episodes, and turns of phrase taken from his own cycle, but also because its entire style and anachronistic ethos as a play stand as silent witness to the fact that in the English tragical history, the more consequential form Shakespeare had made peculiarly his own, little or nothing now remained for anyone else to do.</p>
+
+    <section class="footnotes">
+        <h3>Note</h3>
+        <p>From <i>The Triple Bond</i>. Copyright © 1975 by Pennsylvania State Univeristy Press.</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>

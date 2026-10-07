@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>“Falstaff and Don Quixote” — Wyndham Lewis</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">WYNDHAM LEWIS</p>
+        <h1 class="cab__tit">Falstaff and Don Quixote</h1>
+    </header>
+
+    <p>"The wound that phantom gave me!" is an exclamation illustrating the quixotic attitude to the environing world, which, if it lends qualities to things they do not possess, restores in a sense the balance by not bestowing on any existence quite the harshness of the analytic eye of common sense. Don Quixote is of course one of the many demented characters inhabiting the region of great fiction. Hamlet, Lear, Othello, Timon are all demented or hallucinated, as so many of the celebrated figures in nineteenth-century Russian fiction were. It is the supreme liberty that it is possible to take with your material. That it should be so often taken in the case of the great characters of dramatic fiction is the most evident testimony to the dependence on <i>untruth</i>, in every sense, in which our human nature and human environment put us. In the case of Muishkin, Dostoieffsky had to call in express and abnormal physiological conditions to help him incarnate his saint. And the natural heightening everywhere in Shakespeare is by way of madness. Since it is mad to behave in the way the hero does, he has to be maddened by some means or other more often than not in order to make him at all probable.</p>
+
+    <p>"The defeat of the hero" to see "the splendid triumph of his heroism" is in accord with the definitely tragic nature of the jest, and the movement of thought beneath the symbolization. That Don Quixote has not a ceremonious <i>pathos</i>, and that he only fights with <i>phantoms</i> which we know under homely shapes, does not make him any less a hero. Though Persiles and Sigismunda, for instance, could easily be confounded with the conventional heroes of Heliodorus—similarly connected with Thessaly—Don Quixote is, in literature, a lonely hero, and even in that responds to one of the chief requirements of tragedy, approximating at the same time to one of the conditions of madness.</p>
+
+    <p>The effect of Cervantes on the German romantics—G. Schlegel Tieck and Schelling—produced some interesting results. Some of their conclusions appear to me to correspond to the truth of the figure of Don Quixote.</p>
+
+    <div class="cita">
+        <p>"Schelling put into definite shape the formula of the new interpretation: he saw in <i>Don Quixote</i> the philosophical novel <i>par excellence</i>, in the great adventure of Quixote the universal conflict of the ideal and the real, and in the defeat of the hero the triumph of his heroism."</p>
+    </div>
+
+    <p>"For the rest, <i>Don Quixote</i>, interpretated from the romantic point of view, was in no way opposed to the spirit of adventure and mystical dreams, rather it exalted sacrifice and devotion to the Idea, and thus favoured every kind of religious and political initiative. And, on the other hand, romantic irony found in the spectacle of the eternal duality suggested by Don Quixote the justification of its smile and of its lofty detachment" (J. J. Bertrand).</p>
+
+    <p>You must not, the German romantics said, see in <i>Don Quixote</i> simply a good after-dinner laugh, a <i>bambocciata</i>.</p>
+
+    <div class="cita">
+        <p>"In the theory of universal discord, the principle [of the interpretation] is to be found. Schiller had adopted the hypothesis of the primordial disunity of the world, the result of which is the tragic antithesis in which we are struggling. Fichte opposed still more violently the self and not-self, and made familiar to contemporary thought this system of antagonism between life and the dream, the trivial and the ideal. Don Quixote is the symbol of this duality."</p>
+    </div>
+
+    <p>Such "romantic" explanations appear to be the only ones compatible with the great beauty of this book.</p>
+
+    <p>It was perhaps the long stay Cervantes made in Italy that enabled him to look at Spanish life with detached and foreign eyes: but being an artist can alone have produced this condition in Shakespeare. And I think there is nothing in Shakespeare's work that makes him so <i>national</i> as Cervantes was. Shakespeare's laborious—and in a small business way successful—life was not a fierce and youthful episode, like Marlowe's. But he had his share of hardness and effectiveness: which again, if you regard it as the most exterior thing, and if you wished to trace it to the influence of an environment, would be natural to people living in a great and noisy town, in the midst of affairs, and of a rapidly changing life. Whereas Cervantes had the idyllic peace of the grave landscapes of his country as a background, and had round him the gentler agricultural life of a "backward" people.</p>
+
+    <p>According to Kyd, Marlowe was "irreligious . . . intemperate, and of a cruel heart." He was involved in seditious movements, was considered hostile to religion and died in a brawl. Raleigh's departure in search of El Dorado followed religious persecution and espionage. Marlowe was caught up in the atmosphere of plots and heroics of which that is an example. Kyd attributes to Marlowe a document for which he, Kyd, was arrested, and which is described as a "libell that concerned the State." It was apparently the text of a placard (described by the register of the Privy Council as a <i>lewd, and mutinous libell</i>) of which some had been stuck upon the wall of the Dutch churchyard. It is as well to remember on all counts that Shakespeare was very much influenced by Marlowe, and shared probably some, at least, of his habits and opinions.</p>
+
+    <p>Whether Falstaff (Shakespeare's "knight," as Don Quixote was Cervantes') was only a whimsical invention to amuse; or how far certain more fundamental things—and what things—were involved, has, like most of the matters connected with this very rich and complex work—overcrowded with startlingly real figures—been much discussed. Ulrici, for example, thinks that <i>The Merry Wives</i> is a satire, from the bourgeois point of view, on chivalry—Falstaff representing chivalry:</p>
+
+    <div class="cita">
+        <p>"The burgher class avenges itself pretty severely upon Falstaff's knighthood, and his knighthood does not anywhere appear more miserable and unknightly than when thrown into a basket among dirty clothes, when beaten as an old woman and tormented and pinched as a fantastic satyr. In fact, it seems to me that these three features might be found to contain as many metaphorico-satirical thrusts at the chivalry of the day."</p>
+    </div>
+
+    <p>Possibly every class—as it is supposed that every type of man—found its expression in this universal poet, and the new <i>magnificos</i> of London and the Italianized courtier, and even the many-headed beast, could find something to please them. But with that mechanical type of criticism that could see in a figure like Falstaff the expression of a class it is difficult to agree.</p>
+
+    <p>Where Ulrici says that Falstaff is the "impersonification of the whole of this refined and artificial civilization"—and more closely still that he is a <i>child</i>, a <i>naif</i>—he has, I think, established one of the important things about him. To this I will presently return.</p>
+
+    <p>This passage of Ulrici on Falstaff is, in full, as follows:</p>
+
+    <div class="cita">
+        <p>"He is, so to say, the symbol, the personification of that general state of human frailty which, without being actually wicked—that is, without doing evil for the sake of evil, in order to find satisfaction in it—nevertheless perpetually does evil (to a certain extent against his will) simply because it happens to be the most direct means of attaining what he calls life and happiness; this, he believes, is not only actually arrived at by everyone, but ought to be allowed to be the aim of everyone. In so far Falstaff is a pure child of nature, and it cannot be denied that in <i>Henry IV</i>., at least, he shows some sparks of that <i>naïveté</i>, gay humour and innocent good-nature, which is generally peculiar to the so-called children of nature; but he is a child of nature who not only stands in the midst of, on many sides, an advanced state of civilization, but who—owing to the refined luxury of his enjoyments, the variety of his dissolute appetites, and the manifold devices he makes use of to gratify them—is, at the same time, the impersonification of the whole of this refined and artificial civilization."</p>
+    </div>
+
+    <p>If you imagine Shakespeare taking Falstaff all through his plays—or through as many more as possible—then we should have, still more, a central and great figure (which would also be an <i>idea</i>) to place beside Cervantes' knight.</p>
+
+    <div class="cita">
+        <p>"These scenes [the comic falstaffian ones in <i>Henry IV</i>.] fill almost one half of the whole play. In no other historical drama of Shakespeare's do we find such a total disregard of the subject. Here . . . the comic and unhistorical portions are so surprisingly elaborate, that the question as to their justification becomes a vital point. . . ."</p>
+    </div>
+
+    <p>It was not, according to Ulrici, "Shakespeare's intention merely to give a broader foil to the character of Prince Henry." Nor can it have been "Shakespeare's intention in <i>Henry IV</i>. merely to give a representation of the return of honour and of man's different ideas and positions in regard to it; and he has assuredly not introduced the Falstaff episode merely in order to contrast the representatives of the idea of honour—the Prince and Percy—with Falstaff, the negative counterpart, the caricature of honour and knighthood" (Ulrici, Book VI., chap. vii.).</p>
+
+    <p>Ulrici's solution is that the comic is set to dog the historic in <i>Henry IV</i>. on purpose to show up its influence: "It is intended to parody the hollow pathos of the political history [i.e. of Henry IV.'s reign]. . . . Irony is to hold up its concave mirror to that mere semblance of history which is so frequently mistaken for history itself, as being considered great and important only when it parades about in its purple mantle with crown and sceptre, haggles about kingdoms, or lays about it with the scourge of war. For all that which in the present drama appears outwardly to be historical action—rebellion, dissension and war, victory and defeat, the critics of political cunning, treaties and negotiations with their highsounding speeches about right and wrong—all this was in truth a mere show, the mere <i>mark</i> of history. The reign was of historical importance only as a transition stage in the further development of the great historical tragedy, and accordingly could not be passed over."</p>
+
+    <p>So "to give a clear exhibition of this unreality [that of the proceedings of the 'born actor' Bolingbroke and his playful barons] this semblance, this histrionic parade, was—conveniently or inconveniently—the poet's intention in placing the comic scenes so immediately by the side of the historical action, and in allowing them step by step to accompany the course of the latter."</p>
+
+    <p>Ulrici thinks that the contrast was necessary only because of the emptiness of this <i>particular</i> history, in short. It is very easy, in view of the so-called enigmatical play of <i>Troilus and Cressida</i>, and in the view upheld here of a great many other points in all the plays, to extend this estimate of Ulrici to the whole of Shakespeare's works.</p>
+
+    <p style="text-align: center; text-indent: 0; margin: 2rem 0 1.5rem;">II</p>
+
+    <p>I will now show how all these various questions we have passed in review during the last few chapters can be combined, and how they each contribute to the fixing a psychical centre of control which is responsible for all of them. First of all, what I named <i>shamanization</i> must be reverted to: its effects will be found a necessary ingredient of one of the most celebrated attributes of Shakespeare—namely, his humour. How "worldliness"—which we have discussed—comes in always on the feminine tide of feeling is evident; and how scepticism is not incompatible with courage, any more than it is with feminineness—indeed the contrary, since the female animal is very brave, but on account of different things to the male.</p>
+
+    <p>For those who are not familiar with the phenomenon of <i>shamanization</i>, still universally prevalent among the subarctic tribes, I will briefly describe it.</p>
+
+    <p>A <i>shaman</i> is a person following the calling of a magician or priest: and the word <i>shamanization</i> that I have employed would refer to a shaman (the most typical of them) who had in addition transformed himself. This phenomenon—that of sex-transformation—in our life to-day is so evident, and so widespread, that (unless we are never to refer at all to a thing that exercises such great social influence, and whose prevalence in one manner or another, principally by way of social suggestion, affects the general outlook on life) we should find some cliché that does not smell of the laboratory, or some word that does not belong to those latinizing vulgarities of speech depended on for popular discussion. On behalf of the word employed I have no ambitious views: it is only an inoffensive and convenient counter for my personal use; and because around the figure of the shaman I have elsewhere gathered a number of observations on this subject, and it has naturally suggested itself to me in the course of use.</p>
+
+    <p>As to the phenomenon itself, of sexual perversion, I am not one of those people who regard it as insignificant, or harmless as a widespread fashion: though it is so very much involved with other things (which on the surface seem to have little to do with it) that it is meaningless to discuss it by itself. Its manifestations and effects are extremely different in different ages and countries: successful in Sparta, in Lesbos it might be an offence, and in Chicago a useless and unomamental one, where it would probably take on a curious mechanical intensity, and an earnest scientific air. It might add charm to the south of Russia, but make the arctic rigours of the north still more unendurable. In Rome, for example, its effects were coarse and disagreeable, whereas in Athens they even had the intellect as an ally, recommending them. These general reflections on the nature of perversion do not concern us here very much, except that it seemed advisable to record that partiality for its numerous adepts, and its effects as revealed in current social life, cannot be attributed to me.</p>
+
+    <p>Shamanism, then, returning to the custom prevalent throughout the north of Asia and America, consists generally in the reversal of sex: a man, feeling himself unsuited for his sex, dresses himself as a woman, behaves as a woman (usually adopting the woman's rôle also where some man is concerned), or by means of this sexual abnegation prepares himself for the duties of a magician. Women similarly abandon the outward attributes of sex and become men. (This is more rare, because it is obviously a less attractive proposition—and this does not take with it properly an enhancement of the powers of "mystery," as the other transformation does.)</p>
+
+    <p>Generally speaking, the process of shamanizing himself confers on a man the feminine advantages. It signifies either a desire to experience the sensual delights peculiar to the female organization; or else an ambition to identify himself with occult powers. But it is further a withdrawal from masculine responsibilities in every sense, and an adoption of the spectator's rôle of the woman (freed further, in his case, from the cares of motherhood). That this is a very radical and even inversely heroic, or heroically inverse, proceeding is evident. If we now turn to a figure with which we have already dealt—namely, the "man of the world" (a figure with whom by implication Shakespeare is compromised, but from identification with whom this analysis should, in effect, rescue him)—we shall find that there is nothing that exactly corresponds to the transformed shaman. Like the latter, as it is his strategy to include among his numerous advantages those possessed by the woman, he has a tincture of the <i>shaman</i> in him. Hotspur (one of Shakespeare's lesser heroes) tells in a famous speech how he meets on the battlefield a shamanizing sprig of nobility, whom he describes as chiding soldiers carrying dead bodies near him "for bringing a slovenly unhandsome corpse between the wind and his nobility." This exquisite was not necessarily a wholly shamanized man, but possibly only a macaroni of the time. He would in that case be a "man of the world" of a very extravagant type, very extravagantly <i>shamanized</i>. He would have on the field of battle all the privileges of a woman, only frowned at—and perhaps hustled—by the blustering Percy.</p>
+
+    <p>It is at this point that, fully prepared, we can address ourselves to the subject that can be regarded as the centre one in Shakespeare—that of his <i>humour</i>.</p>
+
+    <p>The <i>humour</i> of Falstaff achieves the same magical result as Don Quixote's chivalrous delusion—namely, it makes him immune from its accidents. The battles he finds himself engaged in are jokes; his opponents, the Douglas, Colevile of the dale, are "phantoms" (of a different sort, it is true), just as Don Quixote's are. The contrast of these two knights is a contrast in two unrealities—two specifics to turn the world by enchantment into something else. One is the sense of humour, the other is the mysticism of chivalry; the first a negation, the latter a positive inspiration. The one, the magic of being <i>wide awake</i> (very wide awake—beyond normal common sense): the other of having your eyes naturally sealed up, and of <i>dreaming</i>.</p>
+
+    <p>The "sense of humour," again, provides us with an exceptionally English or American attribute of worldliness.</p>
+
+    <p>In Falstaff, Shakespeare has given us a very interesting specimen indeed of consummate worldliness, with a very powerfully developed humorous proclivity, which served him better than any suit of armour could in the various vicissitudes of his life. An excellent substitute even for a <i>shamanizing</i> faculty, and enabling its possessor to escape the inconveniences and conventional disgrace of being feminine—at the same time it provides him with most of the social advantages of the woman. The sense of humour is from that point of view the masterpiece of worldly duplicity and strategy. On the field of battle at Tewkesbury, Falstaff avails himself of it in a famous scene, and gives us a classical exhibition of its many advantages, and the graceful operation of its deceit. It does not cut off its practitioner from "men" of the rough "hero type," but on the contrary endears him to them. So it becomes even a substitute for courage. There is no lack that it does not cover. With it Falstaff is as safe on the battlefield as the shamanized noble noticed by Percy Hotspur.</p>
+
+    <p>So if Falstaff is the embodiment of a mass of worldly expedient, this is of course all directed to defeating the reality as much as Don Quixote's. He is a walking disease, but his disease is used to evade the results of that absence of a sense of humour which is so conspicuous a characteristic of nature and natural phenomena. The sense of humour is woven into a magic carpet; with it he progresses through his turbulent career, bearing a charmed life. This "sense" performs for Falstaff the office of a psychological liberator; it is of magic potency, turning the field of Tewkesbury into a field of play, and cheating death wherever they meet.</p>
+
+    <p>The man would indeed be a coward who, possessed of this magic, was seriously timid. Falstaff was evidently not that: yet Morgan thought it necessary to write a book defending his "honour" in this respect. "He had from nature," he said, "as I presume to say, a spirit of boldness and enterprise."</p>
+
+    <p>Being a humorous figure <i>par excellence</i>, it was not possible for him to be brave in the hero's way, any more than it would be proper for the circus clown to be an obviously accomplished athlete. Gaucherie and laughable failure is, in both cases, of the essence of their rôle. But boldness and enterprise—as far as that was compatible with the necessity of advertising a lack of courage—he possessed to a great degree.</p>
+
+    <p>Morgan begins his defence of Falstaff's courage by appealing to the fact that <i>actions</i> (by which people usually judge character) are a very misleading key: "The understanding seems for the most part to take cognizance of <i>actions</i> only, and from these to infer <i>motives</i> and <i>characters</i>; but the sense we have been speaking of proceeds in a contrary direction."</p>
+
+    <p>So he appeals for the actions that were not there—and in the nature of things could not have been there—in his conventional pleading.</p>
+
+    <p>As to Falstaff being "a constitutional coward" (like <i>Parolles or Bobadil</i>) he says:</p>
+
+    <div class="cita">
+        <p>"The reader, I believe, would wonder extremely to find either Parolles or Bobadil possess himself in danger. What then can be the cause that we are not at all surprised at the gaiety and case of Falstaff under the most trying circumstances; and that we never think of charging Shakespeare with departing, on that account, from the truth and coherence of character? Perhaps, after all, the real character of Falstaff may be different from his apparent one; and possibly this difference between reality and appearance, whilst it accounts at once for our liking and our censure, may be the true point of humour in the character, and the source of all our laughter and delight. We may chance to find, if we will but examine a little into the nature of those circumstances which have accidentally involved him, that he was intended to be drawn as a character of much natural courage and resolution; and be obliged thereupon to repeal these decisions," etc.</p>
+    </div>
+
+    <p>Morgan's affected defence (of Falstaff's physical courage) is successfully achieved—but at the expense of every psychologic requirement of the case.</p>
+
+    <p>Morgan makes a point of Falstaff's freedom from malice:</p>
+
+    <div class="cita">
+        <p>"He [Falstaff] seems by nature to have had a mind free of malice or any evil principle; but he never took the trouble of acquiring any good one. He found himself (from the start) esteemed and loved with all his faults, nay <i>for</i> his faults, which were all connected with humour, and for the most part grew out of it." So "laughter and approbation attend his greatest excesses."</p>
+    </div>
+
+    <p>This is of course the "man of the world" in Falstaff—the <i>anti-Machiavel</i> of the type of Frederick the Great. But the "good fellow" in Falstaff, as it is in anybody almost, was no more innocent than, actually not as innocent as, Machiavelli's "bad fellow" or <i>male persona</i>. There is, in short, much method in such sanity.</p>
+
+    <p>Morgan piles up his understandings of the plan of this character:</p>
+
+    <div class="cita">
+        <p>"We all like Old Jack; yet, by some strange perverse fate, we all abuse him, and deny him the possession of any one single good or respectable quality. There is something extraordinary in this; it must be a strange art in Shakespeare which can draw our liking and good will towards so offensive an object. He has wit, it will be said: cheerfulness and humour of the most characteristic and captivating sort. And is this enough? Is the humour and gaiety of vice so very captivating? Is the wit, characteristic of baseness and every ill quality, capable of attaching the heart or winning the affections! Or does not the apparency of such humour, and the flashes of such wit, by more strongly disclosing the deformity of character but the more strongly excite our hatred and contempt for the man?"</p>
+    </div>
+
+    <p>The nonsense into which the moralist critic leads the amiable eighteenth-century writer at least becomes palpable here—even if worthlessness does not become more palpable when associated with wit. That it is not good qualities, any more than great qualities, that "attach the heart" it is not necessary to say.</p>
+
+    <p>Falstaff is a "man of wit and pleasure," and could generally be described as a very good specimen of a "man of the world." But the same thing applies to him as to Iago: the "man of the world" is never so dramatically and openly cynical as Falstaff, any more than he is so candid as Machiavelli. He is not dramatic at all. To come to one of the necessary conclusions in this connexion, if the <i>Machiavel</i> were an Englishman he would be like Falstaff. This laziness, rascality and "good fellow" quality, crafty in the brainless animal way, is the English way of being a "deepbrained Machiavel."</p>
+
+    <p>But Falstaff is a "child," too, a "<i>naif</i>," as Ulrici says. A worldly mixture of any strength is never without that ingredient. The vast compendium of worldly bluff that is Falstaff would have to contain that. It was like "any christom child" that he "went away," Mistress Quickly says.</p>
+
+    <p>He is armed from head to foot with sly feminine inferiorities, lovable weaknesses and instinctively cultivated charm. He is a big helpless bag of guts, exposing himself boldly to every risk on the child's, or the woman's, terms. When he runs away or lies down he is more adorable than any hero "facing fearful odds."</p>
+
+    <p>His immense girth and stature lends the greatest point, even, to his character. He is a hero run hugely to seed: he is actually heavier and bigger than the heaviest and biggest true colossus or hero. He is in that respect, physically, a mock-hero. Then this childishness is enhanced by his great physical scale, so much the opposite of the child's perquisite of smallness. And because of this meaningless, unmasculine immensity he always occupies the centre of the stage, he is the great landmark in any scene where he is. It all means nothing, and is a physical sham and trick put on the eye. And so he becomes the embodiment of bluff and worldly practice, the colossus of the <i>little</i>.</p>
+
+    <section class="footnotes">
+        <h3>Note</h3>
+        <p>From <i>The Lion and the Fox</i>. Copyright © 1951, 1955 by Methuen &amp; Co.</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>
