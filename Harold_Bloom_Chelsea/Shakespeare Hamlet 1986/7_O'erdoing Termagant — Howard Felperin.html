@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>“O’erdoing Termagant” — Howard Felperin</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">Howard Felperin</p>
+        <h1 class="cab__tit">O’erdoing Termagant</h1>
+    </header>
+
+    <div class="epigrafe-inicial">
+        <p>That was the old way, Gossip, when Iniquity came in like Hokos Pokos, in a Juglers jerkin, with false skirts, like the Knave of Clubs! but now they are attir’d like men and women o’ the time, the Vices, male and female!</p>
+        <p class="attribution">Ben Jonson, <i>The Staple of News</i>, 2nd Intermean</p>
+    </div>
+
+    <p>There is probably no more promising point of departure for the study of Shakespeare’s relation to his dramatic past than Hamlet’s advice to the players:</p>
+
+    <div class="cita">
+        <p>O, it offends me to the soul to hear a robustious periwig-pated fellow tear a passion to tatters, to very rags, to split the ears of the groundlings, who (for the most part) are capable of nothing but inexplicable dumb shows and noise. I would have such a fellow whipp’d for o’erdoing Termagant. It out-herods Herod. Pray you avoid it. . . . Be not too tame neither; but let your own discretion be your tutor. Suit the action to the word, the word to the action; with this special observance, that you o’erstep not the modesty of nature: for anything so overdone is from the purpose of playing, whose end, both at the first and now, was and is, to hold, as ’twere, the mirror up to nature; to show virtue her own feature, scorn her own image, and the very age and body of the time his form and pressure.</p>
+        <p class="attribution">(III.ii.7–25)</p>
+    </div>
+
+    <p>At first glance, the speech seems perfectly straightforward and unambiguous. It begins with some practical pointers on acting and builds toward a general statement of the function of drama — one we would all readily agree with and quote often enough — which supports, in turn, the practical pointers. It evokes through many details an august tradition of classical and renaissance dramatic theory, and would seem to promote the kind of “modern” and “lifelike” drama we associate with Shakespeare at the expense of the old-fashioned and exaggerated drama we associate, often as a result of this speech, with the medieval stage. After all, Hamlet’s discourse on the art of theater is, we like to say, the closest thing we have to a statement of Shakespeare’s own aims and principles as a dramatist. Yet whether or not Hamlet’s account of the purpose of playing is also Shakespeare’s, the fact that it occupies a central place within the most theatrically self-conscious and complex of his plays makes it more problematic than is usually supposed, a text in certain respects ambiguous in its statement and inconsistent with the play that forms its context.</p>
+
+    <p>It is with the general statement of the function of drama that I am chiefly concerned here, both in its immediate application to <i>Hamlet</i> itself and in its wider implications for Shakespeare’s work as a whole. In Hamlet’s classic restatement of the commonplace — “to hold, as ’twere, the mirror up to nature” — the purpose of playing is twofold. Drama projects, on the one hand, a moral vision — “to show virtue her own feature, scorn her own image” — and on the other, a lifelike illusion — “the very age and body of the time his form and pressure.” What Hamlet has done, in effect, is to conflate under the blanket phrase, “to hold the mirror up to nature,” two distinct notions of drama, each with a long tradition and each in some degree antagonistic to the other in aim and method. The former, the view of the play as moral vision, transcends by its very nature considerations of time and place, associates drama with theology or moral philosophy, and is identifiable in Hamlet’s account with medieval and Tudor allegorical theater — note the vestiges of personification in the phrases, “virtue <i>her own</i> feature, scorn <i>her own</i> image.” The latter, the view of the play as lifelike illusion, is by its very nature time-bound and localized, associates drama with historiography, and is identifiable in Hamlet’s account with the more or less naturalistic theater of classical Rome and renaissance Italy. Taken as a whole, Hamlet’s speech is predominantly a plea for the new doctrine of dramatic illusionism and falls into line with the special pleading of such Elizabethan classicists as Sidney and Jonson. From such a point of view, to do Termagant at all is to overdo Termagant, for such roles as Termagant and Herod are written out of a homiletic rather than mimetic conception of drama, no matter how they were actually performed, in so far as they are offered as timeless and cautionary embodiments of wickedness and tyranny rather than as characterizations of human similitude. Moral images are not necessarily lifelike ones. But even though Hamlet’s advice to the players stresses neoclassical decorum, the medieval conception of drama as a timeless moral vision, for all its apparent incompatibility, survives in it, as it does in the play of <i>Hamlet</i> itself.</p>
+
+    <p>For a specimen of that older dramatic mode we need look no further than the play-within-the-play. Hamlet describes it to Claudius as “the image of a murder done in Vienna: Gonzago is the duke’s name; his wife, Baptista” (III.ii.247–49); he stresses, that is, the play’s naturalistic representation of an historical event enacted in a specific place by specific people. Any resemblance to persons living or dead in the Danish court, he implies, is purely coincidental. But this description of <i>The Murder of Gonzago</i> does not correspond to the play we see. Its alternative title <i>The Mousetrap</i>, which Hamlet calls it “tropically” or figuratively, is really much more accurate, for the play is “tropical” or figurative in its very conception, a piece of mirror-literature in the older sense, and might have been called <i>A Looking-Glass for Elsinore and Denmark</i>, a dramatic <i>exemplum</i> reflecting the moral essence of many historical situations, pre-eminently the present state of Denmark and its recent past. <i>The Murder of Gonzago</i> represents, in sum, the first phase of a typical revenge action of what might be termed the first wave, of the kind produced during the late 1580’s and early 1590’s when the form was still explicitly involved with the Tudor morality drama and its clear-cut personifications of virtue and vice. It opens with the archaic device of a dumb-show, which presents, not at all inexplicably, the murder of an idealized king and husband and the seduction of his queen by the treacherous usurper, who in the logic of this convention would then have met his own nemesis in the form of a revenger, with order and justice restored.</p>
+
+    <p>Within the interrupted performance we see, the player-king and queen have shed all literal identity as Gonzago and Baptista; the emblematic garden in which the player-king lies down has replaced any more or less historical Vienna as the play’s setting; and the debate on marital fidelity, delivered in stylistically archaic end-stopped couplets and balanced rhetorical figures, works to generalize and depersonalize the situation out of which they speak. The characters themselves are wholly idealized, perfect embodiments of faith in love expressing exemplary attitudes as they strive with each other in “gentilesse.” By naturalistic canons, the lady protests too much and too archaically to be believed. For a moment it might seem as if we had somehow blundered into one of John Heywood’s moral interludes, until the entrance of Lucianus makes the play’s revenge-orientation quite clear. From Hamlet’s remarks upon Lucianus’ entrance — “Pox, leave thy damnable faces, and begin! Come, the croaking raven doth bellow for revenge” (III.ii.264–65) — we can assume that the actor who plays Lucianus is indulging in a good deal of the Tudor equivalent of mustachio-twisting, exploiting the theatricality implicit in the Vice’s role. Hamlet’s line on “the croaking raven” is actually quoted from a speech in the pre-Shakespearean <i>True Tragedy of Richard III</i> (printed 1594) spoken by Richard just at the point when his own nemesis, Henry of Richmond, is close at hand. The six lines that Lucianus, the counterpart of Richard in usurpation and seduction, has time to utter before Claudius, the counterpart of both within the world of <i>Hamlet</i>, breaks up the performance are in a vein familiar to students of those first-wave revenge plays — <i>The Spanish Tragedy</i>, <i>Soliman and Perseda</i>, <i>The True Tragedy of Richard III</i>, <i>Titus Andronicus</i>, and (dare I say it?) the <i>Ur-Hamlet</i>:</p>
+
+    <div class="cita">
+        <p>Thoughts black, hands apt, drugs fit, and time agreeing;</p>
+        <p>Confederate season, else no creature seeing;</p>
+        <p>Thou mixture rank, of midnight weeds collected,</p>
+        <p>With Hecate’s ban thrice blasted, thrice infected,</p>
+        <p>Thy natural magic and dire property</p>
+        <p>On wholesome life usurp immediately.</p>
+        <p class="attribution">(III.ii.266–71)</p>
+    </div>
+
+    <p>At the very center of <i>Hamlet</i>, then, we have a substantial fragment of a primitive Elizabethan revenge tragedy, its morality affiliations — dumb-show, emblematic setting, generalizing rhetoric, virtue figures, and a highly theatrical Vice — intact. Like those older revenge plays, and revenge-plays-within-revenge-plays on which it is modeled, <i>The Murder of Gonzago</i> is by Hamlet’s own standards archaic, conventional, and anti-mimetic. Of its dramatic mode in general we might well conclude that in this style it is impossible to tell the truth.</p>
+
+    <p>It would be convenient to think that in moving with Hamlet from the banquet hall of the play scene to his mother’s closet we have also moved forward through theatrical history, left behind an archaic theatricality with its stiff and stylized postures for contemporary realism with its more intimate disclosures of deepest personality, and thereby taken the measure of Shakespeare’s enormous advance on naturalism in the decade since his own <i>Titus Andronicus</i>. The only trouble is that the closet scene is in certain respects not less archaic and anti-mimetic than the play scene, but more so. Despite its attractiveness to nineteenth-century characterological and twentieth-century psychoanalytic critics, the closet scene tells us little about Hamlet’s alleged state of mind. For most of the scene he does not speak as a son to his mother at all, but as a preacher to a sinner, not out of personal feeling but out of impersonal <i>indignatio</i>. His language and the role it expresses work to generalize, depersonalize, and archaize the scene out of all recognition as a naturalistic rendering of a son’s mixed feelings toward his mother:</p>
+
+    <div class="cita">
+        <p>Such an act</p>
+        <p>That blurs the grace and blush of modesty,</p>
+        <p>Calls virtue hypocrite, and takes the rose</p>
+        <p>From the fair forehead of an innocent love</p>
+        <p>And sets a blister there, makes marriage vows</p>
+        <p>As false as dicers’ oaths. O, such a deed</p>
+        <p>As from the body of contraction plucks</p>
+        <p>The very soul, and sweet religion makes</p>
+        <p>A rhapsody of words! Heaven’s face doth glow,</p>
+        <p>And this solidity and compound mass,</p>
+        <p>With heated visage, as against the doom,</p>
+        <p>Is thought-sick at the act.</p>
+        <p class="attribution">(III.iv.41–52)</p>
+    </div>
+
+    <p>No medieval preacher ever inveighed against the horrors of incest, its assault upon the entire fabric of God’s consecrated order, with greater homiletic inspiration than Hamlet does here. No wonder T. S. Eliot, his neo-classicism at that stage of his career stronger than his neo-medievalism, could find no “objective correlative” within the play for Hamlet’s speeches. Even Gertrude vaguely perceives that Hamlet’s speech is inspired more by ancient texts than by any immediate situation: “Ay me, what act,/That roars so loud and thunders in the index?” (III.iv.51–52) Here, as in so much of the play, we are confronted not with the ravings of a disordered personality but with the heroic frenzy of the prophet’s role.</p>
+
+    <p>Moreover, Gertrude’s terms are theatrical as well as bookish. They recall Hamlet’s own caveats to the players about mouthing lines, tearing a passion to tatters, and splitting the ears of the groundlings. Surely at this moment Hamlet o’erdoes Termagant and out-herods Herod, o’ersteps the modesty of nature, and violates his own neoclassical doctrines of decorum in speech and action as flagrantly as the most unreformed ham among the tragedians of the city. In sum, Hamlet turns the stage during the closet scene into something closely akin to the older <i>theatrum mundi</i> of Termagant and Herod, as he recasts the experience of the play into a straightforward morality drama in which everyone has a clear-cut and conventional role:</p>
+
+    <div class="cita">
+        <p>What devil was’t</p>
+        <p>That thus hath cozened you at hoodman-blind?</p>
+        <p>Eyes without feeling, feeling without sight,</p>
+        <p>Ears without hands or eyes, smelling sans all,</p>
+        <p>Or but a sickly part of one true sense</p>
+        <p>Could not so mope.</p>
+        <p>Oh shame, where is thy blush? Rebellious hell,</p>
+        <p>If thou canst mutine in a matron’s bones,</p>
+        <p>To flaming youth let virtue be as wax</p>
+        <p>And melt in her own fire.</p>
+        <p class="attribution">(III.iv.77–86)</p>
+    </div>
+
+    <p>In Hamlet’s rewriting of events, Gertrude is the misguided sinner related to the figure of hot-blooded youth, seduced by Vices like Will, Inclination, or Lust, in the moralities. Mary Magdalene, in the Digby play of that title, is a good example. Claudius is explicitly cast as such a Vice in Hamlet’s morality, or rather as a composite Vice embodying several sins — lust, drunkenness, riot, etc. — right down to the details of his costume in pre-Shakespearean stage-tradition:</p>
+
+    <div class="cita">
+        <p>A vice of kings,</p>
+        <p>A cutpurse of the empire and the rule,</p>
+        <p>That from a shelf the precious diadem stole</p>
+        <p>And put it in his pocket. . . .</p>
+        <p>A king of shreds and patches.</p>
+        <p class="attribution">(III.iv.99–103)</p>
+    </div>
+
+    <p>As for Hamlet himself, he takes on the role of a preacher, to be sure, specifically the chief virtue-figure of the morality, who tries to redeem the sinner from the snares of the Vice, usually, as Hamlet does here, by preaching him into repentance with Scriptural quotations and <i>exempla</i>, but often through a <i>coup de théâtre</i> like that of the two portraits of King Hamlet and Claudius, a device with many analogues in morality tradition. It recalls, for example, the picture of Wit in Redford’s <i>Wit and Science</i> (c. 1531–47), which he no longer resembles after falling prey to the Vice, Idleness. When Wit incredulously looks into a glass held up by Reason, he finds himself all spotted and deformed. Gertrude’s response to Hamlet’s portrait-test underscores the parallel:</p>
+
+    <div class="cita">
+        <p>Thou turn’st mine eyes into my very soul,</p>
+        <p>And there I see such black and grained spots</p>
+        <p>As will not leave their tinct.</p>
+        <p class="attribution">(III.iv.90–92)</p>
+    </div>
+
+    <p>Although Gertrude speaks figuratively here, her case had been literally represented on the medieval stage as far back as <i>Wisdom, Who Is Christ</i> (1461–85), where the fallen Anima “apperythe in the most horrybull wyse, fowlere than a fende” and is chastized into repentance by Wisdom: “Se howe ye have dysvyguryde yowr soule!/Beholde yowrselff; loke veryly in mynde!” (900–02). Throughout the scene, Hamlet holds the mirror up to nature in the same sense that a long line of preaching Virtues had done before him. “Forgive me this my virtue,” he tells Gertrude, explicitly identifying himself with those older figures,</p>
+
+    <div class="cita">
+        <p>For in the fatness of these pursy times</p>
+        <p>Virtue itself of vice must pardon beg,</p>
+        <p>Yea, curb and woo for leave to do him good.</p>
+        <p class="attribution">(III.iv.153–56)</p>
+    </div>
+
+    <p>His terms might be capitalized. Again they have the force and feel of personifications enacting a drama older than the play of <i>Hamlet</i>, older even than <i>The Murder of Gonzago</i>. What Hamlet has done in the closet scene is to cast the experience of the play into the dramatic mode of their common source, to rewrite <i>Hamlet</i> into a morality play.</p>
+
+    <p>The archaic aspect of <i>Hamlet</i>, though it is most conspicuous in the closet scene, is by no means confined to it but pervades the entire play. It enters <i>Hamlet</i> with the Ghost, not only the spirit of the elder Hamlet but in a sense the spirit of an older dramatic mode, whose account of recent events in Denmark is told from the eschatological point of view of the medieval drama: the “serpent” Claudius, having wrought King Hamlet’s fall in his “orchard,” proceeds under the figure of “lust” to “court” the “radiant angel” Gertrude “in a shape of heaven” and work her “falling-off” as well. Hamlet inherits not only his father’s name, but his talent for writing morality plays. We could point out that the language in which Hamlet addresses Ophelia in the nunnery scene — “You jig, you amble, and you lisp” (III.i.150) — is not that of psychic derangement but of a preaching Virtue addressing a personification of Vanity or Lechery on the medieval stage. Or we could point to Claudius’ account of his fratricide during his futile attempt to pray, a speech explicitly recalling the desperate utterances of Cain after he has murdered Abel in the mystery cycles. But these and other moments in <i>Hamlet</i> when the forms and figures of an older drama stand out from the more or less naturalistic surface of the play are really the tips of an iceberg or, more accurately, the protruding tusks of the mammoth preserved within it.</p>
+
+    <p>For it is nothing less than the revenge form itself that is archaic, not only in the sense I have already suggested, that the revenge play had been out of fashion for at least five years and just recently revived when Shakespeare turned to it again around 1600, but in a more fundamental sense as well. This deeper archaism is already implicit in some lines from <i>The Spanish Tragedy</i>, spoken by Hieronymo after he has conceived and cast his own revenge play-within-the-play and echoed by Hamlet after the success of <i>The Murder of Gonzago</i>:</p>
+
+    <div class="cita">
+        <p>Now shall I see the fall of Babylon,</p>
+        <p>Wrought by the heavens in this confusion.</p>
+        <p>And if the world like not this tragedy,</p>
+        <p>Hard is the hap of old Hieronymo.</p>
+    </div>
+
+    <p>Hieronymo, like Gertrude, might seem merely to speak figuratively, but his lines too reflect actual stage tradition. In the Protestant morality <i>Three Laws</i> (1530–36), for example, the figure of Vindicta Dei drives the chief Vice, Infidelity, off the stage with fire from heaven for what God calls his “Babylonical popery.” In the Marian <i>Respublica</i> (1553), it is the figure of God’s Nemesis who finally brings down judgment on the Protestant Vices, Avarice, Insolence, and Oppression, and restores the commonwealth to “tholde goode eastate.” The figure of Divine Correction plays a similar role in Lindsay’s <i>Satire of the Three Estates</i> (1535–40). In so far as the corrupt courts of the Elizabethan revenge plays are pseudohistorical counterparts to the typological Babylon, Sodom, and Gomorrah of medieval drama, its revenger-heroes are the natural and naturalized offspring of Vindicta Dei and God’s Nemesis. Like Hieronymo, most Elizabethan revengers see themselves as scourges of God, legitimate heirs to those Virtue-figures who have divine authorization to commit whatever acts are required to set right the disjoined world, even if the command of a ghost is not quite the same thing as that of God. (A recent analogue is the “licence to kill” conferred on its agents by the modern state in the coldwar reincarnation of the medieval <i>psychomachia</i>, the spy novel.) From Hamlet’s early assertion that “the time is out of joint: O cursed spite/That ever I was born to set it right” (I.v.189–90) to his parting remarks to his mother that</p>
+
+    <div class="cita">
+        <p>Heaven hath pleas’d it so,</p>
+        <p>To punish me with this, and this with me,</p>
+        <p>That I must be their scourge and minister</p>
+        <p class="attribution">(III.iv.173–75)</p>
+    </div>
+
+    <p>he commits himself to a role and a form by their very nature anachronistic. Yet Hamlet’s attempt to recast his experience into a morality play is actually half accomplished before he even begins, at least to the extent that the Elizabethan revenge play grows out of native morality tradition, a much greater extent than our preoccupation with Seneca would suggest.</p>
+
+    <p>There is, then, an important sense in which the legendary <i>Ur-Hamlet</i>, the crude old native play on the subject alluded to by Thomas Nashe and searched for in vain by generations of scholars, is very much alive in the midst of Shakespeare’s <i>Hamlet</i>. This is not to suggest, however, that Shakespeare borrows nothing from English Seneca. On the contrary, Hamlet tries out classical roles for himself and those around him at several points in the play, but usually in such a way as to reveal their inappropriateness to his situation and rule them out as models for his own action. Gertrude, for example, is only too obviously unlike “Niobe, all tears,” the type of the mourning queen to whom he ironically compares her, and Claudius is “no more like my father/Than I to Hercules,” the paragon of heroic action. Even though the rugged Pyrrhus hesitates for an instant in the pseudo-Senecan speech, pregnant with present analogies, that Hamlet eagerly solicits from the chief player, whatever identification Hamlet may feel is effectively cancelled when Pyrrhus follows through with his regicide. Nor is this to suggest, however, that the native dramatic roles and forms that Hamlet finally falls back on and that seem to fit more comfortably are a perfect fit either. If they were, why would he continue to castigate himself with his own sense of unworthiness, of having so many offenses at his beck, even after he has cast himself in the self-righteous role of an avenging Virtue? As late as the final act, he is still attempting to close any remaining gap between himself and his chosen role, even as the rhetorical nature of that attempt calls attention to the gap and puts into question the propriety of the role:</p>
+
+    <div class="cita">
+        <p>Does it not, think thee, stand me now upon . . .</p>
+        <p>is’t not perfect conscience</p>
+        <p>To quit him with this arm?</p>
+        <p>And is’t not to be damned</p>
+        <p>To let this canker of our nature come</p>
+        <p>In further evil?</p>
+        <p class="attribution">(V.ii.63–70)</p>
+    </div>
+
+    <p>Clearly Hamlet knows at some level that he is not and can never become the potent abstraction acting out of lofty and impersonal motives that he makes himself out to be, any more than his experience can wholly conform, or be made to conform, to the older scenario of just and perfect vengeance that he tries to turn it into.</p>
+
+    <p>At this point in our discussion we seem to be verging upon an older approach to the classic problem of incoherence and archaism in <i>Hamlet</i>, the one exemplified by T. S. Eliot in his well-known essay on the subject. There, Eliot postulates a Shakespeare “unable to impose this motive [of the effect of a mother’s guilt upon her son] successfully upon the ‘intractable’ materials of the old play” and a <i>Hamlet</i> “superimposed upon much cruder material which persists even in the final form,” a play, in sum, that is “most certainly an artistic failure.” Eliot’s unhappy judgments are worth considering here, if only because they are based on an intuition of Shakespeare’s creative process that is so near to and yet so far from the one presupposed in the present essay. He imagines Shakespeare grappling with his archaic sources in the attempt to naturalize, rationalize, and psychologize — generally speaking, to streamline and neoclassicize them — and at least in the case of <i>Hamlet</i>, losing the struggle. Our own intuition of the creative or re-creative act that issued in the play also assumes a struggle with the literary past, but one of a more complex nature. It would seem to be Hamlet who is unable to impose successfully the model of an old play upon the intractable material of his present life, and Shakespeare who dramatizes with unfailing control the tragic conflict between his heroic effort to do so and his ironic consciousness that it cannot be done, with the inevitable by-products of hesitation and delay. Hamlet may well be a projection of Shakespeare’s creative self, but there is no doubt as to which is <i>il miglior fabbro</i>. After all, if this be failure, what in the world of the arts constitutes success?</p>
+
+    <p>For even in those Shakespearean plays for which there are no lost ur-versions, we still encounter a no less pervasive archaism and a scarcely less notorious incoherence by naturalistic or neoclassical standards. Iago, for example, whose motives for doing what he does have proved almost as elusive as Hamlet’s for not doing what he is supposed to do, emerges from Bernard Spivack’s study of the “hybridization” of allegorical and naturalistic drama in the sixteenth century as your old Vice still, hating and intriguing according to conventions older than those which dominate <i>Othello</i> as a whole. And Maynard Mack has reformulated the longstanding problem of staging <i>King Lear</i> in terms of the conflicting dramatic worlds the play simultaneously inhabits, the one medieval and visionary and the other modern and illusionistic. If the archaism informing <i>Hamlet</i> makes it an artistic failure, so too are <i>Othello</i> and <i>Lear</i>.</p>
+
+    <p>The archeological research into Shakespeare’s background in the morality plays pioneered by Spivack has taken us well beyond the genetic speculations culminating in Eliot. Perhaps not surprisingly, however, the poet-critic Eliot seems to approach more closely to Shakespeare’s creative process than do these more recent scholars. For their work hardly envisions or requires a creative act at all, based as it is on certain misleading assumptions concerning the “evolution” of dramatic forms which derive, in turn, from the theory of the evolution of biological forms, and trail clouds of imagery whence they came. Spivack in particular talks of “hybrid” plays and characters, of “the complex pregnancy of the Elizabethan drama,” of how “the great organism [of Shakespeare’s work] unfolds its successive stages of maturity,” and, most tellingly, of “survivals of the older subject and the older technique” into Shakespearean drama. The implicit evolutionary analogy is misleading in so far as it infers from the fact of change a large, impersonal, and inexorable force of change, a spirit of naturalism which, like the spirit of nature in Wordsworth, rolls through all things and irresistibly transforms the Elizabethan drama. Except, that is, for certain survivals, vestiges, or fossils that linger on, inert but not annihilated. In such accounts of the “evolution” of the drama, as in its Darwinian counterpart, the individual <i>qua</i> individual is less important than the species: he is the unwitting medium through whom change manifests itself; his options are to adapt or die, hardly options at all. Little allowance is made in Spivack’s or other accounts for what might be termed creative evolution, the capacity of the individual to exercise control over the rate and direction of his own adaptation. For the simple fact is that not all contemporary playwrights are equally archaic or naturalistic. The relation of the individual talent, especially though not exclusively a talent the size of Shakespeare’s, to available tradition remains unresolved.</p>
+
+    <p>The archaic content of Shakespeare’s work is vast but, at least as far as we have seen in the case of <i>Hamlet</i>, not haphazard. It remains to be demonstrated that virtually any of his plays will yield, on scrutiny, not a wide scattering of fossilized bones and teeth from an earlier era but the almost perfectly preserved mammoth similar to the one we have begun to disinter. One reason I have chosen <i>Hamlet</i> as a point of departure, a play usually discussed in terms of revenge — as distinct from morality — tradition, is incidentally to show that <i>Othello</i> and <i>Lear</i> are not exceptional in their rich and complex relation to morality tradition. They are not special cases, as they have been generally regarded, but typical cases. Moreover, if archaism in Shakespeare were simply an untransmuted residue left behind by the ever-encroaching tide of naturalism, we should expect to encounter more fossils at the beginning of his twenty-year career than at the end. If anything, the opposite is the case: the final romances are now generally recognized to be <i>more</i>, not less, archaic than the early comedies. Similarly, the morality skeleton often observed in <i>Henry IV</i> of a darkened prince of the world flanked by the Virtues of honor and justice and the reverend Vices of riot and debauchery is no less visible, though less often noticed, in <i>Antony and Cleopatra</i>. In its large outline and certain local details, Richard III’s career recalls the rise and fall of several tyrants and child-murderers of the medieval stage — Pharoah, Herod, Cambyses — but so does Macbeth’s. <i>Richard II</i> can be seen as one more sad story of the death of kings, a medieval <i>exemplum</i> of the educative abasement of the high and mighty not unlike those of <i>A Mirror For Magistrates</i>; but so too can <i>King Lear</i>. This last example suggests a final criticism of Spivack’s approach and the starting-point for a new one. In <i>Richard II</i>, there is a great deal in the way of scriptural parallels, medieval pageantry, and emblematic scenes and <i>tableaux</i>, but most of it radiates outward, as it were, from Richard’s own characterization. He is the immediate author of his play’s archaic theatricality, as when he stage-manages the challenge at Coventry, compares himself to Christ and his minions to Judases, calls for a looking-glass during his deposition, and so on. We should distinguish, as neither Eliot nor Spivack does, between that archaism which is Shakespeare’s and that archaism which is Richard’s or Falstaff’s or the elder Hamlet’s or Hamlet’s own. For Shakespeare often surrounds a character with the trappings of an archaic theatricality as a way of identifying him with an older and passing order of things. The evidence suggests that Shakespeare, far from being an unwitting medium of theatrical change through whose pen archaism and naturalism flow in proportions varying with the date of a given play, is rather the deliberate mediator of theatrical change, concentrating his archaism at certain strategic points, fully aware of the outmodedness of the forms and figures at his disposal.</p>
+
+    <p>Given so high a degree of self-awareness, independence, and discrimination in Shakespeare’s use of older modes, it is conceivably within his power to purge his plays of all archaism and give them over altogether to the new naturalism; yet he chooses not to do so. It takes not a Shakespeare to do that but a Beaumont and Fletcher. Instead, Shakespeare does something more truly sophisticated. He invalidates older modes even as he includes them, supersedes them, in the very act of subsuming them. The result is a troubled awareness, shared by Hamlet himself, of the simultaneous resemblance and discrepancy between the play and its older models that is increasingly forced upon us as the action proceeds. In <i>The Murder of Gonzago</i>, the archaic center of <i>Hamlet</i>, we watch Shakespeare’s play approach and embrace, as it were, its own archaic prototype, only to turn and flee it in an almost choreographic pattern of meeting and parting. Hamlet has selected the old play from the repertory of the tragedians of the city for its mirror-relation to the Danish court and inserted “some dozen or sixteen lines” to sharpen that relation. Yet this “knavish piece of work,” as Hamlet terms it, with its dumb-show, idealized characters, and grimacing villain right out of the “croaking raven” school of revenge melodrama, seems less than promising as a mirror or model of the Danish court. Its sheer staginess, its dramaturgic and stylistic archaism, separate it widely from the life of Denmark that frames and mocks it. Then, suddenly, Claudius catches his reflection in its cracked and faded glass, and <i>The Murder of Gonzago</i> dissolves into <i>Hamlet</i>, becomes for a while indistinguishable from it.</p>
+
+    <p>The play is successful beyond even Hamlet’s expectations, as almost everyone assumes the role prescribed for him by this older drama. Hamlet throws himself wholeheartedly into the stock and stagy role of Nemesis, of latter-day Vindicta Dei, and delivers a bloodthirsty soliloquy very much in Lucianus’ vein:</p>
+
+    <div class="cita">
+        <p>’Tis now the very witching time of night,</p>
+        <p>When churchyards yawn, and hell itself breathes out</p>
+        <p>Contagion to this world. Now I could drink hot blood.</p>
+        <p class="attribution">(III.ii.406 ff)</p>
+    </div>
+
+    <p>Settling deeper into this self-righteous role, he proceeds to horrify Samuel Johnson with another soliloquy in which he “contrives damnation for the man he would punish,” the godlike office he later executes on Rosencrantz and Guildenstern. He confronts his mother with her prescribed role of fallen but redeemable sinner, which she reluctantly takes on but promises to play out by mending her ways. Claudius meanwhile fulfills his assigned role of unregenerate Vice, and cursed Cain, by admitting his crimes and failing in his effort to pray. Even Ophelia casts herself as a latter-day Patient Griselda, the role taken in the subsequent tragedies by Desdemona and Cordelia, the wronged Virtue who must suffer long and be kind, love and be silent, while she waits for her beloved to wake from his madness. The archaic model roughed out by the Ghost, made flesh in <i>The Murder of Gonzago</i>, and refined by Hamlet seems for a while adequate to contain the experience of the play.</p>
+
+    <p>Yet all these older roles, and the form that adumbrates them, are already beginning to split at the seams under the pressure of events by the time Hamlet embarks for England. By the time he returns, they have all but burst apart. For one thing, Claudius’ impulse to pray, to repent of his sins, distinguishes him from those older embodiments of wickedness who were constitutionally unable to do so. This merely confirms something we had suspected all along, for Claudius is never presented to us as the loathesome degenerate Hamlet makes him out to be. (He never appears on-stage drunk, and is far from a groping satyr in his dealings with Gertrude.) Hamlet, in turn, has failed to see that Claudius cannot pray, and thereby misses his chance for revenge; still worse, he goes on to kill the wrong man. The older figure of Vindicta Dei would not have made either mistake, could not have been deceived by appearances as Hamlet has been, for he lived and moved and had his being in a dramatic mode that truly knew not “seems,” a world of moral absolutes, of essential reality, in which God’s vengeance could not swerve from its proper object. Moreover, by killing Polonius Hamlet has raised his own Nemesis in Laertes, who embraces the role of fire-breathing revenger with more passion but less theatrical skill and moral discrimination than Hamlet. Meanwhile, Patient Griselda has gone mad; she cannot sustain her part. To adapt a phrase from an Ibsen play well to the other side of naturalism, “people don’t do such things” in morality plays, but then, that is because they are not presented as people, whose psyches can crack and who take on roles for which they are ill-suited. In the medieval drama there is no gap between the role and the character; the role <i>is</i> the character. In <i>Hamlet</i>, in Shakespeare, the role and the identity that assumes it are separable, and characters choose roles they cannot play or play well. Such unforeseen repercussions, casualties, and miscalculations would not have occurred in a morality, and few of them in an early revenge play. There, expectation is still governed by recognized convention, and murder, however bloody or grotesque, goes by design. In the more circumstantial world of <i>Hamlet</i>, with its “accidental judgments, casual slaughters . . . , purposes mistook/Fall’n on th’inventors’ heads” (V.ii.393–96), the conventions and expectations of that programmatic world exist only to be frustrated.</p>
+
+    <p>In the Hamlet who returns from his accident-filled and abortive voyage to England, and who talks quietly with Horatio in the hall, awaiting what the interim will bring, many commentators have seen a changed Hamlet. Perhaps one measure of the change in Hamlet is his repudiation of the role in which he had formerly cast himself:</p>
+
+    <div class="cita">
+        <p>Let us know,</p>
+        <p>Our indiscretion sometime serves us well</p>
+        <p>When our deep plots do pall; and that should learn us</p>
+        <p>There’s a divinity that shapes our ends,</p>
+        <p>Rough-hew them how we will.</p>
+        <p class="attribution">(V.ii.7–11)</p>
+    </div>
+
+    <p>The older model into which he has tried to cast the experience of the play has broken down completely. That model was originally designed to comprehend the essential reality above or behind the world of appearances in which we live, which from its point of view is sheer illusion. Hamlet lives and dies knowing only “seems”; only God knows “is.” In Hamlet’s hands, the older model has proved rough-hewn indeed. His efforts to fit the life of Denmark into it have come increasingly to resemble those of the sorcerer’s apprentice, or in his own phrase for bad actors, one of “Nature’s journeymen,” as this self-styled Virtue is indictable by the end of the play for a series of offences ranging from breach of promise through involuntary manslaughter to premeditated murder. The metaphoric “license to kill” of the old figure of Vindicta Dei has long since expired in a dramatic world in which representation entails a fall into interpretation and subjectivity. The protagonist of <i>Horestes</i> (1567), first of Elizabethan revengers, is also the last to hold such a license, and even he has trouble qualifying for it. Revengers, in their human fallibility, are now doomed to be hero-villains. The metaphoric license to kill could exist only in a dramatic mode itself a sacred metaphor. Hamlet’s attempt to re-enact such a role in a world in which all metaphor is poetic and therefore problematic had been an error of theatrical and moral anachronism. He has tried to be a two-dimensional character in a three-dimensional world.</p>
+
+    <p>Throughout the final act Hamlet does his best to salvage the morality play he has vainly tried to shape. From the <i>danse macabre</i> of the graveyard scene, where kings and clowns, lawyers and gentlewomen mingle indecorously in Hamlet’s imagination, to the summoning by death at the end, he mitigates the severity of his earlier vision and earlier role. Against these latest paradigms, the incongruities of that self-righteous posture, now re-enacted by Laertes, become such stuff as parodies are made on. But even in his closing speeches Hamlet does not so much purge himself of all histrionic and directorial impulses — no Shakespearean character ever changes completely — as exchange one archaic model for another, a heroic for a humble role, Vindicta Dei for Everyman:</p>
+
+    <div class="cita">
+        <p>You that look pale and tremble at this chance,</p>
+        <p>That are but mutes or audience to this act,</p>
+        <p>Had I but time (as this fell sergeant, Death,</p>
+        <p>Is strict in his arrest) O, I could tell you —</p>
+        <p>But let it be. Horatio, I am dead:</p>
+        <p>Thou liv’st; report me and my cause aright</p>
+        <p>To the unsatisfied.</p>
+        <p class="attribution">(V.ii.345–51)</p>
+    </div>
+
+    <p>Horatio, always the good scholar, picks up Hamlet’s allusion and carries it to its logical conclusion: “Good night, sweet prince,/And flights of angels sing thee to thy rest!” (V.ii.370–71). But in likening Hamlet’s death to the salvation of the morality protagonist, perhaps Horatio presses the analogy too far. For it is his secular salvation that concerns Hamlet, the “wounded name” that survives him in history. The other world of the morality drama recedes into a purer kind of dumb-show where “silence” reigns. It is within the historical appearances of “this harsh world” that his story will be weighed and he judged. The play leaves behind its final archaic model by ending on a this-worldly note.</p>
+
+    <p>Critics still argue over whether Hamlet is finally a hero or a villain, whether Othello in his last great speech asserts Christian humility or heathen bravado, whether Lear dies illuminated or deceived, and whether Macbeth’s death “becomes” him in a fair or foul sense. Such questions are central and crucial to the plays that raise them and reflect what is usually called Shakespeare’s characteristic balance and ambiguity. No doubt they represent a refinement beyond the days when critics argued about the afterlives of Shakespeare’s heroes, but they proceed, I believe, from the same source within the plays. Though I can offer no definitive answers to these questions, I think we are in a better position now to see why they arise in the first place. They arise, I submit, because the older models embedded in the plays cast life as a drama of salvation and damnation, and the repudiation of those older models guarantees that there will be no clear-cut cases of salvation and damnation. The older models raise the questions; their repudiation insures a multiplicity of responses to them. Shakespeare’s plays inhabit the gap between things and the preordained meaning of things, between experience and inherited constructs of experience. Edgar’s injunction at the end of <i>King Lear</i> to “speak what we feel, not what we ought to say” formulates the difference between our responses to the drama of naturalism and the drama of allegory, and might serve as rubric to the history of Shakespeare criticism. We must speak what we feel because Shakespeare’s plays no longer dictate what we ought to say; they offer merely cues, hints, signs. Out of the friction between life and the older models designed to contain life is generated not only the heat of critical controversy but the light of Shakespearean meaning.</p>
+
+    <p>Just as the study of his “modernity” begins in the study of his literary past, the study of Shakespearean mimesis, surely the most compelling illusion of reality in world literature, begins paradoxically in the study of convention. Any artist, in order to represent life, must resort to the conventions of art, and in so doing, falsify life in so far as art creates a world rival to life’s. Yet for art to be moral, to teach as well as delight, it must also be mimetic; we cannot learn from the actions of creatures with whom we have nothing in common, who are not in some degree like us. Shakespeare resolves this paradox by subsuming within his work a recognizably conventional model of life, repudiating that model, and thereby creating the illusion that he uses no art at all, that he is presenting life directly. Of course what he is really presenting is a more complicated model with its own conventions — one of which is the breakdown of convention — a model that, to adopt Samuel Johnson’s phrase, opens an appeal from convention to nature. One reverend Vice of the moralities is a coward, that is, he is Cowardice who masquerades as Courage. Falstaff is like this Vice; yet he is also, as Shakespeare makes equally clear, unlike this Vice in so far as he expresses a range of emotion well beyond that of an allegorical abstraction. Critics can then bring to bear on him their various codes of cowardice and courage in this world in the effort to denote him more truly, some concluding that he is, others that he is not, a coward. The important point, however, is that we half-perceive and half-create Falstaff. The miracle of Shakespearean characterization depends finally, not on his modeling his characters on people he knew, but on his opening up inherited dramatic models to invite, even demand, other models of understanding, including those we use on people we know.</p>
+
+    <p>It might be objected that, except by spending a lot of time in libraries, we cannot know the older conventions of character and action from which Shakespeare creatively departs, and therefore cannot recognize those departures and respond to the new meanings they make possible. This is clearly not the case, however, since those older models are not only stored away in libraries but are carried around, as it were, within the plays themselves, and are there to be perceived by the learned and unlearned alike. The most cursory acquaintance with the tradition of Shakespearean interpretation will turn up ample evidence of the naive identification of the play with its models by the most learned scholars, of the failure to perceive its implicit critique of and departure from those models. And those of us who teach will acknowledge that relatively unlearned students are capable of highly sophisticated distinctions between conventional and unconventional language and conduct within the same play. More often than not, however, these naive and sophisticated responses will co-exist within the same reader, and the process of literary education may well be one of sophisticating our naive responses while keeping in touch with them, of developing a sophisticated simplicity of response that mirrors the sophisticated simplicity of literature. This process will go on whether or not we can name the <i>de casibus</i> tragedy or revenge melodrama of the first wave encoded within the play that triggers our naive response in the first place, for it is nothing other than the process of interpretation itself. But the literary-historical knowledge that enables us to do so is an invaluable asset to interpretation, since it provides a means of subjecting to fuller and more rigorous scrutiny responses that might otherwise remain intuitive, impressionistic, and unexamined.</p>
+
+    <section class="footnotes">
+        <h3>Note</h3>
+        <p>From <i>The Yale Review</i> 63, no. 3 (Spring 1974). © 1974 by Yale University. Originally entitled “O’erdoing Termagant: An Approach to Shakespearean Mimesis.”</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>

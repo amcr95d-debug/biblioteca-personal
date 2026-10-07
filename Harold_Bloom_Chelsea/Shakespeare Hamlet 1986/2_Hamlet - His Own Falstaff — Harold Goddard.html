@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>“Hamlet: His Own Falstaff” — Harold Goddard</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">Harold Goddard</p>
+        <h1 class="cab__tit">Hamlet: His Own Falstaff</h1>
+    </header>
+
+    <p>To nearly everyone both Hamlet himself and the play give the impression of having some peculiarly intimate relation to their creator. What that relation may originally have been we shall probably never know. But it is hard to refrain from speculating. When we learn that Dostoevsky had a son, Alyosha (Alexey), whom he loved dearly and who died before he was three, and that the father began writing <i>The Brothers Karamazov</i> that same year, the temptation is irresistible to believe that its hero, Alexey Karamazov, is an imaginative reincarnation of the child, a portrayal of what the author would have liked the boy to become. In this instance the father bestowed an immortality that there is only a negligible chance the son would have achieved if he had lived. Shakespeare’s son Hamnet died at the age of eleven, possibly not long before his father began to be attracted by the Hamlet story. Was there any connection? We do not know. But the name, in its interchangeable forms, must have had strong emotional associations for Shakespeare. Hamnet and Judith Sadler, neighbors and friends of the Shakespeares, were godparents to their twins, to whom they gave their names. When Shakespeare was sixteen, a girl, Katherine Hamlett, was drowned near Stratford under circumstances the poet may have remembered when he told of Ophelia’s death. Resemblances between Hamlet and the Earl of Essex, who, in turn, figured significantly in Shakespeare’s life, have frequently been pointed out.</p>
+
+    <p>However all this may be, there is no doubt that Shakespeare endowed Hamlet with the best he had acquired up to the time he conceived him. He inherits the virtues of a score of his predecessors — and some of their weaknesses. Yet he is no mere recapitulation of them. In him, rather, they recombine to make a man as individual as he is universal. He has the passion of Romeo (“Romeo is Hamlet in love,” says Hazlitt), the dash and audacity of Hotspur, the tenderness and genius for friendship of Antonio, the wit, wisdom, resourcefulness, and histrionic gift of Falstaff, the bravery of Faulconbridge, the boyish charm of the earlier Hal at his best, the poetic fancy of Richard II, the analogic power and meditative melancholy of Jaques, the idealism of Brutus, the simplicity and human sympathy of Henry VI, and, after the assumption of his antic disposition, the wiliness and talent for disguise of Henry IV and the cynicism and irony of Richard III — not to mention gifts and graces that stem more from certain of Shakespeare’s heroines than from his heroes — for, like Rosalind, that inimitable boy-girl, Hamlet is an early draft of a new creature on the Platonic order, conceived in the <i>Upanishads</i>, who begins to synthesize the sexes. “He who understands the masculine and keeps to the feminine shall become the whole world’s channel. Eternal virtue shall not depart from him and he shall return to the state of an infant.” If Hamlet does not attain the consummation that Laotse thus describes, he at least gives promise of it. What wonder that actresses have played his role, or that among the theories about him one of the most inevitable, if most insane, is that he is a woman in disguise! Mad literally, the idea embodies a symbolic truth and helps explain why Hamlet has been pronounced both a hero and a dreamer, hard and soft, cruel and gentle, brutal and angelic, like a lion and like a dove. One by one these judgments are all wrong. Together they are all right —</p>
+
+    <div class="cita">
+        <p>These contraries such unity do hold,</p>
+    </div>
+
+    <p>a line which those who object to such paradoxes as “modernizing” should note is Shakespeare’s, as is also the phrase “mighty opposites.”</p>
+
+    <p>For what was such a man made? Plainly for the ultimate things: for wonder, for curiosity and the pursuit of truth, for love, for creation — but first of all for freedom, the condition of the other four. He was made, that is, for religion and philosophy, for love and art, for liberty to “grow unto himself” — five forces that are the elemental enemies of Force.</p>
+
+    <p>And this man is called upon to kill. It is almost as if Jesus had been asked to play the role of Napoleon (as the temptation in the wilderness suggests that in some sense he was). If Jesus had been, ought he to have accepted it? The absurdity of the question prompts the recording of the strangest of all the strange facts in the history of <i>Hamlet</i>: the fact, namely, that nearly all readers, commentators, and critics are agreed in thinking that it was Hamlet’s duty to kill, that he ought indeed to have killed much sooner than he did. His delay, they say, was a weakness and disaster, entailing, as it did, many unintended deaths, including his own. He should have obeyed much earlier the Ghost’s injunction to avenge his father’s murder. “Surely it is clear,” says Bradley, giving expression to this idea for a multitude of others, “that, whatever we in the twentieth century may think about Hamlet’s duty, we are meant in the play to assume that he <i>ought</i> to have obeyed the Ghost.” “As for the morality of personal vengeance,” says Hazelton Spencer, “however abhorrent the concept we must accept it in the play as Hamlet’s sacred duty, just as we must accept the Ghost who urges it.” “John-a-dreams tarried long,” says Dover Wilson at the end of <i>What Happens in Hamlet</i>, “but this Hercules ‘sweeps’ to his revenge.” And with plain approval he pronounces Hamlet’s “task accomplished,” his “duty now performed.”</p>
+
+    <p>Now whatever we are “meant” to assume, there is no doubt that nearly every spectator and reader the first time he encounters the play does assume that Hamlet ought to kill the King — and nearly all continue in that opinion on further acquaintance in the face of the paradox just stated.</p>
+
+    <p>How can that be?</p>
+
+    <p>It can be for the same reason that we exult when Gratiano cries, “Now, infidel, I have thee on the hip,” and we see Shylock get what he was about to give, for the same reason that we applaud when Romeo sends Tybalt to death, and are enthralled by Henry V’s rant before Harfleur or his injunction to his soldiers to imitate the action of the tiger. It can be because we all have stored up within ourselves so many unrequited wrongs and injuries, forgotten and unforgotten, and beneath these such an inheritance of racial revenge, that we like nothing better than to rid ourselves of a little of the accumulation by projecting it, in a crowd of persons similarly disposed, on the defenseless puppets of the dramatic imagination. There is no mystery about it. Anyone can follow the effect along his own backbone.</p>
+
+    <p>But if we are all repositories of racial revenge, we are also repositories of the rarer tendencies that over the centuries have resisted revenge. Against the contagion of a theater audience these ethereal forces have practically no chance, for in the crowd we are bound to take the play as drama rather than as poetry. But in solitude and in silence these forces are sure to lead a certain number of sensitive readers to shudder at the thought of Hamlet shedding blood. Let them express their revulsion, however, and instantly there will be someone to remind them that, whatever may be true now, “in those days” blood revenge was an accepted part of the moral code. As if Shakespeare were a historian and not a poet!</p>
+
+    <p>“Those days” never existed. They never existed poetically, I mean. No doubt the code of the vendetta has prevailed in many ages in many lands and revenge has been a favorite theme of the poets from Homer down. History itself, as William James remarked, has been a bath of blood. Yet there is a sense in which the dictum “Thou shalt not kill” has remained just as absolute in the kingdom of the imagination as in the Mosaic law. Moralize bloodshed by custom, legalize it by the state, camouflage it by romance, and still to the finer side of human nature it is just bloodshed; and always where poetry has become purest and risen highest there has been some parting of Hector and Andromache, some lament of the Trojan women, to show that those very deeds of vengeance and martial glory that the poet himself is ostensibly glorifying have somehow failed to utter the last word. To utter that last word — or try to — is poetry’s ultimate function, to defend man against his own brutality, against</p>
+
+    <div class="cita">
+        <p>That monster, custom, who all sense doth eat,</p>
+        <p>Of habits devil,</p>
+    </div>
+
+    <p>a much emended line-and-a-half of Hamlet that makes excellent sense exactly as it stands.</p>
+
+    <p>If Shakespeare was bent in this play on presenting the morality of a primitive time, why did he make the mistake of centering it around a man who in endowment is as far ahead of either the Elizabethan age or our own as the code of blood revenge is behind both? “The ultimate fact is,” says J. M. Robertson, “that Shakespeare <i>could not</i> make a psychologically or otherwise consistent play out of a plot which retained a strictly barbaric action while the hero was transformed into a supersubtle Elizabethan.” <i>Hamlet</i>, the conclusion is, is a failure because the materials Shakespeare inherited were too tough and intractable. Too tough and intractable for what? That they were too tough and intractable for a credible historical picture may be readily granted. But what of it? And since when was poetry supposed to defer to history? Two world wars in three decades ought to have taught us that our history has not gone deep enough. But poetry has. The greatest poetry has always depicted the world as a little citadel of nobility threatened by an immense barbarism, a flickering candle surrounded by infinite night. The “historical” impossibility of <i>Hamlet</i> is its poetical truth, and the paradox of its central figure is the universal psychology of man.</p>
+
+    <p>Yet, in the face of the correspondingly universal fascination that both the play and its hero have exercised, T. S. Eliot can write: “<i>Hamlet</i>, like the sonnets, is full of some stuff that the writer could not drag to light, contemplate, or manipulate into art. We must simply admit that here Shakespeare tackled a problem which proved too much for him. Why he attempted it at all is an insoluble enigma.” In which case, why all this fuss over a play that failed? To reason as Eliot does is to indict the taste and intelligence of three centuries. If Hamlet is just a puzzle, why has the world not long since transferred its adulation to Fortinbras and Laertes? They, at any rate, are clear. If action and revenge were what was wanted, they understood them. The trouble is that by no stretch of the imagination can we think of Shakespeare preferring their morality to that of his hero. They are living answers to the contention that Hamlet ought to have done what either of them, in his situation, would have done instantly. For what other purpose indeed did Shakespeare put them in than to make that plain?</p>
+
+    <p>But Hamlet himself, it will be said, accepts the code of blood revenge. Why should we question what one we so admire embraces with such unquestioning eagerness? With such <i>suspicious</i> eagerness might be closer to the mark. But waiving that for the moment, let us see what is involved in the assumption that Shakespeare thought it was Hamlet’s duty to kill the King.</p>
+
+    <p>It involves nothing less than the retraction of all the Histories, of <i>Romeo and Juliet</i> and <i>Julius Caesar</i>. Private injury, domestic feud, civil revolution, imperialistic conquest: one by one in these plays Shakespeare had demonstrated how bloodshed invoked in their name brings on the very thing it was intended to avert, how, like seeds that propagate their own kind, force begets force and vengeance vengeance. And now in <i>Hamlet</i> Shakespeare is supposed to say: “I was wrong. I take it all back. Blood should be shed to avenge blood.” And more incredible yet, we must picture him a year or two later taking his new opinion back and being reconverted in turn to his original conviction in <i>Othello</i>, <i>Macbeth</i>, <i>King Lear</i>, and the rest. If you find a term in a mathematical series fitting perfectly between what has gone before and what follows, you naturally assume it is in its right place, as you do a piece that fits into the surrounding pieces in a jigsaw puzzle. Only on the assumption that Hamlet ought not to have killed the King can the play be fitted into what then becomes the unbroken progression of Shakespeare’s spiritual development. The only other way out of the difficulty for those who do not themselves believe in blood revenge is to hold that Shakespeare in <i>Hamlet</i> is an archeologist or anthropologist interested in the customs of primitive society rather than a poet concerned with the eternal problems of man.</p>
+
+    <p>“But in that case why didn’t Shakespeare make his intention clear?” A question that implies a profound misapprehension of the nature of poetic, if not of dramatic, art.</p>
+
+    <p>Of course Shakespeare expected his audience to assume that Hamlet should kill the King, exactly as he expected them to assume that Katharine was a shrew, and that Henry V was a glorious hero for attempting to steal the kingdom of France. He was not so ignorant of human nature as not to know how it reacts under the stimulus of primitive emotion. He understood too that what ought to be can be seen only against a background of what is. Carlyle spoke of the Paolo and Francesca incident in <i>The Inferno</i> as a thing woven of rainbows on a background of eternal black. And Hamlet himself declared:</p>
+
+    <div class="cita">
+        <p>I’ll be your foil, Laertes; in mine ignorance</p>
+        <p>Your skill shall, like a star i’ the darkest night,</p>
+        <p>Stick fiery off indeed.</p>
+    </div>
+
+    <p>The contrast need not always be so extreme. The setting is more ordinarily terrestrial and diurnal than infernal, or even nocturnal. If, enthralled by its familiarity, we do not alter the focus of our eyes to see what may be unfamiliar and perhaps nearly invisible in the foreground, how is that the poet’s fault? That is not his lookout. His business is to create a work of art. How it is taken is not his responsibility. “Here it is,” he seems to say, as perhaps God did when he made the world, “take it, and see what you can make of it.” And different men make very different things. To all of us in life appearances are deceitful. To all save the wisest characters in a work of dramatic art, if it be true to life, they should be even more so. The spectator or reader of that work takes delight in their delusions. But meanwhile from a higher level the poet may be deluding him. Living would lose all its challenge if everything were made so plain that anybody could understand it all the first time. And so would reading. You plunge into a poem as you plunge into battle — at your peril. “That which can be made explicit to the idiot,” said Blake, “is not worth my care.”</p>
+
+    <p>This procedure is not trickery. Even the alertest reader must be partly taken in the first time or he will miss more then he gains. A book that can be comprehended at a first reading is not imaginative literature. Dostoevsky’s novels, for instance, contain many dreams and hallucinations which the reader is intended to mistake for occurrences in the objective world until, later, he realizes that the person having the experience was asleep or in a trance. That is as it should be. For dreams are true while they last, and Dostoevsky’s technique leads us to identify ourselves with the dreamer. A too critical reader who sees through the device deprives himself of the very experience he would understand. Intellectuals cannot read. A child lost in a story is the model of right first reading. The more ingenuous we are the first time the better. But not the second and third times. Then the critical intellect should begin to check the imagination — or check on it rather. Shakespeare, I am convinced, wanted us at first to believe that Hamlet ought to kill the King in order that we might undergo his agony with him. But he did not want us, I am equally convinced, to persist in that belief. We must view Hamlet first under the aspect of time so that later we may view him under the aspect of eternity. We must be him before we can understand him.</p>
+
+    <p>And here, oddly, we have an advantage over Shakespeare. The author of <i>Hamlet</i>, when he wrote it, had not had the privilege of reading <i>King Lear</i> and other post-Hamletian masterpieces. But we have had it, and can read <i>Hamlet</i> in their light. This does not mean that we import into <i>Hamlet</i> from later plays anything that is not already there. A work of art must stand or fall by itself. It merely means that, with vision sharpened by later plays, we are enabled to see in <i>Hamlet</i> what was already there but hidden from us — as a later dream does not alter an earlier one but may render it intelligible because of a mutual relation. In some sense or other, as we have seen, Hamlet’s problem must have been Shakespeare’s. He doubtless wrote the play in part to make that problem clear, just as Tolstoy, to make his problem clear, wrote <i>Anna Karenina</i>. <i>Hamlet</i> being only a step in its solution, its author could not conceivably have caught its full import at once. But we can see, as later he could see, whither it was tending, as a prophecy is remembered and illuminated when it is fulfilled. However much above us Shakespeare may be in genius, at any particular moment in his development we are beyond him in time. To that extent we are on the mountain while he is on the road.</p>
+
+    <p>And even if we do not look beyond <i>Hamlet</i>, our vantage point enables us to see from the past the direction that road was taking. Roads, to be sure, may make unexpected turns, and even a long-maintained general course is no guarantee against its interruption. But highways of Shakespearean breadth seldom go off abruptly at right angles. And so it is permissible to ask as we come to <i>Hamlet</i>: What, judging from what he had been doing, might Shakespeare be expected to do next?</p>
+
+    <p>The answer is plain. Having given us in Hal-Henry (not to mention Romeo and Richard II) a divided man easily won by circumstances to the side of violence, and in Brutus a man so won only after a brief but terrible inner struggle, what then? Why, naturally, the next step in the progression: a divided man won to the side of violence only after a protracted struggle. And this is precisely what we have in Hamlet. Moreover, there is a passage in the play that confirms just this development. Indeed, as the word “development” suggests, a better metaphor than the road is the figure of an unfolding organism.</p>
+
+    <p>In the notes Dostoevsky made when composing <i>The Brothers Karamazov</i> there is one especially remarkable revelation: the fact that in its earliest stages the hero, who was to become Alyosha, is identified with the hero of a previous novel, <i>The Idiot</i>, being even called the Idiot by name. It shows how akin to the dream the creative faculty is — one character splitting off from another. What was at first a vague differentiation ends as a distinct individual, but an individual always bearing traces of his origin, as traces of the parent can be found in the child and in the man.</p>
+
+    <p>Shakespeare is not Dostoevsky, and it is not likely that an early draft of <i>Hamlet</i> will ever be found in which the Prince’s name is first set down as Brutus. Yet there is a bit of dialogue in the play as we have it that links the two almost as intimately as Alyosha is linked with Prince Myshkin. The passage is brief and apparently parenthetical. Shortly before the performance of <i>The Murder of Gonzago</i>, Hamlet suddenly addresses Polonius:</p>
+
+    <div class="cita">
+        <p>HAMLET: My lord, you played once i’ the university, you say?</p>
+        <p>POLONIUS: That did I, my lord, and was accounted a good actor.</p>
+        <p>HAMLET: What did you enact?</p>
+        <p>POLONIUS: I did enact Julius Caesar: I was killed i’ the Capitol;</p>
+        <p>Brutus killed me.</p>
+        <p>HAMLET: It was a brute part of him to kill so capital a calf there.</p>
+    </div>
+
+    <p>It is interesting, to begin with, that Polonius was accounted a good actor in his youth. He has been playing a part ever since, until his mask has become a part of his face. The roles that men cast themselves for often reveal what they are and may prophesy what they will become. That Polonius acted Julius Caesar characterizes both men: Caesar, the synonym of imperialism, Polonius, the petty domestic despot — the very disparity of their kingdoms makes the comparison all the more illuminating.</p>
+
+    <p>But it is not just Caesar and Polonius. Brutus is mentioned too. And Brutus killed Caesar. In an hour or so Hamlet is to kill Polonius. If Polonius is Caesar, Hamlet is Brutus. This is the rehearsal of the deed. For to hate or scorn is to kill a little. “It was a brute part . . . to kill so capital a calf there.” The unconscious is an inveterate punster and in that “brute part” Hamlet passes judgment in advance on his own deed in his mother’s chamber. Prophecy, rehearsal, judgment: was ever more packed into fewer words? <i>Et tu</i>, Hamlet?</p>
+
+    <p>And it is not Brutus only who stands behind Hamlet. There is another behind him. And another behind <i>him</i>.</p>
+
+    <div class="cita">
+        <p>A third is like the former. . . .</p>
+        <p>A fourth! start, eyes!</p>
+        <p>What! will the line stretch out to the crack of doom?</p>
+        <p>Another yet!</p>
+    </div>
+
+    <p>We need not follow it as far as did Macbeth to perceive that, as Hamlet listens to the spirit of his father, behind him are the ghosts of Brutus, Hal, and Romeo. “Beware, Hamlet,” says Romeo, “my soul told me to embrace Juliet and with her all the Capulets. But my ‘father’ bade me kill Tybalt and carry on the hereditary quarrel. And I obeyed him.” “Beware, Hamlet,” says Hal, “my soul told me to hold fast to Falstaff’s love of life. But, instead, I did what is expected of a king, rejected Falstaff, and following my dying father’s advice, made war on France.” “Beware, Hamlet,” says Brutus, “Portia and my soul gave ample warning. But Cassius reminded me that there was once a Brutus who expelled a tyrant from Rome, and, in the name of ‘our fathers,’ tempted me to exceed him in virtue by killing one. And I did. Beware, Hamlet.” Each of these men wanted to dedicate himself to life. Romeo wanted to love. Hal wanted to play. Brutus wanted to read philosophy. But in each case a commanding hand was placed on the man’s shoulder that disputed the claim of life in the name of death. Romeo defied that command for a few hours, and then circumstances proved too strong for him. Hal evaded it for a while, and then capitulated utterly. Brutus tried to face the issue, with the result of civil war within himself. But death won. Brutus’ suppressed compunctions, however, ejected themselves in the form of a ghost that, Delphically, was both Caesar and Brutus’ own evil spirit, his reliance on force.</p>
+
+    <p>Hamlet is the next step. He is a man as much more spiritually gifted than Brutus as Brutus is than Hal. The story of Hamlet is the story of Hal over again, subtilized, amplified, with a different ending. The men themselves seem so unlike that the similarities of their situations and acts are obscured. Like Hal, Hamlet is a prince of charming quality who cares nothing at the outset for his royal prospects but is absorbed in playing and savoring life. Only with him it is playing in a higher sense: dramatic art, acting, and playwriting rather than roistering in taverns and perpetrating practical jokes. And, like all men genuinely devoted to art, he is deeply interested in philosophy and religion, drawing no sharp lines indeed between or among the three. Because he is himself an imaginative genius, he needs no Falstaff to spur him on. Hamlet is his own Falstaff.</p>
+
+    <p>Hamlet’s father, like Hal’s, was primarily concerned with war, and after death calls his son to a deed of violence, not to imperial conquest, as the elder Henry did, but to revenge. Like Hal, Hamlet accepts the injunction. But instead of initiating a change that gradually alters him into his father’s likeness, the decision immediately shakes his being to its foundations. The “antic disposition” under which he hides his real design is an exaggerated counterpart of the “wildness” under which Hal had previously concealed his own political ambition — however much less selfish and better grounded Hamlet’s deception was.</p>
+
+    <p>The far more shattering effect on Hamlet than on Hal or even on Brutus of the task he assumes shows how much more nearly balanced are the opposing forces in his case. Loyalty to his father and the desire to grow unto himself — thirst for revenge and thirst for creation — are in Hamlet almost in equilibrium, though of course he does not know it. Henry V was vaguely troubled by nocturnal stirrings of the spirit. He saw no ghost. Brutus became the victim of insomnia. He stifled his conscience by action and saw no ghost until after the deed. Hamlet saw his before the deed — as Brutus would have if his soul had been stronger — and it made night hideous for him. No spirit but one from below would have produced that effect, and the fact that “this fellow in the cellarage” speaks from under the platform when he echoes Hamlet’s “swear” is in keeping with Shakespeare’s frequent use of the symbolism that associates what is physically low with what is morally wrong. Hamlet’s delay, then, instead of giving ground for condemnation, does him credit. It shows his soul is still alive and will not submit to the demands of the father without a struggle. If two forces pulling a body in opposite directions are unequal, the body will move in response to the preponderant force. If the two are nearly equal, but alternately gain slight ascendancy, it will remain unmoved except for corresponding vibrations. In a tug of war between evenly matched teams the rope at first is almost motionless, but ultimately the strength of one side ebbs and then the rope moves suddenly and violently. So mysterious, and no more, is Hamlet’s hesitation, followed, as it finally was, by lightning-like action. “Shakespeare, as everyone knows,” says Dover Wilson, “never furnishes an explanation for Hamlet’s inaction.” “No one knows,” says Professor Alden, “why Hamlet delays.” And many others have said the same. Yet Shakespeare puts in the mouth of Claudius words that seem expressly inserted to explain the riddle. The King, caught in the same way between opposing forces — desire to keep the fruits of his sin and desire to pray — declares:</p>
+
+    <div class="cita">
+        <p>And, like a man to double business bound,</p>
+        <p>I stand in pause where I shall first begin,</p>
+        <p>And both neglect.</p>
+    </div>
+
+    <p>That seems plain enough. But what is true of Claudius in this one scene is true of Hamlet during all the earlier part of the play. It is as if his soul were a body in space so delicately poised between the gravitation of the earth and the gravitation, or we might say the levitation, of the sun that it “hesitates” whether to drop into the one or fly up to the other. It sometimes seems as if <i>Homo sapiens</i> were in just that situation.</p>
+
+    <p>People who think Shakespeare was just a playwright say Hamlet delayed that there might be a five-act play! Others, who calmly neglect much of the text, say he delayed because of external obstacles. Coleridge thinks it was because he thought too much. Bradley, because he was so melancholy. It would be nearer the truth to say he thought too much and was melancholy because he delayed. The more powerful an unconscious urge, the stronger and the more numerous the compensations and rationalizations with which consciousness attempts to fight it. Hence the excess of thought and feeling. Goethe, I would say, is far closer to the mark than Coleridge and Bradley in attributing Hamlet’s hesitation to a feminine element in the man. But then he proceeds to spoil it all by implying that Hamlet is weak and effeminate: “a lovely, pure and most moral nature, without the strength of nerve that makes a hero, sinks beneath a burden which it cannot bear and must not cast away.” The implication is that Hamlet ought to have killed the King at once; also that loveliness, purity, and moral insight are not sources of strength and heroism!</p>
+
+    <p>On the contrary, they are the very higher heroism that challenges a more primitive one in this play. Hamlet is the battlefield where the two meet. It is war in that psychological realm where all war begins. Hamlet is like Thermopylae, the battle that stands first among all battles in the human imagination because of its symbolic quality — a contest between the Persian hordes of the lower appetites and the little Greek band of heroic instinct.</p>
+
+    <div class="cita">
+        <p>They have the numbers, we, the heights.</p>
+    </div>
+
+    <p>At Thermopylae the Persians won. Yet we think of it as a Greek victory because it was the promise of Salamis and Plataea. So with Hamlet. Hamlet lost. But <i>Hamlet</i> is the promise of <i>Othello</i> and <i>King Lear</i>. . . .</p>
+
+    <div class="separador">• &nbsp; • &nbsp; •</div>
+
+    <p>At last Hamlet has killed the King.</p>
+
+    <p><i>But has he?</i></p>
+
+    <p>When we look back, everything converges to answer that question with those two words of the Prince’s own: “Never Hamlet.”</p>
+
+    <div class="cita">
+        <p>Never Hamlet!</p>
+        <p>If Hamlet from himself be ta’en away.</p>
+    </div>
+
+    <p>But who, then, did kill the King, if not Hamlet?</p>
+
+    <p>Why! his rashness, his indiscretion, the divinity “of hell” that shaped his end, fortune, fate, “this water,” the Devil. Shakespeare has been at pains to supply an abundance of answers, as if to show how important he considered the question.</p>
+
+    <p>It is just as it was with Romeo in the two duels in <i>Romeo and Juliet</i>. From the viewpoint of drama we have only approval for Hamlet’s conduct in this scene, his sending to death the two plotters against his own life. What else could he have done? Was he not acting in self-defense? But at the elevation of poetry, from which we see not just this scene but the action in its entirety, it is another matter. As Romeo descended to the level of Mercutio in killing Tybalt, Hal to the level of his father in invading France, Brutus to the level of Cassius in murdering Caesar, so Hamlet here finally descends to the level of Laertes. With the rapiers, he once for all exchanges fairness for venom. This duel, like so many duels in literature, is symbolic, condensing into a sudden image the meaning of the play. Under a provocation that, this time, seems like necessity, Hamlet repeats the pattern he cut out for himself at the crisis in the play scene: he converts art — in this case the art of fencing — into death. It is now too late to blame him. Hamlet’s mistake, like those of the other characters just mentioned, was made far back, while he was still free. From the moment when, trembling with suppressed excitement, he interrupted <i>The Murder of Gonzago</i> by crying out:</p>
+
+    <div class="cita">
+        <p>He poisons him i’ the garden for’s estate,</p>
+    </div>
+
+    <p>to his final</p>
+
+    <div class="cita">
+        <p>Then, venom, to thy work!</p>
+    </div>
+
+    <p>an unbroken chain of reflex actions — of which the killing of Polonius and the sending of Rosencrantz and Guildenstern to their doom are the most conspicuous — all tend to one conclusion: that the killing of the King was as purely an instinctive act as is that by which a man draws back his hand from fire.</p>
+
+    <div class="cita">
+        <p>The lion dying thrusteth forth his paw.</p>
+    </div>
+
+    <p>Hamlet’s deed was like that. It was not divinity shaping man’s end; it was man, under the compulsion of circumstance, imitating the action of the tiger. And the thrill we get in the theater as the King falls — from which not a single spectator, I believe, is exempt — is not a celestial one. We take the deed <i>there</i> as a noble act finally accomplished. It is only afterward, when we recollect it in tranquillity, that we recognize its senseless and fatalistic character. Indeed, in spite of differences, the situation resembles the one where Richard II runs amuck and kills the assistants of Exton. It was desperation, not bravery, that prompted Richard’s act. A second later, Exton in turn strikes him down, only to realize the next second what he has done and to wish it undone:</p>
+
+    <div class="cita">
+        <p>For now the devil, that told me I did well,</p>
+        <p>Says that this deed is chronicled in hell.</p>
+    </div>
+
+    <p>It is not at the moment of action, but afterward, that we see. And that can be as true of the theater as of life.</p>
+
+    <p>But we left the action at its climax.</p>
+
+    <p>Laertes begs Hamlet’s forgiveness and follows the King. Hamlet, as if visited by his own genius at the end, speaks to those around him as if they were gathered in a theater as “audience to this act,” prevents Horatio from drinking the last drops of the poisoned liquor, and cries to his friend in words the whole world knows by heart:</p>
+
+    <div class="cita">
+        <p>Absent thee from felicity awhile,</p>
+        <p>And in this harsh world draw thy breath in pain,</p>
+        <p>To tell my story.</p>
+    </div>
+
+    <p>Martial music is heard in the distance, and a salute. The conquering Fortinbras has come from Poland, and Hamlet has just enough breath left to give him his dying voice as his successor. What irony! Like Henry V’s, all the Elder Hamlet’s conquests have been for nothing — for less than nothing. Fortinbras, his former enemy, is to inherit the kingdom! Such is the end to which the Ghost’s thirst for vengeance has led.</p>
+
+    <p>For Hamlet “the rest is silence.” The tragedy is summed up in the contrast between those four mysterious words and Horatio’s</p>
+
+    <div class="cita">
+        <p>Good-night, sweet prince,</p>
+        <p>And flights of angels sing thee to thy rest!</p>
+    </div>
+
+    <p>Fortinbras, who has now entered, gazes around him as on a battlefield:</p>
+
+    <div class="cita">
+        <p>This quarry cries on havoc. O proud death!</p>
+        <p>What feast is toward in thine eternal cell,</p>
+        <p>That thou so many princes at a shot</p>
+        <p>So bloodily hast struck?</p>
+    </div>
+
+    <p>And Horatio promises to tell, in explanation,</p>
+
+    <div class="cita">
+        <p>Of carnal, bloody, and unnatural acts,</p>
+        <p>Of accidental judgements, casual slaughters,</p>
+        <p>Of deaths put on by cunning and forc’d cause,</p>
+        <p>And, in this upshot, purposes mistook</p>
+        <p>Fall’n on the inventors’ heads.</p>
+    </div>
+
+    <p>The Ghost’s words sounded eloquent and noble when he was clamoring for revenge. This is their harvest.</p>
+
+    <p>The dead Hamlet is borne out “like a soldier” and the last rites over his body are to be the rites of war. The final word of the text is “shoot.” The last sounds we hear are a dead march and the reverberations of ordnance being shot off. The end crowns the whole. The sarcasm of fate could go no further. Hamlet, who aspired to nobler things, is treated at death as if he were the mere image of his father: a warrior. Shakespeare knew what he was about in making the conclusion of his play martial. Its theme has been war as well as revenge. It is the story of the Minotaur over again, of that monster who from the beginning of human strife has exacted his annual tribute of youth. No sacrifice ever offered to it was more precious than Hamlet. But he was not the last.</p>
+
+    <p>If ever a play seems expressly written for the twentieth century, it is <i>Hamlet</i>. It should be unnecessary to underscore its pertinence to an age in which, twice within three decades, the older generation has called on the younger generation to settle a quarrel with the making of which it had nothing to do. So taken, <i>Hamlet</i> is an allegory of our time. Imagination or violence, Shakespeare seems to say, there is no other alternative. They are the two forces that exact obedience, the one freely, the other under compulsion. Art or war: it is the only choice humanity ever had or ever will have. Unless the first is resorted to while we are free, the other has to be resorted to under the pressure of events. Hamlet made the right choice, but then, at the moment of triumph, converted an instrument of regeneration into an instrument of revenge. Made for heaven, he was tempted by hell — and fell.</p>
+
+    <p>The prime requisite for an understanding of <i>Hamlet</i> is a belief in ghosts. The common reader who has that will come nearer its heart than the most learned man who lacks it — just as a youth of seventeen who is in love is better fitted to comprehend the <i>Divine Comedy</i> than a scholar who has spent a lifetime on it but who has never shared the experience on which it is based. If “a belief in ghosts” sounds too old-fashioned or superstitious, call it, more pedantically, a belief in the autonomous character of the unconscious. The two are the same.</p>
+
+    <p>Dover Wilson has written of the belief in spirits of Catholics and Protestants in Shakespeare’s day. Catholics, he tells us, held that ghosts came from Purgatory and were actually souls of the departed. Protestants thought they came from hell (or rarely from heaven) and were devils (or angels) who had assumed the shape and appearance of the dead.</p>
+
+    <p>I once asked a young girl (barely over the border of childhood) to whom I had read <i>Hamlet</i>, whether she thought the Ghost was Hamlet’s father or the devil. I like to get the fresh reaction of innocence to a masterpiece, uncontaminated by traditional critical opinion. “I don’t see that it makes any difference,” she said, “I should think it would be just the same.” “Just the same?” I inquired, arrested. “Well,” she explained, “I should think that whoever told you to kill somebody was the devil.” <i>Just the same</i>: in a flash those three words show that the Catholic and Protestant views that Wilson discriminates are really one. The Father, in so far as he represents authority and force, <i>is</i> the Devil, a power utterly transcending anything human in any common meaning of that term. Shakespeare here, as usual, is a harmonizer of opposites.</p>
+
+    <p>But it is not just Shakespeare and childhood who agree. The poets have always seen that the supreme question for humanity is the existence of the gods — and devils. Their existence and their incidence in human affairs. It is startling to compare one or two of their utterances with Shakespeare’s.</p>
+
+    <p>Go back to Aeschylus, the first of the supreme Greek dramatists. Clytemnestra is speaking of her slaying of her husband, Agamemnon:</p>
+
+    <div class="cita">
+        <p>And criest thou still this deed hath been</p>
+        <p>My work? Nay, gaze, and have no thought</p>
+        <p>That this is Agamemnon’s Queen.</p>
+        <p>’Tis He, ’tis He, hath round him wrought</p>
+        <p>This phantom of the dead man’s wife;</p>
+        <p>He, the Old Wrath, the Driver of Men Astray,</p>
+        <p>Pursuer of Atreus for the feast defiled;</p>
+        <p>To assoil an ancient debt he hath paid this life;</p>
+        <p>A warrior and a crowned King this day</p>
+        <p>Atones for a slain child.</p>
+    </div>
+
+    <p>Or come down, past Shakespeare, almost to our own day, to Dostoevsky. Raskolnikov is speaking of the murder of the Old Pawnbroker:</p>
+
+    <div class="cita">
+        <p>Did I murder the old woman? I murdered myself, not her! I crushed myself once for all, for ever. . . . But it was the devil that killed that old woman, not I.</p>
+    </div>
+
+    <p>And then go back to Shakespeare, to Hamlet. He is apologizing for the slaying of Polonius:</p>
+
+    <div class="cita">
+        <p>Was’t Hamlet wronged Laertes? Never Hamlet!</p>
+        <p>If Hamlet from himself be ta’en away,</p>
+        <p>And when he’s not himself does wrong Laertes,</p>
+        <p>Then Hamlet does it not, Hamlet denies it.</p>
+        <p>Who does it then? His madness. If’t be so,</p>
+        <p>Hamlet is of the faction that is wrong’d;</p>
+        <p>His madness is poor Hamlet’s enemy.</p>
+    </div>
+
+    <p>Or to the First Gravedigger:</p>
+
+    <div class="cita">
+        <p>But if the water come to him, and drown him, he drowns not himself.</p>
+    </div>
+
+    <p>The Old Wrath, the Devil, Madness, the Water, Whoever Tells You To Kill: what difference does the terminology make? Each of these words or phrases is just another name for the infernal forces which, unless warded off by an eternal vigilance, rush in at the slightest abdication of his own freedom, to possess man. (To the celestial forces that can take possession of him Shakespeare was to turn his attention more and more in the plays that follow <i>Hamlet</i>.) Perhaps the profoundest and certainly the most detailed analysis of this idea in modern literature is <i>The Possessed</i> of Dostoevsky, or <i>The Devils</i>, as the title of the novel should properly be translated. But probably Orestes from ancient literature, and Ivan Karamazov from recent, are the two most interesting single figures to place beside Hamlet. Orestes murdered his mother, went mad, and was pursued by the Furies. Hamlet was visited by his Father, played with murderous thoughts, and committed irresponsible acts. Ivan Karamazov played with murderous thoughts, was visited by the Devil, and went insane. “God will conquer!” cried Alyosha Karamazov in the critical hour when his brother’s mind hung in the balance, “he will rise up in the light of truth, or . . . he’ll perish in hate, revenging on himself and on everyone his having served the cause he does not believe in.” So with Hamlet. He is that second alternative. God did not conquer, and Hamlet wreaked revenge on himself and on everyone for having served the cause he did not believe in, the cause of blood revenge.</p>
+
+    <p>In <i>War and Peace</i>, Tolstoy gives us the same situation with the other outcome. Pierre, like Brutus, conceives it to be his duty to kill a tyrant: Napoleon. Like Hamlet, he wanders about in a daze. “He was suffering the anguish men suffer,” says Tolstoy, “when they persist in undertaking a task impossible for them — not from its inherent difficulties, but from its incompatibility with their own nature.” But at the critical moment there is a child in a burning building. Pierre dashes in to save her and in doing so saves himself. He is purged from his mad resolve. Nor is it just the heroism of the act that does it. It is its symbolism no less. In saving the actual child from the literal fire, he saves his own innocence, the child within himself, from the criminal fire that threatens to consume him. Imagination triumphs over force.</p>
+
+    <p>It is interesting to speculate on what might have occurred if some happy chance or good angel had intervened in Hamlet’s case as it did in Pierre’s. Suppose for a moment that Hamlet had let <i>The Murder of Gonzago</i> take its unhindered way, and imagine further that the miracle happened: that Claudius repented and surrendered the throne to Hamlet. What might have followed?</p>
+
+    <p>Such conjectures are idle enough, and I should not be recording any of mine here if by chance I had not discovered that one of Shakespeare’s own contemporaries, a man who had seen and perhaps known him in the flesh, had cherished an idea curiously similar to one of my own, not precisely about Hamlet, to be sure, but about what I may call the Hamletian Shakespeare.</p>
+
+    <p>Suppose Hamlet had taken over the throne of Denmark. The Prince as King: is it hard to conceive him in that role? Fortinbras at any rate did not think so:</p>
+
+    <div class="cita">
+        <p>For he was likely, had he been put on,</p>
+        <p>To have prov’d most royally.</p>
+    </div>
+
+    <p>One thing certainly we can count on: he would have made a most unconventional monarch. He would have been just about everything the rest of Shakespeare’s kings were not.</p>
+
+    <p>In the first place, he had what ought to be the prime negative requisite for those in high position the world over, what only Henry VI of Shakespeare’s kings in the History Plays possessed: no love of power. It is precisely because those who are greedy for power so often get it that power is so often administered in the interest of greed. Except for a couple of passages near the end of the play that are mere rationalizations of his hatred of his uncle, there is nothing to indicate that Claudius’ usurpation of the throne, as such, ever caused Hamlet so much as one wakeful night. He was interested in higher things than governing — and for that very reason was fitted to govern. Again, with the same exception of Henry VI, all Shakespeare’s kings welcomed, by daylight at least, the ceremonies of royalty. They enjoyed being lifted by “degree” above their natural station. Hamlet disdained all such trappings and went to the other extreme of debasing himself from Prince to madman. He practiced to the point of perversion by daylight what Henry V only soliloquized about by night.</p>
+
+    <p>Secondly: Hamlet had the love and confidence of the people. Twice Claudius refers to this:</p>
+
+    <div class="cita">
+        <p>Yet must we not put the strong law on him:</p>
+        <p>He’s loved of the distracted multitude,</p>
+    </div>
+
+    <p>and</p>
+
+    <div class="cita">
+        <p>The other motive,</p>
+        <p>Why to a public count I might not go,</p>
+        <p>Is the great love the general gender bear him,</p>
+        <p>Who, dipping all his faults in their affection,</p>
+        <p>Would, like the spring that turneth wood to stone,</p>
+        <p>Convert his gyves to graces.</p>
+    </div>
+
+    <p>The History Plays discriminated the commons as a group of individuals, from the mob as a pack of wolves. So here. The love of the people for Hamlet is thrown in contrast with the backing by the rabble of Laertes, a love that aroused the same jealousy in Claudius as a similar affection for Rosalind — that feminine Hamlet over whom the cloud never fell — did in the Duke in <i>As You Like It</i>.</p>
+
+    <p>Thirdly: Hamlet had the creative instinct and capacity to alter the royal occupation from what it always has been, war, to what it ought to be, art: not “art” as amusement or distraction, but art in its deepest and most religious sense. “Empire against art,” said Blake, putting it in three words. If a Falstaffian Hal could have taught England to play in the common acceptation of the term, Hamlet could have taught Denmark to play in a deeper creative sense.</p>
+
+    <p>What Hamlet’s succession might have meant may be seen by asking: What if, on the death of Elizabeth, not James of Scotland but William of Stratford had inherited the throne! That would have been England falling before William the Conqueror indeed. And it did so fall in the sense that, ever since, Shakespeare has been England’s imaginative king, who has taught more men and women to play perhaps than any other man in the history of the world. But if the England of his own day could have crowned him more specifically, by following his spirit, it might have found its way between the Scylla of a decadent Renaissance and the Charybdis of a puritanical reformation and revolution. It might have substituted freedom and imagination for luxury and dogma. And so might Denmark have achieved a similar consummation under Hamlet, even if he had worn no crown, instead of condemning itself, as all the kingdoms of the world have condemned themselves in the past, to a perpetual oscillation between the softness of a Claudius and the hardness of a Fortinbras.</p>
+
+    <p>Browsing one day among Elizabethan allusions to Shakespeare, I ran on these lines of John Davies of Hereford:</p>
+
+    <div class="cita">
+        <p><i>To our English Terence, Mr. Will Shake-speare</i></p>
+        <p>Some say (good Will) which I, in sport, do sing</p>
+        <p>Had’st thou not plaid some kingly parts in sport,</p>
+        <p>Thou hadst been a companion for a <i>king</i>:</p>
+        <p>And beene a king among the meaner sort.</p>
+        <p>Some others raile; but, raile as they think fit,</p>
+        <p>Thou hast no rayling, but a reigning wit:</p>
+        <p>And honesty thou sow’st, which they do reape:</p>
+        <p>So to increase their stocke which they do keepe:</p>
+    </div>
+
+    <p>Shakespeare — so John Davies of Hereford believed — was fit to be a king of the common people. He still is. He is an unfallen Hamlet.</p>
+
+    <section class="footnotes">
+        <h3>Note</h3>
+        <p>From <i>The Meaning of Shakespeare</i>. © 1951 by The University of Chicago. The University of Chicago Press, 1951. Originally entitled “Hamlet.”</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>

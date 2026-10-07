@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>“Acts III and IV: Problems of Text and Staging” — Ruth Nevo</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">Ruth Nevo</p>
+        <h1 class="cab__tit">Acts III and IV:<br>Problems of Text and Staging</h1>
+    </header>
+
+    <p>In the volume of commentary upon the most famous of all soliloquies, one salient fact is often overlooked: that it occurs at the outset of Act III, the act which contains the <i>processus turbarum</i> [the perturbations and dangers classically a feature of the crisis phase of tragedy] and brings the action to a turning point. Contrivance, conspiracy, concealment, and dissimulation reach their crisis in the sequence that runs from the nunnery scene through the play scene to the killing of Polonius behind the arras. This sequence articulates the peripeteia — the complete reversal of Hamlet’s situation. He who was Denmark’s honored prince (and is still, after all, heir apparent) becomes in the eyes of all an overt menace to the kingdom, and this fact is exploited by Claudius, who seizes the opportunity to rid himself of his dangerous nephew. The inner progress of Hamlet through this chapter of perturbations is the progress toward a great frustration: a blind alley where both knowledge and freedom are totally confounded, and all planning brought to nought.</p>
+
+    <p>It is as a point upon this inner progress that the third soliloquy can most profitably be viewed. A general impression of the speech as expressing again that disaffection with life with which the play opened raises no problems. The Ghost’s revelation, the duplicity of Rosencrantz and Guildenstern, Ophelia’s pitiable helplessness to sustain him in his growing suspicion of all who surround him in Claudius’ court, his own experience of suspense and uncertainty are sufficient to account for a melancholy acute enough to make life wearisome and the sleep of death appealing. Moreover, the strongly ethical bent of Hamlet’s nature expresses itself naturally in the questioning of values and the weighing of options which form the speech’s content. Its catalogue of adversities has often enough been noticed to have little relevance to Hamlet’s specific situation, but an outgoing of sympathy, a partisanship with humankind is, as Sewall has noted, a characteristic consequence of the tragic hero’s own distress. Again, while the speech appears to backtrack upon Hamlet’s immediately preceding decision to stage the Mousetrap and catch the conscience of the King, the opposition between active and passive modes of response links it with its predecessor in a quite specific way. Endurance, suffering in the mind, the absorption of adversity, corresponds to Hecuba; the taking of arms against a sea of troubles and by opposing ending them, to Pyrrhus.</p>
+
+    <p>The critical problem arises from the perception that the speech apparently confuses two issues. Since we know what Hamlet’s obligatory task is, we cannot but register the possibility that the taking of arms and the “enterprises of great pitch and moment” refer to the killing of Claudius, though the logic of the syntax makes them refer to the self-slaughter which is the subject of the whole disquisition. And conversely, because self-slaughter is the ostensible subject of the whole disquisition, we cannot read the speech simply as a case of conscience in the matter of revenge — Christian conscience producing impediments to the action dictated by the code of revenge and the secular sanctions and motivations of honor. Whether Hamlet is talking of his revenge or of his desire for death, or of both, one substituting for the other as mask for truth (or truth for mask) therefore becomes the problem that this speech poses. It is customary again to invoke depth psychology and the strategies of rationalization for a solution to this crux. But the dramatic critic, I would suggest, should anchor his interpretations in drama’s method of progression by thrust and counterthrust rather than in the causal axioms of psychology. The speech is a reaction from the determination which ended the “rogue and peasant slave” soliloquy. It is not a cause of this reaction that we should attempt to uncover — such reactions are a fact of emotional life, and causes for melancholy he has in plenty — but the effects it functions to produce: the further disclosures and discoveries which it proffers us.</p>
+
+    <p>In the Quarto of 1603 the speech precedes the previous scene of the players, as indeed does the whole of the nunnery scene, and it is occasioned very plausibly. It evidently represents Hamlet’s reflections upon the content of the book Polonius notices him reading as he sets his trap for Ophelia in order to discover the cause of the prince’s distemper. In the First Quarto the speech is purely a reflection upon suicide by the grief-stricken, melancholy-mad Hamlet (much madder in the First Quarto than in the later versions), in which neither the lines “Whether ’tis nobler in the mind to suffer” nor “And enterprises of great pitch and moment” appear. There is thus no possibility of reference to the matter of revenge at all. “Conscience” makes cowards of us all in the First Quarto too, but it is, significantly, the “hope” not the dread of something after death which</p>
+
+    <div class="cita">
+        <p>“pusles the braine, and doth confound the sence,</p>
+        <p>Which makes us rather beare those evilles we have,</p>
+        <p>Than flie to others that we know not of.”</p>
+    </div>
+
+    <p>If in the debate upon the provenance of the Bad Quarto we take the side of those who see it as a preliminary (mutilated) draft of the play as we have it from the Second Quarto and Folio, rather than as a garbled copy or a shorthand record of a performance of the longer and better version, I believe we can throw considerable (if speculative) light upon the “To be” speech, and suggest the direction in which it is to be taken. For it was surely the keen shaping sense of an assured artistry that exchanged the First Quarto equivalent of Act II for the brilliant and subtle and technically extremely original dramatization of the player scene, with its dynamic projection of a finely conceived dilemma, and reserved the nunnery scene (which has no bearing upon the main revenge action) for the confusions and perturbations of Act III. The “To be” speech, transferred along with the nunnery scene, is now no simple dialogue of self and soul upon the question of suicide but a much more complex reflection. The speech articulates Hamlet’s heartsick realization of what is involved in the act of choice: its insuperable difficulties and the price to be paid by him who would be elector of himself. This is exactly the import and the effect of the two interpolations:</p>
+
+    <div class="cita">
+        <p>Whether ’tis nobler in the mind to suffer</p>
+        <p>The slings and arrows of outrageous fortune,</p>
+        <p>Or to take arms against a sea of troubles,</p>
+        <p>And by opposing end them?</p>
+    </div>
+
+    <p>and</p>
+
+    <div class="cita">
+        <p>And enterprises of great pitch and moment</p>
+        <p>With this regard their currents turn awry</p>
+        <p>And lose the name of action.</p>
+    </div>
+
+    <p>The complexity which is thus added to the cruder figure of the First Quarto complicates, of course, the critic’s exegetical task. So radically ambiguous in import has the speech become, while at the same time so readily detachable, so generalized and therefore applicable to a host of occasions for melancholy reflections upon adversity, that Lamb’s despair is understandable indeed: “I confess myself,” he says,</p>
+
+    <div class="cita">
+        <p>utterly unable to appreciate that celebrated speech . . . or to tell whether it be good, bad or indifferent; it has been so handled and pawed about by declamatory boys and men, and torn so inhumanly from its living place and principle of continuity in the play, till it has become to me a perfect dead member.</p>
+    </div>
+
+    <p>Nevertheless it has a “living place and principle of continuity”: its position in Act III. It is this positioning that can direct the emphasis to fall upon the bafflement that the speech expresses rather than upon the sense of a dilemma which it also (however obscurely) suggests. Choice of action, Hamlet is saying, depends upon knowledge that is simply not available to the human mind. Hamlet’s very syntax enacts the inextricable entanglement of cognition with volition, the “puzzling” of the “will.” The bare, unmodified infinitive — “to be” — suggests a hovering upon the brink of an act. Yet the following lines introduce a question of preliminary knowledge — or judgment — of what is noble. What Hamlet is recognizing as the conscience which makes him a coward and causes action to lose its name subsumes and transcends the conflict of philosophy with religion, or of duty with desire. Hamlet’s pale case of thought is precisely what it says it is — that mental activity which counters every option with its opposite, every consideration with its contrary; which takes in aspects and calculates consequences; which is stilled only by and in action, but which makes every choice of action seemingly impossible. From this cul-de-sac he sees no escape. His thought moves in clogged and wearisome circles, for he cannot know the answer to the question that he asks. Neither instinct nor ratiocination can endow value with certainty, and therefore freedom and virtue themselves are a snare and a delusion. Hamlet expresses the depth of his dismay at this discovery, which is, at some time, every thinking being’s discovery. That it is so is the secret of the speech’s immense popularity.</p>
+
+    <p>It is to further and more searing recognitions of the limitations of mind that the whole of the third act is directed. For the third act presents, with an unparalleled wealth of resource, the confounding of knowledge with knowledge and the futility of passion and action.</p>
+
+    <p>I take the subdued and abstracted “Nymph, in thy orisons / Be all my sins remember’d” (III.i.89–90) as Johnson did, to be “grave and solemn,” and not accusatory and sarcastic. Hamlet has hardly yet emerged from the intense preoccupation of the soliloquy. But from the moment he is jerked to attention by the gauche little importunity of Ophelia’s return of his gifts to the end of his tirade, the scene becomes a powerful image of the inscrutability of appearances. The fact that the audience is informed of the “espials” of Polonius and the King while Hamlet is not permits the nunnery scene to dramatize the impenetrability and duplicity of appearance in the most direct and unequivocal mode of dramatic irony — that which obtains when the audience is in possession of more information than either the protagonist or the watchers behind the arras. All parties to the scene are on the watch. The audience watches the two spies watching Hamlet, speculating upon his motives and behavior; the audience watches Hamlet probing the genuineness of Ophelia’s feelings, and announcing his own with wildly contradictory declarations, the degree of the sincerity of which it has no means of knowing; and the audience watches Ophelia utterly bewildered by all she sees and hears, and hiding in her heart the knowledge of her own role as decoy. The ellipses of Hamlet’s speech force the audience to its own speculations, chief among them the question whether Hamlet knows or discovers the presence of Polonius and the King. Few can fail to have been beguiled at some time by Dover Wilson’s proposal of a lost stage direction at II.ii.162, which would allow Hamlet, reading on his book, to enter in time to overhear “I’ll loose my daughter to him”; or for that matter by the older stage tradition which makes Polonius betray his presence by an inadvertent movement. (I count myself gratefully among the many who were bewitched [and am on record to this effect in a published article of some years ago], but have since come to believe that a rendering of the scene based upon the pun [at any of several possible points] and Hamlet’s previous overhearing of Polonius, require a sleight-of-hand ingenuity which must be beyond the capacity of acting to convey. Powerful recent support for this view is to be found in the closely reasoned and admirably concise argument of H. Jenkins against the invocation of either pun or earlier entrance. “I suspect,” he concludes, that “when the nunnery, at whatever stage, becomes a brothel, it becomes a red herring”; and he points out that “what the play requires is not that Hamlet shall know but that we shall know, that the King is there to hear.”) But it should be noted that we actually need no further explanation for Hamlet’s sudden “Where’s your father?” than the fact that he has not recently been permitted her presence unchaperoned, if at all. And his apparent change of mood at that point in the scene might well be attributed to recollected angry resentment at Polonius’ interference in his affairs. Indeed, this would seem to be born out by the diatribe on calumny — he being calumniated and exposed by his courtship of Ophelia to the insulting aspersions of such as Polonius.</p>
+
+    <p>I am inclined to believe that the deeper dramatic purport of the scene is obscured if Hamlet is made or becomes aware of Polonius at any point in the scene. For if Hamlet knows that Polonius is behind the arras, then he knows that Ophelia is lying when she tells him her father is at home — knows, therefore, that she is deceiving him. Whereas it is precisely his total inability to know her, or for that matter himself, that the scene, in this theatrically simpler view, would allow us to perceive as the center of his anguish. He is tormented precisely by doubts, not by confirmations. And how indeed should he know what Ophelia is? Is she loving and faithful to him despite parental authority? Or compliant to the latter and therefore false to him? What has she been told about him? Is he not testing her with his hyperbolic declaration:</p>
+
+    <div class="cita">
+        <p>I am very proud, revengeful, ambitious; with more offenses at my back than I have thoughts to put them in, imagination to give them shape, or time to act them in?</p>
+    </div>
+
+    <p>His mother has predisposed him to believe in women’s perfidy, has produced in him a revulsion from sex and the stratagems of sex; he was unable to draw Ophelia’s face by his perusal; she has refused his letters and denied him access; now she returns his gifts. What form of devious double-dealing shall he expect? He is wary, defensive. Yet he did love her once and is enraged by the thought of the father’s meddling. It is surely an extremity of ambivalence that is expressed in the violent paradoxes of</p>
+
+    <div class="cita">
+        <p>If thou dost marry, I’ll give thee this plague for thy dowry. Be thou as chaste as ice, as pure as snow, thou shalt not escape calumny. Get thee to a nunnery, go: farewell. Or, if thou wilt needs marry, marry a fool; for wise men know well enough what monsters you make of them.</p>
+        <p class="attribution">(III.i.135–39)</p>
+    </div>
+
+    <p>It is not absolutely necessary to take “those that are married already, all but one, shall live; the rest shall keep as they are” as an overt threat to the King behind the arras, for Hamlet could be thus obliquely discharging his bosom of the perilous stuff, which is, after all, the root cause of all his agitations; and doing so in a semi-aside to the <i>audience</i>, who will then wonder what the King will make of it. The scene culminates in the tirade against false faces and the ape-like antics of a lying world, generalized by the “you,” which takes the place of the previous intimate “thou”:</p>
+
+    <div class="cita">
+        <p>God has given you one face, and you make yourselves another; you jig, you amble, and you lisp, and nickname God’s creatures, and make your wantonness your ignorance.</p>
+        <p class="attribution">(III.i.149–53)</p>
+    </div>
+
+    <p>This is the familiar Renaissance complaint against cosmetics, against appearance and masked intention. But his final “Get thee to a nunnery” implies again sufficient tenderness for Ophelia to wish her preserved from corruption. The scene in its ambivalence and consternation accumulates a powerful charge of disgust with all the grotesque iniquities of the world as well as those of women.</p>
+
+    <p>In the play scene Hamlet stages his grand exposure of these iniquities. And it is in this sequence that his intention, the triumphant revealing of reality behind appearances, the peeling of the skin of hypocrisy from the onion of truth, will be at once achieved and frustrated in the play’s central reversal. Hamlet’s instructions to the players reflect his sense of his own aim and aspiration:</p>
+
+    <div class="cita">
+        <p>for in the very torrent, tempest, and, as I may say, the whirlwind of passion, you must acquire and beget a temperance that may give it smoothness. Oh, it offends me to the soul, to hear a robustious periwig-pated fellow tear a passion to tatters, to very rags, to split the ears of the groundlings.</p>
+        <p class="attribution">(III.ii.6–13)</p>
+    </div>
+
+    <p>Passion is the powerhouse of the soul, the generator of all deeds. But control of passion is above all requisite for any effective expression or action. Without such temperance a man is no more than passion’s slave. His encomium to Horatio directly expresses his desire for that stoic impassivity in the face of fortune’s buffets and rewards that he admires in his friend in the degree that he has found it wanting in himself.</p>
+
+    <p>It is thus mastery of passion and of circumstance that Hamlet enacts in the play scene. <i>Régisseur</i> prince, as Fergusson has called him, with his fiction of the players he holds the mirror up to nature; he will reveal the inner truth of the guilty creatures sitting at the play. He will expose their real faces. The fiction will reflect their truth, making the mask drop from them. The assumed role of the Player King will expose the assumed virtue of the hypocrite King. Not only the King’s conscience will be caught, but also the Queen’s. Hence his interpolated jibes: “No, good mother, here’s metal more attractive”; “look you, how cheerfully my mother looks”; “O, but she’ll keep her word,” “Wormwood, wormwood.” In order to wound his mother he makes Ophelia her proxy, treating her like a harlot, with deliberate and brutal sexual contempt, forcing their dialogue of innuendos to bear the worst constructions. Meantime he masks his own truth with his riddling talk of ambition, crammed capons, and the chameleon’s dish (knowing how easily motives of thwarted ambition will be imputed to him), and introduces a puzzling hidden threat into the already enigmatic situation for the benefit of the court, which hears him announce that Lucianus is nephew to the King.</p>
+
+    <p>The audience, again watching the watcher being watched, is drawn into the tissue of guesswork, speculation, and inference out of which the scene is made. All are in the dark — the court audience ignorant, Hamlet in suspense; and Hamlet’s sore distraction has never seemed more open and palpable to his fellows.</p>
+
+    <p>Since the dumb show draws no response, the audience itself is put into the same suspense. I believe Shakespeare’s stagecraft here to be both more crude and more profound than Dover Wilson’s marvel of ingenuity, which takes more subtlety to follow than any audience can be assumed to have possessed. An Elizabethan audience, or perhaps any other, is likely to be undisturbed by the King’s apparent inconsistency of response. It will not have supposed for a moment that an accomplished courtier would give himself away at the first hint of danger, more particularly as the essence of his quandary is his ignorance of what, or how much, Hamlet knows. It is after all a war of nerves between him and Hamlet; if his nerves are strong enough for a great deal but no more, so much the more plausible the entire episode.</p>
+
+    <p>The King breaks down; Hamlet has triumphed. He has made the galled jade wince and the truth unkennel itself. It is his text that the players, the court, the King, and the Queen all play. He is master of reality, making his will prevail, no fool of fortune. His elation is unbounded; and superbly expressed in the scene with Horatio which follows the Mousetrap, and in the cloud scene with Polonius, where he fools those who would fool him, articulating through the metaphors of recorders’ stops and cloud-shapes his own inscrutable willful mastery. But his will, now at the top of its bent, has its crucial tests before it.</p>
+
+    <p>In the prayer scene and the closet scene his devices are overthrown. His mastery is confounded by the inherent liability of human reason to jump to conclusions, to fail to distinguish seeming from being. He, of all people, is trapped in the fatal deceptive maze of appearances that is the phenomenal world. Never perhaps has the mind’s finitude been better dramatized than in the prayer scene and in the closet scene. Another motto of the Player King is marvelously fulfilled in the nexus of ironies which constitutes the play’s peripeteia: “Our thoughts are ours, their ends none of our own.” In the sequence of events following Hamlet’s elation at the success of the Mousetrap, and culminating in the death of Polonius, all things are the opposite of what they seem, and action achieves the reverse of what was intended. Here in the play’s peripeteia is enacted Hamlet’s fatal error, his fatal misjudgment, which constitutes the crisis of the action, and is the directly precipitating cause of his own death, seven other deaths, and Ophelia’s madness.</p>
+
+    <p>When the opportunity for his revenge offers itself and is not taken, the reason is given with the greatest explicitness:</p>
+
+    <div class="cita">
+        <p>Now might I do it pat, now he is praying;</p>
+        <p>And now I’ll do’t; and so he goes to Heaven;</p>
+        <p>And so am I revenged. That would be scann’d:</p>
+        <p>A villain kills my father; and for that,</p>
+        <p>I, his sole son, do this same villain send</p>
+        <p>To heaven.</p>
+        <p>Oh, this is hire and salary, not revenge.</p>
+        <p>He took my father grossly, full of bread,</p>
+        <p>With all his crimes broad blown, as flush as May;</p>
+        <p>And how his audit stands who knows save heaven:</p>
+        <p>But in our circumstance and course of thought</p>
+        <p>’Tis heavy with him; and am I then revenged,</p>
+        <p>To take him in the purging of his soul,</p>
+        <p>When he is fit and season’d for his passage?</p>
+        <p>No.</p>
+        <p>Up, sword, and know thou a more horrid hent;</p>
+        <p>When he is drunk asleep, or in his rage,</p>
+        <p>Or in the incestuous pleasure of his bed,</p>
+        <p>At gaming, swearing, or about some act</p>
+        <p>That has no relish of salvation in’t;</p>
+        <p>Then trip him, that his heels may kick at heaven,</p>
+        <p>And that his soul may be as damn’d and black</p>
+        <p>As hell, whereto it goes.</p>
+        <p class="attribution">(III.iii.73–95)</p>
+    </div>
+
+    <p>Hamlet spares the King at prayer not because the King is a suppliant and helpless figure; nor, certainly, because “Vengeance is mine, saith the Lord”; nor merely out of an excessive and savage vindictiveness. Hamlet spares the King in his moment of prayer out of his need not merely for good reasons for action but for the best reasons; for total consonance between deed and retribution. Less than an absolute justice will not denote him truly, will not gain the assent of his inmost soul. Nothing less than the fittingness of punishment to crime can assuage the pain of his constant knowledge, so recently confirmed, of the lying, smiling humbug of the King’s evil. Only so can he justify himself in his own eyes. Only a manifestation of divine justice in its perfection can express and appease his abhorrence and set his spirit at rest. But the elder Hamlet’s spirit did not demand this of him. Nor is it demanded of any man. He plays providence, and the distinction that marked him out as tragic hero — the high demand for absolute truth shining forth in appearances — becomes corrupted in that moment of hubris by the taint of a fatal aestheticism. He becomes the artist caught in the love of his own devices, and sacrifices the deed — the end — which is the moral imperative of his situation, upon the altar of the aesthetically satisfying means.</p>
+
+    <p>That it is appearances that deceive him is of the essence of the irony. For the King in fact is not in a state of grace at all, and Hamlet’s reasoning is based on false premises, false appearances, both when he believes the praying King to be purging his soul, and so spares him, and when he believes Polonius to be the spying King, and so kills him. The Jacobean avenger is in the nature of things a complex figure — judge and executioner, victim and culprit at once; mediating between divinely absolute and humanly contingent justice. Vendice too is hoist with his own petard in an access of overweening pride in his accomplishments as artist of revenge. <i>The Revenger’s Tragedy</i> followed <i>Hamlet</i>, and throws into bold relief what was implicit in the earlier play where Hamlet’s hubris represents a far subtler and more daring conception of this perfectionism. The symbolic action in which he exhibits it — the staging of the Mousetrap and its aftermath — indicates the presence of one of Shakespeare’s major preoccupations: the power of the artist’s will to master reality is a theme that takes many forms in many plays, and receives its final wry exorcism when Prospero — <i>régisseur</i> magician — drowns his book at the end of the <i>Tempest</i>.</p>
+
+    <p>Hamlet’s production, at all events, is a failure. What Hamlet does do is as fatally erroneous as what he does not do; the premeditated action that he does not take is as fraught with evil consequences as the unpremeditated action that he does take. The good that he would do he does not, and the evil that he would not do he does. He exemplifies, without knowing it, the condition Claudius, ahead of him, knows so well:</p>
+
+    <div class="cita">
+        <p>O limed soul, that struggling to be free,</p>
+        <p>Art more engaged!</p>
+        <p class="attribution">(III.iii.68–69)</p>
+    </div>
+
+    <p>The avenger, the thunderbearer, who could drink hot blood in the fierce joy of his resolution and his certain knowledge of the King’s guilt, not only fails to dispatch the evildoer, but instead murders an innocent man. Now he bears not only a tainted mind but a bloodstained hand; is involved irrevocably in the evil he fought; and has never been further from his task, or more infirm of purpose.</p>
+
+    <p>In the closet scene, where Hamlet is intent upon moving his mother to see, as in a glass, the inmost part of her, to see as he sees and so to admit the enormity of what she has done, a further ironic reversal of expectation is brought about. For he is as mistaken about Gertrude as he was mistaken about Ophelia. She is not, on any evidence that the text provides, the murderer of her husband, nor a party to the murder. Her comment on the protesting lady revealed no more, it seems, than a worldly self-possession. It is Hamlet’s delusion that is manifested in the closet scene. “Look here, upon this picture, and on this,” he demands. How could you leave to feed on this fair mountain and batten on this moor? Have you eyes? Can you not see a paddock, a bat, a gib? What I believe should now be realized to the full is that, in very truth, she cannot see. Nor could the audience, who has seen what she has seen: a suave and polished courtier, of plausible manner and smiling mien. To Hamlet it is by now self-evident that this is a satyr, a mildewed ear, a king of shreds and patches, but he is in this deluded. It is not self-evident at all. There is no mark of Cain upon the murderer’s forehead. There is no art by which we can find the mind’s construction in the face.</p>
+
+    <p>It is to be remarked how insistently Hamlet throws the emphasis of his castigation upon what he sees as an error of judgment qua judgment:</p>
+
+    <div class="cita">
+        <p>You cannot call it love, for at your age</p>
+        <p>The hey-day in the blood is tame, it’s humble,</p>
+        <p>And waits upon the judgment; and what judgment</p>
+        <p>Would step from this to this? Sense sure you have,</p>
+        <p>Else could you not have motion; but sure, that sense</p>
+        <p>Is apoplex’d, for madness would not err,</p>
+        <p>Nor sense to ecstasy was ne’er so thrall’d</p>
+        <p>But it reserved some quantity of choice,</p>
+        <p>To serve in such a difference. What devil was’t</p>
+        <p>That thus hath cozen’d you at hoodman-blind?</p>
+        <p class="attribution">(III.iv.68–77)</p>
+    </div>
+
+    <p>The wheel has come full circle, and opaque and inscrutable appearances seem now to be transparent to Hamlet. But they are not, as his own recent blindness ironically underlines. The closet scene with its arras, its images, and its apparition, is a Shakespearean equivalent of the Platonic parable of the cave. Shadow and substance, image, conception, apparition, illusion, play a baffling blindman’s buff. Never was Donne’s “Poor soul, in this thy flesh what doest thou know?” better illustrated; nor dramatic irony denser than in Gertrude’s answer to Hamlet’s “Do you see nothing there?”: “Nothing at all; yet all that is I see.” In these great central scenes of the play Hamlet’s downfall enacts the epistemological anxiety of the age. Montaigne’s dictum that the plague of man is the presumption of knowledge and Donne’s scorn of the “Pedantery, / Of being taught by sense, and fantasie,” here acquire an unexampled resonance.</p>
+
+    <p>Hamlet’s own recognition of fallibility emerges at the close of the closet scene. By the time he has (mistakenly) spared the King, and mistakenly killed Polonius; by the time, chastened by the Ghost, he has acknowledged his blunted purposes and has found it in his heart to ask his mother to “assume a virtue, if you have it not,” it has become clear, with the brutal clarity of irony, that it is indeed only in the counterfeit presentment of the playhouse, or in the mind of God, that the word can be made flesh or truth transparent in appearance. “Forgive me this my virtue” is his striking expression of a new humility. “Assume a virtue, if you have it not” is a very minimal demand for the arrogant and accusatory young man of the first act who announced that he knew not “seems.”</p>
+
+    <p>The death of Polonius, hated and despised as he was, calls forth in Hamlet an awareness of a common tragic destiny. And this common tragic destiny he sees under the aspect of a providence at work behind the appearances of chance:</p>
+
+    <div class="cita">
+        <p>heaven hath pleased it so,</p>
+        <p>To punish me with this, and this with me,</p>
+        <p>That I must be their scourge and minister</p>
+        <p class="attribution">(III.iv.173–75)</p>
+    </div>
+
+    <p>Nevertheless, in what can be interpreted as a reflex of pride, of self-assertive rebellion against that shared destiny, that shared instrumentality, he later in the same scene grimly rejoices at the prospect of counterintrigue, and concludes with the deliberate obscenity of “I’ll lug the guts into the neighbor room,” whereby he would make his victim, if he could, a distant and indifferent object.</p>
+
+    <p>Since both the Folio and the Quartos are silent upon the matter of act division after II.ii, the delimitation of Act IV has remained a vexed question. Johnson found “this modern division into Acts” (at IV.i of the accepted text) “not very happy, for the pause is made at a time when there is more continuity of action than in almost any other of the scenes.” This is at the point immediately after the closet scene, when the Queen is conveying to Claudius the substance of her conclusions that Hamlet is “mad as the sea and wind.” The murder of Polonius is discovered, and Rosencrantz and Guildenstern are dispatched to find Hamlet, who confuses his interlocutors with riddling remarks about the location of Polonius — “in heaven,” or possibly “i’ the other place,” but at all events where “he will stay till ye come.” The three short scenes possess an obvious continuity. There would seem to be no reason whatever, in view of the fluidity and continuity of Elizabethan stage practice, to have the act division at that point. Several nineteenth-century commentators concurred with Johnson’s opinion that the act division should logically be made at IV.iv, where Fortinbras enters upon his expedition and Hamlet is on his way to England. This scene was cut in the Folio with the approval of several later critics. Lloyd, for instance, says,</p>
+
+    <div class="cita">
+        <p>Beautiful as the soliloquy in this scene is, I am disposed to think that the excision of it may have been deliberate — as unnecessary, prolonging the action, and, it may be, exhibiting the weakness of Hamlet too crudely.</p>
+    </div>
+
+    <p>Upon principles derived from the study of Shakespeare’s usual practice in the matter of the management of the fourth act, itself developing impressively in skill and subtlety, I believe it possible to perceive and to reconstruct the sequence in such a way as to yield a characteristic and consequential fourth act. There need be little argument concerning the extension of Act III to what is at present IV.iii. This would bring the third act — the culmination of the <i>processus turbarum</i>, the reversal of the hero’s situation, the disintegration and collapse of his high aims — to a natural close with the rounding-off of the Polonius debacle within the palace of Elsinore. Act IV, “the preparation for the remedy” as the Terentian doctrine had it, must bring Fortinbras into the scope of the play’s action, fetch Laertes from Paris upon his sister’s death, and begin to engineer to counteraction and hence the catastrophe. In addition to this already weighty task, the old plot demanded that Hamlet be got to sea and back, and that Rosencrantz and Guildenstern be dispatched. Part of the problem Shakespeare solved expeditiously enough, though with inevitable loss of pace and immediacy, by means of the dramatized narration in Hamlet’s letter to Horatio and his later retrospective account of the sea voyage. But the sheer difficulty of managing the narrative threads of intrigue, counterintrigue and subintrigue remained formidable. The present act division produces an effect of dislocation and crowding; and a further consequence of the division as we have it is the equally crowded catastrophe of Act V, which is made to contain the gravedigger’s comic material (normally found in Shakespeare’s fourth acts), Hamlet’s leap into the grave, the plotting of Claudius and Laertes, and the complicated duel itself.</p>
+
+    <p>Suppose however, that, as has been suggested, Act IV were to begin at IV.iv with Fortinbras, it would then be possible to see the fourth phase as running right through to include the present V.i (the gravediggers and the burial). This would leave, it is true, a shorter Act V, but one in which the whole momentum of the action would be directed to the issue of the duel, with Osric, Character of an Affected Courtier, absurd relic of the painted court, functioning far more effectively than he does at present in an act that is so full of directions as to become obscure in its import. The great virtue of this shift, however, would be to restore Act IV to a form that is recognizably Shakespearean, exhibiting a characteristic control of design, the effect of that sure shaping power which alone can achieve the intelligible spacing and articulating of complex dramatic material.</p>
+
+    <p>What we would then have is a fourth act in which the protagonist is brought to the nadir of his tragic progress with the familiar Shakespearean modifying and measuring effects of pathos and irony playing upon him, while the important contrast between the three avenging sons is brought into effective prominence. (A common view taken in the matter of the three avenging sons is that Fortinbras represents an Aristotelean mean or ideal [of honor, virtue, or action], while Hamlet represents defect and Laertes excess. My own view is that the two reflectors of Hamlet serve precisely to bring out the specifically tragic-heroic quality of the protagonist’s experience by comparison with their own more commonplace existences. Fortinbras’ revenge is a publicly sanctioned matter of armies and alliances [of the kind that is denied Hamlet by virtue of his circumstances]; Laertes’, a plunge into the abyss of deception and treachery. Only for Hamlet, who treads the tightrope of the task that is public duty and private burden at once, is his revenge the agent of a tragic self-discovery.) The act would then, in its complex strategy (though not of course in its content) resemble the fourth act of <i>Lear</i>, in which despair, pathos, irony, tragic “reunions,” and the comparison between the three victims of adversity — Edgar, Gloucester, and Lear — are all constitutive of the total effect. The act would be consonant with what both the anticipations of previous plays and the developments of later ones leads us to infer as the living principle of Shakespeare’s management of his fourth act; and this being so it would allow us to perceive and interpret the episodes with greater confidence. And “How all occasions” need no longer disturb us as unnecessarily prolonging the action, or as showing too crudely the “weakness of Hamlet.”</p>
+
+    <p>It does indeed represent Hamlet’s abdication from what has become the intolerable burden of thought. One continuity is worth noticing. “About, my brain!” (II.ii.627) expressed a determination to enlist thought in the service of action. The “pale cast of thought” (III.i.85) registered his awareness of thought’s power to paralyze action. Now in “My thoughts be bloody, or be nothing worth!” Hamlet is willing to subdue thought entirely to blood, to absorb himself in his role of avenger. It is a signal defeat, which we should not, I believe, regard with equanimity. Contemporary experience tells us much about the dangerous violence that can spring from defeated idealistic aspirations, or be released by them. What Hamlet was born (as tragic hero) to discover and to accept is precisely that all occasions do inform against us if we are possessed, and to the degree that we are possessed, of “large discourse”; that the anguish of looking before and after is the price to be paid for the capability and godlike reason which must not fust in us unused. That his own possession of this faculty is at this point subverted and confounded is to be discerned in the very illogic of his soliloquy. In compunction and self-blame he affirms the value of and the need for Fortinbras’ uncalculating enterprise, and disparages the “thought” that hinders him, though he is unable to decide whether he thinks too little (“bestial oblivion”) or too much (“some craven scruple of thinking too precisely on the event”). If in his despair of solutions he rejects the calculations of the understanding as more perfidious than the oracles, what he enlists as motive and ground for action is now no more than the puff of ambition, the blazon of honor. And in the same breath as he names the ambition of the delicate and tender prince “divine,” he exposes its object for what it is — worthless and negligible, an eggshell, a plot that is not tomb enough and continent to hide the slain. Drowning, he clutches at the straw of “greatness,” a factitious magnanimity. Man of conscience, of scruples, of considerations and distinctions, he envies Fortinbras his uninhibited sweep of action as he envied the player his uninhibited sweep of expression, as he envied Horatio his power to suffer nothing in suffering all — envied him his freedom from the imperious inner voice which demands integrity, its own inalienably true expression, in acts as in words. Hamlet’s problem, the problem of being what he is not, or not being what he is, is here resolved by denial, by a repudiation of his “ordeal of consciousness”; and it is upon this repudiation that Claudius’ antiphonal persuasion of Laertes to action — an action which will make him the impulsive tool of Claudius’ machinations — throws an ironically revealing and melancholy light:</p>
+
+    <div class="cita">
+        <p>KING. Laertes, was your father dear to you?</p>
+        <p>Or are you like the painting of a sorrow,</p>
+        <p>A face without a heart?</p>
+        <p>LAERTES. Why ask you this?</p>
+        <p>KING. Not that I think you did not love your father,</p>
+        <p>But that I know love is begun by time:</p>
+        <p>And that I see, in passages of proof,</p>
+        <p>Time qualifies the spark and fire of it;</p>
+        <p>There lives within the very flame of love</p>
+        <p>A kind of wick or snuff that will abate it;</p>
+        <p>And nothing is at a like goodness still,</p>
+        <p>For goodness, growing to a plurisy,</p>
+        <p>Dies in his own too-much; that we would do</p>
+        <p>We should do when we would; for this “would” changes,</p>
+        <p>And hath abatements and delays as many,</p>
+        <p>As there are tongues, are hands, are accidents;</p>
+        <p>And then this “should” is like a spendthrift’s sigh,</p>
+        <p>That hurts by easing. But to the quick o’ the ulcer:</p>
+        <p>Hamlet comes back; what would you undertake,</p>
+        <p>To show yourself your father’s son in deed,</p>
+        <p>More than in words?</p>
+        <p class="attribution">(IV.vii.108–27)</p>
+    </div>
+
+    <p>Nothing could bring out with greater force the melancholy perception that the whole play has dramatized. Action traps the actor in the labyrinth of concealed evil: inaction in the toils of time and the lapse of passion.</p>
+
+    <p>What in the meantime becomes of human well-being it is the function of Ophelia’s madness to reveal. The pathos of the figure, exposed to the pitying gaze of the onlookers, withdrawn into the depths of her lunatic solitude, so alone that she can express, in her Valentine song, the most recessed and hidden of a young girl’s fears and wishes, expresses powerfully the frailty of human existence, the irreparable losses it can sustain, the wreckage and flotsam that action, passion, and guilt leave in their wake. “Lord, we know what we are, but know not what we may be” is the leitmotif of the scenes, once more a study in concealments, but deeper and darker than that of the first act because what is concealed now on the stage, while it is revealed to the audience, is not a crime alone, but the sick soul of the Queen and the limed soul of the King, heavy with remorse of conscience. The songs and flowers of Ophelia are the mirrors in which each painfully and obliquely sees his own loss.</p>
+
+    <div class="cita">
+        <p>Thought and affliction, passion, hell itself,</p>
+        <p>She turns to favor and to prettiness,</p>
+    </div>
+
+    <p>Laertes says. Ophelia’s shattered fragments, a madness unfeigned, unglossed, and unmitigated as no other in Shakespeare, and her death, represent the play’s antithesis of human well-being, its maximum of human loss; and they provide the occasion for the graveyard scene, which articulates with an unmatched density of invention Hamlet’s realization of absolute moral finitude.</p>
+
+    <p>The great traditional theme of <i>memento mori</i> is given a prologue before Hamlet’s entrance in the fool’s logic of the gravediggers, whose digging occupation is a reminder of the way of all fallen flesh since Adam. The Second Clown’s worldly wisdom, “Will you ha’ the truth on’t? If this had not been a gentlewoman, she should have been buried out o’ Christian burial,” reminds us of the specific fall — the turpitude in high places — that has been Hamlet’s inheritance. The gravedigger’s way with a syllogism is not Hamlet’s, yet the issue of Hamlet’s capability and godlike reason has scarcely proved happier, as the melancholy circumstances remind us. “Is she to be buried in Christian burial that wilfully seeks her own salvation?” “If I drown myself wittingly it argues an act. . . .” “Wilfully,” “wittingly” — the words plunge in their trajectory to the heart of Hamlet’s matter. That he will still, when he enters with Horatio, be unwitting of the grave’s tenant to be is no small part of the irony. The mingling of comic and tragic modes in this encounter between prince and peasant is particularly effective because the perspective of common humanity which modifies and measures the spectator’s response, and the protagonist’s own extremity of desolation are here focused in one scene, and rendered by the gallows-wit duet between the gravedigger and his interlocutor. The protagonist himself, therefore, becomes the ironic vehicle for this most grimly comprehensive and ironic vision of the enigma and the paradox of existence.</p>
+
+    <p>The center of the scene is the familiar material of meditation in contempt of the world. But Hamlet’s satirical <i>ubi sunt</i> — “Where be his quiddits now” — is transposed into quite another key by the revelation of the skull’s identity. For a skull, most impersonal, most anonymous of all human relics, to have a name, and one which is bound up with Hamlet’s childhood memories, brings into his reflections, with an inescapable, vivid immediacy, the whole impact of the vanished past — his own as well as the dark backward and abysm of time which is everyman’s habitat. Death here is not eloquent, just, and mighty, but a stinking skull at which Hamlet’s gorge rises. The base uses to which return the avatars of wit (“a fellow of infinite jest, of most excellent fancy”) and of will (“that earth, which kept the world in awe”) are obtrusively evident to him, agonizingly present to his senses and his imagination.</p>
+
+    <p>Nor does he seek the consolations of philosophy, of the grander verities. On the contrary, and despite Horatio’s discouragement, he insists on tracing the noble dust of Alexander till he finds it stopping a bunghole. The poignance of his realization is thrown at once into relief and into perspective by the gravedigger’s casual familiarity with the facts of his gruesome trade: “your water is a sore decayer of your whoreson dead body.” Hamlet faces the facts of death, the deliquescent, the repulsive, the abhorrent outcome of a long day’s dying that no paint can disguise for long. By comparison with this thanatopsis Hamlet’s first invocation of death,</p>
+
+    <div class="cita">
+        <p>O! that this too too solid flesh would melt,</p>
+        <p>Thaw and resolve itself into a dew,</p>
+    </div>
+
+    <p>appears remote from reality: the yearning real enough, but the terms academic, as academic indeed as the attempt to resolve the riddles of passion and action — whether to suffer or to act, whether to live and endure or to make one’s quietus with a bare bodkin — by ratiocination. Nor was it in direct contemplation of physical death that the “To be” soliloquy was spoken at all. Then death was conceived to be desirable, were it not for the dread of dreams — a sleep, a consummation devoutly to be wished, an end to griefs and burdens. That speech was the speech of a man who still struggled, despite his depression of spirit, against the admission of his own radical impotence to master his destiny; not of a man to whom the very idea of a destiny, his own or imperious Caesar’s, is grotesque; not of a man mortified in the flesh by the knowledge of his nothingness.</p>
+
+    <p>But this stark humility is offset and modified by yet another shock, another revelation of an identity. Hamlet is precipitated out of his contemplation by the shock of the discovery that it is Ophelia who is to be buried with such “maimed rites.” Her withdrawal from him in life is now to be sealed by the finality of the grave. And, still hidden, he hears himself traduced in Laertes’ rhapsody of words, and is compelled to respond.</p>
+
+    <p>The double shock produces in him a revulsion of spirit, a new energy, an upsurge of passionate self-assertion. He leaps into the grave with a declaration of his royal identity. “This is I, Hamlet the Dane” announces that he dares, in the teeth of his adversary’s ranting threats, to become who he is. The emotional sequence is almost exactly reproduced by Webster in <i>The Duchess of Malfi</i> in the second prison scene. The dramatization there is cruder, more explicit, as is the nature of the Duchess’s ordeal; but “I am Duchess of Malfi still” registers no less movingly the reflex of proud defiance, the dignity of self-election. And his own rant to Laertes, in all its irascible spontaneity, reveals the deepest and most enduring preoccupations of the self he has striven throughout to realize. “What wilt thou do for her?” It is a theme upon which he will fight until his eyelids do no longer wag:</p>
+
+    <div class="cita">
+        <p>’Swounds, show me what thou’lt do;</p>
+        <p>Woo’t weep? woo’t fight? woo’t fast? woo’t tear thyself?</p>
+        <p>Woo’t drink up eisel? eat a crocodile?</p>
+        <p>I’ll do’t. Dost thou come here to whine?</p>
+        <p>To outface me with leaping in her grave?</p>
+        <p>Be buried quick with her, and so will I:</p>
+        <p>And, if thou prate of mountains, let them throw</p>
+        <p>Millions of acres on us, till our ground,</p>
+        <p>Singeing his pate against the burning zone,</p>
+        <p>Make Ossa like a wart! Nay, and thou’lt mouth,</p>
+        <p>I’ll rant as well as thou.</p>
+        <p class="attribution">(V.i.296–306)</p>
+    </div>
+
+    <p>Suffering, doing, saying. What action will suit the word, what word the action? What rhetoric but carries with it its own evasions and falsifications, becoming spurious in the very utterance?</p>
+
+    <p>Hamlet affirms at the end of the play “a divinity that shapes our ends, / Rough-hew them how we will,” as the reality behind the shows and appearances of things. Of all Shakespeare’s tragic heroes, he is the only one for whom a specifically Christian insight is the burden of his painfully acquired wisdom. Of the nominal Christians, Romeo is clearly in need of considerable religious instruction before he will qualify as Christian in any but a technical sense. Richard II’s long dialogue with martyrdom ends with heroic, not saintly, self-assertion. Othello’s Christianity is a <i>donnée</i> of the play, and of Othello’s idea of himself; he repudiates it in a spasm of pagan savagery and he employs its imagery to articulate his sense of the enormity of his own most appalling deed; but its doctrines are never the subject of his cogitations, its truths never matter for reflection. For Macbeth the question is in abeyance, and this is one way in which the dreadful limbo in which he lives is defined. But for Hamlet Christian doctrine is an assumption and an ambience, the frame of his awareness, the implicit substance of his speculations, and the basis of his ethical sensibility. The observation that the code of revenge is anti-Christian is not to the purpose, for the Christian cultures accommodated, or at least failed to displace, the code of revenge for many centuries both before and after <i>Hamlet</i>.</p>
+
+    <p>It is to my mind a curiously perverse understanding that continues to claim, in the words of a distinguished recent commentator [H. Weisinger], that “Hamlet, though nominally a Christian, yet in moments of sharpest crises . . . turns to the consolations of Stoicism.” He is speaking of Hamlet’s defiance of augury: “If it be now, ’tis not to come; if it be not to come, it will be now; if it be not now, yet it will come; the readiness is all.” True, it is a Senecan topos, but it is worth noticing that Hamlet is speaking in a moment not of sharp crisis but of calm decision; that he is, with a new kind of self-possession, calming the anxieties concerning premonitions of the stoical Horatio. This in itself makes its dramatic point. Moreover the evangelical affirmation that precedes the defiance of augury — “there’s a special providence in the fall of a sparrow” — could hardly be more opposed to the Senecan-stoic view of the cosmos. These assertions in defiance of augury have a finality and a poise that is in marked contrast to the “interrogative mood” that has characterized Hamlet’s idiom throughout:</p>
+
+    <div class="cita">
+        <p>What’s Hecuba to him or he to Hecuba,</p>
+        <p>That he should weep for her?</p>
+    </div>
+
+    <div class="cita">
+        <p>What is a man,</p>
+        <p>If his chief good and market of his time</p>
+        <p>Be but to sleep and feed</p>
+    </div>
+
+    <p>Did these bones cost no more the breeding, but to play at loggats with ’em?</p>
+
+    <p>Hamlet’s realization of the folly of that self-assumption of wit whereby a man would be the artist of his own salvation, or another’s, or another’s damnation, has issued in fact in that most basic of mature Christian virtues: the patience, the self-control which waits upon the fullness of time in release both from anxiety and haste, passion and compulsion; which recognizes limitation with an objectivity that precludes panic.</p>
+
+    <p>The composure is dramatized to good effect in the encounter with Osric. Styles of response have been throughout the very stuff of Hamlet’s judgments. He has expressed himself through his responses to them — his mother’s, Claudius’, the players’, Horatio’s, Polonius’, Laertes’. What we know most deeply of Hamlet we know through his reactions to the styles of these others. Now the ridiculous Osric provides the occasion for a Hamlet in complete command of himself. Moreover, the parody of Osric’s affectation serves to exhibit his self-possession, in marked contrast to the towering passion with which he responded to Laertes’ bravery, in the court context in which we first became aware of its absence. The humor is of the kind that is the surest sign of stresses resolved in a play of intelligence. And it is shot through with sentences, such as “to know a man well, were to know himself” (V.ii.143–44), which strikes us as the very essence of a wisdom the entire sequence of events has distilled. Nevertheless, to find the final outcome of Hamlet’s experience in this attainment of humility would be to do less than justice to the fine tragic balance of the catastrophe.</p>
+
+    <p>Hamlet kills his man, and one evil “canker of our nature” is destroyed in the full flush of its crimes. But not before it has destroyed him too, and his house, and seven other lives. What we are required to perceive at the close of the play, what the play strikes as its final note, is the enduring value of authentic individual existence; of the true record of what a man has made of himself and his circumstances. When Hamlet says “a man’s life is no more than to say ‘One,’” he also says “the interim is mine.” And that the bearing of a wounded name should supremely matter is what we learn from Hamlet’s plea to Horatio to absent him from felicity awhile, in order that the truth of the story should be made known. It is the final expression, at the very edge of silence, of a faith in the value of a life’s integrity. Shakespeare has no tragedy which articulates an idea more magnanimous than this.</p>
+
+    <section class="footnotes">
+        <h3>Note</h3>
+        <p>From <i>Tragic Form in Shakespeare</i>. © 1972 by Princeton University Press. Originally entitled “Hamlet.”</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>

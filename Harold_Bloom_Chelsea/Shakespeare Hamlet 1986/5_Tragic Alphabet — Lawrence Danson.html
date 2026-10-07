@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>“Tragic Alphabet” — Lawrence Danson</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">Lawrence Danson</p>
+        <h1 class="cab__tit">Tragic Alphabet</h1>
+    </header>
+
+    <p>“Speak to it. . . . It would be spoke to. . . . By heaven I charge thee, speak. . . . Speak to me. . . . O, Speak!” The word beats like a bell throughout the first scene of <i>Hamlet</i>, introducing (if obliquely) one of the play’s central concerns even before we meet the prince. True, there are special difficulties involved in communicating with a ghost — the protocol is obscure at best, and it is understandable that the men on watch should be confused — but the problem of <i>speaking</i> extends far beyond that special case in the course of the play. Misunderstandings are among the most frequent phenomenon in <i>Hamlet</i>: Hamlet cannot or will not understand the language of the court, and the court, for its part, makes a desperate (and unsuccessful) attempt to understand the wild and whirling words of its prince. There is hardly a character with whom Hamlet does not become involved in a linguistic contretemps: Claudius and Gertrude have to remind him of (among other things) the proper kinship terms; Polonius, Rosencrantz, and Guildenstern — the interpreters Claudius sends to Hamlet — do not understand him; Ophelia does not understand his mad speeches and finally becomes, herself, “A document in madness”; while Osric and the Grave-digger (in their different ways) turn the tables on Hamlet and make <i>him</i> confess that “equivocation will undo us.”</p>
+
+    <p>And the problem is not only verbal. The verbal difficulties mirror difficulties that exist in the realm of action — in the realm of what we might call gestural expression. Hamlet has a task to perform, a task real and deadly, but one also with a clearly symbolic dimension; his revenge must express a certain relationship to his dead father and to Claudius, to the state, to justice human and divine, and Hamlet finds that the acting of it becomes increasingly difficult as the incitements to it become more pressing. As it becomes difficult to say anything simply and directly in <i>Hamlet</i>, so it becomes difficult to do anything. And again the problem afflicts not only Hamlet but all who are involved with him: Claudius and those lesser beings “mortised and adjoined” to him are similarly driven to greater and greater indirections to find their directions out. The rottenness in Denmark has attacked the very roots of society — the symbolic systems which enable the primary social act, verbal and gestural expression.</p>
+
+    <p>The first instance of the problem suggests its dimensions and its cause. Marcellus and Bernardo have been unable to make the ghost speak; with a touching faith they have now called in a specialist: “Thou art a scholar; speak to it, Horatio” (I.i.42). But even Horatio is ill-equipped to break through the impasse in communication. He barrages the voiceless ghost with exhortation and finally, in frustration, calls for force; they strike at it with their partisans only to realize, “We do it wrong, being so majestical,/To offer it the show of violence” (I.i.143). Horatio, Bernardo, and Marcellus are, of course, the wrong men to deal with the ghost:</p>
+
+    <div class="cita">
+        <p>Let us impart what we have seen to-night</p>
+        <p>Unto young Hamlet; for, upon my life,</p>
+        <p>This spirit, dumb to us, will speak to him.</p>
+        <p class="attribution">(I.i.169)</p>
+    </div>
+
+    <p>But they lack more than the proper relationship. They lack the language (words) and the other means (gestures, and words and gestures ordered as ritual) that would make communication possible. They are ignorant of protocol, confused about the sort of ceremony to use — here in the night, on the battlements, amidst the “posthaste and romage” of wartime — when addressing “the king/That was and is the question of these wars.” The ghost, that is to say, is a wholly new element, undreamed of in their philosophy; it is an anomaly, and there is no customary language, no ritual, for dealing with it.</p>
+
+    <p>Even <i>before</i> we see the ghost we may find indications that the problem in Denmark involves the failure of ritual. The very first words of the play are an inversion of ceremonial order:</p>
+
+    <div class="cita">
+        <p>BERNARDO. Who’s there?</p>
+        <p>FRANCISCO. Nay, answer me. Stand and unfold yourself.</p>
+    </div>
+
+    <p>And the men on guard, it appears, do not even know what it is they are guarding against — only that it is something extraordinary. “Good now, sit down, and tell me, he that knows,” Marcellus asks,</p>
+
+    <div class="cita">
+        <p>Why this same strict and most observant watch</p>
+        <p>So nightly toils the subject of the land;</p>
+        <p>And why such daily cast of brazen cannon,</p>
+        <p>And foreign mart for implements of war;</p>
+        <p>Why such impress of shipwrights, whose sore task</p>
+        <p>Does not divide the Sunday from the week;</p>
+        <p>What might be toward, that this sweaty haste</p>
+        <p>Doth make the night joint-labourer with the day:</p>
+        <p>Who is’t that can inform me?</p>
+        <p class="attribution">(I.i.70)</p>
+    </div>
+
+    <p>The dissolving of difference between Sunday and the rest of the week, and between night and day, are small touches, but they are of a piece with the other “strange eruptions” — of which the ghost is the strangest — that have deprived the men of the certainties of custom and ceremonial. In scene IV, when Hamlet joins the watch, the men question him, not only about the ghost, but about the customs of King Claudius as well. Despite “kettledrum and trumpet,” even Claudius fails to make himself understood; even the rituals of the king fail to communicate their meanings.</p>
+
+    <p>In this context it is worth noting that the ghost, in speaking to Hamlet, dwells especially on the rituals that were denied him; he was</p>
+
+    <div class="cita">
+        <p>Cut off even in the blossoms of my sin,</p>
+        <p>Unhous’led, disappointed, unanel’d;</p>
+        <p>No reck’ning made, but sent to my account</p>
+        <p>With all my imperfections on my head.</p>
+        <p class="attribution">(I.v.76)</p>
+    </div>
+
+    <p>The murder was “most foul, strange, and unnatural” — and it receives this triple emphasis presumably because of the many social bonds it canceled: it was both fratricide and political assassination, and it followed acts of adultery and incest. Now the ghost must “walk the night” until “the foul crimes . . . Are burnt and purg’d away” (I.v.12).</p>
+
+    <p>The murder of old Hamlet is the first of the “maimed rites” in the play; others follow, especially in matters of death and interment. Polonius and Ophelia both receive “hugger-mugger” burials, and the series ends only with the play’s bloody final scene. Laertes, with his bold complaints to Claudius about his father’s</p>
+
+    <div class="cita">
+        <p>means of death, his obscure funeral —</p>
+        <p>No trophy, sword, nor hatchment, o’er his bones,</p>
+        <p>No noble rite nor formal ostentation —</p>
+        <p class="attribution">(IV.v.209)</p>
+    </div>
+
+    <p>and his rant (as Hamlet calls it) over Ophelia’s curtailed funeral, is most blatant in expressing his displeasure at the absence of the old expressive modes. But Hamlet, whose vision is deeper and whose denunciation is more subtle, sees what Laertes cannot, that the old terms of “honor” — the old rituals and (as we shall see) language itself — have become rotten and will no longer serve. The murder of old Hamlet and his reappearance in ghostly form introduce a fatal anomaly that destroys ritual observance and makes the demand for a new ritual that can accommodate it. The injunction to Hamlet to revenge includes the implicit demand for a new, expressive language.</p>
+
+    <p>When we turn from the battlements to the court we find the anomaly embodied in Hamlet himself. Amidst the celebrants of a marriage and a coronation, the prince sits silently apart, mourning a death and a usurpation. For Claudius this stark anomaly is intolerable, and his language reflects his method of dealing with it. The oxymorons of his opening speech are a desperate gambit, an attempt to make language swallow up irreconcilable differences:</p>
+
+    <div class="cita">
+        <p>Therefore our sometime sister, now our queen . . .</p>
+        <p>Have we, as ’twere with a defeated joy,</p>
+        <p>With an auspicious and a dropping eye,</p>
+        <p>With mirth in funeral, and with dirge in marriage,</p>
+        <p>In equal scale weighing delight and dole,</p>
+        <p>Taken to wife.</p>
+        <p class="attribution">(I.ii.8, 10)</p>
+    </div>
+
+    <p>But this weighing is a mere trick: the words alone balance and cancel each other out. Still, the trick might work; the courtiers, after all, have in their “better wisdoms . . . freely gone with this affair along.” Only Hamlet is there to remind them of a reality not so easily manipulated.</p>
+
+    <p>If Claudius’s mode is the oxymoron, Hamlet’s is the pun. One man balances words to cancel out their antithetical meanings, while the other overbalances words <i>with</i> meanings. The pun thus typifies Hamlet’s role throughout the play: it is the linguistic confrontation that precedes the physical. Claudius greets Hamlet as “my cousin Hamlet, and my son,” but Hamlet responds (aside), “A little more than kin, and less than kind” (I.ii.64, 65) — informing us that Claudius’s double kinship is (through the pun on “kind”) both unnatural and ungracious, not at all of Hamlet’s kind. “How is it that the clouds still hang on you,” asks Claudius; and in Hamlet’s reply — “Not so my lord; I am too much in the sun” (66, 67) — the sunshine of royal attention and the too-much sonship of double paternity become a distaste for life itself (the condition of being in the sun). “Thou know’st ’tis common — all that lives must die,” says Gertrude (showing a touch of the Claudian manner in her facile balancing of <i>lives</i> with <i>die</i>): “Aye, madam, it is common,” comes Hamlet’s reply (72, 74), but now the word <i>common</i> is loaded with meanings that quite reverse the ameliorating effects of the oxymoron. Hamlet’s punning carries with it the demand that words receive their full freight of meaning, and it is a demand that dooms to defeat Claudius’s wordy attempts at compromise.</p>
+
+    <p>An “exchange of complementary values” is the essential act of social existence. At the linguistic level, “there must be a certain equivalence between the symbols used by the addresser and those known and interpreted by the addressee” [Roman Jakobson and Morris Halle, <i>Fundamentals of Language</i>] to assure the success of any speech event. But at the opening of <i>Hamlet</i> (as the exchanges between Hamlet and Claudius and Gertrude show), the absence of “complementary values,” of equivalent symbols, is indeed remarkable. The one word <i>common</i> conveys ideas so widely different to two speakers as to suggest that it is really two separate words. And there is no equivalence in the use of such vital symbols as <i>mother, father, uncle, nephew,</i> and <i>son</i>. Claudius’s oxymoronic mode is an attempt to enforce the illusion that the symbols are univocal, while Hamlet’s puns expose the equivocation that has invaded each.</p>
+
+    <p>So it is, too, in the other, gestural language of social transactions. “My lord, I came to see your father’s funeral” (I.ii.176), Horatio tells Hamlet, but even a “funeral” is now an ambiguous symbol: “I prithee do not mock me, fellow student; I think it was to see my mother’s wedding.” In the midst of the celebrating court, Hamlet’s very dress and demeanor — his “nighted colour” and “vailed lids” — are a sort of silent pun, loading the values of “funeral” onto those of “marriage.” Later in the play, when we see Hamlet baiting Polonius —</p>
+
+    <div class="cita">
+        <p>What do you read, my lord?</p>
+        <p>HAMLET. Words, words, words.</p>
+        <p>POLONIUS. What is the matter, my lord?</p>
+        <p>HAMLET. Between who?</p>
+        <p>POLONIUS. I mean, the matter that you read, my lord —</p>
+        <p class="attribution">(II.ii.190)</p>
+    </div>
+
+    <p>we will be seeing nothing different in kind from what our first glimpse of Hamlet has already revealed. Hamlet cannot, or will not, understand the language of the court — a language which (as Hamlet shows Polonius in the matter of the shape-shifting cloud) has lost its necessary relationship to a world it no longer adequately describes.</p>
+
+    <p>Hamlet’s puns continually probe a structural flaw in the edifice of Denmark, threatening to bring the building down on all their heads. He consistently brings together the balanced opposites of the Claudian oxymoron and pressurizes the contradiction to the breaking point. Closely related to his technique of aggressive punning is the use he makes of the syllogism. It is not sufficient that the king and queen should be (as in his parody of the Claudian manner he calls them) “my uncle-father and aunt-mother” (II.ii.372); by syllogistic reasoning Hamlet arrives at the reductio ad absurdam where the king is simply “dear mother” — since “father and mother is man and wife; man and wife is one flesh; and so, my mother” (IV.iii.49).</p>
+
+    <p>As a Wittenberg man, Hamlet knows the central importance of the syllogism as a tool of traditional (that is, scholastic) philosophy. But here, in using the syllogism to expose a false, absurd situation, he sounds more like the skeptical Francis than like the scholastic Friar Bacon. In his critique of the “idols of the market-place,” Francis Bacon was to denounce the errors which arise when the language we use fails to correspond to the truth of things-behind-language. And the syllogism would be a special point of Bacon’s attack; as his case has been put by a modern historian [Frederick Copleston]:</p>
+
+    <div class="cita">
+        <p>The syllogism consists of propositions; and propositions consist of words; and words express concepts. Thus, if the concepts are confused and if they are the result of over-hasty abstractions, nothing which is built on them is secure.</p>
+    </div>
+
+    <p>What Hamlet shows by his use of the syllogism is that nothing secure can rest on the falsehood that masquerades as the royal order of Denmark.</p>
+
+    <p>From Claudius’s point of view, however, the syllogism is simply mad: its logic is part of Hamlet’s “antic disposition.” Sane men know, after all, that “man and wife is one flesh” only in a metaphoric or symbolic sense; they know that only a madman would look for literal truth in linguistic conventions. And Claudius is right that such “madness in great ones must not unwatched go” (III.i.end). For the madman, precisely because he does not accept society’s compromises and because he explores its conventions for meanings they cannot bear, exposes the flaws which “normal” society keeps hidden. Hamlet’s wordplay, “pregnant” as it is with matters normally left undisclosed, brings to light things which (as Polonius says) “reason and sanity could not so prosperously be delivered of” (II.ii.208). Hamlet’s very language — a language that is a continual probing <i>of</i> language — brings the conventions and the compromises inexorably to view.</p>
+
+    <p>And not only Hamlet’s: the threat that madness, and mad-speech, poses to the state is shown in Ophelia too. (For, as I have already said, Hamlet’s problem becomes the problem of all who are associated with him. The distance between reality and the language that ostensibly describes it in Denmark, that builds equivocation into that language and leaves Hamlet speaking his antic wordplay, leaves Ophelia, too, speaking madly.) The disorder of Ophelia’s speech — its departure from the intelligible norm — is even more significant, and threatening, than its actual content. A gentleman says of her:</p>
+
+    <div class="cita">
+        <p>She speaks much of her father; says she hears</p>
+        <p>There’s tricks i’ th’ world, and hems, and beats her heart;</p>
+        <p>Spurns enviously at straws; speaks things in doubt,</p>
+        <p>That carry but half sense. Her speech is nothing,</p>
+        <p>Yet the unshaped use of it doth move</p>
+        <p>The hearers to collection; they yawn at it,</p>
+        <p>And botch the words up fit to their own thoughts;</p>
+        <p>Which, as her winks and nods and gestures yield them,</p>
+        <p>Indeed would make one think there might be thought,</p>
+        <p>Though nothing sure, yet much unhappily.</p>
+        <p class="attribution">(IV.v.4)</p>
+    </div>
+
+    <p>Here is the genius of great grief: Ophelia, no longer able to contain or express her experience within the bounds of “normal” behavior, finds in the virtual silence of madness the most effective, and for Claudius the most damning, speech of all. Any charges against Claudius, rationally delivered, could be rationally answered — as Claudius does indeed answer Laertes. But the charge that comes from the realm of madness is too sweeping; its very mode implies that the ordinary language is itself being condemned, and will not serve in reply.</p>
+
+    <p>Now no one has ever suggested (as far as I know) that Ophelia is only shamming; she has no choice about the way she speaks. But Hamlet is another matter and, even without solving the red herring of his real versus his feigned madness, we must agree that Hamlet’s choice of language needs some further explanation. Most of the rest of the court sees nothing wrong with the ordinary expressive modes; Gertrude, for instance, sees nothing wrong with her use of the word <i>common</i>. Why then does Hamlet, even before the ghost appears to him, reject the language of the court, and with it the compromises that would assure a smooth social functioning? Why must the expression he seeks (which, after the ghost’s appearance, will become identified with his revenge) be found outside the conventional modes available?</p>
+
+    <p>Lucien Goldmann defines “two essential characteristics of tragic man” which may be applied as well to our Shakespearean hero as to the Racinian heroes he discusses:</p>
+
+    <div class="cita">
+        <p>the first is that he makes [an] exclusive and absolute demand for impossible values; and the second is that, as a result of this, his demand is for “all or nothing,” and he is totally indifferent to degrees and approximations, and to any concept containing the idea of relativity.</p>
+    </div>
+
+    <p>The self-negating oxymorons of Claudian rhetoric, disguising actual conflict under a show of verbal concord, reflect the sort of condition this absolutist man must find intolerable. Hamlet’s disgust with the equivocal language — both words and rituals — of the Danish court leads him to his “all or nothing” attitude toward all language and ritual.</p>
+
+    <p>Equivocation — the conflict between the reality Hamlet perceives and the language used to describe that reality — has made all expression a matter of mere seeming, and Hamlet knows not seems. His rejection of the Claudian language extends to a rejection of all the symbolic systems that can denote a man. Thus, even his own punning (both verbal and silent) is inadequate: Hamlet chooses “nothing” since he cannot have “all”:</p>
+
+    <div class="cita">
+        <p>’Tis not alone my inky cloak, good mother,</p>
+        <p>Nor customary suits of silent black,</p>
+        <p>Nor windy suspiration of forc’d breath,</p>
+        <p>No, nor the fruitful river in the eye,</p>
+        <p>Nor the dejected haviour in the visage,</p>
+        <p>Together with all forms, moods, shapes of grief,</p>
+        <p>That can denote me truly. These, indeed, seem;</p>
+        <p>For they are actions that a man might play;</p>
+        <p>But I have that within which passes show —</p>
+        <p>These but the trappings and the suits of woe.</p>
+        <p class="attribution">(I.ii.77)</p>
+    </div>
+
+    <p>In an ambiguous world, where all is but seeming, and hence misinterpretation, no symbol is successful. The absolutist Hamlet finds nothing that can denote him truly, and is driven back to the only place where indubitable truth can reside, to the self: “But I have that within which passes show.”</p>
+
+    <p>Hamlet’s insistence upon an inner essence of truth is both noble and peculiarly jejune; it is the youthful nobility which refuses to compromise between the self and the world. For such a man, the self has a value independent of its suits and trappings, and he demands that it be prized and satisfied without regard to that accidental matter, the body, which happens to go with it. There is a poem by John Donne which wittily exposes the inevitable defeat of such youthful idealism. In “The Blossome,” Donne takes quite literally the duality of mind and body; and, as he is about to leave for a libertine visit to London, he addresses the heart which would stay behind in faithfulness to a denying mistress:</p>
+
+    <div class="cita">
+        <p>Well then, stay here; but know,</p>
+        <p>When thou hast stayd and done thy most;</p>
+        <p>A naked thinking heart, that makes no show,</p>
+        <p>Is to a woman, but a kinde of Ghost;</p>
+        <p>How shall shee know my heart; or having none,</p>
+        <p>Know thee for one?</p>
+        <p>Practice may make her know some other part,</p>
+        <p>But take my word, shee doth not know a Heart.</p>
+    </div>
+
+    <p>“A naked thinking heart, that makes no show” (or: “that within which passes show”): it cannot be; it is a mere immanence (a “Ghost”) needing a bodying forth in expressive action. As Hamlet tries to come to terms with the need for body and action, he shows a bitterness not unlike Donne’s (“Practice may make her know some other part”); for a while in Hamlet’s play, the only expressive action that seems possible is “lust in action.” Hamlet’s frequent expressions of sexual disgust project, in part, his feeling that the soul is raped in its commerce with the world. To speak or act in a world where all speech and action are equivocal seeming is, for Hamlet, both perilous and demeaning, a kind of whoring.</p>
+
+    <p>The whole vexed question of Hamlet’s delay ought, I believe, to be considered in light of this dilemma. To a man alienated from his society’s most basic symbolic modes, who finds all speech and action mere seeming and hypocritical playing, comes an imperious demand to speak and act — to express himself in deed his father’s son. The ghost’s stress upon ritual modes indicates that the expression demanded must not be just “a kind of wild justice,” but an expression ordered and meaningful. Hamlet’s difficulties at the linguistic level — his puns and “antic disposition,” the lack of commensurate values between him and the rest of the court — are reflected in his difficulties at the level of action. Like Titus Andronicus, Hamlet is confronted with the expressive imperative; and the demanded expression, the act of revenge, must be an unequivocal gesture in a world where all gesture has become equivocal seeming. Hamlet must satisfy not only his dead father’s needs, but also his own deepest need to be denoted truly.</p>
+
+    <p>The problems of expression which confront Hamlet, as I have so far discussed them, are peculiar to his world — to the Denmark constituted in murder, usurpation, incest, and adultery. But there is a further problem revealed in the course of the play, related to these but central, not only for Hamlet, but for tragic man generally. It is most fully enunciated, appropriately enough, by that tragedian of the city, the Player-King. It is the problem of time, or history, and of expression-in-time. Briefly, how can one speak or act (truly) in a world where each succeeding moment gives the last the lie, where our words are no sooner uttered than they are relegated to a discredited past and (like Achilles racing the inexorable tortoise) can never overtake the truth of the passing moment? In “The Murder of Gonzago,” the Player-Queen protests that she will never remarry after her husband’s death; to which he replies, in lines worth quoting extensively:</p>
+
+    <div class="cita">
+        <p>I do believe you think what now you speak;</p>
+        <p>But what we do determine oft we break.</p>
+        <p>Purpose is but the slave to memory,</p>
+        <p>Of violent birth, but poor validity;</p>
+        <p>Which now, the fruit unripe, sticks on the tree;</p>
+        <p>But fall unshaken when they mellow be.</p>
+        <p>Most necessary ’tis that we forget</p>
+        <p>To pay ourselves what to ourselves is debt.</p>
+        <p>What to ourselves in passion we propose,</p>
+        <p>The passion ending, doth the purpose lose.</p>
+        <p>The violence of either grief or joy</p>
+        <p>Their own enactures with themselves destroy.</p>
+        <p>Where joy most revels grief doth most lament;</p>
+        <p>Grief joys, joy grieves, on slender accident.</p>
+        <p>This world is not for aye; nor ’tis not strange</p>
+        <p>That even our loves should with our fortunes change.</p>
+        <p>But, orderly to end where I begun,</p>
+        <p>Our wills and fates do so contrary run</p>
+        <p>That our devices still are overthrown;</p>
+        <p>Our thoughts are ours, their ends none of our own.</p>
+        <p class="attribution">(III.ii.181, 205)</p>
+    </div>
+
+    <p>The Player-King does not question his wife’s sincerity: the irrelevance of sincerity is part of the problem. He questions, rather, the validity of any assertion of purpose made in a world where (to quote a more pithy tragic figure) thoughts are the slaves of life and life is time’s fool. Even where thought and expression are in tune with each other, the inevitable movement of time (“fate”) makes a liar of our “wills.” In this world of constant process, “Our thoughts are ours, their ends none of our own.”</p>
+
+    <p>Inexorably moving time is the discreditor of all purpose and action: it is the primary equivocator, and for the man who despises all seeming it raises hypocrisy to the level of a universal condition. Claudius, who knows and accepts the conditions of this world as fully as Hamlet knows and rejects them, is in accord with the Player-King on this point. Claudius has been trying to win over Laertes; and he knows that Laertes (whose expressions of love for Polonius and determination to be revenged are made with “emphasis” enough) still may be, as Claudius puts it, “Like the painting of a sorrow,/A face without a heart” (IV.vii.108). For Laertes’s determination, like that of the Player-Queen, is the slave of time: “I know,” Claudius says, that</p>
+
+    <div class="cita">
+        <p>love is begun by time,</p>
+        <p>And that I see, in passages of proof,</p>
+        <p>Time qualifies the spark and fire of it.</p>
+        <p>There lives within the very flame of love</p>
+        <p>A kind of wick or snuff that will abate it;</p>
+        <p>And nothing is at a like goodness still;</p>
+        <p>For goodness, growing to a pleurisy,</p>
+        <p>Dies in his own too much.</p>
+        <p class="attribution">(IV.vii.111)</p>
+    </div>
+
+    <p>Claudius, like the Player-King, does not doubt the intention: he is simply stating a general law, and it is the very absoluteness which makes it so terrible. His crafty answer to the problem of action-in-time is really no answer at all, but mere accommodation; it is simply a <i>carpe diem</i> which avoids the problem:</p>
+
+    <div class="cita">
+        <p>That we would do,</p>
+        <p>We should do when we would; for this “would” changes,</p>
+        <p>And hath abatements and delays as many</p>
+        <p>As there are tongues, are hands, are accidents. . . .</p>
+        <p class="attribution">(IV.vii.118)</p>
+    </div>
+
+    <p>Laertes can show himself indeed his father’s son by getting rid of Hamlet the nearest way. And Claudius’s incitement to immediate action sounds as though it might do as a prescription for Hamlet as well, whose own task is mirrored by Laertes’s. Claudius’s advice would make either man an effective killer — but it would still leave them (what Hamlet refuses to be) the fools of time.</p>
+
+    <p>The problem of time’s discrediting effects upon human actions and intentions is what makes Hamlet’s “To be, or not to be” soliloquy eternal dilemma rather than fulfilled dialectic. Faced with the uncertainty of any action, an uncertainty that extends even to the afterlife, Hamlet, too, finds the “wick or snuff” of which Claudius speaks: “Thus conscience” — by which Hamlet means, I take it, not only scruples but all thoughts concerning the future —</p>
+
+    <div class="cita">
+        <p>does make cowards of us all;</p>
+        <p>And thus the native hue of resolution</p>
+        <p>Is sicklied o’er with the pale cast of thought,</p>
+        <p>And enterprises of great pitch and moment,</p>
+        <p>With this regard, their currents turn awry</p>
+        <p>And lose the name of action. —</p>
+        <p class="attribution">(III.i.83)</p>
+    </div>
+
+    <p>Both the Player-King and Claudius discuss the temporal dilemma in regard to love; here, Hamlet’s reflections are broken off as he catches sight of Ophelia. In the final act, Hamlet will declare, “I loved Ophelia,” but at the midway point of his play the distressing thought that what-we-are-now is not what-we-will-become makes love seem only one more hypocrisy in a world of hypocrisy:</p>
+
+    <div class="cita">
+        <p>OPHELIA. My lord, I have remembrances of yours</p>
+        <p>That I have longed long to re-deliver.</p>
+        <p>I pray you now receive them.</p>
+        <p>HAMLET. No, not I;</p>
+        <p>I never gave you ought.</p>
+        <p class="attribution">(III.i.83)</p>
+    </div>
+
+    <p>For the gestures of yesterday are false today.</p>
+
+    <div class="cita">
+        <p>HAMLET. I did love you once.</p>
+        <p>OPHELIA. Indeed, my lord, you made me believe so.</p>
+        <p>HAMLET. You should not have believ’d me; for virtue cannot so inoculate our old stock but we shall relish of it. I loved you not.</p>
+        <p>OPHELIA. I was the more deceived.</p>
+        <p class="attribution">(III.i.115)</p>
+    </div>
+
+    <p>The only way out of the dilemma of action falsified in the acting is to remove oneself somehow from the mortal condition: “Get thee to a nunnery. Why wouldst thou be a breeder of sinners?”</p>
+
+    <p>Ophelia is not only Hamlet’s victim; in her limited way, she faces the same difficulties which cause him to victimize her. She, too, lives in a world of hypocritical seeming, erected (in her case) into the self-serving morality of Polonius’s and Laertes’s admonitions. Laertes warns her not to trust Hamlet’s expressions of love, and one of the reasons he gives is that same simple reason Hamlet (with self-mocking bitterness) also gives — man is subject to time:</p>
+
+    <div class="cita">
+        <p>For nature crescent does not grow alone</p>
+        <p>In thews and bulk, but as this temple waxes,</p>
+        <p>The inward service of the mind and soul</p>
+        <p>Grows wide withal. Perhaps he loves you now.</p>
+        <p class="attribution">(I.iii.11)</p>
+    </div>
+
+    <p>Polonius adds the limbs and outward flourishes to Laertes’s lesson, in words recalled later by Claudius’s speech:</p>
+
+    <div class="cita">
+        <p>These blazes, daughter,</p>
+        <p>Giving more light than heat — extinct in both,</p>
+        <p>Even in their promise, as it is a-making —</p>
+        <p>You must not take for fire.</p>
+        <p class="attribution">(I.iii.117)</p>
+    </div>
+
+    <p>(Claudius says, “There lives within the very flame of love/A kind of wick or snuff.”) Even as it is spoken, according to Polonius, the word becomes false. And Hamlet, for the greater part of his play, would have to give his bitter assent: only silence (and inaction) can be true to that which is within.</p>
+
+    <p>The Polonii are concerned in a practical manner with the problem of time and growth, that man changes and therefore will be false. Hamlet takes the question the necessary one step further; man dies, and his death is the ultimate change that makes liars of us all. The graveyard, with Yorick’s skull, is to Hamlet a most powerful symbol; it is, at least for a time, his proof that all action contains a principle of obsolescence. Alexander’s world-conquering gestures are rendered as meaningless by the grave as Yorick’s gibes and gambols. Death proves that all our words and deeds are as transient, and thus ultimately false, as a lady’s cosmetics: “Now get you to my lady’s chamber, and tell her, let her paint an inch thick, to this favour she must come” (V.i.189). Horatio’s comment, “’Twere to consider too curiously to consider so,” is a counsel of simple sanity, for Hamlet’s consideration would make all “enterprises . . . their currents turn awry/And lose the name of action.” But Hamlet, who has seen and considered too much to turn away now, will have to achieve his expressive action, not with eyes averted from the skull, but with the fact of death integrated in the gesture he will make.</p>
+
+    <p>The arrival of the players in Act II, scene ii gathers to a focus many of the apparently disparate thematic concerns of <i>Hamlet</i>; most immediately, the coming of the players bears upon the problem of expression in a world of seeming. For these players, unlike others at Elsinore, confess their profession proudly; they are very much experts in seeming, bringing with them the gossip of the green room and merging into one complex image Hamlet’s Denmark and Shakespeare’s Globe Theater. Because they are actors, they have a concern for rhetoric and gesture: their very presence thus serves to remind us of the difficulty men have had at Elsinore in finding a language with which to speak to the ghost and to each other. We have been watching a king (Claudius) play his very difficult role, and have seen the difficulty of that role vastly increased by the prince’s rejection of all seeming and playing. Now the prince exclaims, “He that plays the king shall be welcome” (II.ii.317)</p>
+
+    <p>The scene in which the players make their entrance has already acquainted us with a variety of uses for playing. Polonius has proposed a solution to the problem of Hamlet’s madness, and in the process has been cautioned to speak “more matter with less art” (II.ii.95). “Madam, I swear I use no art at all,” the artful Polonius responds, and then proposes, as a means for getting at the truth, an improvisation with himself and Claudius as hidden audience, and with his daughter as ingénue to Hamlet’s unsuspecting romantic lead. Hamlet then treats Polonius to a private show of his feigned madness — a difficult play full of allusions and puns which seems to Polonius “pregnant” with a meaning “which reason and sanity could not so prosperously be delivered of.” Polonius fails to recognize the madness as acting, but he does see a “method” in it. Finally, Rosencrantz and Guildenstern, playing the parts given them by Claudius, also use seeming to find out a truth and are met in turn with a seeming (Hamlet’s) which may well be truth.</p>
+
+    <p>The arrival of the players at this point breaks through the tangle of involved wordplay, apparent irrelevance, and politic dissembling. Hamlet’s greeting to them is warm, with a controlled excitement which seems to come from what Bradley calls “the true Hamlet, the Hamlet of the days before his father’s death.” Perhaps Hamlet already sees in them a form of release from his noncommunicative tangle: his greeting rushes directly on to a hope: “We’ll have a speech straight. Come, give us a taste of your quality; come, a passionate speech” (II.ii.425).</p>
+
+    <p>Robert J. Nelson, writing of the convention in general, has said that, “The play within a play is the theater reflecting on itself, on its own paradoxical seeming.” The Player’s speech about Pyrrhus, Priam, and Hecuba is, as it were, merely a curtain raiser to the more elaborate “The Murder of Gonzago” in Act III; but it is a true play-within-a-play in providing, to paraphrase Professor Nelson, a reflection of the play <i>Hamlet</i>’s paradoxical seeming, and it is worth pausing over. Polonius finds it too long, but Hamlet is both moved and perplexed by it — by the speech itself and by the circumstances of its delivery. The Player’s speech, as we shall see, brings to consciousness for Hamlet the nexus of ideas: playing-sincerity-expression-revenge.</p>
+
+    <p>One “reflection” is succinctly recognized in Harry Levin’s analysis of the Player’s speech:</p>
+
+    <div class="cita">
+        <p>To the observer who is painfully learning the distinction between <i>seems</i> and <i>is</i>, the hideous pangs of the Trojan Queen are the mirrored distortions of Gertrude’s regal insincerities. The “damn’d defeat” of Priam, reminding Hamlet of his father, prompts him to renounce his hitherto passive role, to soliloquize on the Player’s example, and finally to evolve his plan of action.</p>
+    </div>
+
+    <p>What Hamlet sees, that is to say, is in part the murder of a father — a murder recounted in a high heroical vein which is, in itself, a painful reminder of his own lack of heroism. But the mirror a play holds up to nature — which in the case of a play-<i>within</i>-a-play means the “nature” of the containing play — has curious properties, not the least of which is its ability to reflect more than one scene or set of images simultaneously.</p>
+
+    <p>Thus we need not be unduly surprised by a second “reflection” found in the Player’s speech — a reflection which shows Hamlet’s form in that of the father-murderer Pyrrhus. Here is the picture of Pyrrhus at the instant when he hears the “hideous crash” of “senseless Ilium” falling as if in sympathy with Priam:</p>
+
+    <div class="cita">
+        <p>For, lo! his sword,</p>
+        <p>Which was declining on the milky head</p>
+        <p>Of reverend Priam, seem’d i’ th’ air to stick.</p>
+        <p>So, as a painted tyrant, Pyrrhus stood</p>
+        <p>And, like a neutral to his will and matter,</p>
+        <p>Did nothing.</p>
+        <p>But, as we often see, against some storm,</p>
+        <p>A silence in the heavens, the rack stand still,</p>
+        <p>The bold winds speechless, and the orb below</p>
+        <p>As hush as death, anon the dreadful thunder</p>
+        <p>Doth rend the region; so, after Pyrrhus’ pause,</p>
+        <p>A roused vengeance sets him new a-work;</p>
+        <p>And never did the Cyclops’ hammer fall</p>
+        <p>On Mars’s armour, forg’d for proof eterne,</p>
+        <p>With less remorse than Pyrrhus’ bleeding sword</p>
+        <p>Now falls on Priam.</p>
+        <p class="attribution">(II.ii.471)</p>
+    </div>
+
+    <p>Hamlet, “like a neutral to his will and matter,” has been hesitating in the acting of <i>his</i> revenge (for Pyrrhus, too, is a revenger); and Hamlet, too, has heard the “hideous crash” of a society’s central edifice and symbol. The enacting of his revenge has come to seem like the cataclysm of an entire world.</p>
+
+    <p>The momentary identification between Hamlet and Pyrrhus does not yet exhaust the image. Plays-within-a-play tend, I have suggested, to reflect the nature of dramatic art itself; they present an image, not only of this play’s thematic concerns, but of this play as any or all plays. And thus the image of Pyrrhus as “painted tyrant” — an image associated, by the epithet, with forms of art — expresses something of the nature of the tragic drama. It is an image of energy in stasis, of an eternally suspended moment — suspended first because it is called “painted,” and also because of the retarding motion of the verse here, with its long, swelling epic simile — an eternal moment preceding the inexorable fall of the tragic blow.</p>
+
+    <p>This static instant — which, while only an instant, is also an eternity fixed by poet and painter — is a demonstration of the esthetic fact that, in the Player’s play, Troy will always fall, that Hecuba will always lament, and that the audience will always sympathize — and thus that Troy will never fall utterly. The permanence of the image, and of its potential effect upon an audience, is important in understanding Hamlet’s reaction to it. Imaged in the pregnant instant of “Pyrrhus’ pause” is the optimistic distinction between life and art expressed for our modern world by Pirandello:</p>
+
+    <div class="cita">
+        <p>All that lives, by the fact of living, has a form, and by the same token must die — except the work of art which lives forever in so far as it <i>is</i> form.</p>
+    </div>
+
+    <p>In the world of flux and mere appearance which baffles Hamlet’s search for an adequate expression, a play — apparently the most insubstantial of phenomena — moves Hamlet deeply. He wanted “a passionate speech,” and that he surely got. Nor can we dismiss the Player’s speech as mere literary travesty: whatever objections we might make to it — its strange words, overelaboration, emotional excess — are the same objections made by the audience at Elsinore, as if Shakespeare specifically wanted to forestall and disarm our criticism. Indeed the speech does (in Dryden’s phrase) “smell too strongly of the buskin”; but, Harry Levin recognizes, this is an integral part of the <i>trompe l’oeil</i> effect by which the play-within-the-play makes the equally conventional primary play (that is, <i>Hamlet</i> itself) stand out as primary reality. The self-consciously “poetic” style of the Player’s speech forces us to recognize it as something apart from Hamlet’s accustomed world. Like Hamlet, savoring and questioning that word <i>mobled</i>, we are forced to attend to the language of the Player’s speech: because it calls attention to itself as poetry, its language is “corporealized” [Burkhardt]; it pulls us up short as we confront those devices — its alliterations, invocations, epic similes, archaisms, and so on — which tell us that this is not the “transparent” language of ordinary discourse. We need not like the language of the Player’s speech, though I think we ought, but we cannot dismiss it. Hamlet, at least, does not.</p>
+
+    <p>Hamlet responds eagerly to this professional in the arts of expression. Indeed, he gives the Player the sincerest flattery: his imitation of the Player’s speech follows after Polonius has been bid to “see the players well bestowed” and the stage is again clear. The similarity between Hamlet’s soliloquy (“O, what a rogue and peasant slave am I!”) and the Player’s speech was noticed by Dover Wilson, who writes that “The two speeches are for all the world like a theme given out by the First Violin and then repeated by the soloist.” Repeated, however, with important variations. But the musical analogy is apt because the similarity between the player’s speech and Hamlet’s soliloquy is very much one of tone and rhythm.</p>
+
+    <p>Hamlet’s speech, like the Player’s, builds to a crescendo of sound and emotion:</p>
+
+    <div class="cita">
+        <p>Am I a coward?</p>
+        <p>Who calls me villain, breaks my pate across,</p>
+        <p>Plucks off my beard and blows it in my face,</p>
+        <p>Tweaks me by the nose, gives me the lie i’ th’ throat</p>
+        <p>As deep as to the lungs? Who does me this?</p>
+        <p>Ha!</p>
+    </div>
+
+    <div class="cita">
+        <p>’Swounds, I should take it; for it cannot be</p>
+        <p>But I am pigeon-liver’d and lack gall</p>
+        <p>To make oppression bitter, or ere this</p>
+        <p>I should’a fatted all the region kites</p>
+        <p>With this slave’s offal. Bloody, bawdy villain!</p>
+        <p>Remorseless, treacherous, lecherous, kindless villain!</p>
+        <p>O, vengeance!</p>
+        <p class="attribution">(II.ii.565)</p>
+    </div>
+
+    <p>And here Hamlet’s speech, like the Player’s at the instant when Pyrrhus’s ear is taken prisoner, stops suddenly in its hurtling career. Hamlet, too, is caught in an attitude of listening, suspended while his own roaring declamation dies away. Then:</p>
+
+    <div class="cita">
+        <p>Why, what an ass am I! This is most brave,</p>
+        <p>That I, the son of a dear father murder’d,</p>
+        <p>Prompted to my revenge by heaven and hell,</p>
+        <p>Must, like a whore, unpack my heart with words,</p>
+        <p>And fall a-cursing like a very drab,</p>
+        <p>A scullion!</p>
+        <p class="attribution">(II.ii.578)</p>
+    </div>
+
+    <p>The moment of stasis ended, Hamlet’s speech moves rapidly, surely, with a new sense of purpose, to the announcement of a plan of action. The conclusion comes as swiftly and irrevocably as Pyrrhus’s deadly blow; and the speech which begins as a reflection on the nature of acting ends with the announcement of the tragic peripety: “The play’s the thing/Wherein I’ll catch the conscience of the King.”</p>
+
+    <p>Something curious has happened between the two speeches: the variation on the theme. For the Player’s speech, a speech that is decisively “play” and makes no illusory claims to be “real,” is wholly successful in its expression; but, the “play” now over, the words of passion become in Hamlet’s mouth a mere unpacking, a whorishness. And this, as Hamlet recognizes, is most strange. A player has moved himself and his audience to tears on behalf of a mere fiction; Hamlet now, at his most sincere and most truly impassioned, finds that his sincerity falls far short of a player’s seeming, that his true passion is more theatrical and less satisfying than a player’s part.</p>
+
+    <p>The question Hamlet puts initially stands halting between the existential and the purely esthetic:</p>
+
+    <div class="cita">
+        <p>What’s Hecuba to him or he to Hecuba,</p>
+        <p>That he should weep for her? What would he do,</p>
+    </div>
+
+    <div class="cita">
+        <p>Had he the motive and the cue for passion</p>
+        <p>That I have?</p>
+        <p class="attribution">(II.ii.552)</p>
+    </div>
+
+    <p>And the quick answer he gives is as psychologically useless as it is esthetically naïve: “He would drown the stage with tears, / And cleave the general ear with horrid speech.” Hamlet tries to do precisely this, as we have seen, going faster and faster, louder and louder, working himself up only to stop short and condemn himself for cursing “like a drab.” What goes wrong? Why doesn’t the Player’s way work for Hamlet?</p>
+
+    <p>Since a part of Hamlet’s perplexity has to do with the choice of words and their mode of delivery, a part of our answer must also deal with the linguistic medium. And so we may notice that the Player’s old-fashioned declamation was alive in the timelessness of its play: it stood out from the general buzz and hum of Denmark’s language and earned for itself the right to be attended to fully. But Hamlet is imprisoned in history, a fool of time, and his words are the realm’s current coin. Hamlet’s words are as good as such words can be, but (as he will later tell Laertes) anyone can “mouth” and “rant” them; and despite all the emphasis in the world, the loudest word in a worn-out language might as well be a whisper. At this stage of the action, we might say, Hamlet’s play (unlike the Player’s play of Pyrrhus and Priam) is not yet written: because he lives he is tied to a form, but it is the form of the dying animal; it is a form that lives in history, and so gives itself the lie at every successive moment of its being. Hamlet’s passion becomes false in the very speaking of it, and this (we recall) is precisely the thing he feared when we first saw him, alone and silent, nursing that inner core of unexpressed truth which alone was trustworthy.</p>
+
+    <p>But there is more. For the expression Hamlet seeks is one that words alone could never accomplish. Hamlet demands an expression in action, and so we may notice that it is action which the Player’s speech contains but Hamlet’s lacks. Poet and painter have embodied the form of Pyrrhus’s revenge, and when the Player speaks his lines, the words give renewed life to this action which has been made eternal form. But Hamlet has before him still the task of uniting the proper action with his words, of informing his words with meaning through gesture. Before the meeting with his father’s ghost, Hamlet thought he must be content with what was within. Now the players have come and shown him the potential of “acting”; but immediately he has found the difficulty and double-edgedness of it. Not just any acting will do, and not all words. Still, somehow, “The play’s the thing.”</p>
+
+    <p>I am trying to find an answer to the question, “What does Hamlet find in the players’ art?” and I am aware that the answer I am proposing is a tortuous one. I am aware, too, that there is an easier answer: we could simply say that Hamlet recalls a commonplace about the affective powers of drama —</p>
+
+    <div class="cita">
+        <p>That guilty creatures, sitting at a play,</p>
+        <p>Have by the very cunning of the scene</p>
+        <p>Been struck so to the soul that presently</p>
+        <p>They have proclaim’d their malefactions —</p>
+        <p class="attribution">(II.ii.585)</p>
+    </div>
+
+    <p>and decides to use the theater as a sort of lie-detector test. Is it, then, only a modern consciousness, seeing <i>Hamlet</i> through the redactions of Pirandello or Tom Stoppard, which will want to find more here than the obvious lesson in criminology?</p>
+
+    <p>The fact is that <i>Hamlet</i>, through any eyes, is insistently self-conscious about its own histrionic basis. And in a theater like Shakespeare’s, where the metaphor of life-as-drama was never far away, could the situation of Hamlet’s soliloquy be dismissed? — a player in a play (the actor playing Hamlet in <i>Hamlet</i>) gives a speech about a player playing a player within his play, and in that speech considers the relationships between appearance and reality, histrionics and sincerity, acting and action. A degree of subtlety seems warranted.</p>
+
+    <p>And there are other indications that the answer to Hamlet’s questions about the players’ art, his troubled</p>
+
+    <div class="cita">
+        <p>What would he do,</p>
+        <p>Had he the motive and the cue for passion</p>
+        <p>That I have?</p>
+    </div>
+
+    <p>involves more than simply proving Claudius’s guilt. For the lie-detector use of acting is one we see much of in <i>Hamlet</i>, and though it shares certain characteristics with Hamlet’s use of acting, it is decisively not the same. Polonius is the great master of it — of using, that is, the indirection or downright falseness of acting to discover a truth. Polonius was in his time an amateur actor himself; appropriately, he played Caesar and was killed in the capitol. But we now see Polonius either as a theater critic (and it is a flat sort of criticism he practices, multiplying rigid categories while demanding that he be kept entertained), or as a director — of Laertes, Reynaldo, Ophelia, Gertrude. To each he recommends the use of seeming: in the case of Laertes it is to be nothing short of a life-style, but with the others it is specifically a means for getting at a hidden truth. In itself, of course, there is nothing particularly wrong with his advice to use “indirections [to] find directions out.” But the nature of the truth which is to be found out by these means is seriously inadequate. The truth is, for Polonius, a thing, a simple object, which the sufficiently deceptive man ought to be able to sneak up on and seize. “Give me up the truth,” he demands of Ophelia (I.iii.98), and (underscoring the worth of a truth negotiable in this manner) he tells Reynaldo to use a “bait of falsehood [to] take this carp of truth” (II.i.62). He can boast:</p>
+
+    <div class="cita">
+        <p>If circumstances lead me, I will find</p>
+        <p>Where truth is hid, though it were hid indeed</p>
+        <p>Within the centre.</p>
+        <p class="attribution">(II.ii.156)</p>
+    </div>
+
+    <p>The truth in this case is the truth of Hamlet’s motives, and it is appropriate that the sort of discovery the Polonian roundaboutness is able to make is itself a circularity:</p>
+
+    <div class="cita">
+        <p>Mad call I it; for, to define true madness,</p>
+        <p>What is’t but to be nothing else but mad?</p>
+        <p class="attribution">(II.ii.93)</p>
+    </div>
+
+    <p>It is not, then, simply Polonius’s habit of lurking behind arrases which is wrong. The mistake also comes in what he expects to find when he peeks from behind the arras onto the stage he has set. His belief in a unitary, capturable truth is in some ways similar to Hamlet’s early belief in an inner core of essential being. But Polonius dies like a rat because he is too busy in his seeking to find anything; while Hamlet, both actor and observer of actors, learns a great lesson about ends and means: the hidden truth and the mode of discovery are one, Hamlet finds.</p>
+
+    <p>Polonius is not alone in his failings. Rosencrantz and Guildenstern also use dissembling to pluck out the heart of a mystery, and find that their acting only discovers an actor. Even those good soldiers on watch for the ghost in the opening scene were involved in the impossible search for answers to misstated questions. There is a lesson here for Hamlet, and one for us as well. When we approach the problem of Hamlet’s delayed revenge — a problem more vexed than any ghost — and try to pluck out the heart of that mystery, we would do well to recall these epistemological muddles.</p>
+
+    <p>For are we not accustomed to thinking of Hamlet’s task as Polonius thinks of truth — as something simple and unitary, capable of discovery although only, perhaps, after some initial indirectness? In fact, as I have tried to show, the act of revenge is conceived, by Hamlet and his creator, as an expressive act, a fully meaningful linguistic and gestural expression to be undertaken in a world where words and gestures have become largely meaningless. It is thus a creative as much as a destructive act, and is as complex and hard-won as all true acts of creation must be. To consider the question of Hamlet’s delayed revenge in a narrower context is to run the risk of feeling cheated by the play. Hamlet, after all, never does consciously overcome whatever scruples or fastidiousness have kept him from his revenge; rather he stumbles into it when the Claudius-Laertes plot misfires. Thus, a critic [Brents Stirling] can write that the duel, with all its attendant deaths, is mere “accident . . . which breaks the chain of motivation.” But if not consciously willed, it is still no accident. Hamlet’s protracted search for “revenge” is the search, not for mere action however bloody, but for fully expressive action. And what Hamlet finds is that this action must be accomplished as the players accomplish theirs, with the facing and fulfilling of the tragedy’s necessary fifth act.</p>
+
+    <p>In <i>Feeling and Form</i>, Susanne Langer defines “the tragic rhythm” as “the pattern of a life that grows, flourishes, and declines.” In tragedy, that universal life-rhythm “is abstracted by being transferred . . . to the sphere of characteristically human action, where it is exemplified in mental and emotional growth, maturation, and the final relinquishment of power.” And, Langer adds, “In that relinquishment lies the hero’s true ‘heroism’ — the vision of life as accomplished, that is, life in its entirety, the sense of fulfillment that lifts him above his defeat.” To Hamlet, more perhaps than to any tragic hero except Oedipus, the search for the characteristic tragic rhythm becomes an almost self-conscious concern. Especially because of his interest in modes of playing, we are made to feel that Hamlet’s quest (say, for revenge) is a quest for the shape of his own play, that Hamlet comes to recognize his subservience to the action, in the Aristotelian sense, for which he exists. Hamlet’s task thus involves renunciation as well as action: that is the truth, both esthetic and existential, which he learns in part from his observation of the plays. “The readiness is all”: in the tone of quiet acceptance which characterizes Hamlet in the play’s closing moments we see the fruits of that observation.</p>
+
+    <p>An aspect of Hamlet’s task has been to join the language of words to the proper language of gesture. And no gesture short of the final tragic gesture, Hamlet’s death, will suffice. It is not only Claudius who must expiate the murder of old Hamlet, but Hamlet who must succeed a Hamlet as tragic victim. As the overdetermined image of Pyrrhus in the Player’s speech suggests, avenger and victim must finally become one. Hamlet dies, and his death, the necessary end of his tragedy, enables his expressive gesture. Now to the living, to that steadfast and scholarly observer Horatio, falls the burden to report Hamlet and his cause aright. But then, Horatio’s task has really been accomplished already, for (as Northrop Frye writes), “At the end of <i>Hamlet</i> we get a strong feeling that the play we are watching is, in a sense, Horatio’s story.” Hamlet achieves his necessary language with the completion, in death, when the time is ripe, of his tragic play. That language becomes ours, as it does Horatio’s, to be delivered by us “aright/To the unsatisfied” (V.ii.331).</p>
+
+    <section class="footnotes">
+        <h3>Note</h3>
+        <p>From <i>Tragic Alphabet: Shakespeare’s Drama of Language</i>. © 1974 by Yale University. Yale University Press, 1974. Originally entitled “Hamlet.”</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>

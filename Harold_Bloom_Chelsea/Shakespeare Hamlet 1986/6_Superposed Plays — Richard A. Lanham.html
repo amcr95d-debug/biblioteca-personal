@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>“Superposed Plays” — Richard A. Lanham</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">Richard A. Lanham</p>
+        <h1 class="cab__tit">Superposed Plays</h1>
+    </header>
+
+    <p>Shakespeare uses a variation on the sonnets strategy in <i>Hamlet</i>. He writes two plays in one. Laertes plays the revenge-tragedy hero straight. He does, true enough, veer toward self-parody, as when he complains that crying for Ophelia has interfered with his rants: “I have a speech o’ fire, that fain would blaze/But that this folly drowns it” (IV.vii.189–90). But he knows his generic duty and does it. No sooner has his “good old man” (Polonius’s role in the straight, “serious” play) been polished off than he comes screaming with a rabble army. He delivers predictably and suitably stupid lines like “O thou vile king,/Give me my father” (IV.v.115–16). And the Queen can scarcely manage a “Calmly, good Laertes” before he begins again:</p>
+
+    <div class="cita">
+        <p>That drop of blood that’s calm proclaims me bastard,</p>
+        <p>Cries cuckold to my father, brands the harlot</p>
+        <p>Even here between the chaste unsmirchèd brows</p>
+        <p>Of my true mother.</p>
+        <p class="attribution">(IV.v.117–20)</p>
+    </div>
+
+    <p>And just before the King begins to calm him, to the villainous contentation of both:</p>
+
+    <div class="cita">
+        <p>How came he dead? I’ll not be juggled with.</p>
+        <p>To hell allegiance, vows to the blackest devil,</p>
+        <p>Conscience and grace to the profoundest pit!</p>
+        <p class="attribution">(IV.v.130–32)</p>
+    </div>
+
+    <p>He plays a straight, hard-charging revenge-hero.</p>
+
+    <p>Against him, Ophelia reenacts a delightfully tear-jerking madwoman stage prop. The King mouths kingly platitudes well enough (“There’s such divinity doth hedge a king” [IV.v.123]), comes up with a suitably stagey, two-phase fail-safe plot, and urges the hero on (“Revenge should have no bounds”). And the whole comes suitably laced with moralizing guff. So the King plays a Polonius-of-the-leading-questions: “Laertes, was your father dear to you?” Laertes, with unusual common sense, returns, “Why ask you this?” And then the King is off for a dozen Polonian lines on love’s alteration by time: “Not that I think you did not love your father,/But that I know love is begun by time” (IV.vii.109–10). Only then can he get back to, as he phrases it, “the quick o’ th’ ulcer.” And the Queen plays out a careful scene on the brookside where Ophelia drowned. And wrestling in Ophelia’s grave, Hamlet, annoyed at being upstaged by Laertes, protests, “I’ll rant as well as thou.” And, as superb finale, Laertes, at the fencing match, stands there prating about honor with the poisoned rapier in his hand. The poisoner-poisoned motif releases the Christian forgiveness that forgives us, too, for enjoying all that blood. <i>Hamlet</i> offers, then, a story frankly calculated to make the audience as well as the compositor run out of exclamation points.</p>
+
+    <p>Hamlet obligingly confesses himself Laertes’ foil.</p>
+
+    <div class="cita">
+        <p>In mine ignorance</p>
+        <p>Your skill shall, like a star i’th’darkest night,</p>
+        <p>Stick fiery off indeed.</p>
+    </div>
+
+    <p>It is the other way about, of course. Laertes foils for Hamlet. Shakespeare is up to his old chiasmatic business, writing a play about the kind of play he is writing. The main play overlaps as well as glossing the play criticized — again, a strategy of superposition. Polonius plays a muddling old proverb-monger, and a connoisseur of language, in the Hamlet play, as well as good old man in the Laertes play. Ophelia, though sentimental from the start, is both more naive and more duplicitous in the Hamlet play; and so with the King and Queen, too, both are more complex figures. Shakespeare endeavors especially to wire the two plots in parallel: two avenging sons and two dead fathers; brother’s murder and “this brother’s wager”; both Hamlet and Laertes in love with Ophelia; both dishonest before the duel (Hamlet pretending more madness than he displays when he kills Polonius), and so on.</p>
+
+    <p>Now there is no doubt about how to read the Laertes play: straight revenge tragedy, to be taken — as I’ve tried to imply in my summary — without solemnity. We are to enjoy the rants as rants. When we get tears instead of a rant, as with the Laertes instance cited earlier, an apology for our disappointment does not come amiss. We are not to be caught up in Laertes’ vigorous feeling any more than in Ophelia’s bawdy punning. We savor it. We don’t believe the fake King when he maunders on about Divine Right, the divinity that doth hedge a king. We don’t “believe” anybody. It is not that kind of play. For explanation, neither the ketchup nor the verbal violence need go further than enjoyment. The more outrageous the stage effects, the more ghastly the brutality, the more grotesque the physical mutilation, the better such a play becomes. Shakespeare had done this kind of thing already and knew what he was about. Such a vehicle packed them in. Just so, when part-sales were falling, would Dickens kill a baby.</p>
+
+    <p>The real doubt comes when we ask, “What poetic do we bring to the Hamlet play?” As several of its students have pointed out, it is a wordy play. Eloquence haunts it. Horatio starts the wordiness by supplying a footnote from ancient Rome in the first scene, by improving the occasion with informative reflection. Everybody laughs at Polonius for his moralizing glosses but Hamlet is just as bad. Worse. Gertrude asks him, in the second scene, why he grieves to excess and he gives us a disquisition on seeming and reality in grief. The King follows with <i>his</i> bravura piece on grief. Everybody moralizes the pageant. The Hamlet play abounds with triggers for straight revenge-tragedy response. The whole “mystery” of Hamlet’s hesitant revenge boils down to wondering why he doesn’t go ahead and play his traditional part, complete with the elegant rants we know he can deliver.</p>
+
+    <p>The rhetorical attitude is triggered not only by obvious stylistic excess, as we have seen, or by <i>de trop</i> moralizing, but by talking about language, by surface reference to surface. This surface reference occurs at every level of the Hamlet play in <i>Hamlet</i>, as well as, of course, throughout the Laertes play. Polonius plays a main part here. His tedious prolixity ensures that we notice everyone else’s tedious prolixity. And his relish of language, his speech for its own sake, makes us suspect the same appetite in others and in ourselves. The Queen’s rejoinder to the marvelous “brevity is the soul of wit” speech in II.ii could be addressed to almost anybody in the play, including the gravedigger: “More matter, with less art.”</p>
+
+    <p>Everyone is manipulating everyone else with speechifying and then admitting he has done so. Every grand rhetorical occasion seems no sooner blown than blasted. Polonius offers the famous Gielgud encore about being true to oneself and then sends off Reynaldo to spy and tell fetching lies. The King plays king to angry Laertes then confesses to Gertrude that he has been doing just this. Ophelia is staked out to play innocent maiden so Hamlet can be drawn out and observed. <i>Hic et ubique</i>. Is she a stage contrivance or a character? What kind of audience are we to be? Everyone is an actor, Hamlet and his madness most of all. The play is full of minor invitations to attend the surface, the theme of speaking. Even the ghost has to remind himself to be brief — before continuing for thirty-odd lines (I.v). Theatrical gestures are not simply used all the time but described, as in Hamlet’s inky cloak and windy suspiration for grief, or the costuming and gesture of the distracted lover, as the innocent Ophelia describes Hamlet’s visit:</p>
+
+    <div class="cita">
+        <p>My lord, as I was sewing in my closet,</p>
+        <p>Lord Hamlet, with his doublet all unbraced,</p>
+        <p>No hat upon his head, his stockings fouled,</p>
+        <p>Ungartered, and down-gyvèd to his ankle,</p>
+        <p>Pale as his shirt, his knees knocking each other,</p>
+        <p>And with a look so piteous in purport</p>
+        <p>As if he had been loosèd out of hell</p>
+        <p>To speak of horrors — he comes before me.</p>
+        <p>He took me by the wrist and held me hard.</p>
+        <p>Then goes he to the length of all his arm,</p>
+        <p>And with his other hand thus o’er his brow</p>
+        <p>He falls to such perusal of my face</p>
+        <p>As ‘a would draw it. Long stayed he so.</p>
+        <p>At last, a little shaking of mine arm</p>
+        <p>And thrice his head thus waving up and down,</p>
+        <p>He raised a sigh so piteous and profound</p>
+        <p>As it did seem to shatter all his bulk</p>
+        <p>And end his being. That done, he lets me go,</p>
+        <p>And with his head over his shoulder turned</p>
+        <p>He seemed to find his way without his eyes,</p>
+        <p>For out o’doors he went without their helps</p>
+        <p>And to the last bended their light on me.</p>
+        <p class="attribution">(II.i.77–84, 87–100)</p>
+    </div>
+
+    <p>This might have come from an actor’s manual. Do we take it as such, respond as professional actors?</p>
+
+    <p>The Hamlet play turns in on itself most obviously when the players visit. Dramatic self-consciousness retrogresses a step further as the tragedians of the city talk about themselves doing what they are just now doing in a play depicting them doing just what. . . . The debate is about rightful succession, of course, like both the Laertes and the Hamlet plays.</p>
+
+    <div class="cita">
+        <p>What, are they children? Who maintains ’em? How are they escoted? Will they pursue the quality no longer than they can sing? Will they not say afterwards, if they should grow themselves to common players (as it is most like, if their means are no better), their writers do them wrong to make them exclaim against their own succession?</p>
+        <p class="attribution">(II.ii.338–44)</p>
+    </div>
+
+    <p>Who are the children in the “real” plays? Hamlet had invoked a typical cast a few lines earlier (314ff.) such as <i>Hamlet</i> itself uses and stressed that “he that plays the king shall be welcome.” Hamlet will use the play, that is, as a weapon, the propaganda side of rhetorical poetic, to complement the Polonius-pleasure side. But before that, there is a rehearsal, for effect, to see whether the players are good enough to play the play within the play. Here, even more clearly than in the Laertes play, we confront the connoisseur’s attitude toward language. Polonius supplies a chorus that for once fits: “Fore God, my lord, well spoken, with good accent and good discretion” (II.ii.454–55). This to Hamlet, a good actor, as Polonius was in his youth. They proceed in this vein, nibbling the words; “That’s good. ‘Mobled queen’ is good.”</p>
+
+    <p>The main question pressing is not, How does the feedback work? What relation is there, for example, between rugged Pyrrhus and Hamlet, or Laertes? Or what relation with the King, who also topples a kingdom? And why is Hamlet so keen to reach Hecuba? The main question is, How does all this connoisseurship affect the “serious” part of <i>Hamlet</i>? <i>Hamlet</i> is one of the great tragedies. It has generated more comment than any other written document in English literature, one would guess, reverent, serious comment on it as a serious play. Yet finally can we take <i>any</i> of its rhetoric seriously? If so, how much and when? The play is full of the usual release mechanisms for the rhetorical poetic. And, at the end, the Laertes play is there as stylistic control, to mock us if we have made the naive response. But what is the sophisticated response?</p>
+
+    <p>Hamlet focuses the issue, and the play, the plays, when he finally gets to Hecuba. He who has been so eager for a passionate speech is yet surprised when it comes and when it seizes the player:</p>
+
+    <div class="cita">
+        <p>O, what a rogue and peasant slave am I!</p>
+        <p>Is it not monstrous that this player here,</p>
+        <p>But in a fiction, in a dream of passion,</p>
+        <p>Could force his soul so to his own conceit</p>
+        <p>That from her working all his visage wanned,</p>
+        <p>Tears in his eyes, distraction in his aspect,</p>
+        <p>A broken voice, and his whole function suiting</p>
+        <p>With forms to his conceit? And all for nothing,</p>
+        <p>For Hecuba!</p>
+        <p>What’s Hecuba to him, or he to Hecuba,</p>
+        <p>That he should weep for her? What would he do</p>
+        <p>Had he the motive and the cue for passion</p>
+        <p>That I have?</p>
+        <p class="attribution">(II.ii.534–46)</p>
+    </div>
+
+    <p>Hamlet makes the point that dances before us in every scene. Dramatic, rhetorical motive is stronger than “real,” serious motive. Situation prompts feeling in this play, rather than the other way round. Feelings are not real until played. Drama, ceremony, is always needed to authenticate experience. On the battlements Hamlet — with ghostly reinforcement — makes his friends not simply swear but make a big scene of it. Laertes keeps asking for <i>more ceremonies</i> for Ophelia’s burial and is upset by his father’s hugger-mugger interment. Hamlet plays and then breaks off (“Something too much of this”) a stoic friendship scene with Horatio in III.ii. The stronger, the more genuine the feeling, the greater the need to display it.</p>
+
+    <p>The answer, then, to “What would he do . . . ?” is, presumably, “Kill the King!”? Not at all. “He would drown the stage with tears/And cleave the general ear with horrid speech” (II.ii.546–47). He would rant even better. And this Hamlet himself, by way of illustration, goes on to do:</p>
+
+    <div class="cita">
+        <p>Yet I,</p>
+        <p>A dull and muddy-mettled rascal, peak</p>
+        <p>Like John-a-dreams, unpregnant of my cause,</p>
+        <p>And can say nothing. No, not for a king,</p>
+        <p>Upon whose property and most dear life</p>
+        <p>A damned defeat was made. Am I a coward?</p>
+        <p>Who calls me villain? breaks my pate across?</p>
+        <p>Plucks off my beard and blows it in my face?</p>
+        <p>Tweaks me by the nose? gives me the lie i’th’throat</p>
+        <p>As deep as to the lungs? Who does me this?</p>
+        <p>Ha, ’swounds, I should take it, for it cannot be</p>
+        <p>But I am pigeon-livered and lack gall</p>
+        <p>To make oppression bitter, or ere this</p>
+        <p>I should ha’ fatted all the region kites</p>
+        <p>With this slave’s offal. Bloody, bawdy villain!</p>
+        <p>Remorseless, treacherous, lecherous, kindless villain!</p>
+        <p>O, vengeance!</p>
+        <p class="attribution">(II.ii.551–67)</p>
+    </div>
+
+    <p>Hamlet is here having a fine time dining off his own fury, relishing his sublime passion. He gets a bit confused, to be sure: saying nothing is not his problem. If somebody did call him villain or pluck his beard it would be better, for his grievance would then find some dramatic equivalent, would become real enough to act upon. But he enjoys himself thoroughly. He also sees himself clearly, or at least clearly enough to voice our opinion of his behavior.</p>
+
+    <div class="cita">
+        <p>Why, what an ass am I! This is most brave,</p>
+        <p>That I, the son of a dear father murdered,</p>
+        <p>Prompted to my revenge by heaven and hell,</p>
+        <p>Must like a whore unpack my heart with words.</p>
+        <p class="attribution">(II.ii.568–71)</p>
+    </div>
+
+    <p>Hamlet is one of the most appealing characters the mind of man has ever created but he really is a bit of an ass, and not only here but all through the play. He remains incorrigibly dramatic. Do we like him because he speaks to our love of dramatic imposture? Because his solution, once he has seen his own posturing as such, is not immediate action but more playing?</p>
+
+    <div class="cita">
+        <p>I’ll have these players</p>
+        <p>Play something like the murder of my father</p>
+        <p>Before mine uncle.</p>
+        <p class="attribution">(II.ii.580–82)</p>
+    </div>
+
+    <p>Playing is where we will find reality, find the truth. The play works, of course, tells Hamlet again what he already knows, has had a spirit come specially from purgatory to tell him. But that is not the point. Or rather, that is the point insofar as this is a serious play. The rhetorical purpose is to sustain reality until yet another dramatic contrivance — ship, grave scene, duel — can sustain it yet further.</p>
+
+    <p>We saw in the sonnets [discussed elsewhere] how a passage can invoke opaque attitudes by logical incongruity. Something of the sort happens in the scene after this speech, the “To be or not to be” centerpiece. Plays flourish within plays here, too, of course. The King and Polonius dangle Ophelia as bait and watch. Hamlet sees this. He may even be, as W. A. Bebbington suggested, reading the “To be or not to be” speech from a book, using it, literally, as a stage prop to bemuse the spyers-on, convince them of his now-become-suicidal madness. No one in his right mind will fault the poetry. But it is irrelevant to anything that precedes. It fools Ophelia — no difficult matter — but it should not fool us. The question is whether Hamlet will act directly or through drama? Not at all. Instead, is he going to end it in the river? I put it thus familiarly to penetrate the serious numinosity surrounding this passage. Hamlet anatomizes grievance for all time. But does <i>he</i> suffer these grievances? He has a complaint indeed against the King and one against Ophelia. Why not do something about them instead of meditating on suicide? If the book is a stage prop, or the speech a trap for the hidden listeners, of course, the question of relevancy doesn’t arise. The speech works beautifully. But we do not usually consider it a rhetorical trick. It is the most serious speech in the canon. But is it? It tells us nothing about Hamlet except what we already know — he is a good actor. Its relevance, in fact, may lurk just here. The real question by this point in the play is exactly this one: <i>Is</i> Hamlet or not? Or does he just act? What kind of self does he possess?</p>
+
+    <p>The whole play, we know, seeks authenticity, reality behind the arras, things as they are. Hamlet, we are to assume, embodies the only true self, the central self amidst a cast of wicked phonies. The play, seen this way, provided a natural delight for both the Victorians and the existentialists; their sentimentalism about the central self ran the same way. Yet the question really is whether Hamlet is <i>to be</i>, to act rather than reenact. Much has been written on the Melancholy-Man-in-the-Renaissance and how his problems apply to Hamlet. Much more has been written on Hamlet’s paralysis. Yet, how irrelevant all this commentary is to the real problem, not <i>what</i> Hamlet’s motive is but <i>what kind of</i> motive. Why can’t he act? Angels and ministers of grace, he does nothing else. Polonius, Rosencrantz and Guildenstern, Laertes, Claudius, all go to it. But Hamlet never breaks through to “reality.” His motives and his behavior remain dramatic from first to last. So, in spite of all those bodies at the end, commentators wonder <i>if</i> <i>Hamlet</i> amounts to a tragedy and, if so, what kind. Hamlet lacks the serious, central self tragedy requires. We are compelled to stand back, hold off our identification, and hence to locate the play within rhetorical coordinates, a tragicomedy about the two kinds of self and the two kinds of motive.</p>
+
+    <p>We see this theme in that second quarto scene (IV.iv) where Fortinbras and his army parade, with seeming irrelevance — at least to many directors, who cut it — across the stage. They parade so that Hamlet can reflect upon them. The theme is motive. The scene begins as a straightforward lesson in the vanity of human wishes. They go, the Captain tells Hamlet, “to gain a little patch of ground/That hath in it no profit but the name” (IV.iv.18–19). Hamlet seems to get the point, “the question of this straw,” the absurd artificiality of human motive, and especially of aristocratic war, war for pleasure, for the pure glory of it. But then out jumps another non sequitur soliloquy:</p>
+
+    <div class="cita">
+        <p>How all occasions do inform against me</p>
+        <p>And spur my dull revenge! What is a man,</p>
+        <p>In his chief good and market of his time</p>
+        <p>Be but to sleep and feed? A beast, no more.</p>
+        <p>Sure he that made us with such large discourse,</p>
+        <p>Looking before and after, gave us not</p>
+        <p>That capability and godlike reason</p>
+        <p>To fust in us unused. Now, whether it be</p>
+        <p>Bestial oblivion, or some craven scruple</p>
+        <p>Of thinking too precisely on th’ event —</p>
+        <p>A thought which, quartered, hath but one part wisdom</p>
+        <p>And ever three parts coward — I do not know</p>
+        <p>Why yet I live to say, “This thing’s to do,”</p>
+        <p>Sith I have cause, and will, and strength, and means</p>
+        <p>To do’t.</p>
+        <p class="attribution">(IV.iv.32–46)</p>
+    </div>
+
+    <p>What has reason to do with revenge? His question — why, with all his compelling reasons, doesn’t he go on — is again well taken. Shakespeare has carefully given him the realest reasons a revenge hero ever had — father murdered, mother whored, kingdom usurped, his innocent maiden corrupted in her imagination. The answer to Hamlet’s question marches about on the stage before him. As usual, he does not fully understand the problem. It is the Player King’s tears all over again. Fortinbras’s motivation is sublimely artificial, entirely dramatic. Honor. It has no profit in it but the name. Hamlet cannot act because he cannot find a way to dramatize his revenge. Chances he has, but, as when he surprises Claudius praying, they are not dramatic. Claudius is alone. To fall upon him and kill him would not be revenge, as he says, not because Claudius will die shriven but because he will not see it coming, because nobody is watching.</p>
+
+    <p>So, when Hamlet continues his soliloquy, he draws a moral precisely opposite to the expected one. Again, logical discontinuity triggers stylistic attitude:</p>
+
+    <div class="cita">
+        <p>Examples gross as earth exhort me.</p>
+        <p>Witness this army of such mass and charge,</p>
+        <p>Led by a delicate and tender prince,</p>
+        <p>Whose spirit, with divine ambition puffed,</p>
+        <p>Makes mouths at the invisible event,</p>
+        <p>Exposing what is mortal and unsure</p>
+        <p>To all that fortune, death, and danger dare,</p>
+        <p>Even for an eggshell. Rightly to be great</p>
+        <p>Is not to stir without great argument,</p>
+        <p>But greatly to find quarrel in a straw</p>
+        <p>When honor’s at the stake. How stand I then,</p>
+        <p>That have a father killed, a mother stained,</p>
+        <p>Excitements of my reason and my blood,</p>
+        <p>And let all sleep, while to my shame I see</p>
+        <p>The imminent death of twenty thousand men</p>
+        <p>That for a fantasy and trick of fame</p>
+        <p>Go to their graves like beds, fight for a plot</p>
+        <p>Whereon the numbers cannot try the cause,</p>
+        <p>Which is not tomb enough and continent</p>
+        <p>To hide the slain? O, from this time forth,</p>
+        <p>My thoughts be bloody, or be nothing worth!</p>
+        <p class="attribution">(IV.iv.46–66)</p>
+    </div>
+
+    <p>He sees but does not see. In some way, Fortinbras represents where he wants to go, what he wants to be, how he wants to behave. But he doesn’t see how, nor altogether do we. If ever an allegorical puppet was dragged across a stage it is Fortinbras. Yet he haunts the play. His divine ambition begins the action of the play; he gets that offstage introduction Shakespeare is so fond of; he marches to Norway to make a point about motive; and he marches back at the end, inherits Denmark. Yet he stays cardboard. It is not real motive he represents but martial honor much rather.</p>
+
+    <p>Shakespeare sought to give <i>Hamlet</i> a pronounced military coloration from first to last. The play begins on guard; the ghost wears armor; Denmark is a most warlike state. Military honor is the accepted motive in a Denmark Fortinbras rightly inherits. Honor will cure what is rotten in Denmark, restore its proper values. Hamlet cannot set the times right because he cannot find in martial honor a full and sufficient motive for human life. Hamlet, says Fortinbras, would have done well had he been king, but we may be permitted to doubt it. He thinks too much. Yet honor and the soldier’s life provide the model motive for <i>Hamlet</i>. All his working life, Shakespeare was fascinated and perplexed by how deeply the military motive satisfied man. It constituted a sublime secular commitment which, like the religious commitment, gave all away to get all back. Hamlet’s self-consciousness keeps him from it, yes, but even more his search for real purpose. Chivalric war — all war, perhaps — is manufactured purpose. Hamlet can talk about clutching it to his bosom but he cannot do it, for there is nothing <i>inevitable</i> about it.</p>
+
+    <p>Military honor is finally a role, much like Laertes’ role as revenge hero. Both roles are satisfying, both integrate and direct the personality. But once you realize that you are playing the role for just these reasons, using it as a self-serving device, its attraction fades. As its inevitability diminishes, so does its reality. War and revenge both prove finally so rewarding because they provide, by all the killing, the irrefutable reality needed to bolster the role, restore its inevitability. Thus Shakespeare chose them, a revenge plot superposed on a Fortinbras-honor plot, for his play about motive. They provided a model for the kind of motive men find most satisfying; they combine maximum dramatic satisfaction with the irrefutable reality only bloody death can supply. In the Elizabethan absurdity as in our own, men kill others and themselves because that is the only real thing left to do. It is a rare paradox and Shakespeare builds his play upon it.</p>
+
+    <p>But even death is not dependable. We can learn to make sport of it, enjoy it. So the gravedigger puns on his craft. So, too, I suppose, Fortinbras laconically remarks at the end of the play: “Such a sight as this/Becomes the field, but here shows much amiss.” Death’s reality can vanish too. All our purposes end up, like the skull Hamlet meditates on, a stage prop. It is not accidental that the language which closes the play is theatrical. Hamlet even in death does not escape the dramatic self. When the bodies are “high on a stage . . . placed to the view” Horatio will “speak to th’ yet unknowing world,” will authenticate the proceeding with a rhetorical occasion. Hamlet’s body, Fortinbras commands, is to be borne</p>
+
+    <div class="cita">
+        <p>like a soldier to the stage,</p>
+        <p>For he was likely, had he been put on,</p>
+        <p>To have proved most royal.</p>
+    </div>
+
+    <p>Nor is it accidental that Hamlet kills Polonius. The act is his real attempt at revenge, Polonius his real enemy. Polonius embodies the dramatic self-consciousness which stands between Hamlet and the roles — Avenger and King — he was born to play. But Polonius pervades the whole of Hamlet’s world and lurks within Hamlet himself. Only death can free Hamlet. Perhaps this is why he faces it with nonchalance. Much has been said about Hamlet’s stoicism, but how unstoical the play really is! Honest feeling demands a dramatic equivalent to make it real just as artifice does. Stoicism demands a preexistent reality, a central self beyond drama, which the play denies. Stoicism is death and indeed, in <i>Hamlet</i>, the second follows hard upon the avowal of the first. We have no choice but to play.</p>
+
+    <p>And so Hamlet chooses his foil and plays. I have been arguing that the play invokes rhetorical coordinates as well as serious ones. It makes sense, if this is so, that it should end with a sublime game and the triumph of chance. Hamlet never solves his problem, nor does chance solve it for him, nor does the play solve it for us. No satisfactory model for motive, no movement from game to sublime, is suggested. Hamlet can finally kill the King because the King thoughtfully supplies a dramatic occasion appropriate to the deed. And Hamlet can kill Laertes because dramatic motive has destroyed naive purpose. And vice versa. But Hamlet cannot get rid of his dramatic self, his dramatic motives. The duel allegorizes the quarrel between kinds of motive which the play has just dramatized. And the duel, like the play, is a zero-sum game. Interest for both sides adds up to zero. The play leaves us, finally, where it leaves Hamlet. We have savored the violence and the gorgeous poetry and been made aware that we do. We have been made to reflect on play as well as purpose. We have not been shown how to move from one to the other. Nor that it <i>cannot</i> be done. We are left, like those in the play, dependent on death and chance to show us how to put our two motives, our two selves, together.</p>
+
+    <p>Shakespeare as a mature playwright is not supposed to be an opaque stylist. The great unity of his mature tragedies is a style we look through, not at. The gamesman with words fades out with the nondramatic poems and early infatuations like <i>Love’s Labor’s Lost</i>. <i>Hamlet</i> shows, by itself, how wrong this view of Shakespeare’s development is. The play depends upon an alternation of opaque and transparent styles for its meaning. The alternation almost <i>is</i> the meaning. <i>Hamlet</i> is a play about motive, about style, and thus perhaps, of the mature plays, an exception? I don’t think so. Where Shakespeare is most sublime he is also most rhetorical and both poetics are likely to be present in force. To illustrate such a thesis would constitute an agreeable task. The lines it would follow are clear enough. They would yield explanation of the double plot more basic than the comic/serious one. They would render the comic/tragic division altogether less important than it now seems.</p>
+
+    <p>In play after play the same stylistic strategy illustrates the same juxtaposition of motive, of play and purpose. Richard cannot learn the difference. Hal must. Lear can play the king but he has never <i>been</i> a king. <i>Antony and Cleopatra</i> juxtaposes not only public and private life but two poetics and two selves. The double plot becomes, over and over, a serious plot-poetic and a play plot-poetic. The fatal innocence of Shakespeare’s characters turns out, over and over, to be innocence about the real nature of their motivation. All through the <i>Henriad</i> political rhetoric must be <i>seen</i> as rhetoric. Egypt is meant to be <i>seen</i> as more wordy and more metaphorical than Rome. <i>Romeo and Juliet</i> depends on our seeing the Petrarchan rhetoric as such, else we will mistake the kind of play it is, a play where death authenticates game. Lear on the heath, that centerpiece of Shakespearean sublimity, alters his outlines considerably within rhetorical coordinates. Shakespearean tragedy may come to seem, as in <i>Hamlet</i>, a juxtaposition of the two motives with a hole in the middle, with no way to connect them. The comedies collapse them. And the problem plays and romances try to make a path between the two, see them in dynamic interchange. The two things that obsessed Shakespeare were style and motive, and his career can be charted coherently from beginning to end in terms of their interrelation. In this he typifies the stylistic strategy of the Renaissance as a whole. The real question of motive lay beyond good and evil. It was the principal task of the self-conscious rhetorical style to point this moral. Human flesh is sullied with self-consciousness, with theatricality, and these will be the ground for whatever authentic morality any of us can muster.</p>
+
+    <section class="footnotes">
+        <h3>Note</h3>
+        <p>From <i>The Motives of Eloquence: Literary Rhetoric in the Renaissance</i>. © 1976 by Yale University. Yale University Press, 1976. Originally entitled “Superposed Plays: <i>Hamlet</i>.”</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>

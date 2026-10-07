@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>“Reforming the Role” — Mark Rose</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">Mark Rose</p>
+        <h1 class="cab__tit">Reforming the Role</h1>
+    </header>
+
+    <p>Classical and Elizabethan tragedy represent polar opposites in dramatic structure, the one tightly focused with few characters and a sharply defined action, the other loose and sprawling with many characters, multiple locales, and complex plots which may span years of narrative time. And yet all tragedies tend to share certain central concerns. Sophocles’ Oedipus fled Corinth to prevent the oracle’s prophecy from coming true, but in the process of trying to escape his fate he only succeeded in fulfilling it. Sophocles’ play is concerned, we might say, with the degree to which our lives are not in our own control. The words of the player king in <i>Hamlet</i> are apposite:</p>
+
+    <div class="cita">
+        <p>Our wills and fates do so contrary run</p>
+        <p>That our devices still are overthrown;</p>
+        <p>Our thoughts are ours, their ends none of our own.</p>
+        <p class="attribution">(III.ii.217–19)</p>
+    </div>
+
+    <p><i>Hamlet</i>, too, is concerned with the limits imposed upon mortal will, with the various restrictions that flesh is heir to; and it is upon this central tragic theme that I wish to dwell, suggesting how Shakespeare employs a characteristically Renaissance self-consciousness to transmute a popular Elizabethan dramatic form, the revenge play, into a tragedy the equal of Sophocles’.</p>
+
+    <p>Early in the play Polonius speaks to Ophelia of the “tether” with which Hamlet walks. The image is a useful one to keep in mind, for it suggests both that the prince does have a degree of freedom and that ultimately he is bound. Laertes cautions Ophelia in a similar manner and develops more explicitly the limits on Hamlet’s freedom. The prince’s “will is not his own,” Laertes says,</p>
+
+    <div class="cita">
+        <p>For he himself is subject to his birth.</p>
+        <p>He may not, as unvalued persons do,</p>
+        <p>Carve for himself; for on his choice depends</p>
+        <p>The safety and the health of this whole state.</p>
+        <p class="attribution">(I.iii.18–21)</p>
+    </div>
+
+    <p>What Laertes means is simply that Hamlet as heir apparent may not be free to marry Ophelia, but he says much more than he realizes. Hamlet is indeed subject to his birth, bound by being the dead king’s son, and upon his “carving” — his rapier and dagger-work — the safety and health of Denmark do literally depend. Possibly Shakespeare has in mind the imagery of <i>Julius Caesar</i> and Brutus’s pledge to be a sacrificer rather than a butcher, to carve Caesar as a dish fit for the gods, for, like Brutus, Hamlet is concerned with the manner of his carving. But the word is also Shakespeare’s term for sculptor, and perhaps he is thinking of Hamlet as this kind of carver, an artist attempting to shape his revenge and his life according to his own standards. Yet here, too, Hamlet’s will is not his own: there is, he discovers, “a divinity that shapes our ends,/Rough-hew them how we will” (V.ii.10–11).</p>
+
+    <p>From the first scene in which the prince appears, Shakespeare wishes us to perceive clearly that Hamlet is tethered. He contrasts the king’s permission to Laertes to return to France with his polite refusal of Hamlet’s request to return to Wittenberg. Denmark is in fact a prison for Hamlet, a kind of detention center in which the wary usurper can keep an eye on his disgruntled stepson. Claudius acclaims Hamlet’s yielding as “gentle and unforced” and announces that he will celebrate it by firing his cannon to the heavens, but what he has done in fact is to cut ruthlessly the avenue of escape that the prince had sought from a court and a world he now loathes. One other, more desperate avenue still seems open, and as soon as the stage is cleared the prince considers the possibility of this course, suicide, only to remind himself that against this stands another sort of “canon,” one fixed by God. Hamlet is tied to Elsinore, bound by his birth; on either side the road of escape is guarded and all that remains to him is his disgust for the world and the feeble wish that somehow his flesh will of itself melt into a puddle.</p>
+
+    <p>Hamlet’s real prison is of course more a matter of mental than physical space. “Oh God,” he exclaims to Rosencrantz and Guildenstern, “I could be bounded in a nutshell and count myself a king of infinite space, were it not that I have bad dreams” (II.ii.258–60). The erstwhile friends suppose Hamlet means he is ambitious for the crown, but the bad dream the prince is thinking of, the insubstantial “shadow” as he calls it, is evidently the ghost and its nightmarish revelation. If Claudius has tied him to Elsinore it is of little consequence compared to the way the ghost has bound him to vengeance. Hamlet’s master turns out to be even a more formidable figure than the king. Ironically, Laertes’ and Polonius’s remarks upon what they conceive to be the limits placed upon Hamlet’s freedom immediately precede the scene in which the prince at last encounters the ghost and discovers what it means to be subject to one’s birth. “Speak,” Hamlet says to the ghost, “I am bound to hear,” and the ghost in his reply picks up the significant word <i>bound</i> and throws it back at the prince: “So art thou to revenge, when thou shalt hear” (I.v.6–7). Hamlet cannot shuffle off his father’s spirit any more than he can the mortal coil. The ghost’s command is “Remember me,” and after his departure Shakespeare dramatizes how from this charge there is no escape. Hamlet rushes about the stage seeking a place to swear his companions to secrecy, but wherever he makes his stand the ghost is there directly — “Hic et ubique,” the prince says — its voice crying from the cellarage: “Swear!”</p>
+
+    <p>The ghost binds Hamlet to vengeance, but there is another and more subtle way in which the spirit of his father haunts the prince. It is one of the radical ironies of the tragedy that the same nightmarish figure who takes from Hamlet his freedom should also embody the ideal of man noble in reason and infinite in faculties — the ideal of man, in other words, as free. The ghost of King Hamlet, stalking his son dressed in the same armor he wore in heroic combat with Fortinbras of Norway, becomes a peripatetic emblem of human dignity and worth, a memento of the time before the “falling-off” when Hamlet’s serpent-uncle had not yet crept into the garden, infesting it with things rank and gross in nature. It is no accident that Hamlet bears the same name as his father: the king represents everything to which the prince aspires. Hamlet, too, has his single-combats, his duels both metaphorical and literal, but the world in which he must strive is not his father’s. The memory of those two primal, valiant kings, face to face in a royal combat ratified by law and heraldry, haunts the tragedy, looming behind each pass of the “incensed points” of the modern “mighty opposites,” Hamlet and Claudius, and looming also behind the final combat, Hamlet’s and Laertes’ poisoned play, swaddled in a show of chivalry as “yeasty” as the eloquence of Osric, the waterfly who presides as master of the lists.</p>
+
+    <p>Subject to his birth, tethered by Claudius, and bound by the ghost, Hamlet is obsessed with the idea of freedom, with the dignity that resides in being master of oneself. One must not be “passion’s slave,” a “pipe for Fortune’s finger/To sound what stop she please” (III.ii.72–74) — nor for that matter a pipe for men to play. The first three acts are largely concerned with the attempts of Claudius and Hamlet to play upon each other, the king principally through Rosencrantz and Guildenstern, Hamlet through “The Mousetrap.” It is Hamlet who succeeds, plucking at last the heart of Claudius’s mystery, pressing the king to the point where he loses his self-control and rises in a passion, calling for light. “Dids’t perceive?” Hamlet asks, and Horatio replies: “I did very well note him” (III.ii.293, 296). I should like to see a musical pun in Horatio’s word <i>note</i>, but perhaps it is farfetched. At any rate, Hamlet’s immediate response is to call for music, for the recorders to be brought, as if he thinks to reenact symbolically his triumph over the king. What follows is the “recorder scene” in which Rosencrantz and Guildenstern once again fail with Hamlet precisely where he has succeeded with the king:</p>
+
+    <div class="cita">
+        <p>Why, look you now, how unworthy a thing you make of me! You would play upon me; you would seem to know my stops; you would pluck out the heart of my mystery; you would sound me from my lowest note to the top of my compass; and there is much music, excellent voice, in this little organ, yet cannot you make it speak. ’Sblood, do you think I am easier to be played on than a pipe? Call me what instrument you will, though you can fret me, you cannot play upon me.</p>
+        <p class="attribution">(III.ii.371–80)</p>
+    </div>
+
+    <p>Immediately after speaking this, Hamlet turns to Polonius, who has just entered, and leads the old courtier through the game of cloud shapes, making him see the cloud first as a camel, then as a weasel, and finally as a whale. Though Claudius and his instruments cannot play upon him, Hamlet is contemptuously demonstrating that he can make any of them sound what tune he pleases.</p>
+
+    <p>Hamlet’s disdain for anyone who will allow himself to be made an instrument perhaps suggests his bitter suspicion that he, too, is a kind of pipe. One of the most interesting of the bonds imposed upon Hamlet is presented in theatrical terms. Putting it baldly and exaggerating somewhat for the sake of clarity, one might say that Hamlet discovers that life is a poor play, that he finds himself compelled to play a part in a drama that offends his sense of his own worth. Hamlet is made to sound a tune that is not his own, the whirling and passionate music of the conventional revenger, a stock character familiar to the Elizabethans under a host of names, including Thomas Kyd’s Hieronomo, his Hamlet, and Shakespeare’s own Titus Andronicus. The role of revenger is thrust upon Hamlet by the ghost, and once again it is profoundly ironic that the figure who represents the dignity of man should be the agent for casting his son in a limited, hackneyed, and debasing role. That Hamlet should be constrained to play a role at all is a restriction of his freedom, but that it should be this particular, vulgar role is especially degrading.</p>
+
+    <p>Lest I should seem to be refashioning Shakespeare in the modern image of Pirandello, let me recall at this point that he is a remarkably self-conscious playwright, one who delights in such reflexive devices as the play within the play, the character who is either consciously or unconsciously an actor, or the great set speech on that favorite theme of how all the world is a stage. Of all Shakespeare’s plays, perhaps the most reflexive, the most dramatically self-conscious, is <i>Hamlet</i>. This is possibly due in part to the circumstance not unprecedented but still rather special that Shakespeare is here reworking a well-known, even perhaps notorious, earlier play, a circumstance which permits him to play off his own tragedy and his own protagonist against his audience’s knowledge of Kyd’s <i>Hamlet</i>. In any case, the self-consciousness of Shakespeare’s <i>Hamlet</i> is evident. Here the play within the play is not merely a crucial element in the plot but a central figure in the theme. Here Shakespeare actually introduces a troop of professional actors to discuss their art and give us examples of their skill onstage. Here even a figure like Polonius has had some experience on the boards, acting Julius Caesar to a university audience, and nearly every character in the play from the ghost to the king is at some time or other seen metaphorically as an actor. So pervasive is the play’s concern with theater that, as many critics have noted, simple terms like <i>show, act, play,</i> and <i>perform</i> seem drawn toward their specifically theatrical meaning even when they occur in neutral contexts.</p>
+
+    <p>If <i>Hamlet</i> is Shakespeare’s most self-conscious play, the prince is surely his most self-conscious character. An actor of considerable ability himself, he is also a professed student of the drama, a scholar and critic, and a writer able on short notice to produce a speech to be inserted in a play. The prince is familiar with the stock characters of the Elizabethan stage — he lists a string of them when he hears that the players have arrived — and he is familiar, too, with at least two Elizabethan revenge plays (not counting <i>The Murder of Gonzago</i>), for at various times he burlesques both <i>The True Tragedy of Richard III</i>, that curious mixture of revenge play and chronicle history, and <i>The Spanish Tragedy</i>. Moreover, Hamlet habitually conceives of his life as a play, a drama in which he is sometimes actor and sometimes actor and playwright together. We recall immediately that in the third soliloquy (“O, what a rogue and peasant slave am I!”) he speaks of having the “motive and the cue for passion” (II.ii.571). Only slightly less familiar is his description of how on the voyage to England he devised the plot of sending Rosencrantz and Guildenstern to their deaths with a forged commission:</p>
+
+    <div class="cita">
+        <p>Being thus benetted round with villains,</p>
+        <p>Or I could make a prologue to my brains,</p>
+        <p>They had begun the play. I sat me down,</p>
+        <p>Devised a new commission, wrote it fair.</p>
+        <p class="attribution">(V.ii.29–32)</p>
+    </div>
+
+    <p>And we remember that in the final scene the dying Hamlet addresses the court — and probably the actual spectators in the Globe as well — as you “that are but mutes or audience to this act” (V.ii.336).</p>
+
+    <p>Hamlet’s first reaction to the ghost is to leap enthusiastically into the familiar role. “Haste me” to know the truth, he cries, that I may “sweep to my revenge” (I.v.29–31). And a few lines later he launches into his vow of vengeance, the furious second soliloquy (“O all you host of heaven!”) in which he calls upon heaven, earth, and hell, addresses his heart and his sinews, and pledges to wipe from his brain everything except the commandment of the ghost. It is a tissue of rhetoric passionate and hyperbolical in the true Senecan tradition, a piece of ranting of which Kyd’s Hieronomo would be proud. Hamlet’s self-consciousness as a revenger is suggested by the speech he requests when the players arrive, the story of Pyrrhus’s bloody vengeance for his father’s death. What he sees in this story is an image of his own father’s fall in the crash of father Priam and, in the grief of Hecuba, the “mobled queen,” an image of how Queen Gertrude ought to have behaved after her husband’s death. But he also sees in Pyrrhus a horrible reflection of his own role, and, significantly, it is the prince himself who enacts the first dozen lines describing the dismal heraldry of the revenger.</p>
+
+    <p>Art for Hamlet is the mirror of nature, designed to provoke self-examination. Very reasonably, then, his interview with the players prompts him in the third soliloquy to consider his own motive and cue for passion, to examine how well he has performed as a revenger. Excepting his stormy vow of vengeance, Hamlet has so far controlled himself rather strictly in his duel with Claudius; he has not, by and large, indulged in much cleaving of the general ear with horrid speech in the normal manner of a revenger, and his contempt for such a manner is implicit in his description of what the common player would do with his cue: amaze the very faculties of eyes and ears and drown the stage with tears. Hamlet’s aristocratic taste is for a more subtle species of drama, for plays like the one from which the story of Pyrrhus comes, which he praises to the players for being written with as much “modesty” — by which he means restraint — as cunning. Yet now, with the stock role he is to play brought home to him by the actors, Hamlet falls into the trap of judging himself by the very standards he has rejected and is disturbed by his own silence. Theatrically self-conscious as he is, Hamlet is naturally preoccupied by the relationship between playing and genuine feeling. He touches upon this in his first scene when he speaks to Gertrude of his outward “shapes of grief”:</p>
+
+    <div class="cita">
+        <p>These indeed seem,</p>
+        <p>For they are actions that a man might play,</p>
+        <p>But I have that within which passes show;</p>
+        <p>These but the trappings and the suits of woe.</p>
+        <p class="attribution">(I.ii.83–86)</p>
+    </div>
+
+    <p>How is one to distinguish mere shape — in theatrical parlance the word means costume or role as well as form — from the real thing? Or conversely, if the usual shape is lacking, how can one be sure of the substance? After the interview with the players, it is the latter problem which concerns Hamlet, for now he wonders whether his refusal to play the revenger in the usual shape, his reluctance to drown the stage with tears, means simply that he is unpregnant of his cause. As if to prove to himself that this is not so, he winds himself up again to the ranting rhetoric of the revenger, challenging some invisible observer to call him coward, pluck his beard, tweak his nose, and finally hurling at Claudius a passionate stream of epithets:</p>
+
+    <div class="cita">
+        <p>Bloody, bawdy villain!</p>
+        <p>Remorseless, treacherous, lecherous, kindless villain!</p>
+        <p>O vengeance!</p>
+        <p class="attribution">(II.ii.591–93)</p>
+    </div>
+
+    <p>But this time, at any rate, the role playing is conscious, and a moment later the aristocrat in Hamlet triumphs and he curses himself for a whore, a drab. To rant is cheap and vulgar; moreover, what is presently required is not the player’s whorish art but action. And so, with superb irony in his choice of means, Hamlet decides to take his own kind of action:</p>
+
+    <div class="cita">
+        <p>I’ll have these players</p>
+        <p>Play something like the murder of my father</p>
+        <p>Before mine uncle.</p>
+        <p class="attribution">(II.ii.606–08)</p>
+    </div>
+
+    <p>Hamlet’s difficulty is aesthetic. His problem is one of form and content, of suiting the action to the word, the word to the action — that is, of finding a satisfactory shape for his revenge. Inevitably he is drawn to the preexisting pattern of the familiar revenge plays: life imitates art. Inevitably, too, his sensibility rebels, refusing to permit him to debase himself into a ranting simpleton. I find no evidence that the idea of revenge, of taking life, is itself abhorrent to Hamlet — he is not after all a modern exponent of nonviolence — rather it is the usual style of the revenger that he disdains. He objects to passionate rhetoric because to him it typifies bestial unreason. The conventional revenger, the Hieronomo or the Titus Andronicus, responds mechanically to circumstances, beating his breast in grief and crying wildly for revenge. Such a man is Fortune’s pipe, the puppet of his circumstances, and the prisoner of his own passion. When Hamlet praises the man who is not “passion’s slave,” he is not merely repeating a humanist commonplace; he is commenting on an immediate problem, asserting a profound objection to the role in which he has been cast. At stake, then, for Hamlet is an aesthetic principle, but it is a moral principle as well: the issue is human dignity. In a play in which earsplitting rhetoric becomes the symbol of the protagonist’s burden, it is suitable that “silence” is the final word from his lips as he dies. “The rest,” he says, referring to all that must be left unspoken but also to the repose of death, “is silence.”</p>
+
+    <p>The nature of Hamlet’s objection to his role is elaborated in his address to the players — a speech too frequently overlooked in interpretations of this play — which Shakespeare has included because it permits the prince to comment indirectly on his most vital concern, how one ought to play the part of a revenger. Hamlet’s demand is for elegance and restraint — in a word, for dignity in playing. Lines are to be spoken “trippingly on the tongue” — that is, with grace — rather than clumsily “mouthed” in the fashion of a town crier. Nor should the player permit himself gross gestures, as sawing the air with his hand; rather he must “use all gently,” and even in the very torrent, tempest, and whirlwind of passion — the moment of extremity when the temptation to strut and bellow is greatest — must “acquire and beget a temperance that may give it smoothness” (III.ii.7–8). The actor who tears a passion to tatters may win the applause of the groundlings who are only amused by noise, but he is worse than Termagant or Herod, those proverbially noisy stock characters of the old mystery plays which Hamlet disdains as ignorant and vulgar drama. It is interesting that Hamlet mentions Herod and the mythical infidel god Termagant: he means to suggest that undisciplined acting is not merely poor art, an offense against the “modesty of Nature,” but an offense to all that a Christian gentleman, a humanist like himself, stands for. “O, there be players,” he says a few lines later,</p>
+
+    <div class="cita">
+        <p>that I have seen play . . . that neither having th’ accent of Christians, nor the gait of Christian, pagan, nor man, have so strutted and bellowed that I have thought some of Nature’s journeymen had made men, and not made them well, they imitated humanity so abominably.</p>
+        <p class="attribution">(III.ii.30–37)</p>
+    </div>
+
+    <p>To rage and rant is to make oneself into a monster. The crux of the issue is this: like his father — “’A was a man, take him for all in all” (I.ii.187) — Hamlet intends to be a man.</p>
+
+    <p>The player answers Hamlet’s indictment of vulgar acting by assuring him that his company has improved its style: “I hope we have reformed that indifferently with us, sir.” This complacency irritates Hamlet. “O, reform it altogether” (III.ii.39–40), he snaps in reply. Hamlet’s concern is intense and personal precisely because his own life has taken the shape of a vulgar play, a crude and commonplace tragedy of revenge. The prince’s response — tantalizingly like Shakespeare’s, working over what must have seemed to him the crude and commonplace material of Kyd’s <i>Hamlet</i> — is to “reform it altogether.” Since he cannot escape the role, Hamlet intends at least to be a revenger in a style that offends neither the modesty of nature nor his sense of human dignity. He intends to exercise discipline. I do not mean to suggest that Hamlet, like the singing gravedigger, has no feeling for his work. On the contrary, much of the drama lies in Hamlet’s war with himself, his struggle to reduce his whirlwind passion to smoothness.</p>
+
+    <p><i>Hamlet</i> and <i>Lear</i> are the only two of Shakespeare’s tragedies with double plots. The Gloucester plot in <i>Lear</i> provides a relatively simple moral exemplum of one who stumbled when he saw and lost his eyes in consequence. This is a commonplace species of Elizabethan moral fable designed to set off the more complex and ambiguous story of the king. The story of Polonius’s family works analogously in <i>Hamlet</i>. Each member of the family is a fairly ordinary person who serves as a foil to some aspect of Hamlet’s extraordinary cunning and discipline. Polonius imagines himself a regular Machiavel, an expert at using indirections to find directions out, but compared to Hamlet he is what the prince calls him, a great baby. Ophelia, unable to control her grief, lapses into madness and a muddy death, reminding us that it is one of Hamlet’s achievements that he does not go mad but only plays at insanity to disguise his true strength. And Laertes, of course, goes mad in a different fashion and becomes the model of the kind of revenger that Hamlet so disdains.</p>
+
+    <p>Hamlet knows he is playing a role, but Laertes is blissfully unselfconscious about his part. The prince boasts to his mother that his pulse “doth temperately keep time” (III.iv.141), but Laertes’ brag is of his stereotyped rage: “That drop of blood that’s calm proclaims me bastard” (IV.v.117). Laertes — to adapt Nashe’s famous allusion to Kyd’s old <i>Hamlet</i> — if you entreat him fair in a frosty morning, will shamelessly afford you handfuls of tragical speeches, ranting in the best manner of English Seneca:</p>
+
+    <div class="cita">
+        <p>To hell allegiance, vows to the blackest devil,</p>
+        <p>Conscience and grace to the profoundest pit!</p>
+        <p>I dare damnation. To this point I stand,</p>
+        <p>That both the worlds I give to negligence,</p>
+        <p>Let come what comes, only I’ll be revenged</p>
+        <p>Most thoroughly for my father.</p>
+        <p class="attribution">(IV.v.131–36)</p>
+    </div>
+
+    <p>What comes is not quite the revenge Laertes expects, for the situation is not so simple as he supposes; rather he finds himself on account of his unthinking passion an easy instrument for Claudius to play, becoming, in his own word, the king’s “organ.” The advice that Polonius gave Laertes might have stood the young man in good stead if he had followed it: “Give thy thoughts no tongue,/Nor any unproportioned thought his act” (I.iii.59–60). Ironically, Polonius’s words perfectly describe not Laertes’ but Hamlet’s approach to revenge. From the very first Hamlet has understood the practical as well as the aesthetic importance of controlling his rage. “But break my heart, for I must hold my tongue” (I.ii.159), he says at the end of the first soliloquy, and it is interesting in the light of the play’s general association of lack of discipline with noise, with rant, that even here control is connected with silence.</p>
+
+    <p>Shakespeare contrives to have his two revengers, the typical Laertes and the extraordinary Hamlet, meet at Ophelia’s grave, where the prince finds Laertes true to form tearing a passion to tatters, bellowing to be buried alive with his sister. Hamlet steps forward and the technical rhetorical terms he uses, <i>emphasis</i> and <i>phrase</i>, together with the theatrical simile of making the stars stand like “wonder-wounded hearers,” like an audience, reveal his critical attitude, his professional interest in the quality of Laertes’ performance:</p>
+
+    <div class="cita">
+        <p>What is he whose grief</p>
+        <p>Bears such an emphasis, whose phrase of sorrow</p>
+        <p>Conjures the wand’ring stars, and makes them stand</p>
+        <p>Like wonder-wounded hearers?</p>
+        <p class="attribution">(V.i.256–59)</p>
+    </div>
+
+    <p>According to the probably authentic stage direction of the first quarto, Hamlet at this point leaps into the grave alongside Laertes, suiting outrageous word to outrageous action by challenging the young man to a contest of noise, of rant. What will Laertes do to prove his love for Ophelia, weep, tear himself, drink vinegar, eat a crocodile? Hamlet will match him. Does Laertes mean to whine, to prate of being buried under a mountain higher than Pelion? Why, then Hamlet will say he’ll be buried too, and let the imaginary mountain be so high that it touches the sphere of fire and makes Ossa by comparison a wart. “Nay, an thou’lt mouth,” the prince says, using the same word with which he had earlier described the manner of vulgar actors, “I’ll rant as well as thou” (V.i.285–86).</p>
+
+    <p>Hamlet is mocking Laertes’ style, but the bitterness of his mockery, the nastiness of it, derives from his own sincere grief for Ophelia. In a world of overblown rhetoric, of grotesque elephantine shows, how can a man of taste and discernment be understood? Moreover, since the usual sound and fury so often signify nothing, how will a man of genuine feeling be believed? This burlesque of Laertes is Hamlet’s last act of bitter rebellion against the vulgarity of his world and the role he has been constrained to play in it. Moreover, it is a reversion to his earlier and fiercer mood, the proud, contemptuous spirit of the prince before the sea voyage; for, as most critics observe, the prince who returns from sea is a changed man, resigned, detached, perhaps “tragically illuminated.” Having refused to kill the king when the time was every way propitious — that is, when he found Claudius kneeling in empty not genuine prayer — and then, having chosen his own moment to act only to find that instead of the king he has murdered Polonius, Hamlet seems to have allowed his sinews to relax. He has let himself be thrust aboard ship, let himself in effect be cast onto the sea of fortune that is so common an image in Shakespeare and the Elizabethan poets, an image recalling that “sea of troubles” against which he had earlier taken arms. When the opportunity to escape the king’s trap arises, Hamlet seizes it, leaping aboard the pirate ship, but what he is doing now is reacting to circumstances rather than trying to dominate them wholly. The prince returns to Denmark at once sad and amused, but, except for the single flash of “towering passion” at Ophelia’s grave, relatively impassive. He has ceased to insist that he must be above being played upon by any power.</p>
+
+    <p>And yet, before Hamlet consents to the duel with Laertes, about which he has justified misgivings, he plays a scene with that impossible fop, Osric, the emblem of the empty courtesy of Claudius’s court. Just as Hamlet earlier led Polonius through the game of cloud shapes, so now he toys with Osric, leading him to proclaim first that the weather is warm, then that it is cold, and finally warm again. At the penultimate moment, Hamlet is demonstrating that if he wished he might still play upon the king and his instruments like so many pipes. Hamlet’s mocking Osric, like the scene with Laertes in the grave, recalls the early proud manner of the prince; nevertheless, Hamlet no longer seems to be in rebellion: rather than bitter contempt he displays amusement that at the end he should be forced to share the stage with a waterfly. The prince’s motto is no longer “heart, lose not thy nature,” but “let be.” He has ceased to struggle for absolute freedom in his role, ceased to insist that he alone must be the artist who, in all senses of the term, shapes his life. He understands now that, in Laertes’ words, he cannot carve for himself. One can at best be a collaborator in one’s life, for there is always another artist to be taken into account, “a divinity that shapes our ends,/Rough-hew them how we will.”</p>
+
+    <p>The Hamlet who speaks of special providence in the fall of a sparrow is not perhaps so exciting a figure as the earlier Hamlet heroically refusing to be manipulated. There is something almost superhuman in the discipline, consciousness, and cunning of the earlier Hamlet: certainly he makes superhuman demands upon himself, insisting that he be in action like an angel, in apprehension like a god. But Hamlet has discovered that, finally, he is subject to his birth, that he is neither angel nor god, and, in an ironically different sense, it can now be said of him what he said of his father, “’A was a man, take him for all.” King Hamlet fought his single combat in an unfallen world of law and heraldry; his son must seek to emulate him in a corrupt world of empty chivalry and poisoned foils; and yet, in its way, Hamlet’s duel with Laertes is as heroic as his father’s with Fortinbras, and in his own manner Hamlet proves himself worthy of the name of soldier. “Bear Hamlet like a soldier to the stage” (V.ii.397) is the command of Fortinbras which concludes the play, a command which not only ratifies Hamlet’s heroism by using the term <i>soldier</i>, but in its theatrical allusion reminds us that much of his achievement has been in the skill with which he has played his inauspicious role. If all the world is a stage and all the men and women merely players, then the reckoning of quality must be by professional standards. By these standards Hamlet has proven himself a very great actor indeed, for he has taken a vulgar role and reformed it so that it no longer offends the modesty of nature or the dignity of man. Even a man on a tether, to pick up Polonius’s image again, has a certain degree of freedom. One may be cast in a vulgar role and still win distinction in the manner the role is played. Or one may be tied to the story line of a crude melodrama and still produce a <i>Hamlet</i>.</p>
+
+    <section class="footnotes">
+        <h3>Note</h3>
+        <p>From <i>Homer to Brecht: The European Epic and Dramatic Traditions</i>, edited by Michael Seidel and Edward Mendelson. © 1977 by Yale University. Yale University Press, 1977. Originally entitled “Hamlet.”</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>
