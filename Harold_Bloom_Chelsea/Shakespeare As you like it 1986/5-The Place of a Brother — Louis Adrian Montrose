@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Place of a Brother — Louis Adrian Montrose</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.cita .speaker { font-style: normal; font-size: 0.85em; letter-spacing: 0.05em; color: var(--text-muted); text-transform: uppercase; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.subtitulo { text-align: center; text-transform: uppercase; letter-spacing: .15em; font-size: .9rem; font-weight: 700; color: var(--text-secondary); margin: 3rem 0 1.5rem; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">Louis Adrian Montrose</p>
+        <h1 class="cab__tit">“The Place of a Brother”<br>in <i>As You Like It</i>:<br>Social Process and Comic Form</h1>
+    </header>
+
+    <p><i>As You Like It</i> creates and resolves conflict by mixing what the characters call Fortune and Nature—the circumstances in which they find themselves, as opposed to the resources of playfulness and boldness, moral virtue and witty deception, with which they master adversity and fulfill their desires.</p>
+
+    <p>The romantic action is centered on the meeting, courtship, and successful pairing of Rosalind and Orlando. This action is complicated, as Leo Salingar reminds us, by “a cardinal social assumption . . . (which would have been obvious to . . . Shakespeare’s first audiences)—that Rosalind is a princess, while Orlando is no more than a gentleman. But for the misfortune of her father’s exile, they might not have met in sympathy as at first; but for the second misfortune of her own exile, as well as his, they could not have met in apparent equality in the Forest.” The personal situations of Rosalind and Orlando affect, and are affected by, their relationship to each other. Rosalind’s union with Orlando entails the weakening of her ties to her natural father and to a cousin who has been closer to her than a sister; Orlando’s union with Rosalind entails the strengthening of his ties to his elder brother and to a lord who becomes his patron. Orlando’s atonements with other men—a natural brother, a social father—precede his atonement with Rosalind. They confirm that the disadvantaged young country gentleman is worthy of the princess, by “nature” and by “fortune.” The atonement of earthly things celebrated in Hymen’s wedding song incorporates man and woman within a process that reunites man with man. This process is my subject.</p>
+
+    <p>As the play begins, Orlando and Adam are discussing the terms of a paternal will; the first scene quickly explodes into fraternal resentment and envy, hatred and violence. By the end of the second scene, the impoverished youngest son of Sir Rowland de Boys finds himself victimized by “a tyrant Duke” and “a tyrant brother” (1.3.278). The compact early scenes expose hostilities on the manor and in the court that threaten to destroy both the family and the state. Although modern productions have shown that these scenes can be powerful and effective in the theatre, modern criticism has repeatedly downplayed their seriousness and significance. They are often treated merely as Shakespeare’s mechanism for propelling his characters—and us—into the forest as quickly and efficiently as possible. Thus Harold Jenkins, in his influential essay on the play, writes of “the inconsequential nature of the action” and of “Shakespeare’s haste to get ahead”; for him, the plot’s interest consists in Shakespeare’s ability to get “most of it over in the first act.” If we <i>reverse</i> Jenkins’s perspective, we will do justice to Shakespeare’s dramaturgy and make better sense of the play. What happens to Orlando at home is not Shakespeare’s contrivance to get him into the forest; what happens to Orlando in the forest is Shakespeare’s contrivance to remedy what has happened to him at home. The form of <i>As You Like It</i> becomes comic in the process of resolving the conflicts that are generated within it; events unfold and relationships are transformed in accordance with a precise comic teleology.</p>
+
+    <div class="subtitulo">II</div>
+
+    <p>Jaques sententiously observes that the world is a stage; the men and women, merely players; and one man’s time, a sequence of acts in which he plays many parts. Shakespeare’s plays reveal many traces of the older drama’s intimate connection to the annual agrarian and ecclesiastical cycles. But more pervasive than these are the connections between Shakespearean comic and tragic forms and the human life cycle—the sequence of acts performed in several ages by Jaques’s social player. Action in Shakespearean drama usually originates in combinations of a few basic kinds of human conflict: conflict among members of different families, generations, sexes, and social classes. Shakespeare tends to focus dramatic action precisely <i>between</i> the social “acts,” between the sequential “ages,” in the fictional lives of his characters. Many of the plays turn upon points of transition in the life cycle—birth, puberty, marriage, death—where discontinuities arise and where adjustments are necessary to basic interrelationships in the family and in society. Such dramatic actions are analogous to rites of passage. Transition rites symbolically impose markers upon the life cycle and safely conduct people from one stage of life to the next; they give a social shape, order, and sanction to personal existence.</p>
+
+    <p>In <i>As You Like It</i>, the initial conflict arises from the circumstances of inheritance by primogeniture. The differential relationship between the first born and his younger brothers is profoundly augmented at their father’s death: the eldest son assumes a paternal relationship to his siblings; and the potential for sibling conflict increases when the relationship between brother and brother becomes identified with the relationship between father and son. The transition of the father from life to death both fosters and obstructs the transition of his sons from childhood to manhood. In <i>As You Like It</i>, the process of comedy accomplishes successful passages between ages in the life cycle and ranks in the social hierarchy. By the end of the play, Orlando has been brought from an impoverished and powerless adolescence to the threshold of manhood and marriage, wealth and title.</p>
+
+    <p>A social anthropologist defines inheritance practices as “the way by which property is transmitted between the living and the dead, and especially between generations.”</p>
+
+    <div class="cita">
+        <p>Inheritance is not only the means by which the reproduction of the social system is carried out . . . it is also the way in which interpersonal relationships are structured. . . .</p>
+        <p>The linking of patterns of inheritance with patterns of domestic organization is a matter not simply of numbers and formations but of attitudes and emotions. The manner of splitting property is a manner of splitting people; it creates (or in some cases reflects) a particular constellation of ties and cleavages between husband and wife, parents and children, sibling and sibling, as well as between wider kin.</p>
+        <p class="attribution">[Jack Goody, “Introduction,” in <i>Family and Inheritance: Rural Society in Western Europe, 1200–1800</i>, ed. Jack Goody, Joan Thirsk, and E. P. Thompson]</p>
+    </div>
+
+    <p>As Goody himself concedes, the politics of the family are most powerfully anatomized, not by historians or social scientists, but by playwrights. Parents and children in Shakespeare’s plays are recurrently giving or withholding, receiving or returning, property and love. Material and spiritual motives, self-interest and self-sacrifice, are inextricably intertwined in Shakespearean drama as in life.</p>
+
+    <p>Lear’s tragedy, for example, begins in his division of his kingdom among his daughters and their husbands. He makes a bequest of his property to his heirs before his death, so “that future strife / May be prevented now” (1.1.44–45). Gloucester’s tragedy begins in the act of adultery that begets an “unpossessing bastard” (2.1.67). Edmund rails against “the plague of custom . . . the curiosity of nations” (1.2.3–4); he sees himself as victimized by rules of legitimacy and primogeniture. <i>As You Like It</i> begins with Orlando remembering the poor bequest from a dead father and the unnaturalness of an elder brother; he is victimized by what he bitterly refers to as “the courtesy of nations” (1.1.45–46). Rosalind dejectedly remembers “a banished father” (1.2.4) and the consequent loss of her own preeminent social place. Celia responds to her cousin with naive girlhood loyalty: “You know my father hath no child but I, nor none is like to have; and truly when he dies, thou shalt be his heir; for what he hath taken away from thy father perforce, I will render thee again in affection” (1.2.14–19). The comic action of <i>As You Like It</i> works to atone elder and younger brothers, father and child, man and woman, lord and subject, master and servant. Within his play, Rosalind’s magician-uncle recreates situations that are recurrent sources of ambiguity, anxiety, and conflict in the society of his audience; he explores and exacerbates them, and he resolves them by brilliant acts of theatrical prestidigitation.</p>
+
+    <p>The tense situation which begins <i>As You Like It</i> was a familiar and controversial fact of Elizabethan social life. Lawrence Stone emphasizes that “the prime factor affecting all families which owned property was . . . primogeniture”; that “the principle and practice of primogeniture . . . went far to determine the behaviour and character of both parents and children, and to govern the relationship between siblings” [<i>The Family, Sex and Marriage in England 1500–1800</i>]. In the sixteenth and seventeenth centuries, primogeniture was more widely and rigorously practiced in England—by the gentry and lesser landowners, as well as by the aristocracy—than anywhere else in Europe. The consequent hardships, frequent abuses, and inherent inequities of primogeniture generated a “literature of protest by and for younger sons” that has been characterized as “plentiful,” “vehement” in tone, and “unanimous” in its sympathies [Joan Thirsk, “Younger Sons in the Seventeenth Century,” <i>History</i> (London), 54 (1969)].</p>
+
+    <p>Jaques was not the only satirist to “rail against all the first-born of Egypt” (2.5.57–58). John Earle included the character of a “younger Brother” in his <i>Micro-Cosmographie</i> (1628):</p>
+
+    <div class="cita">
+        <p>His father ha’s done with him, as <i>Pharaoh</i> to the children of <i>Israel</i>, that would have them make brick, and give them no straw, so he taskes him to bee a Gentleman, and leaves him nothing to maintaine it. The pride of his house has undone him, which the elder Knighthood must sustaine, and his beggery that Knighthood. His birth and bringing up will not suffer him to descend to the meanes to get wealth: but hee stands at the mercy of the world, and which is worse of his brother. He is something better then the Servingmen; yet they more saucy with him, then hee bold with the master, who beholds him with a countenance of sterne awe, and checks him oftner then his Liveries. . . . Nature hath furnisht him with a little more wit upon compassion; for it is like to be his best revenew. . . . Hee is commonly discontented, and desperate, and the forme of his exclamation is, that Churle my brother.</p>
+    </div>
+
+    <p>As a class, the gentry experienced a relative rise in wealth and status during this period. But the rise was achieved by inheriting eldest sons at the expense of their younger brothers. As Earle and other contemporaries clearly recognized, the gentry’s drive to aggrandize and perpetuate their estates led them to a ruthless application of primogeniture; this left them without the means adequately to provide for their other offspring. The psychological and socioeconomic consequences of primogeniture for younger sons (and for daughters) seem to have been considerable: downward social mobility and relative impoverishment, inability to marry or late marriage, and fewer children.</p>
+
+    <p>In 1600, about the time <i>As You Like It</i> was first performed, Thomas Wilson wrote a valuable analysis of England’s social structure. His description of gentlemen reveals a very personal involvement:</p>
+
+    <div class="cita">
+        <p>Those which wee call Esquires are gentlemen whose ancestors are or have bin Knights, or else they are the heyres and eldest of their houses and of some competent quantity of revenue fitt to be called to office and authority in their Country. . . . These are the elder brothers.</p>
+        <p>I cannot speak of the number of yonger brothers, albeit I be one of the number myselfe, but for their estate there is no man hath better cause to knowe it, nor less cause to praise it; their state is of all stations for gentlemen most miserable. . . . [A father] may demise as much as he thinkes good to his younger children, but such a fever hectick hath custome brought in and inured amongst fathers, and such fond desire they have to leave a great shewe of the stock of their house, though the branches be withered, that they will not doe it, but my elder brother forsooth must be my master. He must have all, and all the rest that which the catt left on the malt heape, perhaps some smale annuytye during his life or what please our elder brother’s worship to bestowe upon us if wee please him.</p>
+    </div>
+
+    <p>The foregoing texts characterize quite precisely the situation of Orlando and his relationship to Oliver at the beginning of <i>As You Like It</i>. They suggest that Shakespeare’s audience may have responded with some intensity to Orlando’s indictment of “the courtesy of nations.”</p>
+
+    <p>In his constitutional treatise, <i>De Republica Anglorum</i> (written ca. 1562; printed 1583), Sir Thomas Smith observes that “whosoever studies the laws of the realm, who studies at the universities, who professes liberal sciences and to be short, who can live idly and without manual labour, and will bear the port, charge and countenance of a gentleman . . . shall be taken for a gentleman.” The expected social fate of a gentleborn Elizabethan younger son was to lose the ease founded upon landed wealth that was the very hallmark of gentility. Joan Thirsk suggests that, although there were places to be had for those who were industrious and determined to make the best of their misfortune,</p>
+
+    <div class="cita">
+        <p>the habit of working for a living was not ingrained in younger sons of this class, and no amount of argument could convince them of the justice of treating them so differently from their elder brothers. The contrast was too sharp between the life of an elder son, whose fortune was made for him by his father, and who had nothing to do but maintain, and perhaps augment it, and that of the younger sons who faced a life of hard and continuous effort, starting almost from nothing. Many persistently refused to accept their lot, and hung around at home, idle, bored, and increasingly resentful.</p>
+    </div>
+
+    <p>At the beginning of <i>As You Like It</i>, Orlando accuses Oliver of enforcing his idleness and denying him the means to preserve the gentility which is his birthright: “My brother Jaques he keeps at school, and report speaks goldenly of his profit; for my part, he keeps me rustically at home, or, to speak more properly, stays me here at home unkept; for call you that keeping for a gentleman of my birth, that differs not from the stalling of an ox? . . . [He] mines my gentility with my education” (1.1.5–10, 20–21). Orlando is “not taught to make anything” (1.1.30); and his natural virtue is marred “with idleness” (1.2.33–34). When Adam urges him to leave the family estate, Orlando imagines his only prospects to be beggary and highway robbery (2.3.29–34). He finally agrees to go off with Adam, spending the old laborer’s “youthful wages” in order to gain “some settled low content” (2.3.67–68).</p>
+
+    <p>Shakespeare’s opening strategy is to plunge his characters and his audience into the controversy about a structural principle of Elizabethan personal, family, and social life. He is not merely using something topical to get his comedy off to a lively start: the expression and resolution of sibling conflict and its social implications are integral to the play’s form and function. The process of comedy works against the seemingly inevitable prospect of social degradation suggested at the play’s beginning, and against its literary idealization in conventions of humble pastoral retirement. In the course of <i>As You Like It</i>, Orlando’s gentility is preserved and his material well-being is enhanced. Shakespeare uses the machinery of pastoral romance to remedy the lack of fit between deserving and having, between Nature and Fortune. Without actually violating the primary Elizabethan social frontier separating the gentle from the base, the play achieves an illusion of social leveling and of unions across class boundaries. Thus, people of every rank in Shakespeare’s socially heterogeneous audience might construe the action as they liked it.</p>
+
+    <p>Primogeniture is rarely mentioned in modern commentaries on <i>As You Like It</i>, despite its obvious prominence in the text and in the action. Shakespeare’s treatment of primogeniture may very well have been a vital—perhaps even the dominant—source of engagement for many in his Elizabethan audience. The public theatre brought together people from all the status and occupational groups to be found in Shakespeare’s London (except, of course, for the poorest laborers and the indigent). Alfred Harbage points out that the two groups “mentioned again and again in contemporary allusions to the theatres” are “the students of the Inns of Court and the apprentices of London.” In addition to these youthful groups, significant numbers of soldiers, professionals, merchants, shopkeepers, artisans, and household servants were also regular playgoers. The careers most available to the younger sons of gentlemen were in the professions—most notably the law, but also medicine and teaching—as well as in trade, the army, and the church. Thus, Shakespeare’s audience must have included a high proportion of gentleborn younger sons—adults, as well as the youths who were students and apprentices. Among these gentleborn younger sons, and among the baseborn youths who were themselves socially subordinate apprentices and servants, it is likely that Orlando’s desperate situation was the focus of personal projections and a catalyst of powerful feelings. “During the sixteenth century,” Thirsk concludes, “to describe anyone as ‘<i>a younger son</i>’ was a short-hand way of summing up a host of grievances. . . . <i>Younger son</i> meant an angry young man, bearing more than his share of injustice and resentment, deprived of means by his father and elder brother, often hanging around his elder brother’s house as a servant, completely dependent on his grace and favour.” Youths, younger sons, and all Elizabethan playgoers who felt that Fortune’s benefits had been “mightily misplaced” (2.1.33–34) could identify with Shakespeare’s Orlando.</p>
+
+    <div class="subtitulo">III</div>
+
+    <p>It is precisely in the details of inheritance that Shakespeare makes one of the most significant departures from his source. Sir John of Bordeaux is on his deathbed at the beginning of Lodge’s <i>Rosalynde</i>; he divides his land and chattels among his three sons:</p>
+
+    <div class="cita">
+        <p>Unto thee <i>Saladyne</i> the eldest, and therefore the chiefest piller of my house, wherein should be ingraven as well the excellence of thy fathers qualities, as the essentiall forme of his proportion, to thee I give fourteene ploughlands, with all my Mannor houses and richest plate. Next unto <i>Fernadyne</i> I bequeath twelve ploughlands. But unto <i>Rosader</i> the youngest I give my Horse, my Armour and my Launce, with sixteene ploughlands: for if inward thoughts be discovered by outward shadowes, <i>Rosader</i> will exceed you all in bountie and honour.</p>
+    </div>
+
+    <p>The partible inheritance devised by Lodge’s Sir John was an idiosyncratic variation on practices widespread in Elizabethan society among those outside the gentry. Saladyne, the eldest born, inherits his father’s authority. Rosader receives more land and love—he is his father’s joy, although his last and least. Saladyne, who becomes Rosader’s guardian, is deeply resentful and decides not to honor their father’s will: “What man thy Father is dead, and hee can neither helpe thy fortunes, nor measure thy actions: therefore, burie his words with his carkasse, and bee wise for thy selfe.”</p>
+
+    <p>Lodge’s text, like Thomas Wilson’s, reminds us that primogeniture was not a binding law but rather a flexible social custom in which the propertied sought to perpetuate themselves by preserving their estates intact through successive generations. Shakespeare alters the terms of the paternal will in Lodge’s story so as to alienate Orlando from the status of a landed gentleman. The effect is to intensify the differences between the eldest son and his siblings, and to identify the sibling conflict with the major division in the Elizabethan social fabric: that between the landed and the unlanded, the gentle and the base. (Within half a century after Shakespeare wrote <i>As You Like It</i>, radical pamphleteers were using “elder brother” and “younger brother” as synonyms for the propertied, enfranchised social classes and the unpropertied, unenfranchised social classes.) Primogeniture complicates not only sibling and socioeconomic relationships but also relationships between generations: between a father and the eldest son impatient for his inheritance; between a father and the younger sons resentful against the “fever hectic” that custom has inured among fathers.</p>
+
+    <p>Shakespeare’s plays are thickly populated by subjects, sons, and younger brothers who are ambivalently bound to their lords, genitors, and elder siblings—and by young women moving ambivalently between the lordships of father and husband. If this dramatic proliferation of patriarchs suggests that Shakespeare had a neurotic obsession, then it was one with a social context. To see father-figures everywhere in Shakespeare’s plays is not a psychoanalytic anachronism, for Shakespeare’s own contemporaries seem to have seen father-figures everywhere. The period from the mid-sixteenth to the mid-seventeenth century in England has been characterized by Lawrence Stone as “the patriarchal stage in the evolution of the nuclear family.” Writing of the early seventeenth-century family as “a political symbol and a social institution,” Gordon J. Schochet documents that</p>
+
+    <div class="cita">
+        <p>virtually all social relationships—not merely those between fathers and children and magistrates and subjects—were regarded as patriarchal or familial in essence. The family was looked upon as the basis of the entire social order. . . .</p>
+        <p>So long as a person occupied an inferior status within a household—as a child, servant, apprentice, or even as a wife—and was subordinated to the head, his social identity was altogether vicarious. . . .</p>
+        <p>Before a man achieved social status—if he ever did—he would have spent a great many years in various positions of patriarchal subordination.</p>
+        <p class="attribution">[<i>Patriarchalism in Political Thought</i>]</p>
+    </div>
+
+    <p>This social context shaped Shakespeare’s preoccupation with fathers; and it gave him the scope within which to reshape it into drama, satisfying his own needs and those of his paying audience. His plays explore the difficulty or impossibility of establishing or authenticating a self in a rigorously hierarchical and patriarchal society, a society in which full social identity tends to be limited to propertied adult males who are the heads of households.</p>
+
+    <p>Shakespeare’s Sir Rowland de Boys is dead before the play begins. But the father endures in the power exerted by his memory and his will upon the men in the play—his sons, Adam, the dukes—and upon their attitudes toward each other. The play’s very first words insinuate that Orlando’s filial feeling is ambivalent: “As I remember, Adam, it was upon this fashion bequeathed me by will but poor a thousand crowns, and, as thou sayst, charged my brother on his blessing to breed me well; and there begins my sadness” (1.1.1–4). Orlando’s diction is curiously indirect; he conspicuously avoids naming his father. Absent from Shakespeare’s play is any expression of the special, compensatory paternal affection shown to Lodge’s Rosader. There is an implied resentment against an unnamed father, who has left his son a paltry inheritance and committed him to an indefinite and socially degrading dependence upon his own brother. Ironically, Orlando’s first explicit acknowledgment of his filial bond is in a declaration of personal independence, a repudiation of his bondage to his eldest brother: “The spirit of my father, which I think is within me, begins to mutiny against this servitude” (1.1.21–23). Orlando’s assertions of filial piety are actually self-assertions, directed against his father’s eldest son. As Sir Rowland’s inheritor, Oliver perpetuates Orlando’s subordination within the patriarchal order; he usurps Orlando’s selfhood.</p>
+
+    <p>In a private family and household, the eldest son succeeds the father as patriarch. In a royal or aristocratic family, the eldest son also succeeds to the father’s title and political authority. Thus, when he has been crowned as King Henry V, Hal tells his uneasy siblings, “‘I’ll be your father and your brother too. / Let me but bear your love, I’ll bear your cares” (<i>2 Henry IV</i>, 5.2.57–58). Like Henry, Oliver is simultaneously a father and a brother to his own natural sibling; he is at once Orlando’s master and his peer. Primogeniture conflates the generations in the person of the elder brother and blocks the generational passage of the younger brother. What might be described dispassionately as a contradiction in social categories is incarnated in the play, as in English social life, in family conflicts and identity crises.</p>
+
+    <p>Orlando gives bitter expression to his personal experience of this social contradiction: “The courtesy of nations allows you my better in that you are the firstborn, but that same tradition takes not away my blood, were there twenty brothers betwixt us. I have as much of my father in me as you, albeit I confess that your coming before me is nearer his reverence” (1.1.45–51). Here Orlando asserts that all brothers are equally their father’s sons. Oliver might claim a special paternal relationship because he is the first born; but Orlando’s own claim actually to incorporate their father renders insubstantial any argument based on age or birth order. Thus, Orlando can indict his brother and repudiate his authority: “You have trained me like a peasant, obscuring and hiding from me all gentlemanlike qualities. The spirit of my father grows strong in me, and I will no longer endure it” (1.1.68–71). Because the patriarchal family is the basic political unit of a patriarchal society, Orlando’s protests suggest that primogeniture involves contradictions in the categories of social status as well as those of kinship. Orlando is subordinated to his sibling as a son to his father; and he is subordinated to a fellow gentleman as a peasant would be subordinated to his lord.</p>
+
+    <p>Orlando incorporates not only his father’s likeness and name (“Rowland”) but also his potent “spirit”—his personal genius, his manliness, and his moral virtue. To Adam, Orlando is “gentle, strong, and valiant” (2.3.6). He is his father’s gracious and virtuous reincarnation: “O you memory of old Sir Rowland!” (2.3.3–4). Adam challenges the eldest son’s legal claim to be his father’s heir by asserting that Oliver is morally undeserving, that he is <i>spiritually</i> illegitimate:</p>
+
+    <div class="cita">
+        <p>Your brother, no, no brother, yet the son—</p>
+        <p>Yet not the son, I will not call him son—</p>
+        <p>Of him I was about to call his father.</p>
+        <p class="attribution">(2.3.19–21)</p>
+    </div>
+
+    <p>Orlando’s claim to his spiritual inheritance leads immediately to physical coercion: Oliver calls him “boy” and strikes him. Orlando responds to this humiliating form of paternal chastisement not with deference but with rebellion: he puts his hands to Oliver’s throat. Orlando’s assertion of a self which “remembers” their father is a threat to Oliver’s patriarchal authority, a threat to his own social identity: “Begin you to grow upon me?” (1.1.85). The brothers’ natural bond, in short, is contaminated by their ambiguous social relationship.</p>
+
+    <p>Because fraternity is confused with filiation—because the generations have, in effect, been collapsed together—the conflict of elder and younger brothers also projects an oedipal struggle between father and son. In the second scene, the private violence between the brothers is displaced into the public wrestling match. Oliver tells Charles, the Duke’s wrestler, “I had as lief thou didst break [Orlando’s] neck as his finger” (1.1.144–45). Sinewy Charles, the “general challenger” (1.2.159), has already broken the bodies of “three proper young men” (1.1.111) before Orlando comes in to try “the strength of [his] youth” (1.1.161). In a sensational piece of stage business, Orlando and Charles enact a living emblem of the generational struggle. When Orlando throws Charles, youth is supplanting age, the son is supplanting the father. This contest is preceded by a remarkable exchange:</p>
+
+    <div class="cita">
+        <p><span class="speaker">Charles:</span> Come, where is this young gallant that is so desirous to lie with his mother earth?</p>
+        <p><span class="speaker">Orlando:</span> Ready sir, but his will hath in it a more modest working.</p>
+        <p class="attribution">(1.2.188–91)</p>
+    </div>
+
+    <p>Charles’s challenge gives simultaneous expression to a filial threat of incest and a paternal threat of filicide. In this conspicuously motherless play, the social context of reciprocal father-son hostility is a male struggle for identity and power fought between elders and youths, first-born and younger brothers.</p>
+
+    <p>Orlando’s witty response to Charles suggests that he regards neither his fears nor his threats. Orlando’s “will” is merely to come to man’s estate and to preserve the status of a gentleman. At the beginning of <i>As You Like It</i>, then, Shakespeare sets himself the problem of resolving the consequences of a conflict between Orlando’s powerful assertion of identity—his spiritual claim to be a true inheritor—and the social fact that he is a subordinated and disadvantaged younger son. In the forest, Oliver will be spiritually reborn and confirmed in his original inheritance. Orlando will be socially reborn as heir apparent to the reinstated Duke. Orlando will regain a brother by “blood” and a father by “affinity.”</p>
+
+    <div class="subtitulo">IV</div>
+
+    <p>Orlando is not only a younger son but also a youth. And in its language, characterization, and plot, <i>As You Like It</i> emphasizes the significance of age categories. Most prominent, of course, is Jaques’s disquisition on the seven ages of man. But the play’s <i>dramatis personae</i> actually fall into the three functional age groups of Elizabethan society: youth, maturity, and old age. Orlando’s youth is referred to by himself and by others some two dozen times in the first two scenes: he is young; a boy; a youth; the youngest son; a younger brother; a young fellow; a young gallant; a young man; a young gentleman. Social historians have discredited the notion that adolescence went unexperienced or unacknowledged in early modern England. Lawrence Stone, for example, emphasizes that in Shakespeare’s time there was “a strong contemporary consciousness of adolescence (then called ‘youth’), as a distinct stage of life between sexual maturity at about fifteen and marriage at about twenty-six.” Shakespeare’s persistent epithets identify Orlando as a member of the group about which contemporary moralists and guardians of the social order were most obsessively concerned. The Statute of Artificers (1563) summarizes the official attitude: “Until a man grow unto the age of twenty-four years he . . . is wild, without judgment and not of sufficient experience to govern himself.” The youthful members of an Elizabethan household—children, servants, and apprentices—were all supposed to be kept under strict patriarchal control. Stone points out that “it was precisely because its junior members were under close supervision that the state had a very strong interest in encouraging and strengthening the household. . . . It helped to keep in check potentially the most unruly element in any society, the floating mass of young unmarried males.” Orlando is physically mature and powerful, but socially infantilized and weak.</p>
+
+    <p>That Shakespeare should focus so many of his plays on a sympathetic consideration of the problems of youth is not surprising when we consider that perhaps half the population was under twenty, and that the youthfulness of Shakespeare’s society was reflected in the composition of his audience. In his richly documented study [“Age and Authority”], Keith Thomas demonstrates that</p>
+
+    <div class="cita">
+        <p>So far as the young were concerned, the sixteenth and seventeenth centuries are conspicuous for a sustained drive to subordinate persons in their teens and early twenties and to delay their equal participation in the adult world. This drive is reflected in the wider dissemination of apprenticeship; in the involvement of many more children in formal education; and in a variety of measures to prolong the period of legal and social infancy.</p>
+    </div>
+
+    <p>Elizabethan adolescence seems to have been characterized by a high degree of geographical mobility: youths were sent off to school, to search for work as living-in servants, or to be apprenticed in a regional town or in London. Alan Macfarlane [in <i>The Family Life of Ralph Josselin, A Seventeenth-Century Clergyman: An Essay in Historical Anthropology</i>] has suggested that, “at the level of family life,” this widespread and peculiarly English custom of farming out adolescent children was “a mechanism for separating the generations at a time when there might otherwise have been considerable difficulty.” “The changes in patterns of authority as the children approached adulthood would . . . be diminished.” He speculates further that, at the collective level, “the whole process was a form of age ritual, a way of demarcating off age-boundaries by movement through space.”</p>
+
+    <p>The family was a source of social stability, but most families were short-lived and unstable. Youth was geographically mobile, but most youths were given no opportunity to enjoy their liberty. In schools and in households, the masters of scholars, servants, and apprentices were to be their surrogate fathers. Thomas stresses that, “though many children left home early and child labour was thought indispensable, there was total hostility to the early achievement of economic independence.” The material basis of that hostility was alarm about the increasing pressure of population on very limited and unreliable resources. One of its most significant results was delayed marriage: “Combined with strict prohibition on alternative forms of sexual activity, late marriage was the most obvious way in which youth was prolonged. For marriage was the surest test of adult status and on it hinged crucial differences in wages, dress, and economic independence” (Stone, <i>Family, Sex and Marriage</i>). Most Elizabethan youths and maidens were in their mid or late twenties by the time they entered Hymen’s bands. When Touchstone quips that “the forehead of a married man [is] more honourable than the bare brow of a bachelor” (3.3.53–55), he is giving a sarcastic twist to a fundamental mark of status. And when, late in his pseudo-mock-courtship of Ganymede, Orlando remarks ruefully that he “can live no longer by thinking” (5.2.50), he is venting the constrained libido of Elizabethan youth. One of the critical facts about the Elizabethan life cycle—one not noted in Jaques’s speech—was that a large and varied group of codes, customs, and institutions regulated “a separation between physiological puberty and social puberty” (Thomas, “Age and Authority”). “Youth,” then, was the Elizabethan age category separating the end of childhood from the beginning of adulthood. It was a social threshold whose transitional nature was manifested in shifts of residence, activity, sexual feeling, and patriarchal authority.</p>
+
+    <p>The dialectic between Elizabethan dramatic form and social process is especially conspicuous in the triadic romance pattern of exile and return that underlies <i>As You Like It</i>. Here the characters’ experience is a fictional analogue of both the theatrical and the social experiences of its audience. “The circle of this forest” (5.4.34) is equivalent to Shakespeare’s Wooden O. When they enter the special space-time of the theatre, the playgoers have voluntarily and temporarily withdrawn from “this working-day world” (1.3.12) and put on “a holiday humour” (4.1.65–66). When they have been wooed to an atonement by the comedy, the Epilogue conducts them back across the threshold between the world of the theatre and the theatre of the world. The dramatic form of the characters’ experience corresponds, then, not only to the theatrical experience of the play’s audience but also to the social process of youth in the world that playwright, players, and playgoers share. In a playworld of romance, Orlando and Rosalind experience separation from childhood, journeying, posing and disguising, altered and confused relationships to parental figures, sexual ambiguity, and tension. The fiction provides projections for the past or ongoing youthful experiences of most of the people in Shakespeare’s Elizabethan audience. The forest sojourn conducts Orlando and Rosalind from an initial situation of oppression and frustration to the threshold of interdependent new identities. In one sense, then, the whole process of romantic pastoral comedy—the movement into and out of Arden—is what Macfarlane calls “a form of age ritual, a way of demarcating off age-boundaries by movement through space.” The characters’ fictive experience is congruent with the ambiguous and therefore dangerous period of the Elizabethan life cycle that it betwixt and between physical puberty and social puberty.</p>
+
+    <div class="subtitulo">V</div>
+
+    <p>Not only relationships between offspring and their genitors, or between youths and their elders, but any relationship between subordinate and superior males might take on an oedipal character in a patriarchal society. Orlando is perceived as a troublemaker by Oliver and Frederick; his conflicts are with the men who hold power in his world, with its insecure and ineffectual villains. “The old Duke is banished by his younger brother and the new Duke” (1.1.99–100). Old Adam has served Orlando’s family “from seventeen years, till now almost fourscore” (2.3.71), but under Oliver he must endure “unregarded age in corners thrown” (1.1.42). It is precisely the elders abused by Frederick and Oliver who ally themselves to Orlando’s oppressed youth. Adam gives to Orlando the life savings that were to have been the “foster-nurse” (2.3.40) of his old age; he makes his “young master” (1.1.2) his heir. The idealized relationship of Orlando and his old servant compensates for the loss or corruption of Orlando’s affective ties to men of his own kin and class. But Adam’s paternity is only a phase in the reconstitution of Orlando’s social identity. In the process of revealing his lineage to the old Duke, Orlando exchanges the father-surrogate who was his own father’s servant for the father-surrogate who was his own father’s lord.</p>
+
+    <div class="cita">
+        <p>If that you were the good Sir Rowland’s son,</p>
+        <p>As you have whisper’d faithfully you were,</p>
+        <p>And as mine eye doth his effigies witness</p>
+        <p>Most truly limn’d and living in your face,</p>
+        <p>Be truly welcome hither. I am the duke</p>
+        <p>That lov’d your father.</p>
+        <p class="attribution">(2.7.194–99)</p>
+    </div>
+
+    <p>The living son replaces his dead father in the affections of their lord. The Duke, who has no natural son, assumes the role of Orlando’s patron, his social father: “Give me your hand / And let me all your fortunes understand” (2.7.202–3). Orlando’s previous paternal benefactor has been supplanted: Adam neither speaks nor is mentioned again.</p>
+
+    <p>The reunion of the de Boys brothers is blessed by “the old Duke”; the circumstance which makes that reunion possible is Oliver’s expulsion by “the new Duke.” In Lodge’s <i>Rosalynde</i>, the two kings are not kin. Shakespeare’s departure from his immediate source unifies and intensifies the conflicts in the family and the polity. The old Duke who adopts Orlando in the forest has been disinherited by his own younger brother in the court; Frederick has forcibly made himself his brother’s heir. In the course of the play, fratricide is attempted, averted, and repudiated in each sibling relationship. Tensions in the nuclear family and in the body politic are miraculously assuaged within the forest. The Duke addresses his first words to his “comates and brothers in exile” (2.1.1). The courtly decorum of hierarchy and deference may be relaxed in the forest, but it has not been abrogated; the Duke’s “brothers in exile” remain courtiers and servants attendant upon his grace. An atmosphere of charitable community has been created among those who have temporarily lost or abandoned their normal social context; the sources of conflict inherent in the social order are by no means genuinely dissolved in the forest, but rather are translated into a quiet and sweet style. In the forest, the old usurped Duke is a comate and brother to his loyal subjects and a benevolent father to Orlando. The comedy establishes <i>brotherhood</i> as an ideal of social as well as sibling male relationships; at the same time, it reaffirms a positive, nurturing image of <i>fatherhood</i>. And because family and society are a synecdoche, the comedy can also work to mediate the ideological contradiction between spiritual fraternity and political patriarchy, between social communion and social hierarchy.</p>
+
+    <p>Like Richard of Gloucester, Claudius, Edmund, and Antonio, Frederick is a discontented younger brother whom Shakespeare makes the malevolent agent of his plot. Frederick generates action in <i>As You Like It</i> by banishing successively his elder brother, his niece, and his subject. Like his fellow villains, Frederick is the effective agent of a dramatic resolution which he himself does not intend; the tyrant’s perverted will subserves the comic dramatist’s providential irony. Frederick enforces the fraternal bond between Orlando and Oliver by holding Oliver responsible for Orlando on peril of his inheritance, forcing Oliver out to apprehend his brother. By placing Oliver in a social limbo akin to that suffered by Orlando, Frederick unwittingly creates the circumstances that lead to the brothers’ reunion:</p>
+
+    <div class="cita">
+        <p><span class="speaker">Duke Frederick:</span> Thy lands and all things that thou dost call thine,</p>
+        <p>Worth seizure, do we seize into our hands,</p>
+        <p>Till thou canst quit thee by thy brother’s mouth</p>
+        <p>Of what we think against thee.</p>
+        <p><span class="speaker">Oliver:</span> O that your Highness knew my heart in this!</p>
+        <p>I never lov’d my brother in my life.</p>
+        <p><span class="speaker">Duke Frederick:</span> More villain thou.</p>
+        <p class="attribution">(3.1.9–15)</p>
+    </div>
+
+    <p>Oliver has abused the letter and the spirit of Sir Rowland’s will: “It was . . . charged my brother on his blessing to breed me well” (1.1.3–4). Frederick is Oliver’s nemesis.</p>
+
+    <p>In the exchange I have just quoted, Frederick’s attitude toward Oliver is one of <i>moral</i> as well as political superiority. His judgment of Oliver’s villainy is sufficiently ironic to give us pause. Is the usurper in Frederick projecting onto Oliver his guilt for his own unbrotherliness? Or is the younger brother in him identifying with Orlando’s domestic situation? In seizing Oliver’s lands and all things that he calls his until Oliver’s (younger) brother can absolve him, Frederick parodies his own earlier usurpation of his own elder brother. Frederick’s initial seizure takes place before the play begins; its circumstances are never disclosed. We do better to observe Frederick’s dramatic function than to search for his unconscious motives. Frederick actualizes the destructive consequences of younger brothers’ deprivation and discontent, in the family and in society at large. The first scenes demonstrate that such a threat exists within Orlando himself. The threat is neutralized as soon as Orlando enters the good old Duke’s comforting forest home; there his needs are immediately and bountifully gratified:</p>
+
+    <div class="cita">
+        <p><span class="speaker">Duke Senior:</span> What would you have? Your gentleness shall force,</p>
+        <p>More than your force move us to gentleness.</p>
+        <p><span class="speaker">Orlando:</span> I almost die for food, and let me have it.</p>
+        <p><span class="speaker">Duke Senior:</span> Sit down and feed, and welcome to our table.</p>
+        <p><span class="speaker">Orlando:</span> Speak you so gently? Pardon me, I pray you.</p>
+        <p>I thought that all things had been savage here,</p>
+        <p>Let gentleness my strong enforcement be;</p>
+        <p>In the which hope, I blush, and hide my sword.</p>
+        <p class="attribution">(2.7.102–7, 118–19)</p>
+    </div>
+
+    <p>What is latent and potential within Orlando is displaced onto Frederick and realized in his violence and insecurity, his usurpation and tyranny. Frederick sustains the role of villain until he too comes to Arden:</p>
+
+    <div class="cita">
+        <p>Duke Frederick hearing how that every day</p>
+        <p>Men of great worth resorted to this forest,</p>
+        <p>Address’d a mighty power, which were on foot</p>
+        <p>In his own conduct, purposely to take</p>
+        <p>His brother here, and put him to the sword.</p>
+        <p>And to the skirts of this wild wood he came,</p>
+        <p>Where, meeting with an old religious man,</p>
+        <p>After some question with him, was converted</p>
+        <p>Both from his enterprise and from the world,</p>
+        <p>His crown bequeathing to his banish’d brother</p>
+        <p>And all their lands restor’d to them again</p>
+        <p>That were with him exil’d.</p>
+        <p class="attribution">(5.4.153–64)</p>
+    </div>
+
+    <p>Like Orlando, Frederick finds a loving father in the forest. And his conversion is the efficient cause of Orlando’s elevation. In the denouement of Lodge’s <i>Rosalynde</i>, the reunited brothers, Rosader and Saladyne, join the forces of the exiled King Gerismond; the army of the usurping King Torismond is defeated, and he is killed in the action. With striking formal and thematic economy, Shakespeare realizes his change of plot as a change <i>within</i> a character; he gets rid of Frederick not by killing him off but by morally transforming him. Frederick gives all his worldly goods to his natural brother and goes off to claim his spiritual inheritance from a heavenly father.</p>
+
+    <div class="subtitulo">VI</div>
+
+    <p>The reunion of the de Boys brothers is narrated retrospectively by a reborn Oliver, in the alien style of an allegorical dream romance:</p>
+
+    <div class="cita">
+        <p>Pacing through the forest,</p>
+        <p>Chewing the food of sweet and bitter fancy,</p>
+        <p>Lo what befell! He threw his eye aside,</p>
+        <p>And mark that object did present itself.</p>
+        <p>Under an old oak, whose boughs were moss’d with age</p>
+        <p>And high top bald with dry antiquity,</p>
+        <p>A wretched ragged man, o’ergrown with hair,</p>
+        <p>Lay sleeping on his back.</p>
+        <p class="attribution">(4.3.100–107)</p>
+    </div>
+
+    <p>These images of infirm age and impotence, of regression to wildness and ruin through neglect, form a richly suggestive emblem. Expounded in the context of the present argument, the emblem represents the precarious condition into which fratricidal feeling provoked by primogeniture has brought these brothers and their house: “Such a fever hectic hath custome brought in and inured among fathers, and such fond desire they have to leave a great shewe of the <i>stock</i> of their house, though the <i>branches be withered</i>, that . . . my elder brother forsooth must be my master” (Thomas Wilson, <i>State of England</i>, 1600, [italics added]). Orlando, whose “having in beard is a younger brother’s revenue” (3.2.367–68), confronts a hairy man asleep amidst icons of age and antiquity. The description suggests that, in confronting “his brother, his elder brother” (4.3.120), young Orlando is confronting a personification of his patriline and of the patriarchal order itself. The brothers find each other under an <i>arbor consanguinitatis</i>, at the de Boys “family tree.”</p>
+
+    <p>Agnes Latham suggests that the snake and the lioness which menace Oliver are metaphors for his own animosities: as the snake “slides away, Oliver’s envy melts, and his wrath goes with the lion.” The text suggests that it is Orlando who undergoes such an allegorical purgation. When it sees Orlando, the snake slips under the bush where the lioness couches.</p>
+
+    <div class="cita">
+        <p><span class="speaker">Oliver:</span> This seen, Orlando did approach the man,</p>
+        <p>And found it was his brother, his elder brother.</p>
+        <p><span class="speaker">Rosalind:</span> But to Orlando. Did he leave him there,</p>
+        <p>Food to the suck’d and hungry lioness?</p>
+        <p><span class="speaker">Oliver:</span> Twice did he turn his back, and purpos’d so.</p>
+        <p>But kindness, nobler ever than revenge,</p>
+        <p>And nature, stronger than his just occasion,</p>
+        <p>Made him give battle to the lioness,</p>
+        <p>Who quickly fell before him; in which hurtling</p>
+        <p>From miserable slumber I awak’d.</p>
+        <p class="attribution">(4.3.119–20, 125–32)</p>
+    </div>
+
+    <p>In killing the lioness which threatens to kill Oliver, Orlando kills the impediment to atonement within himself. Oliver’s narrative implies a casual relationship between Orlando’s act of self-mastery and purgation and Oliver’s own “awakening.” When the brothers have been “kindly bath’d” (4.3.140) in mutual tears, Oliver’s “conversion” (4.3.136) and his atonement with Orlando are consecrated by the Duke who loved their father. In the play’s first words, Orlando remembered that Oliver had been charged, on his blessing, to breed him well. The Duke’s bequest and injunction reformulate Sir Rowland’s last will and testament:</p>
+
+    <div class="cita">
+        <p>He led me to the gentle Duke,</p>
+        <p>Who gave me fresh array and entertainment</p>
+        <p>Committing me unto my brother’s love.</p>
+        <p class="attribution">(4.3.142–44)</p>
+    </div>
+
+    <p>What has taken place offstage is a conversion of the crucial event that precipitated the fraternal conflict, the event “remembered” in the very first words of the play.</p>
+
+    <p>At this point in the atonement, paternity and fraternity are reaffirmed as spiritual bonds rather than as bonds of blood and property. Brotherhood can now come to mean friendship freed from the material conflicts of kinship. Some remarks by Julian Pitt-Rivers illuminate the point:</p>
+
+    <div class="cita">
+        <p>Kinship’s nature . . . is not free of jural considerations. Rights and duties are distributed differentially to kinsmen because kinship is a system, not a network of dyadic ties like friendship. Status within it is ascribed by birth. . . . Rules of succession and inheritance are required to order that which cannot be left to the manifestations of brotherly love. . . . A revealing assertion echoes through the literature on ritual kinship: ‘Blood-brothers are like brothers,’ it is said, then comes, ‘in fact they are closer than real brothers.’ The implication is troubling, for it would appear that true fraternity is found only between those who are not real brothers. Amity does not everywhere enjoin the same open-ended generosity, least of all between kinsmen, who quarrel only too often, in contrast to ritual kinsmen, who are bound by sacred duty not to do so.</p>
+        <p class="attribution">(“The Kith and the Kin,” in <i>The Character of Kinship</i>, ed. Jack Goody)</p>
+    </div>
+
+    <p>Before he goes to Arden, Orlando feels he has no alternative but to subject himself “to the malice / Of a diverted blood and bloody brother” (2.3.36–37). Shakespeare’s task is to bring the relationship of Orlando and Oliver under the auspices of Hymen:</p>
+
+    <div class="cita">
+        <p>Then is there mirth in heaven,</p>
+        <p>When earthly things made even</p>
+        <p>Atone together.</p>
+        <p class="attribution">(5.4.107–9)</p>
+    </div>
+
+    <p>In Touchstone’s terms (5.4.101–2), hostile siblings are brought to shake hands and swear their brotherhood by the virtue of comedy’s If. The spiritual principle of “brotherly love” is reconciled to the jural principle of primogeniture; “real bothers” are made “blood brothers”—as the napkin borne by Oliver so graphically testifies.</p>
+
+    <p>Some commentators have seen the outlines of a Christian allegory of redemption in the play. They point to the presence of a character named Adam; the Duke’s disquisition on “the penalty of Adam”; the iconography of the serpent, the tree, and the <i>vetus homo</i>; the heroic virtue of Orlando; the comic rite of atonement. Perhaps we do better to think of Shakespeare as creating resonances between the situations in his play and the religious archetypes at the foundations of his culture; as invoking what Rosalie Colie, writing of <i>King Lear</i>, calls “Biblical echo.” What echoes deeply through the scenes I have discussed is the fourth chapter of Genesis, the story of Cain and Abel and what another of Shakespeare’s fratricides calls “the primal eldest curse . . . / A brother’s murther” (<i>Hamlet</i>, 3.3.37–38). Adam’s two sons made offerings to the Lord: “and the Lord had respect unto Habel, and to his offering,”</p>
+
+    <div class="cita">
+        <p>But unto Kain and to his offring he had no regarde: wherefore Kain was exceding wroth, & his countenance fel downe.</p>
+        <p>Then the Lord said unto Kain, Why art thou wroth? and why is thy countenence cast downe?</p>
+        <p>If thou do wel, shalt thou not be accepted? and if thou doest not well, sinne lieth at the dore: also unto thee his desire <i>shal be subject</i>, and thou shalt rule over him.</p>
+        <p>Then Kain spake to Habel his brother. And when they were in the field, Kain rosé up against Habel his brother, and slewe him.</p>
+        <p>Then the Lord said unto Kain, Where is Habel thy-brother? Who answered, I canot tel. Am I my brothers keper?</p>
+        <p>Againe he said, What hast thou done? the voyce of thy brothers blood cryeth unto me from the grounde.</p>
+        <p>Now therefore thou art cursed from the earth, which hath opened her mouth to receive thy brothers blood from thine hand.</p>
+        <p class="attribution">(Gen. 4:4–11)</p>
+    </div>
+
+    <p>The Geneva Bible glosses the italicized phrase in the seventh verse as a reference to the foundations of primogeniture: “The dignitie of ye first borne is given to Kain over Habel.”</p>
+
+    <p>The wrath of Cain echoes in Oliver’s fratricidal musings at the end of the first scene: “I hope I shall see an end of him; for my soul—yet I know not why—hates nothing more than he. Yet he’s gentle, never schooled and yet learned, full of noble device, of all sorts enchantingly beloved, and indeed so much in the heart of the world, and especially of my own people, that I am altogether misprised. But it shall not be so long” (1.1.162–69). Oliver feels humanly rather than divinely misprized; and it is his tyrannical secular lord to whom he declares that he is not his brother’s keeper. Orlando sheds his own blood for his elder brother, which becomes the sign of Oliver’s conversion rather than the mark of his fratricidal guilt. Oliver finds acceptance in the old Duke, who commits him to his brother’s love. Shakespeare is creating a resonance between his romantic fiction and Biblical history, between the dramatic process of assuaging family conflict in the atonements of comedy and the exegetical process of redeeming the primal fratricide of Genesis in the spiritual fraternity of the Gospel:</p>
+
+    <div class="cita">
+        <p>For brethren, ye have bene called unto libertie: onely use not <i>your</i> libertie as an occasion unto the flesh, but by love serve one another.</p>
+        <p>For all the Law is fulfilled in one worde, which is this, Thou shalt love thy neighbour as thy self.</p>
+        <p>If ye byte & devoure one another, take hede lest ye be consumed one of another.</p>
+        <p>Then I say, walke in the Spirit, and ye shal not fulfil the lustes of the flesh.</p>
+        <p class="attribution">(Galatians 5:13–16)</p>
+    </div>
+
+    <p>The rivalry or conflict between elder and younger brothers is a prominent motif in the fictions of cultures throughout the world. Its typical plot has been described as “the disadvantaged younger sibling or orphan child besting an unjust elder and gaining great fortune through the timely intercession of a benevolent supernatural being.” Cultural fictions of the triumphs of younger siblings offer psychological compensation for the social fact of the deprivation of younger siblings. Such fictions are symbolic mediations of discrepancies between the social categories of status and the claims of individual merit, in which the defeat and supplanting of the elder sibling by the younger reconciles ability with status: “The younger outwits, displaces, and becomes the elder; the senior position comes to be associated with superior ability.”</p>
+
+    <p>The folk-tale scenario of sibling rivalry is clear in the fourteenth-century tale of <i>Gamelyn</i>, to which Lodge’s Rosader plot and Shakespeare’s Orlando plot are indebted. The disinherited Gamelyn and his outlaw cohorts sentence Gamelyn’s eldest brother to death by hanging. Their topsy-turvy actions are sanctioned and absorbed by the social order: the King pardons Gamelyn, restores his inheritance, and makes him Chief Justice. In <i>As You Like It</i>, Shakespeare’s characters emphasize the discrepancy between “the gifts of the world” and “the lineaments of Nature” (1.2.40–41), between social place and personal merit. The comedy’s task is to “mock the good hussif Fortune from her wheel, that her gifts may henceforth be bestowed equally” (1.2.30–32). Shakespeare transcends <i>Gamelyn</i> and its folktale paradigm in a wholehearted concern not merely to eliminate social contradictions, but also to redeem and reconcile human beings. Oliver is not defeated, eliminated, supplanted; he is converted, reintegrated, confirmed. In the subplot of <i>King Lear</i>, the unbrotherly struggle for mastery and possession is resolved by fratricide; the comic resolution of <i>As You Like It</i> depends instead upon an expansion of opportunities for mastery and possession.</p>
+
+    <div class="subtitulo">VII</div>
+
+    <p>In Lodge’s <i>Rosalynde</i>, the crude heroic theme of <i>Gamelyn</i> is already fused with the elegant love theme of Renaissance pastorals. In constructing a romantic comedy of familial and sexual tension resolved in brotherhood and marriage, Shakespeare gives new complexity and cohesiveness to his narrative source. The struggle of elder and younger brothers is not simply duplicated; it is inverted. In the younger generation, the elder brother abuses the younger; in the older generation, the younger abuses the elder. The range of experience and affect is thereby enlarged, and the protest against primogeniture is firmly balanced by its reaffirmation. Myth, Scripture, and Shakespearean drama record “the bond crack’d betwixt son and father” (<i>King Lear</i> 1.2.113–14). Hostilities between elder and younger brothers and between fathers and sons are homologous: “Yea, and the brother shal deliver the brother to death, and the father the sonne, and the children shal rise against their parents, and shal cause them to dye” (Mark 13:14). Because in <i>As You Like It</i> the doubling and inversion of fraternal conflict links generations, the relationship of brother and brother can be linked to the relationship of father and son. In the process of atonement, the two families and two generations of men are doubly and symmetrically bound: the younger brother weds the daughter of the elder brother, and the elder brother weds the daughter of the younger brother. They create the figure of <i>chiasmus</i>. Whatever vicarious benefit <i>As You Like It</i> brings to younger brothers and to youths, it is not achieved by perverting or destroying the bonds between siblings and between generations, but by transforming and renewing them—through marriage.</p>
+
+    <p>In Arden, Orlando divides his time between courting Rosalind (who is played by Ganymede, who is played by Rosalind) and courting the old Duke who is Rosalind’s father. Celia teases Rosalind about the sincerity of Orlando’s passion, the truth of his feigning, by reminding her of his divided loyalties: “He attends here in the forest on the Duke your father” (3.4.29–30). Rosalind, who clearly resents that she must share Orlando’s attentions with her father, responds: “I met the Duke yesterday and had much question with him. He asked me of what parentage I was: I told him of as good as he, so he laughed and let me go. But what talk we of fathers, when there is such a man as Orlando?” (3.4.31–35). Celia has already transferred her loyalties from her father to Rosalind; Rosalind is transferring hers from her father and from Celia to Orlando. But she withholds her identity from her lover in order to test and to taunt him. In the forest, while Orlando guilelessly improves his place in the patriarchal order, Rosalind wittily asserts her independence of it. Rosalind avoids her father’s recognition and establishes her own household within the forest; Orlando desires the Duke’s recognition and gladly serves him in his forest-court.</p>
+
+    <p>It is only after he has secured a place within the old Duke’s benign all male community that Orlando begins to play the lover and the poet: “Run, run Orlando, carve on every tree / The fair, the chaste, and unexpressive she” (3.2.9–10):</p>
+
+    <div class="cita">
+        <p>But upon the fairest boughs,</p>
+        <p>Or at every sentence end,</p>
+        <p>Will I Rosalinda write,</p>
+        <p>Teaching all that read to know</p>
+        <p>The quintessence of every sprite</p>
+        <p>Heaven would in little show.</p>
+        <p>Therefore Heaven Nature charg’d</p>
+        <p>That one body should be fill’d</p>
+        <p>With all graces wide-enlarg’d.</p>
+        <p>Nature presently distill’d</p>
+        <p>Helen’s cheek, but not her heart,</p>
+        <p>Cleopatra’s majesty,</p>
+        <p>Atalanta’s better part,</p>
+        <p>Sad Lucretia’s modesty.</p>
+        <p>Thus Rosalind of many parts</p>
+        <p>By heavenly synod was devis’d,</p>
+        <p>Of many faces, eyes, and hearts,</p>
+        <p>To have the touches dearest priz’d.</p>
+        <p>Heaven would that she these gifts should have,</p>
+        <p>And I to live and die her slave.</p>
+        <p class="attribution">(3.2.132–51)</p>
+    </div>
+
+    <p>The Petrarchan lover “writes” his mistress or “carves” her in the image of his own desire, incorporating virtuous feminine stereotypes and scrupulously excluding what is sexually threatening. The lover masters his mistress by inscribing her within his own discourse; he worships a deity of his own making and under his control. When Rosalind-Ganymede confronts this “fancy-monger” (3.2.354–55) who “haunts the forest . . . deifying the name of Rosalind” (3.2.350, 353–54), she puts a question to him: “But are you so much in love as your rhymes speak?” (3.2.386). Rosalind and Touchstone interrogate and undermine self-deceiving amorous rhetoric with bawdy wordplay and relentless insistence upon the power and inconstancy of physical desire. All the love-talk in the play revolves around the issue of mastery in the shifting social relationship between the sexes: in courtship, maidens suspect the faithfulness of their suitors; in wedlock, husbands suspect the faithfulness of their wives. The poems of feigning lovers and the horns of cuckolded husbands are the complementary preoccupations of Arden’s country copulatives.</p>
+
+    <p>Consider the crucially-placed brief scene (4.2) which is barely more than a song inserted between the betrothal scene of Orlando and Rosalind-Ganymede and the scene in which Oliver comes to Rosalind bearing the bloody napkin. In 4.1, Rosalind mocks her tardy lover with talk of an emblematic snail: “He brings his destiny with him. . . . Horns—which such as you fain to be beholding to your wives for” (4.1.54–55, 57–58). Touchstone has already resigned himself to the snail’s destiny with his own misogynistic logic: “As horns are odious, they are necessary. It is said, many a man knows no end of his goods. Right. Many a man has good horns and knows no end of them. Well, that is the dowry of his wife, ’tis none of his own getting” (3.3.45–49). Now, in 4.2, Jaques transforms Rosalind’s jibes into ironic male self-mockery: “He that killed the deer” is to have the horns set on his head “for a branch of victory” (4.2.1, 5). Jaques calls for a song—“‘Tis no matter how it be in tune, so it makes noise enough” (4.2.8–9). The rowdy horn song is a kind of <i>charivari</i> or “rough music,” traditionally the form of ridicule to which cuckolds and others who offended the community’s moral standards were subjected. This <i>charivari</i>, however, is also a song of consolation and good fellowship, for not only the present “victor” but all his companions “shall bear this burden” (4.2.12–13).</p>
+
+    <div class="cita">
+        <p>Take thou no scorn to wear the horn,</p>
+        <p>It was a crest ere thou wast born.</p>
+        <p>Thy father’s father wore it,</p>
+        <p>And thy father bore it.</p>
+        <p>The horn, the horn, the lusty horn,</p>
+        <p>Is not a thing to laugh to scorn.</p>
+        <p class="attribution">(4.2.14–19)</p>
+    </div>
+
+    <p>The play’s concern with patriarchal lineage and the hallmarks of gentility is here transformed into an heraldic celebration of the horn—instrument of male potency and male degradation—which marks all men as kinsmen. Thus, although cuckoldry implies the uncertainty of paternity, the song celebrates the paradox that it is precisely the common destiny they share with the snail that binds men together—father to son, brother to brother. Through the metaphor of hunting (with its wordplays on “deer” and “horns”) and the medium of song, the threat that the power of insubordinate women poses to the authority of men is transformed into an occasion for affirming and celebrating patriarchy and fraternity.</p>
+
+    <p>After the mock-marriage (4.1) in which they have indeed plighted their troth, Rosalind-Ganymede exuberantly teases Orlando about the shrewishness and promiscuity he can expect from his wife. Naively romantic Orlando abruptly leaves his threatening Rosalind in order “to attend the Duke at dinner” (4.1.170). On his way from his cruel mistress to his kind patron, Orlando encounters his own brother. It is hardly insignificant that Shakespeare changes the details of the fraternal recognition scene to include an aspect of sexual differentiation wholly absent from Lodge’s romance. He adds the snake which wreathes itself around Oliver’s neck; and he makes it into an insidious female, “who with her head, nimble in threats, approach’d / The opening of his mouth” (4.3.109–10). Furthermore, he changes Lodge’s lion into a lioness whose nurturing and aggressive aspects are strongly and ambivalently stressed: “a lioness, with udders all drawn dry” (4.3.114); “the suck’d and hungry lioness” (4.3.126). Orlando has retreated in the face of Rosalind’s verbal aggressiveness. He has wandered through the forest, “chewing the food of sweet and bitter fancy” (4.3.101), to seek the paternal figure who has nurtured him. Instead, he has found Oliver in a dangerously passive condition, threatened by a double source of oral aggression.</p>
+
+    <p>Oliver’s fantastic narrative suggests a transformation of the sexual conflict initiated by Rosalind when she teases Orlando in 4.1. Rosalind and the lioness are coyly linked in the exchange between the lovers at their next meeting:</p>
+
+    <div class="cita">
+        <p><span class="speaker">Rosalind:</span> O my dear Orlando, how it grieves me to see thee wear thy heart in a scarf!</p>
+        <p><span class="speaker">Orlando:</span> It is my arm.</p>
+        <p><span class="speaker">Rosalind:</span> I thought thy heart had been wounded with the claws of a lion.</p>
+        <p><span class="speaker">Orlando:</span> Wounded it is, but with the eyes of a lady.</p>
+        <p class="attribution">(5.2.19–23)</p>
+    </div>
+
+    <p>The chain which Rosalind bestows upon Orlando at their first meeting (“Wear this for me” [1.2.236]) is the mark by which Celia identifies him in the forest (“And a chain, that you once wore, about his neck” [3.2.178]). The “green and gilded snake” (4.3.108) encircling Oliver’s neck is a demonic parody of the emblematic stage property worn by his brother throughout the play. The gynephobic response to Rosalind is split into the erotic serpent and the maternal lioness, while Orlando is split into his victimized brother and his heroic self. Orlando’s mastery of the lioness (“Who quickly fell before him” [4.3.131]) is, then, a symbolic mastery of Rosalind’s challenge to Orlando. But it is also a triumph of fraternal “kindness” (4.3.128) over the fratricidal impulse. Relationships between elder and younger brothers and between fathers and sons are purified by what the text suggests is a kind of matricide, a triumph of men over female powers. Thus the killing of the lioness may also symbolize a repudiation of the consanguinity of Orlando and Oliver. If this powerful female—the carnal source of siblings—is destroyed, both fraternity and paternity can be reconceived as male relationships unmediated by woman, relationships of the spirit rather than of the flesh. Orlando’s heroic act, distanced and framed in an allegorical narrative, condenses aspects of both the romantic plot and the sibling plot. And these plots are themselves the complementary aspects of a single social and dramatic process.</p>
+
+    <p>Before Orlando is formally married to Rosalind at the end of the play, he has reaffirmed his fraternal and filial bonds in communion with other men. Orlando’s rescue of Oliver from the she-snake and the lioness frees the brothers’ capacity to give and to receive love. Now Oliver can “fall in love” with Celia; and now Orlando “can live no longer by thinking” (5.2.50) about Rosalind. Oliver asks his younger brother’s consent to marry, and resigns to him his birthright: “My father’s house and all the revenue that was old Sir Rowland’s will I estate upon you, and here live and die a shepherd” (5.2.10–12). Orlando agrees with understandable alacrity: “You have my consent. Let your wedding be tomorrow” (5.2.13–14). Marriage, the social institution at the heart of comedy, serves to ease or eliminate fraternal strife. And fraternity, in turn, serves as a defense against the threat men feel from women.</p>
+
+    <p>Rosalind-as-Ganymede and Ganymede-as-Rosalind—the woman out of place—exerts an informal organizing and controlling power over affairs in the forest. But this power lapses when she relinquishes her male disguise and formally acknowledges her normal status as daughter and wife: “I’ll have no father, if you be not he. / I’ll have no husband, if you be not he” (5.4.121–22). In a ritual gesture of surrender, she assumes the passive role of mediatrix between the Duke and Orlando:</p>
+
+    <div class="cita">
+        <p>[<i>To the Duke.</i>] To you I give myself, for I am yours.</p>
+        <p>[<i>To Orlando.</i>] To you I give myself, for I am yours.</p>
+        <p class="attribution">(5.4.115–16)</p>
+    </div>
+
+    <p>The Duke’s paternal bond to Orlando is not established through the natural fertility of a mother but through the supernatural virginity of a daughter: “Good Duke receive thy daughter, / Hymen from heaven brought her” (5.4.110–11). The play is quite persistent in creating strategies for subordinating the flesh to the spirit, and female powers to male controls. Hymen’s marriage rite gives social sanction to the lovers’ mutual desire. But the atonement of man and woman also implies the social subordination of wife to husband. Rosalind’s exhilarating mastery of herself and others has been a compensatory “holiday humor,” a temporary, inversionary rite of misrule, whose context is a transfer of authority, property, and title from the Duke to his prospective male heir. From the perspective of the present argument, the romantic love plot serves more than its own ends: it is also the means by which other actions are transformed and resolved. In his unions with the Duke and with Rosalind, Orlando’s social elevation is confirmed. Such a perspective does not deny the comedy its festive magnanimity; it merely reaffirms that Shakespearean drama registers the form and pressure of Elizabethan experience. If <i>As You Like It</i> is a vehicle for Rosalind’s exuberance, it is also a structure for her containment.</p>
+
+    <p>Jaques de Boys, “the second son of old Sir Rowland” (5.4.151), enters suddenly at the end of the play. This Shakespearean whimsy fits logically into the play’s comic process. As the narrator of Frederick’s strange eventful history, Jaques brings the miraculous news that resolves the conflict between his own brothers as well as the conflict between the brother-dukes. As Rosalind mediates the affinity of father and son, so Jaques—a brother, rather than a mother—mediates the kinship of eldest and youngest brothers; he is, in effect, the incarnate middle term between Oliver and Orlando. The Duke welcomes him:</p>
+
+    <div class="cita">
+        <p>Thou offer’st fairly to thy brothers’ wedding;</p>
+        <p>To one his lands withheld, and to the other</p>
+        <p>A land itself at large, a potent dukedom.</p>
+        <p class="attribution">(5.4.166–68)</p>
+    </div>
+
+    <p>Jaques’s gift celebrates the wedding of his brothers to their wives and to each other. Solutions to the play’s initial conflicts are worked out between brother and brother, father and son—among men. Primogeniture is reaffirmed in public and private domains: the Duke, newly restored to his own authority and possessions, now restores the de Boys patrimony to Oliver. The aspirations and deserts of the youngest brother are rewarded when the Duke acknowledges Orlando as his own heir, the successor to property, power, and title that far exceed Oliver’s birthright. The eldest brother regains the authority due him by primogeniture at the same time that the youngest brother is freed from subordination to his sibling and validated in his claim to the perquisites of gentility.</p>
+
+    <p>With his patrimony restored and his marriage effected, Oliver legitimately assumes the place of a patriarch and emerges into full social adulthood; he is now worthy to be the son and heir of Sir Rowland de Boys. Orlando, on the other hand, has proved himself worthy to become son and heir to the Duke. Thomas Wilson, another Elizabethan younger brother, made the bitter misfortune of primogeniture the spur to personal achievement: “This I must confess doth us good someways, for it makes us industrious to apply ourselves to letters or to armes, whereby many time we become my master elder brothers’ masters, or at least their betters in honour and reputacion.” Unlike Thomas Wilson, Shakespeare’s Orlando is spectacularly successful, and his success is won more by spontaneous virtue than by industry. But like Wilson’s, Orlando’s accomplishments are those of a gentleman and a courtier. Unlike most Elizabethan younger sons, Orlando is not forced to descend to commerce or to labor to make his way in the world. He succeeds by applying himself to the otiose courtship of his mistress and his prince. Although the perfection of his social identity is deferred during the Duke’s lifetime, Orlando’s new filial subordination is eminently beneficent. It grants him by affinity what he has been denied by kinship: the social advancement and sexual fulfillment of which youths and younger sons were so frequently deprived. The de Boys brothers atone together when the eldest replaces a father and the youngest recovers a father.</p>
+
+    <div class="subtitulo">VIII</div>
+
+    <p>Social and dramatic decorum require that, “to work a comedy kindly, grave old men should instruct, young men should show the imperfections of youth.” London’s city fathers, however, were forever accusing the theatres and the plays of corrupting rather than instructing youth: “We verely think plays and theatres to be the cheif cause . . . of . . . disorder & lewd demeanours which appear of late in young people of all degrees.” Shakespeare’s play neither preaches to youths nor incites them to riot. In the world of its Elizabethan audience, the form of Orlando’s experience may indeed have functioned as a collective compensation, a projection for the wish-fulfillment fantasies of younger brothers, youths, and all who felt themselves deprived by their fathers or their fortunes. But Orlando’s mastery of adversity could also provide support and encouragement to the ambitious individuals who identified with his plight. The play may have fostered strength and perseverance as much as it facilitated pacification and escape. For the large number of youths in Shakespeare’s audience—firstborn and younger siblings, gentle and base—the performance may have been analogous to a rite of passage, helping to ease their dangerous and prolonged journey from subordination to identity, their difficult transition from the child’s part to the adult’s.</p>
+
+    <p>My subject has been the complex interrelationship of brothers, fathers, and sons in <i>As You Like It</i>. But I have suggested that the play’s concern with relationships among men is only artificially separable from its concern with relationships between men and women. The androgynous Rosalind—boy actor and princess—addresses Shakespeare’s heterosexual audience in an epilogue: “My way is to conjure you, and I’ll begin with the women. I charge you, O women, for the love you bear to men, to like as much of this play as please you. And I charge you, O men, for the love you bear to women—as I perceive by your simpering none of you hates them—that between you and the women the play may please” (5.4.208–14). Through the subtle and flexible strategies of drama—in puns, jokes, games, disguises, songs, poems, fantasies—<i>As You Like It</i> expresses, contains, and discharges a measure of the strife between the men and the women. Shakespeare’s comedy manipulates the differential social relationships between the sexes, between brothers, between father and son, master and servant, lord and subject. It is by the conjurer’s art that Shakespeare manages to reconcile the social imperatives of hierarchy and difference with the festive urges toward leveling and atonement. The intense and ambivalent personal bonds upon which the play is focused—bonds between brothers and between lovers—affect each other reciprocally and become the means of each other’s resolution. And as the actions within the play are dialectically related to each other, so the world of Shakespeare’s characters is dialectically related to the world of his audience. <i>As You Like It</i> is both a theatrical reflection of social conflict and a theatrical source of social conciliation.</p>
+
+    <section class="footnotes">
+        <h3>Note</h3>
+        <p>From <i>Shakespeare Quarterly</i> 32, no. 1 (Spring 1981). © 1981 by the Folger Shakespeare Library.</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>
