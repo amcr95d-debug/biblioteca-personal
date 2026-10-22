@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Other Than for Dancing Measures — Thomas McFarland</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.cita .speaker { font-style: normal; font-size: 0.85em; letter-spacing: 0.05em; color: var(--text-muted); text-transform: uppercase; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">Thomas McFarland</p>
+        <h1 class="cab__tit">For Other Than for Dancing Measures:<br>The Complications of <i>As You Like It</i></h1>
+    </header>
+
+    <p>To approach <i>As You Like It</i> immediately after <i>Love’s Labour’s Lost</i> and <i>A Midsummer Night’s Dream</i> is to encounter a darkening of action and tone. The pastoral realm into which it enters has, in marked contrast to the moonlit forest outside Athens, genuine problems to ameliorate. The moment of pure pastoral celebration in Shakespeare’s art is now forever gone. The motif of criminal action, which had been tentatively put forward in <i>The Two Gentlemen of Verona</i>, only to be banished from the golden confines of Navarre’s park and Oberon’s forest, now reasserts itself. <i>As You Like It</i> is a play that labors to keep its comic balance, and for this reason the comic reclamation in the Forest of Arden involves complicated character interactions and severe criticisms of behavior. The play exhibits more humor, but much less happiness, than its two great pastoral predecessors.</p>
+
+    <p>The situation at the start of <i>As You Like It</i> could, indeed, as well serve for a tragedy as for a comedy. The index to the state of moral well-being in Shakespeare’s comedies is usually provided by the character and circumstances of the ruler. The mysterious illness of the King in <i>All’s Well</i> casts that whole play into deviation from an ideal state; the lovesickness of Orsino at the beginning of <i>Twelfth Night</i> forebodes maladjustments throughout the Illyrian society. Conversely, the youth and magnanimity of Navarre, the puissance and benignity of Theseus, authenticate a pervasive well-being in their two realms. It is significant, therefore, that the world of <i>As You Like It</i> is presented at the outset as a severely disfigured, for its ruler has been banished and his power usurped.</p>
+
+    <p>Grave though usurpation is, it is rendered still more grave by the fact that the usurper, as in <i>The Tempest</i>, is the brother of the true ruler, and the action of usurpation therefore reverberates with the archetypal crime of Cain. When Claudius faces his own offense, he says: “O my offence is rank, it smells to heaven; / It hath the primal eldest curse upon’t, / A brother’s murder” (<i>Hamlet</i>, 3.3.36–38). Neither in <i>As You Like It</i> nor in <i>The Tempest</i> does the crime of brother against brother proceed to murder; for such an outcome would put the actions of the two plays irrevocably beyond the power of comedy to heal. But usurpation and banishment represent the most serious kind of transgression. We recall the word that, in opening the somber action of <i>The White Devil</i>, casts all within that play into a nightmare of alienation: “Banished?” Or we recall Romeo’s agony:</p>
+
+    <div class="cita">
+        <p>They are free men, but I am banished.</p>
+        <p>Hadst thou no poison mix’d, no sharp-ground knife,</p>
+        <p>No sudden mean of death, though ne’er so mean,</p>
+        <p>But “banished” to kill me?—“banished”?</p>
+        <p>O friar, the damned use that word in hell;</p>
+        <p>Howling attends it.</p>
+        <p class="attribution">(<i>Romeo and Juliet</i>, 3.3.42–48)</p>
+    </div>
+
+    <p>When, therefore, we learn that “the old Duke is banished by his younger brother the new Duke” (1.1.91–92), a mood of intense alienation settles over <i>As You Like It</i>. The mood is deepened by its foreshadowing in the relationship of Orlando and Oliver. “He lets me feed with his hinds, bars me the place of a brother,” says Orlando (1.1.17–18). Indeed, it is bitter irony that in this play the comic motif of repetition doubles the Cain-and-Abel motif by extending it from Oliver and Orlando to the young Duke and the old Duke. In the supporting trope of Orlando and Oliver, moreover, the trouble between the brothers specifically involves, as does that of Cain and Abel, the relationship between father and son:</p>
+
+    <div class="cita">
+        <p>My father charg’d you in his will to give me good education: you have train’d me like a peasant, obscuring and hiding from me all gentleman-like qualities. The spirit of my father grows strong in me, and I will no longer endure it.</p>
+        <p class="attribution">(1.1.60–65)</p>
+    </div>
+
+    <p>Their father being dead, the old servant Adam fills his place in the psychodramatic struggle, his name reinforcing the motif of “primal eldest curse.” It can hardly be without significance that Shakespeare here slightly alters his source, for in Lodge’s <i>Rosalynde</i> the retainer is called “Adam Spencer, the olde servaunt of Sir John of Bordeaux,” and is almost always referred to by both given and surname. In changing “Adam Spencer” to simple “Adam” in the struggle of brother against brother, <i>As You Like It</i> conveys the sense of old woe ever renewed.</p>
+
+    <p>Beset from its beginning by such clouds of gloom and disharmony, the play must stake its claim to comic redemption very early. In the same conversation in which Oliver, fresh from his mistreatment of his brother and old Adam, learns from the wrestler Charles the “old news” of the old Duke’s banishment (1.1.90), he, and the cosmos of the play, also learn of the existence of the land of pastoral wonder:</p>
+
+    <div class="cita">
+        <p><span class="speaker">Oliver:</span> Where will the old Duke live?</p>
+        <p><span class="speaker">Charles:</span> They say he is already in the Forest of Arden. . . . many young gentlemen flock to him every day, and fleet the time carelessly, as they did in the golden world.</p>
+        <p class="attribution">(1.1.104–9)</p>
+    </div>
+
+    <p>It is interesting that the play here invokes, instead of the Theocritan iconology of formal pastoral, the separate but intertwined tradition of the Golden Age; for the latter, by being more explicitly paradisal, more explicitly repels tragic possibility. Rapin urges in 1659, in his “Dissertatio de carmine pastorali,” that pastoral poetry “is a product of the Golden Age.” To Rapin, pastoral itself is “a perfect image of the state of Innocence, of that golden Age, that blessed time, when Sincerity and Innocence, Peace, Ease, and Plenty inhabited the Plains.” So, to bring in the golden world so early, and entrust the message to such an unexpected source as Charles, is to go—not historically but semiotically—to the very fountainhead of the pastoral myth and thereby to concede the dire need for alleviation of the alienated mood.</p>
+
+    <p>Secure, then, in the promise of Arden’s redemption, the play indulges in a still closer approach to tragic irrevocability. “I had as lief thou didst break his neck as his finger,” says Oliver to Charles, perverting the latter’s honorable intentions in the proposed wrestling match against Orlando (1.1.132). Oliver adorns the malignant proposal by language of studied villainy:</p>
+
+    <div class="cita">
+        <p>And thou wert best to ’t; for if thou dost him any slight disgrace, or if he do not mightily grace himself on thee, he will practise against thee by poison, entrap thee by some treacherous device, and never leave thee till he hath ta’en thy life by some indirect means or other; for, I assure thee, and almost with tears I speak it, there is not one so young and so villainous this day living. I speak but brotherly of him; but should I anatomize him to thee as he is, I must blush and weep, and thou must look pale and wonder.</p>
+        <p class="attribution">(1.1.132–40)</p>
+    </div>
+
+    <p>Such brotherly betrayal prefigures the relationship of Edmund and Edgar. And when Charles departs, Oliver’s musing to himself suggests also the selfless dedication of Iago’s hatred:</p>
+
+    <div class="cita">
+        <p>I hope I shall see an end of him; for my soul, yet I know not why, hates nothing more than he.</p>
+        <p class="attribution">(1.1.144–46)</p>
+    </div>
+
+    <p>This play, then, involves the first massive assault of the forces of bitterness and alienation upon the pastoral vision of Shakespeare, and its action glances off the dark borders of tragedy. Indeed, the motif of repeated abandonment of the court, first by Orlando and Adam, then by Rosalind, Celia, and Touchstone, is prophetic of the departings and rejections of Cordelia, Kent, and Edgar at the beginning of King Lear’s quest for essential being.</p>
+
+    <p>It is, accordingly, both fitting and necessary that the second act of <i>As You Like It</i> opens with an equally massive attempt to restore comic benignity and to check the tragic tendency. For the rightful ruler, Duke Senior, without preliminary of action, invokes the pastoral vision and the idea of a new society in extraordinarily specific terms. In fact, the social assurance of comedy, the environmental assurance of pastoral, and the religious implication of both, are all established by the Duke’s speech:</p>
+
+    <div class="cita">
+        <p>Now, my co-mates and brothers in exile,</p>
+        <p>Hath not old custom made this life more sweet</p>
+        <p>Than that of painted pomp? Are not these woods</p>
+        <p>More free from peril than the envious court?</p>
+        <p>Here feel we not the penalty of Adam,</p>
+        <p>The seasons’ difference; as the icy fang</p>
+        <p>And churlish chiding of the winter’s wind,</p>
+        <p>Which when it bites and blows upon my body,</p>
+        <p>Even till I shrink with cold, I smile and say,</p>
+        <p>“This is no flattery; these are counsellors</p>
+        <p>That feelingly persuade me what I am.”</p>
+        <p>Sweet are the uses of adversity;</p>
+        <p>Which, like the toad, ugly and venomous,</p>
+        <p>Wears yet a precious jewel in his head;</p>
+        <p>And this our life, exempt from public haunt,</p>
+        <p>Finds tongues in trees, books in the running brooks,</p>
+        <p>Sermons in stone, and good in everything.</p>
+        <p class="attribution">(2.1.1–17)</p>
+    </div>
+
+    <p>But “good,” despite the Duke’s statement, is not “in everything” as it is in <i>Love’s Labour’s Lost</i> and <i>A Midsummer Night’s Dream</i>; and the early promise of a “golden world” is not entirely fulfilled. The Forest of Arden, though a paradise, is not an unequivocal paradise; the “churlish chiding of the winter’s wind,” even if not painfully felt, is present. “Arden,” as Helen Gardner notes in her well-known essay on <i>As You Like It</i>, “is not a place where the laws of nature are abrogated and roses are without their thorns.” The gall of the court, before it is flushed away by the Arethusan waters, mingles and dissolves itself into the pastoral limpidity. Hence the existence of natural danger in the forest makes it a place halfway between reality and paradise. As Oliver says of his encounter with Orlando there:</p>
+
+    <div class="cita">
+        <p>A wretched ragged man, o’ergrown with hair,</p>
+        <p>Lay sleeping on his back. About his neck</p>
+        <p>A green and gilded snake had wreath’d itself,</p>
+        <p>Who with her head nimble in threats approach’d</p>
+        <p>The opening of his mouth; but suddenly,</p>
+        <p>Seeing Orlando, it unlink’d itself,</p>
+        <p>And with indented glides did slip away</p>
+        <p>Into a bush.</p>
+        <p class="attribution">(4.3.105–12)</p>
+    </div>
+
+    <p>The presence of the serpent, potentially dangerous, indicates a certain admixture of harsh reality in this version of a golden world, for of that world Virgil stipulates that “occidet et serpens, et fallax herba veneni occidet”—both the serpent and the false poison plant shall die (<i>Eclogues</i>, 4.24–25). And in the Forest of Arden, an unpastoral danger is brought still closer by the lioness that almost kills Oliver:</p>
+
+    <div class="cita">
+        <p>A lioness, with udders all drawn dry,</p>
+        <p>Lay crouching, head on ground, with catlike watch,</p>
+        <p>When that the sleeping man should stir.</p>
+        <p>This seen, Orlando did approach the man,</p>
+        <p>And found it was his brother, his elder brother.</p>
+        <p>kindness, nobler ever than revenge,</p>
+        <p>And nature, stronger than his just occasion,</p>
+        <p>Made him give battle to the lioness,</p>
+        <p>Who quickly fell before him.</p>
+        <p>In brief, he led me to the gentle Duke,</p>
+        <p>Who gave me fresh array and entertainment,</p>
+        <p>Committing me unto my brother’s love;</p>
+        <p>Who led me instantly into his cave,</p>
+        <p>There stripp’d himself, and here upon his arm</p>
+        <p>The lioness had torn some flesh away,</p>
+        <p>Which all this while had bled.</p>
+        <p class="attribution">(4.3.113–47)</p>
+    </div>
+
+    <p>The function of the serpent and the lioness are clearly revealed in these lines: as figures of venom and fury, they symbolically accept the burden of the venom and fury generated by the Cain and Abel contest of Oliver and Orlando. The two brothers, their rage displaced into the iconic beasts, are ready for reconciliation:</p>
+
+    <div class="cita">
+        <p><span class="speaker">Celia:</span> Are you his brother?</p>
+        <p><span class="speaker">Rosalind:</span> Was’t you he rescu’d?</p>
+        <p><span class="speaker">Celia:</span> Was’t you that did so oft contrive to kill him?</p>
+        <p><span class="speaker">Oliver:</span> ’Twas I; but ’tis not I. I do not shame</p>
+        <p>To tell you what I was, since my conversion</p>
+        <p>So sweetly tastes, being the thing I am. . . .</p>
+        <p>When from the first to last, betwixt us two,</p>
+        <p>Tears our recountments had most kindly bath’d,</p>
+        <p>As how I came into that desert place—</p>
+        <p>In brief, he led me to the gentle Duke.</p>
+        <p class="attribution">(4.3.132–41)</p>
+    </div>
+
+    <p>Thus the Cain-against-Abel tragic disharmony gives way to the legendary Roland-for-an-Oliver togetherness implied by the brothers’ names.</p>
+
+    <p>The seriousness of the deviances to be reclaimed is to be found not only in a slight deterioration in the pastoral environment, but also in the introduction of Jaques, a pastorally untypical character. Jaques is a humor figure representing the type of the malcontent; he is a member of the tribe not only of Marston’s Malevole but, in a sense, of Hamlet himself. Like Hamlet, he calls into question all aspects of life that fall below an exalted ideal of human conduct. It is significant that the first mention of his name refers to his awareness of this less-than-ideal pastoral environment. The old Duke says:</p>
+
+    <div class="cita">
+        <p>Come, shall we go and kill us venison?</p>
+        <p>And yet it irks me the poor dappled fools,</p>
+        <p>Being native burghers of this desert city,</p>
+        <p>Should, in their own confines, with forked heads</p>
+        <p>Have their round haunches gor’d.</p>
+        <p><span class="speaker">First Lord:</span> Indeed, my lord,</p>
+        <p>The melancholy Jaques grieves at that;</p>
+        <p>And, in that kind, swears you do more usurp</p>
+        <p>Than doth your brother that hath banish’d you.</p>
+        <p class="attribution">(2.1.21–28)</p>
+    </div>
+
+    <p>It is emphasized that the Forest of Arden is a version of pastoral like Robin Hood’s Sherwood Forest (Charles had said at the outset that “in the forest of Arden” the Duke and his retainers “live like the old Robin Hood of England” [1.1.105–9]). The specification not only prefigures Jonson’s pastoral variant, whose “scene is Sherwood” (<i>The Sad Shepherd</i>, Prologue.), but it also indicates a world somewhat less perfect than Ovid’s golden age. Indeed, as Elizabeth Armstrong points out, “Peace between man and the animal creation” was “a traditional feature of the Age of Gold”; and the “existence of this tradition” may have deterred Ronsard “from allowing his Age of Gold people to slay animals for food or sport” (<i>Ronsard and the Age of Gold</i>). The continuation of the First Lord’s report suggests, in direct ratio to its length, the deficiencies of this only partly golden world:</p>
+
+    <div class="cita">
+        <p>To-day my Lord of Amiens and myself</p>
+        <p>Did steal behind him as he lay along</p>
+        <p>Under an oak whose antique root peeps out</p>
+        <p>Upon the brook that brawls along this wood!</p>
+        <p>To the which place a poor sequest’red stag,</p>
+        <p>That from the hunter’s aim had ta’en a hurt,</p>
+        <p>Did come to languish; and indeed, my lord,</p>
+        <p>The wretched animal heav’d forth such groans</p>
+        <p>That their discharge did stretch his leathern coat</p>
+        <p>Almost to bursting; and the big round tears</p>
+        <p>Cours’d one another down his innocent nose</p>
+        <p>In piteous chase; and thus the hairy fool.</p>
+        <p>Stood on th’ extremest verge of the swift brook,</p>
+        <p>Augmenting it with tears.</p>
+        <p><span class="speaker">Duke Senior:</span> But what said Jaques?</p>
+        <p>Did he not moralize this spectacle?</p>
+        <p><span class="speaker">First Lord:</span> O, yes, into a thousand similes.</p>
+        <p>swearing that we</p>
+        <p>Are mere usurpers, tyrants, and what’s worse,</p>
+        <p>To fright the animals and to kill them up</p>
+        <p>In their assign’d and native dwelling-place.</p>
+        <p><span class="speaker">Duke Senior:</span> And did you leave him in this contemplation?</p>
+        <p><span class="speaker">Second Lord:</span> We did, my lord, weeping and commenting</p>
+        <p>Upon the sobbing deer.</p>
+        <p class="attribution">(2.1.29–66)</p>
+    </div>
+
+    <p>The import of the passage can hardly be mistaken: the deer, with its human coordinates of feeling (“The wretched animal . . . the big round tears . . . his innocent nose . . .”), brings the reality of human pain into the forest; and Jaques’s moral criticism, by linking the killing of the deer with usurpation and tyranny, indicates that the forest is not completely divorced from the reality of the urban spectacle. Jaques, indeed, links city, court, and pastoral forest together by his criticism.</p>
+
+    <p>Although a pastorally atypical figure in the play, Jaques is nevertheless in a sense its central figure, or at least the figure who does most to define the idiosyncratic strain of malaise. But the type of the malcontent can imply not only Hamlet’s idealism but Bosola’s cynicism, and Jaques’s presence threatens as well as criticizes the pastoral environment. It is therefore necessary to provide him a counterweight, so that the unchecked burden of malcontentment may not become so heavy as to break up entirely the fragilities of the pastoral vision. That counterweight the play summons up in the character of Touchstone, the fool. Replacing the “hairy fool / Much marked of the melancholy Jaques” (that is, the deer whose travail brings out Jaques’s role as in part the emissary of a realm of more beatific feeling), Touchstone reminds us, perhaps subliminally, of Jaques’s compassion and at the same time dissolves the accompanying melancholy into a language of ridicule and jest more fitting to comic aims. The function of the fool is to redeem Jaques from the melancholy that is so dangerous to the comic-pastoral aspiration:</p>
+
+    <div class="cita">
+        <p><span class="speaker">Duke Senior:</span> What, you look merrily!</p>
+        <p><span class="speaker">Jaques:</span> A fool, a fool! I met a fool i’ th’ forest,</p>
+        <p>A motley fool. A miserable world!</p>
+        <p>As I do live by food, I met a fool,</p>
+        <p>Who laid him down and bask’d him in the sun,</p>
+        <p>And rail’d on Lady Fortune in good terms,</p>
+        <p>In good set terms—and yet a motley fool.</p>
+        <p>“Good morrow, fool,” quoth I. “No, sir,” quoth he,</p>
+        <p>“Call me not fool till heaven hath sent me fortune.”</p>
+        <p>And then he drew a dial from his poke,</p>
+        <p>And, looking on it with lack-lustre eye,</p>
+        <p>Says very wisely, “It is ten o’clock;</p>
+        <p>Thus we may see,” quoth he, “how the world wags;</p>
+        <p>’Tis but an hour ago since it was nine;</p>
+        <p>And after one hour more ’twill be eleven;</p>
+        <p>And so, from hour to hour, we ripe and ripe,</p>
+        <p>And then, from hour to hour, we rot and rot;</p>
+        <p>And thereby hangs a tale.” When I did hear</p>
+        <p>The motley fool thus moral on the time,</p>
+        <p>My lungs began to crow like chanticleer,</p>
+        <p>That fools should be so deep contemplative;</p>
+        <p>And I did laugh sans intermission</p>
+        <p>An hour by his dial. O noble fool!</p>
+        <p>A worthy fool! Motley’s the only wear.</p>
+        <p class="attribution">(2.7.11–34)</p>
+    </div>
+
+    <p>Thus, whilst Jaques criticizes the world, Touchstone gently and unintentionally mocks that criticism. Touchstone’s own railing “on Lady Fortune in good set terms” reveals to Jaques the dimension of the absurd in all human seriousness. To hear a “motley fool thus moral on the time” is to suggest that to moral on the time is to be a motley fool. If a fool is “deep contemplative,” then perhaps the “deep contemplative” is the foolish. Touchstone is a mirror that not only reflects, but lightens, the malcontentment of Jaques. Indeed, garbed in fool’s motley, such criticisms as those of Jaques can safely be allowed in the pastoral realm. “Invest me in my motley,” says Jaques:</p>
+
+    <div class="cita">
+        <p>give me leave</p>
+        <p>To speak my mind, and I will through and through</p>
+        <p>Cleanse the foul body of th’ infected world.</p>
+        <p class="attribution">(2.7.58–60)</p>
+    </div>
+
+    <p>But only if he accepts the dimension of the ludicrous as supplied by the fool can Jaques fit into the comic scheme:</p>
+
+    <div class="cita">
+        <p><span class="speaker">Jaques:</span> Yes, I have gain’d my experience.</p>
+        <p><span class="speaker">Rosalind:</span> And your experience makes you sad. I had rather have a fool to make me merry than experience to make me sad.</p>
+        <p class="attribution">(4.1.23–25)</p>
+    </div>
+
+    <p>Touchstone himself serves the same large function as his counterpart in <i>King Lear</i>, although his role is less wonderfully developed. The fool, in either comedy or tragedy, tends to criticize arrogance and pretense on the part of the other characters (he can make no claim to wisdom, but he is, notwithstanding, no less wise than the others). In comedy, moreover, his benign good nature provides an added depth of social criticism of the individual: the fool, who is isolated by his motley garb and supposed mental limitations, refuses to be alienated. Whereas Jaques, the malcontent, endlessly finds the world a woeful place, Touchstone accepts existence as he finds it. And most importantly, either here or in <i>King Lear</i>, the fool constantly urges the paradox of St. Paul: “If any man among you seemeth to be wise in this world, let him become a fool, that he may be wise” (1 Cor. 3:18). Thus, as Jaques says, “The wise man’s folly is anatomiz’d / Even by the squand’ring glances of the fool” (2.7.56–57). “The more pity,” says Touchstone,</p>
+
+    <div class="cita">
+        <p>that fools may not speak wisely what wise men do foolishly.</p>
+        <p><span class="speaker">Celia:</span> By my troth, thou sayest true; for since the little wit that fools have was silenced, the little foolery that wise men have makes a great show.</p>
+        <p class="attribution">(1.2.78–82)</p>
+    </div>
+
+    <p>And as Touchstone emphasizes, “ ‘The fool doth think he is wise, but the wise man knows himself to be a fool’ ” (5.1.29–30). By thus paradoxically collapsing the original juxtaposition of wisdom and folly into a playful equation where they are interchangeable, the fool reinforces those attitudes of Plotinus and Plato, mentioned [previously], by which we are urged to realize that human life, when all is done, is not a very serious matter.</p>
+
+    <p>This implication of the fool’s influence is made explicit in the famous speech of Jaques, uttered after he has met Touchstone and expressed the desire “that I were a fool! / I am ambitious for a motley coat” (2.7.42–43); for the speech constitutes a change from Jaques’s customary black melancholy:</p>
+
+    <div class="cita">
+        <p>All the world’s a stage,</p>
+        <p>And all the men and women merely players;</p>
+        <p>They have their exits and their entrances,</p>
+        <p>And one man in his time plays many parts,</p>
+        <p>His acts being seven ages. At first the infant,</p>
+        <p>Mewling and puking in the nurse’s arms,</p>
+        <p>Then the whining school-boy, with his satchel</p>
+        <p>And shining morning face, creeping like snail</p>
+        <p>Unwillingly to school. And then the lover,</p>
+        <p>Sighing like furnace, with a woeful ballad</p>
+        <p>Made to his mistress’ eyebrow. Then a soldier,</p>
+        <p>Full of strange oaths, and bearded like the pard,</p>
+        <p>Jealous in honour, sudden and quick in quarrel,</p>
+        <p>Seeking the bubble reputation</p>
+        <p>Even in the cannon’s mouth. And then the justice,</p>
+        <p>In fair round belly with good capon lin’d,</p>
+        <p>With eyes severe and beard of formal cut,</p>
+        <p>Full of wise saws and modern instances;</p>
+        <p>And so he plays his part. The sixth age shifts</p>
+        <p>Into the lean and slipper’d pantaloon,</p>
+        <p>With spectacles on nose and pouch on side,</p>
+        <p>His youthful hose, well sav’d, a world too wide</p>
+        <p>For his shrunk shank; and his big manly voice,</p>
+        <p>Turning again toward childish treble, pipes</p>
+        <p>And whistles in his sound. Last scene of all,</p>
+        <p>That ends this strange eventful history,</p>
+        <p>Is second childishness and mere oblivion;</p>
+        <p>Sans teeth, sans eyes, sans taste, sans every thing.</p>
+        <p class="attribution">(2.7.139–66)</p>
+    </div>
+
+    <p>The lines achieve simultaneously a vision of life and a wry, rather than melancholy or despairing, perspective on its mystery. The tears of Jaques’s contemplation of the wounded stag, mingled with the merry wonder of Touchstone’s motley, become now an equivocal smile. Jaques’s attitude, accordingly, is reclaimed from tragedy; and as a mark of this reclamation it sees the vanity of human life in terms of social roles—schoolboy, lover, soldier, justice—rather than in terms of individual agonies.</p>
+
+    <p>Jaques’s moralizing, however, is here, as in the instance of the sobbing deer, somewhat blunted by a certain misunderstanding of reality. In the earlier instance, he did not consider that the hunters were killing out of necessity and not for sport; now the generalities of his cynical seven ages speech do not relate to the actuality around him. For Adam, who by Jaques’s speech should be in “second childishness and mere oblivion . . . sans every thing,” is instead—and the point is made by Orlando just before Jaques begins to speak—an “old poor man, / Who after me hath many a weary step / Limp’d in pure love.” Adam is not “sans every thing,” but full of “pure love.” Jaques’s speech, in short, does not recognize the facts of human community and mutual concern, and flies in the face of the reality before him:</p>
+
+    <div class="cita">
+        <p><span class="speaker">Orlando:</span> I almost die for food, and let me have it.</p>
+        <p><span class="speaker">Duke Senior:</span> Sit down and feed, and welcome to our table.</p>
+        <p><span class="speaker">Orlando:</span> Speak you so gently? Pardon me, I pray you; I thought that all things had been savage here.</p>
+        <p class="attribution">(2.7.104–7)</p>
+    </div>
+
+    <p>The Duke’s answer serves both as a repudiation of Jaques’s antisocial cynicism and as a sacramental affirmation of human community:</p>
+
+    <div class="cita">
+        <p>True is it that we have seen better days,</p>
+        <p>And have with holy bell been knoll’d to church,</p>
+        <p>And sat at good men’s feasts, and wip’d our eyes</p>
+        <p>Of drops that sacred pity hath engend’red;</p>
+        <p>And therefore sit you down in gentleness,</p>
+        <p>And take upon command what help we have</p>
+        <p>That to your wanting may be minist’red.</p>
+        <p class="attribution">(2.7.120–26)</p>
+    </div>
+
+    <p>Then, immediately after Jaques’s interruption, the Duke reaffirms the holy sense of mutual concern: he pointedly includes the aged Adam in the communal meal:</p>
+
+    <div class="cita">
+        <p>Welcome. Set down your venerable burden.</p>
+        <p>And let him feed.</p>
+        <p class="attribution">(2.7.167–68)</p>
+    </div>
+
+    <p>In the midst of gentleness, welcoming, help, and veneration Jaques has revealed himself as deficient in the sympathies shared by “co-mates and brothers,” and is therefore finally excluded from the community achieved by comic resolution. He is not only counterbalanced, but humanized, by Touchstone; yet in a sense he is and remains more a fool than does the man in motley.</p>
+
+    <p>Although not so profound a creation as Lear’s fool, Touchstone is clearly closely related:</p>
+
+    <div class="cita">
+        <p><span class="speaker">Rosalind:</span> Well, this is the forest of Arden.</p>
+        <p><span class="speaker">Touchstone:</span> Ay, now am I in Arden; the more fool I; when I was at home, I was in a better place; but travellers must be content.</p>
+        <p class="attribution">(2.4.12–14)</p>
+    </div>
+
+    <p>The combination of childlike apprehension and childlike acceptance marks Lear’s fool too. Moreover, in this play the fool’s apprehension and acceptance upon entering the Forest of Arden are still another way of suggesting that here is a golden world manqué. Like his counterpart in <i>King Lear</i>, Touchstone speaks truer than supposedly more intelligent figures: “Thou speak’st wiser than thou art ware of,” says Rosalind (2.4.53). So when he anatomizes the “seven causes” of dueling, the old Duke finds it appropriate to say, “He uses his folly like a stalking-horse, and under the presentation of that he shoots his wit” (5.4.100–101). The attack on the folly and pretense of dueling, however, is not mere random wit; dueling is a social abuse, and by making it ridiculous, at the end of the fifth act (compare <i>The Alchemist</i>, 4.2.67–68), Touchstone symbolically makes ridiculous all the verbal duelings and disharmonies that have occupied the inhabitants of the pastoral forest.</p>
+
+    <p>These duelings interweave themselves into the encounters of almost all the characters. Orlando, for instance, escapes the deadly duel with Oliver, which is made concrete by his wrestling duel with Charles, only to engage in a duel of wits with Rosalind-Ganymede, and another with Jaques. Indeed, as a recent critic has emphasized, meetings or encounters (of which such duelings are a version) substitute for conventional plot in the play’s middle portion and thereby invest the action with a special lightness of tone: “such is the ease and rapidity with which pairs and groups break up, re-form, and succeed one another on the stage that there is a sense of fluid movement. All is done with the utmost lightness and gaiety, but as the lovers move through the forest, part and meet again, or mingle with the other characters in their constantly changing pairs and groups, every view of life seems, sooner or later, to find its opposite.”</p>
+
+    <p>Such an opposition, playfully cast into dueling’s artifice of thrust and riposte, is the encounter between Jaques and Orlando:</p>
+
+    <div class="cita">
+        <p><span class="speaker">Jaques:</span> I thank you for your company; but, good faith, I had as lief have been myself alone.</p>
+        <p><span class="speaker">Orlando:</span> And so had I; but yet, for fashion sake, I thank you too for your society.</p>
+        <p><span class="speaker">Jaques:</span> God buy you; let’s meet as little as we can.</p>
+        <p><span class="speaker">Orlando:</span> I do desire we may be better strangers.</p>
+        <p><span class="speaker">Jaques:</span> I pray you, mar no more trees with writing love songs in their barks.</p>
+        <p><span class="speaker">Orlando:</span> I pray you, mar no more of my verses with reading them ill-favouredly.</p>
+        <p><span class="speaker">Jaques:</span> Rosalind is your love’s name?</p>
+        <p><span class="speaker">Orlando:</span> Yes, just.</p>
+        <p><span class="speaker">Jaques:</span> I do not like her name.</p>
+        <p><span class="speaker">Orlando:</span> There was no thought of pleasing you when she was christen’d.</p>
+        <p><span class="speaker">Jaques:</span> You have a nimble wit; I think ’twas made of Atalanta’s heels. Will you sit down with me? and we two will rail against our mistress the world, and all our misery.</p>
+        <p><span class="speaker">Orlando:</span> I will chide no breather in the world but myself, against whom I know most faults.</p>
+        <p><span class="speaker">Jaques:</span> The worst fault you have is to be in love.</p>
+        <p><span class="speaker">Orlando:</span> ’Tis a fault I will not change for your best virtue. I am weary of you.</p>
+        <p><span class="speaker">Jaques:</span> By my troth, I was seeking for a fool when I found you.</p>
+        <p><span class="speaker">Orlando:</span> He is drown’d in the brook; look but in, and you shall see him.</p>
+        <p><span class="speaker">Jaques:</span> There I shall see mine own figure.</p>
+        <p><span class="speaker">Orlando:</span> Which I take to be either a fool or a cipher.</p>
+        <p><span class="speaker">Jaques:</span> I’ll tarry no longer with you; farewell, good Signior Love.</p>
+        <p><span class="speaker">Orlando:</span> I am glad of your departure; adieu, good Monsieur Melancholy.</p>
+        <p class="attribution">(3.2.238–77)</p>
+    </div>
+
+    <p>In such a staccato combat, the elegance of which depends on the tension between the content of antagonism and the form of social courtesy, both participants are rebuked for social deviance: Orlando for his lovesickness, Jaques for his misanthropic melancholy; and each, kept within social bounds by the form of courtesy, serves as a comic nullifier of the other’s deviance.</p>
+
+    <p>Neither, however, is wholly reclaimed. Jaques is never entirely redeemed by the play’s action, and Orlando is reclaimed only after complicated and lengthy criticism by Rosalind-Ganymede. Indeed, this comedy, even more than <i>Twelfth Night</i>, rejects romantic love as social sickness. In the Forest of Arden romantic love replaces, and thereby almost seems to participate in the antisocial nature of, the darker motif of Cain against Abel that had characterized the action at court. Orlando indicates his lovesickness by carving his emotion into the bark of forest trees:</p>
+
+    <div class="cita">
+        <p>O Rosalind! these trees shall be my books</p>
+        <p>And in their barks my thoughts I’ll character;</p>
+        <p>Run, run, Orlando; carve on every tree</p>
+        <p>The fair, the chaste, and unexpressive she.</p>
+        <p class="attribution">(3.2.5–10)</p>
+    </div>
+
+    <p>Such a proposal echoes a motif from Virgil’s pastorals:</p>
+
+    <div class="cita">
+        <p>certum est in silvis, inter spelaea ferarum</p>
+        <p>malle pati tenerisque meos incidere amores</p>
+        <p>arboribus: crescent illae, crescetis, amores.</p>
+        <p>it is certain that in the forest, among the caves of the wild beasts, it is better to suffer and carve my love on the young trees; when they grow, you will grow, my love.</p>
+    </div>
+
+    <p>The lines are from the tenth eclogue, which is where the pain of romantic love is most specifically recognized. In <i>As You Like It</i>, however, it is not the case that “vincit omnia Amor”; for the comic society rebukes the pain and despair of a pastoral Gallus-like lover.</p>
+
+    <p>A second significance of the love-carving is that it reinforces still further the sense of Arden as something less than the pastoral ideal. Thomas Rosenmeyer, in his <i>The Green Cabinet: Theocritus and the European Pastoral Lyric</i>, points out that this “pretty vulgarism”—the “self-defeating attack upon the surface of trees”—which had its inception in Callimachus rather than in Theocritus, actually damages rather than honors the sacred environment of pure pastoral. The play makes clear, nonetheless, that the change from the motif of social sickness as brother-against-brother to the motif of social sickness as romantic love corresponds to a change from a courtly to a pastoral environment. It is, accordingly, noteworthy that Orlando’s proposal to carve on the trees is directly followed by a change in the tone of Arden: it promptly becomes less an English Sherwood Forest and more a Latinate shepherd’s world. As though a signal has been given, Orlando’s proposal is followed by the entrance of Touchstone and of Corin, a shepherd. They duel:</p>
+
+    <div class="cita">
+        <p><span class="speaker">Corin:</span> And how like you this shepherd’s life, Master Touchstone?</p>
+        <p><span class="speaker">Touchstone:</span> Truly, shepherd, in respect of itself, it is a good life; but in respect that it is a shepherd’s life, it is nought. In respect that it is solitary, I like it very well; but in respect that it is private, it is a very vile life. Now in respect it is in the fields, it pleaseth me well; but in respect it is not in the court, it is tedious. . . . Hast any philosophy in thee, shepherd?</p>
+        <p><span class="speaker">Corin:</span> No more but that I know the more one sickens the worse at ease he is; . . . that good pasture makes fat sheep; and that a great cause of the night is lack of the sun; . . .</p>
+        <p><span class="speaker">Touchstone:</span> Such a one is a natural philosopher. Wast ever in court, shepherd?</p>
+        <p><span class="speaker">Corin:</span> No, truly. . . .</p>
+        <p><span class="speaker">Touchstone:</span> Why, if thou never wast at court, thou never saw’st good manners. . . . Thou art in a parlous state, shepherd.</p>
+        <p><span class="speaker">Corin:</span> Not a whit, Touchstone. Those that are good manners at the court are as ridiculous in the country as the behaviour of the country is most mockable at court.</p>
+        <p class="attribution">(3.2.11–43)</p>
+    </div>
+
+    <p>Such extended badinage both confirms the equivocal nature of the pastoral realm in <i>As You Like It</i>, and establishes that realm as in fact pastoral. The shepherd’s world is somewhat criticized as against the court; the court is somewhat criticized as against the shepherd’s world.</p>
+
+    <p>In the shepherd’s world, Orlando’s love is attacked from many quarters. It is, first of all, divested of its claim to uniqueness by being ironically echoed in the pastoral lovesickness of Silvius for Phebe. It is lowered in its claim to dignity by being distortedly reflected in the bumpkin love of Touchstone for Audrey. And it is shown as a diminution, rather than a heightening, of awareness by the fact that Orlando does not know that Ganymede, to whom he laments the absence of Rosalind, is actually that Rosalind whom he so extravagantly loves. His emotion, furthermore, is made to appear moist and ludicrous by the dry criticism of Rosalind. “Then in mine own person I die,” sighs Orlando. Rosalind replies:</p>
+
+    <div class="cita">
+        <p>No, faith, die by attorney. The poor world is almost six thousand years old, and in all this time there was not any man died in his own person, videlicet, in a love-cause. Troilus had his brains dash’d out with a Grecian club; yet he did what he could to die before, and he is one of the patterns of love. Leander, he would have liv’d many a fair year, though Hero had turn’d nun, if it had not been for a hot midsummer night; for, good youth, he went but forth to wash him in the Hellespont, and, being taken with the cramp, was drown’d; and the foolish chroniclers of that age found it was—Hero of Sestos. But these are all lies: men have died from time to time, and worms have eaten them, but not for love.</p>
+        <p class="attribution">(4.1.82–95)</p>
+    </div>
+
+    <p>The last justly famous sentence establishes the absolute norm of comedy’s rebuke to romantic love. And the invocation of Hero and Leander directs attention to Marlowe’s poem. Indeed, Marlowe’s antisocial life, as well as the unacceptability of romantic love’s exclusiveness, are focused by reference to Marlowe’s death and by direct quotation of a line from <i>Hero and Leander</i>: “Dead shepherd, now I find thy saw of might, / ‘Who ever lov’d that lov’d not at first sight?’ ” (3.5.80–81; <i>Hero and Leander</i>, 1.176). The question is asked, however, by the pastoral Phebe as she embarks upon a course of patent folly: blind love for Ganymede, who, in reality a woman, represents a social impossibility for the shepherdess.</p>
+
+    <p>Phebe’s folly is underscored by her “love at first sight” infatuation; her pastoral lover, Silvius, is equally foolish, for love makes him less than a man:</p>
+
+    <div class="cita">
+        <p>Sweet Phebe, do not scorn me; do not, Phebe.</p>
+        <p>Say that you love me not; but say not so</p>
+        <p>In bitterness.</p>
+        <p class="attribution">(3.5.1–3)</p>
+    </div>
+
+    <p>Both Phebe and Silvius are accordingly dry-beaten with Rosalind’s scoff, which is the curative of such extravagant and socially unsettling emotion. To Phebe she says:</p>
+
+    <div class="cita">
+        <p>I see no more in you than in the ordinary</p>
+        <p>Of nature’s sale-work. ’Od’s my little life,</p>
+        <p>I think she means to tangle my eyes too!</p>
+        <p>No, faith, proud mistress, hope not after it;</p>
+        <p>’Tis not your inky brows, your black silk hair,</p>
+        <p>Your bugle eyeballs, nor your cheeks of cream,</p>
+        <p>That can entame my spirits to your worship.</p>
+        <p class="attribution">(3.5.42–48)</p>
+    </div>
+
+    <p>Having demolished Phebe’s pretensions to uniqueness, she then turns her scorn on Silvius:</p>
+
+    <div class="cita">
+        <p>You foolish shepherd, wherefore do you follow her,</p>
+        <p>Like foggy south, puffing with wind and rain?</p>
+        <p>You are a thousand times a properer man</p>
+        <p>Than she a woman. ’Tis such fools as you</p>
+        <p>That makes the world full of ill-favour’d children.</p>
+        <p class="attribution">(3.5.49–53)</p>
+    </div>
+
+    <p>Even more explicit, and much more prolonged, are the rebukes administered to Orlando. His romantic extravagance is repeatedly denigrated by being referred to in the language of sickness, and his dramatically pastoral emotion is withered by Rosalind’s scorn:</p>
+
+    <div class="cita">
+        <p>There is a man haunts the forest that abuses our young plants with carving “Rosalind” on their barks; hangs odes upon hawthorns and elegies on brambles; all, forsooth, deifying the name of Rosalind. If I could meet that fancy-monger, I would give him some good counsel, for he seems to have the quotidian of love upon him.</p>
+        <p><span class="speaker">Orlando:</span> I am he that is so love-shak’d; I pray you tell me your remedy.</p>
+        <p><span class="speaker">Rosalind:</span> There is none of my uncle’s marks upon you; he taught me how to know a man in love; in which cage of rushes I am sure you are not prisoner.</p>
+        <p><span class="speaker">Orlando:</span> What were his marks?</p>
+        <p><span class="speaker">Rosalind:</span> A lean cheek, which you have not; a blue eye and sunken, which you have not; an unquestionable spirit, which you have not; a beard neglected, which you have not. . . . Then your hose should be ungarter’d, your bonnet unbanded, your sleeve unbutton’d, your shoe untied, and every thing about you demonstrating a careless desolation. . . .</p>
+        <p><span class="speaker">Orlando:</span> Fair youth, I would I could make thee believe I love. . . .</p>
+        <p><span class="speaker">Rosalind:</span> But are you so much in love as your rhymes speak?</p>
+        <p><span class="speaker">Orlando:</span> Neither rhyme nor reason can express how much.</p>
+        <p><span class="speaker">Rosalind:</span> Love is merely a madness. . . .</p>
+        <p><span class="speaker">Orlando:</span> I would not be cured, youth.</p>
+        <p><span class="speaker">Rosalind:</span> I would cure you, if you would but call me Rosalind, and come every day to my cote and woo me.</p>
+        <p class="attribution">(3.2.334–92)</p>
+    </div>
+
+    <p>The artifice of Rosalind pretending to be Ganymede, and Ganymede pretending to be Rosalind again, grants the audience an insight immensely superior to that of Orlando, while equating his exaggerated love with his ignorance; and it also satisfies dramatically the idea that love is a mistaking of reality. Once love comes under the control supplied by Rosalind’s criticism, however, the play begins to frolic in the dance-like patterns of <i>Love’s Labour’s Lost</i>. The Cain-against-Abel situation of the two dukes, like that of Orlando and Oliver, had from the first involved the play in doublings; and these, together with the doubling of Rosalind by Celia, and the Ganymede disguise by the Aliena disguise, become, as the action of the play lightens, the symmetrical doublings and repetitions of comedy’s artifice. Indeed, perhaps no single place in Shakespeare’s comedy achieves a more perfect coordination of symmetry, repetition, and comic inevitability than the merry-go-round of the love doctor’s final social disposition of the disease of romantic love. Rosalind says to Orlando:</p>
+
+    <div class="cita">
+        <p>Therefore, put you in your best array, bid your friends; for, if you will be married tomorrow, you shall; and to Rosalind, if you will.</p>
+    </div>
+
+    <p>At this point Silvius and Phebe enter:</p>
+
+    <div class="cita">
+        <p><span class="speaker">Phebe:</span> Youth, you have done me much ungentleness.</p>
+        <p><span class="speaker">Rosalind:</span> I care not if I have.</p>
+        <p>You are there follow’d by a faithful shepherd;</p>
+        <p>Look upon him, love him; he worships you.</p>
+        <p><span class="speaker">Phebe:</span> Good shepherd, tell this youth what ’tis to love.</p>
+        <p><span class="speaker">Silvius:</span> It is to be all made of sighs and tears;</p>
+        <p>And so am I for Phebe.</p>
+        <p><span class="speaker">Phebe:</span> And I for Ganymede.</p>
+        <p><span class="speaker">Orlando:</span> And I for Rosalind.</p>
+        <p><span class="speaker">Rosalind:</span> And I for no woman.</p>
+        <p><span class="speaker">Silvius:</span> It is to be all made of faith and service;</p>
+        <p>And so am I for Phebe.</p>
+        <p><span class="speaker">Phebe:</span> And I for Ganymede.</p>
+        <p><span class="speaker">Orlando:</span> And I for Rosalind.</p>
+        <p><span class="speaker">Rosalind:</span> And I for no woman.</p>
+        <p><span class="speaker">Silvius:</span> It is to be all made of fantasy.</p>
+        <p>All made of passion, and all made of wishes;</p>
+        <p>All adoration, duty, and observance,</p>
+        <p>All humbleness, all patience, and impatience</p>
+        <p>All purity, all trial, all obedience;</p>
+        <p>And so am I for Phebe.</p>
+        <p><span class="speaker">Phebe:</span> And so am I for Ganymede.</p>
+        <p><span class="speaker">Orlando:</span> And so am I for Rosalind.</p>
+        <p><span class="speaker">Rosalind:</span> And so I for no woman.</p>
+        <p><span class="speaker">Phebe:</span> If this be so, why blame you me to love you?</p>
+        <p><span class="speaker">Silvius:</span> If this be so, why blame you me to love you?</p>
+        <p><span class="speaker">Orlando:</span> If this be so, why blame you me to love you?</p>
+        <p><span class="speaker">Rosalind:</span> Pray you, no more of this; ’tis like the howling of Irish wolves against the moon. [<i>To Silvius</i>] I will help you, if I can. [<i>To Phebe</i>] I would love you, if I could.—To-morrow meet me all together. [<i>To Phebe</i>] I will marry you if ever I marry woman, and I’ll be married to-morrow. [<i>To Orlando</i>] I will satisfy you if ever I satisfied man, and you shall be married to-morrow. [<i>To Silvius</i>] I will content you if what pleases you contents you, and you shall be married to-morrow.</p>
+        <p class="attribution">(5.2.66–109)</p>
+    </div>
+
+    <p>And thus the play dances to its final resolution. Hymen announces that “Then is there mirth in heaven, / When earthly things made even / Atone together” (5.4.102–4), and his beautiful song pours comic benignity lavishly over the concluding action:</p>
+
+    <div class="cita">
+        <p>Wedding is great Juno’s crown</p>
+        <p>O blessed bond of board and bed!</p>
+        <p>’Tis Hymen peoples every town;</p>
+        <p>High wedlock then be honoured.</p>
+        <p>Honour, high honour, and renown,</p>
+        <p>To Hymen, god of every town!</p>
+        <p class="attribution">(5.4.135–40)</p>
+    </div>
+
+    <p>The song provides one of literature’s most elevated and explicit salutations to the aim and justification of comedy. Under its assurance, the old Duke commands his society to</p>
+
+    <div class="cita">
+        <p>fall into our rustic revelry.</p>
+        <p>Play, music; and you brides and bridegrooms all,</p>
+        <p>With measure heap’d in joy, to th’ measures fall.</p>
+        <p class="attribution">(5.4.171–73)</p>
+    </div>
+
+    <p>And yet even this comic happiness cannot totally sweeten the trace of the bitter root in <i>As You Like It</i>. Both the usurping Duke and the melancholy Jaques are ejected from, rather than reconciled to, the new society. As Jaques de Boys—the new Jaques—says:</p>
+
+    <div class="cita">
+        <p>Duke Frederick, hearing how that every day</p>
+        <p>Men of great worth resorted to this forest,</p>
+        <p>Address’d a mighty power; which were on foot,</p>
+        <p>In his own conduct, purposely to take</p>
+        <p>His brother here, and put him to the sword;</p>
+        <p>And to the skirts of this wild wood he came,</p>
+        <p>Where, meeting with an old religious man,</p>
+        <p>After some question with him, was converted</p>
+        <p>Both from his enterprise and from the world;</p>
+        <p>His crown bequeathing to his banish’d brother,</p>
+        <p>And all their lands restor’d to them again</p>
+        <p>That were with him exil’d.</p>
+        <p class="attribution">(5.4.148–59)</p>
+    </div>
+
+    <p>And Jaques, the malcontent, is, like Molière’s Alceste, equally irredeemable by the comic therapy:</p>
+
+    <div class="cita">
+        <p><span class="speaker">Jaques:</span> Sir, by your patience. If I heard you rightly,</p>
+        <p>The Duke hath put on a religious life</p>
+        <p>And thrown into neglect the pompous court.</p>
+        <p><span class="speaker">Jaques de Boys:</span> He hath.</p>
+        <p><span class="speaker">Jaques:</span> To him will I. Out of these convertites</p>
+        <p>There is much matter to be heard and learn’d.</p>
+        <p>So to your pleasures;</p>
+        <p>I am for other than for dancing measures.</p>
+        <p class="attribution">(5.4.174–87)</p>
+    </div>
+
+    <p>Jaques, indeed, though necessary to the process of comic catharsis in the play, has always exerted counterpressure against the pastoral ideal. When Amiens sings the lovely song that declares Arden’s version of pastoral carefreeness, Jaques immediately seeks to cloud its limpidity:</p>
+
+    <div class="cita">
+        <p><span class="speaker">Amiens:</span> Under the greenwood tree</p>
+        <p>Who loves to lie with me,</p>
+        <p>And turn his merry note</p>
+        <p>Unto the sweet bird’s throat,</p>
+        <p>Come hither, come hither, come hither.</p>
+        <p>Here shall he see</p>
+        <p>No enemy</p>
+        <p>But winter and rough weather.</p>
+        <p><span class="speaker">Jaques:</span> More, more, I prithee more.</p>
+        <p><span class="speaker">Amiens:</span> It will make you melancholy, Monsieur Jaques.</p>
+        <p><span class="speaker">Jaques:</span> I thank it. More, I prithee, more. I can suck melancholy out of a song, as a weasel sucks eggs.</p>
+        <p class="attribution">(2.5.1–13)</p>
+    </div>
+
+    <p>And then Jaques produces his own song, which, in its cynicism, superimposes itself like a blotter on that of Amiens:</p>
+
+    <div class="cita">
+        <p>If it do come to pass</p>
+        <p>That any man turn ass,</p>
+        <p>Leaving his wealth and ease</p>
+        <p>A stubborn will to please,</p>
+        <p>Ducdame, ducdame, ducdame;</p>
+        <p>Here shall he see</p>
+        <p>Gross fools as he,</p>
+        <p>An if he will come to me.</p>
+        <p><span class="speaker">Amiens:</span> What’s that “ducdame”?</p>
+        <p><span class="speaker">Jaques:</span> ’Tis a Greek invocation, to call fools into a circle.</p>
+        <p class="attribution">(2.5.46–56)</p>
+    </div>
+
+    <p>If the coming together of individuals into social happiness is for Jaques a calling of “fools into a circle,” it is clear that his own deviation is as impervious to comic reclamation as that of the wicked younger duke.</p>
+
+    <p>Thus Duke Frederick and Jaques are “for other than for dancing measures,” and by that fact they show that certain persisting threads of action and tone in this play are alien to the comic vision. By leaving Frederick and Jaques out of the social resolution, <i>As You Like It</i> intensifies the strain on comic limits that the villainous Don John had exerted in <i>Much Ado about Nothing</i>. That play, like this one, concludes equivocally. Benedick recites the comic benediction: “Come, come, we are friends. Let’s have a dance ere we are married” (<i>Much Ado</i>, 5.4.113–14); but Don John is a loose end:</p>
+
+    <div class="cita">
+        <p><span class="speaker">Messenger:</span> My lord, your brother John is ta’en in flight,</p>
+        <p>And brought with armed men back to Messina.</p>
+        <p><span class="speaker">Benedick:</span> Think not on him till to-morrow. I’ll devise thee brave punishments for him. Strike up, pipers.</p>
+        <p class="attribution">(<i>Much Ado</i>, 5.4.120–24)</p>
+    </div>
+
+    <p>In <i>As You Like It</i>, Hymen’s song provides a more radiant measure of comic well-being than any statements at the end of <i>Much Ado</i>, but even so the complications have moved nearer to tragedy, and Hymen cannot eradicate all the signs of strain. And after <i>As You Like It</i>, Shakespeare not only forgoes pastoral therapy for a while, but his comic vessels, leaving behind the clear waters sailed by <i>Twelfth Night</i> and <i>The Merry Wives of Windsor</i>, begin increasingly to labor in heavy seas of bitterness. The idea of the joyous society tends henceforth to be more difficult to achieve or maintain. In <i>The Winter’s Tale</i>, great cracks run through the artifice of happiness, and are caulked only with difficulty. Not until <i>The Tempest</i> does Shakespeare’s art, having traversed the bitter complications of the middle and late comedies, find quiet harbor in a renewed paradisal hope. There at last, in the enchanted island’s golden world, the storm of cynicism and tragic disharmony, with a final rage, blows itself out.</p>
+
+    <section class="footnotes">
+        <h3>Note</h3>
+        <p>From <i>Shakespeare’s Pastoral Comedy</i>. © 1972 by the University of North Carolina Press.</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>
