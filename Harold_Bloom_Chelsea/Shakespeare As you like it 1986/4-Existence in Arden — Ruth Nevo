@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Existence in Arden — Ruth Nevo</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.cita .speaker { font-style: normal; font-size: 0.85em; letter-spacing: 0.05em; color: var(--text-muted); text-transform: uppercase; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.subtitulo { text-align: center; text-transform: uppercase; letter-spacing: .15em; font-size: .9rem; font-weight: 700; color: var(--text-secondary); margin: 3rem 0 1.5rem; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">Ruth Nevo</p>
+        <h1 class="cab__tit">Existence in Arden</h1>
+    </header>
+
+    <p>The two great comedies composed during the last years of the sixteenth century share many features which place them in something of a class apart. One of these is the confident, even demonstrative nonchalance with which they relate to the Terentian tradition. It is as if Shakespeare reaches his majority in them, knows it, and would have us know it. It is almost as if we hear him indulging in a sly joke about the whole paternalistic New Comedy model when he has Rosalind, at some undramatized point, meet her father in the forest, where, as she later reports to Celia, she had much question with him: “He ask’d me of what parentage I was. I told him of as good as he, so he laugh’d and let me go. But what talk we of fathers, when there is such a man as Orlando?” (3.4.36–39). With no parental obstacles, no separating misprisions or vows or oaths, with no reason (as has often been pointed out) for Rosalind’s continuing disguise once she is safe in the forest and the writer of the execrable verses identified, <i>As You Like It</i> is the only comedy in which the two chief protagonists fall in love not as victims of blind Cupid, or of plots of one kind and another, or against their own conscious will, but freely, open-eyed, reciprocally and as if in godsent fulfilment of their own deepest desires.</p>
+
+    <p>Their meeting is finely, appropriately rendered. Orlando is hesitant, disconcerted, incredulous, speechless; Rosalind responds with the immediate joyful, irrepressible spontaneity of her confession to Celia. Some of <i>her</i> speechlessness, she says, is “for my child’s father” (1.3.2).</p>
+
+    <p>But this is a comic ending (or very near ending), rather than a comic beginning; and indeed the whole carriage of the play seems almost to set the comedy sequence on its head. The grave potential dangers are concentrated at the start, the tangle of mistaken identities occurs as late as the end of act 3.</p>
+
+    <p>“What,” indeed, asks Barber, “is the comedy in <i>As You Like It</i> about? What does Shakespeare ridicule? At times one gets the impression that it doesn’t matter very much what the characters make fun of so long as they make fun.” Sandwiched between <i>Much Ado</i> and <i>Twelfth Night</i>, Harold Jenkins notes:</p>
+
+    <div class="cita">
+        <p><i>As You Like It</i> is conspicuously lacking in comedy’s more robust and boisterous elements—the pomps of Dogberry and the romps of Sir Toby . . . [and] it has nothing which answers to those bits of crucial trickery . . . which link events together by the logical intricacies of cause and effect. <i>As You Like It</i> takes Shakespearean comedy in one direction nearly as far as it could go before returning (in <i>Twelfth Night</i>) to a more orthodox scheme.</p>
+    </div>
+
+    <p>The point is very well taken. The play exhibits not only a different direction but a markedly looser and more casual handling of the “orthodox scheme,” which I take to mean the Terentian formula; and it is this which makes inspired improvisation, the capacity to seize and make the most of one’s opportunities, a key factor in the comic remedy itself. That which is therapeutic to the human condition is elicited here too by considerable anxiety and error, is winnowed clear of delusion and snatched by a hair’s breadth from disaster. But what is prominently displayed, extruded, so to speak, as surface structure in <i>As You Like It</i> is the wisdom / folly dialectic of comedy itself, as antinomies are first exacerbated and then transcended. And what it embodies in its trickster heroine is comic pleasure itself, in practice and in action: a liberating playful fantasy, an expansive reconciliation of opposites of all kinds, enlivening and enchanting, to be enjoyed and rejoiced in; a heaven-sent euphoria. It is a play so self-assured as not to care whether we notice or not that it is talking about its own mode of being. It is a meta-comedy, in which the underlying principles of Shakespearean practice are drawn out for all to see and turned into the comic material itself.</p>
+
+    <p>The play polarizes harm and remedy in its initial catalogue of imperfections and deficiencies—the most dire we have yet encountered—and in the flight of its refugees. A youngest son seeks his proper place in the world. His elder brother keeps him rustically at home, like a peasant, breeds his horses better—they are not only fed but taught—allows him nothing but mere growth and, in short “mines his gentility with his education.” For this servitude becomes unendurable. Orlando knows no wise remedy, and there begins his sadness. Elsewhere in the kingdom a duke is displaced by his younger brother and flees into exile, leaving his daughter mourning his absence. A thug is hired to dispatch the rebellious younger brother under cover of a court wrestling match, and when the plan miscarries, the young man and his faithful retainer are unceremoniously turned out to make their way in the world as best they can. The usurping duke, unable to bear the accusing presence of his elder brother’s daughter banishes her the court on pain of death. “Thou art a fool,” he says to his daughter, her friend, who entreats him to let her stay:</p>
+
+    <div class="cita">
+        <p>She is too subtile for thee, and her smoothness,</p>
+        <p>Her very silence, and her patience</p>
+        <p>Speak to the people, and they pity her.</p>
+        <p>Thou art a fool; she robs thee of thy name,</p>
+        <p>And thou wilt show more bright and seem more virtuous</p>
+        <p>When she is gone.</p>
+        <p class="attribution">(1.3.77–82)</p>
+    </div>
+
+    <p>His counterpart, Oliver, has a similar message concerning folly to deliver to his younger brother: “What will you do, you fool,” he says, in effect, “when you have the meagre pittance your father left you? Beg when that is spent?”</p>
+
+    <p>This is the cold world of Edmund and Goneril in which there is no place for goodness and virtue, no room for undissimulated feeling; the tainted, radically corrupt world of court or city, of lust for gain and place, of craft and deceit. From wicked brother and wicked uncle there is no recourse for the oppressed but to take flight, which they do gladly. They go “To liberty, and not to banishment.” (1.2.138), to “some settled low content” (2.3.68) as they say in their worldly folly, and arrive by a providential coincidence in the same wood, with nothing but their natural loyalty and generosity, their foolish good nature, and love, contracted at the wrestling match. Back home, cunning and treachery—called worldly wisdom—grow ever more manifest under the impetus of their own accumulation. This is rendered with a splendid acid brevity in act 3, scene 1, when Oliver declares his kinship to Duke Frederick in the matter of affection for his wayward brother Orlando:</p>
+
+    <div class="cita">
+        <p><span class="speaker">Oliver:</span> O that your Highness knew my heart in this! I never lov’d my brother in my life.</p>
+        <p><span class="speaker">Duke Frederick:</span> More villain thou. Well, push him out of doors,</p>
+        <p>And let my officers of such a nature</p>
+        <p>Make an extent upon his house and lands.</p>
+        <p class="attribution">(3.1.13–17)</p>
+    </div>
+
+    <p>The exposition of <i>As You Like It</i> presents a whole society in need of cure, not a temporary emergency, or lunacy, to be providentially set right.</p>
+
+    <p>Since this is the case, however, a good deal of manoeuvring is required to keep the play within the orbit of comedy. The source story in Lodge is far fiercer—there are several deaths; but even Shakespeare’s toning down of the violence, and a reduction of the casualties to Charles’s broken ribs is not sufficient to make the initiating circumstances mere harmless aberrations, or, at worst, aberrations which only an accumulation of mishaps and ill fortune will render disastrous. To transform the Lodge story into comedy, therefore, necessitated a shift of gear, and the production of what one might call a second order set of follies from the realm not of the reprehensible but of the ridiculous; a modulation from vice to error, and potentially liberating error at that. It is the flight into the forest during the long second act which effects this transformation.</p>
+
+    <p>The flight into the forest draws upon the tradition of that other time and other place of the nostalgic imagination—the <i>locus amoenus</i> where the return to nature from corrupt civilization allows the truth, simplicity and humility of innocence to replace the treachery, craft and arrogance of worldly sophistication. But the audience, following the courtiers in their flight from usurpation, cruelty, artifice and deceit discover in the forest the usurpation of Corin, the boorish rusticity of Audrey and William and the factitious elegancies of imitation courtly love masking sexual tyranny in the shepherd lovers; while, before the story is over, the forest’s lionesses and snakes will have revealed in it possibilities no less inhospitable, not to say predatory, than those of the vicious court.</p>
+
+    <p>What we perceive is a plethora of disjunctive contraries. The whole of act 2 bandies views of the good life about between defendants of court and country respectively, in a battery of claims and counterclaims which turns each into its opposite, revealing the absurdity of polarized and partial solutions. Shakespeare erects a burlesque dialectic during which, at every point, assumptions are refuted by realities and opinions fooled by facts.</p>
+
+    <p>Amiens sings to whoever</p>
+
+    <div class="cita">
+        <p>doth ambition shun,</p>
+        <p>And loves to live i’ the’ sun,</p>
+        <p class="attribution">(2.5.38–39)</p>
+    </div>
+
+    <p>promising him no enemy but winter and rough weather. The disenchanted Jaques, whom there is no pleasing, caps Amiens’s with another stanza (or stanzo—Jaques cares not for their names since they owe him nothing) pointing out that anyone who leaves his hearth and ease is an ass, and will find nothing but fools as gross as he in the greenwood. And Amiens’s second song is less buoyant about winter and rough weather, not to mention friendship and loving, than the first.</p>
+
+    <p>Orlando, who has no illusions about “the uncouth forest” swears to succour the fainting Adam: if there be anything living in the desert, he says, “I will either be food for it, or bring it for food to thee.” It is as succinct a summary of nature red in tooth and claw as may be found, but oddly enough Orlando, who complained of the poverty of Nature, denied the benefits of Nurture, steeling himself for savagery, finds civility in the forest. “Your gentleness shall force. / More than your force moves us to gentleness,” says the Duke, his rhetorical chiasmus figuring the contraries. More precisely: figuring the contraries resolved in a way that is characteristic, as we shall see, of the Duke.</p>
+
+    <p>According to the melancholy Jaques that “poor dappled fool” the deer, who has his “round haunches gored” in his own native city is a standing reproach to all seekers of the good life in the forest. But Jaques’s bleak account of human ageing in the seven ages speech (2.7.139ff.) is immediately refuted by Orlando’s tender care for an old and venerable faithful servant. Jaques’s various orations “most invectively” pillory not only country, city and court, but “this our life” in its entirety (2.1.58). But Jaques’s view that evil is universal and good an illusion is countered from yet another perspective by Touchstone’s: that folly is universal and wisdom an illusion.</p>
+
+    <p>These two represent the play’s opposing poles, but in asymmetrical opposition. They are a teasingly complex instance of Shakespeare’s fools, referred to [previously]. The meeting between them is reported exultantly be Jaques in act 2, scene 7, with much rejoicing, on the part of that arrogant nihilist, in the capacity for metaphysics of a mere fool. But the audience is quietly invited to perceive that there is an extraordinary similarity between Touchstone’s oracular ripening and rotting and Jaques’s own disenchanted rhetoric, and we are invited to wonder whether it is not after all the ironical fool who is mocking, by parody, the philosophical pretensions of the sentimental cynic. The scene plays handy dandy (like Lear) with the question most germane to comedy (as Lear’s to tragedy): which is the <i>Eiron</i>, which the <i>Alazon</i>? Which is the mocker and which the mocked? Who is fooling and who is fooled?</p>
+
+    <p>What after all does Touchstone <i>not</i> mock? He dismantles, systematically and with detached amusement, the entire structure of syllogistic reasoning with which his betters occupy their minds:</p>
+
+    <div class="cita">
+        <p>Truly shepherd, in respect of itself, it is a good life; but in respect that it is a shepherd’s life, it is naught. In respect that it is solitary, I like it very well; but in respect that it is private, it is a very vild life. Now in respect it is in the fields, it pleaseth me well; but in respect it is not in the court, it is tedious. As it is a spare life (look you) it fits my humor well; but as there is no more plenty in it, it goes much against my stomach. Hast any philosophy in thee, shepherd?</p>
+        <p class="attribution">(3.2.13–22)</p>
+    </div>
+
+    <p>A premise, to Touchstone is nothing but its own potential contrary, as he delights to demonstrate with his mock or anti-logic of all’s one:</p>
+
+    <div class="cita">
+        <p>That is another simple sin in you, to bring the ewes and the rams together, and to offer to get your living by the copulation of cattle; to be bawd to a bell-wether, and to betray a she-lamb of a twelve-month to a crooked-pated old cuckoldly ram, out of all reasonable match.</p>
+        <p class="attribution">(3.2.78–83)</p>
+    </div>
+
+    <p>Nevertheless, Touchstone is a fool. Audrey is there to remind us of that. And so what we come to see is that both monistic or polarized solutions—that evil is universal and good an illusion, and that folly is universal and wisdom an illusion are being mocked.</p>
+
+    <p>However, the play makes it clear which it prefers, which it includes, finally. It finds a place—a key place, as we shall see—for the mother wit which Touchstone demonstratively parades, and parodies. It is Jaques, totally lacking in good humour, who is sent packing. First by the Duke, in terms which are significant, in view of comedy’s concern with remedies for human ills. The Duke checks Jaques’s enthusiasm about cleansing with satire the foul body of the infected world with the command, <i>Physician, heal thyself</i>:</p>
+
+    <div class="cita">
+        <p>Most mischievous foul sin, in chiding sin:</p>
+        <p>For thou thyself hast been a libertine,</p>
+        <p>As sensual as the brutish sting itself;</p>
+        <p>And all th’ embossed sores, and headed evils,</p>
+        <p>That thou with license of free foot hast caught,</p>
+        <p>Would’st thou disgorge into the general world.</p>
+        <p class="attribution">(2.7.64–69)</p>
+    </div>
+
+    <p>And then by the lovers. “I thank you for your company, but, good faith, I had as lief have been myself alone” is Jaques’s opening ploy when he meets Orlando. He doesn’t, it transpires, approve of Orlando’s verse, of his love’s name, of his “pretty answers” (probably “conn’d out of rings”), of his “nimble wit” at which he learnedly sneers, of his being fool enough to be in love at all. What he would like to do, he says, is to sit down and “rail against our mistress the world, and all our misery.” At the end of this dispiriting conversation Orlando sends him to seek the fool he was looking for in the brook (3.2.253–93 <i>passim</i>). And Rosalind, similarly tried by Jaques’s disquisition on his own unique and inimitable brand of melancholy, would “rather have a fool to make [her] merry than experience to make [her] sad—and travel for it too!” (4.1.28).</p>
+
+    <p>If (much virtue in “if”)—if we must choose between disjunctions, too cool a head is evidently preferable to too cold a heart. But must we choose? Certainly act 2 (in particular) with its reiterated pastoral polemic, its multitude of syntactic, imagistic, situational figurations of either / or places us constantly in attitudes of indecision, or of quasi-dilemma. Nothing is happening, of course, so that these are not the impossible choices of tragic action; they are merely virtual. These constantly collapsing or exploding solutions of the greenwood constitute the comic disposition which the process of the play heightens and mocks. The characters all have answers to the question of the good life, but their answers keep being refuted; keep being invaded by aspects of reality they have not taken into account. Yet they continue tirelessly searching. Moreover, the comedy of this second act is an almost Chekovian dialogue of the deaf. Everybody is talking philosophically about life. Ah Life. But it is only themselves they really hear. The Duke, who needs grist for his mill, loves, he tells us, to cope Jaques in his sullen fits, for “then he’s full of matter.” But Jaques, who has no patience with another’s problems, has been trying all day to avoid him: “He is too disputable for my company,” says he, with sardonic derision. “I think of as many matters as he, but I give heaven thanks, and make no boast of them” (2.5.35–37).</p>
+
+    <p>If then disjunctive logic is the comic disposition in Arden (reflecting the disjunction of good and evil in the play’s outer frame), any remedy will have to mediate or bridge the fissuring of human experience which is thus symbolized. It is the good Duke (<i>meta-senex</i> for a meta-comedy?) who points the way to such a resolution.</p>
+
+    <p>The Duke’s stoicism is more than a brave show. His speech (2.1.1–17) on the sweet uses of adversity and the preferability of biting winter winds to man’s ingratitude and the ingratiation of court sycophancy is a profoundly dialectical <i>concordia discors</i>, transcending, with its paradoxes, diametrical contraries. He is, it is to be noted, as aware as Jaques of the universality of evil. It is he who first notices the anomaly of the deer hunt, though it is Jaques who rubs it in. He does not say that Arden is a rose garden. He only says that he recognizes the penalty of Adam. Duke Senior does not deny the icy fangs of the winter wind, the ugly venom of the toad. On the contrary, he welcomes them because they “feelingly persuade him what he is.” The contraries: painted pomp and icy fangs; chiding and flattery; feeling and persuasion (intuition and reason, we would say); books and brooks; sermons and stones, are all resolved in his remedial vision of the good life to be found in the hard discipline of nature, not in her soft bosom; in the riches of deprivation, not in the poverty of prodigality. “Happy is your Grace,” says Amiens, “That can translate the stubbornness of fortune / “Into so quiet and so sweet a style” (2.1.18–20). This Duke is indeed wise enough to be Rosalind’s father but his wisdom of retreat, his embracing of penury, does not nurture a comic economy which requires bonus and liberating excess. He is the ideologue of resolutions, not their protagonist. Nor is the virtue that he makes of dispossession entirely victorious. They are doing their best, these exiles, to keep their spirits up, and there are moments of greenwood merriment, to be sure, but it doesn’t take much to set off in them a yearning for better days. When the young man rushes on with his drawn sword shouting for food, and meets the Duke’s courteous welcome, he also poignantly reminds him of the privations of a purely private virtue:</p>
+
+    <div class="cita">
+        <p>what e’er you are</p>
+        <p>That in this desert inaccessible,</p>
+        <p>Under the shade of melancholy boughs,</p>
+        <p>Lose and neglect the creeping hours of time;</p>
+        <p>If ever you have look’d on better days,</p>
+        <p>If ever been where bells have knoll’d to church,</p>
+        <p>If ever sate at any good man’s feast,</p>
+        <p>If ever from your eyelids wip’d a tear,</p>
+        <p>And know what ’tis to pity, and be pitied,</p>
+        <p class="attribution">(2.7.109–17)</p>
+    </div>
+
+    <p>The Duke echoes his sentiments with enthusiasm, and invites him to a meal served with as ducal a propriety as circumstances permit. The Duke can do much, but <i>As You Like It</i> requires, for its proper centre, his daughter. Which brings us to the lovers.</p>
+
+    <p>While the veteran refugees are thinking of many matters, these newcomers are thinking of one alone. Orlando, so far from finding settled low content in the forest, finds a compulsion to dream of fair women and to publish his poetasting upon every tree, and Rosalind, who had seized the opportunity, while she was about it, to satisfy a girl’s tomboy fantasies:</p>
+
+    <div class="cita">
+        <p>Were it not better,</p>
+        <p>Because that I am more than common tall,</p>
+        <p>That I did suit me all points like a man?</p>
+        <p>A gallant curtle-axe upon my thigh,</p>
+        <p>A boar-spear in my hand, and—in my heart</p>
+        <p>Lie there what hidden woman’s fear there will—</p>
+        <p>We’ll have a swashing and a martial outside,</p>
+        <p>As many other mannish cowards have</p>
+        <p>That do outface it with their semblances.</p>
+        <p class="attribution">(1.3.114–22)</p>
+    </div>
+
+    <p>now finds an echo to her own thoughts in the lovelorn Silvius. “Alas, poor shepherd searching of [thy wound], / I have by hard adventure found my own” is her sympathetic response to Silvius’s plaint (2.4.44–45ff.). The meeting precipitates the process of self-discovery which the comic device in act 2, the disguise whereby Rosalind both reveals and conceals her true identity, will infinitely advance.</p>
+
+    <p>“Arcadia,” says Peter Marinelli [in <i>Pastoral</i>] (and the perceptive remark applies as well to Arden), “is a middle country of the imagination . . . a place of Becoming rather than Being, where an individual’s potencies for the arts of life and love and poetry are explored and tested.” Shakespeare’s Arcadia offers a further turn: his comic heroine’s own potencies for the arts of life and love and poetry are explored and tested by a variety of contingencies even while she is testing and exploring these same potencies in others.</p>
+
+    <p>Her initial absence of mind at the first encounter with Silvius is amusingly rendered by her failure to take in Touchstone’s derisive parody of fancy shepherds:</p>
+
+    <div class="cita">
+        <p>I remember when I was in love, I broke my sword upon a stone, and bid him take that for coming a-night to Jane Smile; and I remember the kissing of her batler and the cow’s dugs that her pretty chopp’d hands had milk’d; and I remember the wooing of a peascod instead of her, from whom I took two cods, and giving her them again, said with weeping tears, ‘Wear these for my sake’.</p>
+        <p class="attribution">(2.4.46–54)</p>
+    </div>
+
+    <p>All she hears, and that inattentively, is his epigrammatic ending: “as all is mortal in nature, so is all nature in love mortal in folly.” Upon which she sagely replies, “Thou speak’st wiser than thou art ware of,” and misses again entirely the fool’s iron snub. “Nay, I shall ne’er be ware of mine own wit till I break my shins against it” (2.4.58–59).</p>
+
+    <p>But this is the last time Rosalind is inattentive or absentminded. Indeed it is her presence of mind which dominates and characterizes the middle acts.</p>
+
+    <p>From the moment when she finds herself trapped in her page role and exclaims in comic consternation, “Alas the day, what shall I do with my doublet and hose?” to the moment of her unmasking, Ganymede releases in Rosalind her best powers of improvisation, intuition, and witty intelligence. Her quick wit transforms her page disguise into the play’s grand comic device, and turns comic predicament to triumphant account. When she says to Celia: “Good my complexion, doest thou think, though I am caparison’d like a man, I have a doublet and hose in my disposition? One inch of delay more is a South-sea of discovery.” (3.2.194–97), her gift for comic hyperbole as well as her ironic self-awareness are delightfully in evidence. But the master invention of the play lies in “the inch of delay more” which she cannily, deliberately, takes upon herself (though with a handsome young fellow like Orlando wandering about the forest scratching “Rosalind” on every tree there is nothing that would please her more than to be revealed) and in the “South-sea of discovery” it allows her to make. For if Orlando discovers culture—sonnets and banquets—in the forest, Rosalind discovers nature, and rejoices in the occasion for the expression of her own ebullient, versatile and polymorph energies. It is a superbly audacious idea, this saucy lackey cure for love, if she can bring it off:</p>
+
+    <div class="cita">
+        <p>At which time would I, being but a moonish youth, grieve, be effeminate, changeable, longing and liking, proud, fantastical, apish, shallow, inconstant, full of tears, full of smiles; for every passion something, and for no passion truly any thing, as boys and women are for the most part cattle of this color; would now like him, now loathe him; then entertain him, then forswear him; now weep for him, then spit at him; . . . and this way will I take upon me to wash your liver as clean as a sound sheep’s heart, that there shall not be one spot of love in’t.</p>
+        <p class="attribution">(3.2.409–24)</p>
+    </div>
+
+    <p>And if she can bring it off, how can she lose? She is invisible. She is in control. She is master-mistress of the situation. She can discover not only what he is like, but what she is like; test his feelings, test her own; mock love and mask love and make love; provoke and bask in the attentions of the lover whose company she most desires, pretend to be the boy she always wanted, perhaps, to be, and permit herself extravagances everyday decorum would certainly preclude: “Come, woo me, woo me; for now I am in a holiday humor, and like enough to consent. What would you say to me now, and I were your very very Rosalind?” (4.1.68–71).</p>
+
+    <p>It is no wonder the gaiety of this twinned character is infectious, the ebullience irrepressible, the high spirits inimitable. She / he is all things to all men and enjoys every moment of this androgynous ventriloquist’s carnival, the more especially since, unlike her sisters in disguise, Julia and Viola, she has the relief of candid self-exposure to her confidante Celia as well: “O coz, coz, coz, my pretty little coz, that thou didst know how many fathom deep I am in love! But it cannot be sounded; my affection hath an unknown bottom, like the bay of Portugal” (4.1.205–8). “You have simply misus’d our sex in your love-prate,” complains the soberer Celia, concerned for sexual solidarity. But what is sexual solidarity to her is to her chameleon cousin sexual solipsism and she will have none of it.</p>
+
+    <p>She provokes preposterously, and so exorcizes (in this a double for Orlando) the paranoia of male anti-feminism with her dire threat:</p>
+
+    <div class="cita">
+        <p>I will be more jealous of thee than a Barbary cock-pigeon over his hen, more clamorous than a parrot against rain, more new-fangled than an ape, more giddy in my desires than a monkey. I will weep for nothing, like Diana in the fountain, and I will do that when you are disposed to be merry. I will laugh like a hyen, and that when you are inclin’d to sleep.</p>
+        <p class="attribution">(4.1.149–56)</p>
+    </div>
+
+    <p>only to reveal herself with utter if inadvertent candour the next moment: “Alas, dear love, I cannot lack thee two hours” (4.1.178) and then, to cover her slip, immediately dissimulates again in the mock tirade of an abused and long-suffering wife: “Ay, go your ways, go your ways; I knew what you would prove; my friends told me as much, and I thought no less. That flattering tongue of yours won me. ’Tis but one cast away, and so come death! Two a’clock is your hour?” (4.1.185–86).</p>
+
+    <p>Her double role is a triumph of characterization through impersonation, inconsistency, not consistency, being the key to dramatic verisimilitude if a complex and dynamic individual is to be represented. More, Rosalind, the girl, in whom natural impulse is finely cultivated and worldly wisdom cohabits with a passionate nature, together with her own “twin” Ganymede, in whom a youth’s beauty and a youth’s jaunty irreverence combine, provides the double indemnity of comedy with lavish generosity. The duality of her masculine and feminine roles—itself an abolition of disjunction—gratifies our craving both for pleasure and reality, satisfies a deep defensive need for intellectual scepticism as well as an equally deep need for impulsive and limitless abandon, provides at once for cerebration and celebration, resolves the dichotomies of nature and culture, wisdom and folly, mockery and festivity.</p>
+
+    <p>I find in a recent study of what existential psychologists call “peak experience,” interesting confirmation of the theory of comic therapy Shakespeare’s practice, particularly in this play, appears to support. “Peak experiences,” says Abraham H. Maslow, make characters in plays and their audiences more apt to feel “that life in general is worth while, even if it is usually drab, pedestrian, painful or ungratifying, since beauty, excitement, honesty, play, goodness, truth, and meaningfulness have been demonstrated to him to exist. . . . Life itself is validated, and suicide and death wishing must become less likely.” [<i>Towards a Psychology of Being</i>].</p>
+
+    <p>Thus the make-believe courtship, invented on the pretext of furnishing a cure for Orlando’s love melancholy (or at least for his versification!), provides Rosalind with a homeopathic <i>remedia amoris</i> for hers. Free to fantasize, explore, experiment, she confers upon the audience a vivid sense that the mortal coil might not be solely a curse, nor the working-day world of briars beyond transfiguring.</p>
+
+    <p>And even that is not all. Ganymede’s undertaking to cure Orlando’s love-longing passes the time entertainingly in the greenwood but it also runs Rosalind into difficulties with the native population, thus providing the canonical knot of errors through a mistaken identity, and Ganymede with more livers to wash as clean as a sound sheep’s heart.</p>
+
+    <p>Phebe’s high-handed scorn for her doleful lover’s courtly style exposes the substance of her own callousness as well as the absurd affectations of courtly love:</p>
+
+    <div class="cita">
+        <p>’Tis pretty, sure, and very probable,</p>
+        <p>That eyes, that are the frail’st and softest things,</p>
+        <p>Who shut their coward gates on atomies,</p>
+        <p>Should be called tyrants, butchers, murtherers!</p>
+        <p>Now I do frown on thee with all my heart,</p>
+        <p>And if mine eyes can wound, now let them kill thee.</p>
+        <p>Now counterfeit to swound; why, now fall down,</p>
+        <p>Or if thou canst not, O, for shame, for shame,</p>
+        <p>Lie not, to say mine eyes are murtherers!</p>
+        <p class="attribution">(3.5.11–19)</p>
+    </div>
+
+    <p>Rosalind, too, knows that “these are all lies”; that “men have died from time to time, and worms have eaten them, but not for love” (4.1.108), she, too, knows that “men are April when they woo, December when they wed,” and that maids “are May when they are maids, but the sky changes when they are wives” (4.1.147–48). But her realism is of another order altogether than Phebe’s callow literalism, and is vouched for by the vigour with which she scolds the pair of them, combining the swashbuckling gusto of Ganymede with the passionate sincerity of Rosalind, in a <i>nosce teipsum</i> totally free of illusion:</p>
+
+    <div class="cita">
+        <p>’Od’s my little life,</p>
+        <p>I think she means to tangle my eyes too!</p>
+        <p>No, faith, proud mistress, hope not after it.</p>
+        <p>’Tis not your inky brows, your black silk hair,</p>
+        <p>Your bugle eyeballs, nor your cheek of cream</p>
+        <p>That can entame my spirits to your worship.</p>
+        <p>You foolish shepherd, wherefore do you follow her,</p>
+        <p>Like foggy south, puffing with wind and rain?</p>
+        <p>You are a thousand times a properer man</p>
+        <p>Than she a woman. ’Tis such fools as you</p>
+        <p>That make the world full of ill-favor’d children.</p>
+        <p>’Tis not her glass, but you that flatters her,</p>
+        <p>And out of you she sees her self more proper</p>
+        <p>Than any of her lineaments can show her.</p>
+        <p>But, mistress, know yourself, down on your knees,</p>
+        <p>And thank heaven, fasting, for a good man’s love;</p>
+        <p>For I must tell you friendly in your ear,</p>
+        <p>Sell when you can, you are not for all markets.</p>
+        <p class="attribution">(3.5.43–60)</p>
+    </div>
+
+    <p>Ralph Berry takes a counterview of <i>As You Like It</i>, and especially of this incident. He finds unease, irritation and hostility—the groundswell of a power struggle latent or overt—to be the dominant motif of the play. This, however, is a view as overselective as Jaques’s seven ages speech. What is leaves out is the fun. But it is also not strictly accurate. Berry accounts, for instance, for the “quite astonishing warmth” of Rosalind’s diatribe—“thirty odd lines of vulgar abuse” he calls it—in terms of Phebe appearing to Rosalind as a subtly threatening parallel or caricature of herself. “Phebe is a domineering woman who . . . has mastered her man; so is Rosalind.” But when the incident occurs Rosalind has mastered no one. She has merely suggested to Orlando that they meet again. Phebe is, to be sure, the phantom Ganymede conjures to cure Orlando of just such love-longing as Silvius’s. The caricature double surely provides a foil to the hidden Rosalind; and the comedy arising from the idea of Rosalind meeting a “real” embodiment of Ganymede’s fantasy is quite lost in Berry’s reductive reading.</p>
+
+    <p>It is no wonder that Phebe, whose dejected lover Silvius is clearly not manly enough for his imperious mistress, falls head over heels in love with this high-spirited outspokenness, thus hoisting Rosalind / Ganymede with his / her own epicene petard. Ganymede has in his face that which Phebe would feign call master, it seems, and this is a tangle not easy to untie. A remedy for deadlock, however, is provided by the very occurrence which virtually exhausts the Ganymede device. The arrival of Oliver, reformed by his experience of courtly treachery, with the tale of his brother’s heroic rescue (a recapitulation of the native <i>virtù</i> of the wrestling exploit on a higher moral level) provides not only proof that Orlando is no tame snake like Silvius, but also a patrimony for him and a partner for Celia. The exhaustion of the comic device is neatly dramatized by the emotional collapse of Rosalind at the sight of the bloodied handkerchief, and there is now nothing in the world to prevent the trickster heroine from undoing the turmoil she has caused. Her power to do this is beautifully “masqued” by the chiming quarter of act 5, scene 2: Love is “to be made of sighs and tears”—</p>
+
+    <div class="cita">
+        <p><span class="speaker">Silvius:</span> And so am I for Phebe.</p>
+        <p><span class="speaker">Phebe:</span> And I for Ganymede.</p>
+        <p><span class="speaker">Orlando:</span> And I for Rosalind.</p>
+        <p><span class="speaker">Rosalind:</span> And I for no woman</p>
+        <p class="attribution">(5.2.85–93)</p>
+    </div>
+
+    <p>and so on, until Rosalind begs, “Pray you no more of this, ’tis like the howling of Irish wolves against the moon” (5.2.109–10).</p>
+
+    <p>This is the ironic voice which ends the play with the classic plea for applause in the epilogue, and it is worth a moment’s further reflection. That Rosalind is still dressed as Ganymede has been convincingly argued in terms of the scarcity of time available at that point for a boy to change into elaborate women’s clothing. But there is a cogent argument to be drawn from the play’s own dialectical resolution. If she is still Ganymede in the epilogue, then “If I were a woman” is spoken out of her saucy lackey role, as the man-of-the-world bawdy of “that between you and the women the play may please” seems to suggest. She is thus drawing the audience, too, into her transvestite trickster’s net, prolonging the duplicity of self-discovery and self-concealment, the enchanting game of both / and. But if she is dressed as Rosalind, then “If I were a woman” is spoken over the heads, so to speak, of characters and play, by the boy-actor of Shakespeare’s company, and this will collapse the dramatic illusion of “real” make-believe from which the whole play draws its dynamic power. Shakespeare, I submit, is not calling attention to his play as play, as opposed to reality: he is calling attention to Rosalind’s “play” as a component reality would do well to absorb.</p>
+
+    <p>At the end of <i>As You Like It</i> dukes are restored to their dukedoms, sons to their inheritances. Wickedness has burst, like a boil, by some mysterious spontaneous combustion, leaving not a rack behind. But not all Jacks have their Jills. Jaques is unassimilated. But he is by nature a solitary and continues his travels, happily sucking melancholy out of all occasions as a weasel sucks eggs, on the outer edge of remedy.</p>
+
+    <p>There is also unaccommodated William at the marriage feast. But there’s hope even there, if Touchstone’s fidelity can be relied upon; Jaques gives him two months (5.4.192). For though “wedlock,” in the view of that philosopher of life’s most minimal expectations, “will be nibbling,” what of it?</p>
+
+    <div class="cita">
+        <p>But what though? Courage! As horns are odious, they are necessary. It is said, ‘Many a man knows no end of his goods’. Right! many a man has good horns and knows no end of them. Well, that is the dowry of his wife, ’tis none of his own getting. Horns? even so. Poor men alone? No, no, the noblest deer hath them as huge as the rascal. Is the single man therefore bless’d? No, as a wall’d town is more worthier than a village, so is the forehead of a married man more honorable than the bare brow of a bachelor.</p>
+        <p class="attribution">(3.3.51–61)</p>
+    </div>
+
+    <p>If this is a mockery of “romance” it is also a mockery of “reason.” A protuberance is a protuberance, whether it be the bastion of a walled town or the horned frontlet of a married man. To Touchstone, logic is a bagatelle. All is immaterially interchangeable: court and country, culture and nature, fact and fiction, sense and folly, wedlock and non-wedlock, for that matter, too. Earthly things made even atone together in Touchstone’s anti-logic as well as in Hymen’s conjuration. Touchstone’s courtship has been a mocking parody of the affectations of the mid-level characters Phebe and Silvius; but he is also a mocking foil to Rosalind’s superior synthesis of culture and nature, just as his bawdy “prick” song (<i>If a hart do lack a hind</i> [3.2.100–112]) is foil to her own frank naturalism. In this matter she can give as good as she gets, too, in Mercutio’s very vein (3.2.117–20).</p>
+
+    <p>“Rosalind, Viola, and, to a less extent Beatrice,” says Charlton, (forgetting, however, Julia and Hippolyta),</p>
+
+    <div class="cita">
+        <p>have entered into the possession of spiritual endowments which, if hitherto suspected to exist at all, had either been distrusted as dangerous or had become moribund through desuetude . . . they have claimed the intuitive, the subconscious, and the emotional as instruments by which personality may bring itself to a fuller consciousness of and a completer harmony with the realities of existence. They have left Theseus far behind; they have also outgrown Falstaff.</p>
+        <p class="attribution">[H. B. Charlton, <i>Shakespearean Comedy</i>]</p>
+    </div>
+
+    <p>It is perhaps, as I have tried to show, less a matter of outgrowing Falstaff, then of replacing him, by a new combination: the Lady and the Fool. Touchstone is a professional jester, not a bumbling village constable or a Bacchic life-force. He is not a merry fool, either. He is too Ecclesiastes-wise; and besides his feet hurt. But his burlesque fool’s wisdom serves throughout most excellently to mediate our recognition of the Erastian higher folly of his ebullient mistress. When Wylie Sypher speaks, [in <i>Comedy</i>], of “the unruliness of the flesh and its vitality,” he characterizes the buffoon nature in all its manifestations. “Comedy,” Sypher continues, “is essentially a carrying away of Death, a triumph over mortality by some absurd faith in rebirth, restoration, salvation.” Perhaps we could say that Touchstone epitomizes the absurdity, and Rosalind the faith; and that it is the interlocking and paradoxical partnership of the two that characterizes this second, and second last of Shakespeare’s post-Falstaffian comedies.</p>
+
+    <p>Shakespeare is not done with the wayward and unruly erotic passions. Nor will he be, needless to say, until the last word he contributes to <i>Two Noble Kinsmen</i>. But his romantic comedy treatment of them does come to an end with his next play <i>Twelfth Night</i>, in which the rivalries and duplicities, twinnings and doublings of the battle of the sexes are further extended into the ambivalent twinnings, duplicities and doublings within the lovers’ own individual identities.</p>
+
+    <section class="footnotes">
+        <h3>Note</h3>
+        <p>From <i>Comic Transformations in Shakespeare</i>. © 1980 by Ruth Nevo. Methuen, 1980.</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>
