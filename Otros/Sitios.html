@@ -1,0 +1,2457 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inventario de destinos extraordinarios</title>
+<meta name="description" content="Recopilación personal de destinos de viaje excepcionales por naturaleza, cultura, arquitectura y creación contemporánea.">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#061319">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   PALETA — azules poco frecuentes: abisal, prusia, cerúleo,
+   verdemar y glauco. El oro queda reservado a las favoritas.
+   ============================================================ */
+:root {
+  color-scheme: dark;
+
+  --abismo:   #061319;  /* fondo general */
+  --nocturno: #0c2029;  /* superficie de las fichas */
+  --prusia:   #16394a;  /* bordes y filetes */
+  --ceruleo:  #56c2de;  /* acento principal */
+  --verdemar: #5fc9b6;  /* acento secundario */
+  --glauco:   #a9cfe0;  /* títulos de ficha */
+  --espuma:   #dfeef2;  /* texto claro */
+  --bruma:    #93b2bd;  /* texto secundario */
+  --oro:      #e0bb6a;  /* favoritas */
+
+  --halo-oro: 0 0 0 1px rgba(224,187,106,.45), 0 0 34px -10px rgba(224,187,106,.75);
+
+  --tipo-titular: 'Futura', 'Lexend', 'Atkinson Hyperlegible', sans-serif;
+  --tipo-texto:   'Atkinson Hyperlegible', 'Lexend', system-ui, sans-serif;
+
+  --radio:  14px;
+  --medida: 68ch;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 1.5rem;
+  scrollbar-color: var(--prusia) var(--abismo);
+}
+
+body {
+  font-family: var(--tipo-texto);
+  color: var(--espuma);
+  background: var(--abismo);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Fondo con dos halos de luz fría, fijos al viewport */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(90% 55% at 50% -8%, rgba(86,194,222,.14), transparent 65%),
+    radial-gradient(75% 50% at 0% 100%, rgba(95,201,182,.09), transparent 70%),
+    var(--abismo);
+}
+
+.contenedor {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 4vw, 32px) clamp(56px, 8vw, 96px);
+}
+
+::selection { background: rgba(86,194,222,.3); color: var(--espuma); }
+
+a:focus-visible,
+.ficha:focus-visible {
+  outline: 2px solid var(--ceruleo);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ---------------------------------- Portada */
+.portada {
+  padding: clamp(48px, 9vw, 104px) 0 clamp(28px, 5vw, 52px);
+  text-align: center;
+  border-bottom: 1px solid var(--prusia);
+}
+
+h1 {
+  font-family: var(--tipo-titular);
+  font-weight: 600;
+  font-size: clamp(2rem, 5.5vw, 3.4rem);
+  line-height: 1.08;
+  letter-spacing: -.015em;
+  color: var(--ceruleo);
+  text-wrap: balance;
+}
+
+.entradilla {
+  max-width: var(--medida);
+  margin: 1.2rem auto 0;
+  color: var(--bruma);
+  font-size: clamp(1rem, 1.4vw, 1.1rem);
+  text-wrap: pretty;
+}
+
+.indice {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .4rem 1.6rem;
+  margin-top: 2.2rem;
+  font-size: .95rem;
+}
+.indice a {
+  color: var(--bruma);
+  text-decoration: none;
+  padding-bottom: 3px;
+  border-bottom: 1px solid transparent;
+  transition: color .2s, border-color .2s;
+}
+.indice a:hover { color: var(--ceruleo); border-bottom-color: var(--ceruleo); }
+
+.leyenda { margin-top: 1.8rem; font-size: .87rem; color: var(--bruma); }
+.leyenda .estrella { color: var(--oro); }
+
+/* ---------------------------------- Secciones */
+.seccion { margin-top: clamp(52px, 8vw, 92px); }
+
+.seccion > h2 {
+  font-family: var(--tipo-titular);
+  font-weight: 600;
+  font-size: clamp(1.45rem, 3vw, 2rem);
+  line-height: 1.2;
+  color: var(--verdemar);
+  border-inline-start: 3px solid var(--verdemar);
+  padding-inline-start: 16px;
+  text-wrap: balance;
+}
+
+.seccion__desc {
+  max-width: var(--medida);
+  margin: .7rem 0 2.2rem;
+  padding-inline-start: 19px;
+  color: var(--bruma);
+  font-style: italic;
+  text-wrap: pretty;
+}
+
+.rejilla {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr));
+  gap: clamp(16px, 2vw, 26px);
+}
+
+.volver { margin-top: 1.8rem; text-align: right; font-size: .85rem; }
+.volver a { color: var(--bruma); text-decoration: none; }
+.volver a:hover { color: var(--ceruleo); }
+
+/* ---------------------------------- Ficha */
+.ficha {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--nocturno);
+  border: 1px solid var(--prusia);
+  border-radius: var(--radio);
+  overflow: hidden;
+  transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 460px;
+}
+
+.ficha:hover,
+.ficha:focus-within {
+  transform: translateY(-4px);
+  border-color: var(--ceruleo);
+  box-shadow: 0 16px 30px -16px rgba(0,0,0,.9);
+}
+
+/* Halo dorado de las favoritas */
+.ficha--favorita {
+  border-color: rgba(224,187,106,.5);
+  box-shadow: var(--halo-oro);
+}
+.ficha--favorita:hover,
+.ficha--favorita:focus-within {
+  border-color: var(--oro);
+  box-shadow:
+    0 0 0 1px rgba(224,187,106,.65),
+    0 0 44px -8px rgba(224,187,106,.9),
+    0 16px 30px -18px #000;
+}
+
+.ficha__imagen {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-bottom: 1px solid var(--prusia);
+  background: linear-gradient(140deg, #143845, #081b23);
+}
+.ficha__imagen img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Reencuadres puntuales de fotos mal centradas */
+.recorte-arriba { object-position: 50% 20%; }
+.recorte-alto   { object-position: 50% 35%; }
+.recorte-bajo   { object-position: 50% 75%; }
+.recorte-abajo  { object-position: 50% 85%; }
+
+.ficha__estrella {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  font-size: .8rem;
+  color: var(--oro);
+  border-radius: 50%;
+  background: rgba(6,19,25,.72);
+  box-shadow: 0 0 0 1px rgba(224,187,106,.55);
+  backdrop-filter: blur(3px);
+}
+
+.ficha__texto {
+  display: flex;
+  flex-direction: column;
+  gap: .7rem;
+  padding: clamp(16px, 2.2vw, 22px);
+}
+
+.ficha__texto h3 {
+  font-family: var(--tipo-titular);
+  font-weight: 600;
+  font-size: 1.22rem;
+  line-height: 1.25;
+  letter-spacing: -.01em;
+  color: var(--glauco);
+  text-wrap: balance;
+}
+
+.ficha__lugar {
+  align-self: flex-start;
+  margin-top: -.25rem;
+  padding: 3px 11px;
+  font-size: .8rem;
+  color: var(--verdemar);
+  background: rgba(95,201,182,.1);
+  border-radius: 999px;
+}
+
+.ficha__texto p:not(.ficha__lugar) {
+  font-size: .95rem;
+  color: var(--bruma);
+  text-wrap: pretty;
+}
+.ficha__texto strong { color: var(--espuma); }
+
+/* ---------------------------------- Preferencias del sistema */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+  .ficha:hover, .ficha:focus-within { transform: none; }
+}
+
+@media print {
+  body { background: #fff; color: #000; }
+  body::before, .indice, .volver, .leyenda { display: none; }
+  h1, .seccion > h2, .ficha__texto h3 { color: #000; }
+  .entradilla, .seccion__desc, .ficha__texto p:not(.ficha__lugar) { color: #333; }
+  .ficha { background: #fff; border-color: #bbb; box-shadow: none; break-inside: avoid; content-visibility: visible; }
+  .ficha__imagen { display: none; }
+  .ficha__lugar { color: #000; background: none; padding-inline: 0; }
+}
+</style>
+</head>
+<body id="inicio">
+
+<div class="contenedor">
+
+<header class="portada">
+  <h1>Inventario de destinos extraordinarios</h1>
+  <p class="entradilla">Recopilación de destinos únicos analizados por su naturaleza, arquitectura y rareza cultural. Razones profundas para aventurarse a conocer lo excepcional.</p>
+  <nav class="indice" aria-label="Secciones del inventario">
+    <a href="#naturaleza">Naturaleza extrema</a>
+    <a href="#culturas">Culturas vivas</a>
+    <a href="#arquitectura">Arquitectura legendaria</a>
+    <a href="#contemporaneo">Expresiones contemporáneas</a>
+  </nav>
+  <p class="leyenda"><span class="estrella">★</span> Los destinos favoritos van marcados con un halo dorado.</p>
+</header>
+
+<main>
+
+<!-- ============================================================
+     1. Naturaleza extrema y aislamiento
+     ============================================================ -->
+<section class="seccion" id="naturaleza">
+<h2>Naturaleza extrema y aislamiento</h2>
+<p class="seccion__desc">Destinos donde el entorno natural es el protagonista absoluto, el acceso es difícil y la huella humana es mínima. Ideales para expediciones y desconexión total.</p>
+<div class="rejilla">
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Kamchatka.jpg" alt="Kamchatka" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Kamchatka</h3>
+    <p class="ficha__lugar">Extremo Oriente, Rusia</p>
+    <p>Kamchatka es una península en el confín oriental de Rusia donde la Tierra muestra su fuerza primigenia: más de trescientos volcanes, valles humeantes y una población de osos pardos entre las mayores del planeta. No hay ferrocarril ni turismo masivo; solo expediciones por ríos, tundra y costas azotadas por el Pacífico.</p>
+    <p>Viajar aquí es aceptar el aislamiento absoluto y la recompensa de una naturaleza indómita. Sus erupciones, glaciares y géiseres conforman un paisaje que parece anterior al ser humano, ideal para quienes buscan la aventura en estado puro.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Abruzzo.jpg" alt="Los Abruzos" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Los Abruzos</h3>
+    <p class="ficha__lugar">Centro de Italia</p>
+    <p>Los Abruzos guardan el corazón salvaje de los Apeninos: altas mesetas kársticas, bosques de hayas y pueblos de piedra encaramados en riscos. Es el último refugio del oso pardo marsicano y del lobo, y un secreto que Italia ha protegido del turismo de masas.</p>
+    <p>Lejos de la saturación de la Toscana o la Costa Amalfitana, esta región ofrece castillos solitarios como Rocca Calascio, una gastronomía pastoril y la sensación de viajar a una Italia anterior al turismo.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Somiedo.jpg" alt="Parque Natural de Somiedo" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Parque Natural de Somiedo</h3>
+    <p class="ficha__lugar">Asturias, España</p>
+    <p>Somiedo es el gran santuario del oso pardo cantábrico y un paisaje modelado por glaciares. Sus brañas de alta montaña conservan cabañas de teito, con techumbres vegetales que hunden sus raíces en tradiciones celtas.</p>
+    <p>El parque natural asturiano es refugio de los vaqueiros de alzada, pastores trashumantes con rituales propios. Senderos entre niebla, lagos y bosques atlánticos regalan una experiencia de naturaleza pura y memoria rural.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/LaVallFosca.jpg" alt="La Vall Fosca" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>La Vall Fosca</h3>
+    <p class="ficha__lugar">Pirineo catalán (Lleida)</p>
+    <p>La Vall Fosca es la puerta sur del Parque Nacional de Aigüestortes, un circo glaciar salpicado por más de treinta lagos de montaña. Paredes de granito, pizarras negras y aguas cristalinas crean una estética mineral e hipnótica.</p>
+    <p>Su historia industrial añade épica al paisaje: aquí se construyó la primera gran central hidroeléctrica de Cataluña. Hoy conviven la ingeniería de altura, el románico rural y una naturaleza que impone silencio.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/IslaSkye.jpg" alt="Isla de Skye" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Isla de Skye</h3>
+    <p class="ficha__lugar">Hébridas Interiores, Escocia</p>
+    <p>La isla de Skye es la joya paisajística de las Hébridas Interiores: montañas erosionadas como las Cuillin, acantilados verticales, cascadas que caen al mar y lagos de aguas oscuras. Su geología antigua y su clima cambiante crean una atmósfera dramática e inolvidable.</p>
+    <p>Es un paraíso para el senderismo y la fotografía, con lugares icónicos como el Old Man of Storr, el Quiraing o las Fairy Pools. A pesar de su fama creciente, Skye conserva rincones solitarios y una luz única que atrae a viajeros en busca de naturaleza salvaje.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Glencoe.jpg" alt="Glencoe" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Glencoe, valle de las lágrimas</h3>
+    <p class="ficha__lugar">Highlands, Escocia</p>
+    <p>Glencoe es un valle profundo y sobrecogedor de las Highlands escocesas, flanqueado por montañas afiladas y cascadas. Su belleza agreste esconde una historia trágica: la masacre de Glencoe de 1692, cuando miembros del clan MacDonald fueron asesinados por soldados gubernamentales, lo que le valió el sobrenombre de «valle de las lágrimas».</p>
+    <p>Hoy es un destino de senderismo y montañismo, con rutas que ascienden a picos como el Buachaille Etive Mòr. La combinación de drama geológico y memoria histórica lo convierte en uno de los paisajes más conmovedores de Escocia.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/ArgyllHighlands.jpg" alt="Argyll Highlands" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Argyll Highlands</h3>
+    <p class="ficha__lugar">Argyll and Bute, Escocia</p>
+    <p>Las Argyll Highlands, al oeste de Escocia, forman un mosaico de penínsulas, fiordos y montañas cubiertas de brezo. Es una tierra de castillos en ruinas, bosques atlánticos y costas recortadas por el mar, con una luz cambiante y una sensación de lejanía.</p>
+    <p>La región es ideal para explorar en coche o a pie, con joyas como el castillo de Kilchurn, el lago Awe o las islas del Firth of Lorn. Aquí el ritmo lo marcan las mareas y el viento, lejos del turismo masivo.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Terceira.jpg" alt="Isla Terceira" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Isla Terceira</h3>
+    <p class="ficha__lugar">Azores, Portugal</p>
+    <p>Terceira, en el archipiélago de las Azores, es una isla de origen volcánico cubierta de pastos verdes, bosques de laurisilva y cráteres convertidos en lagos. Su capital, Angra do Heroísmo, está declarada Patrimonio de la Humanidad por su casco histórico renacentista.</p>
+    <p>La isla ofrece cuevas volcánicas como la Gruta do Natal, miradores sobre acantilados y una vida rural profundamente atlántica. Es un destino ideal para combinar senderismo, naturaleza y patrimonio en pleno océano Atlántico.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Bozzhyra.jpg" alt="Cañón de Bozzhyra" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Cañón de Bozzhyra</h3>
+    <p class="ficha__lugar">Mangystau, Kazajistán</p>
+    <p>El cañón de Bozzhyra es un paisaje geológico surrealista en pleno desierto de Mangystau, al oeste de Kazajistán. Formaciones de roca blanca y rojiza, mesetas calizas y torres naturales emergen de una llanura infinita, creando una de las estampas más aisladas y sobrecogedoras de Asia Central.</p>
+    <p>Se trata de un destino de expedición pura, sin infraestructuras ni turismo masivo. Recorrer Bozzhyra es adentrarse en un territorio donde el viento, la sal y el tiempo han esculpido un paisaje que parece de otro planeta.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/ZojiLa.jpg" alt="Paso de Zoji La" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Paso de Zoji La</h3>
+    <p class="ficha__lugar">Valle de Cachemira, India</p>
+    <p>El paso de Zoji La, a más de 3.500 metros, comunica Cachemira con Ladakh a través de una de las carreteras más espectaculares y difíciles del Himalaya. Paredes verticales, glaciares colgantes y una pista de montaña marcan un territorio de alta montaña en estado puro.</p>
+    <p>Es un destino para viajeros de aventura que buscan paisajes extremos y la sensación de cruzar una frontera natural entre dos mundos. La zona permanece cerrada por nieve gran parte del año, lo que refuerza su carácter remoto.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Antartida.jpg" alt="La Antártida" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>La Antártida</h3>
+    <p class="ficha__lugar">Continente antártico</p>
+    <p>La Antártida es el continente más remoto, frío y despoblado del planeta. Paisajes de hielo infinito, glaciares colosales, icebergs flotantes y una fauna salvaje —pingüinos, focas y ballenas— definen un territorio donde la naturaleza manda de forma absoluta.</p>
+    <p>Viajar a la Antártida es una expedición en el sentido más puro. Solo accesible en barco desde el sur de América, ofrece una experiencia de aislamiento total y una belleza primigenia que muy pocos lugares en la Tierra pueden igualar.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Sorvagsvatn.jpg" alt="Lago Sørvágsvatn sobre el océano" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Lago Sørvágsvatn sobre el océano</h3>
+    <p class="ficha__lugar">Islas Feroe, Dinamarca</p>
+    <p>El lago Sørvágsvatn, también llamado Leitisvatn, es uno de los paisajes más sorprendentes de las Islas Feroe. Desde muchos ángulos parece flotar sobre el océano Atlántico, colgado en un acantilado vertical, creando una ilusión óptica inolvidable.</p>
+    <p>El sendero hasta el mirador y la cascada de Bøsdalafossur recorre una naturaleza feroesa pura, entre hierba, roca y mar. Es un destino para caminantes que buscan asombro geológico y silencio atlántico.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/GunungMulu.jpg" alt="Parque Nacional de Gunung Mulu" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Parque Nacional de Gunung Mulu</h3>
+    <p class="ficha__lugar">Sarawak, Borneo, Malasia</p>
+    <p>El Parque Nacional de Gunung Mulu, en la isla de Borneo, es un santuario natural declarado Patrimonio de la Humanidad. Sus selvas tropicales esconden algunas de las cuevas más grandes del mundo, como la cámara de Sarawak o Deer Cave, atravesadas por ríos subterráneos.</p>
+    <p>Es un destino de aventura y naturaleza extrema, con redes de pasarelas, cuevas iluminadas solo por la luz natural y la salida de millones de murciélagos al atardecer. Un paraíso para espeleólogos, biólogos y viajeros que buscan ecosistemas únicos.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/InisMor.jpg" alt="Inis Mór" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Inis Mór</h3>
+    <p class="ficha__lugar">Islas Aran, Irlanda</p>
+    <p>Inis Mór, la mayor de las islas Aran, es un territorio de piedra caliza, muros de mampostería y acantilados sobre el Atlántico. El fuerte prehistórico de Dún Aonghasa, colgado sobre un precipicio de vértigo, es uno de los yacimientos arqueológicos más impresionantes de Europa.</p>
+    <p>La isla conserva el gaélico irlandés como lengua viva y un ritmo de vida tradicional, con bicicletas, ponis y pubs familiares. Es un destino para caminantes y amantes de la Irlanda más salvaje y auténtica.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/GrutaAzul.jpg" alt="Gruta Azul" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Gruta Azul</h3>
+    <p class="ficha__lugar">Capri, Italia</p>
+    <p>La Gruta Azul, en la isla de Capri, es una cueva marina donde la luz del sol crea un resplandor azul eléctrico sobre el agua. Solo se accede en pequeñas barcas, tumbándose para cruzar una estrecha abertura al nivel del mar.</p>
+    <p>El fenómeno, causado por la refracción de la luz a través de una abertura submarina, ha fascinado a viajeros desde la Antigüedad. Es una experiencia breve pero mágica, entre la naturaleza kárstica y el mar Mediterráneo.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/CanyonForgottenRivers.jpg" alt="Canyon of Forgotten Rivers" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Canyon of Forgotten Rivers</h3>
+    <p class="ficha__lugar">Asia Central</p>
+    <p>El Canyon of Forgotten Rivers es un sistema de gargantas remotas esculpidas por antiguos cursos de agua en Asia Central. Sus paredes estratificadas, cañones laterales y silencio absoluto crean un paisaje de exploración y soledad.</p>
+    <p>Es un destino para expediciones a pie o en 4x4, sin apenas infraestructura turística. La erosión ha dejado al descubierto capas geológicas de colores y formas que parecen ruinas de un mundo anterior.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Karakol.jpg" alt="Karakol" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Karakol</h3>
+    <p class="ficha__lugar">Kirguistán</p>
+    <p>Karakol, a orillas del lago Issyk-Kul, es la puerta de entrada al corazón montañoso de Kirguistán. Desde aquí parten rutas de trekking hacia los picos nevados del Tian Shan, valles de pastores nómadas y aguas termales.</p>
+    <p>La ciudad conserva una curiosa mezcla cultural: una mezquita dungan de madera, una catedral ortodoxa rusa y un mercado lleno de productos de la estepa. Es una base perfecta para combinar aventura, naturaleza y contacto con la vida kirguisa.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/GuoqiIsland.jpg" alt="Isla de Guoqi" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Isla de Guoqi</h3>
+    <p class="ficha__lugar">Zhejiang, China</p>
+    <p>Guoqi Island es una isla pesquera en la costa de Zhejiang, China, donde el tiempo parece haberse detenido. Sus pueblos de casas de piedra, sus terrazas colgadas sobre el mar y sus calas escondidas conservan un modo de vida tradicional ligado a la pesca.</p>
+    <p>Lejos del turismo masivo, la isla ofrece senderos costeros, acantilados y una atmósfera melancólica. Es un destino para quienes buscan autenticidad y paisajes marítimos poco alterados.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Zhangjiajie.jpg" alt="Parque Forestal Nacional de Zhangjiajie" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Parque Forestal Nacional de Zhangjiajie</h3>
+    <p class="ficha__lugar">Hunan, China</p>
+    <p>El Parque Forestal Nacional de Zhangjiajie es famoso por sus miles de pilares de arenisca que se elevan verticalmente entre la niebla, creando un paisaje fantástico que inspiró las montañas flotantes de la película «Avatar».</p>
+    <p>Sus senderos, ascensores de cristal y puentes colgantes permiten adentrarse en un ecosistema de bosque subtropical y formaciones kársticas únicas. Es un destino de naturaleza imponente, perfecto para senderismo y fotografía.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/TorresDelPaine.jpg" alt="Torres del Paine" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Torres del Paine</h3>
+    <p class="ficha__lugar">Patagonia, Chile</p>
+    <p>Torres del Paine es el parque nacional más emblemático de la Patagonia chilena. Sus tres torres de granito, los Cuernos del Paine, glaciares, lagos turquesa y estepas infinitas crean un paisaje de una belleza sobrecogedora.</p>
+    <p>Es un destino mítico para el senderismo, con rutas como la W o el circuito O. La fuerza del viento, el silencio de la estepa y el sonido de los deshielos acompañan al viajero en una de las experiencias naturales más intensas de Sudamérica.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Lofoten.jpg" alt="Islas Lofoten" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Islas Lofoten</h3>
+    <p class="ficha__lugar">Nordland, Noruega</p>
+    <p>Las islas Lofoten, por encima del círculo polar ártico, forman un archipiélago de montañas escarpadas que emergen directamente del mar. Pueblos pesqueros rojos, playas de arena blanca, fiordos y aguas turquesas crean un paisaje de contrastes extremos.</p>
+    <p>En verano, el sol de medianoche ilumina rutas de senderismo y kayak; en invierno, las auroras boreales danzan sobre picos nevados. Es un destino para amantes de la naturaleza salvaje, la fotografía y el silencio nórdico.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Zion.jpg" alt="Parque Nacional Zion" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Parque Nacional Zion</h3>
+    <p class="ficha__lugar">Utah, Estados Unidos</p>
+    <p>Zion es un parque nacional del suroeste de Utah famoso por sus cañones verticales de arenisca roja, sus ríos y sus paredes de más de seiscientos metros. Rutas como Angels Landing o The Narrows, que se recorren caminando por el agua, lo convierten en un paraíso para el senderismo de aventura.</p>
+    <p>El valle de Zion combina desierto, bosque de ribera y formaciones geológicas colosales. Al amanecer y al atardecer, la luz transforma las rocas en tonos naranjas y violetas, creando una de las experiencias naturales más intensas del oeste americano.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/MilfordSound.jpg" alt="Milford Sound" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Milford Sound</h3>
+    <p class="ficha__lugar">Fiordland, Nueva Zelanda</p>
+    <p>Milford Sound es un fiordo espectacular en la costa suroeste de la Isla Sur de Nueva Zelanda. Paredes de granito cubiertas de selva tropical caen directamente sobre aguas oscuras, mientras cascadas como la Stirling o la Bowen se precipitan desde cientos de metros.</p>
+    <p>Es uno de los paisajes más emblemáticos del país, accesible por carretera o en crucero. La navegación entre delfines, focas y lluvia constante crea una atmósfera mística, con picos como Mitre Peak reflejados en el agua.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Wengen.jpg" alt="Wengen" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Wengen</h3>
+    <p class="ficha__lugar">Berner Oberland, Suiza</p>
+    <p>Wengen es un pueblo alpino sin coches situado en una terraza natural sobre el valle de Lauterbrunnen. Sus chalets de madera, praderas y vistas al Jungfrau, el Eiger y el Mönch lo convierten en uno de los balcones más hermosos de los Alpes suizos.</p>
+    <p>Accesible solo en tren, conserva un ambiente tranquilo y tradicional. Es un destino ideal para el senderismo en verano y el esquí en invierno, con rutas panorámicas, ferrocarriles de montaña y la famosa carrera del Lauberhorn.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/GranCanon.jpg" alt="El Gran Cañón" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>El Gran Cañón</h3>
+    <p class="ficha__lugar">Arizona, Estados Unidos</p>
+    <p>El Gran Cañón es una de las maravillas geológicas más imponentes del planeta. El río Colorado ha excavado durante millones de años un desfiladero de más de 400 kilómetros de longitud y hasta 1.800 metros de profundidad, dejando al descubierto una historia geológica de colores y estratos.</p>
+    <p>Sus miradores, rutas de senderismo y descensos al río permiten experimentar la escala colosal del paisaje. Al amanecer y al atardecer, las rocas se encienden en rojos, naranjas y violetas, creando una experiencia inolvidable.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/CradleMountain.jpg" alt="Cradle Mountain" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Cradle Mountain</h3>
+    <p class="ficha__lugar">Parque Nacional Cradle Mountain-Lake St Clair, Tasmania, Australia</p>
+    <p>Cradle Mountain es el icono del Parque Nacional Cradle Mountain-Lake St Clair, en Tasmania. Su silueta dentada se refleja en el lago Dove, rodeada de bosques de hayas antiguas, brezales alpinos y picos glaciares.</p>
+    <p>Es un paraíso para el senderismo, con rutas como el Overland Track o paseos más cortos hasta miradores. La fauna local incluye wombats, equidnas y demonios de Tasmania, en un entorno de naturaleza salvaje y silenciosa.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Banff.jpg" alt="Banff" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Banff</h3>
+    <p class="ficha__lugar">Alberta, Canadá</p>
+    <p>Banff, en el corazón de las Montañas Rocosas canadienses, es una joya alpina que combina energía cosmopolita y naturaleza salvaje. Rodeado por el primer parque nacional de Canadá, ofrece lagos glaciares de color turquesa como Louise y Moraine, manantiales termales históricos y una temporada de esquí que se extiende de noviembre a mayo.</p>
+    <p>El pueblo conserva su carácter íntimo entre montañas, con cafeterías, galerías de arte indígena y vida nocturna, mientras alces, cabras montesas y osos pardos habitan los valles cercanos. Es un destino donde la vida urbana y la naturaleza se abrazan a cada paso.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/FairyGlen.jpg" alt="Fairy Glen" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Fairy Glen</h3>
+    <p class="ficha__lugar">Uig, Isla de Skye, Escocia</p>
+    <p>Fairy Glen es un pequeño valle de colinas cónicas, lagunas y senderos serpenteantes en la isla de Skye. Su aspecto irreal, casi de miniatura, ha inspirado leyendas de hadas y atrae a caminantes que buscan un rincón mágico en las Tierras Altas.</p>
+    <p>Lejos de los grandes recorridos turísticos, el lugar conserva un silencio especial, ideal para pasear sin prisas, fotografiar las formas extrañas del terreno y dejarse envolver por la atmósfera mística de Escocia.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/WistmansWood.jpg" alt="Wistman's Wood" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Wistman's Wood</h3>
+    <p class="ficha__lugar">Dartmoor, Devon, Inglaterra</p>
+    <p>Wistman's Wood es uno de los bosques más antiguos y misteriosos de Inglaterra, en pleno Dartmoor. Sus robles enanos, retorcidos y cubiertos de musgo, crecen entre piedras graníticas cubiertas de líquenes, creando una atmósfera irreal que ha inspirado leyendas.</p>
+    <p>Es un lugar de acceso delicado y protección especial, ideal para caminantes silenciosos que buscan naturaleza primigenia y un contacto íntimo con un ecosistema frágil y único en Europa.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/MontTremblant.jpg" alt="Mont-Tremblant" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Mont-Tremblant</h3>
+    <p class="ficha__lugar">Quebec, Canadá</p>
+    <p>Mont-Tremblant es una de las estaciones de esquí más famosas del este de Canadá, situada en las Laurentides de Quebec. Sus pistas descienden entre bosques de arces, con un pueblo peatonal de estilo alpino lleno de cafés, tiendas y vida después del esquí.</p>
+    <p>En verano, la montaña se transforma en destino de senderismo, golf, kayak y aventura, con el lago Tremblant a sus pies. Es un refugio al aire libre durante todo el año, ideal para familias y amantes de los deportes de invierno.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Ladakh.jpg" alt="Ladakh" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Ladakh</h3>
+    <p class="ficha__lugar">Jammu y Cachemira, India</p>
+    <p>Ladakh, al norte de la India, es un desierto de alta montaña rodeado por el Himalaya y el Karakórum. Sus valles áridos, lagos de un azul intenso como Pangong o Tso Moriri, y puertos de montaña como Khardung La crean un paisaje de una belleza austera y sobrecogedora.</p>
+    <p>La región es un reducto de cultura budista tibetana, con monasterios encaramados en acantilados, banderas de oración y festivales tradicionales. Es un destino de aventura, espiritualidad y silencio, ideal para quienes buscan la India más remota y mística.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Torridon.jpg" alt="Región de Torridon" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Región de Torridon</h3>
+    <p class="ficha__lugar">Costa noroeste, Highlands, Escocia</p>
+    <p>La región de Torridon, en el noroeste de Escocia, es uno de los paisajes montañosos más antiguos y sobrecogedores de Europa. Picos de arenisca como Liathach o Beinn Eighe se alzan bruscamente sobre lagos marinos y valles glaciares, con una geología que se remonta a más de mil millones de años.</p>
+    <p>Es un paraíso para montañeros y amantes de la naturaleza salvaje, con rutas de alta montaña, bosques de pinos autóctonos y ciervos rojos. El silencio, la luz cambiante y la soledad hacen de Torridon un destino inolvidable.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/XianggongMountain.jpg" alt="Monte Xianggong" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Monte Xianggong</h3>
+    <p class="ficha__lugar">Yangshuo, Guangxi, China</p>
+    <p>Xianggong Mountain, cerca de Yangshuo, es uno de los miradores más espectaculares de la región kárstica del río Li. Desde su cima, tras una corta subida, se contempla una panorámica icónica de picos calizos, meandros del río y campos de arroz.</p>
+    <p>Es un lugar ideal para amaneceres con mar de nubes y fotografía de paisaje. La escalera de piedra conduce a un balcón natural que parece flotar sobre el paisaje de postal del sur de China.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/SonDoong.jpg" alt="Gruta de Sơn Đoòng" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Gruta de Sơn Đoòng</h3>
+    <p class="ficha__lugar">Parque Nacional Phong Nha-Kẻ Bàng, Vietnam</p>
+    <p>Sơn Đoòng es la cueva más grande del mundo, un coloso subterráneo con salas de más de 200 metros de altura, ríos internos, selvas propias y claraboyas naturales por las que se cuela la luz. Descubierta en 1991 y explorada en 2009, solo es accesible con expediciones guiadas de varios días.</p>
+    <p>Atravesar Sơn Đoòng es una aventura extrema: acampada dentro de la cueva, rápel, ríos y un ecosistema casi alienígena. Es un destino único para espeleólogos y viajeros que buscan una de las maravillas naturales más imponentes del planeta.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/LaponiaFinlandesa.jpg" alt="Laponia finlandesa" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Laponia finlandesa</h3>
+    <p class="ficha__lugar">Norte de Finlandia</p>
+    <p>La Laponia finlandesa es un territorio ártico de bosques nevados, lagos helados y colinas suaves, habitado por el pueblo sami y sus renos. En invierno, las auroras boreales danzan sobre los cielos y los bosques se convierten en un escenario de cuento.</p>
+    <p>Es el hogar del Papá Noel en Rovaniemi, pero también un destino de naturaleza pura: safaris con huskies, esquí de fondo, pesca en hielo y noches en cabañas de cristal. Un lugar donde el silencio, la nieve y la cultura ártica lo envuelven todo.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/JinkouCanyon.jpg" alt="Gran Cañón de Jinkou" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Gran Cañón de Jinkou</h3>
+    <p class="ficha__lugar">Sichuan, China</p>
+    <p>El Gran Cañón de Jinkou, en el suroeste de Sichuan, es una profunda garganta tallada por el río Jinkou entre montañas escarpadas y bosques subtropicales. Sus paredes verticales, cascadas y senderos colgantes forman un paisaje espectacular y poco conocido fuera de China.</p>
+    <p>Es un destino para el senderismo y la exploración geológica, con miradores que se asoman a abismos de cientos de metros. La combinación de ríos, niebla y vegetación exuberante lo convierte en una alternativa remota a los cañones más turísticos de Asia.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/VintgarGorge.jpg" alt="Garganta de Vintgar" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Garganta de Vintgar</h3>
+    <p class="ficha__lugar">Bled, Eslovenia</p>
+    <p>La garganta de Vintgar, cerca de Bled, es un desfiladero tallado por el río Radovna entre paredes de roca y bosques de hayas. Pasarelas de madera recorren el cañón a lo largo de kilómetro y medio, sobre aguas turquesas, pozas y rápidos, hasta llegar a la cascada de Šum.</p>
+    <p>Es una de las excursiones naturales más hermosas de Eslovenia, ideal para un paseo entre sonidos de agua, musgo y aire fresco. La combinación de roca, río y vegetación crea un entorno mágico y accesible durante gran parte del año.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/BosqueBambuYibin.jpg" alt="Bosque de bambú de Yibin" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Bosque de bambú de Yibin</h3>
+    <p class="ficha__lugar">Sichuan, China</p>
+    <p>El bosque de bambú de Yibin, también conocido como Bosque de Bambú del Mar del Sur, es uno de los paisajes verdes más impresionantes de China. Cubre colinas y montañas con millones de tallos de bambú, creando túneles vegetales, senderos sombreados y una atmósfera de calma infinita.</p>
+    <p>Es un destino ideal para pasear entre el susurro del bambú, descubrir cascadas, lagos y pueblos locales. La luz filtrada entre las cañas y el aire fresco hacen de este bosque un refugio natural único en la provincia de Sichuan.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Yangshuo.jpg" alt="Yangshuo" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Yangshuo</h3>
+    <p class="ficha__lugar">Guangxi, China</p>
+    <p>Yangshuo, a orillas del río Li, es uno de los paisajes kársticos más famosos del mundo. Cientos de montañas cónicas, colinas verdes y campos de arroz se suceden entre ríos y aldeas, creando estampas que parecen sacadas de una pintura china clásica.</p>
+    <p>Es un paraíso para el ciclismo, el senderismo, la escalada y los paseos en balsa por el río Li o el Yulong. La combinación de naturaleza espectacular, vida rural y un ambiente relajado lo convierten en una de las experiencias más memorables del sur de China.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Rosenlaui.jpg" alt="Rosenlaui" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Rosenlaui</h3>
+    <p class="ficha__lugar">Berner Oberland, Suiza</p>
+    <p>Rosenlaui es un valle remoto del Oberland bernés, dominado por montañas escarpadas, bosques alpinos y el glaciar Rosenlaui. Su garganta, tallada por el agua glaciar en un cañón de roca pulida, se recorre por pasarelas entre cascadas, pozas y paredes cubiertas de musgo.</p>
+    <p>Es un destino de senderismo y contemplación, mucho menos masificado que otros rincones de Suiza, donde el silencio de la montaña y la fuerza del agua crean una atmósfera primigenia e inolvidable.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/BoraBora.jpg" alt="Bora Bora" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Bora Bora</h3>
+    <p class="ficha__lugar">Islas de la Sociedad, Polinesia Francesa</p>
+    <p>Bora Bora es una isla volcánica envuelta en una laguna turquesa y protegida por un anillo de coral. Su pico central, el monte Otemanu, se alza sobre aguas cristalinas, motus de arena blanca y bungalows sobre pilotes que han hecho famosa a la Polinesia Francesa.</p>
+    <p>Es un destino de ensueño para el descanso, el buceo y el romance, con una naturaleza exuberante y una sensación de aislamiento absoluto en medio del Pacífico sur. La luz, el color del agua y la calma del entorno crean una experiencia difícil de igualar.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Moorea.jpg" alt="Moorea" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Moorea</h3>
+    <p class="ficha__lugar">Islas de la Sociedad, Polinesia Francesa</p>
+    <p>Moorea, hermana tranquila de Tahití, es una isla de picos volcánicos dentados, bahías profundas y lagunas de color turquesa. Sus montañas verdes, plantaciones de piña y aguas llenas de corales la convierten en un paraíso natural más íntimo y salvaje.</p>
+    <p>Es un destino ideal para el senderismo, el buceo y la contemplación de la naturaleza polinesia, con miradores como el Belvédère y playas solitarias. Moorea ofrece la sensación de estar en el Pacífico sur auténtico, lejos del lujo masificado.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Galapagos.jpg" alt="Islas Galápagos" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Islas Galápagos</h3>
+    <p class="ficha__lugar">Océano Pacífico, Ecuador</p>
+    <p>Las Islas Galápagos, en el Pacífico ecuatoriano, son un archipiélago volcánico único en el mundo, famoso por inspirar la teoría de la evolución de Darwin. Su aislamiento extremo ha permitido el desarrollo de especies endémicas como las tortugas gigantes, las iguanas marinas y los piqueros de patas azules, que conviven sin miedo ante el ser humano.</p>
+    <p>Es un destino de naturaleza pura y protegida, donde se puede hacer senderismo sobre lava, bucear con leones marinos y observar aves y reptiles que no existen en ningún otro lugar. Visitar Galápagos es una experiencia transformadora, un contacto directo con la vida salvaje en su estado más primigenio.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Antiparos.jpg" alt="Antiparos" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Antiparos</h3>
+    <p class="ficha__lugar">Cícladas, Grecia</p>
+    <p>Antiparos es una pequeña isla de las Cícladas, vecina tranquila de Paros, famosa por sus aguas transparentes, playas de arena dorada y un ambiente relajado que contrasta con el bullicio de otras islas griegas. Su pueblo blanco, con calles empedradas y buganvillas, conserva un encanto auténtico y sosegado.</p>
+    <p>Su gran atractivo natural es la cueva de Antiparos, una de las más espectaculares de Grecia, con estalactitas antiguas y una profundidad que invita a la exploración. Es un destino ideal para nadar, pasear y desconectar, lejos de las masas, en pleno corazón del Egeo.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Gorbeia.jpg" alt="Bosques de Gorbeia" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Bosques de Gorbeia</h3>
+    <p class="ficha__lugar">Parque Natural de Gorbeia, País Vasco, España</p>
+    <p>El Parque Natural de Gorbeia, entre Álava y Vizcaya, es el gran pulmón verde del País Vasco. Sus bosques de hayas, robles y abedules se extienden por laderas y valles húmedos, envueltos en niebla y surcados por arroyos, en un paisaje atlántico de una belleza profunda y silenciosa.</p>
+    <p>Es un territorio ideal para el senderismo, con rutas que ascienden hasta la cruz del monte Gorbeia o se pierden entre hayedos centenarios. Lejos del turismo costero, estos bosques ofrecen una inmersión total en la naturaleza vasca, entre pastos de montaña, simas kársticas y una fauna discreta que habita la espesura.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/RioSucuri.jpg" alt="Río Sucuri" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Río Sucuri</h3>
+    <p class="ficha__lugar">Bonito, Mato Grosso do Sul, Brasil</p>
+    <p>El Río Sucuri es uno de los cursos de agua más cristalinos del planeta. Su secreto reside en el suelo de roca caliza, que filtra el agua de forma natural y elimina las partículas en suspensión, permitiendo una visibilidad que en algunos días supera los veinte metros. El resultado es un paisaje subacuático irreal, donde peces, plantas y troncos parecen suspendidos en el aire.</p>
+    <p>La experiencia consiste en una flotación suave con snorkel, dejándose llevar por una corriente casi imperceptible a lo largo de kilómetro y medio, con el acompañamiento de un guía y una embarcación de apoyo. Lejos del esfuerzo físico, el río invita a la contemplación pura y al asombro ante un ecosistema que es, al mismo tiempo, frágil y sobrecogedor.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Redwood.jpg" alt="Parque Nacional Redwood" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Parque Nacional Redwood</h3>
+    <p class="ficha__lugar">California, Estados Unidos</p>
+    <p>El Parque Nacional Redwood, en la costa norte de California, protege los últimos grandes bosques de secuoyas rojas, los árboles más altos del planeta. Algunos ejemplares superan los 100 metros de altura y los 2.000 años de antigüedad, creando catedrales vegetales donde la luz se filtra en haces entre troncos gigantescos y helechos prehistóricos.</p>
+    <p>El parque combina bosque húmedo, acantilados sobre el Pacífico, praderas costeras y ríos salmoneros. Recorrer sus senderos, como el Grove of Titans o el Fern Canyon, es sumergirse en un ecosistema antiguo y frágil, donde la niebla, el silencio y la escala de los árboles producen una sensación de asombro difícil de describir.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/SalarUyuni.jpg" alt="Salar de Uyuni" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Salar de Uyuni</h3>
+    <p class="ficha__lugar">Potosí, Bolivia</p>
+    <p>El Salar de Uyuni es el desierto de sal más grande del mundo, con más de 10.000 kilómetros cuadrados de superficie blanca que se extiende hasta el horizonte. Formado por antiguos lagos prehistóricos, su costra de sal crea un paisaje irreal que, en época de lluvias, se convierte en el espejo más grande del planeta, reflejando el cielo con una perfección sobrecogedora.</p>
+    <p>En su interior se alzan islas cubiertas de cactus, como la Isla Incahuasi, y se encuentran las piscinas de salmuera que alimentan la industria del litio. Viajar aquí es adentrarse en un territorio extremo y silencioso, donde la altitud, la luz y la inmensidad blanca producen una experiencia casi extraterrestre, especialmente al amanecer y al atardecer.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/MilfordSound.jpg" alt="Milford Sound" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Milford Sound</h3>
+    <p class="ficha__lugar">Fiordland, Nueva Zelanda</p>
+    <p>Milford Sound es un fiordo espectacular en la costa suroeste de la Isla Sur de Nueva Zelanda. Paredes de granito cubiertas de selva tropical caen directamente sobre aguas oscuras, mientras cascadas como la Stirling o la Bowen se precipitan desde cientos de metros.</p>
+    <p>Es uno de los paisajes más emblemáticos del país, accesible por carretera o en crucero. La navegación entre delfines, focas y lluvia constante crea una atmósfera mística, con picos como Mitre Peak reflejados en el agua.</p>
+  </div>
+</article>
+
+</div>
+<p class="volver"><a href="#inicio">↑ Volver al índice</a></p>
+</section>
+
+<!-- ============================================================
+     2. Culturas vivas y cosmovisiones únicas
+     ============================================================ -->
+<section class="seccion" id="culturas">
+<h2>Culturas vivas y cosmovisiones únicas</h2>
+<p class="seccion__desc">El viajero se sumerge en formas de vida, rituales, lenguas y creencias que se han mantenido casi intactas durante siglos. La dimensión humana y espiritual es el centro.</p>
+<div class="rejilla">
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Butan.jpg" alt="Bután" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Bután</h3>
+    <p class="ficha__lugar">Asia (Himalaya)</p>
+    <p>Bután, en el Himalaya oriental, mide el progreso con la Felicidad Nacional Bruta y limita el número de visitantes para proteger su cultura. Valles colgantes, fortalezas-monasterio (dzongs) y bosques de rododendros definen un paisaje casi intacto.</p>
+    <p>Recorrer Bután es entrar en un reino budista donde la arquitectura, la vestimenta y las leyes mantienen viva una identidad única. No hay semáforos, pero sí una calma y una espiritualidad que invitan a la contemplación.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Svaneti.jpg" alt="Svaneti" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Svaneti</h3>
+    <p class="ficha__lugar">Cáucaso, Georgia</p>
+    <p>En el Gran Cáucaso georgiano, Svaneti despliega un paisaje de cumbres superiores a los 5.000 metros y aldeas fortificadas con torres medievales de piedra. Estas torres, Patrimonio de la Humanidad, fueron refugio de clanes y avalanchas.</p>
+    <p>El aislamiento secular preservó una lengua y rituales que mezclan cristianismo y paganismo. Visitar Svaneti es un viaje a la Edad Media viva, con una hospitalidad ruda y una montaña que impone respeto.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/IslaShikoku.jpg" alt="Isla de Shikoku" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Isla de Shikoku</h3>
+    <p class="ficha__lugar">Japón</p>
+    <p>Shikoku es la menos turística de las grandes islas de Japón y encierra una profunda dimensión espiritual. El peregrinaje de los 88 templos (ohenro) circunda la isla entre bosques, costas y santuarios.</p>
+    <p>Su joya oculta, el valle de Iya, conserva puentes colgantes de lianas y gargantas esmeralda. Es un Japón de niebla y silencio, ideal para la introspección y el contacto con tradiciones ancestrales.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Toraja.jpg" alt="Tana Toraja" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Tana Toraja</h3>
+    <p class="ficha__lugar">Sulawesi, Indonesia</p>
+    <p>En las tierras altas de Sulawesi, Tana Toraja sorprende con sus casas tongkonan de techos en forma de barco y una relación con la muerte que desafía la lógica occidental. Los funerales son festivales comunitarios que duran días.</p>
+    <p>Los difuntos descansan en grutas excavadas en acantilados, custodiados por efigies de madera (tau-tau) que miran al valle. Es una cultura viva, compleja y fascinante, en un paisaje de arrozales y montañas brumosas.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Mustang.jpg" alt="Reino de Mustang" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Reino de Mustang</h3>
+    <p class="ficha__lugar">Himalaya, Nepal</p>
+    <p>Alto Mustang, en el Himalaya nepalí, es un antiguo reino prohibido hasta 1992. Su capital amurallada, Lo Manthang, conserva un urbanismo tibetano medieval de barro y piedra.</p>
+    <p>El paisaje es un desierto de altitud con cañones rojizos y cuevas milenarias decoradas con murales budistas. Es uno de los últimos reductos de cultura tibetana pura y un viaje al corazón de Asia.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Quebrada.jpg" alt="Quebrada de Humahuaca" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Quebrada de Humahuaca</h3>
+    <p class="ficha__lugar">Jujuy, Argentina</p>
+    <p>La Quebrada de Humahuaca es un tajo tectónico andino famoso por cerros policromados como el Hornocal. Pueblos de adobe, iglesias coloniales y fortalezas preincaicas salpican un paisaje cargado de historia.</p>
+    <p>La cosmovisión de la Pachamama impregna la vida cotidiana: ferias, música andina y una gastronomía de quinoa, maíz y llama. Es el noroeste argentino en su máxima expresión.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/HighlandGamesBraemar.jpg" alt="Highland Games de Braemar" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Highland Games de Braemar</h3>
+    <p class="ficha__lugar">Braemar, Escocia</p>
+    <p>Los Highland Games de Braemar son la celebración más emblemática de la cultura tradicional escocesa. Cada año, clanes y atletas se reúnen en este pueblo de las Cairngorms para competir en lanzamiento de tronco, martillo, tira y afloja y bailes highland, acompañados de gaitas y kilts.</p>
+    <p>La familia real británica asiste con frecuencia, ya que el castillo de Balmoral está cerca. Es una muestra vibrante de identidad, deporte y música que mantiene vivas costumbres centenarias en un entorno espectacular.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Ohrid.jpg" alt="Ohrid" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Ohrid</h3>
+    <p class="ficha__lugar">Lago Ohrid, Macedonia del Norte</p>
+    <p>Ohrid, a orillas del lago del mismo nombre, es una de las ciudades más antiguas de Europa y un centro espiritual del cristianismo ortodoxo. Su casco antiguo, con calles empedradas, iglesias bizantinas y una fortaleza medieval, está declarado Patrimonio de la Humanidad junto con el lago.</p>
+    <p>El lago Ohrid, de aguas transparentes y origen tectónico, es uno de los más profundos y antiguos de Europa. La combinación de patrimonio, naturaleza y vida local tranquila lo convierte en un destino único en los Balcanes.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/DerryHalloween.jpg" alt="Derry en Halloween" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Derry en Halloween</h3>
+    <p class="ficha__lugar">Derry, Irlanda del Norte</p>
+    <p>Derry celebra cada año el mayor festival de Halloween del mundo. Las murallas del siglo XVII, los desfiles, las luces y los disfraces transforman la ciudad en un escenario de raíces celtas y contemporáneas.</p>
+    <p>El vínculo con la antigua festividad de Samhain da profundidad al evento. Es una experiencia que combina historia, comunidad y cultura popular en Irlanda del Norte.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/FiestasFuegoPirineos.jpg" alt="Fiestas del fuego del solsticio de verano en los Pirineos" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Fiestas del fuego del solsticio de verano en los Pirineos</h3>
+    <p class="ficha__lugar">Pirineos, España/Francia/Andorra</p>
+    <p>Las fiestas del fuego del solsticio de verano, conocidas como Fallas en el Pirineo, son una tradición ancestral declarada Patrimonio Inmaterial de la Humanidad. En pueblos de montaña, los habitantes descienden antorchas encendidas desde las cumbres para encender grandes hogueras en las plazas.</p>
+    <p>El fuego simboliza la purificación y la renovación solar. Participar en estas celebraciones es sumergirse en ritos precristianos que han sobrevivido al paso de los siglos en el corazón de la cordillera.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/CarnavalesCadiz.jpg" alt="Carnavales de Cádiz" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Carnavales de Cádiz</h3>
+    <p class="ficha__lugar">Cádiz, España</p>
+    <p>El Carnaval de Cádiz es una de las fiestas más ingeniosas y participativas del mundo hispanohablante. Sus agrupaciones callejeras —chirigotas, comparsas, coros y cuartetos— despliegan humor, crítica social y música en cada rincón de la ciudad.</p>
+    <p>Durante más de una semana, Cádiz se convierte en un escenario vivo de creatividad popular y libertad de expresión. Es una experiencia festiva que combina tradición, sátira y un profundo sentido comunitario.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Toscana.jpg" alt="Toscana" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Toscana</h3>
+    <p class="ficha__lugar">Italia central</p>
+    <p>La Toscana es un paisaje cultural que parece pintado: colinas onduladas, viñedos, olivos y pueblos medievales coronados por torres. Ciudades como Florencia, Siena o San Gimignano concentran una parte esencial del arte renacentista.</p>
+    <p>Su gastronomía, sus vinos y su ritmo de vida pausado atraen a viajeros que buscan autenticidad. Recorrer la Toscana es adentrarse en un modo de vida donde la belleza y la tradición siguen marcando el día a día.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/ChisakuIn.jpg" alt="Jardín del templo Chishaku-in" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Jardín del templo Chishaku-in</h3>
+    <p class="ficha__lugar">Kioto, Japón</p>
+    <p>El jardín del templo Chishaku-in, en Kioto, es una obra maestra del paisajismo zen. Rocas, musgo, grava rastrillada y pinos podados crean una escena de serenidad y simbolismo profundo, pensada para la contemplación desde las terrazas del templo.</p>
+    <p>Este rincón escondido, poco saturado frente a otros templos de la ciudad, conserva la esencia del budismo zen japonés. Es un lugar ideal para el silencio, la meditación y el disfrute de la estética tradicional.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/BatuCaves.jpg" alt="Cuevas de Batu" class="recorte-arriba" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Cuevas de Batu</h3>
+    <p class="ficha__lugar">Kuala Lumpur, Malasia</p>
+    <p>Las Cuevas de Batu, a las afueras de Kuala Lumpur, son un importante santuario hindú excavado en una colina de piedra caliza. La imponente estatua dorada del dios Murugan, los 272 escalones de colores y las enormes cavernas naturales crean un conjunto espectacular.</p>
+    <p>Durante el festival de Thaipusam, miles de devotos peregrinan hasta aquí en una de las manifestaciones religiosas más intensas de Asia. Es un lugar que combina naturaleza, espiritualidad y cultura tamil en plena Malasia.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/HaishangqiaoVillage.jpg" alt="Aldea de Haishangqiao" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Aldea de Haishangqiao</h3>
+    <p class="ficha__lugar">China</p>
+    <p>Haishangqiao es un pueblo tradicional chino que conserva el encanto de la vida rural y la arquitectura vernácula. Sus antiguos puentes de piedra, callejuelas estrechas y casas de madera y teja reflejan siglos de historia campesina.</p>
+    <p>Lejos del turismo masivo, el pueblo permite conocer el ritmo de vida local, las costumbres agrícolas y la artesanía popular. Es un destino para viajeros que buscan autenticidad y contacto con la China más profunda.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Uthirakosamangai.jpg" alt="Templo Uthirakosamangai" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Templo Uthirakosamangai</h3>
+    <p class="ficha__lugar">Ramanathapuram, Tamil Nadu, India</p>
+    <p>El templo de Uthirakosamangai es un antiguo santuario hindú dedicado a Shiva, considerado uno de los más viejos del sur de la India. Su mayor tesoro es un lingam de esmeralda que, según la tradición, no puede tocarse y permanece cubierto la mayor parte del año.</p>
+    <p>El recinto conserva una arquitectura dravídica sobria, grandes mandapas y un ambiente de intensa devoción. Es un lugar de peregrinación poco visitado por el turismo, ideal para quienes buscan espiritualidad viva y tradición tamil auténtica.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/MasjidAlHaram.jpg" alt="Gran Mezquita de La Meca" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Gran Mezquita de La Meca</h3>
+    <p class="ficha__lugar">La Meca, Arabia Saudita</p>
+    <p>Masjid al-Haram, la Gran Mezquita de La Meca, es el lugar más sagrado del islam y el corazón de la peregrinación del Hajj. En su centro se encuentra la Kaaba, hacia la que se orientan las oraciones de millones de musulmanes en todo el mundo.</p>
+    <p>Su escala monumental, ampliada a lo largo de los siglos, acoge a una multitud constante de fieles. Solo pueden acceder musulmanes, pero su significado espiritual y su arquitectura la convierten en un referente único de la civilización islámica.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Vermont.jpg" alt="Vermont" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Vermont</h3>
+    <p class="ficha__lugar">Nueva Inglaterra, Estados Unidos</p>
+    <p>Vermont es el estado más rural de Nueva Inglaterra, famoso por sus montañas verdes, bosques de arces y pueblos de casas blancas con porches. En otoño, el follaje se convierte en un espectáculo de rojos, naranjas y amarillos que atrae a viajeros de todo el mundo.</p>
+    <p>Sus granjas, mercados de agricultores, fábricas de jarabe de arce y puentes cubiertos conservan una vida comunitaria tranquila y auténtica. Es un destino ideal para recorrer carreteras secundarias, hacer senderismo y saborear la América rural más entrañable.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/RioDeJaneiro.jpg" alt="Río de Janeiro" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Río de Janeiro</h3>
+    <p class="ficha__lugar">Estado de Río de Janeiro, Brasil</p>
+    <p>Río de Janeiro es una de las ciudades más vibrantes y fotogénicas del mundo. Entre montañas redondeadas, selva atlántica y playas legendarias como Copacabana e Ipanema, la ciudad despliega una energía carioca inconfundible. El Cristo Redentor, el Pan de Azúcar y los barrios bohemios de Santa Teresa o Lapa definen un paisaje urbano único.</p>
+    <p>La samba, el fútbol y el Carnaval convierten a Río en una fiesta constante, pero también hay espacio para la naturaleza, el senderismo en la Floresta da Tijuca y la contemplación del atardecer desde Arpoador. Es un destino que mezcla cultura, paisaje y vitalidad como pocos lugares en el planeta.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/MonasteriosCenobiticosItalia.jpg" alt="Monasterios cenobíticos en Italia" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Monasterios cenobíticos en Italia</h3>
+    <p class="ficha__lugar">Italia</p>
+    <p>Unos 200 monasterios cenobíticos de origen medieval salpican la península italiana. En ellos, los monjes practicaban la vida en común y ofrecían descanso a los viajeros, una tradición que sigue viva: hoy acogen a cualquier visitante, sin distinción de creencias.</p>
+    <p>Las celdas son sobrias, pero la experiencia es profunda: cantos gregorianos, obras de arte sacro y renacentista, silencio y meditación en entornos naturales. En La Verna, sobre un acantilado cerca de Florencia, o en la abadía de Monte Oliveto Maggiore, cerca de Siena, se puede incluso probar el vino elaborado por los propios monjes.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Ruta66.jpg" alt="Ruta 66 en Oklahoma" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Ruta 66</h3>
+    <p class="ficha__lugar">Oklahoma, Estados Unidos</p>
+    <p>El tramo de Oklahoma de la Ruta 66 es la quintaesencia del road trip americano. Tulsa, autoproclamada capital de la Mother Road, revive con letreros de neón restaurados, estatuas campestres y el futuro 66 Collective. En el camino aparecen iconos excéntricos como la Ballena Azul de Catoosa, autocines históricos y museos dedicados a la nostalgia automovilística.</p>
+    <p>La ruta también es cultura viva: el Bob Dylan Center y el Woody Guthrie Center en Tulsa, el First Americans Museum en Oklahoma City y una gastronomía que va de diners clásicos a cocina indígena de autor. Recorrerla es viajar por la identidad profunda de los Estados Unidos.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Yamagata.jpg" alt="Prefectura de Yamagata" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Prefectura de Yamagata</h3>
+    <p class="ficha__lugar">Región de Tohoku, Japón</p>
+    <p>Yamagata, al norte de Tokio, es el Japón secreto que muy pocos viajeros descubren. Montañas sagradas, templos envueltos en bosques, pueblos termales de cuento y una gastronomía propia —carne wagyu, ramen local, sake premiado y el guiso imoni— definen esta prefectura rural.</p>
+    <p>En invierno, los «monstruos de nieve» del monte Zao y los farolillos de nieve de Uesugi crean paisajes irreales; en verano, monjes yamabushi realizan meditaciones bajo cascadas y miles de bailarines llenan las calles en el Hanagasa Matsuri. Yamagata es una invitación a salir de la ruta turística y adentrarse en el alma de Japón.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Manila.jpg" alt="Manila" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Manila</h3>
+    <p class="ficha__lugar">Metro Manila, Filipinas</p>
+    <p>Manila es una capital donde las influencias españolas, chinas y malayas se encuentran en una cultura gastronómica vibrante. Mercados como Tutuban o Salcedo, puestos de fish balls y halo-halo, y restaurantes como Manam o New Po Heng Lumpia House muestran la riqueza de la cocina filipina cotidiana.</p>
+    <p>La escena contemporánea también brilla: Toyo Eatery ofrece menús de degustación modernos y festines kamayan servidos en hojas de plátano, mientras que el barrio de Poblacion concentra propuestas creativas como Kondwi. Recorrer Manila es saborear la historia, la calle y la vanguardia en un solo viaje.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/MuCangChai.jpg" alt="Arrozales en terrazas de Mù Cang Chải" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Arrozales en terrazas de Mù Cang Chải</h3>
+    <p class="ficha__lugar">Provincia de Yên Bái, Vietnam</p>
+    <p>Mù Cang Chải, en el noroeste de Vietnam, es famoso por sus impresionantes terrazas de arroz que ascienden por las laderas como escaleras hacia el cielo. Esculpidas durante siglos por las minorías hmong y thai, crean un paisaje cambiante: espejo de agua en primavera, verde intenso en verano, dorado en cosecha.</p>
+    <p>Es un destino para recorrer carreteras de montaña, hacer senderismo entre aldeas y conocer la vida agrícola tradicional. Los miradores de La Pán Tẩn o Chế Cu Nha ofrecen vistas espectaculares, especialmente al amanecer o al atardecer.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Panadura.jpg" alt="Panadura" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Panadura</h3>
+    <p class="ficha__lugar">Provincia Occidental, Sri Lanka</p>
+    <p>Panadura es una ciudad costera al sur de Colombo, en Sri Lanka, conocida por su larga playa de arena, sus templos budistas y su ambiente local auténtico. Es un destino poco turístico donde se puede observar la vida cotidiana ceilandesa, entre mercados, tuk-tuks y puestos de comida callejera.</p>
+    <p>La playa de Panadura es frecuentada por familias y pescadores, y al atardecer se llena de color y actividad. Cerca de la ciudad hay templos y zonas húmedas con aves, lo que la convierte en una parada tranquila para quienes buscan contacto con la cultura y la naturaleza de Sri Lanka.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/WatPhraKaeo.jpg" alt="Wat Phra Kaeo" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Wat Phra Kaeo</h3>
+    <p class="ficha__lugar">Bangkok, Tailandia</p>
+    <p>Wat Phra Kaeo, el Templo del Buda Esmeralda, es el santuario budista más sagrado de Tailandia. Situado dentro del Gran Palacio de Bangkok, alberga una venerada imagen de Buda tallada en jade, envuelta en un halo de devoción y ceremonia real.</p>
+    <p>El conjunto deslumbra con sus techos dorados, mosaicos de colores, guardianes míticos y murales del Ramakien. Es una inmersión total en la espiritualidad, la monarquía y el arte tailandés, imprescindible para entender el alma del país.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/MeenakshiTemple.jpg" alt="Templo Meenakshi Sundareswarar" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Templo Meenakshi Sundareswarar</h3>
+    <p class="ficha__lugar">Madurai, Tamil Nadu, India</p>
+    <p>El templo de Meenakshi Sundareswarar, en Madurai, es uno de los grandes santuarios del hinduismo y una obra maestra de la arquitectura dravídica. Sus catorce gopurams —torres piramidales cubiertas por miles de esculturas pintadas— dominan el centro de la ciudad y crean un perfil inconfundible.</p>
+    <p>El recinto es una ciudad sagrada en sí misma: patios, columnas esculpidas, el tanque de los nenúfares dorados y una intensa vida devocional diaria. Miles de peregrinos y visitantes lo recorren cada día, atraídos por su energía espiritual, sus rituales y su belleza abrumadora.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Sakaiminato.jpg" alt="Sakaiminato" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Sakaiminato</h3>
+    <p class="ficha__lugar">Prefectura de Tottori, Japón</p>
+    <p>Sakaiminato es una ciudad costera del mar de Japón conocida por ser la cuna de Shigeru Mizuki, el célebre creador del manga GeGeGe no Kitarō. Su calle principal, Mizuki Shigeru Road, está flanqueada por más de 170 estatuas de bronce de yokais, los espíritus y monstruos del folclore japonés.</p>
+    <p>El paseo conecta con el museo dedicado al autor, que repasa su vida y su universo creativo. Sakaiminato es un destino peculiar que une cultura popular contemporánea, mitología tradicional y la vida tranquila de una ciudad portuaria japonesa.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/MontanaLaojun.jpg" alt="Montaña Laojun" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Montaña Laojun</h3>
+    <p class="ficha__lugar">Luoyang, Henan, China</p>
+    <p>La montaña Laojun, en la provincia de Henan, es un importante centro de peregrinación taoísta envuelto en niebla y leyenda. Sus templos cuelgan de acantilados y crestas a más de 2.000 metros de altitud, creando una atmósfera mística que parece flotar sobre las nubes.</p>
+    <p>El camino hacia la cima dorada atraviesa bosques, puentes colgantes y santuarios dedicados a Laozi, el padre del taoísmo. Es un lugar donde la espiritualidad, la arquitectura tradicional y el paisaje de montaña se funden en una experiencia contemplativa inolvidable.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/SedaSichuan.jpg" alt="Seda (Larung Gar)" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Seda (Larung Gar)</h3>
+    <p class="ficha__lugar">Prefectura de Garzê, Sichuan, China</p>
+    <p>Seda, en la meseta tibetana de Sichuan, alberga Larung Gar, el mayor centro de estudios budistas tibetanos del mundo. Miles de pequeñas casas rojas de monjes y monjas cubren las laderas del valle, creando una estampa sobrecogedora y única.</p>
+    <p>Es un lugar de intensa vida espiritual, donde se combinan enseñanzas, debates y oración a gran altitud. Aunque su acceso es restringido en ocasiones, Seda es un destino profundamente impactante para quienes buscan el Tíbet cultural y religioso dentro de China.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/BaihabaVillage.jpg" alt="Aldea de Baihaba" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Aldea de Baihaba</h3>
+    <p class="ficha__lugar">Altái, Xinjiang, China</p>
+    <p>Baihaba es un remoto pueblo de montaña en el extremo noroeste de China, cerca de la frontera con Kazajistán. Rodeado por bosques de abedules, praderas y montañas del Altái, es hogar de comunidades kazajas y tuva que conservan una vida seminómada y un profundo vínculo con la naturaleza.</p>
+    <p>Sus casas de madera, el silencio de los valles y los paisajes dorados del otoño lo convierten en un destino de belleza serena y autenticidad. Es un rincón poco visitado, ideal para quienes buscan cultura viva y naturaleza en la China más remota.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Gesar.jpg" alt="La tradición épica del Gesar" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>La tradición épica del Gesar</h3>
+    <p class="ficha__lugar">Meseta tibetana, China</p>
+    <p>La epopeya del rey Gesar es una de las grandes tradiciones orales de la humanidad y la más extensa que se conoce. Transmitida durante siglos por bardos, monjes y pastores en la meseta tibetana, narra las hazañas del legendario rey guerrero Gesar, protector del dharma y vencedor de demonios y tiranos.</p>
+    <p>Declarada Patrimonio Cultural Inmaterial de la Humanidad por la UNESCO, sigue viva en las comunidades tibetanas y entre minorías mongolas, tu y otras de Asia Central. Escuchar a un bardo recitar el Gesar, con cantos y gestos rituales, es asomarse a una memoria colectiva de asombrosa riqueza poética y espiritual.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/BibliotecaChesterBeatty.jpg" alt="Biblioteca Chester Beatty en Dublín" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Biblioteca Chester Beatty</h3>
+    <p class="ficha__lugar">Dublín, Irlanda</p>
+    <p>La Biblioteca Chester Beatty, situada dentro del castillo de Dublín, es un museo extraordinario que reúne manuscritos iluminados, papiros, libros raros y obras de arte de Asia, Oriente Medio, el norte de África y Europa. Su colección, donada por el magnate minero Alfred Chester Beatty, está considerada una de las más importantes de Europa en su género.</p>
+    <p>El espacio destaca por su atmósfera serena y gratuita, ideal para contemplar desde evangelios coptos y coranes medievales hasta xilografías japonesas y tratados persas. Es una visita imprescindible para los amantes del arte, la historia de las religiones y la cultura del libro.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/KirguistanNomada.jpg" alt="Kirguistán nómada" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Kirguistán nómada</h3>
+    <p class="ficha__lugar">Kirguistán, Asia Central</p>
+    <p>Kirguistán es el país donde la cultura nómada sigue viva de forma más accesible. Durante el verano, muchas familias se trasladan a los jailoos, los pastos de alta montaña, donde viven en yurtas y cuidan de sus rebaños. Es posible compartir esa vida durante unos días: ayudar en las tareas, aprender a montar una yurta o fabricar un shyrdak de fieltro.</p>
+    <p>La tradición ecuestre continúa en juegos como el kok-boru, la cetrería con águilas reales y las carreras de caballos. La música de komuz, las danzas como el Kara Jorgo y los festivales etnoculturales completan una experiencia intensa, lejos de los circuitos turísticos y profundamente conectada con la naturaleza y la comunidad.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Bretana.jpg" alt="Bretaña" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Bretaña</h3>
+    <p class="ficha__lugar">Noroeste de Francia</p>
+    <p>Bretaña es una península atlántica de identidad celta, donde el idioma bretón, la música con gaita y bombarda, y las fiestas tradicionales mantienen viva una cultura diferenciada dentro de Francia. Sus costas recortadas, faros batidos por el viento y pueblos de granito conservan una atmósfera marinera y melancólica, marcada por la memoria de los naufragios y las leyendas artúricas.</p>
+    <p>Tierra de megalitos, Bretaña alberga los alineamientos de Carnac, uno de los conjuntos prehistóricos más importantes de Europa, junto a ciudades medievales como Saint-Malo, Dinan o Quimper. Su gastronomía —crêpes, sidra, marisco y sal— y su paisaje de landas, acantilados y calas la convierten en un destino de gran fuerza cultural y natural.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Kioto.jpg" alt="Kioto" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Kioto</h3>
+    <p class="ficha__lugar">Kansai, Japón</p>
+    <p>Kioto es la capital espiritual de Japón y guarda algunos de los paisajes más icónicos del país. El Santuario Fushimi Inari despliega miles de puertas torii rojas que serpentean por la montaña, creando túneles infinitos cargados de simbolismo y devoción. A pocos kilómetros, el Bosque de Bambú de Arashiyama envuelve al visitante en un murmullo verde y una luz filtrada que parece detener el tiempo.</p>
+    <p>La combinación de ambos lugares transporta a una atmósfera mística difícil de igualar. El truco que repiten los viajeros más experimentados es madrugar, llegar a las seis de la mañana y recorrer los senderos en absoluta soledad, antes de que lleguen las multitudes y cuando la niebla aún se enreda entre los torii y las cañas de bambú.</p>
+  </div>
+</article>
+
+</div>
+<p class="volver"><a href="#inicio">↑ Volver al índice</a></p>
+</section>
+
+<!-- ============================================================
+     3. Arquitectura legendaria y conjuntos históricos
+     ============================================================ -->
+<section class="seccion" id="arquitectura">
+<h2>Arquitectura legendaria y conjuntos históricos</h2>
+<p class="seccion__desc">El principal reclamo es el patrimonio construido: ciudades medievales, castillos, monasterios, jardines históricos o arquitectura vernácula excepcional.</p>
+<div class="rejilla">
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/CasteloBranco.jpg" alt="Jardín del Palacio Episcopal de Castelo Branco" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Castelo Branco: el jardín del obispo</h3>
+    <p class="ficha__lugar">Interior de Portugal</p>
+    <p>El Jardín do Paço Episcopal de Castelo Branco es una obra maestra del barroco portugués: parterres, estatuas de reyes, fuentes y escalinatas de agua en un recinto amurallado.</p>
+    <p>La región interior de Beira Baixa esconde aldeias de xisto, castillos templarios y una calma rural que contrasta con el litoral. Un destino para degustar historia, jardinería y silencio.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Wells.jpg" alt="Wells" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Wells</h3>
+    <p class="ficha__lugar">Somerset, Inglaterra</p>
+    <p>Wells es la ciudad más pequeña de Inglaterra y conserva un conjunto medieval excepcional: la catedral gótica, el palacio episcopal y Vicars' Close, la calle residencial completa más antigua de Europa.</p>
+    <p>Sin estación de tren ni semáforos, Wells ofrece una pausa fuera del tiempo. Sus piedras doradas y su ambiente tranquilo invitan a pasear como en el siglo XV.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/RibeiraSacra.jpg" alt="La Ribeira Sacra" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>La Ribeira Sacra</h3>
+    <p class="ficha__lugar">Ourense y Lugo, España</p>
+    <p>La Ribeira Sacra gallega es un cañón fluvial donde los ríos Sil y Miño serpentean entre monasterios románicos y bosques atlánticos. Aquí se encuentra la mayor concentración de románico rural de Europa.</p>
+    <p>Su viticultura heroica, con viñedos en bancales imposibles, produce vinos únicos. Es un destino de espiritualidad, senderismo y enoturismo extremo.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/PlazaImam.jpg" alt="Plaza del Imán y Mezquita del Shah" class="recorte-arriba" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Plaza del Imán y Mezquita del Shah</h3>
+    <p class="ficha__lugar">Isfahán, Irán</p>
+    <p>La plaza Naqsh-e Jahán, declarada Patrimonio de la Humanidad, es el corazón monumental de Isfahán y una de las plazas más grandes del mundo. La Mezquita del Shah, con su portal de azulejos turquesa, su cúpula bulbosa y sus minaretes, es una obra maestra de la arquitectura safávida del siglo XVII.</p>
+    <p>Visitar la plaza al atardecer, cuando la luz dorada baña los azulejos y el sonido de los talleres de artesanía llena los soportales, es una experiencia que transporta a la Persia clásica.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/PuentesIsfahan.jpg" alt="Si-o-se Pol y Puente Khaju" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Si-o-se Pol y Puente Khaju</h3>
+    <p class="ficha__lugar">Isfahán, Irán</p>
+    <p>Los puentes históricos de Isfahán sobre el río Zayandeh Rud son mucho más que infraestructuras: son lugares de encuentro, paseo y contemplación. El Si-o-se Pol (puente de los 33 arcos) y el Puente Khaju, con su doble arcada y pabellones reales, son obras maestras de la ingeniería y estética safávida.</p>
+    <p>Khaju, en especial, funciona como presa y lugar de reunión social, y su acústica bajo los arcos es famosa entre los cantantes espontáneos. Un paseo por ellos es sumergirse en la vida cotidiana de Isfahán.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Vardzia.jpg" alt="Ciudad cueva de Vardzia" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>La ciudad cueva de Vardzia</h3>
+    <p class="ficha__lugar">Samtskhe-Javakheti, Georgia</p>
+    <p>Vardzia es una ciudad-monasterio excavada en la roca de un acantilado del sur de Georgia, construida en el siglo XII bajo el reinado de la reina Tamar. Originalmente contaba con miles de estancias, iglesias, túneles y sistemas de riego, extendiéndose por trece pisos.</p>
+    <p>El lugar fue un refugio espiritual y defensivo frente a las invasiones mongolas. Recorrer sus pasadizos, celdas y capillas excavadas es adentrarse en una de las obras rupestres más ambiciosas de la cristiandad oriental.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/CastillosAberdeenshire.jpg" alt="Castillos de Aberdeenshire" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Castillos de Aberdeenshire</h3>
+    <p class="ficha__lugar">Aberdeenshire, Escocia</p>
+    <p>Aberdeenshire, en el noreste de Escocia, concentra una de las mayores densidades de castillos de Europa. Desde imponentes fortalezas como Dunnottar, encaramada sobre acantilados, hasta elegantes torres señoriales como Crathes o Castle Fraser, la región es un catálogo vivo de la arquitectura defensiva y señorial escocesa.</p>
+    <p>Muchos castillos están rodeados de jardines y bosques, y algunos se asocian a historias de clanes, fantasmas y rebeliones jacobitas. Explorarlos es viajar por siglos de historia feudal en paisajes de colinas y costa.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Persepolis.jpg" alt="Persépolis" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Persépolis</h3>
+    <p class="ficha__lugar">Fars, Irán</p>
+    <p>Persépolis, la capital ceremonial del Imperio aqueménida, es uno de los yacimientos arqueológicos más importantes del mundo. Sus palacios, relieves y escalinatas monumentales, construidos por Darío I y Jerjes, muestran el esplendor de Persia en el siglo V a.C.</p>
+    <p>La famosa Puerta de todas las Naciones y los relieves de la Apadana representan delegaciones de todo el imperio. Recorrer sus ruinas al atardecer permite imaginar la grandeza de una civilización que marcó la historia.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/OrheiulVechi.jpg" alt="Orheiul Vechi" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Orheiul Vechi</h3>
+    <p class="ficha__lugar">Orhei, Moldavia</p>
+    <p>Orheiul Vechi es un complejo arqueológico y monástico situado en un meandro del río Răut, en Moldavia. Cuevas excavadas en acantilados de piedra caliza albergaron ermitas y monasterios ortodoxos desde la Edad Media, en un paisaje de colinas y valles.</p>
+    <p>El lugar combina restos de fortalezas, baños turcos y una iglesia rupestre aún activa. Es un destino para la contemplación, la historia y el senderismo suave, en una de las zonas más singulares de Europa oriental.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Tighina.jpg" alt="Fortaleza de Tighina" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Fortaleza de Tighina</h3>
+    <p class="ficha__lugar">Bender, Moldavia</p>
+    <p>La fortaleza de Tighina, a orillas del Dniéster, es una de las construcciones defensivas más imponentes de Europa oriental. Con orígenes medievales y sucesivas reformas otomanas y rusas, conserva murallas, torres y un foso que hablan de siglos de disputas fronterizas.</p>
+    <p>Hoy es un lugar de memoria y arquitectura militar, donde se cruzan la historia moldava, otomana y soviética. Recorrer sus baluartes permite entender la importancia estratégica del río y la compleja identidad de la región.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Soroca.jpg" alt="Soroca" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Soroca</h3>
+    <p class="ficha__lugar">Ribera del Dniéster, Moldavia</p>
+    <p>Soroca es una pequeña ciudad moldava con una impresionante fortaleza medieval de planta circular, construida por Esteban el Grande en el siglo XV. Sus torres y murallas, perfectamente conservadas, dominan el río Dniéster y recuerdan la defensa de la frontera oriental de Moldavia.</p>
+    <p>Además de la fortaleza, Soroca es conocida por la llamada «colina de los gitanos», un barrio de mansiones extravagantes construidas por comunidades romaníes. Este contraste entre lo medieval y lo contemporáneo convierte a Soroca en un destino sorprendente.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/MoldovaWineCellars.jpg" alt="Bodegas subterráneas de Moldavia" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Bodegas subterráneas de Moldavia</h3>
+    <p class="ficha__lugar">Cricova y Mileștii Mici, Moldavia</p>
+    <p>Bajo las colinas de Moldavia se extienden algunas de las bodegas subterráneas más grandes del mundo. En Cricova y Mileștii Mici, cientos de kilómetros de galerías excavadas en piedra caliza albergan barricas, botellas históricas y hasta calles con nombres de vinos.</p>
+    <p>Estas ciudades subterráneas del vino combinan enoturismo, ingeniería y una atmósfera fresca y silenciosa. Recorrerlas en tren o a pie es sumergirse en una tradición vinícola milenaria y en uno de los secretos mejor guardados de Europa del Este.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Sintra.jpg" alt="Sintra" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Sintra</h3>
+    <p class="ficha__lugar">Lisboa, Portugal</p>
+    <p>Sintra es una villa portuguesa de cuento de hadas, declarada Patrimonio de la Humanidad. Palacios como el colorido Palacio da Pena, el enigmático Quinta da Regaleira y las ruinas del Castillo de los Moros se reparten entre colinas boscosas y jardines exuberantes.</p>
+    <p>Su microclima húmedo y su atmósfera romántica atrajeron a escritores y aristócratas. Visitar Sintra es pasear entre neblina, fuentes y azulejos, en uno de los paisajes culturales más fascinantes de la península ibérica.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/LedniceValtice.jpg" alt="Lednice–Valtice" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Lednice–Valtice</h3>
+    <p class="ficha__lugar">Moravia del Sur, Chequia</p>
+    <p>El paisaje cultural de Lednice–Valtice, declarado Patrimonio de la Humanidad, es una obra maestra del Romanticismo centroeuropeo. Entre los castillos neogóticos de Lednice y Valtice se extiende un jardín inglés salpicado de pabellones, lagos y columnatas.</p>
+    <p>Fue modelado por la familia Liechtenstein durante siglos como un gran escenario de placer y poder. Recorrerlo a pie o en bicicleta permite disfrutar de una naturaleza domesticada y una arquitectura fantástica única en Europa.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Ronda.jpg" alt="Ronda" class="recorte-alto" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Ronda</h3>
+    <p class="ficha__lugar">Málaga, España</p>
+    <p>Ronda es una ciudad andaluza partida en dos por el impresionante tajo del Guadalevín, salvado por el Puente Nuevo. Su casco antiguo, con calles empedradas, palacios y baños árabes, se asoma a un desfiladero de más de cien metros de altura.</p>
+    <p>Fue una de las ciudades legendarias del romanticismo viajero y conserva una plaza de toros histórica, una gastronomía serrana y miradores de vértigo. Es un destino que combina naturaleza, historia y una de las siluetas urbanas más fotogénicas de España.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Praga.jpg" alt="Praga" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Praga</h3>
+    <p class="ficha__lugar">Bohemia, Chequia</p>
+    <p>Praga, la capital checa, es un museo vivo de arquitectura europea. Desde el Castillo de Praga y la catedral de San Vito hasta el Puente de Carlos y el reloj astronómico, su casco histórico es Patrimonio de la Humanidad y una de las ciudades más bellas del continente.</p>
+    <p>Su mezcla de románico, gótico, barroco y art nouveau crea un paisaje urbano fascinante. Pasear por Malá Strana, navegar por el Moldava o perderse en sus callejuelas es viajar por siglos de historia centroeuropea.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/SantuarioVirgenEsperanza.jpg" alt="Santuario de la Virgen de la Esperanza" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Santuario de la Virgen de la Esperanza</h3>
+    <p class="ficha__lugar">Calasparra, Región de Murcia, España</p>
+    <p>El Santuario de la Virgen de la Esperanza se alza en un paraje de gran belleza junto al río Segura, rodeado de huertas y montañas. Su origen se remonta a la Edad Media y combina elementos barrocos y neoclásicos, con una talla mariana de profunda devoción comarcal.</p>
+    <p>Es un lugar de peregrinación y recogimiento, ligado a la historia de Calasparra y su vega arrocera. La visita permite combinar patrimonio religioso, senderismo y la tranquilidad de la España interior.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/StMichaelsMount.jpg" alt="St Michael's Mount" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>St Michael's Mount</h3>
+    <p class="ficha__lugar">Marazion, Cornualles, Inglaterra</p>
+    <p>St Michael's Mount es una isla mareal situada en la bahía de Mount's Bay, en Cornualles. Coronada por un castillo y una iglesia medieval, la isla queda unida a la costa por un camino empedrado que solo emerge durante la marea baja.</p>
+    <p>El lugar ha sido monasterio, fortaleza y residencia señorial. Recorrer sus jardines, capillas y murallas es sumergirse en siglos de historia insular, con vistas espectaculares al Atlántico y una atmósfera mágica.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/PatioNeoarabeElPaso.jpg" alt="Patio neoárabe de la Finca El Paso" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Patio neoárabe de la Finca El Paso</h3>
+    <p class="ficha__lugar">Caudete, Albacete, España</p>
+    <p>La Finca El Paso, también conocida como Palacio El Paso, esconde uno de los ejemplos más singulares de arquitectura neoárabe de la península. Su patio interior combina arcos de herradura, azulejos, yeserías y una rica ornamentación inspirada en el pasado andalusí.</p>
+    <p>Es un edificio poco conocido que sorprende por su escala y su exotismo en plena comarca castellano-manchega. Una visita permite admirar un capricho arquitectónico de gran valor, mezcla de romanticismo, eclecticismo e identidad cultural.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/BibliotecaEscuelasPias.jpg" alt="Biblioteca de las Escuelas Pías" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Biblioteca de las Escuelas Pías</h3>
+    <p class="ficha__lugar">Madrid, España</p>
+    <p>La Biblioteca de las Escuelas Pías, situada en el antiguo convento de San Fernando, es un espacio cargado de historia y memoria. Su sala de lectura conserva una atmósfera solemne, con estanterías de madera, techos altos y una luz que invita al estudio y la contemplación.</p>
+    <p>El edificio, con origen en el siglo XVIII, ha sido testigo de los vaivenes de la ciudad y hoy alberga fondos de gran valor. Es un rincón poco frecuentado por el turismo, ideal para quienes buscan patrimonio, silencio y cultura en pleno Madrid.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Venecia.jpg" alt="Venecia" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Venecia</h3>
+    <p class="ficha__lugar">Véneto, Italia</p>
+    <p>Venecia es una ciudad única construida sobre más de cien islas unidas por puentes y canales. La plaza de San Marcos, el Palacio Ducal y el Gran Canal resumen siglos de poder marítimo y arte.</p>
+    <p>Perderse por sus callejuelas, navegar en vaporetto o escuchar el silencio de sus canales al amanecer es una experiencia irrepetible, pese a la masificación. Venecia sigue siendo un milagro urbano.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/MonteSaintMichel.jpg" alt="Monte Saint-Michel" class="recorte-alto" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Monte Saint-Michel</h3>
+    <p class="ficha__lugar">Normandía, Francia</p>
+    <p>El Monte Saint-Michel es una isla rocosa en Normandía coronada por una abadía medieval. Las mareas transforman el paisaje y convierten el acceso en una experiencia cambiante.</p>
+    <p>Declarado Patrimonio de la Humanidad, es uno de los conjuntos monásticos más espectaculares de Europa. La silueta de la abadía sobre la bahía es una imagen inolvidable.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Edimburgo.jpg" alt="Edimburgo" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Edimburgo</h3>
+    <p class="ficha__lugar">Escocia, Reino Unido</p>
+    <p>Edimburgo, capital de Escocia, es una ciudad de contrastes entre la medieval Old Town y la elegante New Town georgiana, ambas Patrimonio de la Humanidad. El castillo sobre la roca volcánica, la Royal Mile y el palacio de Holyroodhouse definen un paisaje urbano imponente.</p>
+    <p>Su festival internacional de verano convierte la ciudad en un gran escenario cultural. Recorrer sus callejones, museos y pubs es adentrarse en siglos de historia y creatividad escocesa.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/SinagogaSubotica.jpg" alt="Sinagoga de Subotica" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Sinagoga de Subotica</h3>
+    <p class="ficha__lugar">Subotica, Serbia</p>
+    <p>La Sinagoga de Subotica es una obra maestra del modernismo húngaro Art Nouveau, construida a principios del siglo XX. Su cúpula central, sus vidrieras y sus ornamentos florales combinan la tradición judía con el estilo secesión vienesa.</p>
+    <p>Restaurada y reconvertida en espacio cultural, es un símbolo de la diversidad histórica de Vojvodina. Su interior luminoso y colorido sorprende a quienes la visitan, convirtiéndola en una de las sinagogas más bellas de Europa.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/PlazaEspanaSevilla.jpg" alt="Plaza de España en Sevilla" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Plaza de España en Sevilla</h3>
+    <p class="ficha__lugar">Sevilla, España</p>
+    <p>La Plaza España de Sevilla es una de las obras maestras del regionalismo andaluz. Construida para la Exposición Iberoamericana de 1929, combina ladrillo, cerámica y hierro forjado en una plaza semicircular con canales y puentes.</p>
+    <p>Sus bancos dedicados a cada provincia española, sus torres y su ambiente monumental la han convertido en uno de los espacios públicos más espectaculares de España y en escenario de cine.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/AlcazarSevilla.jpg" alt="Alcázar de Sevilla" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Alcázar de Sevilla</h3>
+    <p class="ficha__lugar">Sevilla, España</p>
+    <p>El Real Alcázar de Sevilla es un palacio fortificado de origen islámico que ha sido residencia real desde la Edad Media. Sus salones mudéjares, el Patio de las Doncellas y los jardines de estilo andalusí forman un conjunto declarado Patrimonio de la Humanidad.</p>
+    <p>La superposición de estilos —islámico, gótico, renacentista y barroco— convierte al Alcázar en un viaje por siglos de arte y poder. Recorrer sus estancias y jardines es adentrarse en uno de los palacios más hermosos y vivos de Europa.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Alhambra.jpg" alt="Alhambra" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Alhambra</h3>
+    <p class="ficha__lugar">Granada, España</p>
+    <p>La Alhambra es la joya del arte nazarí y uno de los conjuntos monumentales más visitados del mundo. Sus palacios, patios y fuentes, como el Patio de los Leones o los Arrayanes, combinan agua, luz y geometría con una elegancia incomparable.</p>
+    <p>La fortaleza roja, la Alcazaba y los jardines del Generalife completan un paisaje de colinas y cipreses cargado de memoria andalusí. Visitar la Alhambra es contemplar la cumbre de la cultura hispanomusulmana.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/PlowmanCosmos.jpg" alt="El labrador del cosmos" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>El labrador del cosmos</h3>
+    <p class="ficha__lugar">Chișinău, Moldavia</p>
+    <p>El Plowman of the Cosmos (Plugarul Cosmosului) es un mural monumental de la era soviética situado en Chișinău. La obra combina la figura del campesino con elementos cósmicos, como un homenaje al trabajo agrícola y a la conquista espacial.</p>
+    <p>Hoy es un testimonio visual del pasado soviético de Moldavia y un referente del arte público en la capital. Su estilo simbólico y sus dimensiones lo convierten en una parada singular para quienes exploran las capas históricas del país.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/GinzanOnsen.jpg" alt="Ginzan Onsen" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Ginzan Onsen</h3>
+    <p class="ficha__lugar">Prefectura de Yamagata, Japón</p>
+    <p>Ginzan Onsen es un pueblo de aguas termales escondido en las montañas de Yamagata, famoso por sus ryokan de madera de estilo Taisho alineados a orillas del río. En invierno, la nieve y las lámparas de gas crean una atmósfera nostálgica y casi irreal.</p>
+    <p>Sus baños termales, puentes de piedra y calles empedradas transportan al Japón de principios del siglo XX. Es un destino para disfrutar del onsen, la arquitectura tradicional y la quietud de la montaña.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/YuciOldCityTower.jpg" alt="Torre de la ciudad vieja de Yuci" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Torre de la ciudad vieja de Yuci</h3>
+    <p class="ficha__lugar">Yuci, Shanxi, China</p>
+    <p>La torre antigua de Yuci es uno de los vestigios más representativos de la antigua ciudad amurallada de Yuci, en la provincia de Shanxi. Construida como parte del sistema defensivo y de comunicación, conserva la impronta arquitectónica de la China imperial.</p>
+    <p>Subir a la torre permite contemplar el trazado histórico de la ciudad y comprender la importancia estratégica de la región. Es un rincón poco visitado por el turismo internacional, ideal para los interesados en la arquitectura y la historia china.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Niza.jpg" alt="Niza" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Niza</h3>
+    <p class="ficha__lugar">Costa Azul, Francia</p>
+    <p>Niza es la capital de la Costa Azul francesa, una ciudad elegante bañada por el Mediterráneo. Su Paseo de los Ingleses, la colina del castillo y la arquitectura Belle Époque de sus fachadas recuerdan la época dorada del turismo aristocrático.</p>
+    <p>El casco antiguo, con calles estrechas y mercados, conserva raíces italianas y provenzales. Es un destino que combina sol, arte, gastronomía y una sofisticación luminosa única.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/MachuPicchu.jpg" alt="Machu Picchu" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Machu Picchu</h3>
+    <p class="ficha__lugar">Andes, Perú</p>
+    <p>Machu Picchu es la ciudadela inca más famosa del mundo, enclavada entre montañas y selva tropical. Sus terrazas, templos y palacios de piedra muestran el genio constructivo del Imperio inca y su relación armoniosa con el entorno.</p>
+    <p>Recorrer Machu Picchu al amanecer, con la niebla cubriendo las cumbres, es una experiencia sobrecogedora. Es uno de los grandes hitos arqueológicos y espirituales de América.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/IglesiaSanPabloValladolid.jpg" alt="Iglesia de San Pablo en Valladolid" class="recorte-arriba" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Iglesia de San Pablo en Valladolid</h3>
+    <p class="ficha__lugar">Valladolid, España</p>
+    <p>La iglesia de San Pablo de Valladolid es una joya del gótico isabelino y plateresco. Su fachada, tallada en piedra como un retablo, deslumbra por la profusión de escudos, pináculos y detalles escultóricos.</p>
+    <p>Vinculada al convento dominico, fue escenario de importantes episodios de la historia de Castilla. Su interior conserva capillas y sepulcros de gran valor, convirtiéndola en una visita imprescindible.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/RoyalGreenhousesLaeken.jpg" alt="Invernaderos Reales de Laeken" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Invernaderos Reales de Laeken</h3>
+    <p class="ficha__lugar">Bruselas, Bélgica</p>
+    <p>Los Invernaderos Reales de Laeken son un conjunto de cúpulas y pabellones de vidrio y hierro construidos en el siglo XIX, ligados al castillo real belga. Su arquitectura art nouveau, con columnas, escaleras y detalles florales, alberga una colección botánica excepcional.</p>
+    <p>Abren al público solo unas semanas al año, lo que los convierte en una visita efímera y codiciada. Pasear entre palmeras, camelias y estructuras luminosas es sumergirse en el lujo hortícola de la monarquía belga.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Kelenfold.jpg" alt="Sala de control de la central eléctrica de Kelenföld" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Sala de control de la central eléctrica de Kelenföld</h3>
+    <p class="ficha__lugar">Budapest, Hungría</p>
+    <p>La sala de control de la central eléctrica de Kelenföld es una joya oculta del art déco industrial. Construida en 1927, conserva su techo acristalado, paneles de control originales y una estética futurista que parece sacada de una película de ciencia ficción.</p>
+    <p>El edificio, obra de los arquitectos Kálmán Reichl y Virgil Borbíró, estuvo en funcionamiento hasta 2007 y hoy se abre solo ocasionalmente para visitas guiadas. Es un destino fascinante para amantes del patrimonio industrial y la arquitectura del siglo XX.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Eze.jpg" alt="Èze" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Èze</h3>
+    <p class="ficha__lugar">Costa Azul, Francia</p>
+    <p>Èze es un pueblo medieval encaramado en lo alto de un acantilado entre Niza y Mónaco. Sus callejuelas empedradas, pasadizos abovedados y casas de piedra forman un laberinto con vistas espectaculares al Mediterráneo.</p>
+    <p>El jardín botánico exótico, situado en la cima, añade un contraste de cactus y esculturas sobre el azul del mar. Èze es una postal viva de la Costa Azul, elegida por artistas y viajeros por su atmósfera intemporal.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/SantaMariaNaranco.jpg" alt="Santa María del Naranco" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Santa María del Naranco</h3>
+    <p class="ficha__lugar">Oviedo, Asturias, España</p>
+    <p>Santa María del Naranco es una joya del prerrománico asturiano, declarada Patrimonio de la Humanidad. Originalmente fue el aula regia del palacio del rey Ramiro I, construido en el siglo IX, y más tarde se convirtió en iglesia.</p>
+    <p>Su elegante estructura de sillares, arcos peraltados y contrafuertes muestra la sofisticación del arte asturiano altomedieval. Las vistas sobre Oviedo y los montes completan una visita imprescindible para los amantes de la historia y la arquitectura.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/DazuRockCarvings.jpg" alt="Tallas rupestres de Dazu" class="recorte-alto" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Tallas rupestres de Dazu</h3>
+    <p class="ficha__lugar">Chongqing, China</p>
+    <p>Las tallas rupestres de Dazu, declaradas Patrimonio de la Humanidad, son uno de los conjuntos escultóricos más importantes del arte religioso chino. Entre los siglos IX y XIII se esculpieron miles de figuras budistas, taoístas y confucianas en acantilados y grutas.</p>
+    <p>Las escenas destacan por su expresividad y por su mensaje moral y social. Recorrer Dazu es adentrarse en una obra colosal que combina espiritualidad, arte y vida cotidiana de la China imperial.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/BancoTbilisi1903.jpg" alt="Interior del banco de 1903 en Tbilisi" class="recorte-arriba" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Interior del banco de 1903 en Tbilisi</h3>
+    <p class="ficha__lugar">Tiflis, Georgia</p>
+    <p>El interior del antiguo banco de 1903 en Tiflis es una joya del modernismo art nouveau. Vidrieras, estucos, lámparas originales y mostradores de madera noble conforman un espacio que evoca el esplendor comercial de la Georgia zarista.</p>
+    <p>El edificio conserva una atmósfera decadente y refinada, con detalles ornamentales únicos. Es un destino fascinante para los amantes de la arquitectura, la historia bancaria y el patrimonio oculto de Tiflis.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/GeorgeTownPenang.jpg" alt="George Town, Penang" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>George Town</h3>
+    <p class="ficha__lugar">Penang, Malasia</p>
+    <p>George Town, en la isla de Penang, es un crisol de culturas china, india, malaya y británica. Su casco histórico, declarado Patrimonio de la Humanidad, conserva hileras de casas comerciales, templos, mezquitas y mansiones coloniales.</p>
+    <p>Es también un paraíso gastronómico callejero, con algunos de los hawker centres más famosos de Asia. Recorrer sus calles, murales y mercados es adentrarse en una de las ciudades coloniales más vivas y sabrosas del sudeste asiático.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Valdedios.jpg" alt="Monasterio de Santa María de Valdediós" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Monasterio de Santa María de Valdediós</h3>
+    <p class="ficha__lugar">Villaviciosa, Asturias, España</p>
+    <p>El monasterio de Santa María de Valdediós, en un valle asturiano rodeado de bosques, es un conjunto monástico cisterciense del siglo XIII. Cerca se alza la iglesia prerrománica de San Salvador de Valdediós, conocida como «el Conventín», una joya del arte asturiano.</p>
+    <p>La armonía entre el claustro, la iglesia medieval y el entorno rural convierte a Valdediós en un lugar de gran serenidad. Es una visita imprescindible para los amantes del prerrománico, la vida monástica y los paisajes silenciosos de Asturias.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Cardona.jpg" alt="Cardona" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Cardona, el pueblo que encandiló a Orson Welles</h3>
+    <p class="ficha__lugar">Barcelona, Cataluña, España</p>
+    <p>Cardona es una villa medieval catalana dominada por un imponente castillo-parador y una colegiata románica. Su silueta sobre la colina de sal y su casco antiguo de piedra atrajeron a cineastas como Orson Welles, que rodó aquí parte de «Campanadas a medianoche».</p>
+    <p>La antigua mina de sal, ahora abierta al público, es una de las montañas de sal más espectaculares de Europa. Cardona combina historia, arquitectura y geología en un paisaje interior de gran fuerza visual.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/DhumarLena.jpg" alt="Dhumar Lena, cueva 29 de Ellora" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Dhumar Lena (cueva 29)</h3>
+    <p class="ficha__lugar">Ellora, Maharashtra, India</p>
+    <p>Dhumar Lena, la cueva 29 de Ellora, es uno de los santuarios hindúes excavados en roca más imponentes del conjunto. Su planta cruciforme, sus pilares macizos y los relieves de Shiva —incluida la famosa escena del dios matando al demonio Andhaka— muestran la madurez del arte rupestre indio.</p>
+    <p>La cueva, excavada en el siglo VI, combina arquitectura, escultura y simbolismo religioso en un espacio de penumbra y misterio. Es una de las visitas más sobrecogedoras de Ellora, ideal para los amantes del arte antiguo y la espiritualidad hindú.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/KailasaEllora.jpg" alt="Templo Kailasa, cueva 16 de Ellora" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Templo Kailasa (cueva 16)</h3>
+    <p class="ficha__lugar">Ellora, Maharashtra, India</p>
+    <p>El templo Kailasa es la obra cumbre de Ellora y uno de los mayores logros de la arquitectura rupestre mundial. Fue excavado en el siglo VIII como una sola escultura colosal: un templo completo, con patios, torres y santuarios, extraído directamente de la roca basáltica.</p>
+    <p>Dedicado a Shiva, representa el monte Kailash, morada del dios. Sus dimensiones, relieves y plasticidad asombran por su ambición y precisión. Visitar Kailasa es contemplar una proeza artística y religiosa sin equivalente en el mundo.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/IndraSabha.jpg" alt="Indra Sabha, cueva 32 de Ellora" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Indra Sabha (cueva 32)</h3>
+    <p class="ficha__lugar">Ellora, Maharashtra, India</p>
+    <p>Indra Sabha, la cueva 32 de Ellora, es el santuario jainista más destacado del conjunto. Sus pilares finamente tallados, sus esculturas de tirthankaras y sus decoraciones vegetales crean un espacio de serenidad y refinamiento, muy distinto a la grandiosidad hindú de Kailasa.</p>
+    <p>Excavada entre los siglos IX y X, muestra la continuidad de la tradición rupestre en la India y la convivencia de religiones en Ellora. Su atmósfera silenciosa y su detalle ornamental la convierten en una visita imprescindible.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/RegistanSamarcanda.jpg" alt="Plaza Registán en Samarcanda" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Plaza Registán en Samarcanda</h3>
+    <p class="ficha__lugar">Samarcanda, Uzbekistán</p>
+    <p>La plaza Registán es el corazón monumental de Samarcanda y uno de los conjuntos arquitectónicos más impresionantes de Asia Central. Tres madrasas —Ulugh Beg, Sher-Dor y Tilya-Kori— enmarcan la plaza con sus portales de azulejos, cúpulas turquesas y patios interiores.</p>
+    <p>Fue centro de la vida comercial, religiosa y cultural de la Ruta de la Seda. Al atardecer, la luz dorada sobre la cerámica crea una atmósfera irreal que transporta a la época timúrida.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/SheikhZayedMosque.jpg" alt="Gran Mezquita Sheikh Zayed" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Gran Mezquita Sheikh Zayed</h3>
+    <p class="ficha__lugar">Abu Dabi, Emiratos Árabes Unidos</p>
+    <p>La Gran Mezquita Sheikh Zayed es una obra maestra de la arquitectura islámica contemporánea. Mármol blanco, cúpulas, minaretes y la mayor alfombra artesanal del mundo crean un espacio de una blancura y una escala abrumadoras.</p>
+    <p>Abierta a visitantes de todas las creencias, combina artesanía tradicional y diseño moderno. Su patio de mármol, los espejos de agua y la iluminación nocturna la convierten en una visita inolvidable.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Breslavia.jpg" alt="Breslavia y su división en islas" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Breslavia y su división en islas</h3>
+    <p class="ficha__lugar">Breslavia, Polonia</p>
+    <p>Breslavia, la capital de Silesia, es una ciudad construida sobre doce islas unidas por más de cien puentes. Su casco histórico, la catedral de Ostrów Tumski y los antiguos molinos crean un paisaje urbano de canales y riberas.</p>
+    <p>La ciudad mezcla arquitectura gótica, barroca y modernista, con una vida cultural vibrante. Recorrer sus islas al atardecer, entre farolas de gas y reflejos en el río Óder, es una experiencia única en Polonia.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/CapillasMediceas.jpg" alt="Conjunto funerario de los Medici en Florencia" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Conjunto funerario de los Medici</h3>
+    <p class="ficha__lugar">Florencia, Italia</p>
+    <p>El conjunto funerario de los Medici, formado por la Sacristía Nueva de San Lorenzo y la Capilla de los Príncipes, es una obra mayor del Renacimiento florentino. Miguel Ángel esculpió allí las tumbas de Giuliano y Lorenzo de Medici, con figuras como la Noche, el Día, el Alba y el Crepúsculo.</p>
+    <p>La Capilla de los Príncipes, revestida de mármoles de colores y piedras semipreciosas, muestra la ambición dinástica de la familia. Visitar este recinto es adentrarse en el poder, el arte funerario y la memoria de quienes gobernaron Florencia.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/ViaductoGlenfinnan.jpg" alt="Viaducto de Glenfinnan" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Viaducto de Glenfinnan</h3>
+    <p class="ficha__lugar">Highlands, Escocia</p>
+    <p>El viaducto de Glenfinnan es un impresionante puente ferroviario de 21 arcos que se curva entre montañas y lagos de las Highlands escocesas. Construido a finales del siglo XIX, se ha hecho mundialmente famoso por su aparición en las películas de Harry Potter, con el tren de vapor cruzando sus arcos.</p>
+    <p>Desde los miradores cercanos se contempla una de las postales más icónicas de Escocia, con el viaducto, el lago Shiel y las colinas verdes. Es un destino para amantes del ferrocarril, la ingeniería y los paisajes cinematográficos.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Brasov.jpg" alt="Brașov" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Brașov</h3>
+    <p class="ficha__lugar">Transilvania, Rumanía</p>
+    <p>Brașov es una de las ciudades medievales más bellas de Transilvania, rodeada por los Cárpatos y marcada por su herencia sajona. La iglesia Negra, el mayor templo gótico del sureste europeo, la plaza del Consejo y las antiguas murallas con bastiones como el de los Tejedores definen un casco histórico lleno de encanto.</p>
+    <p>La ciudad combina calles empedradas, torres de vigilancia y puertas fortificadas con una vida cultural activa. Es una base perfecta para explorar castillos cercanos como Bran o Râșnov, y para disfrutar de la montaña, la gastronomía local y el ambiente centroeuropeo de Rumanía.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Guimaraes.jpg" alt="Guimarães" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Guimarães</h3>
+    <p class="ficha__lugar">Minho, Portugal</p>
+    <p>Guimarães es la cuna de Portugal: aquí nació el primer rey, Afonso Henriques, y su casco histórico medieval, declarado Patrimonio de la Humanidad, conserva murallas, castillo y palacios en un entramado de calles empedradas. La Torre da Alfândega, el castillo del siglo X y el Palacio de los Duques de Bragança son hitos imprescindibles.</p>
+    <p>Pero la ciudad también mira al futuro: Capital Verde Europea 2026, impulsa carriles bici, zonas verdes y movilidad eléctrica. Su gastronomía combina petiscos, vino verde y dulces conventuales como los jesuítas, en un equilibrio entre patrimonio y vida contemporánea.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Hull.jpg" alt="Hull, Yorkshire" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Hull</h3>
+    <p class="ficha__lugar">Yorkshire, Inglaterra</p>
+    <p>Hull, en la costa del mar del Norte, está culminando un ambicioso proyecto de 53 millones de dólares para poner en valor sus 800 años de historia marítima. El renovado Hull Maritime Museum, el centro de visitantes del North End Shipyard y dos barcos museo —el arrastrero Arctic Corsair y el buque faro Spurn— abrirán por fases hasta el verano de 2026.</p>
+    <p>Antiguo gran puerto ballenero y pesquero, la ciudad ha renacido en la última década. El antiguo Fruit Market junto a Humber Street es hoy un animado barrio de bares, restaurantes y galerías, mientras que el acuario The Deep y el nuevo Maritime Heritage Trail conectan el casco antiguo georgiano con la memoria de la esclavitud y la cultura marinera.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/ParlamentoBucarest.jpg" alt="Parlamento de Bucarest" class="recorte-bajo" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Parlamento de Bucarest</h3>
+    <p class="ficha__lugar">Bucarest, Rumanía</p>
+    <p>El Palacio del Parlamento, en Bucarest, es una de las construcciones administrativas más grandes y pesadas del mundo. Erigido durante la dictadura de Ceaușescu en los años 80, combina mármol, madera y bronce en una arquitectura de escala colosal que refleja la ambición del régimen.</p>
+    <p>Hoy alberga el Parlamento rumano y puede visitarse parcialmente en visitas guiadas. Sus salones, lámparas y escalinatas monumentales impresionan por su lujo y por la historia que representan.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/EstatuaMadrePatria.jpg" alt="Estatua de la Madre Patria" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Estatua de la Madre Patria</h3>
+    <p class="ficha__lugar">Kyiv, Ucrania</p>
+    <p>La Estatua de la Madre Patria, en Kyiv, es una colosal escultura de acero inoxidable de 102 metros que domina el museo nacional de la Segunda Guerra Mundial. Originalmente portaba el emblema soviético, pero fue sustituido por el tridente ucraniano tras la independencia.</p>
+    <p>Además de su imponente silueta, el complejo ofrece miradores, exposiciones y una profunda carga histórica. Es un símbolo de la memoria y la identidad ucraniana, visible desde buena parte de la ciudad.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Pompeya.jpg" alt="Pompeya" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Pompeya</h3>
+    <p class="ficha__lugar">Campania, Italia</p>
+    <p>Pompeya es la ciudad romana sepultada por la erupción del Vesubio en el año 79 d.C. Sus calles, casas, frescos, termas y teatros han quedado congelados en el tiempo, convirtiéndola en uno de los yacimientos arqueológicos más importantes del mundo.</p>
+    <p>Recorrer Pompeya es asomarse a la vida cotidiana del Imperio romano, con el foro, los templos y los moldes de yeso de las víctimas. Es una visita imprescindible para comprender la fragilidad y la grandeza de la civilización antigua.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/UnderwaterBaia.jpg" alt="Parque arqueológico submarino de Baia" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Parque arqueológico submarino de Baia</h3>
+    <p class="ficha__lugar">Golfo de Pozzuoli, Italia</p>
+    <p>El Parque Arqueológico Subacuático de Baia conserva los restos de una antigua ciudad romana de lujo, sumergida por el lento hundimiento de la caldera volcánica. Villas, mosaicos, columnas y calles descansan bajo el agua cerca de Nápoles.</p>
+    <p>Se puede explorar en barco con fondo de cristal, haciendo snorkel o buceando entre los vestigios. Es un viaje fascinante a la opulencia romana y a la geología activa de los Campos Flégreos.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/ShiCheng.jpg" alt="Shi Cheng" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Shi Cheng</h3>
+    <p class="ficha__lugar">Lago Qiandao, Zhejiang, China</p>
+    <p>Shi Cheng, la «Ciudad León», fue fundada hace más de 1.300 años y quedó sumergida en 1959 con la creación del lago Qiandao. Sus murallas, templos, arcos y calles se conservan bajo el agua en un estado sorprendente.</p>
+    <p>Es un destino único para el buceo arqueológico, con visibilidad variable y estructuras de las dinastías Ming y Qing. La ciudad sumergida ofrece una experiencia inquietante y fascinante de la historia china oculta bajo las aguas.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/SanMiguelFay.jpg" alt="Monasterio de San Miguel de Fay" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Monasterio de San Miguel de Fay</h3>
+    <p class="ficha__lugar">Cingles de Bertí, Barcelona, España</p>
+    <p>El monasterio de San Miguel de Fay (Sant Miquel del Fai) es un conjunto monástico excavado en un acantilado, junto a cascadas y cuevas naturales. Fundado en la Edad Media, combina arquitectura románica, espacios rupestres y un entorno natural sobrecogedor.</p>
+    <p>Las pasarelas sobre el barranco, las pozas y la iglesia semiexcavada en la roca crean una experiencia única entre patrimonio y naturaleza. Es un destino perfecto para una excursión desde Barcelona, lejos del bullicio urbano.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Neuschwanstein.jpg" alt="Castillo de Neuschwanstein" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Castillo de Neuschwanstein</h3>
+    <p class="ficha__lugar">Baviera, Alemania</p>
+    <p>El castillo de Neuschwanstein, encaramado en los Alpes bávaros, es el sueño romántico del rey Luis II de Baviera. Con torres, murallas y salones inspirados en la mitología germánica y las óperas de Wagner, inspiró el castillo de Disney y es uno de los edificios más visitados de Europa.</p>
+    <p>Su interior deslumbra con pinturas murales, lámparas doradas y una gruta artificial, mientras los miradores del puente Marienbrücke ofrecen la postal más famosa de Alemania. Es una parada imprescindible para los amantes del romanticismo arquitectónico.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/TourlitisLighthouse.jpg" alt="Faro de Tourlitis, Andros" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Faro de Tourlitis</h3>
+    <p class="ficha__lugar">Andros, Grecia</p>
+    <p>El faro de Tourlitis, en la isla griega de Andros, es uno de los faros más singulares y fotogénicos del Mediterráneo. Se alza sobre una aguja de roca erosionada por el mar, unido a tierra por una escalera tallada en la piedra.</p>
+    <p>Construido en el siglo XIX y restaurado tras la Segunda Guerra Mundial, parece flotar sobre el Egeo. Es un lugar ideal para contemplar el atardecer, entre acantilados, espuma y la silueta de un faro que desafía al mar.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Linderhof.jpg" alt="Palacio Linderhof" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Palacio Linderhof</h3>
+    <p class="ficha__lugar">Baviera, Alemania</p>
+    <p>El Palacio Linderhof, cerca de Oberammergau, es el único gran palacio que el rey Luis II de Baviera vio terminado. De estilo rococó, combina salones dorados, espejos, porcelanas y techos pintados, en una escala íntima pero deslumbrante.</p>
+    <p>Sus jardines incluyen terrazas, fuentes, estatuas y la gruta de Venus, una cueva artificial con iluminación de colores y un lago interior. Es una obra maestra del romanticismo bávaro, menos masificada que Neuschwanstein pero igual de fascinante.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/ForbiddenCity.jpg" alt="La Ciudad Prohibida" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>La Ciudad Prohibida</h3>
+    <p class="ficha__lugar">Pekín, China</p>
+    <p>La Ciudad Prohibida, en pleno corazón de Pekín, fue la residencia de los emperadores chinos durante casi 500 años. Sus 980 edificios de madera, techos amarillos y patios monumentales forman el mayor conjunto palaciego del mundo y son Patrimonio de la Humanidad.</p>
+    <p>Recorrer sus salones, jardines y museos es adentrarse en la corte imperial de las dinastías Ming y Qing. Cada puerta, color y decoración responde a un profundo simbolismo cósmico y político.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Eurotunel.jpg" alt="Eurotúnel" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Eurotúnel</h3>
+    <p class="ficha__lugar">Canal de la Mancha, Francia/Reino Unido</p>
+    <p>El Eurotúnel es una de las mayores obras de ingeniería del siglo XX. Con 50,5 kilómetros de longitud, conecta Folkestone (Inglaterra) con Calais (Francia) bajo el Canal de la Mancha, y es el tramo submarino más largo del mundo.</p>
+    <p>Inaugurado en 1994, permite el paso de trenes de alta velocidad Eurostar, vehículos de pasajeros y mercancías. Cruzar de un país a otro en solo 35 minutos es una experiencia única, que une la isla británica con el continente europeo.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/CalellaPalafrugell.jpg" alt="Calella de Palafrugell" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Calella de Palafrugell</h3>
+    <p class="ficha__lugar">Girona, Cataluña, España</p>
+    <p>Calella de Palafrugell es un pueblo costero de la Costa Brava formado por calas de aguas turquesas, casas blancas y antiguas barracas de pescadores. A diferencia de otros destinos más masificados, conserva un ambiente marinero auténtico, con barcas varadas en la arena y paseos junto al mar.</p>
+    <p>Sus jardines botánicos de Cap Roig, sus playas como El Golfet y sus caminos de ronda que unen calas la convierten en un lugar perfecto para caminar, nadar y disfrutar del Mediterráneo en estado puro.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Cadaques.jpg" alt="Cadaqués" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Cadaqués</h3>
+    <p class="ficha__lugar">Girona, Cataluña, España</p>
+    <p>Cadaqués es un pueblo blanco de la Costa Brava, encajado entre el mar Mediterráneo y las montañas del Cap de Creus. Sus calles empedradas, casas encaladas y el puerto pesquero conservan un aire de villa mediterránea auténtica, lejos del turismo de masas.</p>
+    <p>El paisaje y la luz única atrajeron a artistas como Salvador Dalí, cuya casa en Portlligat se puede visitar. Es un destino para pasear sin prisa, nadar en calas solitarias y contemplar atardeceres entre barcas y rocas esculpidas por el viento.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Albarracin.jpg" alt="Albarracín" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Albarracín</h3>
+    <p class="ficha__lugar">Teruel, Aragón, España</p>
+    <p>Albarracín es un pueblo medieval de calles empedradas, casas de yeso rojizo y murallas que ascienden por un escarpado meandro del río Guadalaviar. Su casco histórico, declarado conjunto monumental, conserva un aire intacto con la catedral, el alcázar y la torre del Andador.</p>
+    <p>Es uno de los pueblos más bellos de España, rodeado por los Pinares de Ródeno y paisajes kársticos. Pasear por sus estrechas callejuelas al atardecer, con la piedra rojiza iluminada, es una experiencia íntima y evocadora.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/CastilloCorvin.jpg" alt="Castillo de Corvin" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Castillo de Corvin</h3>
+    <p class="ficha__lugar">Hunedoara, Transilvania, Rumanía</p>
+    <p>El castillo de Corvin, también llamado castillo de Hunyadi, es una de las fortalezas góticas más impresionantes de Europa oriental. Sus torres puntiagudas, puentes levadizos, patios y salas renacentistas se alzan sobre un promontorio rocoso en la ciudad de Hunedoara.</p>
+    <p>Ligado al legendario Juan de Hunyadi y asociado a historias como la de Vlad el Empalador, el castillo es un viaje al medievo rumano. Sus galerías, capillas y mazmorras ofrecen una atmósfera de cuento, entre la historia y la leyenda.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/BanskaStiavnica.jpg" alt="Banská Štiavnica" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Banská Štiavnica</h3>
+    <p class="ficha__lugar">Región de Banská Bystrica, Eslovaquia</p>
+    <p>Banská Štiavnica es una histórica ciudad minera enclavada en un valle volcánico de los Cárpatos eslovacos. Su casco antiguo, declarado Patrimonio de la Humanidad, conserva palacios renacentistas, iglesias góticas, plazas empedradas y el castillo viejo y nuevo.</p>
+    <p>La ciudad fue uno de los centros de minería de plata y oro más importantes de Europa. Su academia de minería, una de las primeras del mundo, y sus pozos, lagos artificiales y túneles cuentan una historia de innovación técnica y riqueza.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Sighisoara.jpg" alt="Sighișoara" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Sighișoara</h3>
+    <p class="ficha__lugar">Transilvania, Rumanía</p>
+    <p>Sighișoara es una de las ciudades medievales mejor conservadas de Europa y Patrimonio de la Humanidad. Su ciudadela amurallada, con torres de colores, calles empedradas y casas góticas, se alza sobre una colina en el corazón de Transilvania. La Torre del Reloj, la iglesia de la Colina y la escalera cubierta son sus joyas más famosas.</p>
+    <p>Es también la ciudad natal de Vlad el Empalador, cuya casa se puede visitar. Pasear por sus callejuelas al atardecer, entre murallas y tejados rojos, es adentrarse en un cuento medieval lleno de historia y leyenda.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/BranCastle.jpg" alt="Castillo de Bran" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Castillo de Bran</h3>
+    <p class="ficha__lugar">Bran, Transilvania, Rumanía</p>
+    <p>El castillo de Bran, encaramado sobre un paso de montaña entre Transilvania y Valaquia, es conocido popularmente como el castillo de Drácula. Aunque su vínculo con Vlad el Empalador es más literario que histórico, su silueta de torres, pasadizos y murallas alimenta la leyenda gótica.</p>
+    <p>Construido en el siglo XIV, fue residencia real y aduana fronteriza. Hoy alberga un museo con muebles, armaduras y objetos de la reina María de Rumanía, y ofrece visitas entre niebla, bosques y montañas de los Cárpatos.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/HighclereCastle.jpg" alt="Castillo de Highclere" class="recorte-abajo" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Castillo de Highclere</h3>
+    <p class="ficha__lugar">Hampshire, Inglaterra</p>
+    <p>El castillo de Highclere es una mansión neogótica victoriana rodeada de jardines diseñados por Capability Brown. Su silueta de torres y almenas, su biblioteca y sus salones de estilo renacentista se han hecho mundialmente famosos como escenario de la serie Downton Abbey.</p>
+    <p>Hogar de la familia Herbert, condes de Carnarvon, está vinculado al descubrimiento de la tumba de Tutankamón. Hoy abre sus puertas en fechas seleccionadas y permite recorrer estancias llenas de historia, retratos y recuerdos de una época dorada.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/CastilloCantacuzino.jpg" alt="Castillo de Cantacuzino" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Castillo de Cantacuzino</h3>
+    <p class="ficha__lugar">Bușteni, Prahova, Rumanía</p>
+    <p>El castillo de Cantacuzino se alza en pleno valle de Prahova, a los pies de los Cárpatos. Construido a principios del siglo XX para el príncipe Gheorghe Grigore Cantacuzino, es una de las mejores muestras de la arquitectura neorrumana, con arcos, columnas, azulejos y una silueta elegante que combina historicismo y romanticismo.</p>
+    <p>Hoy funciona como museo, espacio cultural y escenario de eventos. Su exterior imponente se ha hecho conocido como la academia Nevermore de la serie Wednesday. Rodeado de bosques y montañas, es una parada imprescindible en la Ruta de los Cárpatos.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/AitBenhaddou.jpg" alt="Aït Benhaddou" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Aït Benhaddou</h3>
+    <p class="ficha__lugar">Ouarzazate, Marruecos</p>
+    <p>Aït Benhaddou es un ksar fortificado de adobe y piedra en la antigua ruta de caravanas entre el Sahara y Marrakech. Sus torres, murallas y casas escalonadas forman uno de los conjuntos de arquitectura de tierra más impresionantes de Marruecos, declarado Patrimonio de la Humanidad.</p>
+    <p>El lugar ha sido escenario de numerosas películas, desde Lawrence de Arabia hasta Juego de Tronos. Recorrer sus callejuelas, subir al granero fortificado y contemplar el valle desde lo alto es viajar al pasado bereber y cinematográfico a la vez.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/LaPedrera.jpg" alt="La Pedrera" class="recorte-alto" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>La Pedrera (Casa Milà)</h3>
+    <p class="ficha__lugar">Barcelona, Cataluña, España</p>
+    <p>La Pedrera, también conocida como Casa Milà, es una de las obras maestras de Antoni Gaudí. Su fachada de piedra ondulada, sin líneas rectas, y sus balcones de hierro forjado parecen esculpidos por el viento y el mar. Fue la última gran obra civil del arquitecto antes de dedicarse a la Sagrada Familia.</p>
+    <p>El interior esconde patios de luz, columnas orgánicas y una azotea con chimeneas que parecen guerreros y centinelas. Declarada Patrimonio de la Humanidad, ofrece exposiciones, miradores y una inmersión total en el universo creativo de Gaudí.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/AngkorWat.jpg" alt="Angkor Wat" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Angkor Wat</h3>
+    <p class="ficha__lugar">Siem Reap, Camboya</p>
+    <p>Angkor Wat es el mayor monumento religioso del mundo y la obra cumbre del Imperio jemer. Construido en el siglo XII como templo hindú y transformado después en santuario budista, su silueta de torres en forma de loto y sus largos muros de arenisca se reflejan sobre un foso ceremonial.</p>
+    <p>Sus galerías de relieves narran epopeyas hindúes, procesiones reales y escenas del Ramayana y Mahabharata. Ver amanecer sobre sus torres, con la niebla y el agua en calma, es una experiencia sobrecogedora, símbolo del esplendor y el misterio de la antigua Camboya.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/CasaBatllo.jpg" alt="Casa Batlló" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Casa Batlló</h3>
+    <p class="ficha__lugar">Barcelona, Cataluña, España</p>
+    <p>La Casa Batlló, situada en el Paseo de Gracia de Barcelona, es una de las obras más fascinantes de Antoni Gaudí. Su fachada ondulada, cubierta de mosaicos de colores y balcones con forma de máscaras, evoca un mundo marino y onírico que desafía la arquitectura convencional.</p>
+    <p>El interior sorprende con patios de luz azulada, escaleras orgánicas y techos que parecen caparazones. Declarada Patrimonio de la Humanidad, es una visita imprescindible para entender el modernismo catalán y la creatividad sin límites de Gaudí.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Borobudur.jpg" alt="Borobudur" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Borobudur</h3>
+    <p class="ficha__lugar">Java Central, Indonesia</p>
+    <p>Borobudur es el mayor templo budista del mundo y una de las construcciones religiosas más impresionantes del planeta. Levantado en el siglo IX, se despliega en nueve plataformas escalonadas, coronadas por estupas y cientos de budas, en medio de un paisaje de volcanes y selva.</p>
+    <p>Sus más de 2.600 relieves narran la vida de Buda y las escrituras budistas, invitando a un recorrido simbólico desde el mundo terrenal hacia la iluminación. Ver el amanecer sobre sus estupas es una experiencia espiritual inolvidable, entre niebla y montañas.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/IstanaNurulIman.jpg" alt="Istana Nurul Iman" class="recorte-bajo" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Istana Nurul Iman</h3>
+    <p class="ficha__lugar">Bandar Seri Begawan, Brunéi</p>
+    <p>Istana Nurul Iman es el palacio residencial más grande del mundo y la residencia oficial del Sultán de Brunéi. Su nombre significa «Palacio de la Luz de la Fe», y su arquitectura mezcla estilos islámicos y malayos con cúpulas doradas, minaretes y enormes salones de recepción.</p>
+    <p>El complejo cuenta con más de 1.700 habitaciones, mezquita privada, establos y jardines, aunque solo abre al público durante las celebraciones del Hari Raya Aidilfitri. Es un símbolo del poder, la fe y la opulencia del pequeño sultanato de Borneo.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Prambanan.jpg" alt="Prambanan" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Prambanan</h3>
+    <p class="ficha__lugar">Java Central, Indonesia</p>
+    <p>Prambanan es el mayor complejo de templos hindúes de Indonesia y uno de los conjuntos arquitectónicos más impresionantes del sudeste asiático. Dedicado a la trinidad hindú —Brahma, Vishnu y Shiva—, sus torres puntiagudas se elevan más de 45 metros sobre la llanura de Java Central.</p>
+    <p>Sus relieves narran el Ramayana y muestran la maestría escultórica del reino de Mataram. Declarado Patrimonio de la Humanidad, es especialmente bello al atardecer, cuando las siluetas de los templos se recortan contra el cielo.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/SainteChapelle.jpg" alt="Sainte-Chapelle" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Sainte-Chapelle</h3>
+    <p class="ficha__lugar">París, Francia</p>
+    <p>La Sainte-Chapelle, en la Île de la Cité de París, es una obra maestra del gótico radiante. Fue construida en el siglo XIII por encargo de San Luis para custodiar reliquias de la Pasión de Cristo, y su interior deslumbra con más de mil metros cuadrados de vidrieras medievales.</p>
+    <p>Las vidrieras, que narran escenas bíblicas desde el Génesis hasta la Resurrección, sumergen el espacio en una luz azul y roja hipnótica. Es uno de los conjuntos de vitrales más bellos del mundo y una visita imprescindible en París.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Bagan.jpg" alt="Bagan" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Bagan</h3>
+    <p class="ficha__lugar">Mandalay, Myanmar</p>
+    <p>Bagan es uno de los conjuntos arqueológicos más impresionantes del mundo, con más de dos mil templos y pagodas repartidos en una llanura junto al río Irrawaddy. Entre los siglos XI y XIII fue la capital de un floreciente reino budista que levantó una arquitectura sagrada única.</p>
+    <p>Sus templos de ladrillo, estupas doradas y relieves cubiertos de hollín crean un paisaje místico inolvidable. Ver el amanecer o el atardecer desde una terraza, con globos aerostáticos elevándose sobre los templos, es una de las grandes experiencias viajeras del sudeste asiático.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Fenghuang.jpg" alt="Fenghuang" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Fenghuang</h3>
+    <p class="ficha__lugar">Hunan, China</p>
+    <p>Fenghuang, la «ciudad fénix», es una antigua ciudad china a orillas del río Tuo, famosa por sus casas de madera sobre pilotes, sus puentes de piedra y sus callejuelas empedradas. Su casco histórico, bien conservado, evoca la China imperial y ha inspirado a escritores como Shen Congwen.</p>
+    <p>La ciudad es hogar de minorías miao y tujia, cuyas tradiciones, trajes y festividades se asoman entre los tejados de tejas negras. Al anochecer, las luces se reflejan en el río y Fenghuang se convierte en una estampa mágica de la China clásica.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/CristoOtero.jpg" alt="Cristo del Otero en Palencia" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Cristo del Otero</h3>
+    <p class="ficha__lugar">Palencia, Castilla y León, España</p>
+    <p>El Cristo del Otero es una colosal escultura de más de 20 metros de altura que se alza sobre un cerro a las afueras de Palencia. Obra del escultor Victorio Macho, representa a Cristo con los brazos abiertos en gesto de bendición y es uno de los símbolos de la ciudad.</p>
+    <p>Su ubicación elevada lo convierte en un mirador privilegiado sobre la capital palentina y la llanura castellana. La combinación de arte, espiritualidad y paisaje lo hace una visita imprescindible para entender la identidad de Palencia.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/RajgadFort.jpg" alt="Fuerte de Rajgad" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Fuerte de Rajgad</h3>
+    <p class="ficha__lugar">Maharashtra, India</p>
+    <p>Rajgad Fort, en los Ghats occidentales de Maharashtra, fue una de las capitales del Imperio maratha y una de las fortalezas de montaña más impresionantes de la India. Sus murallas, puertas monumentales y cisternas se extienden sobre una meseta rocosa a más de 1.300 metros de altitud.</p>
+    <p>La fortaleza, conquistada por Shivaji Maharaj, combina historia militar, arquitectura defensiva y vistas panorámicas sobre valles y picos vecinos. Es un destino ideal para senderistas e interesados en la historia del Decán, lejos de los circuitos turísticos habituales.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/TaqIKisra.jpg" alt="Taq-i Kisra" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Taq-i Kisra</h3>
+    <p class="ficha__lugar">Ctesifonte, Irak</p>
+    <p>Taq-i Kisra, el Gran Arco de Ctesifonte, es el vestigio más imponente del palacio sasánida de la antigua Persia. Su bóveda de ladrillo, una de las mayores de la antigüedad, se alza sobre la llanura mesopotámica como un eco de la grandeza imperial persa.</p>
+    <p>Construido entre los siglos III y VI, fue símbolo del poder de los reyes sasánidas y una de las maravillas de la arquitectura mundial. Hoy es un lugar de memoria, cargado de historia y melancolía, que recuerda el esplendor de la Persia preislámica.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/WorldNomadGames.jpg" alt="Juegos Mundiales Nómadas" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>World Nomad Games</h3>
+    <p class="ficha__lugar">Asia Central (Kirguistán, Kazajistán y otros países anfitriones)</p>
+    <p>Los Juegos Mundiales Nómadas son una celebración espectacular de las culturas ecuestres y nómadas de Asia Central y otras regiones. Reúnen a deportistas y artistas en competiciones como el kok-boru, la caza con águilas, tiro con arco a caballo, lucha libre y carreras de caballos, junto a exposiciones de yurtas, música y artesanía.</p>
+    <p>Nacidos en Kirguistán en 2014 para preservar y difundir el patrimonio nómada, los juegos se celebran cada dos años y congregan a delegaciones de decenas de países. Es una experiencia única que combina deporte, identidad cultural y memoria ancestral en un entorno de estepas y montañas.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/JalMahal.jpg" alt="Jal Mahal" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Jal Mahal</h3>
+    <p class="ficha__lugar">Jaipur, Rajastán, India</p>
+    <p>Jal Mahal, el «Palacio del Agua», es una joya arquitectónica que parece flotar en el lago Man Sagar, en Jaipur. Construido en el siglo XVIII en estilo rajput y mogol, su fachada de arenisca roja se refleja en las aguas, creando una estampa de gran belleza y serenidad.</p>
+    <p>De sus cinco pisos, cuatro permanecen sumergidos cuando el lago está lleno, lo que añade misterio a su silueta. Aunque el acceso al interior está restringido, contemplarlo desde la orilla al amanecer o al atardecer es una de las imágenes más evocadoras de Rajastán.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/ShahIZinda.jpg" alt="Shah-i-Zinda en Samarcanda" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Shah-i-Zinda (El Rey Viviente)</h3>
+    <p class="ficha__lugar">Samarcanda, Uzbekistán</p>
+    <p>Shah-i-Zinda, la necrópolis del «Rey Viviente», es un conjunto de mausoleos y mezquitas que se alinean a lo largo de una avenida elevada en Samarcanda. Sus cúpulas turquesas y sus portales cubiertos de azulejos, construidos entre los siglos XI y XV, forman uno de los conjuntos funerarios más bellos del mundo islámico.</p>
+    <p>El lugar debe su nombre a la leyenda de Qusam ibn Abbas, primo del profeta Mahoma, que según la tradición no murió y permanece vivo. Peregrinos y viajeros recorren sus estrechas galerías entre cerámica vidriada, caligrafía cúfica y una atmósfera de recogimiento que parece suspendida en el tiempo.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Hallgrimskirkja.jpg" alt="Hallgrímskirkja" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Hallgrímskirkja</h3>
+    <p class="ficha__lugar">Reikiavik, Islandia</p>
+    <p>Hallgrímskirkja es la iglesia más emblemática de Islandia y el edificio más visible de Reikiavik. Su torre de hormigón, de 74 metros de altura, se inspira en las columnas de basalto y en el paisaje volcánico islandés, con una silueta expresionista que se ha convertido en símbolo de la ciudad.</p>
+    <p>En su interior destacan el gran órgano y la luz blanca y limpia del norte. Desde su mirador se contemplan los tejados de colores de Reikiavik, el mar y las montañas circundantes. Es un hito arquitectónico que une espiritualidad, modernidad y naturaleza islandesa.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Bagdad.jpg" alt="Bagdad" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Bagdad</h3>
+    <p class="ficha__lugar">Irak</p>
+    <p>Bagdad, la capital de Irak, fue fundada en el siglo VIII por el califa abasí Al-Mansur como centro del mundo islámico. Su legado como capital de la Edad de Oro islámica pervive en monumentos como la Universidad Mustansiriya, el Palacio Abasí o la mezquita de Al-Kadhimiya, entre zocos y callejuelas cargadas de historia.</p>
+    <p>La ciudad, a orillas del Tigris, conserva museos, mausoleos y restos de la antigua Babilonia cercana. A pesar de los conflictos, Bagdad muestra una vitalidad cultural y una hospitalidad que recuerdan su glorioso pasado mesopotámico.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/GoticoEdimburgo.jpg" alt="Arquitectura gótica de Edimburgo" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Arquitectura gótica de Edimburgo</h3>
+    <p class="ficha__lugar">Edimburgo, Escocia</p>
+    <p>Edimburgo conserva un extraordinario patrimonio gótico que define su silueta medieval. La catedral de St Giles, con su corona de agujas y vidrieras, domina la Royal Mile, mientras que la iglesia de St Margaret, dentro del castillo, es una de las joyas más antiguas de la ciudad.</p>
+    <p>El estilo gótico escocés se aprecia también en capillas, monumentos y fachadas victorianas que reinterpretan el medievo con piedra oscura y detalles ornamentales. Recorrer Edimburgo es sumergirse en un paisaje urbano donde el gótico sigue vivo en cada aguja y cada arco apuntado.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Stellenbosch.jpg" alt="Stellenbosch" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Stellenbosch</h3>
+    <p class="ficha__lugar">Provincia del Cabo Occidental, Sudáfrica</p>
+    <p>Los cielos del sur de África son sencillamente especiales: vastos, limpios y de una belleza difícil de explicar. Y si entre todos los paisajes del sur del continente hay que elegir un lugar pastoral perfecto, Stellenbosch es la respuesta. Sus colinas cubiertas de viñedos, sus acantilados al fondo y su núcleo colonial neerlandés crean una armonía única.</p>
+    <p>La ciudad combina la serenidad del campo vinícola con una arquitectura colonial bien conservada, calles arboladas y una cultura del vino de fama mundial. Es el destino ideal para disfrutar del paisaje, la gastronomía y la calma luminosa del Cabo.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/DaLat.jpg" alt="Da Lat" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Da Lat</h3>
+    <p class="ficha__lugar">Lâm Đồng, Vietnam</p>
+    <p>Da Lat, en las tierras altas centrales de Vietnam, es una ciudad de clima fresco y paisajes de pinos, lagos y cascadas. Antigua estación de montaña colonial francesa, conserva villas de estilo europeo, jardines y un aire romántico que la distingue del resto del país.</p>
+    <p>Es conocida por sus plantaciones de café, flores y fresas, y por lugares como el lago Xuan Huong o la cascada Pongour. Da Lat combina naturaleza, arquitectura colonial y vida local en un entorno tranquilo y evocador.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Santorini.jpg" alt="Santorini" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Santorini</h3>
+    <p class="ficha__lugar">Cícladas, Grecia</p>
+    <p>Santorini es una isla volcánica en forma de media luna que se asoma a una caldera inundada por el mar Egeo. Sus pueblos blancos con cúpulas azules, como Oia y Fira, cuelgan de acantilados vertiginosos y ofrecen algunos de los atardeceres más famosos del mundo.</p>
+    <p>La isla combina arquitectura cicládica, ruinas minoicas de Akrotiri y playas de arena volcánica negra y roja. Es un destino de belleza intensa, entre el azul del mar, el blanco de la cal y la historia de una de las erupciones más grandes de la antigüedad.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Tbilisi.jpg" alt="Tiflis" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Tiflis</h3>
+    <p class="ficha__lugar">Tbilisi, Georgia</p>
+    <p>Tiflis, la capital de Georgia, es una ciudad de capas superpuestas: casas con balcones de madera junto a baños termales abovedados, iglesias ortodoxas sobre colinas, sinagogas y mezquitas que conviven desde hace siglos. Su casco antiguo, bajo la fortaleza de Narikala, conserva el trazado irregular de la antigua ruta de la seda.</p>
+    <p>Junto a ese patrimonio, Tiflis muestra una arquitectura contemporánea audaz, con puentes de cristal y edificios escultóricos junto al río Kurá. Su vida nocturna es una de las más vibrantes de la región: clubes como Bassiani o Khidi, en antiguos edificios industriales, han convertido la ciudad en un referente mundial del techno underground. A ello se suman bares ocultos, cafés bohemios y una escena artística que se despliega hasta el amanecer.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/BogdanBogdanovic.jpg" alt="Monumentos de Bogdan Bogdanović" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Monumentos de Bogdan Bogdanović</h3>
+    <p class="ficha__lugar">Antigua Yugoslavia (Serbia, Croacia, Bosnia, etc.)</p>
+    <p>Bogdan Bogdanović fue arquitecto, escultor y alcalde de Belgrado, y dejó una de las obras conmemorativas más singulares del siglo XX. Sus monumentos abstractos, repartidos por pueblos y bosques de la antigua Yugoslavia, no representan héroes ni batallas: son paisajes simbólicos de piedra, túmulos, puertas y senderos que invitan al recogimiento y a la memoria.</p>
+    <p>Obras como el Monumento a las Víctimas de Jasenovac, el Parque Conmemorativo de Dudik o el de Šumarice combinan arquitectura, escultura y naturaleza con una fuerza poética que trasciende ideologías. Recorrer sus monumentos es adentrarse en una arqueología de la memoria, en un lenguaje formal único que sigue conmoviendo por su silencio y su escala.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/EsnaTemple.jpg" alt="Templo de Esna" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Templo de Esna</h3>
+    <p class="ficha__lugar">Esna, Egipto</p>
+    <p>El Templo de Esna, dedicado al dios creador Khnum, es una joya oculta del Egipto ptolemaico y romano. Su sala hipóstila, excavada nueve metros por debajo del nivel actual de la ciudad, conserva columnas con capiteles florales y un techo astronómico recientemente restaurado que ha revelado una policromía deslumbrante.</p>
+    <p>Los relieves y textos jeroglíficos cubren cada superficie, mostrando escenas rituales, ofrendas y el simbolismo del cosmos. Es un destino íntimo y poco concurrido, ideal para contemplar la sofisticación del arte egipcio tardío en un entorno silencioso.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/ElEscorial.jpg" alt="Monasterio de El Escorial" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Monasterio de El Escorial</h3>
+    <p class="ficha__lugar">San Lorenzo de El Escorial, Madrid, España</p>
+    <p>El Real Monasterio de San Lorenzo de El Escorial es una de las cumbres del Renacimiento español, mandado construir por Felipe II en el siglo XVI. Su traza, iniciada por Juan Bautista de Toledo y culminada por Juan de Herrera, combina palacio, basílica, biblioteca y panteón real en un conjunto de granito de severa belleza, declarado Patrimonio de la Humanidad.</p>
+    <p>Entre sus espacios más emblemáticos destaca el Claustro principal, con las galerías decoradas por los frescos de Pellegrino Tibaldi, y sobre todo el Patio de los Evangelistas, corazón espiritual del monasterio. Este jardín claustral, restaurado recientemente para recuperar su traza original del siglo XVI, está presidido por el templete de Juan de Herrera, con esculturas de Juan Bautista Monegro, que representa la fuente de la Gracia y los cuatro evangelistas.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/SantuarioVerdad.jpg" alt="Santuario de la Verdad en Pattaya" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Santuario de la Verdad</h3>
+    <p class="ficha__lugar">Pattaya, Tailandia</p>
+    <p>El Santuario de la Verdad es una obra monumental enteramente tallada en madera, sin un solo clavo metálico, que se alza a orillas del golfo de Tailandia. Concebido por el empresario y mecenas Lek Viriyaphant en 1981, sigue en construcción, por lo que se ha convertido en un museo vivo donde los artesanos continúan esculpiendo cada superficie con motivos de las tradiciones tailandesa, jemer, china e hindú.</p>
+    <p>Su estructura de 105 metros de altura combina las cuatro grandes iconografías religiosas de Asia en un solo edificio: hinduismo, budismo, confucianismo y tradiciones locales. Declarado uno de los grandes hitos artísticos del sudeste asiático, el santuario es a la vez templo, museo, taller y escenario de danzas y artes marciales tailandesas.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/TemploBlanco.jpg" alt="Templo Blanco (Wat Rong Khun)" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Templo Blanco (Wat Rong Khun)</h3>
+    <p class="ficha__lugar">Chiang Rai, Tailandia</p>
+    <p>El Templo Blanco, o Wat Rong Khun, es una de las obras contemporáneas más sorprendentes de Tailandia. Diseñado por el artista Chalermchai Kositpipat, comenzó a construirse en 1997 y sigue en evolución. Su blancura deslumbrante, cubierta de fragmentos de espejo que centellean al sol, transforma el recinto en un escenario irreal y fascinante.</p>
+    <p>El visitante cruza un puente sobre una multitud de manos que emergen del suelo, símbolo del deseo y el sufrimiento humano, para entrar en un templo donde conviven budismo, iconografía pop, cultura contemporánea y una crítica a la sociedad moderna. Es un lugar de peregrinación, arte y reflexión, que rompe todos los moldes de la arquitectura religiosa tradicional.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Hualinyuan.jpg" alt="Hualinyuan" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Hualinyuan</h3>
+    <p class="ficha__lugar">Dezhou, Shandong, China</p>
+    <p>Hualinyuan es un ambicioso proyecto cultural que reconstruye a escala real algunos de los edificios más emblemáticos de la historia de China, desde la dinastía Wei del Norte hasta la dinastía Song. El resultado es un parque monumental donde se levantan réplicas exactas del Templo de Yongning, el Palacio de Verano del emperador Ming, el Salón Daqing de la dinastía Song o el Salón Zongzhang de la dinastía Tang, entre otros[reference:0].</p>
+    <p>Además de la arquitectura, el recinto alberga veintiún museos temáticos dedicados al arte, la historia y la cultura, con colecciones de porcelana, tallas de madera y objetos históricos. Su oferta se completa con espectáculos nocturnos de gran formato que combinan teatro, música y efectos visuales para narrar episodios de la historia china[reference:1].</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Petra.jpg" alt="Petra" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Petra</h3>
+    <p class="ficha__lugar">Ma'an, Jordania</p>
+    <p>Petra, la antigua capital del reino nabateo, es una de las maravillas arqueológicas del mundo. Sus fachadas monumentales, talladas directamente en la arenisca rosa de los acantilados, emergen tras un desfiladero estrecho llamado el Siq, que culmina ante el Tesoro (Al-Khazneh), el edificio más icónico de la ciudad.</p>
+    <p>Más allá del Tesoro, Petra despliega teatros romanos, tumbas reales, calles pavimentadas, templos y el monasterio (Ad-Deir), al que se asciende por cientos de escalones. Declarada Patrimonio de la Humanidad y una de las nuevas siete maravillas, es un destino sobrecogedor que combina historia, ingeniería hidráulica y desierto, y que sigue asombrando a quien la recorre al amanecer o al atardecer, cuando la piedra cambia de color.</p>
+  </div>
+</article>
+
+</div>
+<p class="volver"><a href="#inicio">↑ Volver al índice</a></p>
+</section>
+
+<!-- ============================================================
+     4. Expresiones contemporáneas
+     ============================================================ -->
+<section class="seccion" id="contemporaneo">
+<h2>Expresiones contemporáneas</h2>
+<p class="seccion__desc">Espacios donde la cultura actual, la música y la vanguardia definen una identidad diferente, mostrando la cara más moderna de sus países.</p>
+<div class="rejilla">
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Bassiani.jpg" alt="Bassiani en Tbilisi" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Bassiani en Tbilisi</h3>
+    <p class="ficha__lugar">Tiflis, Georgia</p>
+    <p>Bassiani es un club de techno situado en el sótano del estadio Dinamo de Tiflis, y uno de los epicentros de la música electrónica mundial. Su sonido, su iluminación y su comunidad han convertido a Tiflis en una capital de la vanguardia nocturna, heredera de la escena underground postsoviética.</p>
+    <p>Más que una discoteca, Bassiani es un espacio de libertad y resistencia cultural, con un ambiente inclusivo y vanguardista. Para muchos viajeros, representa la cara más moderna y creativa de Georgia, un contraste fascinante con sus monasterios y montañas.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/PalaceFriendshipPeoplesTashkent.jpg" alt="Palacio de la Amistad de los Pueblos" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Palacio de la Amistad de los Pueblos</h3>
+    <p class="ficha__lugar">Taskent, Uzbekistán</p>
+    <p>El Palacio de la Amistad de los Pueblos de Taskent es un icono arquitectónico de la era soviética en Uzbekistán. Su fachada de hormigón y celosías, con patrones geométricos inspirados en la tradición local, alberga un gran auditorio y espacios de reunión.</p>
+    <p>Hoy es un símbolo de la capital uzbeka y un ejemplo fascinante del modernismo centroasiático. Asistir a un concierto o simplemente contemplar su exterior permite entender la identidad mestiza de Taskent.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/HuevoColonSevilla.jpg" alt="Huevo de Colón de Zurab Tsereteli en Sevilla" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Huevo de Colón</h3>
+    <p class="ficha__lugar">Sevilla, España</p>
+    <p>El Huevo de Colón es una escultura monumental del artista georgiano Zurab Tsereteli, instalada en Sevilla. La obra, de bronce y gran tamaño, representa un huevo simbólico decorado con motivos marítimos y la figura de Cristóbal Colón, como homenaje a la conexión entre España y América.</p>
+    <p>La pieza genera curiosidad y debate, fiel al estilo provocador de Tsereteli. Se ha convertido en un hito visual contemporáneo, que contrasta con el rico patrimonio histórico de la ciudad.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Batumi.jpg" alt="Batumi" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Batumi</h3>
+    <p class="ficha__lugar">Adjara, Georgia</p>
+    <p>Batumi, en la costa del mar Negro, es la ciudad más moderna y lúdica de Georgia. Su paseo marítimo, la Torre del Alfabeto, la estatua giratoria de Ali y Nino y una arquitectura contemporánea de vidrio y acero dibujan una silueta sorprendente.</p>
+    <p>La ciudad combina playas, montañas y un casco antiguo con influencias otomanas y europeas. Es un destino que refleja la transformación de Georgia y su apuesta por el futuro, sin renunciar a su carácter caucásico.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Tokyo.jpg" alt="Tokio" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Tokio</h3>
+    <p class="ficha__lugar">Japón</p>
+    <p>Tokio es una megalópolis que combina tradición y vanguardia como ninguna otra. Templos y santuarios conviven con rascacielos, neones y calles infinitas. Barrios como Shibuya, Shinjuku o Asakusa muestran las múltiples caras de la capital japonesa.</p>
+    <p>Es un centro mundial de diseño, gastronomía y cultura pop. Desde mercados callejeros hasta restaurantes con estrellas Michelin, Tokio ofrece una experiencia urbana intensa y fascinante.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Beirut.jpg" alt="Beirut" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Beirut</h3>
+    <p class="ficha__lugar">Líbano</p>
+    <p>Beirut es una ciudad mediterránea vibrante y compleja, marcada por su historia y su capacidad de renacer. Su arquitectura mezcla edificios otomanos, franceses y contemporáneos, mientras sus calles rebosan de cafés, galerías y vida nocturna.</p>
+    <p>Es un cruce de culturas entre Oriente y Occidente, donde conviven mezquitas, iglesias y una escena artística pujante. Beirut ofrece una energía única en el Mediterráneo oriental.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Pristina.jpg" alt="Pristina" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Pristina</h3>
+    <p class="ficha__lugar">Kosovo</p>
+    <p>Pristina, la capital de Kosovo, es una ciudad joven y en plena transformación. Su arquitectura combina edificios otomanos, bloques socialistas y proyectos contemporáneos como la Biblioteca Nacional, de estética brutalista.</p>
+    <p>La vida urbana gira en torno a los cafés, la escena musical y una sociedad dinámica. Pristina ofrece una mirada distinta de los Balcanes, entre memoria y futuro.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/XinxiangCulturalTourismCenter.jpg" alt="Xinxiang Cultural Tourism Center" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Xinxiang Cultural Tourism Center</h3>
+    <p class="ficha__lugar">Xinxiang, China</p>
+    <p>El Xinxiang Cultural Tourism Center, diseñado por Mathieu Forest Architecte, es una obra arquitectónica contemporánea de formas fluidas y volúmenes escultóricos. Su fachada de vidrio y metal crea un diálogo entre la cultura, el turismo y el paisaje urbano.</p>
+    <p>Concebido como un hito para la ciudad, el edificio acoge espacios expositivos y de encuentro. Es un ejemplo del dinamismo arquitectónico de la China actual y de la búsqueda de nuevas identidades urbanas.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/EarthshipsTaos.jpg" alt="Comunidades de Earthships en Taos" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Comunidades de Earthships (Naves Tierra) en Taos</h3>
+    <p class="ficha__lugar">Nuevo México, Estados Unidos</p>
+    <p>Las Earthships, o Naves Tierra, son viviendas bioclimáticas construidas con materiales reciclados como neumáticos, botellas y latas, integradas en el paisaje desértico de Nuevo México. Creadas por el arquitecto Michael Reynolds, funcionan fuera de la red: captan agua de lluvia, generan energía solar y cultivan alimentos en invernaderos interiores.</p>
+    <p>En Taos se encuentra la comunidad original, donde es posible visitar, alojarse o realizar talleres. Es un destino fascinante para quienes buscan arquitectura sostenible, autosuficiencia y una forma de vida alternativa en armonía con el desierto.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/EscenaUndergroundTeheran.jpg" alt="Escena underground de Teherán" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Escena underground de Teherán</h3>
+    <p class="ficha__lugar">Teherán, Irán</p>
+    <p>Bajo la superficie de Teherán late una escena cultural clandestina y vibrante. Músicos de rock, rap, electrónica y artistas visuales mantienen viva una contracultura creativa, a menudo en sótanos, galerías privadas y estudios ocultos, desafiando las restricciones oficiales.</p>
+    <p>Conocer esta escena es asomarse a otra cara de Irán: jóvenes que se expresan a través del arte, la moda, el cine y la música. Es una experiencia reveladora para viajeros interesados en la resistencia cultural y la creatividad contemporánea en Oriente Medio.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Cork.jpg" alt="Cork" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Cork</h3>
+    <p class="ficha__lugar">Irlanda</p>
+    <p>Cork, la segunda ciudad de Irlanda, vive una ambiciosa renovación urbana impulsada por el Cork City Development Plan. Hasta 2028 se remodelarán el puerto y los docklands, se restaurará la Crawford Art Gallery y se ampliará el Cork Event Centre para acoger conciertos, festivales y exposiciones.</p>
+    <p>La ciudad brilla especialmente durante Sounds from a Safe Harbour, un festival bienal de música, danza y conversación cofundado por el actor Cillian Murphy, nacido en Cork. Es el momento perfecto para descubrir una escena creativa en plena transformación.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/EasternOrientalExpress.jpg" alt="Eastern &amp; Oriental Express" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Eastern &amp; Oriental Express</h3>
+    <p class="ficha__lugar">Malasia / Singapur</p>
+    <p>El Eastern &amp; Oriental Express, operado por Belmond, regresó en 2024 tras una pausa de cuatro años con un rediseño deslumbrante. Paneles de madera de cerezo, sedas malayas, coche piano bar y un vagón observatorio al aire libre componen sus 15 vagones de lujo.</p>
+    <p>El itinerario Wild Malaysia parte de Singapur y se adentra en el Parque Nacional Taman Negara, donde los viajeros aprenden sobre el tigre malayo en peligro crítico de extinción con la organización Save Wild Tigers. La experiencia combina selva, conservación, alta cocina y glamour ferroviario.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/RuinBarsBudapest.jpg" alt="Ruin bars en Budapest" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Ruin bars en Budapest</h3>
+    <p class="ficha__lugar">Barrio judío, Budapest, Hungría</p>
+    <p>Los ruin bars de Budapest son bares instalados en antiguos edificios abandonados del barrio judío, decorados con objetos reciclados, grafitis y muebles eclécticos. El más famoso, Szimpla Kert, marcó el inicio de un fenómeno que se ha convertido en seña de identidad de la ciudad.</p>
+    <p>Estos espacios mezclan música, arte, gastronomía y vida nocturna en un ambiente caótico y creativo. Son una visita imprescindible para entender la energía alternativa y la cultura urbana de la capital húngara.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/HarbinOperaHouse.jpg" alt="Ópera de Harbin" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Ópera de Harbin</h3>
+    <p class="ficha__lugar">Harbin, Heilongjiang, China</p>
+    <p>La Ópera de Harbin, diseñada por el estudio MAD Architects, es una obra maestra de la arquitecatura contemporánea inspirada en el paisaje nevado del norte de China. Sus curvas fluidas de aluminio y vidrio emergen del terreno como dunas de nieve, difuminando los límites entre edificio y naturaleza.</p>
+    <p>El interior alberga dos salas de conciertos con acabados en madera y formas escultóricas. Inaugurada en 2015, se ha convertido en un icono cultural y arquitectónico, especialmente bello en invierno, cuando su silueta se funde con la nieve de la ciudad.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/HongKong.jpg" alt="Hong Kong" loading="lazy" decoding="async"><span class="ficha__estrella" role="img" aria-label="Destino favorito">★</span></div>
+  <div class="ficha__texto">
+    <h3>Hong Kong</h3>
+    <p class="ficha__lugar">Región Administrativa Especial, China</p>
+    <p>Hong Kong es una metrópolis vertical donde los rascacielos se aprietan entre montañas y mar. Su skyline desde Victoria Peak o el puerto de Victoria es una de las postales urbanas más impactantes del mundo, con el puerto, los juncos tradicionales y el horizonte de cristal como protagonistas.</p>
+    <p>La ciudad combina cultura cantonesa, templos, mercados callejeros, gastronomía de nivel mundial y una vibrante escena contemporánea. Desde los dai pai dongs hasta los bares de Central, Hong Kong es un viaje intenso entre tradición y futuro.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Rotterdam.jpg" alt="Róterdam" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Róterdam</h3>
+    <p class="ficha__lugar">Países Bajos</p>
+    <p>Róterdam es el gran lienzo en blanco de Europa. Tras ser arrasada por los bombardeos de la Segunda Guerra Mundial, la ciudad decidió no reconstruirse a imagen del pasado, sino reinventarse por completo. Hoy es el laboratorio de arquitectura contemporánea del continente, donde el atrevimiento formal y la sostenibilidad marcan cada nuevo proyecto.</p>
+    <p>El mercado de Markthal, las casas cúbicas y los rascacielos de silueta audaz definen un paisaje urbano radicalmente distinto al de Ámsterdam. Róterdam combina diseño vanguardista, vida portuaria y una energía creativa que atrae a arquitectos, artistas y viajeros que buscan la ciudad del futuro en el presente.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/GardensByTheBay.jpg" alt="Gardens by the Bay" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Gardens by the Bay</h3>
+    <p class="ficha__lugar">Singapur</p>
+    <p>Gardens by the Bay es un parque futurista de 101 hectáreas en el corazón de Singapur, famoso por sus Supertrees: gigantescas estructuras verticales cubiertas de vegetación que se iluminan por la noche. Sus cúpulas de cristal albergan el Cloud Forest, con una cascada interior y jardines tropicales, y el Flower Dome, el mayor invernadero de clima mediterráneo del mundo.</p>
+    <p>Es un símbolo de la apuesta de Singapur por la sostenibilidad y la fusión entre naturaleza, tecnología y diseño urbano. Pasear por sus pasarelas elevadas, contemplar los jardines desde el OCBC Skyway o disfrutar del espectáculo de luces es una experiencia única en Asia.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/DDP.jpg" alt="Dongdaemun Design Plaza (DDP)" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Dongdaemun Design Plaza (DDP)</h3>
+    <p class="ficha__lugar">Seúl, Corea del Sur</p>
+    <p>El Dongdaemun Design Plaza, conocido como DDP, es una obra maestra de la arquitectura contemporánea diseñada por Zaha Hadid. Sus formas fluidas y curvilíneas, sin ángulos rectos, parecen emerger del suelo como una escultura alienígena en pleno corazón de Seúl. Inaugurado en 2014, se ha convertido en un símbolo del diseño y la innovación coreana.</p>
+    <p>El complejo alberga salas de exposiciones, museos, espacios para desfiles de moda y zonas de descanso, rodeado de jardines y plazas públicas. De noche, su fachada de paneles metálicos se ilumina y el DDP se transforma en un espectáculo visual, especialmente durante la Seoul Fashion Week y otros eventos culturales.</p>
+  </div>
+</article>
+
+<article class="ficha">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Detroit.jpg" alt="Detroit" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Detroit</h3>
+    <p class="ficha__lugar">Míchigan, Estados Unidos</p>
+    <p>Detroit es el laboratorio definitivo del renacimiento post-industrial. Tras el colapso de la industria automovilística, la ciudad sufrió un abandono masivo, pero hoy sus fábricas vacías y cines en ruinas se han convertido en lienzos para artistas y en espacios para raves de techno underground.</p>
+    <p>Ver a la naturaleza reconquistando rascacielos abandonados y, al mismo tiempo, a jóvenes emprendedores creando huertos urbanos y galerías de arte, ofrece una visión profunda y cruda de la modernidad, del fracaso del capitalismo y de la resiliencia humana.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/CapillaRothko.jpg" alt="Capilla Rothko" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Capilla Rothko</h3>
+    <p class="ficha__lugar">Houston, Texas, Estados Unidos</p>
+    <p>La Capilla Rothko es un espacio espiritual y artístico único, creado por Mark Rothko y el arquitecto Philip Johnson en 1971. En su interior octogonal, catorce lienzos oscuros del artista envuelven al visitante en una atmósfera de silencio, contemplación y recogimiento, más allá de credos o religiones.</p>
+    <p>Concebida como un lugar de meditación, derechos humanos y diálogo, la capilla recibe a personas de todo el mundo. La luz tenue, los tonos profundos y la calma radical hacen de esta obra una experiencia profundamente conmovedora y contemporánea.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/ISS.jpg" alt="Estación Espacial Internacional" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Estación Espacial Internacional</h3>
+    <p class="ficha__lugar">Órbita terrestre baja</p>
+    <p>La Estación Espacial Internacional es el objeto habitado más extremo creado por el ser humano: un laboratorio en microgravedad que orbita la Tierra a unos 400 kilómetros de altitud y viaja a más de 27.000 kilómetros por hora. En su interior, astronautas de distintas nacionalidades conviven, investigan y observan el planeta desde una perspectiva que muy pocos han experimentado.</p>
+    <p>No es un destino turístico convencional, pero representa la frontera última del aislamiento y la exploración. Su existencia es un símbolo de cooperación científica global y de la capacidad humana de habitar fuera de nuestro mundo, mirando cada amanecer y cada atardecer desde la oscuridad del espacio.</p>
+  </div>
+</article>
+
+<article class="ficha ficha--favorita">
+  <div class="ficha__imagen"><img src="Fotos%20sitios/Tiangong.jpg" alt="Estación Espacial Tiangong" loading="lazy" decoding="async"></div>
+  <div class="ficha__texto">
+    <h3>Estación Espacial Tiangong</h3>
+    <p class="ficha__lugar">Órbita terrestre baja</p>
+    <p>La Estación Espacial Tiangong, cuyo nombre significa «Palacio Celestial», es la estación espacial permanente de China. En órbita desde 2021, ha sido ensamblada por módulos como el Tianhe, el Wentian y el Mengtian, y acoge a tripulaciones de taikonautas que realizan experimentos científicos y misiones de larga duración.</p>
+    <p>Es el símbolo del ambicioso programa espacial chino y un nuevo capítulo en la exploración humana del espacio. Su presencia en la órbita baja terrestre representa la consolidación de una capacidad autónoma de habitar y trabajar fuera del planeta, lejos de toda frontera terrestre.</p>
+  </div>
+</article>
+
+</div>
+<p class="volver"><a href="#inicio">↑ Volver al índice</a></p>
+</section>
+
+</main>
+</div>
+
+</body>
+</html>
