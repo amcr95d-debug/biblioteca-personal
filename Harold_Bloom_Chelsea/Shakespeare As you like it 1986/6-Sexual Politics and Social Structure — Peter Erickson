@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sexual Politics and Social Structure — Peter Erickson</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.cita .speaker { font-style: normal; font-size: 0.85em; letter-spacing: 0.05em; color: var(--text-muted); text-transform: uppercase; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.subtitulo { text-align: center; text-transform: uppercase; letter-spacing: .15em; font-size: .9rem; font-weight: 700; color: var(--text-secondary); margin: 3rem 0 1.5rem; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">Peter Erickson</p>
+        <h1 class="cab__tit">Sexual Politics and Social Structure<br>in <i>As You Like It</i></h1>
+    </header>
+
+    <p>The dramatic and emotional effect of Shakespearean comedy can be defined as a process of making manifest “a tough reasonableness beneath the slight lyric grace.” This comic toughness derives in part from Shakespeare’s ability to mix genres, an ability that helps to account for his artistic power. In exploring Shakespeare’s use of genre, we must be concerned as much with overlapping as with differentiation. The father-son motif, for example, provides a specific point of contact between <i>As You Like It</i> and <i>Henry V</i>. The analogous relationships between Duke Senior and Orlando in the first play and Henry IV and Hal in the second help to cut across an oversimplified generic distinction that says history plays deal with political power (implicitly understood as male power) whereas comedies treat love. Rosalind’s androgynous allure can appear so attractive, her linguistic virtuosity so engaging, that all our attention becomes focused on her, as if nothing else happened or mattered. Her talking circles around Orlando seems sufficient proof of her complete triumph. Yet this line of response is deficient because it ignores important parts of the play; that is, political power is a significant element in <i>As You Like It</i>.</p>
+
+    <p>The transmission of paternal heritage, announced at the outset in Orlando’s lament, begins to receive fulfillment when Orlando fashions an alliance with Duke Senior in the forest when no women are present. After his initial complaint about being deprived of a “good education” (1.1.67–68), Orlando is educated twice: once by Rosalind’s father and then by Rosalind. The exiles in the forest can indulge in the pleasures of melancholy because the play can amply satisfy the need for true versions of debased human relationship: “Most friendship is feigning, most loving mere folly” (2.7.181). We relish the platitude of this general rule in order to appreciate the magic of the exceptions. But the question still remains: how are the twin themes of friendship and loving coordinated with each other? And an exclusive focus on Rosalind prevents our asking it. Male friendship, exemplified by the reconciliation of Duke Senior and Orlando, provides a framework that diminishes and contains Rosalind’s apparent power. My point is not that <i>As You Like It</i> is a history play in disguise or that there are no differences between genres. The pastoral feast in the forest of Arden is far less stressful than the feast of Crispian that Henry V imagines as an antidote to the disturbing memory of his inheritance through “the fault / My father made in compassing the crown” (<i>H5</i>, 4.1.293–94). Unlike Henry V, Orlando is never made to confront a paternal fault. However, an exaggerated contrast between history and comedy is misleading. Concentration on Rosalind to the neglect of other issues distorts the overall design of <i>As You Like It</i>, one that is governed by male ends.</p>
+
+    <div class="subtitulo">I</div>
+
+    <p>The endings of <i>Love’s Labor’s Lost</i> and <i>As You Like It</i> present a striking contrast. In the earlier play, Berowne comments explicitly on the absence of marriage and closure, for which, in his frustration, he holds the women responsible: “Our wooing doth not end like an old play: / Jack hath not Gill. These ladies’ courtesy / Might well have made our sport a comedy” (5.2.874–76). <i>Love’s Labor’s Lost</i> culminates in the failure of courtship, but <i>As You Like It</i> reaches a fully and flamboyantly festive conclusion with the onstage revelation of the symbol of marital union, Hymen, who presides over a quadruple wedding. The prevailing mood of sourness at the end of <i>Love’s Labor’s Lost</i> is held in check in the later play by confining the potential for bitterness and disruption to Jaques, the nonparticipant. But even Jaques generously acknowledges the validity of love when he gives his blessing to Orlando, whom he had formerly mocked as “Signior Love” (3.2.292): “You to a love, that your true faith doth merit” (5.4.188). In the final scene of <i>Love’s Labor’s Lost</i>, festivity is short-circuited. The concluding masques and songs are no more helpful in facilitating the happy ending than the men’s poetry had been earlier. The masques of the Muscovites and of the Nine Worthies are farcical artistic performances that precipitate discord. “More Ates, more Ates! stir them on, stir them on!” (5.2.688–89), cries Berowne in an enthusiastic effort to provoke violence between Costard and Armado. Nor do the companion songs of the cuckoo and the owl dispel the awkward atmosphere. The songs act as a conspicuously inadequate substitute for the consummation that has failed to occur among the main characters. The alternative presented by the songs twits the anxiety it ostensibly seeks to mitigate by invoking the larger perspective of the natural cycle:</p>
+
+    <div class="cita">
+        <p>The cuckoo then on every tree</p>
+        <p>Mocks married men; for thus sings he,</p>
+        <p>“Cuckoo;</p>
+        <p>Cuckoo, cuckoo” —O word of fear,</p>
+        <p>Unpleasing to a married ear!</p>
+        <p class="attribution">(5.2.898–902)</p>
+    </div>
+
+    <p>This apparently blithe epilogue mirrors the men’s situation in the play proper by restating women’s power to make or break men. It recapitulates but does not relieve the humiliation of men as helpless victims of female caprice.</p>
+
+    <p>By contrast, <i>As You Like It</i> creates a context in which the efficaciousness of art is affirmed rather than denied. The masque of Hymen anticipates the sanctified unity of a late romance by appealing to the trope of “wonder”:</p>
+
+    <div class="cita">
+        <p>Whiles a wedlock-hymn we sing,</p>
+        <p>Feed yourselves with questioning;</p>
+        <p>That reason wonder may diminish</p>
+        <p>How thus we met, and these things finish.</p>
+        <p class="attribution">(5.4.137–40)</p>
+    </div>
+
+    <p>The equation of wedding with formal closure is indicated by Hymen’s ostentatious use of words like “finish” and “conclusion”: “Peace ho! I bar confusion, / ’Tis I must make conclusion” (125–26). This gratifying happy ending is convincing, however, because Hymen’s role is not just a matter of external <i>deus ex machina</i>. In presenting Rosalind undisguised, the god of marriage claims that “Hymen from heaven brought her” (112), but we are entitled to feel that the reverse is true: Rosalind has brought Hymen. The character of Rosalind, the real coordinator of the final scene, stands behind the metaphor of magic she invokes for the play’s resolution: “Believe then, if you please, that I can do strange things. I have, since I was three year old, convers’d with a magician, most profound in his art, and yet not damnable” (5.2.58–61). Rosalind has explored the limits of the magic that her male costume has afforded her in the forest of Arden. Like Prospero, she now gives up this magic, but she has earned her final throwaway use of it.</p>
+
+    <p>This comparative sketch of the endings of <i>Love’s Labor’s Lost</i> and <i>As You Like It</i> raises questions. How do we account for the difference between the two endings? How is the resolution of <i>As You Like It</i> achieved? A partial answer lies in Shakespeare’s use of pastoral. In <i>Love’s Labor’s Lost</i>, pastoral applies only to the setting and general atmosphere but does not extend to the dramatic structure. The play sets up a contrast between two worlds: the court in which the men take refuge versus the field which the women insist on making their residence. However, the relationship between the two worlds is one of simple opposition. The static quality of this relationship leaves too little room for interplay between the worlds and leads directly to the stalemate of the conclusion. <i>As You Like It</i> dramatically expands the contrast and the possibilities for interaction between the two worlds of court and forest. The sharply differentiated landscapes unfold in sequence, making it possible for men to enter the green world and creating the dynamic three-part process identified by Barber and Northrop Frye. This full realization of pastoral form in <i>As You Like It</i> gives Shakespeare an artistic leverage on his material that helps to make possible the final resolution.</p>
+
+    <p>While useful, this kind of structural comparison can take us only so far. Formal description is insufficient as a total explanation of the differences between <i>Love’s Labor’s Lost</i> and <i>As You Like It</i> because the respective uneasiness and confidence of their endings is a matter of the relations between men and women as well as of aesthetic form. Hence it becomes imperative to look at the plays from the perspective of sexual politics. From this perspective, Shakespeare’s development from <i>Love’s Labor’s Lost</i> to <i>As You Like It</i> does not emerge as the unqualified advancement it might otherwise appear to be. The ending of <i>As You Like It</i> works smoothly because male control is affirmed and women are rendered nonthreatening whereas in <i>Love’s Labor’s Lost</i> women do not surrender their independence and the status of patriarchy remains in doubt. Harmony and disharmony have as much to do with the specific content of male-female relations as with aesthetic form.</p>
+
+    <p>In both <i>Love’s Labor’s Lost</i> and <i>As You Like It</i>, love brings out a disparity between male and female intelligence and power. Orlando, like the four lords, is transformed in a way that makes him look humorously but embarrassingly naive and helpless. Falling in love is experienced as incapacitation:</p>
+
+    <div class="cita">
+        <p>My better parts</p>
+        <p>Are all thrown down, and that which here stands up</p>
+        <p>Is but a quintain, a mere liveless block.</p>
+        <p>O poor Orlando! thou art overthrown</p>
+        <p>Or Charles, or something weaker, masters thee.</p>
+        <p class="attribution">(1.2.249–51, 259–60)</p>
+    </div>
+
+    <p>His sense of being mastered helps to create a one-sided relationship in which the woman has control. Again like the four lords, Orlando equates being in love with the reflex gesture of producing huge quantities of poetry, and he follows a poetic convention that further increases the woman’s power:</p>
+
+    <div class="cita">
+        <p>Thus Rosalind of many parts</p>
+        <p>By heavenly synod was devis’d</p>
+        <p>Of many faces, eyes, and hearts,</p>
+        <p>To have the touches dearest priz’d.</p>
+        <p>Heaven would that she these gifts should have,</p>
+        <p>And I to live and die her slave.</p>
+        <p class="attribution">(3.2.149–54)</p>
+    </div>
+
+    <p>The mechanical and impersonal nature of this elevation of the woman to divine status is demonstrated by the way Orlando’s poem invents her through an amalgamation of fantasized “parts.” Worship of the woman that is supposed to pay homage creates an inhuman pastiche that demeans her and inhibits genuine contact. Such obeisance also belittles the man since Orlando’s poem defines a sharply hierarchical relationship in which his idealization of Rosalind as the perfect goddess leaves him with the role—exaggerated in the opposite direction—of “slave.” The servility implied by poetic worship is taken a step further in the case of Silvius, whose “holy” and “perfect” love make him content “To glean the broken ears after the man / That the main harvest reaps” (3.5.99, 102–3). Rosalind’s observation that Orlando’s verse is “lame” (3.2.168) refers not only to the poem’s execution but also to the psychological stance Orlando adopts toward her.</p>
+
+    <p>Rosalind is thus placed in a position parallel to that of the ladies in <i>Love’s Labor’s Lost</i>. Like them, she is strong and manipulative as she uses her superior wit along with the advantages given to her by circumstance to disabuse Orlando of his stock notions of male and female roles in love. There is, however, a vast difference in the outcome of this process in the two plays because Rosalind proves to be more flexible and accommodating than the women of <i>Love’s Labor’s Lost</i>. Her response to Phebe and Silvius is an attack on sonnet convention that implicitly involves a self-education for Rosalind. In upbraiding the two for their enactment of the stereotype of female scorn and male abasement, she is as critical of Silvius (3.5.49–56) as of Phebe. Rosalind’s effort to put Phebe in her place is accompanied by her attempt to bring Silvius up to his place. This double lesson has an application to her own behavior since Rosalind’s decision to “speak to him like a saucy lackey, and under that habit to play the knave with him” (3.2.295–97) carries the danger that she will allow herself to be as “proud and pitiless” (3.5.40) as she accuses Phebe of being, while Orlando languishes in Silvius-like submissiveness. Observing this dynamic at work in another relation alerts her to the potential Phebe in herself. Rosalind thus proves a more “busy actor in their play” (3.4.59) than she had anticipated; her fervent effort to convince Phebe to adopt more tractable behavior becomes an argument that she must accept her own advice. Rosalind’s capacity to give up this pride is what allows <i>As You Like It</i> to extricate itself from the poetic postures of male subservience and female omnipotence in which <i>Love’s Labor’s Lost</i> remains fixed to the bitter end.</p>
+
+    <p>If Rosalind’s flexibility is the key reason that <i>As You Like It</i> ends “like an old play” with “Jack having his Gill,” we must go on to ask: what is the nature of this flexibility? and is the absence of it in <i>Love’s Labor’s Lost</i> entirely in <i>As You Like It’s</i> favor? The standard approach stresses that Rosalind has a larger emotional range than the ladies of <i>Love’s Labor’s Lost</i>. She is more impressive because more complex and more humane. The encounter between Rosalind and Jaques at the beginning of act 4, scene 1, makes clear her rejection of his detachment: “I fear you have sold your own lands to see other men’s; then to have seen much, and to have nothing, is to have rich eyes and poor hands” (22–25). Her direct experience and involvement distinguish her from the women of <i>Love’s Labor’s Lost</i>, who in the end “have nothing.” But a second approach sees Rosalind as a woman who submits to a man who is her inferior. The power symbolized by her male costume is only temporary, and the harmonious conclusion is based on her willingness to relinquish this power. Thus Rosalind’s passionate involvement has a significant negative side since involvement means co-option and assimilation by a society ruled by men. She escapes the female stereotype of the all-powerful woman created by lyrical inflation only at the price of succumbing to another stereotype: the compliant, essentially powerless woman fostered by practical patriarchal politics.</p>
+
+    <p>Before entering the forest of Arden, Rosalind’s companion Celia/Aliena redefines this pastoral space to mean opportunity rather than punishment: “Now go we in content / To liberty, and not to banishment” (1.3.137–38). This “liberty” implies overcoming the restrictions of the female role. The idea of the male disguise originates as a strategy for avoiding the normal vulnerability to male force: “Alas, what danger will it be to us, / Maids as we are, to travel forth so far! / Beauty provoketh thieves sooner than gold” (108–10). Rosalind’s male costume, as it evolves, expands her identity so that she can play both male and female roles. Yet the costume is problematic. Though it gives her freedom of action and empowers her to take the initiative with Orlando, it simultaneously serves as a protective device, which temptingly offers excessive security, even invulnerability. In order to love, Rosalind must reveal herself directly to Orlando, thereby making herself vulnerable. She must give up the disguise and appear—as she ultimately promises Orlando—“human as she is” (5.2.67). But in giving up the disguise, she also gives up the strength it symbolizes. As the disguise begins to break down before its official removal, Rosalind’s transparent femininity takes the form of fainting—a sign of weakness that gives her away: “You a man? / You lack a man’s heart” (4.3.163–64). This loss of control signals that Rosalind can no longer deny her inner feminine self. The capacity for love that we find so admirable in Rosalind is compromised by the necessity that she resume a traditional female role in order to engage in love.</p>
+
+    <p>This traditional image has been present all along. Rosalind willingly confides to Celia that she remains a woman despite the male costume: “in my heart / Lie there what hidden woman’s fear there will— / We’ll have a swashing and a martial outside” (1.3.118–20); “Good my complexion, dost thou think, though I am caparison’d like a man, I have a doublet and hose in my disposition?” (3.2.194–96); and “Do you not know I am a woman?” (249). By virtue of the costume, Rosalind does have access to both male and female attributes, but the impression she conveys of androgynous wholeness is misleading. Neither Rosalind nor the play questions the conventional categories of masculine and feminine. She does not reconcile gender definitions in the sense of integrating or synthesizing them. Her own insistence on the metaphor of exterior (male) and interior (female) keeps the categories distinct and separable. The liberation that Rosalind experiences in the forest has built into it the conservative countermovement by which, as the play returns to the normal world, she will be reduced to the traditional woman who is subservient to men.</p>
+
+    <p>Rosalind is shown working out in advance the terms of her return. Still protected by her disguise yet allowing herself to come closer to the decisive moment, she instructs Orlando to “woo me” (4.1.68) and subsequently tells him what to say in a wedding rehearsal while she practises yielding. Though she teases Orlando with the wife’s power to make him a cuckold and then to conceal her duplicity with her “wayward wit” (160–76), this is good fun, and it is only that. It is clear to the audience, if not yet to Orlando, that Rosalind’s flaunting of her role as disloyal wife is a put-on rather than a genuine threat. She may playfully delay the final moment when she becomes a wife, but we are reassured that, once married, she will in fact be faithful. Her humor has the effect of exorcising and renouncing her potential weapon. The uncertainty concerns not her loyalty but Orlando’s, as her sudden change of tone when he announces his departure indicates: “Alas, dear love, I cannot lack thee two hours!” (178). Her exuberance and control collapse in fears of his betrayal: “Ay, go your ways, go your ways; I knew what you would prove” (182–83). Her previous wit notwithstanding, for Rosalind the scene is less a demonstration of power than an exercise in vulnerability. She is once again consigned to anxious waiting for her tardy man: “But why did he swear he would come this morning, and comes not?” (3.4.18–19).</p>
+
+    <p>Rosalind’s own behavior neutralizes her jokes about cuckoldry, but this point is sharply reinforced by the brief account of the male hunt that immediately follows act 4, scene 1. The expected negative meaning of horns as the sign of a cuckold is transformed into a positive image of phallic potency that unites men. Changing the style of his literary response to deer killing, Jaques replaces his earlier lament (2.1.26–66) with a celebration of male hunt and conquest: “Let’s present him to the Duke like a Roman conqueror, and it would do well to set the deer’s horns upon his head, for a branch of victory” (4.2.3–5). The rousing song occasioned by this moment suggests the power of an all-male activity to provide a self-sufficient male heritage, thus to defend against male insecurity about humiliation by women.</p>
+
+    <p>The final scene, orchestrated by Rosalind, demonstrates her power in a paradoxical way. She is the architect of a resolution that phases out the control she has wielded and prepares the way for the patriarchal status quo. She accedes to the process by which, in the transition from courtship to marriage, power passes from the female to the male: the man is no longer the suitor who serves, obeys, and begs but is now the husband who commands. Rosalind’s submission is explicit but not ironic, though her tone may be high-spirited. To each of the two men in her life she declares: “To you I give myself, for I am yours” (5.4.116–17). Her casting herself in the role of male possession is all the more charming because she does not have to be forced to adopt it: her self-taming is voluntary. We may wish to give Rosalind credit for her cleverness in forestalling male rivalry between her father and her fiancé. Unlike Cordelia, she is smart enough to see that in order to be gratified, each man needs to feel that he is the recipient of all her love, not half of it. Yet Rosalind is not really in charge here because the potential hostility between the younger and older man has already been negotiated in the forest in act 2, scene 7, a negotiation that results in the formation of an idealized male alliance. Rosalind submits not only to two individual men but also to the patriarchal society that they embody. Patriarchy is not a slogan smuggled in from the twentieth century and imposed on the play but an exact term for the social structure that close reading reveals within the play.</p>
+
+    <div class="subtitulo">II</div>
+
+    <p>We are apt to assume that the green world is more free than it actually is. In the case of <i>As You Like It</i>, the green world cannot be interpreted as a space apart where a youthful rebellion finds a refuge from the older generation. The forest of Arden includes a strong parental presence: Duke Senior’s is the first voice we hear there. Moreover, the green world has a clear political structure. Freed from the constraints of courtly decorum, Duke Senior can afford to address his companions as “brothers” (2.1.1), but he nonetheless retains a fatherly command. Fraternal spirit is not equivalent to democracy, as is clarified when the duke dispenses favor on a hierarchical basis: “Shall share the good of our returned fortune, / According to the measure of their states” (5.4.174–75).</p>
+
+    <p>Although interpretations of <i>As You Like It</i> often stress youthful love, we should not neglect the paternal context in which the love occurs. Both Rosalind and Orlando acknowledge Duke Senior. Rosalind is aware, as she finds herself attracted to Orlando, that “My father lov’d Sir Rowland [Orlando’s father] as his soul” (1.2.235) and hence that her affection is not incompatible with family approval. Orlando, for his part, does not go forward in pursuit of love until after he has become friends with Duke Senior. Rosalind and Orlando approach the forest in strikingly different ways. Rosalind’s mission is love. Upon entering the forest, she discovers there the love “passion” she has brought with her: “Alas, poor shepherd, searching of thy wound, / I have by hard adventure found mine own” (2.4.44–45). Orlando, by contrast, has two projects (though he does not consciously formulate them) to complete in the forest: the first is his quest to reestablish the broken connection with his father’s legacy; the second is the quest for Rosalind. The sequence of these projects is an indication of priority. Orlando’s outburst—“But heavenly Rosalind!” (1.2.289)—is not picked up again until he opens act 3, scene 2, with his love poem. The interim is reserved for his other, patriarchal business.</p>
+
+    <p>In the first scene of the play, Orlando makes it clear, in a melodramatic but nonetheless poignant way, that he derives his sense of identity from his dead father, an identity that is not yet fulfilled. In protesting against his older brother’s mistreatment, Orlando asserts the paternal bond: “The spirit of my father grows strong in me, and I will no longer endure it” (1.1.70–71). His first step toward recovery of the connection with his lost father is the demolition of Charles the wrestler: “How dost thou, Charles?” / “He cannot speak, my lord” (1.2.219–20). This victory earns Orlando the right to proclaim his father’s name as his own:</p>
+
+    <div class="cita">
+        <p><span class="speaker">Duke Frederick:</span> What is thy name, young man?</p>
+        <p><span class="speaker">Orlando:</span> Orlando, my liege, the youngest son of Sir Rowland de Boys.</p>
+        <p>I am more proud to be Sir Rowland’s son.</p>
+        <p class="attribution">(ll. 221–22, 232)</p>
+    </div>
+
+    <p>Frederick’s negative reaction to Orlando’s statement of identity confirms the concept of heritage being evoked here: “Thou shouldst have better pleas’d me with this deed / Hadst thou descended from another house” (ll. 227–28). The significance of the wrestling match is that Orlando has undergone a traditional male rite of passage, providing an established channel for the violence he has previously expressed by collaring Oliver in the opening scene. Yet aggression is the epitome of a rigid masculinity that Shakespeare characteristically condemns as too narrow a basis for identity. Orlando’s aggressiveness is instantly rendered inappropriate by his falling in love. Moreover, his recourse to violence simply mirrors the technique of the tyrannical Duke Frederick. As it turns out, Orlando must give up violence in order to meet the “good father.”</p>
+
+    <p>While Rosalind’s confidante Celia provides the opportunity to talk about love, Orlando is accompanied by Adam, who serves a very different function since he is a living link to Orlando’s father. The paternal inheritance blocked by Oliver is received indirectly from Adam when he offers the money “I sav’d under your father, / Which I did store to be my foster-nurse” (2.3.39–40). The motif of nurturance implied by the “foster-nurse” image is continued as Orlando, through Adam’s sudden collapse from lack of food, is led to Duke Senior’s pastoral banquet. Treating this new situation as another trial of “the strength of my youth,” Orlando imagines an all-or-nothing “adventure” (1.2.172, 177) similar to the wrestling match: “If this uncouth forest yield any thing savage, I will either be food for it, or bring it for food to thee” (2.6.6–8). In act 2, scene 7, he enters with drawn sword. Unexpectedly finding a benevolent father figure, Orlando effects as gracefully as possible a transition from toughness to tenderness: “Let gentleness my strong enforcement be, / In the which hope I blush, and hide my sword” (ll. 118–19). This display of nonviolence is the precondition for Orlando’s recovery of patriarchal lineage. Duke Senior aids this recovery by his recognition of the father’s reflection in the son and by his declaration of his own loving connection with Orlando’s father. This transaction concludes the scene:</p>
+
+    <div class="cita">
+        <p>If that you were the good Sir Rowland’s son,</p>
+        <p>As you have whisper’d faithfully you were,</p>
+        <p>And as mine eye doth his effigies witness</p>
+        <p>Most truly limn’d and living in your face,</p>
+        <p>Be truly welcome hither. I am the Duke</p>
+        <p>That lov’d your father.</p>
+        <p class="attribution">(ll. 191–96)</p>
+    </div>
+
+    <p>The confirmation of Orlando’s identity has the effect of a ritual blessing that makes this particular father-son relation the basis for social cohesion in general. There is much virtue in Orlando’s “If”:</p>
+
+    <div class="cita">
+        <p><span class="speaker">Orlando:</span> If ever you have look’d on better days,</p>
+        <p>If ever been where bells have knoll’d to church,</p>
+        <p>If ever sate at any good man’s feast,</p>
+        <p>If ever from your eyelids wip’d a tear,</p>
+        <p>And know what ’tis to pity, and be pitied.</p>
+        <p><span class="speaker">Duke Senior:</span> True is it that we have seen better days,</p>
+        <p>And have with holy bell been knoll’d to church,</p>
+        <p>And sat at good men’s feasts, and wip’d our eyes</p>
+        <p>Of drops that sacred pity hath engend’red.</p>
+        <p class="attribution">(2.7.113–17, 120–23)</p>
+    </div>
+
+    <p>The liturgy of male utopia, ruthlessly undercut in <i>Love’s Labor’s Lost</i>, is here allowed to stand. Virgilian piety, founded on ideal father-son relations and evoked visually when, like Aeneas with Anchises, Orlando carries Adam on his back, can achieve what Navarre’s academe with its spurious abstinence could not. Orlando’s heroic language as he goes off to rescue Adam is as clumsy as any he uses in the poems to Rosalind, but whereas the play pokes fun at the love poetry, the expression of duty to Adam is not subject to irony: “Then but forbear your food a little while, / Whiles, like a doe, I go to find my fawn, / And give it food” (ll. 127–29). We are invited simply to accept the doe-fawn metaphor that Orlando invokes for his obligation to reciprocate Adam’s “pure love” (l. 131).</p>
+
+    <p>Just as there is an unlimited supply of food in this scene, so there seems to be more than enough “pure love” to go around, Jaques excepted. Love is expressed in terms of food, and men gladly take on nurturant roles. Duke Senior’s abundant provision of food and of “gentleness” creates an image of a self-sustaining patriarchal system. The men take over the traditional female prerogative of maternal nurturance, negatively defined by Jaques: “At first the infant, / Mewling and puking in the nurse’s arms” (2.7.143–44). Such discomfort has been purged from the men’s nurturance as it is dramatized in this scene, which thus offers a new perspective on Duke Senior’s very first speech in the play. We now see that it is the male feast, not the biting winter wind, that “feelingly persuades me what I am” (2.1.11). “Sweet are the uses of adversity” because, as Orlando discovers, adversity disappears when men’s “gentleness” prevails, “translating the stubbornness of fortune / Into so quiet and sweet a style” (ll. 12, 19–20). This sweetness explains why “loving lords have put themselves into voluntary exile” with the duke and why “many young gentlemen flock to him every day” (1.1.101–2, 117).</p>
+
+    <p>The idealized male enclave founded on “sacred pity” in act 2, scene 7, is not an isolated incident. The power of male pity extends beyond this scene to include the evil Oliver, who is threatened by a symbol of maternal nurturance made hostile by depletion: “A lioness, with udders all drawn dry” (4.3.114) and “the suck’d and hungry lioness” (l. 126). The motif of eating here creates a negative image that might disturb the comfortable pastoral banquet, but the lioness’s intrusion is quickly ended. Responding with a kindness that can be traced back to his meeting with Duke Senior, Orlando rescues his brother: “But kindness, nobler ever than revenge, / And nature, stronger than his just occasion, / Made him give battle to the lioness” (ll. 128–30). Oliver’s oral fulfillment follows: “my conversion / So sweetly tastes” (136–37). The tears “that sacred pity hath engend’red” (2.7.123) are reiterated by the brothers’ reconciliation—“Tears our recountments had most kindly bath’d” (4.3.140)—and their reunion confirmed by a recapitulation of the banquet scene: “he led me to the gentle Duke, / Who gave me fresh array and entertainment, / Committing me unto my brother’s love” (142–44). Again the pattern of male reconciliation preceding love for women is seen in Oliver’s confession of his desire to marry Celia (5.2.1–14) coming after his admission to the brotherhood.</p>
+
+    <p>The male community of act 2, scene 7, is also vindicated by the restoration of patriarchal normalcy in the play’s final scene. In the end, as Rosalind’s powers are fading, the relationship between Duke Senior and Orlando is reasserted and completed as the duke announces the inheritance to which marriage entitles Orlando: “A land itself at large, a potent dukedom” (5.4.169). Like the “huswife Fortune” who “doth most mistake in her gifts to women” (1.2.31–32, 36), Rosalind plays her part by rehearsing the men in their political roles:</p>
+
+    <div class="cita">
+        <p><span class="speaker">Rosalind:</span> You say, if I bring in your Rosalind,</p>
+        <p>You will bestow her on Orlando here?</p>
+        <p><span class="speaker">Duke Senior:</span> That would I, had I kingdoms to give with her.</p>
+        <p><span class="speaker">Rosalind:</span> And you say you will have her, when I bring her.</p>
+        <p><span class="speaker">Orlando:</span> That would I, were I of all kingdoms king.</p>
+        <p class="attribution">(5.4.6–10)</p>
+    </div>
+
+    <p>The reference the two men make to kingdoms is shortly to be fulfilled, but this bounty is beyond Rosalind’s power to give. For it is not her magic that produces the surprise entrance of Jaques de Boys with the news of Duke Senior’s restoration. In completing the de Boys family reunion, the middle brother’s appearance reverses the emblematic fate of the three sons destroyed by Charles the wrestler: “Yonder they lie, the poor old man, their father, making such pitiful dole over them that all the beholders take his part with weeping” (1.2.129–32). The image of three de Boys sons reestablishes the proper generational sequence, ensuring continuity.</p>
+
+    <div class="subtitulo">III</div>
+
+    <p>C. L. Barber has shown that the “Saturnalian Pattern” that gives structure to festive comedy is intrinsically conservative since it involves only “a temporary license, a ‘misrule’ which implied rule.” But in <i>As You Like It</i> the conservatism of comic form does not affect all characters equally. In the liberal opening out into the forest of Arden, both men and women are permitted an expansion of sexual identity that transcends restrictive gender roles. Just as Rosalind gains access to the traditional masculine attributes of strength and control through her costume, so Orlando gains access to the traditional female attributes of compassion and nurturance. However, the conservative countermovement built into comic strategy applies exclusively to Rosalind. Her possession of the male costume and of the power it symbolizes is only temporary. But Orlando does not have to give up the emotional enlargement he has experienced in the forest. Discussions of androgyny in <i>As You Like It</i> usually focus on Rosalind whereas in fact it is the men rather than the women who are the lasting beneficiaries of androgyny. It is Orlando, not Rosalind, who achieves a synthesis of attributes traditionally labeled masculine and feminine when he combines compassion and aggression in rescuing his brother from the lioness.</p>
+
+    <p>This selective androgyny demands an ambivalent response: it is a humanizing force for the men, yet it is based on the assumption that men have power over women. Because androgyny is available only to men, we are left with a paradoxical compatibility of androgyny with patriarchy, that is, benevolent patriarchy. In talking about male power in <i>As You Like It</i>, we must distinguish between two forms of patriarchy. The first and most obvious is the harsh, mean-spirited version represented by Oliver, who abuses primogeniture, and by Duke Frederick, who after usurping power holds on to it by arbitrary acts of suppression. Driven by greed, envy, suspicion, and power for power’s sake, neither man can explain his actions. In an ironic demonstration of the consuming nature of evil, Duke Frederick expends his final rage against Oliver, who honestly protests: “I never lov’d my brother in my life” (3.1.14). In contrast to good men, bad men are incapable of forming alliances. Since Frederick’s acts of banishment have now depopulated the court, he himself must enter the forest in order to seek the enemies so necessary to his existence (5.4.154–58). But of course this patriarchal tyranny is a caricature and therefore harmless. Oliver and Frederick are exaggerated fairy-tale villains whose hardened characters are unable to withstand the wholesome atmosphere of the forest and instantly dissolve (4.3.135–37; 5.4.159–65). The second, more serious version of patriarchy is the political structure headed by Duke Senior. To describe it, we seek adjectives like “benevolent,” “humane,” and “civilized.” Yet we cannot leave it at that. A benevolent patriarchy still requires women to be subordinate, and Rosalind’s final performance is her enactment of this subordination.</p>
+
+    <p>We can now summarize the difference between the conclusions of <i>Love’s Labor’s Lost</i> and <i>As You Like It</i>. In order to assess the sense of an ending, we must take into account the perspective of sexual politics and correlate formal harmony or disharmony with patriarchal stability or instability. Unlike Rosalind, the women in <i>Love’s Labor’s Lost</i> do not give up their independence. The sudden announcement of the death of the princess’s father partially restrains her wit. But this news is a <i>pater ex machina</i> attempt to even the score and to equalize the situation between the men and the women because nothing has emerged organically within the play to challenge the women’s predominance. The revelation that the “decrepit, sick and bedred” father (1.1.138) has died is not an effective assertion of his presence but, on the contrary, advertises his weakness. The princess submits to the “new-sad soul” (5.2.731) that mourning requires, but this provides the excuse for going on to reject the suitors as she has all along. Her essential power remains intact, whereas patriarchal authority is presented as weak or nonexistent. The death of the invalid father has a sobering impact because it mirrors the vacuum created by the four lords’ powerlessness within the play. There is no relief from the fear that dominant women inspire in a patriarchal sensibility, and this continuing tension contributes to the uneasiness at the play’s end.</p>
+
+    <p>Like the princess, Rosalind confronts her father in the final scene. But in her case paternal power is vigorously represented by Duke Senior and by the line of patriarchal authority established when Senior makes Orlando his heir. Festive celebration is now possible because a dependable, that is, patriarchal, social order is securely in place. It is Duke Senior’s voice that legitimates the festive closure: “Play, music, and you brides and bridegrooms all, / With measure heap’d in joy, to th’ measures fall” (5.4.178–79). Orlando benefits from this social structure because, in contrast to the lords of <i>Love’s Labor’s Lost</i>, he has a solid political resource to offset the liability of a poetic convention that dictates male subservience. <i>As You Like It</i> achieves marital closure not by eliminating male ties but rather by strengthening them.</p>
+
+    <p>A further phasing out of Rosalind occurs in the Epilogue when it is revealed that she is male: “If I were a woman I would kiss as many of you as had beards that pleas’d me” (18–19). This explicit breaking of theatrical illusion forces us to reckon with the fact of an all-male cast. The boy-actor convention makes it possible for males to explore the female other (I use the term <i>other</i> here in the sense given by Simone de Beauvoir in <i>The Second Sex</i> of woman as the other). Vicariously taking on the female role enables male spectators to make an experimental contact with what otherwise might remain unknown, forbidden territory. Fear of women can be encountered in the relatively safe environment of the theater, acted out, controlled (when it can be controlled as in <i>As You Like It</i>), and overcome. A further twist of logic defuses and reduces the threat of female power: Rosalind is no one to be frightened of since, as the Epilogue insists, she is male after all; she is only a boy and clearly subordinate to men in the hierarchy of things.</p>
+
+    <p>The convention of males playing female roles gives men the opportunity to imagine sex-role fluidity and flexibility. Built into the conditions of performance is the potential for male acknowledgment of a “feminine self” and thus for male transcendence of a narrow masculinity. In the particular case of <i>As You Like It</i>, the all-male cast provides a theatrical counterpart for the male community at Duke Senior’s banquet in act 2, scene 7. This theatrical dimension reinforces the conservative effect of male androgyny within the play. Acknowledgment of the feminine within the male is one thing, the acknowledgment of individual women another: the latter does not automatically follow from the former. In the boy-actor motif, woman is a metaphor for the male discovery of the feminine within himself, of those qualities suppressed by a masculinity strictly defined as aggressiveness. Once the tenor of the metaphor has been attained, the vehicle can be discarded—just as Rosalind is discarded. The sense of the patriarchal ending in <i>As You Like It</i> is that male androgyny is affirmed whereas female “liberty” in the person of Rosalind is curtailed.</p>
+
+    <p>There is, finally, a studied ambiguity about heterosexual versus homoerotic feeling the play, Shakespeare allowing himself to have it both ways. The Epilogue is heterosexual in its bringing together of men and women: “and I charge you, O men, for the love you bear to women (as I perceive by your simp’ring, none of you hates them), that between you and the women the play may please” (ll. 14–17). The “simp’ring” attributed to men in their response to women is evoked in a good-natured jocular spirit; yet the tone conveys discomfort as well. In revealing the self-sufficient male company, the Epilogue also offers the counterimage of male bonds based on the exclusion of women.</p>
+
+    <p>Though he is shown hanging love poems on trees only after achieving atonement with Rosalind’s father, Orlando never tries, like the lords of <i>Love’s Labor’s Lost</i>, to avoid women. The social structure of <i>As You Like It</i>, in which political power is vested in male bonds, can include heterosexual love because marriage becomes a way of incorporating women since Rosalind is complicit in her assimilation by patriarchal institutions. However, in spite of the disarming of Rosalind, resistance to women remains. It is as though asserting the priority of relations between men over relations between men and women is not enough, as though a fall-back position is needed. The Epilogue is, in effect, a second ending that provides further security against women by preserving on stage the image of male ties in their pure form with women absent. Not only are women to be subordinate; they can, if necessary, be imagined as nonexistent. Rosalind’s art does not, as is sometimes suggested, coincide with Shakespeare’s: Shakespeare uses his art to take away Rosalind’s female identity and thereby upstages her claim to magic power.</p>
+
+    <p>We can see the privileged status accorded to male bonds by comparing Shakespeare’s treatment of same-sex relations for men and for women. Men originally divided are reunited as in the instance of Oliver and Orlando, but women undergo the reverse process. Rosalind and Celia are initially inseparable: “never two ladies lov’d as they do” (1.1.112); “whose loves / Are dearer than the natural bond of sisters” (1.2.275–76); “And whereso’er we went, like Juno’s swans, / Still we went coupled and inseparable” (1.3.75–76); and “thou and I am one. / Shall we be sund’red? shall we part, sweet girl? / No, let my father seek another heir” (ll. 97–99). Yet the effect of the play is to separate them by transferring their allegiance to husbands. Celia ceases to be a speaking character at the end of act 4, her silence coinciding with her new role as fiancée. The danger of female bonding is illustrated when Shakespeare diminishes Rosalind’s absolute control by mischievously confronting her with the unanticipated embarrassment of Phebe’s love for her. Rosalind is of course allowed to devise an escape from the pressure of this undesirable entanglement, but it is made clear in the process that such ardor is taboo and that the authorized defense against it is marriage. “And so am I for no woman,” Rosalind insists (5.2.88). A comparable prohibition is not announced against male friendship.</p>
+
+    <p>In conclusion, we must ask: what is Shakespeare’s relation to the sexual politics of <i>As You Like It</i>? Is he taking an ironic and critical stance toward the patriarchal solution of his characters, or is he heavily invested in this solution himself? I think there are limits to Shakespeare’s critical awareness in this play. The sudden conversions of Oliver and Duke Frederick have a fairy-tale quality that Shakespeare clearly intends as an aspect of the wish fulfillment to which he calls attention in the play’s title. Similarly, Jaques’s commentary in the final scene is a deliberate foil to the neatness of the ending that allows Shakespeare as well as Jaques a modicum of distance. However, in fundamental respects Shakespeare appears to be implicated in the fantasy he has created for his characters.</p>
+
+    <p><i>As You Like It</i> enacts two rites of which Shakespeare did not avail himself in <i>Love’s Labor’s Lost</i>. First, Shakespeare has the social structure ultimately contain female energy as he did not in <i>Love’s Labor’s Lost</i>. We have too easily accepted the formulation that says that Shakespeare in the mature history plays concentrates on masculine development whereas in the mature festive comedies he gives women their due by allowing them to play the central role. <i>As You Like It</i> is primarily a defensive action against female power rather than a celebration of it. Second, Shakespeare portrays an ideal male community based on “sacred pity.” This idealized vision of relationships between men can be seen as sentimental and unrealistic, but in contrast to his undercutting of academe in <i>Love’s Labor’s Lost</i>, Shakespeare is here thoroughly engaged and endorses the idealization. These two elements—female vitality kept manageable and male power kept loving—provided a resolution that at this particular moment was “As Shakespeare Liked It.”</p>
+
+    <section class="footnotes">
+        <h3>Note</h3>
+        <p>From <i>Patriarchal Structures in Shakespeare’s Drama</i>. © 1982 by the Massachusetts Review, Inc., © 1985 by the Regents of the University of California. University of California Press, 1985.</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>
