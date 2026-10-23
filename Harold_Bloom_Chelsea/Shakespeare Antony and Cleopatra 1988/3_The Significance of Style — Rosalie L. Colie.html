@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Significance of Style — Rosalie L. Colie</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+.section-head { margin: 3.2rem 0 1.6rem; text-align: center; font-size: 1rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--text-secondary); }
+.section-head::before, .section-head::after { content: ""; display: inline-block; width: 2rem; height: 1px; background: var(--border-color); vertical-align: middle; margin: 0 .8rem; }
+.epigrafe { margin: 2rem 0 1.5rem; text-align: center; font-style: italic; color: var(--text-secondary); font-size: .95rem; }
+.epigrafe .attribution { display: block; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .3rem; }
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">Rosalie L. Colie</p>
+        <h1 class="cab__tit">The Significance of Style</h1>
+    </header>
+
+    <p>In <i>Antony and Cleopatra</i>, the problem of style, although equally telling, is set entirely differently [than in <i>Julius Caesar</i> and <i>Coriolanus</i>]. Oratory and public speaking are not at issue in this play, are not the plot-elements they are in both <i>Julius Caesar</i> and <i>Coriolanus</i>. Nor is style displayed at the outer surface of the play, as in <i>Love’s Labour’s Lost</i> styles are animated into personality. Nonetheless, its peculiar language is a major force in the play, as critics from Dr. Johnson to Maurice Charney have pointed out; in comparison to the plainer speech of the other Roman plays, the verbal richness of <i>Antony and Cleopatra</i> demands attention not only for its spectacular imagery but also as a function of the play’s subject. As in <i>Julius Caesar</i>, where the economical style seems properly mated to its severe subject, so in <i>Antony and Cleopatra</i> the abundance of the language seems to match the richness of its subject, the fertility of the Egyptian setting, the emotional largesse of hero and heroine. The play’s language bursts with energy and vigor; figures abound; of figures, as Charney so cleverly shows, hyperbole is particularly common, that overreacher of the figures of speech. Indeed, the figures are so numerous and so rich that at times they seem almost to crowd out other meanings, to stop the action and the plot, to force attention to their resonances alone. Enobarbus’s speech on Cleopatra is one example, the most famous of the play’s set-pieces; Cleopatra’s memories of the absent Antony, her paean to Dolabella, Antony’s evaluations of his own emotional and worldly situations raise speech above the movement of plot.</p>
+
+    <p>Magniloquence fascinates both hearers and speakers. Antony’s “normal” decisions to undertake his Roman responsibilities as triumvir and husband vanish in the hue and cry raised by his emotions and expressed immediately in the language he uses. More markedly, Enobarbus’s famous detachment gives way before his recognition of Cleopatra’s sources of power. In his great comment on her qualities his magniloquence rolls out to contrast with the plainness and irony of his previous speeches about her. In that speech, Enobarbus abandons himself to Cleopatra, and thereby gives himself away: from his response to her, apparently so out of character, we feel the force of her enchantment. Indeed, Enobarbus’s giving way to grandiloquence seems an almost sexual abandon before her; the cynical and experienced Roman soldier, suspicious of Egypt and its ways, cannot and will not contain his climactic praise of the Queen.</p>
+
+    <p>Though the language seems at times to crowd out action and judgment, it does not crowd out meaning, for much of the meaning of this play, as one critic has argued, resides in the characters’ attitudes to the language they use. The stated, plotted action of the play is in itself grand enough to require no rival in language: the range of the play is epic, over the whole Mediterranean world which was, in the Roman context, the whole world altogether. Action and scene oscillate between the poles of Rome and Egypt. From the beginning, in Philo’s first speech, Rome and Egypt are set off against one another, in the shapes of Caesar and Octavia on the one side, Cleopatra on the other. The two locales, with their properly representative dramatis personae, seem to struggle for domination over Mark Antony’s spirit and will. Like his great ancestor, the god Hercules, Antony stood at the crossroads of duty and sensuality, of self-denial and self-indulgence. Rome is duty, obligation, austerity, politics, warfare, and honor: Rome is public life. Egypt is comfort, pleasure, softness, seduction, sensuousness (if not sensuality also), variety, and sport: Egypt promises her children rich, languorous pleasures and satisfactions. Rome is business, Egypt is foison; Rome is warfare, Egypt is love. Egypt is “the East,” where the beds are soft—and what “beds” can mean is never scanted in this play. To keep us aware of Cleopatra’s power, the Romans, in their own eyes contemptuous of her life, show themselves as fascinated by Cleopatra’s reputation as a bedfellow as Antony is by the actuality. Egypt is florid, decorated, deceitful, artful, opulent, sensual, idle; is “inflatus,” “solutus,” “tumens,” “superfluens,” “redundans,” “enervis,” “inanis.” I took this list of Latin adjectives from various critiques, not of the fleshpots of Egypt, but of the Asiatic style; these epithets can, within the frame of this play, be transferred to the loose, ungirt life in Alexandria, the life to which, according to the source, Antony was inclined by temperament and which, in the end, he chooses as his own.</p>
+
+    <p>The question at issue is another dimension of style from those already discussed: not style as garment, or as chosen rhetoric or self-presentation, not style as manipulative instrument, but style as fundamental morality, style as life. Style of speech necessarily reveals personality, values, and ethics: one recognizes both the rectitude and the chilliness of Octavia, the silliness of Lepidus, the policy of Dolabella, from the way they speak as well as from what they say. In the speeches of Antony, Cleopatra, Octavius, Enobarbus, we recognize not just the varying moods of the speakers but their complex inner natures as well. How otherwise, indeed, could we ever assume anything about dramatic characters? Language must act to indicate quality and character, but here it does more: by reaching to the heart of the moral problems faced by Antony and Cleopatra, the language of their play makes us realize anew the ingrained connection between speech and style of life. The “square” of Roman speech and Roman life has its values, which we recognize the more easily as we see those values betrayed by Romans; the “foison” of Egypt, both its fertility and its corruption, find expression in the agon. If one felt that the play were only an essay in style as life-style, then one might draw back from it as superficial and trivial; but <i>Antony and Cleopatra</i> seems to be more than a presentation-play of theatrical and unpersoned types, more also than the psychomachia to which it is occasionally reduced. One thing that makes the play so compelling is that it <i>is</i> all these things—show, morality, exercise of power; it <i>is</i> a study in cheapness as well as in extravagance and costliness. Its chief characters are undisguisedly selfish and often trivial; in what lies its force? The language is one indicator, again, for the very style, with its grandioseness and hyperbolical explosions, finally points to the real problem: the efforts of two powerful, wilful, commanding personalities to bring their styles of living, their ingrained alien habits, into line with one another, for no reason other than love.</p>
+
+    <p>In a sense quite different from that of the morality-play, <i>Antony and Cleopatra</i> is about morality, about mores and ways of life—not by any means just about sexual morality, although problems of sexuality are not ignored—but about lives lived in moral terms. “Style” is—especially in the Attic-Asiatic polarity—a moral indicator, but here displayed as deeply thrust into the psychological and cultural roots of those ways of life. In this play, a given style is never merely an alternative way of expressing something: rather, styles arise from cultural sources beyond a character’s choice or control.</p>
+
+    <p>At the beginning of the play, this does not seem to be the case: Antony doffs and dons Egyptian and Roman styles, of speech and of life, apparently at will and at need. By the play’s end, he has settled for a manner of speech and behavior proved by his decisive final actions to be the signature of his inmost nature. That is to say, his style can be seen not only to express his deepest sense of self, but also to relate to the consequences of his life-choices. It is possible—indeed, it was the classical view, which Plutarch tried hard to present—to see Mark Antony’s life as ruined by Cleopatra, to see the play, then, as a struggle between <i>virtus</i> and <i>voluptas</i> in which Antony fails to live up to his ancestor Hercules’ example <i>in bivio</i>. But as Plutarch takes pains to tell us, and as Shakespeare in <i>Julius Caesar</i> lets us know clearly enough, there was much in Antony’s temperament, bred though it was in Rome, to explain why the pull of Egypt was so strong upon him, and from Enobarbus we know how strong that pull was on anyone. Though there is a structural and thematic contrast in the play between Rome and Egypt, the scenes alternating to give us that strong sense of oscillation between these poles, the play is not so simple as a straight contest between their different values.</p>
+
+    <p>Seen from one perspective, Rome dominates the play: Rome’s wide arch covers the epic scene, Roman policy decides the order of events and the order therefore of these important private lives. The play begins and ends with expressions of the Roman point of view; by Roman standards, Antony perishes for his failure as a Roman. But seen from another angle, Egypt commands the play, where the action begins and ends and where all the major episodes take place. In this respect, the oscillation between the two localities makes it difficult to identify a single and certain source of power. Further, the two areas are not really kept polar: Rome and Egypt interpenetrate each other, just as past history continually penetrates the play’s present. Rome’s impact on Egypt has helped make Cleopatra what she is; and Antony’s Romanness flaws his pleasure in Egypt, even as his Egyptian experience dulls his Roman arrangements. Together and apart, Antony and Cleopatra recall their own and each other’s past; Octavius speaks of Antony’s and his shared past; Pompey takes the action he does because of events long over before the play begins. We see Antony unwillingly come to accept the fact that his present has been shaped by his past behavior, or that his “Rome” can never be an unqualified value again. Cleopatra dies as a Roman, or so she thinks—but does so in a décor undeniably Egyptian, and by a means particularly local. Her attributes, the iconographical details she chooses for her last tableau, are entirely Egyptian, but her suicide is itself the final Roman gesture consciously chosen.</p>
+
+    <p>Nor is the mixture of Rome and Egypt in her accidental: deep in her experience lay the same Julius Caesar who had such a marked effect on both Mark Antony and Octavius Caesar. Before the play’s beginning, Cleopatra and her Egypt had been Romanized; by its end, she is once more Romanized, and her Egypt has finally fallen to Roman rule. Indeed, throughout the play, Egypt is constantly open to Rome: Cleopatra’s relation to Julius Caesar, to Pompey, to Antony, even her efforts to charm Octavius, are symbolic of her country’s dependency upon Rome’s dominion. The presence at her court (a court “hers” only by the conqueror’s grace) of so many Romans, full of what she calls with distaste “Roman thoughts,” assures that the force of Rome upon Egypt is never unfelt, even at the height of Egyptian wassail.</p>
+
+    <p>However he may think of himself, Antony is a Roman soldier; Roman soldiers are always with him, even at the moment of his death. When he is away from Egypt, Roman messengers bring Cleopatra news of him and of affairs in Rome. He himself was sent to Egypt as a political administrator; he is succeeded at the play’s end by Caesar himself, the last of a series of Romans proclaiming the dominion of the empire, Thidias, Dolabella, Proculeius. People die <i>à la romaine</i>: Enobarbus, Eros, Antony, Cleopatra, Charmian, Iras. Antony is borne to die his long-drawn-out death after the high Roman fashion; Cleopatra promises a like death, in which she shall be “marble constant” at the end of a life lived, publicly and privately, in significantly “infinite variety.” There is no altering Roman historical destiny, however captivating Egypt and the Egyptian way of life may be.</p>
+
+    <p>As the play begins, we are instructed to take Roman virtues for granted as the measure from which Antony has fallen off, but as it develops, we are shown more and more to criticize in Rome. No one could be sillier than Lepidus, one of the triple pillars of the world, grosser and more clownish than any Egyptian; nor more opportunistic than Menas, whose master regrets only that Menas forced him to veto his schemes. Octavius calculates ever; Pompey seeks his own ambitious ends; Octavius’s relation to Roman polity is hardly self-subordinating. Further and most important, when he is “Roman,” Antony is at his least attractive—in his relations to his Roman wives, Fulvia and Octavia, both dismissed in his mind’s economy as terms of political function. As the play advances, the notion of Rome becomes more and more tarnished, particularly in the great orgy-scene in which even Octavius’s tongue “splits what it speaks,” and Lepidus is carried drunk to bed (a scene unmatched in the play by the “sensual” Egyptians so constantly criticized by these same Roman tongues). In that scene, the grossness of Rome is unequivocally displayed in the unbending ambitions of Caesar, the jealousy of the triumvirs, the thinness of Pompey’s honor, Menas’s crude hankering after power, the heroes’ dancing to their roundsong. Into such hands the world has been delivered. Of course “Egypt” offers no moral improvement over this—Cleopatra lies from first to last, to others and to herself. We are never in doubt of her duplicity, but its naturalness comes to seem worthy in comparison to the slyness of Octavius and of the “trustworthy” Proculeius. Cleopatra’s is a consistent and therefore honest duplicity: her policy is innocence itself compared to the masterful and automatic deceptions of the politic Octavius. More: life in its natural spontaneity is set against machination, as Cleopatra faces Octavius symbolically and in fact. Against such an opposition, all the more obviously can Cleopatra be seen to satisfy a universal human need: though she makes hungry where most she satisfies, both hunger and satisfaction are natural enough. The Roman hunger for power can never be filled; in it there is always something barren, inhuman, and perverse—but Cleopatra can allay, even as she rekindles, one Roman’s hunger for the satisfactions of love.</p>
+
+    <p>The question at issue is not so much the value of Rome set against the value of Egypt, clear as these are, as it is the private relation between Antony and Cleopatra, a relation always colored by their different backgrounds and local loyalties. Normally speaking, it is not considered admirable, nor even sensible, for a man of public position to jeopardize his career for a woman. When the man is Antony, well-married in Rome and well-supplied elsewhere, and the woman Cleopatra, full of experience and of years, it is easy enough to see the matter with Roman eyes as a dissolute business between middle-aged sensualists having a last fling while they can, sinking into sloth and indolence and letting the affairs of empire go hang. Further, there is opportunism even in this love affair—that Cleopatra’s political position was immensely strengthened by Antony’s presence in Egypt, Caesar’s sharp observations make plain. The suspicion certainly exists that she loves Antony for what he can do for her as well as for what he is to her.</p>
+
+    <p>The play begins with a Roman inductor, who takes the worst for granted. Philo (what a name for him!) evaluates the major characters according to accepted Roman standards; his critical speech breaks off as Antony and Cleopatra enter to act out what he has just, so degradingly, described as their typical behavior:</p>
+
+    <div class="cita">
+        <p>Nay, but this dotage of our general’s</p>
+        <p>O’erflows the measure: those his goodly eyes,</p>
+        <p>That o’er the files and musters of the war</p>
+        <p>Have glow’d like plated Mars, now bend, now turn</p>
+        <p>The office and devotion of their view</p>
+        <p>Upon a tawny front: his captain’s heart,</p>
+        <p>Which in the scuffles of great fights hath burst</p>
+        <p>The buckles on his breast, reneges all temper</p>
+        <p>And is become the bellows and the fan</p>
+        <p>To cool a gipsy’s lust.</p>
+        <p>Look, where they come:</p>
+        <p>Take but good note, and you shall see in him</p>
+        <p>The triple pillar of the world transform’d</p>
+        <p>Into a strumpet’s fool: behold and see.</p>
+        <p class="attribution">(1.1.1–13)</p>
+    </div>
+
+    <p>The hero and heroine then enter, to act out their tableau of mutual absorption. They behave with freedom towards each other—perhaps with abandon, indeed—but <i>not</i> as strumpet and fool. Their language, that of lovers bent on ideal expression, is thus quite counter to Philo’s assessment of them:</p>
+
+    <div class="cita">
+        <p>CLEOPATRA. If it be love indeed, tell me how much.</p>
+        <p>ANTONY. There’s beggary in love that can be reckon’d.</p>
+        <p>CLEOPATRA. I’ll set a bourn how far to be belov’d.</p>
+        <p>ANTONY. Then must thou needs find out new heaven, new earth.</p>
+        <p class="attribution">(1.1.14–17)</p>
+    </div>
+
+    <p>The inflation of their language may strike us, but hardly as exceptional in any pair of lovers mutually absorbed. Rather, theirs is the common rhetoric of love, unspecified and generalized, seeking to express inexpressible heights and depths of feeling. Cosmic analogies are habitually called up by lovers less involved than these in the “real” world; the fact that Antony and Cleopatra are so deeply involved in the factual political world lends poignancy, irony, and a kind of accuracy to their occupational hyperbole. The “new heaven, new earth” of their love, created by them for themselves alone, must substitute for the real geography around them, the Mediterranean world over which their influence and the play’s action range. Symbolic geography is invoked, with its real referents: Rome, Alexandria, Athens, Sicily, Sardinia, Parthia, Judea, Media, Mesopotamia, Syria, Armenia, Cyprus, Lydia, Cilicia, Phoenicia, Libya, Cappadocia, Paphlagonia, Thrace, Arabia, Pontus all testify to the reach of Rome, whose “universal peace,” proclaimed by Caesar, was endangered by Antony’s withdrawal from the world scene in wilful, careless, selfish pursuit of private satisfactions.</p>
+
+    <p>All this real world, then, was insufficient for these two—but more important than that, it was also too much for them. To keep their love safe, they must shut out the actual world in hopes of finding a new space for themselves small enough to exclude occupations other than love, large enough to contain their exalted imaginations. In this play, the common literary metaphor of lovers’ giving up the world for love is taken as the literal <i>donnée</i>: meaning pours back to give substance to the cliché, as the play teaches something of the human cost involved in neglecting the serious public world, the glories and woes of war and administration, for love of one woman.</p>
+
+    <p>Antony and Cleopatra speak “excessively” from the beginning, in an idiom familiar enough in love-poetry. But it is worth noting that they are not alone in this habit of overstatement: Philo’s initial speech is wholly cast in terms of excess. He degrades the amorous exploits of his commander with Egypt’s queen, certainly: his account of that commander’s military accomplishments is as excessive as his contumelious commentary on Antony’s amatory achievements. Antony’s eyes in war “glow’d like plated Mars”; “his captain’s heart . . . burst the buckles on his breast.” Caesar’s speech too follows the pattern of overstatement: he makes the same kind of contrast of Antony’s “lascivious wassails” and “tumblings on the bed of Ptolemy” to his astonishing endurance at Modena and on the Alps (1.4.55–71). Whatever Antony does, it seems, “o’erflows the measure”—but the Romans can <i>recognize</i> excess only in Antony’s un-Roman acts: the heroic rest is, to them, natural in a Roman. Excess, then, is culturally conditioned: men recognize as excessive only what they regard as “too much,” so that Romans who valued military extravagance as much as Cleopatra valued extravagant pleasures could find in her Antony much to praise. When Octavius denounces Antony’s self-indulgence, he calls him “A man who is the abstract of all faults / That all men follow.” Who could be more than this, an epitome of ill? Taking exception to Octavius’s statement, Lepidus casts his comments in terms equally hyperbolical:</p>
+
+    <div class="cita">
+        <p>I must not think there are</p>
+        <p>Evils enow to darken all his goodness:</p>
+        <p>His faults in him, seem as the spots of heaven,</p>
+        <p>More fiery by night’s blackness.</p>
+        <p class="attribution">(1.4.10–13)</p>
+    </div>
+
+    <p>What are we to make of Antony, then? What are we to make of his present love-experience, judged by Philo as tawdry and low, judged by the lovers as quite past the reach of expression? In fact, what do Antony and Cleopatra <i>do?</i> We are told (by Romans) how they pass their time, in behavior characterized as “Asiatic” in the extreme. Egypt is, certainly, “the East,” regularly so designated in the play. As queen, Cleopatra is often addressed by her country’s name; when she dies, she is called “the eastern star,” that is, the planet Venus. What Antony and Cleopatra do, evidently, is live by the attributes of the Asiatic style; they act out, they and the Romans tell us, a life-style gaudy, loose, ungirt, decorated, artful, contrived, and deceitful. The Egyptian court is an idle, opulent, sensual, Asiatic place, where men are effeminate and women bold. Mardian the eunuch exists to remind us of what can happen to a man in such an environment, and we see Antony unmanned in various symbolic ways. Normal decorum is constantly breached by this general, this queen. Drunk, Antony will not hear his messages from Rome; playing with Cleopatra, he relinquishes his armor to her and dresses in her “tires and mantles.” She takes his sword away, and though she returns it before their battle, she disarms him entirely in the midst of a real battle, by more critical means. Publicly she ignores him, however preoccupied with him privately. Nor is she manly, for all the dressing in armor and proclaiming herself a man’s equal before the last battle. At Actium she flees out of fear, and retires in the last pitch as well: when Antony is dying before her eyes, she will not emerge from her monument, nor even open its doors that he may easily be brought in to her—because, she says, she is afraid.</p>
+
+    <p>In Egypt men feast and sleep. “The beds in the East are soft” in many ways. Both defeat and victory are celebrated in Egypt by one other gaudy night, and Caesar seems to acknowledge this Egyptian need for self-indulgence when, to reassure the captive Cleopatra, he urges her to “Feed and sleep.” Though the meanings of “sleep” deepen radically by the end of the play, at the beginning and for the most part, “sleep” is a sign of Egyptian indolence and womanishness. Festivities are unmanly too; Caesar says of his great competitor:</p>
+
+    <div class="cita">
+        <p>From Alexandria</p>
+        <p>This is the news: he fishes, drinks, and wastes</p>
+        <p>The lamps of night in revel; is not more manlike</p>
+        <p>Than Cleopatra; nor the queen of Ptolemy</p>
+        <p>More womanly than he.</p>
+        <p class="attribution">(1.4.3–7)</p>
+    </div>
+
+    <p>His last comment may indicate Caesar’s limitations as a judge of human character, but it also sums up the Roman attitude to Egypt, a place merely of “lascivious wassails.” The way most Romans think of Cleopatra, it is no wonder that she shrinks, at the end, from being carried through Rome to see “some squeaking Cleopatra boy my greatness / I’ the posture of a whore.” She knows how she is named in Rome, because in his rage Antony tells her:</p>
+
+    <div class="cita">
+        <p>I found you as a morsel, cold upon</p>
+        <p>Dead Caesar’s trencher; nay, you were a fragment</p>
+        <p>Of Gnaeus Pompey’s, besides what hotter hours,</p>
+        <p>Unregister’d in vulgar fame, you have</p>
+        <p>Luxuriously pick’d out.</p>
+        <p class="attribution">(3.13.116–20)</p>
+    </div>
+
+    <p>Again and again, “appetite” is a word used to cover all satisfactions. Feasting and love (or, better, sex) are equated, as in the passage just quoted. Cleopatra is often reduced to food—by Enobarbus, speaking of Antony, “He will to his Egyptian dish again”; by herself, in her youth “a morsel for a monarch,” although those were, as she says, her “salad days,” when she was both greener and colder than she later became. Pompey speaks man-to-man to Antony of “your fine Egyptian cookery” (2.7.63–65) and, later, of the “cloyless sauce” that Egypt proves for Antony.</p>
+
+    <p>Unquestionably the preoccupation with sex and with the shared sexuality of Antony and Cleopatra runs as an undercurrent through the play. The difference between Egyptian and Roman talk of sex is instructive: Charmian and the Soothsayer, Cleopatra and the Eunuch, speak playfully and naturally; Enobarbus speaks cynically to and about Antony, on “death,” on horses and mares; and the other Romans show their prurience and crudity when they speak, as they compulsively do, about the subject. The imagery too carries its sexual meanings: Cleopatra’s “sweating labour” joins with the imagery of bearing and of weight to remind us of the woman’s part in the act of love. This language in turn conjoins with the marvelous and varied horse-imagery which reaches its peak as she imagines the absent Antony on horseback: “O happy horse, to bear the weight of Antony!” Such language assumes sexuality to be a normal part of life; the Nile-imagery, with its “quickenings” and “foison” references, suggests procreation and creation as part of a natural cycle. Nature provides reproductive images for sexuality, and war another sort. The constant reference to swords, in fact as in image, keeps manliness ever at the forefront of our awareness, as it is at the forefront of the dramatic characters’ awareness, too.</p>
+
+    <p>There is more than the suggestion, then, that love is no more than appetite or a drive; if that were all there was to love, the Roman view of this affair would be correct, Cleopatra simply a whore and Antony besotted, “ne’er lust-wearied.” But can a man remain “ne’er lust-wearied” by the same woman, however infinite her variety, if she is merely a whore, however aristocratic her birth? Enobarbus, in so many ways faithful to Antony and Cleopatra in spite of his disapproval of their behavior, sees something more in her and tries to say what that “more” is. Once again, significantly, he speaks in terms of food—“Other women cloy / The appetites they feed, but she makes hungry, / Where most she satisfies.” Mere sexuality, strong sexual love, idealized love: however it is described, the emotions shared by Antony and Cleopatra challenge the heroic world of Roman military organization.</p>
+
+    <p>This miracle of love (or whatever it is) we do not see acted out onstage. Indeed, we never see Antony and Cleopatra alone, as we do Romeo and Juliet, Desdemona and Othello. What we see is something quite different: a man and a woman playing, quarreling, making up; a woman sulking, pretending to anger, flying into real rages, running away from danger, flirting even in deep disgrace and danger. Except on Roman tongues, there is little that can be called shameless or lascivious in Cleopatra’s or Antony’s utterances about love: her language on this preoccupying subject is remarkably clean—which is not the case with Roman commentators on these spectacular lovers.</p>
+
+    <p>To make so commonplace, so vulgar a mixture into a woman worth losing the world for is a considerable task for any playwright. Our playwright accomplishes it by fairly simple, even domestic, means. His Cleopatra has, among other things, a girlish, hoydenish companionability. She is obviously amusing company; she will try anything once. She has a lovely imagination and considerable command of language. She tries to rise to occasions, and sometimes she does. We hear much of Cleopatra’s whoredom, and we see Antony blundering after her, twice fatally; we hear him speak of the less pleasant side of his love, of the “Egyptian fetters” which tie him in Alexandria, of his “dotage,” and later, when he misses her in Rome, of his “pleasure” with Cleopatra. There is every reason to think very little of Cleopatra—although, to balance her crudities (as when she had a salt-fish attached to Antony’s line), we are made to see that even in her breaches of decorum, her riggishness, her foolish middle age, she is delightful. She is earthy, and down-to-earth; her sudden accessions of realism puncture both the romanticizing of the lovers and Antony’s simplistic view of love and Cleopatra as satisfaction to his appetite. This woman is something more:</p>
+
+    <div class="cita">
+        <p>Sir, you and I must part . . .</p>
+        <p>Sir, you and I have lov’d.</p>
+        <p class="attribution">(1.3.87–88)</p>
+    </div>
+
+    <div class="cita">
+        <p>In praising Antony, I have disprais’d Caesar . . .</p>
+        <p>I am paid for’t now.</p>
+        <p class="attribution">(2.5.107–9)</p>
+    </div>
+
+    <div class="cita">
+        <p>Think you there was, or might be such a man</p>
+        <p>As this I dreamt of?</p>
+        <p class="attribution">(5.2.93–94)</p>
+    </div>
+
+    <div class="cita">
+        <p>Antony</p>
+        <p>Shall be brought drunken forth, and I shall see</p>
+        <p>Some squeaking Cleopatra boy my greatness</p>
+        <p>I’ the posture of a whore.</p>
+        <p class="attribution">(5.2.218–20)</p>
+    </div>
+
+    <p>When her ironical common sense pierces her own theatricals, her charm is irresistible: though she rarely acts on that knowledge, we see that at moments she knows herself and the precarious, politicking world she lives in. It is this side of her, the practical, real woman, that is picked up in Charmian’s farewell epithet: to “a lass unparallel’d.” Age, apparently, could not wither her, nor a rakish life, nor childbearing.</p>
+
+    <p>But in her first parting from Antony, as in her exchange with Dolabella after Antony’s death and just before her own, Cleopatra’s common sense rises to something greater:</p>
+
+    <div class="cita">
+        <p>Sir, you and I must part, but that’s not it:</p>
+        <p>Sir, you and I have lov’d, but there’s not it.</p>
+    </div>
+
+    <p>The facts are clear enough—but they do not provide Cleopatra with an explanation for the pressure of her feelings, that this love for Antony is unduly significant, that parting from him must radically diminish her. Her sentence loses its direction as she seeks to express the “more” of her feeling for him:</p>
+
+    <div class="cita">
+        <p>That you know well, something it is I would,—</p>
+        <p>O, my oblivion is a very Antony,</p>
+        <p>And I am all forgotten!</p>
+        <p class="attribution">(1.3.89–91)</p>
+    </div>
+
+    <p>As she later says, she wants to sleep out “the great gap of time” that Antony is away from her; in his absence, even by herself, she is, imaginatively, “forgotten” and therefore does not exist. Both Antony and Cleopatra speak feelingly and movingly about their sense of identity lost. Part of their tragedy lies in Antony’s feeling himself dissolve when he is with her, and Cleopatra’s feeling her “nothingness” when he is not with her.</p>
+
+    <p>Cleopatra makes clear that her love for Antony is fully sexual; but, as has been noted, this emphasis comes in reverie, not in lascivious action or exchange. What is significant, surely, is that in a life given to sexual conquest and enjoyment, her relation to Antony means more to her than anything else. It is not that Cleopatra does not want to be reminded of her old connection with Caesar; it is that she knows its qualitative difference from the connection with Antony. Certainly Cleopatra does not shirk the facts of her sexual past; however giddy and irresponsible her behavior with Antony, though, she knows that for him, she has quit being a rake. For her, sexuality is never just the “pleasure” that Antony implies early in the play it is for him. It has (at last, one has the impression) risen above itself to become love of a sort that defies definition in psychological ways, not just in “literary” ways. Indeed, in literary ways, the lovers’ extreme preoccupation with one another is almost <i>too</i> resonant to the conventional language of love: as in <i>Othello</i>, but in an entirely different context, the Petrarchan mixture of love and war has here been actualized in the necessary conditions, unmetaphored into actuality, of everyday life for this general and this queen. But the love-poet’s transcendent aim is the same as theirs: how to express the indefinable love they share, a love that to unsympathetic onlookers seems ordinary enough, vulgar enough, but to the lover experiencing it inexpressibly glorious and valuable. Their language is pitched at the familiar literary goal, to make the “new heaven, new earth” of lovers’ cliché into a universe for their exclusive dwelling. Their <i>folie à deux</i> is in part a matter of language, manipulated to record heightened experience and to displace both conventional and particular renditions of their experience by others.</p>
+
+    <p>Cleopatra’s imagination particularly works at this task: if sex is the reality and imagination the fantasy of love, then the two fuse in Cleopatra’s speech in Antony’s absence from her, when she imagines him as he at that very moment actually <i>is</i>:</p>
+
+    <div class="cita">
+        <p>Stands he, or sits he?</p>
+        <p>Or does he walk? or is he on his horse?</p>
+        <p class="attribution">(1.5.19–20)</p>
+    </div>
+
+    <p>Her sexual memories crowd into the single line, “O happy horse, to bear the weight of Antony!” Her images of weight, realistic enough in any woman’s experience of love, come to their culmination in the terrible scene of Antony’s death, as she draws him into her monument:</p>
+
+    <div class="cita">
+        <p>How heavy weighs my lord!</p>
+        <p>Our strength is all gone into heaviness,</p>
+        <p>That makes the weight.</p>
+        <p class="attribution">(4.15.32–34)</p>
+    </div>
+
+    <p>The reality is there, although not displayed to us, of the children she has borne him; “the lap of Egypt’s widow,” as Pompey so rudely said, has actually held Antony and known what it was to do so. Finally, to her “demi-Atlas” she attributes more weight than any man can carry; she turns her love into an even more colossal personage than the world will recognize or can, in the person of Dolabella, accept.</p>
+
+    <p>In this habit of stretching expression, of trying to say more than words or figures habitually allow, lies some clue to the effect on each other of these lovers. They make each other feel that age is no bar to living fully; they make each other feel, not still alive, but more than usually alive, a feeling, however illusory, which can exercise curious power over a man and a woman more than commonly experienced. The connection between them, obviously, is quite different from other experiences they have had; Cleopatra knows this from the beginning of the play, and we witness Antony coming to know it too. It is precisely his marriage to Octavia, with all its chilly merits, that teaches him what Cleopatra is to him. In their view of each other, Antony and Cleopatra are more than life-size. So Cleopatra speaks truth in her great speech of hyperbole about Antony:</p>
+
+    <div class="cita">
+        <p>I dreamt there was an Emperor Antony.</p>
+        <p>O such another sleep, that I might see</p>
+        <p>But such another man! . . .</p>
+        <p>His face was as the heavens, and therein stuck</p>
+        <p>A sun and moon, which kept their course, and lighted</p>
+        <p>The little O, the earth. . . .</p>
+        <p>His legs bestrid the ocean, his rear’d arm</p>
+        <p>Crested the world: his voice was propertied</p>
+        <p>As all the tuned spheres, and that to friends:</p>
+        <p>But when he meant to quail, and shake the orb,</p>
+        <p>He was as rattling thunder. For his bounty,</p>
+        <p>There was no winter in ’t: an autumn ’twas</p>
+        <p>That grew the more by reaping: his delights</p>
+        <p>Were dolphin-like, they show’d his back above</p>
+        <p>The element they liv’d in: in his livery</p>
+        <p>Walk’d crowns and crownets: realms and islands were</p>
+        <p>As plates dropp’d from his pocket.</p>
+        <p class="attribution">(5.2.76–92)</p>
+    </div>
+
+    <p>Antony has then finally turned into that “new heaven, new earth” he had told Cleopatra in the first scene she must find as the appropriate bound of their love. Microcosm and macrocosm change places: the earth is smaller than this man, as the common cosmic metaphor expands into all space and more-than-time in the images of ever-ripe autumn and a creature, the dolphin, transcending his natural element. Correspondence imagery involving worlds in different scales—the cosmos, however thought of; macrocosm and microcosm; stars and eyes—is so common in sixteenth- and seventeenth-century poetry as to be mere cliché, and certainly at one level, all Cleopatra is doing in this magnificent speech is making more extravagant a notion already hyperbolical at its base. But in this particular case of lovers, the standard hyperbole has its peculiar reality to “match” this particular psychological and political situation. In the imagery, the larger world has been contracted into the limits of Antony’s body (normally a microcosm), and Antony’s body in turn enlarged encompasses and surpasses the macrocosm to which originally it had been likened. In fact, this is what happened to these lovers: “the world,” in this case half or a third of the civilized world which was under their control, was rejected in favor of the “little world,” quite literally, of man. “Bodies” are very important in the play, and although Antony and Cleopatra speak with remarkable delicacy about each other’s bodies and their own bodily sensations in love, this speech gives the literary justification for that physical love. Hyperbolic metaphor that it is, this speech at the same time unmetaphors its literary content by making plain the crucial importance to these lovers of their finite, particular, well-worn bodies.</p>
+
+    <p>Cleopatra does not linger on the fantasy, but asks Dolabella, with the realism characteristic of her:</p>
+
+    <div class="cita">
+        <p>Think you there was, or might be such a man</p>
+        <p>As this I dreamt of?</p>
+        <p class="attribution">(5.2.93–94)</p>
+    </div>
+
+    <p>To that, Roman Dolabella can only respond, “Gentle madam, no”—which serves to arouse Cleopatra to still more immense reaches of imagery, to language rejecting anything nature can offer as fit comparison to the wonder that Antony was. This time momentary realism touched off, as it habitually does not, the reassertion of hyperbole’s value. Hyperbole becomes “true”—and yet even that hyperbolical language is not “enough” for the intense feelings between these two overreachers of life. In the references within the play, they are always more than merely human, more than triumvir and queen: Cleopatra was, we hear, more beautiful than the most beautiful picture of Venus. Art cannot render her, nor can nature’s works render Antony. In her eulogy of him, Cleopatra never denies his manhood—“My man of men,” she says, and she should know—but the manhood she attributes to him no ordinary mortal can aspire to. His bounty was endless—and his treatment of Enobarbus suggests that this is so—his delights transcendent. His empire was to be prodigal of imperial power—“as plates dropp’d from his pocket.” Compare that magnificence with Caesar’s careful accounting of Mark Antony’s distribution of empire in act 3, scene 6: for Caesar, these political entities which Mark Antony gave away were no mere “plates” but the extended possessions of Rome, to be protected, at cost, for Rome’s sake.</p>
+
+    <p>Cleopatra’s imagination is as bountiful as Antony’s generosity. Her language is rich as her habitat, and she is, as both detractors and admirers point out, histrionic to a degree. She stages herself at Cydnus; she stages herself as dead for Antony; she stages herself for her death. She speaks and is spoken of in theatrical terms of scene, act, and stage; she is a creature of impulse and whim, which she tries out on her audiences, acting to Dolabella, to Caesar, to Antony, acting even with her familiar maids. That habit of acting stands her in good stead in her determination to outwit Caesar at the end. Reversing Marx’s famous quip, this play first acts out in farce what becomes tragedy a second time through. Cleopatra pretends to be dead—trivially, but with horrible results for Antony—before she dies in earnest. The theme of death echoes throughout the play—the lovers know, long before the crisis, the cost of their choice. Enobarbus plays on the slang term, “death,” for sexual intercourse, when Antony first tells him he must be gone; his cynicism can seem justified to an audience which sees Cleopatra feign illness and death. Her coquetry, charming within the domestic protections of her court, is fatal on the battlefield. It is worth noting that for the deceit which cost him his life, Mark Antony never reproaches her; instead, he promises to be “A bridegroom in my death, and run into ’t / As to a lover’s bed.” She too equates love and death: “The stroke of death is as a lover’s pinch, / Which hurts, and is desir’d.” She dies to join Mark Antony—“Husband, I come”—as his wife, taking for granted the meaning of a simple act which could never take place in the Roman world during their lives. Put in the simplest terms, the word “death” is gradually ennobled by what happens in the play—but not before its seamier implications have all been laid before us.</p>
+
+    <p>So the play begins to live up to itself. As Philo’s crudity is submerged under the lovers’ flood of words, again and again the nasty turns out to have its noble aspect too, the Gorgon indeed becomes Mars. Because the playwright never shirks the unpleasantness, the triviality, even the occasional brutality of the lovers, because he always allows them to recognize and to reveal the compulsiveness of their love, its literal extremity, that love’s peculiar force begins to take its confirmation from the radical action and the extreme language. As we watch the hyperbole coming true, we recognize a maturing of emotions more than life-size to begin with, commanding a space of their own making, relying on their mutual respect for their own worth. The simplicity, singleheartedness, and intensity of this faulty human love, magnificent in spite of the lovers’ politics and duplicity, in spite of the inevitable deceits of their world, come to seem a far greater achievement, against greater odds, than the successful Roman quest for power.</p>
+
+    <p>And for this, as we shall see, there is theoretical precedent in Longinus’s defense of the style Antony and his acquaintances used, a style designed to express generosity, magnitude, magnanimity; a style, as he put it, “with the true ring of a noble mind.” Though Shakespeare does not slight the cultural structure and construction of any style—Roman, Egyptian here, Navarrese elsewhere—he is concerned in this play with the significance of a personal style within the cultural matrix, with what Longinus called “megalophrosyne.” Though we know, from Philo’s initial speech, of Antony’s capacity for greatness and perceive, in his dealings with Enobarbus and Cleopatra, his magnanimity in the face of terrible losses, he still has to live up to the nobility of his soul and to the elevation of his speech. Still more Cleopatra, unused to Roman gestures of magnanimity: from riggish, rakish queen who plays tricks with a man’s honor and his life, she must grow into the moral capacities her hyperbole seems to make light of.</p>
+
+    <p>The risks are great—how does a man, how can a woman, leave off grandiose and bombastic play-acting, even to the roles of god and goddess, to die as heroes? The lovers set their sights high from the start: chose as their models superhuman figures from Roman mythology—Antony in the play’s first speech is likened to Mars, Cleopatra unmistakably to Venus. They act out that archetypal coupling throughout their lives, even to receiving mockery like the gods of Venus and Mars. Cleopatra is a goddess of love in her disguises, both the Roman Venus and the Egyptian Isis: she celebrated her greatest political triumph, over Antony and by his means over Rome, dressed “in the habiliments of the goddess Isis,” as Caesar in outrage reports. Isis was also a moon-goddess, whose variability, reflected in the feminine psychology, is made much of in the play; her “habiliments,” as Plutarch tells us in another place, are varicolored, to show her involvement with all nature—with light as well as dark, fire as well as water, life as well as death, beginning as well as ending. These robes are singularly appropriate to Cleopatra: they symbolize all matter and “afford many disclosures of themselves, and opportunities to view them as they are changed about in various ways.” Cleopatra is too much a woman, variable and faulty, to “be” either Venus or Isis, but she takes the part of both of them; posing as these goddesses, she occasionally takes on some of their meanings, as Antony on occasion takes on some of the meanings attributed to Mars and Hercules. In addition, this pair is too intermingled in one another for such an interpretation: whatever their natural attributes making them godlike, Antony and Cleopatra are a man and a woman to each other and to the world.</p>
+
+    <p>Although it is as a man that she most values him, Cleopatra symbolically and actually unmans Antony. We hear of her dressing him in her clothes, as Omphale did Hercules. His decline from perfect manhood to something less than that is part of Antony’s tragedy. In this play, however, the facts of the Roman idea of manhood are examined again and again and found wanting, particularly in respect to the very quality Antony so lavishly displays, magnanimity. He was a generous, a prodigal man, but always a man large of spirit. Largesse is his attribute, in all senses. He gave away his goods to his soldiers in defeat; his graciousness drove the defected Enobarbus to his shamefast death. To Antony’s naturally great character Octavius stands in cheerless contrast; and no one in Rome, ever, is shown as rising to Antony’s heights of grace. Again and again we are brought up against the hard realization that if to be a Roman is to be so narrow and calculating as Octavius, so vulgar as Pompey, so divided as Enobarbus, then Antony has surely chosen the better part. Octavius speaks beautifully of Antony’s death:</p>
+
+    <div class="cita">
+        <p>The breaking of so great a thing should make</p>
+        <p>A greater crack. The round world</p>
+        <p>Should have shook lions into civil streets,</p>
+        <p>And citizens to their dens. The death of Antony</p>
+        <p>Is not a single doom; in the name lay</p>
+        <p>A moiety of the world.</p>
+        <p class="attribution">(5.1.14–19)</p>
+    </div>
+
+    <p>Beautiful words indeed to eulogize a dead colleague and opponent—but Caesar cannot help calculating the man’s worth: “A moiety of the world.” That coveted demi-monde is at last his; the reckoning is over, the world brought under Caesar’s universal landlordism. The “boy” has become, as Cleopatra names him, “Sole sir of the world.” After the briefest respite in honor of his dead “mate in empire,” Caesar turns back to the business of the world and lays his plans for the future. To such a man, it is difficult not to prefer the prodigal old ruffian, who can assert, and mean it, “There’s beggary in love that can be reckon’d,” who can risk and lose his moiety (or his third) of the world for something which, however flawed, he valued above himself.</p>
+
+    <p>For Antony is no standard Roman, as the Romans testify. Men <i>speak</i> of his greatness of character and action, his stature in virtue and in vice. Men <i>act</i> to honor those qualities: his soldiers love him; his servant kills himself rather than stab his master; Enobarbus dies of having betrayed him. Philo can speak of him only in hyperbolical terms; so, in spite of themselves, can Caesar and Lepidus. In everyone’s mind, this man was aggrandized and enlarged above the commonalty of men. Like his ancestor Hercules, Antony does things no other man can do, on a scale on which no other man can do them. It is not Cleopatra alone who feels this, but everyone who knows him. When we compare this Antony with the man duped twice by Cleopatra, or with the man causing Caesar’s messenger to be beaten, or the man feasting, joking, and making love with Cleopatra, we see the range of the problem Shakespeare set himself—and we must suspect that some of this hyperbole is merely bombast. But when his imagination is fired by Cleopatra, Antony <i>can</i> do great deeds at arms. He conquered the entire East and redistributed its countries (without consulting Rome) among Cleopatra and her children. When she arms him, he defeats the Romans at odds, and returns to tell her his “gests” that day. At his death, when an ordinary man might well have nagged, he looks to an Elysium in which he and she shall outdo Aeneas and Dido; he warns her to look after her safety and, like the great lover he is, dies on a kiss. No trace remains of his rage at her, no trace of reproach for her false message: with his own life he was prodigal; with hers, he was generous.</p>
+
+    <p>These are the gestures to match an hyperbolical style, the behavior so admired by Longinus: the gestures of the overreaching man whose imagination is larger than the stage it must act upon. For Antony, the two “stand up peerless”; Cleopatra remembers that</p>
+
+    <div class="cita">
+        <p>Eternity was in our lips, and eyes,</p>
+        <p>Bliss in our brow’s bent; none our parts so poor,</p>
+        <p>But was a race of heaven.</p>
+        <p class="attribution">(1.3.35–37)</p>
+    </div>
+
+    <p>For her he was, finally, truly Herculean, a “demi-Atlas,” a colossus whose “legs bestrid the ocean”; he was greater than the arch of empire itself: he was her world. For him, she could make herself into Venus and Isis, could “be” ageless and infinitely desirable, immortal, more than human. They read their stature from their mutual view of one another. Their ideas of themselves and of each other may have been unrealistic, vain, self-flattering, and self-deceitful, but they reflected what can never be readily explained, the peculiar sense of well-being and power a man and woman in love can give each other. So their clumsy games, their open lovemaking and open quarreling, their flirtations, their drinking, their mockery, turn somehow from nonsense and bombast into legitimate hyperbole, into a language forever on the stretch to express what had not been expressed before. Far from ideal lovers, Antony and Cleopatra demand a language for their love which rejects conventional hyperbole and invents and creates new overstatements, new forms of overstatement. In the language itself, we can read the insatiability of their love, as the language seems to make hungry, too, where most it satisfies. Nothing is enough for these two, not even the most extravagant figures of speech.</p>
+
+    <p>The language Antony and Cleopatra use, the language others use about them, is stretched at its upper and lower limits, to express their high and low gestures as bigger than lifesize. It is interesting that Antony and Cleopatra do not bewitch others’ imaginations only by their charismatic presence; their great qualities are praised, described, referred to, and criticized mostly in their absence. These two are watched by a world fascinated even when disapproving; they are staged in a play of their own making, with the world as their willing audience. But they do not really play for that audience: their imaginative acting is all for each other, and in their mutual absorption they do not care who happens to look on at the spectacle. Of course the Romans cannot keep their eyes off them; beneath the language of official disapproval, one can see Roman fascination with this un-Roman style of life, with this abundant, prodigal, excessive manner of doing things. Their bounty knows no winter but is, in Antony’s word, always “foison.”</p>
+
+    <p>Ripeness, overripeness: certainly the images of fertility, in particular the Nile-imagery, stresses life-giving, fecundity, creation; and, with these good qualities, also corruption and rotting. Action can corrupt; so can inaction. In Caesar’s image for the variable Roman people, the famous “vagabond flag” passage, we read of one kind of rotting; in Antony’s inaction we see another. The flag is dissolved in the stream’s current; “solutus,” dissolved, was one word of disapprobation applied to the Asiatic style, and (as Charney points out) images of dissolution and deliquescence abound in the play. We see things dissolve and resolve—the liaison with Cleopatra, the marriage with Octavia. Antony vacillates between his Roman alliances and his Egyptian delights, choosing now the one, now the other. The tide is against him, literally at Actium, figuratively on land as well. And yet one is not surprised at this particular literalization of water-images of dissolution, for the metaphor has gained power through the play until, in Antony’s great speech about himself, we see that he thinks of himself as formless, his shape lost. The metaphor of dissolution is overtly made use of through the play—“Let Rome in Tiber melt,” Antony cries at the beginning; “Authority melts from me,” he says near the end of his life. Cleopatra too speaks in this image: “Melt Egypt into Nile.” If she should ever play him false, then “dissolve my life.” Both use the neologism “discandy,” Cleopatra in a hyperbolical assertion of love, Antony in connection with his melting authority:</p>
+
+    <div class="cita">
+        <p>The hearts</p>
+        <p>That spaniel’d me at heels, to whom I gave</p>
+        <p>Their wishes, do discandy, melt their sweets</p>
+        <p>On blossoming Caesar.</p>
+        <p class="attribution">(4.12.20–23)</p>
+    </div>
+
+    <p>The most important of the dissolution passages is Antony’s speech about himself as a cloud in which shapes continually shift, dissolve, and reform until “The rack dislimns, and makes it indistinct, / As water is in water.” When he finds his Roman form again and dies “a Roman, by a Roman / Valiantly vanquish’d,” Cleopatra says of him, “The crown o’ the earth doth melt,” into a nothingness she feels as palpable. To mark Cleopatra’s death, Charmian calls for cosmic dissolution, “Dissolve, thick cloud, and rain, that I may say / The gods themselves do weep” (5.2.298–99).</p>
+
+    <p>Peculiarly enough, other words characteristically applied in denigration to the Asiatic style are picked up and openly developed in the powerful imagery of this play. “Enervis” is such a word—Antony and Cleopatra taunt each other with idleness (1.2.113–14, 127; 3.8.90–92), and Antony accuses himself of “slackness” (3.7.27). The notion of effeminacy is related to the notion of idleness and, in Enobarbus’s last speech to Antony, is explicitly connected with melting. Enobarbus weeps (“I, an ass, am onion-eyed”), and asks Antony to stop talking—“for shame / Transform us not to women” (4.2.35–36). “Inanis,” empty, is another word played in the imagery: “vacancy” occurs, in connection with voluptuousness (1.4.26), and in Enobarbus’s attempt to praise Cleopatra (2.6.216). By all odds the most significant use in the play of such a term is the imagery and the practice of enlargement, of blowing up. The Asiatic style was “inflatus”: we have seen how Cleopatra continually enlarged her idea of Antony, until in her paean to Dolabella of Antony’s greatness she outdid her hyperbolical habits of rhetoric. There is, too, much about inflation in the play’s language. In the first speech of Philo, in which so much of the play’s implications, sexual and other, lie coiled, Antony is said to have “become the bellows and the fan / To cool a gipsy’s lust.” Primarily, the bellows blows up, the fan cools: but <i>both</i> can actually blow up and both can cool. On her barge, Cleopatra has magical fans, apparently, also both blowing and cooling: the “winds did seem / To glow the delicate cheeks which they did cool, / And what they undid did” (2.2.203–5). Breathless, Cleopatra breathes forth her power; in her, Enobarbus assures his hearers, defect becomes perfection. Antony and Cleopatra, then, “inflate” each other—or, to put the same thing more gracefully, they inspirit each other. For those Atticists who polemicized against the Asiatic style, such “inflation” was bad because it was untrue to nature and gave false impressions of fact. Now, Antony and Cleopatra may have had, and have fostered, false impressions about themselves and each other; but they were trying to do something else, something highly respectable and highly poetic: to give utterance to their own convictions and sensations of being larger than life, which in turn demanded a style of expression more spacious than that used by the ruck of mankind. By means of the style, ever on the reach for an undefined “more,” the infinite longings of these figures can be understood: but, furthermore, by means of this twice-heightened speech, the play examines not only the values of an enriched style, but the values of the life it seeks to match. The play is a study in richness and ripeness, necessarily also a study in overripeness as well, a study even of corruption. But never may we conclude, in morality vein, that these last qualities are valueless, that the people who speak so are simply megalomaniac and self-deluded. Indeed, what emerges from the play is something quite different, the affirmation of the values, qualified by an awareness of its dangers, of such a way of life.</p>
+
+    <p>As one works through the play, several things become clearer: at the beginning, Antony speaks hyperbolically, bombastically: his honest heartfelt emotions, mingled with an ironic self-criticism, are reserved for his realization of Fulvia’s death. It is Cleopatra who checks his overstatement, questions the sincerity of his hyperbole (“Excellent falsehood”; “Hear the ambassadors”). Mocking him, she is still besotted with him; no less than Antony is she manipulable by her love. Both Antony and Cleopatra suffer from self-surpassing rages, she at the messenger, he at her apparent and real betrayals of him; hyperbole operates there in both language and gesture. By the third act, something has begun to happen which demonstrates the identity of the lovers: the hyperbolical style with which Antony began the play now issues from Cleopatra’s mouth:</p>
+
+    <div class="cita">
+        <p>Ah, dear, if I be so,</p>
+        <p>From my cold heart let heaven engender hail,</p>
+        <p>And poison it in the source, and the first stone</p>
+        <p>Drop in my neck: as it determines, so</p>
+        <p>Dissolve my life; the next Caesarion smite</p>
+        <p>Till by degrees the memory of my womb,</p>
+        <p>Together with my brave Egyptians all,</p>
+        <p>By the discandying of this pelleted storm,</p>
+        <p>Lie graveless, till the flies and gnats of Nile</p>
+        <p>Have buried them for prey!</p>
+        <p class="attribution">(3.13.158–67)</p>
+    </div>
+
+    <p>It is Antony now who says, “I am satisfied,” evidently needing that assurance to go on with the “chronicle” of which he feels himself to be a part. Early in the play, Antony and Cleopatra are separately hyperbolical; as their unity grows, they adapt to each other’s modes of speech. These lovers are in many ways temperamentally alike, and they become more so as their meaning for each other becomes more conscious and more motivating in their lives. In the third act, as they pitch their lives together once more, their most hyperbolical speeches of love are signs of their deepening unity with one another, the more poignant for their violent and frequent misunderstandings.</p>
+
+    <p>To speak as they do, so grandly, so magnificently, so frankly in hyperbole, is in Antony’s and Cleopatra’s nature. They are true to one aspect of the Attic (or “Senecan”) prescription, after all, in that they express “themselves” truly in their language—this is to say, then, that their style <i>must</i> in honesty be bombastic, which according to Attic prescription should mean that their style matches the variability and shoddiness of their characters, discovers beneath their bluster and shouting mere fustian cheapness, secondhand emotions, and sleasy intentions. Longinus was fully aware of how close the elevated style was to bombast: it is almost as if Shakespeare set himself to examine Longinus’s problem fully in this play, to test out against human actions and human speech the human aspiration for sublimity.</p>
+
+    <p>Antony’s habits of speech reach toward and respond to the fundamental grandeur of his nature, as his actions increasingly confirm the propriety and integrity of his grand style. That Enobarbus adopts the hyperbolical mode—that Plutarch adopts it, indeed—to render Cleopatra’s magnificence, tells us much about the “real” application of an inflated and hyperbolical style. In Enobarbus’s mouth we are invited to recognize things as they are: Enobarbus knows <i>ping</i> from <i>pong</i>, Rome from Egypt. For better and for worse, Enobarbus is a Roman, speaks as a Roman, acts as a Roman. Yet to this man is given the great speech about Cleopatra, its figures stretching farther and farther as the speech goes on and as he realizes the difficulties involved in making anyone who has not experienced her charm understand what this woman is. Like his master, vacillating between Rome and Egypt in his own life, Enobarbus seems to opt for Rome against Egypt. At his end he chooses neither place, but rather chooses a man, a human being involved with both symbolic places and, for him, transcending both. From his relation to Mark Antony, Enobarbus took his final definition, to die with his betrayed master’s name on his lips. By the pull of hyperbole, of overstatement, of inflation, and of magnanimity on such a man, we can measure the power of Antony for Cleopatra—and, just because of his greatness, can measure her power for him. The two lovers confirm each other and themselves—so much we might expect. Enobarbus, with his excursions beyond his habitual style and behavior, not wanting to do so, nonetheless confirms them from outside themselves.</p>
+
+    <p>In his set-speech on Cleopatra, Enobarbus had called upon a natural miracle to attest to her power:</p>
+
+    <div class="cita">
+        <p>Antony</p>
+        <p>Enthron’d i’ the market-place, did sit alone,</p>
+        <p>Whistling to the air; which, but for vacancy,</p>
+        <p>Had gone to gaze on Cleopatra too,</p>
+        <p>And made a gap in nature.</p>
+        <p class="attribution">(2.2.214–18)</p>
+    </div>
+
+    <p>Even in figure, though, this miracle cannot take place: there is no gap in nature, nor in this play, however crowded things are by the space Antony and Cleopatra take up, by the bruit of their presence, the bustle of their companionship. To stretch the metaphor, the play’s dominant style is not one of vanity, although there are vanities enough blatantly set forth in the protagonists’ characters. They are self-centered and self-indulgent—but they are not self-satisfied. They look to each other forever for more; they criticize each other and themselves. In their lives, however lived out in the Asiatic style, in dissoluteness, inflation, swelling, enervation, slackness, effeminacy, and idleness, these two do <i>not</i> decay. Their satisfactions breed hunger; their desire neither stales nor cloys, not even at the moments in which they die. Finally, their desire can be seen to be a particular kind of love, a kind of love rarely made romantic, firmly based in shared sexual experience. Out of such love, each can think only of the other at the time of death.</p>
+
+    <p>Even when they are idle, Antony and Cleopatra make a stir in the world. This is perhaps part of the tragedy (though not in Renaissance terms): that public figures cannot afford private joys. In the modern jargon, there is no solution to their problems either of aspiring temperament or of historical situation. They could not do without each other and, their world being what it was, they could not live comfortably with each other. But imagine alternative solutions: suppose Antony <i>had</i> gone back to live in Rome with Octavia and their daughters (present in Plutarch but excised from the play); the political struggle with Caesar could hardly have failed to come to a head, for Caesar, if not Antony, had to find opportunity for quarrel. Suppose Cleopatra had gone back to her philanderings with Eastern potentates and Roman ambassadors: could she have restrained herself from political troublemaking, out of boredom if nothing else? Or, turning the matter about still more, how could Antony have lived among Romans whose view of Cleopatra was as extreme as his own, though at quite the other end of the scale? Could he have endured the silliness of Lepidus, the calculations of Octavius, the prurience of Menas and the rest, their eagerness to vulgarize personal experiences beyond their capacities to imagine? Character has something to do with “fate”—the struggle with Caesar would have come in the end, without the satisfaction for Antony of having chosen for Cleopatra, without the heroics at his death which, self-deceiving or not, eased him into Elysium with the conviction that his life had been worth its trouble and pain, and that his final disgrace was canceled by his grandiose final gestures of love.</p>
+
+    <p>This is a curious play, resting on an ambivalent concept of love impossible to sum up, to categorize, or to define. We learn throughout that desire can remain insatiable, that vacillation breeds corruption, that rewards in one sphere exact penalties in another. Cleopatra’s fans heated where they cooled, what they undid, did. So Cleopatra: she undid Antony, but also she made of him not so much what she wanted him to be—indeed, in that she failed—as what <i>he</i> wanted to be. Certainly one cannot draw as a general conclusion from this play that an intense connection between a man and a woman justifies all else, justifies all the neglect, the idleness, the betrayals, the prodigality of lives and honor. Shakespeare shows us, unmistakably, that it does not, by the play’s eternal balancing of one thing against another, its long vacillation between the bombastic and the sublime, its constant qualification of virtue by fault, of vice by virtue. But on balance, it is obvious that those experiences, from whatever source, which can elevate human beings are judged more favorably than those which do not; that those human beings who can be elevated are nobler than those whose nature is too small to permit such enlargement. With all its qualifications and all its defects admitted, proclaimed, displayed, the love of Antony and Cleopatra is nonetheless affirmed, the strumpet and the strumpet’s fool grow into the imaginative warrior and the theatrical queen. There is no denying their excesses, which are examined, studied, and reassessed both by the speakers within the play and by the audience watching the excesses demonstrated onstage. We learn that in such excess, life itself can reside. Though it threatens to rot, and seems at times to have corrupted the lovers, their style of living affirms their life—and that despite the deaths of the proceedings.</p>
+
+    <p>Indeed, in the deaths we see the value of the lives. Antony says that he dies as a Roman, but he bungled his death all the same, both by letting Eros die before him, and by not killing himself outright. However significant the “elevation” of Antony into Cleopatra’s tomb, it is an awkward business; the queen’s failure to open the tomb lays stress, just at the worst moment, on the weakest side of her nature. Antony’s dying skirts bombast the while, and we may assume that his failure to die efficiently in the Roman style is one mark Egypt laid upon him.</p>
+
+    <p>His beauty of character, though, emerges clearly through this uncomfortable death-scene: in spite of the clumsiness, what we remember is Antony’s magnanimity and Cleopatra’s high poetry. Antony affirms in his manner of dying both the Roman and the Eastern sides of his nature; Cleopatra too comes to accept Roman ways, even to embrace them in her own death. Her contemptuous fear of “Roman thoughts” in the first act gives way before her desire to emulate Antony and to die, like him, “in the high Roman fashion.” Her suicide, though, cannot be said to be pure Roman: she had done research into painless ways to die; she chose the Nile worm as a suitable weapon; she arranged the spectacle of her death with a care and love inappropriate to Roman suicide. In both suicides, a Roman pattern has been expanded and enriched by Egyptian opulence and Egyptian decoration, not least in the ornate style in which both Antony and Cleopatra take leave of their world. The actual world has shrunk away from them; in expectation of Elysium in each other’s company, they affirm the larger world of their fantastic and extravagant imagination, which their love had brought into being. The play’s language affirms that determination to enlarge life: even at the end, Cleopatra speaks as woman, lover, and mother. After all, it is only by Roman tongues that the hero and heroine are spoken of as mere voluptuaries, softened and weakened by self-indulgence and excess. Antony’s and Cleopatra’s speech is consistently vigorous, various, copious, vivid, liveliest in those remarkable passages where excessive behavior, excessive sensation, excessive emotions are given their due.</p>
+
+    <p>Even though it threatens to do so, this hyperbolical play does not get out of hand: its images are as closely controlled as those of the other late tragedies. Further, the richness and decoration of the language, in passages of passionate disgust as in passages of grandiloquent elevation, match the richness of temperament which confers upon their characters the privilege of an equal elevation. What at first sounds like bombast in Antony’s speech is naturalized in the course of the play, until his way of speaking becomes a standard against which other men are judged. Of effeminacy, slackness, or idleness, Antony’s behavior may sometimes be accused—but never his language, nor Cleopatra’s. From first to last what emerges is its affirmation of activity, of creativity, of unending and unendingly interesting emotional process. Till their very last breaths, these persons change and develop, to involve the audience in that development toward greatness. During the course of the play, then, Antony and Cleopatra grow into their rhetorical measure. At the play’s start, Philo had called a spade a spade, or even a shovel; in contrast, Antony and Cleopatra spoke in love’s arrogant, idealized overstatements. By the end of the play, Philo’s linguistic practice is blocked out by Antony’s hyperbole coming true, until we too believe that “the nobleness of life” is for such lovers to embrace. Until the very end, we are never quite sure of Cleopatra, such is the oscillation of the play and the woman between extremes, from rejection to reunion, from reviling to reaffirmation, from lie to truth, from denigration to encomium.</p>
+
+    <p>By their manner of dying, these figures are known: the Roman world, with all its real space, could not house the love of Antony for Cleopatra. That Antony lost his place in the real world, lost that world altogether, is made to seem unimportant beside the imaginative satisfactions of his emotional life. What Antony and Cleopatra do and say represents them: for all their own vacillation and oscillation, they turn out to be true in their ultimate commitment to each other. Antony dies with energy and (oddly enough) enthusiasm; Cleopatra looks to her last moment and beyond it, both on earth and in Elysium—she remains alive, feeling, imagining, to her last breath. Both catch and express their visions of the new heaven, new earth, seen always in terms of each other and of being with each other. They die as they had lived, beyond definition, in expectation of more. It is the strength, the vividness, the vigor of excess which this play presents, examines, criticizes, and ultimately, with full understanding, confirms, in a language of hyperbole built to match the size and scope of the subject. In the <i>ping</i> and <i>pong</i> of plain and grandiloquent styles, now one seeming to lead and now the other, Shakespeare manages to show us the problem and the problematics, in moral as in literary terms, at the heart of style. By sinking the notions associated with the Asiatic style back into life itself, in the play’s dramatic action he can examine and assess both the style and the style of life in terms of each other, and to see them as one. He can demonstrate, then, by the peculiarly literary device of a stylistic agon, the moral problematics of dimension, can manage to make acceptable—more, to make admirable and comprehensible—the values of an honestly ostentatious style.</p>
+
+    <section class="footnotes">
+        <h3>Note</h3>
+        <p>From <i>Shakespeare’s Living Art</i>. © 1974 by Princeton University Press.</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>

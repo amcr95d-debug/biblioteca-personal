@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infinite Variety: Uncertainty and Judgment in Antony and Cleopatra — Janet Adelman</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+.section-head { margin: 3.2rem 0 1.6rem; text-align: center; font-size: 1rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--text-secondary); }
+.section-head::before, .section-head::after { content: ""; display: inline-block; width: 2rem; height: 1px; background: var(--border-color); vertical-align: middle; margin: 0 .8rem; }
+.epigrafe { margin: 2rem 0 1.5rem; text-align: center; font-style: italic; color: var(--text-secondary); font-size: .95rem; }
+.epigrafe .attribution { display: block; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .3rem; }
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">Janet Adelman</p>
+        <h1 class="cab__tit">Infinite Variety: Uncertainty and Judgment in <i>Antony and Cleopatra</i></h1>
+    </header>
+
+    <p>The critical history of <i>Antony and Cleopatra</i> can be seen largely as a series of attempts to assess the motives of the protagonists and to arbitrate between the claims of Egypt and Rome. But this search for certainty often encounters the stumbling block of the play itself: at almost every turn, there are significant lapses in our knowledge of the inner state of the principal characters; and we cannot judge what we do not know. The characters themselves continually tell us that they do not know one another, that their judgments are fallible. Nor can we attribute the critics’ persistent search for answers merely to their stubbornness: for the play demands that we make judgments even as it frustrates our ability to judge rationally. This frustration is not an end in itself: it forces us to participate in the experience of the play and ultimately to make the same leap of faith that the lovers make. In this sense, our uncertainty is an essential feature of the play.</p>
+
+    <p>The moral of recent Shakespeare criticism may be that any tragedy studied long enough reveals that it deliberately provokes uncertainty; and in fact, there are some mysteries of plot, motivation, value, and judgment in all of them. But in other plays, we are usually certain of a few central facts; and we usually have our moral bearings. Despite our doubts about the ghost, we know that Claudius killed old Hamlet. We may question the value of vengeance or of any action in a corrupt state, but our questioning does not usually shake our conviction that the state must be set right. Despite the foolish irascibility of the old king or the foolish credulity of the Moor, we know who is right in <i>King Lear</i> or <i>Othello</i>; despite Macbeth’s eloquent grandeur, we are morally satisfied when he is killed by Macduff. But no such satisfaction awaits us in <i>Antony and Cleopatra</i>, where both the presentation of character and the dramatic structure work to frustrate our reasonable desire for certainty. Certainty, even of a limited kind, seems essential to the tragic experience. But <i>Antony and Cleopatra</i> is only partly tragic; or at least the tragic vision is subject to the same questioning as everything else in the play.</p>
+
+    <h2 class="section-head">Character and Knowledge</h2>
+
+    <div class="epigrafe">
+        <p>Not know me yet?<br><span class="attribution">(3.13.157)</span></p>
+    </div>
+
+    <p>Although the play continually raises questions about motives, it simply does not give any clear answers to them. Almost every major action in the play is in some degree inexplicable. Why did Antony marry Octavia if he planned to return to Cleopatra? Was Octavius ruthless or merely blind in his plan to marry his sister to Antony? Does Antony return to the East for love of Cleopatra or because his spirit is overpowered when he is near Octavius? As the play progresses, the questions accumulate around Cleopatra; and they become more urgent. Is Cleopatra merely exercising her powers over Thidias for the sake of the game, or does she really hope to woo Octavius through him? Is her scene with Seleucus a cunningly staged device to convince Octavius that she has no desire to die, or does she in fact have hopes of a future life without Antony in which some lady trifles will be useful? Even the most critical action in the plot goes unexplained: Antony has won a victory against Octavius and regained the loyalty of his own men (a victory greatly magnified in importance from the account in Plutarch); but in the next encounter, his fleet yields to Octavius and his defeat is certain. Did the ships join with Octavius under Cleopatra’s orders, as Antony assumes? If not, then who is responsible for this final betrayal of Antony? These questions are not all equally unanswerable; and our preferences and critical ingenuity will usually combine with the text of the play to produce satisfactory answers to most of them. But most of the time the answers will satisfy only ourselves. I for one am as unwilling to imagine a fundamentally disloyal Cleopatra as the most romantic critic and will argue for the best possible interpretation of her actions; but the fact is that the play will support the arguments of my opponents almost as readily as mine. We simply are not told the motives of the protagonists at the most critical points in the action.</p>
+
+    <p>Shakespeare was not accustomed to leaving his audience entirely in the dark on central issues in his tragedies. We may not know why Lear chooses to divide his kingdom so arbitrarily; but once we have accepted the initial situation, we are given frequent insights into his mind through his own soliloquies and asides and through a technique of projection called “umbrella speeches” by Maynard Mack, in which the fool, for instance, serves “as a screen on which Shakespeare flashes, as it were, readings from the psychic life of the protagonists.” But in <i>Antony and Cleopatra</i>, the only major soliloquy is Enobarbus’s; and the asides are almost exclusively the property of the minor characters. Antony does tell us in soliloquy of his determination to return to the East (2.3) and of his rage and love for Cleopatra (4.12; 4.14); but these speeches are by no means the meditations on his own inner state which we associate with soliloquy in the major tragedies. Moreover, the “umbrella speeches” and speeches by other characters which seem to reflect the state of the protagonists accurately often turn out upon examination to be wrong. No play in which the characters remain so essentially opaque to each other and to the audience can satisfy us in the way of <i>Macbeth</i>—in the way, that is, of character revelation and moral certainty.</p>
+
+    <p>There are, of course, moments at which the characters are opaque in the other tragedies, but these mysteries are, I think, of a slightly different order. Generations of critics have argued, for instance, about why Hamlet does not kill the king while he is praying. Is it really because he does not want to send Claudius’s soul to heaven, or must we look deeper into Hamlet’s character toward those philosophic or psychoanalytic scruples which keep him from action altogether? We must note that Hamlet himself gives us a perfectly good reason for not killing Claudius praying: that heaven is no recompense for hell. Although we may choose (at our peril) to disbelieve his reason, it is at any rate evident that Hamlet believes it. Moreover, we are informed at this critical moment of the process of Hamlet’s mind: although we may feel that we have not been told the whole truth, at least the illusion of insight into Hamlet’s motivation has been given by the soliloquy. If an aura of mystery persists nonetheless, it is perhaps because the literary figure in this instance creates so absolute an illusion of reality that he breeds all the mysteries of character which we find in real life. The sense of opaqueness comes more from the success of the illusion than from any failure to explicate character: Shakespeare gives us insight into Hamlet’s inner state at virtually every turn in the play.</p>
+
+    <p>A fully realized character like Hamlet will necessarily appear mysterious at some moments precisely insofar as he is fully realized; a relatively unrealized character like Iago will engender mysteries of another sort. Iago’s frequent soliloquies reveal his motives and his machinations: Cassio has got the job he wanted; he suspects both Cassio and Othello of cuckolding him; and the daily beauty of Cassio’s life makes his own ugly. But the more motives Iago gives us, the less likely they seem as explanations of his actions. His motives do not seem equal to the deed, nor can they account for that fundamental hatred of life and love of contrivance which rule him. “I hate the Moor,” he says, and then explicitly denies that he hates him for any particular reason:</p>
+
+    <div class="cita">
+        <p>And it is thought abroad, that ’twixt my sheets</p>
+        <p>He’s done my office; I know not if’t be true. . . .</p>
+        <p>Yet I, for mere suspicion in that kind,</p>
+        <p>Will do, as if for surety.</p>
+        <p class="attribution">(1.3.385–88)</p>
+    </div>
+
+    <p>We are not here fundamentally concerned with Iago’s character; mere ordinary human motivation is serving as the excuse for some more essential hatred which it surely could not have caused. Our impression, despite the soliloquies and their revelation of motivation, is not that the byways of Iago’s character have been revealed to us but rather that essential evil of Iago’s sort is a self-perpetuating, self-aggrandizing, and finally self-annihilating machine to which motivation is almost wholly irrelevant after the initial move is made. We become more interested in watching the diabolical principle at work in a human being than in the character of Iago per se and his inconsistent motivation. It is with a similar disinterest in the intricacies of character that we watch the redemptive principle working through Cordelia. Figures like Iago or Cordelia tend to function less as fully realized characters than as embodiments of moral principles. And in proportion as they are less fully human than Hamlet, as they are more purely symbolic, we are less interested in their inner states. They can afford to be opaque because we are not fundamentally interested in them as characters: mysteries of motivation simply evaporate insofar as they take their places as parts of a symbolic action.</p>
+
+    <p>But in <i>Antony and Cleopatra</i>, the protagonists neither reveal their motives to us nor are they content merely to take their places in a symbolic action. They create the same sort of illusion of reality that Hamlet creates but do not give us even the partial insights into their souls that Hamlet gives. We are forced to concern ourselves with their characters as we are not with Iago’s or Cordelia’s; and yet their characters remain opaque. True, a desire to understand character in the play may be dismissed by some modern critics as naive; and there is little question that <i>Antony and Cleopatra</i> becomes a more unified and explicable whole if it is read as a lyric poem or an allegory to which questions of character are largely irrelevant. But we may not be able to believe entirely in the play-as-lyric-poem of Knight and Knights or in the character-as-a-bundle-of-stage-conventions of Schücking and Stoll or in the character-as-symbol of Bethell; or at least these theories may not be able to explain away character altogether. However convincing they are in part, they do not quite allay the nagging suspicion that the illusion of character is in some measure relevant to drama, and particularly to this one. Critics have persisted in trying to find answers to the questions of motivation and emotion in <i>Antony and Cleopatra</i>; and though questions of character may occasionally be irrelevant, this critical persistence suggests that they are not irrelevant here. If the same questions are continually asked, then I think we must conclude that the questions have been elicited by the play; the search is interminable not because the questions are wrong but because the answers are not given.</p>
+
+    <p>To explain character away, and with it the unanswerable questions, is in this instance to explain the play away: for the whole play can be seen as a series of attempts on the parts of the characters to understand and judge each other and themselves. We see Cleopatra dallying with Thidias in act 3, scene 13: Enobarbus thinks he sees Cleopatra betraying Antony and transferring her allegiance to Caesar; Antony thinks he sees the operations of lascivious habit. What have they seen? Do we watch a cunning queen outfox a wily politician in the scene with Seleucus, or a servant betray his mistress? This uncertainty is apparent not only in the critical moments of the play (did Cleopatra’s ships join Caesar’s on her orders?) but during numerous small scenes. And we are as baffled as the characters; like them, we see only the bare event and are left to speculate upon its meaning.</p>
+
+    <p>Throughout the play, the characters themselves question its meaning for us; the questioning is so habitual that it occurs explicitly even in those relatively minor scenes where the meaning does not seem to be at issue. When the soothsayer tells Charmian that she shall be far fairer than she is, the two women debate his meaning:</p>
+
+    <div class="cita">
+        <p>CHARMIAN. He means in flesh.</p>
+        <p>IRAS. No, you shall paint when you are old.</p>
+        <p class="attribution">(1.2.17–18)</p>
+    </div>
+
+    <p>Their debate is poignant because neither can guess the true meaning of his prophecies. The question of meaning is most explicitly raised in the small scene in which Antony bids his servants farewell; there it is raised four times in thirty-five lines. We would expect Cleopatra to know Antony as well as anyone; yet she asks Enobarbus, “What means this?” (4.2.13) and, ten lines later, “What does he mean?” Enobarbus then asks Antony directly: “What mean you, sir, / To give them this discomfort?” (ll. 33–34). Antony immediately denies that he meant his words as Enobarbus and the servants have taken them:</p>
+
+    <div class="cita">
+        <p>Ho, ho, ho!</p>
+        <p>Now the witch take me, if I meant it thus!</p>
+        <p>Grace grow where those drops fall, my hearty friends;</p>
+        <p>You take me in too dolorous a sense,</p>
+        <p>For I spake to you for your comfort.</p>
+        <p class="attribution">(4.2.36–40)</p>
+    </div>
+
+    <p>Antony’s attempt to console his followers by rearranging his meaning explicitly raises the issue of interpretation; even here, we are faced with one of the central dilemmas of the play. Virtually the only way out of this dilemma is the way that Antony takes at the end of the scene, when he in effect plays Horatio to his own Hamlet: “Let’s to supper, come, / And drown consideration” (ll. 44–45). In the scene which follows immediately, we are shown another farewell embedded in controversy:</p>
+
+    <div class="cita">
+        <p>SECOND SOLDIER. Heard you of nothing strange about the streets?</p>
+        <p>FIRST SOLDIER. Nothing: what news?</p>
+        <p>SECOND SOLDIER. Belike ’tis but a rumour.</p>
+        <p class="attribution">(4.3.3–5)</p>
+    </div>
+
+    <p>The rumor is of course instantly verified: the music of Hercules departing is heard and debated.</p>
+
+    <div class="cita">
+        <p>FOURTH SOLDIER. It signs well, does it not?</p>
+        <p>THIRD SOLDIER. No.</p>
+        <p>FIRST SOLDIER. Peace, I say:</p>
+        <p>What should this mean?</p>
+        <p>SECOND SOLDIER. ’Tis the god Hercules, whom Antony lov’d,</p>
+        <p>Now leaves him.</p>
+        <p class="attribution">(4.3.13–16)</p>
+    </div>
+
+    <p>Nothing goes unquestioned in this play. In most literature there is a convention that character is knowable as it rarely is in life, that characters act in accordance with certain constant, recognizable, and explicable principles which we and they can know. This convention does not operate in <i>Antony and Cleopatra</i>. There the characters do not know each other, nor can we know them, any more clearly than we know ourselves. In the midst of Antony’s rage against Cleopatra and Thidias, Cleopatra asks him, “Not know me yet?” (3.12.157). Antony can scarcely be blamed for not knowing Cleopatra; the question stands as central to the play. From Cleopatra’s “If it be love indeed, tell me how much” (1.1.14) to the First Guardsman’s “Is this well done?” (5.2.324), questions of motive, of value, and of the truth of the emotions are insistently raised. Emotions are unreliable and constantly changing; characters question their own emotions as well as those of others. From the beginning we see Cleopatra stage emotions for Antony’s benefit (“If you find him sad, / Say I am dancing” [1.3.3–4]; “I am sick, and sullen” [1.3.13]). She accuses Antony of playacting his rage (“You can do better yet; but this is meetly” [1.3.81]). We know that Antony “married but his occasion” (2.6.128) in marrying Octavia, for he himself tells us, “I make this marriage for my peace” (2.3.38). But what of Fulvia? “Why did he marry Fulvia, and not love her?” (1.1.41). Even Antony muses on his inconstant emotions: “she’s good, being gone, / The hand could pluck her back that shov’d her on” (1.2.123–24). Is Antony’s emotion love indeed? Cleopatra asks, “Why should I think you can be mine and true . . . / Who have been false to Fulvia?” (1.3.27–29). Why indeed? Antony thinks Cleopatra’s passions are feigned: “She is cunning past man’s thought” (1.2.143). But Enobarbus answers that “her passions are made of nothing but the finest parts of pure love” (1.2.144–45); and whatever his tone of voice, his words at least contradict Antony’s. Enobarbus and Agrippa mock Lepidus’s protestations of love for both Antony and Caesar (3.2). Cleopatra idly asks, “Did I, Charmian, / Ever love Caesar so?” (1.5.66–67), and is most displeased with Charmian’s teasing answer.</p>
+
+    <p>The tears wept by Antony’s crocodile are characteristic of this persistent questioning of emotion. Cleopatra assumes that Antony will weep crocodile tears for her: “I prithee turn aside and weep for her, / Then bid adieu to me, and say the tears / Belong to Egypt” (1.3.76–78). “The tears live in an onion, that should water this sorrow” (1.2.167–68), Enobarbus says of Fulvia’s death; yet even when Enobarbus is genuinely moved by Antony’s farewell to his servants, he calls himself “onion-ey’d” (4.2.35). When Caesar weeps at parting from Octavia, Agrippa recalls Antony’s tears:</p>
+
+    <div class="cita">
+        <p>When Antony found Julius Caesar dead,</p>
+        <p>He cried almost to roaring; and he wept</p>
+        <p>When at Philippi he found Brutus slain.</p>
+        <p class="attribution">(3.2.54–56)</p>
+    </div>
+
+    <p>Characteristically, Enobarbus points the moral:</p>
+
+    <div class="cita">
+        <p>That year, indeed, he was troubled with a rheum;</p>
+        <p>What willingly he did confound, he wail’d,</p>
+        <p>Believe’t, till I wept too.</p>
+        <p class="attribution">(3.2.57–59)</p>
+    </div>
+
+    <p>Antony’s weeping over Brutus recalls his sorrow over Fulvia; in both instances he grieves for what he himself has helped to destroy. The movement is characteristic of the play: we shall see Caesar too weep at what willingly he did confound when Decretas reports Antony’s death (“The gods rebuke me, but it is a tidings / To wash the eyes of kings” 5.1.27–28); Agrippa comments upon the inconsistency of the emotion much as Enobarbus and Antony have already commented (“And strange it is, / That nature must compel us to lament / Our most persisted deeds” [5.1.28–30]). During Cleopatra’s suicide, Charmian asks in effect for cosmic crocodile tears, for the show of cosmic grief: “Dissolve, thick cloud, and rain, that I may say, / The gods themselves do weep!” (5.2.298–99).</p>
+
+    <p>The full acknowledgement of all this uncertainty is in Antony’s quiet lines, “I made these wars for Egypt, and the queen, / Whose heart I thought I had, for she had mine” (4.14.15–16). Does Antony have her heart? Or does she too discover that Antony is good only when he is gone? In the end, the uncertainty implicates us as well as the characters: we must question Cleopatra’s love for Antony as she plans her suicide; Shakespeare’s insistence upon her dread of a Roman triumph forces us to question it. But in this play, not even skepticism is a secure position: Enobarbus shows us that. He persistently questions the sincerity of the passions, but when he follows his reason, he dies of a broken heart. At his death, we who have agreed with his rational skepticism are at a loss: skepticism itself is no more reliable than passion. If we are finally convinced of Cleopatra’s love—and I think we are—we have had to develop a faith nearly as difficult as Antony’s, a faith in what we cannot know.</p>
+
+    <h2 class="section-head">The Dilemma of Judgment</h2>
+
+    <div class="epigrafe">
+        <p>Though he be painted one way like a Gorgon,<br>The other way’s a Mars.<br><span class="attribution">(2.5.116–17)</span></p>
+    </div>
+
+    <p>If we are forced to participate in this questioning of emotion, with all its consequences, we are also forced to participate in the act of judgment. The desire to judge and be judged correctly is one of the dominant passions of the play; it is no wonder that the critics have spent so long trying to judge between Rome and Egypt when the characters themselves are so concerned with right judgment. “Is Antony, or we, in fault for this?” (3.13.2), Cleopatra asks after Actium: it is another of those questions which seem central to our experience of the play. Enobarbus answers “Antony only” without hesitation; but he can afford to give this partial judgment because he had already condemned Cleopatra before the fact (“Your presence needs must puzzle Antony” [3.7.10]). Antony’s desire to die nobly, Cleopatra’s dread of a Roman triumph: both are part of this overriding concern with judgment. Throughout the play, we see people making images of themselves, rearranging their own story. Cleopatra virtually stage-manages her death; and Caesar tries to arrange for correct judgment of himself with nearly every word he speaks. When first we see him, he is busily justifying himself to Lepidus (“You may see, Lepidus, and henceforth know, / It is not Caesar’s natural vice to hate / Our great competitor” [1.4.1–3]). His last words in the play are a judgment on the pity of the lovers’ story and inevitably on his own glory (“their story is / No less in pity than his glory which / Brought them to be lamented” [5.2.359–61]). Enobarbus, that inveterate judge of others, dies judging himself as well as Antony:</p>
+
+    <div class="cita">
+        <p>O Antony,</p>
+        <p>Nobler than my revolt is infamous,</p>
+        <p>Forgive me in thine own particular,</p>
+        <p>But let the world rank me in register</p>
+        <p>A master-leaver, and a fugitive.</p>
+        <p class="attribution">(4.9.18–22)</p>
+    </div>
+
+    <p>In a sense, the play is a series of conflicting judgments passed on the protagonists, even by the protagonists themselves. In the first scene Antony attempts to “bind, / On pain of punishment, the world to weet / We stand up peerless” (1.1.38–40); but the world is watching, in the form of Demetrius and Philo, and its judgment is quite otherwise. For in this play, no judgment is absolute. If we see Caesar’s “old ruffian” (4.1.4), we also see Cleopatra’s “man of men” (1.5.72); if we see “salt Cleopatra” (2.1.21), we also see “a lass unparallel’d” (5.2.315). Cleopatra herself calls attention to this conflict in judgments: “Though he be painted one way like a Gorgon, / The other way’s a Mars” (2.5.116–17).</p>
+
+    <p>Argumentation is the central mode of the play; not even the Romans can agree with one another. The first words of the play are “Nay, but”: enter Philo and Demetrius, arguing. We later see Enobarbus and Antony arguing about Cleopatra (1.2) and Caesar and Lepidus arguing about Antony (1.4). The habit of contrariness infects even the watchmen who oversee Enobarbus’s death and quibble about whether he is asleep or has swooned. Throughout, one man’s meat is another man’s poison. There is no room here for a moral scheme which tidily apportions the world according to vices and virtues. In that sense, the basis for judgment is itself continually challenged. Enobarbus says that Cleopatra “did make defect perfection” (2.2.231): “vilest things / Become themselves in her” (2.2.238–39). Even the Romans describe the lovers as creatures beyond the reach of ordinary judgment. Lepidus defends Antony precisely by pointing out his faults:</p>
+
+    <div class="cita">
+        <p>I must not think there are</p>
+        <p>Evils enow to darken all his goodness:</p>
+        <p>His faults, in him, seem as the spots of heaven,</p>
+        <p>More fiery by night’s blackness.</p>
+        <p class="attribution">(1.4.10–13)</p>
+    </div>
+
+    <p>A metaphor in which goodness is blackness and faults stars mitigates against the possibility of any simple moral judgment. Caesar himself is willing to grant for the sake of argument the vilest things may become Antony; he answers Lepidus,</p>
+
+    <div class="cita">
+        <p>say this becomes him,—</p>
+        <p>As his composure must be rare indeed</p>
+        <p>Whom these things cannot blemish,—yet must Antony</p>
+        <p>No way excuse his foils, when we do bear</p>
+        <p>So great weight in his lightness.</p>
+        <p class="attribution">(1.4.21–25)</p>
+    </div>
+
+    <p>And if the lovers’ defects may be their perfections, Enobarbus knows that Octavia’s perfections may be defects in Antony’s judgment (2.6.117–23).</p>
+
+    <p>The very process of judging is unreliable: as Cleopatra’s image of the perspective painting (2.5.116–17) suggests, judgment depends on where one stands. Pompey is quite certain that he knows the lovers and can judge them; and his judgment seems intended to persuade us that he is right. His great condemnation of the lovers is frequently cited as though it were Shakespeare’s own judgment and one which we ought to share.</p>
+
+    <div class="cita">
+        <p>Mark Antony</p>
+        <p>In Egypt sits at dinner, and will make</p>
+        <p>No wars without doors. . . .</p>
+        <p>. . . but all the charms of love,</p>
+        <p>Salt Cleopatra, soften thy wan’d lip!</p>
+        <p>Let witchcraft join with beauty, lust with both,</p>
+        <p>Tie up the libertine in a field of feasts,</p>
+        <p>Keep his brain fuming; Epicurean cooks</p>
+        <p>Sharpen with cloyless sauce his appetite,</p>
+        <p>That sleep and feeding may prorogue his honour,</p>
+        <p>Even till a Lethe’d dulness—</p>
+        <p class="attribution">(2.1.11–13, 20–27)</p>
+    </div>
+
+    <p>If other characters in disparate situations make the same observations, then we feel that the judgment is corroborated and hence trustworthy. Several elements in Pompey’s judgment are in fact verified by the play. Antony himself suggests that Cleopatra is a witch: he has already called her “this enchanting queen” (1.2.125) and will later call her “this false soul of Egypt! this grave charm” (4.12.25). The fair field of feasts which Pompey evokes is described in some detail by Enobarbus in the next scene (2.2.127ff.); also in the next scene Antony admits to Caesar that his brain has occasionally been kept fuming by feasts (“Three kings had I newly feasted, and did want / Of what I was i’ the morning” [2.2.76–77]). Consequently we must trust Pompey’s judgment. Or must we? Pompey might have continued his diatribe forever if he had not been interrupted by a messenger at the very height of it. Pompey’s eloquence is so great that too few critics have noticed an important detail: the messenger contradicts absolutely the judgment which Pompey has just delivered.</p>
+
+    <div class="cita">
+        <p>POMPEY. Even till a Lethe’d dulness—</p>
+        <p><i>Enter Varrius</i></p>
+        <p>How now, Varrius?</p>
+        <p>VARRIUS. This is most certain, that I shall deliver:</p>
+        <p>Mark Antony is every hour in Rome</p>
+        <p>Expected.</p>
+        <p class="attribution">(2.1.27–30)</p>
+    </div>
+
+    <p>This is most certain indeed. Pompey’s reply is a little weak: “I did not think / This amorous surfeiter would have donn’d his helm” (ll. 32–33). But this new piece of information does not cause Pompey to change his fundamental judgment of Antony: he is still “this amorous surfeiter” and “the ne’er-lust-wearied Antony” (l. 38) even when the messenger has just belied this judgment. Pompey’s judgment asks us simultaneously to believe and disbelieve it: for an audience accustomed to knowing where it stands, this uncertainty is intolerable. And Pompey’s judgment is in this sense typical of all judgments in <i>Antony and Cleopatra</i>: each tells us as much about the judge and his perspective as it does about the accused.</p>
+
+    <p>The degree to which we can rely on a character’s judgment is often at issue in Shakespeare. Edgar’s assessment of events in <i>King Lear</i> is generally undercut by the events themselves, perhaps most vehemently when his blinded father is led in immediately after he has pronounced that “the worst returns to laughter” (4.1.6). At the end of many of the tragedies we are given judgments which are significantly challenged by the play as a whole: we do not, for example, accept Malcolm’s “this dead butcher and his fiend-like queen” (<i>Macbeth</i> 5.9.35) as the whole truth about Macbeth and Lady Macbeth. But in the other tragedies, there are usually some reliable judgments interspersed among those which are clearly partial. When Regan tells us that Lear “hath ever but slenderly known himself” (1.1.292), we accept her judgment, in spite of our distrust of the judge. And despite the occasional inaccuracies of judgment, the analogy of the perspective painting is wholly inappropriate to <i>Hamlet</i>, <i>Othello</i>, <i>King Lear</i>, or <i>Macbeth</i>; its inappropriateness is the measure of the distance between these plays and <i>Antony and Cleopatra</i>. In fact, part of the effect of the tragedies depends precisely on our ability to make moral judgments: that something is rotten in the state of Denmark, that Desdemona is chaste and Iago evil, that Lear is more sinned against than sinning. But in <i>Antony and Cleopatra</i> we frequently find that we can make no judgment at all, or that our judgments are no more reliable than Pompey’s.</p>
+
+    <p>Our involvement in the shaky business of judging is essential to the play; and it depends on precisely that uncertainty about the characters which so often frustrates us. We know of Hamlet’s or Edgar’s designs because they tell us about them. We know when Iago is feigning honesty or Macbeth loyal hospitality; we know precisely to what degree we can rely upon Claudius’s or Gloucester’s or Othello’s or Duncan’s judgment of the situation. But we do not always know when Antony and Cleopatra are feigning; and it is essential that we should not know. In order to be engaged in the movement of judgments, in order to see both the validity and the limitations of all perspectives, we must be able to accept each of the various judgments as true at least momentarily. To do so we cannot know substantially more about the protagonists than the characters who judge them know. And it is this movement of perspectives, rather than the revelations of a psychodrama or the certainties of a morality, which is most characteristic of <i>Antony and Cleopatra</i>.</p>
+
+    <p>The uncertainty of judgment characteristic of <i>Antony and Cleopatra</i> depends on our ignorance of the inner states of the characters and on their own insistent questioning; but it is also built into the dramatic structure of the play. In one sense, the experience of <i>Antony and Cleopatra</i> is curiously indirect: the play consists of a few actions and almost endless discussion of them. Antony is the presumptive hero of the play; when he appears in act 2, scene 2, he has been absent for three scenes during which Caesar, Cleopatra, and Pompey have in their speculations created three distinct Antonys, each to their heart’s desire. Which Antony do we know? We never actually see Cleopatra in mythological garb, yet she is twice described in the habiliments of a goddess: Enobarbus reports her appearance as Venus, and Caesar her appearance as Isis. These two reports are strikingly different in attitude; the difference between them suggests two possible perspectives on Cleopatra, and on the quasidivinity sometimes associated with her, far more economically than any dramatic action could. We do not see Antony’s return to Egypt: we learn of it only as Octavia does, from the not impartial report of her brother. This insistence upon report and discussion makes us suspect that the actions are unimportant except insofar as they are interpreted; in fact, the dramatic design of <i>Antony and Cleopatra</i> forces us to acknowledge the process of judgment at every turn. When the audience is persistently told one thing and shown another or told two conflicting things, when it sees minor characters speculating about the protagonists almost as often as it sees the protagonists themselves, then its own process of judgment becomes part of the experience of the play. It is the very indirectness of <i>Antony and Cleopatra</i> that insures the direct participation of the audience in it.</p>
+
+    <p>The most characteristic dramatic technique in <i>Antony and Cleopatra</i> is the discussion of one group of characters by another. In its purest form, it is strikingly simple: a group of minor characters who are alone on stage discuss an action that is about to take place among the protagonists; the protagonists then appear on stage, act, and disappear; and a group of minor characters, frequently the same as the initial group, are left to discuss the action. The scene is thus framed so that the major characters become in effect actors and the minor characters their interpretive audience. This pattern appears with astonishing consistency throughout the play. Occasionally one half of the frame is missing; but in these instances the framing effect is generally achieved by the presence of commentary on the part of the minor characters throughout whatever action is engaging the protagonists. Either partial or complete framing of this sort occurs in no less than twelve scenes; significant elements of this process occur in many more scenes. Act 1, scene 1, is the paradigm for this structural framing just as it is the paradigm for the varying perspectives of the play. Demetrius and Philo comment on the lovers; the lovers appear and simultaneously substantiate and reveal the limitations of their judges; and they are left to comment once again. Philo’s language virtually forces us to see the lovers’ appearance as a spectacle or a play within the play, a play with a very specific moral:</p>
+
+    <div class="cita">
+        <p>Look, where they come:</p>
+        <p>Take but good note, and you shall see in him</p>
+        <p>The triple pillar of the world transform’d</p>
+        <p>Into a strumpet’s fool: behold and see.</p>
+        <p class="attribution">(1.1.10–13)</p>
+    </div>
+
+    <p>In act 2, scene 2, Enobarbus and Lepidus discuss the meeting of Antony and Caesar; the great triumvirs meet and the marriage with Octavia is arranged; and Enobarbus and Maecenas are left to discuss Cleopatra, Octavia, and the proposed union. The concord is a formal spectacle for which the prologue and epilogue provide the appropriate interpretation. The same pattern of formal concord and interpretive discussion is repeated in act 2, scene 6: Pompey, Antony, and Caesar meet and come to terms; Enobarbus and Menas are left to discuss the terms and to prophesy of the union between Antony and Caesar. Pompey’s servants discuss the drunkenness of the world leaders before we see them in act 2, scene 7; Enobarbus and Menas stand aside and comment during part of the scene (ll. 86–94). In act 3, scene 2, Enobarbus and Agrippa discuss the farewells of Octavia, Caesar, and Antony; we then see the brothers parting while Enobarbus and Agrippa comment on their tears. Act 3, scene 7, is a variation on the pattern: Cleopatra and Enobarbus discuss the effect of Cleopatra’s presence on Antony; Antony enters and apparently under Cleopatra’s influence informs Canidius that he will fight by sea; Canidius and a soldier are left commenting on Cleopatra’s effect on Antony and on the forthcoming battle. The most complex of these scenes is act 3, scene 13, which consists of four separate actions and Enobarbus’s commentary on each of them. When the scene opens, Enobarbus and Cleopatra as prologue are discussing Antony’s flaw. Antony appears and sends Caesar a challenge to single combat; Antony leaves and Enobarbus comments extensively on his folly. Next, Thidias enters and Cleopatra flirts with him; Enobarbus comments on her disloyalty to Antony. In the third section of the scene, Antony returns, oversees their dalliance, and orders Thidias punished; Enobarbus comments on his rage. Finally, after his rage, Antony is reconciled to Cleopatra and vows to do wondrous deeds in the next battle; Enobarbus comments on that diminution in his captain’s brain which has restored his heart. With this final commentary, Enobarbus is again alone on stage, summarizing and judging the entire scene. But in this scene Enobarbus’s asides not only function as a commentary on the main action, but become an impetus to action in themselves. In the process of commenting on Antony’s folly, Enobarbus begins to judge his own (“The loyalty well held to fools does make / Our faith mere folly” [ll. 42–43]). His commentary and his consequent decision to leave Antony begin to take center stage. His death is the result of this decision; it is fitting that in his death scene the constant commentator has become the central actor upon whom others comment. In act 4, scene 9, the watchmen stand aside and comment throughout his soliloquy and after his death.</p>
+
+    <p>These scenes are not the critical dramatic moments in the play; they are interesting because they indicate the extent to which this pattern is habitual even in relatively peripheral scenes. And the most critical moments—Actium, Antony’s suicide, and Cleopatra’s suicide—all have essentially the same structure, the central action and the series of comments. In the Actium scene (3.10) the frame has in fact replaced the picture. In this scene and the one that follows, we are given a hierarchy of commentary upon a scene which takes place offstage: Enobarbus and Scarus comment; then the general Canidius comments; then, finally, Antony comments upon himself. Once the pattern has been established, it can function even when the frame appears without the picture: all those scenes in which characters discuss one another’s activities serve to some extent as prologues and epilogues to actions which occur offstage. Each time the pattern occurs, it is analogous to the structure of the play as a whole—to our opaque protagonists, surrounded by critics and commentators.</p>
+
+    <p>By the device of partial or total framing, the structure of these scenes emphasizes the process of discussion. The effect of all this framing is to insure that we as audience will get at least as much information from the minor characters as from the protagonists. In many of Shakespeare’s plays, the sources of information and their reliability are of critical importance: <i>Hamlet</i> would be a totally different experience if our principal informants throughout were Claudius or Polonius rather than the ghost and Hamlet himself. But in <i>Antony and Cleopatra</i>, information of all kinds is unreliable. The number of messengers in the play is symptomatic of this breakdown in direct and reliable communication. There are eight characters designated simply as “messenger”; to their company we must add Alexas as messenger from Antony to Cleopatra in act 1, scene 5, Menas and Varrius as news bearers to Pompey in act 2, scene 1, Antony’s ambassador to Caesar in act 3, scenes 12 and 13, Thidias as Caesar’s messenger to Cleopatra in act 3, scene 13, Mardian as Cleopatra’s messenger to Antony in act 4, scene 14, Proculeius and Dolabella as Caesar’s messengers to Cleopatra in act 5, scene 2, and the protagonists themselves when they are news bearers. Even given the military and political information which must be reported to Antony, Caesar, Pompey, and Cleopatra, the number of messengers is extraordinary. If the main function of the messengers is expository, surely Shakespeare could have found some simpler device. As it is, the audience is continually bombarded with messengers of one kind or another, not so much to convey information as to convey the sense that all information is unreliable, that it is message or rumor, not fact. In this uncertain world, even the simplest of factual messages is subject to doubt; it is no wonder that Varrius insists on the certainty of his report when he tells Pompey of Antony’s whereabouts (“This is most certain, that I shall deliver” [2.1.28]). And since Shakespeare keeps us in the dark about the motivations and actions of his main characters, we as well as the characters must frequently rely upon these reports for information.</p>
+
+    <p>In the first scene, Antony refuses to listen to the messengers from Rome; he resolves to Cleopatra to hear “no messenger but thine” (1.1.52). When he finally listens to the two messengers from Rome and Sicyon in the next scene, their reports are unimpeachable; in the next scene, where Cleopatra tells Alexas to vary his report according to Antony’s mood (1.3.2–4), we see the reliability of her messenger. But as the play progresses, reliability and unreliability are no longer so tidily apportioned between Rome and Egypt. Most of the messages in the play are in the pattern of Pompey’s unsuccessful prayer: they come too late to be useful. Pompey prays that Cleopatra keep Antony in Egypt only after we know that he is on his way to Rome, thus illustrating his own maxim: “Whiles we are suitors to their throne, decays / The thing we sue for” (2.1.4–5). Immediately after we have seen Antony take his leave of Cleopatra (1.3), Caesar enters with news of Antony’s revelry in Alexandria—news which is obsolete by the time we hear him speak it (1.4.3–5). Shakespeare could perfectly well have gained our full credence for Caesar’s report merely by placing it one scene earlier, but instead he chooses to bewilder us: Caesar’s news has been true, but we know that it is true no longer. This misalignment of report and deed is strikingly consistent in the messages which follow. Alexas presents the pearl from “the firm Roman to great Egypt” (1.5.43); when next we see the firm Roman, he is arranging his marriage with Octavia (2.2). Even the messenger who brings Cleopatra news of Antony’s marriage is part of this sequence: he brings his news (2.5) only after we have heard Antony resolve to return to Egypt (2.3). Again and again, we are made aware that message and fact are askew. How does one act or judge on the basis of such information? At the end of the play, we will see the consequences of this unreliability: it is Mardian’s false message from Cleopatra that causes Antony’s suicide. But even Mardian’s false message will be in some sense true three scenes later, when Cleopatra does indeed kill herself for Antony.</p>
+
+    <p>The messenger who tells Cleopatra of Antony’s marriage is subject to harsh treatment. Cleopatra demands that he rearrange his report to escape punishment: “Say ’tis not so, a province I will give thee” (2.5.68). The messenger is justifiably baffled: “Should I lie, madam?” (l. 93). When he next appears, his report is suitably rearranged with Cleopatra’s help. The messenger says that Octavia is less tall than Cleopatra and low voiced; Cleopatra transmogrifies his report to “dull of tongue, and dwarfish!” (3.3.16). The messenger quickly learns the game of turning perfections into defects. When Cleopatra asks him to describe Octavia’s gait, he is ready with a suitable answer: “She creeps” (l. 18). Cleopatra wants to have the certainty of this newly appealing report confirmed:</p>
+
+    <div class="cita">
+        <p>CLEOPATRA. Is this certain?</p>
+        <p>MESSENGER. Or I have no observance.</p>
+        <p>CHARMIAN. Three in Egypt</p>
+        <p>Cannot make better note.</p>
+        <p>CLEOPATRA. He’s very knowing,</p>
+        <p>I do perceive’t, there’s nothing in her yet.</p>
+        <p>The fellow has good judgment.</p>
+        <p class="attribution">(3.3.21–25)</p>
+    </div>
+
+    <p>It is no wonder that the messenger is found “most fit for business” (l. 36). Perhaps three in Egypt cannot make better note; but what of those in Rome? According to Maecenas, Octavia has “beauty, wisdom, modesty” (2.2.241); according to Enobarbus she is of a “holy, cold, and still conversation” (2.6.120); but according to Cleopatra’s rearranged report she is “dull of tongue and dwarfish.” Antony is evidently not the only person in the play who can be seen as either god or monster. Even this unwelcome messenger can: “Hadst thou Narcissus in thy face, to me / Thou wouldst appear most ugly” (2.5.96–97). Cleopatra’s report of Octavia is obviously false; or is it? We know that Antony would probably concur more in her version than in the others; and that is, after all, what matters to her. In the midst of the comedy, a central point is made: the truth of report is a more delicate matter than we may suspect; ultimately, Cleopatra’s game questions the meaning of true report.</p>
+
+    <p>Truth itself may depend on one’s perspective. Antony addresses the first Roman messenger in terms which suggest that Roman truth may not be Egyptian truth:</p>
+
+    <div class="cita">
+        <p>Speak to me home, mince not the general tongue:</p>
+        <p>Name Cleopatra as she is call’d in Rome;</p>
+        <p>Rail thou in Fulvia’s phrase, and taunt my faults</p>
+        <p>With such full license, as both truth and malice</p>
+        <p>Have power to utter.</p>
+        <p class="attribution">(1.2.102–6)</p>
+    </div>
+
+    <p><i>Both truth and malice</i>: the truth is told, but presumably with a little warping by malice, when it is Roman truth. Octavia chides Caesar for precisely such warping:</p>
+
+    <div class="cita">
+        <p>CAESAR. That ever I should call thee castaway!</p>
+        <p>OCTAVIA. You have not call’d me so, nor have you cause.</p>
+        <p class="attribution">(3.6.40–41)</p>
+    </div>
+
+    <p>“Read not my blemishes in the world’s report” (2.3.5), Antony asks Octavia: though that report may be true, it is not the whole truth. Suggestions of this flexibility of truth permeate the play:</p>
+
+    <div class="cita">
+        <p>Who tells me true, though in his tale lie death,</p>
+        <p>I hear him as he flatter’d.</p>
+        <p class="attribution">(1.2.95–96)</p>
+    </div>
+
+    <div class="cita">
+        <p>They are so still,</p>
+        <p>Or thou, the greatest soldier of the world,</p>
+        <p>Art turn’d the greatest liar.</p>
+        <p class="attribution">(1.3.37–39)</p>
+    </div>
+
+    <div class="cita">
+        <p>By this marriage,</p>
+        <p>. . . truths would be tales,</p>
+        <p>Where now half tales be truths.</p>
+        <p class="attribution">(2.2.131–35)</p>
+    </div>
+
+    <p>If Enobarbus’s report of Cleopatra as Venus is a half tale, is not Caesar’s report of Cleopatra as Isis the sort of truth that malice would utter? At the end of the play, the Clown brings us word of the joys of the worm from “a very honest woman, but something given to lie, as a woman should not do, but in the way of honesty” (5.2.251–53). Truth and lie are bound together, as they are at the end of Chaucer’s <i>House of Fame</i>; their union has already been suggested by Demetrius in the first scene of the play. We have just seen Rome’s valuation of the lovers and their own valuation of themselves. The lovers leave the stage, and Demetrius says,</p>
+
+    <div class="cita">
+        <p>I am full sorry</p>
+        <p>That he approves the common liar, who</p>
+        <p>Thus speaks of him at Rome.</p>
+        <p class="attribution">(1.1.59–61)</p>
+    </div>
+
+    <p>If the liar’s speech is verified by Antony’s deeds, is he nonetheless a liar? Is truth itself the common liar?</p>
+
+    <p>Throughout the play, the audience hears characters ask apparently unanswerable questions and watches them discuss one another without reaching any accord. We listen to a series of reports and judgments which are neither true nor false, or are both together, until even the concepts of truth and falsity lose their meanings. Shakespeare is not dallying with us only to confuse us. He is instead deliberately playing with these dramatic techniques in order to draw us into the act of judging. In effect, we are forced to judge and shown the folly of judging at the same time: our double responses are an essential part of the play. <i>Antony and Cleopatra</i> constantly insists on its status as a play: characters stage emotions and accuse one another of bad acting; the pattern of framing suggests that we see the central figures as actors in a play within the play; and Cleopatra seems to allude to one very limited interpretation of the very play that we are seeing when she fears that she will see “Some squeaking Cleopatra boy my greatness / I’ the posture of a whore” (5.2.219–20). The function of all this insistence on the play as play is not merely to suggest the metaphysical proposition that all the world’s a stage; it is specifically to involve us as audience in the action of the play. For we are, in a sense, the most minor of the characters who stand aside and comment; or at least we as audience are silent extensions of them.</p>
+
+    <h2 class="section-head">The Various World</h2>
+
+    <div class="epigrafe">
+        <p>darkling stand<br>The varying shore o’ the world.<br><span class="attribution">(4.15.10–11)</span></p>
+    </div>
+
+    <p>Tragedies do not normally ask us to identify ourselves with the minor characters. But in <i>Antony and Cleopatra</i> we participate in the experience of the commentators more often than in the experience of the lovers: we are forced to notice the world’s view of them more often than their view of the world. There are of course moments of framing commentary in the other tragedies, moments when we are more engaged with the commentator and his perceptions than with the protagonist. Horatio in <i>Hamlet</i> and the fool in <i>Lear</i> are temporarily allowed to assert their points of view. But such moments are indeed rare; we more readily accept the protagonist’s definition of himself and the world than the world’s definition of him. Even in <i>Macbeth</i>, Macbeth’s own sense of himself as loathsome moves us far more than the world’s condemnation of him. But in <i>Antony and Cleopatra</i> the device of framing forcibly dissociates us from the lovers; their vision of themselves becomes merely one in a series of competing visions. For much of the play, we live outside their immediate universe and see them with distressing clarity from perspectives which are alien to them.</p>
+
+    <p>This emphasis on alien perspectives accounts, I think, for one of the structural peculiarities of the play. In most of the tragedies, virtually every event in the play is related either directly or by analogy to the tragic plot. The most common charge against the structure of <i>Antony and Cleopatra</i> is that it violates this very simple structural principle: there are several distracting scenes that have nothing in particular to do with the tragic plot, that is, with the downfall of the lovers. Even the play’s staunchest supporters often find themselves embarrassed by such apparent excrescences as the Ventidius scene (3.1). We cannot blame this apparent structural laxity on the unwieldy nature of the source material; for in fact Shakespeare quite ruthlessly omits everything in Plutarch’s account that does not serve his purpose. We must assume, then, that Shakespeare did not give his play that concentration of structure typical of most of the tragedies for reasons of his own.</p>
+
+    <p>The world of <i>Antony and Cleopatra</i> is defined by violent juxtapositions and contrasts. The most powerful of these contrasts are unavailable to the reader in his study; they are made in purely theatrical terms, through what Charney calls “presentational imagery.” In act 1, scene 5, we see Cleopatra lounging among her attendants, imagining Antony’s soldiership and recalling Caesar and great Pompey, who “would stand and make his eyes grow in my brow” (l. 32). There is an absolute indolence about the scene, as though we have all drunk mandragora to sleep out the great gap of time. The next scene must follow immediately upon this one (it is only through the accidents of editorial scene division that it does not); it presents the sharpest possible dramatic contrast. “<i>Enter Pompey, Menecrates, and Menas, in warlike manner</i>” (2.1). Everything about this scene is as upright and energetic as the previous scene was indolent; here we see warfare in good earnest, not the version which Cleopatra chooses to imagine or recall. This scene is by no means necessary to the plot; we do not need to see Pompey in his camp. He serves merely to necessitate the temporary union of Antony and Octavius; a report of his sea power would accomplish the same end. In fact he is so superfluous a character that Shakespeare kills him off in a subordinate clause: Antony “threats the throat of that his officer / That murder’d Pompey” (3.5.18–19). Even the fate of poor Lepidus receives more extended treatment. But we do see Pompey in his own camp; we do see from his perspective, however momentarily. Precisely the same sort of theatrical contrast is made when Ventidius enters in triumph; again the scene has been separated from its complement by editorial whim. In act 2, scene 7, we see the world leaders drunk, reclining or dancing; they leave the stage and suddenly “<i>Enter Ventidius as it were in triumph . . . the dead body of Pacorus borne before him</i>” (3.1). As in the Pompey scene, the contrast is made explicit in the stage direction. Moreover, we have just heard the treacherous Menas address Enobarbus as “noble captain” in the last line of act 2, scene 7; five lines later, Ventidius is addressed as “noble”: the echo should emphasize the theatrical point. Again the scene is unnecessary for the plot; again it provides us with a radically disjunctive perspective.</p>
+
+    <p>In the earlier tragedies, we are not given perspectives which are totally unrelated to those of the protagonists; in <i>Antony and Cleopatra</i>, we are. We expect to see Caesar at Actium as we expect Malcolm at Dunsinane, but we do not expect to see Pompey at the Mount; it is rather as though we were to pay a momentary visit to Fortinbras before he left Norway or to the captain of the Turkish fleet in <i>Othello</i>. To clarify this distinction, let us look for a moment at two scenes: the appearance of Fortinbras in <i>Hamlet</i> (4.4) and the appearance of Ventidius here. These scenes are superficially similar: both function fundamentally to contrast a strong and decisive man of action, an efficient soldier, with the protagonist; both are interpolated into the main action and apparently unrelated to it. But it is precisely the similarity in the two scenes of martial activity that allows us to see their fundamental difference. However surprised we are by Fortinbras’s appearance in <i>Hamlet</i>, he does reappear at the end of the play as a figure of some consequence. Moreover, Hamlet himself speaks with one of Fortinbras’s captains; we are essentially aware of Hamlet’s responses in this scene. Fortinbras’s appearance is the occasion for a soliloquy; the hero not only watches the action but explicitly comments on the contrast between Fortinbras and himself. But what of Ventidius? He appears on the outer edges of the empire; none of the protagonists witnesses his appearance. They never discuss him in the course of the play, though he discusses them. And while his bearing serves as a contrast to the bearing of the drunken world leaders on Pompey’s galley and his fear of carrying the battle further serves to indicate the effects of triumviral degeneracy on subordinate officers, he is related to the protagonists only in the most tenuous way; he cannot in any sense be said to explicate Antony’s condition as Fortinbras explicates Hamlet’s. Both the Pompey and the Ventidius scenes present a radical contrast to the perspective of the protagonists; and it is precisely in forcing us to move from one perspective to the next abruptly and without mediation that <i>Antony and Cleopatra</i> achieves its most characteristic effects. Such unanticipated shifts in perspective force upon us an awareness of scope, of how various a place the world is.</p>
+
+    <p>In the other tragedies, even the most minor of the characters tend to take part in the one great tragic event. The musicians in <i>Othello</i> give us an image, however imperfect, of that harmony which Iago will successfully untune. Macbeth’s devil-porter identifies his castle as a kind of hell, in case we were in danger of forgetting; and Macbeth is of course his master-devil. The gravedigger in <i>Hamlet</i> represents a point of view strikingly different from that of the over-curious prince; but he introduces us to Ophelia’s maimed rites and moreover serves as a significant teacher in Hamlet’s education to accept mortality. But what of similar scenes in <i>Antony and Cleopatra</i>? The serving men on Pompey’s galley do not reflect Antony’s condition, nor are they involved in any way in his action. When Lepidus, Maecenas, and Agrippa arrange to meet at Mount Mesena (2.4), they scarcely mention the protagonists; nor is the farewell of these subordinates in any way significant to the protagonists. The varied personages in <i>Antony and Cleopatra</i> come forth, posit their own diverse points of view, and then disappear; they remain autonomous and insist that we notice the multiplicity of this world.</p>
+
+    <p>This insistence on the varying shores of the world is not common in Shakespearean tragedy. In the major tragedies, the presentation of character and the structure generally function to focus our attention on the protagonists, to force us to participate in their experience and to live for a time within the moral contours of their universe. To participate fully in the tragic experience, we must be willing, for the moment, to see the universe through the eyes of the protagonist and entirely in relation to him: we must experience Lear’s storm as he himself experiences it. This concentration of vision allows us to perceive the sufferings of Edgar and the fool on the heath as fragmentary versions of Lear’s suffering; it allows us to feel that Gloucester’s blinding is part of Lear’s experience even before Lear is aware of it. In order to achieve this concentration of vision, we must be given some knowledge of the inner state of the protagonist; we must be allowed to see how he perceives the world before we can participate in his perceptions. Lear on the heath conducts a virtually continuous soliloquy, whether other characters overhear him or not; Hamlet, Othello, and Macbeth constantly tell us how the world seems to them. But this kind of knowledge is usually denied us in <i>Antony and Cleopatra</i>; and the dramatic structure functions to diffuse and dissipate our attention throughout a wider universe than that which the protagonists know. We expect to see the universe only insofar as it reflects the experience of the protagonists; but we see the universe as prior to and independent of them.</p>
+
+    <p>It is of course true of all the tragedies that the audience sees a more varied world than the protagonists; we never share their vision entirely. But in the other tragedies, the exclusiveness of the protagonist’s vision and our partial absorption into it are essential to the tragic effect. Their vision becomes progressively narrowed until fewer and fewer possibilities are left open to them: Lear’s world contracts until it does not include the possibility of kindly daughters, Othello’s the possibility of Desdemona’s innocence; Macbeth gradually loses sight of any world outside his own diseased fantasy. In these plays, the audience participates both in the narrowing of vision and in an awareness of what is excluded; we share in the constriction although we see the protagonist trapped by it. <i>Othello</i> is horrifying partly because we are made to experience Othello’s abused perception even while we know it is wrong; for most of <i>Macbeth</i>, our experience is as claustrophobic as Macbeth’s. When we are finally given sight of King Edward’s or Cordelia’s healing nature, our relief is enormous precisely because we too have been trapped by the protagonist’s vision. Part of the effect of these plays depends on our ability to see through the protagonist’s eyes, even when we see possibilities unacknowledged by him. But this progressive narrowing and widening of our vision is foreign to <i>Antony and Cleopatra</i>: there the exclusivity of the protagonists’ vision never becomes part of our experience; we are given competing visions throughout.</p>
+
+    <p>Multiplicity of all kinds is essential to the structure of <i>Antony and Cleopatra</i>: throughout most of the play the world is an enormously crowded place. This multiplicity is achieved not only through the introduction of apparently unrelated characters and scenes but also through a structural principle of varied repetition, rather like a musical theme and variations. The audience continually sees the same actions, hears the same metaphors, but always with a slight variation; and this structural repetition suggests widely varying versions of experience just as the framing commentary suggests varieties of judgment. We are given, for instance, a series of servants who desert their masters and masters who desert their servants, each of whom comments by implication on the rest. Shortly after Enobarbus has announced that he will “seek / Some way to leave” Antony (3.13.200–201), Antony himself addresses his servants “as one that takes his leave” (4.2.29): Enobarbus weeps over Antony’s leave-taking even as he plans his own. In the next scene, we hear that “the god Hercules, whom Antony lov’d, / Now leaves him” (4.3.15–16). This action reiterates the central action of Actium, in which Antony quite literally leaves his servants; and it complements the action of all those servants who leave their masters throughout the play. Menas deserts Pompey because Pompey is not sufficiently ruthless to deserve service; Alexas and Canidius and the rest desert Antony because Antony has deserted his followers and in some sense himself at Actium; Enobarbus deserts Antony because it appears to him that Cleopatra and his own discretion have deserted Antony. Seleucus deserts Cleopatra for reasons that remain obscure: if his betrayal is not staged (and there is no real reason to assume that it is), then his behavior is, at the least, ungenerous. Dolabella temporarily deserts Octavius for love of Cleopatra; his betrayal of his master’s plans is one of the few moments of compassion at the end of the play. Decretas deserts Antony, presumably because dead masters are not profitable to work for; but his eulogy of Antony reminds us that he knows his master’s worth and is willing to assert it even to Caesar. If Decretas complicates the pattern of betrayal, Scarus reverses it altogether. He too seems inclined to desert Antony after Actium (3.10.32–33), but in the proof, he is magnificently loyal. Enobarbus dies of a broken heart because he has deserted Antony. Eros kills himself to avoid obeying his master’s command; his magnificent disobedience may be seen as a commentary on the disobedience of all the unreliable servants in the play. Antony has previously deserted Fulvia, Octavia, and Cleopatra; Cleopatra seems momentarily to regard his death as a desertion (“Noblest of men, woo’t die? / Hast thou no care of me?” 4.15.59–60). Servants and masters desert, in short, with every reason and under every circumstance; the pattern is repeated with endless variation. Our impression is simultaneously that nothing changes and that nothing is the same.</p>
+
+    <p>The same sense of endless likeness and endless difference is achieved by this kind of repetition throughout the play: in the reception of bad news, for instance, or in the repeated episodes of handshaking or hand kissing. After Actium, Scarus tells us that Antony has “kiss’d away / Kingdoms, and provinces” (3.10.7–8); Antony himself kisses Cleopatra and says, “Even this repays me” (3.11.71). Cleopatra wishes that her kiss could quicken the dying Antony (4.15.39), but her kiss kills Iras (5.2.292). Has she the aspic in her lips? We are given both Charmian’s figs (1.2.32) and the figs that bring death to Cleopatra and her maidens; the reverberations set up between the first fig and the last suggest a whole complex of attitudes toward life and its pleasures. Decretas’s theft of Antony’s sword would not be so shocking if we had not seen Eros practice a different swordplay only a few moments before. Eros draws his own sword to kill himself for love of Antony; Decretas steals Antony’s sword to make matters right with Caesar. The contrast could scarcely be more sharply drawn than by the repeated use of the sword. The three images of entrapment in the play suggest the variety of perspectives with extraordinary economy. Cleopatra decides to go fishing and imagines each fish an Antony (2.5.11–14); she obviously thinks of herself as an amiable trap. But there is nothing amiable about the image of the trap when she greets Antony after his victory: “com’st thou smiling from / The world’s great snare uncaught?” (4.8.17–18). Cleopatra as snare or the world as snare? Which finally captures Antony? Caesar complicates the image further: Cleopatra looks “as she would catch another Antony / In her strong toil of grace” (5.2.345–46). For him, Cleopatra is clearly the snare; nonetheless, there are presumably worse fates than being caught in a toil of grace.</p>
+
+    <p>The achievement of simultaneous perspectives through varied repetition works throughout the play. When we hear the music of Hercules departing, we are reminded of a thematic pattern of enormous complexity. The music of the departing god is the first we know of his presence; we recognize the supernatural only as it withdraws. This pattern of the presence known too late is a variation of the “She’s good, being gone” (1.2.123) theme initiated by Antony’s reaction to Fulvia’s death and repeated whenever we see someone weep what willingly he did confound; it anticipates such critical moments as Enobarbus’s discovery of Antony’s full generosity only after he has deserted him, Antony’s reaction to the report of Cleopatra’s death, and Cleopatra’s deification of Antony after his death. Cleopatra’s dream of her emperor and the political tears which Octavius sheds for Antony are variations on the same theme. The function of varied repetition is most striking in the association of love, war, and death, an association posited by widely differing characters with widely differing perspectives. For Philo and Pompey, the association represents the misapplication of a soldier’s talents (1.1.6–10; 2.1.12–13). Agrippa is more amused than appalled by the association: “She made great Caesar lay his sword to bed” (2.2.227). The death of the character named Eros, with his sword drawn, is the objectification of the association on stage; in his death, the comic perspective is transformed utterly. Enobarbus’s comment on Cleopatra’s “celerity in dying” (1.2.142) will be similarly transformed when Caesar tells us of Cleopatra’s pursuit of easy ways to die. At their suicides, each of the lovers reiterates the association of love and death (4.14.99–101; 5.2.294–95) as part of their transformation of death into reunion. But the sexual suggestiveness of the asp and the Clown’s banter insure that we will not forget the other perspectives possible.</p>
+
+    <p>The insistence upon scope, upon the infinite variety of the world, militates against the tragic experience. We simply are not permitted the luxury of the tragic vision: our attempt to see the universe solely in terms of the protagonists is continually thwarted. For in <i>Antony and Cleopatra</i> the vision of tragedy is only part of the story. The protagonists find themselves to be of primal significance in the universe; but we must see them from other, less comfortable perspectives. We have heard of Antony’s almost magical soldiership from Pompey and Caesar. In the Ventidius scene, we see it for a moment with the satiric impulse of a subordinate who works while his master plays: “I’ll humbly signify what in his name, / That magical word of war, we have effected” (3.1.30–31). In Decretas, we see briefly from the point of view of a man who seems even more perfectly political than Caesar when he greets Antony’s suicide with “This sword but shown to Caesar with this tidings, / Shall enter me with him” (4.14.112–13); but we also see him deliver a potentially dangerous eulogy of Antony to Caesar. The dramatic contrasts and the varied repetitions insist that we move among several versions of experience, among the comic and satiric as well as the tragic.</p>
+
+    <h2 class="section-head">Comic Perspectives</h2>
+
+    <div class="epigrafe">
+        <p>If you find him sad,<br>Say I am dancing.<br><span class="attribution">(1.3.3–4)</span></p>
+    </div>
+
+    <p>The uncertainty and variety characteristic of <i>Antony and Cleopatra</i> frequently militate against its tragic effect. But if the play is not simply a defective tragedy, then what is it? In most tragedies, the protagonists confide in the audience; we can usually take the tragic hero as seriously as he takes himself. But in <i>Antony and Cleopatra</i> we see through the eyes of the commentators more often than through the eyes of the protagonists; and the commentators seldom take the protagonists as seriously as they might wish. In fact, a dramatic structure in which the minor characters continually intervene between the protagonists and the audience is more characteristic of farce than it is of tragedy: at moments, <i>Antony and Cleopatra</i> is closer to Plautine comedy than to <i>Hamlet</i>. Take, for instance, the long scene in which Antony’s challenges to Caesar, his rage against Thidias, and his renewed promises of derring-do are punctuated by Enobarbus’s caustic asides. The relation of actor to commentator in this scene has a venerable ancestry in the tradition of the <i>miles gloriosus</i>: Antony boasts and rages like the braggart soldier; Enobarbus undercuts him like the tricksy slave. Maynard Mack has pointed out that these “paired voices” occur in all the tragedies. But in the other plays, the heroic voice is, I think, strengthened by the presence of the opposing voice; in <i>Antony and Cleopatra</i>, our allegiance is more often divided. There are surely moments of a tragic involvement with the protagonists; but there are also moments of a comic detachment.</p>
+
+    <p>The very process of varying perspectives is essentially a comic technique. In tragedy, everything usually tends to confirm the experience of the tragic hero; by process of analogy even the most diverse scenes will work to substantiate his version of the world. Comedy tends, on the other hand, to work toward variety of experience, a multiplicity of versions, as tragedy does not. In <i>King Lear</i> we have a hierarchy of meaningful figures and events which have their end in the experience of Lear; in <i>As You Like It</i>, we are more interested in the juxtaposition of several contrasting figures than in any single figure. To put it, perhaps, over-tidily: all the figures on the heath comment on Lear’s experience in a way that all the figures in the Forest of Arden simply do not comment on the duke’s or Rosalind’s or Orlando’s. We think of all the versions of love which exist simultaneously in the Forest of Arden; and though we find Rosalind’s the least constricting, our experience of the play depends not solely on her version but on the simultaneous perception of them all. Juxtaposition of this sort is of course essential to the structure of plays like <i>Midsummer Night’s Dream</i>, <i>As You Like It</i>, <i>Twelfth Night</i>, and, to a lesser degree, <i>The Tempest</i>; and it is foreign to the structure of the tragedies. Simultaneous versions of experience which can compete on equal footing are generally not given us in the tragedies; in <i>Antony and Cleopatra</i>, we are given precisely this simultaneity of competing versions.</p>
+
+    <p>I am of course oversimplifying this distinction; <i>Antony and Cleopatra</i> has more in common with <i>King Lear</i> than with <i>Midsummer Night’s Dream</i>. But there is a surprising prevalence of essentially comic technique in the structure of <i>Antony and Cleopatra</i>; and to regard these comic techniques as surface excrescences on a fundamentally tragic play is surely as serious an error as to overemphasize them. There are comic elements in other tragedies: Othello, like Antony, is a type of the <i>miles gloriosus</i>. But in <i>Othello</i>, this comic structure is transformed to serve a tragic purpose: the tragedy consists precisely in the relationship between him and his tricksy servant. Generally, comic elements in the other tragedies are subsumed into the tragic vision as they are not in <i>Antony and Cleopatra</i>. For the comic moments in this play—such moments as Charmian’s baiting Cleopatra about her love for Caesar—are not isolated phenomena: the entire tragic vision of the play is subjected to the comic perspective. If this double perspective is perilous to the structure of the play as tragedy, it is nonetheless its peculiar triumph. It is the unique excellence of <i>Antony and Cleopatra</i> that it does not allow us to maintain the comfortable and certain attitudes of either comedy or tragedy for very long. We are not permitted the luxury of total engagement with the protagonists; nor are we permitted the emotional safety of total detachment from them. We think we know where we stand; and then we feel the ground shifting under our feet. To restrict the play solely to either the tragic or the comic perspective is to make it a much safer play than it actually is: there is always safety for an audience in certainty, even if the certainty is as painful as it usually is in Shakespearean tragedy. But we do not know how to regard <i>Antony and Cleopatra</i>: for the play is essentially a tragic experience embedded in a comic structure. In that sense it is as treacherous and painful as life itself: each of us has moments in which we experience our lives with a tragic concentration and intensity; but each of us must know that these moments can equally well be experienced as comic, if seen from the perspective of the varying shore. The bare experience is susceptible to either perspective; both inhere in it. If we can nonetheless experience the tragedy of Antony and Cleopatra as they experience it, it will be more moving precisely because we have also seen it through foreign eyes, because it can take the criticism of the comic structure and nonetheless survive.</p>
+
+    <section class="footnotes">
+        <h3>Note</h3>
+        <p>From <i>The Common Liar: An Essay on Antony and Cleopatra</i>. © 1973 by Yale University. Yale University Press, 1973.</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>

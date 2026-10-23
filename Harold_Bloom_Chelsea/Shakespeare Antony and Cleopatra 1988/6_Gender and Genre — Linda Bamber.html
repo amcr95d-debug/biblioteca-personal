@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gender and Genre — Linda Bamber</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+.section-head { margin: 3.2rem 0 1.6rem; text-align: center; font-size: 1rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--text-secondary); }
+.section-head::before, .section-head::after { content: ""; display: inline-block; width: 2rem; height: 1px; background: var(--border-color); vertical-align: middle; margin: 0 .8rem; }
+.epigrafe { margin: 2rem 0 1.5rem; text-align: center; font-style: italic; color: var(--text-secondary); font-size: .95rem; }
+.epigrafe .attribution { display: block; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .3rem; }
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">Linda Bamber</p>
+        <h1 class="cab__tit">Gender and Genre</h1>
+    </header>
+
+    <p>Cleopatra, says Enobarbus, is to be understood in terms of her “variety” (2.2.238). He means that she is a surprising person, that her moods are changeable and her personality many-sided. But Cleopatra is also various as an element in the drama. She is more than one kind of character, which may be why she provokes so much disagreement among critics. For my purposes there are three Cleopatras. At one level she is the embodiment of Egypt and a symbol of our antihistorical experience. At another level she represents the Other as against Antony’s representation of the Self. As such, she appears indifferent to the destiny of the male Self; here, as in the other Shakespearean tragedies, the hero’s encounter with this apparently indifferent Other is an important part of his tragic-heroic adventure. And finally Cleopatra is a character like Antony himself, facing failure and defeat, motivated by the desire to contain or rise above her losses. Let us begin with the first and most familiar Cleopatra, Cleopatra-as-Egypt.</p>
+
+    <p>This first Cleopatra is an alternative, for the reader and for Antony, to Caesar and Rome. She has had the lion’s share of the critical attention, so it is unnecessary to deal with her at great length. This Cleopatra is the “serpent of old Nile” (1.5.25), a principle of pleasure, of fertility and decay, of artifice, of ambiguity. She opposes the cold, abstract certainties of Rome with the heat of her body; Caesar challenges Antony to be preeminent in the world of men whereas Cleopatra challenges him to his destiny as a lover. She represents the Egypt Antony describes to Lepidus when he returns to Rome:</p>
+
+    <div class="cita">
+        <p>The higher Nilus swells,</p>
+        <p>The more it promises; as it ebbs, the seedsman</p>
+        <p>Upon the slime and ooze scatters his grain,</p>
+        <p>And shortly comes to harvest.</p>
+        <p class="attribution">(2.7.21–24)</p>
+    </div>
+
+    <p>This Cleopatra is not so much a character in her own right as an experience of Antony’s and a problem for his judgment. This is the one who might be good or bad, who attacks and eludes both the audience and the hero. Is she finally faithful to Antony or not? Is it worth giving up the honors of Rome to pursue something so shifty and unpossessable? We can never know. Take, for instance, the scene in which Cleopatra apparently plans to defect to Caesar. Thidias tells Cleopatra that Caesar “knows you embraced not Antony / As you did love, but as you feared him,” and Cleopatra, as soon as she can collect her wits, responds, “He is a god, and knows / What is most right” (3.13.56–57, 60–61). This is enough for Enobarbus, who leaves to tell Antony that Cleopatra is “quitting” him. But Enobarbus only witnesses this speech in the first place because Cleopatra insists that he stay to hear it. Is it possible that Cleopatra <i>means</i> Enobarbus to report her to Antony? Could this be merely another ploy for Antony’s attention and not really a betrayal? Furthermore, the scene ends with Enobarbus’s desertion, not Cleopatra’s: “I will seek,” says Enobarbus, “Some way to leave him” (3.13.200–201). So we must ask ourselves, in retrospect, who was being faithful to Antony here, Enobarbus or Cleopatra? He actually does leave Antony (although he later returns in spirit) whereas she does not (or does she?). To hunt for this Cleopatra is to double back so many times that we forget what we were looking for. As Egypt, Cleopatra is radically ambiguous and can never be finally known.</p>
+
+    <p>The Cleopatra Antony perceives is this elusive one. He cannot wholly love her or wholly leave her; he can never bring himself to make final judgments of her, and yet he cannot put judgment aside. Only when he believes she is dead or when he is himself dying can he act from a love unmixed with fear and suspicion. Antony’s fears are for his place in history as well as for the returns on his love. He has trusted his reputation to Cleopatra; if she is untrue to him, his fate will have been that of a strumpet’s fool. He dies with his essential question about her unanswered, although at the moment of his death he is no longer interested in such questions.</p>
+
+    <p>If we read Cleopatra entirely as a principle, <i>our</i> question about her goes unanswered also. We do not know whether she is good or bad, important or trivial, Antony’s greatest adventure or his “dotage” (1.1.1). John Danby is one of many critics who read Cleopatra as Egypt; his excellent essay on <i>Antony and Cleopatra</i> quite explicitly recognizes the consequences of doing so. That is, his essay deals with what <i>I</i> consider the consequences of doing so; Danby himself does not connect what I see as interpretive cause and effect. If Cleopatra is Egypt and the crucial dialectic is between Egypt and Rome, the play does not resolve, does not progress, does not reach any kind of tragic climax. Neither Egypt nor Rome represents values endorsed by the play as a whole:</p>
+
+    <div class="cita">
+        <p>The Roman condemnation of the lovers is obviously inadequate. The sentimental reaction in their favor is equally mistaken. There is no so-called “love-romanticism” in the play. The flesh has its glory and its passion, its witchery. Love in <i>Antony and Cleopatra</i> is both these. The love of Antony and Cleopatra, however, is not asserted as a “final value”. . . . To . . . claim that there is a “redemption” motif in Antony and Cleopatra’s love is an . . . error. To the Shakespeare who wrote <i>King Lear</i> it would surely smack of blasphemy. The fourth and fifth acts of <i>Antony and Cleopatra</i> are not epiphanies. They are the ends moved to by that process whereby things rot themselves with motion—unhappy and bedizened and sordid, streaked with the mean, the ignoble, the contemptible. . . .</p>
+        <p><i>Antony and Cleopatra</i> is an account of things in terms of the World and the Flesh, Rome and Egypt, the two great contraries that maintain and destroy each other, considered apart from any third sphere which might stand over against them.</p>
+        <p class="attribution">(John Danby, <i>Poets on Fortune’s Hill</i>)</p>
+    </div>
+
+    <p><i>King Lear</i>, according to Danby, is eschatological, <i>Antony and Cleopatra</i> merely analytical. In the latter play opposite temperaments are merely weighed against each other, and each is found wanting the others virtues. There is a “diminution of scope” from the earlier tragedies.</p>
+
+    <p>What is missing from <i>Antony and Cleopatra</i>, according to Danby, is the theme of “Nature.” By “Nature” he means “a reality that transcends the political and the personal,” something that tests the soul of man. <i>King Lear</i>, says Danby, is tested and tempered by Nature, by the world beyond the Self; the characters in <i>Antony and Cleopatra</i> test only each other, commenting on each other’s limitations. So “<i>Antony and Cleopatra</i> gives the impression of being a technical tour-de-force which Shakespeare enjoyed for its own sake.”</p>
+
+    <p>Danby’s Nature seems very close to what I have been calling the Other: a reality external to the Self with which the hero is confronted in tragedy. We do battle with this Other because it seems to betray us, to make us less than we were; ultimately we transcend our antagonism to it, at which point it no longer seems implacably hostile to us. The dialectic between the Self and the Other, often reflected in the dialectical progression of the hero’s relationship with women, does seem to resolve in tragedy. This dialectic—unlike the dialectic Danby finds between Egypt and Rome—does not simply exhaust itself. It creates something new: the tragic hero in his final phase, the Self transformed. If we read Cleopatra as the representative of the Other and not merely as Egypt, the diachronic movement of the play, which Danby sees as wholly “discreating,” takes on a more positive aspect.</p>
+
+    <p>In a sense, of course, there is little difference between Cleopatra as Egypt and Cleopatra as the Other, for it is <i>as</i> Egypt that Cleopatra represents the Other. But in this reading Egypt and Rome are no longer equal but opposite options for the hero. In this reading Egypt is the new world, the world that calls into question all the old certainties, the heath on which Antony faces the indifference of the universe and his own falling off from what he means to be. Egypt replaces or rewrites Rome as experience replaces and rewrites innocence. When Antony returns to Rome, it is gone; the world in which physical courage and manly purpose prevail has been replaced by a world of drinking, matchmaking, speechifying, and deal-making. Roman honor, after Antony’s time in Egypt, has become as elusive and dubious an ideal as Egyptian love. What it <i>had been</i> we may gather from Caesar’s description of Antony before Egypt, on campaign:</p>
+
+    <div class="cita">
+        <p>Antony,</p>
+        <p>Leave thy lascivious wassails. When thou once</p>
+        <p>Was beaten from Modena, where thou slew’st</p>
+        <p>Hirtius and Pansa, consuls, at thy heel</p>
+        <p>Did famine follow, whom thou fought’st against</p>
+        <p>(Though daintily brought up) with patience more</p>
+        <p>Than savages could suffer. Thou didst drink</p>
+        <p>The stale of horses and the gilded puddle</p>
+        <p>Which beasts would cough at. Thy palate then did deign</p>
+        <p>The roughest berry on the rudest hedge.</p>
+        <p>Yea, like the stag when snow the pasture sheets,</p>
+        <p>The barks of trees thou browsed. On the Alps</p>
+        <p>It is reported thou didst eat strange flesh,</p>
+        <p>Which some did die to look on. And all this</p>
+        <p>(It wounds thine honor that I speak it now)</p>
+        <p>Was borne so like a soldier that thy cheek</p>
+        <p>So much as lanked not.</p>
+        <p class="attribution">(1.4.55–71)</p>
+    </div>
+
+    <p>Prelapsarian Rome, like all the prelapsarian worlds of Shakespearean tragedy, was a world in which honor and manhood followed directly from the fulfillment of clear-cut criteria. In returning to Rome Antony means to return to a more clearly defined manhood; he means to return to his old role as a fighting general. “The beds i’ th’ East are soft,” he tells Pompey,</p>
+
+    <div class="cita">
+        <p>and thanks to you,</p>
+        <p>That called me timelier than my purpose hither;</p>
+        <p>For I have gained by’t.</p>
+        <p class="attribution">(2.6.50–52)</p>
+    </div>
+
+    <p>But Rome can no longer be represented by the hardened body of the general on campaign. In its own way it has gone as soft as the beds in the East; it is pictured as a mean and drunken party on a boat. After Egypt the corruption of Rome is revealed, to Antony and to us. Antony’s return to Egypt is inevitable; the old world is gone and he has no choice but to live in the new.</p>
+
+    <p>If Egypt, then, is the new world—the world of the Other and not merely an equal-but-opposite alternative to Rome—then Cleopatra’s identification with Egypt offers us the possibility of a different interpretation from Danby’s. In this case we may interpret the phases of Antony’s relationship to Cleopatra as phases in his response to the new world. Seen from this point of view, the play seems less committed than Danby thinks to “the sense of ripe-rottenness and hopelessness, the vision of self-destruction [and] the feeling of . . . fevered futility.” Danby charts the falling curve of the dialectic between Egypt and Rome; this dialectic, as he points out, loses energy as the play goes on. But the dialectic between Self and Other gains energy until it reaches a kind of resolution. The second dialectic begins with the refusal of the Other, develops into misogynist rage, and resolves into kindness and connectedness.</p>
+
+    <p>It may seem paradoxical to refer to Antony’s early relations with Cleopatra as a species of denial. His first speech, after all, is one of the most famous declarations of love in all of literature:</p>
+
+    <div class="cita">
+        <p>Let Rome in Tiber melt, and the wide arch</p>
+        <p>Of the ranged empire fall! Here is my space,</p>
+        <p>Kingdoms are clay: our dungy earth alike</p>
+        <p>Feeds beast as man. The nobleness of life</p>
+        <p>Is to do thus; when such a mutual pair</p>
+        <p>And such a twain can do’t, in which I bind,</p>
+        <p>On pain of punishment, the world to weet</p>
+        <p>We stand up peerless.</p>
+        <p class="attribution">(1.1.33–40)</p>
+    </div>
+
+    <p>But from this point until his reunion with Cleopatra in act 3, scene 7, Antony fights a losing battle to limit his relationship with her, to avoid the choice he so grandly claims, in the first scene, already to have made. He succumbs to the Roman view of his relationship, returns to Rome and marries Octavia. Antony does not deny his desire for Cleopatra; but he denies the revolutionary nature of his desire. He denies the radical changes in the Self that will be necessary to accommodate the Other; he denies the choice she imposes between Rome and Egypt, between an asexual and a sexual identity. Rome, of course, is opposed to sexuality not <i>per se</i> but only as it interferes with business. Caesar defines the Roman position as follows:</p>
+
+    <div class="cita">
+        <p>Let’s grant it is not</p>
+        <p>Amiss to tumble on the bed of Ptolemy</p>
+        <p>. . . yet must Antony</p>
+        <p>No way excuse his foils when we do bear</p>
+        <p>So great weight in his lightness. If he filled</p>
+        <p>His vacancy with his voluptuousness,</p>
+        <p>Full surfeits and the dryness of his bones</p>
+        <p>Call on him for’t. But to confound such time</p>
+        <p>That drums him from his sport and speaks as loud</p>
+        <p>As his own state and ours, ’tis to be chid</p>
+        <p>As we rate boys who, being mature in knowledge</p>
+        <p>Pawn their experience to the present pleasure</p>
+        <p>And so rebel to judgment.</p>
+        <p class="attribution">(1.4.16–17, 23–33)</p>
+    </div>
+
+    <p>To Caesar and Rome, relationships with women are a leisure-time activity, something to fill up “vacancy.” When serious business is broached—war or political realignments or the dividing up of land—a man who continues to “tumble on the bed” risks his place in the world of men. A sexual adventure is a luxury, an excursion one might make from a journey whose goals lie elsewhere. Antony’s very decision to return to Cleopatra reflects the Roman attitude toward sexuality: “I will to Egypt,” Antony says, “And though I make this marriage for my peace, / I’ th’ East my pleasure lies” (2.3.37–39). The imperial Self visits here and there, demanding “peace” in one place and “pleasure” in another. The Other is denied its dialectical relationship with the Self and valued only insofar as it brings pleasure. In this phase of the drama the Self refuses the Other and puts his faith in the firmness of his own boundaries.</p>
+
+    <p>Antony’s first action of the play is his departure from Egypt. We are not really sorry to see him leave; we are pleased to see him recover his decisiveness and resist Cleopatra’s wiles. But we should be troubled, I think, to notice that Antony’s language as he leaves for Rome becomes transparently rhetorical. “By the fire / That quickens Nilus’ slime,” he tells Cleopatra,</p>
+
+    <div class="cita">
+        <p>I go from hence</p>
+        <p>Thy soldier-servant, making peace or war</p>
+        <p>As thou affects.</p>
+        <p class="attribution">(1.3.68–71)</p>
+    </div>
+
+    <p>This is simply untrue. Cleopatra has vigorously resisted Antony’s departure; as a soldier he is precisely <i>not</i> her servant but makes peace or war as he himself affects. The speech is downright embarrassing; Cleopatra simply pretends not to have heard it: “Cut my lace, Charmian, come—” she says, “But let it be: I am quickly ill, and well, / So Antony loves” (1.3.71–73). Antony’s last words to Cleopatra are similarly specious:</p>
+
+    <div class="cita">
+        <p>Our separation so abides and flies</p>
+        <p>That thou residing here goes yet with me,</p>
+        <p>And I hence fleeting here remain with thee.</p>
+        <p>Away.</p>
+        <p class="attribution">(1.3.102–5)</p>
+    </div>
+
+    <p>There is something silly, if not actually dishonest, about this scrap of an Elizabethan valediction poem. It makes a gesture in the direction of ideal love—but so cursory a gesture to so lofty an ideal is a kind of self-contradiction. And apart from its sing-song rhythm, easy rhyme, and conventional ideas, it is quite inappropriate at this moment. For the departure of the man into the man’s world of business is an unpleasant inevitability in the lyric poems, whereas everything up to this point has emphasized the element of choice in Antony’s departure. The grandeur of “Let Rome in Tiber melt” has been replaced by a feeble convention. In this movement Antony’s relations with Cleopatra are only romantic; the flip side of his romanticism is his Roman instinct to limit relations with the Other.</p>
+
+    <p>If Antony’s language in this first movement reflects the limitations of his relationship to the Other, so, too, do his actions. His marriage to Octavia is doubly significant in this respect. First of all, it is clearly a betrayal of Egypt and Cleopatra. Second, it is also an alliance with a woman who accepts her role as a leisure-time activity and offers no resistance to Antony’s life in the world of men. To get things straight from the beginning, Antony intones to his new wife, “The world and my great office will sometimes / Divide me from your bosom” (2.3.1–2). Octavia doesn’t skip a beat:</p>
+
+    <div class="cita">
+        <p>All the which time</p>
+        <p>Before the gods my knee shall bow my prayers</p>
+        <p>To them for you.</p>
+        <p class="attribution">(2.3.2–4)</p>
+    </div>
+
+    <p>Octavia will have no demands to make of her husband that conflict with his demands on himself. Leaving her for good, Antony will later tell her,</p>
+
+    <div class="cita">
+        <p>If I lose mine honor,</p>
+        <p>I lose myself: better I were not yours</p>
+        <p>Than yours so branchless.</p>
+        <p class="attribution">(3.4.22–24)</p>
+    </div>
+
+    <p>And poor Octavia will not hear the false note. Unlike Cleopatra she is not aware that the appeal to “honor,” to his position in the world of men, may mask a breach of faith with her. She sends him off—to Cleopatra, as it turns out—without demur. In choosing Octavia over Cleopatra, Antony tries to choose a <i>limited</i> relationship with the Other. Unlike Cleopatra, Octavia offers no threat to the preexisting integrity of the Self.</p>
+
+    <p>In the next movement of the play Antony returns to Egypt for good. He does not exactly choose to do so, but his betrayal of Octavia makes another reconciliation with Caesar out of the question. Antony now has nowhere else to go. It is this knowledge that makes the next phase of his relations with Cleopatra so tumultuous and at the same time so much less theatrical than the opening movement of the play. There is no more striking of poses. The first time we see the lovers back together they are not, as we might have expected, dramatizing their reunion; they are holding a strategy session. Of course, it is because of Cleopatra that the strategy they settle on is a disastrous one; they will meet Caesar at sea. Enobarbus is horrified:</p>
+
+    <div class="cita">
+        <p>Most worthy sir, you therein throw away</p>
+        <p>The absolute soldiership you have by land,</p>
+        <p>. . . quite forgo</p>
+        <p>The way which promises assurance, and</p>
+        <p>Give up yourself merely to chance and hazard</p>
+        <p>From firm security.</p>
+        <p class="attribution">(3.7.41–42, 45–48)</p>
+    </div>
+
+    <p>This is precisely what Antony has done by throwing in his lot with Cleopatra. In his relationship with her he is indeed at sea; he has forgone the assurance of success that Rome promises her sons for the “chance and hazard” of Egypt, Cleopatra, and a life centered on his own sexuality. He is indeed at sea, as all the tragic heroes are when they leave the “firm security” of the patriarchal system and confront the Other dialectically. And at sea Cleopatra is uncontrollable, unfathomable, and possibly unfaithful, even though Antony has committed his worldly fortunes to his relationship with her. Now the antagonism between his worldly affairs and his role as a lover can no longer be glossed over with courtly lies—“thy soldier-servant,” etc. Now everything comes out into the open, and the results are those Shakespearean moments when the hero is taken over by sexual loathing:</p>
+
+    <div class="cita">
+        <p>I found you as a morsel cold upon</p>
+        <p>Dead Caesar’s trencher: nay, you were a fragment</p>
+        <p>Of Gneius Pompey’s, besides what hotter hours,</p>
+        <p>Unregist’red in vulgar fame, you have</p>
+        <p>Luxuriously picked out. For I am sure,</p>
+        <p>Though you can guess what temperance should be,</p>
+        <p>You know not what it is.</p>
+        <p class="attribution">(3.13.116–22)</p>
+    </div>
+
+    <p>The opening of the sexual wound is here, as so often in Shakespeare, a symptom of the hero’s confrontation with what Danby calls Nature and what I have been calling the Other. The new world—Egypt and Cleopatra—has become an inevitability for Antony and not merely a pleasure he may choose to enjoy or not. The difficulties of the new world—its ambiguity and its possible hostility to Antony—are now revealed, and Antony responds to the revelation with rage and disbelief. The intensity of his response is now unmistakably genuine; it is no literary convention that prompts his violent “Triple-turned whore!” or his fantasy of Octavia plowing up Cleopatra’s face “with her preparéd nails” (4.12.13, 39).</p>
+
+    <p>The final phase is one that the heroes never enter until it is too late. In this phase Antony simply abandons judgment of Cleopatra even though he has received no adequate explanation or apology from her. The last phase begins when Cleopatra, who may or may not have betrayed Antony in battle, thinks to avoid his anger by sending him word that she is dead:</p>
+
+    <div class="cita">
+        <p>Mardian, go tell him I have slain myself:</p>
+        <p>Say that the last I spoke was “Antony”</p>
+        <p>And word it, prithee, piteously. Hence, Mardian,</p>
+        <p>And bring me how he takes my death.</p>
+        <p class="attribution">(4.13.7–10)</p>
+    </div>
+
+    <p>The news abruptly turns the tide of Antony’s emotions, which had been running heavily against Cleopatra. On hearing it Antony says, “I will o’ertake thee, Cleopatra, and / Weep for my pardon” (4.14.44–45). Cleopatra’s supposed suicide is proof to Antony that she has <i>not</i> “disposed with Caesar” (4.14.123) and therefore that she has been loyal to himself. Cleopatra becomes “she which by her death our Caesar tells / ‘I am conqueror of myself’” (4.14.61–62). When Antony learns that her suicide was a fake, however, his feelings toward her do not undergo another reversal. His anger and hatred do not return. “Bear me,” he says immediately on hearing the news, “where Cleopatra bides” (4.14.131); and his last words concern her safety after his death, not the unresolved question of her fidelity to him. In this phase of his story Antony is no longer concerned about Cleopatra as she controls his destiny. It is <i>her</i> destiny he thinks of at this point; his own he implicitly trusts to her.</p>
+
+    <p>Antony is Shakespeare’s most sustained study in the temptation to limit or avoid sexuality where it conflicts with the hero’s role in the world of men. The two halves of his life ultimately merge in spite of his efforts to keep them apart: by the second phase of the play Antony’s political and personal destinies come together in Egypt. Antony alternately rages against the new world and sadly accepts it; in his dying moments his objections to it seem to have vanished altogether. Antony’s final attitude toward Cleopatra is resonant with more than itself. If Cleopatra and Egypt stand for the world we fall into when we discover Nature, then Antony’s final unprotesting love for Cleopatra affirms the value of our unsatisfactory natural lives. In his final moments Antony is at peace; he loves what he loves in spite of everything.</p>
+
+    <p>Where Danby sees a trend toward exhaustion, disintegration, and “rot[ting] with motion,” then, I see a trend toward the recognition and acceptance of the Other. But I cannot claim that the trend I see is very pronounced or that it is powerful enough to counterbalance the disintegrative tendencies of the play. For our glimpse of Antony at peace is very brief. We cannot compare it to our vision of, for instance, Hamlet in <i>his</i> final phase. Antony has no graveyard scene, no long still moment when he performs for us his newfound ease. Furthermore, his death does not end the play. What happens to Antony is only part of the story; if we are looking for a sense of resolution we must look at what happens to Cleopatra as well. Does <i>her</i> story resolve? Does the fifth act halt the trend toward disintegration, offer an image of something permanent and valuable in human life? If not, then we must agree with Danby that it represents a kind of falling-off from <i>Hamlet</i> and <i>Lear</i>; Antony’s dying words are simply not enough.</p>
+
+    <p>Of course, I disagree with Danby. <i>Antony and Cleopatra</i>, I think, resolves by offering us an image of a great love relationship. Just as Hamlet and Lear become greatly valuable to us in spite of everything, so too does the relationship between these lovers. This relationship, like whatever is grand about the heroes, endures the confrontation with Nature. It survives the test and resolves the play. But of course we cannot talk about the relationship apart from the lovers who enact it. The confrontation with Nature is endured by both Antony and Cleopatra; having seen something of Antony’s relations with Nature we must now turn to Cleopatra’s. Cleopatra confronts Nature not as Egypt nor as Antony’s Other but as a character with her own destiny at stake.</p>
+
+    <p>Does this mean that Cleopatra, alone among Shakespeare’s women, is a tragic hero, a version of the Self rather than the Other? Linda Fitz believes that she is. In her revisionist essay “Egyptian Queens and Male Reviewers” (“Egyptian Queens and Male Reviewers: Sexist Attitudes in <i>Antony and Cleopatra</i> Criticism,” <i>Shakespeare Quarterly</i> 28 [1977]), Fitz argues that we must understand Cleopatra from the inside since “Shakespeare . . . takes pains to let Cleopatra explain her contrary behavior and give the reasons for it (1.3).” Cleopatra, according to Fitz, “struggles with her own inconstancy” and “learns and grows as Antony does not.” And yet where can we be sure we are getting an inside view of Cleopatra rather than a performance? Only, I think, in act 1, scene 3, the scene Fitz refers to above. This scene is very important to my interpretation as it provides us with an opening through which we can turn the play inside out; through this opening we may see things, as through the wrong end of the opera glasses, from Cleopatra’s point of view. But the play does not maintain continuous contact with Cleopatra’s point of view; it does not bring us close to Cleopatra for more than a few speeches; it does not give us any insight into the struggles of her inner life. The revelation moment merely tells us of her struggle to keep her lover:</p>
+
+    <div class="cita">
+        <p>CHARMIAN. Madam, methinks, if you did love him dearly,</p>
+        <p>You do not hold the method to enforce</p>
+        <p>The like from him.</p>
+        <p>CLEOPATRA. What should I do, I do not?</p>
+        <p>CHARMIAN. In each thing give him way, cross him in nothing.</p>
+        <p>CLEOPATRA. Thou teachest like a fool: the way to lose him.</p>
+        <p class="attribution">(1.3.6–10)</p>
+    </div>
+
+    <p>What we see here is Cleopatra’s strategy in dealing with what is outside herself, not any struggle “against her own inconstancy.” This exchange does briefly but radically shift the perspective from Antony’s to Cleopatra’s; and this one shift gives us permission, as it were, to speculate on Cleopatra’s motives and goals. It suggests a limited likeness between Cleopatra and the tragic version of Self. But we must acknowledge that our speculative reconstruction of Cleopatra’s point of view is a wholly intellectual project. We are not close to Cleopatra, as we are to the tragic hero; we do not sympathize with her or share her hopes and fears. In fact, in the very scenes where the story might evoke most sympathy for her we are most carefully kept at a distance. Whenever Cleopatra suffers loss or defeat she is presented comically, unflatteringly, or ambiguously.</p>
+
+    <p>Consider, for instance, the scene in which Cleopatra learns that Antony has married Octavia. Clearly, <i>she</i> is <i>his</i> victim here and not the other way around. And yet we are dramatically prevented from taking her side, from sympathizing with her against him. She is presented as unreasonable, willful, capricious, and jealous—not as wronged, hurt, or sad. When the messenger arrives she flings herself at him melodramatically until he says in exasperation, “Will’t please you hear me?”—to which she characteristically replies, “I have a mind to strike thee ere thou speak’st” (2.5.41–42). The scene proceeds:</p>
+
+    <div class="cita">
+        <p>CLEOPATRA. Yet, if thou say Antony lives, is well,</p>
+        <p>Or friends with Caesar, or not captive to him,</p>
+        <p>I’ll set thee in a shower of gold, and hail</p>
+        <p>Rich pearls upon thee.</p>
+        <p>MESSENGER. Madam, he’s well.</p>
+        <p>CLEOPATRA. Well said.</p>
+        <p>MESSENGER. And friends with Caesar.</p>
+        <p>CLEOPATRA. Th’art an honest man.</p>
+        <p>MESSENGER. Caesar and he are greater friends than ever.</p>
+        <p>CLEOPATRA. Make thee a fortune from me.</p>
+        <p>MESSENGER. But yet, Madam—</p>
+        <p>CLEOPATRA. I do not like “But yet”; it does allay</p>
+        <p>The good precedence: fie upon “But yet”;</p>
+        <p>“But yet” is as a jailer to bring forth</p>
+        <p>Some monstrous malefactor. Prithee, friend,</p>
+        <p>Pour out the pack of matter to mine ear,</p>
+        <p>The good and bad together: he’s friends with Caesar,</p>
+        <p>In state of health, thou say’st, and thou say’st, free.</p>
+        <p>MESSENGER. Free, madam, no: I made no such report;</p>
+        <p>He’s bound unto Octavia.</p>
+        <p>CLEOPATRA. For what good turn?</p>
+        <p>MESSENGER. For the best turn i’ th’ bed.</p>
+        <p>CLEOPATRA. I am pale, Charmian.</p>
+        <p>MESSENGER. Madam, he’s married to Octavia.</p>
+        <p>CLEOPATRA. The most infectious pestilence upon thee!</p>
+        <p><i>Strikes him down.</i></p>
+        <p class="attribution">(2.5.43–61)</p>
+    </div>
+
+    <p>We are elaborately prevented from sharing in Cleopatra’s emotions at the very moment when it would be most natural for us to do so. Another example is the very first skirmish of the play. In the first three scenes Cleopatra struggles to keep her lover from leaving her; by the fourth scene he is gone. And yet the dominant impression left by these scenes is of Cleopatra running circles around Antony, maneuvering him into professions of love only to jeer at them, taunting him with loving Fulvia and with not loving Fulvia, throwing up a fog of accusations and contradictions around Antony’s efforts to make a judgment on his situation. Antony, says Danby, is “like the man innocent of jujitsu who thinks he is pushing when really he is being pulled.” We may notice, if we like, that at the end of it all the innocent leaves the adept; but we are not free to sympathize very deeply with Cleopatra’s loss. We are at least as pleased that Antony has broken away as we are sorry that Cleopatra has been left alone.</p>
+
+    <p>But although we do not feel Cleopatra’s suffering, we may, if we wish, infer it. We cannot make Emilia the hero of <i>Othello</i>, as Carol Neely suggests, nor even Cordelia the hero of <i>King Lear</i>. But we can, if we wish, shape a tragic fable around Cleopatra without violating or supplementing the data of the play. Through a glass darkly we can see that she, too, faces the challenge of an unsatisfactory Nature; she, too, resists her diminishment according to its laws. Although at one level she is herself a representative of the Other, she also confronts the Other. The third Cleopatra is in fact the most important one for my interpretation. If we overlook her, the play does not resolve.</p>
+
+    <p>Nature (or the Other) in <i>Antony and Cleopatra</i>, whether Cleopatra represents it or confronts it, is quite different from Nature in <i>King Lear</i>. There Nature consists of starkest good and starkest evil; our difficulty is that the reality of the one may be concealed by the illusion of the other. Here we are faced with no such absolutes. Rather we are faced with an acceptable level of niggling everyday selfishness, with the perfectly understandable compromises we make, with ordinary failures of clarity and courage. Loss and defeat are undramatic here; no one stands on the heath and roars with astonishment and pain. In most of Shakespeare’s tragedies, as A. C. Bradley notes [in his <i>Oxford Lectures on Poetry</i>], we are confronted early on with “scenes of action or passion which agitate the audience with alarm, horror, painful expectation, or absorbing sympathies and antipathies.” What is there of this in the first three acts of <i>Antony and Cleopatra?</i> “Almost nothing. People converse, discuss, accuse one another, excuse themselves, mock, describe, drink together, arrange a marriage, meet and part; but they do not kill, do not even tremble or weep.” In <i>Antony and Cleopatra</i> the thing in nature that works against the characters is undramatic and diffuse; nevertheless it grinds away. In almost every scene some character is shown by his own or another’s analysis to be smaller than he would like to think himself. Ventidius tells us that Antony is not free from jealousy of his own lieutenants (3.1); Antony tells us that the loyalties of the common people are shifty and perverse (1.3); Pompey tells Menas that his own honor depends on technicalities (2.7); Charmian reminds Cleopatra that she has loved before (1.4); Antony notices his own inconstancy toward Fulvia:</p>
+
+    <div class="cita">
+        <p>What our contempts doth often hurl from us,</p>
+        <p>We wish it ours again. The present pleasure,</p>
+        <p>By revolution low’ring, does become</p>
+        <p>The opposite of itself: she’s good, being gone;</p>
+        <p>The hand could pluck her back that shoved her on.</p>
+        <p class="attribution">(1.2.124–28)</p>
+    </div>
+
+    <p>All of these speeches imply that there are no absolutes, no unambiguous goods—or that even if there are, human nature can never adhere to them long enough to matter.</p>
+
+    <p>Such is the Nature that Shakespeare deals with in <i>Antony and Cleopatra</i>, Danby to the contrary. And just as Lear’s accomplishment is appropriate to the Nature of that play, so Antony’s and Cleopatra’s are appropriate to this. In <i>King Lear</i>, where warring cosmological forces seem in danger of overwhelming the significance of the human drama, Lear’s search for value and joy takes on a kind of religious intensity. In <i>Antony and Cleopatra</i> it is much harder to know where to have the enemy, for here we are dealing not with the inhuman but with the all-too-human. If Lear’s achievement is the depths to which he can root himself in such unfriendly soil, Antony-and-Cleopatra’s perhaps, is in rising above the undergrowth of everyday failure into the sunshine of history, myth, story. Antony and Cleopatra do become famous, historical. Their ambition is to make themselves special, and as we shall see, they do.</p>
+
+    <p>Antony and Cleopatra, of course, do not struggle as a couple against Nature; they struggle individually, and they often appear to be struggling against each other. For if Cleopatra often represents Nature to Antony, often he represents it to her. But although at one level there is conflict between them, their separate and individual campaigns against Nature are at another level complementary. There is a third and final dialectic in the opposition between their different modes of meeting the challenge of Nature; it is the resolution to this dialectic that resolves the play.</p>
+
+    <p>Antony struggles with Nature by struggling with himself; Cleopatra has no quarrel with herself and struggles exclusively with the outside world. Whereas Antony resists his decline by struggling to become his own ideal, Cleopatra struggles only to keep her lover, to outfox Caesar, to win admiration from all. She is aware of no gap between what she is and what she ought to be, only of the gap between what she wants and what she has. Even when we put Cleopatra in the position of the striving Self, we must notice that she struggles as an Other, as a fixed identity. She is not self-divided, like the tragic heroes; she is at work on her destiny but not, like them, on herself.</p>
+
+    <p>Antony struggles to control his destiny by taking control of himself. “Ten thousand harms,” he tells himself in act 1, scene 2, “my idleness doth hatch,” and so he resolves to be less idle. He decides to become a good Roman again and urges the messenger</p>
+
+    <div class="cita">
+        <p>Speak to me home, mince not the general tongue:</p>
+        <p>Name Cleopatra as she is called in Rome;</p>
+        <p>Rail thou in Fulvia’s phrase, and taunt my faults</p>
+        <p>With such full license as both truth and malice</p>
+        <p>Have power to utter.</p>
+        <p class="attribution">(1.2.106–10)</p>
+    </div>
+
+    <p>Antony wants to hear his “ills” so he can mend them. He fights his sense of dissolving identity—of submission to the play’s occasions—with the weapons of self-consciousness and willpower. Although the decisions he takes about his character are often impossible to carry out, he is always sincere in his resolutions. It is the essence of the battle he wages against Nature that he should always believe he means what he says. He tells Octavia, “I have not kept my square, but that to come / Shall all be done by th’ rule” (2.3.6–7), and he means it, even though thirty lines later he decides to return to Cleopatra. When he fails to live up to his resolutions he is bitter in his self-recriminations: “I have fled myself, and have instructed cowards / To run and show their shoulders” (3.11.7–8). He is always ready to accept instruction; when Cleopatra, in the first words we see her address to him since he left for Rome, advises him that “Celerity is never more admired / Than by the negligent,” he answers,</p>
+
+    <div class="cita">
+        <p>A good rebuke,</p>
+        <p>Which might have well becomed the best of men</p>
+        <p>To taunt at slackness.</p>
+        <p class="attribution">(3.7.24–27)</p>
+    </div>
+
+    <p>Finally, when he thinks that Cleopatra has killed herself and sees Eros do so, he takes their deeds as a lesson:</p>
+
+    <div class="cita">
+        <p>Thrice-nobler than myself,</p>
+        <p>Thou teachest me, O valiant Eros, what</p>
+        <p>I should, and thou couldst not. My queen and Eros</p>
+        <p>Have by their brave instruction got upon me</p>
+        <p>A nobleness in record.</p>
+        <p class="attribution">(4.14.95–99)</p>
+    </div>
+
+    <p>All these are efforts to be the man he thinks he should be; Antony is always at work on himself. Cleopatra, on the other hand, reproaches herself with nothing, rejects her past when it does not do her honor (“My salad days”—[1.5.73]), makes no resolutions for the future, and takes instruction from no one. She is fighting Nature with quite different weapons. If Antony tries to be a center that will hold, Cleopatra seems anxious to appear the least coherent thing on the landscape. Antony aims for constancy, of identity and of Fortune; Cleopatra reveals the constancy of her identity through her extravagant feigning and controls her Fortune by changing roles faster than it requires her to do. Instead of aiming for a solidity of personality that will control her universe, she risks everything on her capacity to fly faster than the Fortune that pursues her.</p>
+
+    <p>The crucial speech by which to distinguish between the two modes is Antony’s great meditation on his own sense of shapelessness:</p>
+
+    <div class="cita">
+        <p>Sometimes we see a cloud that’s dragonish,</p>
+        <p>A vapor sometime like a bear or lion,</p>
+        <p>A tower citadel, a pendant rock,</p>
+        <p>A forkéd mountain, or blue promontory</p>
+        <p>With trees upon’t that nod unto the world</p>
+        <p>And mock our eyes with air.</p>
+        <p>My good knave Eros, now thy captain is</p>
+        <p>Even such a body: here I am Antony,</p>
+        <p>Yet cannot hold this visible shape, my knave.</p>
+        <p class="attribution">(4.14.2–7, 12–14)</p>
+    </div>
+
+    <p>Antony here is divided from himself, disappointed in himself and uncertain of his own identity. Cleopatra has no such speech; it is of the essence of Cleopatra, even of this third, possibly suffering Cleopatra, that she should have no such speech. Even as she passes through the phases of the tragic fable Cleopatra never comments on herself with disapproval, never shares with us the slightest dissatisfaction in herself. Her commentary is always (at least in part) a performance. Since we are aware of no seams in her personality, since there are no openings through which we can have at her innermost soul, she appears to us, as she does to Antony, mysterious and perfect-unto-herself. Antony’s description of Egypt’s emblematic animal, the crocodile, applies quite as well to Egypt’s queen:</p>
+
+    <div class="cita">
+        <p>It is shaped, sir, like itself, and it is as broad as it hath breadth; it is just so high as it is, and moves with its own organs.</p>
+        <p class="attribution">(2.7.43–45)</p>
+    </div>
+
+    <p>Whereas Antony anatomizes himself for us, telling us his shape and breadth and height at each point in the play, Cleopatra never does. So though we seem to see as clearly as Antony the varying shapes he assumes, we can only say that Cleopatra, like the crocodile, is as broad as she has breadth.</p>
+
+    <p>The difference between Antony’s and Cleopatra’s styles of confronting Nature may be illustrated by a comparison between his dealings with Caesar and hers. Both are underdogs when they first face him; other than that the scenes that they stage have nothing in common. Before the meeting between Caesar and Antony early in act 2, Enobarbus suggests that Antony may lose his temper. “If Caesar move him,” says Enobarbus, “Let Antony look over Caesar’s head / And speak as loud as Mars” (2.2.4–6). But of course Antony does no such thing. His final speech of the argument is as follows:</p>
+
+    <div class="cita">
+        <p>As nearly as I may,</p>
+        <p>I’ll play the penitent to you: but mine honesty</p>
+        <p>Shall not make poor my greatness, nor my power</p>
+        <p>Work without it. Truth is, that Fulvia,</p>
+        <p>To have me out of Egypt, made wars here,</p>
+        <p>For which myself, the ignorant motive, do</p>
+        <p>So far ask pardon as befits mine honor</p>
+        <p>To stoop in such a case.</p>
+        <p class="attribution">(2.2.91–98)</p>
+    </div>
+
+    <p>Antony, as usual, is trying to bind together expediency, or responsibility, to the Idea of Antony. He uses his authentic self in the battle for his destiny; his dignity and fair-mindedness rather than his excuses are the answers that he makes to Caesar’s accusations. It is a very impressive and admirable speech; there is poise and confidence in the way that Antony walks the line between chest-thumping and self-deprecation. Yet, Nature being what it is in the play, the truth that Antony achieves by confronting destiny this way is vulnerable to an immediate and unanswerable attack:</p>
+
+    <div class="cita">
+        <p>ENOBARBUS. Or, if you borrow one another’s love for the instant, you may, when you hear no more words of Pompey, return it again: you shall have time to wrangle in when you have nothing else to do.</p>
+        <p>ANTONY. Thou art a soldier only; speak no more.</p>
+        <p>ENOBARBUS. That truth should be silent I had almost forgot.</p>
+        <p>ANTONY. You wrong this presence; therefore speak no more.</p>
+        <p>ENOBARBUS. Go to, then; your considerate stone.</p>
+        <p class="attribution">(2.2.103–11)</p>
+    </div>
+
+    <p>Because Antony opts for a version of sincerity, his compromises with expediency leave him vulnerable to cynicism.</p>
+
+    <p>Cleopatra, on the other hand, never bothers to put the pieces of herself in truthful relation to one another and is therefore not vulnerable to an attack on the final assembly. She leaves the pieces of her identity false, because fragmentary, and flings them at the agents of her declining Fortunes. When she finds herself at a disadvantage before Caesar, she plays her part with an extravagance that would be unthinkable in Antony. Toward the end of the play, “I’ll take my leave,” says Caesar to Cleopatra after a few polite threats. Cleopatra dramatically and unnecessarily answers him,</p>
+
+    <div class="cita">
+        <p>And may, through all the world: ’tis yours, and we,</p>
+        <p>Your scutcheons and your signs of conquest, shall</p>
+        <p>Hang in what place you please.</p>
+        <p class="attribution">(5.2.133–36)</p>
+    </div>
+
+    <p>The difference between Antony’s balanced apology and Cleopatra’s abandoned self-abnegation is not due to the deterioration of the political situation between the one and the other. It is due to the fact that Antony always plays himself as nearly as he can, whereas Cleopatra purposely keeps herself separate from her roles.</p>
+
+    <p>Antony takes the straight path to sincerity and finds it mined by his own slightly tainted motives. Cleopatra’s brand of sincerity brings to mind a passage in Mailer’s <i>Advertisements for Myself</i> in which Mailer comments on his own search for an authentic style: “To write about myself is to send my style through a circus of variations and postures, a fireworks of virtuosity designed to achieve . . . I do not even know what. Leave it that I become a quick-change artist, as if I believe I can trap the Prince of Truth in the act of switching a style.” But although Cleopatra is also a quick-change artist, Mailer’s passage is actually a better description of Hamlet than of Cleopatra. Hamlet’s variations and postures are designed to achieve . . . he does not know what. Cleopatra’s are purposive rather than exploratory. They are not cultures to nourish the embryo of her final, fully developed being; they are deployed by a preexisting identity on missions in its own interests. Like the women in the comedies, and unlike Hamlet, Cleopatra is revealed and not changed by her actions. In a play that is crisscrossed by journeys all over the Mediterranean, Cleopatra alone stays at home. She is no quester; she makes no odyssey in search of herself.</p>
+
+    <p>The relevant comparison here is with Octavia, who journeys from Rome to Athens and back again in the effort to reconcile the two men by whom she is defined. It would seem, in act 5, that Cleopatra is caught between these same two men, for it has been made clear through the imagery that an alliance with Caesar would be a sexual matter and amount to a betrayal of Antony. Caesar’s metaphor, as he looks forward to his conquest of her, is of sexual capitulation:</p>
+
+    <div class="cita">
+        <p>Women are not</p>
+        <p>In their best fortunes strong, but want will perjure</p>
+        <p>The ne’er-touched vestal.</p>
+        <p class="attribution">(3.12.29–31)</p>
+    </div>
+
+    <p>But Cleopatra, unlike Octavia, defines herself. Her changes of style are not experiments in a new identity as Caesar’s ally but rather attempts to flush out the danger to her soul that she senses in Caesar. She is faced not with a choice between men but with a threat to her own identity. It is through her fidelity to herself that she is ultimately faithful to Antony, although it is no coincidence that this should be true. Antony recognizes her, Caesar would ruin her. Octavia, having no identity of her own, cannot be said to have been faithful to either man. <i>Her</i> fidelity simply doesn’t matter, whereas Cleopatra’s does.</p>
+
+    <p>And this, in fact, has been Cleopatra’s goal all along—to make herself matter. Antony struggles with the problem of judgment, thinking that to make his mark on the world he must make correct distinctions between right and wrong, true and false, Rome and Egypt, honor and love. Cleopatra does not bother to make judgments. She meets her occasions with whatever she can find within herself, authentic or not, that will give her the edge. Just as she tries to make herself interesting rather than pleasing to Antony, so she tries always to be the one who elicits judgments rather than the one who makes them. She has no use for Charmian’s advice, “In time we hate that which we often fear” (1.3.12). It does not matter whether Antony’s emotions toward her are good or bad; what matters is that he should not be able to leave off trying to figure her out.</p>
+
+    <p>At his death scene Antony gives Cleopatra a nugget of absolute, Roman advice: trust Proculeius. But like all his efforts to make absolute judgments, this one is a failure. Proculeius betrays and captures her. So Cleopatra once again switches styles. When Dolabella appears, he asks her to say that she has heard of him, but she refuses to make even such a trivial judgment of him as this. Instead, she forces him to judge her. At the end of her speech “I dreamt there was an Emperor Antony” (5.2.76 et seq.), she asks him, “Think you there was or might be such a man / As this I dreamt of?” (5.2.93–94), and Dolabella answers, “Gentle madam, no.” But it does not matter that his judgment is negative; for what is at issue is not her truth, but the validity of her claim to be the center of attention, the topic of conversation, the object of judgment. And Dolabella, although he rejects her version of Antony, accepts her greatness:</p>
+
+    <div class="cita">
+        <p>Your loss is as yourself, great; and you bear it</p>
+        <p>As answering to the weight. Would I might never</p>
+        <p>O’ertake pursued success, but I do feel,</p>
+        <p>By the rebound of yours, a grief that smites</p>
+        <p>My very heart at root.</p>
+        <p class="attribution">(5.2.101–5)</p>
+    </div>
+
+    <p>Seeing that her work is done, Cleopatra does not waste any further time: “I thank you, sir. / Know you what Caesar means to do with me?” (5.2.105–6). And of course Dolabella tells her what she needs to know: that Caesar means to lead her in triumph through the streets of Rome. Now she knows how to behave.</p>
+
+    <p>Because Antony tries to define himself within Nature, his moments of authenticity, although they compel our sympathy and admiration, must be transient and qualified. Even the noble love in the scene where he thanks his followers is subject to a moment of irony: “What does he mean?” asks Cleopatra, and Enobarbus replies, “To make his followers weep” (4.2.23–24). Cleopatra, however, does not try to enact her “true self.” She means to break through the limit on human stature—on the “true self” that is imposed by this play’s Nature. To do so, she must abandon conventional standards of truth and decency, and she does so without regrets. So whereas we see in Antony a moving and admirable achievement given the restrictions of Nature and of his own human nature, Cleopatra presents us with a double vision of what lies outside the normal human limits. Her kind of truth is absolute and permanent, but it must coexist with patent lies. For instance, Mardian, sent to tell Antony that Cleopatra has killed herself, says, “My mistress loved thee, and her fortunes mingled / With thine entirely” (4.14.24–25). This is simultaneously a disgraceful lie and the simple truth. In context it is monstrously untrue; in retrospect it describes the story. Or Enobarbus, anticipating hysterics when Antony announces his departure, says,</p>
+
+    <div class="cita">
+        <p>Cleopatra, catching but the least noise of this, dies instantly;</p>
+        <p>I have seen her die twenty times upon far poorer moment. I</p>
+        <p>do think there is mettle in death, which commits some loving</p>
+        <p>act upon her, she hath such a celerity in dying.</p>
+        <p class="attribution">(1.2.141–45)</p>
+    </div>
+
+    <p>This hits its mark at the time and yet it all comes true. For although celerity is a Roman virtue and Caesar’s weapon in the power struggle with Antony and Pompey, Cleopatra is too quick for him. He “hath sent— / Too slow a messenger” (5.2.321). “The stroke of death” is at the end “as a lover’s pinch” (5.2.295), and Antony’s final departure <i>does</i> make Cleopatra’s death inevitable. Again and again we find ourselves having to say of Cleopatra’s lies, “And <i>that’s</i> true, too.”</p>
+
+    <p>These, then, are the two modes of confronting Nature in this play: the one humanistic, synthesizing, responsible; the other self-assertive, divisive, flamboyant, amoral. Antony is, or tries to be, sincere; he struggles to know himself and to act in accordance with his knowledge. Conversely, when his actions betray his sense of Self he struggles to change. Cleopatra has no part in the effort to accommodate action and inner life. She is not, like the tragic hero, a divided self, struggling to pull herself together. Her struggle is only to discover and ward off what threatens her, to do battle with the outside world, not with the one within. Like all Shakespeare’s women, she is a finished product, a preexisting unified identity. We become aware of Cleopatra’s inner life only insofar as it serves her conscious purposes; it is not, like Antony’s, subversive, demanding, beyond his control.</p>
+
+    <p>Linda Fitz argues that Cleopatra’s inner life <i>is</i> subversive of her conscious purposes and that there is drama in her struggle to take control of it. The triumphant outcome of her struggle, according to Fitz, comes when Cleopatra says,</p>
+
+    <div class="cita">
+        <p>My resolution’s placed, and I have nothing</p>
+        <p>Of woman in me; now from head to foot</p>
+        <p>I am marble-constant: now the fleeting moon</p>
+        <p>No planet is of mine.</p>
+        <p class="attribution">(5.2.238–41)</p>
+    </div>
+
+    <p>And just as this speech indicates the successful conclusion of her struggle against her own inconstancy, so the following speech represents the culmination of the spiritual growth we expect in a tragic hero:</p>
+
+    <div class="cita">
+        <p>No more but e’en a woman, and commanded</p>
+        <p>By such poor passion as the maid that milks</p>
+        <p>And does the meanest chares.</p>
+        <p class="attribution">(4.15.76–78)</p>
+    </div>
+
+    <p>It is worth noticing, however, that these two speeches contradict one another. Marble-constancy is incompatible with milkmaid passion. To be commanded by passion is not to command oneself, as Cleopatra claims to do. These two speeches are best understood, I think, as performances which <i>use</i> the inner life rather than as direct expressions of it. What is moving is neither Cleopatra’s marble-constancy nor her new simplicity, but the sheer energy, talent, and effort she puts into her performances.</p>
+
+    <p>Cleopatra herself comments on the energy it takes to perform as she does. The comment comes after the one moment in which she abandons or fails at performance; when Antony is leaving her in act 1 she is at a loss for words:</p>
+
+    <div class="cita">
+        <p>Courteous lord, one word.</p>
+        <p>Sir, you and I must part, but that’s not it:</p>
+        <p>Sir, you and I have loved, but there’s not it:</p>
+        <p>That you know well. Something it is I would—</p>
+        <p>O, my oblivion is a very Antony,</p>
+        <p>And I am all forgotten.</p>
+        <p class="attribution">(1.3.86–91)</p>
+    </div>
+
+    <p>The broken sentences create the effect of an emotion beyond even Cleopatra’s prodigious capacities to perform; in contrast to Antony’s glibly rhetorical farewell speeches, Cleopatra’s farewell is a demonstration of speechlessness. Antony, with Othello-like obtuseness, responds to this one display of naked emotion with disapproval:</p>
+
+    <div class="cita">
+        <p>But that your royalty</p>
+        <p>Holds idleness your subject, I should take you</p>
+        <p>For idleness itself.</p>
+        <p class="attribution">(1.3.91–93)</p>
+    </div>
+
+    <p>Cleopatra responds,</p>
+
+    <div class="cita">
+        <p>'Tis sweating labor</p>
+        <p>To bear such idleness so near the heart</p>
+        <p>As Cleopatra this.</p>
+        <p class="attribution">(1.3.93–95)</p>
+    </div>
+
+    <p>Cleopatra, unlike Antony, does not deny that she performs her love, plays roles, puts on shows. She only claims that it is hard work, “sweating labor,” to put on these particular shows, and that it is hard because the performance concerns something “so near the heart.” She only says so this once; but we would do well, I think, to remember this speech when we come to act 5, where the project near her heart is the preservation of her own integrity. If we are too aware of the sweating labor, of course, we lose the effect of the performance—just as we lose the effect when we become aware of the actual sweat on a ballerina. But if we are unaware of the effort and risk of her performance altogether, then it must seem to us, as it seems to Antony, idle. Like our appreciation of live ballet, our appreciation of Cleopatra’s act depends on our understanding of how hard it is to do it.</p>
+
+    <p>In <i>The Dickens Theatre</i>, Robert Garis identifies two schools of performance, one of which he associates with Duse and the other with Bernhardt. Duse, he says, offers the continuous illusion of realism, whereas Bernhardt is overtly theatrical. Garis quotes Shaw on Bernhardt to illustrate his point:</p>
+
+    <div class="cita">
+        <p>One is not sorry to have been coaxed to relax one’s notions of the dignity of art when she gets to serious business and shows how ably she does her work. The coaxing suits well with the childishly egotistical character of her acting, which is not the art of making you think more highly or feel more deeply, but the art of making you admire her, pity her, champion her, weep with her, laugh at her jokes, follow her fortunes breathlessly, and applaud her wildly when the curtain falls. It is the art of finding out all your weaknesses and practising on them—cajoling you, harrowing you, exciting you—on the whole, fooling you. And it is always Sarah Bernhardt in her own capacity who does this to you. The dress, the title of the play, the order of the words may vary; but the woman is always the same. She does not enter into the leading character: she substitutes herself for it.</p>
+    </div>
+
+    <p>If Cleopatra’s role is the enactment of her inner life, Shaw’s description of Bernhardt may illuminate her method. Whereas Antony tries to enact his feelings as accurately as he can, Cleopatra, à la Bernhardt, seems to substitute herself for her feelings. “Here I am Cleopatra”—is the message of the “marble-constant” speech—“feeling the thrill of my own resolution.” And in the milkmaid speech: “Here I am Cleopatra feeling the bittersweet pleasure of illusionlessness.” I do not mean that Cleopatra is pretending to feel something she does not; I only mean that her feelings do not threaten her consciousness of being herself, Cleopatra, as broad as she has breadth, at all times and places. Under similar circumstances of loss, the tragic Self, by contrast, invariably suffers a loss of identity more painful than the material loss itself.</p>
+
+    <p>Cleopatra’s style of confronting Nature is, of course, a function of her gender. Only the feminine Other faces the challenge of Nature, of the world outside the Self, with an identity as fixed and unyielding as Nature itself. Insofar as she does confront this challenge, Cleopatra is a rarity among Shakespeare’s women characters and has some affinity with the masculine tragic Self. But insofar as she faces it with performances à la Bernhardt, insofar as her performances remain perfectly self-centered and in her own control, she remains Other even in the face of the Other, in the face of Nature and the challenge of tragedy. Although she is certainly the coprotagonist of the play, she is not the representative of the Self; she is not, as Linda Fitz suggests, a tragic hero.</p>
+
+    <p>It is time to return to the question raised by Danby’s essay, the question of tragic climax or resolution. Neither Antony nor Cleopatra as individuals provides us with a resolution, with an image of human value so impressive as to triumph over and transform our sense of Nature. But what is between them, their relationship, does endure, does restore them to history. The forward motion of the play destroys them both as individuals; nevertheless, it “proves” the relationship between them. This relationship is complex; they are both married and not married. They are not married in that each would sacrifice the other, if they could, for the sake of their own separate destinies; they are married in that they cannot. Antony follows Cleopatra out of the sea battle against his will because “My heart was to thy rudder tied by th’ strings” (3.11.57), and Cleopatra remains faithful to Antony because, although she could wish it were otherwise, it is the only way of being “noble to myself” (5.2.191). But out of the antagonism between their immediate purposes comes the accomplishment of their ultimate purpose, the achievement of distinction or historicity. They defeat themselves in the short run; Cleopatra destroys Antony in her attempt to possess him, and Antony cannot deny her even when he knows she is doing so. Yet they succeed in becoming famous, not individually, but as a pair. In trying to serve themselves, they have served the third thing, their story, and thus have served each other as well as themselves.</p>
+
+    <p>If Antony had not resisted Cleopatra’s spell, he would have lost his citizenship in the world of men, and Cleopatra would not have had an Emperor Antony to dream of when she needed one. But if Antony had succeeded in breaking away, if, Othello-like, he had taken decisive action against the treacherous witch, there would have been no Cleopatra to make a myth of Antony and to pay him the returns on his love that she finally does. In other words, Antony controls his fortune by allowing its agent, Cleopatra, to destroy him, for it is only after his death that she is in a position to choose Antony without qualification. Had he not realized this, Antony’s fate would have been that of a strumpet’s fool; but because he cannot help giving her her due, she lives to make her choice and to give him a noble fate. Her death for his sake is ambiguous, for it is primarily a self-protective measure; his death for her sake is equally ambiguous, for he fights it every step of the way. Yet in this play, it is the negative way to love that leads to significance, to a place in the story. The Octavias and Lepiduses get lost precisely because they lack images of themselves that would command their first loyalty, whereas Antony and Cleopatra are each ennobled by the other’s love only because each pursues a private destiny. Danby remarks that in <i>Antony and Cleopatra</i> “Opposites are juxtaposed, mingled, married; then from the very union which seems to promise strength, dissolution flows.” Yet if we see Cleopatra as opposite to Antony, we see that here is one pair of contrarieties that do <i>not</i> mingle, and the fame that each earns from his connection with the other depends on the space between them.</p>
+
+    <p>The third Cleopatra, then, is the one we must turn to in order to account for our sense of resolution at the end of the play. This Cleopatra faces Nature independently of Antony and differently from him; ultimately, it is her own self-centeredness that leads her back to him. He, by contrast, repeatedly returns to Cleopatra by <i>decentering</i>, by abandoning his pride, his sense of his due, the images he has of himself. This double movement of each, in their opposite ways, toward the other provides us with the resolution we have come to expect in Shakespearean tragedy. As in <i>King Lear</i>, the third thing is love.</p>
+
+    <section class="footnotes">
+        <h3>Note</h3>
+        <p>From <i>Comic Women, Tragic Men: A Study of Gender and Genre in Shakespeare</i>. © 1982 by the Board of Trustees of the Leland Stanford Junior University. Stanford University Press, 1982.</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>

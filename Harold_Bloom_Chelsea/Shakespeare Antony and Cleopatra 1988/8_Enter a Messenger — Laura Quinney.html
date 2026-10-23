@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enter a Messenger — Laura Quinney</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+.section-head { margin: 3.2rem 0 1.6rem; text-align: center; font-size: 1rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--text-secondary); }
+.section-head::before, .section-head::after { content: ""; display: inline-block; width: 2rem; height: 1px; background: var(--border-color); vertical-align: middle; margin: 0 .8rem; }
+.epigrafe { margin: 2rem 0 1.5rem; text-align: center; font-style: italic; color: var(--text-secondary); font-size: .95rem; }
+.epigrafe .attribution { display: block; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .3rem; }
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">Laura Quinney</p>
+        <h1 class="cab__tit">Enter a Messenger</h1>
+    </header>
+
+    <div class="epigrafe-inicial">
+        <p>All their words are like coals of fire.</p>
+        <p class="attribution">PIRKE AVOTH</p>
+    </div>
+
+    <p>For a long stretch of <i>Antony and Cleopatra</i>—until the battle at Actium, late in act 3—Antony’s presence in the play is curiously pervasive but abbreviated. He appears in only half the scenes, and, while Cleopatra appears in even fewer, he seems particularly elusive, since so many of the scenes from which he is absent concern his absence itself. As long as he shuttles ambivalently between Rome and Egypt, the question of his whereabouts remains crucial, and a puzzle. Caesar, Pompey, and Cleopatra all spend their time waiting for him and thinking on him. They speculate on his doings with more or less frustration and anxiety. They invoke his name with more or less respect, affection, and resentment. The host of these apostrophes to Antony both make his presence pervasive, and, with their epitaphic drive, imperil it. When he does appear on stage (the first scene excepted), he seems composed and capable, at once too solid and too vulnerable a figure for the demanding investment in him that others have manifested in their apostrophes. The surprising modesty of his grandeur carries over into the ease and the equanimity of his discourse. He is almost equally comfortable in proclaiming his love, parleying at a diplomatic summit, and quibbling at a drinking bout. While Antony is still a pillar of the world, his language shares in the contented dexterity of his power. But after his fall at Actium—from which point, until his death, he dominates the stage—his language suddenly comes into a range and an urgency that it had not had, at the same time that he comes into a fragility prophesied by the other characters’ insistent apostrophes to him. His language escapes from subordination and utility when he becomes tenuous to himself, and it becomes tenuous to him.</p>
+
+    <p>With Antony’s defeat at Actium, his word loses performative power, as he is the first to remark:</p>
+
+    <div class="cita">
+        <p>Leave me, I pray, a little: pray you now,</p>
+        <p>Nay, do so; for indeed I have lost command,</p>
+        <p>Therefore I pray you</p>
+        <p class="attribution">(3.11.22–24)</p>
+    </div>
+
+    <p>Now that his political sovereignty has disintegrated, he cannot issue commands, but can only, like the powerless and outcast, beg that his small, privative requests should be heard and respected. Yet at the end of this scene, his language claims for itself a performative power more comprehensive than an emperor’s: “Fall not a tear, I say; one of them rates / All that is won and lost” (ll. 69–70). The performative power that Antony’s language assumes here is of a different order from that which he has forfeited. This power is as ungrounded as it is expansive—language affirming itself in the absence of the subject’s empirical authority. And Antony is himself moved by this transformation in his relationship to his own language. With “Fall not a tear, I say,” his mood changes utterly; the spirit of shame, anguish, and recrimination dissolves, and in its place rises quiet acceptance: “Give me a kiss; / Even this repays me” (ll. 70–71).</p>
+
+    <p>He seems to step into the stride and assurance of his language; and yet his anxiety emerges as his language flares. These lines express, after all, the pathos of life and desire constricted to the smallest scope—to a tear, a kiss. The pathos of such a minimalism lingers as Antony struggles toward the soothing surface of activity; he wavers between pursuing the continuity of mundane life, and attending to the absorbing heaviness of his spirit: “We sent our schoolmaster: / Is a come back? Love, I am full of lead. / Some wine, within there, and our viands!” (ll. 71–73). His anxiety is here strangely coterminous with the exuberance of his language, as if this exuberance sprung from, but also sustained, his sense of dislocation. Antony’s political displacement results in his displacement from his own language; and his language then reveals, not a perfect autonomy from him as the speaking subject, but an alterity that makes it at once distant and free. With “Fall not a tear, I say,” Antony can be both affirmative and sad, because he has here discovered the impotent generosity of language.</p>
+
+    <p>This is the discovery, and the life, given to those whom “Fortune” has abandoned. The play is littered with the casualties of imperial conflict and consolidation; and when they lose their political viability, these preterite figures turn to seek in language the elusive space of their survival. In this space there emerges what Maurice Blanchot, in his book <i>L’Entretien infini</i>, calls “the other rapport,” a rapport with that impersonality and impossibility whose existence is obscured by power and place. That Antony’s relationship to his language should change in this way is prefigured by Pompey’s brief appearance. An early and easy casualty of the battle over the empire, Pompey suffers for his fatal incompetence with the ways and the rhetoric of imperial powerplay. He may claim nobility for his purposes in a bold and censurious speech (2.6.8–22), and he may scoff at the compromise the triumvirate has offered him (ll. 34–39), but all this brave rhetoric is vitiated when he sheepishly concedes, “Know then / I came before you here a man prepared / To take this offer” (ll. 40–41). His rhetoric is characteristically more sovereign than it can justify; he pitches it high, but he wears it ill. Caesar observes coldly, “Since I saw you last / There’s a change upon you,” to which Pompey retorts, “Well, I know not / What counts harsh fortune casts upon my face, / But in my bosom shall she never come / To make my heart her vassal” (ll. 51–56). Though valiant, his words are sadly untrue, since his despair has already caused him to “laugh away his fortune” (l. 105), as Menas bitterly remarks. Pompey’s high rhetoric collapses, because his situation and his spirit cannot sustain it. His naive and uneasy handling of rhetoric, like his residual attachment to “honor,” make him a doomed anachronism.</p>
+
+    <p>At his entrance, then, the play encourages us to take Pompey for an awkward and empty boaster. Yet when Pompey falls to his weakest, after he dismisses his last chance for power, and so guarantees his disappearance from the political arena, as from the play, he suddenly steps into the stride of language. At the climax of the boisterous celebration on his galley, this figure, shadowed by defeat and coming extinction, suddenly speaks out with urgency and longing: “O, Antony, / You have my father’s house. But what, we are friends!” (2.7.130). With its (not unambivalent) burst of generosity, and its undercurrent of forlorn appeal, this line seeks a new rapport, outside the domain of diplomacy and imperialism. Aspiring to an intimacy for which there is no room, it becomes the refuge of Pompey’s life, at the same time that it confines his life to this (last) moment of language.</p>
+
+    <p>In the final soliloquies of Enobarbus—who follows Pompey in homoerotic mourning for Antony—this changed relationship to language becomes even more vividly opulent and hopeless. Enobarbus speaks these soliloquies as a shunned pariah, not to be mentioned again, nor mourned himself. His position of utter loss transforms the character of his language; it loses the balance of shrewd, rational appraisal, and becomes, instead, expansive and supplicating. Enobarbus is moved and grieved by Antony’s unexpected generosity to him; it is not only unwarranted, but an instance of that noble excess in Antony, which allows him to go on “o’erflowing the measure” even after he has been stripped. “Your emperor / Continues still a Jove” (4.6.28–29), as the soldier says, who brings Enobarbus’s treasure, with Antony’s “bounty overplus.” Now that he has been stripped to his word, Enobarbus finds a similarly impossible excess, and repays Antony in the only means at his disposal—the wealth of hyperbole:</p>
+
+    <div class="cita">
+        <p>O Antony,</p>
+        <p>Thou mine of bounty, how wouldst thou have paid</p>
+        <p>My better service, when my turpitude</p>
+        <p>Thou dost so crown with gold</p>
+        <p class="attribution">(ll. 31–34)</p>
+    </div>
+
+    <p>Antony’s bounty overflows into the generosity of Enobarbus’s language. At the very end, his comparisons break from symmetry: “O Antony, / Nobler than my revolt is infamous / Forgive me in thine own particular” (4.9.18–20). When the space and time of Enobarbus’s life shrink to that of his language, he invests it with the urgency and power of action, or, as Blanchot puts it in “La Mésure, le suppliant,” “lorsqu’il y a défaut de tout, homme abime dans le malheur est en mésure de parler, car c’est-la sa vraie mésure.” But the expansiveness of his language strays from Enobarbus himself, and his apostrophes go unheard by the one to whom they appeal; despite the vocabulary of “wealth” and “payment” used here, the phenomenon described is not an economic or compensatory one. The space of the subject reduced to the word becomes a space of isolation and futility.</p>
+
+    <p>Much of the sadness in <i>Antony and Cleopatra</i> arises from Antony’s gradual reduction to this space. In the climactic departure of Hercules, for example, the spirit of Antony’s isolation materializes. On the night before battle, his soldiers on watch hear a supernatural, fading music whose mystery troubles them. They huddle together, anxiously wondering, “What should this mean?” until one among them declares grimly, “’Tis the god Hercules, whom Antony loved / Now leaves him” (4.3.14–16). The soldiers’ anxiety and fatalism spill over from Antony’s own, which he had manifested in the crisis pitch of the previous scene. There, in a flushed and restive mood, he makes an elaborate farewell to his servants. His sense of his own deterioration, both in fortune and in psychological integrity, stirs him to this gratuitous and extravagant gesture. In the grip of his apprehension, Antony feels an aura of fatality envelop him, out of which he can appeal to his servants, to cherish and secure this ghost of him still living:</p>
+
+    <div class="cita">
+        <p>Tend me tonight: May be it is the period of your duty.</p>
+        <p>Haply you shall not see me more: or if,</p>
+        <p>A mangled shadow. . . . I look on you</p>
+        <p>As one that takes his leave</p>
+        <p class="attribution">(4.2.23–29)</p>
+    </div>
+
+    <p>He feels himself to be so abstracted, so insubstantial that he is already fading from the world, his presence more tenuous not only than his servants’, but than that of the “mangled shadow” to be memorialized in the alien imperviousness of death. And yet only in these other presences can Antony find an intimation of his own attenuated self, as if he were a figure in a mirror seeking a body to reflect. He enters into such a specular relationship with his own language when it seems to harbor in itself the “I” fast fading from him: “I look on you as one that takes his leave.” His anxiety, which is coterminous with this sense of himself as residualized and isolated, overflows from the one scene to the next, where it conjures up the sadness of departing music, and where that departure certifies the emergence of the other rapport.</p>
+
+    <p>The spirit of abandonment in this scene colors the rest of the play. Hercules’ departure underscores a transition recognized by everyone, including Antony and Cleopatra: history belongs to Caesar, and to them belongs only a space of time and of language. Antony and Cleopatra are acutely aware of surviving into this limbo, where they sustain themselves at preternatural length. Hercules’ abandonment is, oddly enough, followed by a temporary upswing in Antony’s fortunes—his one thriving day of battle—and by Antony and Cleopatra’s tenderest moments. But the spirit of abandonment has so touched the play that this ephemeral success seems “wild”—a grace as exuberant as it is fragile and surprising.</p>
+
+    <p>This is the sense in which Antony and Cleopatra take their victory. Antony understands his single triumph to be so much against the trend of history that his celebration of it leaps to apocalyptic terms:</p>
+
+    <div class="cita">
+        <p>Trumpeters,</p>
+        <p>With brazen din blast you the city’s ear,</p>
+        <p>Make mingle with our rattling tambourines,</p>
+        <p>That heaven and earth may strike their sounds together,</p>
+        <p>Applauding our approach</p>
+        <p class="attribution">(4.8.35–39)</p>
+    </div>
+
+    <p>In their victory Antony and Cleopatra take a joy as buoyant and fleeting as the victory was wild. Their intimate moments become unassuming and gentle in the light of this fragility. They wake up in bed, and Cleopatra helps Antony dress for battle, while he tries to share his proud excitement:</p>
+
+    <div class="cita">
+        <p>O, love,</p>
+        <p>That thou could’st see my wars today, and knew’st</p>
+        <p>The royal occupation: thou should’st see</p>
+        <p>A workman in’t</p>
+        <p class="attribution">(4.4.15–18)</p>
+    </div>
+
+    <p>The sweetness of these moments arises from the fragility in which Antony and Cleopatra now live, the fragility of the world formed in the moment of language. Thus their sadness lingers at the height of celebration. Cleopatra greets Antony, returning triumphant from battle, with these dark, joyous words: “O Lord of lords, / O infinite virtue, com’st thou smiling from / The world’s great snare uncaught?” and Antony replies in the same cadences of haunted affirmation, “Mine nightingale, / We have beat them to their beds. What, girl! Though gray / Do something mingle with our younger brown” (4.8.17–20). In their isolation, signified by the withdrawal of a listening god, the space of their lives turns to words, at the same time that words, now the locus of the other rapport, open out only to absence.</p>
+
+    <p>For Antony, language comes to harbor a confidence like the lost substantiality of the self, but at a distance infinitely remote. This is its generosity, the source of affirmation in the play, and its limitation, the source of tragic affect. This generosity emerges as if it were a movement in language answering to the survival of Antony’s “heart.” “Heart” should carry here its full Shakespearean resonance, so that it means not only courage and affection, but the spirit from which these spring, the residue of the self that perseveres in a buoyant autonomy from its worldly fate. It is a center that, after Actium, is continually displaced in Antony, which he is always seeking, and which is always eluding his grasp. In his language he hears the recovery of his “heart,” though, harbored there, it remains elusive and estranged. He invokes this distant echo when, recovering from his bout with Thidias, he asks, “Where hast thou been, my heart?” (3.13.171), and when he tells Cleopatra, helping him arm for battle, “Ah, let be, let be. Thou art / The armorer of my heart” (4.4.6–7). Because it seems as displaced from him as his own heart, his language can offer him its failed generosity. When he has reached the ebb of loss, where he feels himself to be as attenuated and amorphous as a cloud, even then his words take on an assurance far removed from his own experience of disintegration: “My good knave Eros, now thy captain is / Even such a body: here I am Antony, / Yet cannot hold this visible shape, my knave” (4.14.12–14). In offering Antony all the impersonal resources of its wealth and assurance, his language responds to, but does not answer, his own experience of attenuation; the remote alterity of language only makes it more acutely felt. This alterity is dramatized not only in Antony’s changed relationship to his words, but in his changed relationship to the play’s messengers and messenger-figures.</p>
+
+    <h2 class="section-head">II</h2>
+
+    <p><i>Antony and Cleopatra</i> includes a startling number of messages and messengers. In <i>The Common Liar</i>, Janet Adelman points out that among the dramatis personae there are eight nameless “messengers” and another seven characters who act primarily as messengers (Alexas, Varrius, Thidias, Mardian, Proculeius, Dolabella, and Antony’s schoolmaster). To their number I would add what I call the “messenger-figures”: the Soothsayer, Diomedes, and the Clown. The play’s central conflicts—which lie in the characters’ imperialist struggles and psychological ambivalence—are represented in terms of the manipulation and treatment of messengers. They are spurned, beaten, sent to lie, and sent to ensnare. They bear news that, whether galling or welcome, rapidly turns obsolete in the flux of ambivalence and powerplay. Yet in the course of <i>Antony and Cleopatra</i>, the role of the messenger is so transformed that this figure comes to have its own thematic. The messengers begin as messengers, but end as <i>angelloi</i>; they are at first merely representatives, but, for Antony at least, they finally develop an autonomous presence, ushering in a rapport that is anonymous and otherworldly. Standing on the threshold between subject and language, they are not quite characters, not psyches, yet they have autonomous will and feeling. Because they maintain this liminal position, they can exemplify the quasi-human, but impersonal and anonymous traits of the alterity of language—its generosity, intimacy, and distance.</p>
+
+    <p>To Caesar and his messenger-agents belongs the sterile impersonality of the bureaucrat. Caesar adopts the role of a faceless and efficient administrator, who consolidates his power by skillfully deploying a legion of methodical operatives. This political style originates in, and fulfills, Caesar’s brilliant imperialist imagination, by which Antony is scourged and defeated, as it is, in turn, a symptom of Antony’s failure that he should find the other anonymity in his rapport with the messenger. Unlike Antony, Caesar pursues a canny utilitarianism in his relationship to the messengers. His opening scene dramatizes this relationship, when an envoy enters to assure him, “Thy biddings have been done, and every hour, / Most noble Caesar, shalt thou have report / How ’tis abroad” (1.4.34–36). Through a network of messengers which operates as an information police, Caesar supervises the terrain of expanding empire and accelerating political conflict. In this panoptical extension of himself, he is made preternaturally ubiquitous, disseminated across myriad points of reconnaissance, along which, “every hour,” the news flies.</p>
+
+    <p>Caesar knows this self-dissemination to be the principle of his radical, ineluctable ascendency. In his climactic encounter with Octavia, returning from her brief marriage, Caesar rises to a curious and telling moment of energy in his customarily dry speech. He is unusually excited throughout this scene, rather cruelly insisting to his sister, despite her own attempts to maintain dignity, that she is Antony’s “castaway,” “an abstract ’tween his lust and him,” an abandoned wife who has had to enter Rome like “a market maid” (3.6.40, 61, 51). Though happy to reappropriate his beloved Octavia, Caesar thrills even more to find that, with Antony’s misbehavior, he is free to unleash his own imperial designs, as well as his primal hatred for “our great competitor.” But he is most energized to recall the means and assurance of his triumph, when he presses Octavia by saying, “Where is [Antony] now?” and declares with a sinister confidence:</p>
+
+    <div class="cita">
+        <p>I have eyes upon him,</p>
+        <p>And his affairs come to me upon the wind.</p>
+        <p class="attribution">(3.6.62–63)</p>
+    </div>
+
+    <p>This moment proves so keen for the temperate Caesar because in it he experiences the nature of his own power—as a man all eyes, an impersonal intelligence that ranges as if supernaturally diffused and incorporeal. He is the spirit of bureaucratic anonymity—invisible, ubiquitous, omniscient—that has dissolved into a racing, multifarious power. The play corroborates this view of Caesar, and reproduces his excitement, when it has him advance on Antony and Cleopatra with the speed of a superhuman and selfless force. News of his swift course reaches Antony and his generals, stirring in them a worried confusion over this antagonist who is strangely nebulous yet saturating: “This speed of Caesar’s / Carries beyond belief.” “Can he be there in person? / ’Tis impossible; / Strange that his power should be.” “While he was yet in Rome / His power went out in such distractions as / Beguiled all spies” (3.7.74–75, 56–57, 75–77). The play represents Caesar as uninhibited by temporal and spatial constraints, unlike Antony and Cleopatra, because his power is not located in him, but diffused among proxies.</p>
+
+    <p>Caesar’s political style speeds the rise of imperialism, where Antony and Cleopatra’s faith in charisma and personal loyalty suffers the fate of a static anachronism. The cult of charismatic personality falters more and more miserably, until it finally lapses into such ineffectual challenges as Antony’s demand for single fight (“His coin, ships, legions / May be a coward’s, whose ministers would prevail / Under the service of a child as soon as Caesar. I dare him therefore” [3.13.20–22]). In his archaic attachment to personal nobility, Antony does not see that Caesar has triumphed precisely because he has abandoned individualism, and established the rule of the “ministers”; his empire waxes strong on the structural solidity of a power network efficient unto itself, and so appropriate for the maintenance of a vast, disparate territory. Antony and Cleopatra are defeated in the same way by Caesar’s imperialist mode of articulating politics and representation. Caesar designs and exploits the propagandistic value of documentation and “shows” in which he effaces himself, while drawing others into his chosen representation of history. Meanwhile, Antony and Cleopatra produce themselves as theatrical spectacle, a display that goes to demonstrate their personal distinction and to reaffirm the status quo. “Show me, my women, like a queen” (5.2.227), Cleopatra proclaims, where Caesar harps on “What I can show in this” (“this” being his innocence in Antony’s death; [5.1.77]). The conflict between these two modes of political theatre finally culminates in the specter of Caesar’s triumphal pageant—a propagandistic drama of imperialist enslavement which Antony and Cleopatra regard in the light of the most acute personal humiliation.</p>
+
+    <p>Yet because Caesar makes such productive use of his “ministers” and “representatives,” he would not recognize, and his proxies do not in fact develop, the autonomous presence and the other anonymity that attends on Antony, when he encounters the more gravely marginalized and powerless of the messenger-figures. For this reason, the play’s most elaborate messenger scene—Antony’s tantrum at Thidias—does not participate in the disjunctive rhythms of the other messenger scenes. As a purposeful representative of Caesar, Thidias is easily drawn into the pattern of identification and ambivalence which causes Antony to lash out at him. Uncanniness only arises in the <i>angelloi</i>, those orphaned and otherworldly figures invisible in the blaze of power.</p>
+
+    <p>In the play’s first scene, the messengers appear as the intrusive agents of Caesar, as ciphers for his summons to legal duty and obligation. Antony treats them as vexatious reminders, and impatiently spurns them, as if that were to escape what they represent. The agitation that their appearance excites in him he projects outward, into the apocalyptic collapse of this intrusive world, against which he can then contrast, and renew, his imaginary refuge: “Let Rome in Tiber melt, and the wide arch / Of the ranged empire fall! Here is my space” (1.1.33–34). The space of this delicate idyll would be one in which messengers could mediate intimacy, not empire, and imperial rulers could become anonymous flaneurs:</p>
+
+    <div class="cita">
+        <p>Fie, wrangling queen!</p>
+        <p>Whom everything becomes—to chide, to laugh,</p>
+        <p>To weep; whose every passion fully strives</p>
+        <p>To make itself, in thee, fair and admired.</p>
+        <p>No messenger but thine; and all alone,</p>
+        <p>Tonight we’ll wander through the streets and note</p>
+        <p>The qualities of people. Come, my queen;</p>
+        <p>Last night you did desire it. [<i>To Attendants</i>] Speak not to us.</p>
+        <p><i>Exeunt Antony and Cleopatra with the Train.</i></p>
+        <p class="attribution">(1.1.49–55)</p>
+    </div>
+
+    <p>In Plutarch, Antony and Cleopatra actually do disguise themselves as ordinary people, and go to mingle with the crowds in the streets of Alexandria. But Shakespeare recasts this activity in the mode of “desire,” of a daydream in which their intimacy could have the oblivion it is not allowed in the play: the two never appear “all alone,” but are always accompanied and observed by an audience of waiting-women, eunuchs, generals, and so on. Even after this speech, with its appeal to privacy, and its rebuff, “Speak not to us,” Antony and Cleopatra are in their sweeping exit encircled by “the Train.” The wish for a private intimacy remains a fantasy because it is not, in fact, true to the style of Antony and Cleopatra. They are regal figures who thrive on public admiration, and who do not distinguish between political and intimate life, which they subject to the same project of self-dramatization. Antony can exact the wonder of a universal audience even in this scene (“I bind / On pain of punishment, the world to weet / We stand up peerless” [37–39]), and can imagine such an attentive public even in the shadowiness and impersonality of the underworld (“Where souls do couch on flowers, we’ll hand in hand, / And with our sprightly port make the ghosts gaze” [4.14.51–52]).</p>
+
+    <p>Like the first, the second scene also involves the repudiation of messages. Here, Charmian and Iras make bawdy of the Soothsayer’s enigmatic prophecies. Removed from the action, blank of character and history, the Soothsayer is the pure spirit of the messenger, a remote and grave presence imbued with the anonymous wisdom of the otherworldly. He is the most emblematic of the messenger-figures who, early on, reveal their capacity for chilling detachment and the strangely impersonal intimacy it makes possible. But because these figures are as yet anomalous, their audience now either overlooks or, shaken, retreats from their preternatural austerity.</p>
+
+    <p>The Soothsayer’s appearance works to cast an aura of uncanniness over the messenger-figure, as we feel a few moments later, when Antony determines to hear the envoys he had shunned in the previous scene. The first messenger is talkative and sympathetic, but the second is terse and dark. He materializes suddenly, in answer to the call for news “From Sicyon.” Looking up from a distracted meditation, Antony gasps, “What are you?” (1.2.117), as if this nameless functionary had a piercing air. The messenger replies starkly:</p>
+
+    <div class="cita">
+        <p>Fulvia thy wife is dead.</p>
+        <p class="attribution">(1.2.118)</p>
+    </div>
+
+    <p>He ignores Antony’s question, and omits the softening speeches of his predecessor. Handing Antony a letter, the messenger adds, as if it were the power of his impersonal office to fathom all priorities and needs, “Her length of sickness, with what else more serious / Importeth thee to know, this bears” (ll. 120–21). His distant and austere familiarity fulfills the promise of uncanniness in Antony’s spellbound “What are you?”</p>
+
+    <p>This intimacy can be paradoxically remote and impersonal because it arises between a subject and a spirit void of a subject. In the first half of the play, this anonymous spirit makes its most dramatic approach with the second and final appearance of the Soothsayer, this time before Antony. The Soothsayer opens with the same disjunctive and terse severity as the messenger from Sicyon:</p>
+
+    <div class="cita">
+        <p>ANTONY. Now, sirrah, you do wish yourself in Egypt?</p>
+        <p>SOOTHSAYER. Would I had never come from thence, nor you thither.</p>
+        <p class="attribution">(2.3.11)</p>
+    </div>
+
+    <p>He is empowered to speak with a disinterested authority and candor. His prophecy can claim that it is closer to Antony’s fate than Antony himself, and can describe this fate with an accuracy as grim as it is rigorous: “Thy daemon, that thy spirit which keeps thee, is / Noble, courageous, high, unmatchable, / Where Caesar’s is not. But near him thy angel becomes afeard, as being o’erpowered: therefore / Make space enough between you” (ll. 19–24). But there is no masterful subject behind this knowledge and assurance. The Soothsayer’s grandly precise and dispassionate rhetoric produces its own spirit of austerity; and the anonymous figures who speak this rhetoric, the figures whose dramatic lives work only to speak it, diffuse the chilling aura of this language. The Soothsayer and the messenger from Sicyon appear as uncanny presences not only because they speak a cold message in cold words, but because they uncannily assume the character of these words; they enter not as subjects, who can command or fail to command their own language, but as the impersonal spirit of that language itself. At this point, Antony himself recoils from such a strange phenomenon; he hurries the second messenger out with “Forebear me,” while he anxiously tells the Soothsayer “Speak this no more,” and “Get thee gone.”</p>
+
+    <p>In the play’s first scene, the messengers appear as an encroaching public, whose intervention stirs Antony to an illusive wish for anonymity; but when Antony’s fortunes have irrevocably deteriorated, he will find the spirit of anonymous intimacy in the messenger figures. The change in Antony’s relationship to the messengers comes just after the battle at Actium, in the scene immediately following Antony’s speech, “Fall not a tear, I say,” with its appeal to the generosity of language. A representative appears at Caesar’s camp to bargain for the lives of Antony and Cleopatra. Having never encountered this lowly subject of his new empire, Caesar must ask, “Know you him?” and Dolabella tartly identifies him as Antony’s schoolmaster, “An argument that he is plucked, when hither / He sends so poor a pinion of his wing, / Which had superfluous kings for messengers / Not many moons gone by” (3.12.1–6). Dolabella takes the relative anonymity and unimportance of the messenger to indicate a poverty in Antony. When the schoolmaster enters, he seems to corroborate this view, but what he says in fact completely reverses its tenor and affect. This “poor,” unknown figure speaks in a first person which is peacefully emptied out; his is the fidelity of the insignificant and anonymous, free to affirm Antony’s “bounty” as if it still continued into the present:</p>
+
+    <div class="cita">
+        <p>Such as I am, I come from Antony.</p>
+        <p>I was of late as petty to his ends</p>
+        <p>As is the morn-dew on the myrtle leaf</p>
+        <p>To his grand sea.</p>
+        <p class="attribution">(3.12.7–10)</p>
+    </div>
+
+    <p>With the quiet expansiveness of these lines, the messenger becomes more than a messenger, though still less than a subject; he becomes the spirit of an impersonal intimacy waiting on the “heart” in Antony that survives his worldly decay. His generosity springs from the groundless exuberance of his language, just as this exuberance itself resembles the generosity of an insignificant and anonymous person. Out of Antony’s entry into the alterity of language, there materializes this messenger who, unlike his predecessors, is not austere, but gifted with the impersonal kindness and generosity of the other rapport.</p>
+
+    <p>When Antony falls to his lowest ebb, he can welcome the alterity of this intimate distance, and can requite the grave generosity of the messenger. After Eros foils Antony’s suicide, Antony’s own guard flees from him in panic and dismay. Only Decretas pauses long enough to steal the bloody sword which he hopes will “enter” him with Caesar, and he is so furtive in this opportunism that he ignores Diomedes’ question, “Lives he? / Wilt thou not answer, man?” (4.14.115). Antony’s dying seems destined to take place amid hysteria, betrayal, and then lonely silence. He has been left wretchedly begging to be dispatched when Diomedes enters, fulfilling the wish made long ago for “No messenger but thine.” With Diomedes’ first words, the atmosphere of the scene changes from anguish to quiet concentration. For with Diomedes enters the spirit of calm and disinterested attentiveness. Antony’s exchange with him is pared down to the fewest words, whose weight each knows, so that he speaks with a familiar brevity, as without now superfluous affect:</p>
+
+    <div class="cita">
+        <p>DIOMEDES. Most absolute lord,</p>
+        <p>My mistress Cleopatra sent me to thee.</p>
+        <p>ANTONY. When did she send thee?</p>
+        <p>DIOMEDES. Now, my lord.</p>
+        <p>ANTONY. Where is she?</p>
+        <p>DIOMEDES. Locked in her monument.</p>
+        <p class="attribution">(4.14.116–17)</p>
+    </div>
+
+    <p>Diomedes responds to Antony’s change of tone without surprise, as Antony responds to his news without anger or bitterness. Stages of feeling are simply ellipsed, as if irrelevant, and the two figures share instead a muted understanding and regret. When Diomedes comes to tell of his mission, he acknowledges its failure, but touches on it as lightly as Antony’s mood is quiet. He describes the tragedy he has found with gentle understatement:</p>
+
+    <div class="cita">
+        <p>She had a prophesying fear</p>
+        <p>Of what hath come to pass; for when she saw</p>
+        <p>(Which never shall be found) you did suspect</p>
+        <p>She had disposed with Caesar, and that your rage</p>
+        <p>Would not be purged, she sent you word she was dead;</p>
+        <p>But, fearing since how it might work, hath sent</p>
+        <p>Me to proclaim the truth, and I am come,</p>
+        <p>I dread, too late.</p>
+        <p class="attribution">(4.14.120–26)</p>
+    </div>
+
+    <p>This sentence slows to its subdued and careful end. The “and” which introduces the last, grim reflection (“and I am come”) mutes the potential for melodrama; no climactic transition is marked, but only a soft fall into the heaviness of “too late.” Antony matches the messenger’s calm austerity when he confirms and echoes his words, as if in intimate, lyrical refrain:</p>
+
+    <div class="cita">
+        <p>and I am come,</p>
+        <p>I dread, too late.</p>
+        <p>Too late, good Diomed.</p>
+    </div>
+
+    <p>This scene, with its unexpected turns of feeling, and its close, elliptical dialogue, takes on the form of an intimate encounter. Antony finds a delicate and evanescent rapport with a figure who, though named, is nonetheless fleeting and anonymous, a creature of the moment of language. (Diomedes has not appeared before, and will appear only once more, to answer Cleopatra’s question, “How now? Is he dead?” with a bleak precision: “His death’s upon him, but not dead” [4.15.5–6]). The messenger emerges from his utilitarian function, and the anonymity of the functionary, to manifest an autonomous presence and a different kind of anonymity—that of a spirit not human, available only in the mode of an impersonal and distant intimacy displaced from the world, when Antony himself is displaced from it.</p>
+
+    <p>But it is with Cleopatra that the play irradiates the alterity of language and its intimacy, for she welcomes this alterity without the mediation of the <i>angelloi</i>, and even more luminously than Antony can ever do. Amid the flux of events, she remains oddly unchanging and removed. Neither her character nor her language undergo the dramatic transformation of Antony’s. From her two scenes with the envoy bearing news of Antony’s marriage, it is clear that the affect associated with the <i>angelloi</i> already belongs to Cleopatra, in whom it has advanced beyond the influence of messenger figures. She is from the beginning what she will be—the play’s most intent and moving speaker, a figure given over to the space of language and the other rapport. Her word has an exuberant solitariness all its own until late in the play—when Antony’s joins hers in this, after his collapse at the battle of Actium.</p>
+
+    <p>Cleopatra is vigorously self-dramatizing, and correspondingly keen in her awareness of the theatricality of other people’s rhetoric. She can puncture Antony’s expansive, “Let Rome in Tiber melt,” with the tart riposte, “Excellent falsehood!”; and when he attempts to take a stately leave of her, she can mock his high rhetoric: “Good now, play one scene / Of excellent dissembling, and let it look / Like perfect honor” (1.3.75–77). As Anthony Brennan has argued in his essay, “Excellent Dissembling: Antony and Cleopatra Playing at Love,” their intimacy involves understanding and responding to one another’s self-dramatizations. But the relationship between intimacy and self-dramatization is not unmediated. Cleopatra’s language often seems to be pitched above her audience (including us), opening outward as if in appeal to an attention more comprehensive and an intelligence more perfectly sympatico with her production of herself. Such attention and intelligence do not exist; and this appeal to absence gives her language its solitary grandeur. Her frenzied encounter with the messenger bearing news of Antony’s marriage ends in such a moment of majestic exile:</p>
+
+    <div class="cita">
+        <p>CLEOPATRA. In praising Antony I have dispraised Caesar.</p>
+        <p>CHARMIAN. Many times, madam.</p>
+        <p>CLEOPATRA. I am paid for’t now.</p>
+        <p class="attribution">(2.5.107–8)</p>
+    </div>
+
+    <p>The grave justice of “I am paid for’t now” is not quite addressed to Charmian, but to a disengaged silence and distance. Her language appeals to this other rapport when she says wonderingly, “Though age from folly could not give me freedom, / It does from childishness. Can Fulvia die?” a capacious but enigmatic question elided by Antony’s response, “She’s dead, my queen” (1.3.58–59). But it is not only in moments of shock or abandonment that her language appeals to the other rapport, for she manifests, from beginning to end, the knowledge of her own stature and isolation. She can address even Antony in words that, though supplicating, seem distracted from him, as if their distance and futility were what he ought to love in her:</p>
+
+    <div class="cita">
+        <p>Courteous lord, one word.</p>
+        <p>Sir, you and I must part, but that’s not it:</p>
+        <p>Sir, you and I have loved, but there’s not it:</p>
+        <p>That you know well. Something it is I would—</p>
+        <p>O, my oblivion is a very Antony,</p>
+        <p>And I am all forgotten.</p>
+        <p class="attribution">(1.3.86–91)</p>
+    </div>
+
+    <p>This speech is strangely aware of a remoteness from its listener, and a solitary communication with the elusive spirit of a nonhuman intelligence. This sense of her world’s isolation allows Cleopatra to speak, when she wishes to, with the precision and austerity of the messengers, as when she asks Antony, “Not know me yet?” or replies to Caesar’s “I’ll take my leave” with the bracing truth, “And may, through all the world: ’tis yours” (5.2.133–34).</p>
+
+    <p>It may seem odd that, with its distance and difficulty, her question, “Not know me yet?” should appear in the play’s most commanding representation of intimacy, in the moment of intense conference after Antony’s violent attack on Thidias.</p>
+
+    <div class="cita">
+        <p>ANTONY. To flatter Caesar, would you mingle eyes</p>
+        <p>With one that ties his points?</p>
+        <p>CLEOPATRA. Not know me yet?</p>
+        <p>ANTONY. Cold-hearted toward me?</p>
+        <p class="attribution">(3.12.156–58)</p>
+    </div>
+
+    <p>This dialogue has the antiphonal rhythm and elliptical expression of an intimate exchange, but it is also oddly disjunctive. With their brave solitude, the words of Antony and Cleopatra join the elliptical expression of intimacy and the isolation of language opening out to the other rapport. Here, to be humanly intimate means to be moved by the anonymous intimacy of the other’s language.</p>
+
+    <p>Cleopatra’s “last conquest” takes this form of intimacy, when she brings Dolabella to speak a language that corresponds to her own in heroic sincerity, and corresponds to it especially because he denies her words, when she herself knows this denial to be just:</p>
+
+    <div class="cita">
+        <p>CLEOPATRA. Think you there was or might be such a man</p>
+        <p>As this I dreamt of?</p>
+        <p>DOLABELLA. Gentle madam, no.</p>
+        <p class="attribution">(5.2.92–93)</p>
+    </div>
+
+    <p>It testifies to the summoning power of Cleopatra’s poetry that she can make this agent of the clammy Caesar emerge into the austerity and distant familiarity of the <i>angelloi</i>. In this context, Stephen Booth has engagingly argued that the actor playing Antony doubled for Dolabella. Whether or not Booth’s claim is accurate, his view illuminates this moment: the intimacy between Antony and Cleopatra here resurfaces uncannily as a rapport touched by the spirit of the <i>angelloi</i>, and mediated by the remote alterity of language.</p>
+
+    <p>The absent rapport summoned up by the rhetorical power of Cleopatra’s language constantly makes us feel the impoverishment of the play’s world, with its incorrigible binary oppositions and its stingy imperialist ethos, just as the generosity of her language produces the sense of buoyant affirmation in the play. Critics generally try to say what is being affirmed, whether it is a mystical union of love and death (Knight), the imaginative vision of love (Adelman), or the creation of private value (Eagleton). But the sense of affirmation comes first from Antony and Cleopatra’s language, before an object of affirmation can be found. The solitariness of Cleopatra’s language is, curiously enough, not bleak, but the source of an exuberance which gives sweep and buoyancy even to speeches whose content is not altogether happy, like “My salad days . . .” (1.4.73–end), and even to those spoken at the bleakest moments: “O sun, / Burn the great sphere thou mov’st in: darkling stand / The varying shore of the world. O Antony / Antony, Antony!” (4.15.9–12). From the beginning, Cleopatra knows and loves this impotent generosity of language—which explains the strange tonality of the last act, with its leisurely pace and its strange, erotic happiness. In this act, which Cleopatra has all to herself, she can receive with perfect equanimity the most fantastic of the messenger-figures, a peasant bearing the asps and the eerie salutation, “I wish you joy o’th’worm” (5.2.279); and can free her words, with their call elsewhere, to the most startling affirmations: “go fetch / My best attires. I am again for Cydnus, / To meet Mark Antony” (5.2.226–28).</p>
+
+    <section class="footnotes">
+        <h3>Note</h3>
+        <p>© 1987 by Laura Quinney. Published for the first time in this volume.</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>

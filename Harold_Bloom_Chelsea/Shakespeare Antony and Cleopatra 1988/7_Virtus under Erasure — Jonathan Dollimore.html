@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Virtus under Erasure — Jonathan Dollimore</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+.section-head { margin: 3.2rem 0 1.6rem; text-align: center; font-size: 1rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--text-secondary); }
+.section-head::before, .section-head::after { content: ""; display: inline-block; width: 2rem; height: 1px; background: var(--border-color); vertical-align: middle; margin: 0 .8rem; }
+.epigrafe { margin: 2rem 0 1.5rem; text-align: center; font-style: italic; color: var(--text-secondary); font-size: .95rem; }
+.epigrafe .attribution { display: block; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .3rem; }
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">Jonathan Dollimore</p>
+        <h1 class="cab__tit">Virtus under Erasure</h1>
+    </header>
+
+    <p>In Jonson’s <i>Sejanus</i>, Silius, about to take his own life in order to escape the persecution of Tiberius, tells the latter: “The means that makes your greatness, must not come / In mention of it” (3.311–12). He is of course exposing a strategy of power familiar to the period: first there occurs an effacement of the material conditions of its possibility, second, a claim for its transcendent origin, one ostensibly legitimating it and putting it beyond question—hence Tiberius’s invocation only moments before of “the Capitol, / . . . all our Gods . . . the dear Republic, / Our sacred Laws, and just authority” (3.216–18). In <i>Sejanus</i> this is transparent enough. In other plays—I choose for analysis here <i>Antony and Cleopatra</i> and <i>Coriolanus</i>—the representation of power is more complex in that we are shown how the ideology in question constitutes not only the authority of those in power but their very identity.</p>
+
+    <p>Staged in a period in which there occurred the unprecedented decline of the power, military and political, of the titular aristocracy, <i>Antony</i> and <i>Coriolanus</i>, like <i>Sejanus</i> before them, substantiate the contention that “‘tis place, / Not blood, discerns the noble, and the base” (<i>Sejanus</i>, 5.1.11–12). Historical shifts in power together with the recognition, or at least a more public acknowledgement of, its actual operations, lead to the erasure of older notions of honour and <i>virtus</i>. Both plays effect a sceptical interrogation of martial ideology and in doing so foreground the complex social and political relations which hitherto it tended to occlude.</p>
+
+    <p>In his study of English drama in the seventeenth century C. L. Barber detects a significant decline in the presence of honour as a martial ideal and he is surely right to interpret this as due to changes in the nature and occupations of the aristocracy during that period. These included the professionalising of warfare and the increasing efficiency of state armies. The effect of such changes was that by the end of the seventeenth century there was considerably less scope for personal military initiative and military glory; honour becomes an informal personal code with an extremely attenuated social dimension (<i>The Idea of Honour in the English Drama 1591–1700</i>).</p>
+
+    <p>More recently, and even more significantly for the present study, Mervyn James has explored in depth the changing conceptions of honour between 1485 and 1642; most striking is his conclusion that there occurred “a change of emphasis, apparent by the early seventeenth century . . . [involving] . . . the emergence of a ‘civil’ society in which the monopoly both of honour and violence by the state was asserted” (<i>English Politics and the Concept of Honour 1485–1642</i>).</p>
+
+    <p>Such are the changes which activate a contradiction latent in martial ideology and embodied in two of Shakespeare’s protagonists, Antony and Coriolanus. From one perspective—becoming but not yet residual—they appear innately superior and essentially autonomous, their power independent of the political context in which it finds expression. In short they possess that <i>virtus</i> which enables each, in Coriolanus’s words, to “stand / As if a man were author of himself” (5.3.35–36). “As if”: even as these plays reveal the ideological scope of that belief they disclose the alternative emergent perspective, one according to which Antony and Coriolanus are nothing more than their reputation, an ideological effect of powers antecedent to and independent of them. Even as each experiences himself as the origin and embodiment of power, he is revealed in the words of Foucault to be its instrument and effect—its instrument because, first and foremost, its effect. Bacon brilliantly focusses this contradiction in his essay on martial glory: “It was prettily devised of Æsop: The fly sate upon the axle-tree of the chariot wheel, and said, What a dust do I raise!” (<i>Essays</i>). Throughout Bacon’s essay there is a dryly severe insistence on that fact which martial ideology cannot internally accommodate: “opinion brings on substance.” Such is the condition of Antony and Coriolanus, and increasingly so: as they transgress the power structure which constitutes them both their political and personal identities—inextricably bound together if not identical—disintegrate.</p>
+
+    <h2 class="section-head">Virtus and History</h2>
+
+    <p><i>Antony and Cleopatra</i> anticipates the dawn of a new age of imperialist consolidation:</p>
+
+    <div class="cita">
+        <p>The time of universal peace is near.</p>
+        <p>Prove this a prosp’rous day, the three nook’d world</p>
+        <p>Shall bear the olive freely.</p>
+        <p class="attribution">(4.6.5–7)</p>
+    </div>
+
+    <p>Prior to such moments heroic <i>virtus</i> may appear to be identical with the dominant material forces and relations of power. But this is never actually so: they were only ever coterminous and there is always the risk that a new historical conjuncture will throw them into misalignment. This is what happens in <i>Antony and Cleopatra</i>; Antony, originally identified in terms of both <i>virtus</i> and these dominant forces and relations, is destroyed by their emerging disjunction.</p>
+
+    <p>In an important book Eugene Waith has argued that “Antony’s reassertion of his heroic self in the latter part of the play is entirely personal. What he reasserts is individual integrity. . . . Heroism rather than heroic achievement becomes the important thing” (<i>The Herculean Hero</i>). On this view Antony privately reconstitutes his “heroic self” despite or maybe even because of being defeated by circumstances beyond his control. I want to argue that the reverse is true: heroism of Antony’s kind can never be “entirely personal” (as indeed Bacon insisted) nor separated from either “heroic achievement” or the forces and relations of power which confer its meaning.</p>
+
+    <p>The reader persuaded by the Romantic reading of this play is likely to insist that I’m missing the point—that what I’ve proposed is at best only true of the world in which Antony and Cleopatra live, a world transcended by their love, a love which “translineates man (sic) to divine likeness” (Wilson Knight, <i>The Imperial Theme</i>). It is not anti-Romantic moralism which leads me to see this view as wholly untenable. In fact I want to argue for an interpretation of the play which refuses the usual critical divide whereby it is either “a tragedy of lyrical inspiration, justifying love by presenting it as triumphant over death, or . . . a remorseless exposure of human frailties, a presentation of spiritual possibilities dissipated through a senseless surrender to passion” (Traversi, <i>An Approach to Shakespeare</i>). Nor do I discount the Romantic reading by wilfully disregarding the play’s captivating poetry: it is, indeed, on occasions rapturously expressive of desire. But the language of desire, far from transcending the power relations which structure this society, is wholly in-formed by them.</p>
+
+    <p>As a preliminary instance of this, consider the nature of Antony’s belated “desire” for Fulvia, expressed at news of her death and not so dissimilar to his ambivalent desire for Cleopatra (as the sudden shift of attention from the one to the other suggests):</p>
+
+    <div class="cita">
+        <p>Thus did I desire it:</p>
+        <p>What our contempts doth often hurl from us</p>
+        <p>We wish it ours again; the present pleasure,</p>
+        <p>By revolution low’ring, does become</p>
+        <p>The opposite of itself. She’s good, being gone;</p>
+        <p>The hand could pluck her back that shov’d her on.</p>
+        <p>I must from this enchanting queen break off.</p>
+        <p class="attribution">(1.2.119–25)</p>
+    </div>
+
+    <p>True, the language of the final scenes is very different from this, but there too we are never allowed to forget that the moments of sublimity are conditional upon absence, nostalgic contemplation upon the fact that the other is irrevocably gone. As for present love, it is never any the less conditioned by the imperatives of power than the arranged marriage between Antony and Octavia.</p>
+
+    <h2 class="section-head">Virtus and Realpolitik</h2>
+
+    <p>In <i>Antony and Cleopatra</i> those with power make history yet only in accord with the contingencies of the existing historical moment—in Antony’s words: “the strong necessity of time” (1.3.42). If this sounds fatalistic, in context it is quite clear that Antony is not capitulating to “Time” as such but engaging in <i>realpolitik</i>, real power relations. His capacity for policy is in fact considerable; not only, and most obviously, is there the arranged marriage with Octavia, but also those remarks of his which conclude the alliance with Lepidus and Caesar against Pompey:</p>
+
+    <div class="cita">
+        <p>[Pompey] hath laid strange courtesies and great</p>
+        <p>Of late upon me. I must thank him only,</p>
+        <p>Lest my remembrance suffer ill report;</p>
+        <p>At heel of that, defy him.</p>
+        <p class="attribution">(2.2.159–62)</p>
+    </div>
+
+    <p>In fact, the suggestion of fatalism in Antony’s reference to time is itself strategic, an evasive displacing of responsibility for his impending departure from Cleopatra. As such it is parallelled later by Caesar when he tells the distraught Octavia,</p>
+
+    <div class="cita">
+        <p>Be you not troubled with the time, which drives</p>
+        <p>O’er your content these strong necessities,</p>
+        <p>But let determin’d things to destiny</p>
+        <p>Hold unbewail’d their way.</p>
+        <p class="attribution">(3.6.82–85)</p>
+    </div>
+
+    <p>The cause of her distress is divided allegiance between brother and husband (Caesar and Antony) who are now warring with each other. Caesar’s response comes especially ill from one scarcely less responsible for her conflict than Antony; her marriage to the latter was after all dictated by his political will: “The <i>power</i> of Caesar, and / His <i>power</i> unto Octavia” (2.2.147–48, my italics). “Time” and “destiny” mystify power by eclipsing its operation and effect, and Caesar knows this; compare the exchange on Pompey’s galley—ANTONY: “Be a child o’ th’ time. / CAESAR: Possess it, I’ll make answer” (2.7.98–99). Caesar, in this respect, is reminiscent of Machiavelli’s Prince; he is inscrutable and possessed of an identity which becomes less fixed, less identifiable as his power increases. Antony by contrast is defined in terms of omnipotence (the more so, paradoxically, as his power diminishes): the “man of men” (1.4.72), the “lord of lords” (4.8.16).</p>
+
+    <p>In both <i>Antony and Cleopatra</i> and <i>Coriolanus</i> the sense of <i>virtus</i> (virtue) is close to “valour,” as in “valour is the chiefest virtue” (<i>Coriolanus</i>, 2.2.82), but with the additional and crucial connotations of self-sufficiency and autonomous power, as in “Trust to thy <i>single virtue</i>; for thy soldiers / . . . have . . . / Took their discharge” (<i>King Lear</i>, 5.3.104–6). The essentialist connotations of “virtue” are also clearly brought out in a passage from <i>Troilus and Cressida</i> discussed [elsewhere]: “what hath mass or matter by itself / Lies rich in virtue and unmingled.” In <i>Antony and Cleopatra</i> this idea of self-sufficiency is intensified to such an extent that it suggests a transcendent autonomy; thus Cleopatra calls Antony “lord of lords! / O <i>infinite virtue</i>, com’st thou smiling from / The world’s great snare uncaught?” (4.8.16–18). Coriolanus is similarly described as proud, “even to the altitude of his virtue” (2.1.38). Against this is a counter-discourse, one denying that virtue is the source and ethical legitimation of power and suggesting instead that the reverse is true—in the words of Macro in <i>Sejanus</i>, “A prince’s power makes all his actions virtue” (3.717). At the beginning of act 3 for example Silius urges Ventidius further to consolidate his recent successes in war, so winning even greater gratitude from Antony. Ventidius replies that, although “Caesar and Antony have ever won / More in their officer than person” (3.1.16–17), an officer of theirs who makes that fact too apparent will lose, not gain favour. It is an exchange which nicely illustrates the way power is a function not of the “person” (l. 17) but of “place” (l. 12), and that the criterion for reward is not intrinsic to the “performance” (l. 27) but, again, relative to one’s placing in the power structure (cf. <i>Sejanus</i>, 3.302–5: “all best turns / With doubtful princes, turn deep injuries / In estimation, when they greater rise, / Than can be answered”).</p>
+
+    <p>Later in the same act Antony challenges Caesar to single combat (3.13.20–28). It is an attempt to dissociate Caesar’s power from his individual virtue. Enobarbus, amazed at the stupidity of this, testifies to the reality Antony is trying, increasingly, to deny:</p>
+
+    <div class="cita">
+        <p>men’s judgements are</p>
+        <p>A parcel of their fortunes, and things outward</p>
+        <p>Do draw the inward quality after them,</p>
+        <p>To suffer all alike.</p>
+        <p class="attribution">(3.13.31–34)</p>
+    </div>
+
+    <p>In Enobarbus’s eyes, Antony’s attempt to affirm a self-sufficient identity confirms <i>exactly the opposite</i>. Correspondingly, Caesar scorns Antony’s challenge with a simple but devastating repudiation of its essentialist premise: because “twenty times of better fortune” than Antony, he is, correspondingly, “twenty men to one” (4.2.3–4).</p>
+
+    <p>As effective power slips from Antony he becomes obsessed with reasserting his sense of himself as (in his dying words): “the greatest prince o’ th’ world, / The noblest” (4.20.54–55). The contradiction inherent in this is clear; it is indeed as Canidius remarks: “this whole action grows / Not in the power on’t” (3.7.68–69). Antony’s conception of his omnipotence narrows in proportion to the obsessiveness of his wish to reassert it; eventually it centres on the sexual anxiety—an assertion of sexual prowess—which has characterised his relationship with both Cleopatra and Caesar from the outset. He several times dwells on the youthfulness of Caesar in comparison with his own age (e.g., at 3.13.20, 4.12.48) and is generally preoccupied with lost youthfulness (e.g., at 3.13.192; 4.4.26; 4.8.22). During the battle scenes of acts 3 and 4 he keeps reminding Cleopatra of his prowess—militaristic and sexual: “I will appear in blood” (2.13.174); “There’s sap in’t yet! The next time I do fight, / I’ll make death love me” (3.13.192–93); and:</p>
+
+    <div class="cita">
+        <p>leap thou, attire and all,</p>
+        <p>Through proof of harness to my heart, and there</p>
+        <p>Ride on the pants triumphing.</p>
+        <p class="attribution">(4.8.14–16)</p>
+    </div>
+
+    <p>All this, including the challenge to single combat with Caesar, becomes an obsessive attempt on the part of an ageing warrior (the “old ruffian”—[4.1.4]) to reassert his virility, not only to Cleopatra but also to Caesar, his principal male competitor. Correspondingly, his willingness to risk everything by fighting on Caesar’s terms (3.7) has much more to do with reckless overcompensation for his own experienced powerlessness, his fear of impotence, than the largesse of a noble soul. His increasing ambivalence towards Cleopatra further bespeaks that insecurity (e.g., at 3.12 and 4.12). When servants refuse to obey him he remarks “Authority melts from me”—but insists nevertheless “I am / Antony yet” (3.13.92–93): even as he is attempting to deny it Antony is acknowledging that identity is crucially dependent upon power. Moments later even he cannot help remarking the difference between “what I am” and “what . . . I was” (3.13.142–43).</p>
+
+    <p>It is only when the last vestiges of his power are gone that the myth of heroic omnipotence exhausts itself, even for him. In place of his essentialist fixedness, “the firm Roman,” the “man of steel” he once felt himself to be (1.4.43; 4.4.35), Antony now experiences himself in extreme dissolution:</p>
+
+    <div class="cita">
+        <p>That which is now a horse, even with a thought</p>
+        <p>The rack dislimns, and makes it indistinct</p>
+        <p>As water is in water . . .</p>
+        <p>Eros, now thy captain is</p>
+        <p>Even such a body: here I am Antony,</p>
+        <p>Yet cannot hold this visible shape</p>
+        <p class="attribution">(4.4.9–14)</p>
+    </div>
+
+    <p><i>Virtus</i>, divorced from the power structure, has left to it only the assertion of a negative, inverted autonomy: “there is left us / Ourselves to end ourselves” (4.14.21–22). And in an image which effectively expresses the contradiction Antony has been living out, energy is felt to feed back on itself: “Now all labour / Mars what it does; yea, very force entangles / Itself with strength” (4.19.47–49). Appropriately to this, he resolves on suicide only to bungle the attempt. The bathos of this stresses, uncynically, the extent of his demise. In the next scene it is compounded by Cleopatra’s refusal to leave the monument to kiss the dying Antony lest she be taken by Caesar. Antony, even as he is trying to transcend defeat by avowing a tragic dignity in death, suffers the indignity of being dragged up the monument.</p>
+
+    <p>There is bathos too of course in Caesar’s abruptly concluded encomium:</p>
+
+    <div class="cita">
+        <p>Hear me, good friends—</p>
+        <p><i>Enter an Egyptian</i></p>
+        <p>But I will tell you at some meeter season.</p>
+        <p>The business of this man looks out of him.</p>
+        <p class="attribution">(5.1.48–50)</p>
+    </div>
+
+    <p>The question of Caesar’s sincerity here is beside the point; this is, after all, an encomium, and to mistake it for a spontaneous expression of grief will lead us to miss seeing that even in the few moments he speaks Caesar has laid the foundation for an “official” history of Antony. First we are reminded that Caesar <i>is</i>—albeit regrettably—the victor. He then vindicates himself and so consolidates that victory by confessing to a humanising grief at the death of his “brother” (though note the carefully placed suggestion of Antony’s inferiority: “the arm of mine own body”). Caesar further vindicates himself by fatalising events with the by now familiar appeal to necessity, in this case “our stars, / Unreconcilable.” Earlier Caesar had told Octavia that “The ostentation of our love . . . left unshown, / Is often left unlov’d” (3.6.52–53). Such is the rationale of his encomium, a strategic expression of “love” in the service of power. The bathos of these episodes makes for an insistent cancelling of the potentially sublime in favour of the political realities which the sublime struggles to eclipse or transcend. Actually, bathos has accompanied Antony throughout, from the very first speech of the play, the last three lines of which are especially revealing (Philo is speaking of Antony):</p>
+
+    <div class="cita">
+        <p>Take but good note, and you shall see in him</p>
+        <p>The triple pillar of all the world transform’d</p>
+        <p>Into a strumpet’s fool. Behold and see.</p>
+        <p class="attribution">(1.1.11–13)</p>
+    </div>
+
+    <p>The cadence of “triple pillar of all the world” arches outward and upward, exactly evoking transcendent aspiration; “transformed” at the line end promises apotheosis; we get instead the jarringly discrepant “strumpet’s fool.” Cynical, perhaps, but Philo’s final terse injunction—“Behold and see”—has prologue-like authority and foresight.</p>
+
+    <p>After Antony’s death the myth of autonomous <i>virtus</i> is shown as finally obsolescent; disentangled now from the prevailing power structure, it survives as legend. Unwittingly Cleopatra’s dream about Antony helps relegate him to this realm of the legendary, especially in its use of imagery which is both Herculean and statuesque: “His legs bestrid the ocean; his reared arm / Crested the world” (5.2.82–83). Cleopatra asks Dolabella if such a man ever existed or might exist; he answers: “Gentle Madam, no.” Cleopatra vehemently reproaches him only to qualify instantly her own certainty—“But if there be nor ever were one such”—thereby, in the hesitant syntax, perhaps confirming the doubts which prompted the original question.</p>
+
+    <p>His legs bestrid the ocean: in dream, in death, Antony becomes at last larger than life; but in valediction is there not also invoked an image of the commemorative statue, that material embodiment of a discourse which, like Caesar’s encomium, skilfully overlays (without ever quite obscuring) obsolescence with respect?</p>
+
+    <h2 class="section-head">Honour and Policy</h2>
+
+    <p>If the contradiction which constitutes Antony’s identity can be seen as a consequence of a wider conflict between the residual/dominant and the emergent power relations, so too can the strange relationship set up in the play between honour and policy. Pompey’s reply to Menas’s offer to murder the triumvirs while they are celebrating on board his (Pompey’s) galley is a case in point:</p>
+
+    <div class="cita">
+        <p>Ah, this thou shouldst have done,</p>
+        <p>And not have spoke on’t. In me ’tis villainy:</p>
+        <p>In thee’t had been good service. Thou must know</p>
+        <p>’Tis not my profit that does lead mine honour:</p>
+        <p>Mine honour, it. Repent that e’er thy tongue</p>
+        <p>Hath so betray’d thine act. Being done unknown,</p>
+        <p>I should have found it afterwards well done,</p>
+        <p>But must condemn it now.</p>
+        <p class="attribution">(2.7.73–80)</p>
+    </div>
+
+    <p>Here honour is insisted upon yet divorced from ethics and consequences; the same act is “villainy” or “service” depending on who performs it; ignorance of intent to murder is sufficient condition for approving the murder after the event.</p>
+
+    <p>Elsewhere in the play we see these inconsistencies resolved in favour of policy; now honour pretends to integrity—to be thought to possess it is enough. Once again it is a kind of political strategy which takes us back to Machiavelli’s <i>The Prince</i>. Antony tells Octavia: “If I lose mine honour / I lose myself” (3.4.22–23). Octavia has of course been coerced into marriage with Antony to heal the rift (now reopened) between him and Caesar, her brother. So, for Antony to speak to her of honour seems hypocritical at least; when, however, Antony goes further and presents himself as the injured party ready nevertheless to forego his revenge in order to indulge Octavia’s request that she be <i>allowed</i> to act as mediator—“But, as you requested / Yourself shall go between’s” (3.4.24–25)—the honour in question is shown to be just another strategy in his continuing exploitation of this woman.</p>
+
+    <p>When Thidias is persuading Cleopatra to betray Antony and capitulate to Caesar, honour is now a face-saving strategy for <i>both</i> sides; because she “embraced” Antony through fear, says Caesar, he construes the scar upon her honour as “constrained blemishes, / Not as deserv’d.” Cleopatra quickly concurs: “He [Caesar] is a god, and knows / What is most right. Mine honour was not yielded, / But conquer’d merely” (3.13.59–62).</p>
+
+    <p>In Enobarbus we see how policy aligns positively with realism and judgement. He, like Philo at the outset of the play, Ventidius in act 3, scene 1 and the soldier in act 3, scene 7 who urges Antony not to fight at sea, occupies a role in relation to power very familiar in Jacobean tragedy: he possesses an astuteness characteristic of those removed from, yet involved with and dependent upon—often for their very lives—the centre of power; his is the voice of policy not in the service of aggrandisement so much as a desire for survival. So, for example, we see in act 3, scene 6 Enobarbus attempting to dissuade Cleopatra from participating in the war and Antony from fighting on Caesar’s terms. Failing in the attempt, Enobarbus leaves Antony’s command but is struck with remorse almost immediately. Since he left without his “chests and treasure” (4.5.8) we are, perhaps, to presume that material gain of this kind was not his motive. Enobarbus, like Antony, comes to embody a contradiction; the speech of his beginning “Mine honesty and I begin to square” (3.13.41) suggests as much, and it becomes clear that he has left his master in the name of the “judgement” which the latter has abdicated but which is integral still to his, Enobarbus’s, identity as a soldier. Yet equally integral to that identity is the loyalty which he has betrayed.</p>
+
+    <p>The extent of people’s dependence upon the powerful is something the play never allows us to forget. Cleopatra’s beating of the messenger in act 2, scene 5 is only the most obvious reminder; a subtler and perhaps more effective one comes at the end of the play when Cleopatra attempts to conceal half her wealth from Caesar. In the presence of Caesar she commands Seleucus, her “treasurer,” to confirm that she has surrendered all; “speak the truth, Seleucus” she demands and, unfortunately for her he does, revealing that she has kept back as much as she has declared. Cleopatra has ordered him “Upon his <i>peril</i>” (5.2.142) to speak the truth (i.e., lie) while he, with an eye to Caesar, replies that he would rather seal his lips “than to my <i>peril</i> / Speak that which is not.” Here, truth itself is in the service of survival. Cleopatra, outraged, finds this unforgivable; for servants to shift allegiance is, in her eyes (those of a ruler) “base” treachery (5.2.156). The play however, in that ironic repetition of “peril” (my italics) invites an alternative perspective: such a shift is merely a strategy of survival necessitated precisely by rulers like her. Yet doubly ironic is the fact that while Seleucus is described as a “slave, of no more trust / Than love that’s hir’d” (5.2.153–54) her own deceit is approved by Caesar as the “wisdom” (5.2.149) appropriate to one in her position. Elsewhere Caesar speaks in passing of the “much tall youth” (2.6.7) that will perish in the event of war; Octavia speaks of the consequence of war between Caesar and Antony being as if “the world should cleave, and that slain men / Should solder up the cleave” (3.4.31–32; cf. 3.13.180–81; 4.12.41–42; 4.14.17–18). It is a simple yet important truth, one which the essentialist rhetoric is never quite allowed to efface: to kiss away kingdoms is to kiss away also the lives of thousands.</p>
+
+    <h2 class="section-head">Sexuality and Power</h2>
+
+    <p>Those around Antony and Cleopatra see their love in terms of power; languages of possession, subjugation and conspicuous wealth abound in descriptions of the people. More importantly, Antony and Cleopatra actually experience themselves in the same terms. Antony sends Alexas to Cleopatra with the promise that he will “piece / Her opulent throne with kingdoms. All the East / (Say thou) shall call her mistress” (1.5.45–47). Later Caesar describes the ceremony whereby that promise was honoured, a ceremony aiming for an unprecedented <i>public</i> display both of wealth and power: “Cleopatra and himself in chairs of gold / Were publicly enthron’d”; Antony gives to Cleopatra the stablishment of Egypt and makes her “Absolute Queen” of Syria, Cyprus and Lydia. “This in the public eye?” inquires Maecenas; “I’ th’ common showplace” confirms Caesar (3.6.4–12). Cleopatra for her part sends twenty separate messengers to Antony. On his return from Egypt Enobarbus confirms the rumour that eight wild boars were served at a breakfast of only twelve people, adding: “This was but as a fly by an eagle: we had much more monstrous matter of feast, which <i>worthily deserved noting</i>” (2.2.185, my italics).</p>
+
+    <p>Right from the outset we are told that power is internal to the relationship itself: Philo tells us that Antony has been subjugated by Cleopatra (1.1.1–9) while Enobarbus tells Agrippa that Cleopatra has “pursed up” (i.e. pocketed, taken possession of) Antony’s heart (2.2.190). As if in a discussion of political strategy, Cleopatra asks Charmian which tactics she should adopt in order to manipulate Antony most effectively. Charmian advocates a policy of complete capitulation; Cleopatra replies: “Thou teachest like a fool—the way to lose him!” (1.3.10). Antony enters and Cleopatra tells him: “I have no power upon you,” only then to cast him in the role of treacherous subject: “O, never was there queen / So mightily betrayed. Yet at the first / I saw the treasons planted” (1.3.23–26). Whatever the precise sense of Cleopatra’s famous lines at the end of this scene—“O my oblivion is a very Antony, / And I am all forgotten”—there is no doubt that they continue the idea of a power struggle: her extinction is coterminous with his triumph.</p>
+
+    <p>Attempting to atone for his departure, Antony pledges himself as Cleopatra’s “soldier-servant, making peace or war / As thou affects” (1.3.70). This is just one of many exchanges which shows how their sexuality is rooted in a fantasy transfer of power from the public to the private sphere, from the battlefield to the bed. In act 2, scene 5 Cleopatra recalls with merriment a night of revelry when she subjugated Antony and then engaged in cross-dressing with him, putting “my tires and mantles on him, whilst / I wore his sword Phillipan” (2.5.22–23). Inseparable from the playful reversal of sexual roles is her appropriation of his power, military and sexual, symbolised phallically of course in the sword. Later Antony takes up the sword-power motif in a bitter reproach of Cleopatra for her power over him; here he sees her as his “conqueror” (3.11.66, and cf. 4.14.22–23). Another aspect of the power-sexuality conjunction is suggested in the shamelessly phallic imagery which the lovers use: “Ram thou thy fruitful tidings in mine ears, / That long time have been barren” (2.5.24–25), although again Cleopatra delights in reversing the roles (as at 2.5.10–15).</p>
+
+    <p>Here then is another aspect of the contradiction which defines Antony: his sexuality is informed by the very power relations which he, ambivalently, is prepared to sacrifice for sexual freedom; correspondingly, the heroic <i>virtus</i> which he wants to reaffirm in and through Cleopatra is in fact almost entirely a function of the power structure which he, again ambivalently, is prepared to sacrifice for her.</p>
+
+    <p>Ecstasy there is in this play but not the kind that constitutes a self-sufficient moment above history; if <i>Antony and Cleopatra</i> celebrates anything it is not the love which transcends power but the sexual infatuation which foregrounds it. That infatuation is complex: ecstatic, obsessive, dangerous. Of all the possible kinds of sexual encounter, infatuation is perhaps the most susceptible to power—not just because typically it stems from and intensifies an insecurity which often generates possessiveness and its corollary, betrayal, but because it legitimates a free play of self-destructive desire. In Antony’s case it is a desire which attends and compensates for the loss of power, a desire at once ecstatic and masochistic and playing itself out in the wake of history, the dust of the chariot wheel.</p>
+
+    <section class="footnotes">
+        <h3>Note</h3>
+        <p>From <i>Radical Tragedy: Religion, Ideology, and Power in the Drama of Shakespeare and His Contemporaries</i>. © 1984 by Jonathan Dollimore. Harvester, 1984.</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>
