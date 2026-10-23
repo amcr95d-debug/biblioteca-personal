@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Richardson’s Lovelace: Character and Prediction — Anthony Winner</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p, .separador + p, .section-head + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+.section-head { margin: 3.2rem 0 1.6rem; text-align: center; font-size: 1rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--text-secondary); }
+.section-head::before, .section-head::after { content: ""; display: inline-block; width: 2rem; height: 1px; background: var(--border-color); vertical-align: middle; margin: 0 .8rem; }
+.epigrafe { margin: 2rem 0 1.5rem; text-align: center; font-style: italic; color: var(--text-secondary); font-size: .95rem; }
+.epigrafe .attribution { display: block; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .3rem; }
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">Anthony Winner</p>
+        <h1 class="cab__tit">Richardson’s Lovelace:<br>Character and Prediction</h1>
+    </header>
+
+    <p>Both the suggestiveness and the problematic realism of Lovelace’s character [in <i>Clarissa</i>] are supported largely by his lack of fixity and role in his sociohistorical situation. Cut off both from the spiritual meanings which for Richardson provide the unique mode of fulfillment open to human energies and aspirations and from the roles and meanings espoused by society, Lovelace is trapped in the cul-de-sac of self. His predicament is that of one forced not only to write “to the moment,” but to live to it alone—to reinvent himself in response to each vibration of sensation or each fragment of vision. He anticipates the fragmented, alienated energy often typical of counter-enlightenment, post-Providential protagonists. Unlike his heirs, of course, his dilemmas are controlled by the terms of the anagogic drama in which Richardson casts him and which (as in his failure to understand Clarissa’s reference to her father’s house) he cannot comprehend. Nonetheless, he is as much a figure of pathos as a butt of moralistic condemnation. He transcends the context of those stupidly blind to the evidence of things not seen, those faithless fools too curious for their own good, to mix with the sad company of those later <i>hommes fatals</i> whose intimations of vision or design are frustrated by the seeming nature of things. The vehement inconsistencies of his warring passions point toward what will later become the situation of the sheer bafflement of desire infuriated by the absence of any commensurate object.</p>
+
+    <p>Nowhere is this clearer than in his attitude toward women, their role, and their honor. For Richardson, in an equation almost immediately debased into prurient melodrama by popular fiction, woman’s honor in its fullest meaning is the physical vesture of a God-given soul. The earthly extension of honor is the complex phenomenon we know as character. Knowledge of this equation is the central issue in Lovelace’s failed education: what he ought for his salvation to have learned. His experience leads him to the verge of understanding, as when he admits before the court of his family “that till I knew <i>her</i>, I questioned a soul in a sex, created, as I was willing to suppose, only for temporary purposes.” He cannot, however, escape the usual terms of his mechanistic materialism. He has insisted that since Clarissa’s “will is unviolated,” it is nonsense “to suppose that such a mere <i>notional</i> violation as she has suffered, should be able to cut asunder the strings of life.” Scoffing at the “romantic value” Clarissa places upon her “<i>honour</i>,” he remarks: “people’s extravagant notions of things alter not <i>facts</i>.” Yet not only Clarissa’s apparent exemption from the general rule but also the demands of his own program compel him to allow: “That if a person sets a high value upon anything, be it ever such a trifle in itself, or in the eyes of others, the robbing of that person of it is <i>not</i> a trifle to <i>him</i>. Take the matter in this light, I own I have done wrong, great wrong, to this admirable creature.”</p>
+
+    <p>In the comment on Clarissa’s violation, the physical emerges as notional and the will becomes factual. In the remarks on value, the subjectively notional is permitted the status of fact. Apart from Lovelace’s characteristic inability to sustain coherent thought, these inconsistencies indicate both a pervading need for some system of value and the almost self-imposed frustration of that need by the absolutistic materialism adopted as a defense and vengeance against social and mediated modes of evaluation. One of the crosses romantic criminality must bear is its reliance on conventional society for a norm against which to define its action: if Lovelace dismisses the spiritual meaning of women’s honor, he must still accept some form of received social valuation. For it is this valuation that lends his warfare a socioeconomic dimension and reality. The basis for Richardson’s reestimation of women is Christian realism, not socioeconomics. But Lovelace’s inability to comprehend the former establishes the latter at the center of the action. Clarissa is a potential angel because her relation to society appears to him as disjunctive as his own: women have been reduced to chattel just as heroes have been demeaned as criminal dross. Theoretically, Lovelace offers freedom from bondage and a joint rebellion against the enslaving world. Yet the meaning he assigns Clarissa merely inverts that assigned by the world: grimly and parodistically imitating the materialism of society at large, he can phrase her value only in terms of a private variation on this ubiquitous materialism. Though he yearns for the infinite value he half-glimpses in her, he spurns the divine pathway to his goal and is forced into behavior that can only be a function of the finite and an inversion of the social.</p>
+
+    <p>The process of alienation and isolation to which he subjects Clarissa reflects directly on the society whose depersonalizing idea of women lends itself, by omission or commission, to the implementation of private tyranny. At home, where her trial began, Clarissa had no rights or value except as property. Lovelace extends this strange destiny until there is no refuge in the world: “In the first place, the man, who has had the assurance to think me, and to endeavor to make me, his <i>property</i>, will hunt me from place to place and search after me as a ‘stray; and he knows he may do so with impunity, for whom have I to protect me from him?” Lovelace reports her as asking “whether I am to be controlled in the future disposal of myself? Whether, in a country of liberty, as <i>this</i>, where the <i>sovereign</i> of it must be guilty of <i>your</i> wickedness; and where <i>you</i> neither durst have attempted it, had I one friend or relation to look upon me; I am to be kept here a prisoner, to sustain fresh injuries?” The hierarchical order that once protected women having broken down, there is no earthly escape. Society, abetting the criminal, becomes criminal—and the model Richardson here provides for a dramatization of social injustice at the service of an evil figure of force becomes the well-spring for numbers of subsequent libertarian treatments of righteous brigands in revolt and for the vision of society as a Gothic institution explicit in works such as Godwin’s <i>Things as they are; or, The Adventures of Caleb Williams</i>. Moreover, since family and society have degraded Clarissa into property, Lovelace’s idealization of her as property appears initially a relative improvement.</p>
+
+    <p>The treatment accorded Clarissa, as Leslie Fiedler has shown, can readily be viewed as a representation of the denial by the aristocracy of the rights and identity of her class. The conflict between her and Lovelace, with its warring systems of value, verges on political drama. Such a reading, however, risks distortion of the primary manners conflict between woman and hero. Richardson’s sense of Lovelace’s dilemma harks back to the confinement of heroic and absolutistic occupation within domestic tragedy: to a plot wherein Lovelace plays Iago to his own Othello; wherein he renders love as a physical possession and casts away a pearl worth more than his rakish tribe. Losing Clarissa, he loses the only true complement to himself and, anagogically, his chance for salvation.</p>
+
+    <div class="cita">
+        <p>All that the charmer of my heart shall say, that will I put down: every motion, every air of her beloved person, every look, will I try to describe; and when she is silent I will endeavor to tell thee her thoughts, either what they are, or what I would have them be—so that, having <i>her</i>, I shall never want a subject. Having lost her, my whole soul is a blank: the whole creation round me, the elements above, beneath, and everything I <i>behold</i> (for nothing can I <i>enjoy</i>), are a blank without her!</p>
+        <p>Oh, return, return, return, thou only charmer of my soul! Return to thy adoring Lovelace! What is the light, what the air, what the town, what the country, what’s anything, without thee? Light, air, joy, harmony, in my notion, are but parts of thee; and could they all be expressed in one word, that word would be CLARISSA.</p>
+        <p>O my beloved CLARISSA, return thou then; once more return to bless thy LOVELACE, who now, by the loss of thee, knows the value of the jewel he has slighted.</p>
+    </div>
+
+    <p>Possessive imperialism is scarcely abated in this grand equation of the woman once judged soulless with the soul of all creation Lovelace would rule. But the possession of Clarissa has supplanted the overreaching of warlike stratagems as his subject; his own notion has accorded infinite value to the trifle, the recalcitrant fact, she once was. She has become the tangible ideal, and as such is an apotheosized property—there is no question of class or of problematic womanhood. In the ranting pathos of his loss Lovelace emerges as the ancestor of those protagonists of romanticism who would transmute the material into the ideal—of those who turn to criminal rebellion because God is not to be possessed in His creations. Beyond Lovelace stand figures such as E. T. A. Hoffmann’s Don Juan, who</p>
+
+    <div class="cita">
+        <p>hoped to still, in love, the longing that burned in his heart. . . . Through the cunning of man’s hereditary enemy, the thought was planted in Don Juan’s soul that through love, through the pleasures of the flesh, there could be achieved on earth that which exists in our hearts as a heavenly promise only, and which amounts to just that longing for infinity that weds us to Heaven. Fleeing restlessly from one more beautiful woman to another . . . believing himself always deceived in his choice, hoping always to realize the ideal of ultimate satisfaction, the Don was doomed to find all earthly life dull and shallow in the end . . . he revolted against the delusion which at first had spelled the highest of life’s ambitions for him, only to betray him so bitterly at last. The enjoyment of woman no longer offered him any satisfaction of his sensuality, but had become an opportunity atrociously to outrage Nature and the Creator.</p>
+    </div>
+
+    <p>The transformation of the Don Juan into a Tristan <i>manqué</i> is the work of later generations. Lovelace may more appropriately be viewed as a perversion of the eighteenth-century premise of feeling: the substitution of emotional for rational values. <i>Clarissa</i> is at one and the same time the fictional source of a sentimental revolution and a largely pejorative examination of the implications of such a revolution. Richardson’s celebrated empathy with feminine premises and psychology is carried over into Lovelace, who joins the traditional emotionalism of women to masculine force. At the service of passion rather than reason, this force can be countered only by grace. As Clarissa writes <i>in articulo mortis</i> to the Reverend Doctor Lewen: “I have, through grace, triumphed over the deepest machinations. . . . The man whom once I could have loved, I have been enabled to despise: and shall not <i>charity</i> complete my triumph? And shall I not <i>enjoy</i> it? And where would be my triumph if he <i>deserved</i> my forgiveness? Poor man! He has had a loss in losing me! I have the pride to think so, because I think I know my own heart.” Having nearly completed her earthly purgation, Clarissa judges with the justified pride of Christian triumph; her charity is a refraction of God’s mercy to mankind. Charity is the divine idea nurtured by and adumbrated in terrestrial sentiment. And sentiment should be the complement of manliness such as Lovelace’s; virile force must be tempered by sentiment, which one critic [Harrison R. Steeves] defines as a “<i>consciousness</i> of feeling,” “a stimulated consciousness of emotion.” But Lovelace travesties the sentimental faith, derived out of Shaftesbury, that our feelings are functions of the Providential nature of things, that the issue of emotion will be benevolent. Within this faith, the motions of the feeling heart are continuous with spiritual reason. Clarissa cannot love in contradiction to her God-given “lights” because for her love and reason are in unison. Unfortunately, however, she is exemplary, not natural. And in the natural world the validation of emotion and feeling consequent upon the code of sentiment can unleash chaos and nightmare. Lovelace’s rampant feelings are wholly discontinuous with reason; the forceful male equivalent of what his century calls the female Quixote, he becomes monstrous.</p>
+
+    <p>The centrality of women and of psychological representation in <i>Clarissa</i> should not obscure Richardson’s allegiance to pure spiritual reason as opposed to mundane emotion, his ultimate concern with soul rather than character. The treatment of Anna Howe is intended to stress the flaws of merely natural psychology. Though in no sense evil, she is a creature of feelings—which often express themselves (as do Lovelace’s) in a gay and lively “wit”—and thereby a figure of potential disorder, a benign rebel against her duties as a daughter and a fiancée. She predicts the major tradition of democratic feminism in the novel, is a collateral ancestor of Dorothea Brooke and Isabel Archer. But Richardson is a Christian, not a democratic, feminist. Extravagance such as Miss Howe’s can threaten the hierarchy of order and duty upon which terrestrial life, however uncomfortably, must rely, and Clarissa’s repetitious chiding appears a reliable index of Richardson’s disapproval.</p>
+
+    <p>Anna Howe’s way is that of the world, while Clarissa’s distresses and final triumph point toward heaven. Her progress constitutes a type of theodicy. The evil of earth is countervailed by and must be understood from the vantage of her divine father’s house. But spiritual explanation leaves the grossness and ambiguity of mundane fact well behind. And it is this fact, with Lovelace as its example and explicator, that subsequent novelists tend to borrow and rework. Secure in his divine certitudes, Richardson plumbs deep indeed into earthly inversions, their psychologies and roles. Individual, problematic psychology, the delicate particularities of feeling, are the achievement of the novel but also the nemesis of its characters. Individual psychology is a blind to truth, a stumbling block to grace. Paradoxically for a work that opens the novelistic doors to the registration of feeling, the inner world appears a Pandora’s box. The issue of emotion sundered from grace is sensationalism; the seamy side of mere sensibility abuts on Gothicism.</p>
+
+    <p>Feeling unchecked mounts into a predominant passion, the monomania that intrigues so many eighteenth-century writers. The misdirection of the soul’s energies into such passion ultimately deprives both the monomaniac and his object, if human, of soul. Lovelace’s career describes this plot, illuminates the inevitable course, the suicidal or murderous fate, of unleashed emotion. He predicts not just the villains of worldliness and the criminal mechanists who debase the Enlightenment’s “<i>Système de la Nature</i>,” but also Goethe’s Young Werther and his numerous progeny. Unlike Lovelace, the foiled epic hero, Werther, of course, is an essentially passive, lyric figure. Yet when, under the impetus of Ossian, Werther’s yearning emotions rise to the threshold of action, they recall Lovelace’s warlike stratagems of feeling. In his delirious suicide letter, Werther proclaims: “You are mine, Lotte, forever. . . . Husband—that’s a word for this world, and for this world it’s a sin that I love you and would wrench you out of [your husband’s] arms into mine. A sin? Very well then, and I punish myself for it. I have tasted this sin in all its divine rapture, I have sucked its balm and strength into my heart. From now on you are mine—mine, Lotte!” It is only the hysteria of defeated yearning, of emotion shorn of tenable outlet, that leads to Werther’s suicide but also a maddened self-punishment for the sin of absolute possessiveness. Extreme feeling characteristically overturns any barriers blocking its object; that, in Goethe’s portrait, such feeling should turn against itself in punishment is an assumption of moral sentimentalism. Emotion transmogrified by frustration and released at the pitch of Werther’s last scene with Lotte may as plausibly turn against her, against all society, against God. The raving suicide letter dilutes but does not alter the basic implication of Lovelace’s crude delirium upon hearing of Clarissa’s death: “my ever-dear and beloved lady should be opened and embalmed. . . . her <i>heart</i>, to which I have such unquestionable pretensions . . . I <i>will</i> have. I will keep it in spirits. It shall never be out of my sight. . . . Whose was she living?—Whose is she dead, but mine? . . . Whose then can she be but mine?” Lovelace’s passionate imperialism is, to be sure, far from Werther’s desire to participate wholly and organically in nature. Yet both heroic activism displaced into feeling and a career premised upon the infinite fulfillment of lyric emotion verge on criminal depredation. In Goethe, the crime is forefended by suicide; in Richardson, the reverberations of the criminal nightmare are stilled by Clarissa’s heavenly triumph. Both works, however, suggest a black fission whereby sentiment is split: its spiritual element winging back to the empyrean; its human emotionalism, divested of right reason, bestially stalking earth.</p>
+
+    <p>Unlike Werther, Lovelace is for his creator an extreme and appalling extension of the character of an entire society, ultimately of the postlapsarian world. He is the estrangement of the energies of this world from grace, truth, and order. Clarissa, “looking steadfastly at the awful receptacle,” her coffin, can believe “that there is such a vast superiority of weight and importance in the thought of death, and its hoped-for happy consequences, that it in a manner annihilates all other considerations and concerns.” She has gone beyond mundane multidimensionality, transcended the disintegrative psychology created in man’s Fall. Lovelace, wholly bound by this psychology, is both more “natural” and, novelistically, more suggestive. Like Milton’s Satan, he incarnates his own hell. “As health turned its blithe side, and opened my prospects of recovery, all my old inclinations and appetites returned; and this letter, perhaps, will be a thorough conviction to thee that I <i>am</i> as wild a fellow as ever, or in the way to be so.” Not only is Lovelace at times majestically infernal, he is usually complexly so: for the hell he embodies is the terrible totality of the falsities, ambiguities, and disjunctions of the novelistic world Richardson dramatizes. He is a towering Babel of human potentialities, of builders’ blocks that can never be fit architecture, certainly never mount to heaven. He possesses the “vitality of a myth and the validity of a proverb tested on the pulses.” But the myth resides in the delimiting resonance of Comte’s contention that “society has become the only Divinity,” and the proverb leads to the dark sayings of such criminally wise figures as Balzac’s Vautrin. For later writers who have lost the faith and option of Richardson’s theocentric moralism, Lovelace can stand as typical rather than unique. His inverted and contorted vision becomes the norm of post-Providential, fallen omniscience.</p>
+
+    <section class="footnotes">
+        <h3>Note</h3>
+        <p>From <i>Texas Studies in Literature and Language</i> 14, no. 1 (Spring 1972). © 1972 by the University of Texas Press.</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>

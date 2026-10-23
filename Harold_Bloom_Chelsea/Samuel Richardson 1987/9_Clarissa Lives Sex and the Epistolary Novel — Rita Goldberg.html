@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clarissa Lives: Sex and the Epistolary Novel — Rita Goldberg</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p, .separador + p, .section-head + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+.section-head { margin: 3.2rem 0 1.6rem; text-align: center; font-size: 1rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--text-secondary); }
+.section-head::before, .section-head::after { content: ""; display: inline-block; width: 2rem; height: 1px; background: var(--border-color); vertical-align: middle; margin: 0 .8rem; }
+.epigrafe { margin: 2rem 0 1.5rem; text-align: center; font-style: italic; color: var(--text-secondary); font-size: .95rem; }
+.epigrafe .attribution { display: block; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .3rem; }
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">Rita Goldberg</p>
+        <h1 class="cab__tit">Clarissa Lives:<br>Sex and the Epistolary Novel</h1>
+    </header>
+
+    <p>Clarissa, then, has delivered herself into the hands of her complex and dangerous suitor, Lovelace. Once she leaves Harlowe Place, the interplay of plots, the confusion between authentic and manufactured identities, the counterpoint of voices, create such a dense fabric that any analysis leaves as much behind as it accounts for. If we were to make comparisons between <i>Clarissa</i> and other art forms, indeed, we could choose the opera, a genre which was of great interest to Diderot and Rousseau. What is lacking, however, is that staple of operatic menus, the lovers’ duet. There are quarrels in abundance between Clarissa and Lovelace, but only one occasion (the day before the rakes come to supper) when tenderness prevails on both sides. Even then, Clarissa only admits some affection for Lovelace, and that grudgingly, in a letter to Anna Howe. There are no direct confessions of true feeling between these troubled lovers. The area of actual contact between them is always a battlefield. Only after the skirmishes are over do they retreat and reflect on the reality and depth of their love (or hatred).</p>
+
+    <p>The few letters which <i>are</i> exchanged between the two protagonists are invariably misinterpreted. “Never was there such a pair of scribbling lovers as we,” remarks Lovelace in a letter to his confidant, John Belford, “yet perhaps whom it so much concerns to keep from each other what each other writes.” The most famous example of such a failure of communication is Lovelace’s misunderstanding of a letter which Clarissa sends him near the end of the novel. “Sir,” she writes,</p>
+
+    <div class="cita">
+        <p>I have good news to tell you. I am setting out with all diligence for my father’s house. I am bid to hope that he will receive his poor penitent with a goodness peculiar to himself; for I am overjoyed with the assurance of a thorough reconciliation, through the interposition of a dear, blessed friend whom I always loved and honoured.</p>
+    </div>
+
+    <p>Lovelace believes that the Harlowes have taken her back. Overjoyed, he exults in a letter to Belford about the happiness he will now enjoy with Clarissa. Belford, engaged in other matters, cannot enlighten him about the true state of things until very much later. Clarissa, of course, is referring to her imminent death: by “my father” she means God. She is thinking allegorically, as if she were only half present in the literal world.</p>
+
+    <p>We can compare this spiritual <i>double entendre</i> to the many examples of sexual <i>double entendre</i> which are so common in French novels of the same period. It is curious, after all, that a work which is so deeply concerned with sexuality has so little to do with romantic love. It has been commonly said that the gap between love and sex, and indeed between marriage and love, was far greater in the social life of upper-class Paris than it ever was in London, and there seems little reason to doubt the assertion. But if we turn to the novels of Diderot and, later, Laclos for confirmation of these social facts, we must also remember that they reveal as much about their literary origins as about their social environment. Diderot and Laclos had perhaps the deepest insights of any of their contemporaries except Rousseau into the Richardsonian world view. While Rousseau chose to amend the original vision by giving love an ascendancy over sex, Diderot and Laclos recognized that Richardson was exploring the assault on individuality through sex, and they took this notion to extremes that would probably have shocked the English novelist.</p>
+
+    <p><i>Clarissa</i>, then, would most likely make a bad opera because there are no love-scenes, no opportunities for harmonious reconciliation, in this merciless world of letters. This seems quite surprising when we think about letter-writing. Correspondence has been a favoured means of expressing and even enlarging romantic love; but it does not function in such a way in <i>Clarissa</i>. The epistolary technique, however, is enormously subtle, because it reflects the tensions in and the development of character under stress. One can take the changing attitude of John Belford as an example: he grows from a rather passive defender of Clarissa into her executor, and becomes the main source for an account of her death. It allows us to learn of subplots which parallel and illuminate the main action: the lively Anna Howe’s courtship by the dull but virtuous Hickman, for instance. Through it, we may be treated to several versions of the same events, so that we can know the true depth of Lovelace’s duplicity and of Clarissa’s innocence. Much has been made of the intimacy of the epistolary structure. We see the characters at their most “relaxed,” as it were, because they are writing to their closest friends, who are sometimes critical but never dismissive. But in another way, the epistolary structure also distances us. We learn of events at second hand; they are always being retold. Clarissa’s raving after the rape, for example, is recounted entirely by Lovelace. Here the epistolary style is used most advantageously. We can observe the counterpoint between Lovelace’s account of her behaviour and his own commentary upon it. The breakdown is a time of self-revelation for Clarissa. All the while we are aware of the irony in learning of these truths from the man who has brought Clarissa to them through his duplicity. The effect of the lengthy ellipsis is stunning: we are slowly led to realize the enormity of the rape through its repercussions. It is the great unmentionable, like a religious epiphany, and we are told what happened only after Clarissa has had the presence of mind to escape from the brothel for good. This long first “absence” prefigures Clarissa’s death: it is followed by a great deal of writing from her. When she grows too weak to continue, detailed accounts from Belford to Lovelace take over. After her death there is a flood of posthumous letters from her, while the novel ends with Lovelace’s death. In this way, her consciousness dominates the book.</p>
+
+    <p>But throughout the novel it has been a strangely disembodied consciousness, just as Lovelace’s has been. When we consider Richardson’s emphasis on the integrity of the person, it is odd that the active expression of the self through deeds carries relatively little weight. We are given direct access to thoughts and emotions, but not to events: it is as if plot were an outer shell, an encumbrance like Clarissa’s richly dressed suits, to be got rid of as soon as possible. This attention to the inner life seems extremely modern today, and helps, again, to explain the novel’s ineligibility for opera. There is very little spectacle, very little dialogue between the main figures. As Johnson said in a celebrated remark: “Why, Sir, if you were to read Richardson for the story, your impatience would be so much fretted that you would hang yourself. But you must read him for the sentiment, and consider the story as only giving occasion for the sentiment.”</p>
+
+    <p>On the other hand, the contortions of the plot certainly make for liveliness when they occur, but they depend largely on a misreading of one character by another. Lovelace can trick Clarissa into thinking that Tomlinson is a deliverer, and that the prostitutes are ladies, by playing on her ignorance of the world. But <i>we</i> are not allowed to be ignorant. We are coconspirators, and the moving principle is dramatic irony. The plot doesn’t function the way a thriller’s would, for example, and there are few surprises. Even Lovelace’s stratagems are literary or dramatic: we have impersonation, forged letters, tampering with correspondence, and <i>coups de théâtre</i> such as the escape from Harlowe Place or Lovelace’s appearance at Hampstead dressed as an old man, after Clarissa’s flight from Mother Sinclair’s and before the subsequent rape. They are not developed for or from the novel as such, the way they might be in Balzac, Dickens or Tolstoy. The social context and events in themselves have little meaning and no independent momentum. Even when the prostitutes have Clarissa arrested, the situation and language suggest that we are confronting something which is not so much a narrative event as a linguistic and moral one. In this case, it centres around one of the preoccupations in the novel: the proper sphere and content of Law.</p>
+
+    <p>From Clarissa’s point of view, criminality has little to do with conventional ideas about law. This ambiguity of definition is one of the great ironic currents in the novel. “The Law shall be all my resource: The Law, . . . The Law only shall be my refuge!” she cries, on the verge of suicide after the rape. It is quite clear that she is not referring to the law of the land, nor even to conventional religious notions of legality, since she is about to plunge a penknife into her heart. After all, she has refused to litigate with her father for the control of her estate (which would have granted her freedom from her family and from both her suitors); and she never consents to bringing charges against Lovelace. Shortly after her escape from him, she is arrested on false charges. The description of the scene of the arrest, as related by Belford to Lovelace, who has had nothing to do with this particular trick, is illuminating.</p>
+
+    <div class="cita">
+        <p>As she came out of the church, at the door fronting Bedford Street, the officers, stepping to her, whispered that they had an action against her.</p>
+        <p>She was terrified, trembled, and turned pale.</p>
+        <p><i>Action!</i> said she. What is that? I have committed <i>no bad action!</i> Lord bless me! men, what mean you?</p>
+        <p>That you are our prisoner, madam.</p>
+        <p><i>Prisoner</i>, sirs!—What—How—Why—What have I done?</p>
+        <p>You must go with us. Be pleased, madam, to step into this chair.</p>
+        <p>With <i>you!</i> With <i>men!</i> I am not used to go with <i>strange men!</i> Indeed you must excuse me!</p>
+        <p>We can’t excuse you: we are sheriff’s officers. We have a writ against you. You <i>must</i> go with us, and you shall know at whose suit.</p>
+    </div>
+
+    <p>This little scene, like so many others in the book, is full of precise detail. The officers meet Clarissa on the Bedford Street side of the church; she trembles and goes pale; every turn of dialogue is recorded. But it is also fraught with the quality of nightmare. For Clarissa, the encounter is an effect without a cause. She is being arrested without having committed a crime, without even a clue as to what she might be accused of. As in a dream, she misunderstands what the men are saying. Her <i>malentendu</i>, however, reveals another awareness: it serves to reinforce the strong sense of her own identity, made deeper by suffering. She is terrified, because she <i>does</i> have a secret, the rape, and she has no idea how much the sheriffs men know about her. We may look at part of the passage again: “the officers, stepping to her, whispered that they had an action against her . . . <i>Action!</i> said she. What is that? I have committed <i>no bad action!</i>”</p>
+
+    <p>Indeed she has not. Clarissa’s story is of a passion, in the Christian sense, which must be strongly distinguished from mere passivity. Like all moral passions of this kind, her suffering is purposeful, and offers a direct challenge to society. While we think of the Christian martyr as one who rejects the flesh in favour of the spirit, we have in Clarissa a heroine for whom the flesh is essential. It is true that she transcends earthly rewards in her death, but it is important to remember that the source of her spiritual triumph has all along been her insistence on the integrity of the person, body and spirit. It is this consciousness that gives her the courage to refuse Solmes, and that destroys any hopes for worldly happiness after the rape. In the passage under discussion, the men “have an action against her.” It is not difficult to see that by now Clarissa identifies men with action and action with evil. Hence her disbelieving reply: “Action? . . . I have committed <i>no bad action!</i>”</p>
+
+    <p>Here, the legal word “action” functions in several ways. It brings home to Clarissa the constant necessity of defining her own limits, of being clear in her mind that <i>she</i> is not guilty of the rape. But the men, by bringing an “action” against her, force her into the polar thinking which we have described. Men are active, but do not feel; women are feeling, but cannot act; therefore she cannot have committed a <i>bad action</i>. Action has become a sexual distinction, because all Clarissa’s experience of men shows that they cannot both feel and do. The brilliantly changeable Lovelace, champion of freethinking, is but the most extreme example.</p>
+
+    <p>If we continue further in our analysis we notice, of course, that the passage identifies “action,” which is both male and negative, with the law, which comes apparently out of nowhere to punish Clarissa. The charge has actually been brought by the prostitutes, who are women in complicity with men. This blurring of sexual roles has some importance in other contexts, particularly in connection with Diderot. But the significant point in this bit of dialogue is that the undertones tell us about Clarissa’s consciousness and the impressions that events (which are always secondary in importance to their human impact) make on it. Even her misinterpretations of the world are characteristic.</p>
+
+    <p>One can contrast this view of action (which takes its sexual form in the rape) with Ian Watt’s. “In the realm of action,” writes Watt, “the rape itself, when Clarissa is unconscious from opiates, may be regarded as the ultimate development of the idea of the feminine sexual role as one of passive suffering: it suggests that the animality of the male can only achieve its purpose when the woman’s spirit is absent.” This view, while a common one, is mistaken. Many critics and novelists have seen Clarissa in this way, and the trivializations that followed her <i>have</i> portrayed “the lass with the delicate air” (to borrow loosely a chapter heading from <i>Pamela’s Daughters</i>, that amusing book by Robert Utter and Gwendolyn Needham), for whom sex itself is the ultimate evil. But it is nonetheless curious that even so perceptive a critic as Watt has not seen that this novel centres on a rape, not on conventional expressions of sexuality. Faced with this particular violation, many readers seem to lose their literary alertness. Instead of seeing the rape as a kind of murder of the identity for which the sexual aspect is only a metaphor, they are reduced to conventional phrases about female masochism and sexual passivity, as Watt is later in the same passage.</p>
+
+    <p>But Watt has touched on the deep mythological structure in <i>Clarissa</i> (indeed, it is difficult not to do so, since it informs the text at every point). The male world in <i>Clarissa</i> is seen as potentially criminal, though individual men are not necessarily evil. We can reflect, however, that even the wise and decent cousin Morden becomes a duellist and a murderer, though he deliberately breaks his promise to the dying Clarissa to do so. At the least, one may conclude from a reading of <i>Clarissa</i> that the institutions which men have created are powerful, and therefore not to be trusted by their victims, who are usually women. Indeed, the very scantiness of energetic action and its consequences.</p>
+
+    <p>We can again consider Clarissa’s reluctance to litigate with her father for her estate, which would give her independence, or to bring Lovelace to court for rape. Lovelace plays upon this ambivalence in Clarissa and knows that she will never bring suit against him. Indeed, even before Clarissa’s rape (which has already been planned and is included in his exalted reverie) he fantasizes about raping Anna Howe, whose letters he has been intercepting, and even Anna’s mother. He includes his band of four rakish friends in the enterprise, describes in detail what the rapes would be like, and goes on to consider the consequences:</p>
+
+    <div class="cita">
+        <p>Well, but shall we not be in danger of being hanged for three such enormous rapes . . .?</p>
+        <p>Yes, to be sure, when caught. But is there any likelihood of that? Besides, have we not been in danger before now for worse facts? and what is there in being in <i>danger?</i> If we actually were to appear in open day in England before matters are made up, there will be greater likelihood that these women will <i>not</i> prosecute than that they <i>will.</i>—For my own part, I should wish they <i>may.</i> Would not a brave fellow choose to appear in court to such an arraignment, confronting women who would do credit to his attempt? The country is more merciful in <i>these</i> cases than in <i>any others:</i> I should therefore like to put myself upon my country.</p>
+    </div>
+
+    <p>If caught, he continues, he would turn the trial into a triumphant occasion. He compares himself to a public figure, a general mayor, or ambassador, and ends the elaborate description complacently:</p>
+
+    <div class="cita">
+        <p>Then we shall be praised—even the judges, and the whole crowded bench, will acquit us in their hearts; and every single man wish he had been me!—the women, all the time, disclaiming prosecution, were the case to be their own. To be sure, Belford, the sufferers cannot put half so good a face upon the matter as we. . . . Well, but suppose, after all, we are convicted; what have we to do, but in time make over our estates, that the sheriffs may not revel in our spoils? There is no fear of being hanged for such a crime as this, while we have <i>money</i> or <i>friends</i>. And suppose even the worst, that two or three were to die, have we not a chance, each of us, to escape? The devil’s in ’em, if they’ll hang five for ravishing three!</p>
+        <p>I know I shall get off for one—were it but for family sake: and being a handsome fellow, I shall have a dozen or two of young maidens, all dressed in white, go to court to beg my life. And what a pretty show they will make, with their white hoods, white gowns, white petticoats, white scarves, white gloves, kneeling for me, with their white handkerchiefs at their eyes, in two pretty rows, as his majesty walks through them and nods my pardon for their sakes!—And, if once pardoned, all is over: for, Jack, in a crime of this nature there lies no appeal, as in a murder.</p>
+    </div>
+
+    <p>Lovelace is, of course, justified in his confidence that the law—the law of the land, that is—would be on his side if Clarissa or Anna were ever to bring suit. In the eighteenth century as in the twentieth, it is the victim who is on trial when an accusation of rape is brought before a court of law. As we shall see, Richardson amplifies this insight in a variety of ways throughout the novel. But this passage is also typically Richardsonian in its use of a real social situation as a reflection, or perhaps even refraction, of a character’s imagination. The description expands from a hard-hearted perception of Lovelace’s legal position into an inflation of the external world in which the rake becomes a public figure, almost a god, accompanied by his vestal virgins, over whom only a king has authority.</p>
+
+    <p>Political comparisons abound in Lovelace’s letters. Tyrants, kings and generals from ancient history are often invoked. The real helplessness, in legal and social terms, of the women Lovelace encounters contributes greatly to his sense of his own power. But his power is exercised almost entirely in fantasy. The impulse to remake the world in the image of that fantasy breaks into actual deeds only now and then: the discarded plans, the almost hallucinatory exaltations, are evidence enough that an internal life only slightly enlarged by contact with real women is quite enough for Lovelace. He is no Robespierre: he is on the side of authority, and knows it to be his friend. It is quite striking that he has no political or military aspirations at all, unlike real-life eighteenth-century rakes such as John Wilkes. His dominion is internal. He is really a sportsman, like his aristocratic ancestors, but he stalks ideas and identities rather than the game-birds with which he so often compares his female prey. The imperial parallels which he frequently draws remind us of the society and tradition which support and affirm him.</p>
+
+    <p>Clarissa may therefore be looked upon, with reason, as the perpetual victim, the unjustly accused political prisoner in a male world where rapists and the rapacious alike go free. Clarissa’s crime, if it could be called such, is her unwillingness to go against an inner principle of wholeness. Anna Howe points this out early in the novel (and Clarissa’s awareness of her own integrity remains a constant topic in the correspondence). The famous passage in which Anna points out that virtue itself marks Clarissa off from her persecutors is a constant point of reference throughout the novel. Clarissa’s insistence upon chastity as a vehicle of integrity has perhaps led to her lack of popularity in our own century. Readers have tended to see her as a representative of the most unpleasant side of the Puritan ethic, that which treats women as property, and unwed deflowered girls as damaged goods (even though Clarissa herself makes numerous comments on the interaction of love and property relations). It is confusing that Clarissa was seen, even in her own time, as an apotheosis of womanhood: for us this blurs the clarity of her moral struggle. But in the novel she is singleminded, a person absolutely unable to compromise, whose will cannot be broken or even bent by anyone. Such behaviour hardly conforms to an ideal of female passivity.</p>
+
+    <section class="footnotes">
+        <h3>Note</h3>
+        <p>From <i>Sex and Enlightenment: Women in Richardson and Diderot</i>. © 1984 by Cambridge University Press.</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>

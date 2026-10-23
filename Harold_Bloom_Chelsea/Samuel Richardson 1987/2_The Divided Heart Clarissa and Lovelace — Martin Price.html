@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Divided Heart: Clarissa and Lovelace — Martin Price</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p, .separador + p, .section-head + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+.section-head { margin: 3.2rem 0 1.6rem; text-align: center; font-size: 1rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--text-secondary); }
+.section-head::before, .section-head::after { content: ""; display: inline-block; width: 2rem; height: 1px; background: var(--border-color); vertical-align: middle; margin: 0 .8rem; }
+.epigrafe { margin: 2rem 0 1.5rem; text-align: center; font-style: italic; color: var(--text-secondary); font-size: .95rem; }
+.epigrafe .attribution { display: block; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .3rem; }
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">Martin Price</p>
+        <h1 class="cab__tit">The Divided Heart:<br><i>Clarissa</i> and Lovelace</h1>
+    </header>
+
+    <p>In Samuel Richardson’s <i>Clarissa</i> (1748) the theme of the divided heart—or in Clarissa’s own phrase, the “unexamined heart”—is given formal rigor and tragic consequences. Clarissa’s elevation of spirit arouses fear and jealousy in her family; and, as the Harlowes impose their will more and more cruelly, Clarissa finds herself drawn to Lovelace. Her desires to reclaim his faulty nature and to escape her family combine to make her Lovelace’s victim. Once he has raped her, she puts beneath consideration all earthly solutions to her plight. She chooses to die, to become the bride of Christ; and her coffin becomes her marriage bed.</p>
+
+    <p>Lovelace is trapped by Clarissa in turn. He is a libertine who cannot endure the hindering of his will; he needs to control and subdue others, and he finds tremendous, almost sexual, pleasure in deceit and disguise. Yet there is an element of self-hatred in Lovelace, too, that attracts him to virtue. He must disprove its existence or be conquered by it, and he hardly knows which he wishes the more. The appeal of Clarissa is precisely her power to resist, and thus to conquer him; but he must test her to the utmost. If he can have her on his own terms, he will have preserved his old identity and shown up the claims of a higher order. If he is conquered by her, he will find a new identity; and it is clear that he half hopes this may happen. But the rape destroys both possibilities; in taking Clarissa by force, he has not conquered her will, and his effort to resolve the problem by offering her marriage only wins her scorn.</p>
+
+    <p>After the rape, Clarissa moves toward sainthood, and Lovelace discovers the emptiness of his satanism. She is now hopelessly “above” him. The orders of being have been completely sundered, and there is no possible reconciliation. The power of the book comes of the terrible force that each of these two characters exerts on the other. Each makes the other a supreme instance of a moral type. They are led to absolute self-assertion, and they “stand in contrast,” as Alan D. McKillop puts it, “to many of the surrounding characters who are bogged down in convention and give automatic responses, facile and superficial answers to the questions that beset the principals” (<i>The Early Masters of English Fiction</i>).</p>
+
+    <p>Lovelace is one of the great characters of English fiction, and we can begin to understand him by looking back to the Restoration heroes. “Lovelace inherits the cynicism and the fluency of the fashionable libertine of Restoration comedy,” McKillop observes. “But he is also the superman of the heroic play; he has the lawless egotism common both to the heroes and the villains of the genre.” Dryden is Lovelace’s favorite poet, and he quotes from <i>The Conquest of Granada</i>, <i>Aureng-Zebe</i>, <i>Tyrannic Love</i>, and <i>Don Sebastian</i>. Like the Restoration heroes, Lovelace has a skeptical distrust of the false order that the world conspires to maintain. Like Almanzor or Dorax, he despises cant and hypocrisy. Of the Harlowes he writes: “<i>soul</i>! did I say—there is not a soul among them but my charmer’s.” His difficulties with them arise from his refusal to be “a sly sinner, an hypocrite.” He scorns those “<i>tame spirits</i> which value themselves upon reputation, and are held within the skirts of the law by political considerations only.” When he defends his conduct against his converted and repentant friend, Belford, he can point to the way of the world:</p>
+
+    <div class="cita">
+        <p>Out upon me for an unpolitic wretch! I have not the art of the least artful of any of your Christian princes, who every day are guilty of ten times worse breaches of faith: and yet, issuing out a manifesto, they wipe their mouths, and go on from infraction to infraction; commit devastation upon devastation; and destroy—for their glory! And are rewarded with the names of <i>conquerors</i>, and are dubbed <i>Le Grand</i>; praised, and even deified, by orators and poets, for their butcheries and depredations.</p>
+    </div>
+
+    <p>One need not take Lovelace’s protestations at face value, but one must recognize an aspect of generosity in his defiant boldness. He is a liberal landlord who refuses to rack his tenants. He spends money lavishly, but never to the point of losing his independence of his family. He and Belford, even as libertines, recognize “the noble simplicity, and natural ease and dignity,” of the Scriptures, and Lovelace finds scriptural quotations in the works of modern authors who seek to appropriate them “like a rich vein of golden ore which runs through baser metals.” There are moral grounds, in short, for Lovelace’s disdain of conventional respectability. Is he worse in his treatment of Clarissa than was “the <i>pious</i> Aeneas” in his behavior to Dido? Or the good Protestant Elizabeth in her behavior to Mary of Scotland? “Come, come, Belford,” he concludes, “I am <i>comparatively</i> a very innocent man.”</p>
+
+    <p>Much of this is pretext and self-justification, but by no means all. Like many libertines Lovelace has an impossible standard of goodness. When he cites Mandeville, he refers to him as his “worthy friend”; and, like Mandeville, he makes the idea of virtue so remote and unattainable that men must despair of achieving it. But Lovelace is not so untroubled as Mandeville. While he glories in his contrivances and in his deception of Clarissa, he is still scarcely able to control his impulse to surrender to her. He snatches her hand and violently exclaims, “take me, take me to yourself; mould me as you please; I am wax in your hands; give me your own impression, and seal me for ever yours. We were born for each other! —you to make me happy, and save a soul—I am all error, all crime.” He boasts to Belford that this is all play-acting, that he played the role so intensely because he could scarcely control his passion at the time. But a few days later he finds himself proposing marriage “by an involuntary impulse, in defiance of premeditation, and of all his proud schemes.” Later, he looks at Clarissa’s tearful uplifted face and asks himself, “And can I be a villain to such an angel! —I hope not.”</p>
+
+    <p>As libertine, Lovelace is consistently naturalistic. He invokes a barnyard analogy to describe the lover: “he struts over her with an erected crest, and with an exulting chuck-a chuck-aw-aw-w, circling round her with dropped wings, sweeping the dust in humble courtship.” And while he dwells on his treatment of Clarissa as the taming of a caged bird, he invokes a larger view of natural cruelty, with Hobbesian overtones: “How usual a thing is it for women as well as men, without the least remorse, to ensnare, to cage, and torment, and even with burning knitting-needles to put out the eyes of the poor feathered songster” which “has more life than themselves (for a bird is all soul).” The cynicism with which Lovelace regards his fellow men (“Have I not often said <i>that human nature is a rogue</i>” betrays the bitterness of disappointment, even of moral outrage.</p>
+
+    <p>In his treatment of Clarissa, it is impossible to separate the sexual excitement Lovelace finds in her resistance from the moral excitement he finds in her virtue. He must prove to himself that she is only a woman, and women have never finally been able to resist him. But he senses the disaster that impends: “Why was such a woman as this thrown in my way, whose very fall will be her glory, and perhaps not only my shame, but my destruction?” And the torture increases. “By my soul, I cannot forgive her for her virtues! There is no bearing the consciousness of the infinite inferiority she charged me with. But why will she break from me, when good resolutions are taking place? The red-hot iron she refuses to strike—Oh, why will she suffer the yielding wax to harden?” When the pressure of her virtue becomes more than he can endure, Lovelace resorts once more to the reductive explanation: “ ’Tis pride, a greater pride than my own, that governs her.”</p>
+
+    <p>When, after the rape, Clarissa refuses marriage, Lovelace at last confronts what he has both yearned and feared to see: “Such irresistible proofs of the love of virtue for its own sake,” he tells her, “did I never hear of, nor meet with, in all my reading.” It is to this theme he constantly returns:</p>
+
+    <div class="cita">
+        <p>Oh, my damned incredulity! That, believing her to <i>be</i> a woman, I must hope to <i>find</i> her a woman! Oh, my incredulity that there could be such a virtue (virtue for <i>virtue’s</i> sake) in the sex, founded I my hope of succeeding with her.</p>
+    </div>
+
+    <p>Clarissa comes, at last, to accomplish her purpose of awakening him out of his “sensual dream.” He still fluctuates between the resurgent libertine, hectically defiant and skeptical, and the repentant worshiper, possessively trying to make Clarissa his own even after her death—“Clarissa Lovelace let me call her.” But he dies completely possessed by Clarissa, as much her captive as she had been his: “Look down, Blessed Spirit, look down!”</p>
+
+    <p>Lovelace’s pride and need to control others are only one aspect of his nature. The other is the vacuity his self-assertion and swagger have been used to conceal. The weakness of Lovelace’s pride (Clarissa has remarked on this) is made clear in the final scenes. “Oh the triumphant subduer,” he exclaims. “Ever above me! And now to leave me so infinitely below her!” He can examine his heart at last: “to bring her down from among the stars . . . that my wife, so greatly above me, might not despise me; this was one of my reptile motives, owing to my more reptile envy, and to my consciousness of inferiority to her!”</p>
+
+    <p>The character of Clarissa has been more fully explored by critics, and there has been growing agreement about the nature of Clarissa’s “unconscious duplicities.” We can never assume, Ian Watt points out, that any statement she makes “should be taken as the complete and literal truth.” Until “the book is half done . . . we are fully entitled to suspect Clarissa herself of not knowing her own feelings.” Or as Dr. Johnson put it, “There is always something which she prefers to truth.” If Richardson seems at times to deny this weakness in his heroine, we can invoke Leslie Fiedler’s formula: Richardson knows what she really feels “though he does not quite know he knows it.” The result of this “happy state of quasi-insight” is that Richardson “never falsifies the hidden motivations of his protagonists.” Certainly one feels that Richardson is more accurate than his rather prim consciousness might have been expected to permit.</p>
+
+    <p>Clarissa is clearly attracted by Lovelace, and for good reason. His generosity and recklessness are in marked contrast to the tight, ritualized, status-seeking regimen of the Harlowes. Even his intrigues, which show him in a shabbier aspect, make him the counterpart of a Restoration comic hero in a world of shoddy hypocrites more culpable than himself. In such a world, Clarissa tries to maintain independence and freedom of choice. But she herself is a person of strong will, who terrifies her mother and is capable of a measure of malice to her genuinely malicious sister. One discovers only gradually the full degree of Clarissa’s complicity in encouraging Lovelace’s clandestine letters. Her motives are not necessarily what they seem to herself. Her friend Anna Howe can recognize Clarissa’s incipient love for Lovelace before Clarissa is ready to face it. “Yet, my dear,” Anna writes, “don’t you find at your heart somewhat unusual make it go throb, throb, throb, as you read just here! If you do, don’t be ashamed to own it. It is your <i>generosity</i>, my love, that’s all.”</p>
+
+    <p>Clarissa’s “native generosity and greatness of mind” (as Anna Howe puts it), only stimulate the repressiveness of the Harlowes. The ugly and rich Solmes whom the Harlowes would force Clarissa to marry is their own counterpart:</p>
+
+    <div class="cita">
+        <p>Mr. Solmes appears to me (to all the world indeed) to have a very narrow mind and no great capacity: he is coarse and indelicate; as rough in his manners as in his person: he is not only narrow, but covetous; being possessed of great wealth, he enjoys it not; nor has the spirit to communicate to a distress of any kind. . . . Such a man as this, <i>love!</i> Yes, perhaps he may, my grandfather’s estate.</p>
+    </div>
+
+    <p>Clarissa becomes the victim of the materialism as well as the willfulness of the Harlowes; she is left no room for self-assertion except in flight. Lovelace vows that his only object is “to restore [her] to her own free will.”</p>
+
+    <p>The suffering of Clarissa becomes the cause of her greatness. She comes to recognize and acknowledge the feelings that have controlled her. Just as Lovelace is reveling in his successful deception of Clarissa, she is writing to Anna Howe of her trust in him and confessing her affection: “I think I could prefer him to all the men I ever knew, were he but to be always what he has been this day. You see how ready I am to own all you have charged me with, when I find myself out.” But in the fragments she writes in distraction after the rape, she strikes a deeper vein. To her sister, she writes:</p>
+
+    <div class="cita">
+        <p>I thought, poor proud wretch that I was, that what you said was owing to your envy.</p>
+        <p>I thought I could acquit my intention of any such vanity.</p>
+        <p>I was too secure in the knowledge I thought I had of my own heart.</p>
+        <p>My supposed advantages became a snare to me.</p>
+        <p>And what now is the end of all?</p>
+    </div>
+
+    <p>We are perhaps too eager today to see Clarissa accepting dark motives that have been hidden within her before. She does, certainly, acknowledge her pride and stubbornness of will as well as the appeal of Lovelace’s frankness and generosity. But what she most dramatically accepts is responsibility for what has happened. She refuses Lovelace’s offer of marriage, and she preserves her freedom now in the only way she can, by her readiness to die: “She who fears not death is not to be intimidated into a meanness unworthy of her heart and principles!” “The man whom once I could have loved, I have been enabled to despise,” she writes. “My will is unviolated.” She has won through to integrity: “No credulity, no weakness, no want of vigilance, have I to reproach myself with. I have, with grace, triumphed over the deepest machinations.” As Lovelace puts it, “has not her triumph over me, from first to last, been infinitely greater than her sufferings from me?” Her triumph is completed, however, not with despising Lovelace but with forgiving him. It is a generous forgiveness in which she acknowledges once more that she “could have loved him.”</p>
+
+    <p>There is a danger, in reading Richardson, of allowing facile sophistication to displace more essential awareness. Richardson, like Defoe, seems a writer whose sensibility outruns his conscious art, and it is tempting to impose our own clearer designs upon what he has produced. Several critics have turned his novel into a great Puritan myth of love, as if we were to encounter, in Clarissa and Lovelace, after a long journey through time, the great ancestors. To do this is to import into the novel an historical awareness that may be enormously compelling, as it is in Leslie Fiedler’s discussion, but that tends to obscure the response the novel demands in its own terms. We may prefer our historical myth to the novel Richardson wrote, but we should know we are making a choice. And I am not sure that it is the right choice.</p>
+
+    <p>The ambiguous motivations of Richardson’s characters are the stuff of which tragedy is made, and we must respect this tragic possibility. Is it more apt to say that Clarissa “courts sexual violation as well as death” than to say that an Oedipal Hamlet courts failure as well as death? Perhaps. Richardson is no Shakespeare. Yet the evidence for Clarissa’s unconscious desires looks more impressive when it is collected in lists of stock symbols than it does when it is examined in context. Again and again we have the savage irony of Clarissa’s defense of her freedom exciting Lovelace’s possessive desire. It is Lovelace who brings a febrile sexuality to the scenes he describes:</p>
+
+    <div class="cita">
+        <p>she wildly slapped my hands; but with such a sweet passionate air, her bosom heaving and throbbing as she looked up to me, that although I was most sincerely enraged, I could with transport have pressed her to mine.</p>
+    </div>
+
+    <p>This moment follows upon the notorious passage where Clarissa asks for death: “Then, baring, with a still more frantic violence, part of her enchanting neck, Here, here, said the soul-harrowing beauty, let thy pointed mercy enter.”</p>
+
+    <p>Clarissa, six days after the rape, has just tried to escape from the brothel where Lovelace is holding her prisoner. He has seized her at the door and brought her back, “choked with grief and disappointment.” Richardson has the dramatic shrewdness to make her desperation take the form of sexual provocation for Lovelace, and the force of the scene seems to me divided if one makes Clarissa a counterpart of Pope’s Eloisa, a woman tempted by the very passions she is trying to fight. We must accept, with whatever difficulty, the fact that Clarissa, who at the outset was a robust and marriageable young woman of strong feelings, has begun the process of moving toward sainthood. She has accepted more than her share of guilt for making the abduction and the rape possible, and, having asserted an heroic degree of responsibility, she has begun the defense of her integrity that is the only expiation allowed her. McKillop has pointed out the importance in the last half of the novel of “isolation as an essential part of the tragedy of personality” (<i>Early Masters</i>).</p>
+
+    <p>Clarissa displays a certain artistry in improving the pathos of her final situation; but the pathos comes from the inability of either Lovelace or, more important for her, the Harlowes, to recognize her nature. She has been driven by the world about her into the purest realization of the order of charity. Except for Belford, there is no one to see what she has become. Lovelace is all too aware at intervals of her terrifying superiority, but he must bury this haunting awareness by explaining it away in natural terms. He even hopes that she has become pregnant so that nature will overcome her austere principles, “all her cant of <i>charity</i> and <i>charity</i>.” The Harlowes are locked up in the self-righteousness that is a nasty travesty of what Clarissa has genuinely attained. The loneliness of Clarissa’s condition cannot be overstressed. If she prepares herself as the bride of Christ we need not shake our heads with post-Freudian condescension; she is herself making clear the disjunction between kinds of love, between the order of charity and Lovelace’s order of the flesh or the Harlowes’ love of power.</p>
+
+    <p>Richardson holds surprisingly well to the balance between Clarissa’s triumph and her tragic catastrophe. One must think back to those protracted but intense scenes of family council, or to the confidences with Anna Howe, to recall how vividly Richardson has made Clarissa an actual personality. It is because she is so sharply presented in characteristic speech and gesture, strong in will and limited in self-awareness (far more limited than Anna Howe, and a forerunner of such later heroines as George Eliot’s Dorothea Brooke and Henry James’s Isabel Archer) that her emergence through suffering to sainthood seems a waste of powers as well as the discovery of new ones. Lovelace begins by regarding her quizzically, as a “charming frost-piece” and an exciting challenge. He ends in a state of absolute awe, with the dying word “Blessed.” Clarissa has ascended above the possibilities of earthly life, and Richardson uses figures like Anna Howe and Hickman to make clear the severity, even cruelty, of this ascent as well as its glory. (One may recall T. S. Eliot’s less successful treatment of a comparable instance, the bizarre martyrdom of Celia Coplestone in <i>The Cocktail Party</i>.)</p>
+
+    <p>Richardson has transformed highly particularized characters so that their dense and familiar social setting fades away in the course of the slow disclosure of consequences. The Harlowes and Lovelace represent a conflict of social classes, and Clarissa—like Polly Peachum—the rebellion of feeling against righteous bourgeois acquisitiveness. Unlike Polly, Clarissa is of divided mind; she still honors the filial relationship, even when her father has morally failed its demands. It is hard to make <i>Clarissa</i> into the great bible of the bourgeoisie; the sinister nature of middle-class success has never been more harshly presented than in the Harlowes.</p>
+
+    <p>Nor can we properly draw out of Clarissa’s defense of her integrity as a person a myth of bourgeois sexual morality. Dorothy Van Ghent has proposed that “Clarissa’s whiteness, her debility, and her death are correlatives of the sterilization of instinct and the impotence that are suggested as the desirable qualities of family and social life” (<i>The English Novel</i>). Leslie Fiedler has written brilliantly about those “secret scriptures” that the popular novel becomes, “holy books” in which “the Pure Young Girl replaces Christ as the savior, marriage becomes the equivalent of bliss eternal, and the seducer is the only Devil.” One can surely recognize the stereotypes that both critics trace back to their origins in Richardson, but the fact that they may have their origins there does not mean that they are what Richardson has created. Clarissa’s withdrawal into sainthood is not offered as the pattern of the good woman in the world. There is little reason to assume “sterilization of instinct” in the marriages of Anna Howe and Hickman or of Charlotte Montague and Belford. Richardson’s moralizing is oppressive, and he tends to displace charity into chastity; but the novel <i>Clarissa</i> succeeds in making charity its genuine concern and all else its “inescapable conditions.”</p>
+
+    <section class="footnotes">
+        <h3>Note</h3>
+        <p>From <i>To the Palace of Wisdom: Studies in Order and Energy from Dryden to Blake</i>. © 1964 by Martin Price. Southern Illinois University Press, 1964.</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>

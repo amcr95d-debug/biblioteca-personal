@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sir Charles Grandison: The Enlarged Family — Jean H. Hagstrum</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p, .separador + p, .section-head + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+.section-head { margin: 3.2rem 0 1.6rem; text-align: center; font-size: 1rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--text-secondary); }
+.section-head::before, .section-head::after { content: ""; display: inline-block; width: 2rem; height: 1px; background: var(--border-color); vertical-align: middle; margin: 0 .8rem; }
+.epigrafe { margin: 2rem 0 1.5rem; text-align: center; font-style: italic; color: var(--text-secondary); font-size: .95rem; }
+.epigrafe .attribution { display: block; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .3rem; }
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">Jean H. Hagstrum</p>
+        <h1 class="cab__tit">Sir Charles Grandison:<br><i>The Enlarged Family</i></h1>
+    </header>
+
+    <p>Richardson’s last novel is considerably better than can be easily imagined by those who have only heard about it. But admittedly it represents a falling off after <i>Clarissa</i>, just as <i>Amelia</i> is a decline from the heights of <i>Tom Jones</i>. The portrait of the ideal husband in <i>Sir Charles Grandison</i> (1753) followed two years after Fielding’s portrayal of the faithful and loving wife in <i>Amelia</i>, whose model of domestic loyalty is perhaps in the end more persuasive than Richardson’s paragon. But if the palm for aesthetics must go to Fielding, Richardson comes off with greater intellectual honors, for Amelia does not sparkle with the many intellectual, spiritual, moral, and political facets of Richardson’s diamond: Sir Charles is a modern Anglican knight of sensibility, more successful at disarming than destroying opponents, an early Broad Churchman hopeful of reconciling Englishmen and Italians, Anglicans and Catholics, Anglicans and Methodists. Despite broad, even international concerns, here as everywhere Richardson’s canvas is chiefly the domestic life. The centrally important relationships of the novel are those of Sir Charles: with the ingénue Emily, who, though only fourteen, loves the hero with passion; with Olivia, the violent and volatile black-haired beauty from Florence whose fierce temper forever obviates a union with the hero; with the lively sister Charlotte, a parallel figure to Anna Howe; with the Lady Clementina, an Italian beauty whom the English gentleman would have married had religious differences between reconciled; and supremely with Harriet Byron—a delicate, beautiful heroine with a fresh country skin and a set of the highest principles, whom Sir Charles, when he is free of all debts of honor, makes his wife in an ideal union.</p>
+
+    <p>We are on familiar ground, since many—perhaps most—of the ideas and ideals we have seen developing since the Restoration here attain their climax. The term “hero” is obsessively applied to a new kind of man, the pacifist Sir Charles, who has disciplined his naturally violent passions into a religiously and rationally controlled order. Cliché terms from the heroic plays are also applied to Harriet, who possesses greatness of soul, and to Clementina, who reveals the same quality when she shows herself able to renounce passion for principle, that is, adherence to her Roman Catholic faith and Italian nationality. Richardson’s novel thus represents a climax in the domestication of heroism, realizing nobility of action in the spheres of love, marriage, and quotidian duty. It is also a climax of sensibility in love and friendship; and tears are shed copiously and unashamedly not only by the heroine but also by the hero as their hearts unite and as they feel the warm presages of ultimate bodily copulation. Feeling, along with virtue, extends outward from the loving couple to their environment as they work toward uniting the good and redeeming the evil. Sir Charles’s Christian heroism is forever active in obstructing the cruel, providing for the needy, encouraging the defeated, enforcing prudence in domestic arrangements, reconciling former enemies. Above all, <i>Sir Charles Grandison</i> is the portrait of how a good marriage should be created and sustained. Marriage is an “awful rite,” yet for all its majestic solemnity it is not stoical but rests on love and even sexuality at its base. Sir Charles, as Harriet says of him, may make no “ostentatious pretension to religion” though he is unmistakably a Christian; but he does, somewhat ostentatiously, protest his susceptibility to physical love: “A susceptibility of the <i>passion called Love</i>, I condemn not as a fault; but the contrary. Your <i>brother</i>, Ladies (looking upon all three [the group includes Harriet, his adopted sister, who will become his wife]) is no Stoic.” Love must rise—need I say it?—far above the physical to the nobly spiritual; but in the calm of this novel, much more clearly than in the hectic world of <i>Clarissa</i>, Richardson makes crystal clear what I have assumed to be true everywhere in his thought and art, that the best love arises from physical attraction, grows with sympathy of mind, and achieves permanence only when two minds fully commit themselves to virtue and benevolence. Were not the excitements of sexuality placed well beneath the surface in this novel, it would be more widely read than it is now or has been in our century. But they exist and bubble underground like hidden springs. They make it clear that Richardson’s model for love is the Miltonic, fusing the physical and the spiritual, not the Platonic, rising above and so transcending sexuality.</p>
+
+    <p>Two aspects of Richardson’s treatment of love appear clearly in <i>Sir Charles Grandison</i> for the first time: the portrayal of love madness and the sense that true love is an extension of the familial. Clementina’s wits are temporarily disordered by her great love for Sir Charles and its frustration by her family and life in Italy. Richardson’s picture of love melancholy was greatly praised in the eighteenth century: Joseph Warton called it “deeply interesting,” rating it above the madness of Lear and that of Orestes in Euripedes. But to a modern it seems remote and enormously long in the portrayal, in part an abandonment of what Richardson does so brilliantly in “writing to the moment.” It is unredeemed by the psychological depth one finds elsewhere; and even the political-religious contrasts, though of some interest, are not realized graphically. Transalpine, Catholic life was outside Richardson’s ken—perhaps outside his sympathies, too (his index to the novel refers to “Men, Women, and Italians”); and though the laments of Lady Clementina have some lyrical beauty, they remain general and effusive, without redeeming particularity.</p>
+
+    <p>The presentation of the love of Harriet Byron and Sir Charles as an easy extension of the familial is successful and enormously suggestive to the student of English culture. Richardson continues his familiar polemic against parentally forced marriage and in favor of a child’s freedom to choose a partner. He desires reform of the family into a community of love in which personality can freely flower. He is clearly a prophet of that great modern social movement toward Lawrence Stone’s “affective individualism,” which Richardson not only preaches but embodies in plastic literary forms. The environment of virtuous love which he creates attains its serenity—even its relaxation, I might say—because laughter and tears are both present. Charlotte Grandison possesses real wit and liveliness of mind, and these qualities are not overcome by tragedy as those of Anna Howe are in the greater novel. Even newer habits of love and “bonding” can be treated with relaxed lightness: when Charles kisses Harriet on the lips, Charlotte cries out, “O Lud! O Lud! how could you bear him afterwards in your sight?” Tears are also a sign of personal rapport and goodness in action rather than tension, frustration, or fear. The lachrymose is called, with perhaps a slightly bemused touch, “kindly gush!” and it is regarded as divinely sanctioned: tears are “Dew drops of Heaven!”</p>
+
+    <p>A potentially darker side to the familial in this novel must be analyzed perhaps less for its own sake than for what it seems to prophesy about the future direction of love-sensibility. Richardson’s love fantasies in <i>Grandison</i> have been with some justice called polygamous. His paragon is loved fervently by at least four women, and the question of whom he will choose for a life partner is left decidedly open until very late in the action. And once the decision is made, the former rivals, with some severe obstacles remaining, cease being that and accept their several positions in a relation of tearful love to one another. But in the end “polygamy” is not the appropriate word for the enlarged family over which Sir Charles presides; his own perspective is fraternal: “Men and women are brothers and sisters.” Richardson was religious enough to believe in the family of man and to give new meaning to that concept in exploring the love relationship. The hero’s rescue of Harriet from the clutches of the rich, vain, hot-tempered, rakish Sir Hargrave Pollexfen brings her into the Grandison family, where she becomes virtually a sister. That role is thrust upon her, but she accepts it gladly. She is obviously in it when she falls in love with her rescuer, and it is from the position of a kind of father-brother that he woos her. His endearments are mixed with instruction, exemplary deeds, practical leadership; lover and head of family are not alternating but fully blended functions as the two move through courtship to marriage. Thus the “company of angels” Harriet falls into is a “family of love,” consisting of “true brothers and sisters,” and she will surely look upon the husbandly love that eventuates as simply an extension of “all the tenderness of a brother,” which her rescuer has been manifesting toward her ever since she joined the family. He also regards the relationship in that fashion: he obsessively calls her his new sister. Since Harriet was orphaned at the age of eight, one thinks back to Otway’s famous and influential play in which there is no blood relationship but the orphan has taken a place as a sister before the amorous action begins. Richardson knew Otway’s work well; but it must be said that <i>Sir Charles Grandison</i> is entirely lacking in the morbidity of <i>The Orphan</i>, even though the novel loosely repeats the play’s situation, though not its action, and certainly implies that close similarity, if not consanguinity, is a deep attraction. One reason that Clementina, for all her loveliness and piety, will not do as the hero’s wife is that she comes from afar—she is dark, Catholic, Italian. Harriet is an English “sister,” and the ceremony of marriage is preceded by what can be regarded as an antecedent ceremony—Sir Charles formally taking the orphan into his family. Richardson made of the brother-sister relation in the Grandison family—both the actual blood tie and the symbolic one—something noble, chivalric, and deeply sustaining, endowing it with all the respect and idealism he was prepared to accord to true heterosexual love. The dynamics of Richardsonian love must have been influential; perhaps unconsciously the pre-Romantic, Romantic, and Victorian sensibilities were attracted to the Grandison <i>ménage</i> precisely because it seemed to give so high a sanction to the indigenous and the similar.</p>
+
+    <p>And yet it would be wrong to exaggerate this quality in Richardson’s concept of love, which would be seriously distorted if morbidities were allowed to intrude. The novelist was in fact an enemy of the narcissistic and the inbred. He was careful to make the lesbianism of Mrs. Jewkes in <i>Pamela</i> completely odious, and in this novel his heroine turns away from the irregular embraces and kisses attempted by the violent and mannish Miss Barnevelt, who apparently admires unbaptized ancient heroes and makes us wonder if Richardson was anti-Greek partly because he saw sexual deviance in that culture. Richardson, it can be said rather dogmatically, is not consciously drawn to the abnormal. If anything, it is the forcefully heterosexual that attracts him. In <i>Sir Charles Grandison</i> the paragon has a “keeping” rakish father, who is nevertheless respected and obeyed, and a goatish and gouty uncle (a brother of Sir Charles’s saintly mother), for whom a wife is provided in the course of the novel in one of the hero’s redeeming actions. The hero is himself sexually attractive, with a delicate complexion, curling auburn locks, a manly stature and air, sparkling intelligence, and athletic prowess. This paragon has an eye for feminine beauty, and one of his greatest satisfactions arises from his having wooed and won “one of the most perfect beauties he had ever seen.” If one wishes to see clearly Richardson’s ideal of love, an ideal that perhaps did not change much in its essential features during his writing career, <i>Sir Charles Grandison</i> is an admirable source: as a novel of normality and daily life it is a corrective to the greater <i>Clarissa</i>, with the latter’s hectic evil passions and almost equally hectic transcendence of even good passions. The later novel enables us to see clearly that “transcendence,” not “denial,” is the proper word to describe the sanctification of Clarissa. In the love between Charles and Harriet we have passionate-virtuous love realized in the social sphere, much to its edification. Indeed, that love becomes an example of what could in fact transform mankind into a family and so obviate the drive toward death and the afterlife that so powerfully motivates Clarissa when her earthly love falls in ruin.</p>
+
+    <p>All of Richardson’s novels together enable us to see his achievement as one of the eighteenth-century climaxes in realizing the Miltonic ideal of friendship, love, and marriage and also the post-Edenic frustrations of that ideal. His range is as impressive as his penetration, and his entire treatment of love through all the novels is so encyclopedic that it is as much in need of an index as his last novel, which, like Pope’s <i>Iliad</i>, was provided with one as a convenient guide to its sentiments. What an exploration of the recesses of the heart is stimulated by a full and careful contemplation of the following relations: Pamela and Mr. B; Pamela and the coarse, bisexual Mrs. Jewkes; Clarissa and Lovelace; Clarissa and the squat, toadlike Solmes; Clarissa and her <i>sensible-fervent</i> friend Anna; Anna and her meek lover, Hickman; Clarissa and the reformed rake, Belford; Lovelace and Anna; Harriet and Charlotte; Sir Charles and each of his women; Sir Charles and Lady Clementina’s brother Jeronymo; Harriet and her other “sisters.” Even to give a partial list is to suggest the richness, the essential health, and the ambiguities: a richness that fulfills the adumbration of Lee, Otway, Dryden, Pope in <i>Eloisa</i>, Rowe, Steele, Lillo; a health that impressed Samuel Johnson, Jane Austen, and the Victorians; and the ambiguities that have titillated Gothicists, Romantics, and Freudians. Richardson, as decades of adverse criticism and neglect have shown, is not hard to dismiss or ignore. But, as our age has come to realize, to dismiss him for his surface conventionality is to dismiss one of the most richly nuanced psychological artists English literature has produced. It is a pity that the length of his works and the frequent piety of his tone make him unavailable to many. In a study of eighteenth-century love he will have to be regarded as a watershed.</p>
+
+    <section class="footnotes">
+        <h3>Note</h3>
+        <p>From <i>Sex and Sensibility: Ideal and Erotic Love from Milton to Mozart</i>. © 1980 by the University of Chicago. University of Chicago Press, 1980.</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Miracle of Love — Jina Politi</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p, .separador + p, .section-head + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+.section-head { margin: 3.2rem 0 1.6rem; text-align: center; font-size: 1rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--text-secondary); }
+.section-head::before, .section-head::after { content: ""; display: inline-block; width: 2rem; height: 1px; background: var(--border-color); vertical-align: middle; margin: 0 .8rem; }
+.epigrafe { margin: 2rem 0 1.5rem; text-align: center; font-style: italic; color: var(--text-secondary); font-size: .95rem; }
+.epigrafe .attribution { display: block; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .3rem; }
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">Jina Politi</p>
+        <h1 class="cab__tit">The Miracle of Love</h1>
+    </header>
+
+    <h2 class="section-head">I. Reward and “Reward”</h2>
+
+    <div class="epigrafe-inicial">
+        <p>I will now write to your question—whether there was an original ground-work of fact, for the general foundation of Pamela’s story. About twenty-five years ago, a gentleman with whom I was intimately acquainted . . . met with such a story as that of Pamela.</p>
+        <p class="attribution">(“To Aaron Hill,” <i>Selected Letters of Samuel Richardson</i>)</p>
+    </div>
+
+    <div class="epigrafe-inicial">
+        <p>But, my Friend, the whole narrative is such a Misrepresentation of Facts, such a perversion of Truth.</p>
+        <p class="attribution">(<i>An Apology for the Life of Mrs. Shamela Andrews</i>)</p>
+    </div>
+
+    <p>The Pamela controversy does not originate in a concern over the truth or falsity of the fact as such, but in a culture’s prepossessions as to what it is desirable to consider as probable and possible, and what as improbable and impossible. Anti-Pamelist critics were not out to defend an ideal aesthetic canon but a group’s notion of verisimilitude which rested on a theory of class-psychology. Fielding and the anti-Pamelists espoused as valid the image with which the ruling class operated in its dealings with the lower class, Richardson and the Pamelists were out to challenge these cultural prepossessions by arguing that human behaviour, whether of the upper or lower classes, was ultimately unanswerable to a higher order of morality that emanated from the inward man.</p>
+
+    <p>The controversy proper rests on extra-textural grounds. Fielding and Richardson, like Mr. B. and Pamela, the Deists and the Fundamentalists, used the same terms to mean very different things but there was no ambiguity in their minds as to what each one meant. The disagreement over the right meaning and use of ethical terms which generates conflict in <i>Pamela</i>, generates the controversy over <i>Pamela</i>. It also explains Richardson’s aversion to the morality of <i>Tom Jones</i>: “In the character of the weak, the insipid, the Runaway, the Inn-frequenting Sophia as in the character of her illegitimate Tom, there is nothing that very common persons may not attain to.”</p>
+
+    <p>Fielding’s criticism of the novel is based on the prepossession that disinterested morality, if practised at all, can only be practised by the leisured class. When a member of the lower classes appears to practise disinterested morality this can either be seen as “enthusiastic” religious lunacy, or as dissimulation at the service of self-interest. Fielding sees Pamela motivated by both these attitudes and his suggestion for a proper reading of the novel is: before every account which Pamela gives of her actions and reactions insert the words “I pretended.” By this simple device Pamela is transformed into Shamela and the novel into a tale of intrigue. Had Pamela not been a servant girl but a young lady of quality, no one would have questioned her intentions and there would have been no anti-Pamelist criticism. The Gothic Novel, however, would have had a premature birth.</p>
+
+    <p>That the controversy was not over aesthetic but over class prejudice and role allocation is made evident in the sequel to <i>Pamela</i>. Richardson, under pressure, conceded to the opponent. Mrs. Pamela B. makes it ever so clear to her maid Polly not to harbour any illusions as to Lord H.’s intentions. In this life, saints are saints, maids are maids, and lords are lords.</p>
+
+    <p>Had Richardson not cast his title in the form of an alternation and had left out the “Or Virtue Rewarded,” the controversy may have been less heated. But this title seemed like a deliberate challenge. Virtue and its rewards, vice and its punishments, as was briefly discussed in chapter three, were the occasion of great disputes at the time. The anti-Pamelists saw “virtue” functioning as a synonym for Pamela and thus reduced virtue to a specific name. Like the Deists, they argued that virtue should be its own reward. If virtue ceased being disinterested and became goal-directed, it lost its moral quality and acquired something of the character of hypocrisy. Pamela’s duplicity lay in the fact that she practised virtue not for its future heavenly rewards (even this expectation was judged by the Deists to be reprehensible) but for immediate, temporal gains at the expense of a foolish young man. Although the doctrine of virtue for virtue’s sake seemed a higher system of morality than that of punishments and rewards, actually, it hit at the root of religious eschatology and undermined belief in the Christian plot of fall and redemption.</p>
+
+    <p>If “virtue” is seen as a specific name, “reward” is narrowly interpreted to mean, as in the language of trade, Pamela’s socioeconomic triumph. However, as in the Bible, the term “reward” occurs frequently in the novel and is used by different characters to mean different things. It is these different and often contradictory uses of ethical terms such as reward, virtue, duty, honour, justice, that generate conflict and stasis in the novel. Once the characters come to share meanings, conflict is resolved and harmony established.</p>
+
+    <p>If “virtue” is seen to function generically then “reward” does not attach only to Pamela. It will be noticed that all the characters are in the end rewarded. Pamela’s reward is of less significance precisely because it is temporal. But Mr. B.’s conversion from an agent of darkness to an agent of light, in fact a whole society’s emergence into a world of light, is virtue’s great and proper reward. Pamela may have risen in the social scale, but Mr. B. rose from hell to heaven.</p>
+
+    <p>The conceptual structure in <i>Pamela</i>, as in <i>Tom Jones</i>, is strictly dualistic. It postulates two independent, antagonistic principles, good and evil, whose cosmic strife generates human plots with a teleological structure. Both novels, by analogy, are imitations of the Christian plot which posits a happy outcome at the end of time and the eternal reign of light and love. Both world-models presuppose the active participation in the affairs of mankind of a divine providence. Fielding’s imitation of the Christian myth is enlightened and urbane and his primary interest is to draw the analogy with the world of manners. Richardson’s imitation is mystical and a-social and his primary interest is to draw the analogy with the inward man. Their difference lies in the fact that Fielding’s world model is worldly while Richardson’s other-worldly: “An <i>outward Morality</i>, a <i>Decency</i> and <i>Beauty</i> of Life and Conduct with respect to this world, arising only from a <i>Worldly Spirit</i> has nothing of salvation in it. He that has his <i>Virtue</i> only from this world, is only a <i>Trader</i> of this world” (William Law, <i>An Appeal to all that Doubt, or Disbelieve The Truths of the Gospel</i>). This was the criticism which the Fundamentalists directed against a morality of decorum and prudence.</p>
+
+    <p>Once the obvious point about the dualistic structure of <i>Pamela</i> is accepted it becomes by definition impossible to justify an anti-Pamelist reading. For, either one has to suppress the religious and literary tradition upon which the novel is so explicitly modelled, or, like Fielding, one has to subvert the roles and see Mr. B. as angel and Pamela as temptress. But surely this is pure sophistry since it is Mr. B., like Blifil, who disrupts concord and order to satisfy his wicked desires. Like Master Blifil, Mr. B. is unaware of the fact that the plot originates in an otherworldly region and that, paradoxically, he functions as the instrument for advancing the cause of virtue.</p>
+
+    <p>Fielding’s epilogue to <i>Tom Jones</i> gives us a valuable clue for explaining his anti-Pamelism, a clue which can serve as evidence that the reasons were topical and extratextual. In the light of this evidence, modern anti-Pamelist readings may appear as imitative elaborations of Fielding’s biased reading and hence groundless. Unless we are to accept that these ideological differences on class and religious belief are so deeply embedded in the culture that after two centuries they can still generate similar responses.</p>
+
+    <p>At the conclusion of <i>Tom Jones</i>, in the summary given to the reader concerning the future of the characters, we read the following about Blifil: “He is also lately turned Methodist, in hopes of marrying a very rich Widow of that Sect.” Fielding’s prejudice speaks for itself. Pamela’s fervent, sometimes hysterical, naively articulated faith smacked of “methodism” to Fielding. The label sufficed to generate the type. Fielding, to save himself from the accusation of a biased reading, very ingeniously made Parson Oliver the anti-Pamelist spokesman in <i>Shamela</i> and Parson Tickletext the Pamelist one. Both names have nonconformist connotations since an “Oliverian” meant a Puritan and “Tickletext” could be interpreted as either one who is tickled by the text <i>Pamela</i>, or one who teases the text, i.e., a “textualist,” “one learned in the text of the Bible; one who adheres strictly to, and bases his doctrine upon, the text of the scriptures.” If two nonconformists disagreed about Pamela, then surely the fault lay in her character and not in the reader’s mind.</p>
+
+    <p>Neither Richardson nor Fielding were interested in composing religious allegories. For both, the primary aim of fiction was probability and it is for this reason that their mind models are made complex and the characters not represented as pure, ideal types. Therefore, to see Pamela’s hesitations, fears, decisions and choices, her human failings and natural responses, in other words, to see all those character traits that make her be Pamela and not disembodied Virtue as proofs of her duplicity, is to accuse Richardson for writing a novel and not a morality play. If Fielding is dubious about the sincerity of a servant girl’s motives and accuses Richardson on the grounds of improbability, one may accuse Fielding of the same failing by arguing that he invents plot to confound fact.</p>
+
+    <p>Richardson’s <i>Pamela, or Virtue Rewarded</i>, is an expression in fiction of the reaction against the rational and pragmatic tendencies of the Age which were reducing God to a mechanic, the world to a machine, and the language of morality to the language of trade. It is also expressive of a desire to preserve alive for the culture a religious and ethical ideology which had its roots deep in mysticism and hence could not be easily eroded by being modernised. Richardson’s opposition to Deism is expressed in his letters, in the third part of <i>The Apprentice’s Vade Mecum</i>, and in his refusal to print for the Deists. That he printed the works of his nonconformist friend John Leland, one of their severest critics, is not without significance; that he printed works of the mystical divine William Law shows not only where Richardson’s inclinations lay, but what was the source from which he drew inspiration for the conceptual structure of his novels.</p>
+
+    <h2 class="section-head">II. The Vanity of Time</h2>
+
+    <p>In the small county of Bedfordshire between a master and his servant the cosmic drama of the clash of good and evil is enacted. Like the unfortunate princess in medieval iconography, Virtue chained is at the mercy of the fierce dragon. St. George (Parson Williams) will not be the deliverer. As in Uccello’s version, gentle Virtue at last subdues the beast and makes it follow her on the chain. All evil ultimately serves good and works for its triumph:</p>
+
+    <div class="cita" style="font-style: normal;">
+        <p>All the Evils of Contrariety and Disorder in fallen Nature are only as so many Materials, in the Hands of infinite Love and Wisdom, all made to work in their different Ways, as far as is possible, to one and the same End, <i>viz.</i> to turn temporal Evil into eternal Good.</p>
+        <p class="attribution">(Law, <i>The Spirit of Love</i>)</p>
+    </div>
+
+    <p>Richardson’s world is the world of fallen nature. Nature is not a system of immutable laws whose discovery reveals to man God’s infinite, scientific wisdom, but a restless world torn by internal strife and disorder, labouring to transcend its sinful temporality and regain eternity in the bosom of God’s “abyssal” love:</p>
+
+    <div class="cita" style="font-style: normal;">
+        <p>The Elements of this World stand in great <i>Strife</i> and Contrariety, and yet in great Desire of <i>mixing</i> and <i>uniting</i> with each other; and hence arises both the <i>Life</i> and <i>Death</i> of all Temporal Things. And hereby we plainly know that the Elements of this World were once <i>one undivided</i> Thing; for union can <i>nowhere</i> be desir’d, but where there has first been a <i>separation</i>.</p>
+        <p class="attribution">(Law, <i>An Appeal</i>)</p>
+    </div>
+
+    <p>Good and evil are not propensities in man’s disposition which can be governed by the light of reason, but the very principles of temporal existence which inhere in nature, man, beast and plant:</p>
+
+    <div class="cita" style="font-style: normal;">
+        <p>The Elementary Nature <i>in</i> Man and Beasts, was in the <i>same</i> Disorder with the <i>outward</i> Elements and Stars. . . . For the Elements <i>in</i> and <i>without</i> man were of the same Nature, and therefore acted upon one another.</p>
+        <p class="attribution">(Law, <i>The Grounds and Reasons of Christian Regeneration</i>)</p>
+    </div>
+
+    <p>As male and female, Mr. B. and Pamela are the two terms in an opposition. But the fundamental opposition of wrath and love is to be found separately in each of them, though the mixture of the hostile elements varies in their natures. Their strife, inward and outward, conceals the cosmic yearning for union, the overcoming of separation which can be brought about by the death of the old, wrathful self, and the birth, through repentance, of the new, loving self. The mediating principle that inspires these regenerations is not reason but the divine spirit of love: “<i>Amor si dolce mi si fa sentire.</i>”</p>
+
+    <p>Mystical thought accepts temporal nature in all its gross materiality as it accepts saintliness in all its angelic spirituality. It does not suppress the realities and passions of flesh and blood, or the raptures of beatific wonder for the sake of an enlightened humanism. Its language, unlike the language of reason, is not abstract and refined, but concrete and sensuous. Richardson’s psychological realism has its roots in mysticism which stressed the inward man.</p>
+
+    <p><i>Pamela</i> begins with a series of letters exchanged between a servant girl and her parents. The letters of Goodman Andrews, though few, are of extreme importance because they do not form part of Pamela’s point of view. It is the beliefs and attitudes expressed in these letters, rather than Pamela’s virtue, that generate the novel’s dualistic structure and indicate the manner of its development:</p>
+
+    <div class="cita" style="font-style: normal;">
+        <p>I, too, have written a long Letter: but will say one Thing more, and that is, That in the midst of our Poverty and Misfortunes, we have trusted in God’s Goodness, and been honest, and doubt not to be happy hereafter, if we continue to be good: tho’ our Lot is hard here.</p>
+    </div>
+
+    <p>The “hereafter” for Goodman Andrews is the fundamental condition of existence and therefore ever-present in man. The “here” is a transitory state where “the whole Creation is travelling in Pain and Laborious Working, to be deliver’d from the <i>Vanity of Time</i>” (<i>An Appeal</i>).</p>
+
+    <p>Pamela’s beliefs concerning the master of our temporal existence are in direct opposition to Mr. B.’s:</p>
+
+    <div class="cita" style="font-style: normal;">
+        <p>Surely your Honour ought to be more afraid of God Almighty, in whose Presence we all stand in every Action of our Lives, and to whom the greatest, as well as the least, must be accountable, let them think what they list. . . . Well, Well, <i>Pamela</i>, said he, no more of this unfashionable Jargon.</p>
+    </div>
+
+    <p>Goodman Andrews’s tone is one of humility and resignation to the will of God, whereas Pamela’s betrays an element of pride. Goodman Andrews emphasises God’s goodness, Pamela his stern, equalitarian justice. To Mr. B., all this is “unfashionable jargon” because he situates himself in historical time and accepts it as the only reality. The “hereafter” is to him a discarded metaphysical system which had no foundation in empirical fact. Mr. B. expresses himself like an eighteenth-century atheist, a young man of progressive ideas who considers that beliefs and the language expressing them are subject to the laws of change.</p>
+
+    <p>Both Pamela and Mr. B. are very young to have tested their ideas by experience. Their stubbornness and rigidity, as advocates of two opposed systems of morals, seem more like an exercise in self-persuasion than a debate. When left to their thoughts, or led to a proof of their beliefs in action, they waver in youthful confusion—witness Mr. B.’s unsuccessful attempts at rape and Pamela’s at escape. The action of the novel will centre around the testing of these beliefs. Experience and disputation will lead Pamela to a realisation that humility is a prerequisite to virtue, and Mr. B. to an inward assent to all the tenets of “unfashionable jargon.”</p>
+
+    <p>It is not only the wicked characters that undergo a regeneration in the novel. Pamela’s white angel may be carrying on a fight with Mr. B.’s black one, but Pamela’s black angel is not sitting still. Pamela is not exempt from inward strife and pride. Self, William Law maintained, was responsible for all the “Disorder and Corruption, and Malady of our Nature.” When the novel begins, Pamela is far from “the Sacrifice and Destruction of <i>all Selfishness</i>, as well spiritual as natural that must be made before our regeneration hath its perfect Work.” If the hysterical, fanatical protection of her virtue seems at times unconvincing, this is not because Pamela is a hypocritical, calculating little schemer, but because:</p>
+
+    <div class="cita" style="font-style: normal;">
+        <p>In all this Shew and Glitter of Virtue, there is an <i>unpurified Bottom</i> on which [these virtues] stand, there is a <i>selfishness</i>, which can no more enter in to the Kingdom of Heaven, than the Grossness of Flesh and Blood can enter into it.</p>
+        <p class="attribution">(Law, <i>Christian Regeneration</i>)</p>
+    </div>
+
+    <p>This theme of the overcoming of self which in <i>Pamela</i> brings to the characters the rewards of a happy life in temporal nature, informs the tragedy of <i>Clarissa</i>, whose purification eradicates “the <i>deepest root</i> of all selfishness” and leads her to that saintly state of humility, which is “the <i>most absolute Resignation</i> of our whole selves unto God.”</p>
+
+    <p>Goodman Andrews, therefore, indicates the difficult path to humility which virtue has to tread before she can claim her rewards: “O my Child! Temptations are sore things; but yet without them, we know not ourselves, nor what we are able to do.” Goodman Andrews cautions his daughter of the dangers of pride and admonishes her that “it may be too presumptuous to trust too much to [her] own strength.” Richardson avoids the tragic tone in the representation of the rape scenes because he wished to stress the physical conflict of two proud, warring wills. Pamela will never reach Clarissa’s state of moral excellence. She is not opposing spirit to corrupt matter, but a higher passion to a lower passion.</p>
+
+    <p>The stark, matter-of-fact representations have led, quite erroneously, some critics to read in the rape scenes elements of the comic. Pamela’s detailed descriptions of the stages in her undressing, her prattling on to Mrs. Jewkes, etc., etc., have given rise to all sorts of comment. Yet Pamela’s detailed and eager descriptions could be seen simply as the style of an honest, lower-class girl who has not lost her spontaneity in the twists and turns of wit and who is ready to communicate her experiences without applying the rules of reserve and decorum, trusting that her listeners are as eager to “have it all” as she is eager to transmit it. When Pamela, in the middle of the night, rushes back to the house and arms of her once cruel master, upon waking up the next morning she makes the following entry in her journal: “I am deadly sore all over as if I had been soundly beaten. I did not think I could have liv’d under such fatigue.” Only a culture which considers it a virtue to conceal personal emotions and sensations (unless they be expressed in poetry or in the third-person point of view) could feel ambiguously about Pamela.</p>
+
+    <p>In <i>The Rise of the Novel</i>, Ian Watt observes that Richardson “was very careful to locate all the events of his narrative in an unprecedentedly detailed time-scheme.” Watt seems to have misconstrued Richardson’s handling of time. A “detailed time-scheme” supports the claim to formal realism by assuming that the author’s intention was to represent time historically and to model his conceptual structure on the implications which such a notion of time entails. The actual time of the novel is, roughly, seventeen months. But where is one to place these months? The years are not mentioned, not even the months. Pamela’s letters bear no date and when they do it is simply to name the day or the hour. This is not accidental. Years succeed one another in an inexorable, linear fashion, days and months occur and recur in cycles. To view human time and life historically is to accept change and the finite. Richardson wishes to rescue his world model from the contingencies of history. It is not Mr. B.’s notion of time that determines the novel’s structure but Goodman Andrews’s, for whom time means the repetitive and unrelaxing exercise of duty, the joining of one’s forces with “that Goodness of God, which created Time and all Things in it, to have a happy End in Eternity” (Law, <i>An Appeal</i>). Thus, a cyclical time-pattern is formally established in support of an ever-recurring, archetypal theme. The characters in <i>Pamela</i>, though situated in a temporal-historical world, are enacting the timeless drama of the miracle of love: “Let it be . . . supposed, that God by a Miracle of Love entered into the <i>fiery root</i>, or essence of this fallen Angel, and by a <i>new Birth</i> made it again to be a flame of <i>Love</i>” (Law, <i>Christian Regeneration</i>).</p>
+
+    <p>When the novel begins we realise that the first letter is just another letter in a series. A significant past already exists, one to which constant references will be made because it is the shaping, determining force of Pamela’s present and future: “I owe every thing next to God’s Goodness, to your Piety and good Examples, my dear Parents.” Time has been flowing evenly for virtuous Pamela. The year, the month, the day, the hour are measured by the order and fulfilment of obligations and duties. The daily cycle is an imitation in miniature of the right pattern which man’s life in time should exhibit. When Pamela’s good Lady dies, the even flow of time and letters is disrupted. The pious lady is succeeded by her atheistical son, a master who imposes on the house a government reflecting the disorder of his inward condition: “But then, what comes next? Why it pleased God to take my good Lady: and then comes my Master. And what says he? Why in Effect it is, <i>Be not virtuous, Pamela.</i>”</p>
+
+    <p>Lust, like the soul in its fallen state, burns with a “dark firebreath, an anger fire, that must heat and torment itself with its own inward burning strife, and yet be unable to reach, touch, or obtain any spark of light and love, to make its fire-life sweet and amiable of such a flame of fire as angels are said to be” (<i>Christian Regeneration</i>). Mr. B.’s transgression divides houses, characters, nature and language into two hostile worlds: the city of God and the city of man. Conflict in <i>Pamela</i> is generated by these two world conceptions, one which sees the temporal world as governed by a world above, and another which sees the temporal world and its functional relationships as ends in themselves. The rapidly changing social scene and the theories of Government which had curtailed royal prerogative, and had demythicised the divine right of kings by shifting decision-making more to the people, had shaken faith in the myth of a divine government of the world as well. Richardson in <i>Pamela</i> questions Mr. B.’s absolutistic form of government, but liberalisation comes about only when Mr. B. declares his obedience to a Master above, and acquiesces, like Pamela, to the status of a servant.</p>
+
+    <p>Mrs. Jervis is a good servant in this and the other world, standing by her duty to her divine Master when moral and social duty conflict. Mrs. Jewkes serves no Master other than her temporal one. However, to follow blindly the orders of a temporal master means to have lost that independence of spirit which the moral sense grants and which inspires the humble to rise in revolt against the proud.</p>
+
+    <p>The distribution of characters follows this opposition and the action is modelled in such a way as to show the injustices and perversion of Mr. B.’s temporal government. The good characters who side with Pamela fall from social grace and are exiled from their social paradise. The bad ones wax in worldly power at the expense of their everlasting happiness: “The <i>old natural Man</i>, or the <i>rational Man</i> of this world, the <i>dark fallen Nature</i>, enlightened <i>only</i> and solely with the Light of this outward World; it is the diabolical Nature” (<i>Christian Regeneration</i>). The oppositions generated are multiform. Thus we have:</p>
+
+    <div class="cita" style="font-style: normal; text-align: center; margin-left: 0;">
+        <table style="margin: 0 auto; text-align: left; border-collapse: collapse;">
+            <tr><td>eternity</td><td style="padding-left: 2rem;">temporality</td></tr>
+            <tr><td>Divine Master</td><td style="padding-left: 2rem;">worldly master</td></tr>
+            <tr><td>pious servant</td><td style="padding-left: 2rem;">wicked servant</td></tr>
+            <tr><td>poor materially</td><td style="padding-left: 2rem;">rich materially</td></tr>
+            <tr><td>rich spiritually</td><td style="padding-left: 2rem;">poor spiritually</td></tr>
+            <tr><td>humility</td><td style="padding-left: 2rem;">pride</td></tr>
+            <tr><td>merciful</td><td style="padding-left: 2rem;">wrathful</td></tr>
+            <tr><td>oppressed</td><td style="padding-left: 2rem;">oppressor</td></tr>
+            <tr><td>love</td><td style="padding-left: 2rem;">lust, hate</td></tr>
+            <tr><td>light</td><td style="padding-left: 2rem;">dark</td></tr>
+            <tr><td>white angel</td><td style="padding-left: 2rem;">black angel</td></tr>
+            <tr><td>virtue</td><td style="padding-left: 2rem;">vice</td></tr>
+            <tr><td>female</td><td style="padding-left: 2rem;">male</td></tr>
+            <tr><td>cottage</td><td style="padding-left: 2rem;">mansion</td></tr>
+            <tr><td>sunflower</td><td style="padding-left: 2rem;">bull</td></tr>
+            <tr><td>inward</td><td style="padding-left: 2rem;">outward</td></tr>
+        </table>
+    </div>
+
+    <p>The opposition love-hate and the confusion of the contraries appear early in the book: “Is it not strange,” reflects Pamela, “that Love borders so much upon Hate? But this wicked Love is not like the true virtuous Love, to be sure: <i>That</i> and <i>Hatred</i> must be far off, as <i>Light</i> and <i>Darkness</i>.” Hate is associated with lust and pride which keep the individual imprisoned in the self. “Black-hearted Wretch! How I hate him!” exclaims Pamela. “If I hate or despise any one man in the world, I hate something that God cannot hate, and despise that which he loves . . . no love is <i>holy</i>, or religious, till it becomes <i>universal</i>” (Law, <i>A Serious Call to a Devout and Holy Life</i>). Pamela has a long way to travel before she achieves the state of humility and universal love:</p>
+
+    <div class="cita" style="font-style: normal;">
+        <p>A man naturally fancies, that it is his own exceeding love of virtue that makes him not able to bear with those that want it. . . . If this had been the <i>Spirit</i> of the Son of God, if he hated sin <i>in this manner</i>, there had been no redemption of the <i>World</i>.</p>
+        <p class="attribution">(<i>A Serious Call</i>)</p>
+    </div>
+
+    <p>When despondency leads Pamela to the pond of destruction, the thought of ending her life by drowning deprives the element of water of the grace of baptism and regeneration, and pollutes it with the sin of death. Luckily, Pamela’s sensibility awakes to the fact of her own sinfulness, and to the knowledge of her true enemy which is her inward pride:</p>
+
+    <div class="cita" style="font-style: normal;">
+        <p>But, Oh! my dear Parents, rejoice with me, even in this low, Plunge of my Distress; for your poor <i>Pamela</i> has escaped from an Enemy she never thought of before; and was hardly able to stand against; I mean the Weakness and Presumption, both in one, of her own Mind! which had well nigh, had not divine Grace interposed, sunk her into the lowest, last abyss of Misery and Perdition!</p>
+    </div>
+
+    <p>It is not accidental that Pamela mixes here the first- and third-person point of view. This distance enables her to articulate her sudden realisation of the dual nature of every man and of his inward strife and disorder. In the pond scene Pamela applies to herself the terms which up to now were reserved for Mr. B. Her mind is “benighted,” God sees “all the lurking vileness of her heart,” she is “presumptuous,” “the guilty aggressor.” This agony in the garden matures Pamela in humility and mercifulness:</p>
+
+    <div class="cita" style="font-style: normal;">
+        <p>Just now we heard that he had like to have been drowned in crossing the stream, a few days ago, in pursuing his game. What is the matter, that, with all his ill usage of me, I cannot hate him? . . . He has certainly done enough to make me hate him; but yet, when I heard his danger, which was very great, I could not in my heart forbear rejoicing for his safety.</p>
+    </div>
+
+    <p>Mr. B., while pursuing his game (as he has been pursuing Pamela), runs like her the risk of death by water. The plunge into the baptismal stream marks the awakening of repentance in the heart of Mr. B. Pamela may be the narrator in this novel yet behind her limited point of view stands another author who moulds the plot in divine Omniscience.</p>
+
+    <h2 class="section-head">III. The Infolding Will</h2>
+
+    <p>Upon reading <i>Pamela</i> the reader cannot fail but notice that the outdoors is rarely mentioned. Together with Pamela the reader moves from interior to interior totally disconnected from the outside world. Distance, separation, disconnection, frustrate communication between the characters, and between Pamela and the world. Selfishness, or the infolding will, is mirrored in the novel’s topology. Human space reflects the cosmic heaven-hell division as well as the coexistence of contraries in nature and man. Place acquires the characteristics of the actions that occur within it. Goodman Andrews’s cottage is transformed into a paradise lost to which Pamela yearns to return after her fall from social grace. The stately Bedfordshire mansion, once a paradise, is transformed into a hellish place which is identified even grammatically with its libidinous master: “We would have you flee,” Goodman Andrews writes to his daughter, “this evil Great house and Man.” The Lincolnshire estate also undergoes a metamorphosis, in Pamela’s words: “My prison has become my palace.”</p>
+
+    <p>The projection of moral traits and inner feeling onto place accords with Law’s conception of the external world: “For the outward world is but a glass, or representation of the inward; and every thing and variety of things in temporal nature must have its root, or hidden cause, in something that is more inward” (<i>Christian Regeneration</i>). The visible world in <i>Pamela</i> reflects the inward states of Mr. B. and Pamela. Darkness, secrecy, plotting, fear, imprisonment, separation, tension, wrath, lust, these terms describe it. Richardson creates this atmosphere by studiously avoiding to relate places through descriptive links, or through the movement of characters in space. Like letters, which are infolded, sealed and discontinuous communications, places stand isolated, each holding its secrets within its walls.</p>
+
+    <p>While in Bedfordshire, we see Pamela outdoors once. It is when she is peacefully sitting in the garden at work with her needle. When Mr. B. appears, and forgetting his distance offers freedom to his servant, Pamela rushes into the house for safety, and neither she nor the reader see the outside world again until Mr. B. orders her removal by coach to Lincolnshire. It is significant that in her account of this drive Pamela never mentions the surroundings but keeps herself and the reader safely in the coach. The only external impressions which she records are the sight of a church and the setting sun, symbols of the eternal, the temporal, death and regeneration.</p>
+
+    <p>The sensuous world is identified with Mr. B. whose restless passions are a manifestation of the wrath and disorder of fallen nature. Nature assumes the aggressive animality of the unloving male, and to Pamela’s eyes “Horrid bull,” “hideous Mr. Colbrand” and “hideous master” are as one. Pamela rarely uses similes but on the few occasions when she does her analogies come from the world of nature: “But he kissed me with frightful Vehemence; and then his Voice broke upon me like a Clap of Thunder.” Thunder in mystical symbolism is a manifestation of the wrath, turbulence and strife of the contraries of nature. The spatial world, then, is under a hideous metamorphosis while Pamela’s trials last.</p>
+
+    <p>In myths and folktales the agent who (for good or for evil) transforms men, things and places is personified. It is the magician, the fairy, Satan, or an Olympean god. The metamorphoses in these fictional modes always assume external, visible shape. In myth or folktale Mr. B. would figure as giant or beast finally transformed into handsome prince. In <i>Pamela</i> the transforming agent has no material shape and the proof for the transformation is no longer empirical. The transforming power is now an inward disposition of the heart and the metamorphosis of the characters occurs within. The change is not one from passion to reason, as the Age of Enlightenment would have it: “For the distinction of our Reason from our Passions is only a distinction in Language, made at pleasure” (Law, <i>The Case of Reason or Natural Religion</i>). Richardson, as was mentioned earlier, did not share his Age’s admiration for this faculty and together with William Law and other mystics placed the heart above the head. [T. C. Duncan] Eaves and [Ben D.] Kimpel are wrong when they say that Richardson “is never very clear about the ‘heart’ and it is useless to try to extract from him a consistent belief.” The consistency of his mystical world models in <i>Pamela</i> and <i>Clarissa</i> make abundantly clear his beliefs about the ‘heart’:</p>
+
+    <div class="cita" style="font-style: normal;">
+        <p>When you place the power of your salvation in your <i>intellectual light</i>, or the strength of your <i>own reason</i>, you place it in your <i>weakest</i> part, in the <i>poorest</i>, most <i>trifling</i> and <i>insignificant</i> thing that belongs to you and upon that which has the least effect in human life. . . . For this light of bare reason or the reasoning faculty of the mind has no contrariety to the vices of the heart; it neither kills nor is killed by it.</p>
+        <p class="attribution">(Law, <i>A Demonstration of the Gross and Fundamental Errors of A late Book</i>)</p>
+    </div>
+
+    <p>The “happy Change” which comes in the lives of Pamela and Mr. B. is not the outcome of reason but of a change of hearts:</p>
+
+    <div class="cita" style="font-style: normal;">
+        <p>But in that <i>light</i> of the <i>heart</i>, or <i>attraction</i> to God, which . . . is common to all mankind in and through Jesus Christ, all is contrary. As it is a gift and grace of God, so it is a <i>real life</i>, a living thing, a <i>sentiment</i> of the hearts and so far as it grows and increases in us, so far it destroys all that is bad and corrupt within us. It has the same contrariety to all vices of the heart, that light has to darkness, and must either suppress or be suppressed by them.</p>
+        <p class="attribution">(<i>A Demonstration</i>)</p>
+    </div>
+
+    <p>Space and place in <i>Pamela</i> will reflect the happy change effected in the characters.</p>
+
+    <p>The idea of space in <i>Pamela</i> is not restricted to physical representation. The concept of distance acquires various meanings in the text. Pamela is in physical distance from her parents and in social distance from her origins; Mr. B. is in great distance from God; Mr. B. and Pamela are separated by great social distance: “I again reflected upon the Distance between us.” Mr. B. forgets this and offers liberties to his servant. Pamela is accused by Mrs. Jervis: “Pamela, don’t be so pert to his Honour: you should know your distance.” Distance separates, and separations in temporal nature are effected by the dark forces counteracting the spirit of love. All oppositions holding in the text, all notions of distance, geographical, social or spiritual, will be resolved once the spirit of love triumphs over the antinomies of self:</p>
+
+    <div class="cita" style="font-style: normal;">
+        <p>When Love is the Spirit of your Life, it will have the <i>Freedom</i> and <i>Universality</i> of a <i>Spirit</i>; it will always live and work in <i>Love</i> not because of <i>This</i> or <i>That</i>, <i>Here</i> or <i>There</i>, but because the Spirit of Love can only love, where-ever it is, or goes, or whatever is done to it. For the Spirit of Love is always the same Course; it knows no Difference of Time, Place, or Persons.</p>
+        <p class="attribution">(Law, <i>The Spirit of Love</i>)</p>
+    </div>
+
+    <p>Before the spirit of love, the world automatically sheds its bull-like mask and sunflower light replaces darkness. Rooms, gardens, houses and world establish communication through open windows and unlocked gates. Pamela, once proud, incorruptible virgin, is taken for breakfast to a dairy. Mr. B., once playboy of the world, sits in his closet meditating on the awful subject of death. Pamela’s writings, which were her only means of imposing order to a chaotic existence (even though this order was only a narrative one), once sealed and private communications, now see the light and are transformed into instructive and delightful literature for the benefit of the minds of “the Youth of both Sexes.” And we, shameless peeping Toms, are transformed into regular, respectable readers. As in the eighteenth-century theatre, a mere change in lighting has changed the effect of the whole set. “These are the Mysteries of Love and Mercy” (<i>Christian Regeneration</i>).</p>
+
+    <h2 class="section-head">IV. “The Unlawfulness of Stage Entertainment”</h2>
+
+    <p>The reader of <i>Pamela</i> finds himself in the embarrassing position of peeping into something private. He cannot identify with the recipients of the letters, nor with Mr. B. who intercepts and reads them. Like Mrs. Jewkes, the reader is forced into becoming a voyeur. Indeed, the story is a very private affair, a secret. Mr. B. urges Pamela to keep things secret, his gifts to her are seen by her parents as hiding “a design,” Pamela is “suspicious and fearful,” letters are stolen and never reach their destination, Pamela has secrets with Parson Williams, actions take place within walls, within closets, and keys, real and symbolic, keep everything imprisoned.</p>
+
+    <p>On the first level, the secret appears to be rape. The secret, however, goes beyond the mere act and becomes a method on how to corrupt. Pamela, having crossed the threshold of society, becomes an obstacle to its ways. The values which she advocates are values proper to the illiterate, lower class and are meaningless in Mr. B’s world. Pamela defends them on the grounds that they are eternal and absolute, Mr. B. tries to persuade her that they are relative and that it is in the power of his class to impose, or to change them. Mr. B., once victim of scheming middle-class mothers and daughters, becomes an intriguer himself and uses every art to entangle Pamela in the net of corruption: wooing, threatening, force, temptation. Pamela’s incorruptibility creates an unresolvable conflict.</p>
+
+    <p>The action assumes the form of repetition without much variation. Every incident, physical or verbal, repeats the same theme: attack-resistance-attack. Since incidents perpetuate the same pattern, causality is negated. The letter form is not suited to reproduce the flow of time and change. When each letter ends, continuity in time and action end with it. The time-gap is shrouded in silence and darkness. What will happen between letters is entirely unpredictable. What is certain is that another letter will follow. Time is arrested within the letters and events do not, of themselves, form causal links. As each letter, however, repeats the same theme, the reader, by force of habit, learns to predict.</p>
+
+    <p>There is no playful confusion in <i>Pamela</i>, as there is in <i>Tom Jones</i>, about the right sequence and causal arrangement of actions in time. The element of suspense in <i>Pamela</i> is not the result of plot but of the frustration of plot. Both Pamela and the reader know who intercepts the letters; Mr. B. soon finds out Pamela’s plot with the parson; before the gypsy-plot materialises, Mr. B. has changed his mind. Secret designs are frustrated whether for good or for evil. It soon becomes obvious to the reader that the course of events is not in the hands of the characters or of the narrator. The “secret” then was only deceptively such. Causality will not manifest itself in the factual arrangement of incidents in time. It will not be logical but intuitive and will concern the order of values.</p>
+
+    <p>The first-person narrative point of view appears to enhance the air of secrecy. A subjective narrative presupposes that the thoughts and feelings of the writer are shared with no one but the reader. Pamela’s feelings and thoughts, however, are freely expressed. She does not present a different person in her letters and a different person in her actions. Mr. B. learns nothing from the letters which Pamela has not already directly expressed to him. What Pamela tried to hide are certain of her actions, such as keeping a diary, or planning to escape. These, though, do not make a narrative subjective. The concealment of action is a cliché in novels of plot where the point of view is omniscient.</p>
+
+    <p>Thus, though we are made to feel that we are peeping into a world of secrecy, secrets don’t have their way. Early in the book the characters, unknowingly, make the right prophecies about the future. Mr. Jervis says: “Yet I believe he loves my good Maiden, tho’ his Servant, better than all the Ladies of the Land; and he has try’d to overcome it, because he knows you are so much his Inferior; and ’tis my Opinion he finds he can’t.” In novels where the plot resolution is made dependent on an external scheme of things, whether providential as in Richardson, or deterministic as in Hardy, the end is foreshadowed early in the book to serve as deductive proof of the inevitable outcome. Mr. B. tells Pamela (and the reader) what the outcome of this adventure will be: “O my good Girl! We shall make out between us, before we have done, a pretty Story in Romance.” A literary genre is invoked to give shape to unformulated experience, and as the reader knows, romances, after many tempestuous adventures and reversals of fortune, culminate in a happy end.</p>
+
+    <p>Richardson, though not as fervent in his condemnation of it as was William Law, nevertheless mistrusted the pleasures of the stage. Yet, in his novels he relied for many effects on theatrical conventions. Pamela’s narrative is, by virtue of the point of view, subjective and yet it manages to achieve dramatic distance. When she reproduces scenes her authorial commentary sounds like artful stage direction: “He gave her five guineas!—She made him a low Curchee, and pray’d God to bless him; and look’d to me, as if she would have spoken to me.” “And so I rose up, and was forc’d to lean upon my Master’s Elbow Chair, or I should have sunk down.” “My master . . . seem’d a little mov’d, and took his Handkerchief out of his Pocket and walked to the Window.” “He then took me in his Arms, and presently push’d me from him.” “I threw my Apron over my Face, and laid my Head on a Chair, and cry’d as if my Heart would break.” Movement and pose are described in a manner which enables the reader to visualise the scene. We are asked to imagine the characters as upon a stage, an eighteenth-century stage where actors spoke their lines facing the audience. Pamela’s scenic method enables the reader to gather information which the subjective narrative point of view could not communicate. Since in plays the writer is almost invisible and no one seems to be manipulating the action but the forces inherent in it and the personality of the characters, the scenic method in <i>Pamela</i> creates a balance with the subjective point of view and consequently Pamela cannot properly be accused of “telling the story in the way she likes.” The reader as voyeur is no more guilty than a theatre-goer.</p>
+
+    <p>Motion in <i>Pamela</i>, as on the stage, acquires an ideal representation. The reader has no experience of the physicality of motion in space which in novels is usually connected with the process or progress of the action. In <i>Tom Jones</i>, where the novel is likened to a journey, space and motion play an integral part in the development of the plot. But in <i>Pamela</i> nothing moves. The action is static, conflict culminates in deadlock, Pamela is physically imprisoned, what Mr. B. does when he is offstage no one knows. He appears when the part requires it, disappears when it does not. Pamela in her narrative suppresses the connective links which create the illusion of motion through the illusion of a continuous space. When, for example, she is summoned to appear before Mr. B., she never describes the parts of the house through which she has to pass to arrive in his presence. As in the theatre, we are aware of the lifting of the curtain that reveals a new set. Stasis, which characterises the action, is formally reflected in the narrative method.</p>
+
+    <p>The set “Bedfordshire” and the set “Lincolnshire” delimit Pamela’s area of motion. She travels from the one to the other and back to the first one again. Though space follows the cyclical and apparently unprogressive pattern of time, something of vast significance does change. Pamela and Mr. B., like the pilgrim, have been in continuous motion through paths that seem to lead nowhere but which suddenly lead to a world of light. Mr. B. had been physically free but morally imprisoned; Pamela physically imprisoned but morally free. Both hero and heroine win complete freedom once they come to accept the insoluble bonds of marriage: “And bless the Goodness of that Providence which has, thro’ so many intricate Mazes, made me tread the Paths of Innocence and so amply rewarded me, for what it has itself enabled me to do!” The divine master is as living a presence in the novel as the worldly master. If not a character, he is the maker of the theatre and the play: “God <i>can</i> touch his Heart in an Instant” (italics mine).</p>
+
+    <h2 class="section-head">V. Language as Gesture</h2>
+
+    <p>The cosmic strife between good and evil and the temporal one between a gentleman and his servant girl is reflected in the conflict of opposed linguistic conventions. Language, like walls, separates: “All words have a meaning, a significancy and effect, according to the nature of him whose they are” (Law, <i>A Demonstration</i>). In <i>Pamela</i>, one feels that language is struggling to resolve the tensions but only manages to entangle things more: “The words of man are as men are, <i>weak</i>, <i>vain</i>, <i>earthly</i> and of a <i>poor</i> and narrow Signification” (<i>A Demonstration</i>).</p>
+
+    <p>Pamela speaks the language of order which admits of no relativity in the meaning of its terms since they are fixed, absolute and objective. It is a language characterised by consistency and one which does not depend on the character’s subjective variability. Its terms correspond to, and mirror inward and outward realities. It includes descriptive terms for nonobservable, universal entities. Mr. B. speaks the language of chaos which is characterised by confusion, contradiction and perversion in representation. It is impermanent and its terms are those of immorality, unbelief and materiality. To Pamela’s ideal terms, Mr. B. proffers terms of bartering. Mr. B.’s confusion over the right use of terms is expressed early in the book:</p>
+
+    <div class="cita" style="font-style: normal;">
+        <p>She has written letters . . . in which she makes herself an Angel of Light, and me, her kind Master and Benefactor a Devil Incarnate!—(O how people will sometimes, thought I, call themselves by their right Names!)</p>
+    </div>
+
+    <p>As long as there are two languages which affix contradictory meanings to terms, communication is impossible and the purpose of language frustrated: “Well, Mrs. <i>Jewkes</i>, said I, I shall not at this Time dispute with you about the Words <i>Ruin</i> and <i>Honourable</i>; I thank God, we have quite different Notions of both.” The devaluation of language in mystical thought accords with the idea that things communicated to man by God are of such supernatural significance, so much beyond the categories of human experience that language accommodates, that it can serve poorly as an instrument for the transcription of divine communications: “The common Rules of Speaking are like other things that are common amongst men, <i>viz</i>, poor, empty, and superficial, hardly touching the <i>outside</i> of the mere human things we talk about” (<i>A Demonstration</i>). Pamela’s tone, however, betrays an influence of the empiricist attitude to language and communication which, for other than mystical reasons, devalued the effectiveness of speech.</p>
+
+    <p>The resolution of contraries in the universe of action establishes the language of order as the true and proper one. As there is no disagreement now about the meaning of terms, language can be shared and made to symbolise union and concord. When the miracle of love unseals Mr. B.’s heart and understanding he tells Pamela: “I tho’ I doubted not effecting this last Plot, resolv’d to overcome myself; and . . . part with you, rather than to betray you under so black a Veil. . . . But, perhaps, it would have come too late, had not your white Angel got the better of my black one.” However, besides the two languages which create disorder and confuse characters and reader, there exists another form of communication which is nonverbal and simple.</p>
+
+    <p>Gesture is important in drama as it makes for economy by communicating information to the audience in a nonverbal way. In novels, however, the narrator can articulate for the reader all those messages which on stage gesture communicates. It is for this reason that in novels, nonverbal information is minimal before symbolism. Richardson’s use of gesture in <i>Pamela</i> is of great significance. As in pantomime, it communicates in silence the development of the story and the intentions and feelings of the agents. Gesture supplies the causal structure which the narrative was unable to provide and thus becomes more “eloquent” than speech. The significant gesture in <i>Pamela</i> is the touching of hands.</p>
+
+    <p>In the first scene between Pamela and Mr. B., we see him taking her hand twice: “And for you, <i>Pamela</i>, (and took me by the Hand; yes he took my Hand before them all.)” “And indeed he was not angry for he took me by the Hand.” When Mr. B. declares his wicked intentions, the taking of Pamela’s hand is not considered by her to be an honour but a threat: “I stood still confounded, and began to tremble, and the more when he took me by the Hand.”</p>
+
+    <p>The disorder to which lust throws Mr. B. is reflected in the gesture: “Equivocator, again! said he and took my hand. . . . Sir, said I, and fain would have pulled my Hand away.” “Stay here, stay here, when I bid you; and snatch’d my Hand, I trembled, and said, I will! I will! for he hurt my Fingers, he graps’d me so hard.”</p>
+
+    <p>When force proves ineffectual, Mr. B. tries gentle deceit: “He took my Hand in a kind of good-humour’d Mockery . . . it would be Pity, with these fair soft Hands, and that lovely Skin (as he call’d it.)” “He sat down upon a rich Setee; and took hold of my Hand, and said . . . holding both my Hands in his.” “The guilty wretch took my left Arm and held it under his Neck, and the vile procuress held my Right . . . there was nobody to help me: and both my Hands were secured.”</p>
+
+    <p>After the second attempt at rape, when God has touched Mr. B.’s heart, the aggressive gesture takes on a different meaning: “He said, taking my Hand, now will I vow to you. . . . And now <i>Pamela</i>, said he, give me your Hand, and say you forgive me. . . . I held out my trembling Hand which he vouchsafed to Kiss.” Pamela’s hands, up to this moment, have been passive and unresponsive. Mr. B. exercised a right upon them as upon his property. Pamela has been for him an object of desire and an object which by law he owned.</p>
+
+    <p>When sensibility enters his heart and awakes remorse, Mr. B. begins to see Pamela as a human being worthy of respect and love. Pamela’s hand begins to respond: “I boldly put my Hand before his mouth, hardly Knowing the Liberty I took.” “And with this ambiguous Saying he saluted me . . . and lent me his Hand.”</p>
+
+    <p>When the wicked master is metamorphosed into a virtuous prospective husband, Pamela’s interpretation of the gesture is transformed too: “This, said he, (and honour’d me by kissing my Hand.)” In the first scene, naive Pamela took as an honour a gesture which hid wicked designs. Now that order has been established, right words fit with right gestures. “And so I had the Boldness to kiss his Hand.”</p>
+
+    <p>The struggle of immature, proud and restless wills had placed an insurmountable distance between the lovers which the touching of their hands eloquently expressed. The distance is effaced by their symbolic joining in the mystery of marriage: “The joining of our Hands . . . the Declaration of our being marry’d.” The plot woven by the hands cannot be said to be the product of Pamela’s narrative artistry, or of her “methodist” duplicity. It speaks for itself and answers the anti-Pamelist.</p>
+
+    <p><i>Pamela</i> does not end in Christian tragedy as <i>Clarissa</i>, but in the happy choice of the second manner of Christian life. The epilogue to the book bears striking similarities to the description given by the Church Father Eusebius, as quoted by Law in <i>A Serious Call</i>:</p>
+
+    <div class="cita" style="font-style: normal;">
+        <p>[The second manner of Christian life] is of a lower form and suiting itself more to the condition of human nature, admits <i>chaste wedlock</i>, the care of children and family, of trade and business, and goes through all the employments of life under a sense of piety, and fear of God. Now they who have chosen this manner of life, have their set times for <i>retirement</i> and <i>spiritual exercises</i>, and particular days are set apart for their hearing and learning the word of God. And this order of people is consider’d as in the <i>second state</i> of piety.</p>
+    </div>
+
+    <p>Thus, adventures which are providentially directed to further the cause of virtue make Miss Sophia get her Mr. Jones, and Pamela her Mr. B. Fielding and Richardson can go on disputing about the question of improbability in fiction.</p>
+
+    <section class="footnotes">
+        <h3>Note</h3>
+        <p>From <i>The Novel and Its Presuppositions: Changes in the Conceptual Structure of Novels in the Eighteenth and Nineteenth Centuries</i>. © 1976 by Jina Politi. A. M. Hakkert Ltd., 1976.</p>
+    </section>
+
+    <header class="cab" style="margin-top: 5rem;">
+        <p class="cab__num">Jean H. Hagstrum</p>
+        <h1 class="cab__tit">Sir Charles Grandison:<br><i>The Enlarged Family</i></h1>
+    </header>
+
+    <p>Richardson’s last novel is considerably better than can be easily imagined by those who have only heard about it. But admittedly it represents a falling off after <i>Clarissa</i>, just as <i>Amelia</i> is a decline from the heights of <i>Tom Jones</i>. The portrait of the ideal husband in <i>Sir Charles Grandison</i> (1753) followed two years after Fielding’s portrayal of the faithful and loving wife in <i>Amelia</i>, whose model of domestic loyalty is perhaps in the end more persuasive than Richardson’s paragon. But if the palm for aesthetics must go to Fielding, Richardson comes off with greater intellectual honors, for Amelia does not sparkle with the many intellectual, spiritual, moral, and political facets of Richardson’s diamond: Sir Charles is a modern Anglican knight of sensibility, more successful at disarming than destroying opponents, an early Broad Churchman hopeful of reconciling Englishmen and Italians, Anglicans and Catholics, Anglicans and Methodists. Despite broad, even international concerns, here as everywhere Richardson’s canvas is chiefly the domestic life. The centrally important relationships of the novel are those of Sir Charles: with the ingénue Emily, who, though only fourteen, loves the hero with passion; with Olivia, the violent and volatile black-haired beauty from Florence whose fierce temper forever obviates a union with the hero; with the lively sister Charlotte, a parallel figure to Anna Howe; with the Lady Clementina, an Italian beauty whom the English gentleman would have married had religious differences between reconciled; and supremely with Harriet Byron—a delicate, beautiful heroine with a fresh country skin and a set of the highest</p>
+
+    <section class="footnotes">
+        <h3>Note</h3>
+        <p>From <i>Sex and Sensibility: Ideal and Erotic Love from Milton to Mozart</i>. © 1980 by the University of Chicago. University of Chicago Press, 1980.</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>
