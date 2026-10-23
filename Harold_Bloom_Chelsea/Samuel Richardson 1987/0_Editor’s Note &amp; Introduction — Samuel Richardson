@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Editor’s Note &amp; Introduction — Samuel Richardson</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p, .separador + p, .section-head + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+.section-head { margin: 3.2rem 0 1.6rem; text-align: center; font-size: 1rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--text-secondary); }
+.section-head::before, .section-head::after { content: ""; display: inline-block; width: 2rem; height: 1px; background: var(--border-color); vertical-align: middle; margin: 0 .8rem; }
+.epigrafe { margin: 2rem 0 1.5rem; text-align: center; font-style: italic; color: var(--text-secondary); font-size: .95rem; }
+.epigrafe .attribution { display: block; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .3rem; }
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">Samuel Richardson</p>
+        <h1 class="cab__tit">Editor’s Note<br>&amp; Introduction</h1>
+    </header>
+
+    <h2 class="section-head">Editor’s Note</h2>
+
+    <p>This book gathers together a representative selection of the best modern criticism devoted to the novels of Samuel Richardson. The critical essays are reprinted here in the chronological sequence of their original publication. I am grateful to Marena Fisher for her assistance in editing this volume.</p>
+
+    <p>My introduction considers Clarissa Harlowe and Lovelace as agonists of the will, Protestant saint against Herculean libertine, who destroy both themselves and one another. Ian Watt begins the chronological sequence with a discussion of Richardson’s epistolary technique and characterization in <i>Clarissa</i>. Martin Price gives his account of the ambivalent contest between Clarissa and Lovelace, which he sees as taking place between Pascalian orders of being, with Clarissa, representing the order of charity, triumphing over Lovelace’s naturalism.</p>
+
+    <p>Lovelace is the subject of Anthony Winner’s character analysis, which finds in him a fragmented and alienated energy, an ancestor of Balzac’s Vautrin. <i>Clarissa</i>’s penultimate movement, its final duel of wills between the agonists before the heroine’s slow dying commences, is studied by Mark Kinkead-Weekes, who locates Richardson’s ruling principle in the individual’s right to be precisely what she wills to be. A second essay by Kinkead-Weekes focuses on the central crisis in <i>Sir Charles Grandison</i>.</p>
+
+    <p><i>Pamela</i>, Richardson’s notorious romance of virtue rewarded, is read by Roy Roussel as the triumph of the familiar letter as a literary form. The “Pamela controversy,” between the anti-Pamelists led by Fielding and Richardson’s Pamelists, is outlined by Jina Politi. In a brief examination of marriage in <i>Sir Charles Grandison</i>, Jean H. Hagstrum notes that in this novel, for the first time, “true love is an extension of the familial.”</p>
+
+    <p>Rita Goldberg returns us to <i>Clarissa</i> with a sustained meditation upon sex and enlightenment in the contest of Clarissa and Lovelace. In this book’s final essay, the great fire-scene in <i>Clarissa</i> is read by Rosemary Bechler as the momentary triumph but ultimate defeat of “Lovelace the actor-dramatist,” whose sublime effect is a trick and a lie and so a self-destructive misuse of his own elemental fire.</p>
+
+    <h2 class="section-head">Introduction</h2>
+
+    <p class="separador">I</p>
+
+    <p>I first read <i>Clarissa</i> as a Cornell undergraduate in the late 1940s, under the skilled direction of my teacher, William M. Sale, Jr., a fierce partisan of Richardson and a remarkable critic of fiction. Since I cannot read a novel other than the way that Sale taught me, it is not surprising that forty years later I hold on fast to his canonical judgment that <i>Clarissa</i> is the finest novel in the English language. Rereading it through the years, I find it the only novel that can rival even Proust, despite Proust’s evident advantages. The long and astonishing sequence that ends the novel, Clarissa’s protracted death and its aftermath, is clearly at one of the limits of the novel as an art. I find myself fighting not to weep just before the moment of Clarissa’s death, but as a critic I submit that these would be <i>cognitive</i> tears, and would say little about me but much about Richardson’s extraordinary powers of representation. It remains a mystery that Richardson, with no strong novelistic precursors, should have been able to make Clarissa Harlowe the most persuasive instance of a kind of secular saint, a strong heroine, in the entire subsequent history of the Western novel.</p>
+
+    <p>Ian Watt, still our best historian of the rise of the novel, emphasizes that one of Richardson’s major advances upon Defoe was in solving the problem of plot by centering it upon a single action: courtship between the sexes. That action necessarily entails Richardson’s other grand innovation: the novelistic representation of the protagonists’ inwardness, a mode of mimesis in which Richardson had only the one inevitable precursor, Shakespeare. If Jan Hendrik van den Berg is right, then historical psychology is essentially the study of the growing inner self, from Luther’s “inner man” (1520) through Shakespeare’s almost fully secularized tragic heroes on to Rousseau’s and Wordsworth’s solitary egos confronting, with ecstasy, the estrangement of things in a “sense of nature.” <i>Clarissa</i> (1747–48) preceded all of Rousseau’s publications, so that while Rousseau could have had something to tell Richardson about the sentiments and sensibility of inwardness, he did not teach the first great English novelist about the fictional representation of the inner life.</p>
+
+    <p>Whether anyone since has surpassed Richardson in this mimetic mode seems to me at least doubtful. George Eliot’s Dorothea Brooke, Henry James’s Isabel Archer, D. H. Lawrence’s Ursula Brangwen, and even Virginia Woolf’s Clarissa Dalloway, do not take us farther into the portrayal of a single consciousness than the original Clarissa brings us, and perhaps they all of them retreat to some degree from her full inwardness. Price remarks that “Richardson has transformed highly particularized characters so that their dense and familiar social setting fades away in the course of the slow disclosure of consequences.” That transformation, in Clarissa and to some extent in Lovelace, replaces the social and historical context with a not less than tragic inwardness. If Clarissa is a saint and a martyr, then what she bears heroic witness to is not so much supernatural faith in Christ as it is natural faith in the heroic integrity of her own perpetually growing inner self.</p>
+
+    <p class="separador">II</p>
+
+    <p>Richardson’s power as a novelist centers in the wildly antithetical and fiercely ambivalent relationship between Clarissa and Lovelace, who destroy both themselves and one another in what may be the most equivocal instance of a mutual passion in all of Western literature. I do not venture that assertion lightly, but no single love affair in Shakespeare, Tolstoy, or Proust seems comparable in its strength and complexity to the terrible agon that consumes Clarissa and Lovelace. We can no more speculate upon what a marriage between Richardson’s protagonists might have been than we can visualize a world harmoniously ruled by a perpetually united Antony and Cleopatra. Lovelace and Clarissa are mighty opposites yet uncannily complementary, and it is Richardson’s consummate art to have so created them that they must undo one another.</p>
+
+    <p>I begin with Lovelace, if only because his power of being, immense as it is, finally is eclipsed by the transcendental transformation of the gorgeously dying Clarissa. But that indeed is a finality; until Clarissa begins to die, the sheer force of her resistance to Lovelace compels him to become even more himself. Conversely, Lovelace’s aggression greatly strengthens Clarissa, though the cost of her confirmation is her life. In the novel’s most terrible irony, the slow dying of Clarissa directly causes a steady waning in Lovelace, a dwindling down from a heroic Satanist to a self-ruined libertine, drowning in remorse and confusion.</p>
+
+    <p>A. D. McKillop usefully traced Lovelace’s literary ancestry to the libertine man-of-fashion in Restoration comedy and to the Herculean hero of Dryden’s dramas, such as <i>Aureng-Zebe</i> and <i>The Conquest of Granada</i>. This lineage accounts both for some of Lovelace’s obvious faults and for his few but authentic virtues: healthy disdain for societal appearances and for false morality, a curiously wistful longing for true virtue, and a brutal honesty. But a fusion of a Restoration witty rake and Herculean rhetorician is no more a match for Clarissa Harlowe than a Jacobean hero-villain would have been, and part of the novel’s fascination is in watching Lovelace slowly realize that Clarissa is necessarily an apocalyptic defeat for him. The turning point is not the rape, but a moment late in Letter 266, when Lovelace suddenly apprehends the dialectical entrapment that he and Clarissa constitute for one another:</p>
+
+    <div class="cita">
+        <p>A horrid dear creature!—By my soul, she made me shudder! She had need, indeed, to talk of <i>her</i> unhappiness, in falling into the hands of the only <i>man</i> in the world who could have used her as I have used her! She is the only <i>woman</i> in the world who could have shocked and disturbed me as she has done—So we are upon a foot in that respect. And I think I have the <i>worst</i> of it by much. Since very little has been my joy; very much my trouble: and <i>her</i> punishment, as she calls it, is <i>over</i>: but when <i>mine</i> will, or what it <i>may be</i>, who can tell?</p>
+        <p>Here, only recapitulating (think, then, how I must be affected at the time), I was forced to leave off, and sing a song to myself. I aimed at a lively air; but I croaked rather than sung: and fell into the old dismal thirtieth of January strain. I hemmed up for a sprightlier note; but it would not do: and at last I ended, like a malefactor, in a dead psalm melody.</p>
+        <p>High-ho!—I gape like an unfledged kite in its nest, wanting to swallow a chicken, bobbed at its mouth by its marauding dam!</p>
+        <p>What a devil ails me!—I can neither think nor write!</p>
+        <p>Lie down, pen, for a moment!</p>
+    </div>
+
+    <p>The devil that ails him is the beginning of his own end, his falling outwards and downwards from his last shreds of a libertine ideology into the dreadful inner space of his defeat by Clarissa, his enforced realization that self-willing and self-assertion are permanently over for him. Clarissa, a great Puritan withholder of esteem, will not accept him at his own evaluation, and he begins to know that pragmatically they have destroyed one another. His actual death is a release from the death-in-life he has suffered since Clarissa’s death:</p>
+
+    <div class="cita">
+        <p>He was delirious, at times, in the two last hours; and then several times cried out, Take her away! Take her away! but named nobody. And sometimes praised some lady (that Clarissa, I suppose, whom he had called upon when he received his death’s wound) calling her, Sweet Excellence! Divine Creature! Fair Sufferer!—And once he said, Look down, blessed Spirit, look down!—And there stopped—his lips however moving.</p>
+        <p>At nine in the morning, he was seized with convulsions, and fainted away; and it was a quarter of an hour before he came out of them.</p>
+        <p>His few last words I must not omit, as they show an ultimate composure; which may administer some consolation to his honourable friends.</p>
+        <p><i>Blessed</i>—said he, addressing himself no doubt to Heaven; for his dying eyes were lifted up—a strong convulsion prevented him for a few moments saying more—But recovering, he again with great fervour (lifting up his eyes, and his spread hands) pronounced the word <i>Blessed</i>—Then, in a seeming ejaculation, he spoke inwardly so as not to be understood: at last, he distinctly pronounced these three words,</p>
+        <p>LET THIS EXPIATE!</p>
+        <p>And then, his head sinking on his pillow, he expired; at about half an hour after ten.</p>
+    </div>
+
+    <p>Lovelace dies in his own acquired religion, which is the worship of the blessed Clarissa, whom he personally has converted into something considerably more than a saint or even an angel. Being himself pure will and having been conquered by an even purer one, he worships his conqueror as God. Dying as a Clarissian rather than a Christian, as it were, Lovelace sustains his final pride, a peculiar sense of glory that has gone beyond remorse and has little left in it of mere love. This is hardly expiation in any moral or spiritual sense whatsoever, as Richardson on some level must have known, but is certainly an aesthetic expiation, worthy of Baudelaire or of Proust.</p>
+
+    <p class="separador">III</p>
+
+    <p>Clarissa, as is radiantly appropriate, ends many trajectories beyond her lover’s destination. I dissent from the entire critical tradition, from Watt and Price to my younger contemporaries, that has overemphasized Clarissa’s supposed self-deceptions. Dr. Samuel Johnson first noted that Clarissa could not confront the truth of having fallen in love with Lovelace, but that hardly seems to me a duplicity in her, however unknowing. We cannot choose whom we are free to love, but Clarissa wars more strongly against every mode of overdetermination than any comparable character in secular fiction. What matters to her, and this is her greatness, is that her will cannot be violated, even by her own affections. She refuses to see herself as anyone’s victim—whether Lovelace’s, her family’s, or her own turning against the self.</p>
+
+    <p>Lovelace becomes a wounded narcissist, and so is aggressive down to the end. But Clarissa could honestly say, if she wanted to, that it is not her narcissism but her eros that has been crucified. If Lovelace indeed represented her desire for what she did not have, and was not in herself, then her desire died, not so paradoxically, with the violation of her body. Lovelace becomes still more naturalistic after the rape, but she is transformed into a dualist and begins the process of dying to the body of this life. The issue has nothing to do with society and little to do with conventional reality. It is an aesthetic issue, the ancient agon of the Sublime mode, which always seeks to answer the triple question: more? equal to? less than? She was never less than Lovelace, hoped vainly he could be reformed into her equal, and knows now that she is far more than he is, and more indeed than anyone else in her world. At that height of the Sublime, she can only commence dying.</p>
+
+    <p>If her will is to remain inviolate, then its independence and integrity must be manifested by a death that is anything but a revenge, whether it be against Lovelace, her family, herself, or even against time. Rather, <i>her</i> death is the true expiation, which can bring forgiveness upon everyone else involved, though I surmise that she is more interested in forgiving herself even as she forgives the bewildered Lovelace. A Puritan saint, as Shaw’s St. Joan shows, is rather more interested in her own integrity than in anyone else’s suffering. The cost for Clarissa or for Shaw’s St. Joan is an absolute, inner isolation, but is that not the essence of Protestantism?</p>
+
+    <p>There is nothing like Clarissa’s virtually endless death-scene in all of literature, and while no one would wish it longer I do not wish it any shorter. Extraordinary as the actual moment of death is, in Letter 481, the most characteristic revelation of Clarissa’s apotheosis is in Letter 475:</p>
+
+    <div class="cita">
+        <p>Her breath being very short, she desired another pillow; and having two before, this made her in a manner sit up in her bed; and she spoke then with more distinctness; and seeing us greatly concerned, forgot her own sufferings to comfort us; and a charming lecture she gave us, though a brief one, upon the happiness of a timely preparation and upon the hazards of a late repentance, when the mind, as she observed, was so much weakened, as well as the body, as to render a poor soul unable to contend with its own infirmities.</p>
+        <p>I beseech ye, my good friends, proceeded she, mourn not for one who mourns not, nor has cause to mourn, for herself. On the contrary, rejoice with me that all my worldly troubles are so near their end. Believe me, sirs, that I would not, if I might, choose to live, although the pleasantest part of my life were to come over again: and yet eighteen years of it, out of nineteen, have been <i>very</i> pleasant. To be so much exposed to temptation, and to be so liable to fail in the trial, who would not rejoice that all her dangers are over!—All I wished was pardon and blessing from my dear parents. Easy as my departure seems to promise to be, it would have been still easier had I had that pleasure. But God Almighty WOULD NOT LET ME DEPEND FOR COMFORT UPON ANY BUT HIMSELF.</p>
+    </div>
+
+    <p>This is certainly the purest Protestantism, and we might still be tempted to call this pride, particularly since Clarissa reminds us that she is all of nineteen years old. But we do Clarissa violence to name her total knowledge as a form of pride. The Protestant will by now has been blamed for practically everything that has gone wrong in our spiritual, intellectual, economic, and political life, as well as our sexual life, and the United States is the evening land of Protestantism and so the final stage for the travails of its will. Clarissa, as she dies, shows us the other side, the glory of the Protestant will. If God would not let Clarissa depend for comfort upon any but himself, then he gave her the ultimate accolade of the Protestant will: to accept esteem only where it chose to bestow esteem, and only on its own terms.</p>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>
