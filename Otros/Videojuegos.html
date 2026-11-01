@@ -851,7 +851,7 @@
         case 'pop-desc':
           return copy.sort((a, b) => b.popularityScore - a.popularityScore);
         case 'pop-asc':
-          return copy.sort(rock(a, b) => a.popularityScore - b.popularityScore);
+          return copy.sort((a, b) => a.popularityScore - b.popularityScore);
         case 'console-asc':
           return copy.sort((a, b) => a.console.localeCompare(b.console) || a.year - b.year);
         case 'genre-asc':
@@ -906,7 +906,7 @@
     function renderCard(game) {
       const num = String(game.id).padStart(3, '0');
       const hasImage = game.image && game.image.trim() !== '';
-      const safeTitle = game.title.replace(/"/g, '&quot;');
+      const safeTitle = game.title.replace(/"/g, '&quot;').replace(/'/g, "\\'");
       const safeMeta = `${game.console} · ${game.year}`.replace(/"/g, '&quot;');
 
       const bannerHtml = hasImage
@@ -963,7 +963,7 @@
       const rows = games.map(game => {
         const num = String(game.id).padStart(3, '0');
         const hasImage = game.image && game.image.trim() !== '';
-        const safeTitle = game.title.replace(/"/g, '&quot;');
+        const safeTitle = game.title.replace(/"/g, '&quot;').replace(/'/g, "\\'");        
         const safeMeta = `${game.console} · ${game.year}`.replace(/"/g, '&quot;');
 
         const thumbHtml = hasImage
