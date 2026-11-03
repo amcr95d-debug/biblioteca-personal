@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Writing and the Return to Innocence — Walter Kasell</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p, .separador + p, .section-head + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+.section-head { margin: 3.2rem 0 1.6rem; text-align: center; font-size: 1rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--text-secondary); }
+.section-head::before, .section-head::after { content: ""; display: inline-block; width: 2rem; height: 1px; background: var(--border-color); vertical-align: middle; margin: 0 .8rem; }
+.epigrafe { margin: 2rem 0 1.5rem; text-align: center; font-style: italic; color: var(--text-secondary); font-size: .95rem; }
+.epigrafe .attribution { display: block; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .3rem; }
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">Walter Kasell</p>
+        <h1 class="cab__tit">Writing and the Return<br>to Innocence: Proust’s<br>“La Confession d’une jeune fille”</h1>
+    </header>
+
+    <p>Among the stories in <i>Les Plaisirs et les jours</i>, “La Confession d’une jeune fille” most clearly anticipates, in its structure and theme, the strategies of Proust’s mature novel, <i>A la Recherche du temps perdu</i>. It is a narrative whose end has caught up with its starting point, a confession told in the time between the narrator’s suicide attempt and her death. Like the <i>Recherche</i>, “La Confession” describes a strategy of return to a moment of original innocence and plenitude through memory and writing. Perhaps even more clearly than the novel, however, this apparently sincere confession plays on the fundamental duplicity of writing. It claims to be the narrator’s act of contrition for her mother’s death, fulfilling that love by telling its story. In actuality, the confession replaces the figure of the mother in its most essential aspect, as a force of moral redemption.</p>
+
+    <p>The narrator, although obsessively attached to her mother, has caused her decline and death. In a final fit of remorse the daughter shoots herself, but failing to die instantly, writes this compensatory confession in her death agony. In dying, the narrator returns, through her imagination, to the summer park of her childhood, the scene of her fullest memories of her mother. Her mother would send her away each summer to “Les Oublis,” in order to lessen her dependence and fortify her will, and visited her only rarely. The park is thus filled by continual anticipation of her return. Yet of the place from which her mother was most conspicuously absent, the narrator recalls, “Nul lieu n’est plus plein de ma mère [No other place is so full of my mother].” These visits were privileged moments, when her mother would reveal the true self, and the daughter was allowed to see clearly the gentleness behind the mask of <i>froideur</i>:</p>
+
+    <div class="cita">
+        <p>Tant de doux moments recevaient une douceur de plus de ce que je sentais que c’était ceux-là où ma mère était véritablement elle-même et que son habituelle froideur devait lui coûter beaucoup.</p>
+        <p>[Such sweet moments gained an added sweetness from my feeling that during them my mother was her true self and that her habitual reserve must cost her dearly.]</p>
+    </div>
+
+    <p>The fullness of these moments, however, also recalls the girl’s first sexual transgression, for it ended in the kiss of forgiveness which her mother alone could offer. As a figure of nearly religious dimension, and a principle of purity, the mother can not only absolve the sinner, but transform her, and restore her innocence:</p>
+
+    <div class="cita">
+        <p>Elle releva son voile pour m’embrasser . . . [et] allégeait le poids de ma conscience. Ce poids s’allégeait . . . j’étais tout âme. Une divine douceur émanait de ma mère et de mon innocence revenue.</p>
+        <p>[She threw back her veil to kiss me . . . and lightened the weight of my conscience. That weight grew lighter ... I was all soul. A divine fragrance emanated from my mother and from my recovered innocence.]</p>
+    </div>
+
+    <p>Nevertheless, the narrator’s will fails, and she relapses into further sexual adventures, to the detriment of her mother’s health. Her recuperation clearly depends on her daughter recovering her chastity. At last, only her mother’s failing health can inspire repentance, and the daughter decides to marry. Yet on the eve of her marriage, and after a particularly touching embrace, when innocence seems at last to have been recaptured, the narrator allows herself to be seduced at a party, the sight of which lust kills her mother.</p>
+
+    <p>This is a story of repetition, of separation and return, where the kiss at the wedding party rediscovers the earlier moment of absolution. Its model is its earliest event, the mother’s departure from “Les Oublis,” for this is not a single event, but one repeated during the summer, like a “drame du coucher” filling the entire summer, and centering the girl’s relationship to her mother around a crucial absence. In the passionate anticipation of return, these separations resemble the troubling goodnight kisses which her mother had ended earlier because the girl “y trouvai[t] trop de plaisir et trop de peine.” Once kissed goodnight, the narrator recalls, “Je ne m’endormais plus à force de la rappeler pour me dire bonsoir encore . . . n’en ressentant que davantage le besoin passionné.” These moments are so much a product of the imagination that satisfaction fulfills less than it stimulates further desire.</p>
+
+    <p>Sometimes, if she were ill, her mother would visit unexpectedly, but in a similar fashion, the anticipated departure was so cruel that recuperation became a worse loss. As health implies separation, recovery must be postponed and convalescence extended as long as possible:</p>
+
+    <div class="cita">
+        <p>Cette douceur, cette tendresse étaient tant pour moi que le charme des convalescences me fut toujours mortellement triste: le jour approchait où je serais assez guérie pour que ma mère pût repartir, et jusque-là je n’étais plus assez souffrante pour qu’elle ne reprit pas les sévérités.</p>
+        <p>[That gentleness and tenderness meant so much to me that the charm of convalescence was always unbearably sad; the day was approaching when I should be sufficiently well again for my mother to leave me, and until then not sufficiently ill to keep her any longer from returning to her former severity.]</p>
+    </div>
+
+    <p>The goodnight kiss and convalescence lie at the center of the summers of visits and separations, fleeting events around which experience is created by imagination and memory.</p>
+
+    <p>Since departure is intolerable, the narrator’s anticipation of her mother’s return paradoxically turns “Les Oublis” into the place most filled with her presence. The emptiness of each day endows the park with the image of a perfect, but absent mother, for anticipation also assures her that upon return, her mother is most fully present and most genuinely herself. The project of returning to an imaginary or lost past by traveling to its apparent site is a motif central to Proust’s later work: in his essays on Nerval, Proust focuses on the narrator’s inability to separate the worlds of dream and memory from reality. However, here, as in <i>Sylvie</i>, the return seems to offer the narrator a way back to a landscape of innocence. For the repentant young girl, the park represents an enclave of untroubled happiness, free of corruption, and offering a perfect union with her mother. If her memories of the summers there recall her first transgression, the recollection is only a prelude to the glorious absolution that followed: “Les Oublis” is the place where it is possible to wipe clean the moral slate.</p>
+
+    <p>The sexual transgressions, which are seen as movements away from the mother, set off the recovery of purity, which is expressed as a return. Even in moments of sensuality, the remorse the girl feels in succumbing to temptation is focused on her mother, who alone can wash away the “poisoned joy” of lust. Her mother becomes a measure of the narrator’s moral worth and a model of her aspirations. This lends moral dimension to any potential separation, for separation implies the disappearance of a center and the loss of her moral compass. In her mind, then, separation becomes tantamount to transgression, and permanent separation is simply unthinkable. The incident of the girl’s sexual initiation shows the mother as a paragon of purity, apparently not even touched by the knowledge of sin. She hears and forgives her daughter’s sins “without understanding them,” and remains always “dans une ignorance de mes fautes,” in a world where corruption has not yet occurred. Rather, the narrator recalls, “Ma mère baisait chaque jour mon front qu’elle n’avait jamais cessé de croire pur sans savoir qu’il était régénéré.” Sensuality may again urge the girl into remorseful lust, but her mother offers a way out of the mixed and troubled feelings her conduct produces. Her mother’s world is unmixed (“elle n’était que pure”), whereas the daughter always feels the lack of such unity. Her own actions are impulsive and unpredictable, and show no will.</p>
+
+    <p>All her actions seem confused and mixed in their nature, so that the impurity of her world expresses itself to her by its heterogeneity. She finds in her own conduct the same disparity she felt between surface appearance and underlying essence. Most disturbing to the narrator was the praise she received when her behavior least deserved it:</p>
+
+    <div class="cita">
+        <p>[C’est] à ce moment où de tous les moments de ma vie j’ai le moins valu, que je fus le plus appréciée de tous. . . . Alors que je commettais envers ma mère le plus grand des crimes, on me trouvait, à cause de mes façons tendrement respectueuses avec elle, le modèle, des filles.</p>
+        <p>[It was ... at the very moment of my life when I was the most worthless that everyone esteemed me the most. . . . Just when I was committing the worst crime against my mother, everyone thought me, because of my tenderly respectful manner toward her, a model daughter.]</p>
+    </div>
+
+    <p>This disparity, which culminates when she sees herself in the mirror at the instant of her mother’s death, is what actually leads her to suicide. It is not simply the reflection of lust that scandalizes her, but the inability of her appearance to express the remorse she feels—even as she indulges her lust:</p>
+
+    <div class="cita">
+        <p>J’aimerais mieux que ma mère m’ait vue commettre d’autres crimes encore et celui-là même, mais qu’elle n’ait pas vu cette expression joyeuse qu’avait ma figure dans la glace.</p>
+        <p>[I should rather my mother had seen me commit still other crimes, and even that one too, than that she should have seen that look of joy on my face in the mirror.]</p>
+    </div>
+
+    <p>She is more shamed by her image in the mirror than by her mother’s direct view of her sin: she finds only brute sensuality in her reflection.</p>
+
+    <div class="cita">
+        <p>Je me vis dans la glace. Toute cette vague angoisse de mon âme n’était pas peinte sur ma figure, mais toute elle respirait, des yeux brillants aux joues enflammées et à la bouche offerte, une joie sensuelle, stupide et brutale.</p>
+        <p>[I saw myself in the mirror. None of the vague anguish of my soul was written on my face, but everything about it, from my shining eyes to my blazing cheeks, proclaimed sensual, stupid brutal joy.]</p>
+    </div>
+
+    <p>The narrator suddenly realizes that the remorse is missing from her face which would have redeemed her; in its absence she is implicated not only in sexual wrongdoing, but in deliberate duplicity. The tenderness which she has shown toward her mother just prior to this seduction becomes redefined as a cynical act of deception. No longer a mitigation of her sin, her solicitiousness seems to proclaim her <i>use</i> of appearance for vicious ends.</p>
+
+    <p>This concern with the ability of appearance to hide essence recalls Marcel’s shock when he meets “la dame en rose,” appalled to find that her appearance does not in the least manifest what he knows about actresses: “Je ne lui trouvais rien . . . de l’expression diabolique qui eût été en rapport avec la vie qu’elle devait mener [I found nothing about her . . . of the diabolical expression which would have been related to the life she must have led].” Marcel is most disturbed by her “ordinary” appearance, attesting to the lack of the essential “rapport” with her true life, as though it were doubly indecent for sin to appear so innocuous. Like the narrator of “La Confession,” Marcel is troubled by vice’s success masquerading as virtue: Odette’s appearance transgresses the boundaries between the acceptable and the unacceptable. The ability of the diabolical to hide itself is the most troubling of its seductions: “Et pourtant, en pensant à ce que devait être sa vie, l’immoralité m’en troublait peut-être plus que si elle avait été concrétisée devant moi en une apparence spéciale [And yet, in thinking about what her life must have been, its immorality troubled me perhaps more than if it had been concretized in front of me in a special appearance].”</p>
+
+    <p>The triumph of appearance, acceptance of the outer mask as inner reality, disturbs both Marcel and the young girl because for them corruption <i>means</i> taking the sign at face value. For the narrator of “La Confession,” her own moral degradation is expressed by her acceptance of surfaces, and documented by the successful use of appearance to disguise her actions. Thus, the most reprehensible aspect of her behavior is her enjoyment of this deception, and the delight she took in mocking those who were fooled by her act. To a large extent, the narrator’s confession is her attempt to correct through writing the troubling disjunction of appearance and essence. It is part of a literary project to create a language which fully embodies its intention. If the primacy of appearance is the hallmark of corruption, then the recovery of innocence will be a return to an appearance fully and immediately itself: a transparent language, entirely free of deception.</p>
+
+    <p>In the final scene, however, when the narrator confronts herself in the mirror, the possibility of such return is called into question by the crucial failure of her reflection to show the redeeming regret at the heart of her immorality. She is betrayed by the inadequacy of her image, and condemned by the transparence of her reflection. The question is whether writing is not an equally duplicitous project, and whether the failure of the image does not already presage the hopelessness of the writing project. For even a “true” image would have been heterogeneous, showing the mixed nature of her feelings. The marks of duplicity would be inscribed even in the complexity of adequate appearance, while a simple image, ostensibly a sign of purity, is revealed as one-sided and inadequate. In a parable of discovering the inescapable duplicity of writing, the narrator in front of her reflection is forced to discover the essential role that remorse plays in the pleasure of her illicit sensuality;</p>
+
+    <div class="cita">
+        <p>Je n’avais jamais pu lire sans des frémissements d’horreur le récit des tortures que des scélérats font subir à des animaux, à leur propre femme, à leurs enfants; il m’apparaissait confusément maintenant que dans tout acte voluptueux et coupable il y a autant de férocité de la part du corps qui jouit, et qu’en nous autant de bonnes intentions, autant d’anges purs sont martyrisés et pleurent.</p>
+        <p>[I have never been able to read without shuddering with horror stories of those beasts who torture animals, their own wives, their own children; I now confusedly felt that in every sensual and sinful act there is just as much ferocity on the part of the body in the throes of pleasure, and that in us so many good intentions, so many pure angels are martyred, and weep.]</p>
+    </div>
+
+    <p>In much the same way, Marcel comes to this realization at Montjouvain, when he witnesses the “ritual profanations” by means of which Vinteuil’s daughter tries to create the “appearance” of evil. In contrast to the narrator of “La Confession,” however, Mlle Vinteuil is “so naturally virtuous” that she must enter into a strategy of theatrical gestures to invoke the pleasures that belong only to evil:</p>
+
+    <div class="cita">
+        <p>Dans le coeur de Mlle Vinteuil, le mal, au début du moins, ne fut sans doute pas sans mélange. Une sadique comme elle est l’artiste du mal, ce qu’une créature entièrement mauvaise ne pourrait être, car le mal ne lui serait pas extérieur. . . .</p>
+        <p>[In Mlle Vinteuil’s soul, at least in the earlier stages, the evil element was probably not unmixed. A sadist of her kind is an artist in evil, which a wholly wicked person could not be, for in that case the evil would not have been external.]</p>
+    </div>
+
+    <p>Mlle Vinteuil’s performance corroborates the suspicion that the shock in “La Confession” stems from the realization that regret has always been a part of her pleasure—and perhaps even its source. Already in her first adventure, her cousin’s advances made her tremble “aussitôt de remords et de volupté,” reflecting her own mixed feelings. Significantly, her first seducer succeeded by proceeding in a manner at once gentle and bold: “Il avait des manières à la fois douces et hardies. . . . Il m’induisait à mal faire presque par surprise.” Only the image of her mother’s purity saves the narrator from the troubling mixture of pleasure and remorse, for her mother represents the principle which distinguishes the categories of virtue and sin, purity and corruption, pleasure and pain, truth and deception. The narrator fears that with her mother’s death, the “necessary support” keeping these categories distinct would fail her, and she would be overwhelmed by irresistible transgression. But this leaves her in an impossible situation: successful conduct seems to depend on resisting one crucial separation (from her mother), in order to maintain another, that between moral categories.</p>
+
+    <p>Her solution is a marriage in which the bounds of propriety will be redrawn, yet retained, and the inevitable separation enacted on a ceremonial level, so that the actual, physical departure may be indefinitely deferred. The misplaced object of desire, the mother, will be replaced, by a virtually absent husband, finessing the inescapable loss by a negligible addition. In the ideal solution, her husband will become an appendage of her mother: “Il était, de plus, décidé à habiter avec nous. Je ne serais pas séparée de ma mère, ce qui eût été pour moi la peine la plus cruelle.” The narrator will at once be satisfying her mother’s desire to see her settled, yet retain the essential contact. In the context of this perfect resolution, the narrator experiences a glorious reconciliation and fullness, recapturing, it would seem, the kiss of absolution of her childhood. The experience strikingly anticipates Marcel’s taste of the madeleine:</p>
+
+    <div class="cita">
+        <p>Le baiser de ce soir-là fut aussi doux qu’aucun autre. Ou plutôt ce fut le baiser même des Oublis qui, évoqué par l’attrait d’une minute pareille, glissa doucement du fond du passé et vint se poser entre les joues de ma mère encore un peu pâles et mes lèvres.</p>
+        <p>[The kiss of that evening was as sweet as any other. Or rather it was the same kiss which, evoked by the attraction of a similar moment, had glided softly out of the depth of the past to alight between my mother’s cheeks, still a little pale, and my lips.]</p>
+    </div>
+
+    <p>In this moment, innocence seems once again possible. However, just after, at the party celebrating this union, the girl is approached by a young man “qui avait la plus grande responsabilité dans mes fautes passées [who had the greatest responsibility in my past faults].” The wine has dissolved the bounds between the permissible and impermissible, and the narrator feels a sudden “mixed” urge, “à la fois besoin de me reposer et de dépenser mes nerfs [a need to rest and, at the same time, to expend my nervous energy].” Unable to tolerate these conflicting drives, nor able to keep them separate, she falls into the scandal of sensuality and remorse once again. But with the ensuing death of her mother, the recovery of innocence is no longer possible. The only means for reinstituting the separation essential to meaning are death and writing, but the confrontation in the mirror questions whether “purity” was not always tainted, whether the “proper” was not always a part of the “improper,” and whether the return to innocence was not always impossible.</p>
+
+    <p>For the object of the girl’s passion, her mother, has always been impermissible, and her purity notwithstanding, the pleasures she offered were inevitably a mixture of sweetness and cruelty, like the bedtime kisses which occasioned “too much pleasure and too much pain.” The aura of “Les Oublis,” in which the mother became perfectly herself, has been created by the child’s imagination, or the narrator’s memory. Even at their apparent origin, these kisses were cherished because they recalled a yet more distant joy, “l’ancienne habitude qu’elle avait perdue [the old habit which she had lost].” The only innocent world is one remembered, one seen through the anticipation of return. Those days of remembered fullness were also days of “angoisse joyeuse [joyful anguish],” and the visits were at once “la chose la plus douce et la plus cruelle [the sweetest and the most cruel].” The figure of the mother, seen as free of deception, is itself born of the girl’s paradoxical conviction that her coldness is proof of her love. Even at the moment of greatest plentitude, her mother’s love must be intuited, and her sincerity “démêlée au milieu du feint.” As in Marcel’s first view of the Duchesse de Guermantes in the church at Combray, a creative act of reading must be interposed to preserve the vision. Up to now, transgression has been seen as a separation from the mother, and innocence a return. But if the fullness of the mother’s presence is created by the narrator’s anticipation of her return, we must conclude that the guarantor presence against separation is itself a product of separation.</p>
+
+    <p>The source of the mother’s perfection lies in the proximity of disappearance. When the Duchesse de Guermantes disappoints Marcel’s expectations by failing to embody everything he imagined, he reinscribes in her material appearance all the magic previously invested in her image. Similarly here, the young girl’s imagination is so vivid that her mother’s arrival can only verify the vision carefully nurtured in her absence. Disappointment is precluded, since her presence is already foreseen as a vindication of the anticipation. Nor is she remembered as she was experienced, but rather recalled as she was anticipated. Truly, <i>no</i> figure could fill “Les Oublis” so richly and faithfully as her absent mother, and only this virtual figure, discerned behind a mask of <i>froideur</i> [coldness], could describe the principles of fullness, purity and propriety, replacing, as it were, the mother who does appear. The mother’s image is actually doubly inscribed by absence: in expectation of her arrival, and in the fear of her departure, locating presence always in the project of recovery, at the imagined moment of recapture.</p>
+
+    <p>The complementary nature of presence and absence recalls the pleasure disturbingly close to remorse. Looking in the mirror, the narrator was stunned to discover that her pleasures were corrupt, not because they were “evil,” but because they found their source in the ostensibly redemptive quality of remorse. Later, in his reading of Ruskin, Proust explored this mixed pleasure, for he was troubled to find examples of his mentor’s most profound idolatry among his most beautiful pages: “Je vais citer une de celles que je trouve les plus belles et où ce défaut est pourtant le plus flagrant [I will cite one of those which I find the most beautiful and in which, however, this defect is most apparent].” His difficulty was in locating the reasons for such beauty in the idolatrous context, and finding “à quel ordre de vérité peut correspondre le plaisir esthétique [to what order of truth aesthetic pleasure may correspond].” Proust comes to sense sympathy between Ruskin’s idolatry and his own, as he reads the Ruskin text inside St. Mark’s, as though one could better seize his insights in that mysterious semi-darkness:</p>
+
+    <div class="cita">
+        <p>L’émotion que j’éprouvais à lire là cette page . . . était très grande et n’était pourtant peut-être pas très pure. . . . Et peut-être cette page des <i>Stones of Venice</i> était-elle belle surtout de me donner précisément ces joies mêlées que j’éprouvais dans Saint-Marc.</p>
+        <p>[The emotion I felt in reading this page . . . was very great and yet perhaps not very pure. . . . And maybe that page of <i>Stones of Venice</i> was beautiful above all for giving me those mixed joys I experienced at Saint-Marc.]</p>
+    </div>
+
+    <p>As it is for Proust, “untroubled pleasure” is a difficult concept for the narrator of “La Confession,” since pleasure seems to arise from a context of <i>trouble</i>, in which the regret, the sense of transgression, shows itself an essential part of the pleasure. Evil can hardly have corrupted an original purity, if the purifying remorse was at the heart of the “corrupt” pleasures.</p>
+
+    <p>The scandalous realization that remorse is a necessary part of her pleasure is one that the narrator must postpone, just as she postponed her mother’s departures. Her strategy will use writing to recall the lost moments of innocence, much as she once used disease to call back her mother’s presence. The sweetest moments of “Les Oublis” sustained the mother’s ideality by extending the recovery (which is to say, extending the disease) that had recalled her:</p>
+
+    <div class="cita">
+        <p>Mes plus douces impressions sont celles des années où elle revint aux Oublis, rappelée parce que j’étais malade. . . . Elle n’était plus alors que douceur et tendresse épanchées sans dissimulation ni contrainte.</p>
+        <p>[My happiest recollections are of those times when she would be called back to <i>Les Oublis</i> when I was ill. . . . During that time she was all overflowing gentleness and tenderness, undisguised and unrestrained.]</p>
+    </div>
+
+    <p>Yet actual recovery may be undesirable, since it would cause a new separation. Recovery therefore ironically implies loss, for the narrator would become “well enough for my mother to be able to leave.” The only alternative is to extend interminably the special moment of convalescence, maintaining a delicate balance between irrevocable loss and complete recovery. This would put her always between illness and health, like the “moral convalescence” during which she would recover her innocence; when the fullness of virtue could be appreciated through its absence, but when absolution was not beyond her reach.</p>
+
+    <p>Like a perpetual convalescence, writing will extend these moments indefinitely, recalling lost fullness from the perspective of loss. And presumably, like Marcel’s Tante Léonie, the narrator would remain in a state always bordering between serious illness and perfect health, constantly receiving the undisguised kind consolation of her mother. Illness would remove her from the demands and temptations of life, replacing the deceptions of living with strategies of writing. Those strategies would have become translated to a different level, and like a writer of fiction, she would become a privileged spectator on the world, neither an active participant, nor an isolated outsider. The language of fiction, locating itself between presence and absence, truth and deception, provides the room for re-inscribing the possibility of recovery in the story of loss, the special ground, which is the space of Proust’s <i>Recherche</i>. Baudelaire was surely looking ahead to Proust when he placed the artist “à l’état du convalescent [in the state of the convalescent],” and Proust may well have had this remark in mind when he created the grounds for a “sincere” confession in the suspended time between a nearly unsuccessful suicide attempt and presumed death from its complications.</p>
+
+    <section class="footnotes">
+        <h3>Note</h3>
+        <p>From <i>The Art of the Proustian Novel Reconsidered</i>, edited by Lawrence D. Joiner. © 1979 by Winthrop Studies in Major Modern Writers.</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>

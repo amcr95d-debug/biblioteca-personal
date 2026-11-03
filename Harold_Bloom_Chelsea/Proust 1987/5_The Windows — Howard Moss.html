@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Windows — Howard Moss</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p, .separador + p, .section-head + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+.section-head { margin: 3.2rem 0 1.6rem; text-align: center; font-size: 1rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--text-secondary); }
+.section-head::before, .section-head::after { content: ""; display: inline-block; width: 2rem; height: 1px; background: var(--border-color); vertical-align: middle; margin: 0 .8rem; }
+.epigrafe { margin: 2rem 0 1.5rem; text-align: center; font-style: italic; color: var(--text-secondary); font-size: .95rem; }
+.epigrafe .attribution { display: block; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .3rem; }
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">Howard Moss</p>
+        <h1 class="cab__tit">The Windows</h1>
+    </header>
+
+    <div class="epigrafe-inicial">
+        <p>My curiosity emboldening me by degrees, I went down to the groundfloor window, which also stood open with its shutters ajar.</p>
+        <p class="attribution">—<i>Cities of the Plain</i></p>
+    </div>
+
+    <p>While Marcel waits for his mother to come up and kiss him good night, he peers down into the garden through his bedroom window. That window is to become a point of view, a transparency more viable than that which ordinarily separates the spectator from the visible while it makes vision possible. In Proust, the window is, psychologically, the voyeur’s picture. Accidental images of other people’s pleasure fulfill a painful need in the viewer. Contributing a power within himself to what he sees, Marcel is the victim of what is to be seen.</p>
+
+    <p>We are introduced to the window device in a subtle way. In Marcel’s room at Combray, he looks at the lantern slides of Golo and Geneviève de Brabant, that ancestress of the Duchesse de Guermantes who first stirs the sediment that is to coalesce around the Duchesse’s name and person. Marcel is able, by manipulating the projector, to focus the magic lantern slides on any part of his room. Their images are both deeded and willed.</p>
+
+    <p>There is a finespun association between the colors of the lantern slides and the colors Proust uses in the scene in which Marcel first sees the Duchesse in church. In the slides, Geneviève de Brabant wears a blue girdle, the castle and the moor are yellow, and the body of Golo, overcoming material obstacles, floats on the walls, on the door handle, wearing his red cloak. His face is described as pale. Here, in part, is the church scene:</p>
+
+    <div class="cita">
+        <p>Suddenly, during the nuptial mass, the beadle, by moving to one side, enabled me to see, sitting in a chapel, a lady with fair hair and a large nose, piercing blue eyes, a billowy scarf of mauve silk, glossy and new and brilliant, and a little spot at the corner of her nose. And because the surface of her face, which was red. . . .</p>
+    </div>
+
+    <p>This passage is followed by this interesting connecting link to the lantern slides:</p>
+
+    <div class="cita">
+        <p>we were uncertain, till then, whether we were not looking merely at a projection of limelight from a lantern.</p>
+    </div>
+
+    <p>And ends thus:</p>
+
+    <div class="cita">
+        <p>Her eyes waxed blue as a periwinkle flower, wholly beyond my reach, yet dedicated by her to me; and the sun, bursting out again from behind a threatening cloud and darting the full force of its rays on to the Square and into the sacristy, shed a geranium glow over the red carpet laid down for the wedding, along which Mme. de Guermantes smilingly advanced, and covered its woolen texture with a nap of rosy velvet, a bloom of light.</p>
+    </div>
+
+    <p>The colors of the lantern slides and the stained-glass windows, both illuminating figures pertinent to the Duchesse’s genealogy—Gilbert le Mauvais in stained glass, Geneviève de Brabant in the lantern’s hues—shine down and through the Duchesse de Guermantes. They suggest, too, the fluidity of the apparently stable, the immateriality of what appears to be real. Just as Golo and Geneviève de Brabant can be focused on a doorknob in Marcel’s room, so the light of the Duchesse’s stained-glass ancestors focus their past illuminations on her, transcending her physical body, making her—as Marcel sees her—something more than mortal. The affinity between the lantern slides and the stained-glass windows is one of the finer shades on Proust’s palette, for it is to be through the “lenses” of windows that Marcel is to observe certain secrets of life, each one enlightening a mysterious past he did not understand, or projecting a significant image into the future.</p>
+
+    <p>At Montjouvain, on one of Marcel’s solitary walks along the Méséglise way, he falls asleep outside Vinteuil’s house. When he wakes, he sees the first horror scene of <i>Remembrance of Things Past</i>, Mlle. Vinteuil’s seduction by a woman friend, preceded by the sadistic ritual of spitting on Vinteuil’s photograph. This scene follows one in which Marcel yearns to seduce a peasant girl—one who will be an extension of the countryside itself, a female avatar of the local ground, a precursor to the spectral landscapes locked up in the bodies of Gilberte, the Duchesse, and Albertine. What is the point of this scene?</p>
+
+    <p>A serious relation between sex and art is being established, for it is through his love for his daughter, and the misery her Lesbian attachment causes him, that Vinteuil, a country tunesmith—our first impression of him—is transformed into a great composer. And it will be, ironically, this very same friend of his daughter’s who will save Vinteuil’s septet for posterity by meticulously collating various manuscripts of the score that Vinteuil left behind him when he died. Like Aunt Léonie’s delusions, this woman is both a “cause” and a “cure”; ruining Vinteuil’s life, she redeems herself by preserving his art, part of whose greatness is attributable to her very existence. It is also the first introduction of the homosexual theme in <i>Remembrance of Things Past</i>. Significantly, it will be through a window again that Marcel sees the meeting of Charlus and Jupien, their recognition and ritual pattern of seduction. This second revelation sheds a further light on the meaning of the first.</p>
+
+    <p>These two scenes—Montjouvain and the courtyard scene that opens <i>Cities of the Plain</i>—are linked in many fashions, aside from being two explicit visions of sexual perversion. The pollenization of a rare orchid by a bee, the only insect that can fertilize it, picks up the biological motif with its flower metaphor, a motif implicit in the earlier scene in Marcel’s desire to possess a human fragment of the Méséglise soil. Both scenes are seen through windows, and both scenes require the presence of a passive viewer whose existence is unknown to the participants. To Marcel, the helpless witness of both, they are more than prurient visions; they are <i>happenings</i> that are to have the profoundest effect on the future of his life.</p>
+
+    <p>Homosexuals play a particular biological role in <i>Remembrance of Things Past</i>. Acting behind windows through which their secrets can be observed—windows that often overlook gardens—they illustrate both the irrationality of human emotions and the capriciousness of nature. Like the rare orchid that waits to be fertilized by a bee in the Duchesse de Guermantes’s courtyard, Charlus and Jupien exemplify a rare form of existence. Created from, but not creating life, they are a form, nevertheless, that has existed always. If instinct has become insidious in Swann’s choice of Odette and Marcel’s of Albertine—choices that go counter to probability and reason—Charlus’s choice of Morel goes counter to biology itself, if one assumes the purpose of biology to be reproduction. The impossibility of homosexual relationships in Proust is vitiated by two facts: the pervasive maternal fog through which he sees <i>all</i> sexual relations, and the lack of a noncompulsive heterosexual relationship that might form a standard of comparison. If love itself is a disease psychic in origin, but as predictable in its ultimate effects as pneumonia or cholera, it matters little how diseased any particular version of it is. In Proust, the homosexuals are just as unhappy as the heterosexuals.</p>
+
+    <p>Homosexuals cannot be distinguished by any biological peculiarities observable to the scientist. They cannot necessarily be detected socially by any overt behavior. Being secret, they represent the qualities of secrecy. To the heterosexual made aware of their existence, as Marcel is at Montjouvain and in the Duchesse’s courtyard, the homosexual becomes a permanent reminder of the unconscious nature of sexuality per se, of the irrationality and power of all sexual attraction.</p>
+
+    <p>Convincing as Proust may be, there is one peculiarly illogical drawback to the biological and psychological function homosexuals serve in his novel: Chosen as exceptions to illustrate a general theory of love, the more they illustrate it the less exceptional they become.</p>
+
+    <p>In society, homosexuals form a tenacious underground. At the Princesse de Guermantes’s party in <i>Cities of the Plain</i>, the usher announcing the Duc de Chattellerault has slept with him a few days earlier, under the impression he was an “Englishman.” A footman, unaware of Charlus’s identity, offers to introduce him to the Prince de Guermantes, a relative to whom Charlus hardly needs an introduction. And Charlus himself, one of the great arbiters of French society, a man who sets the tone for a whole civilization, winds up in a male brothel being beaten by a male prostitute. (The inefficacy of the paid-for beating is not merely one irony gilding another, it is the final, rotted core of the disease of the ideal. Even here—chosen, arranged for, paid for, in a house Charlus has helped set up for just such an occasion—the experience is unsatisfactory. The prostitute, a good sort, is not able convincingly to simulate hostility.) The freemasonry of homosexuality is a red thread binding the beggar to the king, the ambassador to the footman. The secrecy of the homosexual, the hypocrisy of society are twin mirrors. Each must pretend something; disguise is the necessary catalyst to both.</p>
+
+    <p>Homosexuals, a society within a society, are rooted in a biological incongruity, perpetually subject to social judgment, just as society, in a larger sense, springs from a false conception of human relationships, and is perpetually at the mercy of individual criticism. The mysteries of genetics produce a secret sect; the arbitrariness of genealogy (and, later, money, for the Duchesse de Guermantes’s “breeding” is no more fortuitous than Mme. Verdurin’s “millions”) produces its social equivalent—the world of the Faubourg Saint-Germain.</p>
+
+    <p>A minority group, driven by guilt and producing it, homosexuals are, according to Proust, outcasts of society only because society casts them out for its own special purposes: the survival of any social group depends on the ability to exclude. At the Verdurin musicale at Quai Conti, Charlus first excludes Mme. Verdurin, isolating her, through rudeness, from what he considers her social superiors. Then she excludes him by turning Morel against him, who publicly denounces Charlus. In each case, the weapons are social: status and prejudice. It is the Queen of Naples who rescues Charlus, taking him by the arm and leading him out of the room. We are back where we started: the Queen is putting Mme. Verdurin in her place.</p>
+
+    <p>Because the homosexual is forced to assume a false social role, he is, paradoxically, a microcosm of society itself. The homosexual generates the condition that precedes social grouping, exclusion; as a member of society, he is a travesty, therefore, of its mechanics. The social grouping of the homosexual is of particular interest to Proust because only a single arbitrary area of connection among individuals is necessary for the formation of the group. Thus, in the Dreyfus case, the social equivalent of this psychological process occurs. The Faubourg Saint-Germain and the anti-Semitic elements of the bourgeoisie, ordinarily without any interests in common, find themselves in a forced but mutually profitable alliance. Similarly, it requires only Swann’s passion for Odette to make him fall in love with the Verdurins—at first—when, in actuality, they are the very sort of people he detests. Homosexuality is most illustrative here because it produces the condition of least choice: psychological compulsion. Homosexuals cannot help excluding what they cannot include, heterosexual love. Society must pretend to be equally helpless. The Duchesse chooses whom she is to see in only a very limited sense; that is why it is important both for her prestige and self-esteem to assume an enormous range of possibilities: She will go to this party, but not that, receive this particular person, but not the other. Actually, like the homosexual, her choices are precircumscribed.</p>
+
+    <p>Charlus shares with Swann a distinction accorded only these two characters: they are observed, but they are also extensions of the observer: Swann is the heterosexual version of the Marcel who is observed, Charlus the homosexual one. They each occupy roughly similar positions, Swann dominating the first half of the book, Charlus the second. We infer this splitting up of character from the following facts:</p>
+
+    <p>Swann’s love affair with Odette, though it occurs many years before Marcel’s birth, is a similar relationship to that of Marcel and Albertine. In spite of the difference in time, both relationships revolve at their beginnings around the closed circle of the Verdurin “little clan” and both have Vinteuil’s “theme” as their leit-motif. Vinteuil’s sonata belongs to Swann, his septet to Marcel. More significantly, the psychological patterns are similar: it is the enigmatic nature of the woman, the torture of her absence rather than the pleasure of her presence, that constitutes the clue to passion. The emotional exchange occurs within the lover, not between the lover and the beloved. It is jealousy that primes the heart rather than mutual satisfaction. Swann’s jealousy is felt most keenly at a point where he becomes aware of Odette’s having had lesbian contacts as well as heterosexual ones—this fear of Odette’s inversion becomes more credible if we connect Swann-Marcel with Odette-Albertine than it would be as an isolated fact. For there is nothing in the rest of Odette’s life or Swann’s history of jealousy to explain this rather unexpected phenomenon. By the time Swann marries Odette, he is no longer in love with her: she has freed him from jealousy, she who was both its object and its cure, and she has detached him from the social world of the Faubourg to which he had belonged. Only one Faubourg daydream remains: Swann’s fantasy of having Odette and Gilberte received by the Duchesse de Guermantes (the Princesse de Laumes at the time of Swann’s marriage) as part of her intimate circle, a daydream denied Swann all his life and accomplished only after his death. Jealousy of a more specific sort drives Marcel into the labyrinth of Albertine’s personality—his suspicions of her lesbian tendencies. But when Marcel returns from that labyrinth, he does not return empty-handed; he has been forced to explore the labyrinth of himself, at the end of which is the book we are reading. Albertine, too, detaches Marcel from the social world—more completely than Odette does Swann, for Odette at least substitutes the society of the petty bourgeois for the Faubourg. Albertine, kept prisoner secretly, disguised as Marcel’s cousin on the few occasions when they go out, absorbs all of Marcel, his will drained by obsession. For Marcel, all social life becomes meaningless.</p>
+
+    <p>In both cases, impossibility is the great propulsion to love. Odette is domesticated, Albertine imprisoned. Under surveillance, they do not give up their secrets.</p>
+
+    <p>Swann marries Odette in the relief of liberation; Marcel lives with Albertine in the despair of imprisonment. But Swann’s liberation is only delusive. Swann and Marcel follow the same path; Swann goes part of the way but not all of the way toward the truth. Swann fails by succeeding; he marries Odette. Marcel succeeds by failing, he loses Albertine, and writes his book. The fineness of Swann’s mind, the delicacy of his perceptions remain those of an extraordinary dilettante, but a dilettante all the same. Death strangles him with cancer among the nonentities of his life, who never have really loved him. Marcel trades life for the secret of time regained, the triumph of art. He does not create a dilettante’s work, like the book on Vermeer that Swann never finishes—or live a life Vermeer might have approved of, which is Swann’s pathetic justification of his own life—but a work of art worthy of Vermeer himself.</p>
+
+    <p>If Swann and Marcel are the victims of a form of love that creates its objects out of itself, making a genuine union impossible, Charlus’s relationship to Morel exemplifies the same general proposition. Love is completely symbolic; the lover is half of a metaphor constantly searching for its relevant image. The metaphor is never completed because the relevant image is always itself. In homosexuality, where both terms of the metaphor are more nearly the same, where there is an actual duplication in the physical bodies of the lovers, this version of love is given its most credible demonstration.</p>
+
+    <p>In Marcel’s love for Albertine, we re-explore the development of Swann’s love for Odette, then step over a boundary on the other side of which lies the country of Charlus and Morel. The exploration is deeper, the nuances finer, the depths more horrifying. But essentially Albertine seems to be in part Odette, in part Morel; Marcel in part Swann, in part Charlus.</p>
+
+    <p>If a window is a transparency necessary to the voyeur, the ability to project images is necessary to the masturbator. The fact that crucial sexual scenes are witnessed in Proust through windows takes us back to the magic lantern of Marcel’s boyhood. Like the window, it is a lens; unlike the window, it is held in the hand, it projects images, and it is manipulable. The lantern slides shed further light once we realize that Geneviève de Brabant was falsely accused by Golo of committing adultery. Even these seemingly innocent childhood images contained a sexual secret. Proust includes a masturbation scene in which the images of a window, a flower, and a tower are used:</p>
+
+    <div class="cita">
+        <p>Alas, it was in vain that I implored the dungeon-keep of Roussainville . . . when, from the top floor of our house at Combray, from the little room that smelt of orris-root, I had peered out and seen nothing but its tower, framed in the square of the half-opened window, while, with the heroic scruples of a traveller setting forth for unknown climes, or of a desperate wretch hesitating on the verge of self-destruction, faint with emotion, I explored, across the bounds of my own experience, an untrodden path, which, I believed, might lead me to my death, even—until passion spent itself and left me shuddering among the sprays of flowering currant which, creeping in through the window, tumbled about my body.</p>
+    </div>
+
+    <p>The sexual meaning of the window is not confined to Marcel. When Swann goes to visit Odette during the early months of their courtship, he taps upon her window as a signal for her to come to the door to let him in. And, on two separate occasions when Swann suspects Odette of deceiving him with Forcheville, the window image is invoked. Odette asks Swann to mail some letters for her, one of which is addressed to Forcheville. Swann reads the letter through the envelope, and confirms the suspicion that Odette has betrayed him:</p>
+
+    <div class="cita">
+        <p>For a time Swann stood still there, heartbroken, bewildered, and yet happy; gazing at this envelope which Odette had handed to him without a scruple, so absolute was her trust in his honour; through its transparent window there had been disclosed to him, with the secret history of an incident which he had despaired of ever being able to learn, a fragment of the life of Odette, seen as through a narrow, luminous incision, cut into its surface without her knowledge. Then his jealousy rejoiced at the discovery, as though that jealousy had had an independent existence, fiercely egotistical, gluttonous of everything that would feed its vitality, even at the expense of Swann himself.</p>
+    </div>
+
+    <p>Later, he tries to peer through Odette’s window to substantiate his fears. It is the wrong window and he wakens two sleeping old gentlemen. If the picture Swann sees framed in the window is not charged with the sexual meaning he expected, or the sexual intensity of the two homosexual scenes witnessed by Marcel, the scene is at least unconsciously consistent, for what Swann sees, no matter how comic or ludicrous at the moment, are two people of the same sex.</p>
+
+    <p>The image of two people of the same sex, a relief to Swann, is to become a torture to Marcel. When Albertine’s friendship with Mlle. Vinteuil’s anonymous lesbian partner is revealed, the scene he had witnessed in his boyhood behind the window at Montjouvain is set in motion; the dormant, still picture becomes animated. It is Albertine’s capacity to make Marcel suffer that defines the nature of his love, and it is her invisible lesbianism that forms the substance of the long, analytical inquisition their relationship is to become. It is maternalness that Marcel seeks in his mother, and it is girlhood he seeks in Albertine (“my love for Albertine had been but a transitory form of my devotion to girlhood”). The particular horror of Albertine for Marcel is that she is not only the chosen deity who springs to life out of a general desire, but that she is his very competitor in that desire (“all my desires helped me to understand, to a certain degree, what hers had been”). She betrays him not only as a lover but as a man, just as his mother betrayed him earlier, in a more complicated sense, not only as a child but as a son. It is the emotional relationship Marcel has with his mother <i>combined</i> with the homosexual content of the Montjouvain scene that gives Albertine her special power. What Marcel feels and sees as a child comes true to haunt him as a fact—a fact he wants and does not want to know, since his pleasure consists primarily in his ability to feel pain—a direct association with Charlus who is explicitly masochistic and needs, finally, to be beaten with chains to feel sexual pleasure. What does pain-pleasure consist in for Marcel? Helplessness—the watching of the performance of others, either childishly, as in the bedroom scene; sexually and literally, as in the two window scenes; or figuratively, as in his obsessive jealousy of Albertine.</p>
+
+    <p>Marcel looks in at Mme. Swann’s winter garden through a window, and out of the dining-room window of the Balbec hotel at the sea—against whose blue he draws the first portrait of Saint-Loup, and out of whose depths the goddess, Albertine, is to rise. He stares out the corridor window of the Grand Hotel at the countryside whose distant greenery encloses La Raspelière, the Verdurins’s estate, and those small, provincial towns where Albertine goes on her “sketching expeditions,” which, in retrospect, become the stations of the cross on the itinerary of the sexual prowler. Through the windows of the restaurant of Rivebelle he sees an intoxicated reality; and it is through a window of Elstir’s studio that he sees Albertine racing by. Looking out of the window of Saint-Loup’s room, he sees the reflected shape of a hill that is to color all his memories of his stay at Doncières. Window images proliferate in Proust and are dramatically pulled together by a final association of three windows.</p>
+
+    <p>The linking of the “mother” window at Combray, and the two “homosexual” windows—the one at Montjouvain, and the one overlooking the Duchesse’s courtyard—provides a tension between two subjects, establishes a bond between two emotions that is reenforced again in a further association. In Venice, Marcel describes a particular window at the hotel:</p>
+
+    <div class="cita">
+        <p>On the piazza, the shadow that would have been cast at Combray by the linen-draper’s awning and the barber’s pole, turned into the tiny blue flowers scattered at its feet upon the desert of sun-scorched tiles by the silhouette of a Renaissance façade, which is not to say that, when the sun was hot, we were not obliged, in Venice as at Combray, to pull down the blinds between ourselves and the Canal, but they hung behind the quatrefoils and foliage of gothic windows. Of this sort was the window in our hotel behind the pillars of which my mother sat waiting for me, gazing at the Canal with a patience which she should not have displayed in the old days at Combray, at that time when, reposing in myself hopes which had never been realized, she was unwilling to let me see how much she loved me. Nowadays she was well aware that an apparent coldness on her part would alter nothing, and the affection she lavished upon me was like those forbidden foods which are no longer withheld from invalids, when it is certain that they are past recovery. To be sure, the humble details which gave an individuality to the window of my aunt Léonie’s bedroom, seen from the Rue de l’Oiseau . . . the equivalent of all these things existed in this hotel in Venice . . . she [his mother] sent out to me, from the bottom of her heart, a love which stopped only where there was no longer any material substance to support it on the surface of her impassioned gaze which she brought as close to me as possible, which she tried to thrust forward to the advanced post of her lips, in a smile which seemed to be kissing me, in the framework and beneath the canopy of the more discreet smile of the arched window illuminated by the midday sun; for these reasons . . . ever since then, whenever I see a cast of that window in a museum, I feel the tears starting to my eyes, it is simply because the window says to me the thing that touches me more than anything else in the world: “I remember your mother so well.”</p>
+        <p class="attribution">(<i>Sweet Cheat Gone</i>)</p>
+    </div>
+
+    <p>The correspondence between the Combray bedroom window and the window in Venice, both maternal shrines, is here made explicit.</p>
+
+    <p>In the ultimate horror scene of <i>Remembrance of Things Past</i>, a scene whose implications project backward through four transparencies—the Venetian window, the window overlooking the Duchesse de Guermantes’s courtyard, the Montjouvain window, and the window of Marcel’s bedroom at Combray—we come upon the following passage:</p>
+
+    <div class="cita">
+        <p>And I heard the cracking of a whip, probably made still more cutting with nails, for I heard cries of pain. Then I noticed that this room had a small, round window opening on the hallway, over which they had neglected to draw the curtain; tip toeing in the darkness, I made my way softly to this window and there, chained to a bed like Prometheus to his rock, and being beaten by Maurice with a cat-o’-nine-tails which was, as a matter of fact, studded with nails, I saw before me M. de Charlus, bleeding all over and covered with welts which showed that this was not the first time the torture had taken place.</p>
+        <p class="attribution">(<i>The Past Recaptured</i>)</p>
+    </div>
+
+    <p>The “ultimate horror scene” for specific reasons. For, if, earlier “My Hell was all that Balbec . . .”, this further vision of Hell peculiarly transcends the personal and fuses the sexual and social motifs of the novel. During a blackout, Marcel has taken refuge in a building that turns out to be a male brothel run by Jupien and supported by Charlus. He is first made aware in this scene of Saint-Loup’s homosexuality—a suspicion confirmed when Saint-Loup carelessly leaves behind his <i>croix de guerre</i> at Jupien’s. The brothel scene is immediately followed by the bombing of Paris. The Paradise of Aunt Léonie’s garden has led, by inevitable stages, to a vision of Hell that is, psychologically, the product of inversion (the brothel), and, socially, the <i>coup de grâce</i> of Europe’s ruling classes (the bombing). Stupidity, corruption, malevolence, selfishness, disease—they are combined in two acts of aggression: the beating of Charlus, the end product of centuries of civilization, and the attempted destruction of Paris, the historical and material center of the same civilization.</p>
+
+    <p>It is no accident that three out of the four major male representatives of the French aristocracy in Proust’s novel—Prince Gilbert de Guermantes (who spends a night with Morel at a house of prostitution at Maineville), Saint-Loup, and Baron Charlus—are all depicted at one point or another as patrons of male prostitutes. The one male Guermantes who eludes this category, the Duc, substitutes for it a lifelong obsession with adultery.</p>
+
+    <p>In <i>The Captive</i>, at a moment of great anxiety, Marcel experiences the following:</p>
+
+    <div class="cita">
+        <p>Suddenly, in the silence of the night, I was startled by a sound apparently insignificant which, however, filled me with terror, the sound of Albertine’s window being violently opened.</p>
+    </div>
+
+    <p>The sound, apparently insignificant, is of the utmost importance. It signals the departure of Albertine—an action suspected, dismissed, then actual, like Marcel’s vision of the Persian church at Balbec, which is oriental in imagination, prosaic in reality, and, then, partly Persian in fact. But between the opening of this window, when Albertine makes the preparations for her departure, and her actual escape, she and Marcel take a trip to Versailles. Hearing a sound they cannot at first identify, Albertine says, “Why . . . there is an aeroplane . . . high up in the sky” (<i>The Captive</i>).</p>
+
+    <p>It is at the violent opening of a window in his own house that Marcel suffers in anticipation the departure of Albertine. Like the other windows, this one sets the scene for a future surprise; Albertine not only parts from Marcel, she departs from life itself. This image of a window being violently opened, which fills Marcel “with terror,” is thematically linked to the earlier brothel scene. Each one—for Marcel and Albertine have quarreled about her relationship to Andrée—involves the rediscovery of inversion, a real or symbolic reference to the French aristocracy (Guermantes, <i>croix de guerre</i>, Versailles) and the presence of an aeroplane (the bombing of Paris, Albertine’s remark about the plane “high in the sky”).</p>
+
+    <p>Like the ringing of the garden gate bell—a sound heard both at the beginning and the end of Proust’s novel—the bedroom window at Combray becomes a repetitive motif. It narrows into a “peephole” behind which a once unimagined, and now desired and detested action takes place, transforming the childhood pictures of legend and history projected by Marcel’s magic lantern into a horrifying vision of sexual love.</p>
+
+    <section class="footnotes">
+        <h3>Note</h3>
+        <p>From <i>The Magic Lantern of Marcel Proust</i>. © 1963 by Howard Moss. Macmillan, 1962.</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>

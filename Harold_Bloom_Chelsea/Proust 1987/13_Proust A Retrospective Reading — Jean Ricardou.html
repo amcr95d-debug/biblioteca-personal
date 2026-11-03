@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proust: A Retrospective Reading — Jean Ricardou</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p, .separador + p, .section-head + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+.section-head { margin: 3.2rem 0 1.6rem; text-align: center; font-size: 1rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--text-secondary); }
+.section-head::before, .section-head::after { content: ""; display: inline-block; width: 2rem; height: 1px; background: var(--border-color); vertical-align: middle; margin: 0 .8rem; }
+.epigrafe { margin: 2rem 0 1.5rem; text-align: center; font-style: italic; color: var(--text-secondary); font-size: .95rem; }
+.epigrafe .attribution { display: block; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .3rem; }
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">Jean Ricardou</p>
+        <h1 class="cab__tit">Proust: A Retrospective Reading</h1>
+    </header>
+
+    <p>There is no such thing as a direct reading. There is no such thing as an innocent reading. There is no such thing as a spontaneous reading. Our reading of any text always takes another for a starting point, for its background; we always read a text by comparison with another. In short, to use today’s language, reading is an intertextual activity. A Balzac fan bases his reading of Proust on Balzac. A Proust fan bases his reading of Balzac on Proust. The naive reader will unwittingly base his reading of any book he opens on the amalgamation of everything else he has already read. Conversely, the enlightened reader may choose to read a text methodically with glasses whose focus has been adjusted for Balzac or Proust or Mallarmé.</p>
+
+    <p>Is that to say all intertextual readings are equivalent? Such is hardly our view. Over the naive reading, based on a random cluster of texts, the undifferentiated library insidiously at work in the mind of the reader, preference must no doubt be given to the enlightened reading, which considers a text in the light of another, clearly defined one. However, a further distinction here between two types of enlightened reading may perhaps be useful.</p>
+
+    <p>Deliberately employing rather vague terms, let us postulate a literature of the past and a literature of today.</p>
+
+    <p>Two very simple ways of bringing them into relation are conceivable. One might adopt a <i>prospective</i> attitude, which would consider today’s literature in the light of the past’s. Or one might adopt a <i>retrospective</i> attitude, which would consider the literature of the past in the light of today’s. The two positions are not equivalent. The prospective attitude is threatened with sterility: it may well find itself mainly seeking in today’s literature the trace of that which was active in the literature of the past, that is, the persistence of something which is now perhaps fading away. The retrospective attitude, on the other hand, has a good chance of proving fruitful: what it tends to seek in the literature of the past is a foreshadowing of that which is alive in the modern text, that is, the beginnings of what is now in effect. In short, the former tends to minimize the innovations of today’s text; the latter tends to stress the innovations in the text of the past.</p>
+
+    <p>Clearly, this does not mean that today’s text has a metaphysical role—that of containing a truth which would illuminate its inarticulate beginnings in the text of the past. Rather, today’s text has an operative role—that of an instrument with which to analyze the text of the past. And this retrospective analysis is threefold: it <i>detects</i> the way the text works; it <i>explains</i> the way the text works; it <i>specifies</i> the way the text works. In the first two operations, detection and explanation, the <i>resemblances</i> between a highly active process in a recent text and a less intense one in an old text are turned to account. In the third operation, specification, the <i>differences</i> between the two are stressed.</p>
+
+    <p>If we subject Proust’s <i>Remembrance of Things Past</i> to a retrospective analysis in the light of the recent literary movement that has been named the New Novel, we immediately perceive, in Proust’s work, a highly significant process. We are, in fact, witness to the beginnings of a monumental metamorphosis: a famous linguistic operation, metaphor, undergoes a radical change in function. It used to be mainly <i>expressive</i> or <i>representative</i>; with Proust, it becomes <i>productive</i>. Let’s see how.</p>
+
+    <p>We know that the principle of metaphor is a kind of <i>exoticism</i>. Whenever the figure appears—in the <i>here and now</i> of what we are reading—it brings with it something <i>foreign</i> which, perhaps, had never before been mentioned.</p>
+
+    <p>Let’s take an example. Imagine a scene in a courtyard, in the Guermantes’s mansion, for instance, with some uneven paving stones that cause the narrator to stumble. It is of course quite possible simply to describe the stones’ unevenness. That is what Proust first does toward the end of <i>Time Regained</i>: “But as I moved sharply backwards I tripped against the uneven paving stones in front of the coach-house.” However, it is also quite possible to formulate that unevenness in a different way, either by a short comparison (i.e., a metaphor) or by a long metaphor (i.e., a comparison). If there are uneven paving stones in some other place, the baptistery of Saint Mark’s in Venice, for instance, I might write, insisting on the common point of the uneven paving stones: But as I moved sharply backwards I tripped against the paving stones as uneven as those in the baptistery of Saint Mark’s in Venice. What then tends to occur, as we can see, is a veritable <i>aggression</i>. One cell of the fiction, the place under discussion, the courtyard of the Guermantes’s mansion, is attacked by an entirely different place, the baptistery of Saint Mark’s in Venice, which had not previously been mentioned. The reader is taken from Paris to Venice in no time. Yet the attack is limited; it is what one might term a <i>minuscule aggression</i>.</p>
+
+    <p>There are two reasons for this. For one, the assailant, Venice, has seen its importance diminished: the few words accorded it ensure the reader of the intervening city’s temporary character. Second, this assailant, Venice, has seen its nature belittled: the formula “<i>as</i> uneven <i>as</i> those in the baptistery of Saint Mark’s” ensures the reader of the intervening city’s phantom character. Venice is presented less as a new place in the fiction than as a simple figure of speech. In fact, the narrative has not left Paris, and the protagonist has merely entered the Guermantes’s mansion. In short, the Venetian baptistery was not brought up for itself; it was only mentioned in order to permit the <i>representation</i> of the uneven paving stones in the Guermantes’s courtyard. Such, very schematically, is the way the expressive or representative metaphor works. On the one hand, it enhances the point, or the quality, that the comparer and the compared have in common. On the other hand, it establishes an <i>inequality</i>: the fiction’s here and now, the compared, remains in a fundamentally dominant position, whereas the foreign place, the comparer, remains in a fundamentally dominated position.</p>
+
+    <p>Now, we all know that <i>Remembrance of Things Past</i> does not contain the sentence we just examined; it is apocryphal, invented purely for the purposes of demonstration. What Proust really accomplishes is not a <i>metaphorical representation</i> (of the uneven paving stones). What Proust really accomplishes is a <i>metaphorical telescoping</i> (of the two cells of the fiction). We have seen that metaphorical representation emphasizes a common point by means of a duel with a foregone conclusion between two unevenly matched cells. Metaphorical telescoping does just the opposite: a combat between two evenly matched cells is carried to its unpredictable climax by means of the point they have in common. This time the narrator is led to <i>forget</i> the fiction’s here and now, the Guermantes’s courtyard, to the extent of finding himself <i>besieged</i> by a foreign place, Saint Mark’s baptistery. Or, if you prefer, the narrative order undergoes a metamorphosis: on the way to a party at the Guermantes’s, we suddenly find ourselves in Venice. The metaphor is no longer used for an expression or a <i>representation</i>; what is important is no longer the unevenness of the courtyard paving stones. The metaphoric principle is used to <i>organize the narrative order</i>; what is important is the passage from one place to another:</p>
+
+    <div class="cita">
+        <p>the chauffeur gave a shout and I just had time to step out of the way, but as I moved sharply backwards I tripped against the uneven paving stones in front of the coach-house.</p>
+        <p>Every time that I merely repeated this physical movement, I achieved nothing, but if I succeeded, <i>forgetting the Guermantes’s party</i>, in recapturing what I had felt when I first placed my feet on the ground in this way, again the dazzling and indistinct vision fluttered near me. . . . And almost immediately I recognized the vision: <i>it was Venice</i>, of which my efforts to describe it and the supposed snapshots taken by my memory had never told me anything, but which the sensation which I had once experienced as I stood upon two uneven stones in the baptistery of Saint Mark’s had, recurring a moment ago, restored to me complete <i>with all</i> the other sensations linked on that day to that particular sensation, all of which had been waiting in their place—from which <i>with imperious suddenness a chance happening had caused them to emerge</i>, in the series of forgotten days.</p>
+    </div>
+
+    <p>Clearly, we are no longer dealing with a <i>representative</i> metaphor whose purpose would be to evoke the uneven paving stones. We are dealing with what I propose to call an <i>ordinal</i> metaphor which elaborates a narrative order and leads one fictional cell (the Guermantes’s mansion) to be interrupted by another fictional cell (Venice). In other words, the ordinal metaphor does not express, or represent, an aspect of the fiction; rather, it is <i>productive of a narrative order</i>.</p>
+
+    <p>Here, however, we need to be very clear. Between the representative metaphor and the ordinal metaphor, there is not merely a <i>difference</i> in function—the one representing an aspect of the fiction (the paving stones’ unevenness), the other ordering the fictional cells (the Guermantes’s mansion interrupted by Venice). Between the representative metaphor and the ordinal metaphor there is mainly a <i>contradiction</i> in function: whereas the <i>representative</i> metaphor obviously obeys the mechanism of representation, the <i>ordinal</i> metaphor has a curious way of challenging this very mechanism. Or, to put it more plainly, <i>the ordinal metaphor has an antirepresentative function</i>.</p>
+
+    <p>While each of the fictional cells is indeed obtained by an effect of representation, the substitution of one cell for another by means of an ordinal metaphor is not an effect of representation. The first cell, qua representation, is attacked by another cell, qua representation, and the attack shakes the solidity of the representation itself. The reason is obvious: by resting on a resemblance, the ordinal metaphor causes two fictional cells, which were remote in space and time, <i>to be telescoped into a single instant</i>. In short, the ordinal metaphor volatilizes time and space, the two categories on which the effect of representation depends.</p>
+
+    <p>This antirepresentative effect of the ordinal metaphor is marked in various ways. One of the most spectacular, no doubt, concerns the function of the narrator. As we know, in this and many other novels the narrator resolutely belongs to the activity of representation: as a character, he participates in the events represented; as the narrator, he represents the events in which he has taken part. His identity, his consistency, his integrity, his presence are, then, indispensable to the smooth working of the representation. Now, it is just this presence, this integrity, this consistency, this identity which are incontrovertibly challenged as soon as an ordinal metaphor goes to work on the narrator’s body. The reason is simple: insofar as he constitutes the place where two different fictional cells are telescoped, the narrator finds himself forced to belong, <i>simultaneously</i>, to two points in space and two moments in time. In short, he undergoes an intolerable division of his own self, which he experiences, on the fictional level, as that perfect challenge to his own being: the loss of consciousness.</p>
+
+    <p>This is exactly what happens a little further on, in the Guermantes’s library, in a delightful passage where, on the one hand, one cell’s attack on another is emphasized by a vocabulary full of conflict terms and, on the other, the battlefield is the narrator’s own being:</p>
+
+    <div class="cita">
+        <p>In this case as in all the others, the sensation common to past and present had sought to <i>re-create</i> the former scene around itself, while the actual scene which had taken the former one’s place opposed with all the resistance of material inertia this <i>incursion</i> into a house in Paris of a Normandy beach or a railway embankment. The marine dining-room of Balbec, with its damask linen prepared like so many altar-cloths to receive the setting sun, had <i>sought to shatter the solidity of the Guermantes’s mansion</i>, to <i>force</i> open its doors, and for an instant had made the sofas around me <i>sway and tremble</i>. . . . And if the actual scene had not very quickly been <i>victorious</i>, I believe that I should have lost consciousness; for so complete are these resurrections of the past during the second that they last, that they not only <i>oblige our eyes</i> to cease to see the room which is near them in order to look instead at the railway bordered with trees or the rising tide, they even <i>force our nostrils</i> to breathe the air of places which are in fact a great distance away, <i>and our will</i> to choose between the various projects which those distant places suggest to us, they force our whole <i>self</i> to believe that it is surrounded by these places.</p>
+    </div>
+
+    <p>Let us now recall the principle which underlies our reading: rather than going naively to Proust with a clutter of baggage from our personal library, we propose to read Proust in the light of a specific recent literary activity, that of the New Novel. Now, we know that the ordinal metaphor is particularly active in the texts of the New Novel. We find it at work in Alain Robbe-Grillet’s <i>Jalousie</i>, in Claude Simon’s <i>Triptyque</i>, as well as in a novel I committed myself, <i>La Prise de Constantinople</i>.</p>
+
+    <p>In <i>Triptyque</i>, for instance, an initial fictional cell, centered around a place in the country, is brutally assailed by a completely different fictional cell, centered around a place on the Mediterranean. The attack is instantaneous: no warning precedes it, not a comment, nor even the indentation of a new paragraph. (We indicate it with a slash in the quote from <i>Triptyque</i> here.) At least this attack is based on a common feature: a <i>leg</i>—of a rabbit on a plate, of a woman on a bed:</p>
+
+    <div class="cita">
+        <p>Half the rabbit’s body is now bared. The pink muscles of the <i>legs</i>, [/] the buttocks and the stomach look like an anatomy plate. Her foot resting flat on the bed, with a sudden stretch of her <i>leg</i> the woman pushed the closet door.</p>
+    </div>
+
+    <p>At this point, we can provide examples of the three operations which characterize retrospective reading. The <i>first operation</i>, as we have already stated, consists in <i>detection</i>: based on the frequency with which this phenomenon appears in the New Novel, it is easy to point out, insofar as they are similar, the various ordinal metaphors at work in the Proustian text. The <i>second operation</i>, we repeat, is on the order of an <i>explanation</i>: based on the radical nature of this phenomenon in the New Novel, it is easy to point out, insofar as they are embryonic in the Proustian metaphor, both a <i>productive aspect</i> (there is elaboration of a narrative order) and an <i>antirepresentative aspect</i> (there is elimination of time and space). The <i>third operation</i> is a kind of <i>specification</i>: based on the radical nature of this phenomenon in the New Novel, it is easy to point out, insofar as they are different in the Proustian metaphor, three mechanisms which each result in an undeniable <i>restriction</i>.</p>
+
+    <p>The <i>first restriction</i> establishes an <i>attenuation</i> of the phenomenon: where the New Novel operates incisively and without warning, Proust’s novel attenuates the mechanism by all sorts of comments which soften the blow. The <i>second restriction</i> leaves the phenomenon incomplete: where in the New Novel the attacking cell prevails, in Proust’s novel the cell which is attacked, the present, is “very quickly victorious.” The <i>third restriction</i> leads to a <i>reduction</i> of the phenomenon: where the New Novel uses it as the decisive operation producing a particular narrative order, Proust’s novel implies, in more ways than one, that the origins of the phenomenon could very well be psychological. We are, of course, referring to his frequent allusions to the famous “involuntary memory.”</p>
+
+    <p>Thus the time has come to make the following observation. Retrospective reading is not limited to detecting a process in the text of the past (the ordinal metaphor). It is not content with emphasizing certain functions which had previously gone relatively unnoticed (the production of the narrative order and the role of antirepresentation). Rather, retrospective reading tends mainly to point out, in Proust’s text, the particular mechanisms which serve to weaken this process. We have already described them: attenuation, incompletion, reduction. In so doing, retrospective reading authorizes a noteworthy event: a complete reversal of perspective as regards the role of “involuntary memory.” Far from founding the mechanism which it is supposed to induce, involuntary memory on the contrary is one of the various tactics of an obvious strategy, the goal of which is to restrict the explosive effects of the ordinal metaphor. In other words, Proust, in <i>Remembrance of Things Past</i>, is not a psychologist who, with the ordinal metaphor, found a powerful formulation for the phenomenon of involuntary memory. On the contrary, in <i>Remembrance of Things Past</i> Proust systematizes a new narrative process, the ordinal metaphor, and proposes, with involuntary memory, a <i>fictional justification</i> enabling this explosive phenomenon to be assimilated in the course of the novel.</p>
+
+    <p>If our hypothesis is correct, its fertility should be demonstrable along several <i>axes of fructification</i>. We shall indicate four of them.</p>
+
+    <p>The <i>first axis is the fictional extension of the ordinal metaphor</i>. Our previous hypothesis was that the fiction calls upon involuntary memory because the latter is patterned, in its particularity, on the functioning of the ordinal metaphor. If this hypothesis is correct, it should be possible to find other fictional subjects in Proust’s novel which are invoked because they, too, conform, in their particularities, to this same ordinal process. These, as we know, are legion. We shall enumerate three of them. The <i>first</i> one is <i>love</i>. When Swann realizes Odette’s resemblance to a Botticelli painting, the shock of the encounter between the two remote realities awakens the ardor of his love. The <i>second</i> one is <i>diplomacy</i>. When King Theodosis defines the principle of the rapprochement between two powers, he employs the term “affinity,” that is, “possession of common features.” The <i>third</i> example is <i>geography</i>. When the narrator, at the end of <i>Remembrance of Things Past</i>, discovers the particularities of the Combray countryside, he does so in the following manner: two cells which had up to that point been inaccessibly remote, Swann’s way and Guermantes’s way, are suddenly brought into relation through what is common to both—Gilberte, Swann’s daughter, becomes a Guermantes through her marriage to Saint-Loup.</p>
+
+    <p>The <i>second axis is the extension of the ordinal metaphor to the configural metaphor</i>. We have had to recognize that a metaphor can become an <i>ordinal</i> metaphor insofar as it brings about the attack of one cell by another. We shall now have to admit that a metaphor may become a <i>configural</i> metaphor insofar as it brings about the organization of a cell, in relation either to another cell or to itself. These phenomena, which at times grow highly complex, are legion in <i>Remembrance of Things Past</i>. We shall provide two examples. The <i>first</i> is well known: it is a case of <i>reciprocal assimilation</i>. When Elstir paints the harbor at Carquethuit, he does it in such a way that the land mimics the sea, and the sea, the land:</p>
+
+    <div class="cita">
+        <p>It was, for instance, for a metaphor of this sort—in a picture of the harbour of Carquethuit, a picture which he had finished a few days earlier and at which I now stood gazing my fill—that Elstir had prepared the mind of the spectator by employing, for the little town, only marine terms, and urban terms for the sea. Whether its houses concealed a part of the harbour, a dry dock, or perhaps the sea itself came cranking in among the land, as constantly happened on the Balbec coast, on the other side of the promontory on which the town was built the roofs were overtopped (as it had been by mill-chimneys or church-steeples) by masts which had the effect of making the vessels to which they belonged appear town-bred, built on land, an impression which was strengthened by the sight of other boats, moored along the jetty but in such serried ranks that you could see men talking across from one deck to another without being able to distinguish the dividing line, the chink of water between them, so that this fishing fleet seemed less to belong to the water than, for instance, the churches of Criquebec which, in the far distance, surrounded by water on every side because you saw them without seeing the town, in a powdery haze of sunlight and crumbling waves, seemed to be emerging from the waters, blown in alabaster or in sea-foam, and, enclosed in the band of a particoloured rainbow, to form an unreal, a mystical picture.</p>
+    </div>
+
+    <p>The <i>second example</i> is one we have implicitly suggested: it is a case of <i>serialization</i>. When the narrator goes to the Guermantes’s party, the entire sequence tends to take shape as a series of similar events: first, the uneven paving stones bring back Venice; then, the metallic sound of the spoon recalls a railway trip; finally, the starched napkin resurrects Balbec.</p>
+
+    <p>The <i>third axis is the extension of the ordinal metaphor to ordinal consonance</i>. We have seen that, with the ordinal metaphor, one cell is attacked by another on the basis of a common point <i>located at the fictional level</i>. We can see that, with ordinal consonance, one cell is attacked by another on the basis of a common point <i>located at the narrational level</i>. It is no longer a question, this time, of a resemblance between two of the events narrated; it is a question, this time, of a resemblance between the words employed to narrate them. At least some traces of ordinal consonance can be found in <i>Remembrance of Things Past</i>. We shall provide two examples. In two of the above quotations, the text states that the solidity of the Guermantes’s mansion is attacked by a common <i>sensation</i>, by the baptistery of Saint Mark’s and by the Balbec dining room. We can now observe that it is also attacked by certain common <i>words</i>. The baptistery of Saint Mark’s is in <i>Venise</i> (“Venice”), and the uneven paving stones at the Guermantes’s mansion are in front of a <i>remise</i> (“coach-house”). Balbec’s dining room is termed <i>marine</i> and, in the Guermantes’s mansion, it is the narrator’s <i>narines</i> (“nostrils”) which are forced to breathe the air of far-off places. Balbec’s linen is prepared like so many <i>nappes d’autel</i> (“altar cloths”), and the place that is attacked is the Guermantes’s <i>hôtel</i> (“mansion”).</p>
+
+    <p>The <i>fourth axis is the extension of the configural metaphor to configural consonance</i>. We have stressed the fact that, with the configural metaphor, one cell organizes certain of its fictional aspects according either to certain <i>fictional</i> aspects of itself or to certain <i>fictional</i> aspects of another cell. We can now see that, with configural consonance, one cell organizes certain of its fictional aspects according either to certain of its own <i>words</i> or to certain words of another cell. Although they remain somewhat clandestine, these phenomena can be found in <i>Remembrance of Things Past</i>. On some pages, for instance, the fictional cell tends to construct itself around the insistent conjunction of churches and pastries. Judge for yourself with the following quotations from <i>Swann’s Way</i> (my italics):</p>
+
+    <div class="cita">
+        <p>She sent out for one of those short, plump little cakes called “petites madeleines,” which look as though they had been moulded in the fluted scallop of a pilgrim’s [<i>Saint Jacques</i>] shell.</p>
+        <p>The taste was that of the little crumb of madeleine which on Sunday mornings at Combray (because on those mornings I did not go out before <i>church-time</i>).</p>
+        <p>Including that of the little scallop-shell of <i>pastry</i>, so richly sensual under its severe, <i>religious</i> folds.</p>
+        <p>I would turn to and fro between the <i>prayer-desk</i> and the stamped velvet armchairs, . . . while the fire, baking like a <i>pie</i> the appetising smells with which the air of the room was thickly clotted, which the dewy and sunny freshness of the morning had already <i>“raised”</i> and started to <i>“set,”</i> <i>puffed</i> them and <i>glazed</i> them and <i>fluted</i> them and <i>swelled</i> them into an invisible though not impalpable country <i>cake</i>.</p>
+        <p>A maid, one who looked as smart at five o’clock in the morning in her kitchen, under a cap whose stiff and dazzling frills seemed to be made of <i>biscuit-ware</i>, as when dressed for <i>churchgoing</i>.</p>
+        <p>You might see Mme. Sazerat kneel for an instant, laying down on the <i>prayer stool</i> beside her own <i>a neatly corded parcel of little cakes</i> which she had just bought at the baker’s.</p>
+        <p>And again, <i>after mass</i>, when we looked in to tell <i>Théodore</i> to bring a <i>larger loaf</i> than usual because our cousins had taken advantage of the fine weather to come over from Thiberzy for luncheon, we had in front of us <i>the steeple, which, baked and brown itself like a larger loaf still of “holy bread,”</i> with flakes and sticky drops on it of sunlight, pricked its sharp point into the blue sky.</p>
+    </div>
+
+    <p>Now, this configuration of the cell becomes clearer once we see that the pattern for the rapprochement is a play on words between the little cakes (the “petites madeleines”) mentioned here and the church (the Madeleine) often mentioned elsewhere in the text.</p>
+
+    <p>One last remark will close this paper: it concerns our demonstration of the axes of fructification. Two methods enabled us to perform it. One uses logic: with the ordinal metaphor, it is possible to conceptualize, at least in the abstract, the mechanisms of configural metaphor, ordinal consonance, and configural consonance. The second method uses retrospective reading: the latter two mechanisms are clearly active in the New Novel—ordinal consonance, for instance, in <i>Triptyque</i>, by Simon, and in <i>La Prise de Constantinople</i>, signed by myself; configural metaphors appear as variants in <i>Martereau</i>, by Nathalie Sarraute, and in <i>La Maison de rendez-vous</i>, by Robbe-Grillet.</p>
+
+    <p>Thus our purpose here has been twofold. One aim, obviously, was to reveal certain aspects of Proust’s text and their place in the modern challenge of expression and representation. The other aim, more generally, was to convey the following. There is a way of enjoying the literature of the past that prevents one from understanding the literature of today. There is a way of enjoying today’s literature that gives one a better understanding of the literature of the past.</p>
+
+    <section class="footnotes">
+        <h3>Note</h3>
+        <p>From <i>Critical Inquiry</i> 8, no. 3 (Spring 1982). © 1982 by Jean Ricardou. Translated by Erica Freiberg.</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>
