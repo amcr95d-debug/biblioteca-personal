@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Orpheus and the Machine: Proust as Theorist of Technological Change, and the Case of Joyce — Sara Danius</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p, .separador + p, .section-head + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+.section-head { margin: 3.2rem 0 1.6rem; text-align: center; font-size: 1rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--text-secondary); }
+.section-head::before, .section-head::after { content: ""; display: inline-block; width: 2rem; height: 1px; background: var(--border-color); vertical-align: middle; margin: 0 .8rem; }
+.epigrafe { margin: 2rem 0 1.5rem; text-align: center; font-style: italic; color: var(--text-secondary); font-size: .95rem; }
+.epigrafe .attribution { display: block; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .3rem; }
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">Sara Danius</p>
+        <h1 class="cab__tit">Orpheus and the Machine: Proust as Theorist<br>of Technological Change, and the Case of Joyce</h1>
+    </header>
+
+    <div class="epigrafe" style="text-align: left; font-style: normal; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 2rem;">
+        From <i>Forum for Modern Language Studies</i> 37, no. 2 (April 2001). © 2001 by Oxford University Press.
+    </div>
+
+    <p><span style="font-size: 2.5rem; float: left; line-height: 1; margin-right: 0.1em; margin-top: 0.1em;">L</span>egend has it that when Orpheus sang and played his lyre, not only fellow mortals but also trees and rocks, even wild beasts, were stirred by the sublime sounds he produced. After the premature death of his young wife Eurydice, the grieving hero descended to the netherworld in the hope of rescuing her. He sang so beautifully that Hell was moved; even the Furies were spellbound, shedding tears for the first time. Orpheus was allowed to take Eurydice away with him on one condition, that both of them refrain from looking back until they had reached the land of the living. Walking in silence, they had almost reached the upper world when Orpheus wanted to ensure that his beloved was still behind him. He turned around; his gaze met hers. “See, again the cruel Fates call me back,” Eurydice cried, “and sleep seals my swimming eyes. And now farewell!” She vanished from sight, absorbed for the second time by the regions of the dead. For months on end, Orpheus roamed the world voicing his grief, but in vain. His fate was sealed when the women of Thrace tore his body to pieces and threw the limbs into a river. In Virgil’s rendering of the myth, Orpheus’ head floated down the current, his “disembodied voice” calling “with departing breath on Eurydice—ah, poor Eurydice!” Whereupon the banks echoed: “Eurydice, Eurydice.”<sup>1</sup></p>
+
+    <p>The Orpheus myth revolves around love and death, around the powers of the gods and the vanity of humans, but it also tells a story about the eye and the ear: about the all-pervasive desire to look and the deadly power of the gaze, about the pleasures of listening and the animating power of the voice. In short, it is an allegory of the senses and, hence, of aesthetics.<sup>2</sup> Throughout the history of aesthetic discourse, sight and hearing have been privileged over taste, smell, and touch. Sight and hearing are more readily disposed to abstraction, and this is partly why they have enjoyed such prominence in the history of aesthetics. According to Hegel, for example, sight and hearing are essentially <i>theoretical</i> senses. For this reason, they are also <i>ideal</i> senses. Taste, smell, and touch, by contrast, are <i>practical</i> senses. They involve consumption of the work of art in one way or other, and this must not be, for Hegel thinks of the work of art as an ideal site where spirit (<i>Geist</i>) and matter intersect. A privileged blend of pure sensuousness and pure thought, exteriority and interiority, art for Hegel is the sensuous objectivation of spirit. Consequently, only the eye and the ear are capable of respecting the integrity and freedom of the work of art. Of sight and hearing, however, hearing is the most ideal sense. It is the ear, and the ear only, that may establish the ideal correspondence between the inner subjectivity of the perceiver and the spiritual interiority of the object perceived. In this way, the perceiving subject receives and so in a sense corresponds to the object whose ideal, because spiritual, interior is mediated by the sounds it emits. Unlike the eye, then, the ear succeeds in apprehending both material objectivity and interiority, all at once.</p>
+
+    <p>Such an idealist theory of aesthetic perception is circumscribed by a long philosophical tradition—the metaphysics of presence. Consequently, it is also marked by a certain historicity. Discussing Hegel’s hierarchy of the senses, Jacques Derrida suggests that Hegel could not imagine the machine, that is, a machine that functions by itself and that works, not in the service of meaning [<i>sens</i>], but rather in the service of exteriority and repetition.<sup>3</sup> Derrida does not state it explicitly, but it is clear that after the advent of devices for reproducing sound, the sense of hearing can no longer be thought of as <i>a priori</i> ideal. Devices such as the telephone and the phonograph strip sound of what Hegel would call its soulful interiority, and the sensory experience of acoustic phenomena henceforth has to resort to an ever-reproducible exteriority. Of course, the same is true of sight: its assumed ideality is exploded in the wake of inventions such as photographic means of recording visual data. In short, from now on the potentially sublime operations of the eye and the ear know an internal cleavage.</p>
+
+    <p>Few early twentieth-century writers have dramatised this aesthetic crisis as effectively as Marcel Proust. Describing the advent of modern technology, from the telephone and electricity to the aeroplane and the automobile, <i>Remembrance of Things Past</i> (1913–1927) offers numerous reflections on how technology affects human experience, particularly sensory experience.<sup>4</sup> The film-maker Raul Ruiz’s adaptation of Proust, <i>Time Regained</i> (1999), is particularly sensitive to these aspects of Proust’s tale. Ruiz even invents scenes not to be found in the novel: in one sequence, the young narrator operates a film camera, as though the entire novel springs out of a cinematographic vision; in another, Vinteuil’s sonata is broadcast over a so-called <i>théâtrophone</i>, a popular telephone service that served to transmit music performances to listeners in the privacy of their home.</p>
+
+    <p>But Proust’s novel more than dramatises technological change; it also delineates a psychology of such transformation, a psychology that may be grasped as a theory in its own right. I am thinking, in particular, of two episodes in <i>The Guermantes Way</i> (1920–21), the one revolving around a telephone conversation, the other reflecting upon photography. Read together, these episodes offer a meditation on the historicity of habits of listening and seeing.</p>
+
+    <p>Proust as theorist? Such a perspective has been elaborated before. Malcolm Bowie, in his brilliant study of the epistemology of jealousy in <i>Remembrance of Things Past</i>, maintains that Proust’s novel is “one of the most elaborate and circumstantial portrayals of the theorising mind that European culture possesses”.<sup>5</sup> And Siegfried Kracauer, in his widely influential <i>Theory of Film</i> (1960), approaches Proust as theorist of photography, basing his ontology of the photographic image in an analysis of the episode where Proust’s narrator reflects upon how he beholds his grandmother with a photographic eye.<sup>6</sup> But Proust as theorist of technological change? Surely nothing could be further removed from the great themes of the novel: the primacy of involuntary memory, the priority of subjective time, and the virtues of immediate sensory experience. Yet, such a perspective alerts us to the richness and intelligence that inform Proust’s book, demonstrating that vast portions of it hardly fit into that famous cup of tea. The second advantage—and this is what I shall dwell on in this essay—is that the theory embedded in Proust’s episodes on telephony and photography yields a convenient point of departure for distinguishing the complex ways in which technologies of perception help reconfigure habitual ways of listening and seeing in the modernist period at large and, ultimately, how such change makes available new sensory domains that open themselves to artistic exploration, particularly in the realm of the novel. James Joyce’s <i>Ulysses</i> is a case in point. Indeed, to juxtapose Proust and Joyce, as I propose to do in this essay, is to historicise some of the most characteristic formal aspects of Joyce’s 1922 epic.</p>
+
+    <div class="section-head">I</div>
+
+    <p>Proust’s telephone episode relates the narrator’s very first telephone conversation with his adored grandmother.<sup>7</sup> Transported across vast distances, from Paris to Doncières, her voice hits his ear as though for the first time—“a tiny sound, an abstract sound”.<sup>8</sup> What amazes the narrator is that although the two of them are spatially separated, their conversation is simultaneous; indeed, despite the spatial distance, they share one and the same temporality. Put differently, the aural impression of the grandmother’s voice fails to coincide spatially with the visual impression of her bodily presence. For the narrator, this insight is deeply unsettling, and it immediately acquires symbolic proportions. But it also awakens the theorising mind whose speculative intelligence animates long stretches of <i>Remembrance of Things Past</i>. Turning around the dissociation of the eye and the ear, of what can be seen and heard, the uncanny experience triggers a Proustian psychology of telecommunication that stretches over half a dozen pages:</p>
+
+    <div class="cita">
+        <p>It is she, it is her voice that is speaking, that is there. But how far away it is! [ ... ] A real presence, perhaps, that voice that seemed so near—in actual separation! But a premonition also of an eternal separation! Many were the times, as I listened thus without seeing her who spoke to me from so far away, when it seemed to me that the voice was crying to me from the depths out of which one does not rise again, and I felt the anxiety that was one day to wring my heart when a voice would thus return (alone and attached no longer to a body which I was never to see again), to murmur in my ear words I longed to kiss as they issued from lips for ever turned to dust. (REM 2: 135 / RTP 2: 432)</p>
+    </div>
+
+    <p>In short, the narrator discovers his grandmother’s voice. Detached and disembodied, it hits him in all its baffling abstraction. Meanwhile, he also realises that he used to identify what he now perceives as “voice” by matching it with her face and other visual features. It is a dialectic moment, for what henceforth appears as having been an organic system of signification has just been sundered; and at the same time, this horizon of signs stands before him, suddenly and visibly revealed, now that it has been lost: “for always until then, every time that my grandmother had talked to me, I had been accustomed to follow what she said on the open score of her face, in which the eyes figured so largely; but her voice itself I was hearing this afternoon for the first time” (REM 2: 135 / RTP 2: 433).</p>
+
+    <p>The narrator discovers not merely his grandmother’s voice; now that he perceives her “without the mask of her face”, he also hears, for the first time, “the sorrows that had cracked [her voice] in the course of a lifetime”. Dwelling inside her is a figure whom he has never yet apprehended, a figure inhabited by time. The narrator realises that his grandmother will die, and die soon, and the psychological impact of this insight is irreversible:</p>
+
+    <div class="cita">
+        <p>“Granny!” I cried to her, “Granny!” and I longed to kiss her, but I had beside me only the voice, a phantom as impalpable as the one that would perhaps come back to visit me when my grandmother was dead. “Speak to me!” But then, suddenly, I ceased to hear the voice, and was left even more alone [ ... ]. It seemed to me as though it was already a beloved ghost that I had allowed to lose herself in the ghostly world, and, standing alone before the instrument, I went on vainly repeating: “Granny! Granny!” as Orpheus, left alone, repeats the name of his dead wife. (REM 2: 137 / RTP 2: 434)</p>
+    </div>
+
+    <p>In this remarkable passage, Proust explicitly inscribes the telephone episode in the Orpheus myth, thereby reworking the Greek tale in a number of unexpected yet characteristic ways. Indeed, it is Proust who interprets the myth, adapting it to the cultural imaginary of the machine age, and not the other way around. But there is more to the episode. What the narrator intimates is that a whole new matrix of perceptual possibilities is sliding into place, one that transforms both the perception of voice (forms of audibility) and the perception of visual appearance (forms of visibility). In other words, the narrator perceives her bodily appearance as though for the first time. The experience of the disembodied voice thus elicits a new understanding of that bodily entity from which the voice has been detached.</p>
+
+    <p>This, indeed, is confirmed by the episode which follows a few pages later; I shall refer to this passage as the camera-eye episode. Once these two sections are read in tandem, as I believe they should be, and as I believe Proust meant them to be, an interesting pattern begins to emerge. The narrator is on his way to pay his grandmother a visit, compelled to do so by the telephone conversation and its uncanny revelation of a phantom grandmother, shaded by her age and future death: “I had to free myself at the first possible moment, in her arms, from the phantom, hitherto unsuspected and suddenly called into being by her voice, of a grandmother really separated from me, resigned, having [ ... ] a definite age” (REM 2: 141/RTP 2: 438). Upon his arrival, the narrator enters the drawing room, where he finds her busy reading a book. Because she fails to notice his presence, she appears to him like a stranger. He, too, feels like a stranger, observing her appearance as he would that of any old woman. To make matters worse, she appears precisely like that ghostly image which he so desperately wanted to banish from his mind: “Alas, it was this phantom that I saw when [ ... ] I found her there reading” (REM 2: 141/RTP 2: 438).</p>
+
+    <p>The grandmother has become pure image. Why does this stand out to his naked eye? Because she has withdrawn her gaze; indeed, it is her failure to look at her grandson that makes him discover, for the second time, her double. During the telephone conversation, her eyes and face failed to accompany her voice, thus anticipating that eternal separation called death. Here, too, she is shrouded in invisibility, for sitting in the sofa is not the grandmother but her doppelgänger. Disembodied and deterritorialised, she literally emerges as a spectral representation of herself. I stress this point because Proust’s episode shares an affinity with Walter Benjamin’s notion of the aura. Benjamin approaches aura in two ways: in terms of spatio-temporal uniqueness, and in terms of the gaze; and these perspectives merge in his reflections on photography in the 1930s.<sup>9</sup> In mechanically reproducing the visual real, the photographic image strips the object of its unique presence in time and space; at the same time, photography makes the past look at us, but—and this is Benjamin’s vital point—we cannot look back. For this reason, photography is linked to death. Yet there is nothing Orphic in a photograph. In Benjamin, it is not the gaze itself that is deadly; it is the failure to meet the gaze of the other that is deadly. The history of the decline of aura is also the history of an increasing inability to meet the intentional and unique gaze of the other, be it an object, a human being, or history.</p>
+
+    <p>It is therefore all the more interesting that Proust’s narrator, in order to explain how the uncanny sight of the grandmother was possible, should draw on the language of photography. Not only does he create an analogy between himself and a professional photographer; he also proposes that during those brief moments before his grandmother realised his presence, his gaze was operating like a camera. The photographic metaphor then sparks a Proustian essay which sets out to explain why we perceive our loved ones the way we do, and why these perceptions are always and necessarily faulty. In the process, Proust the narrator is joined by Proust the psychologist. Their dialogue shuttles between experience and theory, between local observations and general laws:</p>
+
+    <div class="cita">
+        <p>We never see the people who are dear to us save in the animated system, the perpetual motion of our incessant love for them, which, before allowing the images that their faces present to reach us, seizes them in its vortex and flings them back upon the idea that we have always had of them, makes them adhere to it, coincide with it. How, since into the forehead and the cheeks of my grandmother I had been accustomed to read all the most delicate, the most permanent qualities of her mind, how, since every habitual glance is an act of necromancy, each face that we love a mirror of the past, how could I have failed to overlook what had become dulled and changed in her, seeing that in the most trivial spectacles of our daily life, our eyes, charged with thought, neglect, as would a classical tragedy, every image that does not contribute to the action of the play and retain only those that may help to make its purpose intelligible. (REM 2: 142 / RTP 2: 438–9)</p>
+    </div>
+
+    <p>In order to drive home his point concerning the alienating vision inherent in the camera, Proust adds yet another example. This scenario, too, rehearses the contrast between what we expect to see, although we may not have realised it, and what we actually perceive:</p>
+
+    <div class="cita">
+        <p>But if, instead of our eyes, it should happen to be a purely physical object, a photographic plate [<i>plaque photographique</i>], that has watched the action, then what we see, in the courtyard of the Institute, for example, instead of the dignified emergence of an Academician who is trying to hail a cab, will be his tottering steps, his precautions to avoid falling on his back, the parabola of his fall, as though he were drunk or the ground covered in ice. So it is when some cruel trick of chance prevents our intelligent and pious tenderness from coming forward in time to hide from our eyes what they ought never to behold, when it is forestalled by our eyes, and they, arriving first in the field and having it to themselves, set to work mechanically, like films [<i>pellicules</i>], and show us, in place of the beloved person who has long ago ceased to exist but whose death our tenderness has always hitherto kept concealed from us, the new person whom a hundred times daily it has clothed with a loving and mendacious likeness. (REM 2: 142 / RTP 2: 439)</p>
+    </div>
+
+    <p>In an attempt to explain his grandmother’s sudden alienation before his gaze, the narrator splits the category of visual perception into two: the human eye and the camera eye. Marked by affection and tenderness, human vision is necessarily refracted by preconceptions; and such a lens prevents the beholder from seeing the traces of time in the face of a loved one. In effect, the beholder sees not the person, merely his or her preconceived images of the person, thus continuously endowing the loved one with a “likeness”. Memory thus prevents truth from coming forward.</p>
+
+    <p>The camera eye, on the other hand, is cold, mechanical and undistinguishing. It carries no thoughts and no memories, nor is it burdened by a history of assumptions. For this reason, the camera eye is a relentless conveyor of truth, and so it is that the narrator catches sight of a new person, hitherto unknown and unseen, who now flashes into the present: “for the first time and for a moment only, since she vanished very quickly, I saw, sitting on the sofa beneath the lamp, red-faced, heavy and vulgar, sick, vacant, letting her slightly crazed eyes wander over a book, a dejected old woman whom I did not know” (REM 2: 143 / RTP 2: 440). The deadly power of the photographic gaze has struck the grandmother, that once so familiar and self-evident being who, like Eurydice on the verge of light, instantly vanishes from sight and disappears into the shadows. All that is left behind is a phantom image. To be sure, the narrator’s uncompromising image of his grandmother is bound to evaporate as soon as she lifts her eyes and recognises him. Yet for him those seconds have nevertheless hinted at her impending death. From now on the narrator’s perception of his grandmother is scarred by her difference from herself. Her persona is split into two, her uncanny double superimposed upon her seemingly ever-pre-given self.</p>
+
+    <p>It should be clear by now just how intricate Proust’s treatment of technologies of perception is in <i>Remembrance of Things Past</i>. What starts as a reflection on telephony and the discovery of the disembodied voice ends as a meditation on photography and how it changes the perception of visual appearances. In other words, the narrator’s effort to grasp the experience of speaking to his grandmother on the telephone motivates a psychology of visual perception as well. Read in this way, Proust offers a germinal theory of how the emergence of technologies for transmitting sound such as the telephone paves the way for a new matrix of perception, in which not only sound but vision also turn into abstract phenomena. What is more, Proust suggests that the perceptual habits of the eye and the ear begin to function separately, each independent of the other, each in its own sensory register.</p>
+
+    <p>An episode in the last volume of the novel, <i>Time Regained</i> (1927), testifies to the consequences of such technological change. Set in the mid-1920s, the scene unfolds at a social gathering where the narrator is reintroduced to an old friend. The latter expresses delight at meeting again after so many years. A caesura follows, because the narrator, perplexed and confused, fails to identify the person in front of him, although the voice is familiar enough:</p>
+
+    <div class="cita">
+        <p>I was astonished. The familiar voice seemed to be emitted by a gramophone [<i>phonographe</i>] more perfect than any I had ever heard, for, though it was the voice of my friend, it issued from the mouth of a corpulent gentleman with greying hair whom I did not know, and I could only suppose that somehow artificially, by a mechanical device [<i>true de mécanique</i>], the voice of my old comrade had been lodged in the frame of this stout elderly man who might have been anybody. (REM 3: 985 / RTP 4: 522)</p>
+    </div>
+
+    <p>The gentleman’s voice, rising out of the body as though of its own accord, is here rendered as a non-corporeal, hence foreign, element. It is the defamiliarising image of the gramophone that so drastically disconnects the voice from its bodily source. What is more, the mechanical metaphor strips the old acquaintance of human qualities such as consciousness and agency, thus reducing him to a non-human entity, indeed, to a thing. These images serve to underscore the narrator’s insistent efforts to match his perception of the voice with his perception of the friend’s exterior and, at the same time, they prefigure his utter inability to do so:</p>
+
+    <div class="cita">
+        <p>He stopped laughing; I should have liked to recognise my friend, but, like Ulysses in the <i>Odyssey</i> when he rushes forward to embrace his dead mother, like the spiritualist who tries in vain to elicit from a ghost an answer which will reveal its identity, like the visitor at an exhibition of electricity who cannot believe that the voice which the gramophone [<i>phonographe</i>] restores unaltered to life is not a voice spontaneously emitted by a human being, I was obliged to give up the attempt. (REM 3: 985–6 / RTP 4: 523)</p>
+    </div>
+
+    <p>Rich in images and allusions, this passage turns on the tangible discrepancy between the narrator’s aural impressions and his visual experience. What marks the representation of this encounter, and what sets it apart from the telephone scenario, is that the dissociation of the eye and the ear, of what can be seen and heard, has already happened. The differentiation of seeing and hearing both precedes and inscribes the narrator’s account of the event. Whereas the telephone episode contemplated the experience of an abstract voice and, by implication, how the aural impression of the voice fails to coincide spatially with the visual impression of the speaking body, this scene contains within itself the very experiential effects that the previous one reflected upon. For if the telephone episode ultimately ponders the spacing of production and reception, of sonic origin and transmission, the present scenario both presupposes and enacts that logic of spacing. That is to say, the representation of the narrator’s failure to recognise his friend from long ago is organised precisely by that matrix of perception—the dissociation of the eye and the ear, the abstraction and reification of sensory experience—that the narrator, in <i>The Guermantes Way</i>, took upon himself to grasp and explain. In effect, then, the representation of the old friend’s voice presumes the essential <i>internalisation</i> of the very experiential effects that the telephone and camera-eye episodes set out to chart. The phonographic metaphor confirms the implicit dialectics at work. In the telephone episode, the narrator reflected upon the experience of the pure and abstract voice, intimating that it is enabled by a technology for communicating at a spatial distance. To this sound machine we may now add the phonograph, a mechanical device that makes it possible to strip sound not only of its spatial source but also of its temporal origin.<sup>10</sup> From now on, the voice and other acoustic phenomena are, potentially, subject to endless reiteration and exteriorisation.</p>
+
+    <p>In this way, then, Proust’s telephone and camera-eye episodes articulate a theory of how a new division of perceptual labour comes into play, one that bears on both the habits of the ear and those of the eye. For although each of these two processes of abstraction may be traced back to its own relatively distinct technological lineage, their experiential effects—reification, autonomisation and differentiation—are fundamentally interrelated. Mutually determining one another, the abstraction of the visual is inherent in the abstraction of the aural, and vice versa. Meanwhile, as Proust’s own phonographic imagery demonstrates, the new optical and acoustic worlds propelled by such technological change open up realms of representation that readily lend themselves to artistic experiments. From photography to telephony, from phonography to cinematography: technological transformation helps articulate new perceptual domains, charging the modernist call to make the phenomenal world new. Proust’s novel thus offers a way of understanding the mediated nature of so many characteristic formal innovations that are to be found in numerous modernist works. Joyce’s <i>Ulysses</i> offers a particularly rich example.</p>
+
+    <div class="section-head">II</div>
+
+    <p>In <i>Ulysses</i>, each sensory organ appears to operate independently and for its own sake. What is more, each sensory organ, particularly the eye, tends to perform according to its own autonomous rationality, as though detached from any general epistemic tasks. “His gaze,” Joyce writes, “turned at once but slowly from J. J. O’Molloy’s towards Stephen’s face and then bent at once to the ground, seeking” (U 7.819–20).<sup>11</sup> The trivial activity of looking is here rewritten as an event in itself. To look is no longer a mere predicate to be attached to a subject; the predicate has been unhinged from the subject and operates independently, endowed with an agency all its own. By the same token, voices in <i>Ulysses</i> also tend to lead an utterly independent life, physiologically as well as syntactically: “The inner door was opened violently and a scarlet beaked face, crested by a comb of feathery hair, thrust itself in. The bold blue eyes stared about them and the harsh voice asked:—What is it?” (U 7.344–7). Or, to take another example: “Miss voice of Kennedy answered, a second teacup poised, her gaze upon a page:—No. He was not. Miss gaze of Kennedy, heard, not seen, read on” (U 11.237–40).</p>
+
+    <p>The dissociation of the visual and the aural runs through Joyce’s narrative from beginning to end. Indeed, despite the stylistic variegation that characterises <i>Ulysses</i>, this feature persists throughout the eighteen episodes of the novel, coming to the fore especially in the first two episodes, “Telemachus” and “Nestor”. The opening of “Telemachus” dwells on how Stephen Dedalus and his two friends Buck Mulligan and Haines rise, chat and have breakfast in the Martello Tower. The first sentence introduces a perky Buck Mulligan and how he, “stately” and “plump”, comes down the staircase. Wearing a yellow dressing gown which flutters round his body like a priestly mantle, he greets his half-awake friends with loud cries. A few sentences later, Stephen Dedalus enters the scenario. At the same time, Joyce introduces a characteristic stylistic device, a trademark visualising technique which, in various ways and with varying intensity, will be deployed throughout <i>Ulysses</i>. This is how the implicit narrator details Stephen’s visual perception of Buck Mulligan: “Stephen Dedalus, displeased and sleepy, leaned his arms on the top of the staircase and looked coldly at the shaking gurgling face that blessed him, equine in its length, and at the light untonsured hair, grained and hued like pale oak” (U 1.13–16).</p>
+
+    <p>Within the space of a few paragraphs, the visual representation of Mulligan, whom we just observed proceeding from the stairhead and into the room as though in a full-length portrait, has shrunk to a face. In fact, his face has been turned into a thing which, furthermore, takes on a life of its own. The horselike face is said to shake and gurgle all by itself, even bless a somewhat irritated Stephen. Dehumanised and reified, Mulligan’s face floats like a hairy oval before the reader.</p>
+
+    <p>Subsequently, Mulligan brings his shaving utensils to the parapet, lathers his cheeks and chin, and begins to shave, meanwhile chatting with Stephen. “His curling shaven lips laughed and the edges of his white glittering teeth. Laughter seized all his strong wellknit trunk” (U 1.131–3). Significantly, Joyce does not write that Mulligan is laughing, but that his lips are; likewise, Mulligan is not seized by laughter, but his stomach is. Joyce represents Buck Mulligan’s body—that is to say, his lips, teeth and torso—as responding to external stimuli as though its reactions were mere reflexes, bypassing the control of some centrally-operating intentionality. Mulligan’s physical appearance turns into a miniature spectacle before the reader.</p>
+
+    <p>The aesthetic effect of such passages, so common in Joyce, depends upon the differentiation of the human body, whose various parts are then autonomised and, furthermore, endowed with an agency all their own. In this introductory episode, as so often in <i>Ulysses</i>, Joyce’s implicit narrator builds upon a narratological aesthetic that aims at defamiliarisation. The narrator, one could say, keeps to what he perceives, not to what he knows is there. In this way, Joyce’s aesthetics reveals deep affinities with that of Proust, although Joyce pushes that aesthetic program to an extreme.</p>
+
+    <p>When Mulligan is about to descend into the tower, leaving Stephen to ruminate over his dead mother, Stephen’s visual perception of his roommate’s bodily movement is rendered as it presents itself to his eyes. Temporarily frozen by the entrance frame through which he is disappearing, Mulligan’s figure thus appears as an optical outline:</p>
+
+    <div class="cita">
+        <p>His head halted again for a moment at the top of the staircase, level with the roof:</p>
+        <p>—Don’t mope over it all day, he said. I’m inconsequent. Give up the moody brooding.</p>
+        <p>His head vanished but the drone of his descending voice boomed out of the stairhead [ ... ]. (U 1.233–8)</p>
+    </div>
+
+    <p>All Stephen perceives is a head. From a visual point of view, Buck Mulligan’s bodily whole has been bisected by the frame through which he passes. There is a striking affinity between Stephen’s image and a photographic frame, that instant freezing of time and movement. From a rhetorical point of view, Mulligan’s visual <i>Gestalt</i> has been substituted for a synecdoche, his thing-like head being the sign that stands in for the whole and whose shape can be observed for a few more moments.<sup>12</sup> But what, exactly, is the whole, the <i>Gestalt</i>?</p>
+
+    <p>The passage suggests that Stephen’s perceptual experience of Mulligan’s descent is processed in two different registers. On the one hand there is Stephen’s visual impression, and on the other, the auditory one. Each is distinct; indeed, each is separate and independent of the other:</p>
+
+    <div class="cita">
+        <p>Buck Mulligan’s voice sang from within the tower. It came nearer up the staircase, calling again. Stephen, still trembling at his soul’s cry, heard warm running sunlight and in the air behind him friendly words.</p>
+        <p>—Dedalus, come down, like a good mosey. Breakfast is ready. Haines is apologising for waking us last night. It’s all right.</p>
+        <p>—I’m coming, Stephen said, turning.</p>
+        <p>—Do, for Jesus’ sake, Buck Mulligan said. For my sake and for all our sakes.</p>
+        <p>His head disappeared and reappeared. (U 1.281–9)</p>
+    </div>
+
+    <p>What is heard is not joined together with what is seen; and what is seen is in its turn a mere slice of the whole. The multi-sensory hermeneutic horizon, the all-embracing <i>Gestalt</i>, refuses to take shape. Aligning himself with a modernist aesthetic that aims to render what is perceived rather than what is known, Joyce challenges traditional ways of describing movement, gestures and action, and with them, the idea of “organic” modes of perception. At the same time, such a pronounced desire to represent what is heard and, furthermore, to represent it in a register that is radically separate from what is seen, may usefully be considered in the light of those late nineteenth-century acoustic technologies that mediate the new matrices of perception, turning the sense of sight and that of hearing into quasi-ideal senses. Indeed, Joyce’s mode of representing Stephen’s sharply differentiated sensory impressions in the Martello Tower scene is refracted through a perceptual matrix enabled by technologies for transmitting and reproducing the real, acoustic and visual technologies alike.</p>
+
+    <p>No wonder, then, that Joyce’s novel abounds with reified voices and autonomous eyes. One further example will suffice, drawn from “Nestor”, the second episode. Stephen is in the classroom teaching his rather unwilling students history. All of a sudden they are alerted to a sound:</p>
+
+    <div class="cita">
+        <p>A stick struck the door and a voice in the corridor called:</p>
+        <p>—Hockey!</p>
+        <p>They broke asunder, sidling out of their benches, leaping them. Quickly they were gone and from the lumberroom came the rattle of sticks and clamour of their boots and tongues. (U 2.118–22)</p>
+    </div>
+
+    <p>This stylistically sophisticated miniature scene serves to characterise Stephen’s sensory apparatus. Beginning with a voice stripped of its author, the passage proceeds to render the students’ sudden movements in all their visual purity, only to close with sounds, more specifically, with the acoustic phenomena issuing from the lumberroom. Stephen stays behind with one of the students, Sargent, who needs extra assistance, until</p>
+
+    <div class="cita">
+        <p>In the corridor his name was heard, called from the playfield.</p>
+        <p>—Sargent!</p>
+        <p>—Run on, Stephen said. Mr Deasy is calling you.</p>
+        <p>He stood in the porch and watched the laggard hurry towards the scrappy field where sharp voices were in strife. [ ... ]</p>
+        <p>Their sharp voices cried about [Mr Deasy] on all sides: their many forms closed round him, the garish sunshine bleaching the honey of his illdyed head. (U 2.181–98)</p>
+    </div>
+
+    <p>Represented as thing-like and autonomous entities, the boys’ voices act on their own, as though bypassing screens such as the cortex, spreading their sharp vibrations all the way to the veranda where Stephen is standing. Meanwhile his visual impression of the boys’ appearances fades. Gradually, they blend into so many optical outlines surrounding the stingy headmaster whose hair-colour stands out as a sunny exclamation mark.</p>
+
+    <p>A monument to the autonomy of the eye and the ear, <i>Ulysses</i> is both an index and an enactment of the increasing differentiation of sight and hearing in the modernist period. Joyce’s style thus registers the subterranean effects of those technological events that Proust reflects upon. Indeed, once we place Joyce’s mode of representing visual and acoustic impressions alongside the theory of sensory differentiation and reification embedded in Proust’s novel, we realise the great extent to which the very experiential effects that Proust’s narrator contemplates effectively inscribe some of the most persistent stylistic aspects of <i>Ulysses</i>.</p>
+
+    <p>At the same time, the advent of modern technologies of perception fuels the pre-eminently modernist imperative to “make it new” (Ezra Pound), and nowhere as palpably as in Joyce. Technology emerges as an occasion for launching new idioms: it restructures the prose of the world, yielding opaque signatures that demand to be read and decoded. But this also means that Joyce’s aesthetics of perception comes into being as a solution to a historical problem—how to recover and represent the immediacy of lived experience in an age when modes of experience are continually reified by, among other things, the increasingly powerful emergence of technologies for reproducing the visual and audible real. In pursuing absolute immediacy, Joyce’s aesthetics of perception seeks to name the everyday anew; and this is why, in <i>Ulysses</i>, the imperative to make you <i>see</i> and <i>hear</i> is so often an aesthetic end in itself, utterly divorced from processes of knowledge and cognition.</p>
+
+    <p>Joyce’s aesthetics of perceptual immediacy is thus inscribed by a historically specific discourse where the empirical materiality of the body is posited as the privileged site of aesthetics and where perception has become an aesthetically gratifying activity in its own right. Such a discourse, as I have argued, becomes possible in the period which sees the emergence of technologies for reproducing the visual and audible real. The high-modernist aesthetics of perception I have been discussing in this essay thus feeds on a historical irony that is as palpable as it is inevitable: the more abstract the world of observation becomes, the more corporeal is the notion of the perceiver. And this bodily realm is no longer necessarily of a generalised, transcendental order, as in the aesthetic theories of, say, Baumgarten, Kant and Hegel. Indeed, the sensory body is no longer a universal notion. Rather, the aesthetic now tends to be located in a particular body, a concrete, singular and mortal body.</p>
+
+    <section class="footnotes">
+        <h3>Notes</h3>
+        <p>1. Virgil, <i>Georgics</i>, with an English translation by H. Rushton Fairclough, revised by G. P. Goold (Cambridge: Harvard University Press, 1999), p. 257. I have also relied on <i>Bulfinch’s Mythology</i> (New York: HarperCollins, 1991) and <i>Mythologies</i>, ed. Yves Bonnefoy, trans. Wendy Doniger (Chicago: Chicago University Press, 1991).</p>
+        <p>2. Etymologically, the meaning of the term “aesthetics” springs out of a cluster of Greek words that designate activities of sensory perception in both a strictly physiological sense, as in “sensation”, and a mental sense, as in “apprehension”. <i>Aisthetikos</i> derives from <i>aistheta</i>, things perceptible by the senses, from <i>aisthethai</i>, to perceive. For a full etymological explanation, see H. G. Liddell & R. Scott, <i>Greek-English Lexicon</i>, 9th edn (Oxford: Oxford University Press, 1996).</p>
+        <p>3. Jacques Derrida, “The Pit and the Pyramid: Introduction to Hegel’s Semiology”, in <i>Margins of Philosophy</i>, trans. Alan Bass (Chicago: University of Chicago Press, 1982), pp. 71–108.</p>
+        <p>4. For an inventory of the cultural imaginary of the telephone in Proust’s time, see <i>Le Téléphone à la Belle Époque</i> (Brussels: Éditions Libro-Sciences, 1976).</p>
+        <p>5. Malcolm Bowie, <i>Freud, Proust and Lacan: Theory as Fiction</i> (Cambridge: Cambridge University Press, 1987), p. 65.</p>
+        <p>6. Siegfried Kracauer, <i>Theory of Film: The Redemption of Physical Reality</i> (Princeton: Princeton University Press, 1960), pp. 14–20 et passim. In Kracauer’s last work, Proust’s episode also plays an important role; see <i>History: The Last Things Before the Last</i> (New York: Oxford University Press, 1969), pp. 49–52, 82–6, 92–3.</p>
+        <p>7. Proust’s telephone episode has a rich prehistory. An early version appears in <i>Jean Santeuil</i>, in the pages relating Jean’s first telephone conversation with his mother; see <i>Jean Santeuil</i>, 3 vols (Paris: Gallimard, 1952), Vol. 2, pp. 178–81. In 1907, Proust published an expanded version of the episode in a piece on reading in <i>Le Figaro</i>. He then revised the episode once again and made it a part of <i>The Guermantes Way</i>. On the genesis of the episode and its vital role in <i>Remembrance</i>, see Paul Martin, “Le Téléphone: Étude littéraire d’un texte de M. Proust”, parts 1–3, <i>Information littéraire</i> 21 (1969), 233–41; and 22 (1970), 46–52, 87–98.</p>
+        <p>8. Marcel Proust, <i>Remembrance of Things Past</i>, trans. C. K. Scott Moncrieff & Terence Kilmartin, 3 vols (New York: Vintage, 1982), Vol. 2, p. 432; <i>A la recherche du temps perdu</i>, ed. Jean-Yves Tadié et al, 4 vols (Paris: Bibliothèque de la Pléiade, 1987–1989), Vol. 2, p. 135. Page references, hereafter cited parenthetically in the text, indicate first the English translation (REM) and then the French original (RTP).</p>
+        <p>9. See Walter Benjamin, “A Small History of Photography”, in <i>One-Way Street and Other Writings</i>, trans. Edmund Jephcott & Kingsley Shorter (London: NLB, 1979), pp. 240–57; “The Work of Art in the Age of Mechanical Reproduction”, in: <i>Illuminations</i>, ed. Hannah Arendt, trans. Harry Zohn (New York: Schocken, 1988), pp. 217–51; and “Some Motifs in Baudelaire”, in: <i>Charles Baudelaire: A Lyric Poet in the Era of High Capitalism</i>, trans. Harry Zohn (London: Verso, 1973), pp. 109–54.</p>
+        <p>10. For a cultural history of the gramophone and its impact on notions of acoustic representation, see Friedrich Kittler, <i>Gramophone, Film, Typewriter</i>, trans. Geoffrey Winthrop-Young & Michael Wutz (Stanford: Stanford University Press, 1999), pp. 21–114. See also Kittler’s <i>Discourse Networks, 1800/1900</i>, trans. Michael Metteer, with Chris Cullens (Stanford: Stanford University Press, 1990), pp. 229–64.</p>
+        <p>11. James Joyce, <i>Ulysses</i>, ed. Hans Walter Gabler, with Wolfhard Steppe & Claus Melchior (New York: Random House, 1986). References cite episode number, followed by line number.</p>
+        <p>12. Alan Spiegel has usefully related Joyce’s visual style to cinematic modes of representation, focusing in particular on Joyce’s “method of fractured and cellular narration and description, of rendering wholes by their parts”. In Spiegel’s view, this feature represents “the characteristic formal procedure of Joyce’s modernism” (<i>Fiction and the Camera Eye: Visual Consciousness in Film and the Modern Novel</i> [Charlottesville: University Press of Virginia, 1976], p. 64).</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>

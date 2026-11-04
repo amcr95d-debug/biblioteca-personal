@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zipporah: A Ruskinian Enigma Appropriated by Marcel Proust — Cynthia J. Gamble</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p, .separador + p, .section-head + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+.section-head { margin: 3.2rem 0 1.6rem; text-align: center; font-size: 1rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--text-secondary); }
+.section-head::before, .section-head::after { content: ""; display: inline-block; width: 2rem; height: 1px; background: var(--border-color); vertical-align: middle; margin: 0 .8rem; }
+.epigrafe { margin: 2rem 0 1.5rem; text-align: center; font-style: italic; color: var(--text-secondary); font-size: .95rem; }
+.epigrafe .attribution { display: block; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .3rem; }
+.num-list { margin: 1rem 0; padding-left: 1.5rem; }
+.num-list p { text-indent: -1.5rem; padding-left: 1.5rem; margin-bottom: 0.8rem; text-align: justify; }
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">Cynthia J. Gamble</p>
+        <h1 class="cab__tit">Zipporah: A Ruskinian Enigma<br>Appropriated by Marcel Proust<sup>1</sup></h1>
+    </header>
+
+    <div class="epigrafe" style="text-align: left; font-style: normal; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 2rem;">
+        From <i>Word & Image</i> 15, no. 4 (October–December 1999). © 1999 by Taylor & Francis Limited.
+    </div>
+
+    <p><span style="font-size: 2.5rem; float: left; line-height: 1; margin-right: 0.1em; margin-top: 0.1em;">J</span>ohn Ruskin first visited the Sistine Chapel in the Vatican in April 1841 and noted in his diary: ‘Our last day in Rome I devoted to Sistine Chapel, and received real pleasure from it’.<sup>2</sup> His pleasure on that occasion was due to his appreciation of Michelangelo’s use of colour, but no mention is made of Sandro Botticelli. That visit was almost a valediction to Rome: ‘there is something about it which will make me dread to return’, he also wrote.<sup>3</sup> Indeed, Ruskin was not to return to Rome, and the Sistine Chapel in particular, until 1872, some 31 years later.</p>
+
+    <div class="section-head">I. Zipporah in Context</div>
+
+    <p>Ruskin’s <i>Zipporah</i><sup>4</sup> (figure 1) is a copy of a fragment of a large fresco by Botticelli, measuring 348.5 by 558 cm on the South Wall of the Sistine Chapel, about 5.5 metres from the ground, and in some degree of shade. The fresco is entitled <i>Le Prove di Mosè</i>, literally ‘The Trials of Moses’. However, in English, it is variously denominated: <i>The Temptation of Moses</i>, <i>The Temptation of Moses: Bearer of the Written Law</i>, <i>The Life of Moses</i>, <i>Scenes from the Life of Moses</i>, <i>Moses in Egypt and Midian</i>, <i>Youth of Moses</i>. Botticelli painted this scene at the request of Sixtus IV, who summoned him to Rome in 1481, along with Domenico Ghirlandaio, Cosimo Rosselli and Pietro Perugino to decorate the walls of the papal electoral chapel with frescoes. Scenes from the lives of Moses and Christ were executed on the long walls of the chapel. The scenes contain typological references to one another, with, for example, Moses appearing as the prefiguration of Christ.</p>
+
+    <p><i>The Trials of Moses</i> is to be read from right to left, as a Hebrew script, commencing in the bottom right-hand corner. It conveys different points in time and in two places (Egypt and Midian, in the Arabian desert near the Gulf of Akabah): it is a mosaic of the spiritual and the profane, encompassing human and animal life, murder, contrasting emotions of terror, hatred, tenderness, compassion. It is a busy canvas, with lots of movement and activities in contrast to the solid piece of architecture on the right (is it a synagogue, or a loggia?) which might provide some degree of protection. In the background, beyond the trees, the hilly landscape of Biblical Egypt and the wilderness of Midian are visible, and they provide a frame for the activities. It is also a story related in eight episodes of the life of Moses, as a circular narrative moving around the well in the centre.</p>
+
+    <div class="section-head">In Egypt</div>
+
+    <div class="num-list">
+        <p>1. The story begins in the right foreground of the fresco, where the young, angry and impetuous Moses, brandishing a sword, is murdering the Egyptian taskmaster, whose head has hit the ground and whose face is convulsed with pain, agony and horror: ‘And it came to pass in those days, when Moses was grown, that he went out unto his brethren, and looked on their burdens: and he spied an Egyptian smiting an Hebrew, one of his brethren. And he looked this way and that way, and when he saw that there was no man, he slew the Egyptian, and hid him in the sand’. (Exodus 2:11–15).<sup>5</sup></p>
+        <p>2. Contrary to the Biblical story, Botticelli depicts two witnesses who are retreating from the murder. Walking away, to the right, and contrary to the flow of movement of the painting, a woman in a blue garment puts her arms protectively around a man: is he the Hebrew youth who the Egyptian was smiting, or is this a scene of two frightened spectators, such as a mother and son, or a husband and wife?</p>
+    </div>
+
+    <div class="section-head">In Midian</div>
+
+    <div class="num-list">
+        <p>3. Moses flees into the wilderness in Midian for his safety. He is depicted by Botticelli almost suspended in flight, turning to the left and thereby re-establishing the flow of the movement of the painting. ‘Moses ... dwelt in the land of Midian’ (Exodus 2:15). The Biblical story continues as follows: ‘Moses ... sat down by a well. Now the priest of Midian had seven daughters: and they came and drew water, and filled the troughs to water their father’s flock. And the shepherds came and drove them away: but Moses stood up and helped them, and watered their flock’ (Exodus 2: 15–17).</p>
+        <p>4. On the left of Moses in the wilderness, Moses can be seen driving away from the well the Midianite shepherds who had been a nuisance to Jethro’s daughters. We do not know exactly what happened, but the girls had obviously complained to their father.</p>
+        <p>5. In the centre foreground, the focal point of the fresco or the pivot of the composition, the youthful Moses is assisting two of Jethro’s seven daughters. He is hauling water from a deep well with a silvery coloured bucket or pitcher on a rope and filling a trough for the sheep of the two girls who stand watching: Zipporah is on the left facing the reader and her sister is on the right. The black sheep among the flock is perhaps an omen of trials to come. The meeting place is portrayed as idyllic and symbolic, with the water of the well symbolizing life and re-birth, and the well being the place at which marriages were arranged, and business and other deals concluded. It was also the scene of revelations and announcements.<sup>6</sup></p>
+    </div>
+
+    <p>Not recorded in the fresco are several important events in the life of Moses, such as Jethro welcoming him to his home, Moses’ marriage to Zipporah and the birth of a son named Gershom, meaning foreigner or exile in Hebrew: ‘And Moses was content to dwell with the man: and he gave Moses Zipporah his daughter. And she bare him a son, and he called his name Gershom: for he said, I have been a stranger in a strange land’ (Exodus 2:21–2).</p>
+
+    <div class="num-list">
+        <p>6. Upwards, in the left half of the fresco, Moses is guarding Jethro’s sheep on Mount Horeb, better known today as Mount Sinai: ‘Now Moses kept the flock of Jethro his father in law, the priest of Midian; and he led the flock to the backside of the desert, and came to the mountain of God, even to Horeb’ (Exodus 3:1). He is dressed in a short, yellow tunic, not a long robe, and is removing his shoes,<sup>7</sup> for he is on Holy Ground, in obedience to the Lord’s command from the Burning Bush, which burned but was not consumed. ‘Draw not nigh hither: put off thy shoes from off thy feet, for the place whereon thou standest is holy ground’ (Exodus 3:5).</p>
+        <p>7. In the top left-hand corner, Moses, now barefoot, is kneeling before the Lord who appears above a burning bush. The Lord told Moses that he was destined to lead the Hebrews out of Egypt into the promised land of milk and honey. ‘And the angel of the Lord appeared unto him in a flame of fire out of the midst of a bush: and he looked, and, behold, the bush burned with fire, and the bush was not consumed’ (Exodus 3:2).</p>
+        <p>8. In the bottom left-hand corner, Moses, now ‘fourscore years old’ (Exodus 7:7), leads the Exodus of the Jews carrying their various belongings and the spoils of the Egyptians as they had been instructed by God: ‘Every woman shall borrow of her neighbour, and of her that sojourneth in her house, jewels of silver, and jewels of gold, and raiment: and ye shall put them upon your sons, and upon your daughters: and ye shall spoil the Egyptians’ (Exodus 3:22 and cf. 12:35–6). The Bible story details other possessions they took: ‘flocks, and herds, even very much cattle’ (Exodus 12:38). Among this departing crowd, with its variety of characters, Botticelli’s fresco depicts an older, rather matronly Zipporah in a blue dress, accompanied by her two sons, Gershom, holding a little dog, and, beside him, the younger son, Eliezer, mentioned in Exodus 18:4.</p>
+    </div>
+
+    <p>From Botticelli’s <i>Le Prove di Mosè</i>, Ruskin copied four scenes: <i>Zipporah</i> (RF 880), <i>Sheep</i> (RF 879),<sup>8</sup> <i>Sheep</i> (RF 1167) and <i>Gershom’s Little Dog</i> (whereabouts unknown). Charles Fairfax Murray also copied two scenes: <i>Gershom and His Dog</i> (private collection) and <i>Moses and His Family Leaving Midian</i> (Sheffield R 312).</p>
+
+    <div class="section-head">II. When and How did Ruskin Paint Zipporah?</div>
+
+    <p>Ruskin, the Slade Professor of Art at Oxford, records his progress on painting <i>Zipporah</i> in his Diary of 1874, during a 7-month tour of the Continent, of which 6 months were spent in Italy. He started work in 1874 and on 17 April wrote: ‘A delightful day yesterday at Sistine ... ’, followed by ‘Still pleasanter day of work on Botticelli’ on 18 April. His entries for May record his progress, and single-mindedness, and to a lesser extent his method of work:</p>
+
+    <div class="cita">
+        <p>Tuesday 5 May 1874: ‘Y[esterday] began sheep in Sistine Chapel, successfully’.</p>
+        <p>Wednesday 6 May: ‘Y[esterday] began Zipporah in pencil’.</p>
+        <p>Thursday 7 May: ‘Y[esterday] good work in Sistine.’</p>
+        <p>Saturday 9 May: ‘A good day y[esterday] on Zipporah; deciphered her pretty hem of dress’.</p>
+        <p>Sunday 10 May: ‘Up in good time, after sound sleep, my work prospering. If only I can keep myself in good temper and health .... Y[esterday] after standing from ten to two at work on Zipporah, I walked up Monte Mario’.</p>
+        <p>Tuesday 12 May: ‘An utterly dark day, and main difficulties in Zipporah, tired me dreadfully yesterday. I must not let this happen again’.</p>
+        <p>Thursday 14 May: ‘Finished Zipporah down to her feet yesterday’.</p>
+        <p>Friday 22 May: ‘ ... I sadly tired, necessarily, in finishing Zipporah, and all despondent and wrong minded in evening’.</p>
+        <p>Saturday 23 May: ‘Y[esterday] a singularly good day—on Zipporah’.</p>
+        <p>Whit-Sunday 24 May: ‘Y[esterday] practically finished Zipporah, though I shall retouch here and there. She has taken me altogether 15 days, begun on the 6th and three Sundays, one festa, and a lost Monday intervening. The paper added to the difficulty not a little, and not being quite near enough for measurement—and at least a week of dark days. So that, well prepared and under ordinarily favourable circumstances, I can assuredly do such a figure in a fortnight’.<sup>9</sup></p>
+    </div>
+
+    <p>Ruskin seemed well satisfied with his fortnight’s work for he wrote to Charles Eliot Norton on 19 June 1874: ‘I’ve done Botticelli’s Zipporah successfully’.<sup>10</sup></p>
+
+    <p>Details of particular artistic problems Ruskin encountered during the copying of <i>Zipporah</i> are, unfortunately, singularly lacking: but one special difficulty seems to have been that of deciphering the hem of her dress, already referred to in his diary of 9 May. Later in that same year Ruskin drew particular attention to Zipporah’s dress and to what he considered as Botticelli’s ‘ill done’ lettering around the border, a characteristic he had observed in several of Botticelli’s pen drawings with so-called inscriptions, beautifully drawn, but which could not be read: ‘In copying Botticelli’s Zipporah this spring, I found the border of her robe wrought with characters of the same kind, which a young painter, working with me, who already knows the minor secrets of Italian art better that I [Ruskin is referring to Charles Fairfax Murray], assures me are letters—and letters of a language hitherto undeciphered’.<sup>11</sup> Ruskin was a talented linguist who could read Greek, Latin, Italian and French: his unwillingness to decipher the characters or even to attempt to identify them is, therefore, all the more surprising. I have examined closely Ruskin’s copy of <i>Zipporah</i>, and the lettering resembles Etruscan to some extent, thus reinforcing the Etruscan tradition and presence in Italian art. Since the Etruscan alphabet is based on Greek, Ruskin would have had no difficulty in deciphering the lettering. His uncharacteristically casual approach to the problem suggests that he did not wish to decipher the message and preferred to maintain the aura of mystery and ambivalence around Zipporah. He did not want to see the message on the border of her robe which may have destroyed his reconstruction of Zipporah-Athena.</p>
+
+    <div class="section-head">III. John Ruskin’s Zipporah-Athena</div>
+
+    <p>Ruskin’s lecture on 4 December 1874, on Botticelli,<sup>12</sup> revealed an important discovery he had made earlier that year, that Botticelli was a pivotal link between the civilization of pre-Christian Greek-influenced Etruria and Christianity: Ruskin had observed the striking similarity between the olive leaves on a cornice of the church of the Badia of Fiesole, the old capital of Etruria and birthplace of Botticelli, and in Botticelli’s work: ‘There’s no gap and scarcely any difference between these garlands of golden olive of Etruria before Christ and the utmost beauty of leaf drawing of ... Botticelli’.<sup>13</sup> This conjunction of two seemingly disparate elements, the Etruscan and Christian traditions, co-existed in Botticelli’s <i>Zipporah</i>, the Goddess-shepherdess or ‘shepherd maiden’,<sup>14</sup> a figure from Greek mythology and from a Biblical story: she is Ruskin’s ‘Etruscan Athena, becoming queen of a household in Christian humility’.<sup>15</sup></p>
+
+    <p>Ruskin lent his facsimile of <i>Zipporah</i> to an exhibition in Brighton in 1876, together with his woodcut of Athena copied from a Neck Amphora in the British Museum, London (figure 2).<sup>16</sup> His explanatory note for the catalogue is a particularly pertinent, focused <i>exposé</i> of the interconnectedness of Zipporah and Athena.</p>
+
+    <p>The powerful masculinity of Athena, the Greek virgin Goddess of Wisdom, War and Weaving, the protectress of eternal virginity and the embodiment of chastity, is usually depicted in classical Greco-Roman art as an imposing and physically strong, fearless woman, a warrior ready and dressed to fight with her breastplate, helmet, carrying a shield and a spear as Goddess of War (or a distaff as the Goddess of Weaving and the Domestic Arts). This may appear at first sight to be in stark contrast with Zipporah’s timid nature as witnessed at the well when Zipporah, together with her sisters, was unable to cope with some troublesome shepherds. For Ruskin, Botticelli’s Zipporah is a closer representation of Athena as Goddess of Weaving and Domestic Arts.</p>
+
+    <p>Ruskin, in his Brighton catalogue entry of 1876, states clearly the importance to him of Zipporah: ‘Botticelli, trained in the great Etruscan Classic School, retains in his ideal of the future wife of Moses every essential character of the Etrurian Pallas, regarding her as the Heavenly Wisdom given by inspiration to the Lawgiver for his helpmate; yet changing the attributes of the goddess into such as become a shepherd maiden’.<sup>17</sup> He then examines in considerable detail the dresses of Athena and of Zipporah and shows that ‘every piece of the dress [of Athena] will be found to have its corresponding piece in that of Zipporah’.<sup>18</sup> About the chiton or linen robe with the peplus or mantle, Ruskin writes:</p>
+
+    <div class="cita">
+        <p>There is first the sleeved chiton or linen robe, falling to the feet, looped up a little by the shepherdess; then the peplus or covering mantle, very nearly our shawl, but fitting closer; Athena’s, crocus coloured, embroidered by herself with the battle against the giants; Zipporah’s, also crocus coloured, almost dark golden, embroidered with blue and purple, with mystic golden letters on the blue ground; the fringes of the aegis are, however, transposed to the peplus; and these being of warm crimson complete the sacred chord of colour (blue, purple, and scarlet), Zipporah being a priest’s daughter.<sup>19</sup></p>
+    </div>
+
+    <p>Ruskin’s transposition and his detection of what Jeanne Clegg calls ‘iconographical resonances’<sup>20</sup> continue as he compares Athena’s aegis, often represented in mythology as a goatskin fringed with snakes, with Zipporah’s goatskin satchel, her lance to Zipporah’s reed.</p>
+
+    <div class="cita">
+        <p>The aegis of Pallas becomes for Zipporah a goatskin satchel, in which she carries apples and oak (for pleasure and strength); her lance becomes a reed, in which she carries her wool and spindle; the tresses of her hair are merely softened from the long black falling tresses of Athena; a leaf of myrtle replaces the olive [leaf]. The scarcely traceable thin muslin veil over her breast represents the part of the aegis which, in the Pallas, is drawn with dots, meaning soft dew instead of storm.<sup>21</sup></p>
+    </div>
+
+    <p>The effect of this deconstruction and reconstruction of Zipporah, and to a lesser extent Athena, is to redefine her as her uncertain identity begins to emerge. The fusion of these two virgins results in the charged and heightened sexuality of Zipporah-Athena, and consequent lesbian proclivities. Simultaneously, the androgynous nature of the women is suggested by the phallic symbolism of the lance-reed. A detailed examination of Zipporah’s feet in Ruskin’s copy reveals a heavy masculine shape and form, and her lower legs appear hirsute: characteristics not apparent in Zipporah’s sister.</p>
+
+    <p>This interpretation, this overwhelming desire to see Athena in Zipporah, and vice-versa, is an act of Ruskinian idolatry that prefigures Swann’s idolatry of Zipporah-Odette in Proust’s <i>A la Recherche du Temps perdu</i>. A close reading of Ruskin’s text, with its echoes of <i>Queen of the Air</i>, as the red figure of Athena on the amphora becomes a blaze of colour, raises some questions and doubts. For example, is Zipporah really carrying a ‘goatskin satchel’? Or is it a wreath? Is Zipporah wearing a chiton? Her lower garment looks more like Oriental trousers. Is Zipporah at the well carrying ‘apples and oak’? In this partial misreading of Zipporah’s garments, Ruskin projects onto Zipporah what he wants to see, reminiscent of his and Proust’s misreading, of the hawthorn at Amiens Cathedral.<sup>22</sup></p>
+
+    <p>The warrior aspect of Athena, so prominent on the amphora, has been sublimated by Ruskin who has given pre-eminence to nobility and domesticity, juxtaposed in his moral interpretation of Zipporah. His initial interest in Zipporah during his 1872 visit to Rome was as a model of his ideal woman combining the noble qualities of a princess with those of a ‘workwoman’.<sup>23</sup> He then compared Zipporah with Ursula, the industrious princess ‘in a plain house-wifely dress [who] talks quietly [to her father, while] going on with her needlework all the time’<sup>24</sup> depicted by the Venetian artist Vittore Carpaccio in his triptych of 1490–95, <i>L’Arrivo degli Ambasciatori inglesi presso il Re di Bretagna</i>, which opens the Saint Ursula cycle in the Accademia, Venice. Ruskin’s interpretation of Ursula is in terms not dissimilar to those used for Zipporah: but other art historians have understood Ursula to be ticking off on her fingers the conditions for her marriage, while her father listens wearily.<sup>25</sup> Ruskin had focused on Zipporah’s housewifely qualities in letter 20, 5 July 1872, in <i>Fors Clavigera</i>, when he remarked that ‘the girl who is to be the wife of Moses, when he first sees her at the desert-well, has fruit in her left hand, but a distaff in her right’.<sup>26</sup> In a note to this letter, Ruskin modified this initial observation and commented: ‘More accurately a rod cloven into three at the top, and so holding the wool. The fruit is a branch of apples; she has golden sandals, and a wreath of myrtle round her hair’.<sup>27</sup> The evergreen myrtle was a symbol of love and peace in the classical Greco-Roman period, and in the Renaissance it represented conjugal love and fidelity: it was often part of a bridal headpiece. The unreal bride that Ruskin was seeking and idealising was always inaccessible, in a Carpaccio or a Botticelli painting.</p>
+
+    <div class="section-head">IV. Marcel Proust’s Zipporah-Odette</div>
+
+    <p>Botticelli’s Zipporah was, therefore, a fascinating subject for Ruskin, consciously and unconsciously, with her duality at different levels and heightened tension due to these juxtaposed elements. For Proust, also, this very same Zipporah played an important role in <i>A la Recherche du Temps perdu</i>, translated by Terence Kilmartin as <i>In Search of Lost Time</i>.</p>
+
+    <p>Charles Swann is a rich dilettante, a hedonist who prefers High Society to High Art, an art collector who nevertheless has a sensitive appreciation of art and who is writing a book on Ver Meer but who lacks the application to complete it. Works of art, therefore, play a not unimportant role in his life. The focus of <i>Swann in Love</i> is the analysis of Swann’s relationship with Odette de Crécy, tracing the rise and fall of his love culminating in his marriage to Odette at a point when he realises he no longer loves her and about whom he exclaims: ‘To think that I’ve wasted years of my life, that I’ve longed to die, that I’ve experienced my greatest love, for a woman who didn’t appeal to me, who wasn’t even my type’.<sup>28</sup> It is also the story of the self-destruction of Swann.</p>
+
+    <p>Swann’s disappointment, indeed agony, in love is in part due to his manner of conducting his artificially created love-affair. Only when he realises that he has ceased to be in love with Odette is he able to see her, as he had done at the very beginning of their acquaintance, in a transparent and rational way. Her true features, her defects to which he had been blind, or which he had assigned to oblivion during his passionate pursuit, become apparent: ‘Odette’s pallid complexion, her too thin cheeks, her drawn features, her tired eyes, all the things which ... he had ceased to notice since the early days of their intimacy’.<sup>29</sup> Other features of Odette’s that Swann had repressed were ‘her cheeks ... sometimes mottled with little red spots’ that ‘distressed him as proving that the ideal is unattainable and happiness mediocre’.<sup>30</sup> Julia Kristeva maintains that Swann’s imagined love for Odette starts the moment he dissociates her from her real body, with its many defects, and replaces it with the virgin Zipporah: the ‘chair abîmée’ becomes a ‘museum piece’ with which he has a sexual relationship.<sup>31</sup></p>
+
+    <p>Swann begins to construct an artificial Odette when, on his second visit to her apartment, he is ‘struck by her resemblance to the figure of Zipporah, Jethro’s daughter, which is to be seen in one of the Sistine frescoes’.<sup>32</sup> On that occasion, Odette, ‘not very well’, receives him</p>
+
+    <div class="cita">
+        <p>in a dressing-gown of mauve crêpe de Chine, drawing its richly embroidered material over her bosom like a cloak. Standing there beside him, her loosened hair flowing down her cheeks, bending one knee in a slightly balletic pose in order to be able to lean without effort over the picture at which she was gazing, her head on one side, with those great eyes of hers which seemed so tired and sullen when there was nothing to animate her’.<sup>33</sup></p>
+    </div>
+
+    <p>There are distinct echoes of Zipporah in this portrait of Odette, in the depiction of the hair, and the tilt of the head, the richly embroidered cloak-like garment, the pose and the eyes.</p>
+
+    <p>Swann’s feelings for Odette are, from that moment, developed and regulated uniquely through the intermediary of art and especially Botticelli’s Zipporah. He had created an artificial woman. ‘He placed on his study table, as if it were a photograph of Odette, a reproduction of Jethro’s daughter’.<sup>34</sup> This must be a reproduction of Ruskin’s copy of <i>Zipporah</i>, isolated from the rest of the Biblical story (as Odette is presented out of context, without a family or a past) and which was reproduced, in black and white, as a frontispiece to Volume XXIII, published in 1906, of <i>The Complete Works of John Ruskin</i>, edited by Cook and Wedderburn, and which Proust owned. Proust’s mother had already given him the Cook and Wedderburn set so far published for his New Year’s present in January 1905. Proust had on several occasions praised the magnificent pictures in these volumes.<sup>35</sup> Was the absence of colour in the Odette-Zipporah metaphor, apart from the reference to the mauve dressing-gown, due to the fact that Proust was basing his observations on the black-and-white reproduction? Proust never visited Rome: neither did he see Ruskin’s original watercolour copy.</p>
+
+    <p>Swann reconstructs Odette <i>à la Zéphora</i> and gazes ‘in admiration at the large eyes, the delicate features in which the imperfection of the skin might be surmised, the marvellous locks of hair that fell along the tired cheeks’.<sup>36</sup> In this extreme form of iconolatry, Swann is overcome by fetishism as Zipporah becomes both a visual representation and a reincarnation of Odette as Swann takes hold of Zipporah-Odette and grasps her close to his heart. In this moment of illusionary physical possession, Swann’s desire for Odette is realised and a kind of compensatory mechanism is released: ‘The vague feeling of sympathy which attracts one to a work of art, now that he knew the original in flesh and blood of Jethro’s daughter, became a desire which more than compensated, thenceforward, for the desire which Odette’s physical charms had at first failed to inspire in him’.<sup>37</sup> The more Swann looks at the black-and-white reproduction of Botticelli’s <i>Zipporah</i>, the more he believes he is in love with Odette: ‘When he had sat for a long time gazing at the Botticelli, he would think of his own living Botticelli, who seemed even lovelier still, and as he drew towards him the photograph of Zipporah he would imagine that he was holding Odette against his heart’.<sup>38</sup> This is not dissimilar to Ruskin’s absolute desire to read Athena in Zipporah, and vice-versa, and beneath this surface mask can be substituted the name and personage of Rose La Touche. For Zipporah had certainly been an object of desire or at least flirtation for Ruskin, clearly evident in his letters to Joan Severn in which Zipporah is an ‘enchantress’, a ‘pretty Zipporah’ who should ‘make some people jealous’.<sup>39</sup> Ruskin writes in a sexually explicit way revealing his repressed sexual desires: he confesses that he has ‘nearly driven [himself] quite wild today with drawing little Zipporah’s chemisette’ with his urge to see Zipporah’s breasts.<sup>40</sup></p>
+
+    <p>And vice versa, the more Swann looks at Odette’s face, the more he</p>
+
+    <div class="cita">
+        <p>remarked Odette’s resemblance to the Zipporah of ... Botticelli ... He no longer based his estimate of the merit of Odette’s face on the doubtful quality of her cheeks and the purely fleshy softness which he supposed would greet his lips there should he ever hazard a kiss, but regarded it rather as a skein of beautiful, delicate lines which his eyes unravelled, following their curves and convolutions, relating the rhythm of the neck to the effusion of the hair and the droop of the eyelids, as though in a portrait of her in which her type was made clearly intelligible.<sup>41</sup></p>
+    </div>
+
+    <p>After the face, Odette’s entire body is imbued with Botticelli’s Zipporah, as perfection incarnate: ‘[Swann] stood gazing at her; traces of the old fresco were apparent in her face and her body, and these he tried incessantly to recapture thereafter, both when he was with Odette and when he was only thinking of her in her absence; and, although his admiration for the Florentine masterpiece was doubtless based upon his discovery that it had been reproduced in her, the similarity enhanced her beauty also, and made her more precious’.<sup>42</sup> Odette is becoming more and more unreal, as she is transformed from <i>cocotte</i> into a Botticelli maiden, in what Richard Bales described as a ‘rush for substitutes’.<sup>43</sup> The magic contained in the words ‘Florentine masterpiece’ enabled Swann ‘like a title, to introduce the image of Odette into a world of dreams and fancies which, until then, she had been debarred from entering, and where she assumed a new and nobler form’.<sup>44</sup></p>
+
+    <p>In the confines of Odette’s carriage, as it rumbles along a Paris street, Swann’s first physical contact with this ‘tart [and] a kept woman’<sup>45</sup> who feigns coyness and virginity, is also conducted through the metaphor of Botticelli’s paintings of women:</p>
+
+    <div class="cita">
+        <p>[Swann] ran his other hand upwards along Odette’s cheek; she gazed at him fixedly, with that languishing and solemn air which marks the women of the Florentine master in whose faces he had found a resemblance with hers; swimming at the brink of the eyelids, her brilliant eyes, wide and slender like theirs, seemed on the verge of welling out like two great tears. She bent her neck, as all their necks may be seen to bend, in the pagan scenes as well as in the religious pictures.<sup>46</sup></p>
+    </div>
+
+    <p>On other occasions, when Swann, metaphorically transformed by Proust as a blind, mythical unicorn,<sup>47</sup> is listening with enhanced hearing to Vinteuil’s sonata with its little phrase being played over and over again, ‘vilely’<sup>48</sup> on the piano by Odette, she</p>
+
+    <div class="cita">
+        <p>would look at him sulkily, and he would see once again a face worthy to figure in Botticelli’s <i>Life of Moses</i>; he would place it there, giving to Odette’s neck the necessary inclination; and when he had finished her portrait in tempera, in the fifteenth century, on the wall of the Sistine, the idea that she was none the less in the room with him still, by the piano, at that very moment, ready to be kissed and enjoyed, the idea of her material existence, would sweep over him with so violent an intoxication that, with eyes starting from his head and jaws tensed as though to devour her, he would fling himself upon this Botticelli maiden and kiss and bite her cheeks.<sup>49</sup></p>
+    </div>
+
+    <p>Odette-Zipporah creates a dialectical tension in Swann: on the one hand he wants to treat her as a virgin; on the other hand his carnal appetite, his desire to rape and violate her as an object (the museum piece to which I have already referred) are overwhelming.</p>
+
+    <p>Swann felt many misgivings about Odette at the beginning of their relationship, regarding ‘the quality of her face, her body, the whole of her beauty’, which were constantly revived at ‘the mere sight of her in the flesh’; however, ‘those misgivings were swept away and that love confirmed now that he could re-erect his estimate of her on the sure foundations of aesthetic principle’.<sup>50</sup> So making love to Odette, which for Swann ‘would have seemed natural and but moderately attractive’, now takes on a different dimension and as if ‘to crown his adoration of a masterpiece in a gallery, ... [became] supernaturally delicious’<sup>51</sup> in the supreme act of consummation like the Perpetual Adoration in the Mass.</p>
+
+    <p>To cope with Odette’s secret life when she is not with Swann, he suppresses its very existence by means of painting, so that it becomes ‘with its neutral and colourless background, like those sheets of sketches by Watteau upon which one sees here, there, at every corner and at various angles, traced in three colours upon the buff paper, innumerable smiles’.<sup>52</sup></p>
+
+    <p>So Swann weaves a fantasy world of his ‘love’ for Odette, built solely on his imagination and the superimposition of Zipporah onto Odette and substitution of Odette for Zipporah. It is a fragile delusion destined to lead to disappointment. The metamorphosed Odette is imbued with qualities that she does not and can never possess: ‘an inestimably precious work of art, cast for once in a new, a different, an especially delectable metal’.<sup>53</sup> Swann enjoys the romantic idea of being in love, for he ‘was once more finding in things, since he had fallen in love, the charm that he had found when, in his adolescence, he had fancied himself an artist; with this difference, that the charm that lay in them now was conferred by Odette alone’.<sup>54</sup> By being in love, Swann feels that he acquires an identity.</p>
+
+    <p>Proust is severely critical of Swann for debasing a work of art to elevate both the idea of love and a woman with a dubious past and present. Although Swann has found erotic, yet ephemeral excitement via Zipporah, he has failed to plumb the meaning of the original painting—in fact he has not even tried. Similarly, he has failed to comprehend the layers of personality that comprise Odette. Swann has failed because he is a dilettante and aesthete, with a fine knowledge of art which he squanders. The fact that Swann, this ‘célibataire de l’art’,<sup>55</sup> is condemned to a sterile life and early death from cancer serves to emphasize his wasted and artistically barren life. There is a chilling analogy with Proust’s early life.</p>
+
+    <p>This fantasy world serves to conceal the true identity, to Swann, of Odette, a woman without a past. As George Stambolian commented: ‘By comparing Odette with Zipporah Swann attempts to hide her different reality’.<sup>56</sup> This also confuses the reader’s perception of his character, thus paralleling life itself and the problems of identity and communication. Swann too deliberately conceals his identity from Odette—he wears a mask, as he does on so many other occasions such as during his visits to the narrator’s family in Combray, and when at the Verdurins’. Like Zipporah, Odette is an amalgam of contradictory and contrasting tendencies, such as her bisexuality and unclear sexual orientation, her ugliness and charm which co-exist and create tension.</p>
+
+    <p>Botticelli’s Zipporah and Ruskin’s copy of Zipporah had a crucial role in the development of Swann’s love affair with Odette, by inciting and inflaming Swann’s desires, yet at the same time creating a screen which concealed the true nature of the woman.</p>
+
+    <div class="section-head">V. Miss Sacripant—Odette</div>
+
+    <p>To what extent does Swann know Odette through the mediation of Zipporah? Swann marries an imagined Odette–Zipporah without a known past that he can reconstruct, like the façade of a building without foundations and rooms. In a later volume of Proust’s novel, <i>Within a Budding Grove</i>, Odette’s hidden past will be revealed through the medium of another painting, not Zipporah, but <i>Miss Sacripant</i>, and through the vision of the fictitious artist, Elstir.</p>
+
+    <p>The events take place many years before <i>Swann in Love</i> when Proust’s polymorphous/polytemporal narrator, as an adolescent, visits Elstir’s studio for the first time. His attention is caught by one painting in particular, entitled <i>Miss Sacripant</i> and dated October 1872. It is a painting of a young woman ‘in a close-fitting hat not unlike a bowler, trimmed with a ribbon of cerise silk; in one of her mittened hands was a lighted cigarette, while the other held at knee-level a sort of broadbrimmed garden hat .... On a table by her side, a tall vase filled with pink carnations’.<sup>57</sup> As the young narrator looks, his doubts grow and he wonders whether ‘the strange attire of a female model is her costume for a fancy-dress ball, or whether, ... the scarlet cloak which an elderly man looks as though he had put on in response to some whim of the painter’s is his professor’s or alderman’s gown or his cardinal’s cape’. The older narrator posits an explanation for the uncertainty: ‘The ambiguous character of the person whose portrait now confronted me arose, without my understanding it, from the fact that it was a young actress of an earlier generation half dressed up as a man’. But the younger narrator, standing in front of the watercolour, is confused by the fact that ‘the bowler beneath which the hair was fluffy but short, the velvet jacket, without lapels, opening over a white shirt-front, made me hesitate as to the period of the clothes and sex of the model, so that I did not know exactly what I had before my eyes, except that it was a most luminous piece of painting’.<sup>58</sup></p>
+
+    <p>The sexuality of the person oscillates, revealing the androgynous nature of Odette: her sexuality does not have fixed boundaries, as in many of Elstir’s seascapes. This transvestite costume is worn by a young actress, with ‘the lines of the face [along which] the latent sex seemed to be on the point of confessing itself to be that of a somewhat boyish girl, ... vanished, and reappeared further on with a suggestion rather of an effeminate, vicious and pensive youth, then fled once more and remained elusive’.<sup>59</sup></p>
+
+    <p>The contrast between ‘the dreamy sadness in the expression of the eyes’ and the provocative costume ‘belonging to the world of debauchery and the stage’ disturbed the young narrator who could only interpret the facial expression as ‘feigned’ in order ‘to enhance the provocation’.<sup>60</sup></p>
+
+    <p>The contemplation is abruptly and unexpectedly interrupted by Mme Elstir, at which moment Elstir hastily and furtively hides this painting of a woman with whom he had had a relationship. It is some time later before the moment of revelation when the young narrator utters: ‘It couldn’t be Mme Swann before she was married?’<sup>61</sup> Elstir’s stunning silence spoke loudly, for ‘the portrait was indeed that of Odette de Crécy’.<sup>62</sup></p>
+
+    <p>The very title of the painting suggests the sitter’s connections with the world of the Music Hall where it was fashionable to use the title <i>Miss</i>, implying a degree of titillating erotica. <i>Miss Sacripant</i> was also the stage character that Odette played in Paris when she was introduced to Swann by the homosexual, and previously married, Baron de Charlus. The name Sacripant is derived from the Italian male character Sacripante in Boiardo’s <i>Orlando innamorato</i> and has now acquired the meaning in French of a ‘rogue’ or ‘good for nothing’. Through the choice of name, the bisexuality is very explicit, but hidden owing to its connotations with the world of fashion and the Music Hall.<sup>63</sup> The <i>Miss</i> also suggests the unmarried status of the subject, or at least the implied status in this case for Odette de Crécy was the estranged wife of the Comte de Crécy, and enables the subject sexual freedom of choice, if so desired, without the constraints of marriage.</p>
+
+    <p>It was Odette’s unclear and ill-defined sexuality that tortured Swann during his pursuit and courtship: he suspected her of lesbian proclivities and he also suspected her of relationships with other men. Both counts he found impossible to prove, yet his instincts were correct. In the course of Proust’s novel, the truth about Odette and her dubious past would gradually unfold and would reveal that Swann’s doubts were well-founded. Yet the truth about Odette’s inner self had been captured by the artist Elstir, and read and understood correctly by the narrator–writer of <i>In Search of Lost Time</i> who had deciphered the portrait of Miss Sacripant. Elstir had succeeded in discomposing the contrived, superficial appearance of Odette, what Proust calls the ‘artificial harmony’,<sup>64</sup> to reveal her multiple layers and the harsh truth she wished to dissimulate.</p>
+
+    <p>After the publication of <i>Du Côté de chez Swann</i>, Proust revealed in an interview with André Arnyvelde in 1913: ‘I have tried to imitate life, where the unsuspected aspects of a person suddenly reveal themselves to our eyes. We live next to beings whom we think we know. What is lacking is the event that will make them suddenly appear different from the way we know them’.<sup>65</sup> The event that revealed to the narrator unsuspected facets of Odette was seeing Elstir’s painting of <i>Miss Sacripant</i>. The event that revealed to Ruskin the critical role of Botticelli was the conjunction of two unexpected things, the Etruscan olive branch on the Badia in Fiesole and in Botticelli’s paintings.</p>
+
+    <div class="section-head">Epilogue</div>
+
+    <p>Botticelli’s Zipporah was enigmatic for Ruskin and for Proust’s Swann. Whereas Ruskin, the real-life art critic, provides an in-depth analysis and interpretation through Athena, bringing out the tension of the dialectical nature of the painting, its conjunction of two civilizations, religions, yet at the same time expressing continuity, Swann is unable to delve deeply and to interpret Zipporah as a Renaissance masterpiece; he uses this painting solely to obtain ephemeral satisfaction in love. Swann’s is a fruitless act of idolatry and one which will be severely reprimanded and condemned by Proust. It is the adolescent narrator in Proust’s novel who experiences a moment of revelation when, through his critical abilities, he identifies Miss Sacripant as Odette de Crécy.</p>
+
+    <section class="footnotes">
+        <h3>Notes</h3>
+        <p>1. This is an extended version of a lecture given to the Ruskin Programme, University of Lancaster on 12 February 1998. I am grateful to Professor Robert Hewison for the initial invitation and to all members of the Ruskin Programme who contributed to the stimulating and challenging discussion that followed the seminar.</p>
+        <p>2. Joan Evans and John Howard Whitehouse (eds), <i>The Diaries of John Ruskin, 1835–1889</i> (Oxford: Clarendon, 1956), p. 175.</p>
+        <p>3. Ibid., p. 173.</p>
+        <p>4. The Ruskin Foundation, (The Ruskin Library, University of Lancaster) [hereafter RF], 880.</p>
+        <p>5. The Biblical quotations throughout are from the authorised King James version of <i>The Holy Bible</i>.</p>
+        <p>6. For a discussion of the role of the well, see A. Abécassis, <i>La Pensée Juive</i>, vol. 1. <i>Du Désert au Désir</i> (Paris: Librairie Générale Française, 1987), pp. 78–82.</p>
+        <p>7. It is interesting to note that his shoes appear more contemporaneous with the time of Botticelli than with that of Moses.</p>
+        <p>8. For a discussion of Ruskin’s copying of sheep, see Cynthia Gamble, ‘Ruskin’s sheep’, in <i>The Ruskin Programme Bulletin</i>, no. 16 (University of Lancaster, April 1998), pp. 13–15.</p>
+        <p>9. I am grateful to The Ruskin Foundation for permission to consult the manuscripts in The Ruskin Library, and to compare the manuscript with the <i>Diaries</i> edited by Evans and Whitehouse. The only obvious small change in the diary quoted above is the fact that Ruskin does not underline <i>Zipporah</i>, italicized in Evans and Whitehouse.</p>
+        <p>10. E. T. Cook and A. Wedderburn (eds), <i>The Complete Works of John Ruskin</i>, in 39 vols (London: George Allen, 1903–12). This edition will, henceforth, be referred to as cw, followed by the volume number and the page(s); ibid., XXXVII, p. 112.</p>
+        <p>11. CW, XXII, p. 427.</p>
+        <p>12. Ibid., XXIII, pp. 265–79.</p>
+        <p>13. Ibid., pp. 269–70.</p>
+        <p>14. Ibid., p. 479.</p>
+        <p>15. Ibid., p. 275.</p>
+        <p>16. Reproduced, in reverse, in CW, XX, p. 242, pl. IV. The woodcut was produced by Burgess, who no doubt cut it from a drawing Ruskin made, hence Ruskin’s reference to ‘my woodcut of the Attic Pallas’ (ibid., XXIII, p. 479). The Neck Amphora, reference GR 1837.6–9.28 (E268), is in the Canino Collection, in Room 11, at the British Museum. It is about 2 feet high, and has been dated as c. 480 BC. It is from Nola in Southern Italy.</p>
+        <p>17. Ibid., pp. 478–9.</p>
+        <p>18. Ibid., p. 479.</p>
+        <p>19. Ibid.</p>
+        <p>20. Jeanne Clegg and Paul Tucker, <i>Ruskin and Tuscany</i> (Sheffield: Ruskin Gallery, Collection of The Guild of St George in association with Lund Humphries, 1993), p. 112.</p>
+        <p>21. CW, XXIII, p. 479.</p>
+        <p>22. Cynthia Gamble, ‘Proust–Ruskin perspective on La Vierge Dorée at Amiens Cathedral’, <i>Word & Image</i>, IX/3 (1993), pp. 270–86.</p>
+        <p>23. CW, XXVII, p. 347; <i>Fors Clavigera</i>, letter 20, August 1872.</p>
+        <p>24. CW, XXVII, p. 347.</p>
+        <p>25. For example, Frederick Hartt, <i>History of Italian Renaissance Art</i>, 4th edn (London: Thames & Hudson, 1994 [1970]), p. 407.</p>
+        <p>26. CW, XXVII, p. 347.</p>
+        <p>27. Ibid.</p>
+        <p>28. Marcel Proust, <i>In Search of Lost Time</i>, vol. I. <i>Swann’s Way</i>, trans. C. K. Scott Moncrieff and Terence Kilmartin, revised by D. J. Enright (London: Chatto & Windus, 1992), p. 460.</p>
+        <p>29. Ibid., 1, pp. 459–60.</p>
+        <p>30. Ibid., p. 267.</p>
+        <p>31. Julia Kristeva, <i>Le Temps sensible, Proust et l’expérience littéraire</i> (Paris: Gallimard, 1994), p. 42.</p>
+        <p>32. Moncrieff and Kilmartin, <i>In Search of Lost Time</i>, 1, p. 267.</p>
+        <p>33. Ibid., p. 267.</p>
+        <p>34. Ibid., p. 270.</p>
+        <p>35. <i>Correspondance de Marcel Proust</i>, 21 vols, vol. 5, ed. Philip Kolb (Paris: Plon, 1970–93, vol. 5 1979), p. 42; IV, p. 326, n.3: VI, pp. 75–6.</p>
+        <p>36. Moncrieff and Kilmartin, <i>In Search of Lost Time</i>, 1, p. 270.</p>
+        <p>37. Ibid.</p>
+        <p>38. Ibid.</p>
+        <p>39. Manuscripts quoted in Clegg and Tucker, <i>Ruskin and Tuscany</i>, p. 94.</p>
+        <p>40. Ibid.</p>
+        <p>41. Moncrieff and Kilmartin, <i>In Search of Lost Time</i>, 1, pp. 268–9.</p>
+        <p>42. Ibid., p. 269.</p>
+        <p>43. Richard Bales, <i>Proust: A la Recherche du Temps perdu. Critical Guides to French Texts</i> (London: Grant & Cutler, 1995), p. 57.</p>
+        <p>44. Moncrieff and Kilmartin, <i>In Search of Lost Time</i>, 1, p. 269.</p>
+        <p>45. Ibid., p. 288.</p>
+        <p>46. Ibid., p. 280.</p>
+        <p>47. Juliette Hassine, <i>Esotérisme et Ecriture dans l’æuvre de Proust</i> (Paris: Minard, 1990), pp. 143–55.</p>
+        <p>48. Moncrieff and Kilmartin, <i>In Search of Lost Time</i>, 1, p. 284.</p>
+        <p>49. Ibid., p. 286.</p>
+        <p>50. Ibid., p. 269.</p>
+        <p>51. Ibid., pp. 269–70.</p>
+        <p>52. Ibid., p. 289.</p>
+        <p>53. Ibid., p. 270.</p>
+        <p>54. Ibid., p. 287.</p>
+        <p>55. Marcel Proust, <i>A la Recherche du Temps Perdu</i> [edition publiée sous la direction de Jean-Yves Tadié, Bibliothèque de la Pléiade] (Paris: Gallimard, 1989), p. 470.</p>
+        <p>56. George Stambolian, <i>Marcel Proust and the Creative Encounter</i> (Chicago: University of Chicago Press, 1972), p. 128.</p>
+        <p>57. Moncrieff and Kilmartin, <i>In Search of Lost Time</i>, II, p. 494.</p>
+        <p>58. Ibid.</p>
+        <p>59. Ibid., p. 495.</p>
+        <p>60. Ibid.</p>
+        <p>61. Ibid., p. 508.</p>
+        <p>62. Ibid., p. 509.</p>
+        <p>63. Jean-Yves Tadié, <i>Marcel Proust</i> (Paris: NRF Gallimard, 1996), p. 496, n.2.</p>
+        <p>64. Moncrieff and Kilmartin, <i>In Search of Lost Time</i>, II, p. 509.</p>
+        <p>65. Quoted by Stambolian, <i>Marcel Proust</i>, p. 245. The text of the interview is in Philip Kolb and Larkin B. Price (eds), <i>Marcel Proust: Textes Retrouvés</i> (Urbana: University of Illinois Press, 1968), p. 222.</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>

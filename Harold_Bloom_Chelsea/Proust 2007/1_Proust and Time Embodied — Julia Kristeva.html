@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proust and Time Embodied — Julia Kristeva</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<style>
+:root {
+    --bg-body: #002FA7;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.88);
+    --text-muted: rgba(255, 255, 255, 0.6);
+    --border-color: rgba(255, 255, 255, 0.35);
+    --border-light: rgba(255, 255, 255, 0.15);
+    --fab-bg: #ffffff;
+    --fab-color: #002FA7;
+    --shadow: 0 3px 6px rgba(0,0,0,0.3), 0 3px 6px rgba(0,0,0,0.4);
+    --realce: rgba(255, 255, 255, 0.78);
+    --medida: 34rem;
+}
+body.dark-mode {
+    --bg-body: #001233;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.85);
+    --text-muted: rgba(255, 255, 255, 0.5);
+    --border-color: rgba(255, 255, 255, 0.2);
+    --border-light: rgba(255, 255, 255, 0.1);
+    --fab-bg: #ffffff;
+    --fab-color: #001233;
+    --shadow: 0 3px 6px rgba(0,0,0,0.6), 0 3px 6px rgba(0,0,0,0.8);
+    --realce: rgba(255, 255, 255, 0.72);
+}
+* { box-sizing: border-box; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body {
+    margin: 0;
+    background: var(--bg-body);
+    color: var(--text-primary);
+    font-family: "PT Serif", "Charis SIL", Georgia, "Times New Roman", serif;
+    line-height: 1.62;
+    hyphens: auto;
+    -webkit-tap-highlight-color: transparent;
+}
+main { max-width: var(--medida); margin: 0 auto; padding: 4rem 16px 7rem; }
+.cab { text-align: center; margin-bottom: 3.2rem; }
+.cab__num { margin: 0 0 .7rem; font-size: .8rem; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); }
+.cab__tit { margin: 0; font-size: 1.85rem; font-weight: 400; line-height: 1.25; }
+.cab::after { content: ""; display: block; width: 4.5rem; height: 1px; margin: 2rem auto 0; background: var(--border-color); }
+.epigrafe-inicial { margin: 3.2rem 0 2.4rem; padding-left: 1.5rem; border-left: 1px solid var(--border-color); font-style: italic; color: var(--text-secondary); font-size: .95rem; line-height: 1.55; }
+.epigrafe-inicial p { text-indent: 0; margin: 0 0 .6rem; text-align: left; }
+.epigrafe-inicial .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .4rem; }
+p { margin: 0; text-align: justify; text-indent: 1.35em; position: relative; }
+p + p { margin-top: 0; }
+.cab + p, .epigrafe + p, .epigrafe-inicial + p, .cita + p, .firma + p, .separador + p, .section-head + p { text-indent: 0; }
+.sin-sangria { text-indent: 0; }
+.firma { margin: .8rem 0 0; text-align: right; text-indent: 0; font-style: italic; color: var(--text-secondary); font-size: .92rem; }
+.cita { margin: 1.6rem 0 1.6rem 2.2rem; padding: 0; font-style: italic; font-size: .95rem; }
+.cita p { text-indent: 0; text-align: left; }
+.cita p + p { margin-top: .45rem; }
+.cita .attribution { text-align: right; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .5rem; }
+.separador { margin: 2rem 0; text-align: center; letter-spacing: .6em; color: var(--text-muted); text-indent: 0; }
+.footnotes { margin-top: 4rem; border-top: 1px solid var(--border-color); padding-top: 1.5rem; font-size: .88rem; color: var(--text-secondary); }
+.footnotes h3 { margin: 0 0 1rem; font-size: .8rem; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--text-muted); text-align: left; }
+.footnotes p { text-align: left; text-indent: -1.4em; padding-left: 1.4em; margin-bottom: .6rem; line-height: 1.5; }
+sup { font-size: .7em; vertical-align: super; line-height: 0; color: var(--text-secondary); }
+.fab-toggle { position: fixed; bottom: 24px; right: 24px; width: 56px; height: 56px; border-radius: 50%; background-color: var(--fab-bg); color: var(--fab-color); border: none; cursor: pointer; box-shadow: var(--shadow); display: flex; justify-content: center; align-items: center; transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.4s ease, color 0.4s ease, box-shadow 0.3s ease; z-index: 1000; outline: none; }
+.fab-toggle:hover { transform: scale(1.1); }
+.fab-toggle:active { transform: scale(0.95); }
+.fab-toggle .material-icons { font-size: 26px; transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+body.dark-mode .fab-toggle .material-icons { transform: rotate(180deg); }
+@media (max-width: 46rem) {
+    html { font-size: 16px; }
+    main { padding: 2.5rem 16px 4rem; }
+    .cita { margin-left: 1rem; }
+    .epigrafe-inicial { padding-left: 1rem; }
+    .fab-toggle { bottom: 18px; right: 18px; width: 50px; height: 50px; }
+    .fab-toggle .material-icons { font-size: 23px; }
+}
+.section-head { margin: 3.2rem 0 1.6rem; text-align: center; font-size: 1rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--text-secondary); }
+.section-head::before, .section-head::after { content: ""; display: inline-block; width: 2rem; height: 1px; background: var(--border-color); vertical-align: middle; margin: 0 .8rem; }
+.epigrafe { margin: 2rem 0 1.5rem; text-align: center; font-style: italic; color: var(--text-secondary); font-size: .95rem; }
+.epigrafe .attribution { display: block; font-style: normal; font-size: .85rem; color: var(--text-muted); margin-top: .3rem; }
+</style>
+</head>
+
+<body>
+
+<button class="fab-toggle" id="theme-toggle" aria-label="Cambiar tema" title="Modo nocturno">
+    <i class="material-icons" id="theme-icon">dark_mode</i>
+</button>
+
+<main>
+
+    <header class="cab">
+        <p class="cab__num">Julia Kristeva</p>
+        <h1 class="cab__tit">Proust and Time Embodied</h1>
+    </header>
+
+    <div class="epigrafe" style="text-align: left; font-style: normal; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 2rem;">
+        From <i>Proust and the Sense of Time</i>, translated and with an introduction by Stephen Bann. © 1993 by Julia Kristeva. English translation © 1993 by Stephen Bann.
+    </div>
+
+    <div class="section-head">1. Time and Timelessness</div>
+
+    <p><span style="font-size: 2.5rem; float: left; line-height: 1; margin-right: 0.1em; margin-top: 0.1em;">M</span>arcel Proust (1871–1922) composed <i>A la recherche du temps perdu</i> between 1913 (the year of the publication of <i>Du côté de chez Swann</i> by Grasset) and 1922. The last volume, <i>Le Temps retrouvé</i>, published like its predecessors by Gallimard, was to appear in 1927. Proust is often seen as being closer in spirit to the symbolists, dandies and assorted decadents of the <i>fin de siècle</i> than to the sardonic and playful activities of the dadaists, surrealists and futurists propagated by the First World War, not to mention the nightmarish cult of the absurd which followed the Second. Yet it was this man of the nineteenth century who inaugurated the modern aesthetic, and established a completely new form of temporality. Its function is to sum up, and make explicit, the ambitions of all the novels that have gone before, through creating a distinctively new type of <i>Bildungsroman</i> (the German genre which deals with the hero’s education and intellectual development); in this case the learning process involves a return journey from the past to the present and back again. This new form of temporality, furthermore, gives an X-ray image of memory, bringing to light its painful yet rapturous dependence on the senses. It offers modern readers the chance to identify the fragments of disparate time which are nowadays dragging them in every direction, with a greater force and insistence than ever before.</p>
+
+    <p>So I would like to begin by putting a question to you, and to myself as well. What is the time-scale that you belong to? What is the time that you speak from? In the modern world, you might catch an impression of the medieval Inquisition from a nationalist dictator who soon finished spreading the message of integration. (I refer to the Gulf War.) Then you might be rejuvenated by 150 or 200 years by a Victorian president whose stiff, puritanical attitudes belong to the great age of the Protestant conquest of the New World, tempered by an eighteenth-century regard for human rights. But you are also an onlooker, even if you are not a participant, when people demonstrate their regression to infancy through civil violence, as in the recent events in Los Angeles; you witness the futurist breakthroughs of new musical forms like rap, without for a moment forgetting the wise explanatory discourses with which the newspapers and the universities try to explain this sort of thing. Newspapers and universities, by the way, continuing their role of transmitting and handing down knowledge, also belong to totally different time-scales. Yes, we live in a dislocated chronology, and there is as yet no concept that will make sense of this modern, dislocated experience of temporality.</p>
+
+    <div class="section-head">Psychic Time as a Space of Reconciliation</div>
+
+    <p>Living on the threshold of this disturbing epoch, Proust managed to put together the shattered fragments in the form of the life of his narrator, who experiences love and society in accordance with a number of themes which we may think of as archaic, but are in fact our very own, because of their polarized and discontinuous logic. For Proust, time is to be psychic time, and consequently the factor which determines our bodily life. I will argue that time in fact persists as the only surviving imaginative value which can be used by the novel to appeal to the whole community of readers.</p>
+
+    <p>Things come to have meaning when the I of the writer rediscovers the sensations underlying them, which are always linked together in at least a series of two (as in the case of the madeleine offered to me by my mother and the one offered by Aunt Léonie; the paving stones of the Guermantes courtyard and those at St Mark’s, Venice). Time is this bringing together of two sensations which gush out from the signs and signal themselves to me. But since bringing things together is a <i>metaphor</i>, and sensation implies a <i>body</i>, Proustian time, which brings together the sensations imprinted in signs, is a <i>metamorphosis</i>. It is all too easy to rely on just one word of the title and conclude that this is a novel about time. Proust uses time as his intermediary <i>in the search</i> (<i>A la recherche</i>) for an embodied imagination: that is to say, for a space where words and their dark, unconscious manifestations contribute to the weaving of the world’s unbroken flesh, of which I is a part. I as writer; I as reader; I living, loving and dying.</p>
+
+    <p>From Homer to Balzac, fiction creates and modifies its own destiny by offering those who receive it a special field of participation, a distinctive type of communion: it shows us human passions inextricably bound up with the unpredictability of nature and the harshnesses of society. Man, society and being are, for fiction, indissociable. Hence over the period from Rabelais and Shakespeare to Balzac, fiction has blended the serious with the ridiculous, and managed to extract from its chosen area the idea of a time which is specific to the individual—this so-called modern individual whose inner life, in all its different phases of sorrow, joy or ridicule, weaves its own form of continuity which is the thread of a destiny.</p>
+
+    <p>Proust in no way abandons the ambition of Balzac and Homer—which is sociological in an explicit way, but conceals a transcendental aim at its basis. He is concerned to establish a world in which his readers can come and communicate as if they were in a sacred place: a world where they can discover a coherence between time and space and their dreams can be realized, a place which is sadly lacking in modern reality. His Faubourg Saint-Germain (which in fact corresponds more closely to the Faubourg Saint-Honoré) fulfils this aim of establishing a social space, which is the very definition of the sacred in literature. Here it is, majestic as it approaches its demise, glorious and at the same time ridiculous, no less desirable in the first pages of the opening volumes than it will be perverted and intolerable by the final stage, when we see the very impulse that brought it into being by claiming to draw inspiration from it come full circle in the concept of a <i>Temps retrouvé</i> (<i>Time Regained</i>). From the start, social life is offered as a spectacle. We must not take our eyes off it, but we can overtake it by a strategy that enables us to pass far beyond the social; this strategy consists in delving deep down into ourselves, in regaining the time of our inner lives, which has been so subtly reordered that this time now comes to seem the only reality worth taking into account.</p>
+
+    <p>So Proust does not relinquish the obsession of authors from Homer to Balzac. But he tones it down by linking it with a project which traditionally belongs to ‘poetry’: this is the exploration of memory, with the ‘I’ unfolding ideas and images, recalling flavours, smells, touches, resonances, sensations, jealousies, exasperations, griefs and joys—if it succeeds in articulating them. But to the extent that he offers us <i>the space of memory</i> as a residual area of value leading beyond the spectacle of worldly life in its drama, Proust also aligns himself with a tendency of philosophy contemporary with him: one which, from Bergson to Heidegger, in different ways but with significant points in common, seeks to understand Being by exploring the obscurities of Time. Proust goes further indeed, since he puts into words a category of <i>felt time</i> which cuts through the categories of metaphysics, bringing together opposites like idea, duration and space, on the one hand, and force, perception, emotion and desire, on the other; he proposes a psychic universe of the maximum degree of complexity as the favourable location—the place of sacred communion—where lovers of reading can meet.</p>
+
+    <p>Do we want tales of passion? Of money? Of war? Of life and death? Without any doubt, we have enough in Proust to keep up with the official statistics. But this is something quite different. If you will only be so good as to open up your memories of felt time, <i>there</i> will rise the new cathedral. Upon the plinth of a project which is by tradition secular and dates back to the Greeks, Proust’s novel sets up a huge edifice which has instead a biblical and evangelical provenance. And within this network of interminable social events, of endless plots, plots and more plots, he situates a person, <i>I</i>, a subject whose memory cannot be impugned, who is there to bring out the convulsive truth of this seeming history, to ‘tear off its hundred masks’. <i>I</i> invites you to do as <i>I</i> does. <i>Read me, and you will be part of the world but without being taken in by it. I can give you the Divine Comedy of the life of the psyche, not just mine, but yours as well, ours, that is, the absolute.</i></p>
+
+    <p>In creating this synthesis, in using memory to construct <i>A la recherche</i> in this way, Proust is adopting an ethical position. He is contrasting the disarray of the world and of the self with the unending search for that lost temple, that invisible temple, which is <i>the felt time of our subjective memories</i>. In taking up his aesthetic stance, he is also adopting a moral position <i>vis-à-vis</i> the cult of decadence, which he has passed through and, to a great extent, emerged from; Proust is a moralist therefore, but he is a moralist of outrage. The felt time in which he invites us to participate is one of sensual excess and extravagant eroticism, of ruses and betrayals. His sacredness is a sacredness of ill repute. In bringing it to light with the delicate touches of a Saint-Simon or a Mme de Sévigné, Proust the dandy of the <i>belle époque</i> makes contact with us in our contemporary, but also timeless, obsessions. There have been many people, since Proust, who have applied themselves to enlarging a fragment of felt time—writers of the <i>nouveau roman</i> have enhanced such fragments as if they were installing them in a stained-glass window. They may appear to be more modern, more elliptical, provocative and ‘transgressive’. But Proust remains the only one to keep the balance between the violence implicit in the marginal status of the main character (and the author) of <i>A la recherche</i>, and the graceful capacity for creating a world, a place of communion in worldly time. It is this fragile balance that we seem to have lost. Perhaps that is another reason why Proust, our contemporary, is also so difficult to reach in his intimate life.</p>
+
+    <div class="section-head">Plants and Seeds: The Vocation</div>
+
+    <p>Proust’s notebooks, and his <i>Against Sainte-Beuve</i> (composed between 1905 and 1909), tell us that the plan of <i>A la recherche</i> was fixed by 1908–9. The eventual text proceeds through successive alterations and adjustments between 1909 and 1911; then from 1916 onwards we see the final manuscript notebooks emerging. These had not yet been typed out at the time of Proust’s death in 1922. In a letter dated 16 August 1908, he confesses to Mme Straus:</p>
+
+    <div class="cita">
+        <p>I have just begun, and finished, a whole book. Unfortunately, leaving for Cabourg has interrupted my work. I am just about to get back to it. Maybe part of it will appear in serial form in <i>Le Figaro</i>, but only part of it, for it is too long and unsuitable to be published in its entirety. But I do want to finish it, to make an end. Everything is written down, but there is a lot to go over again.<sup>1</sup></p>
+    </div>
+
+    <p>‘Unsuitable’, ‘long’—Proust already knows how his work will begin and end, and what will be its chief features—its outrageous contents and its disproportionate style. The First World War and his illness would delay and modify his original plan: Proust evidently could not have been aware in 1909 of the various changes that would be introduced in the course of time. But the central scheme—the approach and the ‘vision’, as he would later refer to it when speaking of his style—are already in place. In the cork-lined bedroom on the Boulevard Haussmann, in the month of July 1909, there begins the metamorphosis of <i>Against Sainte-Beuve</i> into that starting point of <i>A la recherche</i> which will be <i>Du côté de chez Swann</i> (<i>Swann’s Way</i>). Notebook 3, which dates from this stage, actually contains eight versions of the narrator’s famous awakening scene—his mind invaded by formless sensations seeming to come from an adjacent room, just before the appearance of the familiar sounds and lights will bring him to full consciousness.<sup>2</sup> ‘Involuntary memory’ is already there, causing the boiling lava of memories and desires from the past to coagulate around a present sensation, however slight, however intense.</p>
+
+    <p>So what has been happening between the commencement of <i>Against Sainte-Beuve</i> and the emergence of this fully fledged project—between 1905 and 1909?</p>
+
+    <div class="section-head">2. The Dead Mother</div>
+
+    <p>At the end of <i>Time Regained</i>, after bringing up yet again the way in which the narrator’s experience is structured by the alternation of love and death, with death darkening love but love wiping out the fear of death, Proust quotes a line from Victor Hugo: ‘The grass must grow and children have to die.’<sup>3</sup> And he describes the ‘cruel law of art’ which amounts in the first instance to the romantic notion that suffering and death are necessary for the gestation of works of art, but concludes with a light-hearted apologia for Manet, considered as the Giorgione of a period of open-air painting:</p>
+
+    <div class="cita">
+        <p>To me it seems more correct to say that the cruel law of art is that people die and we ourselves die after exhausting every form of suffering, so that over our heads may grow the grass not of oblivion but of eternal life, the vigorous and luxuriant growth of a true work of art, and so that thither, gaily and without a thought for those who are sleeping beneath them, future generations may come to enjoy their <i>déjeuner sur l’herbe</i>. (III. 1095)</p>
+    </div>
+
+    <p>In this context, it is Albertine who is the object of so much love and so much jealousy. It is her accidental and premature death which has detached the narrator from sexual desire in the same measure as it has made him indifferent to death, and has entrenched him all the more securely within another reality: that of ‘my book’.</p>
+
+    <p>The vigorous and luxuriant grass of the work requires a death. A child’s death? And if so, which child? Albertine? Or the narrator himself, who has died many times, so he believes, since his childhood: dying at every parting, every separation, every bedtime which tears him away from his parents, from his mummy? And what if the child remained in existence only as long as there was a mother there? In that event, the mother would have to die in order for the child to break with his childhood, for him to turn it into a memory, a time regained. Were he finally to regain all his time, set out in the space of a book, then the book would indeed be a ‘<i>déjeuner sur l’herbe</i>’: it would transform the graveyard of the dead children into a pleasure garden, dedicated to the ambiguous, loving and vengeful memory of a mother who always loved excessively and not enough—and made you into a child who is still dying, perhaps, but who has a chance of ultimate resurrection and maturity in the luxuriant grass of the book.</p>
+
+    <p>Mme Proust, née Jeanne-Clemence Weil, died on 26 September 1905, following a short visit to Evian with her son Marcel, in the course of which, while staying at the Hôtel Splendide, she suffered an attack of uraemia. The sudden illness and death agony of the narrator’s grandmother in <i>A la recherche du temps perdu</i> recall the remorse felt by Proust as a result of his feeble behaviour at this juncture. Mme Proust first asked to be photographed, hesitated, and later called it off: ‘She wanted and she didn’t want to be photographed, wishing to leave me one last image, and yet afraid that it would be too distressing ...’<sup>4</sup> A collector of photographs, Proust would later put his family snapshots to blasphemous use, showing them around at the Le Cuziat brothel.</p>
+
+    <p>On her return to the Rue de Courcelles, the dying woman could think only of her elder son. How would he survive without her? She died while Proust stayed alone in his room, unable to cope with the sight of his mother’s death agony.</p>
+
+    <p>There is no event that can explain the genesis of a work, not even the death of a woman like Mme Proust. The book had been maturing for ages, yet it was mourning his mother that marked the start of a new time-scale and a new way of life. ‘Since I lost my mother ...’ Proust often refers to the event in his correspondence, and he does not attempt to hide his wounds in his letters to Montesquiou, Barrès and Maurice Duplay.<sup>5</sup> The second volume of <i>Le Côté de Guermantes</i> (<i>The Guermantes Way</i>; 1921) continually harps on the illness, suffering and finally death agony of the narrator’s grandmother, as if intending to lend to salon life, which the young man finds attractive and empty by turns, an unreal and hallucinatory quality. Yet it is in <i>Sodome et Gomorrhe</i> (<i>Sodom and Gomorrah</i>), published in 1921 and 1922, that the note of black remorse, anticipated in the earlier works, finally strikes home. This is the novel of sexual inversion, no less distinct from the childhood memories of <i>Swann’s Way</i> than it is from the aesthetic theory of <i>Time Regained</i>. It is in this work, which has been called the most Balzacian of the series, that Proust makes the clearest allusion, in the form of allusions to the death of the narrator’s grandmother, to the sense of guilt brought about by his mother’s death.</p>
+
+    <p>As the years go on, and the work progresses with them, the scenes of sexual inversion occupy a more and more important place. Albertine’s lesbianism is the major stimulus for the blend of jealousy and fascination which the narrator feels for this young woman. Society figures, not excluding the irreproachable Prince de Guermantes, turn out to have perverse habits. The adventures of Charlus with Jupien and Morel reach a high point of moral and physical cruelty, culminating in the flagellation scene in the brothel. This homosexual, explicitly erotic <i>mise-en-scène</i> becomes possible only in <i>Sodom and Gomorrah</i>, and in it the vision which we can now appreciate to be the real kernel of Proust’s imaginary world, its ‘albumen’ and ‘seed’, crystallizes. <i>The sado-masochism of Sodom and Gomorrah is the truth underlying eroticism and feeling and, on a deeper level, sado-masochism is the very bond that brings society together.</i></p>
+
+    <div class="section-head">A Crucial Episode</div>
+
+    <p>The inclusion, in a section entitled ‘The Intermittencies of the Heart’, of the (grand-)mother’s death gives the narrator the chance not only to recall childhood memories (his boots and his dressing-gown), but also to discourse at length on two of the fundamental themes of <i>A la recherche</i>. On the one hand, the joyful experience of passion is invariably accompanied by a sense of the nothingness, the mortality and the foreign nature of the loved one, a combination which engenders delightful forms of suffering. On the other hand, the faculty of memory which reveals this exquisite duality to us is lodged in an ‘unknown domain’, ‘in the entire existence of our bodies’, with the effect that ‘a series of different and parallel’ states of the self are superimposed, and consequently the self of today can rediscover the previous self intact, provided that the underlying sensations have the character of ‘intermittencies’: being both violent enough and null at the same time, tender and listless, combining joy with grief and remorse:</p>
+
+    <div class="cita">
+        <p>For with the <i>perturbations of memory</i> are linked the <i>intermittencies of the heart</i> ... But if the context of sensations in which they are preserved is recaptured, they acquire in turn the same power of expelling everything that is incompatible with them, of installing alone in us the self that originally lived them ... <i>without any solution of continuity</i>, immediately after the first evening at Balbec long ago ... I clung to the minute in which my grandmother had stooped over me. The self that I then was, that had disappeared for so long, was once again so close to me that I seemed still to hear the words that had just been spoken, although they were now no more than a phantasm ... (II. 784) [my italics]</p>
+    </div>
+
+    <p>My commentary on this extract is that we are offered a foretaste of memory as comprising the successive states of the self, and of time regained, even to the very sensations: the narrator experiences grief, ecstasy and even indifference in unison with the dramas of sexuality to be made manifest by the two biblical cities. This implies that the (grand-)mother’s death makes it possible for violence and remorse to be inserted into the very heart of the child-narrator’s sensibility, and at the same time it is implied that cruelty is omnipresent, even in the purity of childhood. Time will be truly regained only if he rediscovers the particular form of violence—the violence that is, initially, one of archaic loss and vengeance. That which delights me and abandons me also kills me; but I am capable of putting to death that which is my delight.</p>
+
+    <p>Yet in this crucial year, 1905, when Proust has already anticipated and indeed sketched out the theme of inversion (in <i>Jean Santeuil</i>, and <i>Les Plaisirs et les jours</i>), he has apparently not made a close connection between inversion and memory’s remarkable capacity of regaining sensations by way of signs. Nor has he connected this remarkable aspect of memory with the shock inflicted by his mother’s loss—with her death or her being put to death. The full intensity of his remorse has to wait for its expression until 1921, the publication of <i>Sodom and Gomorrah</i>. And yet his sense of guilt echoes throughout his private correspondence, and gives itself away in the initial volumes through a number of characters who find their place there, such as Mlle Vinteuil, before finally, and with a minimal attempt at disguise, installing the figure of the mother at the heart of all the ‘intermittencies of the heart’. The mother is at the heart of a primal sado-masochism.</p>
+
+    <div class="section-head">Love is Anguish, Anguish is the Putting<br>to Death—of Whom?</div>
+
+    <p>The well-known scene of the kiss withheld at the little boy’s bedtime, already told in <i>Jean Santeuil</i> and repeated in <i>Swann’s Way</i>, has given generations of readers the image of a mother who is loved voraciously and selfishly. This was a love which involved, right from the start, a struggle for power, a mingling of violence and passivity, of desire and contrition. For the moment she yielded, the moment the kiss was granted, the narrator’s anticipated triumph turned to bitter regret, and suffering began to colour his pleasure in a foretaste of sado-masochism.<sup>6</sup></p>
+
+    <p>As early as 1896, in <i>Les Plaisirs et les jours</i>, Proust had written the ‘Confession of a young girl’ whose ‘voluptuous and blameworthy’ eroticism, though remaining heterosexual, is the cause of her mother’s death.<sup>7</sup> Sex is shown to be intrinsically sadistic, as cruel to the lovers themselves as it is to their mothers. Proust writes: ‘Now I was beginning to realize in a confused way that every act which is both voluptuous and blameworthy involves in equal measure the ferocity of the body taking its pleasure, and the tears and martyrdom of our good intentions and our guardian angels.’<sup>8</sup> It is through witnessing an erotic scene that the mother of the young girl who speaks these words is struck with apoplexy and dies.</p>
+
+    <p>After the death of Proust’s own mother, we find him on 4 December 1905 at the clinic of Dr Sollier, a specialist in mental and nervous diseases, with the firm intention of proving that medicine can do nothing in his particular case. He succeeds, and leaves the establishment after six weeks. Social and literary life, so it would appear, are better at turning the activity of mourning into literature. Proust sets up house at 102 Boulevard Haussmann, and the architect Louis Parent lines his bedroom walls with cork in 1909: his cell is ready at just the same time as his plan for the work which will necessitate breaking open this shell, and dominating himself by a massive act of willpower which will be as delightful to experience as it is relentless in its effect on others.</p>
+
+    <p>From 1905 to 1909, Proust publishes little. Yet one thing that takes our attention is the article appearing in <i>Le Figaro</i> of 1 February 1907 under the title ‘Filial Sentiments of a Parricide’. Proust’s notice had been drawn, shortly after his mother’s death, to an incident in which a person of his acquaintance, Henri Van Blarenberghe, had killed his mother and then committed suicide. Proust interpreted this as the aggressiveness of an Oedipus or an Orestes, known in cruel detail from the Greek texts. The further commentary which he added from Shakespeare and Dostoevsky was hardly less cruel. Obviously the murdering son is a criminal, but Proust the writer seems to be on the point of absolving him when he exclaims: ‘what was the religious atmosphere of moral beauty in which this explosion of madness and slaughter took place?’ (CSB, 157). He seems tempted to include himself in this crime: ‘What have you made of me?’ he asks. ‘What have you made of me?’:</p>
+
+    <div class="cita">
+        <p>If we put our minds to it, there would perhaps be not one truly loving mother who was not able, on her last day, and often long before, to address this reproach to her son. Basically, as we grow old, we all kill those who love us by the preoccupation we cause in them, by that very restless tenderness which we breathe in and put ceaselessly on its guard. (CSB, 158–9)</p>
+    </div>
+
+    <p>In January 1908 Proust writes ‘Robert and the Kid. Mother leaves on a journey’, a text which is now lost. The metamorphosis is under way: in 1909, the plan for a book on Sainte-Beuve turns into a genuine novel. Writing <i>Against Sainte-Beuve</i>, Proust the essayist explains that it is not through biography that the work of authors can be explained; talent has its own rationale, which society cannot comprehend. Here it is not just a matter of doing away with biography but, more exactly, of going into mourning for it. Proust takes up the project of <i>Jean Santeuil</i> again and transposes it. He searches for lost time in the innermost signs of his experience, infusing the singularity of his own grief into the universal pattern of an intelligence which is accessible to all. He starts working hard; his reclusiveness increasingly takes him over. In 1912 the first part of <i>A la recherche</i> reaches its completed form. In 1913 <i>Swann’s Way</i> is published.</p>
+
+    <p>At this stage, Céleste Albaret enters Proust’s service and makes it possible for him to live in perfect retirement in spite of his very demanding social life: through this means, and both through and in spite of his asthma, Proust is able to achieve the extraordinary ascetic life which will enable him to trace, with a sick but authoritative hand, the word END at the conclusion of <i>Time Regained</i>.</p>
+
+    <div class="section-head">The Governess: A Daughter and a Mother</div>
+
+    <p>Straight away, the writer recognizes in his female servant the marks of motherly love: that of a daughter for her mother, and that of a mother for her daughter. ‘Your young wife is bored without her mother, Albaret, that’s all,’ he says to his chauffeur, Céleste’s husband, before taking her into his service.<sup>9</sup> Céleste describes herself, in the year 1913, as ‘a child in spite of my 22 years [Proust was 32] above all because I had only just left my mother’s tender care behind’.<sup>10</sup> Master and servant will combine together in joint homage to the maternal. ‘I was very fond of Papa. But Mama, the day she died, took her little Marcel with her.’<sup>11</sup> ‘The nice thing about him was that I sometimes felt like his mother, and at others like his child.’<sup>12</sup> ‘Everything affecting mothers and their experiences reminded him of his own and affected him deeply.’<sup>13</sup> ‘It was particularly about my mother that he used to ask me questions. He would say to me: “It is easy to see that your father was a good man. But even with the best of men, the bread of human kindness will never be what it can be with a woman; there is always an outer shell of roughness. A man can never be the soul of kindness, as your mother seems to have been.”’<sup>14</sup></p>
+
+    <p>This kindness was, however, in Céleste’s estimation, what Proust had managed to realize in himself, making him behave in such a way that the housekeeper, who was herself always taking infinite pains to seek out for him sole, smelts, gudgeons and fumigating powder, felt herself to be under the maternal care of her master. ‘Monsieur, I find my mother again in you.’ And, as Proust explained to Céleste: ‘The thing is, you were made for devotion like your mother, even if you knew nothing about it. Otherwise, you would not be here.’<sup>15</sup></p>
+
+    <p>Never can two beings more disparate in their background and level of education have been thus brought together in their devotion to the ‘good mother’, who would fill them both, alternately, with the sublimated love that binds a child to its mother, and no doubt the writer to his work. The mother who brings desire and guilt is dead; there remains complicity and the benefit of mutual silence. Céleste becomes the living relay between the female body and the book, between the turbulence of eroticism and the definitive form of the signed text. With a charming <i>naïveté</i>, she admits to having taken the place of a possible Albertine, an ideal Albertine, who, in her maternal devotion to the most motherly of sons, allows him not to marry her but to absorb her into a book:</p>
+
+    <div class="cita">
+        <p>Not only did I live at his rhythm, but you could say that, twenty-four hours out of twenty-four, and seven days out of seven, I lived exclusively for him. I have nothing to do with the person in his books whom he called ‘The Captive’, and yet I really deserved the title.<sup>16</sup></p>
+    </div>
+
+    <p>Proust leans on her, and against her, he watches her but does not see her, he speaks to her and his words rebound off her. This is not a dialogue, she simply activates the monologue, by relaying and starting it up again; he forgets her, he gathers her up, she vanishes, as, moreover, does he. There is no longer any ‘self’, just the <i>I</i> that speaks across her.</p>
+
+    <p>So Céleste and the cork lining of his apartment on the Boulevard Haussmann, guarantee the air-tightness of the protected environment in which involuntary memory remakes and unmakes its tentacular sentences, on the look-out for sounds, colours and flavours; and at the same time there is another stage on which the great world keeps up its pretence, sex spends its fury and, soon enough, the war will arrive to turn existing hierarchies upside down. A number of authors talk of Proust at this period as being curious to witness scenes of debauchery. Maurice Sachs mentions rats pierced with hatpins; M. Jouhandeau the photos of Proust’s mother which were profaned in front of gigolos, the family furniture which was carried to the Le Cuziat brothel, the masturbation sessions where the voyeur hid in bed, with a naked young man before him, responding only to the pleasure of seeing rats devour one another.<sup>17</sup> This entire world expands and stages in the most grotesque fashion the sado-masochism which the narrator of <i>A la recherche</i> re-creates in a muted, psychological colouring; it unfolds as a kind of antithesis which works in conjunction with the writing laboratory where Céleste is the vestal virgin. The physical stimulus of debauchery serves to excite the senses and the emotions, with their blend of exaltation and abasement. No one can state categorically, however, that the pleasure of the childhood memory which has been given a name—and that of the scraps of paper which are mounting up all the time in his manuscript—is not as great as, or even greater than, the sexual intoxication.</p>
+
+    <div class="section-head">Sublimation / Profanation</div>
+
+    <p>So the mother is dead, I have killed her, my grief turns to remorse, I speak of it before another, I speak to myself, <i>I</i> speak—and all is regained, eternity.</p>
+
+    <p>The way has been prepared for the profanation which becomes possible after two or three years of mourning, in the course of which the loved person has become blurred in the memory, with no lessening in the mean time of the ambivalence of a guilt-ridden love.</p>
+
+    <p>As early as 1908, in Notebook 1, the hero dreams that his grandmother is dead, but the actual episode, ‘Death of my grandmother’, is forecast only in the plan of the 1912 version of the novel. The theme of inversion becomes steadily more important from 1908 onwards; sketches for the character of Charlus help to achieve the separation between essay and novel in the writing of <i>Against Sainte-Beuve</i>, and at the same time this project takes second place to the strictly narrative undertaking which is to be <i>A la recherche</i>. Meanwhile, over the years 1908 to 1912, the Proustian idea of profaning the mother takes root: Notebook 1 refers to ‘the mother’s face in a debauched grandson’.<sup>18</sup> Profanation is seen as a condition of sublimation. In <i>Against Sainte-Beuve</i> we read: ‘The face of a son who lives on, like a monstrance in which a sublime mother, now dead, placed all her faith, is like the profanation of a sacred memory.’ In <i>Sodom and Gomorrah</i>, finally, there is this late addition to the text:</p>
+
+    <div class="cita">
+        <p>Moreover, was it possible to separate M. de Charlus’s appearance completely from the fact that, as sons do not always bear a likeness to their fathers, even when they are not inverts and go after women, they consummate in their faces the profanation of their mothers? But let us leave at this point what would be worth a chapter on its own: ‘profanation of the mother’. (III. 300)</p>
+    </div>
+
+    <p>The interweaving of the two themes—inversion on the one hand, and on the other ambivalence towards the mother resulting in profanation—comes clearly into view, for example in Notebook 47, which opens with ‘M. Charlus and the Verdurins’ and continues with the grandmother’s illness. When he later draws the connection between the death of his grandmother and that of Albertine, the narrator feels himself to be ‘soiled with a double assassination’; at least, as Georges Bataille has pointed out, he believes himself to be responsible for profaning his mother in just the same way as Mlle Vinteuil profaned the memory of her father: the young girl makes him die of sorrow, and just a few days later, while still in mourning, enjoys the embraces of a lesbian lover who spits on the dead man’s photograph. The sufferings of Vinteuil, who is shocked by his daughter’s sexuality, are presented to us in place of the description which the reader expects, but will never receive, of the sorrows experienced by the narrator’s mother in the face of Albertine (or Albert) coming on the scene:</p>
+
+    <div class="cita">
+        <p>he saw himself and his daughter in the lowest depths, and his manners had of late been tinged with that humility, that respect for persons who ranked above him and to whom he now looked up ... that tendency to search for some means of rising again to their level, which is an almost mechanical result of any human downfall. (1. 162)</p>
+    </div>
+
+    <p>In a similar way, however, the narrator’s mother is said to be so aware of the sufferings of the old piano teacher that she seems to share them from the inside.</p>
+
+    <p>At times when pleasure overtakes him, the narrator feels that he ‘makes his mother’s soul weep’. Like Mlle Vinteuil, who is an artist in sadism, he even comes to believe that sensual pleasure is a form of wickedness in which he can engulf himself and bury his ideal. For the ideal, which is uncompromisingly maternal, is so scrupulous and coercive that, to escape from it, you have to profane it, and drag it down into the bestial world of pleasure. The complicity which Proust discovers between the requirements of an ideal tenderness and the depths of transgression which it imposes is what renders the pervert miserable and, by the same token, deserving of love. Georges Bataille recognizes the kinship with his own inner experience of the ecstasies of sin and profanation when he writes: ‘This wish for limitless horror reveals itself in the end for what it is: the true measure of love.’<sup>19</sup></p>
+
+    <p>As for Albertine, she appears in the novel only around 1913, almost exactly at the same time as Céleste is becoming established in the apartment on the Boulevard Haussmann. Thanks to these two, Albertine and Céleste, the inversion can be concealed—there is a woman to embody the passion of the narrator, transposing the feeling that Proust reserves for men—and the element of profanation gets toned down. Certainly the narrator’s mother would have no time for Albertine—but surely it is inflicting on her no more than a polite and conventional form of cruelty that he should desire a woman in this completely natural way?</p>
+
+    <p>Everything conspires in favour of sublimation: the grievous experience of passion, which has been filtered through mourning and trapped by the cork-lined wall of the motherly Céleste, can now break out in joy:</p>
+
+    <div class="cita">
+        <p>Ideas come to us as the successors to griefs, and griefs, at the moment when they change into ideas, lose some part of their power to injure our heart; the transformation itself, even, for an instant, releases suddenly a little joy. (III. 944)</p>
+    </div>
+
+    <p>The imagination, the reflective faculty may be admirable machines in themselves but they may also be inert. Suffering sets them in motion. And then at least the woman who poses for us as grief favours us with an abundance of sittings, in that studio which we enter only in these periods and which lies deep within us. (III. 946)</p>
+
+    <div class="section-head">Accident, Ageing and War</div>
+
+    <p>In the last volume of <i>A la recherche</i>, we are presented with three different forms of death: Albertine’s accident, the ageing of the main characters, and the upheaval caused in society by the First World War. Without pausing to look at the aspects of this concern in detail, we can certainly show how Proust turns didactic, and outlines the way in which linear time can be transformed into the timelessness of literature. We can follow in <i>Time Regained</i> the successive stages through which he imposes his logic upon the innumerable flashbacks, condensations, plots and digressions which made up the earlier volumes of <i>A la recherche</i>.</p>
+
+    <p>As it restores my various, different, relationships with people and things, my memory fastens upon particular ‘sites’ and ‘places’. But, incapable of placing them in succession to one another, it sets up ‘revolutions’ around me as it does around them. In order to take account of this assembly of ‘revolutions’, the book would have to use ‘not the two-dimensional psychology which we normally use but a quite different sort of three-dimensional psychology’ (III. 1087).</p>
+
+    <p>So through juxtaposing the ‘opposing facets’—as in the face of Mlle de Saint-Loup, the ‘masterpiece’ which combines the features of a Swann and a Guermantes, an Odette and a Gilberte—Proust discovers what will be (and indeed already has been) the ‘spur’ of the book. This will impel the narrator (it already has impelled him) to create a world as vast as a <i>cathedral</i>, or on a more modest scale to arrange the pieces of material among themselves as if making a <i>dress</i> (III. 1090).</p>
+
+    <p>The process of reasoning now reaches its fulfilment, and the formula of <i>A la recherche</i>, its alchemical key, is waiting to be spoken. What the narrator calls an ‘enhanced’ place in time—perceived by the senses, inaccessible no doubt but, as the prepositional form ‘à la’ indicates, always beckoning to us, remaining open and disposable as the self revolves around it—is the notion of <i>embodied time</i>. The time in which all of our sensations are reflected upon, as they tie the knot between subjectivity and the external world and recover once again the sounds that lie beneath the masks of appearance:</p>
+
+    <div class="cita">
+        <p>This notion of <i>Time embodied</i>, of years past but not separated from us, it was now my intention to emphasize as strongly as possible in my work. And at this very moment, in the house of the Prince de Guermantes, as though to strengthen me in my resolve, the noise of my parents’ footsteps as they accompanied M. Swann to the door and the peal—resilient, ferruginous, interminable, fresh and shrill—of the bell on the garden gate which informed me that at last he had gone and that Mamma would presently come upstairs, these sounds rang again in my ears, yes, unmistakably I heard these very sounds, situated though they were in a remote past. And as I cast my mind over all the events which were ranged in an unbroken series between the moment of my childhood when I had first heard its sound and the Guermantes party, I was terrified to think that it was indeed this same bell which rang within me and that nothing that I could do would alter its jangling notes. On the contrary, having forgotten the exact manner in which they faded away and wanting to re-learn this, to hear them properly again, I was obliged to block my ears to the conversations which were proceeding between the masked figures all round me ... (III. 1105)</p>
+    </div>
+
+    <p>Then, without warning, appearing like a confession a few lines before the word ‘END’ is inserted, there comes into play once again the notion of desire, and nothing less than the desire to destroy, on the extreme boundaries of cruelty. There is the sense of something coming into view and then being annihilated, of love and hate: the avowal that desire is in essence a perverse desire is what makes time regained come full circle:</p>
+
+    <div class="cita">
+        <p>And it is because they contain thus within themselves the hours of the past that human bodies have the power to hurt so terribly those who love them, because they contain the memories of so many <i>joys</i> and <i>desires</i> already effaced for them, but still <i>cruel</i> for the lover who contemplates and prolongs in the dimension of Time the beloved body of which he is jealous, so jealous that he may even wish for its <i>destruction</i> ... Albertine deep down, whom I saw sleeping and who was dead.<sup>20</sup> (III. 1106) [my italics]</p>
+    </div>
+
+    <p>And yet, after this avowal of cruelty, it is <i>formal language</i> that passes on the message of the perversity at the root of all desire: the ‘monsters’ which take up their places within us come to form a kind of <i>polytopia</i>—‘a place ... prolonged past measure—for simultaneously, like giants plunged into the years, they touch epochs that are immensely far apart, separated by the slow accretion of many, many days—in the dimension of Time. The End.’ (III. 1107)</p>
+
+    <p>The End. Over and beyond the time of jealousy, the time for the construction of the work now takes over, in so far as the book is itself the direct replacement for the loved person—could we therefore refer to this Proustian time (of cruelty, sensation and writing) as a temporality of concern? Heidegger’s ‘temporality of concern’ incorporates several different stages: the temporality of disclosedness, the temporality of understanding, the temporality of state of mind and the temporality of falling.<sup>21</sup> Yet desire, in its cruelty, goes beyond the temporality of concern, and opens up a place in which signs can develop a spatial dimension by building up sensations. The writer is no philosopher: memory regained bears the imprint of colour, taste, touch and other forms of experience, whilst a distinctive type of writing which transgresses all bounds in its richness of metaphor and its embedding of clauses one within one another at the same time destroys and reconstructs the world. In the Proustian text the non-temporal nature of the unconscious (as Freud would have it) goes side by side with an overpowering awareness of Being. The psychic absorbs the cosmic and, beyond it, Being itself is diluted in style.</p>
+
+    <p>So imaginary experience is not unaware of the temporality of concern. But it goes beyond it, in a search for joy. Closer in this sense to Spinoza than to Heidegger, Proust’s fiction reveals fundamental features of the human psyche. Personally, I enjoy this revelation; I hope that you do too.</p>
+
+    <section class="footnotes">
+        <h3>Notes</h3>
+        <p>1. Marcel Proust, <i>Correspondance</i>, ed. Philip Kolb (Paris, Plon, 1970–83), vol. IX, p. 163.</p>
+        <p>2. Cf. M. Bardèche, <i>Marcel Proust romancier</i>, Les Sept Couleurs (Paris, 1971), vol. I, p 204.</p>
+        <p>3. Victor Hugo, <i>Oeuvres complètes, Poésie II</i> (Paris, Laffont, 1985), p. 412: ‘A Villequier’.</p>
+        <p>4. Proust, <i>Correspondance</i>, Proust to Mme Catusse, vol. X, p. 215.</p>
+        <p>5. Ibid., vol. V, p. 238; vol VI, p. 28: letters to Maurice Duplay cited in Q. de Diesbach, <i>Marcel Proust</i> (Paris, Perrin, 1991).</p>
+        <p>6. Cf. 1.41: ‘It struck me that my mother had just made a first concession which must have been painful to her, that it was a first abdication on her part from the ideal she had formed for me, and that for the first time she who was so brave had to confess herself beaten. It struck me that if I had just won a victory it was over her, that I had succeeded, as sickness or sorrow or age might have succeeded, in relaxing her will, in undermining her judgment; and that this evening opened a new era, would remain a black date in the calendar.’</p>
+        <p>7. Proust, <i>Jean Santeuil précédé de Les Plaisirs et les jours</i> (Paris, Gallimard, Bibliothèque de la Pléiade, 1971), pp. 91–2.</p>
+        <p>8. Ibid., p. 95.</p>
+        <p>9. Céleste Albaret, <i>Monsieur Proust</i> (Paris, Laffont, 1973), p. 19.</p>
+        <p>10. Ibid., p. 32.</p>
+        <p>11. Ibid., p. 30.</p>
+        <p>12. Ibid., p. 117.</p>
+        <p>13. Ibid., p. 133.</p>
+        <p>14. Ibid., p. 139.</p>
+        <p>15. Ibid., p. 140.</p>
+        <p>16. Ibid., p. 64.</p>
+        <p>17. Cf. H. Bonnett, <i>Les Amours et la sexualité de M. Proust</i> (Paris, Nizet, 1985), p. 80.</p>
+        <p>18. Quoted in Proust, <i>Contre Sainte-Beuve</i>, ed. B. de Fallois (Paris, 1954), p. 282.</p>
+        <p>19. Georges Bataille, ‘Marcel Proust et la mère profanée’, in <i>Critique</i>, no. 47 (1946), p. 609.</p>
+        <p>20. The last sentence of this quotation is not to be found in the Penguin Classics edition, which relies on the earlier Pléiade text.</p>
+        <p>21. Cf. Martin Heidegger, <i>Being and Time</i>, trans J. Macquarie and Edward Robinson (London, SCM Press, 1962), pp. 383ff.</p>
+    </section>
+
+</main>
+
+<script>
+    const toggle = document.getElementById('theme-toggle');
+    const icon = document.getElementById('theme-icon');
+
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark-mode');
+        const isDark = document.body.classList.contains('dark-mode');
+        icon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        toggle.title = isDark ? 'Modo diurno' : 'Modo nocturno';
+        toggle.setAttribute('aria-label', isDark ? 'Cambiar a modo diurno' : 'Cambiar a modo nocturno');
+    });
+</script>
+
+</body>
+</html>
