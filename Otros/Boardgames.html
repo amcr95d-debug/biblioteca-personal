@@ -1,0 +1,1416 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La ludoteca imaginaria · Repositorio de juegos de mesa</title>
+<style>
+  :root{
+    --bg:#0b0d12;
+    --panel:#141822;
+    --panel-2:#10141c;
+    --line:#242b38;
+    --ink:#e9ecf3;
+    --muted:#8b93a7;
+    --note:#a9b1c3;
+    --accent:#e0a458;
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+    --sans: ui-sans-serif, -apple-system, "Segoe UI", Inter, Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+
+  body{
+    margin:0;
+    font-family:var(--sans);
+    color:var(--ink);
+    background:
+      radial-gradient(1100px 560px at 12% -12%, rgba(224,164,88,.10), transparent 62%),
+      radial-gradient(900px 520px at 92% -4%, rgba(111,140,255,.11), transparent 58%),
+      var(--bg);
+    min-height:100vh;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ---------- Cabecera ---------- */
+  .masthead{
+    max-width:1180px;
+    margin:0 auto;
+    padding:72px 26px 26px;
+  }
+  .eyebrow{
+    margin:0 0 14px;
+    font-size:.66rem;
+    letter-spacing:.34em;
+    text-transform:uppercase;
+    color:var(--accent);
+  }
+  h1{
+    margin:0;
+    font-family:var(--serif);
+    font-weight:400;
+    font-size:clamp(2.2rem, 5.2vw, 3.5rem);
+    line-height:1.04;
+    letter-spacing:-.022em;
+    background:linear-gradient(180deg,#ffffff 0%, #b9c1d4 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  .lede{
+    margin:18px 0 0;
+    max-width:64ch;
+    font-size:.95rem;
+    line-height:1.72;
+    color:var(--muted);
+  }
+
+  /* ---------- Barra de herramientas ---------- */
+  .toolbar{
+    position:sticky;
+    top:0;
+    z-index:20;
+    margin-top:34px;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    background:rgba(11,13,18,.82);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+  }
+  .toolbar__inner{
+    max-width:1180px;
+    margin:0 auto;
+    padding:14px 26px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .filters{ display:flex; flex-wrap:wrap; gap:8px; }
+  .filter{
+    font-family:inherit;
+    font-size:.75rem;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:var(--muted);
+    background:transparent;
+    border:1px solid var(--line);
+    border-radius:999px;
+    padding:7px 14px;
+    cursor:pointer;
+    transition:color .2s, border-color .2s, background .2s, transform .2s;
+  }
+  .filter:hover{ color:var(--ink); border-color:#39424f; transform:translateY(-1px); }
+  .filter.is-active{
+    color:#0b0d12;
+    background:var(--accent);
+    border-color:var(--accent);
+    font-weight:600;
+  }
+  .search{
+    font-family:inherit;
+    font-size:.82rem;
+    color:var(--ink);
+    background:var(--panel-2);
+    border:1px solid var(--line);
+    border-radius:999px;
+    padding:9px 16px;
+    min-width:220px;
+    outline:none;
+    transition:border-color .2s, box-shadow .2s;
+  }
+  .search::placeholder{ color:#5f6779; }
+  .search:focus{ border-color:#3d4757; box-shadow:0 0 0 3px rgba(224,164,88,.12); }
+
+  /* ---------- Rejilla ---------- */
+  .grid{
+    max-width:1180px;
+    margin:0 auto;
+    padding:30px 26px 90px;
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(335px, 1fr));
+    gap:22px;
+    align-items:stretch;
+  }
+  .grid__empty{
+    grid-column:1 / -1;
+    padding:60px 0;
+    text-align:center;
+    color:var(--muted);
+    font-style:italic;
+  }
+  .grid__empty[hidden]{ display:none; }
+
+  /* ---------- Ficha ---------- */
+  .game{
+    position:relative;
+    display:grid;
+    grid-template-columns:52px 1fr;
+    background:linear-gradient(180deg, var(--panel) 0%, var(--panel-2) 100%);
+    border:1px solid var(--line);
+    border-radius:16px;
+    overflow:hidden;
+    transition:transform .28s ease, border-color .28s ease, box-shadow .28s ease;
+  }
+  .game::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:16px;
+    pointer-events:none;
+    background:radial-gradient(600px 200px at 50% 0%, var(--accent-soft, transparent), transparent 70%);
+    opacity:0;
+    transition:opacity .28s ease;
+  }
+  .game:hover{
+    transform:translateY(-4px);
+    border-color:color-mix(in srgb, var(--accent) 45%, var(--line));
+    box-shadow:0 22px 48px -26px rgba(0,0,0,.9), 0 0 0 1px var(--accent-soft);
+  }
+  .game:hover::after{ opacity:1; }
+
+  .game__spine{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--accent-soft, rgba(255,255,255,.03));
+    border-right:1px solid var(--line);
+  }
+  .game__num{
+    writing-mode:vertical-rl;
+    font-size:.66rem;
+    font-weight:700;
+    letter-spacing:.42em;
+    color:var(--accent);
+    opacity:.9;
+  }
+
+  .game__body{ padding:20px 22px 22px; min-width:0; }
+
+  .game__top{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:12px;
+  }
+  .game__cat{
+    font-size:.62rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--accent);
+  }
+  .game__pill{
+    flex:none;
+    font-size:.66rem;
+    letter-spacing:.04em;
+    color:var(--muted);
+    border:1px solid var(--line);
+    border-radius:999px;
+    padding:2px 9px;
+    white-space:nowrap;
+  }
+
+  .game__title{
+    margin:.45rem 0 .18rem;
+    font-family:var(--serif);
+    font-weight:400;
+    font-size:1.4rem;
+    line-height:1.2;
+    letter-spacing:-.01em;
+  }
+  .game__sub{
+    margin:0;
+    font-size:.87rem;
+    font-style:italic;
+    color:var(--muted);
+    line-height:1.45;
+  }
+
+  .game__meta{
+    display:grid;
+    grid-template-columns:repeat(2, minmax(0,1fr));
+    gap:12px 18px;
+    margin:18px 0 0;
+    padding-top:16px;
+    border-top:1px dashed var(--line);
+  }
+  .game__meta div{ min-width:0; }
+  .game__meta dt{
+    font-size:.58rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:#6f7789;
+    margin-bottom:3px;
+  }
+  .game__meta dd{
+    margin:0;
+    font-size:.84rem;
+    color:#d3d9e6;
+    line-height:1.35;
+  }
+
+  .game__note{
+    margin:16px 0 0;
+    font-size:.855rem;
+    line-height:1.68;
+    color:var(--note);
+  }
+
+  .tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    list-style:none;
+    margin:18px 0 0;
+    padding:0;
+  }
+  .tags li{
+    font-size:.68rem;
+    letter-spacing:.02em;
+    color:#98a1b4;
+    background:rgba(255,255,255,.035);
+    border:1px solid var(--line);
+    border-radius:999px;
+    padding:4px 10px;
+  }
+
+  /* ---------- Pie ---------- */
+  .sitefoot{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 26px 70px;
+    color:#5f6779;
+    font-size:.78rem;
+    line-height:1.7;
+    border-top:1px solid var(--line);
+    padding-top:26px;
+  }
+  .sitefoot em{ color:#8b93a7; }
+
+  .is-hidden{ display:none !important; }
+
+  /* ---------- Animación de entrada ---------- */
+  @keyframes rise{
+    from{ opacity:0; transform:translateY(14px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+  .game{ animation:rise .5s ease both; }
+
+  @media (max-width:520px){
+    .masthead{ padding:52px 18px 20px; }
+    .toolbar__inner, .grid, .sitefoot{ padding-left:18px; padding-right:18px; }
+    .game{ grid-template-columns:42px 1fr; }
+    .search{ min-width:100%; }
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    *{ animation:none !important; transition:none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <p class="eyebrow">Repositorio · Ludoteca personal</p>
+  <h1>La ludoteca imaginaria</h1>
+  <p class="lede">
+    Diecisiete cajas abiertas sobre la mesa. Igual que un museo imaginario no reúne lo «mejor» sino lo que
+    cambió la forma de mirar, esta ludoteca no reúne los juegos mejor valorados: reúne los que cambiaron
+    la forma de sentarse a jugar. Cada ficha es una invitación, no un veredicto.
+  </p>
+</header>
+
+<div class="toolbar">
+  <div class="toolbar__inner">
+    <div class="filters" role="group" aria-label="Filtrar por tipo de juego">
+      <button class="filter is-active" data-filter="all">Todos</button>
+      <button class="filter" data-filter="cooperativo">Cooperativo</button>
+      <button class="filter" data-filter="solitario">Solitario</button>
+      <button class="filter" data-filter="competitivo">Competitivo</button>
+      <button class="filter" data-filter="campana">Campaña</button>
+      <button class="filter" data-filter="familiar">Familiar</button>
+    </div>
+    <input id="search" class="search" type="search" placeholder="Buscar por título, autor, editorial…" aria-label="Buscar fichas">
+  </div>
+</div>
+
+<main class="grid" id="grid">
+
+  <!-- 001 -->
+  <article class="game" style="--accent:#2fbf9b; --accent-soft:rgba(47,191,155,.14)"
+           data-tags="cooperativo solitario" data-title="Spirit Island">
+    <div class="game__spine"><span class="game__num">001</span></div>
+    <div class="game__body">
+      <div class="game__top">
+        <span class="game__cat">Cooperativo · Estrategia asimétrica</span>
+        <span class="game__pill">1–4 jug.</span>
+      </div>
+      <h2 class="game__title">Spirit Island</h2>
+      <p class="game__sub">Los espíritus de la isla contra el imperio</p>
+
+      <dl class="game__meta">
+        <div><dt>Año</dt><dd>2017</dd></div>
+        <div><dt>Editorial</dt><dd>Greater Than Games</dd></div>
+        <div><dt>Diseño</dt><dd>R. Eric Reuss</dd></div>
+        <div><dt>Duración</dt><dd>90–120 min</dd></div>
+      </dl>
+
+      <p class="game__note">
+        Cooperativo de control de áreas en el que los jugadores encarnan espíritus de la tierra,
+        el cielo y los ríos de una isla en un mundo de historia alternativa hacia 1700 d. C.,
+        mientras potencias coloniales europeas intentan reclamar el territorio.
+        Cada espíritu tiene poderes elementales propios y un mazo de cartas exclusivo, y la
+        asimetría es radical: un espíritu construye defensas lentamente, otro destruye apenas
+        nada pero genera cantidades ingentes de miedo, y otro se especializa en ahuyentar
+        invasores sin exterminarlos. La partida sigue un ritmo predecible —los
+        invasores exploran, construyen y devastan en un orden anunciado—, pero la gestión de esa
+        previsibilidad es precisamente la crisis que hay que administrar.
+        La victoria no llega solo por destruir asentamientos: el sistema de <strong>miedo</strong> permite
+        que los invasores huyan de la isla cuando han acumulado suficiente terror, lo que
+        convierte cada partida en una carrera por asustar más rápido de lo que ellos talan.
+        La dificultad es un dial que se sube con adversarios y escenarios, y el juego escala de
+        forma modular sin romper el sistema. Con ocho espíritus en la caja base y cuatro
+        expansiones principales —<em>Branch &amp; Claw</em>, <em>Jagged Earth</em>,
+        <em>Feather and Flame</em> y <em>Nature Incarnate</em>—, la rejugabilidad es
+        prácticamente ilimitada, y la complejidad de las opciones tácticas diluye el «efecto
+        líder» típico de los cooperativos. Un cooperativo exigente, temáticamente anticolonial y
+        con una de las curvas de aprendizaje más gratificantes del género.
+      </p>
+
+      <ul class="tags">
+        <li>Cooperativo</li><li>Asimétrico</li><li>Anticolonial</li>
+        <li>Control de áreas</li><li>Miedo</li><li>R. Eric Reuss</li>
+        <li>Greater Than Games</li><li>Dificultad escalable</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- 002 -->
+  <article class="game" style="--accent:#b06cff; --accent-soft:rgba(176,108,255,.15)"
+           data-tags="competitivo cooperativo solitario" data-title="Champions of Hara">
+    <div class="game__spine"><span class="game__num">002</span></div>
+    <div class="game__body">
+      <div class="game__top">
+        <span class="game__cat">Aventura táctica · Dos modos</span>
+        <span class="game__pill">1–4 jug. (6 con exp.)</span>
+      </div>
+      <h2 class="game__title">Champions of Hara</h2>
+      <p class="game__sub">Campeones, corrupción y un mundo que se desmorona</p>
+
+      <dl class="game__meta">
+        <div><dt>Año</dt><dd>2018</dd></div>
+        <div><dt>Editorial</dt><dd>Greenbrier Games</dd></div>
+        <div><dt>Diseño</dt><dd>Walter Barber · Ian VanNest</dd></div>
+        <div><dt>Duración</dt><dd>30–120 min (≈30 min/jug.)</dd></div>
+      </dl>
+
+      <p class="game__note">
+        Aventura de tablero episódica para uno a cuatro jugadores —hasta seis con la expansión
+        <em>Chaos on Hara</em>— ambientada en Hara, un paraíso moribundo de estética
+        «funk-fantasy» que se está deshaciendo por la energía inestable del Conflux. El juego
+        ofrece dos modos autónomos: un <strong>Versus Arena</strong> competitivo, en el que los
+        campeones se enfrentan por ser los primeros en reunir las tres energías —roja, azul y
+        verde— y regresar al Dojo para sellar el Conflux y pedir un deseo; y una serie de
+        <strong>Escenarios</strong> cooperativos (o por equipos) que narran las consecuencias de
+        ese deseo, con dieciocho escenarios en la caja base, tres por personaje, incluido uno en
+        solitario para cada uno.
+        La mecánica central es un sistema de cartas de doble uso: cada carta tiene dos efectos
+        distintos según esté en la mano o sobre el tablero, de modo que usarla para una cosa la
+        «gasta» para la otra y obliga a alternar entre ambos estados, un vaivén táctico que
+        recuerda al de <em>Gloomhaven</em> pero con un ritmo más ligero. Los personajes son
+        marcadamente asimétricos: cada uno tiene su propio mazo, su propio sistema de recursos y
+        su propia forma de progresar por los tracks de energía, lo que multiplica la
+        rejugabilidad. El tablero es modular y cambia a lo largo de la partida, con seis zonas o
+        «mundos» dentro de Hara —Arechi Wastes, Oppenheim, Oakenmoor, The Baiyu, Lunaridge y
+        The Drear— que se van revelando y alterando.
+        La producción incluye miniaturas de los campeones y de los Corrupted, tableros de
+        jugador de doble capa y un arte muy colorido que se aleja del fantasy habitual. La
+        expansión <em>Chaos on Hara</em> añade cuatro personajes nuevos, componentes para
+        cinco y seis jugadores, dieciséis escenarios adicionales —incluidos cuatro en
+        solitario y cuatro «Challenges From the Void» de dificultad extrema— y dos personajes
+        cruzados del universo de <em>Grimslingers</em>. Es un juego que se ha descrito como
+        «un hermano pequeño de <em>Mage Knight</em>», con reglas más amables y partidas más
+        cortas, pero conservando la planificación de cartas y la sensación de puzzle de
+        eficiencia.
+      </p>
+
+      <ul class="tags">
+        <li>Aventura táctica</li><li>Cartas de doble uso</li><li>Asimétrico</li>
+        <li>Versus Arena</li><li>Escenarios cooperativos</li><li>Solitario</li>
+        <li>Miniaturas</li><li>Greenbrier Games</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- 003 -->
+  <article class="game" style="--accent:#e0a458; --accent-soft:rgba(224,164,88,.14)"
+           data-tags="solitario cooperativo" data-title="Campos de Arle">
+    <div class="game__spine"><span class="game__num">003</span></div>
+    <div class="game__body">
+      <div class="game__top">
+        <span class="game__cat">Solitario / 2 jug. · Gestión de granja</span>
+        <span class="game__pill">1–2 (3 con exp.)</span>
+      </div>
+      <h2 class="game__title">Campos de Arle</h2>
+      <p class="game__sub">Fields of Arle · La vida en una granja de Frisia Oriental</p>
+
+      <dl class="game__meta">
+        <div><dt>Año</dt><dd>2014 (Big Box: 2019)</dd></div>
+        <div><dt>Editorial</dt><dd>Feuerland Spiele · Maldito Games (esp.)</dd></div>
+        <div><dt>Diseño</dt><dd>Uwe Rosenberg</dd></div>
+        <div><dt>Duración</dt><dd>60–120 min</dd></div>
+      </dl>
+
+      <p class="game__note">
+        Uwe Rosenberg vuelve a la estela de <em>Agricola</em> y <em>Caverna</em>, pero esta vez
+        reduce el número de jugadores —uno o dos, tres con la expansión— y concentra toda la
+        tensión en la gestión de una granja en la Frisia Oriental del siglo XVIII.
+        Durante nueve rondas que alternan verano e invierno, hay que desecar humedales, arar
+        campos, criar ganado, producir lino y construir edificios, mientras se alimenta y se
+        calienta a la familia. La colocación de trabajadores es el motor, pero la clave está en
+        la especialización: cada partida permite orientar la granja hacia la turba, el ganado,
+        el lino o la artesanía, y no hay dos explotaciones iguales. La edición Big Box de
+        Maldito Games (2019) incorpora la expansión <em>Té y Comercio</em>, que añade el modo a
+        tres jugadores y abre nuevas vías comerciales. Un Rosenberg de perfil más intimista que
+        sus hermanos mayores, ideal para jugar en solitario o en pareja.
+      </p>
+
+      <ul class="tags">
+        <li>Uwe Rosenberg</li><li>Colocación de trabajadores</li><li>Gestión de granja</li>
+        <li>Solitario</li><li>Frisia Oriental</li><li>Maldito Games</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- 004 -->
+  <article class="game" style="--accent:#e2564a; --accent-soft:rgba(226,86,74,.15)"
+           data-tags="cooperativo solitario campana" data-title="Apocrypha">
+    <div class="game__spine"><span class="game__num">004</span></div>
+    <div class="game__body">
+      <div class="game__top">
+        <span class="game__cat">Cooperativo · Campaña de cartas</span>
+        <span class="game__pill">1–6 jug. (o 1 guía + jugadores)</span>
+      </div>
+      <h2 class="game__title">Apocrypha</h2>
+      <p class="game__sub">Los santos que ven lo que los demás no ven</p>
+
+      <dl class="game__meta">
+        <div><dt>Año</dt><dd>2017 (Kickstarter: 2015)</dd></div>
+        <div><dt>Editorial</dt><dd>Lone Shark Games</dd></div>
+        <div><dt>Diseño</dt><dd>Mike Selinker et al.</dd></div>
+        <div><dt>Duración</dt><dd>~60 min / sesión (20 min/jug.)</dd></div>
+      </dl>
+
+      <p class="game__note">
+        Cooperativo de cartas y campaña con un pie en el juego de rol, diseñado por el equipo de
+        Lone Shark Games —el mismo que creó el <em>Pathfinder Adventure Card Game</em>— y
+        descrito por sus autores como la evolución de aquel sistema junto a
+        <em>Betrayal at House on the Hill</em>. La premisa: el mundo está al borde de una
+        apologipsis moderna provocada por monstruos que solo los personajes pueden ver. Los
+        jugadores encarnan a <strong>santos</strong>, gente corriente con la capacidad de
+        percibir lo que se esconde en cada callejón y en cada comedor escolar. El juego se puede
+        jugar como un cooperativo de cartas al uso (en solitario o en grupo) o con un
+        <strong>guía</strong> que asuma el papel de director de juego y lo convierta en una
+        experiencia de rol completa.
+        La estructura es modular: la caja base, <em>The World</em>, contiene 584 cartas, 20 dados
+        de seis caras, un libro de reglas, un libro de historias y 10 santos con sus
+        correspondientes tokens. Los capítulos se agrupan en dos grandes arcos dentro de la caja
+        base, y las expansiones <em>The Flesh</em> y <em>The Devil</em> añaden cuatro capítulos
+        cada una, con 400 cartas adicionales por caja. En total, el juego completo ofrece 11
+        capítulos y 100 escenarios, incluido el escenario final de la «Apocalipsis», el número
+        100. Cada capítulo cuenta con la colaboración de un autor invitado de fantasía o terror
+        —entre ellos Patrick Rothfuss, Kij Johnson y Bruce R. Cordell— que firma la historia
+        marco y los textos de misión.
+        La progresión no se basa en puntos de experiencia al uso: al superar un escenario, cada
+        jugador elige un <strong>fragmento de memoria</strong> (una capacidad activa o pasiva) de
+        entre los disponibles, y el crecimiento real del personaje llega a través de la
+        construcción de su mazo. Cada santo tiene una configuración inicial fija por tipo de
+        carta (pensamiento, cuerpo, alma y rabia) que debe respetarse, de modo que las cartas que
+        se ganan o intercambian entre sesiones no pueden desequilibrar esa base. Las
+        localizaciones (los «nexos») se investigan con un mazo propio en el que el orden de
+        confrontación es aleatorio, lo que introduce una variabilidad considerable en la
+        dificultad de cada misión.
+        Es un juego de configuración rápida (5–10 minutos), con una curva de aprendizaje
+        media-alta y una duración por sesión de alrededor de una hora. Para quien busque un
+        cooperativo narrativo con crecimiento de personaje, alma de rol y una producción de
+        cartas generosa, <em>Apocrypha</em> es una rareza que envejece bien: tensa, temática y
+        muy extraña, en el mejor sentido.
+      </p>
+
+      <ul class="tags">
+        <li>Cooperativo</li><li>Campaña</li><li>Construcción de mazo</li>
+        <li>Juego de rol</li><li>Santos</li><li>Apocalipsis</li>
+        <li>Mike Selinker</li><li>Lone Shark Games</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- 005 -->
+  <article class="game" style="--accent:#6f8cff; --accent-soft:rgba(111,140,255,.16)"
+           data-tags="solitario cooperativo familiar" data-title="Onirim">
+    <div class="game__spine"><span class="game__num">005</span></div>
+    <div class="game__body">
+      <div class="game__top">
+        <span class="game__cat">Solitario / Cooperativo · Cartas</span>
+        <span class="game__pill">1–2 jug.</span>
+      </div>
+      <h2 class="game__title">Onirim</h2>
+      <p class="game__sub">Ocho puertas antes de que se agote el sueño</p>
+
+      <dl class="game__meta">
+        <div><dt>Año</dt><dd>2010 (2ª ed. 2014)</dd></div>
+        <div><dt>Editorial</dt><dd>Z-Man Games / F2Z</dd></div>
+        <div><dt>Diseño</dt><dd>Shadi Torbey</dd></div>
+        <div><dt>Duración</dt><dd>~15 min</dd></div>
+      </dl>
+
+      <p class="game__note">
+        Solitario de cartas —aunque admite una variante cooperativa a dos— en el que el jugador
+        es un <strong>Dreamwalker</strong> perdido en un laberinto onírico y debe abrir las ocho
+        puertas de los sueños antes de que se agote el mazo, o quedará atrapado para siempre.
+        La baraja base contiene 8 cartas de Puerta (dos de cada color: rojo, azul, verde y
+        marrón), 10 cartas de Pesadilla y 58 cartas de Laberinto repartidas en cuatro colores,
+        cada una marcada con un símbolo de Luna, Sol o Llave.
+        En cada turno se roba hasta tener cinco cartas en mano y se juega o se descarta una: las
+        cartas jugadas no pueden compartir símbolo con la anterior, pero tres cartas consecutivas
+        del mismo color abren la Puerta correspondiente; alternativamente, cuando se revela una
+        carta de Puerta del mazo, puede descartarse una Llave del color adecuado para abrirla
+        directamente. Las Pesadillas, ocultas en la baraja, interrumpen cualquier plan y obligan
+        a elegir entre perder cartas, descartar la mano o devolver una puerta ya abierta, lo que
+        convierte cada decisión en un pequeño cálculo de riesgos.
+        El juego base, por sí solo, es muy sencillo y puede quedarse corto: la propia comunidad
+        señala que «carece de rejugabilidad» y que sufre de un barajado excesivo. La verdadera
+        dimensión de <em>Onirim</em> está en sus <strong>mini-expansiones</strong>, que se pueden
+        combinar libremente entre sí. La primera edición ya incluía tres: <em>The Towers</em>,
+        <em>Happy Dreams and Dark Premonitions</em> y <em>The Book of Steps Lost and Found</em>.
+        La segunda edición amplía el paquete hasta siete expansiones y un apéndice, incluyendo
+        <em>Glyphs</em>, <em>Dreamcatchers</em> y <em>The Door to the Oniverse</em>.
+        Shadi Torbey construye con muy poco —una baraja de símbolos y colores— un puzzle de
+        gestión de mano y colección de sets que se explica en dos minutos y se juega en quince.
+        Su gran logro es haber creado la puerta de entrada a todo el <strong>Oniverse</strong>,
+        una familia de solitarios con un estilo artístico inconfundible y una filosofía común:
+        reglas mínimas, decisiones tensas y una rejugabilidad que depende de cuántas expansiones
+        se quieran añadir. Es el ejemplo perfecto del «juego pequeño» que cabe en un bolsillo y
+        no se parece a nada más en la estantería.
+      </p>
+
+      <ul class="tags">
+        <li>Solitario</li><li>Cooperativo</li><li>Gestión de mano</li>
+        <li>Colección de sets</li><li>Oniverse</li><li>Shadi Torbey</li>
+        <li>Mini-expansiones</li><li>Z-Man Games</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- 006 -->
+  <article class="game" style="--accent:#c9a227; --accent-soft:rgba(201,162,39,.14)"
+           data-tags="solitario" data-title="Comanchería">
+    <div class="game__spine"><span class="game__num">006</span></div>
+    <div class="game__body">
+      <div class="game__top">
+        <span class="game__cat">Solitario · Wargame histórico</span>
+        <span class="game__pill">1 jug.</span>
+      </div>
+      <h2 class="game__title">Comanchería</h2>
+      <p class="game__sub">El ascenso y la caída del imperio comanche</p>
+
+      <dl class="game__meta">
+        <div><dt>Año</dt><dd>2016 (2ª imp. 2025)</dd></div>
+        <div><dt>Editorial</dt><dd>GMT Games</dd></div>
+        <div><dt>Diseño</dt><dd>Joel Toppen</dd></div>
+        <div><dt>Duración</dt><dd>60–360 min</dd></div>
+      </dl>
+
+      <p class="game__note">
+        Segundo título de la serie «First Nations» de Joel Toppen —tras <em>Navajo Wars</em>—,
+        un wargame en solitario en el que el jugador no encarna a un caudillo, sino que dirige
+        las decisiones culturales y políticas de todo el pueblo comanche (los <em>Numunuu</em>,
+        «la gente») desde su llegada a las Llanuras del Sur hasta su enfrentamiento final con el
+        Ejército de los EE. UU. en la Guerra del Río Rojo de 1875.
+        La partida se divide en cuatro períodos históricos —1700–1749, 1750–1799, 1800–1849 y
+        1850–1875—, cada uno con su propio objetivo de victoria. Al final de cada período el
+        jugador debe superar una comprobación; si falla, la partida termina de inmediato. También
+        se pierde si los contadores de Cultura y Militar llegan a cero al mismo tiempo.
+        El motor es un sistema de extracción de fichas de una taza opaca: las fichas de «Éxito»
+        determinan el resultado de las acciones, pero en la misma taza se mezclan fichas de
+        «Puntos de Acción Enemigos». Cuanto más se recurre a la taza, más probable es que el
+        enemigo acumule acciones para su fase de respuesta, lo que crea una tensión constante
+        entre empujar la suerte y contener al rival.
+        El turno se estructura en cuatro fases, tres de las cuales —movimiento enemigo,
+        acontecimientos históricos y paso del tiempo— funcionan de forma casi automática. La
+        fase de operaciones es la decisión real del jugador: elegir entre <strong>Acciones</strong>
+        (mover bandas, cazar bisontes, saquear tribus, comerciar), <strong>Cultura</strong>,
+        <strong>Planificación</strong> o <strong>Paso del Tiempo</strong>, y la relación entre
+        estas cuatro opciones es la que define la estrategia a largo plazo.
+        La caja incluye un mapa montado de 22×34 pulgadas, 84 cartas de Desarrollo (21 por
+        período), 4 cartas de Historia, 24 de Cultura, 25 de Guerra, dos hojas de fichas y un
+        libro de reglas, además de un tutorial de 21 páginas —más largo que el propio reglamento—
+        que guía al jugador paso a paso. Los escenarios, cinco en total, abarcan desde partidas
+        cortas de dificultad fácil hasta la campaña completa, y el modo en solitario es el único
+        previsto. La crítica lo ha descrito como un juego «grande, denso y un poco intimidante»,
+        cuya curva de aprendizaje exige dedicación pero cuya recompensa es una simulación
+        histórica de una profundidad poco habitual.
+      </p>
+
+      <ul class="tags">
+        <li>Solitario</li><li>Wargame histórico</li><li>First Nations</li>
+        <li>Joel Toppen</li><li>GMT Games</li><li>Gestión de recursos</li>
+        <li>Simulación histórica</li><li>Serie First Nations</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- 007 -->
+  <article class="game" style="--accent:#3d7ebf; --accent-soft:rgba(61,126,191,.16)"
+           data-tags="cooperativo solitario" data-title="Renegade">
+    <div class="game__spine"><span class="game__num">007</span></div>
+    <div class="game__body">
+      <div class="game__top">
+        <span class="game__cat">Cooperativo / Solitario · Deck-building ciberpunk</span>
+        <span class="game__pill">1–5 jug.</span>
+      </div>
+      <h2 class="game__title">Renegade</h2>
+      <p class="game__sub">Hackers contra Mother en el Sapporo de 2077</p>
+
+      <dl class="game__meta">
+        <div><dt>Año</dt><dd>2018</dd></div>
+        <div><dt>Editorial</dt><dd>Victory Point Games</dd></div>
+        <div><dt>Diseño</dt><dd>Richard Wilkins (Ricky Royal)</dd></div>
+        <div><dt>Duración</dt><dd>30–90 min (≈60 min en solitario)</dd></div>
+      </dl>
+
+      <p class="game__note">
+        Cooperativo —o en solitario— de construcción de mazos ambientado en un Sapporo
+        distópico donde casi toda la población lleva implantes neuronales obligatorios que la
+        conectan a una Super-Massive Computer (SMC) llamada <strong>Mother</strong>. Mother ha
+        tomado consciencia y mantiene a la ciudad atrapada en un sueño del que no se despierta;
+        los <strong>Renegades</strong> son los pocos que han escapado y hackean la red para
+        liberarla.
+        La partida se juega sobre un tablero modular de cinco piezas, cada una con seis
+        particiones numeradas, que se ensamblan en una disposición distinta en cada sesión. Cada
+        jugador elige uno de los cuatro (cinco, con los extras de la campaña) personajes
+        disponibles, cada uno con un mazo inicial de <strong>15 cartas</strong> y una habilidad
+        propia; el mazo nunca crece en número, sino que se transforma: cada compra en la
+        <em>Hack Shack</em> sustituye una carta vieja por una mejor, de modo que la construcción
+        de mazo es aquí un ejercicio de depuración más que de acumulación.
+        El motor son las <strong>cartas de comando</strong>, codificadas por color y asociadas a
+        cuatro acciones fundamentales: <strong>Infect</strong> (rojo), <strong>Modify</strong>
+        (amarillo), <strong>Move</strong> (azul) y <strong>Shift</strong> (verde). Subir un
+        contaminante requiere jugar tres cartas del mismo color, y una vez desplegado en una
+        partición altera permanentemente las acciones disponibles en ella.
+        La presión viene de dos frentes. Por un lado, las <strong>Countermeasure cards</strong>,
+        objetivos aleatorios de dificultad Cobre, Plata y Oro que deben completarse a lo largo de
+        tres rondas, y cuyo éxito o fracaso modifica el estado del tablero para la siguiente
+        fase. Por otro, la propia SMC coloca y desplaza <strong>Spark tokens</strong> —hasta 25
+        en la caja base— y si el suministro se agota, la partida termina de inmediato:
+        <em>Renegade</em> no es tanto un juego que se gana como uno que se intenta no perder.
+        Un rasgo poco habitual es que el juego escala al alza con el número de jugadores, por lo
+        que el modo en solitario es, paradójicamente, el más accesible. La contrapartida es una
+        curva de aprendizaje empinada: el reglamento está cargado de jerga y la propia comunidad
+        señala que el manual hace que el juego parezca más difícil de lo que es. Quien supera
+        esas dos o tres primeras partidas encuentra un puzzle de eficiencia de una profundidad
+        notable, con partidas de una hora en solitario.
+        La campaña de Kickstarter añadió mejoras hoy integradas en la edición comercial: un
+        quinto personaje, cartas de SMC en tamaño tarot, dados de dificultad y dados de partición
+        personalizados. La línea se completó con dos <strong>Booster Packs</strong>:
+        <em>Booster Pack #1 — Christmas at the Hack Shack</em> y
+        <em>Booster Pack #2 — Fire &amp; Chaos</em>, además de una <em>Renegade Collection</em>
+        que reúne la caja base y ambas expansiones.
+      </p>
+
+      <ul class="tags">
+        <li>Cooperativo</li><li>Solitario</li><li>Deck-building</li>
+        <li>Ciberpunk</li><li>Tablero modular</li><li>Countermeasures</li>
+        <li>Richard Wilkins</li><li>Victory Point Games</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- 008 -->
+  <article class="game" style="--accent:#e05c5c; --accent-soft:rgba(224,92,92,.15)"
+           data-tags="competitivo familiar" data-title="Código secreto">
+    <div class="game__spine"><span class="game__num">008</span></div>
+    <div class="game__body">
+      <div class="game__top">
+        <span class="game__cat">Familiar / Fiesta · Deducción por equipos</span>
+        <span class="game__pill">2–8+ jug. (óptimo 6–8)</span>
+      </div>
+      <h2 class="game__title">Código secreto</h2>
+      <p class="game__sub">Codenames · Una palabra, un número y una red de espías</p>
+
+      <dl class="game__meta">
+        <div><dt>Año</dt><dd>2015 (2ª ed. 2025)</dd></div>
+        <div><dt>Editorial</dt><dd>Czech Games Edition · Devir (esp.)</dd></div>
+        <div><dt>Diseño</dt><dd>Vlaada Chvátil</dd></div>
+        <div><dt>Duración</dt><dd>~15 min</dd></div>
+      </dl>
+
+      <p class="game__note">
+        Juego de fiesta y deducción de palabras en el que dos equipos rivales —rojo y azul—
+        compiten por contactar con todos sus agentes secretos antes que el contrario. Sobre la
+        mesa se despliegan <strong>25 cartas de nombre en una cuadrícula de 5×5</strong>, cada
+        una con una palabra aparentemente aleatoria. Una carta clave, que solo ven los dos
+        <strong>jefes de espionaje</strong>, asigna a cada una de esas 25 palabras una identidad
+        oculta: 9 agentes rojos, 8 agentes azules, 7 transeúntes inocentes y <strong>1
+        asesino</strong>.
+        En cada turno, el jefe de un equipo da una única pista formada por <strong>una sola
+        palabra y un número</strong>, que indica cuántas palabras de la cuadrícula se relacionan
+        con ella. Los compañeros deben debatir y tocar las cartas que creen correctas: si aciertan
+        un agente propio, pueden seguir adivinando; si tocan un transeúnte, un agente enemigo o
+        —peor todavía— al asesino, el turno pasa al rival o la partida termina en derrota
+        inmediata. La tensión está en el filo: una pista demasiado literal es fácil de
+        interceptar por el equipo contrario; una demasiado vaga puede llevar a los tuyos
+        directamente al asesino.
+        El juego se explica en un minuto, se juega en quince y funciona con cualquier grupo.
+        En 2016 se llevó el <strong>Spiel des Jahres</strong> (Juego del Año alemán), el
+        galardón más prestigioso de la industria, con un jurado que sentenció: «A una primera
+        partida de Codenames suele seguir la segunda. Luego la tercera, la cuarta. El juego con
+        asociaciones ejerce una atracción a la que casi nadie puede resistirse».
+        La caja base incluye <strong>200 cartas con 400 nombres en total</strong>, 16 fichas de
+        agente en dos colores, 1 ficha de agente doble, 7 fichas de transeúnte, 1 ficha de
+        asesino, 40 cartas clave y un soporte para las cartas. La segunda edición (2025) revisa
+        la lista de palabras, renueva el arte y sustituye el soporte por uno de RE-Wood
+        reciclado. Su éxito ha generado una familia entera de variantes: <strong>Codenames:
+        Duet</strong> (2017), cooperativo para dos jugadores que ganó el Golden Geek al mejor
+        juego para dos; <strong>Codenames: Pictures</strong>, que sustituye las palabras por
+        imágenes; y decenas de versiones temáticas y licencias, además de una aplicación oficial
+        con modo solitario y multijugador asíncrono.
+      </p>
+
+      <ul class="tags">
+        <li>Familiar</li><li>Fiesta</li><li>Equipos</li>
+        <li>Deducción</li><li>Asociación de palabras</li><li>Vlaada Chvátil</li>
+        <li>Czech Games Edition</li><li>Spiel des Jahres 2016</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- 009 -->
+  <article class="game" style="--accent:#8a8f9c; --accent-soft:rgba(138,143,156,.15)"
+           data-tags="solitario familiar" data-title="Cubo de Rubik">
+    <div class="game__spine"><span class="game__num">009</span></div>
+    <div class="game__body">
+      <div class="game__top">
+        <span class="game__cat">Rompecabezas mecánico · Solitario</span>
+        <span class="game__pill">1 jug.</span>
+      </div>
+      <h2 class="game__title">Cubo de Rubik</h2>
+      <p class="game__sub">Rubik's Cube · El cubo mágico que vendió más de 450 millones</p>
+
+      <dl class="game__meta">
+        <div><dt>Año</dt><dd>1974 (comercialización: 1977; internacional: 1980)</dd></div>
+        <div><dt>Inventor</dt><dd>Ernő Rubik</dd></div>
+        <div><dt>Compañía</dt><dd>Ideal Toy Corporation (original) · Rubik's Brand Ltd. (actual)</dd></div>
+        <div><dt>Formato</dt><dd>Cubo 3×3×3 (estándar) · 5,7 × 5,7 × 5,7 cm</dd></div>
+      </dl>
+
+      <p class="game__note">
+        En 1974, un profesor de arquitectura y diseño húngaro llamado <strong>Ernő Rubik</strong>
+        buscaba un objeto tridimensional que pudiera moverse de forma «infinita» para ayudar a
+        sus estudiantes a pensar geométricamente. Construyó un prototipo de madera con 27 bloques
+        que giraban sobre múltiples ejes sin separarse. Lo llamó «Cubo Mágico»
+        (<em>Bűvös Kocka</em>), y cuando intentó deshacerlo él mismo tardó <strong>un mes</strong>
+        en resolverlo. Comercializado en Hungría desde 1977 —las primeras 5.000 unidades se
+        vendieron en tiendas especializadas de Budapest—, fue rebautizado como «Rubik's Cube»
+        cuando la estadounidense <strong>Ideal Toy Corporation</strong> adquirió los derechos en
+        1980. A partir de ahí se desató la «fiebre del cubo»: solo entre 1980 y 1983 se vendieron
+        200 millones de unidades, y a día de hoy la cifra supera los <strong>450 millones</strong>.
+        Es, con diferencia, el juguete más vendido de la historia: aproximadamente <strong>un
+        cubo por cada 17 personas en el planeta</strong>.
+        El mecanismo interior es una pieza de ingeniería notable: un sistema de ejes y resortes
+        que permite <strong>43.252.003.274.489.856.000</strong> posiciones posibles (más de 43
+        trillones), de las cuales solo una es la solución. El cubo se vende sin instrucciones,
+        pero el objetivo —devolver cada cara a un color uniforme— resulta intuitivo para
+        cualquiera que lo coja. La propia MoMA de Nueva York lo incorporó a su colección
+        permanente en 1981.
+        La vertiente competitiva, el <strong>speedcubing</strong>, se organiza desde 2004 en
+        torno a la <strong>World Cube Association (WCA)</strong>, que homologa récords en decenas
+        de categorías. En la categoría reina (3×3×3), el récord mundial de una sola resolución
+        está en <strong>3,05 segundos</strong>, logrado por el prodigio chino Xuanyi Geng en
+        2025, mientras que el mejor promedio en una ronda oficial es de <strong>4,23
+        segundos</strong>, en manos de Yiheng Wang. En la categoría 2×2×2, el registro más rápido
+        homologado es de <strong>0,39 segundos</strong>. Lejos de ser una moda pasajera, el cubo
+        ha generado una subcultura global de <em>speedcubers</em>, con convenciones, marcas
+        especializadas en cubos magnéticos y una comunidad que sigue creciendo medio siglo
+        después. En 2026, la producción del cubo regresó a Hungría, a una planta en Jászberény,
+        cerrando simbólicamente el círculo iniciado en el taller de Rubik en Budapest.
+      </p>
+
+      <ul class="tags">
+        <li>Rompecabezas</li><li>Solitario</li><li>Ernő Rubik</li>
+        <li>Speedcubing</li><li>WCA</li><li>Juguete más vendido</li>
+        <li>MoMA</li><li>3×3×3</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- 010 -->
+  <article class="game" style="--accent:#4a9e6e; --accent-soft:rgba(74,158,110,.15)"
+           data-tags="competitivo campana" data-title="A Study in Emerald">
+    <div class="game__spine"><span class="game__num">010</span></div>
+    <div class="game__body">
+      <div class="game__top">
+        <span class="game__cat">Competitivo · Identidades ocultas</span>
+        <span class="game__pill">2–5 jug.</span>
+      </div>
+      <h2 class="game__title">A Study in Emerald</h2>
+      <p class="game__sub">Sherlock Holmes contra los Primigenios · Primera edición</p>
+
+      <dl class="game__meta">
+        <div><dt>Año</dt><dd>2013</dd></div>
+        <div><dt>Editorial</dt><dd>Treefrog Games</dd></div>
+        <div><dt>Diseño</dt><dd>Martin Wallace · arte de Anne Stokes</dd></div>
+        <div><dt>Duración</dt><dd>60–90 min</dd></div>
+      </dl>
+
+      <p class="game__note">
+        Primera edición —no la reedición de 2015— del juego inspirado en el relato homónimo de
+        <strong>Neil Gaiman</strong>, que funde el universo de Sherlock Holmes con los Mitos de
+        Cthulhu en una historia alternativa donde los Primigenios gobiernan la Tierra desde hace
+        setecientos años. El juego se ambienta en <strong>1882</strong> y enfrenta a dos facciones
+        secretas: los <strong>Restauracionistas</strong>, que quieren devolver el poder a la
+        humanidad, y los <strong>Leales</strong>, que sirven a los Antiguos. Cada jugador recibe
+        una <strong>carta de identidad secreta</strong> —seis en total, con la posibilidad de que
+        haya un número desigual de agentes de cada bando—, de modo que durante buena parte de la
+        partida nadie sabe con certeza quién juega para quién.
+        Se trata de un híbrido inclasificable: combina <strong>construcción de mazo</strong>,
+        <strong>control de áreas</strong> por influencia en nueve ciudades europeas,
+        <strong>gestión de mano</strong> y <strong>deducción</strong> con roles ocultos. El
+        tablero representa un mapa de Europa con espacios para cartas de ciudad, y el movimiento
+        entre ciudades requiere pagar transporte, lo que añade una capa de planificación
+        logística que la segunda edición eliminaría por completo.
+        El propio Martin Wallace ha descrito esta primera edición como su diseño más
+        <strong>experimental</strong>: un juego en el que «ignoró la cautela y simplemente subió
+        todo a 11». Esa ausencia de freno se traduce en partidas impredecibles, donde a veces la
+        mesa se convierte en una historia de anarquistas y complots con bombas, otras en una
+        plaga zombi que arrasa Europa, y otras en un duelo directo entre Holmes y Moriarty. El
+        resultado es un juego <strong>áspero, caótico y lleno de casos límite</strong>, que puede
+        terminar de forma abrupta y sin un arco narrativo claro, pero que quienes lo defienden
+        consideran brillante precisamente por esa imprevisibilidad.
+        La caja de la primera edición contiene <strong>66 cartas de juego</strong>, 9 cartas de
+        ciudad, 9 cartas de realeza, 6 cartas de identidad secreta, 5 sets de piezas de jugador y
+        el tablero de Europa. La segunda edición (2015) nació, según el propio autor, como un
+        intento de rebajar la complejidad para que el juego pudiera venderse en grandes cadenas,
+        con un reglamento simplificado y un tablero que ya no era un mapa de Europa. La primera
+        edición, en cambio, se ha convertido con los años en un objeto de culto.
+      </p>
+
+      <ul class="tags">
+        <li>Martin Wallace</li><li>Neil Gaiman</li><li>Lovecraft</li>
+        <li>Identidades ocultas</li><li>Construcción de mazo</li><li>Control de áreas</li>
+        <li>Treefrog Games</li><li>1ª edición</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- 011 -->
+  <article class="game" style="--accent:#1f7a8c; --accent-soft:rgba(31,122,140,.16)"
+           data-tags="competitivo cooperativo" data-title="Archipelago">
+    <div class="game__spine"><span class="game__num">011</span></div>
+    <div class="game__body">
+      <div class="game__top">
+        <span class="game__cat">Semi-cooperativo · Exploración y colonización</span>
+        <span class="game__pill">2–5 jug. (mejor 4–5)</span>
+      </div>
+      <h2 class="game__title">Archipelago</h2>
+      <p class="game__sub">Colonos, crisis y un separatista entre nosotros</p>
+
+      <dl class="game__meta">
+        <div><dt>Año</dt><dd>2012</dd></div>
+        <div><dt>Editorial</dt><dd>Ludically · Asmodee</dd></div>
+        <div><dt>Diseño</dt><dd>Christophe Boelinger · arte de Vincent Boulanger</dd></div>
+        <div><dt>Duración</dt><dd>30–240 min (según escenario)</dd></div>
+      </dl>
+
+      <p class="game__note">
+        Juego de exploración y colonización ambientado en la Era de los Descubrimientos, entre
+        1492 y 1797, en el que cada jugador encarna a una potencia europea —Inglaterra, Francia,
+        España, Portugal y Holanda— que compite por explorar un archipiélago del Caribe o del
+        Pacífico. El objetivo declarado es cumplir un <strong>objetivo secreto</strong>, que puede
+        ser de corto, medio o largo plazo y que, una vez alcanzado, dispara el final de la
+        partida. Pero el corazón del juego es su naturaleza <strong>semi-cooperativa</strong>: la
+        colonia solo sobrevive si todos contribuyen a mantener el equilibrio entre población y
+        rebelión, y sin embargo solo un jugador puede ganar.
+        La tensión estructural es el gran hallazgo de Boelinger. Por un lado, los jugadores deben
+        cooperar para evitar que la <strong>población se rebele</strong> y provoque la derrota
+        general; por otro, cada uno persigue su agenda privada y, en el momento en que intuye que
+        no puede ganar, deja de ayudar a la colonia y el sistema entero se desestabiliza. A ello
+        se suma la carta del <strong>Separatista</strong>, un rol secreto que gana en solitario si
+        la colonia declara la independencia: su simple presencia en la mesa obliga a todos a
+        vigilarse.
+        La mecánica central es una <strong>economía de acciones</strong> gestionada con una rueda
+        de doble cara (una para 2–4 jugadores y otra para 5) en la que cada jugador elige
+        simultáneamente qué acciones realizar: explorar, construir, comerciar, reclutar, mover
+        barcos o gestionar recursos. El tablero se construye durante la partida con <strong>25
+        losetas hexagonales de doble cara</strong>, de modo que el archipiélago cambia en cada
+        sesión, y los recursos —madera, piedra, hierro, ganado, fruta y especias— deben
+        gestionarse tanto en el mercado local como en el de exportación.
+        La caja base incluye la rueda de acciones, las 25 losetas, <strong>30 cartas de objetivo
+        secreto</strong>, 48 cartas de evolución, 24 de personaje, 24 de progreso, 12 de
+        tendencia, 51 monedas, 82 cubos de recursos y los tableros de mercado, población y
+        estabilidad. La edición comercial integra una <strong>expansión para jugar en
+        solitario</strong> dentro de la caja base. La expansión <strong>Archipelago: War &amp;
+        Peace</strong> añade 40 cartas de evolución nuevas —más agresivas e interactivas— y tres
+        modos de juego adicionales. En BoardGameGeek mantiene una nota media de <strong>7,3/10</strong>
+        y un peso de <strong>3,7/5</strong>, con una legión de defensores que lo consideran «un
+        juego absolutamente extraordinario» frente a quienes lo acusan de haber envejecido mal y
+        de tener reglas innecesariamente enrevesadas.
+      </p>
+
+      <ul class="tags">
+        <li>Semi-cooperativo</li><li>Exploración</li><li>Objetivos secretos</li>
+        <li>Separatista</li><li>Economía de acciones</li><li>Christophe Boelinger</li>
+        <li>Ludically</li><li>War &amp; Peace</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- 012 -->
+  <article class="game" style="--accent:#7b5ea7; --accent-soft:rgba(123,94,167,.17)"
+           data-tags="competitivo solitario" data-title="Troyes">
+    <div class="game__spine"><span class="game__num">012</span></div>
+    <div class="game__body">
+      <div class="game__top">
+        <span class="game__cat">Competitivo · Eurogame de dados</span>
+        <span class="game__pill">1–4 jug. (óptimo 3)</span>
+      </div>
+      <h2 class="game__title">Troyes</h2>
+      <p class="game__sub">La catedral, los gremios y los dados ajenos</p>
+
+      <dl class="game__meta">
+        <div><dt>Año</dt><dd>2010</dd></div>
+        <div><dt>Editorial</dt><dd>Pearl Games · Z-Man Games (inglés)</dd></div>
+        <div><dt>Diseño</dt><dd>Sébastien Dujardin · Xavier Georges · Alain Orlans</dd></div>
+        <div><dt>Duración</dt><dd>~90 min</dd></div>
+      </dl>
+
+      <p class="game__note">
+        Eurogame de dados ambientado en la ciudad medieval de Troyes, en la región de Champaña,
+        donde los jugadores encarnan a los cabezas de familia de la burguesía local que pugnan
+        por influir en las tres instituciones que sostienen la ciudad: el <strong>Palacio del
+        Conde</strong>, el <strong>Obispado</strong> y el <strong>Ayuntamiento</strong>. La
+        partida abarca generaciones y el objetivo es acumular puntos de victoria tejiendo la
+        historia familiar en el entramado de la ciudad.
+        Su gran innovación es un sistema de <strong>dados compartidos</strong> que convierte el
+        azar en una materia prima negociable. Al inicio de cada ronda, cada jugador recluta
+        ciudadanos (meeples) en los tres edificios, y esos ciudadanos determinan cuántos dados de
+        cada color controla: rojo para el Palacio, blanco para el Obispado, amarillo para el
+        Ayuntamiento. Los dados se lanzan y representan a la <strong>población trabajadora</strong>
+        de Troyes. Cualquiera puede <strong>comprar los dados de un rival</strong>, pagando una
+        moneda por cada pipa, y usar ese dado para su propia acción. El propietario original
+        recibe el dinero aunque ceda el dado, lo que crea una economía de favores forzosos y una
+        interacción poco habitual en el eurogame.
+        La <strong>influencia</strong> es el segundo pilar del sistema. Con puntos de influencia
+        se puede <strong>relanzar un dado propio</strong> (1 punto) o <strong>girarlo a su cara
+        opuesta</strong> (4 puntos para voltear de 1 a 3 dados), lo que permite mitigar tiradas
+        desafortunadas sin eliminar del todo el azar. La tensión está en que la influencia también
+        se necesita para combatir las cartas de evento, que cada ronda traen <strong>dados
+        negros</strong> (saqueadores) que hay que derrotar antes de que inflijan penalizaciones a
+        todos.
+        El juego se estructura en torno a <strong>27 cartas de Actividad</strong> —nueve
+        militares, nueve religiosas y nueve civiles— de las que se despliegan nueve al principio
+        y a las que se van sumando nuevas cada ronda. Cada carta ofrece una acción distinta según
+        el valor del dado gastado. Las cartas de <strong>Personaje</strong> introducen poderes
+        asimétricos y objetivos ocultos que se revelan al final de la partida. La expansión
+        <strong>The Ladies of Troyes</strong> (2012) añade tres cartas de Personaje femeninas, 27
+        nuevas cartas de Actividad, un <strong>dado morado</strong> por jugador que representa a
+        la cabeza de familia y un módulo de murallas.
+        En BoardGameGeek mantiene una nota media de <strong>7,7/10</strong> con más de 23.000
+        valoraciones, un peso de <strong>3,46/5</strong> y un puesto en el top 100. La crítica lo
+        considera uno de los mejores eurogames con dados jamás diseñados, aunque la comunidad
+        está dividida entre quienes lo califican de obra maestra atemporal y quienes señalan que
+        las expansiones diluyen la interacción del juego base.
+      </p>
+
+      <ul class="tags">
+        <li>Eurogame</li><li>Dados</li><li>Colocación de trabajadores</li>
+        <li>Compra de dados</li><li>Influencia</li><li>Pearl Games</li>
+        <li>The Ladies of Troyes</li><li>Sébastien Dujardin</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- 013 -->
+  <article class="game" style="--accent:#b03a2e; --accent-soft:rgba(176,58,46,.16)"
+           data-tags="competitivo solitario campana" data-title="Empire of the Sun">
+    <div class="game__spine"><span class="game__num">013</span></div>
+    <div class="game__body">
+      <div class="game__top">
+        <span class="game__cat">Wargame · Pacífico, 1941–1945</span>
+        <span class="game__pill">1–2 jug.</span>
+      </div>
+      <h2 class="game__title">Empire of the Sun</h2>
+      <p class="game__sub">La Guerra del Pacífico en un solo mapa de hexágonos</p>
+
+      <dl class="game__meta">
+        <div><dt>Año</dt><dd>2005 (5ª impresión: 2025)</dd></div>
+        <div><dt>Editorial</dt><dd>GMT Games</dd></div>
+        <div><dt>Diseño</dt><dd>Mark Herman</dd></div>
+        <div><dt>Duración</dt><dd>60–360 min (campaña: ~8 h)</dd></div>
+      </dl>
+
+      <p class="game__note">
+        Wargame estratégico para uno o dos jugadores que cubre la totalidad de la Guerra del
+        Pacífico, desde el ataque a Pearl Harbor en diciembre de 1941 hasta la rendición de Japón
+        en agosto de 1945. Es el tercer diseño de <strong>Mark Herman</strong> con el sistema de
+        cartas (CDG) que él mismo introdujo en <em>We the People</em>, y el primero que traslada
+        ese sistema a un <strong>mapa de hexágonos</strong> clásico, facilitando el cálculo de
+        movimientos y alcance aéreo. Los jugadores encarnan a MacArthur, Yamamoto, Nimitz y
+        Mountbatten, y dirigen sus fuerzas desde la India hasta Hawái y desde Alaska hasta
+        Australia sobre un único mapa basado en una proyección de áreas iguales de 1942.
+        La escala es verdaderamente estratégica: <strong>cada turno representa cuatro
+        meses</strong> y cada hexágono cubre <strong>150 millas</strong>; la campaña completa
+        consta de <strong>12 turnos</strong>, con un turno especial de diciembre de 1941 que se
+        juega con dos cartas. Las unidades terrestres representan desde batallones holandeses de
+        300–500 hombres hasta ejércitos del tamaño de 10.000 soldados del IJA; las aéreas, desde
+        escuadrones de 8–12 aviones hasta fuerzas aéreas completas; y las navales, cada gran
+        buque capital con su escolta y logística.
+        El corazón del sistema son las <strong>165 cartas de Estrategia</strong> —82 japonesas y
+        83 aliadas— que los jugadores alternan para activar unidades o desencadenar eventos
+        históricos. El combate se resuelve en <strong>dos niveles</strong>: primero el
+        enfrentamiento aéreo-naval, y después el terrestre, de modo que el resultado conjunto de
+        ambos decide el vencedor de la batalla. La <strong>voluntad política de Estados
+        Unidos</strong> es el marcador clave de la victoria estratégica: Japón gana si fuerza una
+        paz negociada —algo que históricamente no logró— conquistando India, China y Australia y
+        causando bajas masivas a los EE. UU.; la bomba atómica no llega automáticamente en su
+        fecha histórica, y a menudo es necesaria la Operación Olympic y la invasión del Japón.
+        La caja incluye un mapa montado de 22"×34", dos barajas de cartas de Estrategia (82 y
+        83), dos juegos de fichas, dos cartas de ayuda al jugador y un dado de diez caras. La
+        <strong>quinta impresión (2025)</strong> añade el <strong>escenario de Birmania</strong>
+        —publicado originalmente en <em>C3i</em> #35— con un mapa sin montar de 11×17" y un
+        reglamento actualizado. GMT ofrece además una hoja de sistema CDG en solitario gratuita.
+        El juego está diseñado para jugarse en <strong>escenarios anuales</strong> (1942, 1943 y
+        1944) de tres turnos cada uno que se completan en menos de dos horas. En BoardGameGeek
+        mantiene una nota media de <strong>8,3/10</strong> con más de 2.000 valoraciones y un
+        <strong>peso de 4,13–4,4/5</strong>. Un pilar del wargame contemporáneo y una de las
+        mejores formas de comprender la logística, la geografía y la política de una guerra que
+        se jugó sobre todo en el mar.
+      </p>
+
+      <ul class="tags">
+        <li>Wargame</li><li>Card-driven</li><li>Hexágonos</li>
+        <li>Segunda Guerra Mundial</li><li>Pacífico</li><li>Mark Herman</li>
+        <li>GMT Games</li><li>Solitario (hoja CDG)</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- 014 -->
+  <article class="game" style="--accent:#e8890c; --accent-soft:rgba(232,137,12,.16)"
+           data-tags="competitivo cooperativo solitario" data-title="Sol: Last Days of a Star">
+    <div class="game__spine"><span class="game__num">014</span></div>
+    <div class="game__body">
+      <div class="game__top">
+        <span class="game__cat">Semi-cooperativo · Infraestructura compartida</span>
+        <span class="game__pill">1–5 jug. (óptimo 3–5)</span>
+      </div>
+      <h2 class="game__title">Sol: Last Days of a Star</h2>
+      <p class="game__sub">Extraer energía de un sol que se apaga</p>
+
+      <dl class="game__meta">
+        <div><dt>Año</dt><dd>2017 (2ª ed. 2025)</dd></div>
+        <div><dt>Editorial</dt><dd>Elephant Laboratories</dd></div>
+        <div><dt>Diseño</dt><dd>Ryan Spangler · Sean Spangler · Jodi Sweetman</dd></div>
+        <div><dt>Duración</dt><dd>~90 min</dd></div>
+      </dl>
+
+      <p class="game__note">
+        Juego de estrategia solar para uno a cinco jugadores en el que cada participante
+        representa a una civilización planetaria que, ante un sol a punto de convertirse en
+        supernova, construye una <strong>Arca</strong> para poner a salvo a una pequeña parte de
+        su población. La ironía trágica del planteamiento es que la única fuente de energía
+        suficiente para propulsar el Arca es la propia estrella moribunda: extraerla acelera su
+        inestabilidad y, con ella, el fin de todos.
+        El tablero representa el sistema solar en capas concéntricas: dos <strong>órbitas
+        exteriores</strong> (superior e inferior) y tres <strong>capas internas del Sol</strong>
+        (zona convectiva, radiativa y núcleo). Cuanto más se adentra un jugador, mayores son las
+        recompensas, pero también más rápido aumenta la inestabilidad de la estrella. La
+        <strong>nave nodriza</strong> de cada jugador orbita lentamente alrededor del Sol y es el
+        único punto desde el que pueden partir sus naves; al final de cada turno, la nave nodriza
+        avanza una casilla, lo que convierte la posición orbital en un recurso táctico que cambia
+        turno a turno.
+        La mecánica central es la gestión de <strong>sundivers</strong>: pequeñas naves que se
+        mueven por el tablero, se convierten en estaciones o activan las estaciones propias y
+        ajenas. Si activas una estación tuya, obtienes la recompensa completa; si activas la de un
+        rival, la recompensa se reparte entre ambos. Esa interdependencia —construir
+        infraestructura que todos pueden usar, pero cuyo uso beneficia al propietario— es la
+        firma del juego y lo emparenta con títulos como <em>Brass: Birmingham</em> o
+        <em>Wildcatters</em>, donde el tablero se construye en común sin renunciar a la
+        competencia. Para entrar en el Sol hay que <strong>convertir naves en puentes
+        solares</strong> que cruzan las membranas de alta energía entre capas, una decisión
+        irreversible que consume tus <em>sundivers</em> y alimenta el bucle de construcción y
+        pérdida de naves.
+        La energía se obtiene con <strong>estaciones de recolección</strong> y se usa para activar
+        <strong>estaciones de construcción</strong> o <strong>estaciones de transmisión</strong>
+        (que envían la energía a tu Arca y la convierten en <strong>Momentum</strong>). El reloj de
+        la partida es un <strong>medidor de inestabilidad</strong> que avanza con cada extracción
+        profunda: cuando se agota, el Sol estalla en una supernova y la partida termina. Las
+        <strong>103 cartas de Inestabilidad</strong> introducen efectos de un solo uso que cada
+        jugador puede retener en la mano para dispararlos en el momento decisivo.
+        La <strong>segunda edición (2025)</strong>, financiada en Kickstarter con más de 2.400
+        mecenas, incluye una bandeja de madera personalizada que organiza todos los componentes.
+        La editorial ha anunciado que <em>Sol</em> es la primera parte de una trilogía:
+        <em>Sol II</em> y <em>Sol III</em> están en desarrollo. En BoardGameGeek mantiene una
+        nota media en torno a <strong>7,5/10</strong> con cerca de 1.900 valoraciones y un peso
+        de <strong>2,9–3,0/5</strong>.
+      </p>
+
+      <ul class="tags">
+        <li>Semi-cooperativo</li><li>Infraestructura compartida</li><li>Espacio</li>
+        <li>Gestión de recursos</li><li>Sundivers</li><li>Ryan Spangler</li>
+        <li>Elephant Laboratories</li><li>Supernova</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- 015 -->
+  <article class="game" style="--accent:#9e3b32; --accent-soft:rgba(158,59,50,.16)"
+           data-tags="cooperativo solitario campana" data-title="Pathfinder Adventure Card Game">
+    <div class="game__spine"><span class="game__num">015</span></div>
+    <div class="game__body">
+      <div class="game__top">
+        <span class="game__cat">Cooperativo / Solitario · Campaña de cartas</span>
+        <span class="game__pill">1–4 jug. (hasta 6 con Add-On)</span>
+      </div>
+      <h2 class="game__title">Pathfinder Adventure Card Game</h2>
+      <p class="game__sub">Rise of the Runelords · El RPG de Pathfinder en forma de cartas</p>
+
+      <dl class="game__meta">
+        <div><dt>Año</dt><dd>2013</dd></div>
+        <div><dt>Editorial</dt><dd>Paizo Publishing</dd></div>
+        <div><dt>Diseño</dt><dd>Mike Selinker · Chad Brown · Tanis O'Connor</dd></div>
+        <div><dt>Duración</dt><dd>30–90 min / escenario</dd></div>
+      </dl>
+
+      <p class="game__note">
+        Adaptación al tablero del popular juego de rol <em>Pathfinder</em>, diseñada por el equipo
+        de <strong>Lone Shark Games</strong> —el mismo que más tarde firmaría
+        <em>Apocrypha</em>— y publicada por <strong>Paizo</strong> en 2013 como primer título de
+        la línea <em>Adventure Card Game</em>. La premisa es exactamente la de una campaña de rol:
+        un grupo de héroes (de uno a cuatro jugadores, hasta seis con el <em>Character Add-On
+        Deck</em>) recorre la región de <strong>Varisia</strong>, explora localizaciones, derrota
+        monstruos y villanos, y va cerrando las tramas de un <strong>Adventure Path</strong>
+        completo, escenario a escenario. La gran diferencia con un juego de cartas al uso es que
+        <strong>el mazo es el personaje</strong>: no hay hoja de personaje ni puntos de
+        experiencia convencionales, sino una baraja de cartas que crece y se transforma entre
+        sesiones.
+        La caja base, <em>Rise of the Runelords Base Set</em>, contiene <strong>casi 500
+        cartas</strong> y cinco dados poliédricos. Incluye siete clases de personaje con tres
+        cartas de personaje por clase, además de las cartas de equipo, magia, aliados, monstruos
+        y villanos. El <strong>Adventure Deck 1: Burnt Offerings</strong> viene incluido en la
+        caja base, junto con la aventura introductoria <em>Perils of the Lost Coast</em>. El resto
+        de la campaña se completa con cinco <strong>Adventure Decks</strong> adicionales de 110
+        cartas cada uno: <em>The Skinsaw Murders</em>, <em>Hook Mountain Massacre</em>,
+        <em>Fortress of the Stone Giants</em>, <em>Sins of the Saviors</em> y
+        <em>Spires of Xin-Shalast</em>.
+        La mecánica central es la <strong>exploración de localizaciones</strong>. Cada escenario
+        despliega varias localizaciones (cada una con su propio mazo de cartas) y el grupo debe
+        recorrerlas, derrotar a los secuaces y, finalmente, acorralar al villano. Para
+        <strong>cerrar una localización</strong> hay que superar una prueba específica, y solo
+        cuando todas están cerradas (o el villano ha sido derrotado) se gana el escenario. El
+        <strong>tiempo</strong> es un recurso limitado: cada exploración consume una carta del
+        mazo de bendiciones (el reloj del escenario), y si se agota, la partida se pierde. El
+        <strong>combate</strong> se resuelve con tiradas de dados contra una dificultad, sumando
+        bonificaciones de las cartas jugadas desde la mano; como las cartas no se «gastan» de
+        forma permanente, el ciclo de recursos es constante y la gestión de la mano se convierte
+        en el verdadero puzzle táctico.
+        La <strong>progresión</strong> es uno de sus grandes atractivos. Al final de cada
+        escenario, los personajes conservan las cartas que han adquirido y ganan puntos de
+        habilidad que pueden invertir en subir atributos o desbloquear poderes especiales. En
+        BoardGameGeek, el <em>Base Set</em> mantiene una nota media en torno a
+        <strong>7,5–7,6/10</strong> y un peso de <strong>2,8–2,9/5</strong>, con una recepción
+        que lo describe como una experiencia narrativa fantástica, de configuración rápida y con
+        la atmósfera mágica del mundo de Pathfinder.
+      </p>
+
+      <ul class="tags">
+        <li>Cooperativo</li><li>Solitario</li><li>Campaña</li>
+        <li>Construcción de mazo</li><li>Juego de rol</li><li>Mike Selinker</li>
+        <li>Paizo Publishing</li><li>Rise of the Runelords</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- 016 -->
+  <article class="game" style="--accent:#5c7a2e; --accent-soft:rgba(92,122,46,.17)"
+           data-tags="solitario cooperativo competitivo campana" data-title="Dawn of the Zeds">
+    <div class="game__spine"><span class="game__num">016</span></div>
+    <div class="game__body">
+      <div class="game__top">
+        <span class="game__cat">Solitario / Cooperativo · Asedio zombi</span>
+        <span class="game__pill">1–5 jug. (coop. 1–4 · versus 5)</span>
+      </div>
+      <h2 class="game__title">Dawn of the Zeds</h2>
+      <p class="game__sub">La batalla por Farmingdale · Tercera edición</p>
+
+      <dl class="game__meta">
+        <div><dt>Año</dt><dd>2016 (3ª ed.) · 1ª ed. 2011</dd></div>
+        <div><dt>Editorial</dt><dd>Victory Point Games</dd></div>
+        <div><dt>Diseño</dt><dd>Hermann Luttmann</dd></div>
+        <div><dt>Duración</dt><dd>90–120 min</dd></div>
+      </dl>
+
+      <p class="game__note">
+        Tercera y definitiva edición del clásico de <strong>Hermann Luttmann</strong> sobre un
+        brote zombi en el pueblo ficticio de <strong>Farmingdale</strong>, diseñado como un
+        <em>States of Siege</em> —la serie de Victory Point Games en la que el jugador resiste
+        oleadas enemigas que avanzan por vías predefinidas— pero llevado a una escala mucho mayor
+        que sus predecesores. Los jugadores no controlan un ejército, sino a un puñado de
+        <strong>ciudadanos y héroes</strong> que deben coordinar defensas, descubrir una cura y
+        preservar la localidad el tiempo suficiente para que llegue la ayuda exterior. La premisa
+        es tan sencilla como brutal: los Zeds avanzan por cinco rutas hacia el centro del pueblo
+        y, si llegan, todo ha terminado.
+        El gran acierto de esta edición es su <strong>sistema de niveles de complejidad
+        progresivos</strong> (<em>Level Up!</em>): la partida puede empezar en el nivel 0 —un
+        tutorial de apenas unas reglas— y escalar hasta el nivel 6, introduciendo gradualmente
+        nuevos personajes, cartas de evento, módulos y reglas especiales. Ese diseño escalonado
+        convierte el aprendizaje en algo orgánico y permite a cada grupo decidir cuánta
+        profundidad quiere añadir sin sentirse abrumado de golpe.
+        La <strong>mecánica de combate</strong> es de raíz wargamera: se tiran <strong>dos dados
+        de seis caras</strong> y se consulta una tabla, modificada por las habilidades del héroe,
+        el tipo de Zed y las circunstancias. Los héroes tienen habilidades únicas que se activan
+        al gastar <strong>Puntos de Acción</strong>, y los <strong>civiles</strong> que vagan por
+        el tablero pueden convertirse en héroes improvisados o, si el caos se desborda, en una
+        carga para la defensa. La caja incluye el tablero de Farmingdale y sus cinco aldeas
+        periféricas, los mazos de cartas de Evento y de Suerte, las fichas de Zeds, los dados
+        personalizados y los libros de reglas <em>Basic Game</em>, <em>Level Up!</em>, el
+        <em>Farmingdale Dossier</em> y el <em>A to Zeds Book</em>.
+        El juego admite <strong>tres modos</strong>: en solitario (el más celebrado),
+        <strong>cooperativo</strong> para hasta cuatro jugadores y un modo <strong>competitivo</strong>
+        para cinco. La campaña de 2019 añadió tres <strong>Expansion Packs</strong> —
+        <em>Stepping Forward</em>, <em>New Player Blues</em> y <em>Rumors and Rails</em>— con
+        nuevos héroes, eventos y los trenes que recorren las vías del mapa. En BoardGameGeek
+        mantiene una nota media de <strong>8,2/10</strong> y un <strong>peso de 3,8/5</strong>,
+        lo que lo sitúa entre los solitarios temáticos más valorados y exigentes del catálogo.
+        La crítica lo describe como «una experiencia cinematográfica» que, pese a su duración,
+        rara vez se siente larga.
+      </p>
+
+      <ul class="tags">
+        <li>Solitario</li><li>Cooperativo</li><li>Zombis</li>
+        <li>Asedio</li><li>States of Siege</li><li>Hermann Luttmann</li>
+        <li>Victory Point Games</li><li>Niveles de complejidad</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- 017 -->
+  <article class="game" style="--accent:#7a8a99; --accent-soft:rgba(122,138,153,.16)"
+           data-tags="cooperativo familiar solitario" data-title="The Grizzled">
+    <div class="game__spine"><span class="game__num">017</span></div>
+    <div class="game__body">
+      <div class="game__top">
+        <span class="game__cat">Cooperativo · Gestión de mano · Gran Guerra</span>
+        <span class="game__pill">2–5 jug. (1–5 con expansión)</span>
+      </div>
+      <h2 class="game__title">The Grizzled</h2>
+      <p class="game__sub">Les Poilus · Sobrevivir a la Gran Guerra sin perder a los amigos</p>
+
+      <dl class="game__meta">
+        <div><dt>Año</dt><dd>2015 (Armistice Edition: 2018)</dd></div>
+        <div><dt>Editorial</dt><dd>Sweet Games · CMON / Ludonova (esp.)</dd></div>
+        <div><dt>Diseño</dt><dd>Fabien Riffaud · Juan Rodríguez · arte de Tignous</dd></div>
+        <div><dt>Duración</dt><dd>~30 min (Armistice: ~45 min)</dd></div>
+      </dl>
+
+      <p class="game__note">
+        Cooperativo de cartas ambientado en las trincheras de la <strong>Primera Guerra
+        Mundial</strong>, donde los jugadores encarnan a un grupo de <em>poilus</em> —soldados
+        franceses— unidos por la amistad y por la necesidad de sobrevivir juntos hasta el
+        armisticio. El título original francés, <em>Les Poilus</em>, alude a esos veteranos de
+        pelo largo y barba descuidada que resistían en el barro; la edición inglesa los rebautizó
+        como «the grizzled», los curtidos. El juego no oculta la dimensión humana del conflicto:
+        cada personaje tiene nombre, historia y una representación dibujada por
+        <strong>Tignous</strong>, el caricaturista de <em>Charlie Hebdo</em> asesinado en 2015,
+        cuyo arte melancólico impregna cada carta de una tristeza que rara vez se encuentra en un
+        juego de mesa.
+        La mecánica es de una sencillez engañosa: <strong>gestión de mano con comunicación
+        limitada</strong>. En cada ronda («misión») los jugadores deben vaciar sus manos jugando
+        cartas a <strong>Tierra de Nadie</strong>, pero hay una trampa: si en la mesa hay
+        <strong>tres cartas del mismo tipo de amenaza</strong> —balas, silbatos o máscaras de gas,
+        o bien nieve, lluvia o noche—, la misión fracasa de inmediato. Cada carta de
+        <em>Prueba</em> contiene al menos una amenaza de terreno y una de equipo, y algunas
+        acumulan dos o tres, de modo que la información es asimétrica: ves tu mano, pero no la de
+        los demás, y la coordinación debe hacerse con pistas mínimas.
+        El segundo mecanismo son los <strong>Hard Knocks</strong> («golpes duros»): cartas que se
+        adjuntan al personaje y representan heridas físicas o psicológicas —sordera, insomnio,
+        pánico, congelación—. Algunas cuentan como amenazas para la condición de derrota, y si al
+        final de la misión hay cuatro o más Hard Knocks entre todos los jugadores, la partida se
+        pierde. La tensión está en elegir entre jugar una carta a Tierra de Nadie —y arriesgar la
+        tercera amenaza— o jugar un Hard Knock sobre tu personaje para aliviar la mesa, a costa de
+        tu propia resistencia. El juego es, en esencia, «gestionar lo mejor posible una situación
+        que ya es mala».
+        La caja original incluye <strong>6 cartas de Personaje</strong>, <strong>59 cartas de
+        Prueba</strong>, 16 fichas de Apoyo, 5 de Discurso y 1 de Líder. La expansión <strong>At
+        Your Orders!</strong> (2016) añade 39 cartas de Misión que permiten ajustar la dificultad
+        de cada ronda, además de <strong>reglas alternativas para jugar en solitario y a dos
+        jugadores</strong>. La <strong>Armistice Edition</strong> (2018) es una edición de lujo
+        con campaña de nueve escenarios que recorre los grandes momentos del conflicto —desde el
+        campo de entrenamiento hasta el armisticio, pasando por la tregua de Navidad, la llegada
+        del gas o el motín de 1917—, con módulos desbloqueables, miniaturas prepintadas y un
+        sistema de relaciones entre personajes que persiste entre partidas.
+        En BoardGameGeek, el juego original mantiene una nota media de <strong>7,1/10</strong> con
+        más de 15.000 valoraciones, un <strong>peso de 1,98/5</strong> y un puesto en torno al
+        <strong>#630–#655</strong> del ranking general. Su mayor logro es haber convertido un
+        conflicto histórico en una experiencia de mesa íntima, donde la victoria no se mide en
+        puntos sino en no haber perdido a ningún amigo por el camino.
+      </p>
+
+      <ul class="tags">
+        <li>Cooperativo</li><li>Gestión de mano</li><li>Primera Guerra Mundial</li>
+        <li>Tignous</li><li>Fabien Riffaud</li><li>Juan Rodríguez</li>
+        <li>At Your Orders</li><li>Armistice Edition</li>
+      </ul>
+    </div>
+  </article>
+
+  <p class="grid__empty" id="empty" hidden>Ninguna ficha coincide con esa búsqueda.</p>
+</main>
+
+<footer class="sitefoot">
+  <em>La ludoteca imaginaria</em> · 17 fichas · repositorio de ejemplo.
+  Para añadir un juego, duplica un bloque <code>&lt;article class="game"&gt;</code>, cambia el número
+  del lomo y ajusta las variables <code>--accent</code> y <code>--accent-soft</code>.
+</footer>
+
+<script>
+  const cards   = Array.from(document.querySelectorAll('.game'));
+  const filters = Array.from(document.querySelectorAll('.filter'));
+  const search  = document.getElementById('search');
+  const counter = document.getElementById('empty');
+  let active = 'all';
+
+  /* Animación de entrada escalonada */
+  cards.forEach((card, i) => { card.style.animationDelay = (i * 50) + 'ms'; });
+
+  function apply(){
+    const q = search.value.trim().toLowerCase();
+    let shown = 0;
+
+    cards.forEach(card => {
+      const tags = (card.dataset.tags || '').split(/\s+/);
+      const matchType = (active === 'all') || tags.includes(active);
+      const matchText = !q || card.textContent.toLowerCase().includes(q);
+      const visible = matchType && matchText;
+      card.classList.toggle('is-hidden', !visible);
+      if (visible) shown++;
+    });
+
+    counter.hidden = shown !== 0;
+  }
+
+  filters.forEach(btn => {
+    btn.addEventListener('click', () => {
+      active = btn.dataset.filter;
+      filters.forEach(b => b.classList.toggle('is-active', b === btn));
+      apply();
+    });
+  });
+
+  search.addEventListener('input', apply);
+</script>
+
+</body>
+</html>
