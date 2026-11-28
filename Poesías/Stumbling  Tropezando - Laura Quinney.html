@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laura Quinney - A trompicones</title>
+    <style>
+        /* Variables para el tema claro (por defecto) */
+        :root {
+            --bg: #fcfcfc;
+            --text: #333333;
+            --accent: #002FA7; /* Azul Klein */
+            --box-bg: #ffffff;
+            --box-text: #333333;
+            --box-border: #e0e0e0;
+            --intro-bg: #f4f4f4;
+            --intro-text: #333333;
+            --analysis-bg: #fafafa;
+            --analysis-text: #333333;
+            --border-light: #cccccc;
+            --border-dotted: #cccccc;
+            --link: #0056b3;
+            --btn-bg: #002FA7;
+            --btn-text: #ffffff;
+        }
+
+        /* Variables para el tema oscuro (Modo Nocturno) */
+        body[data-theme="dark"] {
+            --bg: #050A1F;
+            --text: #B0C4DE;
+            --accent: #4F7CFF;
+            --box-bg: #002FA7; /* Fondo Azul Klein puro */
+            --box-text: #ffffff; /* Texto blanco para contrastar */
+            --box-border: #001E6B;
+            --intro-bg: #0A1435;
+            --intro-text: #B0C4DE;
+            --analysis-bg: #080E24;
+            --analysis-text: #B0C4DE;
+            --border-light: #1E2A4A;
+            --border-dotted: #1E2A4A;
+            --link: #80A8FF;
+            --btn-bg: #ffffff;
+            --btn-text: #002FA7;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: var(--text);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--bg);
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+
+        /* Botón de modo nocturno */
+        .theme-toggle-container {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 20px;
+        }
+
+        button#theme-toggle {
+            background-color: var(--btn-bg);
+            color: var(--btn-text);
+            border: none;
+            padding: 10px 20px;
+            font-size: 0.9em;
+            font-family: 'Georgia', serif;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        button#theme-toggle:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        h1, h2, h3 {
+            color: var(--text);
+            font-weight: normal;
+            transition: color 0.4s ease;
+        }
+        h1 {
+            border-bottom: 2px solid var(--border-light);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+        h2 {
+            margin-top: 40px;
+            font-style: italic;
+        }
+        .intro-text {
+            font-size: 1.1em;
+            margin-bottom: 40px;
+            background-color: var(--intro-bg);
+            color: var(--intro-text);
+            padding: 15px;
+            border-left: 4px solid var(--accent);
+            transition: background-color 0.4s ease, color 0.4s ease;
+        }
+        .poem-container {
+            margin: 40px 0;
+            padding: 20px;
+            background-color: var(--box-bg);
+            color: var(--box-text);
+            border: 1px solid var(--box-border);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+        }
+        .poem-title {
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+        .poem-subtitle {
+            text-align: center;
+            font-style: italic;
+            font-size: 0.9em;
+            margin-bottom: 25px;
+            opacity: 0.8;
+        }
+        .stanza {
+            margin-bottom: 30px;
+            white-space: pre-line;
+            text-align: left;
+        }
+        .analysis-section {
+            margin-top: 50px;
+            background-color: var(--analysis-bg);
+            color: var(--analysis-text);
+            padding: 20px;
+            border-top: 1px solid var(--border-light);
+            transition: background-color 0.4s ease, color 0.4s ease, border-top-color 0.4s ease;
+        }
+        .analysis-section h3 {
+            font-size: 1.1em;
+            margin-top: 25px;
+            border-bottom: 1px dotted var(--border-dotted);
+        }
+        .sources-section {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border-light);
+            font-size: 0.9em;
+            transition: border-top-color 0.4s ease;
+        }
+        .sources-section h3 {
+            font-size: 1em;
+        }
+        .sources-section ul {
+            padding-left: 20px;
+        }
+        .sources-section a {
+            color: var(--link);
+            text-decoration: none;
+            transition: color 0.4s ease;
+        }
+        .sources-section a:hover {
+            text-decoration: underline;
+        }
+        em {
+            font-style: italic;
+        }
+    </style>
+</head>
+<body data-theme="light">
+
+    <div class="theme-toggle-container">
+        <button id="theme-toggle">🌙 Modo Nocturno</button>
+    </div>
+
+    <article>
+        <header>
+            <h1>Laura Quinney: <em>A trompicones</em></h1>
+        </header>
+
+        <section class="intro-text">
+            <p>Según la presentación del libro en el repositorio de la Universidad Brandeis: «La mayoría de los poetas recuerdan o describen el presente. En su tercer libro de poemas, Laura Quinney (cuyas meditaciones soberbiamente despojadas Harold Bloom comparó con la poesía de Paul Celan y Emily Dickinson) hace algo más inquietante: al recordar cómo era antaño anticipar el futuro, rememora cómo creía ella que se vería el pasado desde el momento presente y, al hacerlo, ahonda el significado de la memoria».</p>
+            <p><strong>Sobre la autora:</strong> Laura Quinney es crítica y poeta. Es autora de <em>Literary Power and the Criteria of Truth</em> y de <em>The Poetics of Disappointment: Wordsworth to Ashbery</em>, y enseña en la Universidad Brandeis. «Stumbling» (que aquí traduzco «A trompicones») da título a su tercer libro de poemas, <em>Stumbling and other poems</em> (Borderland Books).</p>
+        </section>
+
+        <section class="poem-container">
+            <div class="poem-title">A trompicones</div>
+            <div class="poem-subtitle">Traducción de Antonio Marina</div>
+            
+            <div class="stanza">El oro del Rin es la juventud.
+Como todo el mundo,
+llevo esperando
+toda la vida
+a descubrir qué era
+lo que encendía tanta envidia
+cuando a mis propios ojos
+yo, y mis amigos a mi alrededor,
+parecíamos asustados
+y a trompicones, perdidos
+de maneras inexplicables
+en este mundo nuevo, con hambre de amor.</div>
+
+            <div class="stanza">No era oro en la mano.
+No poseíamos nada.
+¿Qué habría, entonces,
+que envidiar
+en retrospectiva?
+Pero teníamos curiosidad
+por ver cómo nos
+enseñarían a saber.
+Y aprendemos,
+bueno, despacio,
+como Orfeo.</div>
+        </section>
+
+        <section class="analysis-section">
+            <h2>Análisis y claves de lectura</h2>
+            <p><em>Nota: Como no hay crítica publicada sobre este poema en concreto, todo lo interpretativo que sigue es lectura personal, aunque fundamentada en la obra crítica de la autora.</em></p>
+
+            <h3>La forma: una frase que tropieza y otra que hace cuentas</h3>
+            <p>El poema tiene dos estrofas de verso libre, de doce y once versos, casi todos muy cortos. Lo importante es cómo se reparte la sintaxis. La primera estrofa, tras una sentencia breve y cerrada («El oro del Rin es la juventud»), es una sola frase larga que se va enredando: empieza con una espera de toda la vida y acaba en una subordinada que se tuerce sobre sí misma («cuando a mis propios ojos / yo, y mis amigos a mi alrededor, / parecíamos asustados»). Ese verbo repetido, <em>seemed… seemed</em> en el original, con el sujeto partido entre «yo» y «mis amigos», hace tropezar la frase igual que tropiezan los jóvenes que describe. El título se cumple en la sintaxis.</p>
+            <p>La segunda estrofa cambia de ritmo: frases cortas, declarativas, casi contables («No era oro en la mano. / No poseíamos nada.»). Es la voz adulta haciendo balance. Este contraste entre una juventud que tropieza y una madurez que hace cuentas es la arquitectura del poema.</p>
+
+            <h3>La tesis heredada y la pregunta</h3>
+            <p>El primer verso no es una idea de la hablante. Es un tópico, lo que todo el mundo sabe: la juventud es un tesoro, y por eso la envidian los mayores. La hablante lo acepta («Como todo el mundo»), pero confiesa que lleva toda la vida esperando entender qué tenía de envidiable. Desde dentro, la juventud no le parecía nada de eso: ella y sus amigos parecían asustados, a trompicones, perdidos de maneras inexplicables en un mundo nuevo, con hambre de amor. El poema arranca, por tanto, de un desajuste entre cómo se ve la juventud desde fuera (oro) y cómo se vive desde dentro (miedo y desorientación). «This new world» es el mundo adulto al que se entra.</p>
+
+            <h3>El oro de Wagner</h3>
+            <p>La alusión a <em>El oro del Rin</em> es segura. En Wagner, el oro tiene dos estados. En el fondo del río es inocente: brilla, nadie lo posee, y las hijas del Rin lo aprecian por su belleza y su esplendor físicos. Una vez robado, Alberich forja con él el anillo del poder, y para hacerlo tiene que renunciar al amor. El poema juega con los dos estados. «It was not gold in the hand» (No era oro en la mano) es la clave: la juventud era oro, pero oro en el río, no en la mano. No era nada que se poseyera («No poseíamos nada»), sino un brillo sin dueño. Y los jóvenes del poema están en el polo opuesto a Alberich: no renuncian al amor para conseguir poder, sino que no tienen poder y ansían amor (<em>craving love</em>).</p>
+
+            <h3>La respuesta: la curiosidad</h3>
+            <p>Si no tenían nada, ¿qué había que envidiar «en retrospectiva»? El poema responde con un «Pero» (el <em>But</em> del original): la curiosidad. «We were curious / to see how we would be / taught to know». No dice «curiosos por saber», sino curiosos por ver <em>cómo les enseñarían</em> a saber: el objeto de la curiosidad es el aprendizaje mismo, el proceso por el que la vida iba a instruirlos. Y la voz es pasiva, «would be taught»: el saber no se conquista, se recibe, a veces a la fuerza. Lo envidiable de la juventud no es una posesión ni una felicidad, sino una disposición: estar abiertos a lo que todavía no se sabe.</p>
+
+            <h3>El final: aprender como Orfeo</h3>
+            <p>Tres detalles hacen del cierre lo mejor del poema. El primero es el cambio de tiempo: hasta aquí todo iba en pasado («we were curious»), y de repente «And we learn», en presente. El aprendizaje no terminó con la juventud: sigue ahora. El segundo es «well, slowly». <em>Well</em> puede ser adverbio («aprendemos bien, despacio») o una muletilla que corrige a medias («aprendemos… bueno, despacio»). La segunda lectura le quita solemnidad y suena a la voz de alguien que no quiere darse importancia. El poema parece querer las dos. Mi traducción («bueno, despacio») elige la segunda lectura porque el español no permite conservar la ambigüedad del inglés con una sola expresión.</p>
+            <p>El tercero es Orfeo. Orfeo baja a los infiernos a buscar a Eurídice y la pierde por volver la vista atrás. El poema acaba de decir «in retrospect», mirando atrás. La comparación sugiere que se aprende como Orfeo: mirando hacia atrás, y que ese mismo gesto hace perder lo que se mira. Todo el poema es esa mirada hacia una juventud que se desvanece justo cuando por fin se entiende. Además, Orfeo es el poeta por excelencia: aprender como él es aprender escribiendo, convirtiendo la pérdida en canto.</p>
+
+            <h3>La relación con la crítica de Quinney</h3>
+            <p>Su libro <em>The Poetics of Disappointment</em> describe una tradición lírica en la que, tras una pérdida, el yo que antes tenía esperanza parece, en retrospectiva, arrogante e ingenuo. «A trompicones» puede leerse como una respuesta suya a esa tradición. Mirando atrás, el yo joven no le parece arrogante ni ingenuo, sino asustado, torpe y hambriento de amor. No hay que corregirlo, hay que comprenderlo. Y lo único valioso que tenía, la curiosidad, no se ha perdido del todo: sigue funcionando en presente («we learn»). El poema es una decepción sin amargura. La coincidencia del «in retrospect» con el término que usa en su crítica hace razonable pensar en este diálogo interno.</p>
+
+            <h3>El significado último</h3>
+            <p>Lo que los mayores envidian en la juventud no es nada que se posea (porque los jóvenes no tenían nada y vivían asustados y con hambre de amor), sino un brillo sin dueño: la curiosidad por aprender lo que todavía no sabían. Ese aprendizaje no termina, pero solo avanza despacio y mirando atrás, como Orfeo, a costa de perder lo que se mira.</p>
+        </section>
+
+        <section class="sources-section">
+            <h3>Fuentes</h3>
+            <ul>
+                <li>Ficha del libro <em>Stumbling and other poems</em> en Brandeis ScholarWorks: <a href="https://scholarworks.brandeis.edu/esploro/outputs/book/Stumbling-and-other-poems/9924386976001921" target="_blank" rel="noopener">https://scholarworks.brandeis.edu/esploro/outputs/book/Stumbling-and-other-poems/9924386976001921</a></li>
+                <li><em>The Poetics of Disappointment: Wordsworth to Ashbery</em> en University Press of Virginia: <a href="https://upress.virginia.edu/title/2889/" target="_blank" rel="noopener">https://upress.virginia.edu/title/2889/</a></li>
+                <li><em>The Perfect Wagnerite</em> de George Bernard Shaw en Project Gutenberg (fuente de la referencia a las hijas del Rin): <a href="https://www.gutenberg.org/files/1487/1487-h/1487-h.htm" target="_blank" rel="noopener">https://www.gutenberg.org/files/1487/1487-h/1487-h.htm</a></li>
+            </ul>
+        </section>
+    </article>
+
+    <script>
+        // Lógica para alternar entre Modo Diurno y Nocturno
+        const toggleBtn = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        toggleBtn.addEventListener('click', () => {
+            if (body.getAttribute('data-theme') === 'dark') {
+                body.removeAttribute('data-theme');
+                toggleBtn.textContent = '🌙 Modo Nocturno';
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                toggleBtn.textContent = '☀️ Modo Diurno';
+            }
+        });
+    </script>
+</body>
+</html>

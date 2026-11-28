@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="klein">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <title>Missing Dates / Ocasiones perdidas — William Empson</title>
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem("empson-theme");
+        if (saved === "dark") {
+          document.documentElement.setAttribute("data-theme", "dark");
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #002fa7;
+      --bg-deep: #002178;
+      --surface: rgba(255, 255, 255, 0.075);
+      --surface-strong: rgba(255, 255, 255, 0.12);
+      --text: #f7f3e8;
+      --muted: #c9d5ff;
+      --border: rgba(255, 255, 255, 0.24);
+      --accent: #ffd166;
+      --accent-soft: #ffe6a3;
+      --quote-bg: rgba(0, 0, 0, 0.18);
+      --shadow: rgba(0, 0, 0, 0.22);
+      --selection: rgba(255, 209, 102, 0.4);
+    }
+
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #000a26;
+      --bg-deep: #000617;
+      --surface: rgba(255, 255, 255, 0.055);
+      --surface-strong: rgba(255, 255, 255, 0.09);
+      --text: #e8ecff;
+      --muted: #9fb0e0;
+      --border: rgba(150, 170, 255, 0.24);
+      --accent: #8fb3ff;
+      --accent-soft: #bcd0ff;
+      --quote-bg: rgba(255, 255, 255, 0.035);
+      --shadow: rgba(0, 0, 0, 0.35);
+      --selection: rgba(143, 179, 255, 0.35);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      padding: 2rem 1.25rem 4rem;
+      background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.10), transparent 32rem),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
+      background-attachment: fixed;
+      color: var(--text);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.65;
+      transition: background 0.35s ease, color 0.35s ease;
+    }
+
+    main {
+      max-width: 1150px;
+      margin: 0 auto;
+    }
+
+    header {
+      position: relative;
+      text-align: center;
+      margin-bottom: 3rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    h1 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      margin: 0 0 0.35rem;
+      font-weight: normal;
+      letter-spacing: 0.02em;
+      color: var(--text);
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-style: italic;
+      margin: 0;
+    }
+
+    .theme-toggle {
+      margin-top: 1rem;
+      appearance: none;
+      border: 1px solid var(--border);
+      background: var(--surface-strong);
+      color: var(--text);
+      font: inherit;
+      font-size: 0.9rem;
+      padding: 0.5rem 0.9rem;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .theme-toggle:hover {
+      background: var(--surface-strong);
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .theme-toggle:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      margin: 2.5rem 0 1rem;
+      padding-bottom: 0.35rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--accent);
+      font-weight: normal;
+    }
+
+    h3 {
+      font-size: 1.05rem;
+      margin: 1.75rem 0 0.75rem;
+      color: var(--accent-soft);
+      font-weight: normal;
+    }
+
+    .poem-grid,
+    .bilingual {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .poem-grid {
+      align-items: start;
+    }
+
+    .poem-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px var(--shadow);
+      backdrop-filter: blur(4px);
+    }
+
+    .poem-card h2 {
+      margin-top: 0;
+      border-bottom: none;
+      text-align: center;
+      color: var(--text);
+      font-size: 1.35rem;
+    }
+
+    .poem-title {
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 1.25rem;
+      font-size: 1.1rem;
+    }
+
+    .stanza {
+      margin: 0 0 1.25rem;
+      text-align: left;
+    }
+
+    .stanza:last-child {
+      margin-bottom: 0;
+    }
+
+    .linenum {
+      display: inline-block;
+      min-width: 2.2em;
+      color: var(--muted);
+      font-size: 0.85em;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .note {
+      margin-bottom: 2.5rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .note:last-child {
+      border-bottom: none;
+    }
+
+    .label {
+      display: block;
+      margin-bottom: 0.35rem;
+      color: var(--muted);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-family: system-ui, sans-serif;
+    }
+
+    .original,
+    .translation {
+      font-size: 0.98rem;
+    }
+
+    .original {
+      color: var(--text);
+    }
+
+    .translation {
+      color: var(--text);
+    }
+
+    .original p,
+    .translation p,
+    blockquote p {
+      margin-top: 0;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    blockquote {
+      margin: 0.75rem 0;
+      padding: 0.85rem 1rem;
+      border-left: 3px solid var(--accent);
+      background: var(--quote-bg);
+      color: var(--text);
+      border-radius: 0 6px 6px 0;
+    }
+
+    em { font-style: italic; }
+
+    .small {
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    ::selection {
+      background: var(--selection);
+      color: #fff;
+    }
+
+    @media (max-width: 820px) {
+      .poem-grid,
+      .bilingual {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+
+      body {
+        padding: 1.5rem 1rem 3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<main>
+
+  <header>
+    <h1>Missing Dates / Ocasiones perdidas</h1>
+    <p class="subtitle">William Empson — poema, traducción y comentarios bilingües</p>
+    <button id="themeToggle" class="theme-toggle" type="button" aria-pressed="false">
+      Modo nocturno
+    </button>
+  </header>
+
+  <section id="poema" aria-labelledby="titulo-poema">
+    <h2 id="titulo-poema">Poema y traducción</h2>
+
+    <div class="poem-grid">
+      <article class="poem-card" lang="en">
+        <h2>Missing Dates</h2>
+
+        <p class="stanza">
+          Slowly the poison the whole blood stream fills.<br>
+          It is not the effort nor the failure tires.<br>
+          The waste remains, the waste remains and kills.
+        </p>
+
+        <p class="stanza">
+          It is not your system or clear sight that mills<br>
+          Down small to the consequence a life requires;<br>
+          Slowly the poison the whole blood stream fills.
+        </p>
+
+        <p class="stanza">
+          They bled an old dog dry yet the exchange rills<br>
+          Of young dog blood gave but a month’s desires;<br>
+          The waste remains, the waste remains and kills.
+        </p>
+
+        <p class="stanza">
+          <span class="linenum">10</span>It is the Chinese tombs and the slag hills<br>
+          Usurp the soil, and not the soil retires.<br>
+          Slowly the poison the whole blood stream fills.
+        </p>
+
+        <p class="stanza">
+          Not to have fire is to be a skin that shrills.<br>
+          The complete fire is death. From partial fires<br>
+          The waste remains, the waste remains and kills.
+        </p>
+
+        <p class="stanza">
+          It is the poems you have lost, the ills<br>
+          From missing dates, at which the heart expires.<br>
+          Slowly the poison the whole blood stream fills.<br>
+          The waste remains, the waste remains and kills.
+        </p>
+      </article>
+
+      <article class="poem-card" lang="es">
+        <h2>Ocasiones perdidas</h2>
+
+        <p class="stanza">
+          Lentamente el veneno todo el torrente sanguíneo llena.<br>
+          No es el esfuerzo ni el fracaso lo que cansa.<br>
+          El residuo permanece, el residuo permanece y mata.
+        </p>
+
+        <p class="stanza">
+          No es tu sistema ni tu lucidez lo que muele fino<br>
+          hasta dejar lo mínimo que una vida requiere;<br>
+          lentamente el veneno todo el torrente sanguíneo llena.
+        </p>
+
+        <p class="stanza">
+          Desangraron a un perro viejo, mas los hilillos intercambiados<br>
+          de sangre de perro joven apenas otorgaron un mes de deseos;<br>
+          el residuo permanece, el residuo permanece y mata.
+        </p>
+
+        <p class="stanza">
+          Son las tumbas chinas y las colinas de escoria<br>
+          las que usurpan el suelo, y no es el suelo el que se retira.<br>
+          Lentamente el veneno todo el torrente sanguíneo llena.
+        </p>
+
+        <p class="stanza">
+          Carecer de fuego es ser una piel que chilla.<br>
+          El fuego completo es muerte. De los fuegos parciales<br>
+          el residuo permanece, el residuo permanece y mata.
+        </p>
+
+        <p class="stanza">
+          Son los poemas que has perdido, los males<br>
+          de las ocasiones perdidas, por los que el corazón expira.<br>
+          Lentamente el veneno todo el torrente sanguíneo llena.<br>
+          El residuo permanece, el residuo permanece y mata.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section id="comentarios" aria-labelledby="titulo-comentarios">
+    <h2 id="titulo-comentarios">Comentarios — original y traducción</h2>
+
+    <article class="note">
+      <h3>Nota biográfica y crítica</h3>
+      <div class="bilingual">
+        <div class="original" lang="en">
+          <span class="label">Original</span>
+          <p><strong>Missing Dates</strong></p>
+          <p>A major literary critic, Empson was a highly original but sparse poet. His bisexuality is the hidden burden of some of his strongest yet most obscure poems.</p>
+          <p>Born in Yorkshire, Empson attended Cambridge. At twenty-four, he published <em>Seven Types of Ambiguity</em>, still a critical work of interest. He taught in Tokyo from 1931 to 1934, and then published in 1935 both his <em>Poems</em> and <em>Some Versions of Pastoral</em>. From 1937 to 1939, he taught in Beijing; he then returned to England, where he finished a second volume of poems, <em>The Gathering Storm</em>. After the war, he taught in Beijing again until his final return home in 1952, then taught at Sheffield until he retired in 1971.</p>
+          <p>Empson sustained a complex marriage with a strong-minded wife, who allowed him relationships with her lovers. His intricate and perilous balance was maintained throughout a difficult and productive life.</p>
+          <p>Empson once told me that poetry had become “a mug’s game” in which the next poem was a wager with the poet’s ongoing life. On that basis, he had come late to an appreciation of Hart Crane. I have chosen <em>Missing Dates</em> even though it was written at the halfway point of his life. An inexorable death march, it attains perfection in its final quatrain, which Crane might have envied.</p>
+        </div>
+        <div class="translation" lang="es">
+          <span class="label">Traducción</span>
+          <p><strong>Ocasiones perdidas</strong></p>
+          <p>Crítico literario de primera fila, Empson fue un poeta muy original pero parco. Su bisexualidad es la carga oculta de algunos de sus poemas más fuertes y a la vez más oscuros.</p>
+          <p>Nacido en Yorkshire, Empson estudió en Cambridge. A los veinticuatro años publicó <em>Seven Types of Ambiguity</em>, todavía hoy una obra crítica de interés. Enseñó en Tokio de 1931 a 1934 y luego publicó en 1935 tanto sus <em>Poems</em> como <em>Some Versions of Pastoral</em>. De 1937 a 1939 enseñó en Pekín; después volvió a Inglaterra, donde terminó un segundo volumen de poemas, <em>The Gathering Storm</em>. Tras la guerra, enseñó de nuevo en Pekín hasta su regreso definitivo a casa en 1952; luego enseñó en Sheffield hasta que se jubiló en 1971.</p>
+          <p>Empson mantuvo un matrimonio complejo con una esposa de fuerte carácter, que le permitió tener relaciones con los amantes de ella. Su intrincado y peligroso equilibrio se mantuvo a lo largo de una vida difícil y productiva.</p>
+          <p>Empson me contó una vez que la poesía se había convertido en «un juego de tontos» en el que el siguiente poema era una apuesta con la vida en curso del poeta. Sobre esa base, llegó tarde a apreciar a Hart Crane. He elegido <em>Missing Dates</em> aunque fue escrito a mitad de su vida. Una marcha fúnebre inexorable, alcanza la perfección en su último cuarteto, que Crane podría haber envidiado.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="note">
+      <h3>Sobre la forma, la lectura y el experimento del perro</h3>
+      <div class="bilingual">
+        <div class="original" lang="en">
+          <span class="label">Original</span>
+          <p>The next poem is in the very rigid form of a villanelle and called ‘Missing Dates’. The only difficulty here is in reading it properly; the repeated lines ought to mean something different each time. The poem is meant to become increasingly serious until it generalizes itself in the last verse, so that the actual missing of dates seems almost comically trivial. I did read in some scientific periodical about changing an old dog’s blood, and by the way I think poets ought to read science more than they do, and as older poets normally did. It is not true that ancestral tombs in China occupy a dangerous and increasing amount of farmland, but the legend is so familiar that I used it here.</p>
+        </div>
+        <div class="translation" lang="es">
+          <span class="label">Traducción</span>
+          <p>El poema siguiente está en la forma muy rígida de una villanela y se titula «Missing Dates». La única dificultad aquí está en leerlo correctamente; las líneas repetidas deberían significar algo distinto cada vez. El poema está pensado para volverse cada vez más serio hasta generalizarse en la última estrofa, de modo que la falta real de citas parece casi cómicamente trivial. Leí en alguna revista científica sobre el cambio de la sangre de un perro viejo y, por cierto, creo que los poetas deberían leer más ciencia de lo que lo hacen, como normalmente hacían los poetas mayores. No es verdad que las tumbas ancestrales de China ocupen una cantidad peligrosa y creciente de tierras de cultivo, pero la leyenda es tan familiar que la usé aquí.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="note">
+      <h3>(iii) Las observaciones de WE según Skelton</h3>
+      <div class="bilingual">
+        <div class="original" lang="en">
+          <span class="label">Original</span>
+          <p>(iii) WE’s remarks, in conversation, are indirectly reported by Skelton: ‘William Empson did not consciously decide upon writing a Villanelle when he began his poem, “Missing Dates”. He was intent upon patterning a certain mood or attitude of mind. He wrote several lines before he realized that the poem was taking the form of a Villanelle, and then he deliberately allowed this tendency to develop, and within three hours, produced the completed version’ (<em>Poetic Pattern</em>, pp. 52–3).</p>
+        </div>
+        <div class="translation" lang="es">
+          <span class="label">Traducción</span>
+          <p>(iii) Las observaciones de WE, en conversación, son transmitidas indirectamente por Skelton: «William Empson no decidió conscientemente escribir una villanela cuando comenzó su poema “Missing Dates”. Estaba empeñado en modelar cierto estado de ánimo o actitud mental. Escribió varias líneas antes de darse cuenta de que el poema estaba tomando la forma de una villanela, y entonces permitió deliberadamente que esta tendencia se desarrollara y, en tres horas, produjo la versión completa» (<em>Poetic Pattern</em>, pp. 52–3).</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="note">
+      <h3>(iv) «Este poema dice una mentira»</h3>
+      <div class="bilingual">
+        <div class="original" lang="en">
+          <span class="label">Original</span>
+          <p>(iv) ‘My poetry was written a long time ago, and looking back I realize it was meant to say “Life is strange and unexpected” but not to give any other awful warning. So I need to explain that this poem tells a lie. It says that we only get old because we are so untidy whereas of course the very tidiest people in their city offices get old too. How can it be a good poem if it is all wrong I cannot say. It is a villanelle’ (undated notes for the launch of an anthology).</p>
+        </div>
+        <div class="translation" lang="es">
+          <span class="label">Traducción</span>
+          <p>(iv) «Mi poesía fue escrita hace mucho tiempo y, mirando atrás, me doy cuenta de que pretendía decir “La vida es extraña e inesperada”, pero no dar ninguna otra advertencia terrible. Así que necesito explicar que este poema dice una mentira. Dice que solo envejecemos porque somos muy desordenados, cuando en realidad las personas más ordenadas en sus oficinas de la ciudad también envejecen. Cómo puede ser un buen poema si está todo equivocado, no lo sé. Es una villanela» (notas sin fecha para el lanzamiento de una antología).</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="note">
+      <h3>(v) <em>Contemporary Poets Reading Their Own Poems</em></h3>
+      <div class="bilingual">
+        <div class="original" lang="en">
+          <span class="label">Original</span>
+          <p>(v) <em>Contemporary Poets Reading Their Own Poems</em>: ‘The difficulty of writing a villanelle is to stop it from dying as it goes on. It’s very hard to read properly to justify the form. I was put on to it by Joyce’s <em>A Portrait of the Artist</em> ... I always thought “missing dates” was American slang; but it’s not American slang, it means failing to come to an appointment.’</p>
+        </div>
+        <div class="translation" lang="es">
+          <span class="label">Traducción</span>
+          <p>(v) <em>Contemporary Poets Reading Their Own Poems</em>: «La dificultad de escribir una villanela es evitar que muera a medida que avanza. Es muy difícil leerla correctamente para justificar la forma. Me puso en ello el <em>A Portrait of the Artist</em> de Joyce... Siempre pensé que “missing dates” era jerga americana; pero no es jerga americana: significa faltar a una cita.»</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="note">
+      <h3>(vi) Observación en Harvard</h3>
+      <div class="bilingual">
+        <div class="original" lang="en">
+          <span class="label">Original</span>
+          <p>(vi) On Harvard, WE observed:</p>
+          <p>A villanelle called ‘Missing Dates’ is more widely accepted than anything else I’ve written, and I think probably is the best poem. James Joyce described himself in <em>A Portrait of the Artist</em> writing a villanelle, and this I think made all the poets of my generation try to write villanelles. It seemed a kind of test ... It’s a very rigid form, invented by the Italians, who apparently just thought it was musical: I don’t think you’ll find them struggling with the form—nor of course do the poets of the nineties like Dowson. They just regarded the repetitions as musical. We felt that every time the line is repeated it has to mean something different; and treated like that, it becomes very hard to write. Anybody can push together the repetitions, only it’s dead. Making it come to life, I do think, hard. The best of them was written by W. H. Auden in <em>The Sea and the Mirror</em>, when all the characters in Shakespeare’s <em>Tempest</em> come out and talk about themselves. Miranda comes out panting, completely astonished by the world – she has never seen a man before, except a monster and her father – and what she talks is a perfect villanelle, and this is an astounding piece of technical skill. I do think Auden is a wonderful technician. I remember pointing this out to Louis MacNeice when it first appeared, and he was rather cross and said, ‘Of course it isn’t a villanelle; it may remind you of villanelles, but it couldn’t be one.’ But it is literally a villanelle. However, my villanelle sound very stiff and rather like tombstones – but they are intended to, in a way. I wish to say that what this says is untrue. In writing it I thought this was a wonderful subject for a poem, but it never occurred to me to think whether it is true or not. It’s a very odd thing that in poetry you can do that. I don’t think it’s bad because it’s untrue. It says that if you lead an entirely tidy life – always arriving at the office at nine o’clock and picking up the pins from the carpet as you go to your desk – then you will never grow old; well, you will, as a matter of fact, just the same: it’s rather a good thing, as a matter of fact. But what the poem says is that you won’t. I think this is what I. A. Richards meant – long ago when it was new, and I sent him an early copy – by saying it was a joke: the last verse in a remote way is meant to sound facetious [said Richards]. Well, this is very mysterious. Max Brod, who was a close friend of Kafka, describes how in writing <em>The Trial</em> he had only written the first four verses [paragraphs], but one evening he read them to his young friends and they were all in fits of laughter; they thought <em>The Trial</em> was overwhelmingly funny. They were regarding it as satire on government officials, and in that political way it would seem funny. But if <em>The Trial</em> is funny, I’m very willing to believe that my little poem is funny too ... but it’s fairly remote, I should say. However, it’s a very sympathetic comment [by Richards], I think: I wish it was funny.</p>
+        </div>
+        <div class="translation" lang="es">
+          <span class="label">Traducción</span>
+          <p>(vi) En Harvard, WE observó:</p>
+          <p>Una villanela titulada «Missing Dates» está más ampliamente aceptada que cualquier otra cosa que haya escrito, y creo que probablemente es el mejor poema. James Joyce se describió a sí mismo en <em>A Portrait of the Artist</em> escribiendo una villanela, y esto creo que hizo que todos los poetas de mi generación intentaran escribir villanelas. Parecía una especie de prueba... Es una forma muy rígida, inventada por los italianos, que al parecer solo pensaban que era musical: no creo que se los encuentre luchando con la forma, ni tampoco, por supuesto, a los poetas de los noventa como Dowson. Simplemente consideraban musicales las repeticiones. Nosotros sentíamos que cada vez que se repite la línea tiene que significar algo distinto; y tratada así, se vuelve muy difícil de escribir. Cualquiera puede juntar las repeticiones, solo que así está muerta. Hacer que cobre vida, eso sí que es difícil. La mejor de todas la escribió W. H. Auden en <em>The Sea and the Mirror</em>, cuando todos los personajes de <em>La tempestad</em> de Shakespeare salen y hablan de sí mismos. Miranda sale jadeando, completamente asombrada por el mundo —nunca ha visto a un hombre antes, excepto a un monstruo y a su padre— y lo que dice es una villanela perfecta, y esto es una asombrosa pieza de habilidad técnica. Creo que Auden es un técnico maravilloso. Recuerdo habérselo señalado a Louis MacNeice cuando apareció por primera vez, y él se enfadó bastante y dijo: «Por supuesto que no es una villanela; puede recordarte a las villanelas, pero no podría ser una». Pero es literalmente una villanela. Sin embargo, mi villanela suena muy rígida y bastante parecida a lápidas, pero en cierto modo están pensadas para eso. Quiero decir que lo que dice es falso. Al escribirla pensé que era un tema maravilloso para un poema, pero nunca se me ocurrió pensar si era verdad o no. Es una cosa muy rara que en poesía se pueda hacer eso. No creo que sea mala porque sea falsa. Dice que si llevas una vida enteramente ordenada —llegando siempre a la oficina a las nueve y recogiendo los alfileres de la alfombra mientras vas a tu escritorio— nunca envejecerás; bueno, envejecerás, de hecho, igual: es más bien algo bueno, de hecho. Pero lo que dice el poema es que no lo harás. Creo que esto es lo que I. A. Richards quiso decir —hace mucho tiempo, cuando era nuevo y le envié una copia temprana— al decir que era una broma: la última estrofa, de una manera remota, está destinada a sonar facciosa [dijo Richards]. Bueno, esto es muy misterioso. Max Brod, que era un amigo cercano de Kafka, describe cómo, al escribir <em>The Trial</em>, solo había escrito los primeros cuatro versos [párrafos], pero una tarde se los leyó a sus jóvenes amigos y todos se morían de risa; pensaban que <em>The Trial</em> era abrumadoramente divertida. La consideraban una sátira de los funcionarios del gobierno, y en ese sentido político parecería divertida. Pero si <em>The Trial</em> es divertida, estoy muy dispuesto a creer que mi pequeño poema también es divertido... aunque es bastante remoto, diría. Sin embargo, es un comentario muy comprensivo [de Richards], creo: ojalá fuera divertido.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="note">
+      <h3>(vii) Comentario conservado en una carta</h3>
+      <div class="bilingual">
+        <div class="original" lang="en">
+          <span class="label">Original</span>
+          <p>(vii) A further comment is preserved in a letter (28 May 1976) to WE from David Pirie, who quoted back at WE his remark from a (now lost) letter: ‘You say that in <em>Missing Dates</em> you are “plainly writing about the process of aging in an individual man”’ (courtesy of David Pirie).</p>
+        </div>
+        <div class="translation" lang="es">
+          <span class="label">Traducción</span>
+          <p>(vii) Se conserva otro comentario en una carta (28 de mayo de 1976) a WE de David Pirie, quien le citó de vuelta a WE su observación de una carta (hoy perdida): «Usted dice que en <em>Missing Dates</em> está “escribiendo claramente sobre el proceso de envejecimiento en un hombre individual”» (cortesía de David Pirie).</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="note">
+      <h3>(viii) Nota preliminar de 1983 para la edición de Hogarth Press de <em>CP</em> (1984)</h3>
+      <div class="bilingual">
+        <div class="original" lang="en">
+          <span class="label">Original</span>
+          <p>When I. A. Richards saw the villanelle beginning ‘Slowly the poison ...’ he said it was the best comic poem I had done so far; and I must have betrayed my surprise, because he added, not to hurt my feelings, that of course it was <em>deep</em> humour. I was not hurt but relieved; denouncing the universe has never seemed to me a sensible thing for a poem to do, and I had feared that my villanelle might be tainted with that pomposity. Much of the verse here [in CP] is about the strangeness of the world, in which we are often tripped up and made helpless, and the first thing to do in that situation is to understand it. In such a case, it is usual for some to laugh and others not.</p>
+        </div>
+        <div class="translation" lang="es">
+          <span class="label">Traducción</span>
+          <p>Cuando I. A. Richards vio la villanela que comenzaba «Slowly the poison...», dijo que era el mejor poema cómico que había escrito hasta entonces; y debo de haber delatado mi sorpresa, porque añadió, para no herir mis sentimientos, que por supuesto era humor <em>profundo</em>. No me sentí herido, sino aliviado; denunciar el universo nunca me ha parecido una cosa sensata que deba hacer un poema, y había temido que mi villanela pudiera estar contaminada por esa pomposidad. Mucho del verso que hay aquí [en <em>CP</em>] trata de la extrañeza del mundo, en el que a menudo tropezamos y quedamos indefensos, y lo primero que hay que hacer en esa situación es comprenderlo. En tal caso, es habitual que algunos se rían y otros no.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="note">
+      <h3>Nota adicional: influencia y lecturas críticas</h3>
+      <div class="bilingual">
+        <div class="original" lang="en">
+          <span class="label">Original</span>
+          <p>This poem is recognized to have been the major influence upon other villanelles, including ‘One Art’ by Elizabeth Bishop and ‘Do Dumf Forgetfulness’ by I. A. Richards.</p>
+          <p>See Brooks and Warren, <em>Understanding Poetry</em>, p. 258; Morelli, pp. 104–9; Spector, ‘Form and Content in Empson’s “Missing Dates”’, who tries to match the poem to the paradigm of courtly love poetry traditional for the villanelle; and Drew, <em>Poetry</em>, who draws attention to the wide metaphorical range in this short poem: ‘toxins in the blood stream, the grinding of grain, blood transfusions, Chinese tombs, mining operations, land erosion, body metabolism and the double-edged title of missing dates’. Drew glosses further: ‘active efforts do not exhaust us, even if they end in failure, nor does intellectual effort (system and clear sight) grind the life of the heart beneath the upper and the nether millstone. “The consequence a life requires” is, I suppose, the time-sequence ending in death. That must come finally, but the heart should not die before the body is consumed. No transfusions from outside can revive dwindling emotional vitality. Life gets cumbered with useless regrets for our dead past, waste products, when it could still be productive’ (p. 140). See also Willis, pp. 340–7; Ricks, pp. 201–3; TGA, pp. 185–7; LeCercle, ‘William Empson’s Cosmicomics’, pp. 280–81; and Fenton’s discussion of the poem in ‘Ars Poetica 36’.</p>
+          <p>See ‘Villanelle’ and ‘Advice’ for other instances of the conceit of disease.</p>
+        </div>
+        <div class="translation" lang="es">
+          <span class="label">Traducción</span>
+          <p>Se reconoce que este poema ha sido la principal influencia sobre otras villanelas, incluidas «One Art» de Elizabeth Bishop y «Do Dumf Forgetfulness» de I. A. Richards.</p>
+          <p>Véanse Brooks y Warren, <em>Understanding Poetry</em>, p. 258; Morelli, pp. 104–9; Spector, «Form and Content in Empson’s “Missing Dates”», que intenta emparejar el poema con el paradigma de la poesía amorosa cortesana tradicional para la villanela; y Drew, <em>Poetry</em>, que llama la atención sobre la amplia gama metafórica de este breve poema: «toxinas en el torrente sanguíneo, la molienda del grano, transfusiones de sangre, tumbas chinas, operaciones mineras, erosión de la tierra, metabolismo corporal y el título de doble filo <em>missing dates</em>». Drew glosa además: «los esfuerzos activos no nos agotan, aunque terminen en fracaso, ni el esfuerzo intelectual (<em>system and clear sight</em>) muele la vida del corazón bajo la piedra de molino superior y la inferior. “The consequence a life requires” es, supongo, la secuencia temporal que termina en la muerte. Esa debe llegar finalmente, pero el corazón no debería morir antes de que el cuerpo se consuma. Ninguna transfusión externa puede revivir la vitalidad emocional que se extingue. La vida se carga de lamentos inútiles por nuestro pasado muerto, productos de desecho, cuando todavía podría ser productiva» (p. 140). Véanse también Willis, pp. 340–7; Ricks, pp. 201–3; TGA, pp. 185–7; LeCercle, «William Empson’s Cosmicomics», pp. 280–81; y la discusión del poema por Fenton en «Ars Poetica 36».</p>
+          <p>Véanse «Villanelle» y «Advice» para otros ejemplos del concepto de la enfermedad.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="note">
+      <h3>Notas de la edición</h3>
+
+      <h3>Nota 2</h3>
+      <div class="bilingual">
+        <div class="original" lang="en">
+          <span class="label">Original</span>
+          <p><strong>2 nor:</strong> Hayward told WE in a letter (21 May 1956), ‘orthodox grammar requires <em>or</em> as in l. 4’ – but then the full impact of the sonorous negatives would be lost.</p>
+        </div>
+        <div class="translation" lang="es">
+          <span class="label">Traducción</span>
+          <p><strong>2 nor:</strong> Hayward le dijo a WE en una carta (21 de mayo de 1956): «la gramática ortodoxa exige <em>or</em> en el v. 4», pero entonces se perdería el pleno impacto de las sonoras negaciones.</p>
+        </div>
+      </div>
+
+      <h3>Nota 3.9, 15, 19</h3>
+      <div class="bilingual">
+        <div class="original" lang="en">
+          <span class="label">Original</span>
+          <p><strong>3.9,15,19 The waste remains, the waste remains and kills:</strong> as Richards noted (‘William Empson’), the rhythm here – and, one might think, something of the deathly spirit – holds a memory of Tennyson’s ‘The woods decay, the woods decay and fall’ (‘Tithonus’, l. 1); though Richards thought it only an ‘unconscious echo’. In 1972 WE took part in a BBC radio programme, <em>Tennyson: Eighty Years On</em>, produced by Hallam Tennyson, in which he observed that ‘Tithonus’ is ‘the best and deepest’ of Tennyson’s poems and – in an astounding and memorable phrase – ‘a poem in favour of the human practice of dying’ (<em>Empson on Tennyson</em>, p. 108–9).</p>
+          <p>Cf. Shakespeare, Sonnet 129, l. 1: ‘Th’ expense of spirit in a waste of shame’.</p>
+        </div>
+        <div class="translation" lang="es">
+          <span class="label">Traducción</span>
+          <p><strong>3.9, 15, 19 The waste remains, the waste remains and kills:</strong> como señaló Richards («William Empson»), el ritmo aquí —y, cabría pensar, algo del espíritu mortífero— guarda un recuerdo del «The woods decay, the woods decay and fall» de Tennyson («Tithonus», v. 1); aunque Richards pensaba que solo era un «eco inconsciente». En 1972 WE participó en un programa de radio de la BBC, <em>Tennyson: Eighty Years On</em>, producido por Hallam Tennyson, en el que observó que «Tithonus» es «el mejor y más profundo» de los poemas de Tennyson y —en una frase asombrosa y memorable— «un poema a favor de la práctica humana de morir» (<em>Empson on Tennyson</em>, pp. 108–9).</p>
+          <p>Cf. Shakespeare, Soneto 129, v. 1: «Th’ expense of spirit in a waste of shame».</p>
+        </div>
+      </div>
+
+      <h3>Notas 4–5</h3>
+      <div class="bilingual">
+        <div class="original" lang="en">
+          <span class="label">Original</span>
+          <p><strong>4–5 mills / Down:</strong> ground in a mill, like flour; crushed or pounded down.</p>
+          <p><strong>5 the consequence a life requires:</strong> ‘If we are to take it as a truth that knows no exception that everything living dies for internal reasons – becomes inorganic once again – then we shall be compelled to say that “the aim of all life is death”’ (Freud, <em>Beyond the Pleasure Principle</em>, trans. James Strachey; <em>Standard Edition</em>, vol. 18 (London, 1955), p. 38).</p>
+        </div>
+        <div class="translation" lang="es">
+          <span class="label">Traducción</span>
+          <p><strong>4–5 mills / Down:</strong> molidos en un molino, como harina; triturados o machacados.</p>
+          <p><strong>5 the consequence a life requires:</strong> «Si hemos de tomar como verdad que no conoce excepción que todo lo vivo muere por razones internas —se vuelve inorgánico una vez más—, entonces nos veremos obligados a decir que “la meta de toda vida es la muerte”» (Freud, <em>Beyond the Pleasure Principle</em>, trad. James Strachey; <em>Standard Edition</em>, vol. 18 (Londres, 1955), p. 38).</p>
+        </div>
+      </div>
+
+      <h3>Nota 7</h3>
+      <div class="bilingual">
+        <div class="original" lang="en">
+          <span class="label">Original</span>
+          <p><strong>7 rills:</strong> small streams or brooks; possibly – given the refrain ‘The waste remains, the waste remains and kills’ – subsuming an allusion to Edward Young’s <em>Love of Fame, The Universal Passion</em> (1752–8): ‘Pure purging rills the lonely desert trace, / And waste their music on the savage race’ (<em>Poetical Works</em>, ed. Mitford, vol. II (London, 1896), p. 103). WE cited a passage from <em>Love of Fame</em> in illustration of the third type of ambiguity (ST, p. 133).</p>
+        </div>
+        <div class="translation" lang="es">
+          <span class="label">Traducción</span>
+          <p><strong>7 rills:</strong> pequeños arroyos o riachuelos; posiblemente —dado el estribillo «The waste remains, the waste remains and kills»— subsume una alusión a <em>Love of Fame, The Universal Passion</em> de Edward Young (1752–8): «Pure purging rills the lonely desert trace, / And waste their music on the savage race» (<em>Poetical Works</em>, ed. Mitford, vol. II (Londres, 1896), p. 103). WE citó un pasaje de <em>Love of Fame</em> como ilustración del tercer tipo de ambigüedad (ST, p. 133).</p>
+        </div>
+      </div>
+
+      <h3>Notas 7–8</h3>
+      <div class="bilingual">
+        <div class="original" lang="en">
+          <span class="label">Original</span>
+          <p><strong>7–8 They bled an old dog ... month’s desires:</strong> it is difficult to trace the precise experiment which WE claimed to have read about in a journal, but it is likely to have been something more drastic and nasty than a simple transfusion. C. H. Best and N. B. Taylor included in their standard text on physiology these comments on the state of blood-experimentation in 1937: ‘Bayliss ... reported that if an animal were bled to the extent of 40 per cent of its blood volume it usually succumbed, but that 70 per cent of the blood could be removed yet recovery occur if gum solution were used to restore the blood volume’; and again, ‘In the treatment of certain conditions, e.g., severe toxaemia, carbon monoxide poisoning, etc., the patient is first bled, his blood being then replaced by transfused blood (exsanguination transfusion)’ (<em>The Physiological Basis of Medical Practice</em> (London, 1937), pp. 54–5).</p>
+          <p>However, it is most probable that the experiment to which WE refers, though not so precisely described in the poem, is the one carried out by Alexis Carrel and described by Lecomte de Nouy in <em>Biological Time</em> (London, 1936). Carrel was the originator of successful tissue culture following his demonstration that ‘embryo tissue fluid’ in the culture medium could prolong the survival of tissue cultures indefinitely, whereas the serum of older animals led to the death of the culture in a time which got shorter in proportion to the aging of the donor animal:</p>
+          <blockquote>
+            <p>There was at the Rockefeller Institute, before the war, a dog nearly eighteen years old. This poor animal never stirred from its corner and could hardly get up to eat. ...</p>
+            <p>This animal was anaesthetized, put on the operating table and treated as follows. Carrel bled him by the carotid artery and removed nearly two-thirds of his blood. This blood was collected aseptically and immediately centrifuged, so as to separate the red cells from the serum. The red cells were washed in Ringer solution, recentrifuged and mixed with fresh Ringer solution to re-establish the initial volume of the blood. This was then re-injected into the dog. The circulation was restored by massaging the heart, and the skin was sewn up ... After several days he had regained strength and appetite. The same operation was repeated so as to eliminate practically all the serum of his blood and replace it by this artificial solution, which besides the blood cells, contained only salts such as chlorides of sodium, potassium, and calcium in the same proportion as those found in the blood. The animal not only did he live, but, once over the operative shock, he was a different dog. He ran and barked, a thing he had not done for years. His eyes were clear, his eyelids normal. His coat started to come in; he was gay, active, and most important of all, he was no longer indifferent to the charms of the other sex. He was rejuvenated. (p. 115)</p>
+          </blockquote>
+        </div>
+        <div class="translation" lang="es">
+          <span class="label">Traducción</span>
+          <p><strong>7–8 They bled an old dog ... month’s desires:</strong> es difícil rastrear el experimento preciso que WE afirmaba haber leído en una revista, pero es probable que fuera algo más drástico y desagradable que una simple transfusión. C. H. Best y N. B. Taylor incluyeron en su texto estándar de fisiología estos comentarios sobre el estado de la experimentación con sangre en 1937: «Bayliss... informó que si se desangraba a un animal hasta el 40 por ciento de su volumen sanguíneo, normalmente sucumbía, pero que se podía extraer el 70 por ciento de la sangre y aun así producirse la recuperación si se usaba una solución de goma para restaurar el volumen sanguíneo»; y de nuevo: «En el tratamiento de ciertas afecciones, p. ej., toxemia grave, envenenamiento por monóxido de carbono, etc., primero se sangra al paciente y luego se le reemplaza la sangre mediante transfusión (transfusión por exanguinación)» (<em>The Physiological Basis of Medical Practice</em> (Londres, 1937), pp. 54–5).</p>
+          <p>Sin embargo, lo más probable es que el experimento al que se refiere WE, aunque no se describe con tanta precisión en el poema, sea el llevado a cabo por Alexis Carrel y descrito por Lecomte de Nouy en <em>Biological Time</em> (Londres, 1936). Carrel fue el iniciador del cultivo de tejidos con éxito tras demostrar que «el fluido de tejido embrionario» en el medio de cultivo podía prolongar indefinidamente la supervivencia de los cultivos de tejidos, mientras que el suero de animales viejos llevaba a la muerte del cultivo en un tiempo que se acortaba en proporción al envejecimiento del animal donante:</p>
+          <blockquote>
+            <p>Había en el Rockefeller Institute, antes de la guerra, un perro de casi dieciocho años. Este pobre animal nunca se movía de su rincón y apenas podía levantarse para comer. ...</p>
+            <p>Se anestesió a este animal, se le puso en la mesa de operaciones y se le trató como sigue. Carrel lo sangró por la arteria carótida y le extrajo casi dos tercios de su sangre. Esta sangre se recogió asépticamente y se centrifugó de inmediato para separar los glóbulos rojos del suero. Los glóbulos rojos se lavaron en solución de Ringer, se centrifugaron de nuevo y se mezclaron con solución de Ringer fresca para restablecer el volumen inicial de la sangre. Esta se reinyectó entonces en el perro. La circulación se restableció masajeando el corazón, y se cosió la piel... Al cabo de varios días había recuperado fuerzas y apetito. Se repitió la misma operación para eliminar prácticamente todo el suero de su sangre y sustituirlo por esta solución artificial que, además de los glóbulos sanguíneos, contenía solo sales como cloruros de sodio, potasio y calcio en la misma proporción que las halladas en la sangre. El animal no solo vivió, sino que, una vez superado el shock operatorio, era otro perro. Corría y ladraba, algo que no había hecho en años. Tenía los ojos claros, los párpados normales. El pelo empezó a crecerle; estaba alegre, activo y, lo más importante de todo, ya no era indiferente a los encantos del otro sexo. Se había rejuvenecido. (p. 115)</p>
+          </blockquote>
+        </div>
+      </div>
+
+      <h3>Notas 8, 10 y 14</h3>
+      <div class="bilingual">
+        <div class="original" lang="en">
+          <span class="label">Original</span>
+          <p>(I am indebted to Professor Ivor Mills, Department of Surgery, University of Cambridge, for identifying that passage for me; see also the letter from Professor Mills on this subject: ‘Empson’s Missing Dates’.) In <em>Possible Worlds</em> Haldane had referred to Carrel’s work on cultures (p. 151). WE took a positive interest in biological science, and reviewed the first volume of <em>The Eugenics Review</em>: ‘Health, Wealth and Happiness’ (<em>Granta</em>, 4 May 1928; E in G, p. 53); the variety of approaches to eugenics, he wrote, is ‘a matter so pressing and so unfashionable’.</p>
+          <p>It is possible too that WE’s attention had been caught by Samuel Butler’s scoff, in ‘An Heroical Epistle of Hudibras to Sidrophel’, ll. 59–62: ‘As if the Art you have so long / Profess, of making old Dogs young, / In you had Virtue to renew / Not only Youth, but Childhood too.’</p>
+          <p><strong>8 desires; desires.</strong> copy sent to John Hayward; desires CP</p>
+          <p><strong>10 Chinese tombs:</strong> refers to the shrines or small temples put up in innumerable Chinese fields. Harold B. Rattenbury, who lived in China during the 1930s, recorded: ‘The simplest form of temple, and almost universal in my experience, is the little shrine that stands among the fields and is called by the Chinese “T‘u-ti-Miao” – “local earth temple”. Such shrines are perhaps ten feet high, roofed with tiles, and have only one little chamber in which stand two idol figures, about the size of a child’s toy doll ... It is evident they are the patrons of the field, the local deities, blessing the fertility of your fields and warding off pests from your crops’ (<em>China, My China</em> (London, 1944), p. 132).</p>
+          <p><strong>14 The complete fire is death</strong> may refer to the Buddha’s ‘Fire Sermon’ (see pp. 139–52), or to the purgatorial fires of St Augustine and of Yeats in ‘Byzantium’.</p>
+        </div>
+        <div class="translation" lang="es">
+          <span class="label">Traducción</span>
+          <p>(Debo al profesor Ivor Mills, del Departamento de Cirugía de la Universidad de Cambridge, la identificación de ese pasaje; véase también la carta del profesor Mills sobre este asunto: «Empson’s Missing Dates».) En <em>Possible Worlds</em>, Haldane se había referido al trabajo de Carrel sobre cultivos (p. 151). WE se interesó positivamente por la ciencia biológica y reseñó el primer volumen de <em>The Eugenics Review</em>: «Health, Wealth and Happiness» (<em>Granta</em>, 4 de mayo de 1928; E in G, p. 53); la variedad de enfoques sobre la eugenesia, escribió, es «un asunto tan apremiante y tan poco de moda».</p>
+          <p>Es posible también que la atención de WE hubiera sido captada por la burla de Samuel Butler en «An Heroical Epistle of Hudibras to Sidrophel», vv. 59–62: «As if the Art you have so long / Profess, of making old Dogs young, / In you had Virtue to renew / Not only Youth, but Childhood too.»</p>
+          <p><strong>8 desires; desires.</strong> copy sent to John Hayward; desires CP</p>
+          <p><strong>10 Chinese tombs:</strong> se refiere a los santuarios o pequeños templos erigidos en innumerables campos chinos. Harold B. Rattenbury, que vivió en China durante los años treinta, registró: «La forma más simple de templo, y casi universal en mi experiencia, es el pequeño santuario que está entre los campos y que los chinos llaman “T‘u-ti-Miao” —“templo local de la tierra”. Tales santuarios tienen quizá diez pies de alto, están cubiertos de tejas y tienen una sola camarita en la que se alzan dos figuras de ídolos, del tamaño de una muñeca de juguete... Es evidente que son los patronos del campo, las deidades locales, que bendicen la fertilidad de tus campos y alejan las plagas de tus cosechas» (<em>China, My China</em> (Londres, 1944), p. 132).</p>
+          <p><strong>14 The complete fire is death</strong> puede referirse al «Sermón del Fuego» del Buda (véanse pp. 139–52), o a los fuegos purgatoriales de San Agustín y de Yeats en «Byzantium».</p>
+        </div>
+      </div>
+    </article>
+
+  </section>
+</main>
+
+<script>
+  (function () {
+    var toggle = document.getElementById("themeToggle");
+    var root = document.documentElement;
+
+    function updateButton() {
+      var isDark = root.getAttribute("data-theme") === "dark";
+      toggle.textContent = isDark ? "Modo Klein" : "Modo nocturno";
+      toggle.setAttribute("aria-pressed", isDark ? "true" : "false");
+    }
+
+    toggle.addEventListener("click", function () {
+      var isDark = root.getAttribute("data-theme") === "dark";
+      if (isDark) {
+        root.setAttribute("data-theme", "klein");
+        try { localStorage.setItem("empson-theme", "klein"); } catch (e) {}
+      } else {
+        root.setAttribute("data-theme", "dark");
+        try { localStorage.setItem("empson-theme", "dark"); } catch (e) {}
+      }
+      updateButton();
+    });
+
+    updateButton();
+  })();
+</script>
+</body>
+</html>

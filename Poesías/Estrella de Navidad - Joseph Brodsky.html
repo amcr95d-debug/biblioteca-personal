@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="klein">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <title>Estrella de Navidad — Joseph Brodsky</title>
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem("brodsky-theme");
+        if (saved === "dark") {
+          document.documentElement.setAttribute("data-theme", "dark");
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #002fa7; /* Azul Klein */
+      --bg-deep: #002178;
+      --surface: rgba(255, 255, 255, 0.075);
+      --surface-strong: rgba(255, 255, 255, 0.12);
+      --text: #f7f3e8;
+      --muted: #c9d5ff;
+      --border: rgba(255, 255, 255, 0.24);
+      --accent: #ffd166;
+      --accent-soft: #ffe6a3;
+      --shadow: rgba(0, 0, 0, 0.22);
+      --selection: rgba(255, 209, 102, 0.4);
+    }
+
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #000a26; /* Azul más oscuro para modo nocturno */
+      --bg-deep: #000617;
+      --surface: rgba(255, 255, 255, 0.055);
+      --surface-strong: rgba(255, 255, 255, 0.09);
+      --text: #e8ecff;
+      --muted: #9fb0e0;
+      --border: rgba(150, 170, 255, 0.24);
+      --accent: #8fb3ff;
+      --accent-soft: #bcd0ff;
+      --shadow: rgba(0, 0, 0, 0.35);
+      --selection: rgba(143, 179, 255, 0.35);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      padding: 2rem 1.25rem 4rem;
+      background:
+        radial-gradient(circle at top left, rgba(255, 255, 255, 0.10), transparent 32rem),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
+      background-attachment: fixed;
+      color: var(--text);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.65;
+      transition: background 0.35s ease, color 0.35s ease;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    header {
+      position: relative;
+      text-align: center;
+      margin-bottom: 3rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    h1 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      margin: 0 0 0.35rem;
+      font-weight: normal;
+      letter-spacing: 0.02em;
+      color: var(--text);
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-style: italic;
+      margin: 0;
+    }
+
+    .theme-toggle {
+      margin-top: 1rem;
+      appearance: none;
+      border: 1px solid var(--border);
+      background: var(--surface-strong);
+      color: var(--text);
+      font: inherit;
+      font-size: 0.9rem;
+      padding: 0.5rem 0.9rem;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .theme-toggle:hover {
+      background: var(--surface-strong);
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .theme-toggle:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
+    h2 {
+      font-size: 1.35rem;
+      margin: 2.5rem 0 1rem;
+      padding-bottom: 0.35rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--accent);
+      font-weight: normal;
+      text-align: center;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      margin: 2rem 0 1rem;
+      color: var(--accent-soft);
+      font-weight: normal;
+      text-align: left;
+    }
+
+    .poem-container,
+    .commentary-container {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px var(--shadow);
+      backdrop-filter: blur(4px);
+      margin-bottom: 2rem;
+    }
+
+    .poem-stanza {
+      margin: 0 0 1.5rem;
+      text-align: left;
+    }
+
+    .poem-stanza:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Justificación de los textos */
+    .commentary-text p {
+      margin-top: 0;
+      margin-bottom: 1.25rem;
+      text-align: justify;
+      text-justify: inter-word;
+      hyphens: auto;
+    }
+
+    em { font-style: italic; }
+
+    ::selection {
+      background: var(--selection);
+      color: #fff;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 1.5rem 1rem 3rem;
+      }
+      .poem-container,
+      .commentary-container {
+        padding: 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<main>
+
+  <header>
+    <h1>Estrella de Navidad (1987)</h1>
+    <p class="subtitle">Joseph Brodsky (1940 – 1996)</p>
+    <button id="themeToggle" class="theme-toggle" type="button" aria-pressed="false">
+      Modo nocturno
+    </button>
+  </header>
+
+  <section id="poema">
+    <div class="poem-container">
+      <h2>Estrella de Navidad</h2>
+      <div class="poem-stanza">
+        En la estación fría, en una región más acostumbrada al calor<br>
+        que al frío, a la superficie plana más que a la montaña,<br>
+        nació en una cueva un Niño para salvar al mundo;<br>
+        ventiscaba como solo en el desierto en invierno puede ventiscar.
+      </div>
+
+      <div class="poem-stanza">
+        Todo le parecía enorme: el pecho de la madre, el vaho amarillo<br>
+        de las narices del buey, los Magos Baltasar, Gaspar,<br>
+        Melchor; sus regalos, arrastrados hasta aquí.<br>
+        Él era solo un punto. Y un punto era la estrella.
+      </div>
+
+      <div class="poem-stanza">
+        Con atención, sin parpadear, a través de escasas nubes,<br>
+        sobre el niño echado en el pesebre, desde lejos,<br>
+        desde la profundidad del Universo, desde su otro confín,<br>
+        la estrella miraba dentro de la cueva. Y esa era la mirada del Padre.
+      </div>
+    </div>
+  </section>
+
+  <section id="comentario">
+    <div class="commentary-container">
+      <h2>Comentario</h2>
+      <div class="commentary-text">
+        <p>Leo el poema como la Encarnación contada en términos de escala. Un ser que no es más que un punto, perdido en un mundo que le parece enorme, queda unido a otro punto situado en el extremo opuesto del universo por una sola cosa: una mirada atenta. El cristianismo de Brodski no está aquí en el milagro ni en la adoración, sino en esa relación entre dos puntos separados por la máxima distancia posible. Voy estrofa por estrofa y marco qué es dato y qué es lectura mía.</p>
+
+        <p><strong>Primera estrofa: un mundo al revés.</strong> Todo empieza con una inversión. Hace frío en una tierra hecha al calor, hay montaña en un lugar hecho al llano, y en el desierto barre la ventisca (vv. 1-4). La Navidad aparece como una alteración del orden natural, y el verso 4 dice de qué clase: una ventisca como solo puede haberla en el desierto, es decir, lo imposible. El dato filológico es que esa ventisca procede de Pasternak, del <em>мело</em> de «Зимняя ночь», y que Bogomolov lee todo el poema como un homenaje a la «Рождественская звезда» de Pasternak. Esto tiene consecuencias. Brodski escribe en el exilio, el mismo año del Nobel, y traslada a Belén el invierno ruso, a través de la palabra de otro poeta ruso. Que haya ahí un gesto de exiliado (la nieve de casa llevada a una tierra extraña) es lectura mía, pero el texto la permite. El verso 3 da la finalidad sin adornos: un niño nació en una cueva <em>para salvar al mundo</em>. Es la única vez que el poema dice para qué. Lo demás es mirar.</p>
+
+        <p><strong>Segunda estrofa: la perspectiva del niño.</strong> Aquí está el hallazgo central. El poema adopta la escala del recién nacido: el pecho de la madre, el vaho amarillo del buey, los magos y sus regalos arrastrados hasta allí, todo le parece <em>enorme</em> (vv. 5-7). La escena navideña, que la pintura suele componer alrededor del niño, se ve aquí desde abajo, desde un ser diminuto que no entiende lo que lo rodea. El verso 8 da la clave: «Él era solo un punto. Y un punto era la estrella». La Encarnación queda reducida a geometría. Dios hecho hombre es un punto, y lo que lo guía y lo mira es otro punto, tan pequeño visto desde la cueva como el niño visto desde el cielo. La igualdad de los dos puntos es estructural y está en el texto. Que exprese la paradoja teológica de un Dios infinito contenido en algo mínimo es la lectura natural; Lekmanov y Bogomolov la desarrollan, aunque discrepan en los detalles.</p>
+
+        <p><strong>Tercera estrofa: la mirada.</strong> Es una sola frase larga que retrasa su sujeto hasta el verso 12, «la estrella», y su sentido hasta el final de ese verso: «Y esa era la mirada del Padre». La mirada se describe con cuidado: atenta, sin parpadear, a través de nubes dispersas, desde la profundidad del universo, desde su otro extremo. Me parece decisivo lo que esa mirada no hace. No interviene, no habla, no baja. Solo mira, y mira sin apartar la vista. Bogomolov lo señala: en la última estrofa el niño deja de actuar y se convierte en el objeto de la mirada del Padre. La relación entre Padre e Hijo queda así: una distancia máxima, la del universo entero, recorrida por una atención total. Es un consuelo y a la vez algo inquietante, porque el Padre está tan lejos como puede estarse y, aun así, no deja de mirar. Hay una lectura biográfica que conviene marcar como especulativa. Brodski no pudo volver a ver a sus padres, que murieron en Leningrado en 1983 y 1984 sin que las autoridades les permitieran visitarlo. Un hijo lejos de su padre, y un padre que mira desde el otro extremo sin poder acercarse, es una imagen que en 1987 difícilmente le resultaba ajena. El poema no la impone, pero tampoco la cierra.</p>
+
+        <p><strong>El significado último</strong>, en una frase: la Encarnación es la pequeñez absoluta de Dios en un mundo que lo desborda, y lo que la sostiene no es el poder sino una mirada que, desde la máxima distancia, no se aparta. Lo encuentro sobre todo en tres lugares: el verso 8 (los dos puntos), los versos 9-11 (la atención que cruza el universo) y el final del 12, que nombra esa mirada como la del Padre. La primera estrofa prepara todo eso con la inversión del mundo, y la segunda con el cambio de escala.</p>
+
+        <p><strong>Una comparación con Agee</strong>, que me parece útil para tus notas. Los dos poemas convierten una escena canónica (la Natividad, el acantilado de Dover) en una reflexión sobre la mirada y la distancia. En Agee, el que mira describe y engaña por piedad, y la injusticia sigue cuando el poema acaba. En Brodski, el que mira no dice ni hace nada, y precisamente por eso su mirada es la del Padre. Los dos terminan sin resolución: Lear sigue cautivo, y la estrella sigue mirando hacia la cueva.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  (function () {
+    var toggle = document.getElementById("themeToggle");
+    var root = document.documentElement;
+
+    function updateButton() {
+      var isDark = root.getAttribute("data-theme") === "dark";
+      toggle.textContent = isDark ? "Modo Klein" : "Modo nocturno";
+      toggle.setAttribute("aria-pressed", isDark ? "true" : "false");
+    }
+
+    toggle.addEventListener("click", function () {
+      var isDark = root.getAttribute("data-theme") === "dark";
+      if (isDark) {
+        root.setAttribute("data-theme", "klein");
+        try { localStorage.setItem("brodsky-theme", "klein"); } catch (e) {}
+      } else {
+        root.setAttribute("data-theme", "dark");
+        try { localStorage.setItem("brodsky-theme", "dark"); } catch (e) {}
+      }
+      updateButton();
+    });
+
+    updateButton();
+  })();
+</script>
+</body>
+</html>
